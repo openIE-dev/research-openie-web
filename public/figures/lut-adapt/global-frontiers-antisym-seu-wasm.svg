@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="840" viewBox="0 0 1200 840" role="img" aria-labelledby="p33-t p33-d">
+  <title id="p33-t">Global Multi-Frontier LUT Synthesis: Antisymmetric 40-Entry T-MAC, SEU Resilience, openXC7 Post-PAR Bitstream, Aeneas Rust-to-Lean, and 14.74 KB WebAssembly</title>
+  <desc id="p33-d">Four-panel summary of Claims LA-33 through LA-35: (A) ISCA 2025 antisymmetric 40-entry T-MAC table symmetrization across Jetson AGX Thor DC shunt measured_j, AMD Zen 5 RAPL reported_j, Apple M5 Max, and live Alif Ensemble E3 Cortex-M55 DWT cycles; (B) TMLR July 2026 cosmic-ray SEU parameter bit-flip resilience with (72,64) RAMB36 Extended Hamming SECDED and 0x3C apoptosis achieving 100.0% survival at 1% BER vs 26.28% BF16; (C) Lupanov k=8 -72.5% shared-cofactor reduction, TreeLUT 1-LUT6 GBDT collapse, KAN-LUT zero-FLOP B-splines, and license-free openXC7 320.62 MHz post-PAR timing closure and 77.85 Mbit .bit bitstream on Artix-7 XC7A200T-2FBG484-2; and (D) Inria Charon + Aeneas mechanical #![no_std] Rust MIR to Lean 4.36.0 verification, 50 six-kernel LutAdapt theorems (1,414 fleet), and 14.74 KB browser-native lut6_core.wasm.</desc>
+  <defs>
+    <linearGradient id="bg33" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070b14"/>
+      <stop offset="50%" stop-color="#0b1323"/>
+      <stop offset="100%" stop-color="#07151f"/>
+    </linearGradient>
+    <linearGradient id="bar-em" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="bar-am" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="bar-ro" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f43f5e"/><stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+    <linearGradient id="bar-vi" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="840" fill="url(#bg33)"/>
+  <text x="32" y="36" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="19.0" font-weight="800">Global Multi-Frontier Advancement: Antisym-40 T-MAC, SEU SECDED, openXC7 PAR, Aeneas &amp; WASM</text>
+  <text x="32" y="56" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.1">Claims LA-19 (50 Thms / 1,414 Fleet), LA-33..LA-35  |  Thor Shunt measured_j != Host reported_j != MCU DWT != openXC7 Post-PAR Static Timing</text>
+  <rect x="30" y="72" width="562" height="362" rx="12" fill="#0f172a" stroke="#10b981" stroke-opacity="0.6" stroke-width="1.5"/>
+  <rect x="44" y="84" width="132" height="21" rx="10.5" fill="#064e3b" stroke="#10b981"/>
+  <text x="110" y="98" text-anchor="middle" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">ISCA 2025 Symm.</text>
+  <text x="186" y="99" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.8" font-weight="700">A. Antisymmetric 40-Entry T-MAC (Claim LA-33)</text>
+  <text x="44" y="119" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">T(80 - c) = -T(c), T(40) = 0  |  Stack SRAM: 2,592 B -&gt; 1,312 B (-49.38%)  |  40,500/40,500 Exact</text>
+  <text x="44" y="141" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="700">1. Jetson AGX Thor DC Shunt measured_j (INA3221 VDD_CPU, board_metered=true):</text>
+  <text x="214" y="164" text-anchor="end" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">INT8 Micro-MLP (Base)</text>
+  <rect x="222" y="154" width="205.0" height="12" rx="3" fill="url(#bar-ro)"/>
+  <text x="434.0" y="164" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">14,143.5 nJ (1.00x base)</text>
+  <text x="214" y="188" text-anchor="end" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">Full 81-Entry T-MAC</text>
+  <rect x="222" y="178" width="168.1" height="12" rx="3" fill="url(#bar-am)"/>
+  <text x="397.1" y="188" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">11,597.3 nJ (1.22x CpJ)</text>
+  <text x="214" y="212" text-anchor="end" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">Antisym-40 T-MAC (Ours)</text>
+  <rect x="222" y="202" width="124.6" height="12" rx="3" fill="url(#bar-em)"/>
+  <text x="353.6" y="212" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">8,594.9 nJ (1.65x CpJ (1.35x &lt; 81-LUT))</text>
+  <text x="44" y="244" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="700">2. Cross-Silicon Precompute Savings (board_metered=false):</text>
+  <text x="46" y="264" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">Silicon Target</text>
+  <text x="244" y="264" text-anchor="end" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">INT8 MLP</text>
+  <text x="352" y="264" text-anchor="end" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">81-Entry</text>
+  <text x="462" y="264" text-anchor="end" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">Antisym-40</text>
+  <text x="578" y="264" text-anchor="end" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">Gain</text>
+  <line x1="44" y1="270" x2="578" y2="270" stroke="#334155" stroke-width="1"/>
+  <text x="46" y="290" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">AMD Zen 5 (RAPL nJ)</text>
+  <text x="244" y="290" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">31,122 nJ</text>
+  <text x="352" y="290" text-anchor="end" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">45,733 nJ</text>
+  <text x="462" y="290" text-anchor="end" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">27,830 nJ</text>
+  <text x="578" y="290" text-anchor="end" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">1.12x (&gt;MLP!)</text>
+  <text x="46" y="314" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">Alif E3 M55 (400MHz)</text>
+  <text x="244" y="314" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">119,002 cyc</text>
+  <text x="352" y="314" text-anchor="end" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">67,101 cyc</text>
+  <text x="462" y="314" text-anchor="end" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">41,701 cyc</text>
+  <text x="578" y="314" text-anchor="end" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">1.61x (2.85x)</text>
+  <text x="46" y="338" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">Apple M5 Max (L3 nJ)</text>
+  <text x="244" y="338" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">709 nJ</text>
+  <text x="352" y="338" text-anchor="end" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">1,384 nJ</text>
+  <text x="462" y="338" text-anchor="end" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">1,119 nJ</text>
+  <text x="578" y="338" text-anchor="end" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">1.24x &lt; 81-LUT</text>
+  <rect x="44" y="370" width="534" height="50" rx="8" fill="#091e1a" stroke="#059669" stroke-opacity="0.6"/>
+  <text x="56" y="390" fill="#a7f3d0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">Why Zen 5 Flipped from 0.68x -&gt; 1.12x CpJ:</text>
+  <text x="56" y="408" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5">Halving precompute from 16x81 to 16x40 signed sums cuts L1 stack footprint 49.4% and</text>
+  <text x="56" y="422" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5">beats AVX-512 INT8 Micro-MLP in single-call RAPL energy (27.83 uJ vs 31.12 uJ).</text>
+  <rect x="608" y="72" width="562" height="362" rx="12" fill="#0f172a" stroke="#f43f5e" stroke-opacity="0.6" stroke-width="1.5"/>
+  <rect x="622" y="84" width="138" height="21" rx="10.5" fill="#4c0519" stroke="#f43f5e"/>
+  <text x="691" y="98" text-anchor="middle" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">TMLR Jul 2026 SEU</text>
+  <text x="770" y="99" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.8" font-weight="700">B. Cosmic-Ray SEU Bit-Flip Survival (Claim LA-34)</text>
+  <text x="622" y="119" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">Parameter Bit-Error Rate BER = 1.0% (10^-2)  |  (72,64) RAMB36 SECDED + 0x3C Seed Apoptosis</text>
+  <text x="622" y="141" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="700">1. Post-SEU Task Accuracy &amp; Silent Corruption at BER = 1.0%:</text>
+  <text x="796" y="166" text-anchor="end" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">BF16 Micro-MLP (Exp MSB)</text>
+  <rect x="804" y="156" width="47.8" height="13" rx="3" fill="url(#bar-ro)"/>
+  <text x="858.8" y="166" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">26.28% acc | 37.0% NaN/Inf!</text>
+  <text x="796" y="196" text-anchor="end" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">INT8 Micro-MLP (Dense)</text>
+  <rect x="804" y="186" width="82.7" height="13" rx="3" fill="url(#bar-am)"/>
+  <text x="893.7" y="196" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">45.44% acc | 54.6% silent err</text>
+  <text x="796" y="226" text-anchor="end" fill="#c4b5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">Raw Wobble LUT6 (3-Voter)</text>
+  <rect x="804" y="216" width="181.9" height="13" rx="3" fill="url(#bar-vi)"/>
+  <text x="992.9" y="226" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">99.97% acc | 0.0% NaN</text>
+  <text x="796" y="256" text-anchor="end" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">Nucleus SECDED+0x3C (Ours)</text>
+  <rect x="804" y="246" width="182.0" height="13" rx="3" fill="url(#bar-em)"/>
+  <text x="993.0" y="256" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">100.00% acc | 0.00% silent!</text>
+  <text x="622" y="292" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="700">2. Three-Layer Hardware Radiation Shield (GlobalFrontiers.lean):</text>
+  <rect x="622" y="302" width="172" height="66" rx="8" fill="#131f35" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="708" y="321" text-anchor="middle" fill="#38bdf8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.2" font-weight="700">1. Minterm Locality</text>
+  <text x="708" y="340" text-anchor="middle" fill="#e2e8f0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.6">1-bit INIT flip alters</text>
+  <text x="708" y="356" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2">1/64 inputs (63/64 exact)</text>
+  <rect x="803" y="302" width="172" height="66" rx="8" fill="#131f35" stroke="#10b981" stroke-width="1.2"/>
+  <text x="889" y="321" text-anchor="middle" fill="#10b981" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.2" font-weight="700">2. (72,64) SECDED</text>
+  <text x="889" y="340" text-anchor="middle" fill="#e2e8f0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.6">d_min = 4 Hamming ECC</text>
+  <text x="889" y="356" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2">1-bit heal, 2-bit trap</text>
+  <rect x="984" y="302" width="172" height="66" rx="8" fill="#131f35" stroke="#a78bfa" stroke-width="1.2"/>
+  <text x="1070" y="321" text-anchor="middle" fill="#a78bfa" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.2" font-weight="700">3. 0x3C Apoptosis</text>
+  <text x="1070" y="340" text-anchor="middle" fill="#e2e8f0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.6">Zero silent misroute;</text>
+  <text x="1070" y="356" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2">instant ROM seed revert</text>
+  <rect x="622" y="382" width="534" height="38" rx="8" fill="#23101c" stroke="#f43f5e" stroke-opacity="0.55"/>
+  <text x="889" y="400" text-anchor="middle" fill="#fecdd3" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5">BF16 exponent bit-30 flip scales weight by 2^128 -&gt; NaN poisons entire layer (Bacellar et al., TMLR 2026)</text>
+  <text x="889" y="415" text-anchor="middle" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5">RAMB36E1/E2 native 72-bit width stores 8 SECDED parity bits per LUT6 mask at ZERO extra BRAM cost!</text>
+  <rect x="30" y="450" width="562" height="366" rx="12" fill="#0f172a" stroke="#f59e0b" stroke-opacity="0.6" stroke-width="1.5"/>
+  <rect x="44" y="462" width="142" height="21" rx="10.5" fill="#451a03" stroke="#f59e0b"/>
+  <text x="115" y="476" text-anchor="middle" fill="#fcd34d" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3" font-weight="700">Global LUT + PAR</text>
+  <text x="196" y="477" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.8" font-weight="700">C. Lupanov, TreeLUT, KAN-LUT &amp; openXC7 .bit</text>
+  <text x="44" y="497" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">Russian Asymptotic Synthesis (1958) + GBDT/Spline Compilation + License-Free Artix-7 PAR</text>
+  <text x="44" y="519" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="700">1. Unified Non-Neural &amp; Spline-to-LUT6 Compilers (Claim LA-35):</text>
+  <text x="48" y="540" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">Lupanov (k=8, m=16)</text>
+  <text x="198" y="540" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4">80 -&gt; 22 LUT6s</text>
+  <text x="348" y="540" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4" font-weight="700">-72.5% gates</text>
+  <text x="578" y="540" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.3">256/256 exact minterms</text>
+  <text x="48" y="566" fill="#38bdf8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">TreeLUT (5-Lvl GBDT)</text>
+  <text x="198" y="566" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4">31-node tree -&gt; 1 LUT6</text>
+  <text x="348" y="566" fill="#38bdf8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4" font-weight="700">INIT 0x195cb9f4...</text>
+  <text x="578" y="566" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.3">64/64 exact | 0 branches</text>
+  <text x="48" y="592" fill="#fcd34d" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">KAN-LUT (SiLU+Spline)</text>
+  <text x="198" y="592" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4">FP64 spline -&gt; 8 LUT6s</text>
+  <text x="348" y="592" fill="#fcd34d" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4" font-weight="700">0 runtime FLOPs</text>
+  <text x="578" y="592" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.3">RMSE = 0.00347</text>
+  <line x1="44" y1="610" x2="578" y2="610" stroke="#334155" stroke-width="1"/>
+  <text x="44" y="631" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="700">2. License-Free openXC7 Post-PAR Timing &amp; Bitstream (XC7A200T-2FBG484-2):</text>
+  <rect x="44" y="642" width="534" height="118" rx="9" fill="#131c2e" stroke="#f59e0b" stroke-opacity="0.5"/>
+  <text x="56" y="663" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.2" font-weight="700">Toolchain: Yosys + nextpnr-xilinx 0.8.2 + Project X-Ray fasm2frames + xc7frames2bit</text>
+  <text x="56" y="684" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">Post-Route Fmax: 320.62 MHz  (PASS at 250 MHz target; +0.88 ns positive slack!)</text>
+  <text x="56" y="704" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">Critical Path:   3.1 ns total  (0.7 ns SLICE_LUTX logic + 2.4 ns PIP wire routing)</text>
+  <text x="56" y="724" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">Placed Silicon:  164 SLICE_LUTX, 79 SLICE_FFX, 0 DSP48E1 (Numato Aller A7 XDC pins)</text>
+  <text x="56" y="744" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">7-Series .bit:   9,730,768 B (77.846 Mbit, sha256=d60b0d62ab03...)</text>
+  <rect x="44" y="774" width="534" height="28" rx="6" fill="#271705" stroke="#d97706" stroke-opacity="0.55"/>
+  <text x="311" y="792" text-anchor="middle" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2">Zero commercial Vivado license required  |  Honesty: board_metered = false, measured_j = None</text>
+  <rect x="608" y="450" width="562" height="366" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-opacity="0.6" stroke-width="1.5"/>
+  <rect x="622" y="462" width="148" height="21" rx="10.5" fill="#0c4a6e" stroke="#38bdf8"/>
+  <text x="696" y="476" text-anchor="middle" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3" font-weight="700">Aeneas + WASM32</text>
+  <text x="780" y="477" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.8" font-weight="700">D. Rust-&gt;Lean Extraction, 50 Proofs &amp; Live WASM</text>
+  <text x="622" y="497" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">Inria Charon + Aeneas (nightly-2026.11.23) + 6/6 Lean 4.36.0 Kernels + Browser Silicon Lab</text>
+  <rect x="622" y="512" width="534" height="92" rx="9" fill="#131f35" stroke="#38bdf8" stroke-opacity="0.55"/>
+  <text x="634" y="532" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3" font-weight="700">1. Mechanical #![no_std] Rust MIR -&gt; LLBC -&gt; Lean 4.36.0 (Inria Aeneas):</text>
+  <text x="634" y="551" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">lut6_verify.rs -&gt; Charon (252,201 B LLBC) -&gt; Lut6Verify_Aeneas.lean (3,685 B)</text>
+  <text x="634" y="570" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">Extracted &amp; Kernel-Typechecked (6/6 fns, aeneas_lean_kernel_typechecked = true):</text>
+  <text x="634" y="588" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.3">pack_5trits_u8 · unpack_5trits_u8 · pack_4trits_and_mirror · surgical_overlay_mux · eval_lut6_single · is_wobble</text>
+  <rect x="622" y="614" width="534" height="76" rx="9" fill="#131f35" stroke="#a78bfa" stroke-opacity="0.55"/>
+  <text x="634" y="634" fill="#ddd6fe" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3" font-weight="700">2. Six-Kernel Paranoid Proof Suite Expanded to 50 Theorems (1,414 Fleet):</text>
+  <text x="634" y="653" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">7 Modules (+GlobalFrontiers.lean: 8 thms) · 9/50 Zero-Axiom · 38/50 Choice-Free · 0 sorry</text>
+  <text x="634" y="672" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">con-leche &amp; con-ron --verified (58,785 decls) + lean4lean + nanoda + Linux bwrap PASS</text>
+  <rect x="622" y="700" width="534" height="102" rx="9" fill="#091e1a" stroke="#10b981" stroke-opacity="0.65"/>
+  <text x="634" y="720" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3" font-weight="700">3. Browser-Native #![no_std] WebAssembly Silicon Lab (14.74 KB = 15,094 B):</text>
+  <text x="634" y="739" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">8 Cross-Compiled #![no_std] Targets (+wasm32-unknown-unknown, 0 external crates)</text>
+  <text x="634" y="758" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">Embeds BOTH 4 KB Crystals (CRC32 0xd1cc025a &amp; 0x3b12a681) + FWHT + (72,64) SECDED</text>
+  <text x="634" y="777" fill="#a7f3d0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5">Live Interactive Widget la-wasm-01 in /living/lut-adapt/ (sha256=09f0c664d4865399...)</text>
+</svg>

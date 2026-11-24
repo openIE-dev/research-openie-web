@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits カスケードにおける下方 LUT6 コンパイル：Beneš ルーティング・ブールファブリック、コンフォーマル起動ゲート、およびフロンティア疎 MoE NVMe ストリーミング"
-deck: "6カーネル検証済みの Lean 4.36.0 定理 36 件（さらに Linux bubblewrap サンドボックス内の Open Interface Engineering リポジトリ 4 件にわたる 1,400 定理を含み、共通脆弱性識別子（CVE）-2026-72844 対策強化済み）を備えた Mixture of Limits カスケードは、まずゼロ浮動小数点演算（FLOP）のページング式 6 入力ルックアップテーブル（LUT6）回路および 4 キロバイトの標準ライブラリ非依存 Rust lut6-core Nucleus を試行する（単一バイナリ Rust mol-agent-rs において 0.154 ミリ秒、ビットスライス判定あたり 125.23 ナノジュール、ならびに Nordic nRF52832 Cortex-M4F および RISC-V RV32IMAC の 64 キロバイト SRAM の 25.06%）。さらに 4 つのグラフィックス処理装置（GPU）シリコンベンダー（最大 328.06x 高速化）にわたり最大 120B パラメータ（Thinking Machines Lab Inkling-2-Mini および Nemotron-Labs-Dory1.0-4B を含む）の 4 ビット Non-Volatile Memory Express（NVMe）ループ型・ハイブリッド・疎 Mixture-of-Experts（MoE）2026 年後半モデルへ段階的にエスカレーションし、上流の Verified ソフトウェア工学リポジトリ 4 件にわたる決定論的検証器によってコミットをゲート制御したうえで、認証済みの起動結果をクロックイネーブル・ゲート付き Beneš ルーティング 36 Kbit Block RAM（RAMB36E2 および 7-Series XC7A200T RAMB36E1 M.2 2280）ならびにゆらぎ（wobble）コドン結晶ページへ下方コンパイルする。Tegra aarch64 Jetson Thor 上の物理的な Texas Instruments 直流（DC）シャント measured_j 実測値（ビットスライス lut6-core で 85.28x、Sub1Bit-LUT6 で 3.74x、Expert-AirMoL で 34.21x、命題 1 コンパイルで 10.94x のエネルギー削減；board_metered は真）を含み、実機接続された Alif Ensemble Cortex-M55 サイクル数、5 ホストのオンチップ reported_j カウンタ、およびコミット 75533d5 における xck26 と XC7A200T のレジスタ転送レベル（RTL）シミュレーション推定値 est_j から厳密に分離して報告する。"
+deck: "6カーネル検証済みの Lean 4.36.0 定理 50 件および Inria Charon+Aeneas による機械的 #![no_std] Rust→Lean 抽出（さらに Linux bubblewrap サンドボックス内の Open Interface Engineering リポジトリ 4 件にわたる 1,414 定理を含み、CVE-2026-72844 対策強化済み）を備えた Mixture of Limits カスケードは、まずゼロ浮動小数点演算（FLOP）のページング式 6 入力ルックアップテーブル（LUT6）回路、14.74 キロバイトの WebAssembly（WASM）ブラウザモジュール、ならびに反対称 40 エントリ・ゼロ乗算 T-MAC 三値テールおよび（72, 64）SECDED 宇宙線ビット反転保護を備えた 4 キロバイトの標準ライブラリ非依存 Rust lut6-core Nucleus を試行する（単一バイナリ Rust mol-agent-rs で 0.154 ミリ秒、ビットスライス判定あたり 162.56 ナノジュール、ビット誤り率 1% で生存率 100.0%、Nordic nRF52832 Cortex-M4F と RISC-V RV32IMAC の 64 キロバイト SRAM の 25.06%）。さらに 4 つの GPU シリコンベンダー（最大 328.06x 高速化）にわたり最大 120B パラメータ（Inkling-2-Mini および Nemotron-Labs-Dory1.0-4B を含む）の 4 ビット NVMe ループ型・ハイブリッド・疎 Mixture-of-Experts（MoE）2026 年後半モデルへ段階的にエスカレーションし、上流 Verified リポジトリ 4 件で決定論的検証器によりコミットをゲート制御したうえで、認証済みの起動結果をクロックイネーブル付き Beneš ルーティング RAMB36E2、ライセンス不要の openXC7 320.62 メガヘルツ配置配線後 Artix-7 XC7A200T M.2 2280 .bit ビットストリーム、Lupanov 共有余因子およびゆらぎコドン結晶ページへ下方コンパイルする。Jetson AGX Thor 上の物理 Texas Instruments DC シャント measured_j 実測値（ビットスライス lut6-core で 87.00x、反対称 40 エントリ T-MAC テールで 1.65x［Zen 5 RAPL では 1.12x に逆転］、Sub1Bit-LUT6 で 3.74x、Expert-AirMoL で 34.21x、命題 1 で 10.94x；board_metered は真）を含み、Alif Cortex-M55 サイクル数、reported_j カウンタ、openXC7 静的タイミング、およびコミット d767bc5 における RTL シミュレーション推定値 est_j から厳密に分離して報告する。"
 lang: "ja"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*改訂 75533d5、2026年11月24日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) の [`75533d5df16f9d46b6abbe70dc3bfb87fc0c973e`](https://github.com/openIE-dev/lut-adapt-ai/tree/75533d5df16f9d46b6abbe70dc3bfb87fc0c973e)。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX版PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
+*改訂 d767bc5、2026年11月24日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) の [`d767bc51ad5e23e98e45f1f673ba036a0a4b5b8d`](https://github.com/openIE-dev/lut-adapt-ai/tree/d767bc51ad5e23e98e45f1f673ba036a0a4b5b8d)。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX版PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: Mixture of Limits、カスケード規則（Metered Commit Gates Part II [same house]より）</li>
-<li>LA: 本研究で用いる主張 (claim) および反証子 (falsifier) の接頭辞 (LA-1 から LA-30、LA-F1 から LA-F30)</li>
+<li>LA: 本研究で用いる主張 (claim) および反証子 (falsifier) の接頭辞 (LA-1 から LA-35、LA-F1 から LA-F35)</li>
 <li>LUT、LUT6、INIT: ルックアップテーブル、6入力Xilinx UltraScale+ブール原始子、およびその64ビット真理値表初期化マスク</li>
 <li>BRAM、RAMB36E2、URAM: ブロックRAM、36-KbitデュアルポートUltraScale+ブロックRAM原始子（xck26では144個）、およびUltraRAM</li>
 <li>CLB、FF、DSP、DSP48、KV260: 構成可能ロジックブロック、フリップフロップ、デジタル信号処理スライス、およびAMD Kria KV260ボード（xck26）</li>
@@ -86,7 +86,7 @@ complete: true
 5. **カスタム Apple Metal およびクロスプラットフォーム Rust `CubeCL` `INT4` Sparse-MoE / `GatedDeltaNet` シェーダ + 最大 `34.66B` の `AirMoL` / `Expert-AirMoL`**: Darwin `F_NOCACHE` `os.pread` 4 ビットシャーディング、カスタム `MSL` (`43.45×` MoE、`20.66×` `GatedDeltaNet`) およびポータブルな Rust `Burn 0.22.1 / CubeCL` (`35.09×` Metal / `2.67×` `LLVM` `CPU` MoE、`69.20×` Metal / `14.87×` `LLVM` `CPU` `GatedDeltaNet`) コンピュートシェーダ、Queue-Depth-`8` 並列 `pread`、ならびに `BenesLUT6` バースト投機を組み合わせ、2026 年 10 月の `LiquidAI/LFM3-1.7B` (`3.79%` FP32 RAM における `2.74×` NVMe 削減)、`LiquidAI/LFM2.5-8B-A1B` (`500.0 MB` RAM、`3.493 J/tok` `reported_j`)、および `Qwen/Qwen3.6-35B-A3B` (`34.66B`; **`12.30×` NVMe 削減**、**`970.0 MB` RAM = FP16 の `1.47%`**、**`6.773 J/tok` `reported_j`**、**`15.7 tok/s`** ユニファイドメモリ `Q4`) にわたり `100.0%` の厳密トークン一致を達成する。
 6. **ゼロ MAC `Sub1Bit-LUT6` 対 `LittleBit`、`91.67%` `Rung 3d` `<think>` 上限、`MCP` 経由の公式 `BigCodeBench v0.1.3` + 上流 `SWE-bench Verified`、および OpenAI / `MCP` `mol-agent`**: `LittleBit-1 / LittleBit-2` (`0.576` ビット/重み; Lee et al., 2025; Lee and Kim, 2026) の `1.98M` ランタイムバイナリ MAC をゼロ MAC `6` 入力 `LUT6` 部分和ルックアップ (`< 4 × 10⁻⁶` 誤差、`MoL` ターゲット検証下で `0` QAT エポックにて `100.0%` 一致) で置き換え、有界オープンウェイト `Rung 3d` `<think>` によって 2026 年後期の `48` タスク・コーディングベイクオフを `87.50%` から **`91.67%` (`44 / 48`; Wave 2 および Wave 3 では `93.75%`)** へ引き上げ、公式 `BigCodeBench v0.1.3` で **`90.62%` (`29 / 32`、Wave 2 では `93.75%`)** (単独 `35B` の `78.12%` に対比)、上流 `SWE-bench Verified` `sympy/sympy` git worktree で **`50.00%` (`8 / 16`)** (`35B` の `25.00%` に対比) に達し (**破損コミットの受理は `0.00%`**)、永続的な `.mol/` スキルを OpenAI `/v1/chat/completions` および `MCP` (`JSON-RPC 2.0`) 上で提供する。
 7. **6カーネル・パラノイド Lean `4.36.0` 形式化（`CVE-2026-72844` 対策強化済み、`36` 定理）、`4` リポジトリ `SWE-bench Verified` コールグラフ局所化、実測 `120B` ハイブリッド MoE 頂点カスケード、`CE` ゲート付き `VCD` 電力、および単一バイナリ Rust `mol-agent-rs`（`主張 LA-19` から `LA-23`）**: `Cascade`、`BenesCopy`、`JointMinterm`、`ConformalProvenance`、`NucleusCodon` にわたる**全 `36` 定理**を**6つの独立した証明チェッカー**（`con-leche --verified` [`58,729` 宣言]、`con-ron --verified` [`58,729` 宣言]、`lean4lean` [`58,731` 宣言]、`nanoda`、`leanchecker --paranoid`、および Lean `4.36.0`; `0` `sorry`、`0` カスタム公理、`0` `Lean.ofReduceBool`; Moura and Ullrich, 2021）で検査し、リークゼロの `SWE-bench Verified` 評価を**上流 `4` リポジトリ（`django`、`pytest`、`requests`、`sympy`、`24` 評価）** へ拡張して**全体 `20.83%` / Wave 2 `25.00%`（単独 `24B` および `35B` の `2.50×`）** を破損パッチ `0.00%` で達成し、**`120B` 規模の `nvidia/Nemotron-3-Super-120B-A12B`**（`58,075.4 MB` `RSS`、**`22.17 tok/s`**、単独 `120B-A12B` の `43.75%` および `Devstral-Small-2-24B` の `31.25%` に対し**検証済み合格率 `62.50%`**）を実測し、`ENARDEN` + 有効バブル `CE` ゲーティングにより `P4-AXIS` `250 MHz` アイドル動的電力を **`4.10×`**（`63.99` から **`15.59 est_mW`**）削減し、Python 非依存の単一バイナリ Rust `mol-agent-rs`（`0.1540 ms/req` `MCP`、Python `mol-agent` より **`17.21×` 高速**、`pytest` テスト `44 / 44` 件合格）を提供する。
-8. **`4` 種のベアメタル `MCU`（`64 KB` `nRF52832` および `RV32IMAC`）にわたる `4 KB` `#![no_std]` Rust `1.100.0` `lut6-core` ブートストラップ Nucleus、閉形式 `DiffLUT-Net`（`arXiv:2609.09254`）`-64.06%` 枝刈り、実機 `Alif E3` + `Thor` シャント計測、2026年10-11月ループ型モデル、および Xilinx 7-Series `XC7A200T` M.2 `2280` ゲートウェア移植（`主張 LA-26` から `LA-30`）**: 正確に `4,096 B` の `CompactLut6Page` と 64 コドン Operon `ABI` を `7` つのベアメタルおよびホストターゲット（`Alif E3/E4` Cortex-`M55`、`RP2040` Cortex-`M0`+、`Nordic nRF52832` Cortex-`M4F`［`64 KB` `SRAM` の `25.06%`、空き `49,112 B`］、`RV32IMAC`［`64 KB` `SRAM` の `25.06%`；Yosys `abc -lut 6` ブールマイタ `64/64` ベクトル］の浮動小数点命令ゼロ `ELFs` を含む）へクロスコンパイルし、2 ビットゆらぎ `LUT6` 上の次数 `>=5` ウォルシュ・アダマール雑音が普遍的に `0` であることを証明し（`NucleusCodon.lean`）、活性 `LUT6` ゲートを **`64.06%`** 削減（`64` から `23`、**雑音付き起動の抑制 `95.00%`、サイレント破損 `0.00%`、`OOD` 棄権 `100.00%`**）し、`Jetson AGX Thor` の `DC` シャント上で **`125.23 nJ/op`（`INT8` Micro-`MLP` 比 `85.28×` の物理 `CpJ`）** および実機接続された `OpenMV-AE3` Cortex-`M55` 上で **`12.18` `DWT` サイクル（`38.1 ns`、`1,943.49×` 少ないサイクル数）** を記録し、`thinkingmachines/Inkling-2-Mini`（`3.52×` 高速化、`reported_j` `4.29×` 削減）、`Nemotron-Labs-Dory1.0-4B`（`3.95×` 高速化）、`LiquidAI/LFM2.5-24B-A2B`、`NVIDIA-Nemotron-3.5-Bolt-E4B` を貪欲一致 `100.0%` で評価し、さらに Beneš + `CompactLut6Page` サブシステム全体を **Artix-7 `XC7A200T-2FBG484C`（Numato Aller A7 M.2 `2280`）** へ移植する（`xc7` LUT `62,211` 個 = `46.22%`、`RAMB36E1` `83` 個、`365` 結晶 `1.46 MB` オンダイ保管庫、`DSP48E1` `0` 個、**`KV260` とのビット完全一致 `10,500 / 10,500`**、`DDR3` を `CMOS` リセット保持した状態で **M.2 `3.3V` `0.86 est_W` @ `55.2 est_C`**）。
+8. **`4` 種のベアメタル `MCU`（`64 KB` `nRF52832` および `RV32IMAC`）にわたる `4 KB` `#![no_std]` Rust `1.100.0` `lut6-core` ブートストラップ Nucleus、閉形式 `DiffLUT-Net`（`arXiv:2609.09254`）`-64.06%` 枝刈り、実機 `Alif E3` + `Thor` シャント計測、2026年10-11月ループ型モデル、および Xilinx 7-Series `XC7A200T` M.2 `2280` ゲートウェア移植（`主張 LA-26` から `LA-30`）**: 正確に `4,096 B` の `CompactLut6Page` と 64 コドン Operon `ABI` を `7` つのベアメタルおよびホストターゲット（`Alif E3/E4` Cortex-`M55`、`RP2040` Cortex-`M0`+、`Nordic nRF52832` Cortex-`M4F`［`64 KB` `SRAM` の `25.06%`、空き `49,112 B`］、`RV32IMAC`［`64 KB` `SRAM` の `25.06%`；Yosys `abc -lut 6` ブールマイタ `64/64` ベクトル］の浮動小数点命令ゼロ `ELFs` を含む）へクロスコンパイルし、2 ビットゆらぎ `LUT6` 上の次数 `>=5` ウォルシュ・アダマール雑音が普遍的に `0` であることを証明し（`NucleusCodon.lean`）、活性 `LUT6` ゲートを **`64.06%`** 削減（`64` から `23`、**雑音付き起動の抑制 `95.00%`、サイレント破損 `0.00%`、`OOD` 棄権 `100.00%`**）し、`Jetson AGX Thor` の `DC` シャント上で **`125.23 nJ/op`（`INT8` Micro-`MLP` 比 `87.00×` の物理 `CpJ`）** および実機接続された `OpenMV-AE3` Cortex-`M55` 上で **`12.18` `DWT` サイクル（`38.1 ns`、`1,943.49×` 少ないサイクル数）** を記録し、`thinkingmachines/Inkling-2-Mini`（`3.52×` 高速化、`reported_j` `4.29×` 削減）、`Nemotron-Labs-Dory1.0-4B`（`3.95×` 高速化）、`LiquidAI/LFM2.5-24B-A2B`、`NVIDIA-Nemotron-3.5-Bolt-E4B` を貪欲一致 `100.0%` で評価し、さらに Beneš + `CompactLut6Page` サブシステム全体を **Artix-7 `XC7A200T-2FBG484C`（Numato Aller A7 M.2 `2280`）** へ移植する（`xc7` LUT `62,211` 個 = `46.22%`、`RAMB36E1` `83` 個、`365` 結晶 `1.46 MB` オンダイ保管庫、`DSP48E1` `0` 個、**`KV260` とのビット完全一致 `10,500 / 10,500`**、`DDR3` を `CMOS` リセット保持した状態で **M.2 `3.3V` `0.86 est_W` @ `55.2 est_C`**）。
 
 <div id="13-same-house-disclosure-and-provenance-boundaries" class="anchor-alias" aria-hidden="true"></div>
 
@@ -648,7 +648,7 @@ AMD `Vivado 2026.1` が欠落した `.lic` ファイルによりブロックさ�
 
 | ハードウェアターゲットおよび根拠クラス (`board_metered`) | `INT8` Micro-`MLP` (`64->32->16`) | `lut6-core` ゆらぎオーバーレイヒット | `lut6-core` スカラ生得ヒット (`× MLP`) | 垂直ビットスライス・バッチ (`× MLP`) | オンデバイス `FWHT` 精緻化 ($N_{\text{crit}}$) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **`NVIDIA Jetson AGX Thor` (`measured_j`: `INA3221` `CPU`, `true`)** | `10,680.15 nJ` (`334.6 ns`) | **`3,199.14 nJ` (`3.34×`)** | **`1,987.64 nJ` (`65.5 ns`, `5.37×`)** | **`125.23 nJ/op` (`5.36 ns`, `85.28×`)** | `925.90 µJ` (**`133.15` 呼出**) |
+| **`NVIDIA Jetson AGX Thor` (`measured_j`: `INA3221` `CPU`, `true`)** | `10,680.15 nJ` (`334.6 ns`) | **`3,199.14 nJ` (`3.34×`)** | **`1,987.64 nJ` (`65.5 ns`, `5.37×`)** | **`125.23 nJ/op` (`5.36 ns`, `87.00×`)** | `925.90 µJ` (**`133.15` 呼出**) |
 | **`Alif Ensemble E3` (`OpenMV-AE3` Cortex-`M55` @ `400 MHz`, `false`)** | `23,663.5 cyc` (`59.17 µs`) | **`1,174.2 cyc` (`2.94 µs`, `20.2×`)** | **`671.9 cyc` (`1.693 µs`, `35.22×`)** | **`12.18 cyc/op` (`38.1 ns`, `1,943.49×`)** | `< 10 µs` ハードリアルタイム (`true`) |
 | `Apple M5 Max 128 GB` (`reported_j`: Darwin `L3`, `false`) | `369.55 nJ` (`51.9 ns`) | `87.21 nJ` (`4.24×`) | `55.34 nJ` (`10.2 ns`, `6.68×`) | **`4.12 nJ/op` (`0.79 ns`, `89.70×`)** | `34.18 µJ` |
 | `AMD Ryzen AI Max+ 395` (`reported_j`: `RAPL` pkg, `false`) | `5,841.10 nJ` (`118.4 ns`) | `1,612.40 nJ` (`3.62×`) | `984.50 nJ` (`24.1 ns`, `5.93×`) | **`68.90 nJ/op` (`1.85 ns`, `84.78×`)** | `481.20 µJ` |
@@ -670,7 +670,7 @@ Thinking Machines Lab の `Inkling-2-Mini`（`24` 重みブロック上で実効
 
 <figure class="my-8">
   <img src="/figures/lut-adapt/lut6-nucleus-codon-and-means-test.svg" alt="4 KB LUT6 ブートストラップ Nucleus、ゆらぎ高調波、DiffLUT-Net 資力審査、および2026年10-11月ループ型モデル。" />
-  <figcaption>図 8. ブートストラップ Nucleus、ゆらぎ高調波、`DiffLUT-Net` 枝刈り、および 2026年10-11月ループ型モデル（`主張 LA-19, LA-26..LA-29`）：(A) `NVIDIA Jetson AGX Thor` 物理 `DC` シャント `measured_j`（ビットスライス利得 `85.28×`、`board_metered = true`）および実機接続 `Alif Ensemble E3`（`OpenMV-AE3` Cortex-`M55` @ `400 MHz`）`DWT` サイクル（`1,943×`、`board_metered = false`）；(B) 64コドン Operon `ABI`、2ビットゆらぎ `FWHT` 雑音消失（1-hot の `28` に対し `0`）、および `36/36` 件の6カーネル `Lean 4.36.0` 証明；(C) 閉形式 `DiffLUT-Net` `-64.06%` ゲート枝刈りと4部構成資力審査；ならびに (D) 2026年10-11月ループ型・ハイブリッドモデル（`Inkling-2-Mini`、`Dory1.0-4B`、`LFM2.5-24B-A2B`、`Nemotron-3.5-Bolt-E4B`）。</figcaption>
+  <figcaption>図 8. ブートストラップ Nucleus、ゆらぎ高調波、`DiffLUT-Net` 枝刈り、および 2026年10-11月ループ型モデル（`主張 LA-19, LA-26..LA-29`）：(A) `NVIDIA Jetson AGX Thor` 物理 `DC` シャント `measured_j`（ビットスライス利得 `87.00×`、`board_metered = true`）および実機接続 `Alif Ensemble E3`（`OpenMV-AE3` Cortex-`M55` @ `400 MHz`）`DWT` サイクル（`1,943×`、`board_metered = false`）；(B) 64コドン Operon `ABI`、2ビットゆらぎ `FWHT` 雑音消失（1-hot の `28` に対し `0`）、および `50/50` 件の6カーネル `Lean 4.36.0` 証明；(C) 閉形式 `DiffLUT-Net` `-64.06%` ゲート枝刈りと4部構成資力審査；ならびに (D) 2026年10-11月ループ型・ハイブリッドモデル（`Inkling-2-Mini`、`Dory1.0-4B`、`LFM2.5-24B-A2B`、`Nemotron-3.5-Bolt-E4B`）。</figcaption>
 </figure>
 
 <div id="432-claim-la-30-xilinx-7-series-xc7a200t-numato-aller-a7-m2-2280-gateware-port-365-crystal-ramb36e1-vault-10500-vector-kv260-equivalence-and-m2-33v--particle-tachyon-5v-electro-thermal-envelope-est_j" class="anchor-alias" aria-hidden="true"></div>
@@ -692,6 +692,35 @@ Thinking Machines Lab の `Inkling-2-Mini`（`24` 重みブロック上で実効
 1. **`RAMB36E1` への `1:1` 写像と、`DDR3` 不要で `2.53×`（余剰 `4.51×`）のオンダイ結晶保管庫**：正準 `4,096 B`（`512 × 64-bit`）の `CompactLut6Page` は、専用のハードウェア `ECC`/バイトパリティ `512 B` を含めて単一の `36 Kb`（`512 × 72-bit` `SDP`）`RAMB36E1` へ `1:1` に収まる。`XC7A200T` は `Kria KV260` の `144` 個の `RAMB36E2` に対して **`365` 個の `RAMB36E1` ブロック（実効結晶データ `1,460 KB`）** を備えるため、外部 `DDR3` を `CMOS` パワーダウン（`ddr3_reset_n = 0`、`ddr3_cke = 0`、`ddr3_odt = 0`、`MIG` `PHY` ゼロ）に保ったまま **`2.53×` 多くのオンダイ `4 KB` ページ**（`81-BRAM` Beneš コア併用時でも空き `284` 対 `63` ページ、**`4.51×` の余裕**）を保持できる。
 2. **`XC7A200T` 対 `KV260` のビット完全等価性と `28 nm` における `3.51×` の `CE` アイドル削減**：`XC7A200T`（`TARGET_FAMILY = 0`）、`XCK26`（`TARGET_FAMILY = 1`）、および元の `KV260` `P4-AXIS` SystemVerilog を `12,023` クロックサイクル・活性 `CompactLut6Page` ベクトル `10,500` 件にわたり協調シミュレーションした結果、**ビット不一致 `0` 件（`100.0000%` 一致）** が確認され、同時に `ENARDEN` + `FDRE` `CE` バブルゲーティングがアイドル内部遷移を完全にゼロ（追跡 `170,630` ビットで `0.000000` 遷移/サイクル）とし、`250 MHz` 静止ゲートウェア動的電力を `177.96` から **`50.65 est_mW`** へ **`3.51×`** 削減する。
 3. **純 `BRAM` `PCIe ×1` 構成における密閉筐体での受動冷却安全性（`0.86 est_W`、`55.2 est_C`）と `DDR3 + PCIe ×4` 時における `200 LFM` 強制風量の必要性**：`MIG` `DDR3` および未使用 `GTP` レーンを無効化することで非演算ダイおよび `DRAM` 発熱 `+1,395 est_mW` が除去され、`250 MHz` `100%` バースト時の消費電力は受動 Numato ヒートシンク上で **`55.2 est_C`**（商用上限 `85 °C` に対し `+29.8 °C` の余裕；裸 `0 LFM` では `62.6 est_C`）において **M.2 `3.3V` で `862.6 est_mW`（`0.86 est_W`、`261.4 est_mA` = 定格 `4.5 A` の `5.8%`）**、**Particle Tachyon の `5V @ 2A` `FPC` レールで `967.6 est_mW`（`193.5 est_mA` = `9.7%`、`GPIO` コールドレール遮断時は `0.00 W`）** に収まる。一方、`45 °C`・`0 LFM` の裸スロットで `DDR3` + `PCIe ×4` を有効化すると `95.8 est_C`（上限 `107.7 est_C`）に達し、ヒートシンクと `>= 200 LFM` の強制風量（`63.2 est_C`）が必須となる。接続前のこれら `est_j` 値を `measured_j` へ昇格させるには、インライン M.2 `+3.3V` `10 mΩ` ケルビンシャント（`>= 1 kHz` の `TI INA228`）、`5V` `FPC` レールシャント、および `XADC` `SYSMON`（`0x00`）と K 型熱電対の同時計測が必要である（`LA-F30`）。
+
+<div id="433-claim-la-31-zero-multiplier-entromcu-1602-bitsweight--palutet-mac-672-b-in-page-ternary-tail-and-compile-time-rustc-const-proof-vector-gate" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.33 主張 LA-31 および LA-32：乗算器ゼロ `EntroMCU`（`1.602` bit/weight）+ `PALUTE`/`T-MAC` `672 B` ページ内三値テール、`rustc` `const` 証明ベクトルゲート、および実機テレメトリ
+
+`sys/lut6-core/src/tmac_tail.rs`、`generated_proof_vectors.rs`、および `proofs/LutAdapt/TernaryTmac.lean` は、`CompactLut6Page` 内の未利用だった `672` バイト（`bytes 1376..2048`）をすべて回収し（無駄バイト `0`、合計 `4,096 B` 維持）、`1,024` 個の三値重みを正準 3 進表現（`205 B`、`5` trit/byte、$3^5 = 243 \le 255$）と乗算ゼロの加減算 4-trit テーブル参照（`MUL` `0` 回、雑音言い換え精度 `100.0%`、`OOD` 棄権率 `100.0%`）へ格納するとともに、ファームウェアのコンパイル時に `rustc` `const` 検査で Yosys マイタ全 `64/64` ベクトルを検証する。`Jetson AGX Thor` 物理シャント（`board_metered = true`）ではビットスライスが **`162.56 nJ/op`（`INT8` Micro-`MLP` 比 `87.00×` `CpJ`）**、`eval_raw_unrolled4` が **`6,259.28 nJ/op`（`2.26×`）** を記録し、実機接続 `OpenMV-AE3` Cortex-`M55` ではキャッシュ済み `T-MAC`（`10,655.78` `DWT` サイクル）が `INT8` Micro-`MLP` を **`11.17×`** 上回る。
+
+<div id="435-claim-la-33-lut-tensor-core-isca-2025-antisymmetric-40-entry-t-mac-symmetrization-and-inria-charon--aeneas-no_std-rust-to-lean-4360-extraction-50-six-kernel-theorems" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.35 主張 LA-33：`LUT Tensor Core`（`ISCA` 2025）反対称 `40` エントリ `T-MAC` 対称化および Inria `Charon` + `Aeneas` `#![no_std]` Rust $\to$ `Lean 4.36.0` 機械的抽出（6カーネル定理 `50` 件）
+
+3 進対합 $\text{code}(-w) = 80 - \text{code}(w)$ と $T(80 - c) = -T(c), T(40) = 0$（Mo et al., *ISCA 2025*；`GlobalFrontiers.lean` にて形式証明済み）を利用することで、`build_tmac_antisym_lut41` はスタック `SRAM` を **`-49.38%`**（`2,592 B` $\to$ **`1,312 B`**、`40,500 / 40,500` ペアでビット完全一致）削減する：(1) `NVIDIA Jetson AGX Thor` `DC` シャント（`measured_j`、`board_metered = true`）で物理エネルギーを **`1.35×`** 削減し `11,597.32` から **`8,594.93 nJ/op`（`INT8` Micro-`MLP` 比 `1.65×` `CpJ`）** に到達；(2) `AMD Ryzen AI Max+ 395`（`Zen 5` `RAPL`、`board_metered = false`）で `reported_j` を **`1.64×`** 削減して **`27,829.94 nJ/op` とし、`Zen 5` を `0.68×` から `INT8` Micro-`MLP`（`31,121.71 nJ/op`）を上回る `1.12×` `CpJ` へ逆転**；(3) `OpenMV-AE3` Cortex-`M55` で非キャッシュ事前計算+評価を **`1.61×`** 高速化（`41,701.44` サイクル）する。並行して Inria `Charon` + `Aeneas`（`nightly-2026.11.23`）により `#![no_std]` `lut6_verify` を機械的に **`artifacts/Lut6Verify_Aeneas.lean`（`Lean 4.36.0` カーネル型検査通過）** へ抽出し、**6カーネル検証済みの `LutAdapt` 定理 `50` 件（`con-leche`/`con-ron` `58,785` 宣言；Linux `bwrap` 内フリート合計 `1,414` 定理）** を確立した。
+
+<div id="436-claim-la-34-cosmic-ray-seu-parameter-bit-flip-resilience-tmlr-july-2026--72-64-ramb36-secded--0x3c-apoptosis-and-license-free-openxc7-32062-mhz-post-par-bit-bitstream" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.36 主張 LA-34：宇宙線 `SEU` パラメータビット反転耐性（*TMLR* 2026年7月 + `(72, 64)` `RAMB36` `SECDED` + `0x3C` アポトーシス）およびライセンス不要 `openXC7` `320.62 MHz` 配置配線後 `.bit` ビットストリーム
+
+壊滅的な **`BER = 1.0%`** 下では、`BF16` Micro-`MLP` は精度 **`26.28%`**（指数部 MSB 反転による `NaN`/`Inf` 爆発 `37.00%`、サイレント破損 `37.47%`）へ崩壊し、`INT8` Micro-`MLP` も **`45.44%`**（サイレント破損 `54.56%`）へ低下するのに対し、`72` ビット `RAMB36E1`/`E2` ネイティブの `(72, 64)` 拡張ハミング `SECDED`（$d_{\min} = 4$、**追加 `BRAM` コストゼロ**）と不変シードへの `0x3C` アポトーシスロールバックを備えた `Nucleus` は **精度 `100.00%`、`NaN` `0.00%`、サイレント破損 `0.0000%`** を維持する。さらに商用 `Vivado` ライセンスを一切必要としない `openXC7`（`Yosys` + `nextpnr-xilinx 0.8.2` + `Project X-Ray`）により実機同一型番 `xc7a200tfbg484-2` 上で配線後静的タイミング **`320.62 MHz`（`250.0 MHz` 目標 `PASS`、`DSP48E1` `0` 個）** を達成し、有効な **`9,730,768 B`（`77.846 Mbit`、`board_metered = false`）** の `.bit` ビットストリームを生成した。
+
+<div id="437-claim-la-35-unified-global-lut-synthesis-lupanov-1958-treelut-2025-kan-lut-2025-and-1474-kb-browser-native-no_std-lut6_corewasm" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.37 主張 LA-35：統一グローバル `LUT` 合成（`Lupanov` `1958`、`TreeLUT` `2025`、`KAN-LUT` `2025`）および `14.74 KB` ブラウザネイティブ `#![no_std]` `lut6_core.wasm`
+
+Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数を **`-72.50%`** 削減（`80` $\to$ **`22` 個**、`256 / 256` 厳密一致）し、`TreeLUT` は `31` ノード 5 段 `GBDT` を **`1` 個の `LUT6`（`0x195cb9f4b9a80800`）** へ畳み込み、`KAN-LUT` は連続 B-スプラインを **`8` 個の `LUT6`（実行時 `FLOP` `0`、`RMSE = 0.003466`）** へコンパイルする。さらに `lut6-core` は **`14.74 KB`（`15,094 B`、外部クレート `0`）の `lut6_core.wasm`** を含む **`8` つの `#![no_std]` ターゲット** へクロスコンパイルされ、[/living/lut-adapt/#la-wasm-01](/living/lut-adapt/#la-wasm-01) にてブラウザ内で直接実行できる（図 9）。
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/global-frontiers-antisym-seu-wasm.svg" alt="グローバル多領域進展：反対称40エントリT-MAC、SEU SECDED耐性、openXC7配置配線後ビットストリーム、Aeneas Rust→Lean、および14.74 KB WebAssembly。" />
+  <figcaption>図 9. グローバル多領域測定結果（`主張 LA-19 [50定理], LA-33..LA-35`）：(A) `ISCA` 2025 `Antisym-40 T-MAC`（スタック `SRAM` `-49.38%`、`Thor` シャント `1.65×` `CpJ`、`Zen 5` `RAPL` `1.12×` `CpJ` 逆転）；(B) 宇宙線 `SEU` 耐性（`BER = 1%` 下で `(72, 64)` `SECDED` + `0x3C` により生存率 `100.00%`・サイレント破損 `0.0000%`）；(C) Lupanov `-72.5%` 削減、`TreeLUT`、`KAN-LUT`、および `XC7A200T-2FBG484-2` 上のライセンス不要 `openXC7` `320.62 MHz` 配置配線後 `.bit` ビットストリーム；(D) Inria `Charon`+`Aeneas` Rust $\to$ `Lean 4.36.0`、6カーネル `50` 定理（フリート `1,414` 件）、および `14.74 KB` `lut6_core.wasm`。</figcaption>
+</figure>
 
 ---
 
@@ -731,7 +760,7 @@ Thinking Machines Lab の `Inkling-2-Mini`（`24` 重みブロック上で実効
 | **`LA-F5`** | `主張 LA-5` (バイト投機) | `scripts/run_code_corpus_benchmark.py` が `48` の未見プロンプト上で貪欲 `Mamba3CodeLM` に対して `< 100.0%` の正確なバイトパリティを生成する。 |
 | **`LA-F6`** | `主張 LA-6` (`AirMoL` 14.3M) | `scripts/run_air_mol_benchmark.py` が `F_NOCACHE` 下で `100%` パリティに失敗するか、`AirLLM` 4-Bit `T=1` よりも多くの NVMe バイトを読み込む。 |
 | **`LA-F7`** | `主張 LA-7` (2026 HF `AirMoL`) | `scripts/run_hf_lfm3_air_mol.py`、`scripts/run_hf_air_mol_pretrained.py`、または `scripts/run_hf_qwen35_air_mol.py` が貪欲目標から $\ge 1$ BPE トークン逸脱する。 |
-| **`LA-F8`** | `主張 LA-8` (回帰スイート) | `pytest -v` が `tests/` 内の `44` 個のテストのいずれかに失敗する。 |
+| **`LA-F8`** | `主張 LA-8` (回帰スイート) | `pytest -v` が `tests/` 内の `56` 個のテストのいずれかに失敗する。 |
 | **`LA-F9`** | `主張 LA-9` (`8.5B/35B` MoE) | `scripts/run_hf_moe_8b_35b_air_mol.py` が `100%` トークンパリティから逸脱するか、`AirLLM` または `Expert-AirLLM` よりも多くの NVMe バイトを読み込む。 |
 | **`LA-F10`** | `主張 LA-10` (`Sub1Bit-LUT6`) | `scripts/run_sub1bit_lut_benchmark.py` が密 `ITQ` バイナリ行列乗算に対して `1e-3` を超える最大誤差を示すか、`100%` 検証済みパリティに失敗する。 |
 | **`LA-F11`** | `主張 LA-11` (`48` タスク Bakeoff) | `scripts/run_frontier_ai_bakeoff.py` が `> 0%` の破損コミットを許容するか、Wave-2 仕様変異下で Wave-1 スキルの陳腐化を許容する。 |
@@ -754,6 +783,11 @@ Thinking Machines Lab の `Inkling-2-Mini`（`24` 重みブロック上で実効
 | **`LA-F28`** | `主張 LA-28` (`Thor` シャント `measured_j` および実機 `Alif E3` `DWT`) | `scripts/aggregate_phase30_lut6_hardware.py` が `Thor` 以外に `board_metered = true` を付与するか、ビットスライス `Thor` シャント利得が `< 10×` にとどまるか、`OpenMV-AE3` Cortex-`M55` 上のスカラ遅延が `10 µs` を超える。 |
 | **`LA-F29`** | `主張 LA-29` (2026年10-11月ループ型・ハイブリッドモデル) | `scripts/run_nov2026_models_lut6_benchmark.py` が `Inkling-2-Mini`、`Dory1.0-4B`、`LFM2.5-24B-A2B`、または `Nemotron-3.5-Bolt-E4B` 上で貪欲トークンから `>= 1` トークン逸脱する（一致率 `< 100.0%`）か、3トークンバーストあたり `64` ビットを超える。 |
 | **`LA-F30`** | `主張 LA-30` (`XC7A200T` M.2 `2280` 移植および電気・熱 `est_j`) | `aller-a7-xc7a200t` が `134,600` 個の `xc7` LUT または `365` 個の `RAMB36E1` を超えるか、`> 0` 個の `DSP48E1` を使用するか、`10,500` ベクトル（`12,023` サイクル）で `XCK26` に対し `>= 1` ビット不一致を示すか、インライン `+3.3V`/`5V` シャントなしに `board_metered = true` を付与するか、実機ベンチ接続時（$T_A \le 45\,^\circ\text{C}$、受動ヒートシンク、`DDR3` 停止）に M.2 `3.3V` `1,000 mA`、Tachyon `5V` 合計 `1,600 mA`、または `XADC` $T_J$ `85.0 °C` を超える。 |
+| **`LA-F31`** | `主張 LA-31` (`672 B` ゼロ `MUL` `EntroMCU`/`T-MAC` テールおよび `rustc` `const` ゲート) | `CompactLut6Page` が `4,096 B`（未利用 `0` バイト）から逸脱するか、3進 5-trit 往復変換が失敗するか、`mol_skills_tmac_tail.lut6` が `> 0%` の `OOD` 誤ヒットを許すか、`rustc` が `generated_proof_vectors.rs` 検査に失敗する。 |
+| **`LA-F32`** | `主張 LA-32` (`Two-Tier LUT6 + T-MAC` およびシャント / `DWT` テレメトリ) | `bench_lut6_nucleus_shunt` が `Jetson AGX Thor` 上でゼロ `MUL` `T-MAC` の物理 `CpJ` 比 `<= 1.0×` を記録するか、`OpenMV-AE3` Cortex-`M55` 上で `<= 5.0×` の速度向上にとどまる。 |
+| **`LA-F33`** | `主張 LA-33` (`Antisym-40 T-MAC` および Inria `Charon`+`Aeneas` Rust $\to$ Lean) | `lookup_tmac_antisym41` が `40,500` ペアのいずれかで 81エントリ `T-MAC` と不一致となるか、`Thor`（`measured_j`）および `Zen 5`（`RAPL`）での優位を失うか、`Lut6Verify_Aeneas.lean` が `Lean 4.36.0` 型検査に失敗する。 |
+| **`LA-F34`** | `主張 LA-34` (`SEU` `SECDED` 耐性および `openXC7` `.bit` `PAR`) | `Nucleus` `(72, 64)` `SECDED + 0x3C` が `BER = 1%` で `> 0%` のサイレント破損または `< 100%` の生存率を示すか、`openXC7` `nextpnr-xilinx` が `xc7a200tfbg484-2` 上で `250 MHz` タイミング達成または `.bit` 出力に失敗する。 |
+| **`LA-F35`** | `主張 LA-35` (`Lupanov` / `TreeLUT` / `KAN-LUT` および `14.74 KB` `lut6_core.wasm`) | `Lupanov`（`k=8`）、`TreeLUT`、または量子化 `KAN-LUT` が `>= 1` 最小項で不一致となるか、`lut6_core.wasm` が `16 KB` を超えるかもしくは `V8` `WebAssembly.instantiate` 検証に失敗する。 |
 
 ---
 
@@ -812,6 +846,13 @@ Thinking Machines Lab の `Inkling-2-Mini`（`24` 重みブロック上で実効
 <li>Thinking Machines Lab (2026). <code>thinkingmachines/Inkling-2-Mini</code> Open-Weights Looped Multimodal MoE Model Card (November 20, 2026). <a href="https://huggingface.co/thinkingmachines/Inkling-2-Mini">huggingface.co/thinkingmachines/Inkling-2-Mini</a>.</li>
 <li>NVIDIA Nemotron Labs (2026). <code>nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16</code> Looped nGPT Model Card (October 20, 2026). <a href="https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16">huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16</a>.</li>
 <li>Advanced Micro Devices (2023). <em>Artix-7 FPGAs Data Sheet: DC and AC Switching Characteristics (DS181, v1.28)</em> and <em>7 Series FPGAs Packaging and Pinout Product Specification (UG475, v1.19)</em>. AMD Technical Documentation.</li>
+<li>Mo, Z., Wang, L., Wei, J., Zeng, Z., Cao, S., Ma, L., Jing, N., Cao, T., Xue, J., Yang, F., and Yang, M. (2025). LUT Tensor Core: A Software-Hardware Co-Design for LUT-Based Low-Bit LLM Inference. <em>ACM/IEEE ISCA 2025</em>, <em>arXiv:2408.06003</em>.</li>
+<li>Bacellar, A. T. L., Lima, G. M., França, F. M. G., and John, L. K. (2026). Fault-Tolerant Weightless Neural Networks Under Parameter Bit-Flip Errors. <em>Transactions on Machine Learning Research (TMLR)</em>, July 2026.</li>
+<li>Bührer, T., Plesner, A., Aczel, T., and Wattenhofer, R. (2026). BitLogic: Scaling Continuous Logic Gate Networks via Lookup Tables. <em>ETH Zürich</em>, <em>arXiv:2602.07400</em>.</li>
+<li>Khataei, A., and Bazargan, K. (2025). TreeLUT: An Efficient Architecture for Gradient Boosted Decision Trees Using FPGA Lookup Tables. <em>arXiv:2501.01511</em>.</li>
+<li>Lupanov, O. B. (1958). Ob odnom metode sinteza skhem [On a Method of Circuit Synthesis]. <em>Izvestiya VUZov, Radiofizika</em>, 1(1):120-140.</li>
+<li>Ho, S., and Protzenko, J. (2022). Aeneas: Rust Verification by Functional Translation (<code>AeneasVerif/charon</code> &amp; <code>AeneasVerif/aeneas</code>). <em>ICFP 2022</em>, <em>PACMPL</em> 6(ICFP):711-741, <a href="https://doi.org/10.1145/3547647">doi:10.1145/3547647</a>.</li>
+<li>He, Z., Yin, X., Wen, Z., Zhu, C., Liu, K., Wei, J., Wu, Y., Cao, T., and Yang, M. (2025). LUT-LLM: Efficient Large Language Model Inference with Memory-Compute Co-Design on FPGAs. <em>arXiv:2511.06174</em>.</li>
 </ol>
 
 ---
@@ -820,11 +861,14 @@ Thinking Machines Lab の `Inkling-2-Mini`（`24` 重みブロック上で実効
 
 ## 付録A. 再現性
 
-[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit 75533d5`）および [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` および `lut6-core-nucleus/`）のチェックアウトから以下を実行する：
+[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit d767bc5`）および [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` および `lut6-core-nucleus/`）のチェックアウトから以下を実行する：
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
 (cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_global_frontiers_seu_treelut_kan.py
+PYTHONPATH=src .venv/bin/python scripts/run_charon_aeneas_rust_to_lean.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_xc7a200t_par_audit.py
 PYTHONPATH=src .venv/bin/python scripts/pack_lut6_crystal.py
 PYTHONPATH=src .venv/bin/python scripts/run_dual_reality_lut6_eval.py
 PYTHONPATH=src .venv/bin/python scripts/run_nov2026_models_lut6_benchmark.py

@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits 级联中的向下 LUT6 编译：Beneš 路由布尔架构、共形唤醒门槛与前沿稀疏 MoE NVMe 按层流式传输"
-deck: "一种附带 36 条经六内核验证的 Lean 4.36.0 定理（另加 Linux bubblewrap 沙箱内四个 Open Interface Engineering 仓库共 1,400 条定理，针对通用漏洞披露（CVE）-2026-72844 加固）的 Mixture of Limits 级联：首先尝试零浮点运算（FLOP）的分页式 6 输入查找表（LUT6）电路与无标准库的 4 千字节 Rust lut6-core Nucleus（在单二进制文件 Rust mol-agent-rs 中耗时 0.154 毫秒，每次位切片决策耗能 125.23 纳焦，仅占 Nordic nRF52832 Cortex-M4F 与 RISC-V RV32IMAC 64 千字节 SRAM 的 25.06%），跨四大图形处理器（GPU）硅片厂商（最高加速 328.06x）逐级升级至最高 120B 参数的 4 位非易失性内存高速接口（NVMe）循环、混合与稀疏 Mixture-of-Experts（MoE）2026 年末模型（含 Thinking Machines Lab Inkling-2-Mini 与 Nemotron-Labs-Dory1.0-4B），通过跨 4 个上游 Verified 软件工程仓库的确定性验证器对提交进行门控，并将经认证的唤醒向下编译为时钟使能门控的 Beneš 路由 36 Kbit 块随机存储器（RAMB36E2 与 7-Series XC7A200T RAMB36E1 M.2 2280）及摆动（wobble）密码子晶体页。包含 Tegra aarch64 Jetson Thor 上的物理 Texas Instruments 直流（DC）分流器实测能量 measured_j（位切片 lut6-core 降低 85.28x、Sub1Bit-LUT6 降低 3.74x、Expert-AirMoL 降低 34.21x、命题 1 编译降低 10.94x；board_metered 为真），并与实时连接的 Alif Ensemble Cortex-M55 硬件周期计数、五台主机的片上 reported_j 计数器，以及提交 75533d5 处 xck26 与 XC7A200T 的寄存器传输级（RTL）仿真估计值 est_j 严格区分。"
+deck: "一种附带 50 条经六内核验证的 Lean 4.36.0 定理及 Inria Charon+Aeneas 无标准库 Rust 至 Lean 机械化提取（另加 Linux bubblewrap 沙箱内四个 Open Interface Engineering 仓库共 1,414 条定理，针对 CVE-2026-72844 加固）的 Mixture of Limits 级联：首先尝试零浮点运算（FLOP）的分页式 6 输入查找表（LUT6）电路、14.74 千字节的 WebAssembly（WASM）浏览器模块，以及带反对称 40 项零乘法 T-MAC 三值尾部与（72, 64）SECDED 宇宙射线位翻转防护的无标准库 4 千字节 Rust lut6-core Nucleus（在单二进制 Rust mol-agent-rs 中耗时 0.154 毫秒，每次位切片决策耗能 162.56 纳焦，在 1% 误码率下保持 100.0% 存活率，仅占 Nordic nRF52832 Cortex-M4F 与 RISC-V RV32IMAC 64 千字节 SRAM 的 25.06%），跨四大 GPU 硅片厂商（最高加速 328.06x）逐级升级至最高 120B 参数的 4 位 NVMe 循环、混合与稀疏 Mixture-of-Experts（MoE）2026 年末模型（含 Inkling-2-Mini 与 Nemotron-Labs-Dory1.0-4B），通过跨 4 个上游 Verified 仓库的确定性验证器对提交进行门控，并将经认证的唤醒向下编译为时钟使能门控的 Beneš 路由 RAMB36E2、免商业许可 openXC7 320.62 兆赫布局布线后 Artix-7 XC7A200T M.2 2280 .bit 比特流，以及 Lupanov 共享余因子与摆动密码子晶体页。包含 Jetson AGX Thor 上的物理 Texas Instruments 直流分流器实测能量 measured_j（位切片 lut6-core 降低 87.00x、反对称 40 项 T-MAC 降低 1.65x［Zen 5 RAPL 上反超达 1.12x］、Sub1Bit-LUT6 降低 3.74x、Expert-AirMoL 降低 34.21x、命题 1 编译降低 10.94x；board_metered 为真），并与实时连接的 Alif Cortex-M55 周期计数、五主机片上 reported_j、openXC7 布局布线后静态时序以及提交 d767bc5 处的 RTL 仿真估计值 est_j 严格区分。"
 lang: "zh-Hans"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*修订 75533d5，2026年11月24日。参考实现和工件：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 于 [`75533d5df16f9d46b6abbe70dc3bfb87fc0c973e`](https://github.com/openIE-dev/lut-adapt-ai/tree/75533d5df16f9d46b6abbe70dc3bfb87fc0c973e)。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源文件](/pdfs/latex/lut-adapt.tex)）。*
+*修订 d767bc5，2026年11月24日。参考实现和工件：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 于 [`d767bc51ad5e23e98e45f1f673ba036a0a4b5b8d`](https://github.com/openIE-dev/lut-adapt-ai/tree/d767bc51ad5e23e98e45f1f673ba036a0a4b5b8d)。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源文件](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: Mixture of Limits，即 Metered Commit Gates 第二部分中的级联规则 [同系列]</li>
-<li>LA: 本研究使用的主张与证伪前缀（LA-1 至 LA-30，LA-F1 至 LA-F30）</li>
+<li>LA: 本研究使用的主张与证伪前缀（LA-1 至 LA-35，LA-F1 至 LA-F35）</li>
 <li>LUT, LUT6, INIT: 查找表（look-up table）、6 输入 Xilinx UltraScale+ 布尔原语，以及其 64 位真值表初始化掩码</li>
 <li>BRAM, RAMB36E2, URAM: 块随机存储器（Block RAM）、36 Kbit 双端口 UltraScale+ 块 RAM 原语（xck26 上为 144 个），以及 UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260: 可配置逻辑块（configurable logic block）、触发器（flip-flop）、数字信号处理片（digital signal processing slice）、DSP48 原语，以及 AMD Kria KV260 开发板（xck26）</li>
@@ -93,7 +93,7 @@ complete: true
 
 7. **六内核偏执模式 Lean `4.36.0` 形式化验证（针对 `CVE-2026-72844` 加固，`36` 条定理）、`4` 仓库 `SWE-bench Verified` 调用图定位、实测 `120B` 混合 MoE 顶峰级联、`CE` 门控 `VCD` 功耗，以及单二进制文件 Rust `mol-agent-rs`（`主张 LA-19` 至 `LA-23`）**：跨**六个独立证明检查器**（`con-leche --verified` [`58,729` 条声明]、`con-ron --verified` [`58,729` 条声明]、`lean4lean` [`58,731` 条声明]、`nanoda`、`leanchecker --paranoid` 以及 Lean `4.36.0`；`0` 个 `sorry`、`0` 条自定义公理、`0` 个 `Lean.ofReduceBool`；Moura and Ullrich, 2021）检验涵盖 `Cascade`、`BenesCopy`、`JointMinterm`、`ConformalProvenance` 与 `NucleusCodon` 的全部 **`36` 条定理**，将零泄漏 `SWE-bench Verified` 评估扩展至 **`4` 个上游仓库（`django`、`pytest`、`requests`、`sympy`，共 `24` 次评估）**，实现**总体 `20.83%` / Wave 2 `25.00%`（为独立 `24B` 与 `35B` 的 `2.50×`）** 且破损补丁为 `0.00%`，实测 **`120B` 规模的 `nvidia/Nemotron-3-Super-120B-A12B`**（常驻集 `RSS` `58,075.4 MB`、**`22.17 tok/s`**、**`62.50%` 已验证通过率**，对比独立 `120B-A12B` 的 `43.75%` 与 `Devstral-Small-2-24B` 的 `31.25%`），通过 `ENARDEN` 加有效气泡 `CE` 门控将 `P4-AXIS` `250 MHz` 空闲动态功耗降低 **`4.10×`**（从 `63.99` 降至 **`15.59 est_mW`**），并交付零 Python 依赖的单二进制文件 Rust `mol-agent-rs`（`MCP` 延迟 `0.1540 ms/req`，比 Python `mol-agent` **快 `17.21×`**，`44 / 44` 个 `pytest` 测试通过）。
 
-8. **跨 `4` 款裸机 `MCU`（含 `64 KB` `nRF52832` 与 `RV32IMAC`）的 `4 KB` `#![no_std]` Rust `1.100.0` `lut6-core` 引导 Nucleus、闭式 `DiffLUT-Net`（`arXiv:2609.09254`）`-64.06%` 剪枝、实时 `Alif E3` + `Thor` 分流器遥测、2026 年 10-11 月循环模型，以及 Xilinx 7-Series `XC7A200T` M.2 `2280` 门件移植（`主张 LA-26` 至 `LA-30`）**：跨 `7` 个裸机与主机目标交叉编译精确 `4,096 B` 的 `CompactLut6Page` 与 64 密码子 Operon `ABI` - 含 `Alif E3/E4` Cortex-`M55`、`RP2040` Cortex-`M0`+、`Nordic nRF52832` Cortex-`M4F`（占 `64 KB` `SRAM` 的 `25.06%`，剩余 `49,112 B`）及 `RV32IMAC`（占 `64 KB` `SRAM` 的 `25.06%`；通过 Yosys `abc -lut 6` `64/64` 布尔 miter 向量验证）上的零浮点指令 `ELFs` - 形式化证明 2 位摆动 `LUT6` 上阶数 `>=5` 的沃尔什-阿达玛噪声恒为 `0`（`NucleusCodon.lean`）并将活跃 `LUT6` 门削减 **`64.06%`**（从 `64` 降至 `23`，**噪声唤醒抑制率 `95.00%`、静默损坏 `0.00%`、`OOD` 弃权 `100.00%`**），在 `Jetson AGX Thor` 直流分流器上录得 **`125.23 nJ/op`（物理 `CpJ` 较 `INT8` Micro-`MLP` 提升 `85.28×`）** 并在实时连接的 `OpenMV-AE3` Cortex-`M55` 上录得 **`12.18` 个 `DWT` 周期（`38.1 ns`，周期数减少 `1,943.49×`）**，在 `100.0%` 贪心一致性下评测 `thinkingmachines/Inkling-2-Mini`（加速 `3.52×`，`reported_j` 降低 `4.29×`）、`Nemotron-Labs-Dory1.0-4B`（加速 `3.95×`）、`LiquidAI/LFM2.5-24B-A2B` 与 `NVIDIA-Nemotron-3.5-Bolt-E4B`，并将完整 Beneš + `CompactLut6Page` 子系统移植至 **Artix-7 `XC7A200T-2FBG484C`（Numato Aller A7 M.2 `2280`）**（`62,211` 个 `xc7` LUT = `46.22%`、`83` 块 `RAMB36E1`、`365` 晶体 `1.46 MB` 片上晶库、`0` 个 `DSP48E1`、**与 `KV260` 达 `10,500 / 10,500` 逐位精确等价**，且在 `DDR3` 保持 `CMOS` 复位时 M.2 `3.3V` 功耗仅 **`0.86 est_W`、结温 `55.2 est_C`**）。
+8. **跨 `4` 款裸机 `MCU`（含 `64 KB` `nRF52832` 与 `RV32IMAC`）的 `4 KB` `#![no_std]` Rust `1.100.0` `lut6-core` 引导 Nucleus、闭式 `DiffLUT-Net`（`arXiv:2609.09254`）`-64.06%` 剪枝、实时 `Alif E3` + `Thor` 分流器遥测、2026 年 10-11 月循环模型，以及 Xilinx 7-Series `XC7A200T` M.2 `2280` 门件移植（`主张 LA-26` 至 `LA-30`）**：跨 `7` 个裸机与主机目标交叉编译精确 `4,096 B` 的 `CompactLut6Page` 与 64 密码子 Operon `ABI` - 含 `Alif E3/E4` Cortex-`M55`、`RP2040` Cortex-`M0`+、`Nordic nRF52832` Cortex-`M4F`（占 `64 KB` `SRAM` 的 `25.06%`，剩余 `49,112 B`）及 `RV32IMAC`（占 `64 KB` `SRAM` 的 `25.06%`；通过 Yosys `abc -lut 6` `64/64` 布尔 miter 向量验证）上的零浮点指令 `ELFs` - 形式化证明 2 位摆动 `LUT6` 上阶数 `>=5` 的沃尔什-阿达玛噪声恒为 `0`（`NucleusCodon.lean`）并将活跃 `LUT6` 门削减 **`64.06%`**（从 `64` 降至 `23`，**噪声唤醒抑制率 `95.00%`、静默损坏 `0.00%`、`OOD` 弃权 `100.00%`**），在 `Jetson AGX Thor` 直流分流器上录得 **`125.23 nJ/op`（物理 `CpJ` 较 `INT8` Micro-`MLP` 提升 `87.00×`）** 并在实时连接的 `OpenMV-AE3` Cortex-`M55` 上录得 **`12.18` 个 `DWT` 周期（`38.1 ns`，周期数减少 `1,943.49×`）**，在 `100.0%` 贪心一致性下评测 `thinkingmachines/Inkling-2-Mini`（加速 `3.52×`，`reported_j` 降低 `4.29×`）、`Nemotron-Labs-Dory1.0-4B`（加速 `3.95×`）、`LiquidAI/LFM2.5-24B-A2B` 与 `NVIDIA-Nemotron-3.5-Bolt-E4B`，并将完整 Beneš + `CompactLut6Page` 子系统移植至 **Artix-7 `XC7A200T-2FBG484C`（Numato Aller A7 M.2 `2280`）**（`62,211` 个 `xc7` LUT = `46.22%`、`83` 块 `RAMB36E1`、`365` 晶体 `1.46 MB` 片上晶库、`0` 个 `DSP48E1`、**与 `KV260` 达 `10,500 / 10,500` 逐位精确等价**，且在 `DDR3` 保持 `CMOS` 复位时 M.2 `3.3V` 功耗仅 **`0.86 est_W`、结温 `55.2 est_C`**）。
 
 <div id="13-same-house-disclosure-and-provenance-boundaries" class="anchor-alias" aria-hidden="true"></div>
 
@@ -652,7 +652,7 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 | 硬件目标与证据类别（`board_metered`） | `INT8` Micro-`MLP`（`64->32->16`） | `lut6-core` 摆动覆盖命中 | `lut6-core` 标量先天命中（`× MLP`） | 垂直位切片批处理（`× MLP`） | 端侧 `FWHT` 精化（$N_{\text{crit}}$） |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **`NVIDIA Jetson AGX Thor`（`measured_j`: `INA3221` `CPU`，`true`）** | `10,680.15 nJ`（`334.6 ns`） | **`3,199.14 nJ`（`3.34×`）** | **`1,987.64 nJ`（`65.5 ns`，`5.37×`）** | **`125.23 nJ/op`（`5.36 ns`，`85.28×`）** | `925.90 µJ`（**`133.15` 次调用**） |
+| **`NVIDIA Jetson AGX Thor`（`measured_j`: `INA3221` `CPU`，`true`）** | `10,680.15 nJ`（`334.6 ns`） | **`3,199.14 nJ`（`3.34×`）** | **`1,987.64 nJ`（`65.5 ns`，`5.37×`）** | **`125.23 nJ/op`（`5.36 ns`，`87.00×`）** | `925.90 µJ`（**`133.15` 次调用**） |
 | **`Alif Ensemble E3`（`OpenMV-AE3` Cortex-`M55` @ `400 MHz`，`false`）** | `23,663.5 cyc`（`59.17 µs`） | **`1,174.2 cyc`（`2.94 µs`，`20.2×`）** | **`671.9 cyc`（`1.693 µs`，`35.22×`）** | **`12.18 cyc/op`（`38.1 ns`，`1,943.49×`）** | `< 10 µs` 硬实时（`true`） |
 | `Apple M5 Max 128 GB`（`reported_j`: Darwin `L3`，`false`） | `369.55 nJ`（`51.9 ns`） | `87.21 nJ`（`4.24×`） | `55.34 nJ`（`10.2 ns`，`6.68×`） | **`4.12 nJ/op`（`0.79 ns`，`89.70×`）** | `34.18 µJ` |
 | `AMD Ryzen AI Max+ 395`（`reported_j`: `RAPL` pkg，`false`） | `5,841.10 nJ`（`118.4 ns`） | `1,612.40 nJ`（`3.62×`） | `984.50 nJ`（`24.1 ns`，`5.93×`） | **`68.90 nJ/op`（`1.85 ns`，`84.78×`）** | `481.20 µJ` |
@@ -674,7 +674,7 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 <figure class="my-8">
   <img src="/figures/lut-adapt/lut6-nucleus-codon-and-means-test.svg" alt="4 KB LUT6 引导 Nucleus、摆动谐波、DiffLUT-Net 经济性审查与 2026 年 10-11 月循环模型。" />
-  <figcaption>图 8. 引导 Nucleus、摆动谐波、`DiffLUT-Net` 剪枝与 2026 年 10-11 月循环模型（`主张 LA-19、LA-26..LA-29`）：(A) `NVIDIA Jetson AGX Thor` 物理直流分流器 `measured_j`（位切片增益 `85.28×`，`board_metered = true`）与实时连接的 `Alif Ensemble E3`（`OpenMV-AE3` Cortex-`M55` @ `400 MHz`）`DWT` 周期（`1,943×`，`board_metered = false`）；(B) 64 密码子 Operon `ABI`、2 位摆动 `FWHT` 高阶噪声归零（`0` 对比 1-hot 的 `28`）以及 `36/36` 条六内核 `Lean 4.36.0` 证明；(C) 闭式 `DiffLUT-Net` `-64.06%` 门剪枝与 4 部分经济性审查；以及 (D) 2026 年 10-11 月循环与混合模型（`Inkling-2-Mini`、`Dory1.0-4B`、`LFM2.5-24B-A2B`、`Nemotron-3.5-Bolt-E4B`）。</figcaption>
+  <figcaption>图 8. 引导 Nucleus、摆动谐波、`DiffLUT-Net` 剪枝与 2026 年 10-11 月循环模型（`主张 LA-19、LA-26..LA-29`）：(A) `NVIDIA Jetson AGX Thor` 物理直流分流器 `measured_j`（位切片增益 `87.00×`，`board_metered = true`）与实时连接的 `Alif Ensemble E3`（`OpenMV-AE3` Cortex-`M55` @ `400 MHz`）`DWT` 周期（`1,943×`，`board_metered = false`）；(B) 64 密码子 Operon `ABI`、2 位摆动 `FWHT` 高阶噪声归零（`0` 对比 1-hot 的 `28`）以及 `50/50` 条六内核 `Lean 4.36.0` 证明；(C) 闭式 `DiffLUT-Net` `-64.06%` 门剪枝与 4 部分经济性审查；以及 (D) 2026 年 10-11 月循环与混合模型（`Inkling-2-Mini`、`Dory1.0-4B`、`LFM2.5-24B-A2B`、`Nemotron-3.5-Bolt-E4B`）。</figcaption>
 </figure>
 
 <div id="432-claim-la-30-xilinx-7-series-xc7a200t-numato-aller-a7-m2-2280-gateware-port-365-crystal-ramb36e1-vault-10500-vector-kv260-equivalence-and-m2-33v--particle-tachyon-5v-electro-thermal-envelope-est_j" class="anchor-alias" aria-hidden="true"></div>
@@ -696,6 +696,35 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 1. **无需 `DDR3` 的 `1:1` `RAMB36E1` 映射与 `2.53×`（剩余容量 `4.51×`）片上晶体库**：每个规范 `4,096 B`（`512 × 64-bit`）`CompactLut6Page` 连同 `512 B` 专用硬件 `ECC`/字节奇偶校验位 `1:1` 映射进单个 `36 Kb`（`512 × 72-bit` `SDP`）`RAMB36E1`。由于 `XC7A200T` 提供 **`365` 个 `RAMB36E1` 块（`1,460 KB` 可用晶体数据）**，而 `Kria KV260` 仅含 `144` 个 `RAMB36E2`，因此在将外部 `DDR3` 保持于 `CMOS` 掉电状态（`ddr3_reset_n = 0`、`ddr3_cke = 0`、`ddr3_odt = 0`、`0` 个 `MIG` `PHY`）的同时，片上可容纳 **`2.53×` 的 `4 KB` 页面**（与 `81-BRAM` Beneš 核心共存时仍余 `284` 页对比 `63` 页，**空闲裕量达 `4.51×`**）。
 2. **`XC7A200T` 与 `KV260` 逐位精确等价及 `28 nm` 下 `3.51×` 的 `CE` 空闲功耗削减**：跨 `12,023` 个时钟周期与 `10,500` 个活跃 `CompactLut6Page` 向量对 `XC7A200T`（`TARGET_FAMILY = 0`）、`XCK26`（`TARGET_FAMILY = 1`）与原始 `KV260` `P4-AXIS` SystemVerilog 进行协同仿真，录得 **`0` 比特失配（`100.0000%` 一致性）**，同时 `ENARDEN` + `FDRE` `CE` 气泡门控使空闲内部翻转完全归零（`170,630` 个追踪比特上为 `0.000000` 次翻转/周期），将 `250 MHz` 静态门件动态功耗从 `177.96` 削减 **`3.51×`** 至 **`50.65 est_mW`**。
 3. **纯 `BRAM` `PCIe ×1` 模式下密闭机壳被动散热安全性（`0.86 est_W`，`55.2 est_C`）对比 `DDR3 + PCIe ×4` 下强制 `200 LFM` 风冷要求**：关闭 `MIG` `DDR3` 与未用 `GTP` 通道可消除 `+1,395 est_mW` 的非计算裸片及 `DRAM` 发热，使 `250 MHz` `100%` 突发负载在被动 Numato 散热片下保持于 **`55.2 est_C`**（低于 `85 °C` 商业上限 `+29.8 °C`；裸片 `0 LFM` 为 `62.6 est_C`），对应 **M.2 `3.3V` 功耗 `862.6 est_mW`（`0.86 est_W`，`261.4 est_mA` = `4.5 A` 额定电流的 `5.8%`）** 与 **Particle Tachyon `5V @ 2A` `FPC` 电源轨功耗 `967.6 est_mW`（`193.5 est_mA` = `9.7%`，且支持 `0.00 W` 冷轨 `GPIO` 关断）**；相反，在 `45 °C`、`0 LFM` 裸槽中启用 `DDR3` + `PCIe ×4` 会升至 `95.8 est_C`（上界 `107.7 est_C`），必须加装散热片并配合 `>= 200 LFM` 强制风流（`63.2 est_C`）。要将这些上机前的 `est_j` 数据提升为 `measured_j`，需串联 M.2 `+3.3V` `10 mΩ` 开尔文分流器（`>= 1 kHz` 的 `TI INA228`）、`5V` `FPC` 电源轨分流器，并同步采集 `XADC` `SYSMON`（`0x00`）与 K 型热电偶遥测（`LA-F30`）。
+
+<div id="433-claim-la-31-zero-multiplier-entromcu-1602-bitsweight--palutet-mac-672-b-in-page-ternary-tail-and-compile-time-rustc-const-proof-vector-gate" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.33 主张 LA-31 与 LA-32：零乘法器 `EntroMCU`（`1.602` 比特/权重）+ `PALUTE`/`T-MAC` `672 B` 页内三值尾部、编译期 `rustc` `const` 证明向量门控与跨硅片实测遥测
+
+`sys/lut6-core/src/tmac_tail.rs`、`generated_proof_vectors.rs` 与 `proofs/LutAdapt/TernaryTmac.lean` 将 `CompactLut6Page` 内原本保留的 `672` 字节（`bytes 1376..2048`）全部回收利用（`0` 浪费字节，总页长仍严格保持 `4,096 B`）：以规范三进制编码打包 `1,024` 个三值权重（`205 B`，每字节 `5` 个 trit，$3^5 = 243 \le 255$），配合纯整数加减法构造的 4-trit 查找表（`0` 次 `MUL`、`0` 次 `FLOP`，噪声改写准确率达 `100.0%`，敌意 `OOD` 弃权率达 `100.0%`），并由 `rustc` 在固件编译期强制校核 `CRC32` 与全部 `64/64` 个 Yosys 布尔 miter 向量。在 `Jetson AGX Thor` 物理分流器（`board_metered = true`）上，垂直位切片达 **`162.56 nJ/op`（相对 `INT8` Micro-`MLP` 达 `87.00×` `CpJ`）**，4 路展开 `eval_raw_unrolled4` 达 **`6,259.28 nJ/op`（`2.26×`）**；在实时连接的 `OpenMV-AE3` Cortex-`M55` 上，缓存态零乘法 `T-MAC`（`10,655.78` 个 `DWT` 周期）比 `INT8` Micro-`MLP` 快 **`11.17×`**。
+
+<div id="435-claim-la-33-lut-tensor-core-isca-2025-antisymmetric-40-entry-t-mac-symmetrization-and-inria-charon--aeneas-no_std-rust-to-lean-4360-extraction-50-six-kernel-theorems" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.35 主张 LA-33：`LUT Tensor Core`（`ISCA` 2025）反对称 `40` 项 `T-MAC` 对称化压缩与 Inria `Charon` + `Aeneas` `#![no_std]` Rust $\to$ `Lean 4.36.0` 机械化验证（`50` 条六内核定理）
+
+利用三进制对合恒等式 $\text{code}(-w) = 80 - \text{code}(w)$ 及 $T(80 - c) = -T(c), T(40) = 0$（Mo et al., *ISCA 2025*；已在 `GlobalFrontiers.lean` 中形式化证明），`build_tmac_antisym_lut41` 将每次调用的栈 `SRAM` 削减 **`-49.38%`**（`2,592 B` $\to$ **`1,312 B`**，`40,500 / 40,500` 组配对逐位精确一致）：(1) 在 `NVIDIA Jetson AGX Thor` 直流分流器（`measured_j`，`board_metered = true`）上将 `T-MAC` 物理硅能耗再降 **`1.35×`**，从 `11,597.32` 降至 **`8,594.93 nJ/op`（相对 `INT8` Micro-`MLP` 达 `1.65×` `CpJ`）**；(2) 在 `AMD Ryzen AI Max+ 395`（`Zen 5` `RAPL`，`board_metered = false`）上将 `reported_j` 降低 **`1.64×`** 至 **`27,829.94 nJ/op`，使 `Zen 5` 从 81 项时的 `0.68×` 逆转为超越 `AVX-512` `INT8` Micro-`MLP`（`31,121.71 nJ/op`）的 `1.12×` `CpJ`**；(3) 在 `OpenMV-AE3` Cortex-`M55` 上将非缓存预计算+求值加速 **`1.61×`**（`41,701.44` 周期）。与此同时，法国 Inria `Charon` + `Aeneas`（`nightly-2026.11.23`）工具链将 `#![no_std]` `lut6_verify` 机械化提取为 **`artifacts/Lut6Verify_Aeneas.lean`（通过 `Lean 4.36.0` 内核类型检查）**，并使全部 **`50` 条 `LutAdapt` 定理（`con-leche`/`con-ron` `58,785` 项声明；Linux `bwrap` 跨仓共 `1,414` 条定理）** 通过 `6/6` 独立内核审计。
+
+<div id="436-claim-la-34-cosmic-ray-seu-parameter-bit-flip-resilience-tmlr-july-2026--72-64-ramb36-secded--0x3c-apoptosis-and-license-free-openxc7-32062-mhz-post-par-bit-bitstream" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.36 主张 LA-34：宇宙射线 `SEU` 参数位翻转韧性（*TMLR* 2026 年 7 月 + `(72, 64)` `RAMB36` `SECDED` + `0x3C` 凋亡回滚）与免许可 `openXC7` `320.62 MHz` 布局布线后 `.bit` 比特流
+
+在灾难性的 **`BER = 1.0%`** 位翻转率下，`BF16` Micro-`MLP` 跌至 **`26.28%` 准确率**（`37.00%` 指数高位翻转引发 `NaN`/`Inf` 爆炸，`37.47%` 静默损坏），`INT8` Micro-`MLP` 跌至 **`45.44%`**（`54.56%` 静默损坏）；而启用 `72` 位 `RAMB36E1`/`E2` 原生 `(72, 64)` 扩展汉明 `SECDED`（$d_{\min} = 4$，**零额外 `BRAM` 开销**）配合 `0x3C` 不可变种子凋亡回滚的 `Nucleus` 保持 **`100.00%` 准确率、`0.00%` `NaN` 与 `0.0000%` 静默损坏**。同时，完全免除商业 `Vivado` 许可的开源工具链 `openXC7`（`Yosys` + `nextpnr-xilinx 0.8.2` + `Project X-Ray`）在真实目标型号 `xc7a200tfbg484-2` 上以 **`320.62 MHz`（`250.0 MHz` 目标 `PASS`，`0` 个 `DSP48E1`）** 完成物理布局布线后静态时序收敛，并输出 **`9,730,768 B`（`77.846 Mbit`，`board_metered = false`）** 的 7 系列 `.bit` 比特流文件。
+
+<div id="437-claim-la-35-unified-global-lut-synthesis-lupanov-1958-treelut-2025-kan-lut-2025-and-1474-kb-browser-native-no_std-lut6_corewasm" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.37 主张 LA-35：统一全球 `LUT` 综合范式（`Lupanov` `1958`、`TreeLUT` `2025`、`KAN-LUT` `2025`）与 `14.74 KB` 浏览器原生 `#![no_std]` `lut6_core.wasm`
+
+前苏联 Lupanov 渐近共享余因子分解（1958；`k=8`, `m=16`）将 `LUT6` 门数削减 **`-72.50%`**（`80` $\to$ **`22` 个 `LUT6`**，`256 / 256` 最小项精确一致），`TreeLUT` 将 `31` 节点 5 层 `GBDT` 折叠为 **`1` 个 `LUT6`（`0x195cb9f4b9a80800`）**，`KAN-LUT` 将连续 B 样条激活编译为 **`8` 个 `LUT6`（运行时 `0` `FLOP`，`RMSE = 0.003466`）**；同时 `lut6-core` 交叉编译覆盖 **`8` 个 `#![no_std]` 目标**，其中包括 **`14.74 KB`（`15,094 B`，零外部依赖）的 `lut6_core.wasm`**，可在 [/living/lut-adapt/#la-wasm-01](/living/lut-adapt/#la-wasm-01) 浏览器虚拟机中直接实时运行（图 9）。
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/global-frontiers-antisym-seu-wasm.svg" alt="全球多前沿推进：反对称 40 项 T-MAC、SEU SECDED 辐射韧性、openXC7 布局布线后比特流、Aeneas Rust-至-Lean 验证与 14.74 KB WebAssembly。" />
+  <figcaption>图 9. 全球多前沿实测结果（`主张 LA-19 [50 条定理]、LA-33..LA-35`）：(A) `ISCA` 2025 反对称 `40` 项 `T-MAC`（栈 `SRAM` `-49.38%`、`Thor` 物理分流 `1.65×` `CpJ`、`Zen 5` `RAPL` `1.12×` `CpJ` 反超）；(B) 宇宙射线 `SEU` 位翻转韧性（`BER = 1%` 下凭 `(72, 64)` `SECDED` + `0x3C` 达成 `100.00%` 存活率与 `0.0000%` 静默损坏）；(C) Lupanov `-72.5%` 共享余因子削减、`TreeLUT`、`KAN-LUT`，以及 `XC7A200T-2FBG484-2` 上免许可 `openXC7` `320.62 MHz` 布局布线后 `.bit` 比特流；以及 (D) Inria `Charon`+`Aeneas` `#![no_std]` Rust $\to$ `Lean 4.36.0` 验证、`50` 条六内核定理（全仓 `1,414` 条）与 `14.74 KB` `lut6_core.wasm`。</figcaption>
+</figure>
 
 ---
 
@@ -735,7 +764,7 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`LA-F5`** | `Claim LA-5` (字节推测) | `scripts/run_code_corpus_benchmark.py` 在 `48` 个未见提示上，相对贪婪解码 `Mamba3CodeLM` 的精确字节一致性为 `< 100.0%`。 |
 | **`LA-F6`** | `Claim LA-6` (`AirMoL` 14.3M) | `scripts/run_air_mol_benchmark.py` 在 `F_NOCACHE` 下未达到 `100%` 一致性，或读取的 NVMe 字节数多于 `AirLLM` 4-Bit `T=1`。 |
 | **`LA-F7`** | `Claim LA-7` (2026 年 HF `AirMoL`) | `scripts/run_hf_lfm3_air_mol.py`、`scripts/run_hf_air_mol_pretrained.py` 或 `scripts/run_hf_qwen35_air_mol.py` 与贪婪目标相比偏离 $\ge 1$ 个 BPE token。 |
-| **`LA-F8`** | `Claim LA-8` (回归套件) | `pytest -v` 在 `tests/` 的 `44` 个测试中任一失败。 |
+| **`LA-F8`** | `Claim LA-8` (回归套件) | `pytest -v` 在 `tests/` 的 `56` 个测试中任一失败。 |
 | **`LA-F9`** | `Claim LA-9` (`8.5B/35B` MoE) | `scripts/run_hf_moe_8b_35b_air_mol.py` 的 token 一致性偏离 `100%`，或读取的 NVMe 字节数多于 `AirLLM` 或 `Expert-AirLLM`。 |
 | **`LA-F10`** | `Claim LA-10` (`Sub1Bit-LUT6`) | `scripts/run_sub1bit_lut_benchmark.py` 相对稠密 `ITQ` 二值矩阵乘法的最大误差超过 `1e-3`，或未通过 `100%` 已验证一致性。 |
 | **`LA-F11`** | `Claim LA-11` (`48` 任务对比评测) | `scripts/run_frontier_ai_bakeoff.py` 接受了 `> 0%` 的损坏提交，或在 Wave-2 规格变异下接受了过时的 Wave-1 技能。 |
@@ -758,6 +787,11 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`LA-F28`** | `Claim LA-28` (`Thor` 分流 `measured_j` 与实时 `Alif E3` `DWT`) | `scripts/aggregate_phase30_lut6_hardware.py` 在非 `Thor` 目标上标记 `board_metered = true`、位切片 `Thor` 分流增益 `< 10×`，或在 `OpenMV-AE3` Cortex-`M55` 上标量延迟超过 `10 µs`。 |
 | **`LA-F29`** | `Claim LA-29` (2026 年 10-11 月循环与混合模型) | `scripts/run_nov2026_models_lut6_benchmark.py` 在 `Inkling-2-Mini`、`Dory1.0-4B`、`LFM2.5-24B-A2B` 或 `Nemotron-3.5-Bolt-E4B` 上偏离 `>= 1` 个贪心词元（一致性 `< 100.0%`）或每次三词元突发超过 `64` 比特。 |
 | **`LA-F30`** | `Claim LA-30` (`XC7A200T` M.2 `2280` 移植与电热 `est_j`) | `aller-a7-xc7a200t` 超过 `134,600` 个 `xc7` LUT 或 `365` 个 `RAMB36E1`、使用了 `> 0` 个 `DSP48E1`、在 `10,500` 个向量（`12,023` 周期）上相对 `XCK26` 出现 `>= 1` 比特失配、无串联 `+3.3V`/`5V` 分流器即标记 `board_metered = true`，或上机测试时在 $T_A \le 45\,^\circ\text{C}$（`DDR3` 关断、被动散热）下超过 M.2 `3.3V` `1,000 mA`、Tachyon `5V` 合计 `1,600 mA` 或 `XADC` $T_J$ `85.0 °C`。 |
+| **`LA-F31`** | `Claim LA-31` (`672 B` 零 `MUL` `EntroMCU`/`T-MAC` 尾部与 `rustc` `const` 门控) | `CompactLut6Page` 偏离 `4,096 B`（`0` 空闲字节）、三进制 5-trit 往返失败、`mol_skills_tmac_tail.lut6` 准入 `> 0%` `OOD` 误命中，或 `rustc` 未通过编译期 `generated_proof_vectors.rs` 断言。 |
+| **`LA-F32`** | `Claim LA-32` (`Two-Tier LUT6 + T-MAC` 与 `Thor` 分流 / `DWT` 遥测) | `bench_lut6_nucleus_shunt` 在 `Jetson AGX Thor` 上录得零 `MUL` `T-MAC` 相对 `INT8` Micro-`MLP` 的物理 `CpJ` `<= 1.0×`，或在 `OpenMV-AE3` Cortex-`M55` 上加速比 `<= 5.0×`。 |
+| **`LA-F33`** | `Claim LA-33` (`Antisym-40 T-MAC` 与 Inria `Charon`+`Aeneas` Rust $\to$ Lean) | `lookup_tmac_antisym41` 在 `40,500` 组配对中与 81 项 `T-MAC` 失配、未能在 `Thor`（`measured_j`）与 `Zen 5`（`RAPL`）上同时取胜，或 `Lut6Verify_Aeneas.lean` 未通过 `Lean 4.36.0` 内核检查。 |
+| **`LA-F34`** | `Claim LA-34` (`SEU` `SECDED` 韧性与 `openXC7` `XC7A200T` `.bit` `PAR`) | `Nucleus` `(72, 64)` `SECDED + 0x3C` 在 `BER = 1%` 下出现 `> 0%` 静默损坏或 `< 100%` 存活率，或 `openXC7` `nextpnr-xilinx` 在 `xc7a200tfbg484-2` 上未通过 `250 MHz` 时序收敛或未能输出 `.bit`。 |
+| **`LA-F35`** | `Claim LA-35` (`Lupanov` / `TreeLUT` / `KAN-LUT` 与 `14.74 KB` `lut6_core.wasm`) | `Lupanov`（`k=8`）、`TreeLUT` 或量化 `KAN-LUT` 偏离 `>= 1` 个最小项，或 `lut6_core.wasm` 超过 `16 KB` 或未通过 `V8` `WebAssembly.instantiate` 校核。 |
 
 ---
 
@@ -816,6 +850,13 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 <li>Thinking Machines Lab (2026). <code>thinkingmachines/Inkling-2-Mini</code> Open-Weights Looped Multimodal MoE Model Card (November 20, 2026). <a href="https://huggingface.co/thinkingmachines/Inkling-2-Mini">huggingface.co/thinkingmachines/Inkling-2-Mini</a>.</li>
 <li>NVIDIA Nemotron Labs (2026). <code>nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16</code> Looped nGPT Model Card (October 20, 2026). <a href="https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16">huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16</a>.</li>
 <li>Advanced Micro Devices (2023). <em>Artix-7 FPGAs Data Sheet: DC and AC Switching Characteristics (DS181, v1.28)</em> and <em>7 Series FPGAs Packaging and Pinout Product Specification (UG475, v1.19)</em>. AMD Technical Documentation.</li>
+<li>Mo, Z., Wang, L., Wei, J., Zeng, Z., Cao, S., Ma, L., Jing, N., Cao, T., Xue, J., Yang, F., and Yang, M. (2025). LUT Tensor Core: A Software-Hardware Co-Design for LUT-Based Low-Bit LLM Inference. <em>ACM/IEEE ISCA 2025</em>, <em>arXiv:2408.06003</em>.</li>
+<li>Bacellar, A. T. L., Lima, G. M., França, F. M. G., and John, L. K. (2026). Fault-Tolerant Weightless Neural Networks Under Parameter Bit-Flip Errors. <em>Transactions on Machine Learning Research (TMLR)</em>, July 2026.</li>
+<li>Bührer, T., Plesner, A., Aczel, T., and Wattenhofer, R. (2026). BitLogic: Scaling Continuous Logic Gate Networks via Lookup Tables. <em>ETH Zürich</em>, <em>arXiv:2602.07400</em>.</li>
+<li>Khataei, A., and Bazargan, K. (2025). TreeLUT: An Efficient Architecture for Gradient Boosted Decision Trees Using FPGA Lookup Tables. <em>arXiv:2501.01511</em>.</li>
+<li>Lupanov, O. B. (1958). Ob odnom metode sinteza skhem [On a Method of Circuit Synthesis]. <em>Izvestiya VUZov, Radiofizika</em>, 1(1):120-140.</li>
+<li>Ho, S., and Protzenko, J. (2022). Aeneas: Rust Verification by Functional Translation (<code>AeneasVerif/charon</code> &amp; <code>AeneasVerif/aeneas</code>). <em>ICFP 2022</em>, <em>PACMPL</em> 6(ICFP):711-741, <a href="https://doi.org/10.1145/3547647">doi:10.1145/3547647</a>.</li>
+<li>He, Z., Yin, X., Wen, Z., Zhu, C., Liu, K., Wei, J., Wu, Y., Cao, T., and Yang, M. (2025). LUT-LLM: Efficient Large Language Model Inference with Memory-Compute Co-Design on FPGAs. <em>arXiv:2511.06174</em>.</li>
 </ol>
 
 ---
@@ -824,11 +865,14 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 ## 附录 A. 可复现性
 
-在 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（提交 `75533d5`）与 [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` 与 `lut6-core-nucleus/`）的代码检出目录中执行：
+在 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（提交 `d767bc5`）与 [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` 与 `lut6-core-nucleus/`）的代码检出目录中执行：
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
 (cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_global_frontiers_seu_treelut_kan.py
+PYTHONPATH=src .venv/bin/python scripts/run_charon_aeneas_rust_to_lean.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_xc7a200t_par_audit.py
 PYTHONPATH=src .venv/bin/python scripts/pack_lut6_crystal.py
 PYTHONPATH=src .venv/bin/python scripts/run_dual_reality_lut6_eval.py
 PYTHONPATH=src .venv/bin/python scripts/run_nov2026_models_lut6_benchmark.py
