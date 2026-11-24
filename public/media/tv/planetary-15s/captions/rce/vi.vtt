@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:06.691
+Thứ nhất, bạn chỉ viết chương trình một lần như một bản thiết kế rõ ràng, và máy tính tạo ra mã nguồn tương ứng trên nhiều ngôn ngữ.
+
+2
+00:00:07.031 --> 00:00:13.657
+Thứ hai, mọi đầu vào có thể xảy ra đều phải khai báo trước kết quả, ngăn chặn lỗi sập ngầm trước khi bất cứ thứ gì chạy.
+
+3
+00:00:13.997 --> 00:00:21.204
+Thứ ba, mỗi bản sửa lỗi vượt qua bộ kiểm tra đều được lưu lại và tái sử dụng, nên bạn không bao giờ trả tiền hai lần cho một lần sửa.

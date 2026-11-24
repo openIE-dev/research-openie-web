@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:07.391
+Primero, escribes un programa una sola vez como un plano claro y la computadora genera código equivalente en varios lenguajes.
+
+2
+00:00:07.731 --> 00:00:14.839
+Segundo, cada entrada posible debe tener un resultado declarado de antemano, evitando fallos ocultos antes de ejecutar nada.
+
+3
+00:00:15.179 --> 00:00:22.444
+Tercero, cada reparación que aprueba el verificador se guarda y reutiliza, de modo que nunca pagas dos veces por un mismo arreglo.

@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:05.760
+First, a computer should not take an irreversible action until an independent check confirms it is safe.
+
+2
+00:00:06.100 --> 00:00:12.486
+Second, it should try the cheapest method first and wake a large AI model only when simpler tools miss.
+
+3
+00:00:12.826 --> 00:00:18.747
+Third, every decision is written to a receipt with the energy it used, so anyone can audit it later.

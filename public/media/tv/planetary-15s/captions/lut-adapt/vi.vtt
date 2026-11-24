@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:07.166
+Thứ nhất, phần lớn yêu cầu lặp lại các mẫu đã giải quyết, nên chạy mạng nơ-ron khổng lồ mỗi lần sẽ gây lãng phí bộ nhớ và năng lượng.
+
+2
+00:00:07.506 --> 00:00:14.181
+Thứ hai, chuỗi tầng này kiểm tra các bảng chân trị nhỏ trước và chỉ tải các lát mô hình chuyên biệt từ bộ nhớ lưu trữ khi thật sự cần.
+
+3
+00:00:14.521 --> 00:00:21.131
+Thứ ba, ngay khi bài kiểm tra tự động chứng nhận câu trả lời mới, nó được biên dịch xuống thành kỹ năng mili-giây có thể dùng lại.

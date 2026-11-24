@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:09.486
+Erstens wiederholen die meisten Anfragen bereits gelöste Muster, sodass ein riesiges neuronales Netz bei jedem Aufruf Speicher und Energie verschwendet.
+
+2
+00:00:09.826 --> 00:00:17.713
+Zweitens prüft diese Kaskade zuerst winzige Wahrheitstabellen und lädt spezialisierte Modellteile nur bei Bedarf aus dem Speicher nach.
+
+3
+00:00:18.053 --> 00:00:27.640
+Drittens wird jede neue Antwort, sobald ein automatischer Test sie bestätigt, nach unten in eine wiederverwendbare Millisekunden-Fähigkeit übersetzt.

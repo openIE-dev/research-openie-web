@@ -1,0 +1,1656 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "openie": "https://research.openie.dev/schema/unsiloeing/v1#"
+  },
+  "@id": "https://research.openie.dev/glossary/concepts.json",
+  "@type": [
+    "DefinedTermSet",
+    "skos:ConceptScheme"
+  ],
+  "name": "OpenIE Research & Unsiloeing AAC Concepts Anchor",
+  "description": "Machine-readable W3C SKOS and Schema.org DefinedTermSet anchor for screen readers, switches, and Augmentative and Alternative Communication (AAC) devices. Every concept carries a <=20-word zero-jargon plainDefinition, one-idea Easy-Read sentences, and AAC core-vocabulary symbol hints.",
+  "version": "1.0.0",
+  "dateModified": "2026-11-24",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "spdxLicense": "CC0-1.0",
+  "wcagConformance": "WCAG 2.2 Level AA",
+  "conceptCount": 36,
+  "maxPlainDefinitionWords": 16,
+  "hasDefinedTerm": [
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-commit-gate",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:commit-gate",
+      "canonical_id": "art:concept:commit-gate:f918633929ca8fa0",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "commit gate",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "commit gate"
+      },
+      "plainDefinition": "A safety check that runs before any permanent computer action and records yes or no.",
+      "plainWordCount": 15,
+      "sourceDefinition": "A check that runs before an irreversible action. A proposal may not authorize itself. The gate commits or refuses and writes a receipt.",
+      "easyReadSentences": [
+        "Some computer actions cannot be undone.",
+        "A commit gate checks safety before the computer acts.",
+        "If the check fails, the gate says no and writes down why."
+      ],
+      "symbolHint": {
+        "category": "Safety & Control",
+        "icon": "shield-check",
+        "unicodePictogram": "🛡️",
+        "aacCoreWords": [
+          "stop",
+          "check",
+          "safe"
+        ],
+        "arasaacKeyword": "security gate"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/gates/",
+          "label": "Metered Commit Gates"
+        },
+        {
+          "url": "/papers/agency/",
+          "label": "Thermodynamic Bounds and an Optimal Tempo"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-receipt",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:receipt",
+      "canonical_id": "art:concept:receipt:4af55336a7c93847",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "receipt",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "receipt"
+      },
+      "plainDefinition": "A saved record showing what a computer predicted, what happened, and how much energy it used.",
+      "plainWordCount": 16,
+      "sourceDefinition": "A record written for every decision: the prediction and its timestamp before the act, the outcome, the match, the joules by label, and the refusal reason if any.",
+      "easyReadSentences": [
+        "Every important computer choice leaves a written receipt.",
+        "The receipt shows what was expected and how much power was used.",
+        "Anyone can check the receipt later to verify honesty."
+      ],
+      "symbolHint": {
+        "category": "Records & Audit",
+        "icon": "receipt-text",
+        "unicodePictogram": "🧾",
+        "aacCoreWords": [
+          "write",
+          "keep",
+          "record"
+        ],
+        "arasaacKeyword": "receipt"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/gates/",
+          "label": "Metered Commit Gates"
+        },
+        {
+          "url": "/papers/satb-harness/",
+          "label": "Satiation Benchmark Harness"
+        },
+        {
+          "url": "/products/mei/",
+          "label": "Metabolic Intelligence"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-completeness-predicate",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:completeness-predicate",
+      "canonical_id": "art:concept:completeness-predicate:5bd813b2c5a8e19f",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "completeness predicate C(z)",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "completeness predicate C(z)"
+      },
+      "plainDefinition": "A clear pass-or-fail test that checks whether a job is truly finished.",
+      "plainWordCount": 12,
+      "sourceDefinition": "A written test that maps the state z of a task to 0 or 1, for example tests pass, a proof checks, or an output matches a reference. A task is complete when C(z) = 1.",
+      "easyReadSentences": [
+        "A computer needs a clear rule to know when a job is done.",
+        "This test gives one for pass and zero for fail.",
+        "No system gets credit until it passes the test."
+      ],
+      "symbolHint": {
+        "category": "Testing & Goals",
+        "icon": "check-circle",
+        "unicodePictogram": "✅",
+        "aacCoreWords": [
+          "finish",
+          "test",
+          "right"
+        ],
+        "arasaacKeyword": "correct"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/agency/",
+          "label": "Thermodynamic Bounds and an Optimal Tempo"
+        },
+        {
+          "url": "/papers/satiation/",
+          "label": "Task Satiation vs. Aggregate Rebound"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-energy-to-correct-completion",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:energy-to-correct-completion",
+      "canonical_id": "art:concept:energy-to-correct-completion:e43148ac336355e5",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "energy to correct completion (J*)",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "energy to correct completion (J*)"
+      },
+      "plainDefinition": "The smallest amount of electrical energy needed to finish a job right.",
+      "plainWordCount": 12,
+      "sourceDefinition": "The least expected energy, in joules (J), that a system needs to reach C(z) = 1 with failure probability at most δ. Systems that pass are ordered by J*; ordering by a real number is a total preorder.",
+      "easyReadSentences": [
+        "First, a computer must finish the job the right way.",
+        "Next, we count the electrical energy it spent in joules.",
+        "Spending less energy for the same right answer is smarter."
+      ],
+      "symbolHint": {
+        "category": "Energy & Physics",
+        "icon": "bolt-award",
+        "unicodePictogram": "⚡",
+        "aacCoreWords": [
+          "less",
+          "power",
+          "finish"
+        ],
+        "arasaacKeyword": "energy"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/agency/",
+          "label": "Thermodynamic Bounds and an Optimal Tempo"
+        },
+        {
+          "url": "/papers/gates/",
+          "label": "Metered Commit Gates"
+        },
+        {
+          "url": "/papers/lut-adapt/",
+          "label": "Downward LUT6 Compilation"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-value-of-information",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:value-of-information",
+      "canonical_id": "art:concept:value-of-information:f9aff039fc7c453b",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "value of information (VoI)",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "value of information (VoI)"
+      },
+      "plainDefinition": "How much looking up a new clue improves your choice, minus the cost of looking.",
+      "plainWordCount": 15,
+      "sourceDefinition": "The expected gain in a decision's payoff from observing a quantity before deciding, minus the cost of observing it (Howard, 1966).",
+      "easyReadSentences": [
+        "Looking for extra clues takes time and power.",
+        "Sometimes a clue helps you make a much better choice.",
+        "If checking costs more than it helps, stop and decide now."
+      ],
+      "symbolHint": {
+        "category": "Choices & Strategy",
+        "icon": "scale-balance",
+        "unicodePictogram": "⚖️",
+        "aacCoreWords": [
+          "look",
+          "worth",
+          "choose"
+        ],
+        "arasaacKeyword": "weigh"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/agency/",
+          "label": "Thermodynamic Bounds and an Optimal Tempo"
+        },
+        {
+          "url": "/papers/satiation/",
+          "label": "Task Satiation vs. Aggregate Rebound"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-impedance-tax",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:impedance-tax",
+      "canonical_id": "art:concept:impedance-tax:41362edfd2a800cb",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "impedance tax",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "impedance tax"
+      },
+      "plainDefinition": "Extra computer work wasted when two machines swap text meant for human eyes.",
+      "plainWordCount": 13,
+      "sourceDefinition": "The extra work a machine consumer does because information arrives in a format made for people to read: encode, parse, tokenize and, for a model, read the extra tokens. Defined with units in \"AI\" Reads Human; no joule value is claimed for it yet.",
+      "easyReadSentences": [
+        "People like reading spaced words and punctuation.",
+        "Machines work much faster with compact numbers.",
+        "Forcing two machines to read human text wastes extra power."
+      ],
+      "symbolHint": {
+        "category": "Data & Formats",
+        "icon": "file-warning",
+        "unicodePictogram": "📄",
+        "aacCoreWords": [
+          "extra",
+          "work",
+          "read"
+        ],
+        "arasaacKeyword": "document"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/ai-reads-human/",
+          "label": "\"AI\" Reads Human"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-token",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:token",
+      "canonical_id": "art:concept:token:fd99bf12d729fe3c",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "token",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "token"
+      },
+      "plainDefinition": "A small word piece that a language model reads one step at a time.",
+      "plainWordCount": 14,
+      "sourceDefinition": "The unit a language model reads, a piece of text produced by a tokenizer. The same records give different token counts in different formats and under different tokenizers.",
+      "easyReadSentences": [
+        "Language models chop sentences into small word pieces.",
+        "Each small piece is called a token.",
+        "More tokens mean the computer must do more work."
+      ],
+      "symbolHint": {
+        "category": "Language & Text",
+        "icon": "puzzle-piece",
+        "unicodePictogram": "🧩",
+        "aacCoreWords": [
+          "word",
+          "piece",
+          "count"
+        ],
+        "arasaacKeyword": "word"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/ai-reads-human/",
+          "label": "\"AI\" Reads Human"
+        },
+        {
+          "url": "/papers/ai-coding-market/",
+          "label": "The Promised Trillion Dollar AI-Coding Market"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-landauer-bound",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:landauer-bound",
+      "canonical_id": "art:concept:landauer-bound:b4c17128faaf4b87",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "Landauer bound",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "Landauer bound"
+      },
+      "plainDefinition": "The tiny physical floor of heat released whenever one bit of memory is erased.",
+      "plainWordCount": 14,
+      "sourceDefinition": "The minimum heat dissipated by erasing one bit at temperature T: k_B T ln 2, about 2.87 × 10⁻²¹ J at 300 K (Landauer, 1961).",
+      "easyReadSentences": [
+        "Wiping one bit of computer memory releases a tiny bit of heat.",
+        "Physics sets a floor that no machine can go below.",
+        "Real computers today still spend far more power than this floor."
+      ],
+      "symbolHint": {
+        "category": "Energy & Physics",
+        "icon": "thermometer",
+        "unicodePictogram": "🌡️",
+        "aacCoreWords": [
+          "heat",
+          "small",
+          "limit"
+        ],
+        "arasaacKeyword": "temperature"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/agency/",
+          "label": "Thermodynamic Bounds and an Optimal Tempo"
+        },
+        {
+          "url": "/papers/time-as-an-index/",
+          "label": "Time as an Index"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-cheapest-first-cascade",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:cheapest-first-cascade",
+      "canonical_id": "art:concept:cheapest-first-cascade:6a9864c9c2c6f416",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "cheapest-first cascade",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "cheapest-first cascade"
+      },
+      "plainDefinition": "Trying quick low-power tools first and waking giant models only when simple tools miss.",
+      "plainWordCount": 14,
+      "sourceDefinition": "An order of mechanisms (gears) tried from lowest to highest expected energy, stopping at the first that passes the check. Expected energy is minimized by trying gears in decreasing order of p_i / c_i, with p_i the pass probability and c_i the expected energy (Simon and Kadane, 1975).",
+      "easyReadSentences": [
+        "Start every job with the smallest, fastest tool.",
+        "If the small tool passes the check, stop right there.",
+        "Wake up a giant model only for brand-new hard problems."
+      ],
+      "symbolHint": {
+        "category": "Routing & Cascades",
+        "icon": "stairs-down",
+        "unicodePictogram": "🪜",
+        "aacCoreWords": [
+          "first",
+          "easy",
+          "save"
+        ],
+        "arasaacKeyword": "steps"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/gates/",
+          "label": "Metered Commit Gates"
+        },
+        {
+          "url": "/papers/lut-adapt/",
+          "label": "Downward LUT6 Compilation"
+        },
+        {
+          "url": "/papers/rce-jepa/",
+          "label": "RCE-JEPA"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-mixture-of-limits",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:mixture-of-limits",
+      "canonical_id": "art:concept:mixture-of-limits:086620038d11d96d",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "Mixture of Limits",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "Mixture of Limits"
+      },
+      "plainDefinition": "Using the lowest-energy tool that passes the test and stopping as soon as it works.",
+      "plainWordCount": 15,
+      "sourceDefinition": "The rule of using the cheapest gear that passes the check and stopping when further spend cannot change C(z). The cheapest-first cascade is one instance.",
+      "easyReadSentences": [
+        "Different tools use very different amounts of electricity.",
+        "Pick the cheapest tool that solves the task cleanly.",
+        "Stop spending power once the right answer is checked."
+      ],
+      "symbolHint": {
+        "category": "Routing & Cascades",
+        "icon": "filter-check",
+        "unicodePictogram": "🔀",
+        "aacCoreWords": [
+          "pick",
+          "small",
+          "stop"
+        ],
+        "arasaacKeyword": "choose"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/lut-adapt/",
+          "label": "Downward LUT6 Compilation"
+        },
+        {
+          "url": "/papers/satiation/",
+          "label": "Task Satiation vs. Aggregate Rebound"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-sigma-law-selector",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:sigma-law-selector",
+      "canonical_id": "art:concept:sigma-law-selector:77346f3189f84e2e",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "σ-law selector",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "σ-law selector"
+      },
+      "plainDefinition": "A rule that picks the next step with the best chance per unit of energy.",
+      "plainWordCount": 15,
+      "sourceDefinition": "A selector that picks the next act by the ratio of pass probability to energy cost and stops when the next act's expected gain is below its energy cost.",
+      "easyReadSentences": [
+        "A computer may have several ways to try a task.",
+        "This rule compares chance of success against energy cost.",
+        "It stops when trying again is not worth the power."
+      ],
+      "symbolHint": {
+        "category": "Choices & Strategy",
+        "icon": "compass",
+        "unicodePictogram": "🧭",
+        "aacCoreWords": [
+          "next",
+          "best",
+          "step"
+        ],
+        "arasaacKeyword": "direction"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/agency/",
+          "label": "Thermodynamic Bounds and an Optimal Tempo"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-plateau",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:plateau",
+      "canonical_id": "art:concept:plateau:63c828630a1f5871",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "plateau",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "plateau"
+      },
+      "plainDefinition": "The finish line where spending more power or words cannot improve the answer.",
+      "plainWordCount": 13,
+      "sourceDefinition": "The least spend that closes a task. Past it, further tokens, parameters or joules cannot change C(z).",
+      "easyReadSentences": [
+        "Once a job is solved right, extra work adds nothing.",
+        "That flat finish line is called the plateau.",
+        "Smart systems stop right at the finish line."
+      ],
+      "symbolHint": {
+        "category": "Testing & Goals",
+        "icon": "flag-finish",
+        "unicodePictogram": "🏁",
+        "aacCoreWords": [
+          "done",
+          "enough",
+          "stop"
+        ],
+        "arasaacKeyword": "finish"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/satiation/",
+          "label": "Task Satiation vs. Aggregate Rebound"
+        },
+        {
+          "url": "/papers/agency/",
+          "label": "Thermodynamic Bounds and an Optimal Tempo"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-replay-class",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:replay-class",
+      "canonical_id": "art:concept:replay-class:b0e177c21de8530c",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "replay class",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "replay class"
+      },
+      "plainDefinition": "An honest label showing whether an answer came from an exact rule or a guessing model.",
+      "plainWordCount": 16,
+      "sourceDefinition": "A label on an answer stating how it was produced. An answer labeled ModelGenerated cannot be relabeled Deterministic.",
+      "easyReadSentences": [
+        "Some answers come from exact math rules.",
+        "Other answers are guesses from a language model.",
+        "This label keeps guesses from pretending to be exact rules."
+      ],
+      "symbolHint": {
+        "category": "Records & Audit",
+        "icon": "tag",
+        "unicodePictogram": "🏷️",
+        "aacCoreWords": [
+          "name",
+          "true",
+          "kind"
+        ],
+        "arasaacKeyword": "label"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/gates/",
+          "label": "Metered Commit Gates"
+        },
+        {
+          "url": "/papers/deterministic-null/",
+          "label": "Deterministic Null"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-software-reference-implementation",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:software-reference-implementation",
+      "canonical_id": "art:concept:software-reference-implementation:556eba640eded587",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "software reference implementation",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "software reference implementation"
+      },
+      "plainDefinition": "A working computer program used to test rules before attaching physical power sensors.",
+      "plainWordCount": 13,
+      "sourceDefinition": "The software used to test a claim without board-level metering. Its energy figures are estimates.",
+      "easyReadSentences": [
+        "Engineers write a clear test program first.",
+        "Everyone can run the program to check the rules.",
+        "Its power numbers are software estimates, not wire readings."
+      ],
+      "symbolHint": {
+        "category": "Software & Code",
+        "icon": "code-box",
+        "unicodePictogram": "💻",
+        "aacCoreWords": [
+          "program",
+          "test",
+          "run"
+        ],
+        "arasaacKeyword": "computer"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/gates/",
+          "label": "Metered Commit Gates"
+        },
+        {
+          "url": "/papers/rce/",
+          "label": "The Reality Code Engine"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-est-j",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:est-j",
+      "canonical_id": "art:concept:est-j:b24f6e37f5bd1450",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "est_j",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "est_j"
+      },
+      "plainDefinition": "A math estimate of energy found by multiplying step counts by known step costs.",
+      "plainWordCount": 14,
+      "sourceDefinition": "An analytical energy estimate: operation counts times stated energy constants, in joules.",
+      "easyReadSentences": [
+        "Sometimes we count how many small steps a chip takes.",
+        "We multiply those steps by a stated power formula.",
+        "This label marks the number as a math estimate."
+      ],
+      "symbolHint": {
+        "category": "Energy & Physics",
+        "icon": "calculator",
+        "unicodePictogram": "🧮",
+        "aacCoreWords": [
+          "count",
+          "math",
+          "guess"
+        ],
+        "arasaacKeyword": "calculator"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/lut-adapt/",
+          "label": "Downward LUT6 Compilation"
+        },
+        {
+          "url": "/data/",
+          "label": "Data and Code Receipts"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-reported-j",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:reported-j",
+      "canonical_id": "art:concept:reported-j:52e1629d0e545ca5",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "reported_j",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "reported_j"
+      },
+      "plainDefinition": "An energy reading reported by a computer chip's built-in power counter.",
+      "plainWordCount": 11,
+      "sourceDefinition": "An energy figure read from an operating-system or on-chip counter, such as RAPL package energy minus a stated idle baseline.",
+      "easyReadSentences": [
+        "Many modern computer chips have built-in energy counters.",
+        "Software can read those counters before and after a task.",
+        "This label marks chip-counter readings separately from wire sensors."
+      ],
+      "symbolHint": {
+        "category": "Energy & Physics",
+        "icon": "cpu",
+        "unicodePictogram": "🔲",
+        "aacCoreWords": [
+          "chip",
+          "count",
+          "power"
+        ],
+        "arasaacKeyword": "microchip"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/rce/",
+          "label": "The Reality Code Engine"
+        },
+        {
+          "url": "/papers/satb-harness/",
+          "label": "Satiation Benchmark Harness"
+        },
+        {
+          "url": "/data/",
+          "label": "Data and Code Receipts"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-measured-j",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:measured-j",
+      "canonical_id": "art:concept:measured-j:66f86d370dda0421",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "measured_j",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "measured_j"
+      },
+      "plainDefinition": "A real electrical energy reading taken from a physical sensor on a power wire.",
+      "plainWordCount": 14,
+      "sourceDefinition": "A joule reading from a wall or shunt meter on a named rail, with its calibration stated. Never summed with reported_j, est_j or trajectory_j. Metered Commit Gates also files its KV260 (AMD Kria) onboard INA260 (power monitor) differences under this label, and states that those readings are whole-module, not a core rail.",
+      "easyReadSentences": [
+        "A physical power sensor sits right on the circuit board.",
+        "It measures real electrical current flowing into the hardware.",
+        "We never mix these wire readings with software guesses."
+      ],
+      "symbolHint": {
+        "category": "Energy & Physics",
+        "icon": "plug-zap",
+        "unicodePictogram": "🔌",
+        "aacCoreWords": [
+          "real",
+          "wire",
+          "power"
+        ],
+        "arasaacKeyword": "plug"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/gates/",
+          "label": "Metered Commit Gates"
+        },
+        {
+          "url": "/papers/satb-harness/",
+          "label": "Satiation Benchmark Harness"
+        },
+        {
+          "url": "/papers/communication-avalanche/",
+          "label": "The Communication Tool Avalanche"
+        },
+        {
+          "url": "/papers/lut-adapt/",
+          "label": "Downward LUT6 Compilation"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-trajectory-j",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:trajectory-j",
+      "canonical_id": "art:concept:trajectory-j:fa404c8a8489f6d1",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "trajectory_j",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "trajectory_j"
+      },
+      "plainDefinition": "Tiny physical work calculated from tracked motion paths at the scale of molecules.",
+      "plainWordCount": 13,
+      "sourceDefinition": "Work computed from measured physical trajectories and a calibrated potential, for physical act cycles near the k_B T scale.",
+      "easyReadSentences": [
+        "Tiny moving parts follow measurable paths through space.",
+        "Physics formulas turn those motion paths into work.",
+        "This label marks tiny motion energy near room heat."
+      ],
+      "symbolHint": {
+        "category": "Energy & Physics",
+        "icon": "activity",
+        "unicodePictogram": "〰️",
+        "aacCoreWords": [
+          "move",
+          "path",
+          "tiny"
+        ],
+        "arasaacKeyword": "movement"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/agency/",
+          "label": "Thermodynamic Bounds and an Optimal Tempo"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-evidence-classes",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:evidence-classes",
+      "canonical_id": "art:concept:evidence-classes:940f0ac8910d5033",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "evidence classes",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "evidence classes"
+      },
+      "plainDefinition": "Three honest labels showing whether a result came from math, simulation, or real hardware.",
+      "plainWordCount": 14,
+      "sourceDefinition": "Modeled: a stated formula. Simulated: a program or hardware-description run. Measured: a named meter on a stated device and workload.",
+      "easyReadSentences": [
+        "Modeled means calculated from a written formula.",
+        "Simulated means tested inside a computer program.",
+        "Measured means read from a real sensor on named hardware."
+      ],
+      "symbolHint": {
+        "category": "Records & Audit",
+        "icon": "layers",
+        "unicodePictogram": "📚",
+        "aacCoreWords": [
+          "three",
+          "proof",
+          "kinds"
+        ],
+        "arasaacKeyword": "categories"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/gates/",
+          "label": "Metered Commit Gates"
+        },
+        {
+          "url": "/data/",
+          "label": "Data and Code Receipts"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-board-metered",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:board-metered",
+      "canonical_id": "art:concept:board-metered:828e5017d72e2d9a",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "board_metered",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "board_metered"
+      },
+      "plainDefinition": "A true-or-false badge that is true only when real circuit-board power sensors were used.",
+      "plainWordCount": 14,
+      "sourceDefinition": "A page flag that is true only when a labeled meter returned a board energy reading for that paper.",
+      "easyReadSentences": [
+        "Most software studies do not attach physical wire sensors.",
+        "Those studies set this badge to false for honesty.",
+        "It turns true only when real board sensors recorded power."
+      ],
+      "symbolHint": {
+        "category": "Records & Audit",
+        "icon": "badge-check",
+        "unicodePictogram": "🟢",
+        "aacCoreWords": [
+          "sensor",
+          "true",
+          "badge"
+        ],
+        "arasaacKeyword": "badge"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/gates/",
+          "label": "Metered Commit Gates"
+        },
+        {
+          "url": "/papers/satb-harness/",
+          "label": "Satiation Benchmark Harness"
+        },
+        {
+          "url": "/papers/communication-avalanche/",
+          "label": "The Communication Tool Avalanche"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-form-and-fit",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:form-and-fit",
+      "canonical_id": "art:concept:form-and-fit:9b7ed76d76d10441",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "Form and fit",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "Form and fit"
+      },
+      "plainDefinition": "Writing a program as clear states, allowed events, and a complete step-by-step log.",
+      "plainWordCount": 13,
+      "sourceDefinition": "A program written as a state machine P = (S, E, δ, D, λ): states, events, a pure step function, an append-only log whose fold is the state, and outputs. The form is that shape (Gurevich's Abstract State Machine theorem); the fit is a program's vocabulary, rules and initial state.",
+      "easyReadSentences": [
+        "Form is the clean shape of states and step rules.",
+        "Fit is the specific words and starting state for your job.",
+        "Together they leave nowhere for surprise bugs to hide."
+      ],
+      "symbolHint": {
+        "category": "Software & Code",
+        "icon": "boxes",
+        "unicodePictogram": "📐",
+        "aacCoreWords": [
+          "shape",
+          "rule",
+          "fit"
+        ],
+        "arasaacKeyword": "blueprint"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/rce/",
+          "label": "The Reality Code Engine"
+        },
+        {
+          "url": "/papers/rce-jepa/",
+          "label": "RCE-JEPA"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-reality-code-engine",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:reality-code-engine",
+      "canonical_id": "art:concept:reality-code-engine:4325d2c64849112c",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "Reality Code Engine (RCE)",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "Reality Code Engine (RCE)"
+      },
+      "plainDefinition": "A system where you write one checked blueprint and get matching code in many languages.",
+      "plainWordCount": 15,
+      "sourceDefinition": "A programming system, studied in its own paper, in which a program is written once as a Form and code in other languages is generated from it.",
+      "easyReadSentences": [
+        "You write your program once as one clear blueprint.",
+        "A strict checker verifies every input has a safe outcome.",
+        "Then the engine builds matching code in several languages."
+      ],
+      "symbolHint": {
+        "category": "Software & Code",
+        "icon": "cog-check",
+        "unicodePictogram": "⚙️",
+        "aacCoreWords": [
+          "one",
+          "plan",
+          "build"
+        ],
+        "arasaacKeyword": "engine"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/rce/",
+          "label": "The Reality Code Engine"
+        },
+        {
+          "url": "/papers/rce-jepa/",
+          "label": "RCE-JEPA"
+        },
+        {
+          "url": "/papers/rce-compile/",
+          "label": "RCE Compile"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-requires-change",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:requires-change",
+      "canonical_id": "art:concept:requires-change:d78361db85f90411",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "requires change (RCE)",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "requires change (RCE)"
+      },
+      "plainDefinition": "A clear message naming the exact line and rule to fix before code can run.",
+      "plainWordCount": 15,
+      "sourceDefinition": "The verdict of the RCE checker on code that is not in Form: the checker names the rule the code breaks, for example `requires change FILE: line 1: W-SYN-1 ...`, and nothing runs until the code is changed.",
+      "easyReadSentences": [
+        "Broken blueprints are stopped before they can run.",
+        "The checker points to the exact rule that needs fixing.",
+        "Once you fix that rule, the blueprint can pass."
+      ],
+      "symbolHint": {
+        "category": "Safety & Control",
+        "icon": "alert-octagon",
+        "unicodePictogram": "🛑",
+        "aacCoreWords": [
+          "stop",
+          "fix",
+          "rule"
+        ],
+        "arasaacKeyword": "stop"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/rce/",
+          "label": "The Reality Code Engine"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-kept-step",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:kept-step",
+      "canonical_id": "art:concept:kept-step:d255ca34fb836f51",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "kept step (RCE)",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "kept step (RCE)"
+      },
+      "plainDefinition": "When an invalid event arrives, the program keeps its old state safe and logs why.",
+      "plainWordCount": 15,
+      "sourceDefinition": "A step whose event does not apply in the current state. The step keeps the state, unchanged (theorem T8, atomicity), and is recorded in the log with the error it names.",
+      "easyReadSentences": [
+        "Sometimes an outside event does not fit the current state.",
+        "Instead of crashing, the program stays right where it was.",
+        "It writes down the skipped event in the log."
+      ],
+      "symbolHint": {
+        "category": "Safety & Control",
+        "icon": "lock",
+        "unicodePictogram": "🔒",
+        "aacCoreWords": [
+          "keep",
+          "safe",
+          "same"
+        ],
+        "arasaacKeyword": "safe"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/rce/",
+          "label": "The Reality Code Engine"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-metabolic-intelligence",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:metabolic-intelligence",
+      "canonical_id": "art:concept:metabolic-intelligence:ba09d23468f04940",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "Metabolic Intelligence",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "Metabolic Intelligence"
+      },
+      "plainDefinition": "Computer intelligence built to give the best checked answer inside a strict energy budget.",
+      "plainWordCount": 14,
+      "sourceDefinition": "A class of computer intelligence designed to run inside a fixed energy budget B, studied in its own white paper.",
+      "easyReadSentences": [
+        "Living things survive by respecting strict energy budgets.",
+        "Metabolic Intelligence gives computers a clear power limit up front.",
+        "In low battery, routine chatter pauses so urgent alerts survive."
+      ],
+      "symbolHint": {
+        "category": "Energy & Physics",
+        "icon": "battery-charging",
+        "unicodePictogram": "🔋",
+        "aacCoreWords": [
+          "budget",
+          "battery",
+          "smart"
+        ],
+        "arasaacKeyword": "battery"
+      },
+      "relatedStudies": [
+        {
+          "url": "/products/mei/",
+          "label": "Metabolic Intelligence"
+        },
+        {
+          "url": "/products/jouleos/",
+          "label": "The Search for JouleOS"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-wise-computer-automation",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:wise-computer-automation",
+      "canonical_id": "art:concept:wise-computer-automation:cc38b7946fa522cd",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "WCA (Wise Computer Automation)",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "WCA (Wise Computer Automation)"
+      },
+      "plainDefinition": "Open software in Rust that checks safety gates and writes receipts before actions run.",
+      "plainWordCount": 14,
+      "sourceDefinition": "The Rust software implementation of the commit gate studied in Metered Commit Gates, Part I.",
+      "easyReadSentences": [
+        "This open software guards actions before they happen.",
+        "It runs fast safety checks and logs energy receipts.",
+        "Anyone can inspect and run its code for free."
+      ],
+      "symbolHint": {
+        "category": "Safety & Control",
+        "icon": "shield",
+        "unicodePictogram": "🛡️",
+        "aacCoreWords": [
+          "guard",
+          "check",
+          "code"
+        ],
+        "arasaacKeyword": "guard"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/gates/",
+          "label": "Metered Commit Gates"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-universal-law-of-agency",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:universal-law-of-agency",
+      "canonical_id": "art:concept:universal-law-of-agency:eb97b60f835dc348",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "proposed Universal Law of Agency",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "proposed Universal Law of Agency"
+      },
+      "plainDefinition": "A proposed definition of an agent that holds a goal, respects energy, and can refuse.",
+      "plainWordCount": 15,
+      "sourceDefinition": "A proposed definition of an agent with an energy budget and a refusal rule, stated in the agency paper. It is a proposal.",
+      "easyReadSentences": [
+        "An agent aims at a goal and acts on the world.",
+        "It must stay inside its available energy budget.",
+        "If an action breaks its budget, it can safely refuse."
+      ],
+      "symbolHint": {
+        "category": "Choices & Strategy",
+        "icon": "user-check",
+        "unicodePictogram": "🧭",
+        "aacCoreWords": [
+          "goal",
+          "act",
+          "budget"
+        ],
+        "arasaacKeyword": "goal"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/agency/",
+          "label": "Thermodynamic Bounds and an Optimal Tempo"
+        },
+        {
+          "url": "/products/jouleos/",
+          "label": "The Search for JouleOS"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-law-of-version-control",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:law-of-version-control",
+      "canonical_id": "art:concept:law-of-version-control:4ee4c450dfdc9afa",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "Law of Version Control",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "Law of Version Control"
+      },
+      "plainDefinition": "Admitting code edits from many writers at once whenever a named checker approves them.",
+      "plainWordCount": 14,
+      "sourceDefinition": "The statement quoted in the RCE-VC study: version control is admission of changes to one canonical, name-free repository state. A named checker accepts the post-state under a declared contract, or the change is refused with a recorded reason. Changes whose dependency closures do not meet are admitted without coordination. A stated cost ranks the admissible results. Every accepted result, including every resolved conflict, is reused. The study does not claim that existing version-control tools already work this way, and the reference is not the Reality Code Engine language.",
+      "easyReadSentences": [
+        "Many people and computers can send code edits together.",
+        "A named checker tests whether the new state works.",
+        "Unrelated edits merge cleanly without fighting over line numbers."
+      ],
+      "symbolHint": {
+        "category": "Software & Code",
+        "icon": "git-merge",
+        "unicodePictogram": "🔀",
+        "aacCoreWords": [
+          "join",
+          "check",
+          "share"
+        ],
+        "arasaacKeyword": "join"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/rce-vc/",
+          "label": "RCE-VC"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-deterministic-null",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:deterministic-null",
+      "canonical_id": "art:concept:deterministic-null:b9705341391a7513",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "Deterministic Null (Shape D)",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "Deterministic Null (Shape D)"
+      },
+      "plainDefinition": "A frozen lookup table with zero models, used as a fair baseline test for AI.",
+      "plainWordCount": 15,
+      "sourceDefinition": "A zero-model-call 64-bit integer case loop (OBSERVE, REDUCE, FUZZ, LOOKUP, ACT, VERIFY, MUTATE, WRITE) frozen before evaluation under SHA-256, OpenTimestamps, and drand randomness, used as the baseline control (strict N0 and dev-crystallized N1) against neural and agentic substrates.",
+      "easyReadSentences": [
+        "Medicine tests new pills against a simple sugar pill.",
+        "This frozen lookup table is the fair baseline for AI.",
+        "It shows which tasks simple memory lookup already solves."
+      ],
+      "symbolHint": {
+        "category": "Testing & Goals",
+        "icon": "table",
+        "unicodePictogram": "📋",
+        "aacCoreWords": [
+          "table",
+          "compare",
+          "fair"
+        ],
+        "arasaacKeyword": "table"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/deterministic-null/",
+          "label": "Deterministic Null"
+        },
+        {
+          "url": "/papers/rce-jepa/",
+          "label": "RCE-JEPA"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-good-turing-unseen-mass",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:good-turing-unseen-mass",
+      "canonical_id": "art:concept:good-turing-unseen-mass:8575350929762e5d",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "Good–Turing unseen mass N₁(t) / t",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "Good–Turing unseen mass N₁(t) / t"
+      },
+      "plainDefinition": "Counting one-time requests to estimate how often the next request will be brand new.",
+      "plainWordCount": 14,
+      "sourceDefinition": "The fraction of singleton keys observed along a task stream of length t (Good, 1953), estimating the probability that the next arriving task key has not yet been seen in the case store.",
+      "easyReadSentences": [
+        "Some questions show up only once in a long stream.",
+        "Counting one-time questions tells us how much novelty remains.",
+        "When novelty drops, saved lookup answers handle most work."
+      ],
+      "symbolHint": {
+        "category": "Testing & Goals",
+        "icon": "sparkles",
+        "unicodePictogram": "✨",
+        "aacCoreWords": [
+          "new",
+          "count",
+          "chance"
+        ],
+        "arasaacKeyword": "new"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/deterministic-null/",
+          "label": "Deterministic Null"
+        },
+        {
+          "url": "/papers/lut-adapt/",
+          "label": "Downward LUT6 Compilation"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-canonical-artifact",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:canonical-artifact",
+      "canonical_id": "art:concept:canonical-artifact:bc1b244608075fc2",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "Canonical Artifact",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "Canonical Artifact"
+      },
+      "plainDefinition": "One verified master record from which papers, videos, audio, translations, and accessible formats grow.",
+      "plainWordCount": 14,
+      "sourceDefinition": "One verified master record from which papers, videos, audio, translations, and accessible formats grow.",
+      "easyReadSentences": [
+        "Previously, videos, papers, and datasets lived in separate boxes.",
+        "Now one verified master record connects every format together.",
+        "Screen readers, videos, and translations share the same truth."
+      ],
+      "symbolHint": {
+        "category": "Substrate & Sharing",
+        "icon": "cube",
+        "unicodePictogram": "💎",
+        "aacCoreWords": [
+          "one",
+          "true",
+          "share"
+        ],
+        "arasaacKeyword": "gem"
+      },
+      "relatedStudies": [
+        {
+          "url": "/blueprint/",
+          "label": "Unsiloeing the OpenIE Ecosystem Blueprint"
+        },
+        {
+          "url": "/tv/",
+          "label": "OpenIE Research TV"
+        },
+        {
+          "url": "/radio/",
+          "label": "OpenIE Research Radio"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-wai1-envelope",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:wai1-envelope",
+      "canonical_id": "art:concept:wai1-envelope:459ccf4dbc61f553",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "WAI1 Envelope",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "WAI1 Envelope"
+      },
+      "plainDefinition": "A signed digital wrapper that proves who made a file and that nothing was altered.",
+      "plainWordCount": 15,
+      "sourceDefinition": "A signed digital wrapper that proves who made a file and that nothing was altered.",
+      "easyReadSentences": [
+        "Files travel across websites, podcasts, and tools.",
+        "This wrapper locks the file with a digital fingerprint.",
+        "Any receiver can verify the file was never tampered with."
+      ],
+      "symbolHint": {
+        "category": "Substrate & Sharing",
+        "icon": "mail-check",
+        "unicodePictogram": "✉️",
+        "aacCoreWords": [
+          "wrap",
+          "sign",
+          "trust"
+        ],
+        "arasaacKeyword": "envelope"
+      },
+      "relatedStudies": [
+        {
+          "url": "/blueprint/",
+          "label": "Unsiloeing the OpenIE Ecosystem Blueprint"
+        },
+        {
+          "url": "/data/",
+          "label": "Data and Code Receipts"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-easy-read-projection",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:easy-read-projection",
+      "canonical_id": "art:concept:easy-read-projection:c37b7f095340ee2c",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "Easy Read Projection",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "Easy Read Projection"
+      },
+      "plainDefinition": "A clear companion version using short one-idea sentences, everyday words, and helpful picture symbols.",
+      "plainWordCount": 14,
+      "sourceDefinition": "A clear companion version using short one-idea sentences, everyday words, and helpful picture symbols.",
+      "easyReadSentences": [
+        "Science belongs to everyone, not just specialists.",
+        "Easy Read uses short sentences with one idea each.",
+        "Picture symbols help readers and communication boards follow fast."
+      ],
+      "symbolHint": {
+        "category": "Accessibility",
+        "icon": "book-open",
+        "unicodePictogram": "📖",
+        "aacCoreWords": [
+          "easy",
+          "read",
+          "clear"
+        ],
+        "arasaacKeyword": "easy read"
+      },
+      "relatedStudies": [
+        {
+          "url": "/blueprint/",
+          "label": "Unsiloeing the OpenIE Ecosystem Blueprint"
+        },
+        {
+          "url": "/glossary/",
+          "label": "OpenIE Glossary"
+        },
+        {
+          "url": "/tv/",
+          "label": "OpenIE Research TV"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-audio-description-track",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:audio-description-track",
+      "canonical_id": "art:concept:audio-description-track:97454972a010f11c",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "Audio Description Track",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "Audio Description Track"
+      },
+      "plainDefinition": "A spoken voice track that describes on-screen shapes, colors, and motion for blind viewers.",
+      "plainWordCount": 14,
+      "sourceDefinition": "A spoken voice track that describes on-screen shapes, colors, and motion for blind viewers.",
+      "easyReadSentences": [
+        "Videos show moving charts and three-dimensional models.",
+        "Audio description speaks what appears on the screen.",
+        "Blind and low-vision listeners get the full visual story."
+      ],
+      "symbolHint": {
+        "category": "Accessibility",
+        "icon": "headphones",
+        "unicodePictogram": "🎧",
+        "aacCoreWords": [
+          "hear",
+          "see",
+          "voice"
+        ],
+        "arasaacKeyword": "audio description"
+      },
+      "relatedStudies": [
+        {
+          "url": "/blueprint/",
+          "label": "Unsiloeing the OpenIE Ecosystem Blueprint"
+        },
+        {
+          "url": "/tv/",
+          "label": "OpenIE Research TV"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-codon-lookup-nucleus",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:codon-lookup-nucleus",
+      "canonical_id": "art:concept:codon-lookup-nucleus:9e861d3e8002acec",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "64-Codon Lookup Nucleus",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "64-Codon Lookup Nucleus"
+      },
+      "plainDefinition": "A tiny sixteen-kilobyte lookup core sharing the sixty-four-state pattern of living genetic code.",
+      "plainWordCount": 13,
+      "sourceDefinition": "A tiny sixteen-kilobyte lookup core sharing the sixty-four-state pattern of living genetic code.",
+      "easyReadSentences": [
+        "Living cells use sixty-four triplets to store survival rules.",
+        "Digital six-input lookup tables also have sixty-four switches.",
+        "Grouping four neighbor switches together blocks small sensor noise."
+      ],
+      "symbolHint": {
+        "category": "Hardware & Bio",
+        "icon": "grid-4x4",
+        "unicodePictogram": "🧬",
+        "aacCoreWords": [
+          "grid",
+          "small",
+          "fast"
+        ],
+        "arasaacKeyword": "dna"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/lut-adapt/",
+          "label": "Downward LUT6 Compilation"
+        },
+        {
+          "url": "/tv/#lut6-codon-nucleus:15s",
+          "label": "64-Codon Lookup Nucleus (Research TV)"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-communication-tool-avalanche",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:communication-tool-avalanche",
+      "canonical_id": "art:concept:communication-tool-avalanche:b82ae06106bb2253",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "Communication Tool Avalanche",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "Communication Tool Avalanche"
+      },
+      "plainDefinition": "How living cells and computer teams scale up by sharing checked signals only when needed.",
+      "plainWordCount": 15,
+      "sourceDefinition": "How living cells and computer teams scale up by sharing checked signals only when needed.",
+      "easyReadSentences": [
+        "Constant noisy chatter wastes energy in cells and computers.",
+        "Smart groups speak only when a clear threshold is crossed.",
+        "Signed checks let ten specialist methods work as one team."
+      ],
+      "symbolHint": {
+        "category": "Signals & Teams",
+        "icon": "radio-tower",
+        "unicodePictogram": "📡",
+        "aacCoreWords": [
+          "team",
+          "signal",
+          "gate"
+        ],
+        "arasaacKeyword": "communication"
+      },
+      "relatedStudies": [
+        {
+          "url": "/papers/communication-avalanche/",
+          "label": "The Communication Tool Avalanche"
+        },
+        {
+          "url": "/tv/#communication-avalanche:15s",
+          "label": "The Communication Tool Avalanche (Research TV)"
+        }
+      ]
+    }
+  ]
+}

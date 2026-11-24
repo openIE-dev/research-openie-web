@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:07.817
+Birincisi, çoğu istek çözülmüş kalıpları tekrarlar; bu yüzden her seferinde dev bir sinir ağı çalıştırmak bellek ve enerji israfıdır.
+
+2
+00:00:08.157 --> 00:00:15.917
+İkincisi, bu kademeli yapı önce minik doğruluk tablolarını kontrol eder ve uzman model dilimlerini yalnızca gerektiğinde depolamadan aktarır.
+
+3
+00:00:16.257 --> 00:00:23.024
+Üçüncüsü, otomatik bir test yeni bir yanıtı onayladığında, bu yanıt milisaniyelik yeniden kullanılabilir bir beceriye derlenir.

@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:08.766
+Primeiro, a maioria dos pedidos repete padrões já resolvidos, então rodar uma rede neural gigante toda vez desperdiça memória e energia.
+
+2
+00:00:09.106 --> 00:00:17.673
+Segundo, esta cascata consulta pequenas tabelas-verdade primeiro e carrega fatias especialistas do armazenamento apenas quando necessário.
+
+3
+00:00:18.013 --> 00:00:26.412
+Terceiro, assim que um teste automático certifica uma nova resposta, ela é compilada para baixo em uma habilidade reutilizável de milissegundos.

@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:07.044
+Birincisi, programı tek ve net bir plan olarak bir kez yazarsınız; bilgisayar farklı dillerde birebir uyumlu kod üretir.
+
+2
+00:00:07.384 --> 00:00:14.376
+İkincisi, olası her girdinin sonucu baştan bildirilmelidir; böylece henüz hiçbir şey çalışmadan gizli çökmeler önlenir.
+
+3
+00:00:14.716 --> 00:00:22.746
+Üçüncüsü, denetleyiciden geçen her onarım kaydedilir ve yeniden kullanılır; böylece tek bir düzeltme için asla iki kez ödeme yapmazsınız.

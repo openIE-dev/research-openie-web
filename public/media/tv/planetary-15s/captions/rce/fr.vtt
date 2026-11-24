@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:06.856
+Premièrement, vous écrivez un programme une seule fois sous forme de plan clair, et l'ordinateur génère un code concordant dans plusieurs langages.
+
+2
+00:00:07.196 --> 00:00:13.325
+Deuxièmement, chaque entrée possible doit avoir un résultat déclaré à l'avance, empêchant les pannes cachées avant même l'exécution.
+
+3
+00:00:13.665 --> 00:00:20.943
+Troisièmement, chaque réparation validée par le vérificateur est enregistrée et réutilisée, afin de ne jamais payer deux fois pour un même correctif.

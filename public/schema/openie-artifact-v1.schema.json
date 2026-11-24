@@ -1,0 +1,832 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openie.dev/schemas/openie-artifact-v1.schema.json",
+  "title": "OpenIE Canonical Artifact v1",
+  "description": "Canonical machine-checkable artifact substrate schema unifying OpenIE Research Papers, TV, Radio, Interactive Tutorials, The Commons, Free Humanoid Prior-Art & Morphologies, and the Communication Tool Avalanche over WAI1 envelopes.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "canonical_id",
+    "provenance_chain",
+    "energy_cost_j",
+    "difficulty_rung",
+    "verification_status",
+    "modality_variants",
+    "license",
+    "interchange_envelope"
+  ],
+  "properties": {
+    "canonical_id": {
+      "type": "string",
+      "pattern": "^blake3:(paper|tv|radio|tutorial|humanoid_prior_art|humanoid_morphology|blueprint|concept):[0-9a-f]{64}$",
+      "description": "Content-addressed BLAKE3 canonical identifier scoped by OpenIE artifact domain."
+    },
+    "artifact_kind": {
+      "type": "string",
+      "enum": [
+        "paper",
+        "tv",
+        "radio",
+        "tutorial",
+        "humanoid_prior_art",
+        "humanoid_morphology",
+        "blueprint",
+        "concept"
+      ]
+    },
+    "slug": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "upstream_url": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "provenance_chain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_blake3",
+        "sha256",
+        "ed25519_pubkey",
+        "ed25519_sig",
+        "tx_time_utc",
+        "lineage_parents",
+        "anchors"
+      ],
+      "properties": {
+        "content_blake3": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "ed25519_pubkey": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "ed25519_sig": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{128}$"
+        },
+        "tx_time_utc": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?Z$"
+        },
+        "lineage_parents": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^blake3:(paper|tv|radio|tutorial|humanoid_prior_art|humanoid_morphology|blueprint|concept):[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "anchors": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "git_commit": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{7,40}$"
+            },
+            "rfc3161_tsr": {
+              "type": "string",
+              "minLength": 1
+            },
+            "opentimestamps_ots": {
+              "type": "string",
+              "minLength": 1
+            },
+            "drand_round": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "jcr1_receipt_blake3": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        }
+      }
+    },
+    "energy_cost_j": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_class",
+        "joules",
+        "meter_or_formula",
+        "board_metered",
+        "landauer_300k_bits_equiv"
+      ],
+      "properties": {
+        "evidence_class": {
+          "type": "string",
+          "enum": [
+            "measured_j",
+            "reported_j",
+            "est_j",
+            "unmetered"
+          ]
+        },
+        "joules": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "meter_or_formula": {
+          "type": "string",
+          "minLength": 1
+        },
+        "board_metered": {
+          "type": "boolean"
+        },
+        "landauer_300k_bits_equiv": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "evidence_class": {
+                "const": "measured_j"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "board_metered": {
+                "const": true
+              },
+              "joules": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "landauer_300k_bits_equiv": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "evidence_class": {
+                "enum": [
+                  "reported_j",
+                  "est_j"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "board_metered": {
+                "const": false
+              },
+              "joules": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "landauer_300k_bits_equiv": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "evidence_class": {
+                "const": "unmetered"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "board_metered": {
+                "const": false
+              },
+              "joules": {
+                "type": "null"
+              },
+              "landauer_300k_bits_equiv": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "difficulty_rung": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rung",
+        "rung_name",
+        "phase",
+        "compilation_threshold_crossed"
+      ],
+      "properties": {
+        "rung": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9
+        },
+        "rung_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "phase": {
+          "type": "integer",
+          "enum": [
+            1,
+            2
+          ]
+        },
+        "compilation_threshold_crossed": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "verification_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "human_in_gate",
+        "scientific_gate",
+        "translation_gate",
+        "accessibility_gate"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "verified",
+            "flagged_do_not_ship",
+            "draft"
+          ]
+        },
+        "human_in_gate": {
+          "type": "boolean",
+          "const": false
+        },
+        "scientific_gate": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "passed",
+            "lean_kernel_checked",
+            "sorry_count",
+            "custom_axiom_count",
+            "of_reduce_bool_count",
+            "energy_non_mixing_ok",
+            "failure_reasons"
+          ],
+          "properties": {
+            "passed": {
+              "type": "boolean"
+            },
+            "lean_kernel_checked": {
+              "type": "boolean"
+            },
+            "lean_version": {
+              "type": "string"
+            },
+            "kernel_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "sorry_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "custom_axiom_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "of_reduce_bool_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "bwrap_sandboxed": {
+              "type": "boolean"
+            },
+            "sat_miter_digest": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "energy_non_mixing_ok": {
+              "type": "boolean"
+            },
+            "failure_reasons": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "translation_gate": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "passed",
+            "evaluated_locales",
+            "min_bleu4",
+            "min_chrf_pp",
+            "min_comet_proxy",
+            "numeric_id_conservation_ok",
+            "consecutive_failures",
+            "retry_triggered",
+            "quarantined_do_not_ship",
+            "failure_reasons"
+          ],
+          "properties": {
+            "passed": {
+              "type": "boolean"
+            },
+            "evaluated_locales": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$"
+              }
+            },
+            "min_bleu4": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "min_chrf_pp": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "min_comet_proxy": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "numeric_id_conservation_ok": {
+              "type": "boolean"
+            },
+            "consecutive_failures": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "retry_triggered": {
+              "type": "boolean"
+            },
+            "quarantined_do_not_ship": {
+              "type": "boolean"
+            },
+            "failure_reasons": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "accessibility_gate": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "passed",
+            "wcag_22_aa_captions_ok",
+            "easy_read_ok",
+            "easy_read_avg_words_per_sentence",
+            "unexplained_acronyms",
+            "audio_description_ok",
+            "aac_concepts_resolved",
+            "failure_reasons"
+          ],
+          "properties": {
+            "passed": {
+              "type": "boolean"
+            },
+            "wcag_22_aa_captions_ok": {
+              "type": "boolean"
+            },
+            "easy_read_ok": {
+              "type": "boolean"
+            },
+            "easy_read_avg_words_per_sentence": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unexplained_acronyms": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "audio_description_ok": {
+              "type": "boolean"
+            },
+            "aac_concepts_resolved": {
+              "type": "boolean"
+            },
+            "failure_reasons": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "modality_variants": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "uri",
+            "media_type",
+            "summary"
+          ],
+          "properties": {
+            "uri": {
+              "type": "string",
+              "minLength": 1
+            },
+            "media_type": {
+              "type": "string",
+              "minLength": 1
+            },
+            "summary": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "audio": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "uri",
+            "media_type",
+            "duration_sec",
+            "captions_vtt_uri",
+            "transcript_uri"
+          ],
+          "properties": {
+            "uri": {
+              "type": "string",
+              "minLength": 1
+            },
+            "media_type": {
+              "type": "string",
+              "minLength": 1
+            },
+            "duration_sec": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "captions_vtt_uri": {
+              "type": "string",
+              "minLength": 1
+            },
+            "transcript_uri": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "video": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "15s": {
+              "$ref": "#/$defs/video_cut"
+            },
+            "45s": {
+              "$ref": "#/$defs/video_cut"
+            },
+            "90s": {
+              "$ref": "#/$defs/video_cut"
+            },
+            "180s": {
+              "$ref": "#/$defs/video_cut"
+            }
+          }
+        },
+        "structure_3d": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "uri",
+            "format",
+            "id"
+          ],
+          "properties": {
+            "uri": {
+              "type": "string",
+              "minLength": 1
+            },
+            "format": {
+              "type": "string",
+              "enum": [
+                "glb",
+                "urdf",
+                "mjcf",
+                "step",
+                "cutaway_3d"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "plain_easy_read": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "text",
+            "bullets",
+            "avg_words_per_sentence"
+          ],
+          "properties": {
+            "text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "bullets": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "avg_words_per_sentence": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 18
+            }
+          }
+        },
+        "audio_description": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "track_uri",
+            "script",
+            "voicing"
+          ],
+          "properties": {
+            "track_uri": {
+              "type": "string",
+              "minLength": 1
+            },
+            "script": {
+              "type": "string",
+              "minLength": 1
+            },
+            "voicing": {
+              "type": "string",
+              "enum": [
+                "machine",
+                "human"
+              ]
+            },
+            "ducking_db": {
+              "type": "number"
+            }
+          }
+        },
+        "aac_concepts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "concept_id",
+              "label",
+              "symbol_anchor_uri"
+            ],
+            "properties": {
+              "concept_id": {
+                "type": "string",
+                "pattern": "^aac:[a-z0-9_-]+$"
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "symbol_anchor_uri": {
+                "type": "string",
+                "pattern": "^https://commons\\.openie\\.dev/aac/[a-z0-9_-]+$"
+              }
+            }
+          }
+        },
+        "multilingual": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "title",
+              "plain_easy_read",
+              "bleu4",
+              "chrf_pp",
+              "comet_proxy",
+              "numeric_id_conserved"
+            ],
+            "properties": {
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "plain_easy_read": {
+                "type": "string",
+                "minLength": 1
+              },
+              "bleu4": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "chrf_pp": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "comet_proxy": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "numeric_id_conserved": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "license": {
+      "type": "string",
+      "enum": [
+        "CC0-1.0",
+        "Apache-2.0",
+        "CERN-OHL-S-2.0"
+      ]
+    },
+    "interchange_envelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "wai_version",
+        "media_type",
+        "capability",
+        "fallback",
+        "envelope_blake3",
+        "envelope_bytes"
+      ],
+      "properties": {
+        "format": {
+          "type": "string",
+          "const": "WAI1"
+        },
+        "wai_version": {
+          "type": "string",
+          "const": "1.0"
+        },
+        "media_type": {
+          "type": "string",
+          "const": "application/vnd.wai"
+        },
+        "capability": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fallback": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "envelope_blake3": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "envelope_bytes": {
+          "type": "integer",
+          "minimum": 14
+        },
+        "envelope_uri": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  },
+  "$defs": {
+    "video_cut": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "video_uri",
+        "vtt_uri",
+        "duration_s",
+        "bytes",
+        "sha256",
+        "hook",
+        "transcript"
+      ],
+      "properties": {
+        "video_uri": {
+          "type": "string",
+          "minLength": 1
+        },
+        "vtt_uri": {
+          "type": "string",
+          "minLength": 1
+        },
+        "duration_s": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "hook": {
+          "type": "string",
+          "minLength": 1
+        },
+        "transcript": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

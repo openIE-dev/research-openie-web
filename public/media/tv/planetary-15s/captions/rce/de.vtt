@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:08.617
+Erstens schreibt man ein Programm einmal als klaren Bauplan, und der Computer erzeugt passenden Code über verschiedene Sprachen hinweg.
+
+2
+00:00:08.957 --> 00:00:16.953
+Zweitens muss für jede mögliche Eingabe vorab ein Ergebnis festgelegt sein, was versteckte Abstürze vor dem Start verhindert.
+
+3
+00:00:17.293 --> 00:00:25.979
+Drittens wird jede Reparatur, die die Prüfung besteht, gespeichert und wiederverwendet, sodass man nie zweimal für dieselbe Korrektur zahlt.

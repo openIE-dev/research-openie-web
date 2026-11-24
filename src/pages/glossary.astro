@@ -145,6 +145,25 @@ const terms = allTerms.filter((t) => !hidden.some((h) => (t.term + ' ' + t.def).
       Terms used on this site. Every paper also defines the terms it uses, so no paper depends on this page.
     </p>
 
+    <div class="mt-6 glass-card p-4 md:p-5 border-l-4 border-l-brand-cyan flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div>
+        <div class="font-mono text-[11px] uppercase tracking-wider text-brand-cyan mb-1">
+          AAC &amp; Screen-Reader Concepts Anchor · CC0-1.0
+        </div>
+        <p class="font-body text-xs text-brand-slate leading-relaxed m-0">
+          Machine-readable W3C SKOS + Schema.org <code class="font-mono text-brand-white">DefinedTermSet</code> JSON-LD projection with plain definitions (20 words or fewer), one-idea Easy-Read sentences, and AAC core-vocabulary symbol hints.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-2 shrink-0">
+        <a href="/glossary/concepts.json" class="inline-flex font-mono text-xs text-brand-cyan border border-brand-cyan/40 bg-brand-cyan/10 px-3.5 py-2 rounded-md no-underline hover:bg-brand-cyan/20">
+          concepts.json
+        </a>
+        <a href="/blueprint/#accessibility" class="inline-flex font-mono text-xs text-brand-amber border border-brand-amber/40 px-3.5 py-2 rounded-md no-underline hover:bg-brand-amber/10">
+          Unsiloeing Blueprint →
+        </a>
+      </div>
+    </div>
+
     <dl class="mt-10 space-y-6">
       {terms.map((t) => (
         <div class="glass-card p-5 md:p-6">

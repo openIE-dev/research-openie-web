@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:09.780
+Erstens lassen die meisten Benchmarks für künstliche Intelligenz eine modellfreie Kontrollgruppe aus, die prüft, was einfaches Nachschlagen bereits löst.
+
+2
+00:00:10.120 --> 00:00:19.375
+Zweitens zog bei begrenzten Mathematik- und Datenbankaufgaben eine eingefrorene Nachschlagetabelle in 9 von 10 Tests mit Cloud-Modellen gleich.
+
+3
+00:00:19.715 --> 00:00:30.685
+Drittens lag künstliche Intelligenz bei offenen Programmieraufgaben klar vorn, während das Speichern geprüfter Antworten die Wiederholungsenergie um das 3,6-Fache senkte.

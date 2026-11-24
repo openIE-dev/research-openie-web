@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:08.414
+Thứ nhất, tế bào sống dùng 64 bộ ba di truyền để lưu quy tắc sinh tồn, và bảng tra cứu số 6 đầu vào cũng dùng đúng 64 công tắc y hệt như vậy.
+
+2
+00:00:08.754 --> 00:00:16.580
+Thứ hai, gom nhóm 4 thiết lập công tắc lân cận giúp hấp thụ sai lệch nhỏ từ cảm biến hoặc cách diễn đạt, đồng thời loại bỏ nhiễu tần số cao dễ vỡ.
+
+3
+00:00:16.920 --> 00:00:26.757
+Thứ ba, một nhân 16 kilobyte chạy các kỹ năng đã kiểm chứng trong nano-giây từ vi điều khiển 4 đô la đến thẻ mạch M.2 không quạt, chỉ đánh thức mô hình lớn khi gặp điều mới thật sự.

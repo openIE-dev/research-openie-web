@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:06.752
+First, most AI benchmarks skip a zero-model control group that tests what simple lookup already solves.
+
+2
+00:00:07.092 --> 00:00:14.471
+Second, on bounded math and database tasks, a frozen lookup table matched cloud AI on nine of ten tests.
+
+3
+00:00:14.811 --> 00:00:22.541
+Third, on open coding tasks AI leaped ahead, while caching verified answers cut repeat energy three point six times.

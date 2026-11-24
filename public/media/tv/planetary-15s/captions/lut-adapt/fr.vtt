@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:06.887
+Premièrement, la plupart des requêtes répètent des motifs déjà résolus ; lancer à chaque fois un immense réseau neuronal gaspille mémoire et énergie.
+
+2
+00:00:07.227 --> 00:00:13.753
+Deuxièmement, cette cascade consulte d'abord de minuscules tables de vérité et ne charge des tranches expertes depuis le stockage qu'en cas de besoin.
+
+3
+00:00:14.093 --> 00:00:20.994
+Troisièmement, dès qu'un test automatique certifie une nouvelle réponse, elle est compilée vers le bas en une compétence réutilisable en millisecondes.

@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:07.974
+Primeiro, você escreve um programa uma única vez como uma planta clara, e o computador gera código correspondente em várias linguagens.
+
+2
+00:00:08.314 --> 00:00:16.370
+Segundo, cada entrada possível deve ter um resultado declarado desde o início, evitando travamentos ocultos antes de qualquer execução.
+
+3
+00:00:16.710 --> 00:00:24.477
+Terceiro, cada reparo aprovado pelo verificador é salvo e reutilizado, para que você nunca pague duas vezes pela mesma correção.

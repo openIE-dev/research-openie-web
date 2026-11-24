@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:10.685
+Pertama, sebagian besar permintaan mengulang pola yang sudah terpecahkan, sehingga menjalankan jaringan saraf raksasa setiap kali membuang memori dan energi.
+
+2
+00:00:11.025 --> 00:00:20.393
+Kedua, rangkaian ini memeriksa tabel kebenaran mungil lebih dulu dan mengalirkan irisan model spesialis dari penyimpanan hanya saat diperlukan.
+
+3
+00:00:20.733 --> 00:00:30.756
+Ketiga, begitu uji otomatis mengesahkan jawaban baru, jawaban itu dikompilasi turun menjadi keahlian milidetik yang dapat dipakai ulang.
