@@ -1,0 +1,449 @@
+{
+  "id": "ep14-database-bitemporal-state-desk",
+  "number": 14,
+  "title": "OpenIE Database & Data Desk: Sub-Microsecond Memory-Mapped Stores and Hash-Chained Logs",
+  "subtitle": "Cecily, Marcus, and Kwame examine 1.77 uJ DNULLMM1 POSIX mmap case stores, RCE-VC name-free logs, and bit-exact replay across macOS, Linux, and Windows",
+  "summary": "At the OpenIE Database & Data Desk (database.openie.dev / data.openie.dev), Cecily, Marcus, and Kwame tour 35.28M data cells, 0.325 us / 1.77 uJ DNULLMM1 POSIX mmap and Win32 MapViewOfFile case stores, 69.7 us RCE-VC name-free versioned logs, and zero-diff deterministic replay across macOS, Linux, and bare-metal Windows 11.",
+  "topic_tags": [
+    "database-desk",
+    "dnullmm1-mmap",
+    "rce-vc",
+    "deterministic-replay"
+  ],
+  "panel": [
+    "Cecily",
+    "Marcus",
+    "Kwame"
+  ],
+  "panel_profiles": [
+    {
+      "name": "Cecily",
+      "group": "host",
+      "title": "Lead Science Host · African American English",
+      "voice_id": "NQMJRVvPew6HsaebYnZj",
+      "fallback_voice": "en-US-EmmaMultilingualNeural",
+      "color": "#14B8A6",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    {
+      "name": "Marcus",
+      "group": "skeptic",
+      "title": "Empirical Foil · African American English",
+      "voice_id": "VlUmeC1Uzj3NnwiVR9K9",
+      "fallback_voice": "en-US-ChristopherNeural",
+      "color": "#F59E0B",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    {
+      "name": "Kwame",
+      "group": "specialist",
+      "title": "Distributed Systems Engineer · Nigerian English",
+      "voice_id": "PFnEp0d5QKq6baWI3azv",
+      "fallback_voice": "en-NG-AbeoNeural",
+      "color": "#A78BFA",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    }
+  ],
+  "tts_engines": [
+    "eleven_v4"
+  ],
+  "published_utc": "2026-11-23T12:30:00Z",
+  "duration_sec": 255.2,
+  "duration_human": "4:15",
+  "byte_length": 4347833,
+  "audio_url": "/media/radio/episodes/ep14-database-bitemporal-state-desk.m4a",
+  "captions_url": "/media/radio/captions/ep14-database-bitemporal-state-desk.vtt",
+  "transcript_url": "/media/radio/transcripts/ep14-database-bitemporal-state-desk.json",
+  "turn_count": 15,
+  "card_count": 7,
+  "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+  "desk": "database",
+  "desk_domain": "database.openie.dev",
+  "studies": [
+    "rce",
+    "rce-vc",
+    "time-as-an-index",
+    "deterministic-null",
+    "ai-reads-human",
+    "game-engines"
+  ],
+  "hosts": [
+    "Cecily",
+    "Marcus",
+    "Kwame"
+  ],
+  "duration_s": 255.2,
+  "citations": [
+    {
+      "id": "ep14-database-bitemporal-state-desk-card-00-0",
+      "at_sec": 2.63,
+      "end_sec": 29.128,
+      "turn_index": 0,
+      "speaker": "Cecily",
+      "kind": "ecosystem",
+      "badge": "DESK 06",
+      "title": "OpenIE Database & Data Desk (database.openie.dev)",
+      "detail": "10 axes & 35.28M data cells unifying DNULLMM1 mmap stores, RCEdb bitemporal logs, RCE-VC, and lockstep state replay.",
+      "href": "https://database.openie.dev"
+    },
+    {
+      "id": "ep14-database-bitemporal-state-desk-card-02-0",
+      "at_sec": 42.233,
+      "end_sec": 57.862,
+      "turn_index": 2,
+      "speaker": "Marcus",
+      "kind": "study",
+      "badge": "reported_j",
+      "title": "AI Reads Human: 2,053.8x Format Impedance Tax",
+      "detail": "Fixed binary struct costs 280.4 nJ/record vs 2,212.1 nJ JSON (7.89x) and 575,799.3 nJ pure-Python YAML on Apple M5 Max.",
+      "href": "/papers/ai-reads-human/"
+    },
+    {
+      "id": "ep14-database-bitemporal-state-desk-card-03-0",
+      "at_sec": 58.932,
+      "end_sec": 80.3,
+      "turn_index": 3,
+      "speaker": "Kwame",
+      "kind": "receipt",
+      "badge": "1.77 uJ",
+      "title": "DNULLMM1 Zero-Copy mmap Store (0.325 us / Lookup)",
+      "detail": "64-byte header + 48-byte binary hash slots replay Gear-0 verified cases at 1.771 uJ with 0 model calls.",
+      "href": "/papers/deterministic-null/"
+    },
+    {
+      "id": "ep14-database-bitemporal-state-desk-card-07-0",
+      "at_sec": 118.722,
+      "end_sec": 140.258,
+      "turn_index": 7,
+      "speaker": "Kwame",
+      "kind": "study",
+      "badge": "69.7 us",
+      "title": "RCE-VC: Name-Free Versioned Logs (317–365 uJ)",
+      "detail": "49 offline tests passing; admits non-overlapping submissions across 100,000 units in 69.7–73.6 us while preserving Git.",
+      "href": "/papers/rce-vc/"
+    },
+    {
+      "id": "ep14-database-bitemporal-state-desk-card-11-0",
+      "at_sec": 173.883,
+      "end_sec": 200.048,
+      "turn_index": 11,
+      "speaker": "Kwame",
+      "kind": "receipt",
+      "badge": "0 BYTE DIFFS",
+      "title": "5-Host DNULLMM1 Invariance & 44.6 KB 1-Hour Replay",
+      "detail": "Exact 15027705736 checksum & 0 CRLF drift across 5 OS/silicon hosts; 0/25,500 (GE-H1) & 0/6,480 (GE-H8) lockstep diffs.",
+      "href": "/papers/satb-harness/"
+    }
+  ],
+  "falsifiers": [
+    {
+      "id": "ep14-database-bitemporal-state-desk-card-09-0",
+      "at_sec": 150.798,
+      "end_sec": 164.319,
+      "turn_index": 9,
+      "speaker": "Kwame",
+      "kind": "falsifier",
+      "badge": "TICK 10 DRIFT",
+      "title": "Cross-OS Float Divergence & NTFS CRLF Hazards",
+      "detail": "3-OS std::sin diverges in 10–37 ticks (GE-H2); binary DNULLMM1 + Q32.32 integer state eliminates float and CRLF drift.",
+      "href": "/papers/game-engines/"
+    },
+    {
+      "id": "ep14-database-bitemporal-state-desk-card-13-0",
+      "at_sec": 209.978,
+      "end_sec": 235.246,
+      "turn_index": 13,
+      "speaker": "Kwame",
+      "kind": "falsifier",
+      "badge": "FROZEN SHA-256",
+      "title": "Anti-Smuggling Store Seal (<=4,096 B, 0 Test Writes)",
+      "detail": "Pre/post test SHA-256 digests asserted identical; reducers capped at <=4,096 gzipped bytes & <=50,000 ops; overlapping RCE-VC edits refused.",
+      "href": "/papers/deterministic-null/"
+    }
+  ],
+  "personas": {
+    "Cecily": {
+      "name": "Cecily",
+      "group": "host",
+      "title": "Lead Science Host · African American English",
+      "voice_id": "NQMJRVvPew6HsaebYnZj",
+      "fallback_voice": "en-US-EmmaMultilingualNeural",
+      "color": "#14B8A6",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    "Marcus": {
+      "name": "Marcus",
+      "group": "skeptic",
+      "title": "Empirical Foil · African American English",
+      "voice_id": "VlUmeC1Uzj3NnwiVR9K9",
+      "fallback_voice": "en-US-ChristopherNeural",
+      "color": "#F59E0B",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    "Kwame": {
+      "name": "Kwame",
+      "group": "specialist",
+      "title": "Distributed Systems Engineer · Nigerian English",
+      "voice_id": "PFnEp0d5QKq6baWI3azv",
+      "fallback_voice": "en-NG-AbeoNeural",
+      "color": "#A78BFA",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    }
+  },
+  "turns": [
+    {
+      "turn_index": 0,
+      "speaker": "Cecily",
+      "role": "Lead Science Host · African American English",
+      "group": "host",
+      "color": "#14B8A6",
+      "start_sec": 1.83,
+      "end_sec": 29.128,
+      "text": "Welcome to Episode Fourteen — our OpenIE Database and Data Desk roundtable on OpenIE Research Radio! I'm Cecily, joined by Marcus and Kwame — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural speech and grounded strictly in verified Open Interface Engineering studies. Today we open database.openie.dev and data.openie.dev!"
+    },
+    {
+      "turn_index": 1,
+      "speaker": "Cecily",
+      "role": "Lead Science Host · African American English",
+      "group": "host",
+      "color": "#14B8A6",
+      "start_sec": 29.398,
+      "end_sec": 41.243,
+      "text": "Picture two ways to check a subway transfer as train doors close: mail a handwritten YAML letter to a warehouse clerk, or glance up at a laminated map bolted right onto the station wall!"
+    },
+    {
+      "turn_index": 2,
+      "speaker": "Marcus",
+      "role": "Empirical Foil · African American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 41.433,
+      "end_sec": 57.862,
+      "text": "Most agent memory stacks picked the handwritten YAML letter! In AI Reads Human, pure-Python YAML burned two thousand fifty-three times more energy per record than fixed binary structs. Kwame, how does DNULLMM1 bolt the map straight onto the CPU?"
+    },
+    {
+      "turn_index": 3,
+      "speaker": "Kwame",
+      "role": "Distributed Systems Engineer · Nigerian English",
+      "group": "specialist",
+      "color": "#A78BFA",
+      "start_sec": 58.132,
+      "end_sec": 80.3,
+      "text": "DNULLMM1 packs a sixty-four-byte header plus forty-eight-byte open-addressed binary hash slots and mounts them zero-copy via POSIX mmap on Linux and macOS or MapViewOfFile on Windows 11. Zero parsing, zero heap allocation: one lookup finishes in zero point three two five microseconds at one point seven seven microjoules!"
+    },
+    {
+      "turn_index": 4,
+      "speaker": "Cecily",
+      "role": "Lead Science Host · African American English",
+      "group": "host",
+      "color": "#14B8A6",
+      "start_sec": 80.57,
+      "end_sec": 91.117,
+      "text": "How do database.openie.dev's thirty-five point two eight million data cells connect to state.openie.dev and memory.openie.dev?"
+    },
+    {
+      "turn_index": 5,
+      "speaker": "Kwame",
+      "role": "Distributed Systems Engineer · Nigerian English",
+      "group": "specialist",
+      "color": "#A78BFA",
+      "start_sec": 91.387,
+      "end_sec": 110.025,
+      "text": "Across ten database axes and five hundred thirty-three million memory cells from CPU registers to DNA, every table view is a deterministic fold over an append-only, hash-chained bitemporal log — separating Valid Time in reality from Transaction Time in the chain so history is never overwritten."
+    },
+    {
+      "turn_index": 6,
+      "speaker": "Marcus",
+      "role": "Empirical Foil · African American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 110.215,
+      "end_sec": 117.652,
+      "text": "What happens when ten coding agents commit to one repository at once? Standard Git line-number merges turn into gridlock!"
+    },
+    {
+      "turn_index": 7,
+      "speaker": "Kwame",
+      "role": "Distributed Systems Engineer · Nigerian English",
+      "group": "specialist",
+      "color": "#A78BFA",
+      "start_sec": 117.922,
+      "end_sec": 140.258,
+      "text": "RCE-VC keys every definition by its canonical name-free digest! Non-overlapping edits need zero coordination: admitting a submission against one hundred thousand units takes sixty-nine point seven to seventy-three point six microseconds at three hundred seventeen to three hundred sixty-five microjoules of Apple M5 Max L3 reported_j, while projecting cleanly back to Git!"
+    },
+    {
+      "turn_index": 8,
+      "speaker": "Cecily",
+      "role": "Lead Science Host · African American English",
+      "group": "host",
+      "color": "#14B8A6",
+      "start_sec": 140.528,
+      "end_sec": 149.728,
+      "text": "Now test cross-platform deterministic replay across macOS, Linux, and bare-metal Windows 11 — where do ordinary systems drift?"
+    },
+    {
+      "turn_index": 9,
+      "speaker": "Kwame",
+      "role": "Distributed Systems Engineer · Nigerian English",
+      "group": "specialist",
+      "color": "#A78BFA",
+      "start_sec": 149.998,
+      "end_sec": 164.319,
+      "text": "Windows NTFS carriage-return line-feeds corrupt naive text transcripts, and standard-library floating-point sine diverges across Apple libSystem, Linux glibc, and Windows UCRT in just ten to thirty-seven ticks!"
+    },
+    {
+      "turn_index": 10,
+      "speaker": "Marcus",
+      "role": "Empirical Foil · African American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 164.509,
+      "end_sec": 172.813,
+      "text": "And when you ran frozen binary DNULLMM1 maps plus Q32.32 fixed-point integer state across all those machines?"
+    },
+    {
+      "turn_index": 11,
+      "speaker": "Kwame",
+      "role": "Distributed Systems Engineer · Nigerian English",
+      "group": "specialist",
+      "color": "#A78BFA",
+      "start_sec": 173.083,
+      "end_sec": 200.048,
+      "text": "All five SATB hardware and OS hosts hit the exact ten-thousand-probe checksum fifteen billion twenty-seven million seven hundred five thousand seven hundred thirty-six with zero byte diffs! And in GE-H8, three one-hour sessions of two hundred sixteen thousand ticks replayed bit-for-bit across macOS, Linux, and Windows 11 from forty-four point six kilobytes of gzipped inputs — zero out of six thousand four hundred eighty mismatches!"
+    },
+    {
+      "turn_index": 12,
+      "speaker": "Marcus",
+      "role": "Empirical Foil · African American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 200.238,
+      "end_sec": 208.908,
+      "text": "Final audit check: how do we stop test-time mutation or solver smuggling inside DNULLMM1 and RCE-VC?"
+    },
+    {
+      "turn_index": 13,
+      "speaker": "Kwame",
+      "role": "Distributed Systems Engineer · Nigerian English",
+      "group": "specialist",
+      "color": "#A78BFA",
+      "start_sec": 209.178,
+      "end_sec": 235.246,
+      "text": "Before testing, DNULLMM1 is frozen read-only by SHA-256 under Bitcoin OpenTimestamps and drand beacons — pre-and-post digests must match with zero test writes, and reducers are capped at four thousand ninety-six gzipped bytes and fifty thousand operations! Meanwhile, RCE-VC refuses overlapping edits with a recorded reason and keeps measured_j unset alongside reported_j."
+    },
+    {
+      "turn_index": 14,
+      "speaker": "Cecily",
+      "role": "Lead Science Host · African American English",
+      "group": "host",
+      "color": "#14B8A6",
+      "start_sec": 235.516,
+      "end_sec": 253.328,
+      "text": "Hash-chain the bitemporal log, memory-map verified state at one point seven seven microjoules, and replay bit-for-bit everywhere! Explore all six openie.dev desks right below, subscribe via Podcast RSS, and thank you for listening to OpenIE Research Radio!"
+    }
+  ],
+  "cards": [
+    {
+      "id": "ep14-database-bitemporal-state-desk-card-00-0",
+      "at_sec": 2.63,
+      "end_sec": 29.128,
+      "turn_index": 0,
+      "speaker": "Cecily",
+      "kind": "ecosystem",
+      "badge": "DESK 06",
+      "title": "OpenIE Database & Data Desk (database.openie.dev)",
+      "detail": "10 axes & 35.28M data cells unifying DNULLMM1 mmap stores, RCEdb bitemporal logs, RCE-VC, and lockstep state replay.",
+      "href": "https://database.openie.dev"
+    },
+    {
+      "id": "ep14-database-bitemporal-state-desk-card-02-0",
+      "at_sec": 42.233,
+      "end_sec": 57.862,
+      "turn_index": 2,
+      "speaker": "Marcus",
+      "kind": "study",
+      "badge": "reported_j",
+      "title": "AI Reads Human: 2,053.8x Format Impedance Tax",
+      "detail": "Fixed binary struct costs 280.4 nJ/record vs 2,212.1 nJ JSON (7.89x) and 575,799.3 nJ pure-Python YAML on Apple M5 Max.",
+      "href": "/papers/ai-reads-human/"
+    },
+    {
+      "id": "ep14-database-bitemporal-state-desk-card-03-0",
+      "at_sec": 58.932,
+      "end_sec": 80.3,
+      "turn_index": 3,
+      "speaker": "Kwame",
+      "kind": "receipt",
+      "badge": "1.77 uJ",
+      "title": "DNULLMM1 Zero-Copy mmap Store (0.325 us / Lookup)",
+      "detail": "64-byte header + 48-byte binary hash slots replay Gear-0 verified cases at 1.771 uJ with 0 model calls.",
+      "href": "/papers/deterministic-null/"
+    },
+    {
+      "id": "ep14-database-bitemporal-state-desk-card-07-0",
+      "at_sec": 118.722,
+      "end_sec": 140.258,
+      "turn_index": 7,
+      "speaker": "Kwame",
+      "kind": "study",
+      "badge": "69.7 us",
+      "title": "RCE-VC: Name-Free Versioned Logs (317–365 uJ)",
+      "detail": "49 offline tests passing; admits non-overlapping submissions across 100,000 units in 69.7–73.6 us while preserving Git.",
+      "href": "/papers/rce-vc/"
+    },
+    {
+      "id": "ep14-database-bitemporal-state-desk-card-09-0",
+      "at_sec": 150.798,
+      "end_sec": 164.319,
+      "turn_index": 9,
+      "speaker": "Kwame",
+      "kind": "falsifier",
+      "badge": "TICK 10 DRIFT",
+      "title": "Cross-OS Float Divergence & NTFS CRLF Hazards",
+      "detail": "3-OS std::sin diverges in 10–37 ticks (GE-H2); binary DNULLMM1 + Q32.32 integer state eliminates float and CRLF drift.",
+      "href": "/papers/game-engines/"
+    },
+    {
+      "id": "ep14-database-bitemporal-state-desk-card-11-0",
+      "at_sec": 173.883,
+      "end_sec": 200.048,
+      "turn_index": 11,
+      "speaker": "Kwame",
+      "kind": "receipt",
+      "badge": "0 BYTE DIFFS",
+      "title": "5-Host DNULLMM1 Invariance & 44.6 KB 1-Hour Replay",
+      "detail": "Exact 15027705736 checksum & 0 CRLF drift across 5 OS/silicon hosts; 0/25,500 (GE-H1) & 0/6,480 (GE-H8) lockstep diffs.",
+      "href": "/papers/satb-harness/"
+    },
+    {
+      "id": "ep14-database-bitemporal-state-desk-card-13-0",
+      "at_sec": 209.978,
+      "end_sec": 235.246,
+      "turn_index": 13,
+      "speaker": "Kwame",
+      "kind": "falsifier",
+      "badge": "FROZEN SHA-256",
+      "title": "Anti-Smuggling Store Seal (<=4,096 B, 0 Test Writes)",
+      "detail": "Pre/post test SHA-256 digests asserted identical; reducers capped at <=4,096 gzipped bytes & <=50,000 ops; overlapping RCE-VC edits refused.",
+      "href": "/papers/deterministic-null/"
+    }
+  ]
+}

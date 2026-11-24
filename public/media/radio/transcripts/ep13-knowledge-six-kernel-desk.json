@@ -1,0 +1,448 @@
+{
+  "id": "ep13-knowledge-six-kernel-desk",
+  "number": 13,
+  "title": "OpenIE Knowledge Desk: Seven-Axis Time Claims and the Lean 4.36.0 Six-Kernel Audit",
+  "subtitle": "Priya, Sean, and Claire unpack tritemporal anti-laundering claims and why 5,496 theorem constants run through six independent Lean checkers inside bubblewrap",
+  "summary": "At the OpenIE Knowledge Desk (knowledge.openie.dev), Priya, Sean, and Claire explain seven-axis tritemporal anti-laundering claims <Vt, Tt, Rt, G, S, C, P> and detail how 5,496 Lean 4.36.0 theorem constants pass con-leche, con-ron, lean4lean, nanoda, leanchecker, and Lean 4.36.0 inside an isolated Linux bubblewrap sandbox with zero sorry, zero opaque, and zero ofReduceBool.",
+  "topic_tags": [
+    "knowledge-desk",
+    "seven-axis-claims",
+    "six-kernel-audit",
+    "lean-4-36"
+  ],
+  "panel": [
+    "Priya",
+    "Sean",
+    "Claire"
+  ],
+  "panel_profiles": [
+    {
+      "name": "Priya",
+      "group": "host",
+      "title": "Science Documentary Host · South Asian English",
+      "voice_id": "QCzL5yD6UcwZgNMhRj6G",
+      "fallback_voice": "en-IN-NeerjaNeural",
+      "color": "#34D399",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    {
+      "name": "Sean",
+      "group": "skeptic",
+      "title": "Auditor & Skeptic · Irish English",
+      "voice_id": "tRqj2rLkZmeP61CMmIX4",
+      "fallback_voice": "en-IE-ConnorNeural",
+      "color": "#FBBF24",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    {
+      "name": "Claire",
+      "group": "specialist",
+      "title": "Formal Verification & Silicon Architect · British English",
+      "voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+      "fallback_voice": "en-GB-SoniaNeural",
+      "color": "#60A5FA",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    }
+  ],
+  "tts_engines": [
+    "eleven_v4"
+  ],
+  "published_utc": "2026-11-23T12:00:00Z",
+  "duration_sec": 256.8,
+  "duration_human": "4:17",
+  "byte_length": 4286686,
+  "audio_url": "/media/radio/episodes/ep13-knowledge-six-kernel-desk.m4a",
+  "captions_url": "/media/radio/captions/ep13-knowledge-six-kernel-desk.vtt",
+  "transcript_url": "/media/radio/transcripts/ep13-knowledge-six-kernel-desk.json",
+  "turn_count": 15,
+  "card_count": 7,
+  "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+  "desk": "knowledge",
+  "desk_domain": "knowledge.openie.dev",
+  "studies": [
+    "time-as-an-index",
+    "ai-reads-human",
+    "three-body",
+    "rce",
+    "deterministic-null"
+  ],
+  "hosts": [
+    "Priya",
+    "Sean",
+    "Claire"
+  ],
+  "duration_s": 256.8,
+  "citations": [
+    {
+      "id": "ep13-knowledge-six-kernel-desk-card-00-0",
+      "at_sec": 2.63,
+      "end_sec": 29.476,
+      "turn_index": 0,
+      "speaker": "Priya",
+      "kind": "ecosystem",
+      "badge": "DESK 05",
+      "title": "OpenIE Knowledge Desk (knowledge.openie.dev)",
+      "detail": "Seven-axis tritemporal claims <Vt, Tt, Rt, G, S, C, P> anchored by 5,496 six-kernel-verified Lean 4.36.0 theorem constants.",
+      "href": "https://knowledge.openie.dev"
+    },
+    {
+      "id": "ep13-knowledge-six-kernel-desk-card-03-0",
+      "at_sec": 60.205,
+      "end_sec": 81.614,
+      "turn_index": 3,
+      "speaker": "Claire",
+      "kind": "study",
+      "badge": "[E]",
+      "title": "AI Reads Human & Typed Epistemic Provenance",
+      "detail": "Pure-Python YAML costs 2,053.8x more parse energy than fixed binary structs (575,799 vs 280.4 nJ/record); typed claims preserve exact axes.",
+      "href": "/papers/ai-reads-human/"
+    },
+    {
+      "id": "ep13-knowledge-six-kernel-desk-card-07-0",
+      "at_sec": 129.845,
+      "end_sec": 153.093,
+      "turn_index": 7,
+      "speaker": "Claire",
+      "kind": "receipt",
+      "badge": "[T] 6/6",
+      "title": "5,496 Six-Kernel-Verified Theorem Constants",
+      "detail": "5,393 (RCE) + 45 (Avalanche) + 31 (Time) + 27 (LUT6) = 5,496 constants; 0 sorry, 0 opaque, 0 custom axioms, 0 ofReduceBool.",
+      "href": "/papers/rce/"
+    },
+    {
+      "id": "ep13-knowledge-six-kernel-desk-card-09-0",
+      "at_sec": 157.36,
+      "end_sec": 182.086,
+      "turn_index": 9,
+      "speaker": "Claire",
+      "kind": "receipt",
+      "badge": "bwrap 6-KERNEL",
+      "title": "con-leche · con-ron · lean4lean · nanoda · leanchecker · Lean 4.36.0",
+      "detail": "68,090–68,092 RCE declarations and 58,796–58,798 Time declarations accepted unanimously inside network-isolated bubblewrap.",
+      "href": "https://proof.openie.dev"
+    },
+    {
+      "id": "ep13-knowledge-six-kernel-desk-card-11-0",
+      "at_sec": 190.643,
+      "end_sec": 209.232,
+      "turn_index": 11,
+      "speaker": "Claire",
+      "kind": "study",
+      "badge": "[T]",
+      "title": "Horizon Theorem & 195-Entry Temporal Anomaly Ledger",
+      "detail": "Salted query horizons defeat offline Hellman tables (34.0% -> 0.0%); 65,536 SHA-256 spectral runs show 0 bins below p = 10^-6.",
+      "href": "/papers/time-as-an-index/"
+    }
+  ],
+  "falsifiers": [
+    {
+      "id": "ep13-knowledge-six-kernel-desk-card-05-0",
+      "at_sec": 92.314,
+      "end_sec": 123.198,
+      "turn_index": 5,
+      "speaker": "Claire",
+      "kind": "falsifier",
+      "badge": "CVE HARDENED",
+      "title": "2026 Single-Kernel Soundness Advisories Mitigated",
+      "detail": "Defends against CVE-2026-72844 (.proj confusion), CVE-2026-72711 (add_opaque), #16688 (.olean replay), and #16693 (ofReduceBool).",
+      "href": "/papers/time-as-an-index/"
+    },
+    {
+      "id": "ep13-knowledge-six-kernel-desk-card-13-0",
+      "at_sec": 217.479,
+      "end_sec": 239.822,
+      "turn_index": 13,
+      "speaker": "Claire",
+      "kind": "falsifier",
+      "badge": "ANTI-LAUNDER",
+      "title": "Unproved Clauses Quarantined & 0 Retrocausal Survivors",
+      "detail": "12 unproved RCE Draft 0.9 Appendix F clauses stay segregated; TA001–TA081 primary-source audit leaves 0 unexplained future signals.",
+      "href": "/papers/rce/"
+    }
+  ],
+  "personas": {
+    "Priya": {
+      "name": "Priya",
+      "group": "host",
+      "title": "Science Documentary Host · South Asian English",
+      "voice_id": "QCzL5yD6UcwZgNMhRj6G",
+      "fallback_voice": "en-IN-NeerjaNeural",
+      "color": "#34D399",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    "Sean": {
+      "name": "Sean",
+      "group": "skeptic",
+      "title": "Auditor & Skeptic · Irish English",
+      "voice_id": "tRqj2rLkZmeP61CMmIX4",
+      "fallback_voice": "en-IE-ConnorNeural",
+      "color": "#FBBF24",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    "Claire": {
+      "name": "Claire",
+      "group": "specialist",
+      "title": "Formal Verification & Silicon Architect · British English",
+      "voice_id": "Xb7hH8MSUJpSbSDYk0k2",
+      "fallback_voice": "en-GB-SoniaNeural",
+      "color": "#60A5FA",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    }
+  },
+  "turns": [
+    {
+      "turn_index": 0,
+      "speaker": "Priya",
+      "role": "Science Documentary Host · South Asian English",
+      "group": "host",
+      "color": "#34D399",
+      "start_sec": 1.83,
+      "end_sec": 29.476,
+      "text": "Welcome to the OpenIE Knowledge Desk on OpenIE Research Radio! I'm Priya, joined by Sean and Claire — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural voices and grounded strictly in verified Open Interface Engineering studies. Today we open knowledge.openie.dev: seven-axis time claims and the Lean 4.36.0 six-kernel audit."
+    },
+    {
+      "turn_index": 1,
+      "speaker": "Priya",
+      "role": "Science Documentary Host · South Asian English",
+      "group": "host",
+      "color": "#34D399",
+      "start_sec": 29.746,
+      "end_sec": 48.522,
+      "text": "Picture how internet rumor laundering works: one blog invents a number, three sites quote the blog, and a chatbot cites all three as consensus! Or imagine a medical chart overwriting Tuesday's blood draw on Friday without separating when the lab happened from when the edit happened."
+    },
+    {
+      "turn_index": 2,
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 48.712,
+      "end_sec": 59.135,
+      "text": "Bare English sentences strip away clocks, scope, and primary sources! Claire, how does knowledge.openie.dev make citation laundering impossible?"
+    },
+    {
+      "turn_index": 3,
+      "speaker": "Claire",
+      "role": "Formal Verification & Silicon Architect · British English",
+      "group": "specialist",
+      "color": "#60A5FA",
+      "start_sec": 59.405,
+      "end_sec": 81.614,
+      "text": "Every claim carries seven explicit coordinates, Sean: Valid Time in reality, Transaction Time in the ledger, Reference Time for the horizon frame, Granularity, Scope, Certainty — T, E, M, or S — and Anti-Laundering Provenance collapsing circular citations back to primary cryptographic digests."
+    },
+    {
+      "turn_index": 4,
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 81.804,
+      "end_sec": 91.244,
+      "text": "Now test badge T — kernel-checked proofs! Why didn't we stop at one Lean build instead of locking six rival proof checkers inside Linux bubblewrap?"
+    },
+    {
+      "turn_index": 5,
+      "speaker": "Claire",
+      "role": "Formal Verification & Silicon Architect · British English",
+      "group": "specialist",
+      "color": "#60A5FA",
+      "start_sec": 91.514,
+      "end_sec": 123.198,
+      "text": "Imagine certifying a jet wing with six independent inspectors from different countries inside a sealed room with no internet! In 2026, real Lean 4 soundness bugs — CVE-2026-72844 projection confusion, CVE-2026-72711 in add_opaque, binary cache replay, and compiler-trust ofReduceBool — proved why no single binary should grade its own homework."
+    },
+    {
+      "turn_index": 6,
+      "speaker": "Priya",
+      "role": "Science Documentary Host · South Asian English",
+      "group": "host",
+      "color": "#34D399",
+      "start_sec": 123.468,
+      "end_sec": 128.775,
+      "text": "How many OpenIE theorem constants pass that sealed bubblewrap audit?"
+    },
+    {
+      "turn_index": 7,
+      "speaker": "Claire",
+      "role": "Formal Verification & Silicon Architect · British English",
+      "group": "specialist",
+      "color": "#60A5FA",
+      "start_sec": 129.045,
+      "end_sec": 153.093,
+      "text": "Five thousand four hundred ninety-six theorem constants — five thousand three hundred ninety-three in RCE, forty-five in Communication Avalanche, thirty-one in Time as an Index, and twenty-seven in Downward LUT6 Compilation — with zero sorry, zero custom axioms, zero opaque, and zero ofReduceBool!"
+    },
+    {
+      "turn_index": 8,
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 153.283,
+      "end_sec": 156.29,
+      "text": "Name all six independent checkers at the table!"
+    },
+    {
+      "turn_index": 9,
+      "speaker": "Claire",
+      "role": "Formal Verification & Silicon Architect · British English",
+      "group": "specialist",
+      "color": "#60A5FA",
+      "start_sec": 156.56,
+      "end_sec": 182.086,
+      "text": "Joachim Breitner's minimal con-leche proved consistent in ZFC set theory; con-ron, its Aeneas-verified Rust refinement; Mario Carneiro's Lean-in-Lean checker lean4lean; nanoda in standalone Rust blocking sorryAx; fresh-environment leanchecker dash-dash paranoid; and the post-CVE Lean 4.36.0 C-plus-plus kernel!"
+    },
+    {
+      "turn_index": 10,
+      "speaker": "Priya",
+      "role": "Science Documentary Host · South Asian English",
+      "group": "host",
+      "color": "#34D399",
+      "start_sec": 182.356,
+      "end_sec": 189.573,
+      "text": "Connect that Reference-Time coordinate to horizon.openie.dev and Time as an Index!"
+    },
+    {
+      "turn_index": 11,
+      "speaker": "Claire",
+      "role": "Formal Verification & Silicon Architect · British English",
+      "group": "specialist",
+      "color": "#60A5FA",
+      "start_sec": 189.843,
+      "end_sec": 209.232,
+      "text": "Those six-kernel proofs show why only Shannon one-time pads survive a mathematical PSPACE time loop, while in known physics every fast lookup is Hellman precomputation paid ahead of time — dropping from thirty-four percent reuse to zero percent the instant a fresh query-time salt arrives!"
+    },
+    {
+      "turn_index": 12,
+      "speaker": "Sean",
+      "role": "Auditor & Skeptic · Irish English",
+      "group": "skeptic",
+      "color": "#FBBF24",
+      "start_sec": 209.422,
+      "end_sec": 216.409,
+      "text": "And how did anti-laundering provenance treat unproved RCE draft clauses and famous time-travel stories?"
+    },
+    {
+      "turn_index": 13,
+      "speaker": "Claire",
+      "role": "Formal Verification & Silicon Architect · British English",
+      "group": "specialist",
+      "color": "#60A5FA",
+      "start_sec": 216.679,
+      "end_sec": 239.822,
+      "text": "Twelve unproved Appendix F statements in RCE Draft 0.9 stay strictly segregated from proved theorems, and across eighty-one audited time anomalies, Rudolph Fentz traced to 1951 fiction and superluminal neutrinos to a seventy-three-nanosecond loose cable — leaving zero unexplained future signals!"
+    },
+    {
+      "turn_index": 14,
+      "speaker": "Priya",
+      "role": "Science Documentary Host · South Asian English",
+      "group": "host",
+      "color": "#34D399",
+      "start_sec": 240.092,
+      "end_sec": 254.907,
+      "text": "Stamp every claim with its three clocks and check proofs across six independent kernels! Visit knowledge.openie.dev, and join Cecily, Marcus, and Kwame next at the OpenIE Database and Data Desk!"
+    }
+  ],
+  "cards": [
+    {
+      "id": "ep13-knowledge-six-kernel-desk-card-00-0",
+      "at_sec": 2.63,
+      "end_sec": 29.476,
+      "turn_index": 0,
+      "speaker": "Priya",
+      "kind": "ecosystem",
+      "badge": "DESK 05",
+      "title": "OpenIE Knowledge Desk (knowledge.openie.dev)",
+      "detail": "Seven-axis tritemporal claims <Vt, Tt, Rt, G, S, C, P> anchored by 5,496 six-kernel-verified Lean 4.36.0 theorem constants.",
+      "href": "https://knowledge.openie.dev"
+    },
+    {
+      "id": "ep13-knowledge-six-kernel-desk-card-03-0",
+      "at_sec": 60.205,
+      "end_sec": 81.614,
+      "turn_index": 3,
+      "speaker": "Claire",
+      "kind": "study",
+      "badge": "[E]",
+      "title": "AI Reads Human & Typed Epistemic Provenance",
+      "detail": "Pure-Python YAML costs 2,053.8x more parse energy than fixed binary structs (575,799 vs 280.4 nJ/record); typed claims preserve exact axes.",
+      "href": "/papers/ai-reads-human/"
+    },
+    {
+      "id": "ep13-knowledge-six-kernel-desk-card-05-0",
+      "at_sec": 92.314,
+      "end_sec": 123.198,
+      "turn_index": 5,
+      "speaker": "Claire",
+      "kind": "falsifier",
+      "badge": "CVE HARDENED",
+      "title": "2026 Single-Kernel Soundness Advisories Mitigated",
+      "detail": "Defends against CVE-2026-72844 (.proj confusion), CVE-2026-72711 (add_opaque), #16688 (.olean replay), and #16693 (ofReduceBool).",
+      "href": "/papers/time-as-an-index/"
+    },
+    {
+      "id": "ep13-knowledge-six-kernel-desk-card-07-0",
+      "at_sec": 129.845,
+      "end_sec": 153.093,
+      "turn_index": 7,
+      "speaker": "Claire",
+      "kind": "receipt",
+      "badge": "[T] 6/6",
+      "title": "5,496 Six-Kernel-Verified Theorem Constants",
+      "detail": "5,393 (RCE) + 45 (Avalanche) + 31 (Time) + 27 (LUT6) = 5,496 constants; 0 sorry, 0 opaque, 0 custom axioms, 0 ofReduceBool.",
+      "href": "/papers/rce/"
+    },
+    {
+      "id": "ep13-knowledge-six-kernel-desk-card-09-0",
+      "at_sec": 157.36,
+      "end_sec": 182.086,
+      "turn_index": 9,
+      "speaker": "Claire",
+      "kind": "receipt",
+      "badge": "bwrap 6-KERNEL",
+      "title": "con-leche · con-ron · lean4lean · nanoda · leanchecker · Lean 4.36.0",
+      "detail": "68,090–68,092 RCE declarations and 58,796–58,798 Time declarations accepted unanimously inside network-isolated bubblewrap.",
+      "href": "https://proof.openie.dev"
+    },
+    {
+      "id": "ep13-knowledge-six-kernel-desk-card-11-0",
+      "at_sec": 190.643,
+      "end_sec": 209.232,
+      "turn_index": 11,
+      "speaker": "Claire",
+      "kind": "study",
+      "badge": "[T]",
+      "title": "Horizon Theorem & 195-Entry Temporal Anomaly Ledger",
+      "detail": "Salted query horizons defeat offline Hellman tables (34.0% -> 0.0%); 65,536 SHA-256 spectral runs show 0 bins below p = 10^-6.",
+      "href": "/papers/time-as-an-index/"
+    },
+    {
+      "id": "ep13-knowledge-six-kernel-desk-card-13-0",
+      "at_sec": 217.479,
+      "end_sec": 239.822,
+      "turn_index": 13,
+      "speaker": "Claire",
+      "kind": "falsifier",
+      "badge": "ANTI-LAUNDER",
+      "title": "Unproved Clauses Quarantined & 0 Retrocausal Survivors",
+      "detail": "12 unproved RCE Draft 0.9 Appendix F clauses stay segregated; TA001–TA081 primary-source audit leaves 0 unexplained future signals.",
+      "href": "/papers/rce/"
+    }
+  ]
+}

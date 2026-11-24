@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — eco-database (15s) Narrator Osato
+
+1
+00:00:00.240 --> 00:00:06.853
+First, most software burns needless time and power unpacking text and recalculating answers it already solved.
+
+2
+00:00:07.213 --> 00:00:13.863
+Second, fingerprint-chained logs and dual-time indexes let any machine replay exact past states without guesswork.
+
+3
+00:00:14.223 --> 00:00:20.938
+Third, zero-copy memory-mapped lookup stores turn repeated work into sub-microsecond reads under two microjoules.

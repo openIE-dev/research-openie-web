@@ -1,0 +1,424 @@
+{
+  "id": "ep12-synthesis-routing-verb-desk",
+  "number": 12,
+  "title": "OpenIE Synthesis Desk: Why Routing Beats Cold-Start Generation",
+  "subtitle": "Mateo, Marcus, and Rohan unpack Mixture of Limits cascades, span-normalized FormEBM-v3 pre-filtering, RCE integer verification, and 0.00% broken commits",
+  "summary": "At the OpenIE Synthesis Desk (synthesis.openie.dev), Mateo, Marcus, and Rohan show why energy-ordered Mixture of Limits routing beats cold-start generation: deterministic repair ladders, 6.05M FormEBM-v3 pre-filtering (0.9437 AUROC), 970 MB NVMe sparse-MoE streaming, RCE integer state-machine verification, 91.67% / 90.62% verified coding rates, and 0.00% broken commits.",
+  "topic_tags": [
+    "synthesis-desk",
+    "mixture-of-limits",
+    "formebm-v3",
+    "zero-broken-commits"
+  ],
+  "panel": [
+    "Mateo",
+    "Marcus",
+    "Rohan"
+  ],
+  "panel_profiles": [
+    {
+      "name": "Mateo",
+      "group": "host",
+      "title": "Foundry Host · Latino English",
+      "voice_id": "Dn7kHvEWEQXbRGLGqWJV",
+      "fallback_voice": "en-US-AndrewMultilingualNeural",
+      "color": "#10B981",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    {
+      "name": "Marcus",
+      "group": "skeptic",
+      "title": "Empirical Foil · African American English",
+      "voice_id": "VlUmeC1Uzj3NnwiVR9K9",
+      "fallback_voice": "en-US-ChristopherNeural",
+      "color": "#F59E0B",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    {
+      "name": "Rohan",
+      "group": "specialist",
+      "title": "Hardware & Compiler Specialist · South Asian English",
+      "voice_id": "QtQiNi8LdZTzSJzhCvXT",
+      "fallback_voice": "en-IN-PrabhatNeural",
+      "color": "#818CF8",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    }
+  ],
+  "tts_engines": [
+    "eleven_v4"
+  ],
+  "published_utc": "2026-11-23T11:30:00Z",
+  "duration_sec": 233.9,
+  "duration_human": "3:54",
+  "byte_length": 3826254,
+  "audio_url": "/media/radio/episodes/ep12-synthesis-routing-verb-desk.m4a",
+  "captions_url": "/media/radio/captions/ep12-synthesis-routing-verb-desk.vtt",
+  "transcript_url": "/media/radio/transcripts/ep12-synthesis-routing-verb-desk.json",
+  "turn_count": 15,
+  "card_count": 6,
+  "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+  "desk": "synthesis",
+  "desk_domain": "synthesis.openie.dev",
+  "studies": [
+    "lut-adapt",
+    "rce-jepa",
+    "deterministic-null",
+    "spellcheck",
+    "ai-coding-market"
+  ],
+  "hosts": [
+    "Mateo",
+    "Marcus",
+    "Rohan"
+  ],
+  "duration_s": 233.9,
+  "citations": [
+    {
+      "id": "ep12-synthesis-routing-verb-desk-card-00-0",
+      "at_sec": 2.63,
+      "end_sec": 25.915,
+      "turn_index": 0,
+      "speaker": "Mateo",
+      "kind": "ecosystem",
+      "badge": "DESK 04",
+      "title": "OpenIE Synthesis Desk (synthesis.openie.dev)",
+      "detail": "Routing as Verb: energy-ordered Mixture of Limits cascades, FormEBM-v3 pre-filtering, RCE verification, and 0.00% broken commits.",
+      "href": "https://synthesis.openie.dev"
+    },
+    {
+      "id": "ep12-synthesis-routing-verb-desk-card-02-0",
+      "at_sec": 42.197,
+      "end_sec": 52.557,
+      "turn_index": 2,
+      "speaker": "Marcus",
+      "kind": "study",
+      "badge": "[E]",
+      "title": "Spell Check is Global & Trillion-Dollar Coding Market",
+      "detail": "Forecasts assume perpetual frontier model calls; downward reuse drives marginal cost of recurring code toward local electricity.",
+      "href": "/papers/ai-coding-market/"
+    },
+    {
+      "id": "ep12-synthesis-routing-verb-desk-card-05-0",
+      "at_sec": 79.018,
+      "end_sec": 102.05,
+      "turn_index": 5,
+      "speaker": "Rohan",
+      "kind": "receipt",
+      "badge": "1,718x GAP",
+      "title": "RCE Checker (49.04 mJ) vs. 35B Proposal (84.25 J)",
+      "detail": "Deterministic repair ladder closes 111/151 (73.5%) at 0 model calls; 8.42M FormJEPA-v1 lifts closure to 138/151 (91.4%).",
+      "href": "/papers/rce-jepa/"
+    },
+    {
+      "id": "ep12-synthesis-routing-verb-desk-card-09-0",
+      "at_sec": 147.561,
+      "end_sec": 166.765,
+      "turn_index": 9,
+      "speaker": "Rohan",
+      "kind": "receipt",
+      "badge": "0.00% BROKEN",
+      "title": "91.67% Suite & 90.62% BigCodeBench v0.1.3 (970 MB RAM)",
+      "detail": "Streams 35B-A3B in 970 MB RAM; beats standalone 35B on BigCodeBench (90.62% vs 78.12%) and SWE-bench (2.50x) with 0.00% broken commits.",
+      "href": "/papers/lut-adapt/"
+    }
+  ],
+  "falsifiers": [
+    {
+      "id": "ep12-synthesis-routing-verb-desk-card-07-0",
+      "at_sec": 112.708,
+      "end_sec": 135.896,
+      "turn_index": 7,
+      "speaker": "Rohan",
+      "kind": "falsifier",
+      "badge": "0.2585 -> FIXED",
+      "title": "Wave-4 Unnormalized Edit-Span Inversion Resolved in FormEBM-v3",
+      "detail": "6.05M span-normalized two-head FormEBM-v3 reaches 0.9437 unseen-shape AUROC, 94.0% 5-step monotonicity, and fixes large-edit penalty.",
+      "href": "/papers/rce-jepa/"
+    },
+    {
+      "id": "ep12-synthesis-routing-verb-desk-card-13-0",
+      "at_sec": 201.222,
+      "end_sec": 219.624,
+      "turn_index": 13,
+      "speaker": "Rohan",
+      "kind": "falsifier",
+      "badge": "HOLDS: FALSE",
+      "title": "Rung-F Locked in Observe (2.5% > 2.0%) & MLP Killed by Null",
+      "detail": "Rung F failed its 2.0% promotion gate on 151 tasks; TF-2026-06 neural router lost >60x to a zero-weight integer grid.",
+      "href": "/radio/#foundry"
+    }
+  ],
+  "personas": {
+    "Mateo": {
+      "name": "Mateo",
+      "group": "host",
+      "title": "Foundry Host · Latino English",
+      "voice_id": "Dn7kHvEWEQXbRGLGqWJV",
+      "fallback_voice": "en-US-AndrewMultilingualNeural",
+      "color": "#10B981",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    "Marcus": {
+      "name": "Marcus",
+      "group": "skeptic",
+      "title": "Empirical Foil · African American English",
+      "voice_id": "VlUmeC1Uzj3NnwiVR9K9",
+      "fallback_voice": "en-US-ChristopherNeural",
+      "color": "#F59E0B",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    "Rohan": {
+      "name": "Rohan",
+      "group": "specialist",
+      "title": "Hardware & Compiler Specialist · South Asian English",
+      "voice_id": "QtQiNi8LdZTzSJzhCvXT",
+      "fallback_voice": "en-IN-PrabhatNeural",
+      "color": "#818CF8",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    }
+  },
+  "turns": [
+    {
+      "turn_index": 0,
+      "speaker": "Mateo",
+      "role": "Foundry Host · Latino English",
+      "group": "host",
+      "color": "#10B981",
+      "start_sec": 1.83,
+      "end_sec": 25.915,
+      "text": "Welcome to the OpenIE Synthesis Desk on OpenIE Research Radio! I'm Mateo, joined by Marcus and Rohan — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural speech and grounded strictly in verified Open Interface Engineering studies. Today we're live on synthesis.openie.dev: why routing beats cold-start generation!"
+    },
+    {
+      "turn_index": 1,
+      "speaker": "Mateo",
+      "role": "Foundry Host · Latino English",
+      "group": "host",
+      "color": "#10B981",
+      "start_sec": 26.185,
+      "end_sec": 41.207,
+      "text": "Imagine walking into a clinic with a thumb splinter and having twelve cardiac surgeons scrub in with an MRI scanner! Waking a hundred-billion-parameter cloud model to fix a missing import or recurring bug is that exact hospital triage mistake."
+    },
+    {
+      "turn_index": 2,
+      "speaker": "Marcus",
+      "role": "Empirical Foil · African American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 41.397,
+      "end_sec": 52.557,
+      "text": "And trillion-dollar AI coding forecasts assume we pay that open-heart-surgery bill on every line of code forever! Rohan, how does Mixture of Limits flip the primary verb to routing?"
+    },
+    {
+      "turn_index": 3,
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 52.827,
+      "end_sec": 71.287,
+      "text": "We order tiers strictly by joules, Marcus! Gear Zero checks sub-microsecond lookup pages and deterministic repair rules at zero model calls. Gear One runs tiny millisecond neural proposers and energy rankers. Only hard misses wake sparse frontier experts — and every commit passes a deterministic gate."
+    },
+    {
+      "turn_index": 4,
+      "speaker": "Mateo",
+      "role": "Foundry Host · Latino English",
+      "group": "host",
+      "color": "#10B981",
+      "start_sec": 71.557,
+      "end_sec": 77.948,
+      "text": "Show us that asymmetry in RCE-JEPA between proposing code and checking an integer state-machine Form!"
+    },
+    {
+      "turn_index": 5,
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 78.218,
+      "end_sec": 102.05,
+      "text": "On Apple M5 Max reported_j, checking an RCE Form costs forty-nine point zero four millijoules, versus eighty-four point two five joules for one local thirty-five-B proposal — seventeen hundred eighteen times cheaper! Our zero-model-call ladder closes seventy-three point five percent of broken Forms, and eight-point-four-two-million-parameter FormJEPA-v1 lifts that to ninety-one point four percent!"
+    },
+    {
+      "turn_index": 6,
+      "speaker": "Marcus",
+      "role": "Empirical Foil · African American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 102.24,
+      "end_sec": 111.638,
+      "text": "Wait — before FormEBM-v3 pre-filtered candidate beams, didn't Wave Four's unnormalized energy scorer stumble on big multi-line edits?"
+    },
+    {
+      "turn_index": 7,
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 111.908,
+      "end_sec": 135.896,
+      "text": "It did! Unnormalized scoring penalized valid large edits, dropping out-of-distribution H15 AUROC to zero point two five eight five. Our span-normalized two-head FormEBM-v3 — just six point zero five million parameters — separates defect density from edit depth, hitting zero point nine four three seven unseen-shape AUROC and resolving that edit-size inversion!"
+    },
+    {
+      "turn_index": 8,
+      "speaker": "Mateo",
+      "role": "Foundry Host · Latino English",
+      "group": "host",
+      "color": "#10B981",
+      "start_sec": 136.166,
+      "end_sec": 146.491,
+      "text": "And when a genuinely novel task misses the cheap gears and wakes Qwen 3.6 35B-A3B or Nemotron 120B locally?"
+    },
+    {
+      "turn_index": 9,
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 146.761,
+      "end_sec": 166.765,
+      "text": "Custom Apple Metal and Rust Burn CubeCL four-bit shaders stream active experts straight off NVMe in nine hundred seventy megabytes of RAM — one point four seven percent of FP16 — with one hundred percent exact token parity, lifting 120B verified pass rates from forty-three point seven five to sixty-two point five percent!"
+    },
+    {
+      "turn_index": 10,
+      "speaker": "Marcus",
+      "role": "Empirical Foil · African American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 166.955,
+      "end_sec": 172.5,
+      "text": "Give us the scoreboard across every coding suite — how many broken commits slipped past the verifier?"
+    },
+    {
+      "turn_index": 11,
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 172.77,
+      "end_sec": 195.677,
+      "text": "Zero point zero zero percent broken commits! We hit ninety-one point six seven percent on our forty-eight-task suite, ninety point six two percent on BigCodeBench v0.1.3, forty out of forty on H15-Iterative with Opus 5.5 and Sonnet 5.5, and replayed crystallized fixes in zero point three two five microseconds at one point seven seven microjoules!"
+    },
+    {
+      "turn_index": 12,
+      "speaker": "Marcus",
+      "role": "Empirical Foil · African American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 195.867,
+      "end_sec": 200.152,
+      "text": "And keep us honest: which repair rung failed its own promotion ceiling?"
+    },
+    {
+      "turn_index": 13,
+      "speaker": "Rohan",
+      "role": "Hardware & Compiler Specialist · South Asian English",
+      "group": "specialist",
+      "color": "#818CF8",
+      "start_sec": 200.422,
+      "end_sec": 219.624,
+      "text": "On our hundred-fifty-one-task rce repair audit, Rung F hit two point five percent above our two point zero percent ceiling — so holds returned false and Rung F stayed locked in observe mode, just like Foundry pilot TF-2026-06's neural router got crushed sixty-three times by an integer grid!"
+    },
+    {
+      "turn_index": 14,
+      "speaker": "Mateo",
+      "role": "Foundry Host · Latino English",
+      "group": "host",
+      "color": "#10B981",
+      "start_sec": 219.894,
+      "end_sec": 232.027,
+      "text": "Route cheap, verify with integer totality, and crystallize novelty downward! Explore synthesis.openie.dev, and join Priya, Sean, and Claire next at the OpenIE Knowledge Desk!"
+    }
+  ],
+  "cards": [
+    {
+      "id": "ep12-synthesis-routing-verb-desk-card-00-0",
+      "at_sec": 2.63,
+      "end_sec": 25.915,
+      "turn_index": 0,
+      "speaker": "Mateo",
+      "kind": "ecosystem",
+      "badge": "DESK 04",
+      "title": "OpenIE Synthesis Desk (synthesis.openie.dev)",
+      "detail": "Routing as Verb: energy-ordered Mixture of Limits cascades, FormEBM-v3 pre-filtering, RCE verification, and 0.00% broken commits.",
+      "href": "https://synthesis.openie.dev"
+    },
+    {
+      "id": "ep12-synthesis-routing-verb-desk-card-02-0",
+      "at_sec": 42.197,
+      "end_sec": 52.557,
+      "turn_index": 2,
+      "speaker": "Marcus",
+      "kind": "study",
+      "badge": "[E]",
+      "title": "Spell Check is Global & Trillion-Dollar Coding Market",
+      "detail": "Forecasts assume perpetual frontier model calls; downward reuse drives marginal cost of recurring code toward local electricity.",
+      "href": "/papers/ai-coding-market/"
+    },
+    {
+      "id": "ep12-synthesis-routing-verb-desk-card-05-0",
+      "at_sec": 79.018,
+      "end_sec": 102.05,
+      "turn_index": 5,
+      "speaker": "Rohan",
+      "kind": "receipt",
+      "badge": "1,718x GAP",
+      "title": "RCE Checker (49.04 mJ) vs. 35B Proposal (84.25 J)",
+      "detail": "Deterministic repair ladder closes 111/151 (73.5%) at 0 model calls; 8.42M FormJEPA-v1 lifts closure to 138/151 (91.4%).",
+      "href": "/papers/rce-jepa/"
+    },
+    {
+      "id": "ep12-synthesis-routing-verb-desk-card-07-0",
+      "at_sec": 112.708,
+      "end_sec": 135.896,
+      "turn_index": 7,
+      "speaker": "Rohan",
+      "kind": "falsifier",
+      "badge": "0.2585 -> FIXED",
+      "title": "Wave-4 Unnormalized Edit-Span Inversion Resolved in FormEBM-v3",
+      "detail": "6.05M span-normalized two-head FormEBM-v3 reaches 0.9437 unseen-shape AUROC, 94.0% 5-step monotonicity, and fixes large-edit penalty.",
+      "href": "/papers/rce-jepa/"
+    },
+    {
+      "id": "ep12-synthesis-routing-verb-desk-card-09-0",
+      "at_sec": 147.561,
+      "end_sec": 166.765,
+      "turn_index": 9,
+      "speaker": "Rohan",
+      "kind": "receipt",
+      "badge": "0.00% BROKEN",
+      "title": "91.67% Suite & 90.62% BigCodeBench v0.1.3 (970 MB RAM)",
+      "detail": "Streams 35B-A3B in 970 MB RAM; beats standalone 35B on BigCodeBench (90.62% vs 78.12%) and SWE-bench (2.50x) with 0.00% broken commits.",
+      "href": "/papers/lut-adapt/"
+    },
+    {
+      "id": "ep12-synthesis-routing-verb-desk-card-13-0",
+      "at_sec": 201.222,
+      "end_sec": 219.624,
+      "turn_index": 13,
+      "speaker": "Rohan",
+      "kind": "falsifier",
+      "badge": "HOLDS: FALSE",
+      "title": "Rung-F Locked in Observe (2.5% > 2.0%) & MLP Killed by Null",
+      "detail": "Rung F failed its 2.0% promotion gate on 151 tasks; TF-2026-06 neural router lost >60x to a zero-weight integer grid.",
+      "href": "/radio/#foundry"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — eco-database (45s) Narrator Osato
+
+1
+00:00:00.280 --> 00:00:07.815
+First, most software burns needless time and power unpacking text and recalculating answers it already solved.
+
+2
+00:00:08.255 --> 00:00:15.830
+Second, fingerprint-chained logs and dual-time indexes let any machine replay exact past states without guesswork.
+
+3
+00:00:16.270 --> 00:00:23.893
+Third, zero-copy memory-mapped lookup stores turn repeated work into sub-microsecond reads under two microjoules.
+
+4
+00:00:24.333 --> 00:00:29.669
+Instead of unpacking verbose text buffers and recalculating totals on every single click,
+
+5
+00:00:29.669 --> 00:00:36.623
+a memory-mapped store writes verified answers once in clean binary layout and jumps straight to that memory address.
+
+6
+00:00:37.063 --> 00:00:42.088
+Pairing fingerprint-chained state logs with sub-microsecond zero-copy memory reads
+
+7
+00:00:42.088 --> 00:00:46.806
+lets machines remember proven work identically across every operating system.

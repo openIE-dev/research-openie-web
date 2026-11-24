@@ -1,0 +1,58 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — eco-synthesis (90s) Narrator Joy
+
+1
+00:00:00.320 --> 00:00:07.808
+First, generating text from scratch for already-solved problems wastes electricity and invites avoidable mistakes.
+
+2
+00:00:08.308 --> 00:00:16.366
+Second, an energy-ordered cascade checks microjoule lookup tables and exact verifiers first, waking large models last.
+
+3
+00:00:16.866 --> 00:00:24.853
+Third, every accepted answer passes deterministic checks and crystallizes downward into a fast, reusable lookup skill.
+
+4
+00:00:25.353 --> 00:00:31.753
+Across real software engineering and scientific computing, most daily requests repeat structural patterns
+
+5
+00:00:31.753 --> 00:00:37.544
+already solved thousands of times before. Treating every single prompt like an unsolved mystery
+
+6
+00:00:37.544 --> 00:00:43.518
+forces massive neural networks to burn heavy electrical power re-deriving known work from scratch.
+
+7
+00:00:44.018 --> 00:00:49.009
+On synthesis dot openie dot dev, every task steps down an energy-ordered ladder.
+
+8
+00:00:49.009 --> 00:00:55.809
+Microjoule lookup tables and exact deterministic solvers answer recurring patterns first; only genuine misses
+
+9
+00:00:55.809 --> 00:01:02.484
+stream active slices of a thirty-five-billion-parameter model inside nine hundred seventy megabytes of RAM.
+
+10
+00:01:02.984 --> 00:01:08.661
+Across open multi-library Python coding suites, this synthesis cascade solved ninety point six
+
+11
+00:01:08.661 --> 00:01:13.672
+two percent of tasks and ninety-one point six seven percent of our forty-eight-task
+
+12
+00:01:13.672 --> 00:01:19.590
+benchmark, while closing forty out of forty iterative repairs with zero broken repository commits.
+
+13
+00:01:20.090 --> 00:01:24.014
+Whenever a new candidate patch passes deterministic test gates,
+
+14
+00:01:24.014 --> 00:01:30.927
+it crystallizes downward into fast lookup memory so tomorrow's repeat request finishes cleanly in microseconds.

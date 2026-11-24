@@ -1,0 +1,931 @@
+---
+import defaultRadar from '../../data/radio-radar.json';
+
+interface Props {
+  radar?: any;
+}
+
+const { radar = defaultRadar } = Astro.props;
+const items = radar?.items || [];
+const summary = radar?.rung_summary || {};
+const histogram = summary?.histogram || [];
+const shares = summary?.shares_pct || {};
+const regimeCounts = summary?.counts_by_regime || {};
+const clsCounts = radar?.counts_by_classification || {};
+const srcCounts = radar?.counts_by_source || {};
+const pilotSummary = radar?.shape_d_pilot_summary || {};
+const foundryPilots = radar?.foundry_pilots || [];
+
+const maxHistCount = Math.max(1, ...histogram.map((h: any) => h.count || 0));
+const phase1Hist = histogram.filter((h: any) => h.rung <= 5);
+const phase2Hist = histogram.filter((h: any) => h.rung >= 6);
+const serializedPayload = JSON.stringify(radar).replace(/</g, '\\u003c');
+
+function regimeLabel(reg: string): string {
+  if (reg === 'crossing_compilation_threshold') return 'Crossing Threshold';
+  if (reg === 'compiled_rungs_6_9') return 'Rungs 6–9 Compiled';
+  return 'Rungs 1–5 Ephemeral';
+}
+
+function regimeChipClass(reg: string): string {
+  if (reg === 'crossing_compilation_threshold') return 'rrr-chip-emerald';
+  if (reg === 'compiled_rungs_6_9') return 'rrr-chip-cyan';
+  return 'rrr-chip-amber';
+}
+
+function relationChipClass(rel: string): string {
+  if (rel === 'CHALLENGES_ASSUMPTION') return 'rrr-chip-rose';
+  if (rel === 'NEW_FRONTIER_GAP') return 'rrr-chip-indigo';
+  return 'rrr-chip-cyan';
+}
+---
+
+<section
+  id="rung-radar"
+  data-rrr-register="both"
+  class="max-w-7xl mx-auto px-5 md:px-10 py-10 border-t border-brand-border space-y-6"
+>
+  <!-- Header & Register Switcher -->
+  <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+    <div>
+      <div class="section-label mb-1.5">
+        Autonomous 6-Hour Observatory &middot; 9-Rung Avalanche &amp; Compilation Threshold
+      </div>
+      <h2 class="font-display text-2xl sm:text-3xl font-bold text-brand-white">
+        Global Rung Radar
+      </h2>
+      <p class="rrr-plain font-body text-xs sm:text-sm text-brand-slate mt-1.5 max-w-3xl leading-relaxed">
+        Every 6 hours, the Research Radio daemon polls <strong class="text-brand-white">arXiv</strong>, <strong class="text-brand-white">OpenAlex</strong>, <strong class="text-brand-white">Europe PMC</strong>, and <strong class="text-brand-white">bioRxiv</strong>, deduplicates works via <code class="font-mono text-brand-amber">BLAKE2b-256</code> &amp; <code class="font-mono text-brand-amber">SHA-256</code>, and scores each paper across <strong class="text-brand-amber">Rungs 1–5 (Stateless Ephemeral Inference)</strong>, <strong class="text-brand-cyan">The Compilation Threshold</strong>, and <strong class="text-brand-cyan">Rungs 6–9 (Stateful Compiled Substrates)</strong>.
+      </p>
+      <p class="rrr-formal font-mono text-[11px] text-brand-light mt-1.5 max-w-3xl leading-relaxed">
+        Proposition 1 soundness gate <code class="text-brand-cyan">&Delta;T &gt; &Delta;T* &and; C(z) = 1</code> + <code class="text-brand-amber">Shape D</code> RAPL <code class="text-brand-amber">reported_j</code> pilot audit (<code class="text-brand-gray">board_metered=false</code>) &middot; Manifest SHA-256: <span id="rrr-manifest-hash" class="text-brand-cyan">{(radar?.manifest_sha256 || '').slice(0, 16)}&hellip;</span>
+      </p>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-2 shrink-0">
+      <!-- Explanation Register Switcher -->
+      <div
+        class="inline-flex items-center p-0.5 rounded-full border border-brand-border bg-brand-white/[0.03]"
+        role="group"
+        aria-label="Switch Rung Radar reading mode"
+      >
+        <button
+          type="button"
+          data-rrr-mode="both"
+          class="rrr-mode-btn font-mono text-[11px] px-2.5 py-1 rounded-full bg-brand-amber/20 text-brand-white cursor-pointer transition-all"
+        >
+          Both
+        </button>
+        <button
+          type="button"
+          data-rrr-mode="plain"
+          class="rrr-mode-btn font-mono text-[11px] px-2.5 py-1 rounded-full text-brand-slate hover:text-brand-white cursor-pointer transition-all"
+        >
+          Plain Language
+        </button>
+        <button
+          type="button"
+          data-rrr-mode="formal"
+          class="rrr-mode-btn font-mono text-[11px] px-2.5 py-1 rounded-full text-brand-slate hover:text-brand-white cursor-pointer transition-all"
+        >
+          Formal Science
+        </button>
+      </div>
+
+      <button
+        type="button"
+        id="rrr-refresh-btn"
+        class="font-mono text-[11px] px-3 py-1.5 rounded-md border border-brand-border bg-brand-white/[0.03] text-brand-cyan hover:border-brand-cyan/60 cursor-pointer transition-colors"
+      >
+        &#8635; Sync 6h JSON
+      </button>
+
+      <a
+        href="https://avalanche.openie.dev/forecast/#rung-radar"
+        class="font-mono text-[11px] px-3 py-1.5 rounded-md border border-brand-amber/40 bg-brand-amber/10 text-brand-amber no-underline hover:bg-brand-amber/20 transition-colors"
+      >
+        Avalanche Forecast &rarr;
+      </a>
+    </div>
+  </div>
+
+  <!-- 4-Card Live Summary Telemetry Strip -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+    <div class="glass-card p-4 flex flex-col justify-between">
+      <div class="flex items-center justify-between gap-2 font-mono text-[10px]">
+        <span class="text-brand-gray uppercase">Deduplicated Intake</span>
+        <span class="rrr-chip rrr-chip-indigo">Scraped <span id="rrr-scraped-ts">{(radar?.scraped_at_utc || '').slice(0, 16)}</span></span>
+      </div>
+      <div id="rrr-stat-total" class="font-display text-2xl sm:text-3xl font-bold text-brand-white mt-1.5">
+        {radar?.total_external_works || items.length}
+      </div>
+      <div class="font-mono text-[10.5px] text-brand-slate mt-2 pt-2 border-t border-brand-border truncate">
+        arXiv {srcCounts['arXiv'] || 0} &middot; OpenAlex {srcCounts['OpenAlex'] || 0} &middot; EPMC {srcCounts['Europe PMC'] || 0} &middot; bioRxiv {srcCounts['bioRxiv'] || 0}
+      </div>
+    </div>
+
+    <div class="glass-card p-4 flex flex-col justify-between">
+      <div class="flex items-center justify-between gap-2 font-mono text-[10px]">
+        <span class="text-brand-amber uppercase">Trapped in Rungs 1–5</span>
+        <span class="rrr-chip rrr-chip-amber">&Delta;T &approx; 1</span>
+      </div>
+      <div class="flex items-baseline gap-2 mt-1.5">
+        <span id="rrr-stat-ephemeral" class="font-display text-2xl sm:text-3xl font-bold text-brand-amber">
+          {shares.ephemeral_trapped_pct ?? 0}%
+        </span>
+        <span class="font-mono text-xs text-brand-gray">({regimeCounts.ephemeral_rungs_1_5 || 0} works)</span>
+      </div>
+      <div class="font-body text-xs text-brand-slate mt-2 pt-2 border-t border-brand-border">
+        Cold-start stateless (<span id="rrr-stat-r15-all" class="font-mono text-brand-white">{shares.rungs_1_5_total_pct ?? 0}%</span> sit in R1–R5 total)
+      </div>
+    </div>
+
+    <div class="glass-card p-4 flex flex-col justify-between">
+      <div class="flex items-center justify-between gap-2 font-mono text-[10px]">
+        <span class="text-brand-cyan uppercase">Crossing Threshold</span>
+        <span class="rrr-chip rrr-chip-emerald">C(z) = 1</span>
+      </div>
+      <div class="flex items-baseline gap-2 mt-1.5">
+        <span id="rrr-stat-crossing" class="font-display text-2xl sm:text-3xl font-bold text-brand-cyan">
+          {shares.crossing_threshold_pct ?? 0}%
+        </span>
+        <span class="font-mono text-xs text-brand-gray">({regimeCounts.crossing_compilation_threshold || 0} works)</span>
+      </div>
+      <div class="font-body text-xs text-brand-slate mt-2 pt-2 border-t border-brand-border">
+        Formal kernel verifiers &amp; downward LUT/case lowering
+      </div>
+    </div>
+
+    <div class="glass-card p-4 flex flex-col justify-between">
+      <div class="flex items-center justify-between gap-2 font-mono text-[10px]">
+        <span class="rrr-emerald-text uppercase">Compiled R6–R9 &amp; Pilots</span>
+        <span class="rrr-chip rrr-chip-cyan">&lt;60s Shape-D</span>
+      </div>
+      <div class="flex items-baseline gap-2 mt-1.5">
+        <span id="rrr-stat-compiled" class="font-display text-2xl sm:text-3xl font-bold rrr-emerald-text">
+          {shares.compiled_rungs_6_9_pct ?? 0}%
+        </span>
+        <span class="font-mono text-xs text-brand-gray">({regimeCounts.compiled_rungs_6_9 || 0} native R6–R9)</span>
+      </div>
+      <div class="font-mono text-[10.5px] text-brand-slate mt-2 pt-2 border-t border-brand-border">
+        {pilotSummary?.counts_by_status?.PROMOTED_CANDIDATE ?? 4} promoted &middot; {pilotSummary?.counts_by_status?.KILLED_BY_NULL ?? 1} killed ({pilotSummary?.total_pilot_wall_sec ?? 0}s)
+      </div>
+    </div>
+  </div>
+
+  <!-- Visual 9-Rung Live Literature Histogram -->
+  <div class="glass-card p-5 space-y-4">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+      <div>
+        <div class="font-mono text-[10.5px] uppercase tracking-wider text-brand-amber">
+          9-Rung Live Literature Histogram &middot; Click Any Rung (R1–R9) to Filter Cards
+        </div>
+        <p class="font-body text-xs text-brand-slate mt-0.5">
+          Shows external open-access distribution across Phase 1 (<span class="text-brand-amber font-semibold">R1–R5</span>, stalling at <span class="rrr-rose-text font-semibold">R5 Tool Use</span>) vs. <span class="text-brand-cyan font-semibold">The Compilation Threshold</span> into Phase 2 (<span class="text-brand-cyan font-semibold">R6–R9</span>).
+        </p>
+      </div>
+      <button
+        type="button"
+        id="rrr-clear-rung-btn"
+        class="hidden font-mono text-[11px] px-3 py-1 rounded-md border border-brand-cyan bg-brand-cyan/15 text-brand-cyan cursor-pointer self-start sm:self-auto"
+      >
+        Clear Rung Filter &times;
+      </button>
+    </div>
+
+    <div class="overflow-x-auto pb-1">
+      <div class="min-w-[740px] grid grid-cols-11 gap-2 items-stretch pt-2">
+        <!-- Phase 1 Zone -->
+        <div class="col-span-5 rounded-xl border border-brand-amber/25 bg-brand-amber/[0.04] p-3.5 flex flex-col justify-between">
+          <div class="flex items-center justify-between gap-2 mb-3 font-mono text-[10px]">
+            <span class="font-semibold uppercase text-brand-amber">Phase 1 &middot; Rungs 1–5 Ephemeral</span>
+            <span class="text-brand-gray">&Delta;T &approx; 1 &le; &Delta;T*</span>
+          </div>
+          <div class="grid grid-cols-5 gap-2 items-end h-40">
+            {phase1Hist.map((h: any) => {
+              const pctHeight = Math.max(10, Math.round(((h.count || 0) / maxHistCount) * 100));
+              const isR5 = h.rung === 5;
+              return (
+                <button
+                  type="button"
+                  data-rrr-rung={String(h.rung)}
+                  aria-label={`Filter by Rung ${h.rung}: ${h.name} (${h.count} papers)`}
+                  class="rrr-rung-bar flex flex-col items-center justify-end h-full p-1.5 rounded-lg border border-transparent hover:border-brand-amber/50 hover:bg-brand-white/[0.03] cursor-pointer transition-all bg-transparent"
+                >
+                  <span class="rrr-bar-count font-mono text-xs font-bold text-brand-white mb-0.5">{h.count}</span>
+                  <span class="font-mono text-[9.5px] text-brand-gray mb-1.5">{h.share_pct}%</span>
+                  <div class="w-full flex-1 flex items-end justify-center">
+                    <div
+                      class={`rrr-bar-fill w-full max-w-[36px] rounded-t-md border transition-all duration-300 ${isR5 ? 'rrr-bar-r5' : 'rrr-bar-p1'}`}
+                      style={`height: ${pctHeight}%`}
+                    ></div>
+                  </div>
+                  <span class={`font-mono text-[11px] font-bold mt-1.5 ${isR5 ? 'rrr-rose-text' : 'text-brand-amber'}`}>
+                    {h.code}
+                  </span>
+                  <span class="font-body text-[10px] text-brand-slate truncate max-w-full">{h.name}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <!-- Compilation Threshold Vertical Divider -->
+        <div class="col-span-1 flex flex-col items-center justify-center relative py-2">
+          <div class="h-full w-px border-l-2 border-dashed border-brand-cyan/70 absolute inset-y-2"></div>
+          <div class="relative z-10 px-2 py-2.5 rounded-lg border border-brand-cyan/60 bg-brand-navy text-center">
+            <div class="font-mono text-[9px] font-bold uppercase tracking-widest text-brand-cyan leading-tight">
+              Compilation<br />Threshold
+            </div>
+            <div class="font-mono text-[9px] text-brand-white mt-1">R5 &#9474; R6</div>
+            <div class="font-mono text-[8.5px] rrr-emerald-text mt-0.5">C(z)=1</div>
+          </div>
+        </div>
+
+        <!-- Phase 2 Zone -->
+        <div class="col-span-5 rounded-xl border border-brand-cyan/30 bg-brand-cyan/[0.04] p-3.5 flex flex-col justify-between">
+          <div class="flex items-center justify-between gap-2 mb-3 font-mono text-[10px]">
+            <span class="font-semibold uppercase text-brand-cyan">Phase 2 &middot; Rungs 6–9 Compiled</span>
+            <span class="rrr-emerald-text">&Delta;T &gt; &Delta;T* &middot; CpJ &uarr;</span>
+          </div>
+          <div class="grid grid-cols-4 gap-2 items-end h-40">
+            {phase2Hist.map((h: any) => {
+              const pctHeight = Math.max(10, Math.round(((h.count || 0) / maxHistCount) * 100));
+              return (
+                <button
+                  type="button"
+                  data-rrr-rung={String(h.rung)}
+                  aria-label={`Filter by Rung ${h.rung}: ${h.name} (${h.count} papers)`}
+                  class="rrr-rung-bar flex flex-col items-center justify-end h-full p-1.5 rounded-lg border border-transparent hover:border-brand-cyan/50 hover:bg-brand-white/[0.03] cursor-pointer transition-all bg-transparent"
+                >
+                  <span class="rrr-bar-count font-mono text-xs font-bold text-brand-white mb-0.5">{h.count}</span>
+                  <span class="font-mono text-[9.5px] text-brand-gray mb-1.5">{h.share_pct}%</span>
+                  <div class="w-full flex-1 flex items-end justify-center">
+                    <div
+                      class="rrr-bar-fill rrr-bar-p2 w-full max-w-[40px] rounded-t-md border transition-all duration-300"
+                      style={`height: ${pctHeight}%`}
+                    ></div>
+                  </div>
+                  <span class="font-mono text-[11px] font-bold text-brand-cyan mt-1.5">{h.code}</span>
+                  <span class="font-body text-[10px] text-brand-slate truncate max-w-full">{h.name}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter Pills + Tier Selector + Search Box -->
+  <div class="glass-card p-4 space-y-3">
+    <div class="flex flex-wrap items-center gap-1.5" role="group" aria-label="Filter Global Rung Radar papers">
+      <button
+        type="button"
+        data-rrr-pill="all"
+        class="rrr-pill-btn font-mono text-[11px] px-3 py-1.5 rounded-md border border-brand-amber bg-brand-amber/15 text-brand-amber cursor-pointer transition-all"
+      >
+        All (<span data-rrr-count="all">{items.length}</span>)
+      </button>
+      <button
+        type="button"
+        data-rrr-pill="crossing_compilation_threshold"
+        class="rrr-pill-btn font-mono text-[11px] px-3 py-1.5 rounded-md border border-brand-border text-brand-slate hover:text-brand-white cursor-pointer transition-all"
+      >
+        Crossing Threshold (<span data-rrr-count="crossing_compilation_threshold">{regimeCounts.crossing_compilation_threshold || 0}</span>)
+      </button>
+      <button
+        type="button"
+        data-rrr-pill="ephemeral_rungs_1_5"
+        class="rrr-pill-btn font-mono text-[11px] px-3 py-1.5 rounded-md border border-brand-border text-brand-slate hover:text-brand-white cursor-pointer transition-all"
+      >
+        Rungs 1–5 Ephemeral (<span data-rrr-count="ephemeral_rungs_1_5">{regimeCounts.ephemeral_rungs_1_5 || 0}</span>)
+      </button>
+      <button
+        type="button"
+        data-rrr-pill="compiled_rungs_6_9"
+        class="rrr-pill-btn font-mono text-[11px] px-3 py-1.5 rounded-md border border-brand-border text-brand-slate hover:text-brand-white cursor-pointer transition-all"
+      >
+        Rungs 6–9 Compiled (<span data-rrr-count="compiled_rungs_6_9">{regimeCounts.compiled_rungs_6_9 || 0}</span>)
+      </button>
+      <button
+        type="button"
+        data-rrr-pill="CHALLENGES_ASSUMPTION"
+        class="rrr-pill-btn font-mono text-[11px] px-3 py-1.5 rounded-md border border-brand-border text-brand-slate hover:text-brand-white cursor-pointer transition-all"
+      >
+        Challenges Assumption (<span data-rrr-count="CHALLENGES_ASSUMPTION">{clsCounts.CHALLENGES_ASSUMPTION || 0}</span>)
+      </button>
+      <button
+        type="button"
+        data-rrr-pill="NEW_FRONTIER_GAP"
+        class="rrr-pill-btn font-mono text-[11px] px-3 py-1.5 rounded-md border border-brand-border text-brand-slate hover:text-brand-white cursor-pointer transition-all"
+      >
+        New Frontier Gap (<span data-rrr-count="NEW_FRONTIER_GAP">{clsCounts.NEW_FRONTIER_GAP || 0}</span>)
+      </button>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-2.5 border-t border-brand-border">
+      <div class="flex flex-wrap items-center gap-2">
+        <select
+          id="rrr-tier-select"
+          aria-label="Filter by Target Execution Tier"
+          class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-border bg-brand-navy text-brand-light"
+        >
+          <option value="all">All Target Tiers (Tier 3 &rarr; Tier 0)</option>
+          <option value="Tier 0 (Single-Cycle Silicon)">Tier 0 (Single-Cycle Silicon)</option>
+          <option value="Tier 1 (Indexed Case Store)">Tier 1 (Indexed Case Store)</option>
+          <option value="Tier 2 (Verified Rule/Checker)">Tier 2 (Verified Rule/Checker)</option>
+          <option value="Tier 3 (Frontier Search)">Tier 3 (Frontier Search)</option>
+        </select>
+
+        <button
+          type="button"
+          id="rrr-expand-all-btn"
+          class="font-mono text-[11px] px-3 py-1.5 rounded-md border border-brand-border bg-brand-white/[0.03] text-brand-slate hover:text-brand-white cursor-pointer transition-colors"
+        >
+          Expand All Formal &amp; Falsifier Cards
+        </button>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span id="rrr-visible-count" class="font-mono text-[11px] text-brand-gray whitespace-nowrap">
+          Showing {Math.min(12, items.length)} of {items.length}
+        </span>
+        <input
+          id="rrr-search-input"
+          type="search"
+          placeholder="Search title, takeaway, arXiv, DOI, Rung, study…"
+          aria-label="Search Global Rung Radar"
+          class="font-body text-xs px-3.5 py-1.5 rounded-md border border-brand-border bg-brand-navy text-brand-white placeholder:text-brand-gray min-w-[230px] flex-1"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Paper Cards Grid -->
+  <div id="rrr-cards-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {items.map((it: any, idx: number) => {
+      const isPhase2 = (it.rung || 1) >= 6;
+      const isR5 = it.rung === 5;
+      const rungBadgeCls = isPhase2
+        ? 'rrr-chip-cyan'
+        : isR5
+        ? 'rrr-chip-rose'
+        : 'rrr-chip-amber';
+      const doiHref = it.doi ? `https://doi.org/${it.doi}` : null;
+      const hay = `${it.title} ${it.plain_takeaway} ${it.formal_mechanism || ''} ${it.falsifier_test || ''} ${it.external_id} ${it.doi || ''} ${it.source} ${it.rung_code} ${it.rung_name} ${it.target_tier} ${(it.authors || []).join(' ')} ${it.linked_study_title || ''}`.toLowerCase();
+
+      return (
+        <article
+          class={`rrr-card glass-card p-4 sm:p-5 flex flex-col justify-between ${idx >= 12 ? 'hidden' : ''}`}
+          data-rung={String(it.rung)}
+          data-regime={it.threshold_regime}
+          data-relation={it.openie_relation || it.classification}
+          data-tier={it.target_tier}
+          data-hay={hay}
+        >
+          <div class="space-y-2.5">
+            <!-- Badges -->
+            <div class="flex flex-wrap items-center justify-between gap-1.5">
+              <div class="flex flex-wrap items-center gap-1.5">
+                <span class={`rrr-chip font-bold ${rungBadgeCls}`}>
+                  {it.rung_code} &middot; {it.rung_name}
+                </span>
+                <span class={`rrr-chip ${regimeChipClass(it.threshold_regime)}`}>
+                  {regimeLabel(it.threshold_regime)}
+                </span>
+                <span class="font-mono text-[10px] px-2 py-0.5 rounded border border-brand-border bg-brand-white/[0.03] text-brand-light">
+                  {it.epistemic_badge}
+                </span>
+              </div>
+              <span class={`rrr-chip ${relationChipClass(it.openie_relation || it.classification)}`}>
+                {it.openie_relation || it.classification}
+              </span>
+            </div>
+
+            <!-- Title & Source -->
+            <div>
+              <h3 class="font-display text-sm sm:text-[15.5px] font-bold text-brand-white leading-snug">
+                <a
+                  href={it.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-brand-white no-underline hover:text-brand-cyan transition-colors"
+                >
+                  {it.title} &#8599;
+                </a>
+              </h3>
+              <div class="font-mono text-[10px] text-brand-gray mt-1 flex flex-wrap items-center gap-x-3 gap-y-0.5">
+                <span class="text-brand-light font-semibold">{it.source}</span>
+                <span>{it.external_id}</span>
+                {it.published_date && <span>{it.published_date}</span>}
+                <span class="text-brand-cyan">{it.target_tier}</span>
+              </div>
+              {(it.authors || []).length > 0 && (
+                <div class="font-body text-[11px] text-brand-gray mt-0.5 truncate">
+                  {(it.authors || []).join(', ')}
+                </div>
+              )}
+            </div>
+
+            <!-- Plain-Language Takeaway -->
+            <div class="rrr-plain p-3 rounded-lg border border-brand-border bg-brand-white/[0.025]">
+              <div class="font-mono text-[10px] uppercase tracking-wider text-brand-amber mb-1">
+                Plain-Language Takeaway
+              </div>
+              <p class="font-body text-xs text-brand-light leading-relaxed m-0">
+                {it.plain_takeaway}
+              </p>
+            </div>
+
+            <!-- Expandable Formal Science, Falsifier & Digest -->
+            <details class="rrr-details group rounded-lg border border-brand-border bg-brand-white/[0.02]">
+              <summary class="font-mono text-[10.5px] text-brand-cyan px-3 py-2 cursor-pointer select-none flex items-center justify-between gap-2">
+                <span>Formal Science Invariant, Falsifier Test &amp; Digest</span>
+                <span class="text-brand-gray group-open:rotate-180 transition-transform">&#9662;</span>
+              </summary>
+              <div class="px-3 pb-3 pt-1.5 space-y-2 border-t border-brand-border text-xs">
+                <div>
+                  <span class="font-mono text-[10px] uppercase text-brand-cyan block mb-0.5">Formal Mechanism</span>
+                  <p class="font-mono text-[11px] text-brand-light leading-relaxed m-0">{it.formal_mechanism}</p>
+                </div>
+                <div class="p-2.5 rounded rrr-falsifier-box">
+                  <span class="font-mono text-[10px] font-bold uppercase rrr-rose-text block mb-0.5">
+                    Falsifier / Disproof Test:
+                  </span>
+                  <p class="font-body text-[11.5px] text-brand-light leading-snug m-0">{it.falsifier_test}</p>
+                </div>
+                <div>
+                  <span class="font-mono text-[10px] uppercase text-brand-gray block mb-0.5">Telemetry &amp; Null Audit</span>
+                  <p class="font-body text-[11px] text-brand-slate leading-snug m-0">
+                    {it.telemetry_audit?.audit_summary}
+                  </p>
+                </div>
+                <div class="font-mono text-[10px] text-brand-gray break-all">
+                  BLAKE2b: {(it.blake2b_256 || '').slice(0, 16)}&hellip; &middot; SHA-256: {(it.sha256 || '').slice(0, 16)}&hellip;
+                </div>
+              </div>
+            </details>
+          </div>
+
+          <!-- Footer Links -->
+          <div class="flex flex-wrap items-center justify-between gap-2 pt-2.5 mt-3 border-t border-brand-border font-mono text-[10px]">
+            <div class="flex flex-wrap items-center gap-1.5">
+              <a
+                href={it.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-2 py-0.5 rounded border border-brand-cyan/35 bg-brand-cyan/10 text-brand-cyan no-underline hover:bg-brand-cyan/20"
+              >
+                {it.source} &#8599;
+              </a>
+              {doiHref && (
+                <a
+                  href={doiHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="px-2 py-0.5 rounded border border-brand-border bg-brand-white/[0.03] text-brand-slate no-underline hover:text-brand-white"
+                >
+                  DOI: {it.doi} &#8599;
+                </a>
+              )}
+            </div>
+            <div class="flex flex-wrap items-center gap-1">
+              {(it.matched_openie_studies || []).slice(0, 2).map((ms: any) => (
+                <a
+                  href={ms.path}
+                  class="px-2 py-0.5 rounded border border-brand-amber/30 bg-brand-amber/10 text-brand-amber no-underline hover:bg-brand-amber/20"
+                >
+                  {ms.short_title}
+                </a>
+              ))}
+            </div>
+          </div>
+        </article>
+      );
+    })}
+  </div>
+
+  <div id="rrr-empty-msg" class="hidden glass-card p-8 text-center font-mono text-xs text-brand-gray">
+    No deduplicated radar entries match the active Rung, regime, tier, or search query.
+  </div>
+
+  {items.length > 12 && (
+    <div id="rrr-show-more-wrap" class="flex justify-center">
+      <button
+        type="button"
+        id="rrr-show-all-btn"
+        class="font-mono text-xs px-5 py-2 rounded-md border border-brand-amber/45 bg-brand-amber/12 text-brand-amber hover:bg-brand-amber/20 cursor-pointer transition-colors"
+      >
+        Show All {items.length} Deduplicated Works
+      </button>
+    </div>
+  )}
+</section>
+
+<style>
+  .rrr-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    border: 1px solid;
+    white-space: nowrap;
+  }
+  .rrr-chip-cyan {
+    color: #00D4AA;
+    border-color: rgba(0, 212, 170, 0.38);
+    background: rgba(0, 212, 170, 0.09);
+  }
+  .rrr-chip-amber {
+    color: #F59E0B;
+    border-color: rgba(245, 158, 11, 0.38);
+    background: rgba(245, 158, 11, 0.09);
+  }
+  .rrr-chip-emerald {
+    color: #34D399;
+    border-color: rgba(52, 211, 153, 0.38);
+    background: rgba(52, 211, 153, 0.09);
+  }
+  .rrr-chip-rose {
+    color: #FB7185;
+    border-color: rgba(244, 63, 94, 0.38);
+    background: rgba(244, 63, 94, 0.09);
+  }
+  .rrr-chip-indigo {
+    color: #818CF8;
+    border-color: rgba(129, 140, 248, 0.38);
+    background: rgba(129, 140, 248, 0.09);
+  }
+  .rrr-emerald-text { color: #34D399; }
+  .rrr-rose-text { color: #FB7185; }
+  .rrr-falsifier-box {
+    background: rgba(244, 63, 94, 0.07);
+    border: 1px solid rgba(244, 63, 94, 0.28);
+  }
+  .rrr-bar-p1 {
+    background: linear-gradient(to top, rgba(245, 158, 11, 0.55), rgba(245, 158, 11, 0.92));
+    border-color: rgba(245, 158, 11, 0.55);
+  }
+  .rrr-bar-r5 {
+    background: linear-gradient(to top, rgba(244, 63, 94, 0.72), rgba(245, 158, 11, 0.92));
+    border-color: rgba(244, 63, 94, 0.65);
+  }
+  .rrr-bar-p2 {
+    background: linear-gradient(to top, rgba(0, 212, 170, 0.58), rgba(52, 211, 153, 0.92));
+    border-color: rgba(0, 212, 170, 0.6);
+  }
+
+  html[data-theme="light"] .rrr-chip-cyan { color: #0F766E; border-color: rgba(13, 148, 136, 0.35); background: rgba(13, 148, 136, 0.08); }
+  html[data-theme="light"] .rrr-chip-amber { color: #B45309; border-color: rgba(217, 119, 6, 0.35); background: rgba(217, 119, 6, 0.08); }
+  html[data-theme="light"] .rrr-chip-emerald { color: #047857; border-color: rgba(5, 150, 105, 0.35); background: rgba(5, 150, 105, 0.08); }
+  html[data-theme="light"] .rrr-chip-rose { color: #BE123C; border-color: rgba(225, 29, 72, 0.32); background: rgba(225, 29, 72, 0.07); }
+  html[data-theme="light"] .rrr-chip-indigo { color: #4338CA; border-color: rgba(79, 70, 229, 0.32); background: rgba(79, 70, 229, 0.08); }
+  html[data-theme="light"] .rrr-emerald-text { color: #047857; }
+  html[data-theme="light"] .rrr-rose-text { color: #BE123C; }
+
+  #rung-radar[data-rrr-register="plain"] .rrr-formal { display: none !important; }
+  #rung-radar[data-rrr-register="formal"] .rrr-plain { display: none !important; }
+  #rung-radar[data-rrr-register="formal"] .rrr-details > div { display: block !important; }
+
+  .rrr-rung-bar[data-active="true"] {
+    border-color: var(--color-brand-cyan) !important;
+    background: rgba(0, 212, 170, 0.12) !important;
+  }
+</style>
+
+<script type="application/json" id="rrr-initial-payload" set:html={serializedPayload}></script>
+
+<script>
+  (function () {
+    const rootSec = document.getElementById('rung-radar');
+    const grid = document.getElementById('rrr-cards-grid');
+    if (!rootSec || !grid) return;
+
+    let activePill = 'all';
+    let activeRung: string | null = null;
+    let activeTier = 'all';
+    let searchQuery = '';
+    let showAll = false;
+    let allExpanded = false;
+
+    const modeBtns = rootSec.querySelectorAll<HTMLButtonElement>('.rrr-mode-btn');
+    const pillBtns = rootSec.querySelectorAll<HTMLButtonElement>('.rrr-pill-btn');
+    const rungBars = rootSec.querySelectorAll<HTMLButtonElement>('.rrr-rung-bar');
+    const clearRungBtn = document.getElementById('rrr-clear-rung-btn');
+    const tierSelect = document.getElementById('rrr-tier-select') as HTMLSelectElement | null;
+    const searchInput = document.getElementById('rrr-search-input') as HTMLInputElement | null;
+    const visibleCountEl = document.getElementById('rrr-visible-count');
+    const emptyMsg = document.getElementById('rrr-empty-msg');
+    const showAllBtn = document.getElementById('rrr-show-all-btn');
+    const showMoreWrap = document.getElementById('rrr-show-more-wrap');
+    const expandAllBtn = document.getElementById('rrr-expand-all-btn');
+    const refreshBtn = document.getElementById('rrr-refresh-btn');
+
+    modeBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const mode = btn.getAttribute('data-rrr-mode') || 'both';
+        rootSec.setAttribute('data-rrr-register', mode);
+        modeBtns.forEach((b) => {
+          const on = b === btn;
+          b.classList.toggle('bg-brand-amber/20', on);
+          b.classList.toggle('text-brand-white', on);
+          b.classList.toggle('text-brand-slate', !on);
+        });
+      });
+    });
+
+    function applyFilters() {
+      const cards = grid!.querySelectorAll<HTMLElement>('.rrr-card');
+      const isFiltered =
+        activePill !== 'all' || activeRung !== null || activeTier !== 'all' || searchQuery.length > 0;
+      let matched = 0;
+      let shown = 0;
+
+      cards.forEach((card) => {
+        const cRung = card.getAttribute('data-rung') || '';
+        const cRegime = card.getAttribute('data-regime') || '';
+        const cRel = card.getAttribute('data-relation') || '';
+        const cTier = card.getAttribute('data-tier') || '';
+        const cHay = card.getAttribute('data-hay') || '';
+
+        let pillOk = true;
+        if (
+          activePill === 'ephemeral_rungs_1_5' ||
+          activePill === 'crossing_compilation_threshold' ||
+          activePill === 'compiled_rungs_6_9'
+        ) {
+          pillOk = cRegime === activePill;
+        } else if (activePill !== 'all') {
+          pillOk = cRel === activePill;
+        }
+
+        const rungOk = !activeRung || cRung === activeRung;
+        const tierOk = activeTier === 'all' || cTier === activeTier;
+        const qOk = !searchQuery || cHay.includes(searchQuery);
+
+        if (pillOk && rungOk && tierOk && qOk) {
+          matched++;
+          if (showAll || isFiltered || matched <= 12) {
+            card.classList.remove('hidden');
+            shown++;
+          } else {
+            card.classList.add('hidden');
+          }
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (visibleCountEl) visibleCountEl.textContent = `Showing ${shown} of ${matched}`;
+      if (emptyMsg) emptyMsg.classList.toggle('hidden', matched > 0);
+      if (showMoreWrap) showMoreWrap.classList.toggle('hidden', showAll || isFiltered || matched <= 12);
+    }
+
+    pillBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        activePill = btn.getAttribute('data-rrr-pill') || 'all';
+        pillBtns.forEach((b) => {
+          const on = b === btn;
+          b.classList.toggle('border-brand-amber', on);
+          b.classList.toggle('bg-brand-amber/15', on);
+          b.classList.toggle('text-brand-amber', on);
+          b.classList.toggle('border-brand-border', !on);
+          b.classList.toggle('text-brand-slate', !on);
+        });
+        applyFilters();
+      });
+    });
+
+    function syncRungBars() {
+      rungBars.forEach((bar) => {
+        const r = bar.getAttribute('data-rrr-rung');
+        bar.setAttribute('data-active', r === activeRung ? 'true' : 'false');
+      });
+      if (clearRungBtn) {
+        clearRungBtn.classList.toggle('hidden', activeRung === null);
+        if (activeRung) clearRungBtn.textContent = `Filtering R${activeRung} · Clear ×`;
+      }
+    }
+
+    rungBars.forEach((bar) => {
+      bar.addEventListener('click', () => {
+        const r = bar.getAttribute('data-rrr-rung');
+        activeRung = activeRung === r ? null : r;
+        syncRungBars();
+        applyFilters();
+      });
+    });
+
+    if (clearRungBtn) {
+      clearRungBtn.addEventListener('click', () => {
+        activeRung = null;
+        syncRungBars();
+        applyFilters();
+      });
+    }
+
+    if (tierSelect) {
+      tierSelect.addEventListener('change', () => {
+        activeTier = tierSelect.value;
+        applyFilters();
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        searchQuery = searchInput.value.toLowerCase().trim();
+        applyFilters();
+      });
+    }
+
+    if (showAllBtn) {
+      showAllBtn.addEventListener('click', () => {
+        showAll = true;
+        applyFilters();
+      });
+    }
+
+    if (expandAllBtn) {
+      expandAllBtn.addEventListener('click', () => {
+        allExpanded = !allExpanded;
+        grid.querySelectorAll<HTMLDetailsElement>('.rrr-details').forEach((d) => {
+          d.open = allExpanded;
+        });
+        expandAllBtn.textContent = allExpanded
+          ? 'Collapse Formal & Falsifier Cards'
+          : 'Expand All Formal & Falsifier Cards';
+      });
+    }
+
+    function escHtml(s: string): string {
+      return String(s || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function buildCardHtml(it: any, idx: number): string {
+      const r = Number(it.rung || 1);
+      const rungCls = r >= 6 ? 'rrr-chip-cyan' : r === 5 ? 'rrr-chip-rose' : 'rrr-chip-amber';
+      const reg = it.threshold_regime || 'ephemeral_rungs_1_5';
+      const regLbl =
+        reg === 'crossing_compilation_threshold'
+          ? 'Crossing Threshold'
+          : reg === 'compiled_rungs_6_9'
+          ? 'Rungs 6–9 Compiled'
+          : 'Rungs 1–5 Ephemeral';
+      const regCls =
+        reg === 'crossing_compilation_threshold'
+          ? 'rrr-chip-emerald'
+          : reg === 'compiled_rungs_6_9'
+          ? 'rrr-chip-cyan'
+          : 'rrr-chip-amber';
+      const rel = it.openie_relation || it.classification || 'CORROBORATES';
+      const relCls =
+        rel === 'CHALLENGES_ASSUMPTION' ? 'rrr-chip-rose' : rel === 'NEW_FRONTIER_GAP' ? 'rrr-chip-indigo' : 'rrr-chip-cyan';
+      const hay = `${it.title} ${it.plain_takeaway} ${it.formal_mechanism || ''} ${it.falsifier_test || ''} ${it.external_id} ${it.doi || ''} ${it.source} ${it.rung_code} ${it.rung_name} ${it.target_tier} ${(it.authors || []).join(' ')} ${it.linked_study_title || ''}`.toLowerCase();
+      const doiLink = it.doi
+        ? `<a href="https://doi.org/${escHtml(it.doi)}" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded border border-brand-border bg-brand-white/[0.03] text-brand-slate no-underline hover:text-brand-white">DOI: ${escHtml(it.doi)} &#8599;</a>`
+        : '';
+      const studiesHtml = (it.matched_openie_studies || [])
+        .slice(0, 2)
+        .map(
+          (ms: any) =>
+            `<a href="${escHtml(ms.path)}" class="px-2 py-0.5 rounded border border-brand-amber/30 bg-brand-amber/10 text-brand-amber no-underline hover:bg-brand-amber/20">${escHtml(ms.short_title)}</a>`
+        )
+        .join('');
+
+      return `<article class="rrr-card glass-card p-4 sm:p-5 flex flex-col justify-between ${idx >= 12 ? 'hidden' : ''}" data-rung="${r}" data-regime="${escHtml(reg)}" data-relation="${escHtml(rel)}" data-tier="${escHtml(it.target_tier)}" data-hay="${escHtml(hay)}">
+        <div class="space-y-2.5">
+          <div class="flex flex-wrap items-center justify-between gap-1.5">
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span class="rrr-chip font-bold ${rungCls}">${escHtml(it.rung_code)} &middot; ${escHtml(it.rung_name)}</span>
+              <span class="rrr-chip ${regCls}">${regLbl}</span>
+              <span class="font-mono text-[10px] px-2 py-0.5 rounded border border-brand-border bg-brand-white/[0.03] text-brand-light">${escHtml(it.epistemic_badge)}</span>
+            </div>
+            <span class="rrr-chip ${relCls}">${escHtml(rel)}</span>
+          </div>
+          <div>
+            <h3 class="font-display text-sm sm:text-[15.5px] font-bold text-brand-white leading-snug">
+              <a href="${escHtml(it.url)}" target="_blank" rel="noopener noreferrer" class="text-brand-white no-underline hover:text-brand-cyan transition-colors">${escHtml(it.title)} &#8599;</a>
+            </h3>
+            <div class="font-mono text-[10px] text-brand-gray mt-1 flex flex-wrap items-center gap-x-3 gap-y-0.5">
+              <span class="text-brand-light font-semibold">${escHtml(it.source)}</span>
+              <span>${escHtml(it.external_id)}</span>
+              ${it.published_date ? `<span>${escHtml(it.published_date)}</span>` : ''}
+              <span class="text-brand-cyan">${escHtml(it.target_tier)}</span>
+            </div>
+            ${(it.authors || []).length ? `<div class="font-body text-[11px] text-brand-gray mt-0.5 truncate">${escHtml((it.authors || []).join(', '))}</div>` : ''}
+          </div>
+          <div class="rrr-plain p-3 rounded-lg border border-brand-border bg-brand-white/[0.025]">
+            <div class="font-mono text-[10px] uppercase tracking-wider text-brand-amber mb-1">Plain-Language Takeaway</div>
+            <p class="font-body text-xs text-brand-light leading-relaxed m-0">${escHtml(it.plain_takeaway)}</p>
+          </div>
+          <details class="rrr-details group rounded-lg border border-brand-border bg-brand-white/[0.02]" ${allExpanded ? 'open' : ''}>
+            <summary class="font-mono text-[10.5px] text-brand-cyan px-3 py-2 cursor-pointer select-none flex items-center justify-between gap-2">
+              <span>Formal Science Invariant, Falsifier Test &amp; Digest</span>
+              <span class="text-brand-gray group-open:rotate-180 transition-transform">&#9662;</span>
+            </summary>
+            <div class="px-3 pb-3 pt-1.5 space-y-2 border-t border-brand-border text-xs">
+              <div>
+                <span class="font-mono text-[10px] uppercase text-brand-cyan block mb-0.5">Formal Mechanism</span>
+                <p class="font-mono text-[11px] text-brand-light leading-relaxed m-0">${escHtml(it.formal_mechanism)}</p>
+              </div>
+              <div class="p-2.5 rounded rrr-falsifier-box">
+                <span class="font-mono text-[10px] font-bold uppercase rrr-rose-text block mb-0.5">Falsifier / Disproof Test:</span>
+                <p class="font-body text-[11.5px] text-brand-light leading-snug m-0">${escHtml(it.falsifier_test)}</p>
+              </div>
+              <div>
+                <span class="font-mono text-[10px] uppercase text-brand-gray block mb-0.5">Telemetry &amp; Null Audit</span>
+                <p class="font-body text-[11px] text-brand-slate leading-snug m-0">${escHtml(it.telemetry_audit?.audit_summary || '')}</p>
+              </div>
+              <div class="font-mono text-[10px] text-brand-gray break-all">BLAKE2b: ${escHtml((it.blake2b_256 || '').slice(0, 16))}&hellip; &middot; SHA-256: ${escHtml((it.sha256 || '').slice(0, 16))}&hellip;</div>
+            </div>
+          </details>
+        </div>
+        <div class="flex flex-wrap items-center justify-between gap-2 pt-2.5 mt-3 border-t border-brand-border font-mono text-[10px]">
+          <div class="flex flex-wrap items-center gap-1.5">
+            <a href="${escHtml(it.url)}" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded border border-brand-cyan/35 bg-brand-cyan/10 text-brand-cyan no-underline hover:bg-brand-cyan/20">${escHtml(it.source)} &#8599;</a>
+            ${doiLink}
+          </div>
+          <div class="flex flex-wrap items-center gap-1">${studiesHtml}</div>
+        </div>
+      </article>`;
+    }
+
+    async function refreshFromLiveJson(manual = false) {
+      try {
+        if (manual && refreshBtn) refreshBtn.textContent = 'Syncing…';
+        const res = await fetch('/data/global-rung-radar.json', { cache: 'no-cache' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const live = await res.json();
+        if (!live || !Array.isArray(live.items) || live.items.length === 0) return;
+
+        const tsEl = document.getElementById('rrr-scraped-ts');
+        if (tsEl && live.scraped_at_utc) tsEl.textContent = live.scraped_at_utc.slice(0, 16);
+        const hashEl = document.getElementById('rrr-manifest-hash');
+        if (hashEl && live.manifest_sha256) hashEl.textContent = live.manifest_sha256.slice(0, 16) + '…';
+
+        const sh = live.rung_summary?.shares_pct || {};
+        const rc = live.rung_summary?.counts_by_regime || {};
+        const cc = live.counts_by_classification || {};
+
+        const setTxt = (id: string, val: string) => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = val;
+        };
+        setTxt('rrr-stat-total', String(live.total_external_works || live.items.length));
+        if (sh.ephemeral_trapped_pct !== undefined) setTxt('rrr-stat-ephemeral', sh.ephemeral_trapped_pct + '%');
+        if (sh.rungs_1_5_total_pct !== undefined) setTxt('rrr-stat-r15-all', sh.rungs_1_5_total_pct + '%');
+        if (sh.crossing_threshold_pct !== undefined) setTxt('rrr-stat-crossing', sh.crossing_threshold_pct + '%');
+        if (sh.compiled_rungs_6_9_pct !== undefined) setTxt('rrr-stat-compiled', sh.compiled_rungs_6_9_pct + '%');
+
+        const setCnt = (key: string, val: number) => {
+          const el = rootSec!.querySelector(`[data-rrr-count="${key}"]`);
+          if (el) el.textContent = String(val);
+        };
+        setCnt('all', live.items.length);
+        setCnt('crossing_compilation_threshold', rc.crossing_compilation_threshold || 0);
+        setCnt('ephemeral_rungs_1_5', rc.ephemeral_rungs_1_5 || 0);
+        setCnt('compiled_rungs_6_9', rc.compiled_rungs_6_9 || 0);
+        setCnt('CHALLENGES_ASSUMPTION', cc.CHALLENGES_ASSUMPTION || 0);
+        setCnt('NEW_FRONTIER_GAP', cc.NEW_FRONTIER_GAP || 0);
+
+        const hist = live.rung_summary?.histogram || [];
+        const maxCnt = Math.max(1, ...hist.map((h: any) => h.count || 0));
+        hist.forEach((h: any) => {
+          const barBtn = rootSec!.querySelector<HTMLElement>(`.rrr-rung-bar[data-rrr-rung="${h.rung}"]`);
+          if (!barBtn) return;
+          const cntEl = barBtn.querySelector('.rrr-bar-count');
+          const fillEl = barBtn.querySelector<HTMLElement>('.rrr-bar-fill');
+          if (cntEl) cntEl.textContent = String(h.count || 0);
+          if (fillEl) fillEl.style.height = Math.max(10, Math.round(((h.count || 0) / maxCnt) * 100)) + '%';
+        });
+
+        const initialEl = document.getElementById('rrr-initial-payload');
+        const initialDigest = initialEl ? (JSON.parse(initialEl.textContent || '{}').manifest_sha256 || '') : '';
+        if (live.manifest_sha256 && live.manifest_sha256 !== initialDigest) {
+          grid!.innerHTML = live.items.map((it: any, idx: number) => buildCardHtml(it, idx)).join('');
+        }
+        applyFilters();
+        if (manual && refreshBtn) {
+          refreshBtn.textContent = '✓ Synced';
+          setTimeout(() => { refreshBtn.textContent = '↻ Sync 6h JSON'; }, 2000);
+        }
+      } catch (_) {
+        if (manual && refreshBtn) {
+          refreshBtn.textContent = 'Snapshot Active';
+          setTimeout(() => { refreshBtn.textContent = '↻ Sync 6h JSON'; }, 2000);
+        }
+      }
+    }
+
+    if (refreshBtn) refreshBtn.addEventListener('click', () => refreshFromLiveJson(true));
+    refreshFromLiveJson(false);
+  })();
+</script>

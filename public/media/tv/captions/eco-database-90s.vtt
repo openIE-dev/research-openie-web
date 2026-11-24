@@ -1,0 +1,58 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — eco-database (90s) Narrator Osato
+
+1
+00:00:00.320 --> 00:00:07.855
+First, most software burns needless time and power unpacking text and recalculating answers it already solved.
+
+2
+00:00:08.355 --> 00:00:15.930
+Second, fingerprint-chained logs and dual-time indexes let any machine replay exact past states without guesswork.
+
+3
+00:00:16.430 --> 00:00:24.053
+Third, zero-copy memory-mapped lookup stores turn repeated work into sub-microsecond reads under two microjoules.
+
+4
+00:00:24.553 --> 00:00:30.512
+Software teams usually treat databases, state machines, and memory caches as separate worlds
+
+5
+00:00:30.512 --> 00:00:36.601
+that serialize text back and forth endlessly. Physically, storing a verified answer in aligned
+
+6
+00:00:36.601 --> 00:00:41.783
+memory is simply freezing past computation so no machine ever pays for it twice.
+
+7
+00:00:42.283 --> 00:00:46.427
+Across database dot openie dot dev and data dot openie dot dev, every
+
+8
+00:00:46.427 --> 00:00:51.711
+state change clears a sixty-nine point seven microsecond safety gate before appending to
+
+9
+00:00:51.711 --> 00:00:57.537
+a tamper-evident fingerprint-linked log indexed by both valid world time and recorded write time.
+
+10
+00:00:58.037 --> 00:01:02.779
+Reading a verified entry from our zero-copy memory-mapped store took zero point three
+
+11
+00:01:02.779 --> 00:01:07.576
+two five microseconds and one point seven seven microjoules on built-in chip counters,
+
+12
+00:01:07.576 --> 00:01:14.159
+while deterministic logs replayed twenty-five thousand five hundred frames identically across three operating systems.
+
+13
+00:01:14.659 --> 00:01:19.968
+Mapping ten storage and state coordinates onto real joules and microseconds clarifies
+
+14
+00:01:19.968 --> 00:01:24.215
+exactly when to compute fresh and when to read directly from memory.

@@ -1,0 +1,63 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:01.830 --> 00:00:29.128
+<v Cecily>Welcome to Episode Fourteen — our OpenIE Database and Data Desk roundtable on OpenIE Research Radio! I'm Cecily, joined by Marcus and Kwame — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural speech and grounded strictly in verified Open Interface Engineering studies. Today we open database.openie.dev and data.openie.dev!
+
+2
+00:00:29.398 --> 00:00:41.243
+<v Cecily>Picture two ways to check a subway transfer as train doors close: mail a handwritten YAML letter to a warehouse clerk, or glance up at a laminated map bolted right onto the station wall!
+
+3
+00:00:41.433 --> 00:00:57.862
+<v Marcus>Most agent memory stacks picked the handwritten YAML letter! In AI Reads Human, pure-Python YAML burned two thousand fifty-three times more energy per record than fixed binary structs. Kwame, how does DNULLMM1 bolt the map straight onto the CPU?
+
+4
+00:00:58.132 --> 00:01:20.300
+<v Kwame>DNULLMM1 packs a sixty-four-byte header plus forty-eight-byte open-addressed binary hash slots and mounts them zero-copy via POSIX mmap on Linux and macOS or MapViewOfFile on Windows 11. Zero parsing, zero heap allocation: one lookup finishes in zero point three two five microseconds at one point seven seven microjoules!
+
+5
+00:01:20.570 --> 00:01:31.117
+<v Cecily>How do database.openie.dev's thirty-five point two eight million data cells connect to state.openie.dev and memory.openie.dev?
+
+6
+00:01:31.387 --> 00:01:50.025
+<v Kwame>Across ten database axes and five hundred thirty-three million memory cells from CPU registers to DNA, every table view is a deterministic fold over an append-only, hash-chained bitemporal log — separating Valid Time in reality from Transaction Time in the chain so history is never overwritten.
+
+7
+00:01:50.215 --> 00:01:57.652
+<v Marcus>What happens when ten coding agents commit to one repository at once? Standard Git line-number merges turn into gridlock!
+
+8
+00:01:57.922 --> 00:02:20.258
+<v Kwame>RCE-VC keys every definition by its canonical name-free digest! Non-overlapping edits need zero coordination: admitting a submission against one hundred thousand units takes sixty-nine point seven to seventy-three point six microseconds at three hundred seventeen to three hundred sixty-five microjoules of Apple M5 Max L3 reported_j, while projecting cleanly back to Git!
+
+9
+00:02:20.528 --> 00:02:29.728
+<v Cecily>Now test cross-platform deterministic replay across macOS, Linux, and bare-metal Windows 11 — where do ordinary systems drift?
+
+10
+00:02:29.998 --> 00:02:44.319
+<v Kwame>Windows NTFS carriage-return line-feeds corrupt naive text transcripts, and standard-library floating-point sine diverges across Apple libSystem, Linux glibc, and Windows UCRT in just ten to thirty-seven ticks!
+
+11
+00:02:44.509 --> 00:02:52.813
+<v Marcus>And when you ran frozen binary DNULLMM1 maps plus Q32.32 fixed-point integer state across all those machines?
+
+12
+00:02:53.083 --> 00:03:20.048
+<v Kwame>All five SATB hardware and OS hosts hit the exact ten-thousand-probe checksum fifteen billion twenty-seven million seven hundred five thousand seven hundred thirty-six with zero byte diffs! And in GE-H8, three one-hour sessions of two hundred sixteen thousand ticks replayed bit-for-bit across macOS, Linux, and Windows 11 from forty-four point six kilobytes of gzipped inputs — zero out of six thousand four hundred eighty mismatches!
+
+13
+00:03:20.238 --> 00:03:28.908
+<v Marcus>Final audit check: how do we stop test-time mutation or solver smuggling inside DNULLMM1 and RCE-VC?
+
+14
+00:03:29.178 --> 00:03:55.246
+<v Kwame>Before testing, DNULLMM1 is frozen read-only by SHA-256 under Bitcoin OpenTimestamps and drand beacons — pre-and-post digests must match with zero test writes, and reducers are capped at four thousand ninety-six gzipped bytes and fifty thousand operations! Meanwhile, RCE-VC refuses overlapping edits with a recorded reason and keeps measured_j unset alongside reported_j.
+
+15
+00:03:55.516 --> 00:04:13.328
+<v Cecily>Hash-chain the bitemporal log, memory-map verified state at one point seven seven microjoules, and replay bit-for-bit everywhere! Explore all six openie.dev desks right below, subscribe via Podcast RSS, and thank you for listening to OpenIE Research Radio!

@@ -1,0 +1,63 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:01.830 --> 00:00:25.915
+<v Mateo>Welcome to the OpenIE Synthesis Desk on OpenIE Research Radio! I'm Mateo, joined by Marcus and Rohan — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural speech and grounded strictly in verified Open Interface Engineering studies. Today we're live on synthesis.openie.dev: why routing beats cold-start generation!
+
+2
+00:00:26.185 --> 00:00:41.207
+<v Mateo>Imagine walking into a clinic with a thumb splinter and having twelve cardiac surgeons scrub in with an MRI scanner! Waking a hundred-billion-parameter cloud model to fix a missing import or recurring bug is that exact hospital triage mistake.
+
+3
+00:00:41.397 --> 00:00:52.557
+<v Marcus>And trillion-dollar AI coding forecasts assume we pay that open-heart-surgery bill on every line of code forever! Rohan, how does Mixture of Limits flip the primary verb to routing?
+
+4
+00:00:52.827 --> 00:01:11.287
+<v Rohan>We order tiers strictly by joules, Marcus! Gear Zero checks sub-microsecond lookup pages and deterministic repair rules at zero model calls. Gear One runs tiny millisecond neural proposers and energy rankers. Only hard misses wake sparse frontier experts — and every commit passes a deterministic gate.
+
+5
+00:01:11.557 --> 00:01:17.948
+<v Mateo>Show us that asymmetry in RCE-JEPA between proposing code and checking an integer state-machine Form!
+
+6
+00:01:18.218 --> 00:01:42.050
+<v Rohan>On Apple M5 Max reported_j, checking an RCE Form costs forty-nine point zero four millijoules, versus eighty-four point two five joules for one local thirty-five-B proposal — seventeen hundred eighteen times cheaper! Our zero-model-call ladder closes seventy-three point five percent of broken Forms, and eight-point-four-two-million-parameter FormJEPA-v1 lifts that to ninety-one point four percent!
+
+7
+00:01:42.240 --> 00:01:51.638
+<v Marcus>Wait — before FormEBM-v3 pre-filtered candidate beams, didn't Wave Four's unnormalized energy scorer stumble on big multi-line edits?
+
+8
+00:01:51.908 --> 00:02:15.896
+<v Rohan>It did! Unnormalized scoring penalized valid large edits, dropping out-of-distribution H15 AUROC to zero point two five eight five. Our span-normalized two-head FormEBM-v3 — just six point zero five million parameters — separates defect density from edit depth, hitting zero point nine four three seven unseen-shape AUROC and resolving that edit-size inversion!
+
+9
+00:02:16.166 --> 00:02:26.491
+<v Mateo>And when a genuinely novel task misses the cheap gears and wakes Qwen 3.6 35B-A3B or Nemotron 120B locally?
+
+10
+00:02:26.761 --> 00:02:46.765
+<v Rohan>Custom Apple Metal and Rust Burn CubeCL four-bit shaders stream active experts straight off NVMe in nine hundred seventy megabytes of RAM — one point four seven percent of FP16 — with one hundred percent exact token parity, lifting 120B verified pass rates from forty-three point seven five to sixty-two point five percent!
+
+11
+00:02:46.955 --> 00:02:52.500
+<v Marcus>Give us the scoreboard across every coding suite — how many broken commits slipped past the verifier?
+
+12
+00:02:52.770 --> 00:03:15.677
+<v Rohan>Zero point zero zero percent broken commits! We hit ninety-one point six seven percent on our forty-eight-task suite, ninety point six two percent on BigCodeBench v0.1.3, forty out of forty on H15-Iterative with Opus 5.5 and Sonnet 5.5, and replayed crystallized fixes in zero point three two five microseconds at one point seven seven microjoules!
+
+13
+00:03:15.867 --> 00:03:20.152
+<v Marcus>And keep us honest: which repair rung failed its own promotion ceiling?
+
+14
+00:03:20.422 --> 00:03:39.624
+<v Rohan>On our hundred-fifty-one-task rce repair audit, Rung F hit two point five percent above our two point zero percent ceiling — so holds returned false and Rung F stayed locked in observe mode, just like Foundry pilot TF-2026-06's neural router got crushed sixty-three times by an integer grid!
+
+15
+00:03:39.894 --> 00:03:52.027
+<v Mateo>Route cheap, verify with integer totality, and crystallize novelty downward! Explore synthesis.openie.dev, and join Priya, Sean, and Claire next at the OpenIE Knowledge Desk!

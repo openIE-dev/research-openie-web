@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-OpenIE Research TV — 21-Presenter Global Studio Ensemble & Tutorial Lab Map.
-Maps each of the 21 published OpenIE studies to:
+OpenIE Research TV — 27-Study Global Studio Ensemble & Tutorial Lab Map.
+Maps each of the 21 published OpenIE research studies + 6 flagship *.openie.dev
+ecosystem channel openers (27 studies total = 108 films) to:
   1. A distinct ElevenLabs eleven_v4 studio voice (name, voice_id, edge-tts neural fallback, profile)
   2. Its canonical /tutorials/?lab=<id> interactive tutorial lab identifier
 """
@@ -29,6 +30,13 @@ VOICE_ENSEMBLE = {
     "mei": ("Nylo", "GbDIo39THauInuigCmPM", "en-US-JennyNeural", "Systems Educator · African American English"),
     "jouleos": ("Bobby", "lGMJWfnL2SVUwU7i6zQ7", "en-US-BrianMultilingualNeural", "Commanding Baritone · African American English"),
     "latency": ("Julius", "VlUmeC1Uzj3NnwiVR9K9", "en-US-ChristopherNeural", "Conversational Host · African American English"),
+    # 6 Flagship *.openie.dev Ecosystem Channel Openers
+    "eco-avalanche": ("Cecily", "NQMJRVvPew6HsaebYnZj", "en-US-EmmaMultilingualNeural", "Documentary Host · African American English"),
+    "eco-stack": ("Hakim", "EzoxNTKsg4JNN7wxAgut", "en-GB-ThomasNeural", "Confident Narrator · Middle Eastern English"),
+    "eco-compute": ("Nylo", "GbDIo39THauInuigCmPM", "en-US-JennyNeural", "Systems Educator · African American English"),
+    "eco-synthesis": ("Joy", "mzbNqbWwLuZObi7qEA67", "en-NG-EzinneNeural", "Warm Contralto · West African English"),
+    "eco-knowledge": ("Julius", "VlUmeC1Uzj3NnwiVR9K9", "en-US-ChristopherNeural", "Conversational Host · African American English"),
+    "eco-database": ("Osato", "PFnEp0d5QKq6baWI3azv", "en-NG-AbeoNeural", "Smooth Narrator · Nigerian English"),
 }
 
 TUTORIAL_LAB_MAP = {
@@ -53,4 +61,11 @@ TUTORIAL_LAB_MAP = {
     "mei": "lab-09-lut6-benes",
     "jouleos": "lab-09-lut6-benes",
     "latency": "lab-03-ai-ratchet-winters",
+    # 6 Flagship *.openie.dev Ecosystem Channel Openers
+    "eco-avalanche": "lab-04-digital-enzymatic",
+    "eco-stack": "lab-01-quorum-sepj",
+    "eco-compute": "lab-09-lut6-benes",
+    "eco-synthesis": "lab-06-rce-world-coding",
+    "eco-knowledge": "lab-10-time-index",
+    "eco-database": "lab-08-game-lockstep",
 }

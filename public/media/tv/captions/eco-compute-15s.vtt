@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — eco-compute (15s) Narrator Nylo
+
+1
+00:00:00.240 --> 00:00:06.851
+First, every calculation is a physical event where flipping silicon switches spends real energy in joules.
+
+2
+00:00:07.211 --> 00:00:13.941
+Second, honest hardware audits separate wire current sensors from chip counters, while sleeping between real jobs.
+
+3
+00:00:14.301 --> 00:00:21.856
+Third, single-cycle Boolean lookup circuits replace heavy decimal arithmetic on repeated checks with tiny hardware steps.

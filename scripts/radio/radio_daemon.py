@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""OpenIE Research Radio — Autonomous 6-Hour Scrape, Synthesis & Pilot Daemon.
+"""OpenIE Research Radio & Global Rung Radar — Autonomous 6-Hour Daemon.
 
-Executes the 4-stage OpenIE Research Radio loop on a 6-hour schedule:
-  Stage 1: Live sanctioned open-access literature scrape (arXiv, Europe PMC, OpenAlex, bioRxiv, ClinicalTrials.gov)
-  Stage 2: Epistemic badge ([T]/[E]/[M]/[S]) & telemetry cross-examination against OpenIE's 21 studies
-  Stage 3: Candidate research topic generation & <60s deterministic pilot execution (RAPL reported_j)
+Executes the OpenIE Global Rung Radar & Research Radio loop on a 6-hour schedule:
+  Stage 1: Live sanctioned open-access literature scrape (arXiv, OpenAlex, Europe PMC, bioRxiv)
+  Stage 2: 9-Rung Computer Intelligence Avalanche scoring + epistemic ([T]/[E]/[M]/[S]) audit
+  Stage 3: Candidate research topic generation & <60s deterministic Shape-D pilot execution (RAPL reported_j)
   Stage 4: Multi-voice ElevenLabs eleven_v4 (or multicultural edge-tts fallback) radar pulse synthesis
 
 All deployment targets and API credentials are read strictly from environment variables or
@@ -26,6 +26,7 @@ from typing import Any
 
 from foundry_runner import run_foundry
 from reviewer import run_review
+from rung_radar import finalize_global_rung_radar
 from scraper import run_scrape
 from studio_synth import load_radio_env, render_episode
 
@@ -46,6 +47,10 @@ def build_autonomous_pulse_spec(radar: dict[str, Any], foundry: dict[str, Any], 
     host_sp, skep_sp, spec_sp = ROTATING_PULSE_PANELS[hour_slot]
 
     items = radar.get("items", [])[:3]
+    shares = (radar.get("rung_summary") or {}).get("shares_pct") or {}
+    trapped_pct = shares.get("ephemeral_trapped_pct", 0.0)
+    crossing_pct = shares.get("crossing_threshold_pct", 0.0)
+
     promoted = [t for t in foundry.get("topics", []) if t["status"] == "PROMOTED_CANDIDATE"]
     killed = [t for t in foundry.get("topics", []) if t["status"] == "KILLED_BY_NULL"]
     top_p = promoted[0] if promoted else (foundry.get("topics") or [{}])[0]
@@ -58,7 +63,7 @@ def build_autonomous_pulse_spec(radar: dict[str, Any], foundry: dict[str, Any], 
         {
             "speaker": host_sp,
             "text": (
-                f"Welcome back to the OpenIE Research Radio six-hour autonomous radar pulse for {run_ts[:10]}! "
+                f"Welcome back to the OpenIE Research Radio six-hour Global Rung Radar pulse for {run_ts[:10]}! "
                 f"Studio disclosure up front: {host_sp}, {skep_sp}, and {spec_sp} are AI-synthesized OpenIE research personas "
                 "voiced via ElevenLabs neural studio voices and grounded strictly in live open-access feeds and bench receipts."
             ),
@@ -66,8 +71,10 @@ def build_autonomous_pulse_spec(radar: dict[str, Any], foundry: dict[str, Any], 
         {
             "speaker": spec_sp,
             "text": (
-                f"This wakeup deduplicated {radar.get('total_external_works', 0)} open-access works across five sanctioned APIs, "
-                f"audited against all twenty-one OpenIE studies. Highlights include {p1_title}, alongside {p2_title}."
+                f"This wakeup deduplicated {radar.get('total_external_works', 0)} open-access papers across arXiv, OpenAlex, "
+                f"Europe PMC, and bioRxiv, scoring every paper onto the nine-rung avalanche map. "
+                f"Right now {trapped_pct} percent remain in stateless Rungs one through five, while {crossing_pct} percent "
+                f"actively cross the Compilation Threshold. Highlights include {p1_title}, alongside {p2_title}."
             ),
         },
         {
@@ -88,18 +95,18 @@ def build_autonomous_pulse_spec(radar: dict[str, Any], foundry: dict[str, Any], 
         {
             "speaker": host_sp,
             "text": (
-                "Every BLAKE2b digest, epistemic badge, and Linux RAPL pilot receipt from this wakeup is live in the radar and foundry tables. "
-                "Catch the next autonomous pulse in six hours on OpenIE Research Radio!"
+                "Every BLAKE2b digest, nine-rung classification, falsifier test, and Linux RAPL pilot receipt from this wakeup "
+                "is live on the Global Rung Radar. Catch the next autonomous pulse in six hours on OpenIE Research Radio!"
             ),
         },
     ]
     return {
         "id": "ep00-latest-autonomous-pulse",
         "number": 0,
-        "title": f"Autonomous 6h Radar Pulse ({run_ts[:16]}Z)",
-        "subtitle": f"{host_sp}, {skep_sp}, and {spec_sp} review newly indexed open-access literature and <60s pilot verdicts",
-        "summary": "Rendered automatically by the 6-hour Linux Research Radio daemon using ElevenLabs eleven_v4 studio neural voices.",
-        "topic_tags": ["autonomous-daemon", "literature-radar", "pilot-loop"],
+        "title": f"Autonomous 6h Global Rung Radar Pulse ({run_ts[:16]}Z)",
+        "subtitle": f"{host_sp}, {skep_sp}, and {spec_sp} review 9-Rung literature shifts and <60s pilot verdicts",
+        "summary": "Rendered automatically by the 6-hour Linux Research Radio & Global Rung Radar daemon.",
+        "topic_tags": ["autonomous-daemon", "global-rung-radar", "pilot-loop"],
         "published_utc": run_ts,
         "turns": turns,
     }
@@ -130,14 +137,17 @@ def run_cycle(base_dir: Path, render_pulse: bool = False, skip_scrape: bool = Fa
     intake_path = state_dir / "literature_intake.json"
     studies_path = state_dir / "studies.json"
     radar_path = state_dir / "radio-radar.json"
+    global_radar_path = state_dir / "global-rung-radar.json"
     foundry_path = state_dir / "topic-foundry.json"
 
     if skip_scrape and intake_path.exists():
         intake = json.loads(intake_path.read_text(encoding="utf-8"))
     else:
         intake = run_scrape(intake_path)
-    radar = run_review(intake_path, studies_path, radar_path)
+
+    run_review(intake_path, studies_path, radar_path)
     foundry = run_foundry(radar_path, foundry_path)
+    radar = finalize_global_rung_radar(radar_path, foundry_path, global_radar_path)
 
     cur_digests = {w["blake2b_256"] for w in intake.get("works", [])}
     novel_count = len(cur_digests - prev_digests)
@@ -146,23 +156,33 @@ def run_cycle(base_dir: Path, render_pulse: bool = False, skip_scrape: bool = Fa
     pulse_meta = None
     if render_pulse or novel_count > 0:
         spec = build_autonomous_pulse_spec(radar, foundry, run_ts)
-        pulse_meta = render_episode(spec, state_dir / "pulse_media", state_dir / "tmp_audio", state_dir / "eleven_cache")
+        pulse_meta = render_episode(
+            spec,
+            state_dir / "pulse_media",
+            state_dir / "tmp_audio",
+            state_dir / "eleven_cache",
+        )
 
     sync_target = os.environ.get("OPENIE_RADIO_SYNC_TARGET", "").strip()
     sync_status = "not_configured"
     if sync_target:
-        rc = subprocess.run(["rsync", "-az", str(radar_path), str(foundry_path), sync_target], check=False).returncode
+        rc = subprocess.run(
+            ["rsync", "-az", str(radar_path), str(global_radar_path), str(foundry_path), sync_target],
+            check=False,
+        ).returncode
         sync_status = "ok" if rc == 0 else f"rsync_exit_{rc}"
 
     elapsed_s = round(time.perf_counter() - t0, 2)
     status_doc = {
-        "schema": "openie.radio.daemon_status.v2",
+        "schema": "openie.radio.daemon_status.v3",
         "last_run_utc": run_ts,
         "cadence": "every 6 hours (systemd --user timer + crontab flock)",
         "elapsed_sec": elapsed_s,
         "scraped_works": intake.get("total_works", 0),
         "novel_digests": novel_count,
         "counts_by_source": intake.get("counts_by_source", {}),
+        "rung_shares_pct": (radar.get("rung_summary") or {}).get("shares_pct", {}),
+        "manifest_sha256": radar.get("manifest_sha256", ""),
         "foundry_verdicts": foundry.get("counts_by_status", {}),
         "pulse_rendered": bool(pulse_meta),
         "pulse_tts_engines": pulse_meta.get("tts_engines") if pulse_meta else [],
@@ -175,8 +195,9 @@ def run_cycle(base_dir: Path, render_pulse: bool = False, skip_scrape: bool = Fa
 
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser(description="OpenIE Research Radio 6h Autonomous Daemon")
+    ap = argparse.ArgumentParser(description="OpenIE Research Radio & Global Rung Radar 6h Autonomous Daemon")
     ap.add_argument("--base-dir", type=Path, default=Path(__file__).resolve().parent)
+    ap.add_argument("--once", action="store_true", help="Execute a single complete 6h scrape, 9-Rung scoring, and <60s pilot pass")
     ap.add_argument("--render-pulse", action="store_true", help="Force neural audio synthesis of the 6h pulse briefing")
     ap.add_argument("--skip-scrape", action="store_true", help="Reuse cached literature_intake.json")
     args = ap.parse_args()

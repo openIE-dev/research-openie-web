@@ -70,6 +70,7 @@ BANNED_PATTERNS = [
     (r"\bJEPA\b|\bEBM\b|\bMoE\b|\bMLP\b|\bLLM\b|\bLLMs\b|\bFLOP\b|\bFLOPS\b", "ML acronym soup (say 'language model', 'mixture of specialist networks', etc.)"),
     (r"\bNVMe\b|\bAST\b|\bISA\b|\bSIMD\b|\bBFT\b|\bSSP\b|\bDAG\b|\bDAGs\b|\bMCP\b|\bJSON-RPC\b", "systems acronym soup"),
     (r"\bSATB\b|\bMEI-JCP\b|\bMEI\b|\bRCE-VC\b|\bRCE-JEPA\b|\bCpJ\b|\bECC\b|\bATP\b|\bSepJ\b|\bBCI\b|\bEV\b", "domain acronym soup (spell out in plain words)"),
+    (r"(?i)\bmathground\b|\bpattern-lang\b|\btrinity\b|\bb-corp\b", "banned brand/trinity term"),
 ]
 
 # Catch any stray ALL-CAPS acronym >= 3 chars in spoken prose (excluding natural words or Roman numerals)
@@ -179,7 +180,7 @@ def lint_study(st: dict) -> list[str]:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--part", type=int, choices=[0, 1, 2, 3], default=0, help="0 = all parts, or 1/2/3")
+    ap.add_argument("--part", type=int, choices=[0, 1, 2, 3, 4], default=0, help="0 = all parts (27 studies), or 1/2/3/4")
     args = ap.parse_args()
 
     studies = []
@@ -192,6 +193,9 @@ def main():
     if args.part in (0, 3):
         from studies_part3 import STUDIES_PART3
         studies.extend(STUDIES_PART3)
+    if args.part in (0, 4):
+        from ecosystem_studies import ECOSYSTEM_STUDIES
+        studies.extend(ECOSYSTEM_STUDIES)
 
     all_errs = []
     for st in studies:

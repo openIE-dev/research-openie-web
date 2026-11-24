@@ -1,0 +1,102 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — eco-stack (180s) Narrator Hakim
+
+1
+00:00:00.360 --> 00:00:08.894
+First, information theory, game theory, and mechanism design form three altitudes of one energy-bounded computing map.
+
+2
+00:00:09.454 --> 00:00:16.791
+Second, one prices bits and heat, one maps strategy, and one writes rules where honesty wins.
+
+3
+00:00:17.351 --> 00:00:20.054
+Third, across every layer of computing,
+
+4
+00:00:20.054 --> 00:00:24.768
+each action must clear its energy floor and pass independent checks.
+
+5
+00:00:25.328 --> 00:00:32.138
+Hardware teams work tirelessly to shave picojoules off transistor switches, only to watch software wrappers
+
+6
+00:00:32.138 --> 00:00:38.822
+burn megawatts on endless retry loops, chatty text formats, or gamed benchmark leaderboards. Those costly
+
+7
+00:00:38.822 --> 00:00:45.823
+breakdowns happen right at the seams where physical bit limits meet strategic incentives without shared rules.
+
+8
+00:00:46.383 --> 00:00:52.588
+Imagine guiding cargo ships safely into a narrow harbor during a busy tide. Water depth, wind,
+
+9
+00:00:52.588 --> 00:00:59.915
+and hull drag set hard physical limits; ship captains steer strategically around rival vessels for berth space;
+
+10
+00:00:59.915 --> 00:01:07.704
+and harbor authorities design pilot lanes and inspection rules so reporting honest cargo weight beats cutting corners.
+
+11
+00:01:08.264 --> 00:01:17.226
+Altitude one unites Claude Shannon's noisy-channel capacity limits with Rolf Landauer's minimum heat price for erasing memory bits at
+
+12
+00:01:17.226 --> 00:01:26.929
+finite temperature. Altitude two brings John von Neumann and John Nash's mathematics of strategic equilibria among goal-seeking actors. Altitude
+
+13
+00:01:26.929 --> 00:01:35.890
+three applies Leonid Hurwicz, Eric Maskin, and Roger Myerson's inverse question: given a safe outcome, what rules make truth optimal?
+
+14
+00:01:36.450 --> 00:01:42.564
+Across all three altitudes, total task energy equals the sum over every active primitive of
+
+15
+00:01:42.564 --> 00:01:48.880
+how often it runs multiplied by the physical joules each invocation dissipates inside its real
+
+16
+00:01:48.880 --> 00:01:56.740
+hardware context. Moving too slowly leaks standing idle power, while switching too frantically multiplies reset heat.
+
+17
+00:01:57.300 --> 00:02:04.730
+In this three-dimensional landscape, the flat lower plane marks nature's thermodynamic bit floor, the middle ridges
+
+18
+00:02:04.730 --> 00:02:12.419
+trace strategic equilibria among interacting agents, and the upper emerald ring marks metered commit gates—aligning all
+
+19
+00:02:12.419 --> 00:02:20.301
+nine periodic tables from silicon transistor switches right up to autonomous multi-agent coordination across the open web.
+
+20
+00:02:20.861 --> 00:02:28.197
+Using all three altitudes together delivered measurable wins across our companion research studies: completion-gated
+
+21
+00:02:28.197 --> 00:02:35.217
+joule scoring stopped cheap-failing random baselines from gaming benchmarks across twenty thousand puzzle runs,
+
+22
+00:02:35.217 --> 00:02:41.857
+while independent commit gates blocked every single unsafe action across two hundred nine thousand tests.
+
+23
+00:02:42.417 --> 00:02:49.718
+Good science keeps unifying maps honest about their boundaries. Placing bit heat, strategic incentives, and
+
+24
+00:02:49.718 --> 00:02:56.951
+commit verification on one shared ledger exposes hidden blind spots fast, yet every individual cell across
+
+25
+00:02:56.951 --> 00:03:05.958
+all nine periodic stacks still requires its own reproducible hardware measurements, pre-registered controls, and falsifiable checks.

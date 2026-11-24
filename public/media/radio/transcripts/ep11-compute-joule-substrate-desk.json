@@ -1,0 +1,448 @@
+{
+  "id": "ep11-compute-joule-substrate-desk",
+  "number": 11,
+  "title": "OpenIE Compute Desk: Physical Shunts, Zero-Clock Wakeups, and Lookup Silicon",
+  "subtitle": "Mei, Nia, and Tariq separate measured_j from reported_j and est_j, put polling loops to sleep, and tour 250 MHz Beneš LUT6 pages",
+  "summary": "At the OpenIE Compute Desk (compute.openie.dev), Mei, Nia, and Tariq audit 258 hardware primitives across physical TI INA238/INA3221 rail shunts (measured_j), CPU/GPU counters (reported_j), and RTL power models (est_mW), alongside eventfd zero-clock wakeups, 20.07x pre-compiled Rust preludes, and 250 MHz Beneš-routed LUT6 FPGA fabrics.",
+  "topic_tags": [
+    "compute-desk",
+    "measured-j",
+    "eventfd",
+    "lut6-silicon"
+  ],
+  "panel": [
+    "Mei",
+    "Nia",
+    "Tariq"
+  ],
+  "panel_profiles": [
+    {
+      "name": "Mei",
+      "group": "host",
+      "title": "Tech & Physics Host · East/SE Asian English",
+      "voice_id": "7o3vIXfwm98KKuNfGmuY",
+      "fallback_voice": "en-SG-LunaNeural",
+      "color": "#38BDF8",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    {
+      "name": "Nia",
+      "group": "skeptic",
+      "title": "Empirical Auditor · African American English",
+      "voice_id": "GbDIo39THauInuigCmPM",
+      "fallback_voice": "en-US-JennyNeural",
+      "color": "#F97316",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    {
+      "name": "Tariq",
+      "group": "specialist",
+      "title": "Telemetry & Physics Specialist · Middle Eastern English",
+      "voice_id": "EzoxNTKsg4JNN7wxAgut",
+      "fallback_voice": "en-GB-ThomasNeural",
+      "color": "#C084FC",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    }
+  ],
+  "tts_engines": [
+    "eleven_v4"
+  ],
+  "published_utc": "2026-11-23T11:00:00Z",
+  "duration_sec": 253.7,
+  "duration_human": "4:14",
+  "byte_length": 4398465,
+  "audio_url": "/media/radio/episodes/ep11-compute-joule-substrate-desk.m4a",
+  "captions_url": "/media/radio/captions/ep11-compute-joule-substrate-desk.vtt",
+  "transcript_url": "/media/radio/transcripts/ep11-compute-joule-substrate-desk.json",
+  "turn_count": 15,
+  "card_count": 7,
+  "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+  "desk": "compute",
+  "desk_domain": "compute.openie.dev",
+  "studies": [
+    "rce-compile",
+    "satb-harness",
+    "lut-adapt",
+    "mei",
+    "jouleos"
+  ],
+  "hosts": [
+    "Mei",
+    "Nia",
+    "Tariq"
+  ],
+  "duration_s": 253.7,
+  "citations": [
+    {
+      "id": "ep11-compute-joule-substrate-desk-card-00-0",
+      "at_sec": 2.63,
+      "end_sec": 27.19,
+      "turn_index": 0,
+      "speaker": "Mei",
+      "kind": "ecosystem",
+      "badge": "DESK 03",
+      "title": "OpenIE Compute Desk (compute.openie.dev)",
+      "detail": "258 compute primitives across 33 families linking physical shunt rails, zero-clock OS sleep, LUT6 silicon, and JouleOS.",
+      "href": "https://compute.openie.dev"
+    },
+    {
+      "id": "ep11-compute-joule-substrate-desk-card-02-0",
+      "at_sec": 42.845,
+      "end_sec": 67.904,
+      "turn_index": 2,
+      "speaker": "Tariq",
+      "kind": "study",
+      "badge": "measured_j",
+      "title": "SATB 5-Host Telemetry & Attribution Audit",
+      "detail": "Separates physical TI INA238/INA3221 rail shunts (measured_j) from RAPL/IOReport/NVML counters (reported_j) and datasheet models (est_j).",
+      "href": "/papers/satb-harness/"
+    },
+    {
+      "id": "ep11-compute-joule-substrate-desk-card-07-0",
+      "at_sec": 122.522,
+      "end_sec": 140.551,
+      "turn_index": 7,
+      "speaker": "Tariq",
+      "kind": "receipt",
+      "badge": "reported_j",
+      "title": "Zero-Clock Kernel Wakeups (2.21x–6.22x Idle Savings)",
+      "detail": "Linux eventfd & Darwin kqueue eliminate 100% of empty polls across 5 hardware hosts vs 1 kHz polling.",
+      "href": "/papers/communication-avalanche/"
+    },
+    {
+      "id": "ep11-compute-joule-substrate-desk-card-09-0",
+      "at_sec": 150.22,
+      "end_sec": 170.026,
+      "turn_index": 9,
+      "speaker": "Tariq",
+      "kind": "receipt",
+      "badge": "20.07x CUT",
+      "title": "RCE Compile Shared Prelude (56.29 J -> 2.81 J)",
+      "detail": "Pre-compiling librce_rt.rlib cuts rustc -O3 core reported_j 20.07x and lowers payback N* 28.8x to 1,079 runs across 300 verified cells.",
+      "href": "/papers/rce-compile/"
+    },
+    {
+      "id": "ep11-compute-joule-substrate-desk-card-11-0",
+      "at_sec": 179.606,
+      "end_sec": 204.16,
+      "turn_index": 11,
+      "speaker": "Tariq",
+      "kind": "receipt",
+      "badge": "est_mW",
+      "title": "250 MHz CE-Gated Beneš LUT6 Fabric (15.59 est_mW)",
+      "detail": "4-stage, 13-level 81-RAMB36E2 Kria xck26 RTL achieves 320/320 Verilator parity, cutting idle power 4.10x and stream power 2.69x.",
+      "href": "/papers/lut-adapt/"
+    }
+  ],
+  "falsifiers": [
+    {
+      "id": "ep11-compute-joule-substrate-desk-card-04-0",
+      "at_sec": 79.348,
+      "end_sec": 105.907,
+      "turn_index": 4,
+      "speaker": "Tariq",
+      "kind": "falsifier",
+      "badge": "89.88% ERR",
+      "title": "Kepler CPU Splitting & Windows Tick Aliasing Falsified",
+      "detail": "CPU-ratio splitting errs 32.59%–89.88%; SATB Falsifier 6 automatically withholds noisy shared-host net attribution.",
+      "href": "/papers/satb-harness/"
+    },
+    {
+      "id": "ep11-compute-joule-substrate-desk-card-13-0",
+      "at_sec": 219.58,
+      "end_sec": 238.324,
+      "turn_index": 13,
+      "speaker": "Tariq",
+      "kind": "falsifier",
+      "badge": "measured_j: NULL",
+      "title": "Strict Pre-Bench Quarantine (LUT6 RTL & MEI-JCP-Tag-v1)",
+      "detail": "RTL power stays labeled est_mW and open KiCad/STEP tag hardware keeps board_metered=false until physical boards are shunt-probed.",
+      "href": "/products/mei/"
+    }
+  ],
+  "personas": {
+    "Mei": {
+      "name": "Mei",
+      "group": "host",
+      "title": "Tech & Physics Host · East/SE Asian English",
+      "voice_id": "7o3vIXfwm98KKuNfGmuY",
+      "fallback_voice": "en-SG-LunaNeural",
+      "color": "#38BDF8",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    "Nia": {
+      "name": "Nia",
+      "group": "skeptic",
+      "title": "Empirical Auditor · African American English",
+      "voice_id": "GbDIo39THauInuigCmPM",
+      "fallback_voice": "en-US-JennyNeural",
+      "color": "#F97316",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    "Tariq": {
+      "name": "Tariq",
+      "group": "specialist",
+      "title": "Telemetry & Physics Specialist · Middle Eastern English",
+      "voice_id": "EzoxNTKsg4JNN7wxAgut",
+      "fallback_voice": "en-GB-ThomasNeural",
+      "color": "#C084FC",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    }
+  },
+  "turns": [
+    {
+      "turn_index": 0,
+      "speaker": "Mei",
+      "role": "Tech & Physics Host · East/SE Asian English",
+      "group": "host",
+      "color": "#38BDF8",
+      "start_sec": 1.83,
+      "end_sec": 27.19,
+      "text": "Welcome to the OpenIE Compute Desk on OpenIE Research Radio! I'm Mei, joined by Nia and Tariq — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural voices and grounded strictly in verified Open Interface Engineering studies. Today we explore compute.openie.dev: physical shunts, zero-clock wakeups, and lookup silicon."
+    },
+    {
+      "turn_index": 1,
+      "speaker": "Nia",
+      "role": "Empirical Auditor · African American English",
+      "group": "skeptic",
+      "color": "#F97316",
+      "start_sec": 27.38,
+      "end_sec": 41.775,
+      "text": "Tariq, benchmarks constantly blur datasheet math, software counters, and physical wattmeters! Give us a household analogy for OpenIE's three strict columns: est_j, reported_j, and measured_j."
+    },
+    {
+      "turn_index": 2,
+      "speaker": "Tariq",
+      "role": "Telemetry & Physics Specialist · Middle Eastern English",
+      "group": "specialist",
+      "color": "#C084FC",
+      "start_sec": 42.045,
+      "end_sec": 67.904,
+      "text": "Think of tracking your home's hot water, Nia! Multiplying shower minutes by a brochure rate is an analytical estimate — est_j. Reading what a smart dishwasher's firmware thinks it used is software counter telemetry — reported_j, like RAPL, IOReport, or NVML. Clamping a calibrated brass meter directly onto the copper pipe is physical inline measurement — measured_j!"
+    },
+    {
+      "turn_index": 3,
+      "speaker": "Mei",
+      "role": "Tech & Physics Host · East/SE Asian English",
+      "group": "host",
+      "color": "#38BDF8",
+      "start_sec": 68.174,
+      "end_sec": 78.278,
+      "text": "Across two hundred fifty-eight primitives in thirty-three families, those three columns never mix. What did our five-host SATB audit uncover?"
+    },
+    {
+      "turn_index": 4,
+      "speaker": "Tariq",
+      "role": "Telemetry & Physics Specialist · Middle Eastern English",
+      "group": "specialist",
+      "color": "#C084FC",
+      "start_sec": 78.548,
+      "end_sec": 105.907,
+      "text": "On Jetson AGX Thor, physical Texas Instruments INA238 and INA3221 shunts measure nine hundred twenty-seven point three microjoules of real measured_j per attested edge. Meanwhile, cloud-standard Kepler CPU-ratio splitting erred by thirty-two point five nine up to eighty-nine point eight eight percent, and Windows 11 tick aliasing missed eighty-nine point eight eight percent of short bursts!"
+    },
+    {
+      "turn_index": 5,
+      "speaker": "Nia",
+      "role": "Empirical Auditor · African American English",
+      "group": "skeptic",
+      "color": "#F97316",
+      "start_sec": 106.097,
+      "end_sec": 113.733,
+      "text": "Almost ninety percent error! Now explain why idle agent loops waste watts even when zero tasks arrive."
+    },
+    {
+      "turn_index": 6,
+      "speaker": "Mei",
+      "role": "Tech & Physics Host · East/SE Asian English",
+      "group": "host",
+      "color": "#38BDF8",
+      "start_sec": 114.003,
+      "end_sec": 121.452,
+      "text": "Busy-wait polling is like sprinting to open your front door every second all night instead of waiting for the doorbell to ring!"
+    },
+    {
+      "turn_index": 7,
+      "speaker": "Tariq",
+      "role": "Telemetry & Physics Specialist · Middle Eastern English",
+      "group": "specialist",
+      "color": "#C084FC",
+      "start_sec": 121.722,
+      "end_sec": 140.551,
+      "text": "Switching from one-kilohertz polling to zero-clock kernel eventfd and kqueue wakeups eliminated one hundred percent of empty polls across all five hosts — cutting one-percent-duty energy by up to three point two two times on Linux sockets and six point two two times on Apple Silicon!"
+    },
+    {
+      "turn_index": 8,
+      "speaker": "Nia",
+      "role": "Empirical Auditor · African American English",
+      "group": "skeptic",
+      "color": "#F97316",
+      "start_sec": 140.741,
+      "end_sec": 149.15,
+      "text": "And in RCE Compile, you caught Rust builds burning fifty-six joules re-compiling the same runtime helpers on every kernel!"
+    },
+    {
+      "turn_index": 9,
+      "speaker": "Tariq",
+      "role": "Telemetry & Physics Specialist · Middle Eastern English",
+      "group": "specialist",
+      "color": "#C084FC",
+      "start_sec": 149.42,
+      "end_sec": 170.026,
+      "text": "Pre-compiling that shared runtime prelude once into librce_rt.rlib cut per-kernel rustc dash O3 core reported_j twenty point zero seven times from fifty-six point two nine joules down to two point eight one joules — dropping payback horizon N-star to one thousand seventy-nine runs!"
+    },
+    {
+      "turn_index": 10,
+      "speaker": "Mei",
+      "role": "Tech & Physics Host · East/SE Asian English",
+      "group": "host",
+      "color": "#38BDF8",
+      "start_sec": 170.296,
+      "end_sec": 178.536,
+      "text": "Now take us down to silicon.openie.dev and our two-hundred-fifty-megahertz Beneš-routed LUT6 fabric!"
+    },
+    {
+      "turn_index": 11,
+      "speaker": "Tariq",
+      "role": "Telemetry & Physics Specialist · Middle Eastern English",
+      "group": "specialist",
+      "color": "#C084FC",
+      "start_sec": 178.806,
+      "end_sec": 204.16,
+      "text": "Picture a thirteen-level railway switchyard routing six wires at a time into tiny sixty-four-bit truth-table flashcards across eighty-one block RAMs on a Xilinx Kria KV260 FPGA. Clock-enable gating passed three hundred twenty out of three hundred twenty Verilator checks at two hundred fifty megahertz, cutting modeled idle power four point one times down to fifteen point five nine estimated milliwatts!"
+    },
+    {
+      "turn_index": 12,
+      "speaker": "Nia",
+      "role": "Empirical Auditor · African American English",
+      "group": "skeptic",
+      "color": "#F97316",
+      "start_sec": 204.35,
+      "end_sec": 218.51,
+      "text": "Quick audit check: both that LUT6 RTL figure and our thirty-two-by-twenty-four-millimeter MEI-JCP sovereign PCB tag refuse premature measured_j claims, right?"
+    },
+    {
+      "turn_index": 13,
+      "speaker": "Tariq",
+      "role": "Telemetry & Physics Specialist · Middle Eastern English",
+      "group": "specialist",
+      "color": "#C084FC",
+      "start_sec": 218.78,
+      "end_sec": 238.324,
+      "text": "Strictly! LUT6 stays labeled est_mW, and MEI-JCP-Tag-v1 keeps board_metered false until fabricated boards sit under probes — all scheduled under energy grants by our three-hundred-ten-test JouleOS Rust spine."
+    },
+    {
+      "turn_index": 14,
+      "speaker": "Mei",
+      "role": "Tech & Physics Host · East/SE Asian English",
+      "group": "host",
+      "color": "#38BDF8",
+      "start_sec": 238.594,
+      "end_sec": 251.745,
+      "text": "Meter the rail honestly, sleep at zero clocks, and route settled logic into lookup silicon! Visit compute.openie.dev, and join Mateo, Marcus, and Rohan next at the OpenIE Synthesis Desk!"
+    }
+  ],
+  "cards": [
+    {
+      "id": "ep11-compute-joule-substrate-desk-card-00-0",
+      "at_sec": 2.63,
+      "end_sec": 27.19,
+      "turn_index": 0,
+      "speaker": "Mei",
+      "kind": "ecosystem",
+      "badge": "DESK 03",
+      "title": "OpenIE Compute Desk (compute.openie.dev)",
+      "detail": "258 compute primitives across 33 families linking physical shunt rails, zero-clock OS sleep, LUT6 silicon, and JouleOS.",
+      "href": "https://compute.openie.dev"
+    },
+    {
+      "id": "ep11-compute-joule-substrate-desk-card-02-0",
+      "at_sec": 42.845,
+      "end_sec": 67.904,
+      "turn_index": 2,
+      "speaker": "Tariq",
+      "kind": "study",
+      "badge": "measured_j",
+      "title": "SATB 5-Host Telemetry & Attribution Audit",
+      "detail": "Separates physical TI INA238/INA3221 rail shunts (measured_j) from RAPL/IOReport/NVML counters (reported_j) and datasheet models (est_j).",
+      "href": "/papers/satb-harness/"
+    },
+    {
+      "id": "ep11-compute-joule-substrate-desk-card-04-0",
+      "at_sec": 79.348,
+      "end_sec": 105.907,
+      "turn_index": 4,
+      "speaker": "Tariq",
+      "kind": "falsifier",
+      "badge": "89.88% ERR",
+      "title": "Kepler CPU Splitting & Windows Tick Aliasing Falsified",
+      "detail": "CPU-ratio splitting errs 32.59%–89.88%; SATB Falsifier 6 automatically withholds noisy shared-host net attribution.",
+      "href": "/papers/satb-harness/"
+    },
+    {
+      "id": "ep11-compute-joule-substrate-desk-card-07-0",
+      "at_sec": 122.522,
+      "end_sec": 140.551,
+      "turn_index": 7,
+      "speaker": "Tariq",
+      "kind": "receipt",
+      "badge": "reported_j",
+      "title": "Zero-Clock Kernel Wakeups (2.21x–6.22x Idle Savings)",
+      "detail": "Linux eventfd & Darwin kqueue eliminate 100% of empty polls across 5 hardware hosts vs 1 kHz polling.",
+      "href": "/papers/communication-avalanche/"
+    },
+    {
+      "id": "ep11-compute-joule-substrate-desk-card-09-0",
+      "at_sec": 150.22,
+      "end_sec": 170.026,
+      "turn_index": 9,
+      "speaker": "Tariq",
+      "kind": "receipt",
+      "badge": "20.07x CUT",
+      "title": "RCE Compile Shared Prelude (56.29 J -> 2.81 J)",
+      "detail": "Pre-compiling librce_rt.rlib cuts rustc -O3 core reported_j 20.07x and lowers payback N* 28.8x to 1,079 runs across 300 verified cells.",
+      "href": "/papers/rce-compile/"
+    },
+    {
+      "id": "ep11-compute-joule-substrate-desk-card-11-0",
+      "at_sec": 179.606,
+      "end_sec": 204.16,
+      "turn_index": 11,
+      "speaker": "Tariq",
+      "kind": "receipt",
+      "badge": "est_mW",
+      "title": "250 MHz CE-Gated Beneš LUT6 Fabric (15.59 est_mW)",
+      "detail": "4-stage, 13-level 81-RAMB36E2 Kria xck26 RTL achieves 320/320 Verilator parity, cutting idle power 4.10x and stream power 2.69x.",
+      "href": "/papers/lut-adapt/"
+    },
+    {
+      "id": "ep11-compute-joule-substrate-desk-card-13-0",
+      "at_sec": 219.58,
+      "end_sec": 238.324,
+      "turn_index": 13,
+      "speaker": "Tariq",
+      "kind": "falsifier",
+      "badge": "measured_j: NULL",
+      "title": "Strict Pre-Bench Quarantine (LUT6 RTL & MEI-JCP-Tag-v1)",
+      "detail": "RTL power stays labeled est_mW and open KiCad/STEP tag hardware keeps board_metered=false until physical boards are shunt-probed.",
+      "href": "/products/mei/"
+    }
+  ]
+}

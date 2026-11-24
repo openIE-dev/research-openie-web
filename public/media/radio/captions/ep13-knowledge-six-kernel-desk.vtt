@@ -1,0 +1,63 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:01.830 --> 00:00:29.476
+<v Priya>Welcome to the OpenIE Knowledge Desk on OpenIE Research Radio! I'm Priya, joined by Sean and Claire — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural voices and grounded strictly in verified Open Interface Engineering studies. Today we open knowledge.openie.dev: seven-axis time claims and the Lean 4.36.0 six-kernel audit.
+
+2
+00:00:29.746 --> 00:00:48.522
+<v Priya>Picture how internet rumor laundering works: one blog invents a number, three sites quote the blog, and a chatbot cites all three as consensus! Or imagine a medical chart overwriting Tuesday's blood draw on Friday without separating when the lab happened from when the edit happened.
+
+3
+00:00:48.712 --> 00:00:59.135
+<v Sean>Bare English sentences strip away clocks, scope, and primary sources! Claire, how does knowledge.openie.dev make citation laundering impossible?
+
+4
+00:00:59.405 --> 00:01:21.614
+<v Claire>Every claim carries seven explicit coordinates, Sean: Valid Time in reality, Transaction Time in the ledger, Reference Time for the horizon frame, Granularity, Scope, Certainty — T, E, M, or S — and Anti-Laundering Provenance collapsing circular citations back to primary cryptographic digests.
+
+5
+00:01:21.804 --> 00:01:31.244
+<v Sean>Now test badge T — kernel-checked proofs! Why didn't we stop at one Lean build instead of locking six rival proof checkers inside Linux bubblewrap?
+
+6
+00:01:31.514 --> 00:02:03.198
+<v Claire>Imagine certifying a jet wing with six independent inspectors from different countries inside a sealed room with no internet! In 2026, real Lean 4 soundness bugs — CVE-2026-72844 projection confusion, CVE-2026-72711 in add_opaque, binary cache replay, and compiler-trust ofReduceBool — proved why no single binary should grade its own homework.
+
+7
+00:02:03.468 --> 00:02:08.775
+<v Priya>How many OpenIE theorem constants pass that sealed bubblewrap audit?
+
+8
+00:02:09.045 --> 00:02:33.093
+<v Claire>Five thousand four hundred ninety-six theorem constants — five thousand three hundred ninety-three in RCE, forty-five in Communication Avalanche, thirty-one in Time as an Index, and twenty-seven in Downward LUT6 Compilation — with zero sorry, zero custom axioms, zero opaque, and zero ofReduceBool!
+
+9
+00:02:33.283 --> 00:02:36.290
+<v Sean>Name all six independent checkers at the table!
+
+10
+00:02:36.560 --> 00:03:02.086
+<v Claire>Joachim Breitner's minimal con-leche proved consistent in ZFC set theory; con-ron, its Aeneas-verified Rust refinement; Mario Carneiro's Lean-in-Lean checker lean4lean; nanoda in standalone Rust blocking sorryAx; fresh-environment leanchecker dash-dash paranoid; and the post-CVE Lean 4.36.0 C-plus-plus kernel!
+
+11
+00:03:02.356 --> 00:03:09.573
+<v Priya>Connect that Reference-Time coordinate to horizon.openie.dev and Time as an Index!
+
+12
+00:03:09.843 --> 00:03:29.232
+<v Claire>Those six-kernel proofs show why only Shannon one-time pads survive a mathematical PSPACE time loop, while in known physics every fast lookup is Hellman precomputation paid ahead of time — dropping from thirty-four percent reuse to zero percent the instant a fresh query-time salt arrives!
+
+13
+00:03:29.422 --> 00:03:36.409
+<v Sean>And how did anti-laundering provenance treat unproved RCE draft clauses and famous time-travel stories?
+
+14
+00:03:36.679 --> 00:03:59.822
+<v Claire>Twelve unproved Appendix F statements in RCE Draft 0.9 stay strictly segregated from proved theorems, and across eighty-one audited time anomalies, Rudolph Fentz traced to 1951 fiction and superluminal neutrinos to a seventy-three-nanosecond loose cable — leaving zero unexplained future signals!
+
+15
+00:04:00.092 --> 00:04:14.907
+<v Priya>Stamp every claim with its three clocks and check proofs across six independent kernels! Visit knowledge.openie.dev, and join Cecily, Marcus, and Kwame next at the OpenIE Database and Data Desk!

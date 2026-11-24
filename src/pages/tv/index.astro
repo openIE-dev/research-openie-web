@@ -12,7 +12,7 @@ const initialStudy = studies.find((s) => s.id === 'communication-avalanche') ?? 
 const initialTier = initialStudy.tiers['90s'] ?? Object.values(initialStudy.tiers)[0];
 
 const categories = [
-  'All 21',
+  'All 27',
   'Foundations & Thermodynamics',
   'Reality Code Engine',
   'Null & Benchmarks',
@@ -40,7 +40,7 @@ const isoDuration = (sec: number) => `PT${Math.max(1, Math.round(sec))}S`;
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'OpenIE Research TV — 84 Plain-Language Research Films Across 21 Studies',
+  name: 'OpenIE Research TV — 108 Plain-Language Research & Ecosystem Films Across 27 Topics',
   description: tvCatalog.studio_disclosure,
   numberOfItems: tvCatalog.film_count,
   itemListElement: studies.flatMap((s, sIdx) =>
@@ -72,8 +72,8 @@ const jsonLd = {
 ---
 
 <Layout
-  title="OpenIE Research TV — Plain-Language Research Films (15s to 3m)"
-  description="Watch all 21 OpenIE research studies across four plain-language depth slots (15s Three Plain Points, 45s Everyday Example, 90s Full Briefing, and 3-Minute 3D Deep Cut)—starting with the three layperson takeaways and free of unexplained acronyms."
+  title="OpenIE Research TV — 108 Plain-Language Research Films (15s to 3m)"
+  description="Watch all 27 OpenIE research studies and *.openie.dev channel openers across four plain-language depth slots (15s Three Plain Points, 45s Everyday Example, 90s Full Briefing, and 3-Minute 3D Deep Cut)—starting with the three layperson takeaways and free of unexplained acronyms."
 >
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
@@ -85,10 +85,10 @@ const jsonLd = {
       <div class="flex flex-wrap items-center gap-3 mb-3">
         <span class="section-label">OpenIE Broadcast Studio · /tv/</span>
         <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-amber/15 text-brand-amber border border-brand-amber/30">
-          21 Studies × 4 Depth Slots (15s · 45s · 90s · 3m) = 84 Films
+          27 Topics × 4 Depth Slots (15s · 45s · 90s · 3m) = 108 Films
         </span>
         <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/30">
-          Plain Words First · Zero Acronym Soup · 21 Global Voices
+          Plain Words First · Zero Acronym Soup · Global Voices
         </span>
         <a href="#ecosystem-channels" class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-white/5 text-brand-light border border-brand-border no-underline hover:border-brand-amber hover:text-brand-amber transition-colors">
           6 *.openie.dev Channels ↓
@@ -292,17 +292,17 @@ const jsonLd = {
         <input
           id="tv-search-input"
           type="search"
-          placeholder="Search 21 studies, 3-bullet summaries & transcripts..."
+          placeholder="Search 27 topics, 3-bullet summaries & transcripts..."
           aria-label="Search studies, plain-word bullets, and film transcripts"
           class="font-body text-sm px-3.5 py-2 rounded-lg bg-white/5 border border-brand-border text-brand-white placeholder:text-brand-gray focus:border-brand-amber w-full md:w-80"
         />
       </div>
     </div>
     <div id="tv-visible-count" class="font-mono text-xs text-brand-gray mb-5">
-      21 / 21 studies shown (84 films)
+      27 / 27 studies shown (108 films)
     </div>
 
-    <!-- 21-Study × 4-Tier Visual Grid (Each Card Leads With Its 3 Plain-Words Bullets) -->
+    <!-- 27-Topic × 4-Tier Visual Grid (Each Card Leads With Its 3 Plain-Words Bullets) -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {studies.map((s) => (
         <article data-study-card={s.id} class="glass-card overflow-hidden flex flex-col justify-between transition-all">

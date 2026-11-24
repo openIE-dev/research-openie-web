@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""OpenIE Research Radio — 8-Episode Global Ensemble Parallel Renderer & Feed Builder."""
+"""OpenIE Research Radio — 14-Episode Global Ensemble Parallel Renderer & Feed Builder."""
 
 from __future__ import annotations
 
@@ -14,6 +14,14 @@ from episodes_ep1_ep2 import EPISODE_01, EPISODE_02
 from episodes_ep3_ep4 import EPISODE_03, EPISODE_04
 from episodes_ep5_ep6 import EPISODE_05, EPISODE_06
 from episodes_ep7_ep8 import EPISODE_07, EPISODE_08
+from episodes_ep9_ep14 import (
+    EPISODE_09,
+    EPISODE_10,
+    EPISODE_11,
+    EPISODE_12,
+    EPISODE_13,
+    EPISODE_14,
+)
 from personas import AI_DISCLOSURE, PERSONAS
 from studio_synth import fmt_human_dur, load_radio_env, render_episode
 
@@ -26,14 +34,45 @@ ALL_EPISODES: list[dict[str, Any]] = [
     EPISODE_06,
     EPISODE_07,
     EPISODE_08,
+    EPISODE_09,
+    EPISODE_10,
+    EPISODE_11,
+    EPISODE_12,
+    EPISODE_13,
+    EPISODE_14,
 ]
 
 
 def _worker(args: tuple[dict[str, Any], str, str, str]) -> dict[str, Any]:
     ep_spec, media_root_s, tmp_dir_s, cache_dir_s = args
-    meta = render_episode(ep_spec, Path(media_root_s), Path(tmp_dir_s), Path(cache_dir_s))
-    full_doc = json.loads((Path(media_root_s) / "transcripts" / f"{ep_spec['id']}.json").read_text(encoding="utf-8"))
-    return {**meta, "turns": full_doc["turns"], "cards": full_doc["cards"]}
+    media_root = Path(media_root_s)
+    meta = render_episode(ep_spec, media_root, Path(tmp_dir_s), Path(cache_dir_s))
+    transcript_path = media_root / "transcripts" / f"{ep_spec['id']}.json"
+    full_doc = json.loads(transcript_path.read_text(encoding="utf-8"))
+
+    cards = full_doc.get("cards", [])
+    extra: dict[str, Any] = {}
+    if "desk" in ep_spec:
+        extra["desk"] = ep_spec["desk"]
+    if "desk_domain" in ep_spec:
+        extra["desk_domain"] = ep_spec["desk_domain"]
+    if "studies" in ep_spec:
+        extra["studies"] = ep_spec["studies"]
+    if extra:
+        extra["hosts"] = meta["panel"]
+        extra["duration_s"] = meta["duration_sec"]
+        extra["citations"] = [c for c in cards if c.get("kind") != "falsifier"]
+        extra["falsifiers"] = [c for c in cards if c.get("kind") == "falsifier"]
+        enriched_transcript = {
+            **meta,
+            **extra,
+            "personas": full_doc.get("personas", {nm: PERSONAS[nm] for nm in meta["panel"]}),
+            "turns": full_doc["turns"],
+            "cards": cards,
+        }
+        transcript_path.write_text(json.dumps(enriched_transcript, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    return {**meta, **extra, "turns": full_doc["turns"], "cards": cards}
 
 
 def build_launch_pack(state_dir: Path, workers: int = 3) -> dict[str, Any]:

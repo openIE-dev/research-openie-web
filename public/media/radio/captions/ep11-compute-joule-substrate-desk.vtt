@@ -1,0 +1,63 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:01.830 --> 00:00:27.190
+<v Mei>Welcome to the OpenIE Compute Desk on OpenIE Research Radio! I'm Mei, joined by Nia and Tariq — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural voices and grounded strictly in verified Open Interface Engineering studies. Today we explore compute.openie.dev: physical shunts, zero-clock wakeups, and lookup silicon.
+
+2
+00:00:27.380 --> 00:00:41.775
+<v Nia>Tariq, benchmarks constantly blur datasheet math, software counters, and physical wattmeters! Give us a household analogy for OpenIE's three strict columns: est_j, reported_j, and measured_j.
+
+3
+00:00:42.045 --> 00:01:07.904
+<v Tariq>Think of tracking your home's hot water, Nia! Multiplying shower minutes by a brochure rate is an analytical estimate — est_j. Reading what a smart dishwasher's firmware thinks it used is software counter telemetry — reported_j, like RAPL, IOReport, or NVML. Clamping a calibrated brass meter directly onto the copper pipe is physical inline measurement — measured_j!
+
+4
+00:01:08.174 --> 00:01:18.278
+<v Mei>Across two hundred fifty-eight primitives in thirty-three families, those three columns never mix. What did our five-host SATB audit uncover?
+
+5
+00:01:18.548 --> 00:01:45.907
+<v Tariq>On Jetson AGX Thor, physical Texas Instruments INA238 and INA3221 shunts measure nine hundred twenty-seven point three microjoules of real measured_j per attested edge. Meanwhile, cloud-standard Kepler CPU-ratio splitting erred by thirty-two point five nine up to eighty-nine point eight eight percent, and Windows 11 tick aliasing missed eighty-nine point eight eight percent of short bursts!
+
+6
+00:01:46.097 --> 00:01:53.733
+<v Nia>Almost ninety percent error! Now explain why idle agent loops waste watts even when zero tasks arrive.
+
+7
+00:01:54.003 --> 00:02:01.452
+<v Mei>Busy-wait polling is like sprinting to open your front door every second all night instead of waiting for the doorbell to ring!
+
+8
+00:02:01.722 --> 00:02:20.551
+<v Tariq>Switching from one-kilohertz polling to zero-clock kernel eventfd and kqueue wakeups eliminated one hundred percent of empty polls across all five hosts — cutting one-percent-duty energy by up to three point two two times on Linux sockets and six point two two times on Apple Silicon!
+
+9
+00:02:20.741 --> 00:02:29.150
+<v Nia>And in RCE Compile, you caught Rust builds burning fifty-six joules re-compiling the same runtime helpers on every kernel!
+
+10
+00:02:29.420 --> 00:02:50.026
+<v Tariq>Pre-compiling that shared runtime prelude once into librce_rt.rlib cut per-kernel rustc dash O3 core reported_j twenty point zero seven times from fifty-six point two nine joules down to two point eight one joules — dropping payback horizon N-star to one thousand seventy-nine runs!
+
+11
+00:02:50.296 --> 00:02:58.536
+<v Mei>Now take us down to silicon.openie.dev and our two-hundred-fifty-megahertz Beneš-routed LUT6 fabric!
+
+12
+00:02:58.806 --> 00:03:24.160
+<v Tariq>Picture a thirteen-level railway switchyard routing six wires at a time into tiny sixty-four-bit truth-table flashcards across eighty-one block RAMs on a Xilinx Kria KV260 FPGA. Clock-enable gating passed three hundred twenty out of three hundred twenty Verilator checks at two hundred fifty megahertz, cutting modeled idle power four point one times down to fifteen point five nine estimated milliwatts!
+
+13
+00:03:24.350 --> 00:03:38.510
+<v Nia>Quick audit check: both that LUT6 RTL figure and our thirty-two-by-twenty-four-millimeter MEI-JCP sovereign PCB tag refuse premature measured_j claims, right?
+
+14
+00:03:38.780 --> 00:03:58.324
+<v Tariq>Strictly! LUT6 stays labeled est_mW, and MEI-JCP-Tag-v1 keeps board_metered false until fabricated boards sit under probes — all scheduled under energy grants by our three-hundred-ten-test JouleOS Rust spine.
+
+15
+00:03:58.594 --> 00:04:11.745
+<v Mei>Meter the rail honestly, sleep at zero clocks, and route settled logic into lookup silicon! Visit compute.openie.dev, and join Mateo, Marcus, and Rohan next at the OpenIE Synthesis Desk!

@@ -1,0 +1,30 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — eco-compute (45s) Narrator Nylo
+
+1
+00:00:00.280 --> 00:00:07.793
+First, every calculation is a physical event where flipping silicon switches spends real energy in joules.
+
+2
+00:00:08.233 --> 00:00:15.890
+Second, honest hardware audits separate wire current sensors from chip counters, while sleeping between real jobs.
+
+3
+00:00:16.330 --> 00:00:24.917
+Third, single-cycle Boolean lookup circuits replace heavy decimal arithmetic on repeated checks with tiny hardware steps.
+
+4
+00:00:25.357 --> 00:00:32.482
+Leaving processor clocks spinning between requests is like burning stadium floodlights in an empty park all night,
+
+5
+00:00:32.482 --> 00:00:35.670
+then firing a jet engine just to check a door lock.
+
+6
+00:00:36.110 --> 00:00:42.704
+Sleeping quietly until real events arrive, evaluating rules in one-cycle lookup circuits,
+
+7
+00:00:42.704 --> 00:00:47.593
+and metering wire current directly turns code into honest physics.

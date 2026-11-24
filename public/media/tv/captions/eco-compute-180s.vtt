@@ -1,0 +1,98 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — eco-compute (180s) Narrator Nylo
+
+1
+00:00:00.360 --> 00:00:07.873
+First, every calculation is a physical event where flipping silicon switches spends real energy in joules.
+
+2
+00:00:08.433 --> 00:00:16.090
+Second, honest hardware audits separate wire current sensors from chip counters, while sleeping between real jobs.
+
+3
+00:00:16.650 --> 00:00:25.237
+Third, single-cycle Boolean lookup circuits replace heavy decimal arithmetic on repeated checks with tiny hardware steps.
+
+4
+00:00:25.797 --> 00:00:32.393
+High-level software treats loops, text parsing, and wide decimal matrix math as if digital symbols
+
+5
+00:00:32.393 --> 00:00:39.258
+floated completely free of physical matter. Down inside the silicon package, every needless clock tick
+
+6
+00:00:39.258 --> 00:00:46.931
+and wide floating-point multiplier charges and drains millions of microscopic capacitors straight into waste heat.
+
+7
+00:00:47.491 --> 00:00:54.255
+Imagine auditing a factory's monthly electricity bill using only rough runtime timers attached to half the
+
+8
+00:00:54.255 --> 00:01:01.785
+motors. Built-in software energy counters inside laptops and servers smooth over rapid spikes and miss sub-millisecond
+
+9
+00:01:01.785 --> 00:01:09.697
+tasks completely, whereas inline current-sense resistors across board power rails measure real voltage and current directly.
+
+10
+00:01:10.257 --> 00:01:17.356
+Our compute catalog on compute dot openie dot dev charts two hundred fifty-eight hardware and operating-system
+
+11
+00:01:17.356 --> 00:01:26.520
+primitives spanning room-temperature logic, reversible circuits, and cold-temperature physics bounds. Systems rest at zero active clock cycles
+
+12
+00:01:26.520 --> 00:01:34.070
+between events, wake in microseconds on real inputs, and route recurring checks into six-input Boolean lookup tables.
+
+13
+00:01:34.630 --> 00:01:41.411
+Total electrical energy per completed job combines standing baseline power leaked while waiting plus dynamic
+
+14
+00:01:41.411 --> 00:01:47.878
+switching joules paid on each active clock cycle. Event-driven sleep eliminates idle clock spin between
+
+15
+00:01:47.878 --> 00:01:55.852
+arrivals, while replacing wide floating-point arithmetic with direct truth-table lookups collapses switching cost per decision.
+
+16
+00:01:56.412 --> 00:02:03.705
+This three-dimensional hardware cutaway shows the dark metallic carrier board, glowing amber supply rails monitored by
+
+17
+00:02:03.705 --> 00:02:09.886
+inline current shunts, and a dense checkerboard of cyan and emerald Boolean lookup tiles ringed by a
+
+18
+00:02:09.886 --> 00:02:17.055
+hardware enable latch that clocks only active memory pages at two hundred fifty megahertz with deterministic timing.
+
+19
+00:02:17.615 --> 00:02:26.809
+Across controlled hardware experiments, compiling interpreted rule checks into deterministic native binaries reduced measured energy twenty point
+
+20
+00:02:26.809 --> 00:02:34.671
+zero seven times without changing a single output bit. Direct circuit-board power sensors recorded nine hundred twenty-seven
+
+21
+00:02:34.671 --> 00:02:43.295
+point three microjoules on edge inference rails and eleven thousand four hundred twenty-eight picojoules per hardware safety-gate cycle.
+
+22
+00:02:43.855 --> 00:02:50.281
+Rigorous hardware science never blurs measured watts with modeled estimates on the same chart. Board-rail
+
+23
+00:02:50.281 --> 00:02:57.564
+current readings come straight from physical inline sensors, whereas our fifteen point six milliwatt clock-gated lookup
+
+24
+00:02:57.564 --> 00:03:04.541
+array figure is explicitly labeled as a post-synthesis timing and power model awaiting custom silicon fabrication.

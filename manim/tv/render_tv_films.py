@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-OpenIE Research TV v3.0 — 84-Film Master Render & Verification Orchestrator.
-Renders 21 studies × 4 plain-language telescoping depth tiers (15s, 45s, 90s, 180s) = 84 MP4 films,
-84 WebVTT caption tracks, 21 high-DPI 1280x720 JPG posters, and tv-catalog.json.
+OpenIE Research TV v3.1 — 108-Film Master Render & Verification Orchestrator.
+Renders 27 studies (21 research papers + 6 flagship *.openie.dev channel openers) × 4 plain-language
+telescoping depth tiers (15s, 45s, 90s, 180s) = 108 MP4 films, 108 WebVTT caption tracks,
+27 high-DPI 1280x720 JPG posters, and tv-catalog.json.
 """
 import argparse
 import concurrent.futures as cf
@@ -17,8 +18,9 @@ import cairo
 from studies_part1 import STUDIES_PART1
 from studies_part2 import STUDIES_PART2
 from studies_part3 import STUDIES_PART3
+from ecosystem_studies import ECOSYSTEM_STUDIES
 from voices_and_labs import TUTORIAL_LAB_MAP, VOICE_ENSEMBLE
-from audio_studio import FPS, build_film_audio_and_vtt
+from audio_studio import FPS, TIER_BOUNDS, build_film_audio_and_vtt
 from visual_scenes import W, H, draw_chrome, load_cutaway_surfaces, render_poster_jpg, render_scene_body
 
 TIERS = ["15s", "45s", "90s", "180s"]
@@ -119,6 +121,9 @@ def study_video_job(task):
         if "video" not in streams or "audio" not in streams:
             raise RuntimeError(f"Missing stream in {mp4_path}: {streams}")
         dur_actual = round(float(pdata["format"]["duration"]), 2)
+        min_b, max_b = TIER_BOUNDS[tier][0], TIER_BOUNDS[tier][1]
+        if not (min_b - 0.15 <= dur_actual <= max_b + 0.15):
+            raise RuntimeError(f"Duration out of bounds for {sid}-{tier}: {dur_actual}s (expected {min_b}..{max_b}s)")
         fbytes = os.path.getsize(mp4_path)
         h = hashlib.sha256()
         with open(mp4_path, "rb") as bf:
@@ -145,13 +150,20 @@ def main():
     ap.add_argument("--tts-workers", type=int, default=5)
     ap.add_argument("--video-workers", type=int, default=12)
     ap.add_argument("--tiers", default="15s,45s,90s,180s")
-    ap.add_argument("--studies", default="", help="Optional comma-separated subset of study IDs to re-render")
+    ap.add_argument("--studies", default="", help="Optional comma-separated subset of study IDs to render")
+    ap.add_argument("--only-ids", default="", help="Optional comma-separated subset of study IDs to render (alias for --studies)")
+    ap.add_argument("--require-elevenlabs", action="store_true", help="Fail if ELEVENLABS_API_KEY is unset or fallback is triggered")
     args = ap.parse_args()
     active_tiers = [t.strip() for t in args.tiers.split(",") if t.strip() in TIERS]
-    only_studies = {s.strip() for s in args.studies.split(",") if s.strip()}
+    raw_subset = ",".join(x for x in (args.studies, args.only_ids) if x)
+    only_studies = {s.strip() for s in raw_subset.split(",") if s.strip()}
+
+    has_eleven = bool(os.environ.get("ELEVENLABS_API_KEY", "").strip())
+    if args.require_elevenlabs and not has_eleven:
+        raise RuntimeError("--require-elevenlabs set, but ELEVENLABS_API_KEY is empty in environment!")
 
     studies = []
-    for raw_st in STUDIES_PART1 + STUDIES_PART2 + STUDIES_PART3:
+    for raw_st in STUDIES_PART1 + STUDIES_PART2 + STUDIES_PART3 + ECOSYSTEM_STUDIES:
         st = dict(raw_st)
         sid = st["id"]
         v_tup = VOICE_ENSEMBLE[sid]
@@ -159,8 +171,11 @@ def main():
         st["narrator_profile"] = v_tup[3]
         st["tutorial_lab_id"] = TUTORIAL_LAB_MAP[sid]
         studies.append(st)
-    assert len(studies) == 21, f"Expected 21 studies, got {len(studies)}"
+    assert len(studies) == 27, f"Expected 27 studies, got {len(studies)}"
     target_studies = [st for st in studies if not only_studies or st["id"] in only_studies]
+    if only_studies and len(target_studies) != len(only_studies):
+        found_ids = {st["id"] for st in target_studies}
+        raise ValueError(f"Unknown study IDs requested: {sorted(only_studies - found_ids)}")
 
     existing_by_id = {}
     if os.path.exists(args.catalog_out) and (set(active_tiers) != set(TIERS) or bool(only_studies)):
@@ -176,9 +191,9 @@ def main():
     for d in (cache_dir, tmp_tts, wav_dir, films_dir, vtt_dir, posters_dir, os.path.dirname(args.catalog_out)):
         os.makedirs(d, exist_ok=True)
 
-    engine_label = "eleven_v4" if os.environ.get("ELEVENLABS_API_KEY", "").strip() else "edge-tts-neural"
+    engine_label = "eleven_v4" if has_eleven else "edge-tts-neural"
     t0 = time.time()
-    print(f"[1/3] Synthesizing {len(target_studies)}-presenter {engine_label} voiceovers & WebVTT ({args.tts_workers} workers)...", flush=True)
+    print(f"[1/3] Synthesizing {len(target_studies)}-study {engine_label} voiceovers & WebVTT ({args.tts_workers} workers)...", flush=True)
     tts_tasks = []
     for st in target_studies:
         sid = st["id"]
@@ -191,6 +206,11 @@ def main():
     with cf.ProcessPoolExecutor(max_workers=args.tts_workers) as ex:
         for sid, tier, n_frames, dur, wins, tr in ex.map(audio_job, tts_tasks):
             audio_meta[sid][tier] = (n_frames, dur, wins, tr)
+    if args.require_elevenlabs:
+        edge_files = [fn for fn in os.listdir(cache_dir) if fn.startswith("edge_")]
+        el_files = [fn for fn in os.listdir(cache_dir) if fn.startswith("el_")]
+        if edge_files or not el_files:
+            raise RuntimeError(f"Expected pure ElevenLabs eleven_v4 cache, found el={len(el_files)}, edge={len(edge_files)}")
     print(f"      Audio + VTT tracks ready in {time.time() - t0:.1f}s", flush=True)
 
     t1 = time.time()
@@ -211,6 +231,9 @@ def main():
     catalog_studies = []
     for st in studies:
         sid = st["id"]
+        if sid not in rendered_info and sid in existing_by_id:
+            catalog_studies.append(existing_by_id[sid])
+            continue
         tiers_obj = {}
         for tier in TIERS:
             if sid in rendered_info and tier in rendered_info[sid]:
@@ -252,20 +275,20 @@ def main():
 
     catalog = {
         "title": "OpenIE Research TV Catalog",
-        "version": "3.0.0",
-        "study_count": 21,
-        "film_count": 84,
+        "version": "3.1.0",
+        "study_count": len(catalog_studies),
+        "film_count": len(catalog_studies) * len(TIERS),
         "tiers": TIERS,
-        "tts_model": "ElevenLabs eleven_v4 (21-Presenter Global Studio Ensemble; edge-tts neural fallback)",
+        "tts_model": "ElevenLabs eleven_v4 (21-Presenter Global Studio Ensemble across 27 Studies; edge-tts neural fallback)",
         "categories": CATEGORIES,
-        "studio_disclosure": "Every study opens with its three plain-language takeaways—free of unexplained acronyms—and expands across four depth slots (15s, 45s, 90s, and 3 minutes) narrated by a 21-presenter global studio voice ensemble via ElevenLabs eleven_v4.",
+        "studio_disclosure": "Every study and flagship *.openie.dev channel opener begins with its three plain-language takeaways—free of unexplained acronyms—and expands across four depth slots (15s, 45s, 90s, and 3 minutes) narrated by a global studio voice ensemble via ElevenLabs eleven_v4.",
         "metering_contract": "Every energy number states in plain words how it was obtained: direct circuit-board power sensors (in Metered Commit Gates, Satiation Benchmark Harness, and The Communication Tool Avalanche), built-in computer chip counters, or mathematical physics bounds.",
         "studies": catalog_studies,
     }
     with open(args.catalog_out, "w", encoding="utf-8") as cf_out:
         json.dump(catalog, cf_out, indent=2, ensure_ascii=False)
         cf_out.write("\n")
-    print(f"[DONE] Total elapsed: {time.time() - t0:.1f}s -> {args.catalog_out}", flush=True)
+    print(f"[DONE] Total elapsed: {time.time() - t0:.1f}s -> {args.catalog_out} ({len(catalog_studies)} studies, {len(catalog_studies) * len(TIERS)} films)", flush=True)
 
 
 if __name__ == "__main__":

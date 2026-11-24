@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:01.830 --> 00:00:27.027
+<v Elena>Welcome to the OpenIE Stack Desk on OpenIE Research Radio! I'm Elena, joined by Liam and senior fellow Arthur — three AI-synthesized OpenIE research personas voiced with ElevenLabs studio neural speech and grounded strictly in verified Open Interface Engineering studies. Today we open stack.openie.dev: Shannon, von Neumann, and Hurwicz on one substrate.
+
+2
+00:00:27.217 --> 00:00:40.686
+<v Liam>Arthur, in universities, physicists study Shannon and Landauer while economists study von Neumann and Hurwicz across campus! Give us an everyday picture of why they're actually three altitudes of the same machine.
+
+3
+00:00:40.956 --> 00:01:01.091
+<v Arthur>Picture a busy city suspension bridge, Liam! Down in the steel cables, engineers calculate load limits and dissipation — that is Claude Shannon and Rolf Landauer, counting bits and the two point eight seven one times ten to the minus twenty-one joule floor paid whenever a bit is irreversibly erased at room temperature.
+
+4
+00:01:01.361 --> 00:01:06.619
+<v Elena>Now move up onto the roadway deck, where thousands of rush-hour drivers are choosing lanes!
+
+5
+00:01:06.889 --> 00:01:28.385
+<v Arthur>On the deck, goal-holding agents react strategically to each other — that is John von Neumann and John Nash's game theory. And at the entrance plaza sits the tollbooth and axle scale: Leonid Hurwicz, Eric Maskin, and Roger Myerson's mechanism design, shaping the admission rules so honesty and safety beat bluffing!
+
+6
+00:01:28.575 --> 00:01:38.805
+<v Liam>Wait — that tollbooth explains why unverified chat models hallucinate! If guessing confidently pays the same reward as verifying a patch, bluffing wins!
+
+7
+00:01:39.075 --> 00:02:03.074
+<v Arthur>Precisely! Metered Commit Gates place a physical Hurwicz mechanism right before state mutation: nothing irreversible commits until a deterministic check passes. On a Xilinx Kria KV260 module metered via an inline INA260 shunt, one gate cycle costs just eleven thousand four hundred twenty-eight picojoules of board-metered energy!
+
+8
+00:02:03.344 --> 00:02:09.887
+<v Elena>How does stack.openie.dev map every computing workload across those three altitudes?
+
+9
+00:02:10.157 --> 00:02:29.678
+<v Arthur>Every computational act sums primitive counts times hardware joule weights across nine Periodic Stacks, partitioned into three zones: Zone One for deterministic lookup and checking, Zone Two for bounded search and routing, and Zone Three for open-world frontier synthesis.
+
+10
+00:02:29.868 --> 00:02:37.076
+<v Liam>Prove to a skeptic why we need all three zones instead of running pure Zone One lookup or pure Zone Three neural!
+
+11
+00:02:37.346 --> 00:03:08.441
+<v Arthur>Deterministic Null tested both across four thousand thirty held-out instances! On bounded formal Track-A classes, single-turn neural models failed to beat Zone One integer lookup on nine of ten cells. On open public benchmarks like SWE-bench Verified where lookup hits zero, Zone Three added up to ninety-five percentage points — and crystallizing verified outputs back into Zone One cut repeat energy spend three point five nine times!
+
+12
+00:03:08.711 --> 00:03:16.251
+<v Elena>Now connect that to The Three-Body Problem in Computing — why do catastrophic failures cluster at multi-party handoffs?
+
+13
+00:03:16.521 --> 00:03:37.249
+<v Arthur>Because specifiers, builders, and users rely on unwritten assumptions — like Mars Climate Orbiter's unit mismatch or Ariane 5's float overflow! Checking static Forms and manifests caught ninety-eight point four six percent of one hundred thirty injected handoff faults versus near-zero for syntax parsing.
+
+14
+00:03:37.439 --> 00:03:46.132
+<v Liam>And economically, you refuse to blend survey guesses into audited losses, while warning that cheaper tasks still trigger Jevons rebound!
+
+15
+00:03:46.402 --> 00:04:02.340
+<v Arthur>Exactly. Each bounded job hits task satiation the moment its verifier passes, yet cheaper completions unlock new jobs economy-wide. Token prices fall, while physics guarantees electricity is never free.
+
+16
+00:04:02.610 --> 00:04:15.165
+<v Elena>Shannon sets the bit floor, von Neumann maps the players, and Hurwicz gates the commit. Explore stack.openie.dev, and join Mei, Nia, and Tariq next at the OpenIE Compute Desk!

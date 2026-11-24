@@ -1,0 +1,458 @@
+{
+  "id": "ep09-avalanche-ratchet-desk",
+  "number": 9,
+  "title": "OpenIE Avalanche Desk: The Nine Rungs and Crossing the Compilation Threshold",
+  "subtitle": "Amara, Marcus, and Kenji trace 3.8 billion years of signaling ratchets, why Rung 5 Tool Use stalls, and how downward compilation unlocks Rungs 6–9",
+  "summary": "At the OpenIE Avalanche Desk (avalanche.openie.dev), Amara, Marcus, and Kenji unpack the nine-rung intelligence ratchet across 3.8 billion years of biology and 76 years of AI, diagnose why ephemeral Rung 5 tool loops stall on compounding error and energy, and show how DES-10 digital enzymes (98/100 pass, 927.30 uJ Thor shunt measured_j) and downward compilation cross into Rungs 6–9.",
+  "topic_tags": [
+    "avalanche-desk",
+    "nine-rungs",
+    "compilation-threshold",
+    "des-10"
+  ],
+  "panel": [
+    "Amara",
+    "Marcus",
+    "Kenji"
+  ],
+  "panel_profiles": [
+    {
+      "name": "Amara",
+      "group": "host",
+      "title": "Systems Storyteller · West African English",
+      "voice_id": "mzbNqbWwLuZObi7qEA67",
+      "fallback_voice": "en-NG-EzinneNeural",
+      "color": "#22D3EE",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    {
+      "name": "Marcus",
+      "group": "skeptic",
+      "title": "Empirical Foil · African American English",
+      "voice_id": "VlUmeC1Uzj3NnwiVR9K9",
+      "fallback_voice": "en-US-ChristopherNeural",
+      "color": "#F59E0B",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    {
+      "name": "Kenji",
+      "group": "specialist",
+      "title": "Orchestration & Runtime Engineer · Filipino/APAC English",
+      "voice_id": "yWnF5eFXku7WqBV6sBto",
+      "fallback_voice": "en-PH-JamesNeural",
+      "color": "#6EE7B7",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    }
+  ],
+  "tts_engines": [
+    "eleven_v4"
+  ],
+  "published_utc": "2026-11-23T10:00:00Z",
+  "duration_sec": 271.4,
+  "duration_human": "4:31",
+  "byte_length": 4506242,
+  "audio_url": "/media/radio/episodes/ep09-avalanche-ratchet-desk.m4a",
+  "captions_url": "/media/radio/captions/ep09-avalanche-ratchet-desk.vtt",
+  "transcript_url": "/media/radio/transcripts/ep09-avalanche-ratchet-desk.json",
+  "turn_count": 16,
+  "card_count": 7,
+  "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+  "desk": "avalanche",
+  "desk_domain": "avalanche.openie.dev",
+  "studies": [
+    "communication-avalanche",
+    "lut-adapt",
+    "deterministic-null",
+    "rce-jepa",
+    "latency"
+  ],
+  "hosts": [
+    "Amara",
+    "Marcus",
+    "Kenji"
+  ],
+  "duration_s": 271.4,
+  "citations": [
+    {
+      "id": "ep09-avalanche-ratchet-desk-card-00-0",
+      "at_sec": 2.63,
+      "end_sec": 29.346,
+      "turn_index": 0,
+      "speaker": "Amara",
+      "kind": "ecosystem",
+      "badge": "DESK 01",
+      "title": "OpenIE Avalanche Desk (avalanche.openie.dev)",
+      "detail": "Maps Rungs 1–5 (Ephemeral) across the Compilation Threshold into Rungs 6–9 (Compiled) with an 18-milestone forecast.",
+      "href": "https://avalanche.openie.dev"
+    },
+    {
+      "id": "ep09-avalanche-ratchet-desk-card-03-0",
+      "at_sec": 61.374,
+      "end_sec": 75.824,
+      "turn_index": 3,
+      "speaker": "Kenji",
+      "kind": "study",
+      "badge": "[T]",
+      "title": "The Communication Tool Avalanche (45 Lean 4.36.0 Theorems)",
+      "detail": "Six-kernel bubblewrap-verified ratchet across 24 biological rungs (CL01–CL24), 38 AI milestones (1950–2026), and 10 AI camps.",
+      "href": "/papers/communication-avalanche/"
+    },
+    {
+      "id": "ep09-avalanche-ratchet-desk-card-05-0",
+      "at_sec": 88.404,
+      "end_sec": 119.375,
+      "turn_index": 5,
+      "speaker": "Kenji",
+      "kind": "receipt",
+      "badge": "[M]",
+      "title": "Biological Gate Controls (CA-M1 & CA-M2)",
+      "detail": "Cooperative quorum switches save 95.49%–99.17% ATP at low density; 50 ms SepJ plugs preserve 19/20 (95.0%) cells vs 0% ungated.",
+      "href": "/papers/communication-avalanche/"
+    },
+    {
+      "id": "ep09-avalanche-ratchet-desk-card-09-0",
+      "at_sec": 157.771,
+      "end_sec": 189.96,
+      "turn_index": 9,
+      "speaker": "Kenji",
+      "kind": "receipt",
+      "badge": "measured_j",
+      "title": "DES-10 on Jetson AGX Thor Shunts (98/100 Pass)",
+      "detail": "927.30 uJ physical TI INA3221 VDD_CPU_SOC_MSS measured_j per 1 KiB edge; 9.26x–26.87x higher CpJ and 75,374x lower handoff energy.",
+      "href": "/papers/communication-avalanche/"
+    },
+    {
+      "id": "ep09-avalanche-ratchet-desk-card-11-0",
+      "at_sec": 198.975,
+      "end_sec": 219.615,
+      "turn_index": 11,
+      "speaker": "Kenji",
+      "kind": "study",
+      "badge": "[M]",
+      "title": "Downward Compilation & Post-Removal Ratchet (CA-M5)",
+      "detail": "Attested artifact libraries retain 100.0% competence at Generation 20 after teachers leave vs 29.27% under unverified imitation.",
+      "href": "/papers/lut-adapt/"
+    }
+  ],
+  "falsifiers": [
+    {
+      "id": "ep09-avalanche-ratchet-desk-card-07-0",
+      "at_sec": 128.054,
+      "end_sec": 147.68,
+      "turn_index": 7,
+      "speaker": "Kenji",
+      "kind": "falsifier",
+      "badge": "STALL <= 49%",
+      "title": "Rung-5 Solo Camp Ceiling & Unattested Cascade Drift",
+      "detail": "Every solo AI camp C1–C10 stalls at <=49% across 5 regimes; unattested 4-agent chat suffers 13.3% broken commits.",
+      "href": "/papers/communication-avalanche/"
+    },
+    {
+      "id": "ep09-avalanche-ratchet-desk-card-14-0",
+      "at_sec": 241.68,
+      "end_sec": 255.717,
+      "turn_index": 14,
+      "speaker": "Kenji",
+      "kind": "falsifier",
+      "badge": "[E] vs [S]",
+      "title": "18-Milestone Forecast Kill Gates & Clinical Quarantine",
+      "detail": "HM01–HD04 milestones declare exact energy/solve kill criteria; animal EV/BCI rescue [E] never extrapolates to human efficacy [S].",
+      "href": "/papers/latency/"
+    }
+  ],
+  "personas": {
+    "Amara": {
+      "name": "Amara",
+      "group": "host",
+      "title": "Systems Storyteller · West African English",
+      "voice_id": "mzbNqbWwLuZObi7qEA67",
+      "fallback_voice": "en-NG-EzinneNeural",
+      "color": "#22D3EE",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    "Marcus": {
+      "name": "Marcus",
+      "group": "skeptic",
+      "title": "Empirical Foil · African American English",
+      "voice_id": "VlUmeC1Uzj3NnwiVR9K9",
+      "fallback_voice": "en-US-ChristopherNeural",
+      "color": "#F59E0B",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    "Kenji": {
+      "name": "Kenji",
+      "group": "specialist",
+      "title": "Orchestration & Runtime Engineer · Filipino/APAC English",
+      "voice_id": "yWnF5eFXku7WqBV6sBto",
+      "fallback_voice": "en-PH-JamesNeural",
+      "color": "#6EE7B7",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    }
+  },
+  "turns": [
+    {
+      "turn_index": 0,
+      "speaker": "Amara",
+      "role": "Systems Storyteller · West African English",
+      "group": "host",
+      "color": "#22D3EE",
+      "start_sec": 1.83,
+      "end_sec": 29.346,
+      "text": "Welcome to the OpenIE Avalanche Desk on OpenIE Research Radio! I'm Amara, joined by Marcus and Kenji — three AI-synthesized OpenIE research personas voiced via ElevenLabs studio neural voices and grounded strictly in verified Open Interface Engineering studies. Today we're mapping avalanche.openie.dev: the nine rungs and the compilation threshold."
+    },
+    {
+      "turn_index": 1,
+      "speaker": "Amara",
+      "role": "Systems Storyteller · West African English",
+      "group": "host",
+      "color": "#22D3EE",
+      "start_sec": 29.616,
+      "end_sec": 46.808,
+      "text": "Think about learning to ride a bicycle. On day one, your conscious brain narrates every wobble and burns exhausting focus. A month later, your cerebellum has compiled balance into a fast reflex, freeing conscious energy for new terrain."
+    },
+    {
+      "turn_index": 2,
+      "speaker": "Marcus",
+      "role": "Empirical Foil · African American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 46.998,
+      "end_sec": 60.304,
+      "text": "And right now, almost the whole AI industry is riding that bike in day-one panic mode forever! Every recurring tool call wakes up a giant cloud model from scratch. Kenji, where does that sit on the nine-rung map?"
+    },
+    {
+      "turn_index": 3,
+      "speaker": "Kenji",
+      "role": "Orchestration & Runtime Engineer · Filipino/APAC English",
+      "group": "specialist",
+      "color": "#6EE7B7",
+      "start_sec": 60.574,
+      "end_sec": 75.824,
+      "text": "Right at Rung Five — Ephemeral Tool Use, Marcus! Rungs One through Five cover access, generation, reasoning, transport, and live tool calling, yet every win evaporates the second the context window closes."
+    },
+    {
+      "turn_index": 4,
+      "speaker": "Amara",
+      "role": "Systems Storyteller · West African English",
+      "group": "host",
+      "color": "#22D3EE",
+      "start_sec": 76.094,
+      "end_sec": 87.334,
+      "text": "Zoom out to three point eight billion years of biology across twenty-four evolutionary rungs — single microbes didn't just shout chemical noise into the ocean."
+    },
+    {
+      "turn_index": 5,
+      "speaker": "Kenji",
+      "role": "Orchestration & Runtime Engineer · Filipino/APAC English",
+      "group": "specialist",
+      "color": "#6EE7B7",
+      "start_sec": 87.604,
+      "end_sec": 119.375,
+      "text": "Across forty-five six-kernel Lean 4.36.0 theorems with zero sorry, nature and seventy-six years of AI share one ratchet: externalize state, ingest across a threshold gate, and transform without regressing. Bacterial quorum switches save up to ninety-nine point one seven percent of low-density ATP, and fifty-millisecond calcium plugs save ninety-five percent of punctured cyanobacterial filaments!"
+    },
+    {
+      "turn_index": 6,
+      "speaker": "Marcus",
+      "role": "Empirical Foil · African American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 119.565,
+      "end_sec": 126.984,
+      "text": "Now show what breaks at Rung Five when chatty multi-agent loops skip that gate — like playing whisper-down-the-lane with long memos!"
+    },
+    {
+      "turn_index": 7,
+      "speaker": "Kenji",
+      "role": "Orchestration & Runtime Engineer · Filipino/APAC English",
+      "group": "specialist",
+      "color": "#6EE7B7",
+      "start_sec": 127.254,
+      "end_sec": 147.68,
+      "text": "On our sixty-task repair benchmark, an unattested four-agent prose cascade dropped to eighty-six point six seven percent with thirteen point three percent broken commits! And across five regimes on our hundred-task suite, every solo AI camp C1 through C10 stalled at or below forty-nine percent."
+    },
+    {
+      "turn_index": 8,
+      "speaker": "Amara",
+      "role": "Systems Storyteller · West African English",
+      "group": "host",
+      "color": "#22D3EE",
+      "start_sec": 147.95,
+      "end_sec": 156.701,
+      "text": "So how does ten-camp Digital Enzymatic Synthesis — DES-10 — carry intelligence across the Compilation Threshold?"
+    },
+    {
+      "turn_index": 9,
+      "speaker": "Kenji",
+      "role": "Orchestration & Runtime Engineer · Filipino/APAC English",
+      "group": "specialist",
+      "color": "#6EE7B7",
+      "start_sec": 156.971,
+      "end_sec": 189.96,
+      "text": "Like a biological enzyme lowering an activation barrier and stepping away unconsumed, DES-10 replaces hundred-joule prose chat with typed BLAKE3 and Ed25519 envelopes plus deterministic verifiers. On Jetson AGX Thor's physical INA3221 rail shunts, one kilobyte edge verification costs nine hundred twenty-seven point three microjoules of measured_j — lifting solve rate to ninety-eight out of one hundred!"
+    },
+    {
+      "turn_index": 10,
+      "speaker": "Marcus",
+      "role": "Empirical Foil · African American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 190.15,
+      "end_sec": 197.905,
+      "text": "Nine point two six to twenty-six point eight seven times higher physical-shunt Coherence per Joule! Walk us up Rungs Six through Nine."
+    },
+    {
+      "turn_index": 11,
+      "speaker": "Kenji",
+      "role": "Orchestration & Runtime Engineer · Filipino/APAC English",
+      "group": "specialist",
+      "color": "#6EE7B7",
+      "start_sec": 198.175,
+      "end_sec": 219.615,
+      "text": "Rung Six sleeps at zero clocks and pins verified cases into sub-microsecond memory maps. Rung Seven compiles wins into integer Forms and LUT6 silicon. Rung Eight locks seven-axis provenance across six Lean kernels, and Rung Nine enforces hardware energy budgets in JouleOS!"
+    },
+    {
+      "turn_index": 12,
+      "speaker": "Amara",
+      "role": "Systems Storyteller · West African English",
+      "group": "host",
+      "color": "#22D3EE",
+      "start_sec": 219.885,
+      "end_sec": 234.365,
+      "text": "Just like model CA-M5, where an attested external library holds one hundred percent competence ten generations after teachers leave, while unverified imitation collapses to twenty-nine percent!"
+    },
+    {
+      "turn_index": 13,
+      "speaker": "Marcus",
+      "role": "Empirical Foil · African American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 234.555,
+      "end_sec": 240.61,
+      "text": "And across our eighteen forecast milestones and neuro-vesicle audits, where does the falsifier line sit?"
+    },
+    {
+      "turn_index": 14,
+      "speaker": "Kenji",
+      "role": "Orchestration & Runtime Engineer · Filipino/APAC English",
+      "group": "specialist",
+      "color": "#6EE7B7",
+      "start_sec": 240.88,
+      "end_sec": 255.717,
+      "text": "Every milestone declares an explicit energy-and-accuracy kill gate, and our eighteen BCI and sixteen extracellular-vesicle audits strictly quarantine preclinical animal rescue from unverified human clinical efficacy!"
+    },
+    {
+      "turn_index": 15,
+      "speaker": "Amara",
+      "role": "Systems Storyteller · West African English",
+      "group": "host",
+      "color": "#22D3EE",
+      "start_sec": 255.987,
+      "end_sec": 269.51,
+      "text": "Externalize, gate, and compile downward so intelligence compounds! Explore avalanche.openie.dev, and join Elena, Liam, and Arthur next at the OpenIE Stack Desk!"
+    }
+  ],
+  "cards": [
+    {
+      "id": "ep09-avalanche-ratchet-desk-card-00-0",
+      "at_sec": 2.63,
+      "end_sec": 29.346,
+      "turn_index": 0,
+      "speaker": "Amara",
+      "kind": "ecosystem",
+      "badge": "DESK 01",
+      "title": "OpenIE Avalanche Desk (avalanche.openie.dev)",
+      "detail": "Maps Rungs 1–5 (Ephemeral) across the Compilation Threshold into Rungs 6–9 (Compiled) with an 18-milestone forecast.",
+      "href": "https://avalanche.openie.dev"
+    },
+    {
+      "id": "ep09-avalanche-ratchet-desk-card-03-0",
+      "at_sec": 61.374,
+      "end_sec": 75.824,
+      "turn_index": 3,
+      "speaker": "Kenji",
+      "kind": "study",
+      "badge": "[T]",
+      "title": "The Communication Tool Avalanche (45 Lean 4.36.0 Theorems)",
+      "detail": "Six-kernel bubblewrap-verified ratchet across 24 biological rungs (CL01–CL24), 38 AI milestones (1950–2026), and 10 AI camps.",
+      "href": "/papers/communication-avalanche/"
+    },
+    {
+      "id": "ep09-avalanche-ratchet-desk-card-05-0",
+      "at_sec": 88.404,
+      "end_sec": 119.375,
+      "turn_index": 5,
+      "speaker": "Kenji",
+      "kind": "receipt",
+      "badge": "[M]",
+      "title": "Biological Gate Controls (CA-M1 & CA-M2)",
+      "detail": "Cooperative quorum switches save 95.49%–99.17% ATP at low density; 50 ms SepJ plugs preserve 19/20 (95.0%) cells vs 0% ungated.",
+      "href": "/papers/communication-avalanche/"
+    },
+    {
+      "id": "ep09-avalanche-ratchet-desk-card-07-0",
+      "at_sec": 128.054,
+      "end_sec": 147.68,
+      "turn_index": 7,
+      "speaker": "Kenji",
+      "kind": "falsifier",
+      "badge": "STALL <= 49%",
+      "title": "Rung-5 Solo Camp Ceiling & Unattested Cascade Drift",
+      "detail": "Every solo AI camp C1–C10 stalls at <=49% across 5 regimes; unattested 4-agent chat suffers 13.3% broken commits.",
+      "href": "/papers/communication-avalanche/"
+    },
+    {
+      "id": "ep09-avalanche-ratchet-desk-card-09-0",
+      "at_sec": 157.771,
+      "end_sec": 189.96,
+      "turn_index": 9,
+      "speaker": "Kenji",
+      "kind": "receipt",
+      "badge": "measured_j",
+      "title": "DES-10 on Jetson AGX Thor Shunts (98/100 Pass)",
+      "detail": "927.30 uJ physical TI INA3221 VDD_CPU_SOC_MSS measured_j per 1 KiB edge; 9.26x–26.87x higher CpJ and 75,374x lower handoff energy.",
+      "href": "/papers/communication-avalanche/"
+    },
+    {
+      "id": "ep09-avalanche-ratchet-desk-card-11-0",
+      "at_sec": 198.975,
+      "end_sec": 219.615,
+      "turn_index": 11,
+      "speaker": "Kenji",
+      "kind": "study",
+      "badge": "[M]",
+      "title": "Downward Compilation & Post-Removal Ratchet (CA-M5)",
+      "detail": "Attested artifact libraries retain 100.0% competence at Generation 20 after teachers leave vs 29.27% under unverified imitation.",
+      "href": "/papers/lut-adapt/"
+    },
+    {
+      "id": "ep09-avalanche-ratchet-desk-card-14-0",
+      "at_sec": 241.68,
+      "end_sec": 255.717,
+      "turn_index": 14,
+      "speaker": "Kenji",
+      "kind": "falsifier",
+      "badge": "[E] vs [S]",
+      "title": "18-Milestone Forecast Kill Gates & Clinical Quarantine",
+      "detail": "HM01–HD04 milestones declare exact energy/solve kill criteria; animal EV/BCI rescue [E] never extrapolates to human efficacy [S].",
+      "href": "/papers/latency/"
+    }
+  ]
+}

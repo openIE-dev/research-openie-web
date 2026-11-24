@@ -30,7 +30,7 @@ const ecosystemJson = JSON.stringify(ecosystem);
   let activeStudyId = byId['communication-avalanche'] ? 'communication-avalanche' : (STUDIES[0]?.id || 'agency');
   let activeTier = '90s';
   let playlistMode = null; // null | '15s' | '90s'
-  let activeCategory = 'All 21';
+  let activeCategory = 'All 27';
   let activeChannelId = null; // null | 'avalanche' | 'stack' | 'compute' | 'synthesis' | 'knowledge' | 'database'
   let searchQuery = '';
   let playbackRate = 1.0;
@@ -79,7 +79,7 @@ const ecosystemJson = JSON.stringify(ecosystem);
     const chSet = chObj ? new Set(chObj.tv_studies || []) : null;
     const filtered = STUDIES.filter((s) => {
       if (chSet && !chSet.has(s.id)) return false;
-      if (!chSet && activeCategory !== 'All 21' && s.category !== activeCategory) return false;
+      if (!chSet && !activeCategory.startsWith('All') && s.category !== activeCategory) return false;
       if (!q) return true;
       const hay = [
         s.id, s.title, s.short_title, s.category, s.headline_metric, s.energy_tier,
@@ -298,7 +298,7 @@ const ecosystemJson = JSON.stringify(ecosystem);
   document.querySelectorAll('[data-cat-tab]').forEach((tab) => {
     tab.addEventListener('click', () => {
       activeChannelId = null;
-      activeCategory = tab.getAttribute('data-cat-tab') || 'All 21';
+      activeCategory = tab.getAttribute('data-cat-tab') || 'All 27';
       document.querySelectorAll('[data-cat-tab]').forEach((t) => {
         const on = t === tab;
         t.classList.toggle('tv-cat-active', on);

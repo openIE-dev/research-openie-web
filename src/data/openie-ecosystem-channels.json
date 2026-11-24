@@ -16,6 +16,7 @@
       "plain_summary": "Extracts the three-step signal ratchet across 3.8 billion years of biology and 76 years of AI, diagnoses why the industry is stuck at Rung 5 (Tool Use), and forecasts Month, Quarter, Year, and Decade breakthroughs through ten-camp Digital Enzymatic Synthesis.",
       "key_metric": "98/100 DES-10 pass vs ≤49% solo · 9.26×–26.87× physical shunt CpJ · 18-milestone forecast",
       "tv_studies": [
+        "eco-avalanche",
         "communication-avalanche",
         "lut-adapt",
         "deterministic-null",
@@ -23,6 +24,7 @@
         "latency"
       ],
       "radio_episodes": [
+        "ep09-avalanche-ratchet-desk",
         "ep02-communication-tool-avalanche",
         "ep06-lut6-metabolic-jouleos",
         "ep08-idea-foundry-redteam"
@@ -44,6 +46,7 @@
       "plain_summary": "Reads information theory (Shannon and Landauer), game theory (von Neumann and Nash), and mechanism design (Hurwicz, Maskin, and Myerson) as three altitudes of one energy-bounded computing map.",
       "key_metric": "E(x) = Σ θ(p)·μ(p, H) · 9 Periodic Stacks · Zones Z₁, Z₂, Z₃",
       "tv_studies": [
+        "eco-stack",
         "agency",
         "gates",
         "three-body",
@@ -51,6 +54,7 @@
         "interface-economics"
       ],
       "radio_episodes": [
+        "ep10-stack-three-altitudes-desk",
         "ep01-global-literature-radar",
         "ep04-deterministic-null-satb",
         "ep08-idea-foundry-redteam"
@@ -80,6 +84,7 @@
       "plain_summary": "Defines the permitted-act substrate where bits pay joules—connecting physical board current-shunt sensors, processor energy counters, 250 MHz paged Boolean lookup circuits, and sovereign hardware tags.",
       "key_metric": "258 primitives · 927.3 µJ Tegra shunt edge · 20.07× compile cut · 15.59 est_mW CE-gated LUT6",
       "tv_studies": [
+        "eco-compute",
         "rce-compile",
         "satb-harness",
         "lut-adapt",
@@ -87,6 +92,7 @@
         "jouleos"
       ],
       "radio_episodes": [
+        "ep11-compute-joule-substrate-desk",
         "ep06-lut6-metabolic-jouleos",
         "ep04-deterministic-null-satb",
         "ep05-game-engines-everywhere"
@@ -114,6 +120,7 @@
       "plain_summary": "Replaces cold-start floating-point generation with energy-ordered cascades: try zero-FLOP lookup pages and exact proposers first, stream sparse experts only on misses, verify every commit, and crystallize winners downward.",
       "key_metric": "91.67% 48-task & 90.62% BCB v0.1.3 · 40/40 H15-Iterative · 0.00% broken commits · 970 MB 35B RAM",
       "tv_studies": [
+        "eco-synthesis",
         "lut-adapt",
         "rce-jepa",
         "deterministic-null",
@@ -121,6 +128,7 @@
         "ai-coding-market"
       ],
       "radio_episodes": [
+        "ep12-synthesis-routing-verb-desk",
         "ep03-rce-world-coding",
         "ep06-lut6-metabolic-jouleos",
         "ep01-global-literature-radar"
@@ -146,6 +154,7 @@
       "plain_summary": "Treats knowledge as a claim carrying valid time, transaction time, reference time, granularity, scope, certainty, and anti-laundering provenance—anchored across six independent Lean 4.36.0 proof checkers.",
       "key_metric": "5,496 six-kernel-verified theorem constants · 0 sorry / 0 opaque / 0 ofReduceBool · 195-entry time ledger",
       "tv_studies": [
+        "eco-knowledge",
         "time-as-an-index",
         "ai-reads-human",
         "three-body",
@@ -153,6 +162,7 @@
         "deterministic-null"
       ],
       "radio_episodes": [
+        "ep13-knowledge-six-kernel-desk",
         "ep07-time-as-an-index",
         "ep03-rce-world-coding",
         "ep01-global-literature-radar"
@@ -180,6 +190,7 @@
       "plain_summary": "Maps storage, retrieval, state machines, durable hash-chained logs (RCEdb), and sub-microsecond memory-mapped case stores (DNULLMM1) onto shared thermodynamic and bitemporal coordinates.",
       "key_metric": "35.28M data cells · 0.325 µs / 1.77 µJ mmap lookup · 69.7 µs RCE-VC admit · 0/25,500 lockstep diffs",
       "tv_studies": [
+        "eco-database",
         "rce",
         "rce-vc",
         "time-as-an-index",
@@ -188,6 +199,7 @@
         "game-engines"
       ],
       "radio_episodes": [
+        "ep14-database-bitemporal-state-desk",
         "ep07-time-as-an-index",
         "ep05-game-engines-everywhere",
         "ep02-communication-tool-avalanche"

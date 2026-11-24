@@ -1,0 +1,98 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — eco-synthesis (180s) Narrator Joy
+
+1
+00:00:00.360 --> 00:00:07.945
+First, generating text from scratch for already-solved problems wastes electricity and invites avoidable mistakes.
+
+2
+00:00:08.505 --> 00:00:16.682
+Second, an energy-ordered cascade checks microjoule lookup tables and exact verifiers first, waking large models last.
+
+3
+00:00:17.242 --> 00:00:25.338
+Third, every accepted answer passes deterministic checks and crystallizes downward into a fast, reusable lookup skill.
+
+4
+00:00:25.898 --> 00:00:32.765
+Conventional cloud AI services route a simple one-line date parser and a brand-new physics simulation through
+
+5
+00:00:32.765 --> 00:00:39.190
+the exact same giant language model every single time. That uniform pipeline demands tens of gigabytes
+
+6
+00:00:39.190 --> 00:00:47.127
+of costly server memory, burns watts re-solving familiar chores, and still risks subtle hallucinations on deterministic rules.
+
+7
+00:00:47.687 --> 00:00:53.867
+Think of how a well-organized teaching hospital works every day. Routine checkups follow fast,
+
+8
+00:00:53.867 --> 00:01:00.245
+proven checklists in minutes; automated labs run exact diagnostic panels; and full surgical teams
+
+9
+00:01:00.245 --> 00:01:07.412
+assemble only for genuinely rare cases—then distill what worked into updated clinical protocols for everyone.
+
+10
+00:01:07.972 --> 00:01:16.263
+Our synthesis cascade on synthesis dot openie dot dev orders every solver strictly by energy-to-verified-completion. First come
+
+11
+00:01:16.263 --> 00:01:25.339
+memory-mapped lookup tables requiring zero decimal arithmetic. Second come exact parsers, type checkers, and constraint solvers. Third come
+
+12
+00:01:25.339 --> 00:01:33.565
+sparse specialist slices streamed on demand from local storage. Fourth comes an unforgiving automated test gate before commit.
+
+13
+00:01:34.125 --> 00:01:42.129
+Real software and engineering workloads follow a steep power-law distribution where a compact head of recurring patterns drives
+
+14
+00:01:42.129 --> 00:01:49.062
+the vast majority of daily traffic. Each time a novel miss clears its verification tests and compiles downward
+
+15
+00:01:49.062 --> 00:01:56.688
+into a lookup entry, average energy per task plunges toward microjoules while latency drops from seconds to microseconds.
+
+16
+00:01:57.248 --> 00:02:03.638
+In this three-dimensional architecture model, the bright cyan crystal at the center holds zero-copy compiled
+
+17
+00:02:03.638 --> 00:02:09.732
+lookup skills ready for instant replay, encircled by an amber orbit of streamed specialist model slices
+
+18
+00:02:09.732 --> 00:02:16.418
+and emerald verification latches that reject every single test-breaking edit before it can touch version history.
+
+19
+00:02:16.978 --> 00:02:24.411
+Streaming only the active specialist weights needed per prompt kept resident memory below nine hundred seventy megabytes
+
+20
+00:02:24.411 --> 00:02:31.534
+on everyday consumer laptops while achieving ninety point six two percent on open multi-library coding tasks, forty
+
+21
+00:02:31.534 --> 00:02:38.038
+out of forty on iterative refinement, zero broken commits, and three point six times lower repeat energy.
+
+22
+00:02:38.598 --> 00:02:45.823
+Scientific clarity requires naming the exact regime where compilation cannot shortcut work: truly unprecedented
+
+23
+00:02:45.823 --> 00:02:52.918
+one-off inventions with zero shared sub-structure must still pay full specialist synthesis and automated test
+
+24
+00:02:52.918 --> 00:02:59.362
+energy on their very first encounter, paying back that investment only when related patterns recur.

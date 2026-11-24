@@ -1,0 +1,62 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — eco-stack (90s) Narrator Hakim
+
+1
+00:00:00.320 --> 00:00:08.854
+First, information theory, game theory, and mechanism design form three altitudes of one energy-bounded computing map.
+
+2
+00:00:09.354 --> 00:00:16.691
+Second, one prices bits and heat, one maps strategy, and one writes rules where honesty wins.
+
+3
+00:00:17.191 --> 00:00:19.894
+Third, across every layer of computing,
+
+4
+00:00:19.894 --> 00:00:24.608
+each action must clear its energy floor and pass independent checks.
+
+5
+00:00:25.108 --> 00:00:31.880
+For eighty years, universities taught electrical engineering, game theory, and economic mechanism design
+
+6
+00:00:31.880 --> 00:00:38.653
+in separate departments with separate notation. Yet inside networked computers and multi-agent software,
+
+7
+00:00:38.653 --> 00:00:45.101
+thermal noise, strategic shortcuts, and safety rules collide every single millisecond of operation.
+
+8
+00:00:45.601 --> 00:00:51.350
+At ground level, Claude Shannon and Rolf Landauer price the minimum heat nature
+
+9
+00:00:51.350 --> 00:00:57.319
+charges to send and erase bits reliably. One altitude higher, game theory maps how
+
+10
+00:00:57.319 --> 00:01:04.160
+competing agents choose actions. At the top, mechanism design crafts rules where honesty wins.
+
+11
+00:01:04.660 --> 00:01:09.375
+On stack dot openie dot dev, this single coordinate map organizes
+
+12
+00:01:09.375 --> 00:01:17.717
+nine periodic tables—compute, memory, state machines, databases, communication, synthesis, formal proofs, knowledge
+
+13
+00:01:17.717 --> 00:01:24.390
+claims, and goal-holding agents—pricing every design choice in real joules and microseconds.
+
+14
+00:01:24.890 --> 00:01:31.966
+When software protocols measure real electricity upfront and require independent verification before commit,
+
+15
+00:01:31.966 --> 00:01:37.011
+cheap bluffing stops paying off and parsimonious engineering wins every time.

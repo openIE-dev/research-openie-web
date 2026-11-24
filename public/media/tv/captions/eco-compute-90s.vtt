@@ -1,0 +1,58 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — eco-compute (90s) Narrator Nylo
+
+1
+00:00:00.320 --> 00:00:07.833
+First, every calculation is a physical event where flipping silicon switches spends real energy in joules.
+
+2
+00:00:08.333 --> 00:00:15.990
+Second, honest hardware audits separate wire current sensors from chip counters, while sleeping between real jobs.
+
+3
+00:00:16.490 --> 00:00:25.077
+Third, single-cycle Boolean lookup circuits replace heavy decimal arithmetic on repeated checks with tiny hardware steps.
+
+4
+00:00:25.577 --> 00:00:31.125
+Built-in processor energy counters work like a dashboard fuel estimate—helpful over long
+
+5
+00:00:31.125 --> 00:00:37.051
+trips, yet blind to sub-millisecond bursts and shared background noise. Physical current-shunt
+
+6
+00:00:37.051 --> 00:00:42.473
+sensors sit directly on the circuit-board power rail and measure real electrical draw.
+
+7
+00:00:42.973 --> 00:00:49.368
+On compute dot openie dot dev, we organize two hundred fifty-eight primitives across
+
+8
+00:00:49.368 --> 00:00:56.600
+thirty-three families. First, halt idle clocks until real work arrives; second, compile dynamic
+
+9
+00:00:56.600 --> 00:01:03.755
+code into tight binaries; third, run frozen decisions in single-cycle Boolean lookup circuits.
+
+10
+00:01:04.255 --> 00:01:10.532
+Compiling interpreted validation loops into native machine code cut measured energy twentyfold. On
+
+11
+00:01:10.532 --> 00:01:16.745
+edge modules equipped with inline power-rail current shunts, compiled execution drew nine hundred
+
+12
+00:01:16.745 --> 00:01:23.021
+twenty-seven point three microjoules while paged lookup arrays ran at two hundred fifty megahertz.
+
+13
+00:01:23.521 --> 00:01:28.633
+Whether an energy reading comes from a physical wire shunt, a processor counter,
+
+14
+00:01:28.633 --> 00:01:33.681
+or a circuit simulation, stating its exact instrument keeps engineering honest.
