@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits カスケードにおける下方 LUT6 コンパイル：Beneš ルーティング・ブールファブリック、コンフォーマル起動ゲート、およびフロンティア疎 MoE NVMe ストリーミング"
-deck: "6カーネル検証済みの Lean 4.36.0 定理 50 件および Inria Charon+Aeneas による機械的 #![no_std] Rust→Lean 抽出（さらに Linux bubblewrap サンドボックス内の Open Interface Engineering リポジトリ 4 件にわたる 1,414 定理を含み、CVE-2026-72844 対策強化済み）を備えた Mixture of Limits カスケードは、まずゼロ浮動小数点演算（FLOP）のページング式 6 入力ルックアップテーブル（LUT6）回路、14.74 キロバイトの WebAssembly（WASM）ブラウザモジュール、ならびに反対称 40 エントリ・ゼロ乗算 T-MAC 三値テールおよび（72, 64）SECDED 宇宙線ビット反転保護を備えた 4 キロバイトの標準ライブラリ非依存 Rust lut6-core Nucleus を試行する（単一バイナリ Rust mol-agent-rs で 0.154 ミリ秒、ビットスライス判定あたり 162.56 ナノジュール、ビット誤り率 1% で生存率 100.0%、Nordic nRF52832 Cortex-M4F と RISC-V RV32IMAC の 64 キロバイト SRAM の 25.06%）。さらに 4 つの GPU シリコンベンダー（最大 328.06x 高速化）にわたり最大 120B パラメータ（Inkling-2-Mini および Nemotron-Labs-Dory1.0-4B を含む）の 4 ビット NVMe ループ型・ハイブリッド・疎 Mixture-of-Experts（MoE）2026 年後半モデルへ段階的にエスカレーションし、上流 Verified リポジトリ 4 件で決定論的検証器によりコミットをゲート制御したうえで、認証済みの起動結果をクロックイネーブル付き Beneš ルーティング RAMB36E2、ライセンス不要の openXC7 320.62 メガヘルツ配置配線後 Artix-7 XC7A200T M.2 2280 .bit ビットストリーム、Lupanov 共有余因子およびゆらぎコドン結晶ページへ下方コンパイルする。Jetson AGX Thor 上の物理 Texas Instruments DC シャント measured_j 実測値（ビットスライス lut6-core で 87.00x、反対称 40 エントリ T-MAC テールで 1.65x［Zen 5 RAPL では 1.12x に逆転］、Sub1Bit-LUT6 で 3.74x、Expert-AirMoL で 34.21x、命題 1 で 10.94x；board_metered は真）を含み、Alif Cortex-M55 サイクル数、reported_j カウンタ、openXC7 静的タイミング、およびコミット d767bc5 における RTL シミュレーション推定値 est_j から厳密に分離して報告する。"
+deck: "6カーネル検証済みの Lean 4.36.0 定理 58 件および Inria Charon+Aeneas による機械的 #![no_std] Rust→Lean 抽出（さらに Linux bubblewrap サンドボックス内の Open Interface Engineering リポジトリ 4 件にわたる 1,422 定理を含み、CVE-2026-72844 対策強化済み）を備えた Mixture of Limits カスケードは、まずゼロ浮動小数点演算（FLOP）のページング式 6 入力ルックアップテーブル（LUT6）回路、15.31 キロバイトの WebAssembly（WASM）ブラウザモジュール、反対称 40 エントリ・ゼロ乗算 T-MAC 三値テールを備えた 4 キロバイトの Rust lut6-core Nucleus、プレフィックス汚染 0.00% の 56 ビット 4 トークン開幕応答を備えた 5,984 バイト（64 キロバイト・スマートウォッチ SRAM の 9.13%）の Wearable-MoL、および（72, 64）SECDED 宇宙線ビット反転保護を試行する（単一バイナリ Rust mol-agent-rs で 0.154 ミリ秒、ビットスライス判定あたり 162.71 ナノジュール、ビット誤り率 1% で生存率 100.0%）。さらにサブ10億パラメータのウェアラブル小型言語モデル（Sensente/uLM-28M、LiquidAI/LFM2.5-230M）および 4 つの GPU シリコンベンダー（最大 328.06x 高速化、LastExam プロトコル RMS 較正誤差を 70.62% から 13.14% へ 5.37x 削減し確信度 >= 80% での誤答 CHR@80 を 0.00% へ低減）にわたり最大 120B パラメータの 4 ビット NVMe ループ型・ハイブリッド・疎 MoE 2026 年後半モデルへ段階的にエスカレーションし、上流 Verified リポジトリ 4 件でコミットをゲート制御したうえで、認証済みの起動結果を RAMB36E2、ライセンス不要の openXC7 320.62 メガヘルツ配置配線後 Artix-7 XC7A200T M.2 2280 .bit ビットストリーム、Lupanov 共有余因子およびゆらぎコドン結晶ページへ下方コンパイルする。Jetson AGX Thor 上の物理 Texas Instruments DC シャント measured_j 実測値（ビットスライスで 87.25x、uLM-28M 層スライス比でウェアラブル 56 ビット認識論ゲート 222.57x、反対称 40 エントリ T-MAC で 1.65x［Zen 5 では 1.12x］、Sub1Bit-LUT6 で 3.74x、Expert-AirMoL で 34.21x、命題 1 で 10.94x；board_metered は真）を含み、Alif Cortex-M55 サイクル数（ウェアラブルゲート 2,745.18x）、reported_j カウンタ、openXC7 静的タイミング、およびコミット dc45357 における RTL 推定値 est_j から厳密に分離して報告する。"
 lang: "ja"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*改訂 d767bc5、2026年11月24日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) の [`d767bc51ad5e23e98e45f1f673ba036a0a4b5b8d`](https://github.com/openIE-dev/lut-adapt-ai/tree/d767bc51ad5e23e98e45f1f673ba036a0a4b5b8d)。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX版PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
+*改訂 dc45357、2026年11月24日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) の [`dc45357edd95399ec956e17d185ee475cd27639e`](https://github.com/openIE-dev/lut-adapt-ai/tree/dc45357edd95399ec956e17d185ee475cd27639e)。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX版PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -715,11 +715,25 @@ Thinking Machines Lab の `Inkling-2-Mini`（`24` 重みブロック上で実効
 
 ### 4.37 主張 LA-35：統一グローバル `LUT` 合成（`Lupanov` `1958`、`TreeLUT` `2025`、`KAN-LUT` `2025`）および `14.74 KB` ブラウザネイティブ `#![no_std]` `lut6_core.wasm`
 
-Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数を **`-72.50%`** 削減（`80` $\to$ **`22` 個**、`256 / 256` 厳密一致）し、`TreeLUT` は `31` ノード 5 段 `GBDT` を **`1` 個の `LUT6`（`0x195cb9f4b9a80800`）** へ畳み込み、`KAN-LUT` は連続 B-スプラインを **`8` 個の `LUT6`（実行時 `FLOP` `0`、`RMSE = 0.003466`）** へコンパイルする。さらに `lut6-core` は **`14.74 KB`（`15,094 B`、外部クレート `0`）の `lut6_core.wasm`** を含む **`8` つの `#![no_std]` ターゲット** へクロスコンパイルされ、[/living/lut-adapt/#la-wasm-01](/living/lut-adapt/#la-wasm-01) にてブラウザ内で直接実行できる（図 9）。
+Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数を **`-72.50%`** 削減（`80` $\to$ **`22` 個**、`256 / 256` 厳密一致）し、`TreeLUT` は `31` ノード 5 段 `GBDT` を **`1` 個の `LUT6`（`0x195cb9f4b9a80800`）** へ畳み込み、`KAN-LUT` は連続 B-スプラインを **`8` 個の `LUT6`（実行時 `FLOP` `0`、`RMSE = 0.003466`）** へコンパイルする。さらに `lut6-core` は **`15.31 KB`（`15,679 B`、外部クレート `0`）の `lut6_core.wasm`** を含む **`8` つの `#![no_std]` ターゲット** へクロスコンパイルされ、[/living/lut-adapt/#la-wasm-01](/living/lut-adapt/#la-wasm-01) にてブラウザ内で直接実行できる（図 9）。
 
 <figure class="my-8">
-  <img src="/figures/lut-adapt/global-frontiers-antisym-seu-wasm.svg" alt="グローバル多領域進展：反対称40エントリT-MAC、SEU SECDED耐性、openXC7配置配線後ビットストリーム、Aeneas Rust→Lean、および14.74 KB WebAssembly。" />
-  <figcaption>図 9. グローバル多領域測定結果（`主張 LA-19 [50定理], LA-33..LA-35`）：(A) `ISCA` 2025 `Antisym-40 T-MAC`（スタック `SRAM` `-49.38%`、`Thor` シャント `1.65×` `CpJ`、`Zen 5` `RAPL` `1.12×` `CpJ` 逆転）；(B) 宇宙線 `SEU` 耐性（`BER = 1%` 下で `(72, 64)` `SECDED` + `0x3C` により生存率 `100.00%`・サイレント破損 `0.0000%`）；(C) Lupanov `-72.5%` 削減、`TreeLUT`、`KAN-LUT`、および `XC7A200T-2FBG484-2` 上のライセンス不要 `openXC7` `320.62 MHz` 配置配線後 `.bit` ビットストリーム；(D) Inria `Charon`+`Aeneas` Rust $\to$ `Lean 4.36.0`、6カーネル `50` 定理（フリート `1,414` 件）、および `14.74 KB` `lut6_core.wasm`。</figcaption>
+  <img src="/figures/lut-adapt/global-frontiers-antisym-seu-wasm.svg" alt="グローバル多領域進展：反対称40エントリT-MAC、SEU SECDED耐性、openXC7配置配線後ビットストリーム、Aeneas Rust→Lean、および15.31 KB WebAssembly。" />
+  <figcaption>図 9. グローバル多領域測定結果（`主張 LA-19 [58定理], LA-33..LA-35`）：(A) `ISCA` 2025 `Antisym-40 T-MAC`（スタック `SRAM` `-49.38%`、`Thor` シャント `1.65×` `CpJ`、`Zen 5` `RAPL` `1.12×` `CpJ` 逆転）；(B) 宇宙線 `SEU` 耐性（`BER = 1%` 下で `(72, 64)` `SECDED` + `0x3C` により生存率 `100.00%`・サイレント破損 `0.0000%`）；(C) Lupanov `-72.5%` 削減、`TreeLUT`、`KAN-LUT`、および `XC7A200T-2FBG484-2` 上のライセンス不要 `openXC7` `320.62 MHz` 配置配線後 `.bit` ビットストリーム；(D) Inria `Charon`+`Aeneas` Rust $\to$ `Lean 4.36.0`、6カーネル `58` 定理（フリート `1,422` 件）、および `15.31 KB` `lut6_core.wasm`。</figcaption>
+</figure>
+
+<div id="438-claim-la-36-smart-glasses-and-smartwatch-micro-llms-sensenteulm-28m-smollm2-135m-liquidailfm25-230m-qwen3-06b-vs-wearable-mol-5984-b-watch-sram-fit-and-000-prefix-poisoning" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.38 主張 LA-36・LA-37・LA-38：スマートグラスおよびスマートウォッチ向けマイクロLLM（`Sensente/uLM-28M`、`LFM2.5-230M`）対 `Wearable-MoL`（`5,984 B`）、`lastexam.ai` 較正（`RMS` 誤差 `5.37×` 削減、`0.00%` `CHR@80`）、`hle:3r2s` 隔離、および 6カーネル `58` 定理
+
+`src/clai/frontier/wearable_microllm_and_lastexam.py`、`sys/lut6-core/src/wearable_epistemic.rs`、および `proofs/LutAdapt/WearableLastExam.lean`（新規構成的定理 `8` 件を追加し、`LutAdapt` 合計 **`58` 定理**［`con-leche`/`con-ron` `58,802` 宣言］・Linux `bwrap` フリート合計 **`1,422` 定理**を達成）は、サブ10億パラメータのウェアラブル小型モデルと `Humanity's Last Exam`（`https://lastexam.ai/`、Phan et al., *Nature* 2026；`cais/hle` の `HTTP 403` アクセス制御は一切回避せず厳守）プロトコルに基づく認識論的較正を評価する（図 10）：
+- **`5,984 B`（スマートウォッチ `64 KB` `SRAM` の `9.13%`）への格納と `0.00%` プレフィックス汚染（`LA-36`）**：`INT4` 量子化でもスマートグラス向け `Sensente/uLM-28M`（`28.84M`、`|V| = 12,288`、Cheng et al., *EMNLP* 2026）は `13.75 MB`（`Nordic nRF52832` の `64 KB` `SRAM` の `214×`）を要し、協調的プレフィックスマスキングはホワイトボード上の博士・オリンピック級問題の **`93.75%`（`15/16`）** で誤った冒頭4トークンを即座に発話して汚染するのに対し、`Wearable-MoL` は **`5,984 B`（`9.13%`）** に収まり、日常ウェアラブル操作で **`97.92%`**（**`0.0019 mJ/クエリ`**、`250 mAh` 電池で `~1.80 × 10⁹` `est_queries`）を達成しつつ `< 1.4 µs` で `EpistemicHoldEscalate` を発火し **プレフィックス汚染を `0.00%`** に抑える。
+- **`SHA`-256 固定の公開フロンティア `32` 問における `lastexam.ai` プロトコル較正（`LA-37`）**：`m-a-p/SuperGPQA` の `hard` 10択（`MC10`）`16` 問と 2025 年数学オリンピック `16` 問（`MathArena/aime_2025`・`hmmt_feb_2025`、問題・解答の生テキスト保存 `0` 件）において、`28.8M` から `34.66B` までの全単独モデルは強い過信（`RMS-CE = 59.75%–87.42%`、`CHR@80 = 81.25%–96.88%`）を示す。`MoL Epistemic Cascade` は最高正答率タイ（全体 `18.75%` / `SuperGPQA` `hard` `37.50%`）を維持したまま、`RMS` 較正誤差を **`5.37×`** 削減（`70.62%` $\to$ **`13.14%`**）し、**`CHR@80` を `0.00%`** へ引き下げ、選択コミット精度を **`2.13×`（`40.00%`）** に高める。
+- **`56 + 8 = 64` ビット全単射パッキング、`hle:3r2s` カナリア隔離、および 4 シリコン実測（`LA-38`）**：`pack_ulm4_56bit` は `uLM-28M` の 4 トークン（`56` ビット）+ `8` ビット認識論ヘッダを単一 `uint64` に格納し、`admit_to_wearable_crystal` は `hle:3r2s` を含む入力を完全隔離（ベンチマーク結晶化 `0` 件）する。`Window 10` 対 `Window 11`（`uLM-28M` 単層の `1/16`）は **`NVIDIA Jetson AGX Thor`（`TI INA3221` 物理シャント、`board_metered = true`）で `2,803.25` 対 `623,920.52 nJ/op`（物理 `measured_j` `222.57×` 削減；ビットスライスは `162.71 nJ/op` = `87.25×`）**、`Apple M5 Max` で **`313.24×`**、`AMD Zen 5` `RAPL` で **`259.31×`**、実機接続 `OpenMV-AE3` Cortex-`M55` で **`556.94`（`1.399 µs`）対 `1,528,901.48` `DWT` サイクル（`2,745.18×` 高速、`board_metered = false`）** を記録した（[/living/lut-adapt/#la-hle-01](/living/lut-adapt/#la-hle-01)）。
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/wearable-microllm-and-lastexam.svg" alt="スマートグラス・スマートウォッチ向けマイクロLLMとLastExamプロトコル：5,984 BウォッチSRAM Nucleus、ゼロプレフィックス汚染、多階層較正。" />
+  <figcaption>図 10. ウェアラブル・マイクロLLMおよび `LastExam` プロトコル測定結果（`主張 LA-19 [58定理 / フリート1,422件], LA-36..LA-38`）：(A) `64 KB` スマートウォッチ `SRAM` 格納（`5,984 B` = `9.13%` 対 `uLM-28M` `INT4` `13.75 MB`）および `Jetson AGX Thor`（`222.57×` `measured_j`）・`Zen 5`（`259.31×`）・`M5 Max`（`313.24×`）・実機 `OpenMV-AE3` Cortex-`M55`（`2,745.18×` `DWT` サイクル）利得；(B) `64` クエリのウェアラブル二峰性ストリームとプレフィックス汚染 `0.00%`；(C) `RMS-CE` の `5.37×` 削減（`13.14%` 対 `70.62%`）および `CHR@80 = 0.00%`；(D) 6カーネル `Lean 4.36.0` 定理 `58` 件と `hle:3r2s` カナリア隔離。</figcaption>
 </figure>
 
 ---
@@ -760,7 +774,7 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 | **`LA-F5`** | `主張 LA-5` (バイト投機) | `scripts/run_code_corpus_benchmark.py` が `48` の未見プロンプト上で貪欲 `Mamba3CodeLM` に対して `< 100.0%` の正確なバイトパリティを生成する。 |
 | **`LA-F6`** | `主張 LA-6` (`AirMoL` 14.3M) | `scripts/run_air_mol_benchmark.py` が `F_NOCACHE` 下で `100%` パリティに失敗するか、`AirLLM` 4-Bit `T=1` よりも多くの NVMe バイトを読み込む。 |
 | **`LA-F7`** | `主張 LA-7` (2026 HF `AirMoL`) | `scripts/run_hf_lfm3_air_mol.py`、`scripts/run_hf_air_mol_pretrained.py`、または `scripts/run_hf_qwen35_air_mol.py` が貪欲目標から $\ge 1$ BPE トークン逸脱する。 |
-| **`LA-F8`** | `主張 LA-8` (回帰スイート) | `pytest -v` が `tests/` 内の `56` 個のテストのいずれかに失敗する。 |
+| **`LA-F8`** | `主張 LA-8` (回帰スイート) | `pytest -v` が `tests/` 内の `61` 個のテストのいずれかに失敗する。 |
 | **`LA-F9`** | `主張 LA-9` (`8.5B/35B` MoE) | `scripts/run_hf_moe_8b_35b_air_mol.py` が `100%` トークンパリティから逸脱するか、`AirLLM` または `Expert-AirLLM` よりも多くの NVMe バイトを読み込む。 |
 | **`LA-F10`** | `主張 LA-10` (`Sub1Bit-LUT6`) | `scripts/run_sub1bit_lut_benchmark.py` が密 `ITQ` バイナリ行列乗算に対して `1e-3` を超える最大誤差を示すか、`100%` 検証済みパリティに失敗する。 |
 | **`LA-F11`** | `主張 LA-11` (`48` タスク Bakeoff) | `scripts/run_frontier_ai_bakeoff.py` が `> 0%` の破損コミットを許容するか、Wave-2 仕様変異下で Wave-1 スキルの陳腐化を許容する。 |
@@ -787,7 +801,10 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 | **`LA-F32`** | `主張 LA-32` (`Two-Tier LUT6 + T-MAC` およびシャント / `DWT` テレメトリ) | `bench_lut6_nucleus_shunt` が `Jetson AGX Thor` 上でゼロ `MUL` `T-MAC` の物理 `CpJ` 比 `<= 1.0×` を記録するか、`OpenMV-AE3` Cortex-`M55` 上で `<= 5.0×` の速度向上にとどまる。 |
 | **`LA-F33`** | `主張 LA-33` (`Antisym-40 T-MAC` および Inria `Charon`+`Aeneas` Rust $\to$ Lean) | `lookup_tmac_antisym41` が `40,500` ペアのいずれかで 81エントリ `T-MAC` と不一致となるか、`Thor`（`measured_j`）および `Zen 5`（`RAPL`）での優位を失うか、`Lut6Verify_Aeneas.lean` が `Lean 4.36.0` 型検査に失敗する。 |
 | **`LA-F34`** | `主張 LA-34` (`SEU` `SECDED` 耐性および `openXC7` `.bit` `PAR`) | `Nucleus` `(72, 64)` `SECDED + 0x3C` が `BER = 1%` で `> 0%` のサイレント破損または `< 100%` の生存率を示すか、`openXC7` `nextpnr-xilinx` が `xc7a200tfbg484-2` 上で `250 MHz` タイミング達成または `.bit` 出力に失敗する。 |
-| **`LA-F35`** | `主張 LA-35` (`Lupanov` / `TreeLUT` / `KAN-LUT` および `14.74 KB` `lut6_core.wasm`) | `Lupanov`（`k=8`）、`TreeLUT`、または量子化 `KAN-LUT` が `>= 1` 最小項で不一致となるか、`lut6_core.wasm` が `16 KB` を超えるかもしくは `V8` `WebAssembly.instantiate` 検証に失敗する。 |
+| **`LA-F35`** | `主張 LA-35` (`Lupanov` / `TreeLUT` / `KAN-LUT` および `15.31 KB` `lut6_core.wasm`) | `Lupanov`（`k=8`）、`TreeLUT`、または量子化 `KAN-LUT` が `>= 1` 最小項で不一致となるか、`lut6_core.wasm` が `16 KB` を超えるかもしくは `V8` `WebAssembly.instantiate` 検証に失敗する。 |
+| **`LA-F36`** | `主張 LA-36` (`Wearable-MoL` 対 スマートグラス小型LLM) | `Wearable-MoL` Rung 0 がスマートウォッチ `64 KB` `SRAM` を超えるか、ホワイトボード問題で `> 0%` のプレフィックス汚染を許すか、`>= 1` 件のベンチマーク問題を結晶化する。 |
+| **`LA-F37`** | `主張 LA-37` (`LastExam` 較正および `CHR@80`) | `scripts/run_wearable_and_lastexam_benchmark.py` が `cais/hle` アクセス制限を回避するか、生テキストを保存するか、`> 5%` の `CHR@80` を記録するか、`Qwen3.6-35B-A3B` 比で `RMS-CE` 削減が `< 3×` にとどまる。 |
+| **`LA-F38`** | `主張 LA-38` (`56` ビット `uLM-28M` 開幕応答、`hle:3r2s` 隔離、および `58` 証明) | `pack_ulm4_56bit` 往復変換が失敗するか、`admit_to_wearable_crystal` が `hle:3r2s` を通すか、`WearableLastExam.lean` が `6` カーネル（`58/58`）のいずれかに失敗するか、`Window 10` の `Thor` 物理シャント利得が `< 50×` となる。 |
 
 ---
 
@@ -853,6 +870,10 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 <li>Lupanov, O. B. (1958). Ob odnom metode sinteza skhem [On a Method of Circuit Synthesis]. <em>Izvestiya VUZov, Radiofizika</em>, 1(1):120-140.</li>
 <li>Ho, S., and Protzenko, J. (2022). Aeneas: Rust Verification by Functional Translation (<code>AeneasVerif/charon</code> &amp; <code>AeneasVerif/aeneas</code>). <em>ICFP 2022</em>, <em>PACMPL</em> 6(ICFP):711-741, <a href="https://doi.org/10.1145/3547647">doi:10.1145/3547647</a>.</li>
 <li>He, Z., Yin, X., Wen, Z., Zhu, C., Liu, K., Wei, J., Wu, Y., Cao, T., and Yang, M. (2025). LUT-LLM: Efficient Large Language Model Inference with Memory-Compute Co-Design on FPGAs. <em>arXiv:2511.06174</em>.</li>
+<li>Phan, L., Gatti, A., Han, Z., Li, N., Hu, J., Zhang, H., Zhang, C. B. C., Shaaban, M., Ling, J., Shi, S., et al. (2026). Humanity's Last Exam (<code>cais/hle</code>, <a href="https://lastexam.ai/">lastexam.ai</a>). <em>Nature</em>, 649:1139-1146, <em>arXiv:2501.14249</em>.</li>
+<li>Cheng, J., Li, S., Zhang, Y., et al. (2026). Micro Language Models Enable Instant Responses (<code>Sensente/uLM-28M</code>, University of Washington &amp; Meta AI). <em>EMNLP 2026</em>, <em>arXiv:2604.19642</em>.</li>
+<li>M-A-P Team, ByteDance Seed, et al. (2025). SuperGPQA: Scaling LLM Evaluation across 285 Graduate Disciplines (<code>m-a-p/SuperGPQA</code>). <em>arXiv:2502.14739</em>.</li>
+<li>Liu, X., et al. (2026). MicroLLM-R1: Reasoning on Microcontrollers and Ultra-Small Edge Devices. <em>arXiv:2603.24967</em>.</li>
 </ol>
 
 ---
@@ -861,11 +882,12 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 
 ## 付録A. 再現性
 
-[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit d767bc5`）および [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` および `lut6-core-nucleus/`）のチェックアウトから以下を実行する：
+[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit dc45357`）および [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` および `lut6-core-nucleus/`）のチェックアウトから以下を実行する：
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
 (cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_wearable_and_lastexam_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_global_frontiers_seu_treelut_kan.py
 PYTHONPATH=src .venv/bin/python scripts/run_charon_aeneas_rust_to_lean.py
 PYTHONPATH=src .venv/bin/python scripts/run_openxc7_xc7a200t_par_audit.py

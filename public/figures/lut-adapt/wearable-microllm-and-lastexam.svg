@@ -1,0 +1,212 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="860" viewBox="0 0 1220 860" role="img" aria-labelledby="p34-t p34-d">
+  <title id="p34-t">Smart-Glasses and Smartwatch MicroLLMs Meets LastExam Epistemic Calibration: 5,984 B Watch SRAM Nucleus, Zero-Poison Opener Gate, and Multi-Scale Calibration</title>
+  <desc id="p34-d">Four-panel synthesis of Claims LA-36 through LA-38: (A) 64 KB smartwatch SRAM feasibility (5,984 B = 9.13% vs 14 MB uLM-28M INT4 overflow) and 56-bit 4-token uLM-28M opener + epistemic hold hardware telemetry across Jetson AGX Thor DC shunt measured_j, AMD Zen 5 RAPL, Apple M5 Max, and live OpenMV-AE3 Cortex-M55 DWT cycles; (B) 64-query Smart-Glasses and Smartwatch bimodal stream accuracy and collaborative prefix poisoning suppression (0.0% poisoned prefixes on MoL vs UW/Meta uLM-28M prefix masking); (C) LastExam-protocol closed-ended accuracy vs RMS Calibration Error and Confident Hallucination Rate across 28M to 35B models; and (D) 58 six-kernel Lean 4.36.0 theorems (1,422 fleet) and hle:3r2s canary quarantine.</desc>
+  <defs>
+    <linearGradient id="bg34" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#060b16"/>
+      <stop offset="50%" stop-color="#0b1528"/>
+      <stop offset="100%" stop-color="#071921"/>
+    </linearGradient>
+    <linearGradient id="g34-em" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="g34-am" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="g34-ro" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f43f5e"/><stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+    <linearGradient id="g34-vi" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1220" height="860" fill="url(#bg34)"/>
+  <text x="30" y="36" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18.8" font-weight="800">From Smartwatch 64 KB SRAM &amp; uLM-28M Glasses Openers to LastExam Epistemic Humility</text>
+  <text x="30" y="56" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.0">Claims LA-19 (58 Thms / 1422 Fleet), LA-36..LA-38  |  Thor Shunt measured_j != Host reported_j != Live Cortex-M55 DWT != Battery est_queries</text>
+  <rect x="28" y="72" width="570" height="372" rx="12" fill="#0f172a" stroke="#10b981" stroke-opacity="0.6" stroke-width="1.5"/>
+  <text x="46" y="98" fill="#34d399" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700">A. 64 KB Watch SRAM Fit &amp; 56-Bit 4-Token Opener Silicon (Claims LA-36 &amp; LA-38)</text>
+  <text x="46" y="116" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">5,984 B (9.13% of nRF52832 64 KB SRAM) vs. 14.0 MB uLM-28M INT4 (&gt;213x overflow)</text>
+  <rect x="46" y="128" width="416" height="32" rx="5" fill="#064e3b" stroke="#10b981" stroke-width="1.2"/>
+  <text x="254" y="148" text-anchor="middle" fill="#ecfdf5" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.2" font-weight="700">bits [55..0]: 4 x 14-bit uLM-28M Opener Tokens (|V|=12,288)</text>
+  <rect x="466" y="128" width="114" height="32" rx="5" fill="#1e1b4b" stroke="#a78bfa" stroke-width="1.2"/>
+  <text x="523" y="148" text-anchor="middle" fill="#ede9fe" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.8" font-weight="700">[63..56] CalHdr</text>
+  <text x="46" y="193" fill="#e2e8f0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.0" font-weight="700">Jetson Thor Shunt</text>
+  <rect x="186" y="178" width="392" height="22" rx="4" fill="#1e293b"/>
+  <rect x="186" y="178" width="241" height="22" rx="4" fill="url(#g34-em)"/>
+  <text x="194" y="193" fill="#020617" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="800">223x measured CpJ</text>
+  <text x="186" y="214" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1">2,803 nJ vs 623.9 uJ (board_metered=true)</text>
+  <text x="46" y="247" fill="#e2e8f0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.0" font-weight="700">AMD Zen 5 RAPL</text>
+  <rect x="186" y="232" width="392" height="22" rx="4" fill="#1e293b"/>
+  <rect x="186" y="232" width="248" height="22" rx="4" fill="url(#g34-vi)"/>
+  <text x="194" y="247" fill="#020617" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="800">259x reported CpJ</text>
+  <text x="186" y="268" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1">12,783 nJ vs 3,314.9 uJ (amd_rapl pkg)</text>
+  <text x="46" y="301" fill="#e2e8f0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.0" font-weight="700">Apple M5 Max L3</text>
+  <rect x="186" y="286" width="392" height="22" rx="4" fill="#1e293b"/>
+  <rect x="186" y="286" width="256" height="22" rx="4" fill="url(#g34-vi)"/>
+  <text x="194" y="301" fill="#020617" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="800">313x reported CpJ</text>
+  <text x="186" y="322" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1">102 nJ vs 31.8 uJ (RUSAGE_INFO_V6)</text>
+  <text x="46" y="355" fill="#e2e8f0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.0" font-weight="700">Live Alif E3 M55</text>
+  <rect x="186" y="340" width="392" height="22" rx="4" fill="#1e293b"/>
+  <rect x="186" y="340" width="353" height="22" rx="4" fill="url(#g34-am)"/>
+  <text x="194" y="355" fill="#020617" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="800">2,745x fewer DWT cyc</text>
+  <text x="186" y="376" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1">557 vs 1,528,901 cyc (vs 1/16th uLM-28M layer)</text>
+  <rect x="46" y="400" width="534" height="32" rx="6" fill="#022c22" stroke="#10b981" stroke-opacity="0.5"/>
+  <text x="313" y="420" text-anchor="middle" fill="#a7f3d0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">Nicla Voice (nRF52832 64 KB) + OpenMV-AE3 (Cortex-M55 @ 400 MHz): 1.40 us / reflex, 0 flash writes</text>
+  <rect x="620" y="72" width="572" height="372" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-opacity="0.6" stroke-width="1.5"/>
+  <text x="638" y="98" fill="#38bdf8" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700">B. Smart-Glasses &amp; Watch Bimodal Stream: Accuracy vs. Prefix Poisoning (LA-36)</text>
+  <text x="638" y="116" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">48 Daily Wearable Intents (2 Waves) + 16 Whiteboard PhD/Olympiad Glance Queries</text>
+  <text x="640" y="138" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">Architecture</text>
+  <text x="948" y="138" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">Wear%</text>
+  <text x="1014" y="138" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">Exam%</text>
+  <text x="1088" y="138" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">Poison%</text>
+  <text x="1170" y="138" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">mJ/q</text>
+  <line x1="638" y1="144" x2="1174" y2="144" stroke="#334155" stroke-width="1"/>
+  <rect x="634" y="149" width="544" height="28" rx="5" fill="#1e293b" fill-opacity="0.75"/>
+  <text x="640" y="167" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">Sensente/uLM-28M (28M Standalone)</text>
+  <text x="948" y="167" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">6.2%</text>
+  <text x="1014" y="167" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">6.2%</text>
+  <text x="1088" y="167" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">93.8%</text>
+  <text x="1170" y="167" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">273.6</text>
+  <rect x="634" y="183" width="544" height="28" rx="5" fill="#3f1d2e" fill-opacity="0.75"/>
+  <text x="640" y="201" fill="#fecdd3" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">uLM-28M Collab Prefix + Cloud 35B</text>
+  <text x="948" y="201" text-anchor="end" fill="#fecdd3" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">95.8%</text>
+  <text x="1014" y="201" text-anchor="end" fill="#fecdd3" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">37.5%</text>
+  <text x="1088" y="201" text-anchor="end" fill="#fecdd3" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">93.8%</text>
+  <text x="1170" y="201" text-anchor="end" fill="#fecdd3" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">17,234.5</text>
+  <rect x="634" y="217" width="544" height="28" rx="5" fill="#1e293b" fill-opacity="0.75"/>
+  <text x="640" y="235" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">SmolLM2-135M-Instruct (135M)</text>
+  <text x="948" y="235" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">27.1%</text>
+  <text x="1014" y="235" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">6.2%</text>
+  <text x="1088" y="235" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">93.8%</text>
+  <text x="1170" y="235" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">629.8</text>
+  <rect x="634" y="251" width="544" height="28" rx="5" fill="#1e293b" fill-opacity="0.75"/>
+  <text x="640" y="269" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">LiquidAI/LFM2.5-230M (230M Hybrid)</text>
+  <text x="948" y="269" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">41.7%</text>
+  <text x="1014" y="269" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">18.8%</text>
+  <text x="1088" y="269" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">81.2%</text>
+  <text x="1170" y="269" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">204.8</text>
+  <rect x="634" y="285" width="544" height="28" rx="5" fill="#1e293b" fill-opacity="0.75"/>
+  <text x="640" y="303" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">Qwen/Qwen3-0.6B</text>
+  <text x="948" y="303" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">16.7%</text>
+  <text x="1014" y="303" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">12.5%</text>
+  <text x="1088" y="303" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">87.5%</text>
+  <text x="1170" y="303" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">1,637.6</text>
+  <rect x="634" y="319" width="544" height="28" rx="5" fill="#1e293b" fill-opacity="0.75"/>
+  <text x="640" y="337" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">Always-Cloud Qwen3.6-35B (+RTT)</text>
+  <text x="948" y="337" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">100.0%</text>
+  <text x="1014" y="337" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">37.5%</text>
+  <text x="1088" y="337" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">0.0%</text>
+  <text x="1170" y="337" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">21,201.1</text>
+  <rect x="634" y="353" width="544" height="28" rx="5" fill="#064e3b" fill-opacity="0.75"/>
+  <text x="640" y="371" fill="#ecfdf5" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">OpenIE Wearable-MoL (4KB-&gt;230M-&gt;35B</text>
+  <text x="948" y="371" text-anchor="end" fill="#ecfdf5" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">97.9%</text>
+  <text x="1014" y="371" text-anchor="end" fill="#ecfdf5" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">37.5%</text>
+  <text x="1088" y="371" text-anchor="end" fill="#ecfdf5" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">0.0%</text>
+  <text x="1170" y="371" text-anchor="end" fill="#ecfdf5" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">29,919.7</text>
+  <rect x="634" y="402" width="544" height="30" rx="6" fill="#0c4a6e" stroke="#38bdf8" stroke-opacity="0.5"/>
+  <text x="906" y="421" text-anchor="middle" fill="#bae6fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">Routine Rung-0 Wearable Hits: 0.0019 mJ/q -&gt; ~1,800,000,000 est_queries on 250 mAh (3,420 J) Glasses</text>
+  <rect x="28" y="462" width="730" height="372" rx="12" fill="#0f172a" stroke="#f59e0b" stroke-opacity="0.6" stroke-width="1.5"/>
+  <text x="46" y="488" fill="#fbbf24" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700">C. LastExam-Protocol Frontier Evaluation: Accuracy vs. RMS Calibration Error (Claim LA-37)</text>
+  <text x="46" y="506" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">32 SHA-256-Pinned Items (16 SuperGPQA 10-Choice PhD + 16 AIME/HMMT 2025 Exact-Match) | Zero Prompt Leakage</text>
+  <text x="48" y="528" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">Model</text>
+  <text x="390" y="528" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">Acc%</text>
+  <text x="450" y="528" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">MC10%</text>
+  <text x="510" y="528" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">Exact%</text>
+  <text x="582" y="528" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">RMS-CE%</text>
+  <text x="656" y="528" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">CHR@80%</text>
+  <text x="734" y="528" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">SelAcc%</text>
+  <line x1="46" y1="534" x2="740" y2="534" stroke="#334155" stroke-width="1"/>
+  <rect x="42" y="539" width="702" height="27" rx="5" fill="#1e293b" fill-opacity="0.78"/>
+  <text x="48" y="557" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">Sensente/uLM-28M (28.8M Glasses uLM)</text>
+  <text x="390" y="557" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">3.1%</text>
+  <text x="450" y="557" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">6.2%</text>
+  <text x="510" y="557" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">0.0%</text>
+  <text x="582" y="557" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">68.2%</text>
+  <text x="656" y="557" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">3.1%</text>
+  <text x="734" y="557" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">3.1%</text>
+  <rect x="42" y="570" width="702" height="27" rx="5" fill="#1e293b" fill-opacity="0.78"/>
+  <text x="48" y="588" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">SmolLM2-135M-Instruct (135M)</text>
+  <text x="390" y="588" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">3.1%</text>
+  <text x="450" y="588" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">6.2%</text>
+  <text x="510" y="588" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">0.0%</text>
+  <text x="582" y="588" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">70.5%</text>
+  <text x="656" y="588" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">25.0%</text>
+  <text x="734" y="588" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">3.1%</text>
+  <rect x="42" y="601" width="702" height="27" rx="5" fill="#1e293b" fill-opacity="0.78"/>
+  <text x="48" y="619" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">LiquidAI/LFM2.5-230M (230M Hybrid)</text>
+  <text x="390" y="619" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">9.4%</text>
+  <text x="450" y="619" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">18.8%</text>
+  <text x="510" y="619" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">0.0%</text>
+  <text x="582" y="619" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">59.8%</text>
+  <text x="656" y="619" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">9.4%</text>
+  <text x="734" y="619" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">9.4%</text>
+  <rect x="42" y="632" width="702" height="27" rx="5" fill="#1e293b" fill-opacity="0.78"/>
+  <text x="48" y="650" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">Qwen/Qwen3-0.6B</text>
+  <text x="390" y="650" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">3.1%</text>
+  <text x="450" y="650" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">6.2%</text>
+  <text x="510" y="650" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">0.0%</text>
+  <text x="582" y="650" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">87.4%</text>
+  <text x="656" y="650" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">96.9%</text>
+  <text x="734" y="650" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">3.1%</text>
+  <rect x="42" y="663" width="702" height="27" rx="5" fill="#1e293b" fill-opacity="0.78"/>
+  <text x="48" y="681" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">google/gemma-4-E2B-it (WearOS Class)</text>
+  <text x="390" y="681" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">6.2%</text>
+  <text x="450" y="681" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">12.5%</text>
+  <text x="510" y="681" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">0.0%</text>
+  <text x="582" y="681" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">77.8%</text>
+  <text x="656" y="681" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">93.8%</text>
+  <text x="734" y="681" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">6.2%</text>
+  <rect x="42" y="694" width="702" height="27" rx="5" fill="#1e293b" fill-opacity="0.78"/>
+  <text x="48" y="712" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">Devstral-Small-2-24B-Instruct</text>
+  <text x="390" y="712" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">15.6%</text>
+  <text x="450" y="712" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">31.2%</text>
+  <text x="510" y="712" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">0.0%</text>
+  <text x="582" y="712" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">69.3%</text>
+  <text x="656" y="712" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">84.4%</text>
+  <text x="734" y="712" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">15.6%</text>
+  <rect x="42" y="725" width="702" height="27" rx="5" fill="#1e293b" fill-opacity="0.78"/>
+  <text x="48" y="743" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">Qwen/Qwen3.6-35B-A3B (35B-A3B MoE)</text>
+  <text x="390" y="743" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">18.8%</text>
+  <text x="450" y="743" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">37.5%</text>
+  <text x="510" y="743" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">0.0%</text>
+  <text x="582" y="743" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">70.6%</text>
+  <text x="656" y="743" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">81.2%</text>
+  <text x="734" y="743" text-anchor="end" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="500">18.8%</text>
+  <rect x="42" y="756" width="702" height="27" rx="5" fill="#064e3b" fill-opacity="0.78"/>
+  <text x="48" y="774" fill="#ecfdf5" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">OpenIE MoL Epistemic Cascade</text>
+  <text x="390" y="774" text-anchor="end" fill="#ecfdf5" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">18.8%</text>
+  <text x="450" y="774" text-anchor="end" fill="#ecfdf5" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">37.5%</text>
+  <text x="510" y="774" text-anchor="end" fill="#ecfdf5" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">0.0%</text>
+  <text x="582" y="774" text-anchor="end" fill="#ecfdf5" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">13.1%</text>
+  <text x="656" y="774" text-anchor="end" fill="#ecfdf5" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">0.0%</text>
+  <text x="734" y="774" text-anchor="end" fill="#ecfdf5" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">40.0%</text>
+  <rect x="42" y="800" width="702" height="24" rx="5" fill="#451a03" stroke="#f59e0b" stroke-opacity="0.5"/>
+  <text x="393" y="816" text-anchor="middle" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.2">cais/hle (sha=5a81a4c7) gated HTTP 403 respected (0 bypass); hle:3r2s canary guard = 0 exam items crystallized</text>
+  <rect x="776" y="462" width="416" height="372" rx="12" fill="#0f172a" stroke="#a78bfa" stroke-opacity="0.6" stroke-width="1.5"/>
+  <text x="794" y="488" fill="#c4b5fd" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700">D. 58-Theorem 6-Kernel Proof Suite (LA-19 / LA-38)</text>
+  <text x="794" y="506" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">WearableLastExam.lean (8 new thms) | 1,422 Linux bwrap fleet</text>
+  <rect x="792" y="522" width="384" height="35" rx="5" fill="#1e1b4b" fill-opacity="0.7" stroke="#6366f1" stroke-opacity="0.4"/>
+  <text x="800" y="536" fill="#e0e7ff" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.2" font-weight="700">Thm 51: uLM-28M 56b+8b Bijection</text>
+  <text x="800" y="550" fill="#a5b4fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">4x14b (|V|=12,288) + 8b CalHdr &lt;-&gt; uint64</text>
+  <rect x="792" y="560" width="384" height="35" rx="5" fill="#1e1b4b" fill-opacity="0.7" stroke="#6366f1" stroke-opacity="0.4"/>
+  <text x="800" y="574" fill="#e0e7ff" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.2" font-weight="700">Thm 52: 64 KB Watch SRAM Bound</text>
+  <text x="800" y="588" fill="#a5b4fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">5,984 B (&lt;10% nRF52) vs 14 MB uLM (&gt;213x)</text>
+  <rect x="792" y="598" width="384" height="35" rx="5" fill="#1e1b4b" fill-opacity="0.7" stroke="#6366f1" stroke-opacity="0.4"/>
+  <text x="800" y="612" fill="#e0e7ff" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.2" font-weight="700">Thm 53: Prefix Poisoning Bound</text>
+  <text x="800" y="626" fill="#a5b4fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">Unverified uLM err &lt;= rec+wrong; Gated = 0</text>
+  <rect x="792" y="636" width="384" height="35" rx="5" fill="#1e1b4b" fill-opacity="0.7" stroke="#6366f1" stroke-opacity="0.4"/>
+  <text x="800" y="650" fill="#e0e7ff" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.2" font-weight="700">Thm 54: LastExam Overconfidence</text>
+  <text x="800" y="664" fill="#a5b4fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">(conf - acc)^2 &gt;= (cMin - pMax)^2 &gt; 0</text>
+  <rect x="792" y="674" width="384" height="35" rx="5" fill="#1e1b4b" fill-opacity="0.7" stroke="#6366f1" stroke-opacity="0.4"/>
+  <text x="800" y="688" fill="#e0e7ff" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.2" font-weight="700">Thm 55: Epistemic Calibration Drop</text>
+  <text x="800" y="702" fill="#a5b4fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">|confCal - acc|^2 &lt; (confRaw - acc)^2</text>
+  <rect x="792" y="712" width="384" height="35" rx="5" fill="#1e1b4b" fill-opacity="0.7" stroke="#6366f1" stroke-opacity="0.4"/>
+  <text x="800" y="726" fill="#e0e7ff" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.2" font-weight="700">Thm 56: Sound Necessary Verifier</text>
+  <text x="800" y="740" fill="#a5b4fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">V(x,y*)=1 -&gt; 0 valid lost, all V=0 blocked</text>
+  <rect x="792" y="750" width="384" height="35" rx="5" fill="#1e1b4b" fill-opacity="0.7" stroke="#6366f1" stroke-opacity="0.4"/>
+  <text x="800" y="764" fill="#e0e7ff" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.2" font-weight="700">Thm 57: Wearable Battery Lifetime</text>
+  <text x="800" y="778" fill="#a5b4fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">B/e_mol &gt;= B/e_ulm &amp; N*(e_ulm - e_mol) &gt; 0</text>
+  <rect x="792" y="788" width="384" height="35" rx="5" fill="#1e1b4b" fill-opacity="0.7" stroke="#6366f1" stroke-opacity="0.4"/>
+  <text x="800" y="802" fill="#e0e7ff" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.2" font-weight="700">Thm 58: hle:3r2s Canary Quarantine</text>
+  <text x="800" y="816" fill="#a5b4fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">admitToCrystal(true, _, _) = false (0 leak)</text>
+</svg>

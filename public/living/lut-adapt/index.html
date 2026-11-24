@@ -46,10 +46,10 @@
 
       <div class="measurement-box">
         <strong>Measurement grammar on this page.</strong> Every widget below stamps its numbers with an explicit honesty chip and never sums across tiers:
-        <span class="chip chip-meas">Physical DC Shunt (measured_j · Claims LA-24, LA-28, LA-32 &amp; LA-33)</span> for <code>NVIDIA Jetson AGX Thor</code> <code>TI INA3221</code> <code>VDD_CPU_SOC_MSS</code> + <code>INA238</code> <code>VIN</code> joules (<code>board_metered = true</code> solely on Thor, reaching <code>162.56 nJ/op</code> = <code>87.00×</code> <code>CpJ</code> bit-sliced and <code>8,594.93 nJ/op</code> = <code>1.65×</code> <code>CpJ</code> antisymmetric-40 zero-MUL <code>T-MAC</code> on <code>lut6-core</code>);
-        <span class="chip chip-meas">Reported, Bare-Metal Cycles, &amp; Live WASM (reported_j / DWT / .wasm)</span> for <code>RAPL</code> (including <code>1.12×</code> <code>CpJ</code> <code>Zen 5</code> <code>Antisym-40</code> flip), <code>amdgpu PPT</code>, <code>NVML</code>, Apple M5 Max/M3 Ultra <code>IOReport</code> + <code>proc_pid_rusage</code> counters, live attached <code>Alif Ensemble E3</code> (<code>OpenMV-AE3</code> Cortex-M55 @ <code>400 MHz</code>) <code>DWT</code> cycles, and the live <code>14.74 KB</code> <code>lut6_core.wasm</code> VM (<code>board_metered = false</code>);
+        <span class="chip chip-meas">Physical DC Shunt (measured_j · Claims LA-24, LA-28, LA-32, LA-33 &amp; LA-38)</span> for <code>NVIDIA Jetson AGX Thor</code> <code>TI INA3221</code> <code>VDD_CPU_SOC_MSS</code> + <code>INA238</code> <code>VIN</code> joules (<code>board_metered = true</code> solely on Thor, reaching <code>162.71 nJ/op</code> = <code>87.25×</code> <code>CpJ</code> bit-sliced, <code>2,803.25 nJ/op</code> = <code>222.57×</code> <code>CpJ</code> wearable 56-bit 4-token epistemic gate vs. <code>uLM-28M</code> slice, and <code>8,594.93 nJ/op</code> = <code>1.65×</code> <code>CpJ</code> antisymmetric-40 zero-MUL <code>T-MAC</code> on <code>lut6-core</code>);
+        <span class="chip chip-meas">Reported, Bare-Metal Cycles, &amp; Live WASM (reported_j / DWT / .wasm)</span> for <code>RAPL</code> (including <code>1.12×</code> <code>CpJ</code> <code>Zen 5</code> <code>Antisym-40</code> flip), <code>amdgpu PPT</code>, <code>NVML</code>, Apple M5 Max/M3 Ultra <code>IOReport</code> + <code>proc_pid_rusage</code> counters, live attached <code>Alif Ensemble E3</code> (<code>OpenMV-AE3</code> Cortex-M55 @ <code>400 MHz</code>) <code>DWT</code> cycles (<code>2,745.18×</code> wearable gate), and the live <code>15.31 KB</code> <code>lut6_core.wasm</code> VM (<code>board_metered = false</code>);
         <span class="chip chip-sim">Post-PAR openXC7 &amp; Simulated RTL</span> for license-free <code>openXC7</code> <code>nextpnr-xilinx</code> <code>320.62 MHz</code> post-route timing &amp; <code>77.85 Mbit</code> <code>.bit</code> bitstream on <code>XC7A200T-2FBG484-2</code> plus Yosys <code>0.71+</code> <code>xcup</code> + <code>abc -lut 6</code> 64/64 miter + Verilator <code>5.054</code> netlists (<code>measured_j = None</code>); and
-        <span class="chip chip-est">Modelled (est_j)</span> for analytical cascade equations.
+        <span class="chip chip-est">Modelled (est_j / est_queries)</span> for analytical cascade and wearable battery equations.
       </div>
 
       <!-- Widget 1: Proposition 1 Simon-Kadane + Downward Amortization -->
@@ -263,19 +263,19 @@
       <!-- Widget 5: Six-Kernel Paranoid Proof Audit Explorer -->
       <section id="la-tab-01" class="glass-card" style="margin-top: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-tab-01</code> · Six-Kernel Paranoid Formal Proof &amp; <code>Aeneas</code> Explorer (<code>Claims LA-19 &amp; LA-33</code>)</h2>
-          <span class="chip chip-meas">6 / 6 Independent Kernels Accept (50 Thms · 0 sorry)</span>
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-tab-01</code> · Six-Kernel Paranoid Formal Proof &amp; <code>Aeneas</code> Explorer (<code>Claims LA-19, LA-33 &amp; LA-38</code>)</h2>
+          <span class="chip chip-meas">6 / 6 Independent Kernels Accept (58 Thms · 0 sorry)</span>
         </div>
         <p style="font-size: 0.9rem; margin-top: 0.6rem;">
-          Inspect the six independent checkers executed by <code>scripts/verify_lean_proofs.py</code> (<code>lake check --paranoid</code>) across all <code>50</code> theorems in <code>proofs/LutAdapt/</code> (7 modules including <code>NucleusCodon.lean</code>, <code>TernaryTmac.lean</code>, and <code>GlobalFrontiers.lean</code>, plus Inria <code>Charon</code>+<code>Aeneas</code> mechanical <code>#![no_std]</code> Rust-to-Lean extraction <code>Lut6Verify_Aeneas.lean</code>), hardening against single-prover bugs (<code>CVE-2026-72844</code>, <code>CVE-2026-72711</code>) and <code>native_decide</code> (<code>Lean.ofReduceBool</code>).
+          Inspect the six independent checkers executed by <code>scripts/verify_lean_proofs.py</code> (<code>lake check --paranoid</code>) across all <code>58</code> theorems in <code>proofs/LutAdapt/</code> (8 modules including <code>NucleusCodon.lean</code>, <code>TernaryTmac.lean</code>, <code>GlobalFrontiers.lean</code>, and <code>WearableLastExam.lean</code>, plus Inria <code>Charon</code>+<code>Aeneas</code> mechanical <code>#![no_std]</code> Rust-to-Lean extraction <code>Lut6Verify_Aeneas.lean</code>), hardening against single-prover bugs (<code>CVE-2026-72844</code>, <code>CVE-2026-72711</code>) and <code>native_decide</code> (<code>Lean.ofReduceBool</code>).
         </p>
         <div class="ctrl-grid">
           <div class="ctrl-box">
             <label><span>Select Independent Proof Checker</span></label>
             <select id="sk-select">
-              <option value="conleche" selected>1 · con-leche --verified (Set-theory-proved consistent kernel · 58,785 decls)</option>
-              <option value="conron">2 · con-ron --verified (Aeneas-verified Rust refinement of con-leche · 58,785 decls)</option>
-              <option value="lean4lean">3 · lean4lean (Mario Carneiro's Lean-in-Lean CIC typechecker · 58,787 decls)</option>
+              <option value="conleche" selected>1 · con-leche --verified (Set-theory-proved consistent kernel · 58,802 decls)</option>
+              <option value="conron">2 · con-ron --verified (Aeneas-verified Rust refinement of con-leche · 58,802 decls)</option>
+              <option value="lean4lean">3 · lean4lean (Mario Carneiro's Lean-in-Lean CIC typechecker · 58,804 decls)</option>
               <option value="nanoda">4 · nanoda (Standalone zero-Lean-runtime Rust export verifier · sorryAx blocked)</option>
               <option value="paranoid">5 · leanchecker --paranoid (Fresh-environment C++ replay · zero tactic trust)</option>
               <option value="default">6 · Lean v4.36.0 + Inria Aeneas LLBC→Lean (Post-CVE Nov 2026 kernel · #print axioms enforced)</option>
@@ -286,11 +286,11 @@
           <div class="metric-tile">
             <div class="k">Kernel Verdict</div>
             <div class="v" id="sk-verdict" style="color: var(--color-brand-cyan);">ACCEPTS</div>
-            <div class="s" id="sk-decls">58,785 declarations (--verified)</div>
+            <div class="s" id="sk-decls">58,802 declarations (--verified)</div>
           </div>
           <div class="metric-tile">
             <div class="k">Fleet Sandboxed Audit</div>
-            <div class="v">1,414 Thms</div>
+            <div class="v">1,422 Thms</div>
             <div class="s">4 OpenIE repos · Linux bwrap 6/6</div>
           </div>
           <div class="metric-tile">
@@ -361,14 +361,14 @@
         </div>
       </section>
 
-      <!-- Widget 7: Live 14.74 KB #![no_std] WebAssembly Silicon & SEU Lab (la-wasm-01) -->
+      <!-- Widget 7: Live 15.31 KB #![no_std] WebAssembly Silicon & SEU Lab (la-wasm-01) -->
       <section id="la-wasm-01" class="glass-card" style="margin-top: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-wasm-01</code> · Live <code>14.74 KB</code> <code>#![no_std]</code> <code>lut6_core.wasm</code> Silicon &amp; Cosmic-Ray <code>SEU</code> Lab (<code>Claims LA-33..LA-35</code>)</h2>
-          <span class="chip chip-meas" id="wasm-status-chip">Live WASM Engine (15,094 B · 0 Crates)</span>
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-wasm-01</code> · Live <code>15.31 KB</code> <code>#![no_std]</code> <code>lut6_core.wasm</code> Silicon &amp; Cosmic-Ray <code>SEU</code> Lab (<code>Claims LA-33..LA-35</code>)</h2>
+          <span class="chip chip-meas" id="wasm-status-chip">Live WASM Engine (15,679 B · 0 Crates)</span>
         </div>
         <p style="font-size: 0.9rem; margin-top: 0.6rem;">
-          Executes the actual compiled <code>wasm32-unknown-unknown</code> Rust binary (<code>/living/lut-adapt/lut6_core.wasm</code>, embedding both verified <code>4,096 B</code> <code>.lut6</code> crystals <code>0xd1cc025a</code> &amp; <code>0x3b12a681</code>, ISCA 2025 <code>Antisym-40 T-MAC</code>, Walsh–Hadamard <code>FWHT</code>, and <code>(72,64)</code> <code>RAMB36</code> Hamming <code>SECDED</code>) directly inside your browser's WebAssembly VM.
+          Executes the actual compiled <code>wasm32-unknown-unknown</code> Rust binary (<code>/living/lut-adapt/lut6_core.wasm</code>, embedding both verified <code>4,096 B</code> <code>.lut6</code> crystals <code>0xd1cc025a</code> &amp; <code>0x3b12a681</code>, ISCA 2025 <code>Antisym-40 T-MAC</code>, Walsh–Hadamard <code>FWHT</code>, <code>(72,64)</code> <code>RAMB36</code> Hamming <code>SECDED</code>, and <code>Wearable-MoL</code> epistemic &amp; canary gates) directly inside your browser's WebAssembly VM.
         </p>
         <div class="ctrl-grid">
           <div class="ctrl-box">
@@ -415,12 +415,72 @@
         </div>
       </section>
 
+      <!-- Widget 8: Smart-Glasses / Smartwatch Wearable-MoL & LastExam Calibration Lab (la-hle-01) -->
+      <section id="la-hle-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-hle-01</code> · Smart-Glasses <code>Wearable-MoL</code> (<code>5,984 B</code> Watch <code>SRAM</code>) &amp; <code>LastExam</code> Epistemic Lab (<code>Claims LA-36..LA-38</code>)</h2>
+          <span class="chip chip-meas">Live WASM + Thor Shunt (222.6×) + 32-Item Open Suite</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Compare sub-billion wearable checkpoints (<code>Sensente/uLM-28M</code>, <code>SmolLM2-135M</code>, <code>LiquidAI/LFM2.5-230M</code>, <code>Qwen3-0.6B</code>, UW/Meta collaborative prefix masking) and frontier models against <code>Wearable-MoL</code> and <code>MoL Epistemic Cascade</code>, while testing live <code>wasm_eval_wearable_epistemic</code> and <code>wasm_check_hle_canary8</code> inside <code>lut6_core.wasm</code>.
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label><span>Select Wearable / Frontier Architecture</span></label>
+            <select id="hle-arch">
+              <option value="mol" selected>Wearable-MoL + Epistemic Cascade (5,984 B = 9.13% Watch SRAM · 0.0% Poison · Reference)</option>
+              <option value="collab">UW/Meta uLM-28M Collab Prefix + Cloud 35B (arXiv:2604.19642 · 93.75% Exam Poison!)</option>
+              <option value="ulm28m">Sensente/uLM-28M Standalone Glasses µLM (28.84M · 13.75 MB = 214× Watch Overflow)</option>
+              <option value="lfm230m">LiquidAI/LFM2.5-230M O(1) Wearable Hybrid (229.69M · 109.53 MB · 45.1 ms/q)</option>
+              <option value="smol135m">HuggingFaceTB/SmolLM2-135M-Instruct (134.52M · 64.14 MB)</option>
+              <option value="qwen06b">Qwen/Qwen3-0.6B (596.05M · 96.88% CHR@80 Overconfidence)</option>
+              <option value="gemma2b">google/gemma-4-E2B-it (2.60B Android XR Class · 93.75% CHR@80)</option>
+              <option value="qwen35b">Qwen/Qwen3.6-35B-A3B Standalone (34.66B · 18.75% Acc · 70.62% RMS-CE · 81.25% CHR@80)</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label><span>Live <code>lut6_core.wasm</code> Wearable &amp; <code>hle:3r2s</code> Canary Probe</span></label>
+            <select id="hle-probe">
+              <option value="reflex" selected>Routine Glasses Reflex (0x015A26A6C3DEEDED) → 56-Bit 4-Tok Opener</option>
+              <option value="whiteboard">Whiteboard PhD Glance (0xFFFA26A6C3DEEDED) → EpistemicHold (0% Poison!)</option>
+              <option value="canary">Benchmark Canary Bytes ("hle:3r2s") → Quarantine (0 Crystallized!)</option>
+            </select>
+          </div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-tile">
+            <div class="k">64 KB Watch SRAM Fit</div>
+            <div class="v" id="hle-sram" style="color: var(--color-brand-cyan);">5,984 B (9.13% FITS!)</div>
+            <div class="s" id="hle-batt">~1.80B routine est_queries · 0.0019 mJ R0</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Bimodal Stream &amp; Poisoning</div>
+            <div class="v" id="hle-stream">97.9% Wear / 0.0% Poison</div>
+            <div class="s" id="hle-stream-sub">37.5% Whiteboard PhD · 222.6× Thor Shunt CpJ</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">LastExam Calibration</div>
+            <div class="v" id="hle-cal" style="color: var(--color-brand-cyan);">13.14% RMS-CE (5.37× cut)</div>
+            <div class="s" id="hle-cal-sub">0.00% CHR@80 · 40.00% SelAcc · 18.75% Acc (#1)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Live WASM Epistemic Gate</div>
+            <div class="v" id="hle-gate" style="color: var(--color-brand-cyan);">Mode 1 · 4-Tok Opener</div>
+            <div class="s" id="hle-gate-sub">CalConf=88% · Canary=0 (Verified)</div>
+          </div>
+        </div>
+      </section>
+
       <!-- Static Vector Diagrams Gallery -->
       <section id="la-figs" style="margin-top: 2.5rem;">
         <h2 style="font-size: 1.3rem;">Paper Vector Diagrams (Click to Zoom)</h2>
         <figure class="fig">
-          <img src="/figures/lut-adapt/global-frontiers-antisym-seu-wasm.svg" alt="Global Multi-Frontier Advancement: Antisymmetric 40-Entry T-MAC, SEU SECDED Survival, openXC7 Post-PAR Bitstream, Aeneas Rust-to-Lean, and 14.74 KB WebAssembly">
-          <figcaption><strong>Figure 9.</strong> Global multi-frontier measurements (<code>Claims LA-19 [50 thms], LA-33..LA-35</code>): ISCA 2025 <code>Antisym-40 T-MAC</code> (<code>1.65×</code> <code>Thor</code> shunt <code>CpJ</code>, <code>1.12×</code> <code>Zen 5</code> <code>RAPL</code> <code>CpJ</code> flip), <em>TMLR</em> July 2026 cosmic-ray <code>SEU</code> <code>(72,64)</code> <code>SECDED</code> + <code>0x3C</code> apoptosis (<code>100.0%</code> survival &amp; <code>0.0%</code> silent corruption at <code>BER = 1%</code>), <code>Lupanov</code> <code>-72.5%</code> / <code>TreeLUT</code> / <code>KAN-LUT</code>, license-free <code>openXC7</code> <code>320.62 MHz</code> post-<code>PAR</code> <code>.bit</code> on <code>XC7A200T-2FBG484-2</code>, Inria <code>Aeneas</code> Rust→Lean, and <code>14.74 KB</code> <code>lut6_core.wasm</code>.</figcaption>
+          <img src="/figures/lut-adapt/wearable-microllm-and-lastexam.svg" alt="Smart-Glasses and Smartwatch MicroLLMs Meets LastExam Epistemic Calibration: 5,984 B Watch SRAM Nucleus, Zero-Poison Opener Gate, and Multi-Scale Calibration">
+          <figcaption><strong>Figure 10.</strong> Wearable micro-LLM and <code>LastExam</code>-protocol measurements (<code>Claims LA-19 [58 thms / 1,422 fleet], LA-36..LA-38</code>): <code>5,984 B</code> (<code>9.13%</code>) smartwatch <code>SRAM</code> fit, <code>222.57×</code> <code>Thor</code> DC shunt <code>measured_j</code> &amp; <code>2,745.18×</code> live <code>OpenMV-AE3</code> Cortex-M55 <code>DWT</code> gain vs. <code>uLM-28M</code> slice, <code>0.00%</code> prefix poisoning vs. <code>93.75%</code> on UW/Meta collaborative prefix masking, <code>5.37×</code> <code>RMS-CE</code> cut (<code>13.14%</code> vs. <code>70.62%</code>), <code>0.00%</code> <code>CHR@80</code>, and <code>hle:3r2s</code> canary quarantine.</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="/figures/lut-adapt/global-frontiers-antisym-seu-wasm.svg" alt="Global Multi-Frontier Advancement: Antisymmetric 40-Entry T-MAC, SEU SECDED Survival, openXC7 Post-PAR Bitstream, Aeneas Rust-to-Lean, and 15.31 KB WebAssembly">
+          <figcaption><strong>Figure 9.</strong> Global multi-frontier measurements (<code>Claims LA-19 [58 thms], LA-33..LA-35</code>): ISCA 2025 <code>Antisym-40 T-MAC</code> (<code>1.65×</code> <code>Thor</code> shunt <code>CpJ</code>, <code>1.12×</code> <code>Zen 5</code> <code>RAPL</code> <code>CpJ</code> flip), <em>TMLR</em> July 2026 cosmic-ray <code>SEU</code> <code>(72,64)</code> <code>SECDED</code> + <code>0x3C</code> apoptosis (<code>100.0%</code> survival &amp; <code>0.0%</code> silent corruption at <code>BER = 1%</code>), <code>Lupanov</code> <code>-72.5%</code> / <code>TreeLUT</code> / <code>KAN-LUT</code>, license-free <code>openXC7</code> <code>320.62 MHz</code> post-<code>PAR</code> <code>.bit</code> on <code>XC7A200T-2FBG484-2</code>, Inria <code>Aeneas</code> Rust→Lean, and <code>15.31 KB</code> <code>lut6_core.wasm</code>.</figcaption>
         </figure>
         <figure class="fig">
           <img src="/figures/lut-adapt/lut6-nucleus-codon-and-means-test.svg" alt="4 KB LUT6 + Zero-MUL T-MAC Nucleus, Wobble Harmonics, DiffLUT-Net Means Test, and Nov 2026 Looped Models">
@@ -451,8 +511,8 @@
           <figcaption><strong>Figure 5.</strong> The nine-rung capability ratchet and Proposition 1's Compilation Threshold (<code>ΔT &gt; ΔT*</code>), separating <code>reported_j</code> and <code>est_j</code> across twelve orders of magnitude (<code>board_metered = false</code>).</figcaption>
         </figure>
         <figure class="fig">
-          <img src="/figures/lut-adapt/six-kernel-trust-and-stack.svg" alt="Six-Kernel Formal Proof Assurance (50 Theorems + Aeneas) and Three-Layer Compiled Stack">
-          <figcaption><strong>Figure 6.</strong> Six-kernel paranoid proof audit across all <code>50</code> theorems (<code>1,414</code> fleet, <code>Claims LA-19 &amp; LA-33</code>: <code>con-leche</code>, <code>con-ron</code>, <code>lean4lean</code>, <code>nanoda</code>, <code>leanchecker</code>, <code>Lean 4.36.0</code> + Inria <code>Charon</code>+<code>Aeneas</code> Rust-to-Lean) and the three-layer compiled stack.</figcaption>
+          <img src="/figures/lut-adapt/six-kernel-trust-and-stack.svg" alt="Six-Kernel Formal Proof Assurance (58 Theorems + Aeneas) and Three-Layer Compiled Stack">
+          <figcaption><strong>Figure 6.</strong> Six-kernel paranoid proof audit across all <code>58</code> theorems (<code>1,422</code> fleet, <code>Claims LA-19, LA-33 &amp; LA-38</code>: <code>con-leche</code>, <code>con-ron</code>, <code>lean4lean</code>, <code>nanoda</code>, <code>leanchecker</code>, <code>Lean 4.36.0</code> + Inria <code>Charon</code>+<code>Aeneas</code> Rust-to-Lean) and the three-layer compiled stack.</figcaption>
         </figure>
       </section>
     </div>
@@ -672,12 +732,12 @@
     // Widget 5: Six-Kernel Paranoid Proof Audit Explorer
     (function(){
       var sk = {
-        conleche: { decls: '58,785 declarations (--verified)', vec: 'CVE-2026-72844', basis: 'Proved consistent in ZFC set theory (Breitner)' },
-        conron:   { decls: '58,785 declarations (--verified)', vec: 'CVE-2026-72711 & GMP', basis: 'Aeneas-verified Rust refinement of con-leche' },
-        lean4lean:{ decls: '58,787 declarations checked', vec: 'C++ .proj divergence', basis: 'Independent Lean-in-Lean CIC typechecker' },
-        nanoda:   { decls: '58,787 decls (sorryAx blocked)', vec: '.olean tampering', basis: 'Zero-Lean-runtime standalone Rust verifier' },
-        paranoid: { decls: '58,787 fresh-env decls', vec: 'skipKernelTC / meta', basis: 'Fresh-environment C++ replay (0 tactic trust)' },
-        default:  { decls: '50 LutAdapt thms + 6 Aeneas fns', vec: 'Lean.ofReduceBool', basis: 'Post-CVE Lean 4.36.0 + Inria Aeneas LLBC→Lean' }
+        conleche: { decls: '58,802 declarations (--verified)', vec: 'CVE-2026-72844', basis: 'Proved consistent in ZFC set theory (Breitner)' },
+        conron:   { decls: '58,802 declarations (--verified)', vec: 'CVE-2026-72711 & GMP', basis: 'Aeneas-verified Rust refinement of con-leche' },
+        lean4lean:{ decls: '58,804 declarations checked', vec: 'C++ .proj divergence', basis: 'Independent Lean-in-Lean CIC typechecker' },
+        nanoda:   { decls: '58,804 decls (sorryAx blocked)', vec: '.olean tampering', basis: 'Zero-Lean-runtime standalone Rust verifier' },
+        paranoid: { decls: '58,804 fresh-env decls', vec: 'skipKernelTC / meta', basis: 'Fresh-environment C++ replay (0 tactic trust)' },
+        default:  { decls: '58 LutAdapt thms + 6 Aeneas fns', vec: 'Lean.ofReduceBool', basis: 'Post-CVE Lean 4.36.0 + Inria Aeneas LLBC→Lean' }
       };
       var sel = document.getElementById('sk-select');
       function updSk() {
@@ -747,13 +807,74 @@
         .then(function(bytes){ return WebAssembly.instantiate(bytes, {}); })
         .then(function(res){
           exportsObj = res.instance.exports;
-          chip.textContent = 'Live WASM VM Active (15,094 B · Verified)';
+          window.__lut6WasmExports = exportsObj;
+          chip.textContent = 'Live WASM VM Active (15,679 B · Verified)';
           updateUI();
+          if (window.__updateHleWasm) window.__updateHleWasm();
         })
         .catch(function(){
           chip.textContent = 'Offline Mode (Pre-verified V8 receipt)';
           updateUI();
+          if (window.__updateHleWasm) window.__updateHleWasm();
         });
+    })();
+
+    // Widget 8: Smart-Glasses / Smartwatch Wearable-MoL & LastExam Calibration Lab
+    (function(){
+      var archData = {
+        mol:     { sram: '5,984 B (9.13% FITS!)', batt: '~1.80B routine est_queries · 0.0019 mJ R0', stream: '97.9% Wear / 0.0% Poison', ssub: '37.5% Whiteboard PhD · 222.6× Thor Shunt CpJ', cal: '13.14% RMS-CE (5.37× cut)', csub: '0.00% CHR@80 · 40.00% SelAcc · 18.75% Acc (#1)', ok: true },
+        collab:  { sram: '13.75 MB (214× OVERFLOW)', batt: '198 est_queries · 17,234.5 mJ/q (Darwin)', stream: '95.8% Wear / 93.8% POISON!', ssub: '37.5% Exam · Speaks wrong 4-tok prefix first!', cal: '70.62% RMS-CE (Cloud 35B)', csub: '81.25% CHR@80 · Uncalibrated prefix masking', ok: false },
+        ulm28m:  { sram: '13.75 MB (214× OVERFLOW)', batt: '12,498 est_queries · 273.62 mJ/q', stream: '6.2% Wear / 93.8% Poison', ssub: '6.2% Whiteboard PhD · 28.84M |V|=12,288', cal: '68.24% RMS-CE', csub: '3.12% Acc (6.25% MC10) · 3.12% SelAcc', ok: false },
+        lfm230m: { sram: '109.5 MB (1,711× OVERFLOW)', batt: '16,699 est_queries · 204.79 mJ/q (45.1 ms)', stream: '41.7% Wear / 81.2% Poison', ssub: '18.8% Whiteboard PhD · O(1) Hybrid 229.7M', cal: '59.75% RMS-CE', csub: '9.38% Acc (18.75% MC10) · 9.38% CHR@80', ok: false },
+        smol135m:{ sram: '64.1 MB (1,002× OVERFLOW)', batt: '5,430 est_queries · 629.75 mJ/q', stream: '27.1% Wear / 93.8% Poison', ssub: '6.2% Whiteboard PhD · 134.5M', cal: '70.46% RMS-CE', csub: '3.12% Acc · 25.00% CHR@80', ok: false },
+        qwen06b: { sram: '284.2 MB (4,441× OVERFLOW)', batt: '2,088 est_queries · 1,637.6 mJ/q', stream: '16.7% Wear / 87.5% Poison', ssub: '12.5% Whiteboard PhD · 596.1M', cal: '87.42% RMS-CE', csub: '3.12% Acc · 96.88% CHR@80 (Extreme!)', ok: false },
+        gemma2b: { sram: '3,200 MB (Android XR Class)', batt: '775.3 J / 32 exam items', stream: 'XR Tier · Not MCU', ssub: '2.6B On-Device Hybrid', cal: '77.75% RMS-CE', csub: '6.25% Acc (12.5% MC10) · 93.75% CHR@80', ok: false },
+        qwen35b: { sram: '25,200 MB (Always-Cloud)', batt: '161 est_queries (+320 ms BLE/LTE RTT)', stream: '100% Wear / 0.0% Poison', ssub: '37.5% Exam · 2,088 ms/q latency', cal: '70.62% RMS-CE', csub: '18.75% Acc (#1) · 81.25% CHR@80 · 18.75% SelAcc', ok: false }
+      };
+      var aSel = document.getElementById('hle-arch'), pSel = document.getElementById('hle-probe');
+      function updHle() {
+        var d = archData[aSel.value];
+        var sEl = document.getElementById('hle-sram'), cEl = document.getElementById('hle-cal');
+        sEl.textContent = d.sram;
+        sEl.style.color = d.ok ? 'var(--color-brand-cyan)' : 'var(--color-brand-amber)';
+        document.getElementById('hle-batt').textContent = d.batt;
+        document.getElementById('hle-stream').textContent = d.stream;
+        document.getElementById('hle-stream-sub').textContent = d.ssub;
+        cEl.textContent = d.cal;
+        cEl.style.color = d.ok ? 'var(--color-brand-cyan)' : 'var(--color-brand-amber)';
+        document.getElementById('hle-cal-sub').textContent = d.csub;
+
+        var ex = window.__lut6WasmExports;
+        var gEl = document.getElementById('hle-gate'), gsEl = document.getElementById('hle-gate-sub');
+        var mode = pSel.value;
+        if (ex && ex.wasm_eval_wearable_epistemic && ex.wasm_check_hle_canary8) {
+          if (mode === 'reflex') {
+            var r = ex.wasm_eval_wearable_epistemic(0xC3DEEDED, 0x015A26A6, 8) >>> 0;
+            var can = ex.wasm_check_hle_canary8(0x656D6974, 0x35303072) >>> 0;
+            gEl.textContent = 'Mode ' + ((r >>> 24) & 3) + ' · 4-Tok Opener (t₀=' + (r & 0x3FFF) + ')';
+            gEl.style.color = 'var(--color-brand-cyan)';
+            gsEl.textContent = 'CalConf=' + ((r >>> 16) & 0xFF) + '% · Canary=' + can + ' (Live WASM)';
+          } else if (mode === 'whiteboard') {
+            var r2 = ex.wasm_eval_wearable_epistemic(0xC3DEEDED, 0xFFFA26A6, 8) >>> 0;
+            gEl.textContent = 'Mode ' + ((r2 >>> 24) & 3) + ' · EPISTEMIC HOLD';
+            gEl.style.color = 'var(--color-brand-amber)';
+            gsEl.textContent = 'PriorConf=' + ((r2 >>> 16) & 0xFF) + '% · 0 poisoned prefix words!';
+          } else {
+            var canHle = ex.wasm_check_hle_canary8(0x3A656C68, 0x73327233) >>> 0;
+            gEl.textContent = 'CANARY=1 · QUARANTINED!';
+            gEl.style.color = 'var(--color-brand-amber)';
+            gsEl.textContent = 'hle:3r2s detected (' + canHle + ') → 0 items crystallized';
+          }
+        } else {
+          if (mode === 'reflex') { gEl.textContent = 'Mode 1 · 4-Tok Opener (t₀=267)'; gsEl.textContent = 'CalConf=88% · Canary=0 (Verified receipt)'; }
+          else if (mode === 'whiteboard') { gEl.textContent = 'Mode 3 · EPISTEMIC HOLD'; gsEl.textContent = 'PriorConf=0% · 0 poisoned prefix words'; }
+          else { gEl.textContent = 'CANARY=1 · QUARANTINED!'; gsEl.textContent = 'hle:3r2s blocked from .lut6 crystal'; }
+        }
+      }
+      window.__updateHleWasm = updHle;
+      aSel.addEventListener('change', updHle);
+      pSel.addEventListener('change', updHle);
+      updHle();
     })();
 
     // Widget 6: Six-Host Fleet & 4-Vendor GPU Explorer

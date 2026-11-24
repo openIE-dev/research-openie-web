@@ -31,13 +31,13 @@
   <text x="44" y="141" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="700">1. Jetson AGX Thor DC Shunt measured_j (INA3221 VDD_CPU, board_metered=true):</text>
   <text x="214" y="164" text-anchor="end" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">INT8 Micro-MLP (Base)</text>
   <rect x="222" y="154" width="205.0" height="12" rx="3" fill="url(#bar-ro)"/>
-  <text x="434.0" y="164" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">14,143.5 nJ (1.00x base)</text>
+  <text x="434.0" y="164" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">14,196.2 nJ (1.00x base)</text>
   <text x="214" y="188" text-anchor="end" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">Full 81-Entry T-MAC</text>
-  <rect x="222" y="178" width="168.1" height="12" rx="3" fill="url(#bar-am)"/>
-  <text x="397.1" y="188" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">11,597.3 nJ (1.22x CpJ)</text>
+  <rect x="222" y="178" width="166.1" height="12" rx="3" fill="url(#bar-am)"/>
+  <text x="395.1" y="188" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">11,504.0 nJ (1.23x CpJ)</text>
   <text x="214" y="212" text-anchor="end" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">Antisym-40 T-MAC (Ours)</text>
-  <rect x="222" y="202" width="124.6" height="12" rx="3" fill="url(#bar-em)"/>
-  <text x="353.6" y="212" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">8,594.9 nJ (1.65x CpJ (1.35x &lt; 81-LUT))</text>
+  <rect x="222" y="202" width="128.2" height="12" rx="3" fill="url(#bar-em)"/>
+  <text x="357.2" y="212" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">8,876.1 nJ (1.60x CpJ (1.35x &lt; 81-LUT))</text>
   <text x="44" y="244" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="700">2. Cross-Silicon Precompute Savings (board_metered=false):</text>
   <text x="46" y="264" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">Silicon Target</text>
   <text x="244" y="264" text-anchor="end" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">INT8 MLP</text>
@@ -51,14 +51,14 @@
   <text x="462" y="290" text-anchor="end" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">27,830 nJ</text>
   <text x="578" y="290" text-anchor="end" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">1.12x (&gt;MLP!)</text>
   <text x="46" y="314" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">Alif E3 M55 (400MHz)</text>
-  <text x="244" y="314" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">119,002 cyc</text>
-  <text x="352" y="314" text-anchor="end" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">67,101 cyc</text>
-  <text x="462" y="314" text-anchor="end" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">41,701 cyc</text>
+  <text x="244" y="314" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">118,994 cyc</text>
+  <text x="352" y="314" text-anchor="end" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">67,070 cyc</text>
+  <text x="462" y="314" text-anchor="end" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">41,705 cyc</text>
   <text x="578" y="314" text-anchor="end" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">1.61x (2.85x)</text>
   <text x="46" y="338" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">Apple M5 Max (L3 nJ)</text>
   <text x="244" y="338" text-anchor="end" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">709 nJ</text>
-  <text x="352" y="338" text-anchor="end" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">1,384 nJ</text>
-  <text x="462" y="338" text-anchor="end" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">1,119 nJ</text>
+  <text x="352" y="338" text-anchor="end" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">745 nJ</text>
+  <text x="462" y="338" text-anchor="end" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">516 nJ</text>
   <text x="578" y="338" text-anchor="end" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">1.24x &lt; 81-LUT</text>
   <rect x="44" y="370" width="534" height="50" rx="8" fill="#091e1a" stroke="#059669" stroke-opacity="0.6"/>
   <text x="56" y="390" fill="#a7f3d0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="700">Why Zen 5 Flipped from 0.68x -&gt; 1.12x CpJ:</text>
@@ -137,12 +137,12 @@
   <text x="634" y="570" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">Extracted &amp; Kernel-Typechecked (6/6 fns, aeneas_lean_kernel_typechecked = true):</text>
   <text x="634" y="588" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.3">pack_5trits_u8 · unpack_5trits_u8 · pack_4trits_and_mirror · surgical_overlay_mux · eval_lut6_single · is_wobble</text>
   <rect x="622" y="614" width="534" height="76" rx="9" fill="#131f35" stroke="#a78bfa" stroke-opacity="0.55"/>
-  <text x="634" y="634" fill="#ddd6fe" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3" font-weight="700">2. Six-Kernel Paranoid Proof Suite Expanded to 50 Theorems (1,414 Fleet):</text>
-  <text x="634" y="653" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">7 Modules (+GlobalFrontiers.lean: 8 thms) · 9/50 Zero-Axiom · 38/50 Choice-Free · 0 sorry</text>
-  <text x="634" y="672" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">con-leche &amp; con-ron --verified (58,785 decls) + lean4lean + nanoda + Linux bwrap PASS</text>
+  <text x="634" y="634" fill="#ddd6fe" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3" font-weight="700">2. Six-Kernel Paranoid Proof Suite Expanded to 58 Theorems (1,422 Fleet):</text>
+  <text x="634" y="653" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">7 Modules (+GlobalFrontiers.lean: 8 thms) · 11/50 Zero-Axiom · 44/50 Choice-Free · 0 sorry</text>
+  <text x="634" y="672" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">con-leche &amp; con-ron --verified (58,802 decls) + lean4lean + nanoda + Linux bwrap PASS</text>
   <rect x="622" y="700" width="534" height="102" rx="9" fill="#091e1a" stroke="#10b981" stroke-opacity="0.65"/>
-  <text x="634" y="720" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3" font-weight="700">3. Browser-Native #![no_std] WebAssembly Silicon Lab (14.74 KB = 15,094 B):</text>
+  <text x="634" y="720" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3" font-weight="700">3. Browser-Native #![no_std] WebAssembly Silicon Lab (15.31 KB = 15,679 B):</text>
   <text x="634" y="739" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">8 Cross-Compiled #![no_std] Targets (+wasm32-unknown-unknown, 0 external crates)</text>
   <text x="634" y="758" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6">Embeds BOTH 4 KB Crystals (CRC32 0xd1cc025a &amp; 0x3b12a681) + FWHT + (72,64) SECDED</text>
-  <text x="634" y="777" fill="#a7f3d0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5">Live Interactive Widget la-wasm-01 in /living/lut-adapt/ (sha256=09f0c664d4865399...)</text>
+  <text x="634" y="777" fill="#a7f3d0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5">Live Interactive Widget la-wasm-01 in /living/lut-adapt/ (sha256=78bcf975e32e14e6...)</text>
 </svg>

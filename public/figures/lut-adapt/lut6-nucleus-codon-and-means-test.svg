@@ -26,7 +26,7 @@
   </defs>
   <rect width="1200" height="820" fill="url(#bg30)"/>
   <text x="34" y="36" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="19.2" font-weight="700">4 KB LUT6 + Zero-MUL T-MAC Nucleus, Wobble Harmonics, DiffLUT-Net &amp; Nov 2026 Looped Models</text>
-  <text x="34" y="56" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.4">Claims LA-19 (50 Thms), LA-26..LA-33  |  Rust 1.100.0 #![no_std] lut6-core  |  Thor Shunt measured_j != Host reported_j != Bare-Metal Cycles</text>
+  <text x="34" y="56" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.4">Claims LA-19 (58 Thms), LA-26..LA-38  |  Rust 1.100.0 #![no_std] lut6-core  |  Thor Shunt measured_j != Host reported_j != Bare-Metal Cycles</text>
   <rect x="32" y="72" width="560" height="352" rx="12" fill="#0f172a" stroke="#10b981" stroke-opacity="0.55" stroke-width="1.4"/>
   <rect x="46" y="84" width="144" height="21" rx="10.5" fill="#064e3b" stroke="#10b981"/>
   <text x="118" y="98" text-anchor="middle" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="700">Shunt + Live MCU</text>
@@ -35,47 +35,47 @@
   <text x="46" y="138" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.0" font-weight="600">1. Jetson AGX Thor Physical DC Shunt (measured_j per decision):</text>
   <text x="210" y="159" text-anchor="end" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">INT8 Micro-MLP (64-&gt;32-&gt;16)</text>
   <rect x="218" y="150" width="235.0" height="11" rx="3" fill="url(#g-rose)"/>
-  <text x="460.0" y="159" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">14143.5 nJ (1.0x base)</text>
+  <text x="460.0" y="159" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">14196.2 nJ (1.0x base)</text>
   <text x="210" y="182" text-anchor="end" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">Antisym-40 T-MAC Tail (0 MUL)</text>
-  <rect x="218" y="173" width="142.8" height="11" rx="3" fill="url(#g-amber)"/>
-  <text x="367.8" y="182" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">8594.9 nJ (1.65x CpJ)</text>
+  <rect x="218" y="173" width="146.9" height="11" rx="3" fill="url(#g-amber)"/>
+  <text x="371.9" y="182" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">8876.1 nJ (1.60x CpJ)</text>
   <text x="210" y="205" text-anchor="end" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">Nucleus Wobble Overlay Hit</text>
-  <rect x="218" y="196" width="63.1" height="11" rx="3" fill="url(#g-indigo)"/>
-  <text x="288.1" y="205" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">3798.8 nJ (3.7x CpJ)</text>
+  <rect x="218" y="196" width="62.7" height="11" rx="3" fill="url(#g-indigo)"/>
+  <text x="287.7" y="205" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">3788.3 nJ (3.7x CpJ)</text>
   <text x="210" y="228" text-anchor="end" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">Nucleus Innate Rung-6 Hit</text>
-  <rect x="218" y="219" width="32.2" height="11" rx="3" fill="url(#g-emerald)"/>
-  <text x="257.2" y="228" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">1935.0 nJ (7.3x CpJ)</text>
+  <rect x="218" y="219" width="31.9" height="11" rx="3" fill="url(#g-emerald)"/>
+  <text x="256.9" y="228" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">1927.6 nJ (7.4x CpJ)</text>
   <text x="210" y="251" text-anchor="end" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">Vertical Bit-Sliced Batch-64</text>
   <rect x="218" y="242" width="6.0" height="11" rx="3" fill="url(#g-emerald)"/>
-  <text x="231.0" y="251" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">162.6 nJ (87.0x CpJ)</text>
+  <text x="231.0" y="251" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">162.7 nJ (87.2x CpJ)</text>
   <text x="46" y="280" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.0" font-weight="600">2. Attached Alif Ensemble E3 (AE302F80F55D5AE Cortex-M55 @ 400 MHz):</text>
   <text x="54" y="296" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">INT8 Micro-MLP (2L) </text>
-  <text x="236" y="296" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">119001.9 cyc</text>
+  <text x="236" y="296" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">118993.6 cyc</text>
   <text x="367" y="296" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">297.6 us (&gt;10 us)</text>
   <text x="574" y="296" text-anchor="end" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">1.0x</text>
   <text x="54" y="314" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">Zero-MUL T-MAC Tail </text>
-  <text x="236" y="314" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">10655.8 cyc</text>
-  <text x="367" y="314" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">26.66 us (&gt;10 us)</text>
+  <text x="236" y="314" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">10597.9 cyc</text>
+  <text x="367" y="314" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">26.51 us (&gt;10 us)</text>
   <text x="574" y="314" text-anchor="end" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">11.2x</text>
   <text x="54" y="332" fill="#a5f3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">LUT6 Wobble Overlay </text>
-  <text x="236" y="332" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">1158.4 cyc</text>
-  <text x="367" y="332" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">2.90 us (&lt;10 us)</text>
-  <text x="574" y="332" text-anchor="end" fill="#a5f3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">102.7x</text>
+  <text x="236" y="332" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">1166.9 cyc</text>
+  <text x="367" y="332" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">2.92 us (&lt;10 us)</text>
+  <text x="574" y="332" text-anchor="end" fill="#a5f3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">102.0x</text>
   <text x="54" y="350" fill="#a5f3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">LUT6 Scalar Innate  </text>
-  <text x="236" y="350" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">684.6 cyc</text>
+  <text x="236" y="350" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">684.3 cyc</text>
   <text x="367" y="350" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">1.72 us (&lt;10 us)</text>
-  <text x="574" y="350" text-anchor="end" fill="#a5f3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">173.8x</text>
+  <text x="574" y="350" text-anchor="end" fill="#a5f3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">173.9x</text>
   <text x="54" y="368" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">LUT6 Bit-Sliced B32 </text>
-  <text x="236" y="368" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">2.68 cyc</text>
-  <text x="367" y="368" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">7.0 ns (&lt;10 us)</text>
-  <text x="574" y="368" text-anchor="end" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">44404x</text>
+  <text x="236" y="368" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">2.66 cyc</text>
+  <text x="367" y="368" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">6.9 ns (&lt;10 us)</text>
+  <text x="574" y="368" text-anchor="end" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">44734x</text>
   <rect x="46" y="388" width="532" height="24" rx="6" fill="#091e1a" stroke="#059669" stroke-opacity="0.55"/>
-  <text x="312" y="404" text-anchor="middle" fill="#a7f3d0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.5">ELFs: Alif M55 .text=30496B .dtcm=8192B | Pico M0+ .text=27520B .sram=8192B | Thor N_crit=177.8 calls</text>
+  <text x="312" y="404" text-anchor="middle" fill="#a7f3d0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.5">ELFs: Alif M55 .text=30496B .dtcm=8192B | Pico M0+ .text=27520B .sram=8192B | Thor N_crit=182.5 calls</text>
   <rect x="608" y="72" width="560" height="352" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-opacity="0.55" stroke-width="1.4"/>
   <rect x="622" y="84" width="146" height="21" rx="10.5" fill="#0c4a6e" stroke="#38bdf8"/>
   <text x="695" y="98" text-anchor="middle" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="700">6/6 Lean Kernels</text>
-  <text x="778" y="99" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700">B. Two-Tier LUT6+T-MAC, Wobble FWHT &amp; 50-Thm Proof</text>
-  <text x="622" y="119" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3">Parseval sum_S f_hat(S)^2 = 4096  |  con-leche &amp; con-ron --verified (58785 decls)</text>
+  <text x="778" y="99" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700">B. Two-Tier LUT6+T-MAC, Wobble FWHT &amp; 58-Thm Proof</text>
+  <text x="622" y="119" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3">Parseval sum_S f_hat(S)^2 = 4096  |  con-leche &amp; con-ron --verified (58802 decls)</text>
   <text x="622" y="141" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.2" font-weight="600">1. Boolean Fourier High-Harmonic Noise (|S| &gt;= 5 out of 4,096):</text>
   <text x="808" y="166" text-anchor="end" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1">6-Bit XOR Parity (0x6996...)</text>
   <rect x="816" y="156" width="190.0" height="13" rx="3" fill="url(#g-rose)"/>
@@ -100,9 +100,9 @@
   <text x="1068" y="305" text-anchor="middle" fill="#f1f5f9" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.2" font-weight="600">2 x 4 KB SRAM/DTCM</text>
   <text x="1068" y="322" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">FWHT &lt;=16 &amp; 100% Anchor Gate</text>
   <text x="622" y="356" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">Yosys Miter: 64/64 PASS + 672B T-MAC Tail (1.60 bpw, 0 MULs, rustc const gate)</text>
-  <text x="622" y="374" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4">Lean 4.36.0: Cascade(7)+Benes(7)+Minterm(7)+Conformal(6)+Nucleus(9)+Tmac(6)+Global(8)</text>
+  <text x="622" y="374" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2">Lean 4.36.0: Cascade(7)+Benes(7)+Minterm(7)+Conformal(6)+Nucleus(9)+Tmac(6)+Global(8)+Wearable(8)</text>
   <rect x="622" y="388" width="532" height="24" rx="6" fill="#0b1d33" stroke="#0284c7" stroke-opacity="0.55"/>
-  <text x="888" y="404" text-anchor="middle" fill="#bae6fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2">50/50 Theorems Verified Across 6 Kernels (Darwin + Linux bwrap)  |  0 sorryAx  |  0 ofReduceBool</text>
+  <text x="888" y="404" text-anchor="middle" fill="#bae6fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2">58/58 Theorems Verified Across 6 Kernels (Darwin + Linux bwrap)  |  0 sorryAx  |  0 ofReduceBool</text>
   <rect x="32" y="440" width="560" height="356" rx="12" fill="#0f172a" stroke="#f59e0b" stroke-opacity="0.55" stroke-width="1.4"/>
   <rect x="46" y="452" width="150" height="21" rx="10.5" fill="#451a03" stroke="#f59e0b"/>
   <text x="121" y="466" text-anchor="middle" fill="#fcd34d" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">arXiv:2609.09254</text>
