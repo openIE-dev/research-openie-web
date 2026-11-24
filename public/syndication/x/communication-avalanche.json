@@ -1,0 +1,74 @@
+{
+  "schema": "openie.x_thread_bundle.v1",
+  "study_id": "communication-avalanche",
+  "canonical_id": "blake3:tv:4f70aff689f283a093283c5442909832ad3d481af954a6c581fff29f0c4f7ec6",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 220,
+  "card_video_uri": "/media/tv/tiktok/communication-avalanche-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/communication-avalanche-15s.mp4",
+  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/communication-avalanche/",
+  "canonical_paper_url": "https://research.openie.dev/papers/communication-avalanche/",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "The Communication Tool Avalanche\n\nOne scaling rule connects ancient bacteria, multi-agent AI teams, and consent-gated brain interfaces.\n\n[59 of 60 Fixes · 0 Bad Commits · 98% Combined]",
+      "weighted_chars": 184,
+      "raw_chars": 184,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/communication-avalanche-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/communication-avalanche-15s.mp4",
+        "poster_uri": "/media/tv/posters/communication-avalanche-poster.jpg",
+        "vtt_uri": "/media/tv/captions/communication-avalanche-15s.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "plain_points_1_2",
+      "text": "1/3 From ancient microbes to modern AI, groups scale by sharing signals across strict thresholds and safety gates.\n\n2/3 Event-driven wakeups and signed checks block bad edits and deliver far more verified work per joule.",
+      "weighted_chars": 220,
+      "raw_chars": 220,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "plain_point_3_and_energy",
+      "text": "3/3 Ten AI approaches unite through tiny compiled routines, while future brain links stay grounded in strict consent.\n\nEnergy class: measured_j (927.30 µJ via physical board shunt; board_metered=true).",
+      "weighted_chars": 201,
+      "raw_chars": 201,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "machine_verification_gate",
+      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E]/[M]/[S] · WAI1 blake3:4f70aff689f2… · CC0-1.0",
+      "weighted_chars": 211,
+      "raw_chars": 208,
+      "urls": [],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "bidirectional_medium_and_paper_bridge",
+      "text": "Read & verify The Communication Tool Avalanche (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/communication-avalanche/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/communication-avalanche/",
+      "weighted_chars": 176,
+      "raw_chars": 258,
+      "urls": [
+        "https://research.openie.dev/syndication/medium/communication-avalanche/",
+        "https://research.openie.dev/papers/communication-avalanche/"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "724a1cc8e67cd8381e0c69f169d6c8d5406e54a9ee700e43ab201779da7a644c"
+}

@@ -1,0 +1,1111 @@
+{
+  "version": "1.0.0",
+  "title": "OpenIE Research TV — 9:16 Snackable Vertical Editions",
+  "study_count": 28,
+  "resolution": "1080x1920",
+  "aspect_ratio": "9:16",
+  "fps": 60,
+  "loudness_lufs": -14.0,
+  "safe_zone_box": {
+    "x_min": 56,
+    "x_max": 924,
+    "y_min": 164,
+    "y_max": 1485
+  },
+  "total_bytes": 104324260,
+  "total_mb": 99.49,
+  "studies": [
+    {
+      "id": "agency",
+      "short_title": "Thermodynamic Bounds & Optimal Tempo",
+      "title": "Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents",
+      "category": "Foundations & Thermodynamics",
+      "paper_url": "/papers/agency/",
+      "narrator_name": "Joy",
+      "video_url": "/media/tv/tiktok/agency-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/agency-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/agency-tiktok.vtt",
+      "duration_s": 22.3,
+      "bytes": 3574613,
+      "sha256": "09d876cc05c5f7c1b479a403d5d109bbef89033317bd5b0a4fd630c8d674d622",
+      "blake3": "0e9d86f2f9e4d4b6f09eaaa14729b5010506ccb586ee64d764440ebb9096a742",
+      "hook_headline": "Thermodynamic Bounds & Optimal Tempo · Finish Right First, Then Rank by Joules",
+      "headline_metric": "Finish Right First, Then Rank by Joules",
+      "plain_bullets": [
+        "An agent must aim at a goal, act on the world, and stay within an energy budget.",
+        "Physics prices every decision, creating one optimal pace between slow idle drain and frantic switching waste.",
+        "Among systems that finish a task correctly, the smarter one is whichever spent less energy."
+      ],
+      "energy_tier": "Chip Energy Counter",
+      "energy_disclosure": "Built-in laptop chip energy counters and physics bounds; no external wall meter.",
+      "tiktok_caption": "Thermodynamic Bounds & Optimal Tempo - Finish Right First, Then Rank by Joules\n\n1) An agent must aim at a goal, act on the world, and stay within an energy budget.\n2) Physics prices every decision, creating one optimal pace between slow idle drain and frantic switching waste.\n3) Among systems that finish a task correctly, the smarter one is whichever spent less energy.\n\nEnergy (Chip Energy Counter): Built-in laptop chip energy counters and physics bounds; no external wall meter.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #physics #thermodynamics #ai #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "Thermodynamic Bounds & Optimal Tempo - Finish Right First, Then Rank by Joules\n\n1) An agent must aim at a goal, act on the world, and stay within an energy budget.\n2) Physics prices every decision, creating one optimal pace between slow idle drain and frantic switching waste.\n3) Among systems that finish a task correctly, the smarter one is whichever spent less energy.\n\nEnergy (Chip Energy Counter): Built-in laptop chip energy counters and physics bounds; no external wall meter.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #physics #thermodynamics #ai #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/agency-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "gates",
+      "short_title": "Metered Commit Gates",
+      "title": "Metered Commit Gates: Energy-to-Correct-Completion for Agentic Systems",
+      "category": "Foundations & Thermodynamics",
+      "paper_url": "/papers/gates/",
+      "narrator_name": "George",
+      "video_url": "/media/tv/tiktok/gates-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/gates-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/gates-tiktok.vtt",
+      "duration_s": 21.87,
+      "bytes": 3484984,
+      "sha256": "871851bb37b231246cd504a916850a6057b4756a613ced1e3b666f73064ffff9",
+      "blake3": "077bd3c04baf8f7cf91612e3f64d46be810f149263f7489b209db13002afacca",
+      "hook_headline": "Metered Commit Gates · 11,428 Picojoules per Hardware Gate Check",
+      "headline_metric": "11,428 Picojoules per Hardware Gate Check",
+      "plain_bullets": [
+        "A computer should not take an irreversible action until an independent check confirms it is safe.",
+        "It should try the cheapest method first and wake a large AI model only when simpler tools miss.",
+        "Every decision is written to a receipt with the energy it used, so anyone can audit it later."
+      ],
+      "energy_tier": "Board Power Sensor",
+      "energy_disclosure": "Direct circuit-board power sensor on vision module; software runs stay estimates.",
+      "tiktok_caption": "Metered Commit Gates - 11,428 Picojoules per Hardware Gate Check\n\n1) A computer should not take an irreversible action until an independent check confirms it is safe.\n2) It should try the cheapest method first and wake a large AI model only when simpler tools miss.\n3) Every decision is written to a receipt with the energy it used, so anyone can audit it later.\n\nEnergy (Board Power Sensor): Direct circuit-board power sensor on vision module; software runs stay estimates.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #physics #thermodynamics #ai #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "Metered Commit Gates - 11,428 Picojoules per Hardware Gate Check\n\n1) A computer should not take an irreversible action until an independent check confirms it is safe.\n2) It should try the cheapest method first and wake a large AI model only when simpler tools miss.\n3) Every decision is written to a receipt with the energy it used, so anyone can audit it later.\n\nEnergy (Board Power Sensor): Direct circuit-board power sensor on vision module; software runs stay estimates.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #physics #thermodynamics #ai #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/gates-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "deterministic-null",
+      "short_title": "Deterministic Null",
+      "title": "Deterministic Null: A Pre-Registered Control Experiment for Neural and Agentic Substrates",
+      "category": "Null & Benchmarks",
+      "paper_url": "/papers/deterministic-null/",
+      "narrator_name": "Hari",
+      "video_url": "/media/tv/tiktok/deterministic-null-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/deterministic-null-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/deterministic-null-tiktok.vtt",
+      "duration_s": 23.47,
+      "bytes": 3460441,
+      "sha256": "2fc59118a6729f5a919fa19f7de3fd3edc3fb1b2b6670a6af33529b9b5e11468",
+      "blake3": "292fef05e4141a086130e5dd60f253ca38d8e0f8a5cd876cc24622611f4210d3",
+      "hook_headline": "Deterministic Null · 9 of 10 Bounded Ties · 3.59x Repeat Energy Cut",
+      "headline_metric": "9 of 10 Bounded Ties · 3.59x Repeat Energy Cut",
+      "plain_bullets": [
+        "Most AI benchmarks skip a zero-model control group that tests what simple lookup already solves.",
+        "On bounded math and database tasks, a frozen lookup table matched cloud AI on nine of ten tests.",
+        "On open coding tasks AI leaped ahead, while caching verified answers cut repeat energy three point six times."
+      ],
+      "energy_tier": "Chip Energy Counter",
+      "energy_disclosure": "Built-in Apple chip energy counters; cloud server watts unavailable and unguessed.",
+      "tiktok_caption": "Deterministic Null - 9 of 10 Bounded Ties · 3.59x Repeat Energy Cut\n\n1) Most AI benchmarks skip a zero-model control group that tests what simple lookup already solves.\n2) On bounded math and database tasks, a frozen lookup table matched cloud AI on nine of ten tests.\n3) On open coding tasks AI leaped ahead, while caching verified answers cut repeat energy three point six times.\n\nEnergy (Chip Energy Counter): Built-in Apple chip energy counters; cloud server watts unavailable and unguessed.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #ai #machinelearning #benchmarks #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "Deterministic Null - 9 of 10 Bounded Ties · 3.59x Repeat Energy Cut\n\n1) Most AI benchmarks skip a zero-model control group that tests what simple lookup already solves.\n2) On bounded math and database tasks, a frozen lookup table matched cloud AI on nine of ten tests.\n3) On open coding tasks AI leaped ahead, while caching verified answers cut repeat energy three point six times.\n\nEnergy (Chip Energy Counter): Built-in Apple chip energy counters; cloud server watts unavailable and unguessed.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #ai #machinelearning #benchmarks #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/deterministic-null-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "satb-harness",
+      "short_title": "Satiation Benchmark Harness",
+      "title": "Satiation Benchmark: Reference Harness, Adapters, and Telemetry Attribution",
+      "category": "Null & Benchmarks",
+      "paper_url": "/papers/satb-harness/",
+      "narrator_name": "Mia",
+      "video_url": "/media/tv/tiktok/satb-harness-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/satb-harness-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/satb-harness-tiktok.vtt",
+      "duration_s": 21.03,
+      "bytes": 3200369,
+      "sha256": "8d55127c4ec9a784a6fccc77d59ac19f171e3173c54afb09024e164f4bc878ba",
+      "blake3": "6d9fb46789b836e2272a2aa6612de5432906e5d8b9505bf5fecd5bd9cbcc542c",
+      "hook_headline": "Satiation Benchmark Harness · 12 of 12 Checks · 5 Computers · 0 Replay Drift",
+      "headline_metric": "12 of 12 Checks · 5 Computers · 0 Replay Drift",
+      "plain_bullets": [
+        "Changing the wrapper around an AI model can swing scores as much as swapping the model.",
+        "This test harness locks prompts, memory trimming, and tools so every AI takes the exact same exam.",
+        "Across five computer types, it separates real board sensors from chip counters and blocks noisy power estimates."
+      ],
+      "energy_tier": "Board Sensor + Chip Counter",
+      "energy_disclosure": "Board power shunts on Tegra kit plus chip counters on four hosts; never summed.",
+      "tiktok_caption": "Satiation Benchmark Harness - 12 of 12 Checks · 5 Computers · 0 Replay Drift\n\n1) Changing the wrapper around an AI model can swing scores as much as swapping the model.\n2) This test harness locks prompts, memory trimming, and tools so every AI takes the exact same exam.\n3) Across five computer types, it separates real board sensors from chip counters and blocks noisy power estimates.\n\nEnergy (Board Sensor + Chip Counter): Board power shunts on Tegra kit plus chip counters on four hosts; never summed.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #ai #machinelearning #benchmarks #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "Satiation Benchmark Harness - 12 of 12 Checks · 5 Computers · 0 Replay Drift\n\n1) Changing the wrapper around an AI model can swing scores as much as swapping the model.\n2) This test harness locks prompts, memory trimming, and tools so every AI takes the exact same exam.\n3) Across five computer types, it separates real board sensors from chip counters and blocks noisy power estimates.\n\nEnergy (Board Sensor + Chip Counter): Board power shunts on Tegra kit plus chip counters on four hosts; never summed.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #ai #machinelearning #benchmarks #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/satb-harness-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "time-as-an-index",
+      "short_title": "Time as an Index",
+      "title": "Time as an Index: What It Would Take to Look Up Tomorrow",
+      "category": "Foundations & Thermodynamics",
+      "paper_url": "/papers/time-as-an-index/",
+      "narrator_name": "Hakim",
+      "video_url": "/media/tv/tiktok/time-as-an-index-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/time-as-an-index-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/time-as-an-index-tiktok.vtt",
+      "duration_s": 23.37,
+      "bytes": 4734679,
+      "sha256": "2f91055af279113cdddc4ca00ac3ff556ad2abfc7192c8f28082a5c29df52654",
+      "blake3": "a6eb043fe3d19d79755f72613ccbe9cc7674bc6932f4b0101b80806838e7ac18",
+      "hook_headline": "Time as an Index · 31 Machine-Checked Proofs · 0 Time Shortcuts",
+      "headline_metric": "31 Machine-Checked Proofs · 0 Time Shortcuts",
+      "plain_bullets": [
+        "Inside a mathematical time loop, almost every digital lock would break at once except a one-time secret pad.",
+        "In known physics, no quantum trick, analog circuit, or reported anomaly sends readable answers backward in time.",
+        "Every fast lookup of a future answer is work paid upfront, which fresh random values defeat immediately."
+      ],
+      "energy_tier": "Physics Math Bound",
+      "energy_disclosure": "Mathematical proofs and physics simulations only; no hardware power meter used.",
+      "tiktok_caption": "Time as an Index - 31 Machine-Checked Proofs · 0 Time Shortcuts\n\n1) Inside a mathematical time loop, almost every digital lock would break at once except a one-time secret pad.\n2) In known physics, no quantum trick, analog circuit, or reported anomaly sends readable answers backward in time.\n3) Every fast lookup of a future answer is work paid upfront, which fresh random values defeat immediately.\n\nEnergy (Physics Math Bound): Mathematical proofs and physics simulations only; no hardware power meter used.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #physics #thermodynamics #ai #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "Time as an Index - 31 Machine-Checked Proofs · 0 Time Shortcuts\n\n1) Inside a mathematical time loop, almost every digital lock would break at once except a one-time secret pad.\n2) In known physics, no quantum trick, analog circuit, or reported anomaly sends readable answers backward in time.\n3) Every fast lookup of a future answer is work paid upfront, which fresh random values defeat immediately.\n\nEnergy (Physics Math Bound): Mathematical proofs and physics simulations only; no hardware power meter used.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #physics #thermodynamics #ai #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/time-as-an-index-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "communication-avalanche",
+      "short_title": "The Communication Tool Avalanche",
+      "title": "The Communication Tool Avalanche: Thresholded Signal Externalization, Event-Driven Orchestration, and Coherence per Joule",
+      "category": "Communication Avalanche & Bio",
+      "paper_url": "/papers/communication-avalanche/",
+      "narrator_name": "Cecily",
+      "video_url": "/media/tv/tiktok/communication-avalanche-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/communication-avalanche-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/communication-avalanche-tiktok.vtt",
+      "duration_s": 22.67,
+      "bytes": 3792124,
+      "sha256": "a2041b8b9423950ee935d4da7a64f1f4116b3a33c2933c18846ef489ee153a1d",
+      "blake3": "9cba1e2d98f22709e77c62c9c4c0d60715a44c4b16b9d0f9686ebb90ebb2e143",
+      "hook_headline": "The Communication Tool Avalanche · 59 of 60 Fixes · 0 Bad Commits · 98% Combined",
+      "headline_metric": "59 of 60 Fixes · 0 Bad Commits · 98% Combined",
+      "plain_bullets": [
+        "From ancient microbes to modern AI, groups scale by sharing signals across strict thresholds and safety gates.",
+        "Event-driven wakeups and signed checks block bad edits and deliver far more verified work per joule.",
+        "Ten AI approaches unite through tiny compiled routines, while future brain links stay grounded in strict consent."
+      ],
+      "energy_tier": "Board Sensor + Chip Counter",
+      "energy_disclosure": "Tegra board power shunts plus chip counters across four workstations; separated.",
+      "tiktok_caption": "The Communication Tool Avalanche - 59 of 60 Fixes · 0 Bad Commits · 98% Combined\n\n1) From ancient microbes to modern AI, groups scale by sharing signals across strict thresholds and safety gates.\n2) Event-driven wakeups and signed checks block bad edits and deliver far more verified work per joule.\n3) Ten AI approaches unite through tiny compiled routines, while future brain links stay grounded in strict consent.\n\nEnergy (Board Sensor + Chip Counter): Tegra board power shunts plus chip counters across four workstations; separated.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #biology #ai #neuroscience #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "The Communication Tool Avalanche - 59 of 60 Fixes · 0 Bad Commits · 98% Combined\n\n1) From ancient microbes to modern AI, groups scale by sharing signals across strict thresholds and safety gates.\n2) Event-driven wakeups and signed checks block bad edits and deliver far more verified work per joule.\n3) Ten AI approaches unite through tiny compiled routines, while future brain links stay grounded in strict consent.\n\nEnergy (Board Sensor + Chip Counter): Tegra board power shunts plus chip counters across four workstations; separated.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #biology #ai #neuroscience #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/communication-avalanche-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "lut-adapt",
+      "short_title": "Downward Lookup Compilation",
+      "title": "Downward LUT6 Compilation in a Mixture of Limits Cascade: Beneš-Routed Boolean Fabrics, Conformal Wake Gates, and Frontier Sparse-MoE NVMe Streaming",
+      "category": "Hardware, Silicon & OS",
+      "paper_url": "/papers/lut-adapt/",
+      "narrator_name": "Jenny",
+      "video_url": "/media/tv/tiktok/lut-adapt-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/lut-adapt-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/lut-adapt-tiktok.vtt",
+      "duration_s": 22.53,
+      "bytes": 3605386,
+      "sha256": "bc47616e18c3ef4c7578f32c873792fe79f0cbc171843f923cd9a3203939524c",
+      "blake3": "de5111408b9913b8fdf08351a7ef17442707947fbebef06b6d8c88c9a4b96af4",
+      "hook_headline": "Downward Lookup Compilation · 970 MB Active RAM · 91.7% Verified · 0% Broken",
+      "headline_metric": "970 MB Active RAM · 91.7% Verified · 0% Broken",
+      "plain_bullets": [
+        "Most requests repeat solved patterns, so running a giant neural network every time wastes memory and energy.",
+        "This cascade checks tiny truth tables first and streams specialist model slices from storage only when needed.",
+        "Once an automated test certifies a new answer, it compiles downward into a reusable millisecond skill."
+      ],
+      "energy_tier": "Chip Energy Counter",
+      "energy_disclosure": "Built-in Apple chip counters and simulated circuit estimates; no board shunt.",
+      "tiktok_caption": "Downward Lookup Compilation - 970 MB Active RAM · 91.7% Verified · 0% Broken\n\n1) Most requests repeat solved patterns, so running a giant neural network every time wastes memory and energy.\n2) This cascade checks tiny truth tables first and streams specialist model slices from storage only when needed.\n3) Once an automated test certifies a new answer, it compiles downward into a reusable millisecond skill.\n\nEnergy (Chip Energy Counter): Built-in Apple chip counters and simulated circuit estimates; no board shunt.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #hardware #silicon #systems #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "Downward Lookup Compilation - 970 MB Active RAM · 91.7% Verified · 0% Broken\n\n1) Most requests repeat solved patterns, so running a giant neural network every time wastes memory and energy.\n2) This cascade checks tiny truth tables first and streams specialist model slices from storage only when needed.\n3) Once an automated test certifies a new answer, it compiles downward into a reusable millisecond skill.\n\nEnergy (Chip Energy Counter): Built-in Apple chip counters and simulated circuit estimates; no board shunt.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #hardware #silicon #systems #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/lut-adapt-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "satiation",
+      "short_title": "Task Satiation vs. Aggregate Rebound",
+      "title": "Task Satiation vs. Aggregate Rebound in AI Demand",
+      "category": "Economics & Cadence",
+      "paper_url": "/papers/satiation/",
+      "narrator_name": "Gabriel",
+      "video_url": "/media/tv/tiktok/satiation-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/satiation-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/satiation-tiktok.vtt",
+      "duration_s": 20.6,
+      "bytes": 3293139,
+      "sha256": "a51381df52a4886af442c4171b8f0db96bda3756f95f16c0efe92db14bfd119b",
+      "blake3": "c31cd367e58e81b5a570df6c3f8d09a423f395ba6646d35264e0303b94b3ccda",
+      "hook_headline": "Task Satiation vs. Aggregate Rebound · One Job Finishes · Total Jobs Still Grow",
+      "headline_metric": "One Job Finishes · Total Jobs Still Grow",
+      "plain_bullets": [
+        "Every job has a finish line, and extra computer work after that point is pure waste.",
+        "Cheaper computer work still inspires people to start many more jobs, so total use keeps rising.",
+        "Money prices for AI are falling fast, but the physical electricity it burns is never free."
+      ],
+      "energy_tier": "Theory + Price Audit",
+      "energy_disclosure": "Economic theory and published AI price series; no chip or wall power meter used.",
+      "tiktok_caption": "Task Satiation vs. Aggregate Rebound - One Job Finishes · Total Jobs Still Grow\n\n1) Every job has a finish line, and extra computer work after that point is pure waste.\n2) Cheaper computer work still inspires people to start many more jobs, so total use keeps rising.\n3) Money prices for AI are falling fast, but the physical electricity it burns is never free.\n\nEnergy (Theory + Price Audit): Economic theory and published AI price series; no chip or wall power meter used.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #economics #ai #software #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "Task Satiation vs. Aggregate Rebound - One Job Finishes · Total Jobs Still Grow\n\n1) Every job has a finish line, and extra computer work after that point is pure waste.\n2) Cheaper computer work still inspires people to start many more jobs, so total use keeps rising.\n3) Money prices for AI are falling fast, but the physical electricity it burns is never free.\n\nEnergy (Theory + Price Audit): Economic theory and published AI price series; no chip or wall power meter used.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #economics #ai #software #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/satiation-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "rce",
+      "short_title": "The Reality Code Engine",
+      "title": "The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming",
+      "category": "Reality Code Engine",
+      "paper_url": "/papers/rce/",
+      "narrator_name": "Alice",
+      "video_url": "/media/tv/tiktok/rce-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/rce-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/rce-tiktok.vtt",
+      "duration_s": 21.73,
+      "bytes": 3305402,
+      "sha256": "22bceef6ca5e6b386c8157d77d982ec84719b5a760fcebf57e997f2bebe8cc98",
+      "blake3": "3e607b941842239ee0e00cb8215bb792073b14a5b7b1387c9d4bde7e99b93e07",
+      "hook_headline": "The Reality Code Engine · 2,221 Checks, 0 Failures · 49 mJ per Check",
+      "headline_metric": "2,221 Checks, 0 Failures · 49 mJ per Check",
+      "plain_bullets": [
+        "You write a program once in one clear blueprint, and the computer generates matching code in many languages.",
+        "Every possible input must have a declared outcome up front, leaving nowhere for silent crashes to hide.",
+        "Once a repair passes every check, the engine saves and reuses it so nobody pays twice for one bug."
+      ],
+      "energy_tier": "Chip Energy Counter",
+      "energy_disclosure": "Built-in Apple M5 Max chip counter (49.04 mJ per check); no wall power meter used.",
+      "tiktok_caption": "The Reality Code Engine - 2,221 Checks, 0 Failures · 49 mJ per Check\n\n1) You write a program once in one clear blueprint, and the computer generates matching code in many languages.\n2) Every possible input must have a declared outcome up front, leaving nowhere for silent crashes to hide.\n3) Once a repair passes every check, the engine saves and reuses it so nobody pays twice for one bug.\n\nEnergy (Chip Energy Counter): Built-in Apple M5 Max chip counter (49.04 mJ per check); no wall power meter used.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #computerscience #softwareengineering #compilers #ai",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "The Reality Code Engine - 2,221 Checks, 0 Failures · 49 mJ per Check\n\n1) You write a program once in one clear blueprint, and the computer generates matching code in many languages.\n2) Every possible input must have a declared outcome up front, leaving nowhere for silent crashes to hide.\n3) Once a repair passes every check, the engine saves and reuses it so nobody pays twice for one bug.\n\nEnergy (Chip Energy Counter): Built-in Apple M5 Max chip counter (49.04 mJ per check); no wall power meter used.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #computerscience #softwareengineering #compilers #ai",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/rce-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "rce-jepa",
+      "short_title": "RCE-JEPA",
+      "title": "RCE-JEPA: World Coding, with JEPA as Premise",
+      "category": "Reality Code Engine",
+      "paper_url": "/papers/rce-jepa/",
+      "narrator_name": "Jyothi",
+      "video_url": "/media/tv/tiktok/rce-jepa-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/rce-jepa-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/rce-jepa-tiktok.vtt",
+      "duration_s": 22.8,
+      "bytes": 3444811,
+      "sha256": "df20c31e8401cb6c0b7c4625f220918e5edb921df1d042dfa6ee361268cad61b",
+      "blake3": "9b23e20c2ac961976c7196b9defa106a53d348093f3fa9575ac52e1e11900bdc",
+      "hook_headline": "RCE-JEPA · 40/40 Hard Tasks Solved · 16.7x Fewer Big Calls",
+      "headline_metric": "40/40 Hard Tasks Solved · 16.7x Fewer Big Calls",
+      "plain_bullets": [
+        "Instead of guessing raw code word by word, small models predict compact summaries of program meaning.",
+        "Any AI model may propose a candidate program, but a fast, strict checker alone decides what passes.",
+        "Checking costs over seventeen hundred times less energy than generating, and saved fixes cut big AI calls sixteenfold."
+      ],
+      "energy_tier": "Chip Energy Counter",
+      "energy_disclosure": "Apple M5 Max and Linux chip counters only; cloud and wall power not measured.",
+      "tiktok_caption": "RCE-JEPA - 40/40 Hard Tasks Solved · 16.7x Fewer Big Calls\n\n1) Instead of guessing raw code word by word, small models predict compact summaries of program meaning.\n2) Any AI model may propose a candidate program, but a fast, strict checker alone decides what passes.\n3) Checking costs over seventeen hundred times less energy than generating, and saved fixes cut big AI calls sixteenfold.\n\nEnergy (Chip Energy Counter): Apple M5 Max and Linux chip counters only; cloud and wall power not measured.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #computerscience #softwareengineering #compilers #ai",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "RCE-JEPA - 40/40 Hard Tasks Solved · 16.7x Fewer Big Calls\n\n1) Instead of guessing raw code word by word, small models predict compact summaries of program meaning.\n2) Any AI model may propose a candidate program, but a fast, strict checker alone decides what passes.\n3) Checking costs over seventeen hundred times less energy than generating, and saved fixes cut big AI calls sixteenfold.\n\nEnergy (Chip Energy Counter): Apple M5 Max and Linux chip counters only; cloud and wall power not measured.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #computerscience #softwareengineering #compilers #ai",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/rce-jepa-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "rce-compile",
+      "short_title": "RCE Compile",
+      "title": "RCE Compile: A Law of Compilation, Tested as a Normal Form Against Real Compilers",
+      "category": "Reality Code Engine",
+      "paper_url": "/papers/rce-compile/",
+      "narrator_name": "Lem",
+      "video_url": "/media/tv/tiktok/rce-compile-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/rce-compile-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/rce-compile-tiktok.vtt",
+      "duration_s": 23.37,
+      "bytes": 3559860,
+      "sha256": "47779677ab851ea4e26a8a353fd81f668870a1b8431b7c0b303d3a84c6916a0e",
+      "blake3": "5a00aee499368e32344a359f9f20bdc4de137221ff5c0a53918ddab338f9c0f0",
+      "hook_headline": "RCE Compile · 448.5x Rebuild Energy Cut · 0/500 Mix-Ups",
+      "headline_metric": "448.5x Rebuild Energy Cut · 0/500 Mix-Ups",
+      "plain_bullets": [
+        "Real compilers break any single descriptive law, so this study establishes a seven-part yardstick to measure them.",
+        "Maximum compiler optimization burns upfront chip energy that never pays back on up to thirty percent of programs.",
+        "Fingerprinting code by variable position reuses compiled builds safely, cutting warm Rust compile energy over four hundred times."
+      ],
+      "energy_tier": "Chip Energy Counter",
+      "energy_disclosure": "Built-in Linux chip energy counters across 300 builds; no wall power meter used.",
+      "tiktok_caption": "RCE Compile - 448.5x Rebuild Energy Cut · 0/500 Mix-Ups\n\n1) Real compilers break any single descriptive law, so this study establishes a seven-part yardstick to measure them.\n2) Maximum compiler optimization burns upfront chip energy that never pays back on up to thirty percent of programs.\n3) Fingerprinting code by variable position reuses compiled builds safely, cutting warm Rust compile energy over four hundred times.\n\nEnergy (Chip Energy Counter): Built-in Linux chip energy counters across 300 builds; no wall power meter used.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #computerscience #softwareengineering #compilers #ai",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "RCE Compile - 448.5x Rebuild Energy Cut · 0/500 Mix-Ups\n\n1) Real compilers break any single descriptive law, so this study establishes a seven-part yardstick to measure them.\n2) Maximum compiler optimization burns upfront chip energy that never pays back on up to thirty percent of programs.\n3) Fingerprinting code by variable position reuses compiled builds safely, cutting warm Rust compile energy over four hundred times.\n\nEnergy (Chip Energy Counter): Built-in Linux chip energy counters across 300 builds; no wall power meter used.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #computerscience #softwareengineering #compilers #ai",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/rce-compile-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "rce-vc",
+      "short_title": "RCE-VC",
+      "title": "RCE-VC: Law of Version Control",
+      "category": "Reality Code Engine",
+      "paper_url": "/papers/rce-vc/",
+      "narrator_name": "River",
+      "video_url": "/media/tv/tiktok/rce-vc-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/rce-vc-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/rce-vc-tiktok.vtt",
+      "duration_s": 23.4,
+      "bytes": 3532749,
+      "sha256": "1d71495ddac8a5881cfc8c6a673acb67c2e2d780fe18b1bc48c2900505f1f1fe",
+      "blake3": "3e67c68953b68ac1e538950fe3c6ca1a5eed91d014ddd041efa3640ab8979ad3",
+      "hook_headline": "RCE-VC · 70 µs & 317 µJ Admission @ 100,000 Items",
+      "headline_metric": "70 µs & 317 µJ Admission @ 100,000 Items",
+      "plain_bullets": [
+        "Many people and AI agents can submit code at once, and a named check admits changes or records why not.",
+        "Tracking code by name-free functions instead of text lines lets unrelated edits land together without pointless merge wars.",
+        "Developers keep using ordinary Git while admission against one hundred thousand items finishes in about seventy microseconds."
+      ],
+      "energy_tier": "Chip Energy Counter",
+      "energy_disclosure": "Apple M5 Max chip counter (317–365 µJ) plus stated table; no wall power meter.",
+      "tiktok_caption": "RCE-VC - 70 µs & 317 µJ Admission @ 100,000 Items\n\n1) Many people and AI agents can submit code at once, and a named check admits changes or records why not.\n2) Tracking code by name-free functions instead of text lines lets unrelated edits land together without pointless merge wars.\n3) Developers keep using ordinary Git while admission against one hundred thousand items finishes in about seventy microseconds.\n\nEnergy (Chip Energy Counter): Apple M5 Max chip counter (317-365 µJ) plus stated table; no wall power meter.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #computerscience #softwareengineering #compilers #ai",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "RCE-VC - 70 µs & 317 µJ Admission @ 100,000 Items\n\n1) Many people and AI agents can submit code at once, and a named check admits changes or records why not.\n2) Tracking code by name-free functions instead of text lines lets unrelated edits land together without pointless merge wars.\n3) Developers keep using ordinary Git while admission against one hundred thousand items finishes in about seventy microseconds.\n\nEnergy (Chip Energy Counter): Apple M5 Max chip counter (317-365 µJ) plus stated table; no wall power meter.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #computerscience #softwareengineering #compilers #ai",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/rce-vc-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "game-engines",
+      "short_title": "Writing a Game Once",
+      "title": "Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins",
+      "category": "Reality Code Engine",
+      "paper_url": "/papers/game-engines/",
+      "narrator_name": "Charlie",
+      "video_url": "/media/tv/tiktok/game-engines-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/game-engines-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/game-engines-tiktok.vtt",
+      "duration_s": 23.37,
+      "bytes": 4493740,
+      "sha256": "c2a1b9804f7496dc23ae5944afa52891650b46ca2d4e7469e326abff070bb5a6",
+      "blake3": "dcdb622c6b4b0078a7369beee54877d9609b79fed352800f7fe9cf93b532fdc7",
+      "hook_headline": "Writing a Game Once · 0 Replay Drift Across 3 OSes · 9/9 Suites Pass",
+      "headline_metric": "0 Replay Drift Across 3 OSes · 9/9 Suites Pass",
+      "plain_bullets": [
+        "Using exact whole-number physics, one game blueprint replays identically for hours across Windows, macOS, Linux, and major engines.",
+        "Standard decimal math drifts across operating systems within thirty-seven frames, and chaotic collisions quickly amplify tiny rounding gaps.",
+        "Graphics cards vary slightly pixel by pixel, so visual rendering must sit downstream behind a strict one-way tolerance gate."
+      ],
+      "energy_tier": "Chip Energy Counter",
+      "energy_disclosure": "Built-in macOS and Linux chip counters across 6 machines; no wall meter used.",
+      "tiktok_caption": "Writing a Game Once - 0 Replay Drift Across 3 OSes · 9/9 Suites Pass\n\n1) Using exact whole-number physics, one game blueprint replays identically for hours across Windows, macOS, Linux, and major engines.\n2) Standard decimal math drifts across operating systems within thirty-seven frames, and chaotic collisions quickly amplify tiny rounding gaps.\n3) Graphics cards vary slightly pixel by pixel, so visual rendering must sit downstream behind a strict one-way tolerance gate.\n\nEnergy (Chip Energy Counter): Built-in macOS and Linux chip counters across 6 machines; no wall meter used.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #computerscience #softwareengineering #compilers #ai",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "Writing a Game Once - 0 Replay Drift Across 3 OSes · 9/9 Suites Pass\n\n1) Using exact whole-number physics, one game blueprint replays identically for hours across Windows, macOS, Linux, and major engines.\n2) Standard decimal math drifts across operating systems within thirty-seven frames, and chaotic collisions quickly amplify tiny rounding gaps.\n3) Graphics cards vary slightly pixel by pixel, so visual rendering must sit downstream behind a strict one-way tolerance gate.\n\nEnergy (Chip Energy Counter): Built-in macOS and Linux chip counters across 6 machines; no wall meter used.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #computerscience #softwareengineering #compilers #ai",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/game-engines-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "three-body",
+      "short_title": "The Three-Body Problem in Computing",
+      "title": "The Pursuit of AGI Resolves the Three-Body Problem in Computing",
+      "category": "Foundations & Thermodynamics",
+      "paper_url": "/papers/three-body/",
+      "narrator_name": "Bill",
+      "video_url": "/media/tv/tiktok/three-body-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/three-body-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/three-body-tiktok.vtt",
+      "duration_s": 22.63,
+      "bytes": 4331527,
+      "sha256": "814c1c765cd5409b19585610d0a4f5b259f25654aa24647404656dba13440313",
+      "blake3": "261311cf958f988d05ca83ad069f2e6ab5a4086415314142298e44eb4ca58082",
+      "hook_headline": "The Three-Body Problem in Computing · Checked Handoffs Stop Bug Cascades Cold",
+      "headline_metric": "Checked Handoffs Stop Bug Cascades Cold",
+      "plain_bullets": [
+        "Most major computer failures start at the handoffs between teams or system layers, not inside individual parts.",
+        "The culprit is usually an unwritten guess crossing a boundary, such as which physical units a number uses.",
+        "When every boundary guess is written down and machine-checked, fixing one problem stays fixed without breaking upper layers."
+      ],
+      "energy_tier": "Theory + Case Audit",
+      "energy_disclosure": "Structural interface proof and historical failure audit; no power meter claimed.",
+      "tiktok_caption": "The Three-Body Problem in Computing - Checked Handoffs Stop Bug Cascades Cold\n\n1) Most major computer failures start at the handoffs between teams or system layers, not inside individual parts.\n2) The culprit is usually an unwritten guess crossing a boundary, such as which physical units a number uses.\n3) When every boundary guess is written down and machine-checked, fixing one problem stays fixed without breaking upper layers.\n\nEnergy (Theory + Case Audit): Structural interface proof and historical failure audit; no power meter claimed.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #physics #thermodynamics #ai #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "The Three-Body Problem in Computing - Checked Handoffs Stop Bug Cascades Cold\n\n1) Most major computer failures start at the handoffs between teams or system layers, not inside individual parts.\n2) The culprit is usually an unwritten guess crossing a boundary, such as which physical units a number uses.\n3) When every boundary guess is written down and machine-checked, fixing one problem stays fixed without breaking upper layers.\n\nEnergy (Theory + Case Audit): Structural interface proof and historical failure audit; no power meter claimed.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #physics #thermodynamics #ai #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/three-body-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "ai-reads-human",
+      "short_title": "\"AI\" Reads Human",
+      "title": "\"AI\" Reads Human: Human Language Encoding at Machine Speed and the Energy Cost",
+      "category": "Null & Benchmarks",
+      "paper_url": "/papers/ai-reads-human/",
+      "narrator_name": "Sean",
+      "video_url": "/media/tv/tiktok/ai-reads-human-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/ai-reads-human-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/ai-reads-human-tiktok.vtt",
+      "duration_s": 21.73,
+      "bytes": 2996471,
+      "sha256": "f47748a679a4d75cf836c07b12c671678013500125c81cc8a90a97d8adc54ae8",
+      "blake3": "f906351fd91faf90d57dc003d2dd5ab96cc5ede91e5585c31356bca02fb347d5",
+      "hook_headline": "\"AI\" Reads Human · Up to 2,054x Extra Chip Energy Reading Human Text",
+      "headline_metric": "Up to 2,054x Extra Chip Energy Reading Human Text",
+      "plain_bullets": [
+        "Computers often swap data in text formats written for human eyes, forcing machines to spend extra energy reading them back.",
+        "Reading indented configuration text took over two thousand times more chip energy per record than reading compact machine numbers directly.",
+        "Chopping text into AI word pieces burned twelve times more chip energy than parsing the text, before any model ran."
+      ],
+      "energy_tier": "Chip Energy Counter",
+      "energy_disclosure": "Built-in Apple chip counters per worker process; no wall power meter attached.",
+      "tiktok_caption": "\"AI\" Reads Human - Up to 2,054x Extra Chip Energy Reading Human Text\n\n1) Computers often swap data in text formats written for human eyes, forcing machines to spend extra energy reading them back.\n2) Reading indented configuration text took over two thousand times more chip energy per record than reading compact machine numbers directly.\n3) Chopping text into AI word pieces burned twelve times more chip energy than parsing the text, before any model ran.\n\nEnergy (Chip Energy Counter): Built-in Apple chip counters per worker process; no wall power meter attached.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #ai #machinelearning #benchmarks #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "\"AI\" Reads Human - Up to 2,054x Extra Chip Energy Reading Human Text\n\n1) Computers often swap data in text formats written for human eyes, forcing machines to spend extra energy reading them back.\n2) Reading indented configuration text took over two thousand times more chip energy per record than reading compact machine numbers directly.\n3) Chopping text into AI word pieces burned twelve times more chip energy than parsing the text, before any model ran.\n\nEnergy (Chip Energy Counter): Built-in Apple chip counters per worker process; no wall power meter attached.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #ai #machinelearning #benchmarks #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/ai-reads-human-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "spellcheck",
+      "short_title": "Spell Check is Global",
+      "title": "Spell Check is Global: The Future of Computer Intelligence in the Hands of the Many (7B+), Not the Few",
+      "category": "Economics & Cadence",
+      "paper_url": "/papers/spellcheck/",
+      "narrator_name": "Misha",
+      "video_url": "/media/tv/tiktok/spellcheck-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/spellcheck-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/spellcheck-tiktok.vtt",
+      "duration_s": 21.47,
+      "bytes": 4622706,
+      "sha256": "01de053fac1e8348ae7e544ec3e70b0628e0019af12424028673793428ca8381",
+      "blake3": "79b4916f6743c709c4e5ad9699435cda2fc683d8a669e6ab7269d02a991df6b0",
+      "hook_headline": "Spell Check is Global · $200 Standalone Box -> $0 Feature for 7B+ People",
+      "headline_metric": "$200 Standalone Box -> $0 Feature for 7B+ People",
+      "plain_bullets": [
+        "People once paid hundreds of dollars for standalone spell check, yet today it comes free inside every phone and browser.",
+        "Spell check became free because checking a word costs almost nothing to run right inside the writing tool you own.",
+        "Other forms of computer intelligence will reach seven billion people only when they run cheaply on everyday local devices."
+      ],
+      "energy_tier": "Historical Price Audit",
+      "energy_disclosure": "Dated historical software prices and economic model; no hardware watts measured.",
+      "tiktok_caption": "Spell Check is Global - $200 Standalone Box -> $0 Feature for 7B+ People\n\n1) People once paid hundreds of dollars for standalone spell check, yet today it comes free inside every phone and browser.\n2) Spell check became free because checking a word costs almost nothing to run right inside the writing tool you own.\n3) Other forms of computer intelligence will reach seven billion people only when they run cheaply on everyday local devices.\n\nEnergy (Historical Price Audit): Dated historical software prices and economic model; no hardware watts measured.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #economics #ai #software #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "Spell Check is Global - $200 Standalone Box -> $0 Feature for 7B+ People\n\n1) People once paid hundreds of dollars for standalone spell check, yet today it comes free inside every phone and browser.\n2) Spell check became free because checking a word costs almost nothing to run right inside the writing tool you own.\n3) Other forms of computer intelligence will reach seven billion people only when they run cheaply on everyday local devices.\n\nEnergy (Historical Price Audit): Dated historical software prices and economic model; no hardware watts measured.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #economics #ai #software #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/spellcheck-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "ai-coding-market",
+      "short_title": "The Promised Trillion Dollar AI-Coding Market",
+      "title": "The Promised Trillion Dollar AI-Coding Market",
+      "category": "Economics & Cadence",
+      "paper_url": "/papers/ai-coding-market/",
+      "narrator_name": "Osato",
+      "video_url": "/media/tv/tiktok/ai-coding-market-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/ai-coding-market-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/ai-coding-market-tiktok.vtt",
+      "duration_s": 23.43,
+      "bytes": 5024533,
+      "sha256": "56fa1f9219fc4315448b45ccd2a6426f9a0f29a19b25812aad05ffa8e6a79ae5",
+      "blake3": "8ab973a7fe770f0bc043fe8aeacc0cb13c3b17efbbdf3db6163db55a9d27e539",
+      "hook_headline": "The Promised Trillion Dollar AI-Coding Market · $1T Forecasts Assume Zero Verified Code Reuse",
+      "headline_metric": "$1T Forecasts Assume Zero Verified Code Reuse",
+      "plain_bullets": [
+        "Headline trillion-dollar figures for AI coding are mostly future projections and value guesses, not counts of money actually earned.",
+        "Almost every forecast quietly assumes programmers will pay a giant AI model by the word for every task forever.",
+        "When verified working code is saved and reused, repeated jobs drop toward the cost of electricity, shrinking vendor rent."
+      ],
+      "energy_tier": "Market Forecast Audit",
+      "energy_disclosure": "Published market forecasts and economic cost model; no hardware meter attached.",
+      "tiktok_caption": "The Promised Trillion Dollar AI-Coding Market - $1T Forecasts Assume Zero Verified Code Reuse\n\n1) Headline trillion-dollar figures for AI coding are mostly future projections and value guesses, not counts of money actually earned.\n2) Almost every forecast quietly assumes programmers will pay a giant AI model by the word for every task forever.\n3) When verified working code is saved and reused, repeated jobs drop toward the cost of electricity, shrinking vendor rent.\n\nEnergy (Market Forecast Audit): Published market forecasts and economic cost model; no hardware meter attached.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #economics #ai #software #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "The Promised Trillion Dollar AI-Coding Market - $1T Forecasts Assume Zero Verified Code Reuse\n\n1) Headline trillion-dollar figures for AI coding are mostly future projections and value guesses, not counts of money actually earned.\n2) Almost every forecast quietly assumes programmers will pay a giant AI model by the word for every task forever.\n3) When verified working code is saved and reused, repeated jobs drop toward the cost of electricity, shrinking vendor rent.\n\nEnergy (Market Forecast Audit): Published market forecasts and economic cost model; no hardware meter attached.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #economics #ai #software #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/ai-coding-market-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "interface-economics",
+      "short_title": "The Price of the Unexamined Interface",
+      "title": "The Price of the Unexamined Interface",
+      "category": "Economics & Cadence",
+      "paper_url": "/papers/interface-economics/",
+      "narrator_name": "Edwin",
+      "video_url": "/media/tv/tiktok/interface-economics-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/interface-economics-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/interface-economics-tiktok.vtt",
+      "duration_s": 20.87,
+      "bytes": 2877469,
+      "sha256": "bcc015823461f7dc795fc0bc0d7e0bd38131e941418d29e4901b77a50b824a08",
+      "blake3": "2cd1f84955073fc86fc880d4a7e1fd1b1f0afb85e3fdf7148286d71142337728",
+      "hook_headline": "The Price of the Unexamined Interface · $327.6M Mars Loss vs Cheap Automated Handoff Checks",
+      "headline_metric": "$327.6M Mars Loss vs Cheap Automated Handoff Checks",
+      "plain_bullets": [
+        "Single handoff failures carry exact price tags, like losing a three-hundred-twenty-eight-million-dollar Mars mission over mismatched force units.",
+        "Trillion-dollar national figures come from broad surveys and models of software quality, and none isolates handoff failures alone.",
+        "Checking shared assumptions upfront is cheap, yet teams skip it because one group pays while everyone downstream benefits."
+      ],
+      "energy_tier": "Historical + Economic Audit",
+      "energy_disclosure": "Primary failure accounts and economic studies; no physical power meter used.",
+      "tiktok_caption": "The Price of the Unexamined Interface - $327.6M Mars Loss vs Cheap Automated Handoff Checks\n\n1) Single handoff failures carry exact price tags, like losing a three-hundred-twenty-eight-million-dollar Mars mission over mismatched force units.\n2) Trillion-dollar national figures come from broad surveys and models of software quality, and none isolates handoff failures alone.\n3) Checking shared assumptions upfront is cheap, yet teams skip it because one group pays while everyone downstream benefits.\n\nEnergy (Historical + Economic Audit): Primary failure accounts and economic studies; no physical power meter used.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #economics #ai #software #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "The Price of the Unexamined Interface - $327.6M Mars Loss vs Cheap Automated Handoff Checks\n\n1) Single handoff failures carry exact price tags, like losing a three-hundred-twenty-eight-million-dollar Mars mission over mismatched force units.\n2) Trillion-dollar national figures come from broad surveys and models of software quality, and none isolates handoff failures alone.\n3) Checking shared assumptions upfront is cheap, yet teams skip it because one group pays while everyone downstream benefits.\n\nEnergy (Historical + Economic Audit): Primary failure accounts and economic studies; no physical power meter used.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #economics #ai #software #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/interface-economics-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "mei",
+      "short_title": "Metabolic Intelligence",
+      "title": "Metabolic Intelligence: Budget-Native Compute from Tag to Campus",
+      "category": "Hardware, Silicon & OS",
+      "paper_url": "/products/mei/",
+      "narrator_name": "Nylo",
+      "video_url": "/media/tv/tiktok/mei-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/mei-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/mei-tiktok.vtt",
+      "duration_s": 22.9,
+      "bytes": 2695608,
+      "sha256": "de70ccffe949f2a99fb19ee07a40510365d67ed44d97945066600d0e721acf4b",
+      "blake3": "b8065b8c62f4c9389b3b7af8bd32ccc1c94ce0fc1ee59bfd9a7667f5f54c2ef9",
+      "hook_headline": "Metabolic Intelligence · 8-Yr Coin-Cell Schedule · 100% Cold Alerts Saved",
+      "headline_metric": "8-Yr Coin-Cell Schedule · 100% Cold Alerts Saved",
+      "plain_bullets": [
+        "Give a computer a strict energy budget upfront, and design it to deliver the best verified answer inside that limit.",
+        "A food-freshness sensor tag can budget a coin battery for eight years and drop routine chatter in freezing cargo so critical alerts survive.",
+        "At the other extreme, a data center can follow power-grid caps by pausing flexible jobs and matching human reading speed."
+      ],
+      "energy_tier": "Electro-Thermal Model",
+      "energy_disclosure": "Datasheet schedules and cold-chain battery simulations; physical board unmetered.",
+      "tiktok_caption": "Metabolic Intelligence - 8-Yr Coin-Cell Schedule · 100% Cold Alerts Saved\n\n1) Give a computer a strict energy budget upfront, and design it to deliver the best verified answer inside that limit.\n2) A food-freshness sensor tag can budget a coin battery for eight years and drop routine chatter in freezing cargo so critical alerts survive.\n3) At the other extreme, a data center can follow power-grid caps by pausing flexible jobs and matching human reading speed.\n\nEnergy (Electro-Thermal Model): Datasheet schedules and cold-chain battery simulations; physical board unmetered.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #hardware #silicon #systems #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "Metabolic Intelligence - 8-Yr Coin-Cell Schedule · 100% Cold Alerts Saved\n\n1) Give a computer a strict energy budget upfront, and design it to deliver the best verified answer inside that limit.\n2) A food-freshness sensor tag can budget a coin battery for eight years and drop routine chatter in freezing cargo so critical alerts survive.\n3) At the other extreme, a data center can follow power-grid caps by pausing flexible jobs and matching human reading speed.\n\nEnergy (Electro-Thermal Model): Datasheet schedules and cold-chain battery simulations; physical board unmetered.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #hardware #silicon #systems #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/mei-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "jouleos",
+      "short_title": "The Search for JouleOS",
+      "title": "The Search for JouleOS",
+      "category": "Hardware, Silicon & OS",
+      "paper_url": "/products/jouleos/",
+      "narrator_name": "Bobby",
+      "video_url": "/media/tv/tiktok/jouleos-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/jouleos-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/jouleos-tiktok.vtt",
+      "duration_s": 21.77,
+      "bytes": 2606151,
+      "sha256": "fcd8bba0afc318bbdcde768089e8898f5b70070571f10991fb09beb9d2d9e33a",
+      "blake3": "fe20d0b7753b83c2284e1b803cba06cbbea7bb4db255e6afe2ea8ad827a0d660",
+      "hook_headline": "The Search for JouleOS · 310 Passing Rust Tests · 78,400 Provenance Checks",
+      "headline_metric": "310 Passing Rust Tests · 78,400 Provenance Checks",
+      "plain_bullets": [
+        "Modern computers stack many separate software layers, and today's AI agents are bolted on top without changing the floor underneath.",
+        "None of those underlying layers asks, before an agent acts, how much energy the action will spend or whether it fits.",
+        "A machine built for agents must meter energy honestly, grant strict budgets, and refuse any action that breaks its limit."
+      ],
+      "energy_tier": "Verified Software + Model",
+      "energy_disclosure": "Verified software tests and analytical models; no bare-metal power meter used.",
+      "tiktok_caption": "The Search for JouleOS - 310 Passing Rust Tests · 78,400 Provenance Checks\n\n1) Modern computers stack many separate software layers, and today's AI agents are bolted on top without changing the floor underneath.\n2) None of those underlying layers asks, before an agent acts, how much energy the action will spend or whether it fits.\n3) A machine built for agents must meter energy honestly, grant strict budgets, and refuse any action that breaks its limit.\n\nEnergy (Verified Software + Model): Verified software tests and analytical models; no bare-metal power meter used.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #hardware #silicon #systems #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "The Search for JouleOS - 310 Passing Rust Tests · 78,400 Provenance Checks\n\n1) Modern computers stack many separate software layers, and today's AI agents are bolted on top without changing the floor underneath.\n2) None of those underlying layers asks, before an agent acts, how much energy the action will spend or whether it fits.\n3) A machine built for agents must meter energy honestly, grant strict budgets, and refuse any action that breaks its limit.\n\nEnergy (Verified Software + Model): Verified software tests and analytical models; no bare-metal power meter used.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #hardware #silicon #systems #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/jouleos-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "latency",
+      "short_title": "The Gap Between Possible and Deployed",
+      "title": "The Gap Between Possible and Deployed: A Cadence Model of Computer Intelligence and the Forcing Function of Automation Tools",
+      "category": "Economics & Cadence",
+      "paper_url": "/papers/latency/",
+      "narrator_name": "Julius",
+      "video_url": "/media/tv/tiktok/latency-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/latency-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/latency-tiktok.vtt",
+      "duration_s": 21.9,
+      "bytes": 4770653,
+      "sha256": "1ea18cc2fe7b89c3a5b7fd56846cd7847ee4ebe6af372b21c3d0ebaf11d785d2",
+      "blake3": "9598c70c2f924717800d2f94a2c29a22a31c1961036b0e59b487bda47dcc88cd",
+      "hook_headline": "The Gap Between Possible and Deployed · Electricity < 12% of Task Cost · Switching Is the Moat",
+      "headline_metric": "Electricity < 12% of Task Cost · Switching Is the Moat",
+      "plain_bullets": [
+        "Open methods routinely run AI far more cheaply on existing machines, yet products often wait months or years to adopt them.",
+        "Machine hardware costs far more per task than raw electricity, backed by both operating cash and circular supplier investments.",
+        "Corporate calendars delay rollouts in quarterly steps until automation tools slash switching friction and force cheaper methods into production."
+      ],
+      "energy_tier": "Historical + Market Audit",
+      "energy_disclosure": "Public financial filings and task cost equations; no new hardware meter attached.",
+      "tiktok_caption": "The Gap Between Possible and Deployed - Electricity < 12% of Task Cost · Switching Is the Moat\n\n1) Open methods routinely run AI far more cheaply on existing machines, yet products often wait months or years to adopt them.\n2) Machine hardware costs far more per task than raw electricity, backed by both operating cash and circular supplier investments.\n3) Corporate calendars delay rollouts in quarterly steps until automation tools slash switching friction and force cheaper methods into production.\n\nEnergy (Historical + Market Audit): Public financial filings and task cost equations; no new hardware meter attached.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #economics #ai #software #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "The Gap Between Possible and Deployed - Electricity < 12% of Task Cost · Switching Is the Moat\n\n1) Open methods routinely run AI far more cheaply on existing machines, yet products often wait months or years to adopt them.\n2) Machine hardware costs far more per task than raw electricity, backed by both operating cash and circular supplier investments.\n3) Corporate calendars delay rollouts in quarterly steps until automation tools slash switching friction and force cheaper methods into production.\n\nEnergy (Historical + Market Audit): Public financial filings and task cost equations; no new hardware meter attached.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #economics #ai #software #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/latency-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "eco-avalanche",
+      "short_title": "Nine-Rung Intelligence Avalanche",
+      "title": "The Nine-Rung Computer Intelligence Avalanche",
+      "category": "Communication Avalanche & Bio",
+      "paper_url": "/papers/communication-avalanche/",
+      "narrator_name": "Cecily",
+      "video_url": "/media/tv/tiktok/eco-avalanche-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/eco-avalanche-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/eco-avalanche-tiktok.vtt",
+      "duration_s": 21.93,
+      "bytes": 3701713,
+      "sha256": "cc3ef9d0913dd07aec01766c0b431704a21ab8639ea38af677639eb62f1b7326",
+      "blake3": "6d5059a26d69af5d15bfff6afea7e7d13bdc6a053d105c8c2b98a92cccf05862",
+      "hook_headline": "Nine-Rung Intelligence Avalanche · 98 / 100 Verified Synthesis · 9x–27x Board Power Gain",
+      "headline_metric": "98 / 100 Verified Synthesis · 9x–27x Board Power Gain",
+      "plain_bullets": [
+        "Across 3.8 billion years of biology and 76 years of computing, intelligence climbs a nine-step ladder through one repeating signal ratchet.",
+        "Today's AI stalls at the fifth step—tool use—because routine jobs still wake giant models from scratch.",
+        "Crossing the compilation threshold unlocks the top four steps by turning verified answers into fast, low-energy lookup reflexes."
+      ],
+      "energy_tier": "Board Power Sensor",
+      "energy_disclosure": "Direct circuit-board power sensor on edge hardware; forecast horizons stay open predictions.",
+      "tiktok_caption": "Nine-Rung Intelligence Avalanche - 98 / 100 Verified Synthesis · 9x-27x Board Power Gain\n\n1) Across 3.8 billion years of biology and 76 years of computing, intelligence climbs a nine-step ladder through one repeating signal ratchet.\n2) Today's AI stalls at the fifth step - tool use - because routine jobs still wake giant models from scratch.\n3) Crossing the compilation threshold unlocks the top four steps by turning verified answers into fast, low-energy lookup reflexes.\n\nEnergy (Board Power Sensor): Direct circuit-board power sensor on edge hardware; forecast horizons stay open predictions.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #biology #ai #neuroscience #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "Nine-Rung Intelligence Avalanche - 98 / 100 Verified Synthesis · 9x-27x Board Power Gain\n\n1) Across 3.8 billion years of biology and 76 years of computing, intelligence climbs a nine-step ladder through one repeating signal ratchet.\n2) Today's AI stalls at the fifth step - tool use - because routine jobs still wake giant models from scratch.\n3) Crossing the compilation threshold unlocks the top four steps by turning verified answers into fast, low-energy lookup reflexes.\n\nEnergy (Board Power Sensor): Direct circuit-board power sensor on edge hardware; forecast horizons stay open predictions.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #biology #ai #neuroscience #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/eco-avalanche-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "eco-stack",
+      "short_title": "Three Sciences, One Computing Map",
+      "title": "Three Sciences, One Energy-Bounded Computing Map",
+      "category": "Foundations & Thermodynamics",
+      "paper_url": "/papers/agency/",
+      "narrator_name": "Hakim",
+      "video_url": "/media/tv/tiktok/eco-stack-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/eco-stack-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/eco-stack-tiktok.vtt",
+      "duration_s": 21.87,
+      "bytes": 3556838,
+      "sha256": "82e8a21f446244951ea399ba70855af1acf7c29044a7658c965f2675b2d818b5",
+      "blake3": "5c726e25757aa6ab29a70aac087aa6bbc1c370875ba1c9dfbe796ae7c1f2d9c9",
+      "hook_headline": "Three Sciences, One Computing Map · 3 Sciences · 9 Periodic Stacks · 1 Joule Ledger",
+      "headline_metric": "3 Sciences · 9 Periodic Stacks · 1 Joule Ledger",
+      "plain_bullets": [
+        "Information theory, game theory, and mechanism design form three altitudes of one energy-bounded computing map.",
+        "Information theory prices bits and heat, game theory maps strategic interaction, and mechanism design writes rules where honesty wins.",
+        "Across every layer of computing, each permitted action must clear its physical energy floor and pass independent checks."
+      ],
+      "energy_tier": "Physics + Chip Counter",
+      "energy_disclosure": "Mathematical physics bounds paired with built-in chip energy counters across stack studies.",
+      "tiktok_caption": "Three Sciences, One Computing Map - 3 Sciences · 9 Periodic Stacks · 1 Joule Ledger\n\n1) Information theory, game theory, and mechanism design form three altitudes of one energy-bounded computing map.\n2) Information theory prices bits and heat, game theory maps strategic interaction, and mechanism design writes rules where honesty wins.\n3) Across every layer of computing, each permitted action must clear its physical energy floor and pass independent checks.\n\nEnergy (Physics + Chip Counter): Mathematical physics bounds paired with built-in chip energy counters across stack studies.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #physics #thermodynamics #ai #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "Three Sciences, One Computing Map - 3 Sciences · 9 Periodic Stacks · 1 Joule Ledger\n\n1) Information theory, game theory, and mechanism design form three altitudes of one energy-bounded computing map.\n2) Information theory prices bits and heat, game theory maps strategic interaction, and mechanism design writes rules where honesty wins.\n3) Across every layer of computing, each permitted action must clear its physical energy floor and pass independent checks.\n\nEnergy (Physics + Chip Counter): Mathematical physics bounds paired with built-in chip energy counters across stack studies.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #physics #thermodynamics #ai #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/eco-stack-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "eco-compute",
+      "short_title": "Why Every Bit Pays Joules",
+      "title": "Why Every Bit Pays Joules: The Compute Substrate",
+      "category": "Hardware, Silicon & OS",
+      "paper_url": "/papers/rce-compile/",
+      "narrator_name": "Nylo",
+      "video_url": "/media/tv/tiktok/eco-compute-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/eco-compute-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/eco-compute-tiktok.vtt",
+      "duration_s": 22.3,
+      "bytes": 3589511,
+      "sha256": "5b193133436817fdb2d62a96c467cb9966781668ef3a167d56c736bbd5130657",
+      "blake3": "0cec81ef42fc955d2ccc445206d8d99393c22f8e05e4e222b5d5f122137f8b7a",
+      "hook_headline": "Why Every Bit Pays Joules · 927 Microjoules Shunt Edge · 20x Compile Cut",
+      "headline_metric": "927 Microjoules Shunt Edge · 20x Compile Cut",
+      "plain_bullets": [
+        "Every calculation is a physical event where flipping switches on silicon spends real electrical energy in joules.",
+        "Honest hardware audits separate power-rail current sensors from chip counters, while sleeping at zero clock cycles between jobs.",
+        "Single-cycle Boolean lookup circuits replace power-hungry floating-point arithmetic on repeated decisions with tiny hardware steps."
+      ],
+      "energy_tier": "Board Power Sensor",
+      "energy_disclosure": "Direct circuit-board current sensors on edge rails; gate-level circuit figures stay labeled models.",
+      "tiktok_caption": "Why Every Bit Pays Joules - 927 Microjoules Shunt Edge · 20x Compile Cut\n\n1) Every calculation is a physical event where flipping switches on silicon spends real electrical energy in joules.\n2) Honest hardware audits separate power-rail current sensors from chip counters, while sleeping at zero clock cycles between jobs.\n3) Single-cycle Boolean lookup circuits replace power-hungry floating-point arithmetic on repeated decisions with tiny hardware steps.\n\nEnergy (Board Power Sensor): Direct circuit-board current sensors on edge rails; gate-level circuit figures stay labeled models.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #hardware #silicon #systems #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "Why Every Bit Pays Joules - 927 Microjoules Shunt Edge · 20x Compile Cut\n\n1) Every calculation is a physical event where flipping switches on silicon spends real electrical energy in joules.\n2) Honest hardware audits separate power-rail current sensors from chip counters, while sleeping at zero clock cycles between jobs.\n3) Single-cycle Boolean lookup circuits replace power-hungry floating-point arithmetic on repeated decisions with tiny hardware steps.\n\nEnergy (Board Power Sensor): Direct circuit-board current sensors on edge rails; gate-level circuit figures stay labeled models.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #hardware #silicon #systems #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/eco-compute-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "eco-synthesis",
+      "short_title": "Route First, Generate Last",
+      "title": "Route First, Generate Last: The Synthesis Cascade",
+      "category": "Reality Code Engine",
+      "paper_url": "/papers/lut-adapt/",
+      "narrator_name": "Joy",
+      "video_url": "/media/tv/tiktok/eco-synthesis-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/eco-synthesis-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/eco-synthesis-tiktok.vtt",
+      "duration_s": 23.37,
+      "bytes": 3532714,
+      "sha256": "e9be57a1f7a3d09123351824c64dfad6b0b41ac47c2d74aff75efd1d436e69cd",
+      "blake3": "fff0a60e8d21352674d00a611a45603b4c74e6febbc8e469d07ba384e46277ad",
+      "hook_headline": "Route First, Generate Last · 90.6% Open Coding · 0.00% Broken Commits · 970 MB RAM",
+      "headline_metric": "90.6% Open Coding · 0.00% Broken Commits · 970 MB RAM",
+      "plain_bullets": [
+        "Generating fresh text from scratch for already-solved problems wastes electricity and invites avoidable mistakes.",
+        "An energy-ordered cascade checks microjoule lookup tables and exact verifiers first, waking large models only on genuine novelty.",
+        "Every accepted answer passes deterministic checks and crystallizes downward into a fast, reusable lookup skill."
+      ],
+      "energy_tier": "Chip Energy Counter",
+      "energy_disclosure": "Built-in processor energy counters and strict 970 MB RAM limits on open coding benchmarks.",
+      "tiktok_caption": "Route First, Generate Last - 90.6% Open Coding · 0.00% Broken Commits · 970 MB RAM\n\n1) Generating fresh text from scratch for already-solved problems wastes electricity and invites avoidable mistakes.\n2) An energy-ordered cascade checks microjoule lookup tables and exact verifiers first, waking large models only on genuine novelty.\n3) Every accepted answer passes deterministic checks and crystallizes downward into a fast, reusable lookup skill.\n\nEnergy (Chip Energy Counter): Built-in processor energy counters and strict 970 MB RAM limits on open coding benchmarks.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #computerscience #softwareengineering #compilers #ai",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "Route First, Generate Last - 90.6% Open Coding · 0.00% Broken Commits · 970 MB RAM\n\n1) Generating fresh text from scratch for already-solved problems wastes electricity and invites avoidable mistakes.\n2) An energy-ordered cascade checks microjoule lookup tables and exact verifiers first, waking large models only on genuine novelty.\n3) Every accepted answer passes deterministic checks and crystallizes downward into a fast, reusable lookup skill.\n\nEnergy (Chip Energy Counter): Built-in processor energy counters and strict 970 MB RAM limits on open coding benchmarks.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #computerscience #softwareengineering #compilers #ai",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/eco-synthesis-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "eco-knowledge",
+      "short_title": "Time-Indexed Claims & Six-Kernel Proofs",
+      "title": "Time-Indexed Claims and Six-Kernel Proof Verification",
+      "category": "Null & Benchmarks",
+      "paper_url": "/papers/time-as-an-index/",
+      "narrator_name": "Julius",
+      "video_url": "/media/tv/tiktok/eco-knowledge-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/eco-knowledge-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/eco-knowledge-tiktok.vtt",
+      "duration_s": 21.5,
+      "bytes": 4461108,
+      "sha256": "7f3743186e3325e60ef7c7877d48df3e99f91fa8d8532c463576c533fecdea1b",
+      "blake3": "dcbde7ff8b84a842c0e1f8f2911e33bb9fcb6fbd459a2de9c48f9d4b41c3465c",
+      "hook_headline": "Time-Indexed Claims & Six-Kernel Proofs · 5,496 Six-Kernel Theorems · 0 Skipped Proofs",
+      "headline_metric": "5,496 Six-Kernel Theorems · 0 Skipped Proofs",
+      "plain_bullets": [
+        "Claims without timestamps and source roots go stale fast and let copied summaries masquerade as independent evidence.",
+        "Every recorded claim carries valid time, recorded time, reference frame, scale, scope, certainty, and anti-laundering provenance.",
+        "Checking mathematical theorems across six independent Lean proof kernels eliminates single-compiler blind spots completely."
+      ],
+      "energy_tier": "Chip Energy Counter",
+      "energy_disclosure": "Deterministic six-kernel Lean 4.36.0 verification runs and 195-entry dated ledger.",
+      "tiktok_caption": "Time-Indexed Claims & Six-Kernel Proofs - 5,496 Six-Kernel Theorems · 0 Skipped Proofs\n\n1) Claims without timestamps and source roots go stale fast and let copied summaries masquerade as independent evidence.\n2) Every recorded claim carries valid time, recorded time, reference frame, scale, scope, certainty, and anti-laundering provenance.\n3) Checking mathematical theorems across six independent Lean proof kernels eliminates single-compiler blind spots completely.\n\nEnergy (Chip Energy Counter): Deterministic six-kernel Lean 4.36.0 verification runs and 195-entry dated ledger.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #ai #machinelearning #benchmarks #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "Time-Indexed Claims & Six-Kernel Proofs - 5,496 Six-Kernel Theorems · 0 Skipped Proofs\n\n1) Claims without timestamps and source roots go stale fast and let copied summaries masquerade as independent evidence.\n2) Every recorded claim carries valid time, recorded time, reference frame, scale, scope, certainty, and anti-laundering provenance.\n3) Checking mathematical theorems across six independent Lean proof kernels eliminates single-compiler blind spots completely.\n\nEnergy (Chip Energy Counter): Deterministic six-kernel Lean 4.36.0 verification runs and 195-entry dated ledger.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #ai #machinelearning #benchmarks #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/eco-knowledge-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "eco-database",
+      "short_title": "Sub-Microsecond State & Verifiable Logs",
+      "title": "Sub-Microsecond State, Memory, and Verifiable Logs",
+      "category": "Reality Code Engine",
+      "paper_url": "/papers/rce/",
+      "narrator_name": "Osato",
+      "video_url": "/media/tv/tiktok/eco-database-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/eco-database-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/eco-database-tiktok.vtt",
+      "duration_s": 21.37,
+      "bytes": 3331628,
+      "sha256": "b70dd037c8dbdde02f58b2f4382bffd7239698d83a98f4d8397f900ef39abd7e",
+      "blake3": "5c48b552991016d509d3153c3d575740aeb2e36f1c9c4cd0952af6b334c43ba1",
+      "hook_headline": "Sub-Microsecond State & Verifiable Logs · 0.325 Microsecond Lookup · 1.77 Microjoules · 0 Drift",
+      "headline_metric": "0.325 Microsecond Lookup · 1.77 Microjoules · 0 Drift",
+      "plain_bullets": [
+        "Conventional software burns needless time and electricity unpacking text and recalculating answers it already solved.",
+        "Immutable fingerprint-chained logs and bitemporal indexes let any machine replay exact past states without guesswork.",
+        "Zero-copy memory-mapped lookup stores turn repeated work into sub-microsecond reads costing under two microjoules."
+      ],
+      "energy_tier": "Chip Energy Counter",
+      "energy_disclosure": "Built-in processor energy counters and three-OS deterministic replay across 25,500 frames.",
+      "tiktok_caption": "Sub-Microsecond State & Verifiable Logs - 0.325 Microsecond Lookup · 1.77 Microjoules · 0 Drift\n\n1) Conventional software burns needless time and electricity unpacking text and recalculating answers it already solved.\n2) Immutable fingerprint-chained logs and bitemporal indexes let any machine replay exact past states without guesswork.\n3) Zero-copy memory-mapped lookup stores turn repeated work into sub-microsecond reads costing under two microjoules.\n\nEnergy (Chip Energy Counter): Built-in processor energy counters and three-OS deterministic replay across 25,500 frames.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #computerscience #softwareengineering #compilers #ai",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "Sub-Microsecond State & Verifiable Logs - 0.325 Microsecond Lookup · 1.77 Microjoules · 0 Drift\n\n1) Conventional software burns needless time and electricity unpacking text and recalculating answers it already solved.\n2) Immutable fingerprint-chained logs and bitemporal indexes let any machine replay exact past states without guesswork.\n3) Zero-copy memory-mapped lookup stores turn repeated work into sub-microsecond reads costing under two microjoules.\n\nEnergy (Chip Energy Counter): Built-in processor energy counters and three-OS deterministic replay across 25,500 frames.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #computerscience #softwareengineering #compilers #ai",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/eco-database-tiktok.mp4"
+        }
+      }
+    },
+    {
+      "id": "lut6-codon-nucleus",
+      "short_title": "64-Codon Lookup Nucleus & M.2 Silicon",
+      "title": "The 64-Codon Lookup Table Nucleus, Wobble Harmonics, and Fanless M.2 Silicon",
+      "category": "Hardware, Silicon & OS",
+      "paper_url": "/papers/lut-adapt/",
+      "narrator_name": "Bobby",
+      "video_url": "/media/tv/tiktok/lut6-codon-nucleus-tiktok.mp4",
+      "poster_url": "/media/tv/tiktok/lut6-codon-nucleus-tiktok.jpg",
+      "vtt_url": "/media/tv/tiktok/lut6-codon-nucleus-tiktok.vtt",
+      "duration_s": 27.38,
+      "bytes": 4743333,
+      "sha256": "6d4abc481c38205e09f2af1aba13f5049bb674dc04dad9afeffb25af959eada7",
+      "blake3": "e2ba69c0949c0c47e33baace1a673391d85d399f98043402713cdbb7b0f638b9",
+      "hook_headline": "64-Codon Lookup Nucleus & M.2 Silicon · 125–176 nJ Board Sensor · 38 ns Cycle · 55.2 °C M.2 Bound",
+      "headline_metric": "125–176 nJ Board Sensor · 38 ns Cycle · 55.2 °C M.2 Bound",
+      "plain_bullets": [
+        "Living cells use sixty-four genetic triplets to store survival rules, and digital six-input lookup tables use the exact same sixty-four switches.",
+        "Grouping four neighboring switch settings together absorbs small sensor or wording glitches while eliminating brittle high-frequency noise.",
+        "A sixteen-kilobyte core runs verified skills in nanoseconds from four-dollar microcontrollers to fanless M.2 circuit cards, waking large models only on genuine novelty."
+      ],
+      "energy_tier": "Board Sensor + Thermal Bound",
+      "energy_disclosure": "Direct circuit-board current sensors on Jetson Thor, microcontroller cycle counters, and M.2 thermal physics bounds.",
+      "tiktok_caption": "64-Codon Lookup Nucleus & M.2 Silicon - 125-176 nJ Board Sensor · 38 ns Cycle · 55.2 °C M.2 Bound\n\n1) Living cells use sixty-four genetic triplets to store survival rules, and digital six-input lookup tables use the exact same sixty-four switches.\n2) Grouping four neighboring switch settings together absorbs small sensor or wording glitches while eliminating brittle high-frequency noise.\n3) A sixteen-kilobyte core runs verified skills in nanoseconds from four-dollar microcontrollers to fanless M.2 circuit cards, waking large models only on genuine novelty.\n\nEnergy (Board Sensor + Thermal Bound): Direct circuit-board current sensors on Jetson Thor, microcontroller cycle counters, and M.2 thermal physics bounds.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #hardware #silicon #systems #computerscience",
+      "tiktok_api_v2_init_payload": {
+        "post_info": {
+          "title": "64-Codon Lookup Nucleus & M.2 Silicon - 125-176 nJ Board Sensor · 38 ns Cycle · 55.2 °C M.2 Bound\n\n1) Living cells use sixty-four genetic triplets to store survival rules, and digital six-input lookup tables use the exact same sixty-four switches.\n2) Grouping four neighboring switch settings together absorbs small sensor or wording glitches while eliminating brittle high-frequency noise.\n3) A sixteen-kilobyte core runs verified skills in nanoseconds from four-dollar microcontrollers to fanless M.2 circuit cards, waking large models only on genuine novelty.\n\nEnergy (Board Sensor + Thermal Bound): Direct circuit-board current sensors on Jetson Thor, microcontroller cycle counters, and M.2 thermal physics bounds.\nFull open-access proof & interactive lab: research.openie.dev · CC0-1.0\n#openscience #hardware #silicon #systems #computerscience",
+          "privacy_level": "PUBLIC_TO_EVERYONE",
+          "disable_duet": false,
+          "disable_comment": false,
+          "disable_stitch": false,
+          "video_cover_timestamp_ms": 1500
+        },
+        "source_info": {
+          "source": "PULL_FROM_URL",
+          "video_url": "https://research.openie.dev/media/tv/tiktok/lut6-codon-nucleus-tiktok.mp4"
+        }
+      }
+    }
+  ]
+}

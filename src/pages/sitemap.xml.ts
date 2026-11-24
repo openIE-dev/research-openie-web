@@ -16,10 +16,16 @@ const STATIC = [
   '/living/fpga-sim/alchitry/',
   '/opportunity-map/',
   '/rce/download/',
+  '/tv/',
+  '/radio/',
+  '/tutorials/',
+  '/blueprint/',
+  '/syndication/',
   '/llms.txt',
   '/llms-full.txt',
   '/catalog.json',
   '/feed.xml',
+  '/feeds/medium.xml',
 ];
 
 export const GET: APIRoute = async ({ site }) => {

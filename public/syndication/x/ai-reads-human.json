@@ -1,0 +1,74 @@
+{
+  "schema": "openie.x_thread_bundle.v1",
+  "study_id": "ai-reads-human",
+  "canonical_id": "blake3:tv:354d34ae4d1f4445cf393cc82d84c99ac2bac5585366b86e02521716baa3112c",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 272,
+  "card_video_uri": "/media/tv/tiktok/ai-reads-human-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/ai-reads-human-15s.mp4",
+  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/ai-reads-human/",
+  "canonical_paper_url": "https://research.openie.dev/papers/ai-reads-human/",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "\"AI\" Reads Human: Human Language Encoding at Machine Speed and the Energy Cost\n\nWhen two machines talk in text formats designed for human eyes, they burn up to two thousand times more chip energy.\n\n[Up to 2,054x Extra Chip Energy Reading Human Text]",
+      "weighted_chars": 249,
+      "raw_chars": 249,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/ai-reads-human-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/ai-reads-human-15s.mp4",
+        "poster_uri": "/media/tv/posters/ai-reads-human-poster.jpg",
+        "vtt_uri": "/media/tv/captions/ai-reads-human-15s.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "plain_points_1_2",
+      "text": "1/3 Computers often swap data in text formats written for human eyes, forcing machines to spend extra energy reading them back.\n\n2/3 Reading indented configuration text took over two thousand times more chip energy per record than reading compact machine numbers directly.",
+      "weighted_chars": 272,
+      "raw_chars": 272,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "plain_point_3_and_energy",
+      "text": "3/3 Chopping text into AI word pieces burned twelve times more chip energy than parsing the text, before any model ran.\n\nEnergy class: reported_j (280.40 nJ chip counter; board_metered=false, never mixed with shunts).",
+      "weighted_chars": 217,
+      "raw_chars": 217,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "machine_verification_gate",
+      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [E]/[M] · WAI1 blake3:354d34ae4d1f… · CC0-1.0",
+      "weighted_chars": 203,
+      "raw_chars": 200,
+      "urls": [],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "bidirectional_medium_and_paper_bridge",
+      "text": "Read & verify \"AI\" Reads Human (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/ai-reads-human/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/ai-reads-human/",
+      "weighted_chars": 160,
+      "raw_chars": 224,
+      "urls": [
+        "https://research.openie.dev/syndication/medium/ai-reads-human/",
+        "https://research.openie.dev/papers/ai-reads-human/"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "fffb87e33258102572166675fc186650d6edec203143da21d1e75b2ef15cfb45"
+}

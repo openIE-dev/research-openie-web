@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "eco-avalanche",
+  "canonical_id": "blake3:tv:f4c0b7df0176f02e56e35e3cc9703033be962f8c06fcd1865615c66741535bd1",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/eco-avalanche-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/eco-avalanche-15s.mp4",
+    "poster_uri": "/media/tv/posters/eco-avalanche-poster.jpg",
+    "vtt_uri": "/media/tv/captions/eco-avalanche-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 21.93,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "ec45d07425854ed8ed12e41073178b1aa2d6b0059e629d3ffc2829dc037c7c5c"
+  },
+  "caption_utf16_chars": 785,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "Nine-Rung Intelligence Avalanche (98 / 100 Verified Synthesis · 9x–27x Board Power Gain)\nWhy computer intelligence follows the same nine-step signal ratchet as life—and how compiling answers unlocks the next four steps.\n1) Across 3.8 billion years of biology and 76 years of computing, intelligence climbs a nine-step ladder through one repeating signal ratchet.\n2) Today's AI stalls at the fifth step—tool use—because routine jobs still wake giant models from scratch.\n3) Crossing the compilation threshold unlocks the top four steps by turning verified answers into fast, low-energy lookup reflexes.\nEnergy class: measured_j (Board Power Sensor) · CC0-1.0 · https://research.openie.dev/papers/communication-avalanche/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/eco-avalanche-tiktok.mp4"
+    }
+  },
+  "content_blake3": "a1bcacb631b3ad7a24b5caec668432bb800868643e5c0a344a9fcf0aafada931"
+}

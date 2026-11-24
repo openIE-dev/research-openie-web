@@ -1,0 +1,75 @@
+# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+slug: "rce-vc"
+
+metadata:
+  title: "RCE-VC: Law of Version Control"
+  description: "Let humans and AI swarms commit in parallel: check changes against 100,000 name-free items in 70 microseconds while staying on Git."
+  date: "2026-11-24"
+  author: "David Charlot, Open Interface Engineering"
+  category: "engineering"
+  tags: ["rce-vc", "engineering", "open-science", "cc0", "reported-j"]
+  featured: false
+  draft: false
+  toc: true
+  canonicalUrl: "https://research.openie.dev/papers/rce-vc/"
+  license: "CC0-1.0"
+
+hero:
+  image: "rce-vc-poster.jpg"
+  alt: "RCE-VC — 70 µs & 317 µJ Admission @ 100,000 Items"
+
+sections:
+  - heading: null
+    content: |
+      *Canonical Primary Source: [https://research.openie.dev/papers/rce-vc/](https://research.openie.dev/papers/rce-vc/) · Dedicated to the Public Domain (`CC0-1.0`)*
+
+      Let humans and AI swarms commit in parallel: check changes against 100,000 name-free items in 70 microseconds while staying on Git.
+
+  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+    content: |
+      1. Many people and AI agents can submit code at once, and a named check admits changes or records why not.
+      2. Tracking code by name-free functions instead of text lines lets unrelated edits land together without pointless merge wars.
+      3. Developers keep using ordinary Git while admission against one hundred thousand items finishes in about seventy microseconds.
+
+  - heading: "Everyday Analogy & Why It Matters"
+    content: |
+      Branching and line-diffing worked fine when small human teams merged a few pull requests a day. When dozens of automated tools refactor comments, variable names, and helper functions every second, text lines manufacture fake conflicts nonstop. Our standalone Rust reference splits Rust and Python files into top-level items keyed by normalized structure rather than names.
+
+      Non-overlapping dependency closures merge without waiting, real overlaps rank by pre-stated cost, and exact original bytes project back to Git. Across forty-nine offline tests with unsafe Rust forbidden, admitting a change into a one-hundred-thousand-unit repository takes sixty-nine point seven to seventy-three point six microseconds and three hundred seventeen to three hundred sixty-five microjoules on an Apple M5 Max chip counter. This standalone reference runs on ordinary Rust and Python repositories today without requiring the Reality Code Engine language, while keeping kernel chip energy readings strictly separate from nominal cost tables.
+
+  - heading: "Inside the Mechanism & Candid Limits"
+    content: |
+      Traditional version control was built around files, folder paths, and line numbers. Rename a helper function, adjust formatting, or let twenty coding agents improve distinct functions inside one module, and classic branches stall waiting for humans to untangle false text conflicts that have nothing to do with program meaning. Imagine a kitchen library where fixing one recipe forced you to lock the entire cookbook shelf. By splitting Rust and Python source files into top-level structural items while preserving exact original bytes alongside them, writers continue using ordinary Git files and commands while the engine tracks true item dependencies.
+
+      Implemented in pure safe Rust with forty-nine offline tests and zero network dependencies, the workspace combines three focused crates: a deterministic core with persistent hash trees and an assurance boundary that blocks stale race updates, an offline parser that extracts name-free item keys, and a lossless Git history bridge with atomic reference swaps. Two concurrent changes commute whenever neither writes into the dependency neighborhood read or affected by the other—guaranteeing identical repository roots in either arrival order. Because unchanged subtrees share cryptographic hashes in constant time, diffing a hundred-thousand-item repository walks only the tiny slice that actually changed rather than scanning everything. This three-dimensional view shows concurrent writers submitting against one canonical state ring.
+
+      Every submission appends an auditable hash-chained log entry—either admitted with a cost receipt or refused with a recorded reason—and accepted conflict fixes are stored by name-free signature so recurring clashes resolve automatically before any AI model is asked. Against a repository of one hundred thousand units across ten thousand modules at commit a-b-a-nine-nine-f-c-e, initial sealing finishes in one point two four seconds, and each admission completes in roughly seventy microseconds—over thirteen thousand admissions per second on a single core—burning three hundred seventeen to three hundred sixty-five microjoules. This reference is completely independent of the Reality Code Engine language, and it keeps Apple M5 Max kernel energy counters strictly separate from its internal integer cost table. TypeScript item splitting, Git packfile compression, thousand-repository replay corpora, and external wall-plug power meters remain open future milestones.
+
+  - heading: "How Energy Was Metered"
+    content: |
+      - **Acquisition Tier**: Chip Energy Counter
+      - **Disclosure**: Apple M5 Max chip counter (317–365 µJ) plus stated table; no wall power meter.
+      - **Evidence Class**: `reported_j` (`317.00 µJ (reported_j)`)
+      - **Meter / Formula**: Apple M5 Max L3 reported_j single-core admission check against 100,000 repository units
+
+      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+
+references:
+  - id: 1
+    authors: "David Charlot, Open Interface Engineering"
+    title: "RCE-VC: Law of Version Control"
+    publication: "OpenIE Research"
+    year: 2026
+    url: "https://research.openie.dev/papers/rce-vc/"
+
+closing:
+  content: |
+    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=rce-vc) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
+  cta:
+    primary:
+      text: "Read Primary Study & PDF"
+      url: "https://research.openie.dev/papers/rce-vc/"
+    secondary:
+      text: "Watch on OpenIE Research TV"
+      url: "https://research.openie.dev/tv/?study=rce-vc"
+  footer_text: "Summary text dedicated to the public domain under CC0-1.0."

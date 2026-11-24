@@ -1,0 +1,33 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:00.240 --> 00:00:04.515 line:72%
+First, today's computers stack
+many separate layers, and AI
+
+2
+00:00:04.515 --> 00:00:07.021 line:72%
+agents are bolted on top
+unchanged.
+
+3
+00:00:07.381 --> 00:00:11.349 line:72%
+Second, none of those layers
+asks beforehand how much energy
+
+4
+00:00:11.349 --> 00:00:13.838 line:72%
+an agent's action will actually
+spend.
+
+5
+00:00:14.198 --> 00:00:18.295 line:72%
+Third, an agent machine must
+measure energy, enforce strict
+
+6
+00:00:18.295 --> 00:00:21.332 line:72%
+budgets, and refuse actions that
+break them.

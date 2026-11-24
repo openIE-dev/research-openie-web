@@ -1,0 +1,34 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:00.240 --> 00:00:04.121 line:72%
+First, claims without timestamps
+and sources go stale fast and
+
+2
+00:00:04.121 --> 00:00:06.348 line:72%
+let copied summaries fake
+consensus.
+
+3
+00:00:06.708 --> 00:00:10.793 line:72%
+Second, every claim records
+valid time, write time, frame,
+
+4
+00:00:10.793 --> 00:00:13.874 line:72%
+scale, scope, certainty, and
+source lineage.
+
+5
+00:00:14.234 --> 00:00:18.920 line:72%
+Third, checking mathematical
+proofs across six independent
+Lean proof kernels removes
+
+6
+00:00:18.920 --> 00:00:21.065 line:72%
+single-compiler blind spots
+completely.

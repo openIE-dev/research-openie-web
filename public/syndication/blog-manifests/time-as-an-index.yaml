@@ -1,0 +1,77 @@
+# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+slug: "time-as-an-index"
+
+metadata:
+  title: "Time as an Index: What It Would Take to Look Up Tomorrow"
+  description: "What would happen to digital security if tomorrow's calculations could be looked up like a table today?"
+  date: "2026-11-24"
+  author: "David Charlot, Open Interface Engineering"
+  category: "research"
+  tags: ["time-as-an-index", "research", "open-science", "cc0", "unmetered"]
+  featured: false
+  draft: false
+  toc: true
+  canonicalUrl: "https://research.openie.dev/papers/time-as-an-index/"
+  license: "CC0-1.0"
+
+hero:
+  image: "time-as-an-index-poster.jpg"
+  alt: "Time as an Index — 31 Machine-Checked Proofs · 0 Time Shortcuts"
+
+sections:
+  - heading: null
+    content: |
+      *Canonical Primary Source: [https://research.openie.dev/papers/time-as-an-index/](https://research.openie.dev/papers/time-as-an-index/) · Dedicated to the Public Domain (`CC0-1.0`)*
+
+      What would happen to digital security if tomorrow's calculations could be looked up like a table today?
+
+  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+    content: |
+      1. Inside a mathematical time loop, almost every digital lock would break at once except a one-time secret pad.
+      2. In known physics, no quantum trick, analog circuit, or reported anomaly sends readable answers backward in time.
+      3. Every fast lookup of a future answer is work paid upfront, which fresh random values defeat immediately.
+
+  - heading: "Everyday Analogy & Why It Matters"
+    content: |
+      Every password hash, digital signature, and time-locked puzzle assumes nature offers no index into the end of a calculation without running the steps in between. If future states had addresses, sequential brute-force security would vanish overnight. We audited four candidate shortcuts: mathematical time loops, quantum retrocausal circuits, analog settling hardware, and precomputed lookup tables.
+
+      Outside theoretical time loops, every apparent shortcut pays upfront in discarded runs, exponential energy noise, or full prior search. Thirty-one machine-checked theorems verify our horizon bounds with zero unproven gaps, sixty-five thousand five hundred thirty-six cryptographic hash tests show zero frequency shortcuts, and auditing one hundred ninety-five anomaly and paradox reports leaves zero verified signals from tomorrow. Adding a fresh random value at query time dropped precomputed table hits from thirty-four percent all the way down to zero across two hundred trials, binding computation firmly to the present moment.
+
+  - heading: "Inside the Mechanism & Candid Limits"
+    content: |
+      Software already indexes recorded history in temporal databases and deterministic replay debuggers. So what stops a machine from indexing tomorrow's state the exact same way? If future states could be queried directly like rows in a table, public-key signatures, symmetric block ciphers, and proof-of-work puzzles would shatter in one query. In formal time-loop math, forcing a classical or quantum bit sent into its own past to return unchanged creates a self-consistent fixed point that surfaces hard answers without running the search—sparing only information-theoretic one-time pads whose random keys carry zero mathematical link to the secret message.
+
+      In real laboratory physics, quantum delayed-choice experiments obey exact marginal no-signalling so future measurement choices never shift earlier statistics. Postselected teleportation discards exponentially many failed trials—needing four thousand ninety-six runs on six-bit circuits where simple guessing needs thirty-two—while analog settling hardware shifts exponential hardness into thermal noise or frequency precision. Without physical time loops, every working fast lookup of a deterministic function is precomputation paid in advance. Online lookup steps multiplied by squared memory equals the squared state space, achieved only after paying the full exhaustive table fill upfront and dissipating nature's minimum heat floor for every erased bit.
+
+      This three-dimensional torus contrasts theoretical closed time loops along the outer ring against relativistic light-cone causal horizons and upfront lookup cubes at the center, illustrating visually why rewriting past steps incurs causal replay overhead and why no precomputed table can index a fresh random salt chosen after setup. Lean four mechanically checked thirty-one horizon and paradox theorems with zero unproven placeholders or custom axioms. Sixty-five thousand five hundred thirty-six consecutive cryptographic digests showed zero anomalous frequency bins, fresh block challenges drove table reuse from thirty-four percent down to zero, and auditing one hundred ninety-five anomaly and paradox entries found zero future signals. Every substantive claim across the study carries an explicit tag separating established physics, machine-checked theorems, testable conjectures, and debunked folklore.
+
+      No hardware power sensor was attached, no real-world time loop is claimed in nature, and net vacuum energy harvest over any closed physical cycle equals strictly zero.
+
+  - heading: "How Energy Was Metered"
+    content: |
+      - **Acquisition Tier**: Physics Math Bound
+      - **Disclosure**: Mathematical proofs and physics simulations only; no hardware power meter used.
+      - **Evidence Class**: `unmetered` (`unmetered (joules = null; never fabricated as zero)`)
+      - **Meter / Formula**: Formal Lean 4.36.0 & SHA-256 spectral study; no hardware power meter attached
+
+      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+
+references:
+  - id: 1
+    authors: "David Charlot, Open Interface Engineering"
+    title: "Time as an Index: What It Would Take to Look Up Tomorrow"
+    publication: "OpenIE Research"
+    year: 2026
+    url: "https://research.openie.dev/papers/time-as-an-index/"
+
+closing:
+  content: |
+    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=time-as-an-index) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
+  cta:
+    primary:
+      text: "Read Primary Study & PDF"
+      url: "https://research.openie.dev/papers/time-as-an-index/"
+    secondary:
+      text: "Watch on OpenIE Research TV"
+      url: "https://research.openie.dev/tv/?study=time-as-an-index"
+  footer_text: "Summary text dedicated to the public domain under CC0-1.0."

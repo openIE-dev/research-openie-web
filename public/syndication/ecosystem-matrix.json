@@ -1,0 +1,544 @@
+{
+  "schema": "openie.ecosystem_matrix.v1",
+  "version": "1.0.0",
+  "updated": "2026-11-24",
+  "human_in_gate": false,
+  "text_and_summary_license": "CC0-1.0",
+  "code_and_schema_license": "Apache-2.0",
+  "energy_non_mixing_invariant": "measured_j != reported_j != est_j != unmetered",
+  "tier_count": 6,
+  "ecosystem_entry_count": 36,
+  "publishos_literary_archive_count": 22,
+  "parliaments_count": 5,
+  "tiers": [
+    {
+      "tier": 1,
+      "id": "outbound_owned_attested_hubs",
+      "name": "Outbound Owned & Attested Hubs",
+      "description": "Primary sovereign OpenIE web properties, signed WAI1 binary repositories, and CC0-1.0 defensive prior-art hubs.",
+      "ecosystems": [
+        {
+          "id": "research-openie-web",
+          "name": "OpenIE Research Hub (TV + Radio + Papers + Labs)",
+          "direction": "outbound",
+          "protocol": "HTTPS + Astro Static + RSS 2.0 + WebVTT + WAI1",
+          "surface": "https://research.openie.dev",
+          "license": "CC0-1.0 (summaries/media/articles) · Apache-2.0 (code/schema)",
+          "status": "live",
+          "capabilities": [
+            "21 primary research papers & PDFs",
+            "28 Research TV studies × 4 cuts = 112 films + 9:16 vertical snackables",
+            "15 Research Radio autonomous broadcasts",
+            "12 interactive Predict -> Break -> Repair -> Verify labs",
+            "50-language planetary 15s primers + WCAG 2.2 AA Easy-Read & Audio Description"
+          ]
+        },
+        {
+          "id": "blog-openie-web",
+          "name": "OpenIE Engineering & Research Blog",
+          "direction": "outbound",
+          "protocol": "YAML Post Manifest (`build-post.js`) + RSS + Canonical Link",
+          "surface": "https://blog.openie.dev",
+          "license": "CC0-1.0",
+          "status": "staged_manifests_ready",
+          "capabilities": [
+            "28 deterministic YAML blog manifests (`public/syndication/blog-manifests/*.yaml`)",
+            "Canonical URL linkage back to primary OpenIE studies"
+          ]
+        },
+        {
+          "id": "the-commons",
+          "name": "The Commons (scholar.askdavidc.ai)",
+          "direction": "bidirectional",
+          "protocol": "HTTPS + Streamable HTTP MCP + A2A + 3D Galaxy Trails",
+          "surface": "https://scholar.askdavidc.ai",
+          "license": "CC0-1.0",
+          "status": "live",
+          "capabilities": [
+            "Observatory, Codex Studio, Reference Desk, Dialectic, Galaxy 3D, PresenceVault",
+            "Prior-art grounding and cross-study BLAKE3 lineage trails"
+          ]
+        },
+        {
+          "id": "openie-periodic-stack-network",
+          "name": "OpenIE Avalanche & Periodic Stack Domain Family (*.openie.dev)",
+          "direction": "outbound",
+          "protocol": "HTTPS + JSON-LD + Interactive Living Figures",
+          "surface": "https://avalanche.openie.dev · https://stack.openie.dev · https://compute.openie.dev · https://synthesis.openie.dev · https://knowledge.openie.dev · https://database.openie.dev",
+          "license": "CC0-1.0 / Apache-2.0",
+          "status": "live",
+          "capabilities": [
+            "9-Rung Computer Intelligence Avalanche coordinate mapping",
+            "Companion portals: silicon, energy, tei, cad, ecad, proof, horizon, state, memory, communication, agent"
+          ]
+        },
+        {
+          "id": "openie-artifact-substrate-and-corpora",
+          "name": "OpenIE Canonical Artifact Substrate & Free Prior-Art Corpora",
+          "direction": "outbound",
+          "protocol": "Git + WAI1 (`application/vnd.wai`) + RFC 8032 Ed25519 + BLAKE3",
+          "surface": "https://github.com/openIE-dev/openie-artifact-substrate",
+          "license": "Apache-2.0 (substrate) · CC0-1.0 (1,991 prior-art records) · CERN-OHL-S-2.0 (17th OpenLoco morphology)",
+          "status": "live",
+          "capabilities": [
+            "2,115 signed canonical artifacts + 118 WAI1 binary containers",
+            "Free Humanoid (1,102), Phone (344), Wearable (238), and eVTOL (307) CC0 corpora"
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 2,
+      "id": "short_form_and_social_discourse",
+      "name": "Short-Form Video & Bidirectional Social Discourse",
+      "description": "Coordinated native 9:16 snackable video distribution, 5-post verification threads, and bidirectional essay synchronization.",
+      "ecosystems": [
+        {
+          "id": "x-medium-bidirectional-bridge",
+          "name": "X (Twitter) <-> Medium Bidirectional Automation",
+          "direction": "bidirectional",
+          "protocol": "RFC 5849 OAuth 1.0a Media Upload + X API v2 + Medium REST v1 + Canonical Story Import + RSS 2.0",
+          "surface": "https://api.x.com/2/tweets <-> https://api.medium.com/v1",
+          "license": "CC0-1.0",
+          "status": "staged_and_tested",
+          "capabilities": [
+            "Forward: Canonical Artifact -> 28 illustrated Medium essays + 28 5-post X threads (<=280 weighted chars, 0 URLs in Post 1 + native 9:16 video card)",
+            "Reverse 1: Medium RSS XML -> BLAKE3 deduplicated X threads (`sync_medium_rss_to_x`)",
+            "Reverse 2: X self-reply timeline threads -> compiled Medium essays + thread-root backlink reply (`sync_x_threads_to_medium`)"
+          ]
+        },
+        {
+          "id": "tiktok",
+          "name": "TikTok Content Posting API v2",
+          "direction": "outbound",
+          "protocol": "TikTok OAuth 2.0 + `/v2/post/publish/video/init/` (`PULL_FROM_URL` & `FILE_UPLOAD`)",
+          "surface": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+          "license": "CC0-1.0",
+          "status": "staged_and_tested",
+          "capabilities": [
+            "28 1080x1920 60fps 9:16 safe-zone verified vertical snackables (`/media/tv/tiktok/<id>-tiktok.mp4`)",
+            "Honest `is_aigc: true` studio voice disclosure + BLAKE3 deduplication"
+          ]
+        },
+        {
+          "id": "youtube-and-shorts",
+          "name": "YouTube Documentary & YouTube Shorts",
+          "direction": "outbound",
+          "protocol": "YouTube Data API v3 Resumable `videos.insert` + WebVTT `captions.insert`",
+          "surface": "https://www.googleapis.com/upload/youtube/v3/videos",
+          "license": "CC0-1.0 / CC-BY-4.0",
+          "status": "connector_ready",
+          "capabilities": [
+            "16:9 180s 3D cutaway documentaries + 9:16 <=60s Shorts",
+            "50-language WebVTT caption track attachment"
+          ]
+        },
+        {
+          "id": "instagram-reels",
+          "name": "Instagram Reels",
+          "direction": "outbound",
+          "protocol": "Meta Graph API Container `media` (`media_type=REELS`) + `media_publish`",
+          "surface": "https://graph.facebook.com/v21.0/",
+          "license": "CC0-1.0",
+          "status": "connector_ready",
+          "capabilities": [
+            "9:16 1080x1920 safe-zone verified vertical snackable reels + cover frame"
+          ]
+        },
+        {
+          "id": "mastodon",
+          "name": "Mastodon & ActivityPub Fediverse",
+          "direction": "bidirectional",
+          "protocol": "Mastodon REST API v1 (`Idempotency-Key` BLAKE3) + ActivityPub",
+          "surface": "https://fosstodon.org/api/v1/statuses",
+          "license": "CC0-1.0",
+          "status": "staged_and_tested",
+          "capabilities": [
+            "500-char threaded plain-language summaries + inbound public timeline radar"
+          ]
+        },
+        {
+          "id": "bluesky",
+          "name": "Bluesky (AT Protocol)",
+          "direction": "outbound",
+          "protocol": "ATProto XRPC `com.atproto.repo.createRecord` + UTF-8 Byte-Slice Facets",
+          "surface": "https://bsky.social/xrpc/com.atproto.repo.createRecord",
+          "license": "CC0-1.0",
+          "status": "staged_and_tested",
+          "capabilities": [
+            "300-char root/parent CID-chained threads with verified rich-text link facets"
+          ]
+        },
+        {
+          "id": "linkedin",
+          "name": "LinkedIn Research & Engineering Posts",
+          "direction": "outbound",
+          "protocol": "LinkedIn Posts REST API (`/rest/posts` + Videos API)",
+          "surface": "https://api.linkedin.com/rest/posts",
+          "license": "CC0-1.0",
+          "status": "connector_ready",
+          "capabilities": [
+            "Executive plain-language 3-bullet synthesis + native video / canonical study cards"
+          ]
+        },
+        {
+          "id": "substack",
+          "name": "Substack Newsletter & Notes",
+          "direction": "outbound",
+          "protocol": "RSS / Canonical Markdown Import",
+          "surface": "https://substack.com",
+          "license": "CC0-1.0",
+          "status": "markdown_ready",
+          "capabilities": [
+            "Illustrated long-form essays with canonical primary-source provenance headers"
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "id": "resilient_public_mirrors",
+      "name": "Resilient Archival Mirrors & Open Audio Syndication",
+      "description": "Censorship-resistant, bit-verified public mirrors for video, audio, papers, and WAI1 envelopes.",
+      "ecosystems": [
+        {
+          "id": "internet-archive",
+          "name": "Internet Archive (`archive.org` IAS3)",
+          "direction": "outbound",
+          "protocol": "IAS3 REST (`PUT https://s3.us.archive.org/{identifier}/{file}`)",
+          "surface": "https://archive.org",
+          "license": "CC0-1.0",
+          "status": "staged_and_tested",
+          "capabilities": [
+            "Permanent CC0 preservation of `.wai` envelopes, PDFs, 4-tier MP4 films, and Medium Markdown"
+          ]
+        },
+        {
+          "id": "peertube",
+          "name": "PeerTube Federated Research Video",
+          "direction": "bidirectional",
+          "protocol": "PeerTube REST v1 + ActivityPub + WebTorrent/HLS",
+          "surface": "https://joinpeertube.org",
+          "license": "CC0-1.0",
+          "status": "connector_ready",
+          "capabilities": [
+            "Federated 16:9 & 9:16 captioned study mirrors + inbound educational video radar"
+          ]
+        },
+        {
+          "id": "podcast-index-apple-spotify",
+          "name": "Podcast Index, Apple Podcasts & Spotify",
+          "direction": "outbound",
+          "protocol": "Podcasting 2.0 RSS 2.0 (`<podcast:transcript>`, `<enclosure>`)",
+          "surface": "https://research.openie.dev/radio/rss.xml",
+          "license": "CC0-1.0",
+          "status": "live",
+          "capabilities": [
+            "15 autonomous multi-voice Research Radio episodes with VTT captions & transcripts"
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 4,
+      "id": "academic_prior_art_and_timestamping",
+      "name": "Academic Archival, Defensive Prior-Art & Cryptographic Timestamping",
+      "description": "DOI registration, non-patent literature (NPL) prior-art indexing, and multi-anchor cryptographic time proofs.",
+      "ecosystems": [
+        {
+          "id": "zenodo",
+          "name": "Zenodo (CERN Data Centre)",
+          "direction": "outbound",
+          "protocol": "InvenioRDM REST Deposit API + DataCite DOI",
+          "surface": "https://zenodo.org/api/deposit/depositions",
+          "license": "CC0-1.0 / Apache-2.0 / CERN-OHL-S-2.0",
+          "status": "ready",
+          "capabilities": [
+            "Versioned DOI minting for papers, corpora, and WAI1 substrate tarballs"
+          ]
+        },
+        {
+          "id": "osf",
+          "name": "Open Science Framework (OSF)",
+          "direction": "outbound",
+          "protocol": "OSF v2 JSON:API + WaterButler Storage",
+          "surface": "https://api.osf.io/v2/",
+          "license": "CC0-1.0",
+          "status": "ready",
+          "capabilities": [
+            "Frozen preregistrations (`Shape D`, `40-seed agency`) & replication bundles"
+          ]
+        },
+        {
+          "id": "arxiv",
+          "name": "arXiv Preprint Repository",
+          "direction": "bidirectional",
+          "protocol": "TeX Source Tarball Submission + OAI-PMH / REST Preprint Ingestion",
+          "surface": "https://arxiv.org",
+          "license": "CC0-1.0 / arXiv Perpetual Non-Exclusive",
+          "status": "active",
+          "capabilities": [
+            "Outbound study TeX packages + daily inbound cs.AI/cs.LG/cs.PL/cs.AR radar"
+          ]
+        },
+        {
+          "id": "crossref",
+          "name": "Crossref Metadata & Citation Graph",
+          "direction": "bidirectional",
+          "protocol": "Crossref REST API + Deposit XML",
+          "surface": "https://api.crossref.org/works",
+          "license": "CC0-1.0 (metadata)",
+          "status": "active",
+          "capabilities": [
+            "DOI resolution, reference linking, and citation graph verification"
+          ]
+        },
+        {
+          "id": "google-scholar-and-patents-npl",
+          "name": "Google Scholar & Google Patents Non-Patent Literature (NPL)",
+          "direction": "outbound",
+          "protocol": "Highwire Press `<meta name=\"citation_*\">` + Schema.org `ScholarlyArticle` + Sitemap",
+          "surface": "https://research.openie.dev/sitemap-index.xml",
+          "license": "CC0-1.0",
+          "status": "live",
+          "capabilities": [
+            "Defensive prior-art indexing across 21 studies & 1,991 humanoid/phone/wearable/eVTOL disclosures"
+          ]
+        },
+        {
+          "id": "opentimestamps-bitcoin",
+          "name": "OpenTimestamps (Bitcoin Blockchain Calendar)",
+          "direction": "outbound",
+          "protocol": "OpenTimestamps Merkle Calendar `.ots` Proofs",
+          "surface": "https://alice.btc.calendar.opentimestamps.org",
+          "license": "CC0-1.0",
+          "status": "live",
+          "capabilities": [
+            "Trustless Bitcoin-anchored existence proofs on `provenance_chain.anchors.opentimestamps_ots`"
+          ]
+        },
+        {
+          "id": "freetsa-rfc3161",
+          "name": "FreeTSA (`RFC 3161` Time-Stamp Authority)",
+          "direction": "outbound",
+          "protocol": "RFC 3161 Time-Stamp Protocol (`.tsq` / `.tsr`)",
+          "surface": "https://freetsa.org/tsr",
+          "license": "CC0-1.0",
+          "status": "live",
+          "capabilities": [
+            "X.509 cryptographic timestamp receipts on every quarterly corpus & substrate release"
+          ]
+        },
+        {
+          "id": "drand-league-of-entropy",
+          "name": "League of Entropy `drand` Verifiable Randomness",
+          "direction": "inbound",
+          "protocol": "drand HTTP Beacon (`BLS12-381` threshold signatures)",
+          "surface": "https://api.drand.sh",
+          "license": "CC0-1.0",
+          "status": "live",
+          "capabilities": [
+            "Unbiasable public randomness rounds (e.g. `6663734`, `6664089`) for preregistered splits"
+          ]
+        },
+        {
+          "id": "software-heritage",
+          "name": "Software Heritage (`SWHID` Universal Source Archive)",
+          "direction": "outbound",
+          "protocol": "SWH Save Code Now REST API + Intrinsic `swh:1:*` Identifiers",
+          "surface": "https://archive.softwareheritage.org/api/1/",
+          "license": "Apache-2.0 / CERN-OHL-S-2.0",
+          "status": "live",
+          "capabilities": [
+            "Permanent archival of Lean 4 proofs, Rust crates, RTL gateware, and CAD repositories"
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 5,
+      "id": "accessibility_oer_and_global_retail",
+      "name": "Accessibility Commons, Open Educational Resources (OER) & PublishOS Retail",
+      "description": "Universal cognitive/sensory accessibility boards, interactive STEM curricula, and global print/ebook distribution.",
+      "ecosystems": [
+        {
+          "id": "arasaac-and-openboard",
+          "name": "ARASAAC Pictograms & OpenBoard (`OBZ`) AAC",
+          "direction": "bidirectional",
+          "protocol": "W3C SKOS JSON-LD + OpenBoard `.obz` + `commons.openie.dev/aac/*`",
+          "surface": "https://research.openie.dev/glossary/concepts.json",
+          "license": "CC0-1.0",
+          "status": "live",
+          "capabilities": [
+            "69 AAC concept anchors + 36 W3C SKOS concepts verified by `AccessibilityGate` (`<=18` words/sentence)"
+          ]
+        },
+        {
+          "id": "oer-commons",
+          "name": "OER Commons & Open STEM Curricula",
+          "direction": "outbound",
+          "protocol": "LRMI / IEEE LOM Metadata + Standalone Browser Wasm Labs",
+          "surface": "https://research.openie.dev/tutorials/",
+          "license": "CC0-1.0 / Apache-2.0",
+          "status": "live",
+          "capabilities": [
+            "12 interactive `Predict -> Break -> Repair -> Verify` browser laboratories"
+          ]
+        },
+        {
+          "id": "wikimedia-and-wikidata",
+          "name": "Wikimedia Commons & Wikidata",
+          "direction": "outbound",
+          "protocol": "MediaWiki Action API + Wikibase Structured Claims",
+          "surface": "https://commons.wikimedia.org · https://www.wikidata.org",
+          "license": "CC0-1.0",
+          "status": "ready",
+          "capabilities": [
+            "Public-domain SVG diagrams, captioned explainer media, and prior-art Q-item links"
+          ]
+        },
+        {
+          "id": "publishos-global-retail",
+          "name": "PublishOS Global Print & Ebook Distribution (`KDP`, `IngramSpark`, `Apple Books`, `Google Play Books`, `ONIX 3.0`)",
+          "direction": "outbound",
+          "protocol": "ONIX 3.0 XML + EPUB 3.3 Accessibility 1.1 + PDF/X-1a Print Ready",
+          "surface": "PublishOS Deterministic Book Compiler",
+          "license": "CC0-1.0 (editions)",
+          "status": "ready",
+          "capabilities": [
+            "Automated compilation of OpenIE research monographs across Amazon KDP, IngramSpark, Apple Books, and Google Play Books"
+          ]
+        }
+      ]
+    },
+    {
+      "tier": 6,
+      "id": "inbound_ingestion_radar_and_agent_bus",
+      "name": "Inbound Global Ingestion Radar & Universal AI Agent Bus",
+      "description": "Continuous zero-human-gate literature, civic, archival, and machine-to-machine protocol bus.",
+      "ecosystems": [
+        {
+          "id": "scientific-literature-radar",
+          "name": "Global Preprint, Biomedical & Retraction Radar (`OpenAlex`, `arXiv`, `bioRxiv`, `Europe PMC`, `Crossref`, `RetractionWatch`)",
+          "direction": "inbound",
+          "protocol": "REST JSON / OAI-PMH / CSV Integrity Feeds",
+          "surface": "OpenIE Research Radio & Rung Radar",
+          "license": "CC0-1.0 (derived claims & receipts)",
+          "status": "live",
+          "capabilities": [
+            "Live retraction-screened ingestion across OpenAlex, arXiv, bioRxiv/medRxiv, Europe PMC, Crossref, and RetractionWatch"
+          ]
+        },
+        {
+          "id": "open-web-and-video-radar",
+          "name": "Open Web & Educational Video Corpus (`Common Crawl CDX/WAT`, `YouTube Edu`, `PeerTube`)",
+          "direction": "inbound",
+          "protocol": "Common Crawl CDX/WAT HTTP Range + TimedText VTT + ActivityPub",
+          "surface": "The Commons Reference Desk",
+          "license": "CC0-1.0 (provenance pointers)",
+          "status": "live",
+          "capabilities": [
+            "Byte-range WARC/WAT verification and captioned lecture indexing"
+          ]
+        },
+        {
+          "id": "technical-and-civic-discourse-radar",
+          "name": "Technical & Civic Legislative Radar (`Hacker News`, `Reddit`, `Mastodon`, `5 Parliaments`)",
+          "direction": "inbound",
+          "protocol": "Algolia/Firebase JSON + ActivityPub + Akoma Ntoso / Hansard XML",
+          "surface": "OpenIE Cadence & Governance Observatory",
+          "license": "CC0-1.0 / Open Government Licenses",
+          "status": "live",
+          "parliaments": [
+            "UK Parliament Hansard",
+            "United States Congressional Record",
+            "European Parliament Verbatim Debates",
+            "Parliament of Canada Hansard",
+            "Parliament of Australia Hansard"
+          ],
+          "capabilities": [
+            "Tracks practitioner bottlenecks on HN, Reddit, and Mastodon alongside verbatim debates from 5 Parliaments"
+          ]
+        },
+        {
+          "id": "publishos-20plus-literary-archives",
+          "name": "PublishOS 22 Public-Domain Literary & Historical Archives",
+          "direction": "inbound",
+          "protocol": "OPDS + IIIF + TEI-XML + Plain UTF-8",
+          "surface": "PublishOS Commons Ingestor",
+          "license": "CC0-1.0 / Public Domain",
+          "status": "live",
+          "archives": [
+            "Project Gutenberg",
+            "Standard Ebooks",
+            "Internet Archive Texts",
+            "HathiTrust Public Domain",
+            "Perseus Digital Library",
+            "Wikisource",
+            "BnF Gallica",
+            "Europeana Public Domain",
+            "Digital Public Library of America (DPLA)",
+            "Library of Congress Chronicling America",
+            "National Library of Australia Trove",
+            "Biodiversity Heritage Library (BHL)",
+            "Wellcome Collection",
+            "PubMed Central Open Access Subset",
+            "Chinese Text Project (ctext)",
+            "Aozora Bunko",
+            "Biblioteca Digital Hispánica",
+            "Arabic Collections Online (ACO)",
+            "Open Greek and Latin / Open Philology",
+            "Open Textbook Library",
+            "Directory of Open Access Books (DOAB)",
+            "Sacred Texts Public Domain Archive"
+          ],
+          "archive_count": 22,
+          "capabilities": [
+            "Ingests 22 world literary, historical, philological, and open-textbook public-domain archives"
+          ]
+        },
+        {
+          "id": "mcp-model-context-protocol",
+          "name": "Model Context Protocol (`MCP`)",
+          "direction": "bidirectional",
+          "protocol": "MCP JSON-RPC 2.0 Streamable HTTP & Stdio",
+          "surface": "https://scholar.askdavidc.ai/api/mcp",
+          "license": "Apache-2.0",
+          "status": "live",
+          "capabilities": [
+            "Exposes canonical OpenIE artifacts, BLAKE3 receipts, and energy ledgers as typed MCP tools/resources"
+          ]
+        },
+        {
+          "id": "a2a-agent-to-agent-protocol",
+          "name": "Agent-to-Agent Protocol (`A2A`)",
+          "direction": "bidirectional",
+          "protocol": "A2A `/.well-known/agent.json` + Signed `WAI1` Task Artifacts",
+          "surface": "https://scholar.askdavidc.ai/.well-known/agent.json",
+          "license": "Apache-2.0",
+          "status": "live",
+          "capabilities": [
+            "Attested multi-agent task delegation carrying Ed25519 + BLAKE3 WAI1 envelopes"
+          ]
+        },
+        {
+          "id": "webmcp-browser-agent-bus",
+          "name": "WebMCP (`navigator.modelContext`)",
+          "direction": "bidirectional",
+          "protocol": "W3C/Browser `navigator.modelContext` Tool Registration",
+          "surface": "https://research.openie.dev",
+          "license": "Apache-2.0",
+          "status": "live",
+          "capabilities": [
+            "Zero-scrape in-browser structured tool queries over all 28 studies, 112 films, and syndication bundles"
+          ]
+        }
+      ]
+    }
+  ],
+  "study_count": 28,
+  "x_post_count_total": 140,
+  "x_max_weighted_chars_observed": 278,
+  "ledger_blake3": "dbe25e548ead94a2a5935e51cecf77987405b4e9a0444f4dcb340d986c77cd88",
+  "matrix_blake3": "92fa5e6e638953183dc4fbbdbd438f6ac2ce54c031d3caaff202fd6ea0090482"
+}

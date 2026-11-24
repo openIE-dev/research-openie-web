@@ -1,0 +1,74 @@
+{
+  "schema": "openie.x_thread_bundle.v1",
+  "study_id": "ai-coding-market",
+  "canonical_id": "blake3:tv:69e7a2fe33716674a0c355af3726928fd2147ec38c6f5f2e34db059289735979",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 253,
+  "card_video_uri": "/media/tv/tiktok/ai-coding-market-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/ai-coding-market-15s.mp4",
+  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/ai-coding-market/",
+  "canonical_paper_url": "https://research.openie.dev/papers/ai-coding-market/",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "The Promised Trillion Dollar AI-Coding Market\n\nTrillion-dollar AI coding forecasts quietly assume nobody ever saves and reuses a verified solution.\n\n[$1T Forecasts Assume Zero Verified Code Reuse]",
+      "weighted_chars": 196,
+      "raw_chars": 196,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/ai-coding-market-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/ai-coding-market-15s.mp4",
+        "poster_uri": "/media/tv/posters/ai-coding-market-poster.jpg",
+        "vtt_uri": "/media/tv/captions/ai-coding-market-15s.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "plain_points_1_2",
+      "text": "1/3 Headline trillion-dollar figures for AI coding are mostly future projections and value guesses, not counts of money actually earned.\n\n2/3 Almost every forecast quietly assumes programmers will pay a giant AI model by the word for every task forever.",
+      "weighted_chars": 253,
+      "raw_chars": 253,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "plain_point_3_and_energy",
+      "text": "3/3 When verified working code is saved and reused, repeated jobs drop toward the cost of electricity, shrinking vendor rent.\n\nEnergy class: unmetered (Market Forecast Audit; joules=null, never faked as zero).",
+      "weighted_chars": 209,
+      "raw_chars": 209,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "machine_verification_gate",
+      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [M]/[S] · WAI1 blake3:69e7a2fe3371… · CC0-1.0",
+      "weighted_chars": 203,
+      "raw_chars": 200,
+      "urls": [],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "bidirectional_medium_and_paper_bridge",
+      "text": "Read & verify The Promised Trillion Dollar AI-Coding Market (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/ai-coding-market/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/ai-coding-market/",
+      "weighted_chars": 189,
+      "raw_chars": 257,
+      "urls": [
+        "https://research.openie.dev/syndication/medium/ai-coding-market/",
+        "https://research.openie.dev/papers/ai-coding-market/"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "c6df096290b4652a62d5b925bdf24cbe0e23bacdd11aa6994a9758f6a172b2f2"
+}

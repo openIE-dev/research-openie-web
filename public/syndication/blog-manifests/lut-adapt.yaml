@@ -1,0 +1,75 @@
+# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+slug: "lut-adapt"
+
+metadata:
+  title: "Downward LUT6 Compilation in a Mixture of Limits Cascade: Beneš-Routed Boolean Fabrics, Conformal Wake Gates, and Frontier Sparse-MoE NVMe Streaming"
+  description: "How to run giant coding models inside tiny laptop memory and turn verified answers into millisecond reflexes."
+  date: "2026-11-24"
+  author: "David Charlot, Open Interface Engineering"
+  category: "energy"
+  tags: ["lut-adapt", "energy", "open-science", "cc0", "measured-j"]
+  featured: false
+  draft: false
+  toc: true
+  canonicalUrl: "https://research.openie.dev/papers/lut-adapt/"
+  license: "CC0-1.0"
+
+hero:
+  image: "lut-adapt-poster.jpg"
+  alt: "Downward Lookup Compilation — 970 MB Active RAM · 91.7% Verified · 0% Broken"
+
+sections:
+  - heading: null
+    content: |
+      *Canonical Primary Source: [https://research.openie.dev/papers/lut-adapt/](https://research.openie.dev/papers/lut-adapt/) · Dedicated to the Public Domain (`CC0-1.0`)*
+
+      How to run giant coding models inside tiny laptop memory and turn verified answers into millisecond reflexes.
+
+  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+    content: |
+      1. Most requests repeat solved patterns, so running a giant neural network every time wastes memory and energy.
+      2. This cascade checks tiny truth tables first and streams specialist model slices from storage only when needed.
+      3. Once an automated test certifies a new answer, it compiles downward into a reusable millisecond skill.
+
+  - heading: "Everyday Analogy & Why It Matters"
+    content: |
+      Local developer workstations hit two steep walls at the exact same time: giant coding models normally demand tens of gigabytes of wired memory, and re-running them from scratch on repeating software bugs wastes energy over and over again. Incoming requests first check a zero-multiply Boolean truth-table switch and a tiny constant-size sequence memory. A calibrated novelty detector wakes four-bit storage-streamed models up to a hundred twenty billion parameters only on unfamiliar problems, then compiles certified wins downward.
+
+      Custom Apple Metal and portable Rust GPU shaders cut unbuffered flash storage reads twelve point three times at exact token parity, reaching ninety-one point seven percent verified coding pass and fifty percent on real symbolic math repositories with zero broken commits. Twenty-seven machine-checked mathematical proofs guarantee lossless target verification on every emitted token and ensure statistical wake tables are never silently mislabeled as exact deterministic rules across deployments.
+
+  - heading: "Inside the Mechanism & Candid Limits"
+    content: |
+      Running a thirty-five-billion-parameter coding model locally normally locks up sixty-six gigabytes of sixteen-bit memory even when most incoming edits repeat familiar patterns. Static hardware lookup networks hit the opposite wall: whenever real-world input traffic shifts, rewiring chip logic from scratch takes hours of vendor synthesis. Picture an experienced surgeon who checks fast laminated checklists for routine steps, pulls only the exact specialist manual chapter from storage for rare cases, and compiles every newly verified procedure into a fresh checklist card overnight without ever halting or rebuilding the operating room. A single-binary Rust server checks truth-table and canonical skill pages in zero point one five milliseconds—seventeen times faster than Python—then steps up to forty-eight-kilobyte state-space tracking, runs an adaptive statistical novelty gate that caught shifted traffic with zero false risk, and wakes large specialist models only last.
+
+      Twenty-seven Lean four theorems prove downward compilation saves net energy whenever recurring hits over a stationary horizon outweigh one-time synthesis cost, and prove joint truth-table synthesis avoids invalid blended tokens. Unbuffered four-bit specialist streaming plus truth-table drafting cuts flash reads twelve point three times inside nine hundred seventy megabytes at exact token parity. This three-dimensional chip layout shows eighty-one dual-port block memories feeding eighty six-input truth tables across a forty-three-stage non-blocking multicast switch fabric that swaps shadow pages in one cycle without vendor rewiring. Clock-enable bubble gating shrinks single-cycle logic depth fourfold and cuts simulated idle switching power four point one times at two hundred fifty megahertz.
+
+      Gating every candidate code patch behind automated unit tests reached ninety-one point seven percent on our forty-eight-task bakeoff, ninety point six percent on public function coding, two-point-five-times standalone pass across four open-source repositories, and twenty-two point two tokens per second with sixty-two point five percent verified pass on a hundred-twenty-billion-parameter model. Every measurement boundary stays completely explicit from software to silicon: workstation joules come from built-in Apple and Linux chip counters, hardware switching milliwatts come from cycle-accurate waveform activity rather than an isolated circuit-board power shunt or commercial post-route timing signoff in this repository, and zero broken commits ever cross the gate.
+
+  - heading: "How Energy Was Metered"
+    content: |
+      - **Acquisition Tier**: Chip Energy Counter
+      - **Disclosure**: Built-in Apple chip counters and simulated circuit estimates; no board shunt.
+      - **Evidence Class**: `measured_j` (`164.44 nJ (measured_j)`)
+      - **Meter / Formula**: NVIDIA Jetson AGX Thor physical TI INA3221 VDD_CPU_SOC_MSS DC current-shunt (bit-sliced lut6-core op)
+
+      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+
+references:
+  - id: 1
+    authors: "David Charlot, Open Interface Engineering"
+    title: "Downward LUT6 Compilation in a Mixture of Limits Cascade: Beneš-Routed Boolean Fabrics, Conformal Wake Gates, and Frontier Sparse-MoE NVMe Streaming"
+    publication: "OpenIE Research"
+    year: 2026
+    url: "https://research.openie.dev/papers/lut-adapt/"
+
+closing:
+  content: |
+    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=lut-adapt) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
+  cta:
+    primary:
+      text: "Read Primary Study & PDF"
+      url: "https://research.openie.dev/papers/lut-adapt/"
+    secondary:
+      text: "Watch on OpenIE Research TV"
+      url: "https://research.openie.dev/tv/?study=lut-adapt"
+  footer_text: "Summary text dedicated to the public domain under CC0-1.0."

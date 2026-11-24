@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "ai-reads-human",
+  "canonical_id": "blake3:tv:354d34ae4d1f4445cf393cc82d84c99ac2bac5585366b86e02521716baa3112c",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/ai-reads-human-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/ai-reads-human-15s.mp4",
+    "poster_uri": "/media/tv/posters/ai-reads-human-poster.jpg",
+    "vtt_uri": "/media/tv/captions/ai-reads-human-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 21.73,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "5d3e8ebde35332f034f089f3eb756d39ab984167d3ea79e4968049ece4c7f6a8"
+  },
+  "caption_utf16_chars": 750,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "\"AI\" Reads Human (Up to 2,054x Extra Chip Energy Reading Human Text)\nWhen two machines talk in text formats designed for human eyes, they burn up to two thousand times more chip energy.\n1) Computers often swap data in text formats written for human eyes, forcing machines to spend extra energy reading them back.\n2) Reading indented configuration text took over two thousand times more chip energy per record than reading compact machine numbers directly.\n3) Chopping text into AI word pieces burned twelve times more chip energy than parsing the text, before any model ran.\nEnergy class: reported_j (Chip Energy Counter) · CC0-1.0 · https://research.openie.dev/papers/ai-reads-human/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/ai-reads-human-tiktok.mp4"
+    }
+  },
+  "content_blake3": "b80df38956f452e7ebdd8c0dca4ffa7d64e93ea8e0446b7d6a503e6e9d01f00e"
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "openie.x_thread_bundle.v1",
+  "study_id": "satiation",
+  "canonical_id": "blake3:tv:3ea9cd43444f33d5bae2a87a6c253bc8b45889597003b30a4b10f956c078b304",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 207,
+  "card_video_uri": "/media/tv/tiktok/satiation-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/satiation-15s.mp4",
+  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/satiation/",
+  "canonical_paper_url": "https://research.openie.dev/papers/satiation/",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "Task Satiation vs. Aggregate Rebound in AI Demand\n\nEvery single task has a hard finish line—even while cheaper AI sparks millions of new tasks across the economy.\n\n[One Job Finishes · Total Jobs Still Grow]",
+      "weighted_chars": 206,
+      "raw_chars": 206,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/satiation-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/satiation-15s.mp4",
+        "poster_uri": "/media/tv/posters/satiation-poster.jpg",
+        "vtt_uri": "/media/tv/captions/satiation-15s.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "plain_points_1_2",
+      "text": "1/3 Every job has a finish line, and extra computer work after that point is pure waste.\n\n2/3 Cheaper computer work still inspires people to start many more jobs, so total use keeps rising.",
+      "weighted_chars": 189,
+      "raw_chars": 189,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "plain_point_3_and_energy",
+      "text": "3/3 Money prices for AI are falling fast, but the physical electricity it burns is never free.\n\nEnergy class: unmetered (Theory + Price Audit; joules=null, never faked as zero).",
+      "weighted_chars": 177,
+      "raw_chars": 177,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "machine_verification_gate",
+      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[M]/[S] · WAI1 blake3:3ea9cd43444f… · CC0-1.0",
+      "weighted_chars": 207,
+      "raw_chars": 204,
+      "urls": [],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "bidirectional_medium_and_paper_bridge",
+      "text": "Read & verify Task Satiation vs. Aggregate Rebound (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/satiation/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/satiation/",
+      "weighted_chars": 180,
+      "raw_chars": 234,
+      "urls": [
+        "https://research.openie.dev/syndication/medium/satiation/",
+        "https://research.openie.dev/papers/satiation/"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "da8213dd94cd14adcd6ef9c200bccf9b7ef771c9ed384d20f79348f69309b616"
+}

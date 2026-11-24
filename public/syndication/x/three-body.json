@@ -1,0 +1,74 @@
+{
+  "schema": "openie.x_thread_bundle.v1",
+  "study_id": "three-body",
+  "canonical_id": "blake3:tv:16e4e4b439081a0ed33c49753fe852f5ef4a4ac5f32d4bdf70826f08da0e7738",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 236,
+  "card_video_uri": "/media/tv/tiktok/three-body-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/three-body-15s.mp4",
+  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/three-body/",
+  "canonical_paper_url": "https://research.openie.dev/papers/three-body/",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "The Pursuit of AGI Resolves the Three-Body Problem in Computing\n\nBig software disasters hide in unwritten guesses between theorists, builders, and users—machine-checked handoffs lock the stack.\n\n[Checked Handoffs Stop Bug Cascades Cold]",
+      "weighted_chars": 236,
+      "raw_chars": 236,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/three-body-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/three-body-15s.mp4",
+        "poster_uri": "/media/tv/posters/three-body-poster.jpg",
+        "vtt_uri": "/media/tv/captions/three-body-15s.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "plain_points_1_2",
+      "text": "1/3 Most major computer failures start at the handoffs between teams or system layers, not inside individual parts.\n\n2/3 The culprit is usually an unwritten guess crossing a boundary, such as which physical units a number uses.",
+      "weighted_chars": 227,
+      "raw_chars": 227,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "plain_point_3_and_energy",
+      "text": "3/3 When every boundary guess is written down and machine-checked, fixing one problem stays fixed without breaking upper layers.\n\nEnergy class: unmetered (Theory + Case Audit; joules=null, never faked as zero).",
+      "weighted_chars": 210,
+      "raw_chars": 210,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "machine_verification_gate",
+      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[S] · WAI1 blake3:16e4e4b43908… · CC0-1.0",
+      "weighted_chars": 203,
+      "raw_chars": 200,
+      "urls": [],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "bidirectional_medium_and_paper_bridge",
+      "text": "Read & verify The Three-Body Problem in Computing (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/three-body/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/three-body/",
+      "weighted_chars": 179,
+      "raw_chars": 235,
+      "urls": [
+        "https://research.openie.dev/syndication/medium/three-body/",
+        "https://research.openie.dev/papers/three-body/"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "7534fbd97844c2c691aa9d209868dee55df4e2516240d1d1e64f2c379d919ff3"
+}

@@ -1,0 +1,75 @@
+# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+slug: "eco-database"
+
+metadata:
+  title: "Sub-Microsecond State, Memory, and Verifiable Logs"
+  description: "How tamper-evident logs, dual-time indexes, and zero-copy memory maps turn expensive recomputation into sub-microsecond reads."
+  date: "2026-11-24"
+  author: "David Charlot, Open Interface Engineering"
+  category: "engineering"
+  tags: ["eco-database", "engineering", "open-science", "cc0", "reported-j"]
+  featured: false
+  draft: false
+  toc: true
+  canonicalUrl: "https://research.openie.dev/papers/rce/"
+  license: "CC0-1.0"
+
+hero:
+  image: "eco-database-poster.jpg"
+  alt: "Sub-Microsecond State & Verifiable Logs — 0.325 Microsecond Lookup · 1.77 Microjoules · 0 Drift"
+
+sections:
+  - heading: null
+    content: |
+      *Canonical Primary Source: [https://research.openie.dev/papers/rce/](https://research.openie.dev/papers/rce/) · Dedicated to the Public Domain (`CC0-1.0`)*
+
+      How tamper-evident logs, dual-time indexes, and zero-copy memory maps turn expensive recomputation into sub-microsecond reads.
+
+  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+    content: |
+      1. Conventional software burns needless time and electricity unpacking text and recalculating answers it already solved.
+      2. Immutable fingerprint-chained logs and bitemporal indexes let any machine replay exact past states without guesswork.
+      3. Zero-copy memory-mapped lookup stores turn repeated work into sub-microsecond reads costing under two microjoules.
+
+  - heading: "Everyday Analogy & Why It Matters"
+    content: |
+      Software teams usually treat databases, state machines, and memory caches as separate worlds that serialize text back and forth endlessly. Physically, storing a verified answer in aligned memory is simply freezing past computation so no machine ever pays for it twice. Across database dot openie dot dev and data dot openie dot dev, every state change clears a sixty-nine point seven microsecond safety gate before appending to a tamper-evident fingerprint-linked log indexed by both valid world time and recorded write time.
+
+      Reading a verified entry from our zero-copy memory-mapped store took zero point three two five microseconds and one point seven seven microjoules on built-in chip counters, while deterministic logs replayed twenty-five thousand five hundred frames identically across three operating systems. Mapping ten storage and state coordinates onto real joules and microseconds clarifies exactly when to compute fresh and when to read directly from memory.
+
+  - heading: "Inside the Mechanism & Candid Limits"
+    content: |
+      Typical cloud software overwrites database rows in place—permanently destroying exact audit history—while copying and re-parsing the exact same payload across four or five intermediate text buffers on every single network request. When an autonomous software agent or distributed workflow misbehaves, engineers cannot replay the exact world state it actually saw. Careful accountants never erase ink from a bound ledger; they append dated entries linked in strict sequence so any past afternoon's exact balance reconstructs without guesswork, then place direct physical thumb tabs on verified totals so reading a settled figure takes one quick glance with zero manual copying. Our data architecture unites database dot openie dot dev, data dot openie dot dev, state dot openie dot dev, and memory dot openie dot dev across ten shared physical coordinates.
+
+      Every state update clears an invariant safety check, appends to a cryptographic fingerprint chain with dual timestamps, and maps directly into aligned virtual memory pages ready for instant hardware reads. Spending sixty-nine point seven microseconds once to check state invariants and seal a versioned commit unlocks millions of subsequent zero-copy reads at zero point three two five microseconds each—turning heavy repeated computation, query planning, and text parsing into tiny, deterministic pointer arithmetic across resident memory. This three-dimensional polyhedron reveals the central cyan state crystal protected inside a transparent memory shell, ringed by six invariant check stations where five emerald gates admit verified state transitions cleanly into the durable log and the sixth rose gate isolates, refuses, and logs any rejected fault. Audited with built-in processor energy counters on quiet test hosts, zero-copy memory-mapped case lookups averaged just one point seven seven microjoules per query without allocating heap memory.
+
+      Replaying fixed-point deterministic state logs across Linux, macOS, and Windows machines yielded zero bit differences across twenty-five thousand five hundred frames. Transparent systems engineering always states its exact physical boundary upfront without marketing spin: sub-microsecond, microjoule lookups hold when working pages sit warm in fast RAM, whereas first-time page faults from cold solid-state drives or remote archival object stores still pay full storage transfer latency and energy.
+
+  - heading: "How Energy Was Metered"
+    content: |
+      - **Acquisition Tier**: Chip Energy Counter
+      - **Disclosure**: Built-in processor energy counters and three-OS deterministic replay across 25,500 frames.
+      - **Evidence Class**: `reported_j` (`1.77 µJ (reported_j)`)
+      - **Meter / Formula**: On-chip CPU energy counter for sub-microsecond canonical state lookup
+
+      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+
+references:
+  - id: 1
+    authors: "David Charlot, Open Interface Engineering"
+    title: "Sub-Microsecond State, Memory, and Verifiable Logs"
+    publication: "OpenIE Research"
+    year: 2026
+    url: "https://research.openie.dev/papers/rce/"
+
+closing:
+  content: |
+    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=eco-database) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
+  cta:
+    primary:
+      text: "Read Primary Study & PDF"
+      url: "https://research.openie.dev/papers/rce/"
+    secondary:
+      text: "Watch on OpenIE Research TV"
+      url: "https://research.openie.dev/tv/?study=eco-database"
+  footer_text: "Summary text dedicated to the public domain under CC0-1.0."

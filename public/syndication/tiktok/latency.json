@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "latency",
+  "canonical_id": "blake3:tv:388791ddb736142eaa8a75aed41c6f6c61030a764040797bc8b9d36016833e40",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/latency-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/latency-15s.mp4",
+    "poster_uri": "/media/tv/posters/latency-poster.jpg",
+    "vtt_uri": "/media/tv/captions/latency-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 21.9,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "1c13a1d7099eef7539370f2f3e2aa2ca8957b86a63a8de09395541a73f6e996a"
+  },
+  "caption_utf16_chars": 816,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "The Gap Between Possible and Deployed (Electricity < 12% of Task Cost · Switching Is the Moat)\nCheaper open AI methods sit on the shelf for months—held back by hardware write-offs and quarterly calendars until automation breaks lock-in.\n1) Open methods routinely run AI far more cheaply on existing machines, yet products often wait months or years to adopt them.\n2) Machine hardware costs far more per task than raw electricity, backed by both operating cash and circular supplier investments.\n3) Corporate calendars delay rollouts in quarterly steps until automation tools slash switching friction and force cheaper methods into production.\nEnergy class: unmetered (Historical + Market Audit) · CC0-1.0 · https://research.openie.dev/papers/latency/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/latency-tiktok.mp4"
+    }
+  },
+  "content_blake3": "01493b73a9329aec70644de8862179ca3caea0158c6561f968ee279724fc1788"
+}

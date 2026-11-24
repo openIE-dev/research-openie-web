@@ -1,0 +1,74 @@
+{
+  "schema": "openie.x_thread_bundle.v1",
+  "study_id": "lut6-codon-nucleus",
+  "canonical_id": "blake3:tv:b3baf367788259314785478a6d1b13dc0ac325cd6b7eb7f66e336f8394cac0be",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 278,
+  "card_video_uri": "/media/tv/tiktok/lut6-codon-nucleus-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/lut6-codon-nucleus-15s.mp4",
+  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/lut6-codon-nucleus/",
+  "canonical_paper_url": "https://research.openie.dev/papers/lut-adapt/",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "The 64-Codon Lookup Table Nucleus, Wobble Harmonics, and Fanless M.2 Silicon\nHow living genetic triplets and digital 6-input truth tables share one 64-state code—running verified skills on tiny chips and fanless M.2 cards.\n[125–176 nJ Board Sensor · 38 ns Cycle · 55.2 °C M.2…",
+      "weighted_chars": 277,
+      "raw_chars": 276,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/lut6-codon-nucleus-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/lut6-codon-nucleus-15s.mp4",
+        "poster_uri": "/media/tv/posters/lut6-codon-nucleus-poster.jpg",
+        "vtt_uri": "/media/tv/captions/lut6-codon-nucleus-15s.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "plain_points_1_2",
+      "text": "1/3 Living cells use 64 genetic triplets to store survival rules, and digital six-input lookup tables use the exact same 64 switches.\n\n2/3 Grouping four neighboring switch settings together absorbs small sensor or wording glitches while eliminating brittle high-frequency noise.",
+      "weighted_chars": 278,
+      "raw_chars": 278,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "plain_point_3_and_energy",
+      "text": "3/3 A sixteen-kilobyte core runs verified skills in nanoseconds from four-dollar microcontrollers to fanless M.2 circuit cards, waking large models only on genuine novelty.\n\nEnergy class: measured_j (125.23 nJ via physical board shunt; board_metered=true).",
+      "weighted_chars": 256,
+      "raw_chars": 256,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "machine_verification_gate",
+      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E]/[M] · WAI1 blake3:b3baf3677882… · CC0-1.0",
+      "weighted_chars": 207,
+      "raw_chars": 204,
+      "urls": [],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "bidirectional_medium_and_paper_bridge",
+      "text": "Read & verify 64-Codon Lookup Nucleus & M.2 Silicon (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/lut6-codon-nucleus/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/lut-adapt/",
+      "weighted_chars": 181,
+      "raw_chars": 244,
+      "urls": [
+        "https://research.openie.dev/syndication/medium/lut6-codon-nucleus/",
+        "https://research.openie.dev/papers/lut-adapt/"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "2736b02ff53e0e0ea3502409080192ff70b259b26b0d6fdce0beff4a7e99cb01"
+}

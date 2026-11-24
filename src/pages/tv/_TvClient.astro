@@ -14,7 +14,7 @@ const ecosystemJson = JSON.stringify(ecosystem);
   const ECOSYSTEM = JSON.parse(ecosystemJson);
   const CHANNELS_BY_ID = Object.fromEntries((ECOSYSTEM.channels || []).map((c) => [c.id, c]));
   const STUDIES = CATALOG.studies || [];
-  const TIER_ORDER = ['15s', '45s', '90s', '180s'];
+  const TIER_ORDER = ['15s', '45s', '90s', '180s', 'tiktok'];
   const LEGACY_TIER_MAP = {
     '5s': '15s',
     '30s': '45s',
@@ -24,6 +24,10 @@ const ecosystemJson = JSON.stringify(ecosystem);
     '45s': '45s',
     '180s': '180s',
     '3m': '180s',
+    'tiktok': 'tiktok',
+    '9x16': 'tiktok',
+    'vertical': 'tiktok',
+    'shorts': 'tiktok',
   };
   const byId = Object.fromEntries(STUDIES.map((s) => [s.id, s]));
 
@@ -55,7 +59,13 @@ const ecosystemJson = JSON.stringify(ecosystem);
   const linkFigures = document.getElementById('tv-link-figures');
   const linkTutorial = document.getElementById('tv-link-tutorial');
   const linkPdf = document.getElementById('tv-link-pdf');
+  const linkSyndication = document.getElementById('tv-link-syndication');
   const linkAbout = document.getElementById('tv-link-about');
+  const playerFrameEl = document.getElementById('tv-player-frame');
+  const tiktokBarEl = document.getElementById('tv-tiktok-bar');
+  const tiktokDlEl = document.getElementById('tv-tiktok-dl');
+  const tiktokCopyBtn = document.getElementById('tv-tiktok-copy-caption');
+  const syndicateLinkEl = document.getElementById('tv-syndicate-link');
 
   function normalizeTier(raw) {
     if (!raw) return '90s';
@@ -175,7 +185,25 @@ const ecosystemJson = JSON.stringify(ecosystem);
     if (linkFigures) linkFigures.href = study.figures_url;
     if (linkTutorial) linkTutorial.href = '/tutorials/?lab=' + study.tutorial_lab_id;
     if (linkPdf) linkPdf.href = study.pdf_url;
+    if (linkSyndication) linkSyndication.href = '/syndication/?study=' + study.id;
     if (linkAbout) linkAbout.href = study.about_url;
+
+    const isVertical = activeTier === 'tiktok';
+    if (playerFrameEl) {
+      playerFrameEl.classList.toggle('aspect-video', !isVertical);
+      playerFrameEl.classList.toggle('aspect-[9/16]', isVertical);
+      playerFrameEl.classList.toggle('max-w-[380px]', isVertical);
+      playerFrameEl.classList.toggle('mx-auto', isVertical);
+    }
+    if (tiktokBarEl) {
+      tiktokBarEl.classList.toggle('hidden', !isVertical);
+    }
+    if (tiktokDlEl && study.tiers?.tiktok) {
+      tiktokDlEl.href = study.tiers.tiktok.video_url;
+    }
+    if (syndicateLinkEl) {
+      syndicateLinkEl.href = '/syndication/?study=' + study.id;
+    }
 
     document.querySelectorAll('[data-tier-btn]').forEach((b) => {
       const isAct = b.getAttribute('data-tier-btn') === activeTier;
@@ -212,7 +240,7 @@ const ecosystemJson = JSON.stringify(ecosystem);
     if (videoEl) {
       const curSrc = videoEl.getAttribute('data-loaded-src');
       if (curSrc !== tObj.video_url) {
-        videoEl.poster = study.poster_url;
+        videoEl.poster = tObj.poster_url || study.poster_url;
         videoEl.setAttribute('data-loaded-src', tObj.video_url);
         if (trackEl) trackEl.src = tObj.vtt_url;
         videoEl.src = tObj.video_url;
@@ -245,7 +273,7 @@ const ecosystemJson = JSON.stringify(ecosystem);
       const chSuffix = activeChannelId && CHANNELS_BY_ID[activeChannelId]
         ? ' · Channel: ' + CHANNELS_BY_ID[activeChannelId].name + ' (' + CHANNELS_BY_ID[activeChannelId].domain + ')'
         : '';
-      countEl.textContent = vis.size + ' / ' + STUDIES.length + ' studies shown (' + (vis.size * 4) + ' films)' + chSuffix;
+      countEl.textContent = vis.size + ' / ' + STUDIES.length + ' studies shown (' + (vis.size * 5) + ' horizontal + 9:16 films)' + chSuffix;
     }
   }
 
@@ -361,6 +389,15 @@ const ecosystemJson = JSON.stringify(ecosystem);
     });
   });
 
+  tiktokCopyBtn?.addEventListener('click', () => {
+    const st = byId[activeStudyId];
+    const cap = st?.tiers?.tiktok?.tiktok_caption || '';
+    navigator.clipboard?.writeText(cap).then(() => {
+      tiktokCopyBtn.textContent = 'Copied Caption!';
+      setTimeout(() => { tiktokCopyBtn.textContent = 'Copy TikTok Caption'; }, 1600);
+    });
+  });
+
   videoEl?.addEventListener('timeupdate', syncActiveCue);
   videoEl?.addEventListener('ended', () => {
     if (playlistMode) stepTopic(1, true);
@@ -372,7 +409,7 @@ const ecosystemJson = JSON.stringify(ecosystem);
     if (e.key === ' ') {
       e.preventDefault();
       if (videoEl) videoEl.paused ? videoEl.play().catch(() => {}) : videoEl.pause();
-    } else if (['1', '2', '3', '4'].includes(e.key)) {
+    } else if (['1', '2', '3', '4', '5'].includes(e.key)) {
       playlistMode = null;
       activeTier = TIER_ORDER[parseInt(e.key, 10) - 1];
       updateUIState(true);

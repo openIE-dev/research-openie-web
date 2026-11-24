@@ -1,0 +1,74 @@
+{
+  "schema": "openie.x_thread_bundle.v1",
+  "study_id": "eco-avalanche",
+  "canonical_id": "blake3:tv:f4c0b7df0176f02e56e35e3cc9703033be962f8c06fcd1865615c66741535bd1",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 252,
+  "card_video_uri": "/media/tv/tiktok/eco-avalanche-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/eco-avalanche-15s.mp4",
+  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/eco-avalanche/",
+  "canonical_paper_url": "https://research.openie.dev/papers/communication-avalanche/",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "The Nine-Rung Computer Intelligence Avalanche\n\nWhy computer intelligence follows the same nine-step signal ratchet as life—and how compiling answers unlocks the next four steps.\n\n[98 / 100 Verified Synthesis · 9x–27x Board Power Gain]",
+      "weighted_chars": 234,
+      "raw_chars": 234,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/eco-avalanche-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/eco-avalanche-15s.mp4",
+        "poster_uri": "/media/tv/posters/eco-avalanche-poster.jpg",
+        "vtt_uri": "/media/tv/captions/eco-avalanche-15s.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "plain_points_1_2",
+      "text": "1/3 Across 3.8 billion years of biology and 76 years of computing, intelligence climbs a nine-step ladder through one repeating signal ratchet.\n\n2/3 Today's AI stalls at the fifth step—tool use—because routine jobs still wake giant models from scratch.",
+      "weighted_chars": 252,
+      "raw_chars": 252,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "plain_point_3_and_energy",
+      "text": "3/3 Crossing the compilation threshold unlocks the top four steps by turning verified answers into fast, low-energy lookup reflexes.\n\nEnergy class: measured_j (927.30 µJ via physical board shunt; board_metered=true).",
+      "weighted_chars": 216,
+      "raw_chars": 216,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "machine_verification_gate",
+      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E]/[M]/[S] · WAI1 blake3:f4c0b7df0176… · CC0-1.0",
+      "weighted_chars": 211,
+      "raw_chars": 208,
+      "urls": [],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "bidirectional_medium_and_paper_bridge",
+      "text": "Read & verify Nine-Rung Intelligence Avalanche (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/eco-avalanche/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/communication-avalanche/",
+      "weighted_chars": 176,
+      "raw_chars": 248,
+      "urls": [
+        "https://research.openie.dev/syndication/medium/eco-avalanche/",
+        "https://research.openie.dev/papers/communication-avalanche/"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "394143ec0b42e8318446b6496975265c70c916ba563cf6a82cec7cfa89917dc8"
+}

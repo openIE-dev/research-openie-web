@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "rce-compile",
+  "canonical_id": "blake3:tv:d561a8e7e445f1878caa5144e08df2f7cbe006ff65dba485bc787c7361a7027a",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/rce-compile-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/rce-compile-15s.mp4",
+    "poster_uri": "/media/tv/posters/rce-compile-poster.jpg",
+    "vtt_uri": "/media/tv/captions/rce-compile-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 23.37,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "6062ffd2d2a02e369121509b5d3a8090ed0cfd029a3d1de15a68c5ff9da13652"
+  },
+  "caption_utf16_chars": 735,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "RCE Compile (448.5x Rebuild Energy Cut · 0/500 Mix-Ups)\nThirty percent of maximum-optimization builds never earn back their compile energy—unless positional caching cuts warm rebuilds 448 times.\n1) Real compilers break any single descriptive law, so this study establishes a seven-part yardstick to measure them.\n2) Maximum compiler optimization burns upfront chip energy that never pays back on up to thirty percent of programs.\n3) Fingerprinting code by variable position reuses compiled builds safely, cutting warm Rust compile energy over four hundred times.\nEnergy class: reported_j (Chip Energy Counter) · CC0-1.0 · https://research.openie.dev/papers/rce-compile/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/rce-compile-tiktok.mp4"
+    }
+  },
+  "content_blake3": "db4bff84dc2e1390fb667cc8005d4b6e2e691485107a63393850cfcbfba0f1c8"
+}

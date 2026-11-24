@@ -1,0 +1,75 @@
+# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+slug: "eco-avalanche"
+
+metadata:
+  title: "The Nine-Rung Computer Intelligence Avalanche"
+  description: "Why computer intelligence follows the same nine-step signal ratchet as life—and how compiling answers unlocks the next four steps."
+  date: "2026-11-24"
+  author: "David Charlot, Open Interface Engineering"
+  category: "research"
+  tags: ["eco-avalanche", "research", "open-science", "cc0", "measured-j"]
+  featured: false
+  draft: false
+  toc: true
+  canonicalUrl: "https://research.openie.dev/papers/communication-avalanche/"
+  license: "CC0-1.0"
+
+hero:
+  image: "eco-avalanche-poster.jpg"
+  alt: "Nine-Rung Intelligence Avalanche — 98 / 100 Verified Synthesis · 9x–27x Board Power Gain"
+
+sections:
+  - heading: null
+    content: |
+      *Canonical Primary Source: [https://research.openie.dev/papers/communication-avalanche/](https://research.openie.dev/papers/communication-avalanche/) · Dedicated to the Public Domain (`CC0-1.0`)*
+
+      Why computer intelligence follows the same nine-step signal ratchet as life—and how compiling answers unlocks the next four steps.
+
+  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+    content: |
+      1. Across 3.8 billion years of biology and 76 years of computing, intelligence climbs a nine-step ladder through one repeating signal ratchet.
+      2. Today's AI stalls at the fifth step—tool use—because routine jobs still wake giant models from scratch.
+      3. Crossing the compilation threshold unlocks the top four steps by turning verified answers into fast, low-energy lookup reflexes.
+
+  - heading: "Everyday Analogy & Why It Matters"
+    content: |
+      Across three point eight billion years of evolution, microbes, cells, and nervous systems scaled collective intelligence using one repeating three-step ratchet: standardize a cheap signal, filter out noise below a sharp threshold, and lock verified winners into durable memory. Over seventy-six years, computing climbed five ephemeral steps: indexed access, fluent generation, reasoning checks, networked transport, and tool use. Yet routing routine tool calls through giant neural networks every single time burns vast electricity until verified answers compile downward.
+
+      When ten distinct AI traditions exchange compact verified routines instead of verbose prose, benchmark completion jumps from forty-nine percent solo to ninety-eight percent, while physical circuit-board power sensors record nine-to-twenty-seven-fold gains in verified work per joule. On avalanche dot openie dot dev, every forecast across month, quarter, year, and decade windows names a concrete physical test that could prove it wrong, keeping science open and accountable.
+
+  - heading: "Inside the Mechanism & Candid Limits"
+    content: |
+      Today's frontier AI systems can draft code, call external software tools, and search databases, yet every routine request still wakes billions of numerical weights from scratch. Pouring more megawatts into data centers buys raw capability at steep electrical cost, leaving the software industry bottlenecked at step five of a nine-step intelligence ladder. Think back to your very first afternoon balancing a bicycle down a quiet street. At first your conscious cortex burned intense focus correcting every tiny wobble, but once your nervous system verified what worked, it compiled balance downward into fast cerebellar and spinal reflexes so your mind could scan the road ahead.
+
+      Comparing major evolutionary leaps—from bacterial quorum sensing and myelinated nerves to spoken human language—against seventy-six years of computer science reveals the exact same three-part ratchet at every jump. First, make signaling cheap; second, gate action behind a strict verification threshold; third, compile proven solutions into fast, low-energy memory. Below the compilation threshold, every repeated question pays the full electrical bill of cold-start neural generation. Once automated checks certify a solution and freeze it into a compact lookup table or deterministic routine, verified completions per joule surge upward across steps six, seven, eight, and nine without losing accuracy.
+
+      Our three-dimensional ratchet view shows noisy candidate proposals entering on the left, clearing strict emerald verification rings at the center, and crystallizing into quiet event-driven wakeups at step six, single-cycle Boolean lookup circuits at step seven, tamper-evident provenance at step eight, and energy-scheduled operating systems at step nine. In controlled experiments uniting ten classic AI paradigms—spanning symbolic search, Bayesian inference, evolutionary routines, and neural world models—no single method passed half our hundred-task suite alone, yet compiled synthesis passed ninety-eight tasks while inline circuit-board current sensors measured nine-to-twenty-seven-fold gains in verified work per joule. Scientific honesty demands separating today's lab measurements from tomorrow's predictions across eighteen dated milestones spanning one month to ten years, each paired with a concrete falsifier test. And wherever long-horizon steps touch human neural links, strict opt-in consent, local power limits, and instant user revocation remain absolute.
+
+  - heading: "How Energy Was Metered"
+    content: |
+      - **Acquisition Tier**: Board Power Sensor
+      - **Disclosure**: Direct circuit-board power sensor on edge hardware; forecast horizons stay open predictions.
+      - **Evidence Class**: `measured_j` (`927.30 µJ (measured_j)`)
+      - **Meter / Formula**: NVIDIA Jetson AGX Thor physical TI INA3221 & INA238 board power sensor (DES-10 attested synthesis)
+
+      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+
+references:
+  - id: 1
+    authors: "David Charlot, Open Interface Engineering"
+    title: "The Nine-Rung Computer Intelligence Avalanche"
+    publication: "OpenIE Research"
+    year: 2026
+    url: "https://research.openie.dev/papers/communication-avalanche/"
+
+closing:
+  content: |
+    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=eco-avalanche) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
+  cta:
+    primary:
+      text: "Read Primary Study & PDF"
+      url: "https://research.openie.dev/papers/communication-avalanche/"
+    secondary:
+      text: "Watch on OpenIE Research TV"
+      url: "https://research.openie.dev/tv/?study=eco-avalanche"
+  footer_text: "Summary text dedicated to the public domain under CC0-1.0."

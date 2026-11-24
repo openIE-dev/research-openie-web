@@ -1,0 +1,284 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import syndicationCatalog from '../../../data/syndication-catalog.json';
+
+export function getStaticPaths() {
+  const studies = (syndicationCatalog.studies ?? []) as any[];
+  return studies.map((study) => ({
+    params: { slug: study.id },
+    props: { study },
+  }));
+}
+
+const { study } = Astro.props as { study: any };
+const SITE = 'https://research.openie.dev';
+const canonicalPaperUrl = study.medium?.canonical_source_url ?? `${SITE}${study.paper_url}`;
+const posterAbsUrl = `${SITE}${study.poster_url}`;
+const tiktokMp4Url = `${SITE}${study.short_vertical_9x16?.video_uri ?? `/media/tv/tiktok/${study.id}-tiktok.mp4`}`;
+
+const mdFilePath = path.resolve(process.cwd(), 'public', 'syndication', 'medium', `${study.id}.md`);
+const mdRaw = fs.existsSync(mdFilePath) ? fs.readFileSync(mdFilePath, 'utf-8') : '';
+
+function escHtml(s: string): string {
+  return String(s ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function formatInline(s: string): string {
+  let out = escHtml(s);
+  out = out.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  out = out.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  out = out.replace(/`([^`]+)`/g, '<code>$1</code>');
+  out = out.replace(
+    /\[([^\]]+)\]\((https?:\/\/[^)\s]+|\/[^)\s]+)\)/g,
+    (_m, label, url) => `<a href="${url}">${label}</a>`
+  );
+  return out;
+}
+
+function renderMediumSemanticBody(md: string): string {
+  const lines = md.split('\n');
+  const out: string[] = [];
+  let listTag: 'ol' | 'ul' | null = null;
+  const flushList = () => {
+    if (listTag) {
+      out.push(`</${listTag}>`);
+      listTag = null;
+    }
+  };
+
+  for (const raw of lines) {
+    const ln = raw.trim();
+    if (!ln || ln.startsWith('<!--') || ln.startsWith('# ')) {
+      flushList();
+      continue;
+    }
+    if (ln.startsWith('## ')) {
+      flushList();
+      out.push(`<h2>${formatInline(ln.slice(3))}</h2>`);
+      continue;
+    }
+    if (ln.startsWith('### ')) {
+      flushList();
+      out.push(`<h3>${formatInline(ln.slice(4))}</h3>`);
+      continue;
+    }
+    if (ln === '---') {
+      flushList();
+      out.push('<hr />');
+      continue;
+    }
+    if (ln.startsWith('![')) {
+      flushList();
+      const m = ln.match(/^!\[(.*?)\]\((.*?)\)$/);
+      if (m) {
+        out.push(
+          `<figure><img src="${escHtml(m[2])}" alt="${escHtml(m[1])}" /><figcaption>${escHtml(m[1])}</figcaption></figure>`
+        );
+      }
+      continue;
+    }
+    if (ln.startsWith('> ')) {
+      flushList();
+      out.push(`<blockquote><p>${formatInline(ln.slice(2))}</p></blockquote>`);
+      continue;
+    }
+    const olm = ln.match(/^\d+\.\s+(.*)$/);
+    if (olm) {
+      if (listTag !== 'ol') {
+        flushList();
+        out.push('<ol>');
+        listTag = 'ol';
+      }
+      out.push(`<li>${formatInline(olm[1])}</li>`);
+      continue;
+    }
+    if (ln.startsWith('- ')) {
+      if (listTag !== 'ul') {
+        flushList();
+        out.push('<ul>');
+        listTag = 'ul';
+      }
+      out.push(`<li>${formatInline(ln.slice(2))}</li>`);
+      continue;
+    }
+    flushList();
+    out.push(`<p>${formatInline(ln)}</p>`);
+  }
+  flushList();
+  return out.join('\n');
+}
+
+const renderedBody = renderMediumSemanticBody(mdRaw);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: study.title,
+  description: study.medium?.subtitle ?? study.headline_metric,
+  image: [posterAbsUrl],
+  datePublished: '2026-11-24',
+  author: {
+    '@type': 'Organization',
+    name: 'Open Interface Engineering',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Open Interface Engineering, Inc.',
+    url: 'https://openie.dev',
+  },
+  license: 'https://creativecommons.org/publicdomain/zero/1.0/',
+  mainEntityOfPage: canonicalPaperUrl,
+  isBasedOn: canonicalPaperUrl,
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{study.title} — OpenIE Medium Canonical Edition</title>
+    <!-- Medium Story Importer & Search Engine Canonical Primary Source Pointer -->
+    <link rel="canonical" href={canonicalPaperUrl} />
+    <meta name="description" content={study.medium?.subtitle ?? study.headline_metric} />
+    <meta name="author" content="Open Interface Engineering" />
+    <meta name="dcterms.rights" content="https://creativecommons.org/publicdomain/zero/1.0/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={study.title} />
+    <meta property="og:description" content={study.medium?.subtitle ?? study.headline_metric} />
+    <meta property="og:image" content={posterAbsUrl} />
+    <meta property="og:url" content={canonicalPaperUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={study.title} />
+    <meta name="twitter:description" content={study.medium?.subtitle ?? study.headline_metric} />
+    <meta name="twitter:image" content={posterAbsUrl} />
+    <link rel="alternate" type="text/markdown" href={`/syndication/medium/${study.id}.md`} />
+    <link rel="alternate" type="application/rss+xml" title="OpenIE Medium Canonical RSS" href="/feeds/medium.xml" />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+    <style>
+      :root {
+        color-scheme: dark light;
+      }
+      body {
+        margin: 0;
+        font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+        background: #080c17;
+        color: #e8edf7;
+        line-height: 1.72;
+      }
+      .top-bar {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 12px;
+        background: #0d1426;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 12px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+      }
+      .top-bar a {
+        color: #f59e0b;
+        text-decoration: none;
+      }
+      .top-bar a:hover {
+        text-decoration: underline;
+      }
+      main {
+        max-width: 740px;
+        margin: 0 auto;
+        padding: 40px 22px 80px;
+      }
+      h1 {
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: clamp(1.85rem, 4vw, 2.6rem);
+        line-height: 1.18;
+        margin: 0 0 12px;
+        color: #ffffff;
+      }
+      .subtitle {
+        font-size: 1.2rem;
+        color: #9fb0cc;
+        margin: 0 0 28px;
+      }
+      h2 {
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: 1.45rem;
+        margin-top: 2.2rem;
+        color: #ffffff;
+      }
+      h3 {
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: 1.15rem;
+        margin-top: 1.6rem;
+        color: #22d3ee;
+      }
+      p, li {
+        font-size: 1.08rem;
+      }
+      a {
+        color: #38bdf8;
+      }
+      blockquote {
+        margin: 20px 0;
+        padding: 12px 18px;
+        border-left: 3px solid #f59e0b;
+        background: rgba(245, 158, 11, 0.08);
+        border-radius: 0 8px 8px 0;
+      }
+      figure {
+        margin: 28px 0;
+      }
+      figure img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      figcaption {
+        font-size: 0.9rem;
+        color: #94a3b8;
+        text-align: center;
+        margin-top: 8px;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.9em;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+      hr {
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+        margin: 32px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="top-bar">
+      <div>
+        <strong>OpenIE Medium Canonical Import Surface</strong> · <code>rel="canonical" → {study.paper_url}</code>
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href={`/syndication/?study=${study.id}`}>← X ↔ Medium &amp; TikTok Studio</a>
+        <a href={`/syndication/medium/${study.id}.md`}>Raw .md</a>
+        <a href={`/syndication/x/${study.id}.json`}>X Thread JSON</a>
+        <a href={tiktokMp4Url}>9:16 TikTok MP4</a>
+        <a href={study.paper_url}>Primary Paper →</a>
+      </div>
+    </header>
+    <main>
+      <article>
+        <h1>{study.title}</h1>
+        <p class="subtitle"><em>{study.medium?.subtitle ?? study.headline_metric}</em></p>
+        <Fragment set:html={renderedBody} />
+      </article>
+    </main>
+  </body>
+</html>

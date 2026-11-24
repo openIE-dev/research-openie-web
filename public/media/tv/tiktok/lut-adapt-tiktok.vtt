@@ -1,0 +1,34 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:00.240 --> 00:00:02.986 line:72%
+First, most requests repeat
+solved patterns,
+
+2
+00:00:02.986 --> 00:00:07.356 line:72%
+so running a giant neural
+network every time wastes memory
+and energy.
+
+3
+00:00:07.716 --> 00:00:11.021 line:72%
+Second, this cascade checks tiny
+truth tables first and
+
+4
+00:00:11.021 --> 00:00:14.747 line:72%
+streams specialist model slices
+from storage only when needed.
+
+5
+00:00:15.107 --> 00:00:18.538 line:72%
+Third, once an automated test
+certifies a new answer,
+
+6
+00:00:18.538 --> 00:00:22.098 line:72%
+it compiles downward into a
+reusable millisecond skill.

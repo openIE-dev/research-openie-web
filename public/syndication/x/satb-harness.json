@@ -1,0 +1,74 @@
+{
+  "schema": "openie.x_thread_bundle.v1",
+  "study_id": "satb-harness",
+  "canonical_id": "blake3:tv:87f465518d6db67ded6205ef9c2b11b5ec15f9216f750aa4dd9caf236e1d3238",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 223,
+  "card_video_uri": "/media/tv/tiktok/satb-harness-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/satb-harness-15s.mp4",
+  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/satb-harness/",
+  "canonical_paper_url": "https://research.openie.dev/papers/satb-harness/",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "Satiation Benchmark: Reference Harness, Adapters, and Telemetry Attribution\n\nHow to stop agent wrappers and sloppy power estimates from distorting AI benchmark leaderboards.\n\n[12 of 12 Checks · 5 Computers · 0 Replay Drift]",
+      "weighted_chars": 223,
+      "raw_chars": 223,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/satb-harness-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/satb-harness-15s.mp4",
+        "poster_uri": "/media/tv/posters/satb-harness-poster.jpg",
+        "vtt_uri": "/media/tv/captions/satb-harness-15s.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "plain_points_1_2",
+      "text": "1/3 Changing the wrapper around an AI model can swing scores as much as swapping the model.\n\n2/3 This test harness locks prompts, memory trimming, and tools so every AI takes the exact same exam.",
+      "weighted_chars": 195,
+      "raw_chars": 195,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "plain_point_3_and_energy",
+      "text": "3/3 Across five computer types, it separates real board sensors from chip counters and blocks noisy power estimates.\n\nEnergy class: measured_j (1.42 mJ via physical board shunt; board_metered=true).",
+      "weighted_chars": 198,
+      "raw_chars": 198,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "machine_verification_gate",
+      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E] · WAI1 blake3:87f465518d6d… · CC0-1.0",
+      "weighted_chars": 203,
+      "raw_chars": 200,
+      "urls": [],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "bidirectional_medium_and_paper_bridge",
+      "text": "Read & verify Satiation Benchmark Harness (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/satb-harness/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/satb-harness/",
+      "weighted_chars": 171,
+      "raw_chars": 231,
+      "urls": [
+        "https://research.openie.dev/syndication/medium/satb-harness/",
+        "https://research.openie.dev/papers/satb-harness/"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "3e60e27198b09d28bc4ece44813970acdb93b12d8bb8b14f3cbbe23d5dddda93"
+}

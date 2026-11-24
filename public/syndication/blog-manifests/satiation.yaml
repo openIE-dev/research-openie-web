@@ -1,0 +1,81 @@
+# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+slug: "satiation"
+
+metadata:
+  title: "Task Satiation vs. Aggregate Rebound in AI Demand"
+  description: "Every single task has a hard finish line—even while cheaper AI sparks millions of new tasks across the economy."
+  date: "2026-11-24"
+  author: "David Charlot, Open Interface Engineering"
+  category: "energy"
+  tags: ["satiation", "energy", "open-science", "cc0", "unmetered"]
+  featured: false
+  draft: false
+  toc: true
+  canonicalUrl: "https://research.openie.dev/papers/satiation/"
+  license: "CC0-1.0"
+
+hero:
+  image: "satiation-poster.jpg"
+  alt: "Task Satiation vs. Aggregate Rebound — One Job Finishes · Total Jobs Still Grow"
+
+sections:
+  - heading: null
+    content: |
+      *Canonical Primary Source: [https://research.openie.dev/papers/satiation/](https://research.openie.dev/papers/satiation/) · Dedicated to the Public Domain (`CC0-1.0`)*
+
+      Every single task has a hard finish line—even while cheaper AI sparks millions of new tasks across the economy.
+
+  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+    content: |
+      1. Every job has a finish line, and extra computer work after that point is pure waste.
+      2. Cheaper computer work still inspires people to start many more jobs, so total use keeps rising.
+      3. Money prices for AI are falling fast, but the physical electricity it burns is never free.
+
+  - heading: "Everyday Analogy & Why It Matters"
+    content: |
+      Once an accounting ledger balances or a bug patch passes its tests, running an AI loop longer adds zero value and can even undo working code. Confusing the finish line of one task with all tasks across an economy distorts both software pricing and power-grid forecasts. We split total computing demand into two distinct numbers: effort per job and total number of jobs.
+
+      A written completion check puts a hard ceiling on each individual chore, while plunging unit prices steadily pull millions of brand-new chores off the sidelines. Published industry series show the dollar cost of fixed AI benchmark performance falling roughly thirteenfold per year since twenty twenty-three. Yet moving data across silicon memory chips, driving physical motors, and delivering trusted human clinical care never become free.
+
+      Products that optimize time-on-screen or bill by raw word counts reward wasted retries past the finish line, whereas completion-gated systems stop immediately and save real electricity.
+
+  - heading: "Inside the Mechanism & Candid Limits"
+    content: |
+      Today two loud stories talk past each other. Market bulls draw upward demand curves assuming every single prompt wants ten times more compute forever, while skeptics argue that finite chores cap the entire AI industry. Both get the math wrong because they blur one single job into the entire economy. In eighteen sixty-five, economist William Stanley Jevons observed that more efficient steam engines cut the coal needed for one factory task, yet drove Britain to burn far more coal overall as new industries became affordable.
+
+      One clean dish needs zero extra soap, even while cheaper soap opens busy new kitchens across town. Turning consumer satiation theory into working software takes four steps. First, state a concrete completion check in plain rules—tests green, ledger discrepancy zero, or hospital handoff checklist signed. Second, stop calling models the instant that check turns true.
+
+      Third, block extra calls that undo completion. Fourth, track new task arrivals separately. John Maynard Keynes distinguished finite practical chores from open-ended status competition. On any finite chore, value rises until the written check passes and then flattens to zero—or turns negative when extra chatter introduces errors.
+
+      Across the wider queue, however, forty-seven percent quarterly price drops invite previously uneconomic chores. Our three-dimensional surface separates single-task effort along one axis from economy-wide task count along the second and physical energy on the vertical axis. Past each job's finish line sits a flat zero-value plateau, while total workload climbs above an unyielding thermodynamic floor of silicon memory movement and data-center cooling. Epoch AI documents fixed-capability inference prices dropping roughly thirteen times a year since twenty twenty-three, and nine to nine hundred times across benchmarks, aided by compact typed decision models.
+
+      Yet as William Baumol explained, cheaper digital text never makes nursing time, legal accountability, physical actuators, or grid megawatts free. Scientific clarity demands stating what remains unmeasured. This paper establishes operational definitions and audits published price series, historical technology cycles, attention markets, and silicon chip energy physics; it does not report a randomized field trial, a completion-detector error rate, an econometric rebound fit, or any circuit-board or wall-plug power reading.
+
+  - heading: "How Energy Was Metered"
+    content: |
+      - **Acquisition Tier**: Theory + Price Audit
+      - **Disclosure**: Economic theory and published AI price series; no chip or wall power meter used.
+      - **Evidence Class**: `unmetered` (`unmetered (joules = null; never fabricated as zero)`)
+      - **Meter / Formula**: Analytical microeconomic task-satiation vs aggregate-rebound derivation; unmetered
+
+      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+
+references:
+  - id: 1
+    authors: "David Charlot, Open Interface Engineering"
+    title: "Task Satiation vs. Aggregate Rebound in AI Demand"
+    publication: "OpenIE Research"
+    year: 2026
+    url: "https://research.openie.dev/papers/satiation/"
+
+closing:
+  content: |
+    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=satiation) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
+  cta:
+    primary:
+      text: "Read Primary Study & PDF"
+      url: "https://research.openie.dev/papers/satiation/"
+    secondary:
+      text: "Watch on OpenIE Research TV"
+      url: "https://research.openie.dev/tv/?study=satiation"
+  footer_text: "Summary text dedicated to the public domain under CC0-1.0."

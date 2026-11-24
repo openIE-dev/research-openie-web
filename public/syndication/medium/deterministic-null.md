@@ -1,0 +1,61 @@
+# Deterministic Null: A Pre-Registered Control Experiment for Neural and Agentic Substrates
+
+*9 of 10 Bounded Ties · 3.59x Repeat Energy Cut — Why AI benchmarks need a placebo control group, and where giant models actually beat a simple lookup table.*
+
+> **Public Domain (`CC0-1.0`) · OpenIE Research Essay**  
+> **Canonical Primary Source**: [https://research.openie.dev/papers/deterministic-null/](https://research.openie.dev/papers/deterministic-null/)  
+> **Canonical Artifact ID**: `blake3:tv:d3018098f6b08132cb47527bca323e5c8236e9193f1375feffa9ebd20c21305c` · **Gate Invariant**: `human_in_gate = false`
+
+---
+
+## Three Plain-Language Takeaways (Zero Acronym Soup)
+
+1. Most AI benchmarks skip a zero-model control group that tests what simple lookup already solves.
+2. On bounded math and database tasks, a frozen lookup table matched cloud AI on nine of ten tests.
+3. On open coding tasks AI leaped ahead, while caching verified answers cut repeat energy three point six times.
+
+![Deterministic Null: A Pre-Registered Control Experiment for Neural and Agentic Substrates — OpenIE Research TV Studio Poster](https://research.openie.dev/media/tv/posters/deterministic-null-poster.jpg)
+*Studio key visual for **Deterministic Null** (`Null & Benchmarks` · 9 of 10 Bounded Ties · 3.59x Repeat Energy Cut). Dedicated to the public domain under `CC0-1.0`.*
+
+## Everyday Analogy & Why It Matters
+
+Doctors never approve a new drug without testing it against a sugar pill. Yet AI leaderboards routinely pit one giant neural model against another without asking what a fast recipe book of verified examples solves. Testing a zero-model baseline first separates marketing hype from real reasoning, and saving verified answers turns expensive breakthroughs into cheap instant lookups the next time they appear.
+
+If two hundred-billion-parameter models both score ninety-nine percent on a structured benchmark, did either one actually need a neural network at decision time? Without a zero-model control group on the exact same exam, nobody can tell the difference. We built an eight-step integer lookup table verified bit-for-bit across Rust, Go, Python, Julia, and C plus plus, then anchored its digital fingerprints onto public Bitcoin calendar proofs before public randomness beacons generated four thousand thirty fresh held-out problems.
+
+Across two thousand eight hundred forty bounded math and database problems, cloud models beat the frozen table on only unindexed customer phrasing, yet jumped forty-four to ninety-five percentage points ahead across four externally authored software engineering benchmarks. When newly verified neural fixes are written back into the lookup store, realistic skewed workloads cut recurring model calls and local chip energy by three point five nine times.
+
+## Inside the Mechanism & Candid Limits
+
+Modern AI evaluations routinely compare one language model against another, leaving a foundational scientific question unmeasured: how much task completion actually needed a neural network at decision time, and how much could a fixed integer lookup procedure over verified prior examples already solve for free? Just as clinical drug trials seal their treatment protocols before patients enroll, we anchored our frozen lookup store's digital fingerprint onto Bitcoin calendar proofs before public randomness beacons existed, and capped per-task helper code at four kilobytes and fifty thousand operations so no hidden solver could sneak inside. At test time, the control loop observes an input, reduces features using pure sixty-four-bit signed integers with zero floating-point instructions, probes a read-only memory-mapped hash table in half a microsecond, and acts with zero model calls. Rust, Go, Python, Julia, and C plus plus match bit-for-bit across one million records.
+
+Subtracting control accuracy from neural accuracy reveals a sharp boundary governed by how often genuinely unseen patterns arrive in the workload stream. Where structural templates saturate early, frozen integer lookup matches giant models at zero call cost; where open-world software recombines freely, neural synthesis shines and then seeds future instant lookups. This three-dimensional crystal depicts our frozen binary lookup table locked before public randomness rounds existed. Paired evaluation lanes route every fresh test problem simultaneously to zero-model controls, classical deductive solvers, local open-weight models on Apple Silicon, and six multi-vendor cloud frontier systems under identical scoring rules.
+
+Single-turn cloud models beat the frozen table on just one of ten bounded cells, while multi-turn clause feedback solved fifty of fifty logic formulas that a free classical solver also closed. Across public coding suites and six real upstream repository bugs—five patched and replayed at zero model calls—frontier models leaped up to ninety-five points ahead. Every measurement boundary stays completely transparent from start to finish. Local workstation energy comes from built-in Apple chip counters rather than an external wall meter, closed cloud server watts are recorded strictly as unavailable instead of guessed from fleet averages, and busy-host baseline drift drops net subtractions automatically.
+
+### Epistemic Evidence Tags (`[T]` / `[E]` / `[M]` / `[S]`)
+
+- **`[T]` Theorem / Machine-Checked Formal Proof**
+- **`[E]` Empirical / Hardware-Instrumented Experiment**
+
+## How Energy Was Metered
+
+Open Interface Engineering enforces strict epistemic non-mixing across physical power rails, processor counters, and mathematical bounds (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition is forbidden by `ScientificGate`):
+
+- **Acquisition Tier**: Chip Energy Counter
+- **Plain-Language Disclosure**: Built-in Apple chip energy counters; cloud server watts unavailable and unguessed.
+- **Substrate Evidence Class**: `reported_j` (`board_metered = false`)
+- **Primary Reading**: `1.77 µJ (reported_j)`
+- **Meter or Formula**: Apple M5 Max Darwin proc_pid_rusage / IOReport warm DNULLMM1 Gear-0 replay counter
+- **300 K Landauer Bit-Equivalents**: `6.1686e+14` bits (`E / (k_B · 300 K · ln 2)`)
+
+## Continue the Discussion & Verify Every Byte
+
+<!-- x_thread_backlink_slot: {{X_THREAD_URL}} -->
+- **Watch in 15 Seconds or 3 Minutes**: Stream the native `9:16` Vertical Snackable ([`deterministic-null-tiktok.mp4`](https://research.openie.dev/media/tv/tiktok/deterministic-null-tiktok.mp4)) or explore all four captioned studio cuts (`15s`, `45s`, `90s`, and `3m` 3D cutaway documentary) on **[OpenIE Research TV](https://research.openie.dev/tv/?study=deterministic-null)**.
+- **Join the Synchronized X (Twitter) Thread**: Reply, critique, or inspect the 5-post verification thread on **[X (Twitter)](https://x.com/search?q=%22Deterministic%20Null%22%20OR%20research.openie.dev%2Ftv%2F%3Fstudy%3Ddeterministic-null&src=typed_query)**.
+- **Query Grounded Prior Art & Signed WAI1 Receipts**: Explore linked lineage trails on **[The Commons (`scholar.askdavidc.ai`)](https://scholar.askdavidc.ai)**, read the full primary paper & PDF at **[`research.openie.dev/papers/deterministic-null/`](https://research.openie.dev/papers/deterministic-null/)**, and verify the Ed25519-signed `WAI1` binary container (`blake3:5e66182b4c3deef0…`) in **[`openie-artifact-substrate`](https://github.com/openIE-dev/openie-artifact-substrate/blob/main/catalog/envelopes/tv-deterministic-null.wai)**.
+
+---
+
+*Summary & essay text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Code, verification gates, and `WAI1` schemas licensed under `Apache-2.0`.*

@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "ai-coding-market",
+  "canonical_id": "blake3:tv:69e7a2fe33716674a0c355af3726928fd2147ec38c6f5f2e34db059289735979",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/ai-coding-market-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/ai-coding-market-15s.mp4",
+    "poster_uri": "/media/tv/posters/ai-coding-market-poster.jpg",
+    "vtt_uri": "/media/tv/captions/ai-coding-market-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 23.43,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "0ea62488fee231e96850d0e9d5454eeaced1ccfb22fd7de9484419ed3bacf363"
+  },
+  "caption_utf16_chars": 749,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "The Promised Trillion Dollar AI-Coding Market ($1T Forecasts Assume Zero Verified Code Reuse)\nTrillion-dollar AI coding forecasts quietly assume nobody ever saves and reuses a verified solution.\n1) Headline trillion-dollar figures for AI coding are mostly future projections and value guesses, not counts of money actually earned.\n2) Almost every forecast quietly assumes programmers will pay a giant AI model by the word for every task forever.\n3) When verified working code is saved and reused, repeated jobs drop toward the cost of electricity, shrinking vendor rent.\nEnergy class: unmetered (Market Forecast Audit) · CC0-1.0 · https://research.openie.dev/papers/ai-coding-market/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/ai-coding-market-tiktok.mp4"
+    }
+  },
+  "content_blake3": "a6caf4cda935a5b64ce400fbb140fba072a1bb5037b7703c975027af645b8fb3"
+}

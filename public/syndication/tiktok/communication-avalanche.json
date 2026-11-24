@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "communication-avalanche",
+  "canonical_id": "blake3:tv:4f70aff689f283a093283c5442909832ad3d481af954a6c581fff29f0c4f7ec6",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/communication-avalanche-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/communication-avalanche-15s.mp4",
+    "poster_uri": "/media/tv/posters/communication-avalanche-poster.jpg",
+    "vtt_uri": "/media/tv/captions/communication-avalanche-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 22.67,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "14a0e976e36558a7f50a9cb9480737a7f51c8e2e96703f289f7c3756c4d69e8e"
+  },
+  "caption_utf16_chars": 710,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "The Communication Tool Avalanche (59 of 60 Fixes · 0 Bad Commits · 98% Combined)\nOne scaling rule connects ancient bacteria, multi-agent AI teams, and consent-gated brain interfaces.\n1) From ancient microbes to modern AI, groups scale by sharing signals across strict thresholds and safety gates.\n2) Event-driven wakeups and signed checks block bad edits and deliver far more verified work per joule.\n3) Ten AI approaches unite through tiny compiled routines, while future brain links stay grounded in strict consent.\nEnergy class: measured_j (Board Sensor + Chip Counter) · CC0-1.0 · https://research.openie.dev/papers/communication-avalanche/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/communication-avalanche-tiktok.mp4"
+    }
+  },
+  "content_blake3": "ccf3b86d65e4bb494485be9bb49e8bc6aaf97af56ee914397374898f50d34299"
+}

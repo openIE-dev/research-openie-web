@@ -1,0 +1,74 @@
+{
+  "schema": "openie.x_thread_bundle.v1",
+  "study_id": "lut-adapt",
+  "canonical_id": "blake3:tv:f5f2551c2e873bdc7af0ce1e380b0a888679c3ade804cbec637a62785734ec8d",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 228,
+  "card_video_uri": "/media/tv/tiktok/lut-adapt-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/lut-adapt-15s.mp4",
+  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/lut-adapt/",
+  "canonical_paper_url": "https://research.openie.dev/papers/lut-adapt/",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "Downward Lookup Compilation\n\nHow to run giant coding models inside tiny laptop memory and turn verified answers into millisecond reflexes.\n\n[970 MB Active RAM · 91.7% Verified · 0% Broken]",
+      "weighted_chars": 188,
+      "raw_chars": 188,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/lut-adapt-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/lut-adapt-15s.mp4",
+        "poster_uri": "/media/tv/posters/lut-adapt-poster.jpg",
+        "vtt_uri": "/media/tv/captions/lut-adapt-15s.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "plain_points_1_2",
+      "text": "1/3 Most requests repeat solved patterns, so running a giant neural network every time wastes memory and energy.\n\n2/3 This cascade checks tiny truth tables first and streams specialist model slices from storage only when needed.",
+      "weighted_chars": 228,
+      "raw_chars": 228,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "plain_point_3_and_energy",
+      "text": "3/3 Once an automated test certifies a new answer, it compiles downward into a reusable millisecond skill.\n\nEnergy class: measured_j (164.44 nJ via physical board shunt; board_metered=true).",
+      "weighted_chars": 190,
+      "raw_chars": 190,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "machine_verification_gate",
+      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E]/[M] · WAI1 blake3:f5f2551c2e87… · CC0-1.0",
+      "weighted_chars": 207,
+      "raw_chars": 204,
+      "urls": [],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "bidirectional_medium_and_paper_bridge",
+      "text": "Read & verify Downward Lookup Compilation (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/lut-adapt/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/lut-adapt/",
+      "weighted_chars": 171,
+      "raw_chars": 225,
+      "urls": [
+        "https://research.openie.dev/syndication/medium/lut-adapt/",
+        "https://research.openie.dev/papers/lut-adapt/"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "81f789ac7a2c0c302bc4fdef66a5dccf40a7f4722f8e2f563d3df722f0c794b2"
+}

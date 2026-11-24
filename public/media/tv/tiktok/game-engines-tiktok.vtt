@@ -1,0 +1,35 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:00.240 --> 00:00:02.741 line:72%
+First, with exact whole-number
+physics,
+
+2
+00:00:02.741 --> 00:00:08.320 line:72%
+one game blueprint replays
+identically across Windows,
+macOS, Linux, and major engines.
+
+3
+00:00:08.680 --> 00:00:13.852 line:72%
+Second, standard decimal math
+drifts across operating systems
+within thirty-seven frames,
+
+4
+00:00:13.852 --> 00:00:15.873 line:72%
+splitting chaotic collisions
+apart.
+
+5
+00:00:16.233 --> 00:00:19.095 line:72%
+Third, graphics cards differ
+slightly on pixels,
+
+6
+00:00:19.095 --> 00:00:22.911 line:72%
+so rendering sits safely behind
+a one-way visual tolerance gate.

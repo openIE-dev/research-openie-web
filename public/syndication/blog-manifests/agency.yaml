@@ -1,0 +1,77 @@
+# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+slug: "agency"
+
+metadata:
+  title: "Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents"
+  description: "Three plain truths about what makes a system an agent, why pace matters, and how energy ranks intelligence."
+  date: "2026-11-24"
+  author: "David Charlot, Open Interface Engineering"
+  category: "energy"
+  tags: ["agency", "energy", "open-science", "cc0", "reported-j"]
+  featured: false
+  draft: false
+  toc: true
+  canonicalUrl: "https://research.openie.dev/papers/agency/"
+  license: "CC0-1.0"
+
+hero:
+  image: "agency-poster.jpg"
+  alt: "Thermodynamic Bounds & Optimal Tempo — Finish Right First, Then Rank by Joules"
+
+sections:
+  - heading: null
+    content: |
+      *Canonical Primary Source: [https://research.openie.dev/papers/agency/](https://research.openie.dev/papers/agency/) · Dedicated to the Public Domain (`CC0-1.0`)*
+
+      Three plain truths about what makes a system an agent, why pace matters, and how energy ranks intelligence.
+
+  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+    content: |
+      1. An agent must aim at a goal, act on the world, and stay within an energy budget.
+      2. Physics prices every decision, creating one optimal pace between slow idle drain and frantic switching waste.
+      3. Among systems that finish a task correctly, the smarter one is whichever spent less energy.
+
+  - heading: "Everyday Analogy & Why It Matters"
+    content: |
+      Picture driving across a wide desert on a strict fuel grant. Idling in traffic burns baseline power without moving you forward, while sprinting at top speed multiplies switching heat until your tank runs dry before reaching town. To qualify as an agent, a system locks in a testable prediction before acting, changes the outside world rather than editing its own sensors, updates its internal state from the outcome, and writes a clean refusal receipt whenever the energy budget falls short.
+
+      Across more than twenty thousand puzzle episodes on two laptops, an unguided random baseline looked great on raw bits per joule only because its fast failures were cheap, whereas gating by full task completion ranked our goal-holding selectors accurately. Stop mistaking brute energy spend for intelligence. Demand a verified correct answer first, enforce hard energy budgets with transparent refusal receipts, and rank every passing system strictly by total joules spent.
+
+  - heading: "Inside the Mechanism & Candid Limits"
+    content: |
+      Today's AI scoreboards celebrate whichever system gets the highest raw score, ignoring whether one answer burned a thousand watts or a thousandth of a watt. Pouring more electricity into a machine can buy capability, yet true intelligence means solving the exact same problem parsimoniously with minimal energy. Imagine balancing an upright broomstick on your palm while walking on a strict calorie budget. Wait too long between corrections and the stick tips away while baseline metabolism drains your reserves; twitch too frantically and every rapid muscle reset dumps extra heat into the air for tiny gains.
+
+      The framework stacks three layers in a fixed order. First comes eligibility: fix a discriminating prediction beforehand, physically push on the outside world rather than editing your own sensors, update internal memory from the result, and stay inside your joule grant or log a refusal receipt. Next come speed limits, then hindsight intelligence. Every time a machine compares an outcome and resets memory over a closed cycle, physics charges a minimum heat floor per erased bit while idle circuits leak steady baseline watts.
+
+      Dividing useful task velocity by both costs combined traces a smooth arch peaking at one optimal action pace where marginal drag equals baseline drain. In this three-dimensional landscape, the flat lower plane marks nature's minimum heat price for updating a single bit of memory at room temperature. Steep walls on either side show slow idle battery drain and frantic high-speed heat waste, framing one golden ridge where verified progress per joule reaches its physical maximum. Across pre-registered forty-seed puzzle benchmarks on two computers, moving receipt writing inside the budget guard reduced overspends to zero across ten thousand eight hundred runs.
+
+      Requiring task completion first stopped a cheap-failing random baseline from gaming raw bit rates, while our threshold selector closed more tasks than a fixed cascade at loose budgets. Scientific honesty requires reporting every failed check alongside every success. Tight-budget selector gains from our first exploratory run did not replicate, shared tasks used equal energy, and built-in Linux chip counters missed sub-millisecond steps completely, proving why dedicated quiet hosts and external wall or circuit-board power sensors must come next.
+
+  - heading: "How Energy Was Metered"
+    content: |
+      - **Acquisition Tier**: Chip Energy Counter
+      - **Disclosure**: Built-in laptop chip energy counters and physics bounds; no external wall meter.
+      - **Evidence Class**: `reported_j` (`85.00 mJ (reported_j)`)
+      - **Meter / Formula**: Linux & Darwin on-chip CPU package energy counters per puzzle episode (no external board shunt)
+
+      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+
+references:
+  - id: 1
+    authors: "David Charlot, Open Interface Engineering"
+    title: "Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents"
+    publication: "OpenIE Research"
+    year: 2026
+    url: "https://research.openie.dev/papers/agency/"
+
+closing:
+  content: |
+    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=agency) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
+  cta:
+    primary:
+      text: "Read Primary Study & PDF"
+      url: "https://research.openie.dev/papers/agency/"
+    secondary:
+      text: "Watch on OpenIE Research TV"
+      url: "https://research.openie.dev/tv/?study=agency"
+  footer_text: "Summary text dedicated to the public domain under CC0-1.0."

@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "rce-jepa",
+  "canonical_id": "blake3:tv:019888e27dfd3fb4b49ea3e29a210c3c3de5f4565c4d71c3b42ed1e7f5114b8e",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/rce-jepa-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/rce-jepa-15s.mp4",
+    "poster_uri": "/media/tv/posters/rce-jepa-poster.jpg",
+    "vtt_uri": "/media/tv/captions/rce-jepa-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 22.8,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "75ff07f93a8f4c0ac2a2aa8e872e6be8f6a784aba7e5384dac3c201c8d2bdb38"
+  },
+  "caption_utf16_chars": 685,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "RCE-JEPA (40/40 Hard Tasks Solved · 16.7x Fewer Big Calls)\nPredict program meaning instead of raw words, let a 49-millijoule checker decide, and cut recurring frontier calls 16.7 times.\n1) Instead of guessing raw code word by word, small models predict compact summaries of program meaning.\n2) Any AI model may propose a candidate program, but a fast, strict checker alone decides what passes.\n3) Checking costs over seventeen hundred times less energy than generating, and saved fixes cut big AI calls sixteenfold.\nEnergy class: reported_j (Chip Energy Counter) · CC0-1.0 · https://research.openie.dev/papers/rce-jepa/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/rce-jepa-tiktok.mp4"
+    }
+  },
+  "content_blake3": "a98ef46898850743ca35ffd6aa21d5fe8dfc7cf68fbdd14f2ad1b6fd3b6fa084"
+}

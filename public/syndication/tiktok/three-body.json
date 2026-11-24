@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "three-body",
+  "canonical_id": "blake3:tv:16e4e4b439081a0ed33c49753fe852f5ef4a4ac5f32d4bdf70826f08da0e7738",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/three-body-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/three-body-15s.mp4",
+    "poster_uri": "/media/tv/posters/three-body-poster.jpg",
+    "vtt_uri": "/media/tv/captions/three-body-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 22.63,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "6f7499f0bd12c6ce2a6b6d7a72558961ace6eb0894a38cf84e587df724b38c3c"
+  },
+  "caption_utf16_chars": 730,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "The Three-Body Problem in Computing (Checked Handoffs Stop Bug Cascades Cold)\nBig software disasters hide in unwritten guesses between theorists, builders, and users—machine-checked handoffs lock the stack.\n1) Most major computer failures start at the handoffs between teams or system layers, not inside individual parts.\n2) The culprit is usually an unwritten guess crossing a boundary, such as which physical units a number uses.\n3) When every boundary guess is written down and machine-checked, fixing one problem stays fixed without breaking upper layers.\nEnergy class: unmetered (Theory + Case Audit) · CC0-1.0 · https://research.openie.dev/papers/three-body/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/three-body-tiktok.mp4"
+    }
+  },
+  "content_blake3": "5776d03da8c5439c008b19c8167c271d2b01dcf86dd3a24106ce3300e4a5f47c"
+}

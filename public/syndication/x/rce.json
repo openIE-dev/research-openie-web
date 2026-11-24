@@ -1,0 +1,74 @@
+{
+  "schema": "openie.x_thread_bundle.v1",
+  "study_id": "rce",
+  "canonical_id": "blake3:tv:6d19f6f263097e58b92f17fb3d4a4745f98bc5a2496157ac1c25b7fa22c2cb24",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 221,
+  "card_video_uri": "/media/tv/tiktok/rce-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/rce-15s.mp4",
+  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/rce/",
+  "canonical_paper_url": "https://research.openie.dev/papers/rce/",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "The Reality Code Engine\n\nWrite a program once as one complete state-machine blueprint, check it in 49 millijoules, and emit matching code across languages.\n\n[2,221 Checks, 0 Failures · 49 mJ per Check]",
+      "weighted_chars": 201,
+      "raw_chars": 201,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/rce-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/rce-15s.mp4",
+        "poster_uri": "/media/tv/posters/rce-poster.jpg",
+        "vtt_uri": "/media/tv/captions/rce-15s.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "plain_points_1_2",
+      "text": "1/3 You write a program once in one clear blueprint, and the computer generates matching code in many languages.\n\n2/3 Every possible input must have a declared outcome up front, leaving nowhere for silent crashes to hide.",
+      "weighted_chars": 221,
+      "raw_chars": 221,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "plain_point_3_and_energy",
+      "text": "3/3 Once a repair passes every check, the engine saves and reuses it so nobody pays twice for one bug.\n\nEnergy class: reported_j (49.04 mJ chip counter; board_metered=false, never mixed with shunts).",
+      "weighted_chars": 199,
+      "raw_chars": 199,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "machine_verification_gate",
+      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E] · WAI1 blake3:6d19f6f26309… · CC0-1.0",
+      "weighted_chars": 203,
+      "raw_chars": 200,
+      "urls": [],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "bidirectional_medium_and_paper_bridge",
+      "text": "Read & verify The Reality Code Engine (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/rce/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/rce/",
+      "weighted_chars": 167,
+      "raw_chars": 209,
+      "urls": [
+        "https://research.openie.dev/syndication/medium/rce/",
+        "https://research.openie.dev/papers/rce/"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "0f3acaa036bc8474831b100fcb1c9b718ab75a2306e16c1c54d16296a04749ce"
+}

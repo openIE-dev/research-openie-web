@@ -1,0 +1,77 @@
+# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+slug: "game-engines"
+
+metadata:
+  title: "Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins"
+  description: "Write a game once: exact whole-number physics holds zero drift across Windows, macOS, and Linux, while GPU pixels stay behind a one-way gate."
+  date: "2026-11-24"
+  author: "David Charlot, Open Interface Engineering"
+  category: "engineering"
+  tags: ["game-engines", "engineering", "open-science", "cc0", "unmetered"]
+  featured: false
+  draft: false
+  toc: true
+  canonicalUrl: "https://research.openie.dev/papers/game-engines/"
+  license: "CC0-1.0"
+
+hero:
+  image: "game-engines-poster.jpg"
+  alt: "Writing a Game Once — 0 Replay Drift Across 3 OSes · 9/9 Suites Pass"
+
+sections:
+  - heading: null
+    content: |
+      *Canonical Primary Source: [https://research.openie.dev/papers/game-engines/](https://research.openie.dev/papers/game-engines/) · Dedicated to the Public Domain (`CC0-1.0`)*
+
+      Write a game once: exact whole-number physics holds zero drift across Windows, macOS, and Linux, while GPU pixels stay behind a one-way gate.
+
+  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+    content: |
+      1. Using exact whole-number physics, one game blueprint replays identically for hours across Windows, macOS, Linux, and major engines.
+      2. Standard decimal math drifts across operating systems within thirty-seven frames, and chaotic collisions quickly amplify tiny rounding gaps.
+      3. Graphics cards vary slightly pixel by pixel, so visual rendering must sit downstream behind a strict one-way tolerance gate.
+
+  - heading: "Everyday Analogy & Why It Matters"
+    content: |
+      Game studios burn fortunes rewriting the same gameplay across Unity, Unreal, Bevy, and Godot—or hunting baffling multiplayer desynchronizations. The breakthrough comes from separating layers that require exact bit-for-bit agreement from layers that only paint pixels. We place physics simulation and gameplay scripts inside one checked Reality Code Engine blueprint using sixty-four-bit fixed-point whole numbers, static wiring checks that catch ninety-eight point five percent of broken scene and signal links, and a strict one-way rendering wall.
+
+      Across thirty compiler-and-machine combinations and three one-hour replays driven by forty-five-kilobyte input logs alone, whole-number simulation hit zero state mismatches. Meanwhile all twenty-eight DirectX 12, Apple Metal, and Vulkan hardware pairs stayed within two tiny color steps. Compiled C plus plus projections step ten thousand actors in point zero five eight milliseconds—using over seven thousand times less chip energy than interpreted Python—and match all thirty-six headless Godot tasks tick for tick.
+
+  - heading: "Inside the Mechanism & Candid Limits"
+    content: |
+      Modern game engines tangle gameplay rules, rigid-body collisions, scene asset links, and graphics shaders into one big loop. Even with strict floating-point compiler flags enabled, standard sine and cosine libraries on Windows, macOS, and Linux disagree within ten to thirty-seven frames—shattering cross-machine multiplayer replays in less than one second. Picture a break shot on a billiard table: every collision multiplies any microscopic angle error exponentially along its chaos slope. Across eight hundred forty paired chaotic trajectories, tightening initial decimal precision more than four trillionfold bought only six to fourteen extra seconds before simulated worlds diverged completely.
+
+      Our nine-suite empirical study draws a sharp architectural line. Upstream, simulation and gameplay scripts run in sixty-four-bit fixed-point whole-number arithmetic inside one checked blueprint, while static manifest checks catch one hundred twenty-eight of one hundred thirty broken scene and signal faults before launch. Downstream, graphics shaders only read state. Upstream, deterministic whole-number arithmetic holds every state checkpoint identical across Rust, C plus plus, WebAssembly, JavaScript, and Python—replaying three full one-hour, two-hundred-sixteen-thousand-frame sessions across Windows, Linux, and macOS from forty-four-point-six-kilobyte input logs alone, up to two hundred ninety times smaller than compressed state snapshots.
+
+      This three-dimensional gyroscopic arena shows Apple Silicon macOS, Zen and Intel Linux, and bare-metal Windows 11 locked in exact simulation phase across thirty host-and-language combinations—while an unguarded floating-point ghost trajectory peels away within frames whenever transcendental functions or fused multiply-add instructions enter collisions. Across seventeen game behaviors from Haunted Jaunt, Survival Shooter, and Tanks, blueprints cut behavior code seventy-six percent versus Unity C-sharp, sixty-one percent versus Bevy Rust, and fifty-two percent versus Godot script with zero trace mismatches. Compiled C plus plus steps ten thousand actors in fifty-eight microseconds and one point seven millijoules, and thirty-six Godot tasks match tick-for-tick. Testing eight hardware graphics endpoints across DirectX 12, Apple Metal, and Vulkan proved a crucial negative boundary: even on the exact same Nvidia or Intel card, switching DirectX 12 to Vulkan flips one tiny color step out of two hundred fifty-five.
+
+      Perceptual tolerance passes all twenty-eight hardware pairs cleanly, all nine falsifier suites stand closed, and chip counters claim no wall power meter.
+
+  - heading: "How Energy Was Metered"
+    content: |
+      - **Acquisition Tier**: Chip Energy Counter
+      - **Disclosure**: Built-in macOS and Linux chip counters across 6 machines; no wall meter used.
+      - **Evidence Class**: `unmetered` (`unmetered (joules = null; never fabricated as zero)`)
+      - **Meter / Formula**: Six-host Q32.32 lockstep & wgpu PSNR/SSIM reproducibility audit; measured_j unset
+
+      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+
+references:
+  - id: 1
+    authors: "David Charlot, Open Interface Engineering"
+    title: "Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins"
+    publication: "OpenIE Research"
+    year: 2026
+    url: "https://research.openie.dev/papers/game-engines/"
+
+closing:
+  content: |
+    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=game-engines) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
+  cta:
+    primary:
+      text: "Read Primary Study & PDF"
+      url: "https://research.openie.dev/papers/game-engines/"
+    secondary:
+      text: "Watch on OpenIE Research TV"
+      url: "https://research.openie.dev/tv/?study=game-engines"
+  footer_text: "Summary text dedicated to the public domain under CC0-1.0."

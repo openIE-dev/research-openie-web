@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "eco-synthesis",
+  "canonical_id": "blake3:tv:7aa479ced7a5cc1a84a07d286ab1d6143f62fe59ceaf75750190ae134730de3e",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/eco-synthesis-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/eco-synthesis-15s.mp4",
+    "poster_uri": "/media/tv/posters/eco-synthesis-poster.jpg",
+    "vtt_uri": "/media/tv/captions/eco-synthesis-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 23.37,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "e677bea5eaab15a8e6db14b531b7db753348fc72e550412cf43be651f373d523"
+  },
+  "caption_utf16_chars": 740,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "Route First, Generate Last (90.6% Open Coding · 0.00% Broken Commits · 970 MB RAM)\nWhy smart systems route through fast lookup tables and exact verifiers first—waking large models only on genuine novelty.\n1) Generating fresh text from scratch for already-solved problems wastes electricity and invites avoidable mistakes.\n2) An energy-ordered cascade checks microjoule lookup tables and exact verifiers first, waking large models only on genuine novelty.\n3) Every accepted answer passes deterministic checks and crystallizes downward into a fast, reusable lookup skill.\nEnergy class: reported_j (Chip Energy Counter) · CC0-1.0 · https://research.openie.dev/papers/lut-adapt/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/eco-synthesis-tiktok.mp4"
+    }
+  },
+  "content_blake3": "18897e7262f3b81aa691485a21e62fa1d5910f04f27120498b3d9da44367247c"
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "satb-harness",
+  "canonical_id": "blake3:tv:87f465518d6db67ded6205ef9c2b11b5ec15f9216f750aa4dd9caf236e1d3238",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/satb-harness-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/satb-harness-15s.mp4",
+    "poster_uri": "/media/tv/posters/satb-harness-poster.jpg",
+    "vtt_uri": "/media/tv/captions/satb-harness-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 21.03,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "40ae18b7223ad0e7bd5a8839ed32a10227f577097be652e501e533e23cf463ed"
+  },
+  "caption_utf16_chars": 664,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "Satiation Benchmark Harness (12 of 12 Checks · 5 Computers · 0 Replay Drift)\nHow to stop agent wrappers and sloppy power estimates from distorting AI benchmark leaderboards.\n1) Changing the wrapper around an AI model can swing scores as much as swapping the model.\n2) This test harness locks prompts, memory trimming, and tools so every AI takes the exact same exam.\n3) Across five computer types, it separates real board sensors from chip counters and blocks noisy power estimates.\nEnergy class: measured_j (Board Sensor + Chip Counter) · CC0-1.0 · https://research.openie.dev/papers/satb-harness/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/satb-harness-tiktok.mp4"
+    }
+  },
+  "content_blake3": "4d91e604380288922eda8224a6f9937322ba95b2ceb19da2ced752c6d8caca67"
+}

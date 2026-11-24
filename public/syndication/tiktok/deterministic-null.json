@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "deterministic-null",
+  "canonical_id": "blake3:tv:d3018098f6b08132cb47527bca323e5c8236e9193f1375feffa9ebd20c21305c",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/deterministic-null-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/deterministic-null-15s.mp4",
+    "poster_uri": "/media/tv/posters/deterministic-null-poster.jpg",
+    "vtt_uri": "/media/tv/captions/deterministic-null-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 23.47,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "fe2cbfc22b06791737072d4d35ead6b253bc6cf90c47485672f66e9d54e9aced"
+  },
+  "caption_utf16_chars": 668,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "Deterministic Null (9 of 10 Bounded Ties · 3.59x Repeat Energy Cut)\nWhy AI benchmarks need a placebo control group, and where giant models actually beat a simple lookup table.\n1) Most AI benchmarks skip a zero-model control group that tests what simple lookup already solves.\n2) On bounded math and database tasks, a frozen lookup table matched cloud AI on nine of ten tests.\n3) On open coding tasks AI leaped ahead, while caching verified answers cut repeat energy three point six times.\nEnergy class: reported_j (Chip Energy Counter) · CC0-1.0 · https://research.openie.dev/papers/deterministic-null/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/deterministic-null-tiktok.mp4"
+    }
+  },
+  "content_blake3": "d3f5e3307d6ad5e05e765ad83286ff898c1befd6f61b6b1f524088adef2bb681"
+}

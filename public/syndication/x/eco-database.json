@@ -1,0 +1,74 @@
+{
+  "schema": "openie.x_thread_bundle.v1",
+  "study_id": "eco-database",
+  "canonical_id": "blake3:tv:74a6c924643a078e785536a03514eee6983c488a2a00381e2186933fe3a7688e",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 244,
+  "card_video_uri": "/media/tv/tiktok/eco-database-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/eco-database-15s.mp4",
+  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/eco-database/",
+  "canonical_paper_url": "https://research.openie.dev/papers/rce/",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "Sub-Microsecond State, Memory, and Verifiable Logs\n\nHow tamper-evident logs, dual-time indexes, and zero-copy memory maps turn expensive recomputation into sub-microsecond reads.\n\n[0.325 Microsecond Lookup · 1.77 Microjoules · 0 Drift]",
+      "weighted_chars": 235,
+      "raw_chars": 235,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/eco-database-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/eco-database-15s.mp4",
+        "poster_uri": "/media/tv/posters/eco-database-poster.jpg",
+        "vtt_uri": "/media/tv/captions/eco-database-15s.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "plain_points_1_2",
+      "text": "1/3 Conventional software burns needless time and electricity unpacking text and recalculating answers it already solved.\n\n2/3 Immutable fingerprint-chained logs and bitemporal indexes let any machine replay exact past states without guesswork.",
+      "weighted_chars": 244,
+      "raw_chars": 244,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "plain_point_3_and_energy",
+      "text": "3/3 Zero-copy memory-mapped lookup stores turn repeated work into sub-microsecond reads costing under two microjoules.\n\nEnergy class: reported_j (1.77 µJ chip counter; board_metered=false, never mixed with shunts).",
+      "weighted_chars": 214,
+      "raw_chars": 214,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "machine_verification_gate",
+      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E]/[M] · WAI1 blake3:74a6c924643a… · CC0-1.0",
+      "weighted_chars": 207,
+      "raw_chars": 204,
+      "urls": [],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "bidirectional_medium_and_paper_bridge",
+      "text": "Read & verify Sub-Microsecond State & Verifiable Logs (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/eco-database/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/rce/",
+      "weighted_chars": 183,
+      "raw_chars": 234,
+      "urls": [
+        "https://research.openie.dev/syndication/medium/eco-database/",
+        "https://research.openie.dev/papers/rce/"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "9e1eb6239fd7c89427bbbe2deed1967e51c325e5e16106f8f23487f56d2e7904"
+}

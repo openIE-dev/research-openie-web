@@ -1,0 +1,77 @@
+# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+slug: "rce"
+
+metadata:
+  title: "The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming"
+  description: "Write a program once as one complete state-machine blueprint, check it in 49 millijoules, and emit matching code across languages."
+  date: "2026-11-24"
+  author: "David Charlot, Open Interface Engineering"
+  category: "engineering"
+  tags: ["rce", "engineering", "open-science", "cc0", "reported-j"]
+  featured: false
+  draft: false
+  toc: true
+  canonicalUrl: "https://research.openie.dev/papers/rce/"
+  license: "CC0-1.0"
+
+hero:
+  image: "rce-poster.jpg"
+  alt: "The Reality Code Engine — 2,221 Checks, 0 Failures · 49 mJ per Check"
+
+sections:
+  - heading: null
+    content: |
+      *Canonical Primary Source: [https://research.openie.dev/papers/rce/](https://research.openie.dev/papers/rce/) · Dedicated to the Public Domain (`CC0-1.0`)*
+
+      Write a program once as one complete state-machine blueprint, check it in 49 millijoules, and emit matching code across languages.
+
+  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+    content: |
+      1. You write a program once in one clear blueprint, and the computer generates matching code in many languages.
+      2. Every possible input must have a declared outcome up front, leaving nowhere for silent crashes to hide.
+      3. Once a repair passes every check, the engine saves and reuses it so nobody pays twice for one bug.
+
+  - heading: "Everyday Analogy & Why It Matters"
+    content: |
+      A short request like make checkout faster can mean ten different things, and rewriting it across server, browser, and mobile languages loses edge cases at every step. Writing one complete state-machine blueprint captures exact meaning once and keeps every target aligned. Every program in the Reality Code Engine is a total functional state machine.
+
+      Each incoming event either advances the state cleanly or records an explicit kept step that leaves state untouched—and emitters then generate matching Rust, Python, JavaScript, and Scala. Across sixty-four Lean 4 proof modules totaling five thousand five hundred thirty-seven theorem constants and two thousand two hundred twenty-one active conformance checks, zero checks fail—and checking, running, and emitting all sixty-two example blueprints costs fifteen point four joules. Because accepted repairs are stored by structural shape and replayed in microseconds, the engine calls an AI model only when no stored solution or rule fits.
+
+  - heading: "Inside the Mechanism & Candid Limits"
+    content: |
+      Ask a large language model to write code from scratch on every ticket and you pay full energy to sample a fresh statistical guess each time—even though empirical studies of public repositories show roughly seventy percent of files are close clones of work already solved elsewhere. Human requests carry wide ambiguity, yet every processor ultimately executes simple loads, stores, arithmetic, and jumps. Translating intent across hundreds of surface languages injects silent mismatches at the seams—for instance, negative three modulo two equals positive one in Python yet negative one in C. The Reality Code Engine replaces that leaky translation funnel with four steps.
+
+      First, author intent once as a lossless state machine called a Form, carrying states, events, and an append-only step log. Second, pass grammar, type, ownership, and mutation checks. Third, emit byte-matching Rust, Python, JavaScript, and Scala. Fourth, store accepted fixes.
+
+      By construction, every input must either step cleanly to a declared state or record an explicit kept step—eliminating undefined crashes. When solving or repairing tasks, mechanisms run in strict order of energy cost: microsecond lookup first, guarded rewrite rules second, constraint search third, and neural models only last. Our three-dimensional polyhedron illustrates one checked state-machine core anchored by a hash-chained event log. Rather than maintaining four separate codebases that drift from their comments and from one another over years of edits, every target runtime is a verified mathematical projection of one master blueprint that replays identical event traces.
+
+      At public commit one-seven-six-two-f-b-four-b, the Lean 4 audit verifies five thousand five hundred thirty-seven theorem constants across sixty-four modules with zero unproven placeholders. Two thousand two hundred twenty-one conformance checks and eight hundred thirty-seven Rust unit tests pass with zero failures, costing forty-nine millijoules per check and fifteen point four joules across all sixty-two example blueprints. Every open boundary is stated plainly: twelve newer draft-zero-point-nine theorems remain unproved, no production optimizing compiler ships yet, outside stochastic repairs reached two point five percent above their two percent promotion cap and remained in observation mode, and all energy figures come from chip counters without a wall meter.
+
+  - heading: "How Energy Was Metered"
+    content: |
+      - **Acquisition Tier**: Chip Energy Counter
+      - **Disclosure**: Built-in Apple M5 Max chip counter (49.04 mJ per check); no wall power meter used.
+      - **Evidence Class**: `reported_j` (`49.04 mJ (reported_j)`)
+      - **Meter / Formula**: Apple M5 Max reported_j checker energy per total RCE Form check
+
+      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+
+references:
+  - id: 1
+    authors: "David Charlot, Open Interface Engineering"
+    title: "The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming"
+    publication: "OpenIE Research"
+    year: 2026
+    url: "https://research.openie.dev/papers/rce/"
+
+closing:
+  content: |
+    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=rce) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
+  cta:
+    primary:
+      text: "Read Primary Study & PDF"
+      url: "https://research.openie.dev/papers/rce/"
+    secondary:
+      text: "Watch on OpenIE Research TV"
+      url: "https://research.openie.dev/tv/?study=rce"
+  footer_text: "Summary text dedicated to the public domain under CC0-1.0."

@@ -1,0 +1,33 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:00.240 --> 00:00:03.268 line:72%
+First, most software burns
+needless time and power
+
+2
+00:00:03.268 --> 00:00:06.853 line:72%
+unpacking text and recalculating
+answers it already solved.
+
+3
+00:00:07.213 --> 00:00:10.868 line:72%
+Second, fingerprint-chained logs
+and dual-time indexes let any
+
+4
+00:00:10.868 --> 00:00:13.863 line:72%
+machine replay exact past states
+without guesswork.
+
+5
+00:00:14.223 --> 00:00:18.008 line:72%
+Third, zero-copy memory-mapped
+lookup stores turn repeated work
+
+6
+00:00:18.008 --> 00:00:20.938 line:72%
+into sub-microsecond reads under
+two microjoules.

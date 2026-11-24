@@ -1,0 +1,35 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:00.240 --> 00:00:03.689 line:72%
+First, many people and AI agents
+write at once,
+
+2
+00:00:03.689 --> 00:00:07.212 line:72%
+and a named check admits changes
+or records why.
+
+3
+00:00:07.572 --> 00:00:11.336 line:72%
+Second, tracking name-free
+functions instead of text lines
+
+4
+00:00:11.336 --> 00:00:15.230 line:72%
+lets unrelated edits pass
+together without false merge
+wars.
+
+5
+00:00:15.590 --> 00:00:20.849 line:72%
+Third, developers stay on
+ordinary Git while checking
+against one hundred thousand
+
+6
+00:00:20.849 --> 00:00:22.952 line:72%
+items takes seventy
+microseconds.

@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "rce-vc",
+  "canonical_id": "blake3:tv:86d270c120708d4df299264a57fb54a861630fd2bcb2841abc701873d365b3b0",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/rce-vc-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/rce-vc-15s.mp4",
+    "poster_uri": "/media/tv/posters/rce-vc-poster.jpg",
+    "vtt_uri": "/media/tv/captions/rce-vc-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 23.4,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "aee24664241c9e57c28a7a834b3c1d2dbec2e9cd10153dd2d0c4dbcd822d2189"
+  },
+  "caption_utf16_chars": 712,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "RCE-VC (70 µs & 317 µJ Admission @ 100,000 Items)\nLet humans and AI swarms commit in parallel: check changes against 100,000 name-free items in 70 microseconds while staying on Git.\n1) Many people and AI agents can submit code at once, and a named check admits changes or records why not.\n2) Tracking code by name-free functions instead of text lines lets unrelated edits land together without pointless merge wars.\n3) Developers keep using ordinary Git while admission against one hundred thousand items finishes in about seventy microseconds.\nEnergy class: reported_j (Chip Energy Counter) · CC0-1.0 · https://research.openie.dev/papers/rce-vc/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/rce-vc-tiktok.mp4"
+    }
+  },
+  "content_blake3": "2c20a33481d237057007393a8080dd1a70e0c9d7f9578dcad20d96761703b469"
+}

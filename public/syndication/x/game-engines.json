@@ -1,0 +1,74 @@
+{
+  "schema": "openie.x_thread_bundle.v1",
+  "study_id": "game-engines",
+  "canonical_id": "blake3:tv:77911a4ef555be4fc2b485790d43a76cff398719ebebd3b0f3f9c1fffa353adb",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 271,
+  "card_video_uri": "/media/tv/tiktok/game-engines-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/game-engines-15s.mp4",
+  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/game-engines/",
+  "canonical_paper_url": "https://research.openie.dev/papers/game-engines/",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "Writing a Game Once\n\nWrite a game once: exact whole-number physics holds zero drift across Windows, macOS, and Linux, while GPU pixels stay behind a one-way gate.\n\n[0 Replay Drift Across 3 OSes · 9/9 Suites Pass]",
+      "weighted_chars": 212,
+      "raw_chars": 212,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/game-engines-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/game-engines-15s.mp4",
+        "poster_uri": "/media/tv/posters/game-engines-poster.jpg",
+        "vtt_uri": "/media/tv/captions/game-engines-15s.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "plain_points_1_2",
+      "text": "1/3 Using exact whole-number physics, one game blueprint replays identically for hours across Windows, macOS, Linux, and major engines.\n\n2/3 Standard decimal math drifts across operating systems within 37 frames, and chaotic collisions quickly amplify tiny rounding gaps.",
+      "weighted_chars": 271,
+      "raw_chars": 271,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "plain_point_3_and_energy",
+      "text": "3/3 Graphics cards vary slightly pixel by pixel, so visual rendering must sit downstream behind a strict one-way tolerance gate.\n\nEnergy class: unmetered (Chip Energy Counter; joules=null, never faked as zero).",
+      "weighted_chars": 210,
+      "raw_chars": 210,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "machine_verification_gate",
+      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E]/[M] · WAI1 blake3:77911a4ef555… · CC0-1.0",
+      "weighted_chars": 207,
+      "raw_chars": 204,
+      "urls": [],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "bidirectional_medium_and_paper_bridge",
+      "text": "Read & verify Writing a Game Once (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/game-engines/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/game-engines/",
+      "weighted_chars": 163,
+      "raw_chars": 223,
+      "urls": [
+        "https://research.openie.dev/syndication/medium/game-engines/",
+        "https://research.openie.dev/papers/game-engines/"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "10329b0041d5bf62af1b5f0a1a01d065ce6e0f2ecc117d978702508adff062ad"
+}

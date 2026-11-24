@@ -1,0 +1,75 @@
+# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+slug: "latency"
+
+metadata:
+  title: "The Gap Between Possible and Deployed: A Cadence Model of Computer Intelligence and the Forcing Function of Automation Tools"
+  description: "Cheaper open AI methods sit on the shelf for months—held back by hardware write-offs and quarterly calendars until automation breaks lock-in."
+  date: "2026-11-24"
+  author: "David Charlot, Open Interface Engineering"
+  category: "research"
+  tags: ["latency", "research", "open-science", "cc0", "unmetered"]
+  featured: false
+  draft: false
+  toc: true
+  canonicalUrl: "https://research.openie.dev/papers/latency/"
+  license: "CC0-1.0"
+
+hero:
+  image: "latency-poster.jpg"
+  alt: "The Gap Between Possible and Deployed — Electricity < 12% of Task Cost · Switching Is the Moat"
+
+sections:
+  - heading: null
+    content: |
+      *Canonical Primary Source: [https://research.openie.dev/papers/latency/](https://research.openie.dev/papers/latency/) · Dedicated to the Public Domain (`CC0-1.0`)*
+
+      Cheaper open AI methods sit on the shelf for months—held back by hardware write-offs and quarterly calendars until automation breaks lock-in.
+
+  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+    content: |
+      1. Open methods routinely run AI far more cheaply on existing machines, yet products often wait months or years to adopt them.
+      2. Machine hardware costs far more per task than raw electricity, backed by both operating cash and circular supplier investments.
+      3. Corporate calendars delay rollouts in quarterly steps until automation tools slash switching friction and force cheaper methods into production.
+
+  - heading: "Everyday Analogy & Why It Matters"
+    content: |
+      Between late 2022 and late 2024, benchmark AI inference prices fell two hundred eighty times while hardware cost and chip energy efficiency each improved only about twofold, leaving a roughly hundred-forty-fold gain driven by software, utilization, and smaller models. Across seventy-four frontier data centers, one utilized accelerator hour costs between eighty-three cents and two-and-a-half dollars, and plug electricity is under twelve percent of that bill. Amortizing thirty-three-thousand-dollar machine capital and smoothing quarterly earnings sets deployment speed.
+
+      Auditing public regulatory filings bounds supplier-funded chip revenue below twenty percent at the leading chipmaker and shows major tech platforms paying out of operating cash, while exposing heavy leverage at specialized clouds whose purchase backlogs exceed eleven times annual revenue. When automated porting tools let buyers move workloads onto open methods and existing hardware without rewriting software stacks by hand, waiting stops paying and deployed prices snap downward toward the capability frontier.
+
+  - heading: "Inside the Mechanism & Candid Limits"
+    content: |
+      Public research halves the compute needed to reach a fixed language-model score roughly every eight months, and open-weight models on a single consumer graphics card match frontier scores within six to twelve months. Yet commercial products routinely wait ten to twenty-four months to ship published speedups like fast attention and speculative decoding. Just as factories took decades to reorganize around individual electric motors, enterprises today face real adoption drag—official surveys read in eight original languages show only eighteen to twenty percent of American and European firms using AI by early 2026, while listed executives admit delaying worthwhile projects to smooth quarterly earnings. A bottom-up infrastructure model across seventy-four frontier sites finds median capital near thirty-three thousand three hundred dollars and eight hundred eighty facility watts per chip.
+
+      Over four-to-six-year server lives, raw plug electricity is just one-point-five to eleven-point-eight percent of an accelerator hour—hardware capital dominates eight to seventy times over. Because electricity is under one eighth of task cost, cheaper power alone barely moves dollar prices. Cutting the chip time a task occupies slashes capital cost directly—explaining why two-hundred-eighty-fold inference price drops outpaced two-fold hardware improvements by a factor of roughly one hundred forty-one across just under two years. Our three-dimensional global cadence view maps fourteen point one gigawatts of listed frontier sites alongside multi-billion-dollar commitments linking chipmakers, clouds, and AI labs.
+
+      A closed-loop filing test proves supplier-provided capital could fund at most nineteen point five percent of the largest chipmaker's two-hundred-sixteen-billion-dollar annual revenue, while world data centers drew roughly four hundred fifteen terawatt-hours. Regulatory filings cut against both simple extremes: the four largest cloud buyers fund capital spending comfortably out of operating cash flow, whereas two debt-heavy cloud builders spend one-point-seven to three-point-four times operating cash and rely on a single customer for up to sixty-seven percent of annual revenue. Every source across eight languages is sorted strictly as proven, demonstrated, or opinion, and every model output prints its exact hand-checked arithmetic. Twelve refutable predictions specify which future release calendars, older-chip rental prices, or corporate filing ratios would falsify this cadence model—and show how automated porting compresses switching friction.
+
+  - heading: "How Energy Was Metered"
+    content: |
+      - **Acquisition Tier**: Historical + Market Audit
+      - **Disclosure**: Public financial filings and task cost equations; no new hardware meter attached.
+      - **Evidence Class**: `unmetered` (`unmetered (joules = null; never fabricated as zero)`)
+      - **Meter / Formula**: Publication-to-deployment cadence model & public capital-flow audit; unmetered
+
+      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+
+references:
+  - id: 1
+    authors: "David Charlot, Open Interface Engineering"
+    title: "The Gap Between Possible and Deployed: A Cadence Model of Computer Intelligence and the Forcing Function of Automation Tools"
+    publication: "OpenIE Research"
+    year: 2026
+    url: "https://research.openie.dev/papers/latency/"
+
+closing:
+  content: |
+    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=latency) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
+  cta:
+    primary:
+      text: "Read Primary Study & PDF"
+      url: "https://research.openie.dev/papers/latency/"
+    secondary:
+      text: "Watch on OpenIE Research TV"
+      url: "https://research.openie.dev/tv/?study=latency"
+  footer_text: "Summary text dedicated to the public domain under CC0-1.0."

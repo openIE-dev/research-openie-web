@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "game-engines",
+  "canonical_id": "blake3:tv:77911a4ef555be4fc2b485790d43a76cff398719ebebd3b0f3f9c1fffa353adb",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/game-engines-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/game-engines-15s.mp4",
+    "poster_uri": "/media/tv/posters/game-engines-poster.jpg",
+    "vtt_uri": "/media/tv/captions/game-engines-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 23.37,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "09aafccf2db76cf61ba2b81023ede540b1bbc22373827f4c6162ce890b0d8092"
+  },
+  "caption_utf16_chars": 790,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "Writing a Game Once (0 Replay Drift Across 3 OSes · 9/9 Suites Pass)\nWrite a game once: exact whole-number physics holds zero drift across Windows, macOS, and Linux, while GPU pixels stay behind a one-way gate.\n1) Using exact whole-number physics, one game blueprint replays identically for hours across Windows, macOS, Linux, and major engines.\n2) Standard decimal math drifts across operating systems within thirty-seven frames, and chaotic collisions quickly amplify tiny rounding gaps.\n3) Graphics cards vary slightly pixel by pixel, so visual rendering must sit downstream behind a strict one-way tolerance gate.\nEnergy class: unmetered (Chip Energy Counter) · CC0-1.0 · https://research.openie.dev/papers/game-engines/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/game-engines-tiktok.mp4"
+    }
+  },
+  "content_blake3": "c0b964129560d571c42f3800ff07bde13334aad2bee0e2e2a2373ed17b8a1167"
+}

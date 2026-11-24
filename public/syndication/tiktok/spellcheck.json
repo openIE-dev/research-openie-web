@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "spellcheck",
+  "canonical_id": "blake3:tv:6fec7c11e477aee4e0bba694ae09890629609e44ddb85fae7d3ac0e859e31090",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/spellcheck-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/spellcheck-15s.mp4",
+    "poster_uri": "/media/tv/posters/spellcheck-poster.jpg",
+    "vtt_uri": "/media/tv/captions/spellcheck-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 21.47,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "c8a415c5823f84f856fe077bddbbeb3a8be6ce38907edfdf21a809ba2c27e1a7"
+  },
+  "caption_utf16_chars": 738,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "Spell Check is Global ($200 Standalone Box -> $0 Feature for 7B+ People)\nSpell check went from a two-hundred-dollar standalone luxury to a free global reflex once local compute cost hit near zero.\n1) People once paid hundreds of dollars for standalone spell check, yet today it comes free inside every phone and browser.\n2) Spell check became free because checking a word costs almost nothing to run right inside the writing tool you own.\n3) Other forms of computer intelligence will reach seven billion people only when they run cheaply on everyday local devices.\nEnergy class: unmetered (Historical Price Audit) · CC0-1.0 · https://research.openie.dev/papers/spellcheck/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/spellcheck-tiktok.mp4"
+    }
+  },
+  "content_blake3": "4805953826d27e86f52cbffd894205971ecea6f7ebfabc165f8c8de3be0d7d53"
+}

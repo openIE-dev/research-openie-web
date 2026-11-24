@@ -1,0 +1,79 @@
+# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+slug: "eco-compute"
+
+metadata:
+  title: "Why Every Bit Pays Joules: The Compute Substrate"
+  description: "Why every digital bit pays real electrical joules—and how power-rail sensors, zero-clock sleep, and lookup circuits cut waste."
+  date: "2026-11-24"
+  author: "David Charlot, Open Interface Engineering"
+  category: "energy"
+  tags: ["eco-compute", "energy", "open-science", "cc0", "measured-j"]
+  featured: false
+  draft: false
+  toc: true
+  canonicalUrl: "https://research.openie.dev/papers/rce-compile/"
+  license: "CC0-1.0"
+
+hero:
+  image: "eco-compute-poster.jpg"
+  alt: "Why Every Bit Pays Joules — 927 Microjoules Shunt Edge · 20x Compile Cut"
+
+sections:
+  - heading: null
+    content: |
+      *Canonical Primary Source: [https://research.openie.dev/papers/rce-compile/](https://research.openie.dev/papers/rce-compile/) · Dedicated to the Public Domain (`CC0-1.0`)*
+
+      Why every digital bit pays real electrical joules—and how power-rail sensors, zero-clock sleep, and lookup circuits cut waste.
+
+  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+    content: |
+      1. Every calculation is a physical event where flipping switches on silicon spends real electrical energy in joules.
+      2. Honest hardware audits separate power-rail current sensors from chip counters, while sleeping at zero clock cycles between jobs.
+      3. Single-cycle Boolean lookup circuits replace power-hungry floating-point arithmetic on repeated decisions with tiny hardware steps.
+
+  - heading: "Everyday Analogy & Why It Matters"
+    content: |
+      Built-in processor energy counters work like a dashboard fuel estimate—helpful over long trips, yet blind to sub-millisecond bursts and shared background noise. Physical current-shunt sensors sit directly on the circuit-board power rail and measure real electrical draw. On compute dot openie dot dev, we organize two hundred fifty-eight primitives across thirty-three families.
+
+      First, halt idle clocks until real work arrives; second, compile dynamic code into tight binaries; third, run frozen decisions in single-cycle Boolean lookup circuits. Compiling interpreted validation loops into native machine code cut measured energy twentyfold. On edge modules equipped with inline power-rail current shunts, compiled execution drew nine hundred twenty-seven point three microjoules while paged lookup arrays ran at two hundred fifty megahertz.
+
+      Whether an energy reading comes from a physical wire shunt, a processor counter, or a circuit simulation, stating its exact instrument keeps engineering honest.
+
+  - heading: "Inside the Mechanism & Candid Limits"
+    content: |
+      High-level software treats loops, text parsing, and wide decimal matrix math as if digital symbols floated completely free of physical matter. Down inside the silicon package, every needless clock tick and wide floating-point multiplier charges and drains millions of microscopic capacitors straight into waste heat. Imagine auditing a factory's monthly electricity bill using only rough runtime timers attached to half the motors. Built-in software energy counters inside laptops and servers smooth over rapid spikes and miss sub-millisecond tasks completely, whereas inline current-sense resistors across board power rails measure real voltage and current directly.
+
+      Our compute catalog on compute dot openie dot dev charts two hundred fifty-eight hardware and operating-system primitives spanning room-temperature logic, reversible circuits, and cold-temperature physics bounds. Systems rest at zero active clock cycles between events, wake in microseconds on real inputs, and route recurring checks into six-input Boolean lookup tables. Total electrical energy per completed job combines standing baseline power leaked while waiting plus dynamic switching joules paid on each active clock cycle. Event-driven sleep eliminates idle clock spin between arrivals, while replacing wide floating-point arithmetic with direct truth-table lookups collapses switching cost per decision.
+
+      This three-dimensional hardware cutaway shows the dark metallic carrier board, glowing amber supply rails monitored by inline current shunts, and a dense checkerboard of cyan and emerald Boolean lookup tiles ringed by a hardware enable latch that clocks only active memory pages at two hundred fifty megahertz with deterministic timing. Across controlled hardware experiments, compiling interpreted rule checks into deterministic native binaries reduced measured energy twenty point zero seven times without changing a single output bit. Direct circuit-board power sensors recorded nine hundred twenty-seven point three microjoules on edge inference rails and eleven thousand four hundred twenty-eight picojoules per hardware safety-gate cycle. Rigorous hardware science never blurs measured watts with modeled estimates on the same chart.
+
+      Board-rail current readings come straight from physical inline sensors, whereas our fifteen point six milliwatt clock-gated lookup array figure is explicitly labeled as a post-synthesis timing and power model awaiting custom silicon fabrication.
+
+  - heading: "How Energy Was Metered"
+    content: |
+      - **Acquisition Tier**: Board Power Sensor
+      - **Disclosure**: Direct circuit-board current sensors on edge rails; gate-level circuit figures stay labeled models.
+      - **Evidence Class**: `measured_j` (`927.30 µJ (measured_j)`)
+      - **Meter / Formula**: NVIDIA Jetson AGX Thor physical TI INA3221 DC current-shunt substrate measurement
+
+      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+
+references:
+  - id: 1
+    authors: "David Charlot, Open Interface Engineering"
+    title: "Why Every Bit Pays Joules: The Compute Substrate"
+    publication: "OpenIE Research"
+    year: 2026
+    url: "https://research.openie.dev/papers/rce-compile/"
+
+closing:
+  content: |
+    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=eco-compute) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
+  cta:
+    primary:
+      text: "Read Primary Study & PDF"
+      url: "https://research.openie.dev/papers/rce-compile/"
+    secondary:
+      text: "Watch on OpenIE Research TV"
+      url: "https://research.openie.dev/tv/?study=eco-compute"
+  footer_text: "Summary text dedicated to the public domain under CC0-1.0."

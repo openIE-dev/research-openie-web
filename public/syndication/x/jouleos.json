@@ -1,0 +1,74 @@
+{
+  "schema": "openie.x_thread_bundle.v1",
+  "study_id": "jouleos",
+  "canonical_id": "blake3:tv:7dc57a2972460389e4fabd076f069c237545d6154f816d489335f8b3eed65e07",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 259,
+  "card_video_uri": "/media/tv/tiktok/jouleos-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/jouleos-15s.mp4",
+  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/jouleos/",
+  "canonical_paper_url": "https://research.openie.dev/products/jouleos/",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "The Search for JouleOS\n\nToday's operating systems schedule clock slices, not energy—so we mapped what an agent machine must require and tested its core rules in Rust.\n\n[310 Passing Rust Tests · 78,400 Provenance Checks]",
+      "weighted_chars": 219,
+      "raw_chars": 219,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/jouleos-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/jouleos-15s.mp4",
+        "poster_uri": "/media/tv/posters/jouleos-poster.jpg",
+        "vtt_uri": "/media/tv/captions/jouleos-15s.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "plain_points_1_2",
+      "text": "1/3 Modern computers stack many separate software layers, and today's AI agents are bolted on top without changing the floor underneath.\n\n2/3 None of those underlying layers asks, before an agent acts, how much energy the action will spend or whether it fits.",
+      "weighted_chars": 259,
+      "raw_chars": 259,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "plain_point_3_and_energy",
+      "text": "3/3 A machine built for agents must meter energy honestly, grant strict budgets, and refuse any action that breaks its limit.\n\nEnergy class: unmetered (Verified Software + Model; joules=null, never faked as zero).",
+      "weighted_chars": 213,
+      "raw_chars": 213,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "machine_verification_gate",
+      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E]/[S] · WAI1 blake3:7dc57a297246… · CC0-1.0",
+      "weighted_chars": 207,
+      "raw_chars": 204,
+      "urls": [],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "bidirectional_medium_and_paper_bridge",
+      "text": "Read & verify The Search for JouleOS (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/jouleos/\n• Primary paper, PDF & receipts: https://research.openie.dev/products/jouleos/",
+      "weighted_chars": 166,
+      "raw_chars": 218,
+      "urls": [
+        "https://research.openie.dev/syndication/medium/jouleos/",
+        "https://research.openie.dev/products/jouleos/"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "a9b51148345a9bd8c8cb76f46eb8721b0e9acb17db917a14f5ac741500dc7699"
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "eco-stack",
+  "canonical_id": "blake3:tv:f1be23b37b7c4b0d74ccaaf3952659250ac143aa9ea3116538cd2c3ac0d9d774",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/eco-stack-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/eco-stack-15s.mp4",
+    "poster_uri": "/media/tv/posters/eco-stack-poster.jpg",
+    "vtt_uri": "/media/tv/captions/eco-stack-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 21.87,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "8ef15f1b6dd8f5988e5bb40dc9326e786b077b850168e9daea4ea2f9a88a5752"
+  },
+  "caption_utf16_chars": 758,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "Three Sciences, One Computing Map (3 Sciences · 9 Periodic Stacks · 1 Joule Ledger)\nHow information theory, game theory, and mechanism design fit together as three altitudes of one energy-bounded computing map.\n1) Information theory, game theory, and mechanism design form three altitudes of one energy-bounded computing map.\n2) Information theory prices bits and heat, game theory maps strategic interaction, and mechanism design writes rules where honesty wins.\n3) Across every layer of computing, each permitted action must clear its physical energy floor and pass independent checks.\nEnergy class: reported_j (Physics + Chip Counter) · CC0-1.0 · https://research.openie.dev/papers/agency/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/eco-stack-tiktok.mp4"
+    }
+  },
+  "content_blake3": "453f77b92b48b46058038c7940095c2234032b68b1b00a03c3dd16e1cca77485"
+}

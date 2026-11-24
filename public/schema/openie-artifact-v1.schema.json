@@ -18,7 +18,7 @@
   "properties": {
     "canonical_id": {
       "type": "string",
-      "pattern": "^blake3:(paper|tv|radio|tutorial|humanoid_prior_art|humanoid_morphology|blueprint|concept):[0-9a-f]{64}$",
+      "pattern": "^blake3:(paper|tv|radio|tutorial|humanoid_prior_art|phone_prior_art|wearable_prior_art|evtol_prior_art|humanoid_morphology|hardware_subsystem|blueprint|concept):[0-9a-f]{64}$",
       "description": "Content-addressed BLAKE3 canonical identifier scoped by OpenIE artifact domain."
     },
     "artifact_kind": {
@@ -29,7 +29,11 @@
         "radio",
         "tutorial",
         "humanoid_prior_art",
+        "phone_prior_art",
+        "wearable_prior_art",
+        "evtol_prior_art",
         "humanoid_morphology",
+        "hardware_subsystem",
         "blueprint",
         "concept"
       ]
@@ -98,7 +102,7 @@
           "type": "array",
           "items": {
             "type": "string",
-            "pattern": "^blake3:(paper|tv|radio|tutorial|humanoid_prior_art|humanoid_morphology|blueprint|concept):[0-9a-f]{64}$"
+            "pattern": "^blake3:(paper|tv|radio|tutorial|humanoid_prior_art|phone_prior_art|wearable_prior_art|evtol_prior_art|humanoid_morphology|hardware_subsystem|blueprint|concept):[0-9a-f]{64}$"
           },
           "uniqueItems": true
         },
@@ -581,6 +585,8 @@
                 "urdf",
                 "mjcf",
                 "step",
+                "udd",
+                "scad",
                 "cutaway_3d"
               ]
             },
@@ -720,6 +726,165 @@
               },
               "numeric_id_conserved": {
                 "type": "boolean"
+              }
+            }
+          }
+        },
+        "short_vertical_9x16": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "video_uri",
+            "poster_uri",
+            "vtt_uri",
+            "resolution",
+            "fps",
+            "duration_s",
+            "safe_zone_verified",
+            "sha256"
+          ],
+          "properties": {
+            "video_uri": {
+              "type": "string",
+              "minLength": 1
+            },
+            "poster_uri": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vtt_uri": {
+              "type": "string",
+              "minLength": 1
+            },
+            "resolution": {
+              "type": "string",
+              "const": "1080x1920"
+            },
+            "fps": {
+              "type": "integer",
+              "const": 60
+            },
+            "duration_s": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "safe_zone_verified": {
+              "type": "boolean"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "medium_article": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "markdown_uri",
+            "canonical_import_uri",
+            "canonical_source_url",
+            "word_count",
+            "reading_time_min",
+            "license",
+            "x_thread_backlink_slot"
+          ],
+          "properties": {
+            "markdown_uri": {
+              "type": "string",
+              "minLength": 1
+            },
+            "canonical_import_uri": {
+              "type": "string",
+              "minLength": 1
+            },
+            "canonical_source_url": {
+              "type": "string",
+              "minLength": 1
+            },
+            "word_count": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "reading_time_min": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "license": {
+              "type": "string",
+              "const": "CC0-1.0"
+            },
+            "x_thread_backlink_slot": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "x_thread": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "bundle_uri",
+            "post_count",
+            "max_weighted_chars",
+            "card_video_uri",
+            "medium_crosslink_uri"
+          ],
+          "properties": {
+            "bundle_uri": {
+              "type": "string",
+              "minLength": 1
+            },
+            "post_count": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "max_weighted_chars": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 280
+            },
+            "card_video_uri": {
+              "type": "string",
+              "minLength": 1
+            },
+            "medium_crosslink_uri": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "syndication_channels": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "ecosystem",
+              "direction",
+              "protocol",
+              "status"
+            ],
+            "properties": {
+              "ecosystem": {
+                "type": "string",
+                "minLength": 1
+              },
+              "direction": {
+                "type": "string",
+                "enum": [
+                  "outbound",
+                  "inbound",
+                  "bidirectional"
+                ]
+              },
+              "protocol": {
+                "type": "string",
+                "minLength": 1
+              },
+              "status": {
+                "type": "string",
+                "minLength": 1
               }
             }
           }

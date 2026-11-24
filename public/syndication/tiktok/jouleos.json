@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "jouleos",
+  "canonical_id": "blake3:tv:7dc57a2972460389e4fabd076f069c237545d6154f816d489335f8b3eed65e07",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/jouleos-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/jouleos-15s.mp4",
+    "poster_uri": "/media/tv/posters/jouleos-poster.jpg",
+    "vtt_uri": "/media/tv/captions/jouleos-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 21.77,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "0d7aada77251749cf6b1a793be68ee8cebd8d2acc75d49acc422f6b1f0e8b7c4"
+  },
+  "caption_utf16_chars": 775,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "The Search for JouleOS (310 Passing Rust Tests · 78,400 Provenance Checks)\nToday's operating systems schedule clock slices, not energy—so we mapped what an agent machine must require and tested its core rules in Rust.\n1) Modern computers stack many separate software layers, and today's AI agents are bolted on top without changing the floor underneath.\n2) None of those underlying layers asks, before an agent acts, how much energy the action will spend or whether it fits.\n3) A machine built for agents must meter energy honestly, grant strict budgets, and refuse any action that breaks its limit.\nEnergy class: unmetered (Verified Software + Model) · CC0-1.0 · https://research.openie.dev/products/jouleos/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/jouleos-tiktok.mp4"
+    }
+  },
+  "content_blake3": "966c40232a25c95ca82068d50ded2be0ec86d2ae0f6527c29bfdcebce457f30e"
+}

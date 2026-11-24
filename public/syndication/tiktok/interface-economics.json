@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "interface-economics",
+  "canonical_id": "blake3:tv:6cee9f2f140f50dfe0d3b09bfab0b718b3f208c720a149f06e287da7d1412f55",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/interface-economics-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/interface-economics-15s.mp4",
+    "poster_uri": "/media/tv/posters/interface-economics-poster.jpg",
+    "vtt_uri": "/media/tv/captions/interface-economics-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 20.87,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "6ed1bf3e5178dd2a60a33531a427f6194d1f5959715a87b6b9a8dd5dc751f8df"
+  },
+  "caption_utf16_chars": 819,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "The Price of the Unexamined Interface ($327.6M Mars Loss vs Cheap Automated Handoff Checks)\nChecking a software handoff is cheap, skipping it destroys spacecraft, and public-good economics explains why teams still skip it.\n1) Single handoff failures carry exact price tags, like losing a three-hundred-twenty-eight-million-dollar Mars mission over mismatched force units.\n2) Trillion-dollar national figures come from broad surveys and models of software quality, and none isolates handoff failures alone.\n3) Checking shared assumptions upfront is cheap, yet teams skip it because one group pays while everyone downstream benefits.\nEnergy class: unmetered (Historical + Economic Audit) · CC0-1.0 · https://research.openie.dev/papers/interface-economics/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/interface-economics-tiktok.mp4"
+    }
+  },
+  "content_blake3": "64695b63df32a0445ea4768c8df4638afe197f81efcbd3a56f53a2e256f7d629"
+}

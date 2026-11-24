@@ -1,0 +1,29 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:00.240 --> 00:00:04.439 line:72%
+First, most big computer
+failures happen at the handoffs
+
+2
+00:00:04.439 --> 00:00:07.416 line:72%
+between teams or parts, not
+inside them.
+
+3
+00:00:07.776 --> 00:00:14.467 line:72%
+Second, the cause is usually a
+guess nobody wrote down, like
+which units a number uses.
+
+4
+00:00:14.827 --> 00:00:19.880 line:72%
+Third, when every handoff guess
+is written down and
+machine-checked,
+
+5
+00:00:19.880 --> 00:00:22.183 line:72%
+a fix in one place stays fixed.

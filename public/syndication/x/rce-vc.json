@@ -1,0 +1,74 @@
+{
+  "schema": "openie.x_thread_bundle.v1",
+  "study_id": "rce-vc",
+  "canonical_id": "blake3:tv:86d270c120708d4df299264a57fb54a861630fd2bcb2841abc701873d365b3b0",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 236,
+  "card_video_uri": "/media/tv/tiktok/rce-vc-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/rce-vc-15s.mp4",
+  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/rce-vc/",
+  "canonical_paper_url": "https://research.openie.dev/papers/rce-vc/",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "RCE-VC: Law of Version Control\n\nLet humans and AI swarms commit in parallel: check changes against 100,000 name-free items in 70 microseconds while staying on Git.\n\n[70 µs & 317 µJ Admission @ 100,000 Items]",
+      "weighted_chars": 207,
+      "raw_chars": 207,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/rce-vc-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/rce-vc-15s.mp4",
+        "poster_uri": "/media/tv/posters/rce-vc-poster.jpg",
+        "vtt_uri": "/media/tv/captions/rce-vc-15s.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "plain_points_1_2",
+      "text": "1/3 Many people and AI agents can submit code at once, and a named check admits changes or records why not.\n\n2/3 Tracking code by name-free functions instead of text lines lets unrelated edits land together without pointless merge wars.",
+      "weighted_chars": 236,
+      "raw_chars": 236,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "plain_point_3_and_energy",
+      "text": "3/3 Developers keep using ordinary Git while admission against one hundred thousand items finishes in about seventy microseconds.\n\nEnergy class: reported_j (317.00 µJ chip counter; board_metered=false, never mixed with shunts).",
+      "weighted_chars": 227,
+      "raw_chars": 227,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "machine_verification_gate",
+      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E] · WAI1 blake3:86d270c12070… · CC0-1.0",
+      "weighted_chars": 203,
+      "raw_chars": 200,
+      "urls": [],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "bidirectional_medium_and_paper_bridge",
+      "text": "Read & verify RCE-VC (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/rce-vc/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/rce-vc/",
+      "weighted_chars": 150,
+      "raw_chars": 198,
+      "urls": [
+        "https://research.openie.dev/syndication/medium/rce-vc/",
+        "https://research.openie.dev/papers/rce-vc/"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "a999c3538188dca3e53a7f979e151d5cb2eeba192c7b70c2f14e94aa7fd5de9e"
+}

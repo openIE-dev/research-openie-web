@@ -1,0 +1,74 @@
+{
+  "schema": "openie.x_thread_bundle.v1",
+  "study_id": "gates",
+  "canonical_id": "blake3:tv:b6075421aa4a225d509d07481bc5a850f9e1dc14424cd92bd9abe3ebe93260a3",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 224,
+  "card_video_uri": "/media/tv/tiktok/gates-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/gates-15s.mp4",
+  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/gates/",
+  "canonical_paper_url": "https://research.openie.dev/papers/gates/",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "Metered Commit Gates: Energy-to-Correct-Completion for Agentic Systems\n\nWhy computers must check before taking undoable actions, start with the cheapest tool, and log every joule.\n\n[11,428 Picojoules per Hardware Gate Check]",
+      "weighted_chars": 224,
+      "raw_chars": 224,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/gates-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/gates-15s.mp4",
+        "poster_uri": "/media/tv/posters/gates-poster.jpg",
+        "vtt_uri": "/media/tv/captions/gates-15s.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "plain_points_1_2",
+      "text": "1/3 A computer should not take an irreversible action until an independent check confirms it is safe.\n\n2/3 It should try the cheapest method first and wake a large AI model only when simpler tools miss.",
+      "weighted_chars": 202,
+      "raw_chars": 202,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "plain_point_3_and_energy",
+      "text": "3/3 Every decision is written to a receipt with the energy it used, so anyone can audit it later.\n\nEnergy class: measured_j (11.43 nJ via physical board shunt; board_metered=true).",
+      "weighted_chars": 180,
+      "raw_chars": 180,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "machine_verification_gate",
+      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E] · WAI1 blake3:b6075421aa4a… · CC0-1.0",
+      "weighted_chars": 203,
+      "raw_chars": 200,
+      "urls": [],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "bidirectional_medium_and_paper_bridge",
+      "text": "Read & verify Metered Commit Gates (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/gates/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/gates/",
+      "weighted_chars": 164,
+      "raw_chars": 210,
+      "urls": [
+        "https://research.openie.dev/syndication/medium/gates/",
+        "https://research.openie.dev/papers/gates/"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "d8ed75a43c939452c870045a127e7976a0fc1e3bc6d1ed27254f7f0ab3a88785"
+}

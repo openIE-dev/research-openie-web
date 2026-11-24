@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "rce",
+  "canonical_id": "blake3:tv:6d19f6f263097e58b92f17fb3d4a4745f98bc5a2496157ac1c25b7fa22c2cb24",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/rce-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/rce-15s.mp4",
+    "poster_uri": "/media/tv/posters/rce-poster.jpg",
+    "vtt_uri": "/media/tv/captions/rce-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 21.73,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "d82c5d7891d96400a195e3c4c95c73f818412f055dfd8f5c930183029aa949be"
+  },
+  "caption_utf16_chars": 685,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "The Reality Code Engine (2,221 Checks, 0 Failures · 49 mJ per Check)\nWrite a program once as one complete state-machine blueprint, check it in 49 millijoules, and emit matching code across languages.\n1) You write a program once in one clear blueprint, and the computer generates matching code in many languages.\n2) Every possible input must have a declared outcome up front, leaving nowhere for silent crashes to hide.\n3) Once a repair passes every check, the engine saves and reuses it so nobody pays twice for one bug.\nEnergy class: reported_j (Chip Energy Counter) · CC0-1.0 · https://research.openie.dev/papers/rce/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/rce-tiktok.mp4"
+    }
+  },
+  "content_blake3": "22099d97e5858bae992e1fc5c9547e3d5d520e5ec2f0f6fdab52638b0c87ca89"
+}

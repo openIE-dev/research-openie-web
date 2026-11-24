@@ -1,0 +1,33 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:00.240 --> 00:00:03.963 line:72%
+First, every calculation is a
+physical event where flipping
+
+2
+00:00:03.963 --> 00:00:06.851 line:72%
+silicon switches spends real
+energy in joules.
+
+3
+00:00:07.211 --> 00:00:10.788 line:72%
+Second, honest hardware audits
+separate wire current sensors
+
+4
+00:00:10.788 --> 00:00:13.941 line:72%
+from chip counters, while
+sleeping between real jobs.
+
+5
+00:00:14.301 --> 00:00:17.886 line:72%
+Third, single-cycle Boolean
+lookup circuits replace heavy
+
+6
+00:00:17.886 --> 00:00:21.856 line:72%
+decimal arithmetic on repeated
+checks with tiny hardware steps.

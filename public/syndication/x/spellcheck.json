@@ -1,0 +1,74 @@
+{
+  "schema": "openie.x_thread_bundle.v1",
+  "study_id": "spellcheck",
+  "canonical_id": "blake3:tv:6fec7c11e477aee4e0bba694ae09890629609e44ddb85fae7d3ac0e859e31090",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 244,
+  "card_video_uri": "/media/tv/tiktok/spellcheck-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/spellcheck-15s.mp4",
+  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/spellcheck/",
+  "canonical_paper_url": "https://research.openie.dev/papers/spellcheck/",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "Spell Check is Global\n\nSpell check went from a two-hundred-dollar standalone luxury to a free global reflex once local compute cost hit near zero.\n\n[$200 Standalone Box -> $0 Feature for 7B+ People]",
+      "weighted_chars": 198,
+      "raw_chars": 198,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/spellcheck-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/spellcheck-15s.mp4",
+        "poster_uri": "/media/tv/posters/spellcheck-poster.jpg",
+        "vtt_uri": "/media/tv/captions/spellcheck-15s.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "plain_points_1_2",
+      "text": "1/3 People once paid hundreds of dollars for standalone spell check, yet today it comes free inside every phone and browser.\n\n2/3 Spell check became free because checking a word costs almost nothing to run right inside the writing tool you own.",
+      "weighted_chars": 244,
+      "raw_chars": 244,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "plain_point_3_and_energy",
+      "text": "3/3 Other forms of computer intelligence will reach seven billion people only when they run cheaply on everyday local devices.\n\nEnergy class: unmetered (Historical Price Audit; joules=null, never faked as zero).",
+      "weighted_chars": 211,
+      "raw_chars": 211,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "machine_verification_gate",
+      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [M]/[S] · WAI1 blake3:6fec7c11e477… · CC0-1.0",
+      "weighted_chars": 203,
+      "raw_chars": 200,
+      "urls": [],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "bidirectional_medium_and_paper_bridge",
+      "text": "Read & verify Spell Check is Global (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/spellcheck/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/spellcheck/",
+      "weighted_chars": 165,
+      "raw_chars": 221,
+      "urls": [
+        "https://research.openie.dev/syndication/medium/spellcheck/",
+        "https://research.openie.dev/papers/spellcheck/"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "33ff11e077e4fc44f7bb701b6603fa6b358621554fb9ea22a9a41eb9f856bfc9"
+}

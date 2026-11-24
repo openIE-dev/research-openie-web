@@ -1,0 +1,75 @@
+# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+slug: "spellcheck"
+
+metadata:
+  title: "Spell Check is Global: The Future of Computer Intelligence in the Hands of the Many (7B+), Not the Few"
+  description: "Spell check went from a two-hundred-dollar standalone luxury to a free global reflex once local compute cost hit near zero."
+  date: "2026-11-24"
+  author: "David Charlot, Open Interface Engineering"
+  category: "research"
+  tags: ["spellcheck", "research", "open-science", "cc0", "unmetered"]
+  featured: false
+  draft: false
+  toc: true
+  canonicalUrl: "https://research.openie.dev/papers/spellcheck/"
+  license: "CC0-1.0"
+
+hero:
+  image: "spellcheck-poster.jpg"
+  alt: "Spell Check is Global — $200 Standalone Box -> $0 Feature for 7B+ People"
+
+sections:
+  - heading: null
+    content: |
+      *Canonical Primary Source: [https://research.openie.dev/papers/spellcheck/](https://research.openie.dev/papers/spellcheck/) · Dedicated to the Public Domain (`CC0-1.0`)*
+
+      Spell check went from a two-hundred-dollar standalone luxury to a free global reflex once local compute cost hit near zero.
+
+  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+    content: |
+      1. People once paid hundreds of dollars for standalone spell check, yet today it comes free inside every phone and browser.
+      2. Spell check became free because checking a word costs almost nothing to run right inside the writing tool you own.
+      3. Other forms of computer intelligence will reach seven billion people only when they run cheaply on everyday local devices.
+
+  - heading: "Everyday Analogy & Why It Matters"
+    content: |
+      Imagine mailing every sentence you write to a distant typing bureau and paying by the word just to spot a typo. That sounds ridiculous for spelling today, yet renting every answer from a remote cloud server is still how frontier AI operates. In 1982, engineers compressed thirty thousand English words into twenty-six thousand sixteen-bit machine words so ordinary minicomputers could check documents locally without a network.
+
+      Within a decade, word processors, web browsers, and mobile keyboards absorbed spell checking completely at zero separate price. Our dated price ledger tracks electronic calculators from four-thousand-nine-hundred-dollar desktop units and standalone two-hundred-dollar spell checkers in 1981 down through eighty-nine-dollar grammar packages to open libraries and compact one-point-four-megabyte phone keyboard models. Global reach follows the everyday hardware people already carry in their hands—nearly six billion mobile subscribers and over three hundred billion embedded chips—once verified skills run locally at negligible energy.
+
+  - heading: "Inside the Mechanism & Candid Limits"
+    content: |
+      Even after frontier chat crossed eight hundred million weekly users, scarcity pricing still holds capabilities inside rented data centers and sells monthly access to the few who can pay. History shows that computer skills reach more than seven billion people only when separate per-seat and per-word invoices disappear completely. Open a January 1981 computer magazine and you find WordCheck for dual-disk personal computers advertised at a list price of two hundred dollars, followed by eighty-nine-dollar and ninety-nine-dollar grammar add-ons in the late 1980s. Back then, proofreading software was a premium standalone purchase, just like early electronic desk calculators.
+
+      Spell check vanished as a separate product because engineers deliberately shrunk the procedure onto the machine that already held the document. Prefix stripping and hashing packed thirty thousand English words into twenty-six thousand machine words in 1982, and open-source morphological checkers later shipped free inside browsers, office suites, and operating systems. Economics explains why the separate price fell all the way to zero. Checking a word is most useful right beside the cursor where you are already writing, and once local dictionary lookup plus one-letter edit formulas cost almost zero energy to run, metering each check made less sense than bundling it free.
+
+      Our three-dimensional global cadence model contrasts centralized high-wattage server hubs against the installed fleet people already own—five point eight billion mobile subscribers worldwide, over two point three billion active phones and tablets in one ecosystem alone, and more than three hundred ten billion cumulative microcontroller chips. A capability completes the automation path when five strict conditions hold: the work sits on ordinary hardware already in hand, runs as a local routine rather than a remote bureau job, fits everyday memory and battery envelopes, requires no frontier data-center rental, and returns an accurate answer without cutting corners. Every single figure on our price tape cites its exact dated advertisement, museum brochure, or release note, leaving unprinted months blank instead of inventing smooth curves. Nor do we guess energy numbers for closed phone keyboards—the documented historical transition from two hundred dollars to bundled zero speaks clearly for itself.
+
+  - heading: "How Energy Was Metered"
+    content: |
+      - **Acquisition Tier**: Historical Price Audit
+      - **Disclosure**: Dated historical software prices and economic model; no hardware watts measured.
+      - **Evidence Class**: `unmetered` (`unmetered (joules = null; never fabricated as zero)`)
+      - **Meter / Formula**: Historical marginal-cost & software-bundling price archive; unmetered
+
+      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+
+references:
+  - id: 1
+    authors: "David Charlot, Open Interface Engineering"
+    title: "Spell Check is Global: The Future of Computer Intelligence in the Hands of the Many (7B+), Not the Few"
+    publication: "OpenIE Research"
+    year: 2026
+    url: "https://research.openie.dev/papers/spellcheck/"
+
+closing:
+  content: |
+    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=spellcheck) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
+  cta:
+    primary:
+      text: "Read Primary Study & PDF"
+      url: "https://research.openie.dev/papers/spellcheck/"
+    secondary:
+      text: "Watch on OpenIE Research TV"
+      url: "https://research.openie.dev/tv/?study=spellcheck"
+  footer_text: "Summary text dedicated to the public domain under CC0-1.0."

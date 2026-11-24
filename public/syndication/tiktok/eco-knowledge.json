@@ -1,0 +1,38 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "eco-knowledge",
+  "canonical_id": "blake3:tv:fc3012f98ba403ab92bbd58bd833bdb65b3b7bd8b104449efe5cdf4a805cee5a",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/eco-knowledge-tiktok.mp4",
+    "fallback_video_uri": "/media/tv/films/eco-knowledge-15s.mp4",
+    "poster_uri": "/media/tv/posters/eco-knowledge-poster.jpg",
+    "vtt_uri": "/media/tv/captions/eco-knowledge-15s.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 21.5,
+    "safe_zone_verified": true,
+    "source_15s_sha256": "a89e1f0c53a2ac34269aba9c887bec005140514f2c9bd989b3d3a1a6d25cdb75"
+  },
+  "caption_utf16_chars": 776,
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "Time-Indexed Claims & Six-Kernel Proofs (5,496 Six-Kernel Theorems · 0 Skipped Proofs)\nWhy trustworthy knowledge requires dated provenance to stop citation laundering—and six independent proof kernels for mathematics.\n1) Claims without timestamps and source roots go stale fast and let copied summaries masquerade as independent evidence.\n2) Every recorded claim carries valid time, recorded time, reference frame, scale, scope, certainty, and anti-laundering provenance.\n3) Checking mathematical theorems across six independent Lean proof kernels eliminates single-compiler blind spots completely.\nEnergy class: reported_j (Chip Energy Counter) · CC0-1.0 · https://research.openie.dev/papers/time-as-an-index/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/eco-knowledge-tiktok.mp4"
+    }
+  },
+  "content_blake3": "8e0b7c56a6ae42d66ad6c7374fc0e20ae9f40d2725634e2d3cdfe814b7c823f9"
+}

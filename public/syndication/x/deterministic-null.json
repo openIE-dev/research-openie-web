@@ -1,0 +1,74 @@
+{
+  "schema": "openie.x_thread_bundle.v1",
+  "study_id": "deterministic-null",
+  "canonical_id": "blake3:tv:d3018098f6b08132cb47527bca323e5c8236e9193f1375feffa9ebd20c21305c",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 209,
+  "card_video_uri": "/media/tv/tiktok/deterministic-null-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/deterministic-null-15s.mp4",
+  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/deterministic-null/",
+  "canonical_paper_url": "https://research.openie.dev/papers/deterministic-null/",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "Deterministic Null\n\nWhy AI benchmarks need a placebo control group, and where giant models actually beat a simple lookup table.\n\n[9 of 10 Bounded Ties · 3.59x Repeat Energy Cut]",
+      "weighted_chars": 177,
+      "raw_chars": 177,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/deterministic-null-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/deterministic-null-15s.mp4",
+        "poster_uri": "/media/tv/posters/deterministic-null-poster.jpg",
+        "vtt_uri": "/media/tv/captions/deterministic-null-15s.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "plain_points_1_2",
+      "text": "1/3 Most AI benchmarks skip a zero-model control group that tests what simple lookup already solves.\n\n2/3 On bounded math and database tasks, a frozen lookup table matched cloud AI on nine of ten tests.",
+      "weighted_chars": 202,
+      "raw_chars": 202,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "plain_point_3_and_energy",
+      "text": "3/3 On open coding tasks AI leaped ahead, while caching verified answers cut repeat energy three point six times.\n\nEnergy class: reported_j (1.77 µJ chip counter; board_metered=false, never mixed with shunts).",
+      "weighted_chars": 209,
+      "raw_chars": 209,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "machine_verification_gate",
+      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E] · WAI1 blake3:d3018098f6b0… · CC0-1.0",
+      "weighted_chars": 203,
+      "raw_chars": 200,
+      "urls": [],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "bidirectional_medium_and_paper_bridge",
+      "text": "Read & verify Deterministic Null (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/deterministic-null/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/deterministic-null/",
+      "weighted_chars": 162,
+      "raw_chars": 234,
+      "urls": [
+        "https://research.openie.dev/syndication/medium/deterministic-null/",
+        "https://research.openie.dev/papers/deterministic-null/"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "3ac41d93db705acb062fb4e8436c80de0684c45bb198585151d5a8e272d9d253"
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "openie.x_thread_bundle.v1",
+  "study_id": "rce-jepa",
+  "canonical_id": "blake3:tv:019888e27dfd3fb4b49ea3e29a210c3c3de5f4565c4d71c3b42ed1e7f5114b8e",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 223,
+  "card_video_uri": "/media/tv/tiktok/rce-jepa-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/rce-jepa-15s.mp4",
+  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/rce-jepa/",
+  "canonical_paper_url": "https://research.openie.dev/papers/rce-jepa/",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "RCE-JEPA: World Coding, with JEPA as Premise\n\nPredict program meaning instead of raw words, let a 49-millijoule checker decide, and cut recurring frontier calls 16.7 times.\n\n[40/40 Hard Tasks Solved · 16.7x Fewer Big Calls]",
+      "weighted_chars": 223,
+      "raw_chars": 223,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/rce-jepa-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/rce-jepa-15s.mp4",
+        "poster_uri": "/media/tv/posters/rce-jepa-poster.jpg",
+        "vtt_uri": "/media/tv/captions/rce-jepa-15s.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "plain_points_1_2",
+      "text": "1/3 Instead of guessing raw code word by word, small models predict compact summaries of program meaning.\n\n2/3 Any AI model may propose a candidate program, but a fast, strict checker alone decides what passes.",
+      "weighted_chars": 210,
+      "raw_chars": 210,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "plain_point_3_and_energy",
+      "text": "3/3 Checking costs over seventeen hundred times less energy than generating, and saved fixes cut big AI calls sixteenfold.\n\nEnergy class: reported_j (49.04 mJ chip counter; board_metered=false, never mixed with shunts).",
+      "weighted_chars": 219,
+      "raw_chars": 219,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "machine_verification_gate",
+      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E]/[M] · WAI1 blake3:019888e27dfd… · CC0-1.0",
+      "weighted_chars": 207,
+      "raw_chars": 204,
+      "urls": [],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "bidirectional_medium_and_paper_bridge",
+      "text": "Read & verify RCE-JEPA (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/rce-jepa/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/rce-jepa/",
+      "weighted_chars": 152,
+      "raw_chars": 204,
+      "urls": [
+        "https://research.openie.dev/syndication/medium/rce-jepa/",
+        "https://research.openie.dev/papers/rce-jepa/"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "725db0ff7c28e17a9ce2f840733057ca65399af876f3fb49fe872be3818b2822"
+}

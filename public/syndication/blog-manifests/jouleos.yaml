@@ -1,0 +1,75 @@
+# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+slug: "jouleos"
+
+metadata:
+  title: "The Search for JouleOS"
+  description: "Today's operating systems schedule clock slices, not energy—so we mapped what an agent machine must require and tested its core rules in Rust."
+  date: "2026-11-24"
+  author: "David Charlot, Open Interface Engineering"
+  category: "product"
+  tags: ["jouleos", "product", "open-science", "cc0", "unmetered"]
+  featured: false
+  draft: false
+  toc: true
+  canonicalUrl: "https://research.openie.dev/products/jouleos/"
+  license: "CC0-1.0"
+
+hero:
+  image: "jouleos-poster.jpg"
+  alt: "The Search for JouleOS — 310 Passing Rust Tests · 78,400 Provenance Checks"
+
+sections:
+  - heading: null
+    content: |
+      *Canonical Primary Source: [https://research.openie.dev/products/jouleos/](https://research.openie.dev/products/jouleos/) · Dedicated to the Public Domain (`CC0-1.0`)*
+
+      Today's operating systems schedule clock slices, not energy—so we mapped what an agent machine must require and tested its core rules in Rust.
+
+  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+    content: |
+      1. Modern computers stack many separate software layers, and today's AI agents are bolted on top without changing the floor underneath.
+      2. None of those underlying layers asks, before an agent acts, how much energy the action will spend or whether it fits.
+      3. A machine built for agents must meter energy honestly, grant strict budgets, and refuse any action that breaks its limit.
+
+  - heading: "Everyday Analogy & Why It Matters"
+    content: |
+      Modern agent sandboxes jail file access or count virtual instructions, yet elevated commands still escape onto the host kernel, and one virtual instruction spends wildly different physical energy depending on memory traffic, cache misses, and chip frequency. Our review maps ten distinct jobs from bare silicon up to the human screen. It specifies a schedule that tries cheap deterministic checks before language models, signed energy grants that only shrink when delegated to sub-tasks, and tool outputs treated strictly as passive untrusted data.
+
+      Our reference Rust spine passes all three hundred ten conformance tests for crash-safe two-phase energy holds and signed binary receipts, while proving exhaustively across seventy-eight thousand four hundred pairs that software estimates can never masquerade as physical hardware measurements. By separating verified software checks from unverified bare-metal kernel claims, this design guide gives systems engineers a concrete, checkable blueprint for building agent machines governed by energy law.
+
+  - heading: "Inside the Mechanism & Candid Limits"
+    content: |
+      New agent-safety platforms add sandboxes, external watchdogs, and policy wrappers on top of Linux, macOS, or Windows kernels. That engineering solves real file and network containment problems, yet it treats the underlying process model as permanently fixed—where an agent remains an ordinary guest program and no kernel gates commits on certified energy bounds. Before naming any commercial product, our study teaches the ten-step stack from bare silicon, chip, board, and firmware through instruction sets, hardware abstraction, kernels, compilers, and programs right up to the human interface. Even formally verified microkernels prove functional C code correctness while saying nothing at all about joules or power limits.
+
+      Closing that architectural gap requires four linked open contracts: an energy-oriented schedule ordered cheapest operator first rather than billed in tokens, narrowing capability-and-joule grants checked outside the AI model, transactional commits bounded by preconditions, postconditions, invariants, and joule ceilings, and an eight-step isolation ladder carrying honest hardware or estimator meter tags. Even built-in processor energy counters on modern chips are partly mathematical models rather than inline wire shunts, missing operand-level variations. Our monotone lattice algebra tests all seventy-eight thousand four hundred pairs of sensor boundaries and attribution rules so combining a hardware shunt with an estimate always preserves the weaker label. In our three-dimensional stack view, authorization runs strictly outside the language model, and every tool response arrives tagged as untrusted passive data rather than executable instructions so poisoned prompts cannot hijack control.
+
+      Before any actuation begins, the runtime reserves a crash-safe energy hold and settles a hash-chained cryptographic receipt afterward. Across seven Rust workspace crates, three hundred ten automated conformance tests verify deterministic binary encoding without floating-point ambiguity, reject revoked, duplicate, or over-budget calls, replay exact ledger balances after simulated power loss, and automatically drop net energy splits whenever host idle power drifts past five percent. This white paper is written as an honest architectural review and requirement guide, never an inflated product pitch. Ratios cited from the private Joule Operating System repository—such as hundred-thousand-fold corpus efficiency claims—are explicitly flagged as unverified project claims rather than measurements, and bare-metal external power metering remains unset.
+
+  - heading: "How Energy Was Metered"
+    content: |
+      - **Acquisition Tier**: Verified Software + Model
+      - **Disclosure**: Verified software tests and analytical models; no bare-metal power meter used.
+      - **Evidence Class**: `unmetered` (`unmetered (joules = null; never fabricated as zero)`)
+      - **Meter / Formula**: Operating-system energy-grant architecture & 310-test Rust spine review; unmetered
+
+      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+
+references:
+  - id: 1
+    authors: "David Charlot, Open Interface Engineering"
+    title: "The Search for JouleOS"
+    publication: "OpenIE Research"
+    year: 2026
+    url: "https://research.openie.dev/products/jouleos/"
+
+closing:
+  content: |
+    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=jouleos) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
+  cta:
+    primary:
+      text: "Read Primary Study & PDF"
+      url: "https://research.openie.dev/products/jouleos/"
+    secondary:
+      text: "Watch on OpenIE Research TV"
+      url: "https://research.openie.dev/tv/?study=jouleos"
+  footer_text: "Summary text dedicated to the public domain under CC0-1.0."
