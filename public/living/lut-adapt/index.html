@@ -46,7 +46,7 @@
 
       <div class="measurement-box">
         <strong>Measurement grammar on this page.</strong> Every widget below stamps its numbers with an explicit honesty chip and never sums across tiers:
-        <span class="chip chip-meas">Physical DC Shunt (measured_j · Claims LA-24 &amp; LA-28)</span> for <code>NVIDIA Jetson AGX Thor</code> <code>TI INA3221</code> <code>VDD_CPU_SOC_MSS</code> + <code>INA238</code> <code>VIN</code> joules (<code>board_metered = true</code> solely on Thor, reaching <code>125.23 nJ/op</code> = <code>85.28×</code> <code>CpJ</code> on <code>lut6-core</code>);
+        <span class="chip chip-meas">Physical DC Shunt (measured_j · Claims LA-24, LA-28 &amp; LA-32)</span> for <code>NVIDIA Jetson AGX Thor</code> <code>TI INA3221</code> <code>VDD_CPU_SOC_MSS</code> + <code>INA238</code> <code>VIN</code> joules (<code>board_metered = true</code> solely on Thor, reaching <code>164.44 nJ/op</code> = <code>84.65×</code> <code>CpJ</code> bit-sliced and <code>1.33×</code> <code>CpJ</code> zero-MUL <code>T-MAC</code> on <code>lut6-core</code>);
         <span class="chip chip-meas">Reported &amp; Bare-Metal Cycles (reported_j / DWT)</span> for <code>RAPL</code>, <code>amdgpu PPT</code>, <code>NVML</code>, Apple M5 Max/M3 Ultra <code>IOReport</code> + <code>proc_pid_rusage</code> counters, and live attached <code>Alif Ensemble E3</code> (<code>OpenMV-AE3</code> Cortex-M55 @ <code>400 MHz</code>) <code>DWT</code> cycles (<code>board_metered = false</code>);
         <span class="chip chip-sim">Simulated (RTL &amp; Miter)</span> for Yosys <code>0.71+</code> <code>xcup</code> + <code>abc -lut 6</code> 64/64 miter + Verilator <code>5.054</code> netlist results (<code>measured_j = None</code> on <code>xck26</code>); and
         <span class="chip chip-est">Modelled (est_j)</span> for analytical cascade equations.
@@ -267,15 +267,15 @@
           <span class="chip chip-meas">6 / 6 Independent Kernels Accept (0 sorry)</span>
         </div>
         <p style="font-size: 0.9rem; margin-top: 0.6rem;">
-          Inspect the six independent checkers executed by <code>scripts/verify_lean_proofs.py</code> (<code>lake check --paranoid</code>) across all <code>27</code> theorems in <code>proofs/LutAdapt/</code>, hardening against single-prover bugs (<code>CVE-2026-72844</code>, <code>CVE-2026-72711</code>) and <code>native_decide</code> (<code>Lean.ofReduceBool</code>).
+          Inspect the six independent checkers executed by <code>scripts/verify_lean_proofs.py</code> (<code>lake check --paranoid</code>) across all <code>42</code> theorems in <code>proofs/LutAdapt/</code> (6 modules including <code>NucleusCodon.lean</code> and <code>TernaryTmac.lean</code>), hardening against single-prover bugs (<code>CVE-2026-72844</code>, <code>CVE-2026-72711</code>) and <code>native_decide</code> (<code>Lean.ofReduceBool</code>).
         </p>
         <div class="ctrl-grid">
           <div class="ctrl-box">
             <label><span>Select Independent Proof Checker</span></label>
             <select id="sk-select">
-              <option value="conleche" selected>1 · con-leche --verified (Set-theory-proved consistent kernel · 58,683 decls)</option>
-              <option value="conron">2 · con-ron --verified (Aeneas-verified Rust refinement of con-leche · 58,683 decls)</option>
-              <option value="lean4lean">3 · lean4lean (Mario Carneiro's Lean-in-Lean CIC typechecker · 58,685 decls)</option>
+              <option value="conleche" selected>1 · con-leche --verified (Set-theory-proved consistent kernel · 58,762 decls)</option>
+              <option value="conron">2 · con-ron --verified (Aeneas-verified Rust refinement of con-leche · 58,762 decls)</option>
+              <option value="lean4lean">3 · lean4lean (Mario Carneiro's Lean-in-Lean CIC typechecker · 58,764 decls)</option>
               <option value="nanoda">4 · nanoda (Standalone zero-Lean-runtime Rust export verifier · sorryAx blocked)</option>
               <option value="paranoid">5 · leanchecker --paranoid (Fresh-environment C++ replay · zero tactic trust)</option>
               <option value="default">6 · Lean v4.36.0 (Post-CVE Nov 2026 kernel · #print axioms enforced)</option>
@@ -286,11 +286,11 @@
           <div class="metric-tile">
             <div class="k">Kernel Verdict</div>
             <div class="v" id="sk-verdict" style="color: var(--color-brand-cyan);">ACCEPTS</div>
-            <div class="s" id="sk-decls">58,683 declarations (--verified)</div>
+            <div class="s" id="sk-decls">58,762 declarations (--verified)</div>
           </div>
           <div class="metric-tile">
             <div class="k">Fleet Sandboxed Audit</div>
-            <div class="v">1,391 Thms</div>
+            <div class="v">1,406 Thms</div>
             <div class="s">4 OpenIE repos · Linux bwrap 6/6</div>
           </div>
           <div class="metric-tile">
@@ -365,8 +365,8 @@
       <section id="la-figs" style="margin-top: 2.5rem;">
         <h2 style="font-size: 1.3rem;">Paper Vector Diagrams (Click to Zoom)</h2>
         <figure class="fig">
-          <img src="/figures/lut-adapt/lut6-nucleus-codon-and-means-test.svg" alt="4 KB LUT6 Bootstrap Nucleus, Wobble Harmonics, DiffLUT-Net Means Test, and Nov 2026 Looped Models">
-          <figcaption><strong>Figure 8.</strong> Phase 30 hardware, formal, and looped-frontier measurements (<code>Claims LA-19 [36 thms], LA-26..LA-29</code>): <code>Jetson AGX Thor</code> physical DC shunt <code>measured_j</code> (<code>85.28×</code> bit-sliced <code>CpJ</code>, <code>board_metered = true</code>), live attached <code>Alif Ensemble E3</code> (<code>OpenMV-AE3</code> Cortex-M55 @ <code>400 MHz</code>) <code>DWT</code> cycles (<code>1,943×</code>), 64-codon Operon + 2-bit wobble FWHT noise vanishing, closed-form <code>DiffLUT-Net</code> <code>-64.06%</code> pruning, and Oct–Nov 2026 looped models (<code>Inkling-2-Mini</code>, <code>Dory1.0-4B</code>).</figcaption>
+          <img src="/figures/lut-adapt/lut6-nucleus-codon-and-means-test.svg" alt="4 KB LUT6 + Zero-MUL T-MAC Nucleus, Wobble Harmonics, DiffLUT-Net Means Test, and Nov 2026 Looped Models">
+          <figcaption><strong>Figure 8.</strong> Hardware, formal, and looped-frontier measurements (<code>Claims LA-19 [42 thms], LA-26..LA-29, LA-31, LA-32</code>): <code>Jetson AGX Thor</code> physical DC shunt <code>measured_j</code> (<code>84.65×</code> bit-sliced <code>CpJ</code>, <code>1.33×</code> zero-MUL <code>T-MAC</code> <code>CpJ</code>, <code>board_metered = true</code>), live attached <code>Alif Ensemble E3</code> (<code>OpenMV-AE3</code> Cortex-M55 @ <code>400 MHz</code>) <code>DWT</code> cycles (<code>172.11×</code> scalar, <code>11.13×</code> <code>T-MAC</code>, <code>47,080×</code> bit-sliced), 64-codon Operon + 2-bit wobble FWHT noise vanishing, closed-form <code>DiffLUT-Net</code> <code>-64.06%</code> pruning, and Oct–Nov 2026 looped models (<code>Inkling-2-Mini</code>, <code>Dory1.0-4B</code>).</figcaption>
         </figure>
         <figure class="fig">
           <img src="/figures/lut-adapt/six-host-measured-j-and-multivendor-gpu.svg" alt="Physical DC Shunt measured_j, Four-Vendor CubeCL GPUs, and Sandboxed 6-Kernel Proof Audit">
@@ -614,12 +614,12 @@
     // Widget 5: Six-Kernel Paranoid Proof Audit Explorer
     (function(){
       var sk = {
-        conleche: { decls: '58,729 declarations (--verified)', vec: 'CVE-2026-72844', basis: 'Proved consistent in ZFC set theory (Breitner)' },
-        conron:   { decls: '58,729 declarations (--verified)', vec: 'CVE-2026-72711 & GMP', basis: 'Aeneas-verified Rust refinement of con-leche' },
-        lean4lean:{ decls: '58,731 declarations checked', vec: 'C++ .proj divergence', basis: 'Independent Lean-in-Lean CIC typechecker' },
-        nanoda:   { decls: '58,731 decls (sorryAx blocked)', vec: '.olean tampering', basis: 'Zero-Lean-runtime standalone Rust verifier' },
-        paranoid: { decls: '58,731 fresh-env decls', vec: 'skipKernelTC / meta', basis: 'Fresh-environment C++ replay (0 tactic trust)' },
-        default:  { decls: '36 LutAdapt thms (5 modules)', vec: 'Lean.ofReduceBool', basis: 'Post-CVE Lean 4.36.0 + #print axioms enforced' }
+        conleche: { decls: '58,762 declarations (--verified)', vec: 'CVE-2026-72844', basis: 'Proved consistent in ZFC set theory (Breitner)' },
+        conron:   { decls: '58,762 declarations (--verified)', vec: 'CVE-2026-72711 & GMP', basis: 'Aeneas-verified Rust refinement of con-leche' },
+        lean4lean:{ decls: '58,764 declarations checked', vec: 'C++ .proj divergence', basis: 'Independent Lean-in-Lean CIC typechecker' },
+        nanoda:   { decls: '58,764 decls (sorryAx blocked)', vec: '.olean tampering', basis: 'Zero-Lean-runtime standalone Rust verifier' },
+        paranoid: { decls: '58,764 fresh-env decls', vec: 'skipKernelTC / meta', basis: 'Fresh-environment C++ replay (0 tactic trust)' },
+        default:  { decls: '42 LutAdapt thms (6 modules)', vec: 'Lean.ofReduceBool', basis: 'Post-CVE Lean 4.36.0 + #print axioms enforced' }
       };
       var sel = document.getElementById('sk-select');
       function updSk() {
