@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:08.783
+Primero, las computadoras de hoy en día se apilan en muchas capas separadas, y los agentes de IA están atornillados en la parte superior sin cambios.
+
+2
+00:00:09.123 --> 00:00:15.467
+En segundo lugar, ninguna de esas capas pregunta de antemano cuánta energía gastará realmente la acción de un agente.
+
+3
+00:00:15.807 --> 00:00:22.892
+En tercer lugar, una máquina agente debe medir la energía, hacer cumplir presupuestos estrictos y rechazar acciones que los rompan.

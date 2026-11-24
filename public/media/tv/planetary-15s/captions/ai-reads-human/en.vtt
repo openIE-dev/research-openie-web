@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:07.595
+First, computers often swap data in text formats written for human eyes, forcing machines to spend extra work.
+
+2
+00:00:07.935 --> 00:00:15.564
+Second, reading indented configuration text took over two thousand times more chip energy than reading compact machine numbers.
+
+3
+00:00:15.904 --> 00:00:22.629
+Third, chopping structured text into AI word pieces burned twelve times more energy than parsing the text itself.

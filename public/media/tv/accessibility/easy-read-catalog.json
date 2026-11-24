@@ -1,12 +1,13 @@
 {
   "schema": "openie.accessibility.easy_read.v1",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "updated": "2026-11-24",
   "license": "https://creativecommons.org/publicdomain/zero/1.0/",
   "spdx_license": "CC0-1.0",
   "wcag_conformance": "WCAG 2.2 Level AA",
   "study_count": 28,
-  "audio_described_flagship_count": 8,
+  "audio_described_flagship_count": 28,
+  "audio_described_study_count": 28,
   "concepts_anchor_url": "/glossary/concepts.json",
   "studies": [
     {
@@ -51,7 +52,7 @@
       ],
       "energy_plain_note": "Built-in computer chip counters recorded the energy used.",
       "links": {
-        "tv_15s": "/tv/?study=agency&tier=15s",
+        "tv_15s": "/tv/?study=agency",
         "paper_url": "/papers/agency/",
         "figures_url": "/living/",
         "audio_description_vtt": "/media/tv/accessibility/agency-15s.ad.vtt",
@@ -100,7 +101,7 @@
       ],
       "energy_plain_note": "Real power sensors on the circuit board measured the electricity.",
       "links": {
-        "tv_15s": "/tv/?study=gates&tier=15s",
+        "tv_15s": "/tv/?study=gates",
         "paper_url": "/papers/gates/",
         "figures_url": "/living/ni/",
         "audio_description_vtt": "/media/tv/accessibility/gates-15s.ad.vtt",
@@ -149,7 +150,7 @@
       ],
       "energy_plain_note": "Built-in computer chip counters recorded the energy used.",
       "links": {
-        "tv_15s": "/tv/?study=deterministic-null&tier=15s",
+        "tv_15s": "/tv/?study=deterministic-null",
         "paper_url": "/papers/deterministic-null/",
         "figures_url": "/living/deterministic-null/",
         "audio_description_vtt": "/media/tv/accessibility/deterministic-null-15s.ad.vtt",
@@ -158,7 +159,7 @@
     },
     {
       "study_id": "satb-harness",
-      "flagship_slug": null,
+      "flagship_slug": "satb-harness",
       "canonical_id": "art:easyread:satb-harness:2d115068cdc00ae0",
       "short_title": "Satiation Benchmark Harness",
       "easy_title": "Same Fair Exam for Every AI",
@@ -198,16 +199,16 @@
       ],
       "energy_plain_note": "Real power sensors on the circuit board measured the electricity.",
       "links": {
-        "tv_15s": "/tv/?study=satb-harness&tier=15s",
+        "tv_15s": "/tv/?study=satb-harness",
         "paper_url": "/papers/satb-harness/",
         "figures_url": "/living/satb-harness/",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/satb-harness-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/satb-harness-15s.ad.m4a"
       }
     },
     {
       "study_id": "time-as-an-index",
-      "flagship_slug": null,
+      "flagship_slug": "time-as-an-index",
       "canonical_id": "art:easyread:time-as-an-index:b904cfc63e624ee2",
       "short_title": "Time as an Index",
       "easy_title": "Why Nobody Can Look Up Tomorrow",
@@ -247,11 +248,11 @@
       ],
       "energy_plain_note": "Clear math and public price records checked every number.",
       "links": {
-        "tv_15s": "/tv/?study=time-as-an-index&tier=15s",
+        "tv_15s": "/tv/?study=time-as-an-index",
         "paper_url": "/papers/time-as-an-index/",
         "figures_url": "/living/time-as-an-index/",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/time-as-an-index-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/time-as-an-index-15s.ad.m4a"
       }
     },
     {
@@ -296,7 +297,7 @@
       ],
       "energy_plain_note": "Real power sensors on the circuit board measured the electricity.",
       "links": {
-        "tv_15s": "/tv/?study=communication-avalanche&tier=15s",
+        "tv_15s": "/tv/?study=communication-avalanche",
         "paper_url": "/papers/communication-avalanche/",
         "figures_url": "/living/communication-avalanche/",
         "audio_description_vtt": "/media/tv/accessibility/communication-avalanche-15s.ad.vtt",
@@ -345,7 +346,7 @@
       ],
       "energy_plain_note": "Built-in computer chip counters recorded the energy used.",
       "links": {
-        "tv_15s": "/tv/?study=lut-adapt&tier=15s",
+        "tv_15s": "/tv/?study=lut-adapt",
         "paper_url": "/papers/lut-adapt/",
         "figures_url": "/living/lut-adapt/",
         "audio_description_vtt": "/media/tv/accessibility/lut-adapt-15s.ad.vtt",
@@ -354,7 +355,7 @@
     },
     {
       "study_id": "satiation",
-      "flagship_slug": null,
+      "flagship_slug": "satiation",
       "canonical_id": "art:easyread:satiation:195b09f14e2d89ea",
       "short_title": "Task Satiation vs. Aggregate Rebound",
       "easy_title": "Every Single Job Has a Finish Line",
@@ -394,11 +395,11 @@
       ],
       "energy_plain_note": "Clear math and public price records checked every number.",
       "links": {
-        "tv_15s": "/tv/?study=satiation&tier=15s",
+        "tv_15s": "/tv/?study=satiation",
         "paper_url": "/papers/satiation/",
         "figures_url": "/living/satiation/",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/satiation-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/satiation-15s.ad.m4a"
       }
     },
     {
@@ -443,7 +444,7 @@
       ],
       "energy_plain_note": "Built-in computer chip counters recorded the energy used.",
       "links": {
-        "tv_15s": "/tv/?study=rce&tier=15s",
+        "tv_15s": "/tv/?study=rce",
         "paper_url": "/papers/rce/",
         "figures_url": "/figures/rce/intent-entropy.svg",
         "audio_description_vtt": "/media/tv/accessibility/rce-15s.ad.vtt",
@@ -452,7 +453,7 @@
     },
     {
       "study_id": "rce-jepa",
-      "flagship_slug": null,
+      "flagship_slug": "rce-jepa",
       "canonical_id": "art:easyread:rce-jepa:117cbf1c2feafdde",
       "short_title": "RCE-JEPA",
       "easy_title": "Predict Program Meaning, Let the Checker Decide",
@@ -492,16 +493,16 @@
       ],
       "energy_plain_note": "Built-in computer chip counters recorded the energy used.",
       "links": {
-        "tv_15s": "/tv/?study=rce-jepa&tier=15s",
+        "tv_15s": "/tv/?study=rce-jepa",
         "paper_url": "/papers/rce-jepa/",
         "figures_url": "/living/rce-jepa/",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/rce-jepa-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/rce-jepa-15s.ad.m4a"
       }
     },
     {
       "study_id": "rce-compile",
-      "flagship_slug": null,
+      "flagship_slug": "rce-compile",
       "canonical_id": "art:easyread:rce-compile:64bbd3ab7fe35a24",
       "short_title": "RCE Compile",
       "easy_title": "When Heavy Code Optimization Wastes Power",
@@ -541,16 +542,16 @@
       ],
       "energy_plain_note": "Built-in computer chip counters recorded the energy used.",
       "links": {
-        "tv_15s": "/tv/?study=rce-compile&tier=15s",
+        "tv_15s": "/tv/?study=rce-compile",
         "paper_url": "/papers/rce-compile/",
         "figures_url": "/living/rce-compile/",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/rce-compile-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/rce-compile-15s.ad.m4a"
       }
     },
     {
       "study_id": "rce-vc",
-      "flagship_slug": null,
+      "flagship_slug": "rce-vc",
       "canonical_id": "art:easyread:rce-vc:d8c585fe6f54dd4f",
       "short_title": "RCE-VC",
       "easy_title": "Merge Code Safely Without Line Fights",
@@ -590,16 +591,16 @@
       ],
       "energy_plain_note": "Built-in computer chip counters recorded the energy used.",
       "links": {
-        "tv_15s": "/tv/?study=rce-vc&tier=15s",
+        "tv_15s": "/tv/?study=rce-vc",
         "paper_url": "/papers/rce-vc/",
         "figures_url": "/figures/rce-vc/swarm-and-timing.svg",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/rce-vc-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/rce-vc-15s.ad.m4a"
       }
     },
     {
       "study_id": "game-engines",
-      "flagship_slug": null,
+      "flagship_slug": "game-engines",
       "canonical_id": "art:easyread:game-engines:0dbf3906973d498f",
       "short_title": "Writing a Game Once",
       "easy_title": "Write One Game That Replays Everywhere",
@@ -639,16 +640,16 @@
       ],
       "energy_plain_note": "Built-in computer chip counters recorded the energy used.",
       "links": {
-        "tv_15s": "/tv/?study=game-engines&tier=15s",
+        "tv_15s": "/tv/?study=game-engines",
         "paper_url": "/papers/game-engines/",
         "figures_url": "/living/game-engines/",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/game-engines-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/game-engines-15s.ad.m4a"
       }
     },
     {
       "study_id": "three-body",
-      "flagship_slug": null,
+      "flagship_slug": "three-body",
       "canonical_id": "art:easyread:three-body:a87e58d7722086e4",
       "short_title": "The Three-Body Problem in Computing",
       "easy_title": "Fix Unwritten Guesses Between Teams",
@@ -688,16 +689,16 @@
       ],
       "energy_plain_note": "Clear math and public price records checked every number.",
       "links": {
-        "tv_15s": "/tv/?study=three-body&tier=15s",
+        "tv_15s": "/tv/?study=three-body",
         "paper_url": "/papers/three-body/",
         "figures_url": "/figures/three-body/three-bodies.svg",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/three-body-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/three-body-15s.ad.m4a"
       }
     },
     {
       "study_id": "ai-reads-human",
-      "flagship_slug": null,
+      "flagship_slug": "ai-reads-human",
       "canonical_id": "art:easyread:ai-reads-human:c803f71a0658c9d3",
       "short_title": "\"AI\" Reads Human",
       "easy_title": "Machine Numbers Save Power Over Human Text",
@@ -737,16 +738,16 @@
       ],
       "energy_plain_note": "Built-in computer chip counters recorded the energy used.",
       "links": {
-        "tv_15s": "/tv/?study=ai-reads-human&tier=15s",
+        "tv_15s": "/tv/?study=ai-reads-human",
         "paper_url": "/papers/ai-reads-human/",
         "figures_url": "/living/ai-reads-human/",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/ai-reads-human-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/ai-reads-human-15s.ad.m4a"
       }
     },
     {
       "study_id": "spellcheck",
-      "flagship_slug": null,
+      "flagship_slug": "spellcheck",
       "canonical_id": "art:easyread:spellcheck:53a5b110428c2e22",
       "short_title": "Spell Check is Global",
       "easy_title": "Cheap Local Tools Reach Everyone on Earth",
@@ -786,16 +787,16 @@
       ],
       "energy_plain_note": "Clear math and public price records checked every number.",
       "links": {
-        "tv_15s": "/tv/?study=spellcheck&tier=15s",
+        "tv_15s": "/tv/?study=spellcheck",
         "paper_url": "/papers/spellcheck/",
         "figures_url": "/living/spellcheck/",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/spellcheck-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/spellcheck-15s.ad.m4a"
       }
     },
     {
       "study_id": "ai-coding-market",
-      "flagship_slug": null,
+      "flagship_slug": "ai-coding-market",
       "canonical_id": "art:easyread:ai-coding-market:ec17076cd4b21586",
       "short_title": "The Promised Trillion Dollar AI-Coding Market",
       "easy_title": "Why Saving Working Code Shrinks AI Costs",
@@ -835,16 +836,16 @@
       ],
       "energy_plain_note": "Clear math and public price records checked every number.",
       "links": {
-        "tv_15s": "/tv/?study=ai-coding-market&tier=15s",
+        "tv_15s": "/tv/?study=ai-coding-market",
         "paper_url": "/papers/ai-coding-market/",
         "figures_url": "/figures/rce/intent-entropy.svg",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/ai-coding-market-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/ai-coding-market-15s.ad.m4a"
       }
     },
     {
       "study_id": "interface-economics",
-      "flagship_slug": null,
+      "flagship_slug": "interface-economics",
       "canonical_id": "art:easyread:interface-economics:394b61d13b7a27fd",
       "short_title": "The Price of the Unexamined Interface",
       "easy_title": "Cheap Handoff Checks Prevent Huge Disasters",
@@ -884,16 +885,16 @@
       ],
       "energy_plain_note": "Clear math and public price records checked every number.",
       "links": {
-        "tv_15s": "/tv/?study=interface-economics&tier=15s",
+        "tv_15s": "/tv/?study=interface-economics",
         "paper_url": "/papers/interface-economics/",
         "figures_url": "/figures/interface-economics/estimates-by-kind.svg",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/interface-economics-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/interface-economics-15s.ad.m4a"
       }
     },
     {
       "study_id": "mei",
-      "flagship_slug": null,
+      "flagship_slug": "mei",
       "canonical_id": "art:easyread:mei:f2e291eb99b57295",
       "short_title": "Metabolic Intelligence",
       "easy_title": "Computers That Respect a Strict Battery Budget",
@@ -933,16 +934,16 @@
       ],
       "energy_plain_note": "Clear math and public price records checked every number.",
       "links": {
-        "tv_15s": "/tv/?study=mei&tier=15s",
+        "tv_15s": "/tv/?study=mei",
         "paper_url": "/products/mei/",
         "figures_url": "/living/mei/",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/mei-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/mei-15s.ad.m4a"
       }
     },
     {
       "study_id": "jouleos",
-      "flagship_slug": null,
+      "flagship_slug": "jouleos",
       "canonical_id": "art:easyread:jouleos:53e8305578c6fffb",
       "short_title": "The Search for JouleOS",
       "easy_title": "An Operating System Built for Energy Budgets",
@@ -982,16 +983,16 @@
       ],
       "energy_plain_note": "Clear math and public price records checked every number.",
       "links": {
-        "tv_15s": "/tv/?study=jouleos&tier=15s",
+        "tv_15s": "/tv/?study=jouleos",
         "paper_url": "/products/jouleos/",
         "figures_url": "/living/",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/jouleos-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/jouleos-15s.ad.m4a"
       }
     },
     {
       "study_id": "latency",
-      "flagship_slug": null,
+      "flagship_slug": "latency",
       "canonical_id": "art:easyread:latency:d6ee87db650f7475",
       "short_title": "The Gap Between Possible and Deployed",
       "easy_title": "Why Cheaper Open AI Takes Months to Ship",
@@ -1031,11 +1032,11 @@
       ],
       "energy_plain_note": "Clear math and public price records checked every number.",
       "links": {
-        "tv_15s": "/tv/?study=latency&tier=15s",
+        "tv_15s": "/tv/?study=latency",
         "paper_url": "/papers/latency/",
         "figures_url": "/living/latency/",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/latency-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/latency-15s.ad.m4a"
       }
     },
     {
@@ -1080,16 +1081,16 @@
       ],
       "energy_plain_note": "Real power sensors on the circuit board measured the electricity.",
       "links": {
-        "tv_15s": "/tv/?study=eco-avalanche&tier=15s",
+        "tv_15s": "/tv/?study=eco-avalanche",
         "paper_url": "/papers/communication-avalanche/",
         "figures_url": "https://avalanche.openie.dev",
-        "audio_description_vtt": "/media/tv/accessibility/ecosystem-avalanche-15s.ad.vtt",
-        "audio_description_m4a": "/media/tv/accessibility/ecosystem-avalanche-15s.ad.m4a"
+        "audio_description_vtt": "/media/tv/accessibility/eco-avalanche-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/eco-avalanche-15s.ad.m4a"
       }
     },
     {
       "study_id": "eco-stack",
-      "flagship_slug": null,
+      "flagship_slug": "eco-stack",
       "canonical_id": "art:easyread:eco-stack:8a6eae861ff86771",
       "short_title": "Three Sciences, One Computing Map",
       "easy_title": "Three Sciences on One Energy Map",
@@ -1129,16 +1130,16 @@
       ],
       "energy_plain_note": "Built-in computer chip counters recorded the energy used.",
       "links": {
-        "tv_15s": "/tv/?study=eco-stack&tier=15s",
+        "tv_15s": "/tv/?study=eco-stack",
         "paper_url": "/papers/agency/",
         "figures_url": "https://stack.openie.dev",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/eco-stack-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/eco-stack-15s.ad.m4a"
       }
     },
     {
       "study_id": "eco-compute",
-      "flagship_slug": null,
+      "flagship_slug": "eco-compute",
       "canonical_id": "art:easyread:eco-compute:50d22ff32dd90721",
       "short_title": "Why Every Bit Pays Joules",
       "easy_title": "Every Digital Bit Spends Real Electricity",
@@ -1178,16 +1179,16 @@
       ],
       "energy_plain_note": "Real power sensors on the circuit board measured the electricity.",
       "links": {
-        "tv_15s": "/tv/?study=eco-compute&tier=15s",
+        "tv_15s": "/tv/?study=eco-compute",
         "paper_url": "/papers/rce-compile/",
         "figures_url": "https://compute.openie.dev",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/eco-compute-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/eco-compute-15s.ad.m4a"
       }
     },
     {
       "study_id": "eco-synthesis",
-      "flagship_slug": null,
+      "flagship_slug": "eco-synthesis",
       "canonical_id": "art:easyread:eco-synthesis:e1010af3b200ed69",
       "short_title": "Route First, Generate Last",
       "easy_title": "Check Fast Tables First, Generate Last",
@@ -1227,16 +1228,16 @@
       ],
       "energy_plain_note": "Built-in computer chip counters recorded the energy used.",
       "links": {
-        "tv_15s": "/tv/?study=eco-synthesis&tier=15s",
+        "tv_15s": "/tv/?study=eco-synthesis",
         "paper_url": "/papers/lut-adapt/",
         "figures_url": "https://synthesis.openie.dev",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/eco-synthesis-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/eco-synthesis-15s.ad.m4a"
       }
     },
     {
       "study_id": "eco-knowledge",
-      "flagship_slug": null,
+      "flagship_slug": "eco-knowledge",
       "canonical_id": "art:easyread:eco-knowledge:5990f89568b3ce42",
       "short_title": "Time-Indexed Claims & Six-Kernel Proofs",
       "easy_title": "Dated Sources and Six Proof Checkers",
@@ -1276,16 +1277,16 @@
       ],
       "energy_plain_note": "Built-in computer chip counters recorded the energy used.",
       "links": {
-        "tv_15s": "/tv/?study=eco-knowledge&tier=15s",
+        "tv_15s": "/tv/?study=eco-knowledge",
         "paper_url": "/papers/time-as-an-index/",
         "figures_url": "https://knowledge.openie.dev",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/eco-knowledge-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/eco-knowledge-15s.ad.m4a"
       }
     },
     {
       "study_id": "eco-database",
-      "flagship_slug": null,
+      "flagship_slug": "eco-database",
       "canonical_id": "art:easyread:eco-database:1b6078dfd8de0419",
       "short_title": "Sub-Microsecond State & Verifiable Logs",
       "easy_title": "Exact Logs and Microsecond Memory Reads",
@@ -1325,11 +1326,11 @@
       ],
       "energy_plain_note": "Built-in computer chip counters recorded the energy used.",
       "links": {
-        "tv_15s": "/tv/?study=eco-database&tier=15s",
+        "tv_15s": "/tv/?study=eco-database",
         "paper_url": "/papers/rce/",
         "figures_url": "https://database.openie.dev",
-        "audio_description_vtt": null,
-        "audio_description_m4a": null
+        "audio_description_vtt": "/media/tv/accessibility/eco-database-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/eco-database-15s.ad.m4a"
       }
     },
     {
@@ -1374,7 +1375,7 @@
       ],
       "energy_plain_note": "Real power sensors on the circuit board measured the electricity.",
       "links": {
-        "tv_15s": "/tv/?study=lut6-codon-nucleus&tier=15s",
+        "tv_15s": "/tv/?study=lut6-codon-nucleus",
         "paper_url": "/papers/lut-adapt/",
         "figures_url": "/living/lut-adapt/",
         "audio_description_vtt": "/media/tv/accessibility/lut6-codon-nucleus-15s.ad.vtt",

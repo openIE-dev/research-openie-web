@@ -349,5 +349,11 @@
       "detail": "Attested externalized artifact library retains 100.0% optimal competence at Gen 20 vs 29.27% under unverified imitation.",
       "href": "/papers/communication-avalanche/"
     }
-  ]
+  ],
+  "canonical_id": "art:radio:ep02-communication-tool-avalanche:7c95afdf95ac3f0b",
+  "wai_envelope_url": "/media/radio/wai/ep02-communication-tool-avalanche.wai",
+  "wai_content_blake3": "678bdaa24913eb44b85f2e071dd329456160804f7dec685a3cf3782ddaedabbf",
+  "wai_sha256": "f4de6993339efcd71fcf7667b2642c1ce6b9d6bd732d6ab38e6e255be95b2012",
+  "wai_byte_length": 5697,
+  "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=5dfdaa350a717b92"
 }

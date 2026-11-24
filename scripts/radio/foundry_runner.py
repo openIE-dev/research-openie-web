@@ -16,6 +16,7 @@ import time
 from pathlib import Path
 from typing import Any
 
+from commons_prior_art import commons_prior_art_check
 from foundry_pilots import (
     RAPL_PKG,
     pick_urls,
@@ -107,6 +108,9 @@ def run_foundry(radar_path: Path, out_path: Path) -> dict[str, Any]:
     topics_out: list[dict[str, Any]] = []
     status_counts = {"PROMOTED_CANDIDATE": 0, "HOLD_NEEDS_HARDWARE": 0, "KILLED_BY_NULL": 0}
     for sp in specs:
+        # Blueprint §6: query The Commons for prior art BEFORE proposing/executing a novel continuation
+        commons_q = f"{sp['title']} {' '.join(sp['openie_anchors'])}"
+        commons_corr = commons_prior_art_check(commons_q, top=8)
         res = sp["fn"]()
         st = res["status"]
         status_counts[st] = status_counts.get(st, 0) + 1
@@ -118,6 +122,7 @@ def run_foundry(radar_path: Path, out_path: Path) -> dict[str, Any]:
             "status": st,
             "openie_anchors": sp["openie_anchors"],
             "inspired_by_urls": pick_urls(items, sp["vector_ids"], k=3),
+            "commons_corroboration": commons_corr,
             "hypothesis": sp["hypothesis"],
             "shape_d_null_baseline": sp["shape_d_null_baseline"],
             "kill_criterion": sp["kill_criterion"],

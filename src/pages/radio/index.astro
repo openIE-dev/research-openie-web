@@ -12,19 +12,33 @@ import radioRadar from '../../data/radio-radar.json';
 import topicFoundry from '../../data/topic-foundry.json';
 import ecosystemChannelsRaw from '../../data/openie-ecosystem-channels.json';
 
+const EP15_ID = 'ep15-codon-lut6-m2-silicon';
+const EP16_ID = 'ep16-unsiloeing-planetary-wai-commons';
+
 const ecosystemChannels = {
   ...ecosystemChannelsRaw,
   channels: (ecosystemChannelsRaw.channels || []).map((ch: any) => {
-    if ((ch.id === 'avalanche' || ch.id === 'compute') && !(ch.radio_episodes || []).includes('ep15-codon-lut6-m2-silicon')) {
-      return { ...ch, radio_episodes: ['ep15-codon-lut6-m2-silicon', ...(ch.radio_episodes || [])] };
+    let eps = [...(ch.radio_episodes || [])];
+    if ((ch.id === 'avalanche' || ch.id === 'compute') && !eps.includes(EP15_ID)) {
+      eps = [EP15_ID, ...eps];
     }
-    return ch;
+    // Wire flagship Ep 16 into avalanche, stack, and database (which hosts communication.openie.dev)
+    if ((ch.id === 'avalanche' || ch.id === 'stack' || ch.id === 'database') && !eps.includes(EP16_ID)) {
+      eps = [EP16_ID, ...eps];
+    }
+    return { ...ch, radio_episodes: eps };
   }),
 };
 
-const pageTitle = 'OpenIE Research Radio — Live Broadcast, Global Rung Radar & Pilot Foundry';
+const episodes = (radioFeed as any).episodes || [];
+const ep16 = episodes.find((e: any) => e.id === EP16_ID) || episodes[episodes.length - 1] || episodes[0];
+const commonsSummary = (radioRadar as any).commons_prior_art_summary || {};
+const waiRoot = (radioFeed as any).wai_merkle_root_blake3 || '';
+const waiPubkey = (radioFeed as any).wai_signer_pubkey_ed25519 || '';
+
+const pageTitle = 'OpenIE Research Radio — 16 WAI1 Broadcasts, Commons-Grounded Rung Radar & Pilot Foundry';
 const pageDesc =
-  'Multi-voice OpenIE Research Radio (15 episodes across 6 *.openie.dev desks + Podcast RSS), 6-hour autonomous Global Rung Radar scoring open-access literature onto the 9-Rung Avalanche, and sub-60-second deterministic RAPL pilot foundry.';
+  'Multi-voice OpenIE Research Radio (16 episodes across *.openie.dev desks + Podcast RSS + byte-conforming WAI1 BLAKE3/Ed25519 envelopes), Commons-grounded 6-hour Global Rung Radar (scholar.askdavidc.ai §6 prior-art pre-check), and sub-60-second deterministic RAPL pilot foundry.';
 ---
 
 <Layout title={pageTitle} description={pageDesc}>
@@ -44,6 +58,76 @@ const pageDesc =
     ecosystemCount={(ecosystemChannels.channels || []).length}
   />
 
+  <!-- Canonical WAI1 Binary Envelope, Ep 16 Spotlight & Blueprint §6 Commons Attestation Bar -->
+  <section aria-label="Canonical WAI1 Envelopes and Commons Prior-Art Grounding" class="max-w-7xl mx-auto px-5 md:px-10 pb-6">
+    <div class="glass-card p-4 sm:p-5 border border-brand-cyan/35 bg-gradient-to-r from-brand-cyan/[0.06] via-brand-navy/60 to-brand-amber/[0.06]">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <div class="space-y-1.5 max-w-3xl">
+          <div class="flex flex-wrap items-center gap-2 font-mono text-[10.5px]">
+            <span class="px-2 py-0.5 rounded bg-brand-amber/20 border border-brand-amber/45 text-brand-amber font-semibold">
+              NEW · EP 16 FLAGSHIP
+            </span>
+            <span class="px-2 py-0.5 rounded bg-brand-cyan/15 border border-brand-cyan/40 text-brand-cyan">
+              16/16 WAI1 Binary Envelopes · BLAKE3 + Ed25519
+            </span>
+            <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-brand-border text-brand-light">
+              §6 Commons Pre-Check: {commonsSummary.radar_works_with_prior_art ?? (radioRadar.items || []).length}/{(radioRadar.items || []).length} Corroborated
+            </span>
+          </div>
+          <div class="font-display text-sm sm:text-base font-bold text-brand-white">
+            {ep16?.title || 'Ep 16 · Unsiloeing Science: One Canonical WAI1 Artifact Across 50 Languages, Accessibility, & The Commons'}
+          </div>
+          <p class="font-body text-xs text-brand-slate leading-relaxed m-0">
+            Every Research Radio broadcast ships a byte-conforming <code class="font-mono text-brand-cyan">WAI1</code> container (<code class="font-mono text-brand-amber">/media/radio/wai/*.wai</code>) carrying the 8-field <code class="font-mono text-brand-light">openie-artifact-v1</code> record, Zstandard transcript &amp; cards, audio digests, and <code class="font-mono text-brand-cyan">moq-jwp</code> Merkle signatures{waiRoot ? ` (root ${waiRoot.slice(0, 12)}…)` : ''}, while the 6-hour synthesis loop queries <a href="https://scholar.askdavidc.ai" target="_blank" rel="noopener noreferrer" class="text-brand-amber hover:underline">scholar.askdavidc.ai</a> before proposing novel continuations.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 shrink-0">
+          <button
+            type="button"
+            id="spotlight-tune-ep16-btn"
+            data-ep16-id={EP16_ID}
+            class="font-mono text-xs font-semibold px-3.5 py-2 rounded-lg bg-brand-amber text-brand-dark hover:opacity-90 cursor-pointer transition-all"
+          >
+            ▶ Tune Ep 16 Now
+          </button>
+          <a
+            id="strip-active-wai-link"
+            href={ep16?.wai_envelope_url || `/media/radio/wai/${EP16_ID}.wai`}
+            download
+            class="font-mono text-xs px-3 py-2 rounded-lg border border-brand-cyan/45 bg-brand-cyan/10 text-brand-cyan no-underline hover:bg-brand-cyan/20 transition-all"
+          >
+            ⬇ Active .wai Envelope
+          </a>
+          <a
+            href="/media/radio/wai/receipts.json"
+            target="_blank"
+            rel="noopener noreferrer"
+            title={waiPubkey ? `Ed25519 Signer: ${waiPubkey}` : 'JWP BLAKE3 Merkle + Ed25519 Receipts'}
+            class="font-mono text-xs px-3 py-2 rounded-lg border border-brand-border bg-white/[0.03] text-brand-light no-underline hover:border-brand-cyan hover:text-brand-cyan transition-all"
+          >
+            JWP Receipts ↗
+          </a>
+          <a
+            href="/blueprint/"
+            class="font-mono text-xs px-3 py-2 rounded-lg border border-brand-border bg-white/[0.03] text-brand-slate no-underline hover:text-brand-white transition-all"
+          >
+            /blueprint/ →
+          </a>
+          <a
+            id="strip-active-commons-link"
+            href={ep16?.commons_citation_url || 'https://scholar.askdavidc.ai'}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-mono text-xs px-3 py-2 rounded-lg border border-brand-amber/35 bg-brand-amber/10 text-brand-amber no-underline hover:bg-brand-amber/20 transition-all"
+          >
+            Commons Seekable ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <RadioEcosystemSection ecosystem={ecosystemChannels} episodes={radioFeed.episodes || []} />
 
   <RadioRungRadar radar={radioRadar} />
@@ -53,4 +137,217 @@ const pageDesc =
   <RadioFoundrySection foundry={topicFoundry} />
 
   <RadioClientScript feed={radioFeed} radar={radioRadar} foundry={topicFoundry} ecosystem={ecosystemChannels} />
+
+  <script is:inline>
+  (function () {
+    'use strict';
+
+    var rawEl = document.getElementById('openie-radio-payload');
+    if (!rawEl) return;
+    var DATA = {};
+    try { DATA = JSON.parse(rawEl.textContent || '{}'); } catch (_) { return; }
+    var FEED = DATA.feed || { episodes: [] };
+    var RADAR = DATA.radar || { items: [], foundry_pilots: [] };
+    var EPISODES = FEED.episodes || [];
+    if (!EPISODES.length) return;
+
+    var epById = {};
+    EPISODES.forEach(function (e) { epById[e.id] = e; });
+
+    // 1. Update playlist heading & two-digit EP numbers (EP 01 .. EP 16) + per-item .wai badge
+    var listEl = document.getElementById('episode-list');
+    if (listEl && listEl.previousElementSibling) {
+      var h3 = listEl.previousElementSibling.querySelector('h3');
+      if (h3) h3.textContent = EPISODES.length + ' Broadcast Episodes · WAI1';
+    }
+    document.querySelectorAll('.ep-select-btn').forEach(function (btn) {
+      var eid = btn.getAttribute('data-ep-id') || '';
+      var ep = epById[eid];
+      if (!ep) return;
+      var numSpan = btn.querySelector('span.text-brand-cyan');
+      if (numSpan) {
+        var padNum = String(ep.number).padStart(2, '0');
+        numSpan.textContent = 'EP ' + padNum + ' · ' + (ep.panel || []).join(' · ');
+      }
+      var topRow = btn.querySelector('div');
+      if (topRow && ep.wai_envelope_url && !btn.querySelector('[data-wai-chip]')) {
+        var rightSpan = topRow.lastElementChild;
+        if (rightSpan) {
+          rightSpan.textContent = (ep.duration_human || '') + ' · WAI1';
+          rightSpan.setAttribute('data-wai-chip', '1');
+        }
+      }
+    });
+
+    // Also normalize EP 015 / EP 016 labels inside Ecosystem Desk pills
+    document.querySelectorAll('[data-desk-tune-ep] strong').forEach(function (st) {
+      var txt = (st.textContent || '').trim();
+      var m = /^EP\s+0(\d{2,})$/.exec(txt);
+      if (m) st.textContent = 'EP ' + m[1];
+    });
+
+    // 2. Inject dynamic .wai envelope & Commons seekable citation badges next to .m4a download in Studio Deck
+    var dlM4a = document.getElementById('deck-download-link');
+    var stripWai = document.getElementById('strip-active-wai-link');
+    var stripCommons = document.getElementById('strip-active-commons-link');
+    var waiDeckLink = null;
+    var commonsDeckLink = null;
+
+    if (dlM4a && dlM4a.parentElement) {
+      var wrap = document.createElement('div');
+      wrap.className = 'flex flex-wrap items-center gap-1.5';
+      dlM4a.parentElement.insertBefore(wrap, dlM4a);
+      wrap.appendChild(dlM4a);
+
+      waiDeckLink = document.createElement('a');
+      waiDeckLink.id = 'deck-wai-link';
+      waiDeckLink.setAttribute('download', '');
+      waiDeckLink.className = 'font-mono text-[11px] px-2.5 py-1.5 rounded border border-brand-cyan/40 bg-brand-cyan/10 text-brand-cyan no-underline hover:bg-brand-cyan/20 text-center';
+      waiDeckLink.textContent = '.wai';
+      wrap.appendChild(waiDeckLink);
+
+      commonsDeckLink = document.createElement('a');
+      commonsDeckLink.id = 'deck-commons-link';
+      commonsDeckLink.target = '_blank';
+      commonsDeckLink.rel = 'noopener noreferrer';
+      commonsDeckLink.className = 'font-mono text-[11px] px-2.5 py-1.5 rounded border border-brand-amber/35 bg-brand-amber/10 text-brand-amber no-underline hover:bg-brand-amber/20 text-center';
+      commonsDeckLink.textContent = 'Commons ↗';
+      wrap.appendChild(commonsDeckLink);
+    }
+
+    function syncActiveEnvelopeLinks() {
+      if (!dlM4a) return;
+      var curAudio = dlM4a.getAttribute('href') || '';
+      var activeEp = EPISODES.find(function (e) { return e.audio_url === curAudio; }) || EPISODES[0];
+      if (!activeEp) return;
+      var wUrl = activeEp.wai_envelope_url || ('/media/radio/wai/' + activeEp.id + '.wai');
+      var cUrl = activeEp.commons_citation_url || ('https://scholar.askdavidc.ai/?q=' + encodeURIComponent(activeEp.id));
+      var b3Short = (activeEp.wai_content_blake3 || '').slice(0, 12);
+      if (waiDeckLink) {
+        waiDeckLink.href = wUrl;
+        waiDeckLink.title = 'Download WAI1 binary envelope' + (b3Short ? ' (BLAKE3 ' + b3Short + '…)' : '');
+      }
+      if (commonsDeckLink) {
+        commonsDeckLink.href = cUrl;
+        commonsDeckLink.title = 'Inspect seekable citation in The Commons (scholar.askdavidc.ai)';
+      }
+      if (stripWai) stripWai.setAttribute('href', wUrl);
+      if (stripCommons) stripCommons.setAttribute('href', cUrl);
+    }
+    syncActiveEnvelopeLinks();
+    if (dlM4a && typeof MutationObserver === 'function') {
+      new MutationObserver(syncActiveEnvelopeLinks).observe(dlM4a, { attributes: true, attributeFilter: ['href'] });
+    }
+
+    // 3. Spotlight Ep 16 button + ?ep=<id>&t=<sec> & ?desk=communication seekable deep-links
+    function triggerEpisodeAndSeek(epId, seekSec, autoPlay) {
+      var btn = document.querySelector('.ep-select-btn[data-ep-id="' + epId + '"]');
+      if (btn) btn.click();
+      var audioEl = document.getElementById('radio-audio');
+      if (!audioEl) return;
+      var apply = function () {
+        if (typeof seekSec === 'number' && !isNaN(seekSec) && seekSec > 0) {
+          try { audioEl.currentTime = seekSec; } catch (_) {}
+        }
+        if (autoPlay) audioEl.play().catch(function () {});
+        else audioEl.pause();
+      };
+      if (audioEl.readyState >= 1) apply();
+      else audioEl.addEventListener('loadedmetadata', apply, { once: true });
+    }
+
+    var ep16Btn = document.getElementById('spotlight-tune-ep16-btn');
+    if (ep16Btn) {
+      ep16Btn.addEventListener('click', function () {
+        var targetId = ep16Btn.getAttribute('data-ep16-id') || 'ep16-unsiloeing-planetary-wai-commons';
+        triggerEpisodeAndSeek(targetId, 0, true);
+        var studioEl = document.getElementById('radio-panel-studio');
+        if (studioEl) studioEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+
+    var params = new URLSearchParams(window.location.search);
+    var qEp = params.get('ep');
+    var qT = params.get('t');
+    var qDesk = params.get('desk');
+    if (qDesk === 'communication' && epById['ep16-unsiloeing-planetary-wai-commons']) {
+      triggerEpisodeAndSeek('ep16-unsiloeing-planetary-wai-commons', 0, false);
+    }
+    if (qEp && epById[qEp]) {
+      var parsedSec = qT ? parseFloat(String(qT).replace(/s$/i, '')) : 0;
+      triggerEpisodeAndSeek(qEp, isNaN(parsedSec) ? 0 : parsedSec, false);
+    }
+
+    // 4. Surface Blueprint §6 Commons Prior-Art Corroboration badges across Radar & Foundry cards
+    var radarItems = RADAR.items || [];
+    var corrByUrl = {};
+    var corrByRadarId = {};
+    radarItems.forEach(function (it) {
+      if (it && it.commons_corroboration) {
+        if (it.url) corrByUrl[it.url] = it.commons_corroboration;
+        if (it.radar_id) corrByRadarId[it.radar_id] = it.commons_corroboration;
+      }
+    });
+
+    function makeCommonsBadge(corr) {
+      var a = document.createElement('a');
+      a.href = corr.top_citation_url || corr.top_commons_permalink || 'https://scholar.askdavidc.ai';
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.className = 'inline-flex items-center gap-1 font-mono text-[10px] px-2 py-0.5 rounded border border-brand-cyan/35 bg-brand-cyan/10 text-brand-cyan no-underline hover:bg-brand-cyan/20';
+      a.textContent = '§6 Commons (' + (corr.hit_count || 0) + ' hits) ↗';
+      if (corr.top_statement_excerpt) a.title = corr.top_statement_excerpt;
+      return a;
+    }
+
+    document.querySelectorAll('#rrr-cards-grid .rrr-card').forEach(function (card) {
+      var titleLink = card.querySelector('h3 a');
+      var href = titleLink ? titleLink.getAttribute('href') : '';
+      var corr = href ? corrByUrl[href] : null;
+      var footerLeft = card.querySelector('.border-t .flex');
+      if (corr && footerLeft && !card.querySelector('[data-commons-badge]')) {
+        var b = makeCommonsBadge(corr);
+        b.setAttribute('data-commons-badge', '1');
+        footerLeft.appendChild(b);
+      }
+    });
+
+    document.querySelectorAll('#radar-grid .radar-item').forEach(function (card) {
+      var ridSpan = card.querySelector('span.text-brand-gray');
+      var rid = ridSpan ? (ridSpan.textContent || '').trim() : '';
+      var corr = rid ? corrByRadarId[rid] : null;
+      var linkRow = card.lastElementChild;
+      if (corr && linkRow && !card.querySelector('[data-commons-badge]')) {
+        var b = makeCommonsBadge(corr);
+        b.setAttribute('data-commons-badge', '1');
+        linkRow.appendChild(b);
+      }
+    });
+
+    var foundryCorrByTitle = {};
+    (RADAR.foundry_pilots || []).forEach(function (fp) {
+      if (fp && fp.title && fp.commons_corroboration) {
+        foundryCorrByTitle[fp.title] = fp.commons_corroboration;
+      }
+    });
+    document.querySelectorAll('.foundry-card').forEach(function (card) {
+      var h3 = card.querySelector('h3');
+      var titleTxt = h3 ? (h3.textContent || '').trim() : '';
+      var corr = foundryCorrByTitle[titleTxt];
+      if (corr && h3 && h3.parentElement && !card.querySelector('[data-commons-badge]')) {
+        var row = document.createElement('div');
+        row.className = 'mt-1.5 flex flex-wrap items-center gap-2';
+        row.setAttribute('data-commons-badge', '1');
+        row.appendChild(makeCommonsBadge(corr));
+        if (corr.top_statement_excerpt) {
+          var ex = document.createElement('span');
+          ex.className = 'font-mono text-[10px] text-brand-gray truncate max-w-md';
+          ex.textContent = corr.top_statement_excerpt;
+          row.appendChild(ex);
+        }
+        h3.parentElement.insertBefore(row, h3.nextSibling);
+      }
+    });
+  })();
+  </script>
 </Layout>

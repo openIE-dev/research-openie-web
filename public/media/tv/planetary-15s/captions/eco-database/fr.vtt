@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:06.928
+Premièrement, la plupart des logiciels consomment inutilement de l'énergie et du temps pour décompresser le texte et recalculer les réponses qu'ils ont déjà résolues.
+
+2
+00:00:07.268 --> 00:00:14.314
+Deuxièmement, les journaux reliés par empreintes digitales et les indices à double temps permettent à n'importe quelle machine de reproduire les états passés exacts sans deviner.
+
+3
+00:00:14.654 --> 00:00:21.312
+Troisièmement, les magasins de recherche mappés en mémoire à copie zéro transforment le travail répété en lectures en sous-microseconde sous deux microjoules.

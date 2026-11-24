@@ -1,0 +1,358 @@
+{
+  "schema": "openie.radio.wai1_jwp_receipts.v1",
+  "wai_spec": "1.0",
+  "jwp_extension": "open-standards/wai/extensions/jwp-receipts.md",
+  "generated_at_utc": "2026-11-24T19:59:22Z",
+  "group_receipt": {
+    "kind": "group",
+    "track_alias": 1,
+    "group_id": 16,
+    "root_hash": "c43412bc2194865d8bc1f665dc9750eca203f6feb8ac0a66ebe69b1119eaaa3f",
+    "leaf_count": 16,
+    "joules_total": 0,
+    "group_start": "2026-11-23T06:00:00Z",
+    "group_end": "2026-11-24T19:00:00Z",
+    "signer_pubkey": "3289bd26e96cfaeaa3a376a729a0afe21a1b34fe92c997523a72e0b557ee3405",
+    "signer_id": "https://research.openie.dev#radio-wai1-publisher",
+    "parent_receipt_hash": null,
+    "sig": "c8a3d8e294900a0b03e6f5d3151d55ec7c80a8bc321363088c4417a30eb8552467a28949bafce4550ef9202df879fd11f149a3f5dff5c5812d5c0a660efe7a08"
+  },
+  "object_receipts": [
+    {
+      "kind": "object",
+      "track_alias": 1,
+      "group_id": 16,
+      "object_id": 0,
+      "episode_id": "ep01-global-literature-radar",
+      "wai_envelope_url": "/media/radio/wai/ep01-global-literature-radar.wai",
+      "content_hash": "31dc5fe1b419174360e01d10f6eec9f9efc52823b7e64d2c1fd3b75792daf3bd",
+      "joules_micro": 0,
+      "origin": "openie-radio-studio",
+      "merkle_proof": {
+        "siblings": [
+          "e0f1e9da9d1bf587c2828917b7e0ecef5cc24ae6f4272669d2f021d59206cd11",
+          "e79cda2bcd7122dcd9a748d18329a07d870f81aa91a834aa3c2e50c595076207",
+          "e01608bcbdc01dfb0b085031d5566a5ddbe717e04f270d2f875ad66969d086a2",
+          "8de48ea5808c3d33ce6285f336635e0091341d6708d57e3ef97294d61d72bb7f"
+        ],
+        "direction_bits": 0,
+        "leaf_index": 0
+      }
+    },
+    {
+      "kind": "object",
+      "track_alias": 1,
+      "group_id": 16,
+      "object_id": 1,
+      "episode_id": "ep02-communication-tool-avalanche",
+      "wai_envelope_url": "/media/radio/wai/ep02-communication-tool-avalanche.wai",
+      "content_hash": "678bdaa24913eb44b85f2e071dd329456160804f7dec685a3cf3782ddaedabbf",
+      "joules_micro": 0,
+      "origin": "openie-radio-studio",
+      "merkle_proof": {
+        "siblings": [
+          "f606f603743740920abec3811ad7ad2f02d9135d8cb0e8b6c522d8823aaaaae2",
+          "e79cda2bcd7122dcd9a748d18329a07d870f81aa91a834aa3c2e50c595076207",
+          "e01608bcbdc01dfb0b085031d5566a5ddbe717e04f270d2f875ad66969d086a2",
+          "8de48ea5808c3d33ce6285f336635e0091341d6708d57e3ef97294d61d72bb7f"
+        ],
+        "direction_bits": 1,
+        "leaf_index": 1
+      }
+    },
+    {
+      "kind": "object",
+      "track_alias": 1,
+      "group_id": 16,
+      "object_id": 2,
+      "episode_id": "ep03-rce-world-coding",
+      "wai_envelope_url": "/media/radio/wai/ep03-rce-world-coding.wai",
+      "content_hash": "b2bc7962bfc395b9a44cbb5c3f32adcc265f8d6ffb8848c15c6d6b3f0173bc25",
+      "joules_micro": 0,
+      "origin": "openie-radio-studio",
+      "merkle_proof": {
+        "siblings": [
+          "f9fb3cf6c1b2f5599f20bc54cf3c25437ea030217ab1ca1eff28ee0741e269fc",
+          "8add94ea8ae98e7b4278479ab82480cf56f8b7d596dad0849e248eccfebeb69c",
+          "e01608bcbdc01dfb0b085031d5566a5ddbe717e04f270d2f875ad66969d086a2",
+          "8de48ea5808c3d33ce6285f336635e0091341d6708d57e3ef97294d61d72bb7f"
+        ],
+        "direction_bits": 2,
+        "leaf_index": 2
+      }
+    },
+    {
+      "kind": "object",
+      "track_alias": 1,
+      "group_id": 16,
+      "object_id": 3,
+      "episode_id": "ep04-deterministic-null-satb",
+      "wai_envelope_url": "/media/radio/wai/ep04-deterministic-null-satb.wai",
+      "content_hash": "c49f928b8b1959101e5ec8cfed1921ae190dffda3784084ede21970aa4b063ac",
+      "joules_micro": 0,
+      "origin": "openie-radio-studio",
+      "merkle_proof": {
+        "siblings": [
+          "9fe764861e98659c8a12cbea4a190520e4591787f48f218dffeff82a6b8700eb",
+          "8add94ea8ae98e7b4278479ab82480cf56f8b7d596dad0849e248eccfebeb69c",
+          "e01608bcbdc01dfb0b085031d5566a5ddbe717e04f270d2f875ad66969d086a2",
+          "8de48ea5808c3d33ce6285f336635e0091341d6708d57e3ef97294d61d72bb7f"
+        ],
+        "direction_bits": 3,
+        "leaf_index": 3
+      }
+    },
+    {
+      "kind": "object",
+      "track_alias": 1,
+      "group_id": 16,
+      "object_id": 4,
+      "episode_id": "ep05-game-engines-everywhere",
+      "wai_envelope_url": "/media/radio/wai/ep05-game-engines-everywhere.wai",
+      "content_hash": "5d8fe712c532274b41e5fc15650dfcf1f784a5e48611ca3f2c7fba22002b2b51",
+      "joules_micro": 0,
+      "origin": "openie-radio-studio",
+      "merkle_proof": {
+        "siblings": [
+          "94b240a34e2ee7f03338f3117267c28bb8424d0d7402fcb8938ee8ae3e947597",
+          "5181fd736c1fd8519e51690fd9eacdf7d57ce9ec02a3b27c87254d8ced7368fa",
+          "97743fed0a571f2d758b433e051743f0a534aae5ae8e196034f65278f1a4e415",
+          "8de48ea5808c3d33ce6285f336635e0091341d6708d57e3ef97294d61d72bb7f"
+        ],
+        "direction_bits": 4,
+        "leaf_index": 4
+      }
+    },
+    {
+      "kind": "object",
+      "track_alias": 1,
+      "group_id": 16,
+      "object_id": 5,
+      "episode_id": "ep06-lut6-metabolic-jouleos",
+      "wai_envelope_url": "/media/radio/wai/ep06-lut6-metabolic-jouleos.wai",
+      "content_hash": "3570d730d90c1548f3f2565bf558d3c95bb7d535f80d58d7bbdf685e87fb2445",
+      "joules_micro": 0,
+      "origin": "openie-radio-studio",
+      "merkle_proof": {
+        "siblings": [
+          "43323958c8f442373c1389a8bcd9be4bc07d71f9e539f7bbbb43427586aaead3",
+          "5181fd736c1fd8519e51690fd9eacdf7d57ce9ec02a3b27c87254d8ced7368fa",
+          "97743fed0a571f2d758b433e051743f0a534aae5ae8e196034f65278f1a4e415",
+          "8de48ea5808c3d33ce6285f336635e0091341d6708d57e3ef97294d61d72bb7f"
+        ],
+        "direction_bits": 5,
+        "leaf_index": 5
+      }
+    },
+    {
+      "kind": "object",
+      "track_alias": 1,
+      "group_id": 16,
+      "object_id": 6,
+      "episode_id": "ep07-time-as-an-index",
+      "wai_envelope_url": "/media/radio/wai/ep07-time-as-an-index.wai",
+      "content_hash": "6fa5d194e420bfbf243fe9948d7648367a6b934acc020c942a8e30d164c0e1a5",
+      "joules_micro": 0,
+      "origin": "openie-radio-studio",
+      "merkle_proof": {
+        "siblings": [
+          "cf4c98d7d4cfdd93e43ab000e1a8dc76eb1bfe3a9d2a9a11ff85ad4818b4f735",
+          "3b19751032a433a544fd688997b0b4efb0e40d6d3634afbc5cd9479fe27ce5b7",
+          "97743fed0a571f2d758b433e051743f0a534aae5ae8e196034f65278f1a4e415",
+          "8de48ea5808c3d33ce6285f336635e0091341d6708d57e3ef97294d61d72bb7f"
+        ],
+        "direction_bits": 6,
+        "leaf_index": 6
+      }
+    },
+    {
+      "kind": "object",
+      "track_alias": 1,
+      "group_id": 16,
+      "object_id": 7,
+      "episode_id": "ep08-idea-foundry-redteam",
+      "wai_envelope_url": "/media/radio/wai/ep08-idea-foundry-redteam.wai",
+      "content_hash": "1702bc0c0bbc9be1d76225e344c0a9e6ad0968f2905623aa35193c9999d90842",
+      "joules_micro": 0,
+      "origin": "openie-radio-studio",
+      "merkle_proof": {
+        "siblings": [
+          "5e128d3297bc85791d3558640a51d76ad67d1d4c73e279ef7657397a1d1d1b9c",
+          "3b19751032a433a544fd688997b0b4efb0e40d6d3634afbc5cd9479fe27ce5b7",
+          "97743fed0a571f2d758b433e051743f0a534aae5ae8e196034f65278f1a4e415",
+          "8de48ea5808c3d33ce6285f336635e0091341d6708d57e3ef97294d61d72bb7f"
+        ],
+        "direction_bits": 7,
+        "leaf_index": 7
+      }
+    },
+    {
+      "kind": "object",
+      "track_alias": 1,
+      "group_id": 16,
+      "object_id": 8,
+      "episode_id": "ep09-avalanche-ratchet-desk",
+      "wai_envelope_url": "/media/radio/wai/ep09-avalanche-ratchet-desk.wai",
+      "content_hash": "9c49d481e46a0782bd0b36c0a0cd995d2a0d736af998633f979c5adba082a644",
+      "joules_micro": 0,
+      "origin": "openie-radio-studio",
+      "merkle_proof": {
+        "siblings": [
+          "3bd50cb3d71d051535fe54f94de215d503f26da17653bfe5a8a1e3de46765610",
+          "3edcc398566e8a5731d596aa6230a4d0882f640a6f6246f2abd5e65a1d706e54",
+          "ce7545999aee395831aed9683f7ab240ed11ffb31784420f20fcf208785078ce",
+          "3d050ac1778e480eb7243d76618b3a79d4adb11e04c3c177e6bcd00050a7c005"
+        ],
+        "direction_bits": 8,
+        "leaf_index": 8
+      }
+    },
+    {
+      "kind": "object",
+      "track_alias": 1,
+      "group_id": 16,
+      "object_id": 9,
+      "episode_id": "ep10-stack-three-altitudes-desk",
+      "wai_envelope_url": "/media/radio/wai/ep10-stack-three-altitudes-desk.wai",
+      "content_hash": "4bb76f4f6ea8e3840007b31886ed67659424d0dca836c4b260219cfd6a18e848",
+      "joules_micro": 0,
+      "origin": "openie-radio-studio",
+      "merkle_proof": {
+        "siblings": [
+          "bf3c09139b586a7f1beca0514b0922228554b830340aa2338be9a21ace7428c9",
+          "3edcc398566e8a5731d596aa6230a4d0882f640a6f6246f2abd5e65a1d706e54",
+          "ce7545999aee395831aed9683f7ab240ed11ffb31784420f20fcf208785078ce",
+          "3d050ac1778e480eb7243d76618b3a79d4adb11e04c3c177e6bcd00050a7c005"
+        ],
+        "direction_bits": 9,
+        "leaf_index": 9
+      }
+    },
+    {
+      "kind": "object",
+      "track_alias": 1,
+      "group_id": 16,
+      "object_id": 10,
+      "episode_id": "ep11-compute-joule-substrate-desk",
+      "wai_envelope_url": "/media/radio/wai/ep11-compute-joule-substrate-desk.wai",
+      "content_hash": "7b63ecd00d5a592d7dc67d776a23084dbc767786df1c14df4a7450f474859f3c",
+      "joules_micro": 0,
+      "origin": "openie-radio-studio",
+      "merkle_proof": {
+        "siblings": [
+          "a2af86b85df9fd132eca48c3c91d858ac7e972b8187dfd93a67477cfed9711ab",
+          "611e2d6a7fea2f589207ad13160602f632a8be702130c2adbf8633a6ec604c64",
+          "ce7545999aee395831aed9683f7ab240ed11ffb31784420f20fcf208785078ce",
+          "3d050ac1778e480eb7243d76618b3a79d4adb11e04c3c177e6bcd00050a7c005"
+        ],
+        "direction_bits": 10,
+        "leaf_index": 10
+      }
+    },
+    {
+      "kind": "object",
+      "track_alias": 1,
+      "group_id": 16,
+      "object_id": 11,
+      "episode_id": "ep12-synthesis-routing-verb-desk",
+      "wai_envelope_url": "/media/radio/wai/ep12-synthesis-routing-verb-desk.wai",
+      "content_hash": "106b48f0367b6adb6406ff3194ff9f7d45f14fca7209b4a9c569734b63a80a6c",
+      "joules_micro": 0,
+      "origin": "openie-radio-studio",
+      "merkle_proof": {
+        "siblings": [
+          "1aee27c6f290f2a9c384705ad9cf9e695b60d9147e68d83b48ce263337a38a0a",
+          "611e2d6a7fea2f589207ad13160602f632a8be702130c2adbf8633a6ec604c64",
+          "ce7545999aee395831aed9683f7ab240ed11ffb31784420f20fcf208785078ce",
+          "3d050ac1778e480eb7243d76618b3a79d4adb11e04c3c177e6bcd00050a7c005"
+        ],
+        "direction_bits": 11,
+        "leaf_index": 11
+      }
+    },
+    {
+      "kind": "object",
+      "track_alias": 1,
+      "group_id": 16,
+      "object_id": 12,
+      "episode_id": "ep13-knowledge-six-kernel-desk",
+      "wai_envelope_url": "/media/radio/wai/ep13-knowledge-six-kernel-desk.wai",
+      "content_hash": "db01b41a3da798031a31c81c1570a39ebe0eca4f66d205f176ee527703b4750e",
+      "joules_micro": 0,
+      "origin": "openie-radio-studio",
+      "merkle_proof": {
+        "siblings": [
+          "24756c8985e4043ac3000ba0c869450e40ca4fb1ac7363c68ba3329cb3e639b0",
+          "3161ce43c66e8955a1bf9f3bf6e69100f85940c3e45d456be1cb2fb0297da725",
+          "2bd03aa8a3d84cc180d715f4d0258557351a24dfdce554842fc8a19219b1edef",
+          "3d050ac1778e480eb7243d76618b3a79d4adb11e04c3c177e6bcd00050a7c005"
+        ],
+        "direction_bits": 12,
+        "leaf_index": 12
+      }
+    },
+    {
+      "kind": "object",
+      "track_alias": 1,
+      "group_id": 16,
+      "object_id": 13,
+      "episode_id": "ep14-database-bitemporal-state-desk",
+      "wai_envelope_url": "/media/radio/wai/ep14-database-bitemporal-state-desk.wai",
+      "content_hash": "322c3195c3188f9c360f2c11d6ad0209f006f9b01dccd664c0e516d0470a7424",
+      "joules_micro": 0,
+      "origin": "openie-radio-studio",
+      "merkle_proof": {
+        "siblings": [
+          "a906743395a74dfd447ec9b08ad891cab38814470fbcf7c62c087c0ae3da6773",
+          "3161ce43c66e8955a1bf9f3bf6e69100f85940c3e45d456be1cb2fb0297da725",
+          "2bd03aa8a3d84cc180d715f4d0258557351a24dfdce554842fc8a19219b1edef",
+          "3d050ac1778e480eb7243d76618b3a79d4adb11e04c3c177e6bcd00050a7c005"
+        ],
+        "direction_bits": 13,
+        "leaf_index": 13
+      }
+    },
+    {
+      "kind": "object",
+      "track_alias": 1,
+      "group_id": 16,
+      "object_id": 14,
+      "episode_id": "ep15-codon-lut6-m2-silicon",
+      "wai_envelope_url": "/media/radio/wai/ep15-codon-lut6-m2-silicon.wai",
+      "content_hash": "8a0674be95d7ff3771a64c4af04351666c20ca7254c285043b42307d9709cc07",
+      "joules_micro": 0,
+      "origin": "openie-radio-studio",
+      "merkle_proof": {
+        "siblings": [
+          "982dc9e1d40c883e077ef7aea337cc2f5175ecf3c4bdf7492a4b5c41994b2909",
+          "affb3bce8b262558a98040fce3ed9699c5cd803b8b8499987d5eef5f4c1655b3",
+          "2bd03aa8a3d84cc180d715f4d0258557351a24dfdce554842fc8a19219b1edef",
+          "3d050ac1778e480eb7243d76618b3a79d4adb11e04c3c177e6bcd00050a7c005"
+        ],
+        "direction_bits": 14,
+        "leaf_index": 14
+      }
+    },
+    {
+      "kind": "object",
+      "track_alias": 1,
+      "group_id": 16,
+      "object_id": 15,
+      "episode_id": "ep16-unsiloeing-planetary-wai-commons",
+      "wai_envelope_url": "/media/radio/wai/ep16-unsiloeing-planetary-wai-commons.wai",
+      "content_hash": "bf4edd8a529a69557e05bbcb8e0b0838c0b568b32933d1bb99632db360b49c6b",
+      "joules_micro": 0,
+      "origin": "openie-radio-studio",
+      "merkle_proof": {
+        "siblings": [
+          "e0d0b8d0b6cc26ea5d36cac11110412ba8394a3ce2324630384bc36150d3f857",
+          "affb3bce8b262558a98040fce3ed9699c5cd803b8b8499987d5eef5f4c1655b3",
+          "2bd03aa8a3d84cc180d715f4d0258557351a24dfdce554842fc8a19219b1edef",
+          "3d050ac1778e480eb7243d76618b3a79d4adb11e04c3c177e6bcd00050a7c005"
+        ],
+        "direction_bits": 15,
+        "leaf_index": 15
+      }
+    }
+  ]
+}

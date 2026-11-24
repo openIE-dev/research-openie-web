@@ -8,7 +8,7 @@
     <link>https://research.openie.dev/radio/</link>
     <language>en-us</language>
     <copyright>Open Interface Engineering, Inc.</copyright>
-    <lastBuildDate>Tue, 24 Nov 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2026 19:00:00 GMT</lastBuildDate>
     <atom:link href="https://research.openie.dev/radio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Global multi-voice research broadcasts auditing energy-per-completion, formal state machines, biological signaling ratchets, and live open-access science. AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
     <itunes:author>Open Interface Engineering</itunes:author>
@@ -21,6 +21,23 @@
     </itunes:owner>
     <itunes:category text="Science" />
     <itunes:category text="Technology" />
+    <item>
+      <guid isPermaLink="false">openie-radio-ep16-unsiloeing-planetary-wai-commons</guid>
+      <title>Ep. 16: Ep 16 · Unsiloeing Science: One Canonical WAI1 Artifact Across 50 Languages, Accessibility, &amp; The Commons</title>
+      <link>https://research.openie.dev/radio/#ep16-unsiloeing-planetary-wai-commons</link>
+      <pubDate>Tue, 24 Nov 2026 19:00:00 GMT</pubDate>
+      <description>Roundtable Cast: Cecily, Marcus, Kwame, Amara. Cecily, Marcus, Amara, and Kwame examine how Open Interface Engineering eliminates manual curation drift across web pages, 112 Research TV films, 16 Research Radio broadcasts, and defensive prior-art repositories through one 8-field openie-artifact-v1 record sealed inside a byte-conforming WAI1 (BLAKE3 + Ed25519) container; why translating 15-second three-point Plain-Words cuts reaches 20 Tier-1 and 30 Tier-2 languages (50 languages, ~7.95B speakers) behind zero-human COMET, LaBSE, mE5, and NLLB-200 chrF++ gates (auto-regenerating on strike 1 and halting as flagged_do_not_ship on strike 2); how CC0-1.0 WCAG 2.2 AA projections ship 28-study Easy Read, 28-study Extended Audio Description, and 36 W3C SKOS AAC concepts (/glossary/concepts.json); and how 1,991 CC0 prior-art disclosures (Humanoid, Phone, Wearable, eVTOL) with JCR-1 COSE_Sign1 receipts unite inside scholar.askdavidc.ai so the autonomous synthesis loop checks The Commons before proposing novel continuations. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
+      <itunes:subtitle>Cecily, Marcus, Amara, and Kwame unpack the 8-field openie-artifact-v1 schema, WAI1 BLAKE3/Ed25519 envelopes, 50-language COMET/LaBSE/chrF++ gates, CC0 WCAG 2.2 AA Easy-Read/AD/SKOS AAC projections, and 1,991 prior-art disclosures in The Commons</itunes:subtitle>
+      <itunes:summary>Roundtable Cast: Cecily, Marcus, Kwame, Amara. Cecily, Marcus, Amara, and Kwame examine how Open Interface Engineering eliminates manual curation drift across web pages, 112 Research TV films, 16 Research Radio broadcasts, and defensive prior-art repositories through one 8-field openie-artifact-v1 record sealed inside a byte-conforming WAI1 (BLAKE3 + Ed25519) container; why translating 15-second three-point Plain-Words cuts reaches 20 Tier-1 and 30 Tier-2 languages (50 languages, ~7.95B speakers) behind zero-human COMET, LaBSE, mE5, and NLLB-200 chrF++ gates (auto-regenerating on strike 1 and halting as flagged_do_not_ship on strike 2); how CC0-1.0 WCAG 2.2 AA projections ship 28-study Easy Read, 28-study Extended Audio Description, and 36 W3C SKOS AAC concepts (/glossary/concepts.json); and how 1,991 CC0 prior-art disclosures (Humanoid, Phone, Wearable, eVTOL) with JCR-1 COSE_Sign1 receipts unite inside scholar.askdavidc.ai so the autonomous synthesis loop checks The Commons before proposing novel continuations. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</itunes:summary>
+      <itunes:author>Open Interface Engineering</itunes:author>
+      <itunes:episode>16</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:duration>08:16</itunes:duration>
+      <enclosure url="https://research.openie.dev/media/radio/ep16-unsiloeing-planetary-wai-commons.m4a" length="8501990" type="audio/x-m4a" />
+      <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep16-unsiloeing-planetary-wai-commons.vtt" type="text/vtt" language="en" />
+      <podcast:alternateEnclosure type="application/vnd.wai" length="7096" title="WAI1 Attested Transcript &amp; Metadata Envelope"><podcast:source uri="https://research.openie.dev/media/radio/wai/ep16-unsiloeing-planetary-wai-commons.wai" /></podcast:alternateEnclosure>
+    </item>
     <item>
       <guid isPermaLink="false">openie-radio-ep15-codon-lut6-m2-silicon</guid>
       <title>Ep. 15: Ep 15 · Why 64 Codons Match 6-Input Lookup Tables: Wobble Harmonics, ReTrace, &amp; Fanless M.2 Silicon</title>
@@ -36,6 +53,7 @@
       <itunes:duration>07:24</itunes:duration>
       <enclosure url="https://research.openie.dev/media/radio/ep15-codon-lut6-m2-silicon.m4a" length="7325107" type="audio/x-m4a" />
       <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep15-codon-lut6-m2-silicon.vtt" type="text/vtt" language="en" />
+      <podcast:alternateEnclosure type="application/vnd.wai" length="6872" title="WAI1 Attested Transcript &amp; Metadata Envelope"><podcast:source uri="https://research.openie.dev/media/radio/wai/ep15-codon-lut6-m2-silicon.wai" /></podcast:alternateEnclosure>
     </item>
     <item>
       <guid isPermaLink="false">openie-radio-ep14-database-bitemporal-state-desk</guid>
@@ -52,6 +70,7 @@
       <itunes:duration>04:15</itunes:duration>
       <enclosure url="https://research.openie.dev/media/radio/episodes/ep14-database-bitemporal-state-desk.m4a" length="4347833" type="audio/x-m4a" />
       <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep14-database-bitemporal-state-desk.vtt" type="text/vtt" language="en" />
+      <podcast:alternateEnclosure type="application/vnd.wai" length="5230" title="WAI1 Attested Transcript &amp; Metadata Envelope"><podcast:source uri="https://research.openie.dev/media/radio/wai/ep14-database-bitemporal-state-desk.wai" /></podcast:alternateEnclosure>
     </item>
     <item>
       <guid isPermaLink="false">openie-radio-ep13-knowledge-six-kernel-desk</guid>
@@ -68,6 +87,7 @@
       <itunes:duration>04:17</itunes:duration>
       <enclosure url="https://research.openie.dev/media/radio/episodes/ep13-knowledge-six-kernel-desk.m4a" length="4286686" type="audio/x-m4a" />
       <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep13-knowledge-six-kernel-desk.vtt" type="text/vtt" language="en" />
+      <podcast:alternateEnclosure type="application/vnd.wai" length="5168" title="WAI1 Attested Transcript &amp; Metadata Envelope"><podcast:source uri="https://research.openie.dev/media/radio/wai/ep13-knowledge-six-kernel-desk.wai" /></podcast:alternateEnclosure>
     </item>
     <item>
       <guid isPermaLink="false">openie-radio-ep12-synthesis-routing-verb-desk</guid>
@@ -84,6 +104,7 @@
       <itunes:duration>03:54</itunes:duration>
       <enclosure url="https://research.openie.dev/media/radio/episodes/ep12-synthesis-routing-verb-desk.m4a" length="3826254" type="audio/x-m4a" />
       <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep12-synthesis-routing-verb-desk.vtt" type="text/vtt" language="en" />
+      <podcast:alternateEnclosure type="application/vnd.wai" length="5044" title="WAI1 Attested Transcript &amp; Metadata Envelope"><podcast:source uri="https://research.openie.dev/media/radio/wai/ep12-synthesis-routing-verb-desk.wai" /></podcast:alternateEnclosure>
     </item>
     <item>
       <guid isPermaLink="false">openie-radio-ep11-compute-joule-substrate-desk</guid>
@@ -100,6 +121,7 @@
       <itunes:duration>04:14</itunes:duration>
       <enclosure url="https://research.openie.dev/media/radio/episodes/ep11-compute-joule-substrate-desk.m4a" length="4398465" type="audio/x-m4a" />
       <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep11-compute-joule-substrate-desk.vtt" type="text/vtt" language="en" />
+      <podcast:alternateEnclosure type="application/vnd.wai" length="5158" title="WAI1 Attested Transcript &amp; Metadata Envelope"><podcast:source uri="https://research.openie.dev/media/radio/wai/ep11-compute-joule-substrate-desk.wai" /></podcast:alternateEnclosure>
     </item>
     <item>
       <guid isPermaLink="false">openie-radio-ep10-stack-three-altitudes-desk</guid>
@@ -116,6 +138,7 @@
       <itunes:duration>04:17</itunes:duration>
       <enclosure url="https://research.openie.dev/media/radio/episodes/ep10-stack-three-altitudes-desk.m4a" length="4285364" type="audio/x-m4a" />
       <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep10-stack-three-altitudes-desk.vtt" type="text/vtt" language="en" />
+      <podcast:alternateEnclosure type="application/vnd.wai" length="5161" title="WAI1 Attested Transcript &amp; Metadata Envelope"><podcast:source uri="https://research.openie.dev/media/radio/wai/ep10-stack-three-altitudes-desk.wai" /></podcast:alternateEnclosure>
     </item>
     <item>
       <guid isPermaLink="false">openie-radio-ep09-avalanche-ratchet-desk</guid>
@@ -132,6 +155,7 @@
       <itunes:duration>04:31</itunes:duration>
       <enclosure url="https://research.openie.dev/media/radio/episodes/ep09-avalanche-ratchet-desk.m4a" length="4506242" type="audio/x-m4a" />
       <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep09-avalanche-ratchet-desk.vtt" type="text/vtt" language="en" />
+      <podcast:alternateEnclosure type="application/vnd.wai" length="5294" title="WAI1 Attested Transcript &amp; Metadata Envelope"><podcast:source uri="https://research.openie.dev/media/radio/wai/ep09-avalanche-ratchet-desk.wai" /></podcast:alternateEnclosure>
     </item>
     <item>
       <guid isPermaLink="false">openie-radio-ep08-idea-foundry-redteam</guid>
@@ -148,6 +172,7 @@
       <itunes:duration>05:36</itunes:duration>
       <enclosure url="https://research.openie.dev/media/radio/episodes/ep08-idea-foundry-redteam.m4a" length="5742670" type="audio/x-m4a" />
       <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep08-idea-foundry-redteam.vtt" type="text/vtt" language="en" />
+      <podcast:alternateEnclosure type="application/vnd.wai" length="5673" title="WAI1 Attested Transcript &amp; Metadata Envelope"><podcast:source uri="https://research.openie.dev/media/radio/wai/ep08-idea-foundry-redteam.wai" /></podcast:alternateEnclosure>
     </item>
     <item>
       <guid isPermaLink="false">openie-radio-ep07-time-as-an-index</guid>
@@ -164,6 +189,7 @@
       <itunes:duration>04:58</itunes:duration>
       <enclosure url="https://research.openie.dev/media/radio/episodes/ep07-time-as-an-index.m4a" length="4942423" type="audio/x-m4a" />
       <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep07-time-as-an-index.vtt" type="text/vtt" language="en" />
+      <podcast:alternateEnclosure type="application/vnd.wai" length="5095" title="WAI1 Attested Transcript &amp; Metadata Envelope"><podcast:source uri="https://research.openie.dev/media/radio/wai/ep07-time-as-an-index.wai" /></podcast:alternateEnclosure>
     </item>
     <item>
       <guid isPermaLink="false">openie-radio-ep06-lut6-metabolic-jouleos</guid>
@@ -180,6 +206,7 @@
       <itunes:duration>04:58</itunes:duration>
       <enclosure url="https://research.openie.dev/media/radio/episodes/ep06-lut6-metabolic-jouleos.m4a" length="4994019" type="audio/x-m4a" />
       <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep06-lut6-metabolic-jouleos.vtt" type="text/vtt" language="en" />
+      <podcast:alternateEnclosure type="application/vnd.wai" length="5217" title="WAI1 Attested Transcript &amp; Metadata Envelope"><podcast:source uri="https://research.openie.dev/media/radio/wai/ep06-lut6-metabolic-jouleos.wai" /></podcast:alternateEnclosure>
     </item>
     <item>
       <guid isPermaLink="false">openie-radio-ep05-game-engines-everywhere</guid>
@@ -196,6 +223,7 @@
       <itunes:duration>04:51</itunes:duration>
       <enclosure url="https://research.openie.dev/media/radio/episodes/ep05-game-engines-everywhere.m4a" length="4947143" type="audio/x-m4a" />
       <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep05-game-engines-everywhere.vtt" type="text/vtt" language="en" />
+      <podcast:alternateEnclosure type="application/vnd.wai" length="5206" title="WAI1 Attested Transcript &amp; Metadata Envelope"><podcast:source uri="https://research.openie.dev/media/radio/wai/ep05-game-engines-everywhere.wai" /></podcast:alternateEnclosure>
     </item>
     <item>
       <guid isPermaLink="false">openie-radio-ep04-deterministic-null-satb</guid>
@@ -212,6 +240,7 @@
       <itunes:duration>05:13</itunes:duration>
       <enclosure url="https://research.openie.dev/media/radio/episodes/ep04-deterministic-null-satb.m4a" length="5467820" type="audio/x-m4a" />
       <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep04-deterministic-null-satb.vtt" type="text/vtt" language="en" />
+      <podcast:alternateEnclosure type="application/vnd.wai" length="5323" title="WAI1 Attested Transcript &amp; Metadata Envelope"><podcast:source uri="https://research.openie.dev/media/radio/wai/ep04-deterministic-null-satb.wai" /></podcast:alternateEnclosure>
     </item>
     <item>
       <guid isPermaLink="false">openie-radio-ep03-rce-world-coding</guid>
@@ -228,6 +257,7 @@
       <itunes:duration>05:12</itunes:duration>
       <enclosure url="https://research.openie.dev/media/radio/episodes/ep03-rce-world-coding.m4a" length="5216340" type="audio/x-m4a" />
       <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep03-rce-world-coding.vtt" type="text/vtt" language="en" />
+      <podcast:alternateEnclosure type="application/vnd.wai" length="5316" title="WAI1 Attested Transcript &amp; Metadata Envelope"><podcast:source uri="https://research.openie.dev/media/radio/wai/ep03-rce-world-coding.wai" /></podcast:alternateEnclosure>
     </item>
     <item>
       <guid isPermaLink="false">openie-radio-ep02-communication-tool-avalanche</guid>
@@ -244,6 +274,7 @@
       <itunes:duration>05:51</itunes:duration>
       <enclosure url="https://research.openie.dev/media/radio/episodes/ep02-communication-tool-avalanche.m4a" length="5890990" type="audio/x-m4a" />
       <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep02-communication-tool-avalanche.vtt" type="text/vtt" language="en" />
+      <podcast:alternateEnclosure type="application/vnd.wai" length="5697" title="WAI1 Attested Transcript &amp; Metadata Envelope"><podcast:source uri="https://research.openie.dev/media/radio/wai/ep02-communication-tool-avalanche.wai" /></podcast:alternateEnclosure>
     </item>
     <item>
       <guid isPermaLink="false">openie-radio-ep01-global-literature-radar</guid>
@@ -260,6 +291,7 @@
       <itunes:duration>05:28</itunes:duration>
       <enclosure url="https://research.openie.dev/media/radio/episodes/ep01-global-literature-radar.m4a" length="5492407" type="audio/x-m4a" />
       <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep01-global-literature-radar.vtt" type="text/vtt" language="en" />
+      <podcast:alternateEnclosure type="application/vnd.wai" length="5995" title="WAI1 Attested Transcript &amp; Metadata Envelope"><podcast:source uri="https://research.openie.dev/media/radio/wai/ep01-global-literature-radar.wai" /></podcast:alternateEnclosure>
     </item>
   </channel>
 </rss>

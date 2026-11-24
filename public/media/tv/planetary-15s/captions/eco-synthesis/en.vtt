@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:07.435
+First, generating text from scratch for already-solved problems wastes electricity and invites avoidable mistakes.
+
+2
+00:00:07.775 --> 00:00:16.308
+Second, an energy-ordered cascade checks microjoule lookup tables and exact verifiers first, waking large models last.
+
+3
+00:00:16.648 --> 00:00:24.544
+Third, every accepted answer passes deterministic checks and crystallizes downward into a fast, reusable lookup skill.

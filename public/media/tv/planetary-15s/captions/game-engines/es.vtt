@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:09.910
+En primer lugar, con física exacta de números enteros, un modelo de juego se reproduce de manera idéntica en Windows, macOS, Linux y los principales motores.
+
+2
+00:00:10.250 --> 00:00:19.515
+En segundo lugar, las matemáticas decimales estándar se desplazan a través de los sistemas operativos dentro de treinta y siete fotogramas, separando colisiones caóticas.
+
+3
+00:00:19.855 --> 00:00:29.548
+En tercer lugar, las tarjetas gráficas difieren ligeramente en los píxeles, por lo que la representación se asienta con seguridad detrás de una puerta de tolerancia visual unidireccional.

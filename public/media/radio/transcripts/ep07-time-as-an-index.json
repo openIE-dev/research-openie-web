@@ -327,5 +327,11 @@
       "detail": "Frames the OpenIE authors' proposed Universal Law of Agency: agents hold goals under energy budgets, bounded by Landauer and kinematic tempo limits.",
       "href": "/papers/agency/"
     }
-  ]
+  ],
+  "canonical_id": "art:radio:ep07-time-as-an-index:4c0be886dcbbf439",
+  "wai_envelope_url": "/media/radio/wai/ep07-time-as-an-index.wai",
+  "wai_content_blake3": "6fa5d194e420bfbf243fe9948d7648367a6b934acc020c942a8e30d164c0e1a5",
+  "wai_sha256": "b7a77773fa13b2b88c7e76b4793201e831d8613250b4de49b6b8691f26f1e028",
+  "wai_byte_length": 5095,
+  "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=beb2f2ee9df1c227"
 }

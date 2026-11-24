@@ -339,5 +339,11 @@
       "detail": "Python -> clang -O3 pays back in N*=2,490 runs, while 30% of -O2 -> -O3 tiers never pay back; De Bruijn SHA-256 cuts warm compile joules 448.5x.",
       "href": "/papers/rce-compile/"
     }
-  ]
+  ],
+  "canonical_id": "art:radio:ep03-rce-world-coding:7f3ab258543b9d42",
+  "wai_envelope_url": "/media/radio/wai/ep03-rce-world-coding.wai",
+  "wai_content_blake3": "b2bc7962bfc395b9a44cbb5c3f32adcc265f8d6ffb8848c15c6d6b3f0173bc25",
+  "wai_sha256": "7d238f9d45074aa2a3970ae22e1a70febc19022aa434b338a015507a08d781e0",
+  "wai_byte_length": 5316,
+  "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=b5c4e244df80e2c7"
 }

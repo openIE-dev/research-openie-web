@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:08.822
+Primeiro, com física de números inteiros exatos, um plano de jogo reproduz-se de forma idêntica em Windows, macOS, Linux e motores principais.
+
+2
+00:00:09.162 --> 00:00:18.156
+Em segundo lugar, a matemática decimal padrão desloca-se através de sistemas operacionais dentro de trinta e sete quadros, dividindo colisões caóticas.
+
+3
+00:00:18.496 --> 00:00:28.080
+Em terceiro lugar, os cartões gráficos diferem ligeiramente em pixels, de modo que a renderização fica segura atrás de uma porta de tolerância visual unidirecional.

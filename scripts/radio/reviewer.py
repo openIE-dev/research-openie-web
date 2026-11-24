@@ -17,6 +17,7 @@ import re
 from pathlib import Path
 from typing import Any
 
+from commons_prior_art import enrich_radar_items_with_commons
 from rung_radar import compute_rung_summary, score_paper_on_rungs
 
 VECTOR_STUDY_AFFINITY: dict[str, list[str]] = {
@@ -251,6 +252,7 @@ def run_review(intake_path: Path, studies_path: Path, out_path: Path) -> dict[st
             "matched_openie_studies": matched,
         })
 
+    reviewed, commons_summary = enrich_radar_items_with_commons(reviewed, max_workers=8)
     rung_summary = compute_rung_summary(reviewed)
     canonical_manifest = json.dumps(
         {
@@ -275,6 +277,7 @@ def run_review(intake_path: Path, studies_path: Path, out_path: Path) -> dict[st
         "counts_by_classification": class_counts,
         "counts_by_badge": badge_counts,
         "study_coverage_counts": study_touch_counts,
+        "commons_prior_art_summary": commons_summary,
         "rung_summary": rung_summary,
         "items": reviewed,
     }

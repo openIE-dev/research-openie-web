@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:08.227
+Primero, en lugar de adivinar el código en bruto palabra por palabra, los modelos pequeños predicen resúmenes compactos del significado del programa.
+
+2
+00:00:08.567 --> 00:00:15.761
+Segundo, cualquier modelo de IA puede proponer un programa candidato, pero un verificador rápido y estricto decide qué pasa.
+
+3
+00:00:16.101 --> 00:00:25.535
+En tercer lugar, la comprobación utiliza 1.700 veces menos energía que la generación, y las correcciones guardadas reducen las llamadas de modelos grandes.

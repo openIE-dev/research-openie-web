@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:08.457
+Pertama, alih-alih menebak kode mentah kata demi kata, model kecil memprediksi ringkasan kompak dari makna program.
+
+2
+00:00:08.797 --> 00:00:17.050
+Kedua, setiap model AI dapat mengusulkan program kandidat, tapi checker yang cepat dan ketat memutuskan apa yang lulus.
+
+3
+00:00:17.390 --> 00:00:27.383
+Ketiga, memeriksa menggunakan energi tujuh belas ratus kali lebih sedikit daripada menghasilkan, dan memperbaiki disimpan memotong panggilan model besar.

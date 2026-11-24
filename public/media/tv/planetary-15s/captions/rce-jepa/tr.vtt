@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:06.969
+İlk olarak, çiğ kodu kelime kelime tahmin etmek yerine, küçük modeller program anlamının kompakt özetlerini tahmin eder.
+
+2
+00:00:07.309 --> 00:00:14.888
+İkincisi, herhangi bir yapay zekâ modeli aday bir program önerebilir, ama hızlı, sıkı bir kontrolcü neyin geçerli olduğuna karar verir.
+
+3
+00:00:15.228 --> 00:00:23.353
+Üçüncüsü, kontrol yapmak üretmekten 1.700 kat daha az enerji kullanıyor ve kaydedilen düzeltmeler büyük model aramalarını azaltıyor.

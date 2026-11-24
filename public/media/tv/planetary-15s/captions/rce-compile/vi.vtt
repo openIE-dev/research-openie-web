@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:07.097
+Đầu tiên, các trình biên dịch thực sự vi phạm bất kỳ luật mô tả nào, vì vậy nghiên cứu này xác định một tiêu chuẩn bảy phần thay vào đó.
+
+2
+00:00:07.437 --> 00:00:14.260
+Thứ hai, tối đa compiler tối ưu hóa đốt cháy năng lượng trước mà không bao giờ trả lại trên ba mươi phần trăm của các chương trình thử nghiệm.
+
+3
+00:00:14.600 --> 00:00:21.862
+Thứ ba, mã vân tay bằng vị trí biến đổi tái sử dụng xây dựng với không có sự nhầm lẫn, cắt giảm năng lượng biên dịch Rust 400 lần.

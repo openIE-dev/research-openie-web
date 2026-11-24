@@ -383,5 +383,11 @@
       "detail": "Enforces strict epistemic boundary between replicated animal vesicle/BCI rescue [E] and human clinical efficacy [S].",
       "href": "https://clinicaltrials.gov/study/NCT04253587"
     }
-  ]
+  ],
+  "canonical_id": "art:radio:ep01-global-literature-radar:ab5e02382ef8f2b5",
+  "wai_envelope_url": "/media/radio/wai/ep01-global-literature-radar.wai",
+  "wai_content_blake3": "31dc5fe1b419174360e01d10f6eec9f9efc52823b7e64d2c1fd3b75792daf3bd",
+  "wai_sha256": "5d36430c504b329847d97f71441b6168eb78a4ffa8bcedb2cfa85a386b8d971a",
+  "wai_byte_length": 5995,
+  "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=ed9aa0eee5fcb368"
 }

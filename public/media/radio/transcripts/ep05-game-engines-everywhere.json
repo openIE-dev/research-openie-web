@@ -339,5 +339,11 @@
       "detail": "Catastrophic failures cluster at unwritten handoff assumptions between specifiers, builders, and users (Mars Climate Orbiter, Ariane 5).",
       "href": "/papers/three-body/"
     }
-  ]
+  ],
+  "canonical_id": "art:radio:ep05-game-engines-everywhere:fbb911d84251eda6",
+  "wai_envelope_url": "/media/radio/wai/ep05-game-engines-everywhere.wai",
+  "wai_content_blake3": "5d8fe712c532274b41e5fc15650dfcf1f784a5e48611ca3f2c7fba22002b2b51",
+  "wai_sha256": "01cf537693d17196335244b58e9708ffaaa3e431bb300307e4dd56db147b4ec9",
+  "wai_byte_length": 5206,
+  "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=75a24dac7c9fb8d1"
 }

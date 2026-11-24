@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:08.146
+Primero, la mayoría de los programas consumen tiempo y energía innecesarios desempaquetando el texto y recalculando las respuestas que ya han resuelto.
+
+2
+00:00:08.486 --> 00:00:17.346
+En segundo lugar, los registros encadenados con huellas dactilares y los índices de doble tiempo permiten que cualquier máquina repita estados pasados exactos sin adivinanzas.
+
+3
+00:00:17.686 --> 00:00:25.909
+En tercer lugar, los almacenes de búsqueda con memoria de copia cero transforman el trabajo repetido en lecturas de submicrosegundos bajo dos microjuelas.

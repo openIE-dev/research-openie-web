@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:08.432
+Erstens schreiben viele Menschen und KI-Agenten gleichzeitig, und ein benannter Scheck gibt Änderungen zu oder zeichnet auf, warum.
+
+2
+00:00:08.772 --> 00:00:19.024
+Zweitens ermöglicht das Tracking von namenfreien Funktionen anstelle von Textzeilen, dass nicht verwandte Bearbeitungen ohne falsche Verschmelzungskriege miteinander passieren.
+
+3
+00:00:19.364 --> 00:00:27.472
+Drittens bleiben Entwickler auf gewöhnlichem Git, während das Überprüfen von 100.000 Elementen siebzig Mikrosekunden dauert.

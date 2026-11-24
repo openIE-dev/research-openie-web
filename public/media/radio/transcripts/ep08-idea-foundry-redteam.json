@@ -339,5 +339,11 @@
       "detail": "Zero-parameter integer bit-shift achieved 100.0% exact recall in ~0.34 ms vs MLP's 99.4% recall in ~22 ms (~1.0 J reported_j).",
       "href": "/radio/#foundry"
     }
-  ]
+  ],
+  "canonical_id": "art:radio:ep08-idea-foundry-redteam:04aba3257e60dcf0",
+  "wai_envelope_url": "/media/radio/wai/ep08-idea-foundry-redteam.wai",
+  "wai_content_blake3": "1702bc0c0bbc9be1d76225e344c0a9e6ad0968f2905623aa35193c9999d90842",
+  "wai_sha256": "3b009dc6dcb519e639d760e5d136f62e55c9cf419c67c4233a01185b8b505ca5",
+  "wai_byte_length": 5673,
+  "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=63e4d68a955ebb64"
 }

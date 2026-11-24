@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:06.821
+First, today's computers stack many separate layers, and AI agents are bolted on top unchanged.
+
+2
+00:00:07.161 --> 00:00:13.074
+Second, none of those layers asks beforehand how much energy an agent's action will actually spend.
+
+3
+00:00:13.414 --> 00:00:20.048
+Third, an agent machine must measure energy, enforce strict budgets, and refuse actions that break them.

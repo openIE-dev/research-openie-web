@@ -327,5 +327,11 @@
       "detail": "Separates single-task completion ceilings from Jevons aggregate demand growth: token prices fall, but electricity is never free.",
       "href": "/papers/satiation/"
     }
-  ]
+  ],
+  "canonical_id": "art:radio:ep04-deterministic-null-satb:23b1708fa67eead9",
+  "wai_envelope_url": "/media/radio/wai/ep04-deterministic-null-satb.wai",
+  "wai_content_blake3": "c49f928b8b1959101e5ec8cfed1921ae190dffda3784084ede21970aa4b063ac",
+  "wai_sha256": "1a6b053685900406df9b8520fd61059d2d9fba552c483a884f7f46f29e9cee44",
+  "wai_byte_length": 5323,
+  "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=4da0da5a6dc1f0cc"
 }

@@ -27,6 +27,7 @@ import requests
 import soundfile as sf
 
 from personas import AI_DISCLOSURE, PERSONAS, to_spoken_english
+from wai_envelope import emit_episode_wai_envelope
 
 SR = 44100
 ELEVEN_MODEL = "eleven_v4"
@@ -203,7 +204,8 @@ def render_episode(
     ep_audio_dir = media_root / "episodes"
     ep_vtt_dir = media_root / "captions"
     ep_json_dir = media_root / "transcripts"
-    for d in (ep_audio_dir, ep_vtt_dir, ep_json_dir, tmp_dir, cache_dir):
+    ep_wai_dir = media_root / "wai"
+    for d in (ep_audio_dir, ep_vtt_dir, ep_json_dir, ep_wai_dir, tmp_dir, cache_dir):
         d.mkdir(parents=True, exist_ok=True)
 
     segments: list[np.ndarray] = []
@@ -223,10 +225,11 @@ def render_episode(
         if speaker not in panel_names:
             panel_names.append(speaker)
         p_cfg = PERSONAS[speaker]
+        pan_vec = (ep_spec.get("pan_overrides") or {}).get(speaker) or p_cfg.get("pan", [1.0, 1.0])
         spoken_text = to_spoken_english(turn.get("tts_text") or turn["text"])
         mp3_clip, eng = fetch_or_cache_mp3(speaker, spoken_text, cache_dir)
         engines_used.add(eng)
-        stereo_arr = decode_mp3_stereo(ffmpeg_bin, mp3_clip, p_cfg.get("pan", [1.0, 1.0]))
+        stereo_arr = decode_mp3_stereo(ffmpeg_bin, mp3_clip, pan_vec)
 
         start_sec = round(cursor_samples / SR, 3)
         segments.append(stereo_arr)
@@ -342,6 +345,13 @@ def render_episode(
         "card_count": len(cards_out),
         "ai_disclosure": AI_DISCLOSURE,
     }
+    ep_doc = {**ep_meta, "personas": {nm: PERSONAS[nm] for nm in panel_names}, "turns": turns_out, "cards": cards_out}
+    wai_info = emit_episode_wai_envelope(ep_doc, m4a_path, ep_wai_dir / f"{ep_id}.wai")
+    ep_meta["canonical_id"] = wai_info["canonical_id"]
+    ep_meta["wai_envelope_url"] = wai_info["wai_envelope_url"]
+    ep_meta["wai_content_blake3"] = wai_info["wai_content_blake3"]
+    ep_meta["wai_sha256"] = wai_info["wai_sha256"]
+    ep_meta["wai_byte_length"] = wai_info["wai_byte_length"]
     ep_doc = {**ep_meta, "personas": {nm: PERSONAS[nm] for nm in panel_names}, "turns": turns_out, "cards": cards_out}
     (ep_json_dir / f"{ep_id}.json").write_text(json.dumps(ep_doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return ep_meta

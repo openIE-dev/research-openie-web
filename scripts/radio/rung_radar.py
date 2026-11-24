@@ -24,6 +24,8 @@ from typing import Any
 
 import numpy as np
 
+from commons_prior_art import enrich_foundry_topics_with_commons, enrich_radar_items_with_commons
+
 RAPL_PKG = Path("/sys/class/powercap/intel-rapl:0/energy_uj")
 RAPL_PKG_MAX = Path("/sys/class/powercap/intel-rapl:0/max_energy_range_uj")
 
@@ -685,9 +687,14 @@ def finalize_global_rung_radar(
     radar_path: Path,
     foundry_path: Path | None = None,
     public_out_path: Path | None = None,
+    refresh_commons: bool = False,
 ) -> dict[str, Any]:
     radar = json.loads(radar_path.read_text(encoding="utf-8"))
     items = radar.get("items", [])
+    if refresh_commons or not all("commons_corroboration" in it for it in items):
+        items, commons_summary = enrich_radar_items_with_commons(items, max_workers=8)
+        radar["items"] = items
+        radar["commons_prior_art_summary"] = commons_summary
     rung_summary = compute_rung_summary(items)
     ephemeral_pct = rung_summary["shares_pct"]["ephemeral_trapped_pct"]
     threshold_pilot = run_threshold_amortization_pilot(ephemeral_pct)
@@ -707,7 +714,10 @@ def finalize_global_rung_radar(
         foundry_summary["pilot_budget_limit_sec"] = fdoc.get("pilot_budget_limit_sec", 60.0)
         foundry_summary["execution_substrate"] = fdoc.get("execution_substrate", "")
         foundry_summary["counts_by_status"] = fdoc.get("counts_by_status", {})
-        for tp in fdoc.get("topics", []):
+        raw_topics = fdoc.get("topics", [])
+        if refresh_commons or not all("commons_corroboration" in tp for tp in raw_topics):
+            raw_topics = enrich_foundry_topics_with_commons(raw_topics, max_workers=6)
+        for tp in raw_topics:
             tid = tp.get("topic_id", "")
             trung, ttier = TOPIC_RUNG_MAP.get(tid, (7, "Tier 1 (Indexed Case Store)"))
             foundry_pilots.append({
@@ -719,12 +729,19 @@ def finalize_global_rung_radar(
                 "target_rung_name": RUNG_META[trung]["name"],
                 "target_tier": ttier,
                 "openie_anchors": tp.get("openie_anchors", []),
+                "commons_corroboration": tp.get("commons_corroboration"),
                 "hypothesis": tp.get("hypothesis", ""),
                 "shape_d_null_baseline": tp.get("shape_d_null_baseline", ""),
                 "kill_criterion": tp.get("kill_criterion", ""),
                 "inspired_by_urls": tp.get("inspired_by_urls", []),
                 "pilot_receipt": tp.get("pilot_receipt", {}),
             })
+
+    if "commons_prior_art_summary" in radar:
+        radar["commons_prior_art_summary"]["continuations_checked"] = len(foundry_pilots)
+        radar["commons_prior_art_summary"]["continuations_with_prior_art"] = sum(
+            1 for fp in foundry_pilots if (fp.get("commons_corroboration") or {}).get("hit_count", 0) > 0
+        )
 
     radar["schema"] = "openie.global_rung_radar.v2"
     radar["cadence"] = "Every 6 hours via autonomous Linux systemd --user timer"

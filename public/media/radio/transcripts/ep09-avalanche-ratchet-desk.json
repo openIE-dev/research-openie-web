@@ -454,5 +454,11 @@
       "detail": "HM01–HD04 milestones declare exact energy/solve kill criteria; animal EV/BCI rescue [E] never extrapolates to human efficacy [S].",
       "href": "/papers/latency/"
     }
-  ]
+  ],
+  "canonical_id": "art:radio:ep09-avalanche-ratchet-desk:d722d5ed37b08621",
+  "wai_envelope_url": "/media/radio/wai/ep09-avalanche-ratchet-desk.wai",
+  "wai_content_blake3": "9c49d481e46a0782bd0b36c0a0cd995d2a0d736af998633f979c5adba082a644",
+  "wai_sha256": "70486194f9f9bd26ee72f652e3fd77e740415f9d0346f55d419a39fe843fd01a",
+  "wai_byte_length": 5294,
+  "commons_citation_url": "https://scholar.askdavidc.ai/?q=ep09-avalanche-ratchet-desk"
 }

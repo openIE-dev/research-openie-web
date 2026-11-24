@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:08.214
+İlk olarak, gerçek derleyiciler tek bir tanımlayıcı yasayı bile çiğniyor, bu yüzden bu çalışma bunun yerine yedi bölümden oluşan bir ölçüt tanımlıyor.
+
+2
+00:00:08.554 --> 00:00:16.201
+İkincisi, maksimum derleyici optimizasyonu, test programlarının yüzde otuzunda asla geri ödeme yapmayan önceden enerjiyi yakar.
+
+3
+00:00:16.541 --> 00:00:23.957
+Üçüncüsü, değişken konuma göre parmak izi kodu sıfır karışıklıklarla yeniden kullanılır, Rust'un derleme enerjisini dört kat azaltır.

@@ -430,5 +430,11 @@
       "detail": "Per-task energy drops when gated at completion, yet aggregate grid demand can still rise as cheaper automation unlocks new workloads.",
       "href": "/papers/satiation/"
     }
-  ]
+  ],
+  "canonical_id": "art:radio:ep10-stack-three-altitudes-desk:17ed5915b92c38e1",
+  "wai_envelope_url": "/media/radio/wai/ep10-stack-three-altitudes-desk.wai",
+  "wai_content_blake3": "4bb76f4f6ea8e3840007b31886ed67659424d0dca836c4b260219cfd6a18e848",
+  "wai_sha256": "4a46eb19e47ec02828e81dc4f8a79ab51a97fcfe66446c443c2dd831aa4a0862",
+  "wai_byte_length": 5161,
+  "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=146829a81a9dd873"
 }

@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:07.077
+First, instead of guessing raw code word by word, small models predict compact summaries of program meaning.
+
+2
+00:00:07.417 --> 00:00:14.771
+Second, any AI model may propose a candidate program, but a fast, strict checker decides what passes.
+
+3
+00:00:15.111 --> 00:00:22.195
+Third, checking uses seventeen hundred times less energy than generating, and saved fixes slash big model calls.

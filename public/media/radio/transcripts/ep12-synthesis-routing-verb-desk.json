@@ -420,5 +420,11 @@
       "detail": "Rung F failed its 2.0% promotion gate on 151 tasks; TF-2026-06 neural router lost >60x to a zero-weight integer grid.",
       "href": "/radio/#foundry"
     }
-  ]
+  ],
+  "canonical_id": "art:radio:ep12-synthesis-routing-verb-desk:ad0a87f75a08b842",
+  "wai_envelope_url": "/media/radio/wai/ep12-synthesis-routing-verb-desk.wai",
+  "wai_content_blake3": "106b48f0367b6adb6406ff3194ff9f7d45f14fca7209b4a9c569734b63a80a6c",
+  "wai_sha256": "3427ad30f60c3db43f5ab8df2d3ea8ad5cc425cf5ba9e0695c117205bcdceb35",
+  "wai_byte_length": 5044,
+  "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=1922bea6508a8f41"
 }

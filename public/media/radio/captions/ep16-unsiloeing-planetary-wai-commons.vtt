@@ -1,0 +1,67 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:01.830 --> 00:00:35.362
+<v Cecily>Welcome to Episode Sixteen of OpenIE Research Radio! I'm Cecily, and today we have a four-chair flagship roundtable in the studio: empirical skeptic Marcus, systems and accessibility storyteller Amara, and distributed WAI envelope engineer Kwame. Full studio disclosure up front: all four of us are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 neural speech and grounded strictly in verified Open Interface Engineering artifacts and live Commons receipts.
+
+2
+00:00:35.552 --> 00:00:59.814
+<v Marcus>Let's start with the embarrassing confession every research lab in the world recognizes, Kwame. Normally, a team writes a paper, exports a PDF, renders a video folder, hand-edits a podcast RSS XML file, and pushes a separate GitHub repo. Six weeks later, five copies disagree on revision hashes, captions are missing, and human curators spend all day babysitting glue scripts!
+
+3
+00:01:00.084 --> 00:01:26.791
+<v Kwame>That fragmentation is pure unverified multi-hop drift, Marcus! Unsiloeing fixes the root cause by making every web page, video cut, podcast enclosure, and agent endpoint a deterministic projection of one eight-field schema called openie-artifact-v1: canonical_id, provenance_chain, energy_cost_j, difficulty_rung, verification_status, modality_variants, license, and interchange_envelope.
+
+4
+00:01:27.061 --> 00:01:41.819
+<v Cecily>Walk listeners right down to the wire bytes of that interchange_envelope, Kwame — because as of today, all sixteen Research Radio episodes ship live dot-wai binary envelopes under /media/radio/wai/!
+
+5
+00:01:42.089 --> 00:02:30.972
+<v Kwame>Every file begins with the exact four-byte ASCII magic WAI1 — hex 57 41 49 31 — followed by a thirty-two-bit little-endian manifest length, a whitespace-free UTF-8 JSON manifest declaring capability wai.text.zstd with intent replicate, a thirty-two-bit little-endian payload length, and a single-segment RFC 8878 Zstandard payload bundling the canonical eight-field artifact, turn-synced transcript, citation cards, and audio SHA-256 and BLAKE3 digests. Above the container, a domain-separated moq-jwp BLAKE3 Merkle tree and RFC 8032 Ed25519 group signature seal all sixteen episodes in receipts.json.
+
+6
+00:02:31.242 --> 00:02:53.674
+<v Amara>Now once an artifact is sealed cleanly once, ask who on Earth can actually understand it! If a breakthrough stays locked inside dense English academic jargon, over six billion people who speak Mandarin, Hindi, Spanish, Arabic, Swahili, Bengali, Hausa, or Amharic are shut out on day one.
+
+7
+00:02:53.864 --> 00:03:10.959
+<v Marcus>Hold on, Amara — let me push back with the classic translation trap! If you auto-translate forty pages of math and hardware telemetry into fifty languages without human translators, you're guaranteed to ship hallucinated numbers or mangled negations. Why doesn't our pipeline fall into that trap?
+
+8
+00:03:11.229 --> 00:03:51.621
+<v Amara>Two reasons, Marcus! First, we translate the highest-leverage artifact first: the fifteen-second, three-bullet Plain-Words cut — zero unexplained acronyms, covering what problem is solved, how the mechanism works, and what falsifies it. Tier One ships twenty languages reaching six point five four billion speakers — one hundred sixty out of one hundred sixty live variants across eight flagship films in a thirty-five-megabyte minus-sixteen LUFS stereo bundle — and Tier Two adds the next thirty languages to reach fifty languages and roughly seven point nine five billion speakers!
+
+9
+00:03:51.891 --> 00:04:37.377
+<v Kwame>And second is our zero-human deterministic verification gate! Every translated script must clear neural semantic alignment via LaBSE and multilingual-E5, calibrated COMET at or above zero point seven eight — our fleet mean is zero point eight five zero — plus independent NLLB-200 neural back-translation into English scoring chrF++ at or above thirty-eight, where our fleet averages fifty-eight point zero, alongside structural checks for three plain bullets, zero leaked acronyms, and exact number preservation! Strike one triggers automatic regeneration — rescuing two variants cleanly — and strike two halts immediately as flagged_do_not_ship. In adversarial red-teaming, sign inversions and dropped negations were blocked one hundred percent of the time.
+
+10
+00:04:37.647 --> 00:04:53.284
+<v Cecily>That brings us to Pillar Three, Amara: first-class CC0-1.0 accessibility projections! Why did we release Easy Read, Extended Audio Descriptions, and AAC concept boards into the public domain under CC0?
+
+11
+00:04:53.554 --> 00:05:40.296
+<v Amara>Because assistive technology builders, schools, disability advocates, and screen-reader users should never hit copyright friction or visual-only walls! Every Canonical Artifact automatically emits WCAG 2.2 Level AA companions under CC0-1.0: standalone Easy-Read editions across all twenty-eight Research TV studies built with one-idea sentences and visual symbol cues; twenty-eight study Extended Audio Description scripts plus narrated stereo AD tracks describing 3D scenes and charts; and thirty-six W3C SKOS and Schema.org DefinedTerm concepts at /glossary/concepts.json!
+
+12
+00:05:40.486 --> 00:06:07.175
+<v Marcus>I inspected /glossary/concepts.json earlier — every single one of those thirty-six concepts defines ideas like a commit gate, a receipt, or a lookup table in sixteen plain words or fewer, paired with ARASAAC symbol keywords and three core switch words like stop, check, safe! Now connect Pillar Four, Kwame: how does all of this plug into scholar.askdavidc.ai — The Commons?
+
+13
+00:06:07.445 --> 00:06:42.416
+<v Kwame>Inside scholar.askdavidc.ai, we unified one thousand nine hundred ninety-one CC0-1.0 defensive prior-art disclosures spanning four open hardware domains — Humanoid, Phone, Wearable, and eVTOL — right alongside all twenty-eight Research TV studies and all sixteen Research Radio broadcasts! Every ingested claim carries seven-axis provenance and JCR-1 COSE_Sign1 cryptographic receipts, searchable by humans and AI agents over REST /api/ask and the MCP endpoint at /mcp.
+
+14
+00:06:42.686 --> 00:06:54.843
+<v Cecily>And that closes Blueprint Section Six right inside our own autonomous six-hour Research Radio daemon! Marcus, tell us what happens now before our Topic Foundry proposes any candidate continuation.
+
+15
+00:06:55.033 --> 00:07:39.465
+<v Marcus>No more blind brainstorming! Before our six-hour Linux loop proposes or runs a single candidate pilot, commons_prior_art_check queries live scholar.askdavidc.ai across those one thousand nine hundred ninety-one prior-art disclosures, Research TV, Research Radio, and open literature — recording hit_count, the top seekable citation URL, and statement excerpt directly into radio-radar.json! Plus, any browser or MCP agent visiting research.openie.dev can call our new WebMCP tools — openie_get_blueprint_artifacts, openie_lookup_aac_concept, and openie_query_commons_prior_art — to join the Universal AI Agent Bus in one hop!
+
+16
+00:07:39.735 --> 00:08:13.838
+<v Cecily>One canonical eight-field artifact, sixteen WAI1 binary envelopes with BLAKE3 and Ed25519 receipts, fifty languages guarded by zero-human neural gates, CC0 WCAG 2.2 AA accessibility, and live prior-art grounding across The Commons! Inspect the live blueprint at research.openie.dev/blueprint, download any episode's dot-wai envelope right from the Studio Deck, and catch our next autonomous pulse in six hours on OpenIE Research Radio!

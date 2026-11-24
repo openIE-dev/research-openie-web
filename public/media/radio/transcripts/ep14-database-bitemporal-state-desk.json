@@ -445,5 +445,11 @@
       "detail": "Pre/post test SHA-256 digests asserted identical; reducers capped at <=4,096 gzipped bytes & <=50,000 ops; overlapping RCE-VC edits refused.",
       "href": "/papers/deterministic-null/"
     }
-  ]
+  ],
+  "canonical_id": "art:radio:ep14-database-bitemporal-state-desk:77d9a9e044dfe88e",
+  "wai_envelope_url": "/media/radio/wai/ep14-database-bitemporal-state-desk.wai",
+  "wai_content_blake3": "322c3195c3188f9c360f2c11d6ad0209f006f9b01dccd664c0e516d0470a7424",
+  "wai_sha256": "1163e71b47bf1700c4419fceca06a5adf5b8e481977a78a138e11f778e80a1f0",
+  "wai_byte_length": 5230,
+  "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=f008ef4ae3155a37"
 }

@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:07.289
+Birincisi, zaten çözülmüş problemler için sıfırdan metin üretmek elektrik harcıyor ve önlenebilir hatalara yol açıyor.
+
+2
+00:00:07.629 --> 00:00:15.979
+İkincisi, enerji düzenli bir kaskad önce mikrojoule arama tablolarını ve doğru doğrulayıcıları kontrol eder, büyük modelleri son olarak uyandırır.
+
+3
+00:00:16.319 --> 00:00:23.580
+Üçüncüsü, kabul edilen her cevap deterministik kontrollerden geçer ve hızlı, tekrar kullanılabilir bir arama becerisine dönüşür.

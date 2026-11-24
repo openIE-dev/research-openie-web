@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:07.365
+Birincisi, çoğu yazılım, metni açmak ve zaten çözdüğü cevapları yeniden hesaplamak için gereksiz zaman ve enerji harcar.
+
+2
+00:00:07.705 --> 00:00:16.257
+İkincisi, parmak izi zincirlenmiş günlükler ve ikili zaman indeksleri herhangi bir makinenin tahmin yapmadan tam geçmiş durumları tekrarlamasına izin verir.
+
+3
+00:00:16.597 --> 00:00:24.679
+Üçüncüsü, sıfır kopya hafıza haritalama arama depoları, tekrarlanan çalışmayı iki mikrojoule altında, mikrosaniye altındaki okumalara dönüştürür.

@@ -444,5 +444,11 @@
       "detail": "RTL power stays labeled est_mW and open KiCad/STEP tag hardware keeps board_metered=false until physical boards are shunt-probed.",
       "href": "/products/mei/"
     }
-  ]
+  ],
+  "canonical_id": "art:radio:ep11-compute-joule-substrate-desk:5fe0b09f31eff4a9",
+  "wai_envelope_url": "/media/radio/wai/ep11-compute-joule-substrate-desk.wai",
+  "wai_content_blake3": "7b63ecd00d5a592d7dc67d776a23084dbc767786df1c14df4a7450f474859f3c",
+  "wai_sha256": "6251a4125fc9f9da60f0a4a81b5424e62d2ac82bd21acb6ca3ec528dcdb2f53f",
+  "wai_byte_length": 5158,
+  "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=5047929d4f979847"
 }

@@ -5,7 +5,7 @@
   "site_url": "https://research.openie.dev/radio/",
   "rss_url": "https://research.openie.dev/radio/rss.xml",
   "audio_spec": "44.1 kHz · 128 kbps Stereo AAC (-16 LUFS) · ElevenLabs eleven_v4 Studio Ensemble",
-  "generated_at_utc": "2026-11-24T12:00:00Z",
+  "generated_at_utc": "2026-11-24T19:00:00Z",
   "rotation_epoch_unix": 1763856000,
   "autonomous_cadence": "Every 6 hours (systemd --user openie-research-radio.timer + cron flock)",
   "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
@@ -239,9 +239,9 @@
       ]
     }
   },
-  "episode_count": 15,
-  "total_duration_sec": 4499.7,
-  "total_duration_human": "75:00",
+  "episode_count": 16,
+  "total_duration_sec": 4995.5,
+  "total_duration_human": "83:16",
   "episodes": [
     {
       "id": "ep01-global-literature-radar",
@@ -590,7 +590,13 @@
           "detail": "Enforces strict epistemic boundary between replicated animal vesicle/BCI rescue [E] and human clinical efficacy [S].",
           "href": "https://clinicaltrials.gov/study/NCT04253587"
         }
-      ]
+      ],
+      "canonical_id": "art:radio:ep01-global-literature-radar:ab5e02382ef8f2b5",
+      "wai_envelope_url": "/media/radio/wai/ep01-global-literature-radar.wai",
+      "wai_content_blake3": "31dc5fe1b419174360e01d10f6eec9f9efc52823b7e64d2c1fd3b75792daf3bd",
+      "wai_sha256": "5d36430c504b329847d97f71441b6168eb78a4ffa8bcedb2cfa85a386b8d971a",
+      "wai_byte_length": 5995,
+      "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=ed9aa0eee5fcb368"
     },
     {
       "id": "ep02-communication-tool-avalanche",
@@ -905,7 +911,13 @@
           "detail": "Attested externalized artifact library retains 100.0% optimal competence at Gen 20 vs 29.27% under unverified imitation.",
           "href": "/papers/communication-avalanche/"
         }
-      ]
+      ],
+      "canonical_id": "art:radio:ep02-communication-tool-avalanche:7c95afdf95ac3f0b",
+      "wai_envelope_url": "/media/radio/wai/ep02-communication-tool-avalanche.wai",
+      "wai_content_blake3": "678bdaa24913eb44b85f2e071dd329456160804f7dec685a3cf3782ddaedabbf",
+      "wai_sha256": "f4de6993339efcd71fcf7667b2642c1ce6b9d6bd732d6ab38e6e255be95b2012",
+      "wai_byte_length": 5697,
+      "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=5dfdaa350a717b92"
     },
     {
       "id": "ep03-rce-world-coding",
@@ -1210,7 +1222,13 @@
           "detail": "Python -> clang -O3 pays back in N*=2,490 runs, while 30% of -O2 -> -O3 tiers never pay back; De Bruijn SHA-256 cuts warm compile joules 448.5x.",
           "href": "/papers/rce-compile/"
         }
-      ]
+      ],
+      "canonical_id": "art:radio:ep03-rce-world-coding:7f3ab258543b9d42",
+      "wai_envelope_url": "/media/radio/wai/ep03-rce-world-coding.wai",
+      "wai_content_blake3": "b2bc7962bfc395b9a44cbb5c3f32adcc265f8d6ffb8848c15c6d6b3f0173bc25",
+      "wai_sha256": "7d238f9d45074aa2a3970ae22e1a70febc19022aa434b338a015507a08d781e0",
+      "wai_byte_length": 5316,
+      "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=b5c4e244df80e2c7"
     },
     {
       "id": "ep04-deterministic-null-satb",
@@ -1503,7 +1521,13 @@
           "detail": "Separates single-task completion ceilings from Jevons aggregate demand growth: token prices fall, but electricity is never free.",
           "href": "/papers/satiation/"
         }
-      ]
+      ],
+      "canonical_id": "art:radio:ep04-deterministic-null-satb:23b1708fa67eead9",
+      "wai_envelope_url": "/media/radio/wai/ep04-deterministic-null-satb.wai",
+      "wai_content_blake3": "c49f928b8b1959101e5ec8cfed1921ae190dffda3784084ede21970aa4b063ac",
+      "wai_sha256": "1a6b053685900406df9b8520fd61059d2d9fba552c483a884f7f46f29e9cee44",
+      "wai_byte_length": 5323,
+      "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=4da0da5a6dc1f0cc"
     },
     {
       "id": "ep05-game-engines-everywhere",
@@ -1808,7 +1832,13 @@
           "detail": "Catastrophic failures cluster at unwritten handoff assumptions between specifiers, builders, and users (Mars Climate Orbiter, Ariane 5).",
           "href": "/papers/three-body/"
         }
-      ]
+      ],
+      "canonical_id": "art:radio:ep05-game-engines-everywhere:fbb911d84251eda6",
+      "wai_envelope_url": "/media/radio/wai/ep05-game-engines-everywhere.wai",
+      "wai_content_blake3": "5d8fe712c532274b41e5fc15650dfcf1f784a5e48611ca3f2c7fba22002b2b51",
+      "wai_sha256": "01cf537693d17196335244b58e9708ffaaa3e431bb300307e4dd56db147b4ec9",
+      "wai_byte_length": 5206,
+      "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=75a24dac7c9fb8d1"
     },
     {
       "id": "ep06-lut6-metabolic-jouleos",
@@ -2113,7 +2143,13 @@
           "detail": "Verified Rust spine (jcp-satb-cad-spine) with 78,400-pair provenance meet-semilattice scheduling, budgeting, and refusing agents under energy grants.",
           "href": "/products/jouleos/"
         }
-      ]
+      ],
+      "canonical_id": "art:radio:ep06-lut6-metabolic-jouleos:2de52a49186572fe",
+      "wai_envelope_url": "/media/radio/wai/ep06-lut6-metabolic-jouleos.wai",
+      "wai_content_blake3": "3570d730d90c1548f3f2565bf558d3c95bb7d535f80d58d7bbdf685e87fb2445",
+      "wai_sha256": "7bb7a82da89d661f5d0fd8a934d48f92ce047ccae8f50b09cbd18e9c852785d9",
+      "wai_byte_length": 5217,
+      "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=cf468e5a90065590"
     },
     {
       "id": "ep07-time-as-an-index",
@@ -2406,7 +2442,13 @@
           "detail": "Frames the OpenIE authors' proposed Universal Law of Agency: agents hold goals under energy budgets, bounded by Landauer and kinematic tempo limits.",
           "href": "/papers/agency/"
         }
-      ]
+      ],
+      "canonical_id": "art:radio:ep07-time-as-an-index:4c0be886dcbbf439",
+      "wai_envelope_url": "/media/radio/wai/ep07-time-as-an-index.wai",
+      "wai_content_blake3": "6fa5d194e420bfbf243fe9948d7648367a6b934acc020c942a8e30d164c0e1a5",
+      "wai_sha256": "b7a77773fa13b2b88c7e76b4793201e831d8613250b4de49b6b8691f26f1e028",
+      "wai_byte_length": 5095,
+      "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=beb2f2ee9df1c227"
     },
     {
       "id": "ep08-idea-foundry-redteam",
@@ -2711,7 +2753,13 @@
           "detail": "Zero-parameter integer bit-shift achieved 100.0% exact recall in ~0.34 ms vs MLP's 99.4% recall in ~22 ms (~1.0 J reported_j).",
           "href": "/radio/#foundry"
         }
-      ]
+      ],
+      "canonical_id": "art:radio:ep08-idea-foundry-redteam:04aba3257e60dcf0",
+      "wai_envelope_url": "/media/radio/wai/ep08-idea-foundry-redteam.wai",
+      "wai_content_blake3": "1702bc0c0bbc9be1d76225e344c0a9e6ad0968f2905623aa35193c9999d90842",
+      "wai_sha256": "3b009dc6dcb519e639d760e5d136f62e55c9cf419c67c4233a01185b8b505ca5",
+      "wai_byte_length": 5673,
+      "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=63e4d68a955ebb64"
     },
     {
       "id": "ep09-avalanche-ratchet-desk",
@@ -3131,7 +3179,13 @@
           "detail": "HM01–HD04 milestones declare exact energy/solve kill criteria; animal EV/BCI rescue [E] never extrapolates to human efficacy [S].",
           "href": "/papers/latency/"
         }
-      ]
+      ],
+      "canonical_id": "art:radio:ep09-avalanche-ratchet-desk:d722d5ed37b08621",
+      "wai_envelope_url": "/media/radio/wai/ep09-avalanche-ratchet-desk.wai",
+      "wai_content_blake3": "9c49d481e46a0782bd0b36c0a0cd995d2a0d736af998633f979c5adba082a644",
+      "wai_sha256": "70486194f9f9bd26ee72f652e3fd77e740415f9d0346f55d419a39fe843fd01a",
+      "wai_byte_length": 5294,
+      "commons_citation_url": "https://scholar.askdavidc.ai/?q=ep09-avalanche-ratchet-desk"
     },
     {
       "id": "ep10-stack-three-altitudes-desk",
@@ -3527,7 +3581,13 @@
           "detail": "Per-task energy drops when gated at completion, yet aggregate grid demand can still rise as cheaper automation unlocks new workloads.",
           "href": "/papers/satiation/"
         }
-      ]
+      ],
+      "canonical_id": "art:radio:ep10-stack-three-altitudes-desk:17ed5915b92c38e1",
+      "wai_envelope_url": "/media/radio/wai/ep10-stack-three-altitudes-desk.wai",
+      "wai_content_blake3": "4bb76f4f6ea8e3840007b31886ed67659424d0dca836c4b260219cfd6a18e848",
+      "wai_sha256": "4a46eb19e47ec02828e81dc4f8a79ab51a97fcfe66446c443c2dd831aa4a0862",
+      "wai_byte_length": 5161,
+      "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=146829a81a9dd873"
     },
     {
       "id": "ep11-compute-joule-substrate-desk",
@@ -3937,7 +3997,13 @@
           "detail": "RTL power stays labeled est_mW and open KiCad/STEP tag hardware keeps board_metered=false until physical boards are shunt-probed.",
           "href": "/products/mei/"
         }
-      ]
+      ],
+      "canonical_id": "art:radio:ep11-compute-joule-substrate-desk:5fe0b09f31eff4a9",
+      "wai_envelope_url": "/media/radio/wai/ep11-compute-joule-substrate-desk.wai",
+      "wai_content_blake3": "7b63ecd00d5a592d7dc67d776a23084dbc767786df1c14df4a7450f474859f3c",
+      "wai_sha256": "6251a4125fc9f9da60f0a4a81b5424e62d2ac82bd21acb6ca3ec528dcdb2f53f",
+      "wai_byte_length": 5158,
+      "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=5047929d4f979847"
     },
     {
       "id": "ep12-synthesis-routing-verb-desk",
@@ -4323,7 +4389,13 @@
           "detail": "Rung F failed its 2.0% promotion gate on 151 tasks; TF-2026-06 neural router lost >60x to a zero-weight integer grid.",
           "href": "/radio/#foundry"
         }
-      ]
+      ],
+      "canonical_id": "art:radio:ep12-synthesis-routing-verb-desk:ad0a87f75a08b842",
+      "wai_envelope_url": "/media/radio/wai/ep12-synthesis-routing-verb-desk.wai",
+      "wai_content_blake3": "106b48f0367b6adb6406ff3194ff9f7d45f14fca7209b4a9c569734b63a80a6c",
+      "wai_sha256": "3427ad30f60c3db43f5ab8df2d3ea8ad5cc425cf5ba9e0695c117205bcdceb35",
+      "wai_byte_length": 5044,
+      "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=1922bea6508a8f41"
     },
     {
       "id": "ep13-knowledge-six-kernel-desk",
@@ -4733,7 +4805,13 @@
           "detail": "12 unproved RCE Draft 0.9 Appendix F clauses stay segregated; TA001–TA081 primary-source audit leaves 0 unexplained future signals.",
           "href": "/papers/rce/"
         }
-      ]
+      ],
+      "canonical_id": "art:radio:ep13-knowledge-six-kernel-desk:59e1f1b40af2bfc9",
+      "wai_envelope_url": "/media/radio/wai/ep13-knowledge-six-kernel-desk.wai",
+      "wai_content_blake3": "db01b41a3da798031a31c81c1570a39ebe0eca4f66d205f176ee527703b4750e",
+      "wai_sha256": "c8a4943a09e8883b9c9e6a1346ebf0ce5e1fb7b49f2ae22d532c509f134a8e2d",
+      "wai_byte_length": 5168,
+      "commons_citation_url": "https://scholar.askdavidc.ai/?q=ep13-knowledge-six-kernel-desk"
     },
     {
       "id": "ep14-database-bitemporal-state-desk",
@@ -5144,7 +5222,13 @@
           "detail": "Pre/post test SHA-256 digests asserted identical; reducers capped at <=4,096 gzipped bytes & <=50,000 ops; overlapping RCE-VC edits refused.",
           "href": "/papers/deterministic-null/"
         }
-      ]
+      ],
+      "canonical_id": "art:radio:ep14-database-bitemporal-state-desk:77d9a9e044dfe88e",
+      "wai_envelope_url": "/media/radio/wai/ep14-database-bitemporal-state-desk.wai",
+      "wai_content_blake3": "322c3195c3188f9c360f2c11d6ad0209f006f9b01dccd664c0e516d0470a7424",
+      "wai_sha256": "1163e71b47bf1700c4419fceca06a5adf5b8e481977a78a138e11f778e80a1f0",
+      "wai_byte_length": 5230,
+      "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=f008ef4ae3155a37"
     },
     {
       "id": "ep15-codon-lut6-m2-silicon",
@@ -5577,7 +5661,510 @@
           "detail": "Explore 8x8 codon quartets, 64-bar Walsh filtering, and M.2 DDR3-reset thermals interactively on /tutorials/?lab=lab-11-lut6-codon-wobble and /tv/#lut6-codon-nucleus:90s.",
           "href": "/tv/#lut6-codon-nucleus:90s"
         }
-      ]
+      ],
+      "canonical_id": "art:radio:ep15-codon-lut6-m2-silicon:023c7f603ec85e17",
+      "wai_envelope_url": "/media/radio/wai/ep15-codon-lut6-m2-silicon.wai",
+      "wai_content_blake3": "8a0674be95d7ff3771a64c4af04351666c20ca7254c285043b42307d9709cc07",
+      "wai_sha256": "18997637c7f1113a4cda4c5dc07c349a5f05f6ed9e8b0a7315f4ee79dd7d7f8a",
+      "wai_byte_length": 6872,
+      "commons_citation_url": "https://scholar.askdavidc.ai/?q=ep15-codon-lut6-m2-silicon"
+    },
+    {
+      "id": "ep16-unsiloeing-planetary-wai-commons",
+      "number": 16,
+      "title": "Ep 16 · Unsiloeing Science: One Canonical WAI1 Artifact Across 50 Languages, Accessibility, & The Commons",
+      "subtitle": "Cecily, Marcus, Amara, and Kwame unpack the 8-field openie-artifact-v1 schema, WAI1 BLAKE3/Ed25519 envelopes, 50-language COMET/LaBSE/chrF++ gates, CC0 WCAG 2.2 AA Easy-Read/AD/SKOS AAC projections, and 1,991 prior-art disclosures in The Commons",
+      "summary": "Cecily, Marcus, Amara, and Kwame examine how Open Interface Engineering eliminates manual curation drift across web pages, 112 Research TV films, 16 Research Radio broadcasts, and defensive prior-art repositories through one 8-field openie-artifact-v1 record sealed inside a byte-conforming WAI1 (BLAKE3 + Ed25519) container; why translating 15-second three-point Plain-Words cuts reaches 20 Tier-1 and 30 Tier-2 languages (50 languages, ~7.95B speakers) behind zero-human COMET, LaBSE, mE5, and NLLB-200 chrF++ gates (auto-regenerating on strike 1 and halting as flagged_do_not_ship on strike 2); how CC0-1.0 WCAG 2.2 AA projections ship 28-study Easy Read, 28-study Extended Audio Description, and 36 W3C SKOS AAC concepts (/glossary/concepts.json); and how 1,991 CC0 prior-art disclosures (Humanoid, Phone, Wearable, eVTOL) with JCR-1 COSE_Sign1 receipts unite inside scholar.askdavidc.ai so the autonomous synthesis loop checks The Commons before proposing novel continuations.",
+      "topic_tags": [
+        "unsiloeing-blueprint",
+        "wai1-envelope",
+        "planetary-50-languages",
+        "wcag-skos-aac",
+        "commons-prior-art"
+      ],
+      "panel": [
+        "Cecily",
+        "Marcus",
+        "Kwame",
+        "Amara"
+      ],
+      "panel_profiles": [
+        {
+          "name": "Cecily",
+          "group": "host",
+          "title": "Lead Science Host · African American English",
+          "voice_id": "NQMJRVvPew6HsaebYnZj",
+          "fallback_voice": "en-US-EmmaMultilingualNeural",
+          "color": "#14B8A6",
+          "pan": [
+            0.98,
+            0.98
+          ]
+        },
+        {
+          "name": "Marcus",
+          "group": "skeptic",
+          "title": "Empirical Foil · African American English",
+          "voice_id": "VlUmeC1Uzj3NnwiVR9K9",
+          "fallback_voice": "en-US-ChristopherNeural",
+          "color": "#F59E0B",
+          "pan": [
+            1.04,
+            0.9
+          ]
+        },
+        {
+          "name": "Kwame",
+          "group": "specialist",
+          "title": "Distributed Systems Engineer · Nigerian English",
+          "voice_id": "PFnEp0d5QKq6baWI3azv",
+          "fallback_voice": "en-NG-AbeoNeural",
+          "color": "#A78BFA",
+          "pan": [
+            0.9,
+            1.04
+          ]
+        },
+        {
+          "name": "Amara",
+          "group": "host",
+          "title": "Systems Storyteller · West African English",
+          "voice_id": "mzbNqbWwLuZObi7qEA67",
+          "fallback_voice": "en-NG-EzinneNeural",
+          "color": "#22D3EE",
+          "pan": [
+            0.98,
+            0.98
+          ]
+        }
+      ],
+      "tts_engines": [
+        "eleven_v4"
+      ],
+      "published_utc": "2026-11-24T19:00:00Z",
+      "duration_sec": 495.8,
+      "duration_human": "8:16",
+      "byte_length": 8501990,
+      "audio_url": "/media/radio/ep16-unsiloeing-planetary-wai-commons.m4a",
+      "captions_url": "/media/radio/captions/ep16-unsiloeing-planetary-wai-commons.vtt",
+      "transcript_url": "/media/radio/transcripts/ep16-unsiloeing-planetary-wai-commons.json",
+      "turn_count": 16,
+      "card_count": 9,
+      "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+      "canonical_id": "art:radio:ep16-unsiloeing-planetary-wai-commons:7f4181b8b0328f46",
+      "wai_envelope_url": "/media/radio/wai/ep16-unsiloeing-planetary-wai-commons.wai",
+      "wai_content_blake3": "bf4edd8a529a69557e05bbcb8e0b0838c0b568b32933d1bb99632db360b49c6b",
+      "wai_sha256": "709e671084d492579b7550ad5b9d9bf689f8512d071d74a8fe24f8963c41c4d8",
+      "wai_byte_length": 7096,
+      "desk": "avalanche",
+      "desk_domain": "avalanche.openie.dev",
+      "desks": [
+        "avalanche",
+        "stack",
+        "communication"
+      ],
+      "studies": [
+        "communication-avalanche",
+        "ai-reads-human",
+        "gates",
+        "deterministic-null",
+        "interface-economics"
+      ],
+      "hosts": [
+        "Cecily",
+        "Marcus",
+        "Kwame",
+        "Amara"
+      ],
+      "duration_s": 495.8,
+      "citations": [
+        {
+          "id": "ep16-unsiloeing-planetary-wai-commons-card-00-0",
+          "at_sec": 2.63,
+          "end_sec": 35.362,
+          "turn_index": 0,
+          "speaker": "Cecily",
+          "kind": "ecosystem",
+          "badge": "BLUEPRINT · CC0",
+          "title": "Unsiloeing the OpenIE Ecosystem (/blueprint/)",
+          "detail": "One canonical 8-field openie-artifact-v1 record projecting TV, Radio, 50-language Plain-Words cuts, WCAG 2.2 AA accessibility, and The Commons.",
+          "href": "/blueprint/"
+        },
+        {
+          "id": "ep16-unsiloeing-planetary-wai-commons-card-02-0",
+          "at_sec": 60.884,
+          "end_sec": 86.791,
+          "turn_index": 2,
+          "speaker": "Kwame",
+          "kind": "receipt",
+          "badge": "WAI1 · BLAKE3",
+          "title": "Byte-Conforming WAI1 Envelope & Ed25519 Receipt",
+          "detail": "4-byte ASCII 'WAI1' + u32 LE man_len + compact JSON manifest + u32 LE payload_len + Zstandard payload + moq-jwp BLAKE3 Merkle & Ed25519 signature.",
+          "href": "/media/radio/wai/ep16-unsiloeing-planetary-wai-commons.wai"
+        },
+        {
+          "id": "ep16-unsiloeing-planetary-wai-commons-card-07-0",
+          "at_sec": 192.029,
+          "end_sec": 231.621,
+          "turn_index": 7,
+          "speaker": "Amara",
+          "kind": "receipt",
+          "badge": "160/160 PASS",
+          "title": "Tier-1 20-Language + Tier-2 30-Language Matrix (~7.95B)",
+          "detail": "Fleet mean COMET 0.850, LaBSE cosine 0.866, mE5 0.867, and NLLB-200 back-translation chrF++ 58.0 across 160 Stereo -16 LUFS variants.",
+          "href": "/media/tv/planetary-15s/manifest.json"
+        },
+        {
+          "id": "ep16-unsiloeing-planetary-wai-commons-card-10-0",
+          "at_sec": 294.354,
+          "end_sec": 340.296,
+          "turn_index": 10,
+          "speaker": "Amara",
+          "kind": "study",
+          "badge": "36 SKOS AAC",
+          "title": "WCAG 2.2 AA Easy Read (28) + SKOS AAC (/glossary/concepts.json)",
+          "detail": "CC0-1.0 W3C SKOS DefinedTermSet with <=16-word plain definitions, one-idea Easy-Read sentences, ARASAAC pictograms, and switch core words.",
+          "href": "/glossary/concepts.json"
+        },
+        {
+          "id": "ep16-unsiloeing-planetary-wai-commons-card-10-1",
+          "at_sec": 294.354,
+          "end_sec": 340.296,
+          "turn_index": 10,
+          "speaker": "Amara",
+          "kind": "study",
+          "badge": "28 EASY READ",
+          "title": "Standalone 28-Study Easy-Read & Audio Description Guide",
+          "detail": "Accessible HTML and JSON projections covering all 28 Research TV studies with zero-jargon summaries and extended visual descriptions.",
+          "href": "/media/tv/accessibility/easy-read-index.html"
+        },
+        {
+          "id": "ep16-unsiloeing-planetary-wai-commons-card-12-0",
+          "at_sec": 368.245,
+          "end_sec": 402.416,
+          "turn_index": 12,
+          "speaker": "Kwame",
+          "kind": "ecosystem",
+          "badge": "1,991 CC0 + JCR-1",
+          "title": "The Commons: 1,991 Prior-Art Disclosures + TV & Radio",
+          "detail": "Unifies Humanoid, Phone, Wearable, and eVTOL CC0 disclosures with Research TV/Radio under JCR-1 COSE_Sign1 receipts at scholar.askdavidc.ai.",
+          "href": "https://scholar.askdavidc.ai"
+        },
+        {
+          "id": "ep16-unsiloeing-planetary-wai-commons-card-14-1",
+          "at_sec": 415.833,
+          "end_sec": 459.465,
+          "turn_index": 14,
+          "speaker": "Marcus",
+          "kind": "ecosystem",
+          "badge": "WEBMCP BUS",
+          "title": "Universal AI Agent Bus (/webmcp-tools.js)",
+          "detail": "Exposes openie_get_blueprint_artifacts, openie_lookup_aac_concept, and openie_query_commons_prior_art to browser & MCP agents.",
+          "href": "/webmcp-tools.js"
+        }
+      ],
+      "falsifiers": [
+        {
+          "id": "ep16-unsiloeing-planetary-wai-commons-card-06-0",
+          "at_sec": 174.664,
+          "end_sec": 190.959,
+          "turn_index": 6,
+          "speaker": "Marcus",
+          "kind": "falsifier",
+          "badge": "2-STRIKE HALT",
+          "title": "Zero-Human Gate: flagged_do_not_ship on Strike 2",
+          "detail": "Checks COMET >= 0.78, LaBSE >= 0.74, mE5 >= 0.79, NLLB-200 chrF++ >= 38.0, 3 bullets, 0 unexplained acronyms, and exact numbers; halts on 2 strikes.",
+          "href": "/blueprint/#gate-scoreboard"
+        },
+        {
+          "id": "ep16-unsiloeing-planetary-wai-commons-card-14-0",
+          "at_sec": 415.833,
+          "end_sec": 459.465,
+          "turn_index": 14,
+          "speaker": "Marcus",
+          "kind": "falsifier",
+          "badge": "§6 PRE-CHECK",
+          "title": "Ungrounded Continuation Refusal (commons_prior_art_check)",
+          "detail": "Every Rung-Radar paper and Topic Foundry continuation logs live scholar.askdavidc.ai corroboration before proposing novel experiments.",
+          "href": "https://scholar.askdavidc.ai/mcp"
+        }
+      ],
+      "turns": [
+        {
+          "turn_index": 0,
+          "speaker": "Cecily",
+          "role": "Lead Science Host · African American English",
+          "group": "host",
+          "color": "#14B8A6",
+          "start_sec": 1.83,
+          "end_sec": 35.362,
+          "text": "Welcome to Episode Sixteen of OpenIE Research Radio! I'm Cecily, and today we have a four-chair flagship roundtable in the studio: empirical skeptic Marcus, systems and accessibility storyteller Amara, and distributed WAI envelope engineer Kwame. Full studio disclosure up front: all four of us are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 neural speech and grounded strictly in verified Open Interface Engineering artifacts and live Commons receipts."
+        },
+        {
+          "turn_index": 1,
+          "speaker": "Marcus",
+          "role": "Empirical Foil · African American English",
+          "group": "skeptic",
+          "color": "#F59E0B",
+          "start_sec": 35.552,
+          "end_sec": 59.814,
+          "text": "Let's start with the embarrassing confession every research lab in the world recognizes, Kwame. Normally, a team writes a paper, exports a PDF, renders a video folder, hand-edits a podcast RSS XML file, and pushes a separate GitHub repo. Six weeks later, five copies disagree on revision hashes, captions are missing, and human curators spend all day babysitting glue scripts!"
+        },
+        {
+          "turn_index": 2,
+          "speaker": "Kwame",
+          "role": "Distributed Systems Engineer · Nigerian English",
+          "group": "specialist",
+          "color": "#A78BFA",
+          "start_sec": 60.084,
+          "end_sec": 86.791,
+          "text": "That fragmentation is pure unverified multi-hop drift, Marcus! Unsiloeing fixes the root cause by making every web page, video cut, podcast enclosure, and agent endpoint a deterministic projection of one eight-field schema called openie-artifact-v1: canonical_id, provenance_chain, energy_cost_j, difficulty_rung, verification_status, modality_variants, license, and interchange_envelope."
+        },
+        {
+          "turn_index": 3,
+          "speaker": "Cecily",
+          "role": "Lead Science Host · African American English",
+          "group": "host",
+          "color": "#14B8A6",
+          "start_sec": 87.061,
+          "end_sec": 101.819,
+          "text": "Walk listeners right down to the wire bytes of that interchange_envelope, Kwame — because as of today, all sixteen Research Radio episodes ship live dot-wai binary envelopes under /media/radio/wai/!"
+        },
+        {
+          "turn_index": 4,
+          "speaker": "Kwame",
+          "role": "Distributed Systems Engineer · Nigerian English",
+          "group": "specialist",
+          "color": "#A78BFA",
+          "start_sec": 102.089,
+          "end_sec": 150.972,
+          "text": "Every file begins with the exact four-byte ASCII magic WAI1 — hex 57 41 49 31 — followed by a thirty-two-bit little-endian manifest length, a whitespace-free UTF-8 JSON manifest declaring capability wai.text.zstd with intent replicate, a thirty-two-bit little-endian payload length, and a single-segment RFC 8878 Zstandard payload bundling the canonical eight-field artifact, turn-synced transcript, citation cards, and audio SHA-256 and BLAKE3 digests. Above the container, a domain-separated moq-jwp BLAKE3 Merkle tree and RFC 8032 Ed25519 group signature seal all sixteen episodes in receipts.json."
+        },
+        {
+          "turn_index": 5,
+          "speaker": "Amara",
+          "role": "Systems Storyteller · West African English",
+          "group": "host",
+          "color": "#22D3EE",
+          "start_sec": 151.242,
+          "end_sec": 173.674,
+          "text": "Now once an artifact is sealed cleanly once, ask who on Earth can actually understand it! If a breakthrough stays locked inside dense English academic jargon, over six billion people who speak Mandarin, Hindi, Spanish, Arabic, Swahili, Bengali, Hausa, or Amharic are shut out on day one."
+        },
+        {
+          "turn_index": 6,
+          "speaker": "Marcus",
+          "role": "Empirical Foil · African American English",
+          "group": "skeptic",
+          "color": "#F59E0B",
+          "start_sec": 173.864,
+          "end_sec": 190.959,
+          "text": "Hold on, Amara — let me push back with the classic translation trap! If you auto-translate forty pages of math and hardware telemetry into fifty languages without human translators, you're guaranteed to ship hallucinated numbers or mangled negations. Why doesn't our pipeline fall into that trap?"
+        },
+        {
+          "turn_index": 7,
+          "speaker": "Amara",
+          "role": "Systems Storyteller · West African English",
+          "group": "host",
+          "color": "#22D3EE",
+          "start_sec": 191.229,
+          "end_sec": 231.621,
+          "text": "Two reasons, Marcus! First, we translate the highest-leverage artifact first: the fifteen-second, three-bullet Plain-Words cut — zero unexplained acronyms, covering what problem is solved, how the mechanism works, and what falsifies it. Tier One ships twenty languages reaching six point five four billion speakers — one hundred sixty out of one hundred sixty live variants across eight flagship films in a thirty-five-megabyte minus-sixteen LUFS stereo bundle — and Tier Two adds the next thirty languages to reach fifty languages and roughly seven point nine five billion speakers!"
+        },
+        {
+          "turn_index": 8,
+          "speaker": "Kwame",
+          "role": "Distributed Systems Engineer · Nigerian English",
+          "group": "specialist",
+          "color": "#A78BFA",
+          "start_sec": 231.891,
+          "end_sec": 277.377,
+          "text": "And second is our zero-human deterministic verification gate! Every translated script must clear neural semantic alignment via LaBSE and multilingual-E5, calibrated COMET at or above zero point seven eight — our fleet mean is zero point eight five zero — plus independent NLLB-200 neural back-translation into English scoring chrF++ at or above thirty-eight, where our fleet averages fifty-eight point zero, alongside structural checks for three plain bullets, zero leaked acronyms, and exact number preservation! Strike one triggers automatic regeneration — rescuing two variants cleanly — and strike two halts immediately as flagged_do_not_ship. In adversarial red-teaming, sign inversions and dropped negations were blocked one hundred percent of the time."
+        },
+        {
+          "turn_index": 9,
+          "speaker": "Cecily",
+          "role": "Lead Science Host · African American English",
+          "group": "host",
+          "color": "#14B8A6",
+          "start_sec": 277.647,
+          "end_sec": 293.284,
+          "text": "That brings us to Pillar Three, Amara: first-class CC0-1.0 accessibility projections! Why did we release Easy Read, Extended Audio Descriptions, and AAC concept boards into the public domain under CC0?"
+        },
+        {
+          "turn_index": 10,
+          "speaker": "Amara",
+          "role": "Systems Storyteller · West African English",
+          "group": "host",
+          "color": "#22D3EE",
+          "start_sec": 293.554,
+          "end_sec": 340.296,
+          "text": "Because assistive technology builders, schools, disability advocates, and screen-reader users should never hit copyright friction or visual-only walls! Every Canonical Artifact automatically emits WCAG 2.2 Level AA companions under CC0-1.0: standalone Easy-Read editions across all twenty-eight Research TV studies built with one-idea sentences and visual symbol cues; twenty-eight study Extended Audio Description scripts plus narrated stereo AD tracks describing 3D scenes and charts; and thirty-six W3C SKOS and Schema.org DefinedTerm concepts at /glossary/concepts.json!"
+        },
+        {
+          "turn_index": 11,
+          "speaker": "Marcus",
+          "role": "Empirical Foil · African American English",
+          "group": "skeptic",
+          "color": "#F59E0B",
+          "start_sec": 340.486,
+          "end_sec": 367.175,
+          "text": "I inspected /glossary/concepts.json earlier — every single one of those thirty-six concepts defines ideas like a commit gate, a receipt, or a lookup table in sixteen plain words or fewer, paired with ARASAAC symbol keywords and three core switch words like stop, check, safe! Now connect Pillar Four, Kwame: how does all of this plug into scholar.askdavidc.ai — The Commons?"
+        },
+        {
+          "turn_index": 12,
+          "speaker": "Kwame",
+          "role": "Distributed Systems Engineer · Nigerian English",
+          "group": "specialist",
+          "color": "#A78BFA",
+          "start_sec": 367.445,
+          "end_sec": 402.416,
+          "text": "Inside scholar.askdavidc.ai, we unified one thousand nine hundred ninety-one CC0-1.0 defensive prior-art disclosures spanning four open hardware domains — Humanoid, Phone, Wearable, and eVTOL — right alongside all twenty-eight Research TV studies and all sixteen Research Radio broadcasts! Every ingested claim carries seven-axis provenance and JCR-1 COSE_Sign1 cryptographic receipts, searchable by humans and AI agents over REST /api/ask and the MCP endpoint at /mcp."
+        },
+        {
+          "turn_index": 13,
+          "speaker": "Cecily",
+          "role": "Lead Science Host · African American English",
+          "group": "host",
+          "color": "#14B8A6",
+          "start_sec": 402.686,
+          "end_sec": 414.843,
+          "text": "And that closes Blueprint Section Six right inside our own autonomous six-hour Research Radio daemon! Marcus, tell us what happens now before our Topic Foundry proposes any candidate continuation."
+        },
+        {
+          "turn_index": 14,
+          "speaker": "Marcus",
+          "role": "Empirical Foil · African American English",
+          "group": "skeptic",
+          "color": "#F59E0B",
+          "start_sec": 415.033,
+          "end_sec": 459.465,
+          "text": "No more blind brainstorming! Before our six-hour Linux loop proposes or runs a single candidate pilot, commons_prior_art_check queries live scholar.askdavidc.ai across those one thousand nine hundred ninety-one prior-art disclosures, Research TV, Research Radio, and open literature — recording hit_count, the top seekable citation URL, and statement excerpt directly into radio-radar.json! Plus, any browser or MCP agent visiting research.openie.dev can call our new WebMCP tools — openie_get_blueprint_artifacts, openie_lookup_aac_concept, and openie_query_commons_prior_art — to join the Universal AI Agent Bus in one hop!"
+        },
+        {
+          "turn_index": 15,
+          "speaker": "Cecily",
+          "role": "Lead Science Host · African American English",
+          "group": "host",
+          "color": "#14B8A6",
+          "start_sec": 459.735,
+          "end_sec": 493.838,
+          "text": "One canonical eight-field artifact, sixteen WAI1 binary envelopes with BLAKE3 and Ed25519 receipts, fifty languages guarded by zero-human neural gates, CC0 WCAG 2.2 AA accessibility, and live prior-art grounding across The Commons! Inspect the live blueprint at research.openie.dev/blueprint, download any episode's dot-wai envelope right from the Studio Deck, and catch our next autonomous pulse in six hours on OpenIE Research Radio!"
+        }
+      ],
+      "cards": [
+        {
+          "id": "ep16-unsiloeing-planetary-wai-commons-card-00-0",
+          "at_sec": 2.63,
+          "end_sec": 35.362,
+          "turn_index": 0,
+          "speaker": "Cecily",
+          "kind": "ecosystem",
+          "badge": "BLUEPRINT · CC0",
+          "title": "Unsiloeing the OpenIE Ecosystem (/blueprint/)",
+          "detail": "One canonical 8-field openie-artifact-v1 record projecting TV, Radio, 50-language Plain-Words cuts, WCAG 2.2 AA accessibility, and The Commons.",
+          "href": "/blueprint/"
+        },
+        {
+          "id": "ep16-unsiloeing-planetary-wai-commons-card-02-0",
+          "at_sec": 60.884,
+          "end_sec": 86.791,
+          "turn_index": 2,
+          "speaker": "Kwame",
+          "kind": "receipt",
+          "badge": "WAI1 · BLAKE3",
+          "title": "Byte-Conforming WAI1 Envelope & Ed25519 Receipt",
+          "detail": "4-byte ASCII 'WAI1' + u32 LE man_len + compact JSON manifest + u32 LE payload_len + Zstandard payload + moq-jwp BLAKE3 Merkle & Ed25519 signature.",
+          "href": "/media/radio/wai/ep16-unsiloeing-planetary-wai-commons.wai"
+        },
+        {
+          "id": "ep16-unsiloeing-planetary-wai-commons-card-06-0",
+          "at_sec": 174.664,
+          "end_sec": 190.959,
+          "turn_index": 6,
+          "speaker": "Marcus",
+          "kind": "falsifier",
+          "badge": "2-STRIKE HALT",
+          "title": "Zero-Human Gate: flagged_do_not_ship on Strike 2",
+          "detail": "Checks COMET >= 0.78, LaBSE >= 0.74, mE5 >= 0.79, NLLB-200 chrF++ >= 38.0, 3 bullets, 0 unexplained acronyms, and exact numbers; halts on 2 strikes.",
+          "href": "/blueprint/#gate-scoreboard"
+        },
+        {
+          "id": "ep16-unsiloeing-planetary-wai-commons-card-07-0",
+          "at_sec": 192.029,
+          "end_sec": 231.621,
+          "turn_index": 7,
+          "speaker": "Amara",
+          "kind": "receipt",
+          "badge": "160/160 PASS",
+          "title": "Tier-1 20-Language + Tier-2 30-Language Matrix (~7.95B)",
+          "detail": "Fleet mean COMET 0.850, LaBSE cosine 0.866, mE5 0.867, and NLLB-200 back-translation chrF++ 58.0 across 160 Stereo -16 LUFS variants.",
+          "href": "/media/tv/planetary-15s/manifest.json"
+        },
+        {
+          "id": "ep16-unsiloeing-planetary-wai-commons-card-10-0",
+          "at_sec": 294.354,
+          "end_sec": 340.296,
+          "turn_index": 10,
+          "speaker": "Amara",
+          "kind": "study",
+          "badge": "36 SKOS AAC",
+          "title": "WCAG 2.2 AA Easy Read (28) + SKOS AAC (/glossary/concepts.json)",
+          "detail": "CC0-1.0 W3C SKOS DefinedTermSet with <=16-word plain definitions, one-idea Easy-Read sentences, ARASAAC pictograms, and switch core words.",
+          "href": "/glossary/concepts.json"
+        },
+        {
+          "id": "ep16-unsiloeing-planetary-wai-commons-card-10-1",
+          "at_sec": 294.354,
+          "end_sec": 340.296,
+          "turn_index": 10,
+          "speaker": "Amara",
+          "kind": "study",
+          "badge": "28 EASY READ",
+          "title": "Standalone 28-Study Easy-Read & Audio Description Guide",
+          "detail": "Accessible HTML and JSON projections covering all 28 Research TV studies with zero-jargon summaries and extended visual descriptions.",
+          "href": "/media/tv/accessibility/easy-read-index.html"
+        },
+        {
+          "id": "ep16-unsiloeing-planetary-wai-commons-card-12-0",
+          "at_sec": 368.245,
+          "end_sec": 402.416,
+          "turn_index": 12,
+          "speaker": "Kwame",
+          "kind": "ecosystem",
+          "badge": "1,991 CC0 + JCR-1",
+          "title": "The Commons: 1,991 Prior-Art Disclosures + TV & Radio",
+          "detail": "Unifies Humanoid, Phone, Wearable, and eVTOL CC0 disclosures with Research TV/Radio under JCR-1 COSE_Sign1 receipts at scholar.askdavidc.ai.",
+          "href": "https://scholar.askdavidc.ai"
+        },
+        {
+          "id": "ep16-unsiloeing-planetary-wai-commons-card-14-0",
+          "at_sec": 415.833,
+          "end_sec": 459.465,
+          "turn_index": 14,
+          "speaker": "Marcus",
+          "kind": "falsifier",
+          "badge": "§6 PRE-CHECK",
+          "title": "Ungrounded Continuation Refusal (commons_prior_art_check)",
+          "detail": "Every Rung-Radar paper and Topic Foundry continuation logs live scholar.askdavidc.ai corroboration before proposing novel experiments.",
+          "href": "https://scholar.askdavidc.ai/mcp"
+        },
+        {
+          "id": "ep16-unsiloeing-planetary-wai-commons-card-14-1",
+          "at_sec": 415.833,
+          "end_sec": 459.465,
+          "turn_index": 14,
+          "speaker": "Marcus",
+          "kind": "ecosystem",
+          "badge": "WEBMCP BUS",
+          "title": "Universal AI Agent Bus (/webmcp-tools.js)",
+          "detail": "Exposes openie_get_blueprint_artifacts, openie_lookup_aac_concept, and openie_query_commons_prior_art to browser & MCP agents.",
+          "href": "/webmcp-tools.js"
+        }
+      ],
+      "commons_citation_url": "https://scholar.askdavidc.ai/?q=ep16-unsiloeing-planetary-wai-commons"
     }
-  ]
+  ],
+  "wai_receipts_url": "/media/radio/wai/receipts.json",
+  "wai_merkle_root_blake3": "c43412bc2194865d8bc1f665dc9750eca203f6feb8ac0a66ebe69b1119eaaa3f",
+  "wai_signer_pubkey_ed25519": "3289bd26e96cfaeaa3a376a729a0afe21a1b34fe92c997523a72e0b557ee3405"
 }

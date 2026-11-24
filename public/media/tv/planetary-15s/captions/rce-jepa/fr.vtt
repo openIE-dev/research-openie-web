@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:06.596
+Premièrement, au lieu de deviner le code brut mot pour mot, les petits modèles prédisent des résumés compacts de la signification du programme.
+
+2
+00:00:06.936 --> 00:00:12.864
+Deuxièmement, tout modèle d'IA peut proposer un programme candidat, mais un vérificateur rapide et strict décide ce qui passe.
+
+3
+00:00:13.204 --> 00:00:20.536
+Troisièmement, la vérification utilise dix-sept cents fois moins d'énergie que la génération, et les correctifs enregistrés réduisent les appels de modèles importants.

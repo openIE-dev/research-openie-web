@@ -2,12 +2,66 @@
 import Layout from '../../layouts/Layout.astro';
 import tvCatalog from '../../data/tv-catalog.json';
 import ecosystemChannelsRaw from '../../data/openie-ecosystem-channels.json';
+import unsiloeing from '../../data/planetary-unsiloeing.json';
 import TvEcosystemChannels from '../../components/tv/TvEcosystemChannels.astro';
 import TvClient from './_TvClient.astro';
 
 const SITE = 'https://research.openie.dev';
 const studies = tvCatalog.studies as any[];
 const studiesById = Object.fromEntries(studies.map((s) => [s.id, s]));
+
+const uMetrics: any = unsiloeing.summary_metrics ?? {};
+const allPlanetaryLangs = [
+  ...((unsiloeing.tier1_languages ?? []) as any[]).map((l) => ({
+    code: l.code,
+    tier: 1,
+    name: l.name,
+    native: l.native,
+    dir: l.dir ?? 'ltr',
+    speakers_m: l.speakers_m,
+  })),
+  ...(((unsiloeing as any).tier2_languages ?? unsiloeing.tier2_roadmap ?? []) as any[]).map((l) => ({
+    code: l.code,
+    tier: 2,
+    name: l.name,
+    native: l.native,
+    dir: l.dir ?? (l.code === 'fa' || l.code === 'he' ? 'rtl' : 'ltr'),
+    speakers_m: l.speakers_m,
+  })),
+];
+
+const tvPlanetaryPayload = JSON.stringify({
+  langs: allPlanetaryLangs,
+  variants: ((unsiloeing.variants ?? []) as any[])
+    .filter((v) => v.ship_allowed !== false && v.audio_url)
+    .map((v) => ({
+      tv_id: v.tv_id,
+      lang: v.lang,
+      tier: v.tier ?? 1,
+      dir: v.dir ?? 'ltr',
+      voice: v.voice,
+      audio_url: v.audio_url,
+      vtt_url: v.vtt_url,
+      gate_status: v.gate_status,
+      comet: v.comet_calibrated,
+      chrf: v.backtrans_chrfpp,
+      bullets: v.bullets,
+    })),
+  ad: ((unsiloeing.audio_descriptions ?? []) as any[]).map((a) => ({
+    tv_id: a.tv_id,
+    overview: a.visual_overview,
+    audio_url: a.ad_audio_url,
+    vtt_url: a.ad_vtt_url,
+    duration_s: a.duration_s,
+    cues: a.cues,
+  })),
+  easyRead: ((unsiloeing.easy_read_flagship ?? []) as any[]).map((e) => ({
+    study_id: e.study_id,
+    easy_title: e.easy_title,
+    symbol_tags: e.symbol_tags,
+    one_idea_sentences: e.one_idea_sentences,
+  })),
+});
 const ecosystemChannels = {
   ...ecosystemChannelsRaw,
   channels: (ecosystemChannelsRaw.channels || []).map((ch: any) => {
@@ -66,7 +120,7 @@ const jsonLd = {
           uploadDate: '2026-11-23',
           duration: isoDuration(td.duration_s),
           contentUrl: `${SITE}${td.video_url}`,
-          embedUrl: `${SITE}/tv/#${s.id}:${t}`,
+          embedUrl: `${SITE}/tv/?study=${s.id}&tier=${t}`,
           transcript: td.transcript,
           publisher: {
             '@type': 'Organization',
@@ -103,7 +157,7 @@ const jsonLd = {
           6 *.openie.dev Channels ↓
         </a>
         <a href="/blueprint/" class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-amber/15 text-brand-amber border border-brand-amber/40 no-underline hover:bg-brand-amber/25 transition-colors">
-          20-Language 15s · Easy Read · AD Blueprint →
+          {uMetrics.active_languages ?? 50}-Language 15s · {uMetrics.easy_read_studies ?? 28}/28 Easy Read &amp; AD Blueprint →
         </a>
         <a href="/glossary/concepts.json" class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-white/5 text-brand-cyan border border-brand-cyan/30 no-underline hover:border-brand-cyan transition-colors">
           AAC concepts.json
@@ -186,6 +240,141 @@ const jsonLd = {
                 default
               />
             </video>
+          </div>
+
+          <!-- Native Planetary 50-Language 15s, Extended Audio Description (28/28), & Easy-Read + AAC Studio Bar -->
+          <div
+            id="tv-accessibility-studio"
+            role="region"
+            aria-label="Planetary 15s language, extended audio description, and Easy-Read accessibility controls"
+            class="mt-3 p-3.5 rounded-xl border border-brand-cyan/35 bg-white/[0.025]"
+          >
+            <div class="flex flex-wrap items-center justify-between gap-2.5">
+              <div class="flex flex-wrap items-center gap-2 flex-1 min-w-[240px]">
+                <label for="tv-planetary-lang" class="font-mono text-[11px] uppercase tracking-wider text-brand-cyan shrink-0">
+                  🌐 15s Language:
+                </label>
+                <select
+                  id="tv-planetary-lang"
+                  aria-label="Select 15-second plain-words language track"
+                  class="font-mono text-xs px-2.5 py-1.5 rounded-lg bg-[#0b1020] border border-brand-border text-brand-white focus:border-brand-amber focus:outline-none max-w-full sm:max-w-[310px]"
+                >
+                  <option value="studio">Studio English (ElevenLabs v4 · All 4 Slots)</option>
+                  <optgroup id="tv-lang-opt-t1" label="Tier 1 · Top 20 Languages (All 28 Studies · 6.54B Speakers)">
+                    {allPlanetaryLangs.filter((l) => l.tier === 1).map((lg) => (
+                      <option value={lg.code}>
+                        {lg.native} — {lg.name} ({lg.code}{lg.dir === 'rtl' ? ' · RTL' : ''} · {lg.speakers_m}M)
+                      </option>
+                    ))}
+                  </optgroup>
+                  <optgroup id="tv-lang-opt-t2" label="Tier 2 · Next 30 Languages (50-Lang Flagships · +1.41B Speakers)">
+                    {allPlanetaryLangs.filter((l) => l.tier === 2).map((lg) => (
+                      <option value={lg.code}>
+                        {lg.native} — {lg.name} ({lg.code}{lg.dir === 'rtl' ? ' · RTL' : ''} · {lg.speakers_m}M)
+                      </option>
+                    ))}
+                  </optgroup>
+                </select>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-2">
+                <button
+                  id="tv-ad-toggle"
+                  type="button"
+                  aria-pressed="false"
+                  aria-controls="tv-ad-drawer"
+                  class="tv-a11y-btn font-mono text-xs px-3 py-1.5 rounded-lg border border-brand-border text-brand-light hover:border-emerald-400 hover:text-emerald-200 cursor-pointer bg-transparent transition-all"
+                >
+                  🎧 AD Audio Description
+                </button>
+                <button
+                  id="tv-easyread-toggle"
+                  type="button"
+                  aria-pressed="false"
+                  aria-expanded="false"
+                  aria-controls="tv-easyread-drawer"
+                  class="tv-a11y-btn font-mono text-xs px-3 py-1.5 rounded-lg border border-brand-border text-brand-light hover:border-brand-cyan hover:text-brand-cyan cursor-pointer bg-transparent transition-all"
+                >
+                  📖 Easy Read + AAC
+                </button>
+              </div>
+            </div>
+
+            <!-- Synchronized Auxiliary Audio Bar (shown when Planetary 15s Language or AD Track is active) -->
+            <div id="tv-aux-audio-wrap" class="hidden mt-3 pt-3 border-t border-brand-border/70">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                <div id="tv-aux-status" role="status" aria-live="polite" class="font-mono text-[11px] text-emerald-300 font-semibold"></div>
+                <div class="flex items-center gap-2 font-mono text-[11px]">
+                  <span id="tv-aux-gate-badge" class="text-brand-slate"></span>
+                  <a id="tv-aux-dl-m4a" href="/media/tv/accessibility/communication-avalanche-15s.ad.m4a" class="text-brand-amber no-underline hover:underline">.m4a</a>
+                  <span class="text-brand-gray">·</span>
+                  <a id="tv-aux-dl-vtt" href="/media/tv/accessibility/communication-avalanche-15s.ad.vtt" class="text-brand-cyan no-underline hover:underline">.vtt</a>
+                  <button id="tv-aux-reset" type="button" class="ml-1 px-2 py-0.5 rounded border border-brand-border text-brand-slate hover:text-brand-white cursor-pointer bg-transparent">
+                    Reset Studio Audio
+                  </button>
+                </div>
+              </div>
+              <audio
+                id="tv-aux-audio"
+                controls
+                preload="none"
+                class="w-full h-9"
+                aria-label="Synchronized planetary language or extended audio description track"
+              ></audio>
+              <div
+                id="tv-planetary-bullets-box"
+                dir="ltr"
+                lang="en"
+                class="hidden mt-2.5 p-3 rounded-lg border border-brand-amber/30 bg-[#0b1020]"
+              >
+                <div class="flex items-center justify-between gap-2 mb-1.5">
+                  <span id="tv-planetary-kicker" class="font-mono text-[10px] uppercase tracking-wider text-brand-amber">
+                    Verified 15s Plain-Words Translation
+                  </span>
+                  <span id="tv-planetary-dir-pill" class="font-mono text-[10px] px-2 py-0.5 rounded bg-white/5 text-brand-cyan border border-brand-border">
+                    LTR
+                  </span>
+                </div>
+                <ol id="tv-planetary-bullets" class="list-decimal pl-5 space-y-1 font-body text-[13px] text-brand-white leading-relaxed m-0"></ol>
+              </div>
+            </div>
+
+            <!-- Extended Audio Description Inline Geometry Drawer (28 / 28 Studies) -->
+            <div id="tv-ad-drawer" class="hidden mt-3 pt-3 border-t border-emerald-400/30">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                <span class="font-mono text-[11px] uppercase tracking-wider text-emerald-300 font-semibold">
+                  Extended Audio Description · 28/28 Catalog Visual Geometry · WCAG 2.2 AA
+                </span>
+                <a id="tv-ad-vtt-link" href="/media/tv/accessibility/communication-avalanche-15s.ad.vtt" class="font-mono text-[11px] text-emerald-300 no-underline hover:underline">
+                  WebVTT (.ad.vtt) ↗
+                </a>
+              </div>
+              <p id="tv-ad-overview" class="font-body text-xs text-brand-slate mb-2 leading-relaxed"></p>
+              <div id="tv-ad-cues" class="grid grid-cols-1 md:grid-cols-3 gap-2"></div>
+            </div>
+
+            <!-- Easy Read + SKOS AAC Symbol Drawer (28 / 28 Studies) -->
+            <div id="tv-easyread-drawer" class="hidden mt-3 pt-3 border-t border-brand-cyan/30">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <div>
+                  <span class="font-mono text-[11px] uppercase tracking-wider text-brand-cyan font-semibold">
+                    Easy Read + SKOS AAC Symbols · One Idea Per Sentence · CC0-1.0
+                  </span>
+                  <div id="tv-er-title" class="font-display text-base font-bold text-brand-white mt-0.5"></div>
+                </div>
+                <div class="flex items-center gap-2 font-mono text-[11px]">
+                  <a id="tv-er-guide-link" href="/media/tv/accessibility/easy-read-index.html" class="text-brand-amber no-underline hover:underline">
+                    28-Study Guide ↗
+                  </a>
+                  <span class="text-brand-gray">·</span>
+                  <a href="/glossary/concepts.json" class="text-brand-cyan no-underline hover:underline">
+                    AAC JSON-LD
+                  </a>
+                </div>
+              </div>
+              <div id="tv-er-symbols" class="flex flex-wrap gap-1.5 mb-2.5" aria-label="AAC symbol supports"></div>
+              <ol id="tv-er-sentences" class="list-decimal pl-5 space-y-1 font-body text-[13.5px] text-brand-white leading-relaxed m-0"></ol>
+            </div>
           </div>
 
           <!-- Active Film Metadata & Prev/Next Bar -->
@@ -432,7 +621,346 @@ const jsonLd = {
       background: rgba(245, 158, 11, 0.08) !important;
       box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.25);
     }
+    .tv-a11y-active {
+      border-color: #00d4aa !important;
+      background: rgba(0, 212, 170, 0.16) !important;
+      color: #ffffff !important;
+    }
+    .tv-a11y-btn:focus-visible,
+    #tv-planetary-lang:focus-visible {
+      outline: 2px solid #f59e0b;
+      outline-offset: 2px;
+    }
   </style>
 
   <TvClient catalog={tvCatalog} ecosystem={ecosystemChannels} />
+
+  <script is:inline define:vars={{ tvPlanetaryPayload }}>
+  (function () {
+    const P = JSON.parse(tvPlanetaryPayload);
+    const LANG_BY_CODE = Object.fromEntries((P.langs || []).map((l) => [l.code, l]));
+    const VAR_BY_KEY = {};
+    const LANGS_FOR_STUDY = {};
+    (P.variants || []).forEach((v) => {
+      VAR_BY_KEY[v.tv_id + ':' + v.lang] = v;
+      if (!LANGS_FOR_STUDY[v.tv_id]) LANGS_FOR_STUDY[v.tv_id] = new Set();
+      LANGS_FOR_STUDY[v.tv_id].add(v.lang);
+    });
+    const AD_BY_TV = Object.fromEntries((P.ad || []).map((a) => [a.tv_id, a]));
+    const ER_BY_TV = Object.fromEntries((P.easyRead || []).map((e) => [e.study_id, e]));
+
+    const videoEl = document.getElementById('tv-player');
+    const trackEl = document.getElementById('tv-track');
+    const langSelect = document.getElementById('tv-planetary-lang');
+    const optGroupT2 = document.getElementById('tv-lang-opt-t2');
+    const adBtn = document.getElementById('tv-ad-toggle');
+    const erBtn = document.getElementById('tv-easyread-toggle');
+    const auxWrap = document.getElementById('tv-aux-audio-wrap');
+    const auxStatus = document.getElementById('tv-aux-status');
+    const auxGateBadge = document.getElementById('tv-aux-gate-badge');
+    const auxDlM4a = document.getElementById('tv-aux-dl-m4a');
+    const auxDlVtt = document.getElementById('tv-aux-dl-vtt');
+    const auxResetBtn = document.getElementById('tv-aux-reset');
+    const auxAudio = document.getElementById('tv-aux-audio');
+    const pBulletsBox = document.getElementById('tv-planetary-bullets-box');
+    const pBulletsList = document.getElementById('tv-planetary-bullets');
+    const pKicker = document.getElementById('tv-planetary-kicker');
+    const pDirPill = document.getElementById('tv-planetary-dir-pill');
+    const adDrawer = document.getElementById('tv-ad-drawer');
+    const adOverview = document.getElementById('tv-ad-overview');
+    const adCues = document.getElementById('tv-ad-cues');
+    const adVttLink = document.getElementById('tv-ad-vtt-link');
+    const erDrawer = document.getElementById('tv-easyread-drawer');
+    const erTitle = document.getElementById('tv-er-title');
+    const erSymbols = document.getElementById('tv-er-symbols');
+    const erSentences = document.getElementById('tv-er-sentences');
+    const erGuideLink = document.getElementById('tv-er-guide-link');
+
+    let selectedLang = 'studio'; // 'studio' | BCP-47 code
+    let adActive = false;
+    let erOpen = false;
+    let syncingMedia = false;
+
+    function esc(s) {
+      return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function detectCurrentStudyAndTier() {
+      const loaded = (videoEl && (videoEl.getAttribute('data-loaded-src') || videoEl.getAttribute('src'))) || '';
+      const m = loaded.match(/\/media\/tv\/films\/(.+)-(15s|45s|90s|180s)\.mp4$/);
+      if (m) return { studyId: m[1], tier: m[2] };
+      return { studyId: 'communication-avalanche', tier: '90s' };
+    }
+
+    function ensureTier15s(studyId, tier) {
+      if (tier !== '15s' && window.openieTV && typeof window.openieTV.play === 'function') {
+        window.openieTV.play(studyId, '15s');
+        return true;
+      }
+      return false;
+    }
+
+    function updateLangOptionAvailability(studyId) {
+      const avail = LANGS_FOR_STUDY[studyId] || new Set();
+      let hasAnyT2 = false;
+      if (optGroupT2) {
+        optGroupT2.querySelectorAll('option').forEach((opt) => {
+          const ok = avail.has(opt.value);
+          opt.disabled = !ok;
+          if (ok) hasAnyT2 = true;
+        });
+        optGroupT2.label = hasAnyT2
+          ? 'Tier 2 · Next 30 Languages (Active 50-Language Study · +1.41B Speakers)'
+          : 'Tier 2 · Next 30 Languages (Select Avalanche or 64-Codon Study)';
+      }
+    }
+
+    function renderAccessibilityState(autoplayAux) {
+      const { studyId, tier } = detectCurrentStudyAndTier();
+      updateLangOptionAvailability(studyId);
+
+      // If user explicitly switched to 45s/90s/180s while language or AD was active, return audio to studio English
+      if (tier !== '15s' && (selectedLang !== 'studio' || adActive)) {
+        selectedLang = 'studio';
+        adActive = false;
+        if (langSelect) langSelect.value = 'studio';
+      }
+
+      // If current study lacks a Tier-2 variant that was selected on a flagship, fall back cleanly to English 15s
+      if (selectedLang !== 'studio' && !VAR_BY_KEY[studyId + ':' + selectedLang]) {
+        selectedLang = VAR_BY_KEY[studyId + ':en'] ? 'en' : 'studio';
+        if (langSelect) langSelect.value = selectedLang;
+      }
+
+      const adObj = AD_BY_TV[studyId];
+      const erObj = ER_BY_TV[studyId];
+      const varObj = selectedLang !== 'studio' ? VAR_BY_KEY[studyId + ':' + selectedLang] : null;
+      const lgMeta = selectedLang !== 'studio' ? LANG_BY_CODE[selectedLang] : null;
+
+      // Toggle button visual + ARIA states
+      if (adBtn) {
+        adBtn.classList.toggle('tv-a11y-active', adActive);
+        adBtn.setAttribute('aria-pressed', String(adActive));
+      }
+      if (erBtn) {
+        erBtn.classList.toggle('tv-a11y-active', erOpen);
+        erBtn.setAttribute('aria-pressed', String(erOpen));
+        erBtn.setAttribute('aria-expanded', String(erOpen));
+      }
+
+      // Easy-Read drawer (works on every study and every depth slot)
+      if (erDrawer) {
+        erDrawer.classList.toggle('hidden', !erOpen);
+        if (erObj) {
+          if (erTitle) erTitle.textContent = erObj.easy_title;
+          if (erGuideLink) erGuideLink.setAttribute('href', '/media/tv/accessibility/easy-read-index.html#study-' + studyId);
+          if (erSymbols) {
+            erSymbols.innerHTML = (erObj.symbol_tags || []).map((t) =>
+              '<span class="px-2.5 py-1 rounded-full border border-brand-cyan/35 bg-white/5 font-mono text-[11px] text-brand-white">' +
+              '<span aria-hidden="true">' + esc(t.unicode) + '</span> <strong>' + esc(t.core_word) + '</strong>: ' + esc(t.label) +
+              '</span>'
+            ).join('');
+          }
+          if (erSentences) {
+            erSentences.innerHTML = (erObj.one_idea_sentences || []).map((s) => '<li>' + esc(s) + '</li>').join('');
+          }
+        }
+      }
+
+      // Extended Audio Description drawer
+      const fallbackAdM4a = '/media/tv/accessibility/' + studyId + '-15s.ad.m4a';
+      const fallbackAdVtt = '/media/tv/accessibility/' + studyId + '-15s.ad.vtt';
+      if (adDrawer) {
+        adDrawer.classList.toggle('hidden', !adActive);
+        if (adVttLink) adVttLink.setAttribute('href', adObj ? adObj.vtt_url : fallbackAdVtt);
+        if (adObj) {
+          if (adOverview) adOverview.textContent = adObj.overview;
+          if (adCues) {
+            adCues.innerHTML = (adObj.cues || []).map((c, idx) =>
+              '<div class="p-2.5 rounded-lg border border-brand-border bg-[#0b1020] text-xs">' +
+              '<div class="font-mono text-[10px] text-emerald-300 mb-1">Scene ' + (idx + 1) + ' Geometry</div>' +
+              '<div class="text-brand-light mb-1 leading-snug">' + esc(c.visual) + '</div>' +
+              '<div class="font-mono text-[10.5px] text-brand-amber leading-snug">' + esc(c.takeaway) + '</div>' +
+              '</div>'
+            ).join('');
+          }
+        }
+      }
+
+      // Auxiliary audio & captions orchestration (AD takes precedence when toggled ON, otherwise Planetary 15s language)
+      const useAux = adActive || Boolean(varObj);
+      if (auxWrap) auxWrap.classList.toggle('hidden', !useAux);
+
+      if (!useAux) {
+        if (auxAudio && !auxAudio.paused) auxAudio.pause();
+        if (videoEl) videoEl.muted = false;
+        if (trackEl) {
+          const origVtt = '/media/tv/captions/' + studyId + '-' + tier + '.vtt';
+          if (trackEl.getAttribute('src') !== origVtt) {
+            trackEl.setAttribute('srclang', 'en');
+            trackEl.setAttribute('label', 'English Studio Captions');
+            trackEl.setAttribute('src', origVtt);
+          }
+        }
+        if (pBulletsBox) pBulletsBox.classList.add('hidden');
+        return;
+      }
+
+      const targetAudio = adActive ? (adObj ? adObj.audio_url : fallbackAdM4a) : varObj.audio_url;
+      const targetVtt = adActive ? (adObj ? adObj.vtt_url : fallbackAdVtt) : varObj.vtt_url;
+
+      if (videoEl) videoEl.muted = true;
+      if (trackEl) {
+        trackEl.setAttribute('srclang', adActive ? 'en' : varObj.lang);
+        trackEl.setAttribute('label', adActive ? 'Extended Audio Description' : ((lgMeta ? lgMeta.name : varObj.lang) + ' Captions'));
+        if (trackEl.getAttribute('src') !== targetVtt) {
+          trackEl.setAttribute('src', targetVtt);
+        }
+      }
+
+      if (auxAudio && auxAudio.getAttribute('src') !== targetAudio) {
+        auxAudio.pause();
+        auxAudio.setAttribute('src', targetAudio);
+        auxAudio.load();
+      }
+      if (auxDlM4a) auxDlM4a.setAttribute('href', targetAudio);
+      if (auxDlVtt) auxDlVtt.setAttribute('href', targetVtt);
+
+      if (adActive) {
+        if (auxStatus) auxStatus.textContent = '🎧 Extended Audio Description Active · Stereo -16 LUFS (.ad.m4a)';
+        if (auxGateBadge) auxGateBadge.textContent = 'WCAG 2.2 AA · 28/28 Catalog';
+        if (pBulletsBox) pBulletsBox.classList.add('hidden');
+      } else if (varObj) {
+        const lLabel = lgMeta ? (lgMeta.native + ' · ' + lgMeta.name) : varObj.lang;
+        if (auxStatus) auxStatus.textContent = '🌐 15s Native Audio · ' + lLabel + ' (' + varObj.voice + ')';
+        if (auxGateBadge) {
+          auxGateBadge.textContent = '✓ Gate: Semantic ' + Number(varObj.comet || 0).toFixed(3) + ' · chrF++ ' + Number(varObj.chrf || 0).toFixed(1);
+        }
+        if (pBulletsBox && pBulletsList) {
+          pBulletsBox.classList.remove('hidden');
+          pBulletsBox.setAttribute('dir', varObj.dir || 'ltr');
+          pBulletsBox.setAttribute('lang', varObj.lang);
+          if (pKicker) pKicker.textContent = 'Verified 15s Plain-Words Takeaways · ' + (lgMeta ? lgMeta.name : varObj.lang);
+          if (pDirPill) pDirPill.textContent = varObj.lang + ' · ' + String(varObj.dir || 'ltr').toUpperCase();
+          pBulletsList.innerHTML = (varObj.bullets || []).map((b) => '<li>' + esc(b) + '</li>').join('');
+        }
+      }
+
+      if (autoplayAux && auxAudio) {
+        if (videoEl) {
+          videoEl.currentTime = 0;
+          videoEl.play().catch(() => {});
+        }
+        auxAudio.currentTime = 0;
+        auxAudio.play().catch(() => {});
+      }
+    }
+
+    // Keep muted video and auxiliary track synchronized
+    if (auxAudio && videoEl) {
+      auxAudio.addEventListener('play', () => {
+        if (syncingMedia) return;
+        syncingMedia = true;
+        videoEl.muted = true;
+        if (videoEl.duration) videoEl.currentTime = auxAudio.currentTime % videoEl.duration;
+        videoEl.play().catch(() => {});
+        syncingMedia = false;
+      });
+      auxAudio.addEventListener('pause', () => {
+        if (syncingMedia || auxAudio.ended) return;
+        syncingMedia = true;
+        videoEl.pause();
+        syncingMedia = false;
+      });
+      auxAudio.addEventListener('ended', () => {
+        if (syncingMedia) return;
+        syncingMedia = true;
+        videoEl.pause();
+        syncingMedia = false;
+      });
+      videoEl.addEventListener('play', () => {
+        if (syncingMedia) return;
+        if (adActive || selectedLang !== 'studio') {
+          syncingMedia = true;
+          videoEl.muted = true;
+          if (auxAudio.paused) auxAudio.play().catch(() => {});
+          syncingMedia = false;
+        }
+      });
+      videoEl.addEventListener('pause', () => {
+        if (syncingMedia) return;
+        if ((adActive || selectedLang !== 'studio') && !auxAudio.paused) {
+          syncingMedia = true;
+          auxAudio.pause();
+          syncingMedia = false;
+        }
+      });
+    }
+
+    langSelect?.addEventListener('change', () => {
+      const val = langSelect.value || 'studio';
+      selectedLang = val;
+      if (val !== 'studio') {
+        adActive = false;
+        const { studyId, tier } = detectCurrentStudyAndTier();
+        ensureTier15s(studyId, tier);
+        renderAccessibilityState(true);
+      } else {
+        renderAccessibilityState(false);
+      }
+    });
+
+    adBtn?.addEventListener('click', () => {
+      adActive = !adActive;
+      if (adActive) {
+        selectedLang = 'studio';
+        if (langSelect) langSelect.value = 'studio';
+        const { studyId, tier } = detectCurrentStudyAndTier();
+        ensureTier15s(studyId, tier);
+        renderAccessibilityState(true);
+      } else {
+        renderAccessibilityState(false);
+      }
+    });
+
+    erBtn?.addEventListener('click', () => {
+      erOpen = !erOpen;
+      renderAccessibilityState(false);
+    });
+
+    auxResetBtn?.addEventListener('click', () => {
+      selectedLang = 'studio';
+      adActive = false;
+      if (langSelect) langSelect.value = 'studio';
+      renderAccessibilityState(false);
+    });
+
+    // Observe #tv-player data-loaded-src so switching studies or depth slots updates studio controls automatically
+    if (videoEl && typeof MutationObserver !== 'undefined') {
+      const obs = new MutationObserver(() => {
+        renderAccessibilityState(false);
+      });
+      obs.observe(videoEl, { attributes: true, attributeFilter: ['data-loaded-src', 'src'] });
+    }
+
+    // Support URL query params (?lang=<code>&ad=1&easyread=1)
+    const qp = new URLSearchParams(window.location.search);
+    const qLang = qp.get('lang');
+    const qAd = qp.get('ad');
+    const qEr = qp.get('easyread');
+    if (qEr === '1' || qEr === 'true') erOpen = true;
+    if (qAd === '1' || qAd === 'true') {
+      adActive = true;
+      const { studyId, tier } = detectCurrentStudyAndTier();
+      ensureTier15s(studyId, tier);
+    } else if (qLang && LANG_BY_CODE[qLang]) {
+      selectedLang = qLang;
+      if (langSelect) langSelect.value = qLang;
+      const { studyId, tier } = detectCurrentStudyAndTier();
+      ensureTier15s(studyId, tier);
+    }
+
+    renderAccessibilityState(false);
+  })();
+  </script>
 </Layout>

@@ -339,5 +339,11 @@
       "detail": "Verified Rust spine (jcp-satb-cad-spine) with 78,400-pair provenance meet-semilattice scheduling, budgeting, and refusing agents under energy grants.",
       "href": "/products/jouleos/"
     }
-  ]
+  ],
+  "canonical_id": "art:radio:ep06-lut6-metabolic-jouleos:2de52a49186572fe",
+  "wai_envelope_url": "/media/radio/wai/ep06-lut6-metabolic-jouleos.wai",
+  "wai_content_blake3": "3570d730d90c1548f3f2565bf558d3c95bb7d535f80d58d7bbdf685e87fb2445",
+  "wai_sha256": "7bb7a82da89d661f5d0fd8a934d48f92ce047ccae8f50b09cbd18e9c852785d9",
+  "wai_byte_length": 5217,
+  "commons_citation_url": "https://scholar.askdavidc.ai/idea?id=cf468e5a90065590"
 }

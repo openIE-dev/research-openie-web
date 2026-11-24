@@ -467,5 +467,11 @@
       "detail": "Explore 8x8 codon quartets, 64-bar Walsh filtering, and M.2 DDR3-reset thermals interactively on /tutorials/?lab=lab-11-lut6-codon-wobble and /tv/#lut6-codon-nucleus:90s.",
       "href": "/tv/#lut6-codon-nucleus:90s"
     }
-  ]
+  ],
+  "canonical_id": "art:radio:ep15-codon-lut6-m2-silicon:023c7f603ec85e17",
+  "wai_envelope_url": "/media/radio/wai/ep15-codon-lut6-m2-silicon.wai",
+  "wai_content_blake3": "8a0674be95d7ff3771a64c4af04351666c20ca7254c285043b42307d9709cc07",
+  "wai_sha256": "18997637c7f1113a4cda4c5dc07c349a5f05f6ed9e8b0a7315f4ee79dd7d7f8a",
+  "wai_byte_length": 6872,
+  "commons_citation_url": "https://scholar.askdavidc.ai/?q=ep15-codon-lut6-m2-silicon"
 }

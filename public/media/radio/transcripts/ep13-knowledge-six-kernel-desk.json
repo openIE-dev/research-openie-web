@@ -444,5 +444,11 @@
       "detail": "12 unproved RCE Draft 0.9 Appendix F clauses stay segregated; TA001–TA081 primary-source audit leaves 0 unexplained future signals.",
       "href": "/papers/rce/"
     }
-  ]
+  ],
+  "canonical_id": "art:radio:ep13-knowledge-six-kernel-desk:59e1f1b40af2bfc9",
+  "wai_envelope_url": "/media/radio/wai/ep13-knowledge-six-kernel-desk.wai",
+  "wai_content_blake3": "db01b41a3da798031a31c81c1570a39ebe0eca4f66d205f176ee527703b4750e",
+  "wai_sha256": "c8a4943a09e8883b9c9e6a1346ebf0ce5e1fb7b49f2ae22d532c509f134a8e2d",
+  "wai_byte_length": 5168,
+  "commons_citation_url": "https://scholar.askdavidc.ai/?q=ep13-knowledge-six-kernel-desk"
 }

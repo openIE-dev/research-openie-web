@@ -173,19 +173,23 @@ def run_cycle(base_dir: Path, render_pulse: bool = False, skip_scrape: bool = Fa
         sync_status = "ok" if rc == 0 else f"rsync_exit_{rc}"
 
     elapsed_s = round(time.perf_counter() - t0, 2)
+    commons_sum = radar.get("commons_prior_art_summary") or {}
     status_doc = {
-        "schema": "openie.radio.daemon_status.v3",
+        "schema": "openie.radio.daemon_status.v4",
         "last_run_utc": run_ts,
         "cadence": "every 6 hours (systemd --user timer + crontab flock)",
         "elapsed_sec": elapsed_s,
         "scraped_works": intake.get("total_works", 0),
         "novel_digests": novel_count,
         "counts_by_source": intake.get("counts_by_source", {}),
+        "commons_prior_art_checked": commons_sum.get("radar_works_checked", 0),
+        "commons_prior_art_corroborated": commons_sum.get("radar_works_with_prior_art", 0),
         "rung_shares_pct": (radar.get("rung_summary") or {}).get("shares_pct", {}),
         "manifest_sha256": radar.get("manifest_sha256", ""),
         "foundry_verdicts": foundry.get("counts_by_status", {}),
         "pulse_rendered": bool(pulse_meta),
         "pulse_tts_engines": pulse_meta.get("tts_engines") if pulse_meta else [],
+        "pulse_wai_envelope": pulse_meta.get("wai_envelope_url") if pulse_meta else None,
         "sync_status": sync_status,
     }
     (state_dir / "daemon_status.json").write_text(json.dumps(status_doc, indent=2) + "\n", encoding="utf-8")
