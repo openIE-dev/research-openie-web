@@ -101,13 +101,20 @@ const firstEp = episodes[0] || {
           </div>
         </div>
       </div>
-      <div class="flex items-center gap-3 shrink-0">
+      <div class="flex flex-wrap items-center gap-2.5 shrink-0">
         <button
           id="tune-in-live-btn"
           type="button"
           class="font-mono text-xs font-semibold px-4 py-2.5 rounded-lg bg-brand-amber text-brand-dark hover:opacity-90 cursor-pointer transition-all shadow-sm"
         >
           Tune In Live Now
+        </button>
+        <button
+          id="radio-live-call-btn"
+          type="button"
+          class="font-mono text-xs font-semibold px-3.5 py-2.5 rounded-lg border border-emerald-400/50 bg-emerald-500/15 text-emerald-300 hover:bg-emerald-500/25 cursor-pointer transition-all"
+        >
+          📞 Call Into Studio
         </button>
         <span id="playback-mode-pill" class="font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-gray">
           Mode: On-Demand Ready
@@ -194,7 +201,7 @@ const firstEp = episodes[0] || {
       </audio>
 
       <div class="flex flex-col sm:flex-row sm:items-center gap-3">
-        <div class="flex items-center gap-2">
+        <div class="flex flex-wrap items-center gap-2">
           <button id="play-pause-btn" type="button" class="font-mono text-xs font-bold px-4 py-2 rounded-lg bg-brand-cyan text-brand-dark hover:opacity-90 cursor-pointer min-w-[92px]">
             ▶ Play
           </button>
@@ -203,6 +210,13 @@ const firstEp = episodes[0] || {
           </button>
           <button id="seek-fwd-btn" type="button" class="font-mono text-xs px-2.5 py-2 rounded-lg border border-brand-border text-brand-slate hover:text-brand-white cursor-pointer" title="Forward 15 seconds">
             +15s
+          </button>
+          <button
+            id="radio-call-studio-btn"
+            type="button"
+            class="font-mono text-xs font-semibold px-3.5 py-2 rounded-lg border border-emerald-400/50 bg-emerald-500/15 text-emerald-300 hover:bg-emerald-500/25 hover:border-emerald-300 cursor-pointer transition-all"
+          >
+            📞 Call Into Studio · Challenge Hosts (Voice + Video)
           </button>
         </div>
 

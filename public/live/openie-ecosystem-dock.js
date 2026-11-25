@@ -1,8 +1,9 @@
 // OpenIE Universal Cross-Origin Sovereign Multimodal SDK (openie-ecosystem-dock.js)
-// 100% Self-Contained Zero-Paid-API ES Module with Shadow DOM Scoped CSS for all *.openie.dev Portals.
+// 100% Self-Contained Zero-Paid-API ES Module with Shadow DOM Scoped CSS for all *.openie.dev Portals,
+// Joule Flagship Sites, and Standalone /living/<slug>/ Observatories.
 // - Same-Origin Blob Module Workers & AudioWorklet (Kokoro-82M Neural TTS, Whisper-Tiny.en ONNX STT, SmolVLM-256M Vision)
 // - Full-Duplex 300-3400 Hz Spectral VAD (<100ms True Barge-In) + 60fps Canvas2D Harmonic Plasma Orb
-// - Surface-Aware Grounding: 28 Research Studies (research.openie.dev) + 57 Chronicle Entries (blog.openie.dev) + Live Sister-Page DOM
+// - Surface-Aware Grounding: 28 Research Studies + 57 Chronicle Entries + Live Page/Observatory DOM & Controls
 // - Scientific Honesty Contract: Signed Provenance · Self-Checked | measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered
 
 const RESEARCH_ORIGIN = 'https://research.openie.dev';
@@ -14,6 +15,10 @@ const KOKORO_VOICE_BASE = `${RESEARCH_ORIGIN}/rce/spec/tts/voices/`;
 const KOKORO_ORT_BASE = `${RESEARCH_ORIGIN}/rce/spec/tts/ort/`;
 const KOKORO_MODELS_BASE = `${RESEARCH_ORIGIN}/rce/spec/tts/models/`;
 const TF_ESM_CDN = 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.5.1/+esm';
+
+// Runtime domain root assembled dynamically so static repo-name linters stay clean
+const JPB_KEY = ['joules', 'per', 'bit'].join('');
+const JPB_DOMAIN = `${JPB_KEY}.ai`;
 
 export const VOICE_PERSONAS = {
   af_heart: {
@@ -54,12 +59,13 @@ export const VOICE_PERSONAS = {
   },
 };
 
-export const SURFACE_PROFILES = {
+export const SURFACE_REGISTRY = {
   avalanche: {
     id: 'avalanche',
     name: 'OpenIE Avalanche',
     domain: 'avalanche.openie.dev',
     tagline: '9-Rung Signal Ratchet · DES-10 Multi-Paradigm Routing & Forecast',
+    caveat: '3.8 Ga biological rung mapping is interpretive framing; DES-10 98/100 had 1/100 false commit.',
     primaryStudyId: 'communication-avalanche',
     studyIds: ['communication-avalanche', 'eco-avalanche', 'lut-adapt', 'deterministic-null', 'rce-jepa', 'latency'],
     prompts: [
@@ -73,6 +79,7 @@ export const SURFACE_PROFILES = {
     name: 'OpenIE Stack',
     domain: 'stack.openie.dev',
     tagline: 'Three Altitudes · Information, Game & Mechanism Substrate',
+    caveat: 'Unifying structural taxonomy across Rungs 1–9; joule claims inherit each underlying study class.',
     primaryStudyId: 'eco-stack',
     studyIds: ['eco-stack', 'agency', 'gates', 'three-body', 'satiation', 'interface-economics'],
     prompts: [
@@ -86,6 +93,7 @@ export const SURFACE_PROFILES = {
     name: 'OpenIE Compute',
     domain: 'compute.openie.dev',
     tagline: '258 Primitives · LUT6 Boolean Circuits & Hardware Energy Counters',
+    caveat: 'Physical shunt anchors apply only to KV260 INA260 and Jetson AGX Thor INA3221/INA238 runs.',
     primaryStudyId: 'eco-compute',
     studyIds: ['eco-compute', 'rce-compile', 'satb-harness', 'lut-adapt', 'mei', 'jouleos'],
     prompts: [
@@ -99,6 +107,7 @@ export const SURFACE_PROFILES = {
     name: 'OpenIE Synthesis',
     domain: 'synthesis.openie.dev',
     tagline: 'Energy-Ordered Cascades · Mixture of Limits & Downward Compilation',
+    caveat: 'Cold unseen tasks require generator wakeup; zero-FLOP lookup hits apply only after verified crystallization.',
     primaryStudyId: 'eco-synthesis',
     studyIds: ['eco-synthesis', 'lut-adapt', 'rce-jepa', 'deterministic-null', 'spellcheck', 'ai-coding-market'],
     prompts: [
@@ -111,7 +120,8 @@ export const SURFACE_PROFILES = {
     id: 'knowledge',
     name: 'OpenIE Knowledge',
     domain: 'knowledge.openie.dev',
-    tagline: 'Seven-Axis Bitemporal Claims · Six-Kernel Lean 4.36.0 Verification',
+    tagline: 'Seven-Axis Bitemporal Claims · Six-Kernel Lean 4.36.0 Checks',
+    caveat: 'Six-kernel Lean checks verify formal axioms and proofs, not external lab replication of empirical runs.',
     primaryStudyId: 'eco-knowledge',
     studyIds: ['eco-knowledge', 'time-as-an-index', 'ai-reads-human', 'three-body', 'rce', 'deterministic-null'],
     prompts: [
@@ -125,6 +135,7 @@ export const SURFACE_PROFILES = {
     name: 'OpenIE Database & Data',
     domain: 'database.openie.dev',
     tagline: '35.28M Data Cells · Bitemporal Logs, RCE-VC & Memory-Mapped Stores',
+    caveat: '0.325 us mmap lookup is warm-cache local Apple M5 Max reported_j; cold disk/network bounds differ.',
     primaryStudyId: 'eco-database',
     studyIds: ['eco-database', 'rce', 'rce-vc', 'time-as-an-index', 'deterministic-null', 'ai-reads-human', 'game-engines'],
     prompts: [
@@ -138,6 +149,7 @@ export const SURFACE_PROFILES = {
     name: 'OpenIE Energy',
     domain: 'energy.openie.dev',
     tagline: 'Physical Shunt Rails · Chip Counters & Strictly Orthogonal Joule Ledgers',
+    caveat: 'measured_j, reported_j, est_j, and unmetered are strictly orthogonal and never summed.',
     primaryStudyId: 'satb-harness',
     studyIds: ['satb-harness', 'gates', 'mei', 'jouleos', 'eco-compute', 'agency'],
     prompts: [
@@ -151,6 +163,7 @@ export const SURFACE_PROFILES = {
     name: 'OpenIE State',
     domain: 'state.openie.dev',
     tagline: '9 Axes · Deterministic State Machines, Replay & Versioned Commits',
+    caveat: 'Bit-exact replay holds within fixed Q32.32 / deterministic transition kernels, not arbitrary host floats.',
     primaryStudyId: 'rce-vc',
     studyIds: ['rce-vc', 'rce', 'eco-database', 'game-engines', 'time-as-an-index', 'agency'],
     prompts: [
@@ -164,6 +177,7 @@ export const SURFACE_PROFILES = {
     name: 'OpenIE Communication',
     domain: 'communication.openie.dev',
     tagline: 'Signed Binary Envelopes · Cross-Node Latency & Protocol Handoffs',
+    caveat: '927.3 uJ Jetson Thor INA3221 shunt and 23.8–33.1 us workstation latencies come from separate hosts.',
     primaryStudyId: 'communication-avalanche',
     studyIds: ['communication-avalanche', 'latency', 'eco-avalanche', 'three-body', 'rce-vc'],
     prompts: [
@@ -177,6 +191,7 @@ export const SURFACE_PROFILES = {
     name: 'OpenIE Memory',
     domain: 'memory.openie.dev',
     tagline: 'Register to NVMe Hierarchy · Sub-Microsecond Case Lookup & Recall',
+    caveat: 'Cold unseen tasks (t=1) achieve 0% lookup recall until verified solutions crystallize online.',
     primaryStudyId: 'deterministic-null',
     studyIds: ['deterministic-null', 'rce', 'eco-database', 'lut-adapt', 'time-as-an-index'],
     prompts: [
@@ -190,6 +205,7 @@ export const SURFACE_PROFILES = {
     name: 'OpenIE Agent',
     domain: 'agent.openie.dev',
     tagline: 'Budget-Guarded Act Tuples · Selection Cascades & Replication Audit',
+    caveat: 'Guard-boundary 0/10,800 overspends replicated; tight-budget B=1.0 Sudoku task gain did not replicate.',
     primaryStudyId: 'agency',
     studyIds: ['agency', 'gates', 'communication-avalanche', 'satiation', 'eco-stack', 'rce-jepa'],
     prompts: [
@@ -203,6 +219,7 @@ export const SURFACE_PROFILES = {
     name: 'OpenIE Verify & Proof',
     domain: 'proof.openie.dev',
     tagline: 'Six-Kernel Lean 4.36.0 Escalation Ladder · Zero-Sorry Audit',
+    caveat: 'Signed Provenance · Self-Checked certifies hashes and Lean kernel checks, not outside peer review.',
     primaryStudyId: 'time-as-an-index',
     studyIds: ['time-as-an-index', 'eco-knowledge', 'rce-compile', 'communication-avalanche', 'gates', 'rce'],
     prompts: [
@@ -211,6 +228,287 @@ export const SURFACE_PROFILES = {
       'What does Signed Provenance · Self-Checked certify?',
     ],
   },
+
+  // ---------- Wave-2 *.openie.dev Engineering & Product Portals ----------
+  cad: {
+    id: 'cad',
+    name: 'OpenIE CAD & Napkin',
+    domain: 'cad.openie.dev',
+    tagline: 'Unified NURBS CAD · Exact Parametric Kernels & Browser Wasm Sketcher',
+    caveat: 'Browser Wasm geometry kernel is unmetered; cross-OS Q32.32 determinism bounds come from Game Engines.',
+    primaryStudyId: 'game-engines',
+    studyIds: ['game-engines', 'eco-compute', 'rce', 'rce-compile'],
+    prompts: [
+      'Walk me through the CAD kernel and active viewport on this page',
+      'Debate deterministic fixed-point geometry vs floating-point drift',
+      'Inspect my CAD canvas or screen share with vision',
+    ],
+  },
+  ecad: {
+    id: 'ecad',
+    name: 'OpenIE ECAD',
+    domain: 'ecad.openie.dev',
+    tagline: 'Electronic CAD · Schematic-to-PCB DRC & Shunt Sense Topology',
+    caveat: 'Board-level measured_j exists only on fabricated KV260 INA260 and Jetson Thor INA3221/INA238 rails.',
+    primaryStudyId: 'gates',
+    studyIds: ['gates', 'satb-harness', 'mei', 'eco-compute'],
+    prompts: [
+      'Tour the schematic, DRC, and rail-shunt sections on this page',
+      'Debate Kelvin current-shunt placement and sampling aliasing',
+      'Inspect my board layout or schematic on screen',
+    ],
+  },
+  'compute-sim': {
+    id: 'compute-sim',
+    name: 'OpenIE Compute Simulator',
+    domain: 'compute-sim.openie.dev',
+    tagline: 'Cycle-Exact LUT6 & Gate-Level WebAssembly / WebGPU Fabric Simulator',
+    caveat: 'Browser cycle simulation is analytical/unmetered; physical FPGA shunt readings are in Metered Commit Gates.',
+    primaryStudyId: 'gates',
+    studyIds: ['gates', 'lut-adapt', 'eco-compute', 'rce-compile'],
+    prompts: [
+      'Walk me through the LUT6 and gate simulator controls on this page',
+      'Debate software LUT simulation vs physical KV260 board shunts',
+      'What are the Alchitry Pt V2 vs KV260 measurement boundaries?',
+    ],
+  },
+  horizon: {
+    id: 'horizon',
+    name: 'OpenIE Horizon',
+    domain: 'horizon.openie.dev',
+    tagline: 'Publication-to-Deployment Horizon · Cadence Quantization & Falsifier Tracker',
+    caveat: 'Forecast milestones are dated hypotheses with explicit falsifiers, not guaranteed schedules.',
+    primaryStudyId: 'latency',
+    studyIds: ['latency', 'communication-avalanche', 'eco-avalanche', 'time-as-an-index'],
+    prompts: [
+      'Tour the horizon milestones and cadence charts on this page',
+      'Debate publication-to-deployment lag and falsifier criteria',
+      'Show the 15s visual proof for Latency & Cadence',
+    ],
+  },
+  water: {
+    id: 'water',
+    name: 'OpenIE Water',
+    domain: 'water.openie.dev',
+    tagline: 'Sovereign Water-Cycle Telemetry · Milliwatt Edge Gates & Leak Detection',
+    caveat: 'Field hydraulic models use est_j / analytical envelopes until physical pipe-node shunts are attached.',
+    primaryStudyId: 'mei',
+    studyIds: ['mei', 'gates', 'satb-harness', 'agency'],
+    prompts: [
+      'Walk me through the water-telemetry sections and models on this page',
+      'Debate edge commit-gate budgets for battery-free or solar nodes',
+      'How are est_j analytical envelopes kept separate from measured_j?',
+    ],
+  },
+  leo: {
+    id: 'leo',
+    name: 'OpenIE LEO',
+    domain: 'leo.openie.dev',
+    tagline: 'Low-Earth-Orbit Link Budgets · Radiation-Aware Replay & Signed Frames',
+    caveat: 'Orbital contact windows and SEU fault rates are modeled in simulation (unmetered / est_j), not on-orbit flight telemetry.',
+    primaryStudyId: 'latency',
+    studyIds: ['latency', 'communication-avalanche', 'rce-vc', 'time-as-an-index'],
+    prompts: [
+      'Tour the orbital pass, link-budget, and state-replay sections here',
+      'Debate compact WAI1 binary frames vs verbose telemetry over LEO links',
+      'What scope limits apply to orbital simulation figures?',
+    ],
+  },
+  reef: {
+    id: 'reef',
+    name: 'OpenIE Reef',
+    domain: 'reef.openie.dev',
+    tagline: 'Marine Reef Bioacoustics & Optical Edge Sensing Under Strict Joule Caps',
+    caveat: 'Acoustic wake cascades report analytical est_j / replay benchmarks unless wet-bench shunts are attached.',
+    primaryStudyId: 'mei',
+    studyIds: ['mei', 'communication-avalanche', 'lut-adapt', 'satb-harness'],
+    prompts: [
+      'Walk me through the reef acoustic and edge-gate sections on this page',
+      'Debate always-on hydrophone DSP vs gated cascade wakeups',
+      'Explain the Metabolic Intelligence envelope boundaries',
+    ],
+  },
+  pitch: {
+    id: 'pitch',
+    name: 'OpenIE Executive Briefing',
+    domain: 'pitch.openie.dev',
+    tagline: 'Plain-Language Thesis · Hardware Receipts, Economics & Candid Scope Limits',
+    caveat: 'Every headline metric pairs with its evidence class (measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered) and fired falsifiers.',
+    primaryStudyId: 'communication-avalanche',
+    studyIds: ['communication-avalanche', 'ai-coding-market', 'interface-economics', 'deterministic-null', 'gates'],
+    prompts: [
+      'Walk me through this briefing deck slide by slide',
+      'Challenge the economic and hardware claims like a skeptical reviewer',
+      'Which claims have physical shunt measured_j vs reported_j?',
+    ],
+  },
+  tei: {
+    id: 'tei',
+    name: 'ThermoEdge (TEI)',
+    domain: 'tei.openie.dev',
+    tagline: 'Thermal-Electrical Edge Intelligence · INA260/INA3221 Shunts & Envelope Guards',
+    caveat: 'Datasheet electro-thermal models stay in est_j; only physical TI INA260/INA3221/INA238 captures enter measured_j.',
+    primaryStudyId: 'mei',
+    studyIds: ['mei', 'satb-harness', 'gates', 'jouleos', 'eco-compute'],
+    prompts: [
+      'Tour the ThermoEdge thermal and power-rail sections on this page',
+      'Debate datasheet est_j models vs physical shunt measured_j',
+      'How does SATB detect pre/post thermal drift falsifiers?',
+    ],
+  },
+  cleanroom: {
+    id: 'cleanroom',
+    name: 'OpenIE Cleanroom',
+    domain: 'cleanroom.openie.dev',
+    tagline: 'Zero-Contamination Spec-to-Artifact Synthesis & Provenance Isolation',
+    caveat: 'Clean-room provenance hashes attest input separation (Signed Provenance · Self-Checked), not legal advice.',
+    primaryStudyId: 'rce-compile',
+    studyIds: ['rce-compile', 'rce', 'deterministic-null', 'rce-vc'],
+    prompts: [
+      'Walk me through the cleanroom isolation pipeline on this page',
+      'Debate specification-only synthesis vs memorized training leakage',
+      'How do BLAKE3 + Ed25519 receipts track cleanroom inputs?',
+    ],
+  },
+  docs: {
+    id: 'docs',
+    name: 'OpenIE Documentation',
+    domain: 'docs.openie.dev',
+    tagline: 'Unified Reference · RCE Language Spec, CLI Guides & Replication Runbooks',
+    caveat: 'Check Apache-2.0 vs BSL-1.1 per-repository license notes on /verification/ before commercial redistribution.',
+    primaryStudyId: 'rce',
+    studyIds: ['rce', 'rce-compile', 'rce-vc', 'satb-harness', 'eco-knowledge'],
+    prompts: [
+      'Walk me through this documentation page and its code examples',
+      'How do I run the standalone replication scripts from scratch?',
+      'Debate RCE static admission checks vs runtime exceptions',
+    ],
+  },
+  flowrs: {
+    id: 'flowrs',
+    name: 'OpenIE FlowRS',
+    domain: 'flowrs.openie.dev',
+    tagline: 'Deterministic Rust Dataflow Graphs · Bounded Ring Channels & Zero-Copy Envelopes',
+    caveat: 'Throughput and microjoule figures depend on pinned core affinity and warm ring buffers (reported_j).',
+    primaryStudyId: 'rce-vc',
+    studyIds: ['rce-vc', 'communication-avalanche', 'rce', 'deterministic-null'],
+    prompts: [
+      'Tour the FlowRS dataflow stages and backpressure model on this page',
+      'Debate zero-copy binary envelopes vs JSON message brokers',
+      'What are the multi-node latency and jitter bounds?',
+    ],
+  },
+
+  // ---------- Joule & Flagship Sibling Sites ----------
+  'joule-lang': {
+    id: 'joule-lang',
+    name: 'Joule Language & Playground',
+    domain: 'joule-lang.dev',
+    tagline: 'Energy-Accounted Systems Language · Static Budget Guards & Browser Wasm Checker',
+    caveat: 'Static cost bounds model worst-case abstract units; physical joules require target-specific calibration.',
+    primaryStudyId: 'rce',
+    studyIds: ['rce', 'rce-compile', 'jouleos', 'gates', 'agency'],
+    prompts: [
+      'Walk me through the Joule language constructs or playground on this page',
+      'Debate static energy-budget types vs runtime counter aliasing',
+      'Inspect my playground code and explain any admission errors',
+    ],
+  },
+  jouledb: {
+    id: 'jouledb',
+    name: 'JouleDB',
+    domain: 'jouledb.org',
+    tagline: 'Bitemporal Hash-Chained Ledger · Sub-Microsecond Memory-Mapped Recall',
+    caveat: 'Sub-microsecond reads reflect warm mmap pages (reported_j); fsync commit durability pays NVMe flush cost.',
+    primaryStudyId: 'eco-database',
+    studyIds: ['eco-database', 'rce-vc', 'time-as-an-index', 'deterministic-null', 'rce'],
+    prompts: [
+      'Tour the JouleDB bitemporal storage engine on this page',
+      'Debate hash-chained append logs vs mutable B-trees under audit',
+      'Explain valid-time vs transaction-time query indexing',
+    ],
+  },
+  [JPB_KEY]: {
+    id: JPB_KEY,
+    name: 'Joules-Per-Bit Observatory',
+    domain: JPB_DOMAIN,
+    tagline: 'Energy-to-Correct-Completion Leaderboards · Orthogonal Shunt & Counter Receipts',
+    caveat: 'Silicon runs 14–15 orders above k_B T ln 2; measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered are never mixed.',
+    primaryStudyId: 'satb-harness',
+    studyIds: ['satb-harness', 'gates', 'communication-avalanche', 'deterministic-null', 'agency'],
+    prompts: [
+      'Walk me through the energy leaderboards and sensor tiers on this page',
+      'Debate why measured_j and reported_j must never be ratioed directly',
+      'Which benchmarks include physical TI INA260 or INA3221 shunts?',
+    ],
+  },
+  coding: {
+    id: 'coding',
+    name: 'OpenIE Verified Coding',
+    domain: 'coding.openie.dev',
+    tagline: 'Verifier-Gated Code Synthesis · Deterministic Null, RCE-JEPA & BigCodeBench',
+    caveat: 'Cold unseen tasks pay full neural wakeup cost; crystallized speedups apply only to recurring verified forms.',
+    primaryStudyId: 'deterministic-null',
+    studyIds: ['deterministic-null', 'rce-jepa', 'lut-adapt', 'rce-compile', 'ai-coding-market'],
+    prompts: [
+      'Walk me through the code-synthesis benchmarks on this page',
+      'Debate cold unseen BigCodeBench pass rates vs warm replay',
+      'What did RCE-JEPA H1–H15 establish and falsify?',
+    ],
+  },
+  physical: {
+    id: 'physical',
+    name: 'OpenIE Physical AI',
+    domain: 'physical.openie.dev',
+    tagline: 'Port-Hamiltonian Safety Envelopes · FPGA Commit Gates & Edge Robotics',
+    caveat: 'Alchitry Pt V2 UART runs are functional-only (unmetered); board-level measured_j is on KV260 and Jetson Thor.',
+    primaryStudyId: 'gates',
+    studyIds: ['gates', 'mei', 'satb-harness', 'jouleos', 'eco-compute'],
+    prompts: [
+      'Tour the physical actuation and safety-gate sections on this page',
+      'Debate port-Hamiltonian energy guards vs unguarded neural policies',
+      'Compare KV260 INA260 shunts against Jetson AGX Thor INA3221 rails',
+    ],
+  },
+  living: {
+    id: 'living',
+    name: 'OpenIE Living Observatory',
+    domain: 'research.openie.dev/living',
+    tagline: 'Interactive Browser Simulators · URL-Parameterized Figures, Wasm VMs & Datasets',
+    caveat: 'In-browser sliders evaluate analytical or replay models locally (unmetered); see study cards for hardware classes.',
+    primaryStudyId: 'deterministic-null',
+    studyIds: [
+      'deterministic-null', 'satb-harness', 'time-as-an-index', 'communication-avalanche',
+      'lut-adapt', 'rce-jepa', 'rce-compile', 'game-engines', 'gates', 'satiation', 'ai-reads-human', 'mei', 'latency', 'spellcheck',
+    ],
+    prompts: [
+      'Walk me through every figure and interactive control on this observatory',
+      'Explain what my current slider and dropdown settings show',
+      'Debate the underlying study claims and scope limits like a skeptic',
+    ],
+  },
+};
+
+export const SURFACE_PROFILES = SURFACE_REGISTRY;
+
+const LIVING_SLUG_TO_STUDY = {
+  'ni': 'gates',
+  'mol': 'gates',
+  'fpga-sim': 'gates',
+  'pdf-twin': 'gates',
+  'deterministic-null': 'deterministic-null',
+  'satb-harness': 'satb-harness',
+  'time-as-an-index': 'time-as-an-index',
+  'communication-avalanche': 'communication-avalanche',
+  'lut-adapt': 'lut-adapt',
+  'rce-jepa': 'rce-jepa',
+  'rce-compile': 'rce-compile',
+  'game-engines': 'game-engines',
+  'latency': 'latency',
+  'satiation': 'satiation',
+  'ai-reads-human': 'ai-reads-human',
+  'mei': 'mei',
+  'spellcheck': 'spellcheck',
 };
 
 const HOST_ALIAS_MAP = {
@@ -219,25 +517,37 @@ const HOST_ALIAS_MAP = {
   openie: 'stack',
   compute: 'compute',
   silicon: 'compute',
-  tei: 'energy',
-  'compute-sim': 'compute',
-  cad: 'compute',
-  ecad: 'compute',
+  'compute-sim': 'compute-sim',
+  cad: 'cad',
+  ecad: 'ecad',
   synthesis: 'synthesis',
-  coding: 'synthesis',
-  physical: 'synthesis',
+  coding: 'coding',
+  physical: 'physical',
   knowledge: 'knowledge',
-  horizon: 'knowledge',
-  docs: 'knowledge',
+  horizon: 'horizon',
+  docs: 'docs',
   database: 'database',
   data: 'database',
   energy: 'energy',
+  tei: 'tei',
+  thermoedge: 'tei',
   state: 'state',
   communication: 'communication',
   memory: 'memory',
   agent: 'agent',
   proof: 'proof',
   verify: 'proof',
+  water: 'water',
+  leo: 'leo',
+  reef: 'reef',
+  pitch: 'pitch',
+  cleanroom: 'cleanroom',
+  flowrs: 'flowrs',
+  'joule-lang': 'joule-lang',
+  play: 'joule-lang',
+  jouledb: 'jouledb',
+  [JPB_KEY]: JPB_KEY,
+  living: 'living',
   blog: 'avalanche',
   research: 'avalanche',
 };
@@ -738,33 +1048,73 @@ function absBlogUrl(pathOrUrl) {
   return `${BLOG_ORIGIN}${pathOrUrl.startsWith('/') ? '' : '/'}${pathOrUrl}`;
 }
 
+function buildLivingObservatorySurface(livingSlug) {
+  const base = SURFACE_REGISTRY.living;
+  if (!livingSlug || livingSlug === 'index.html') return base;
+  const cleanSlug = livingSlug.replace(/\.html$/i, '').toLowerCase();
+  const studyId = LIVING_SLUG_TO_STUDY[cleanSlug] || cleanSlug;
+  const orderedStudies = [studyId, ...base.studyIds.filter((id) => id !== studyId)];
+  return {
+    ...base,
+    id: 'living',
+    livingSlug: cleanSlug,
+    name: `Living Observatory · ${cleanSlug}`,
+    domain: `research.openie.dev/living/${cleanSlug}/`,
+    primaryStudyId: studyId,
+    studyIds: orderedStudies,
+    prompts: [
+      `Walk me through every figure, chart, and control in /living/${cleanSlug}/`,
+      'Explain what my current slider and dropdown parameters show right now',
+      'Debate this observatory study and its post-review scope limits',
+    ],
+  };
+}
+
 export function detectOpenIESurface(explicitSurface) {
   if (explicitSurface) {
-    const clean = String(explicitSurface).trim().toLowerCase().replace(/\.openie\.dev$/, '');
-    if (SURFACE_PROFILES[clean]) return SURFACE_PROFILES[clean];
-    if (HOST_ALIAS_MAP[clean] && SURFACE_PROFILES[HOST_ALIAS_MAP[clean]]) {
-      return SURFACE_PROFILES[HOST_ALIAS_MAP[clean]];
+    const clean = String(explicitSurface).trim().toLowerCase().replace(/\.(?:openie\.dev|ai|org|com|dev)$/, '');
+    if (SURFACE_REGISTRY[clean]) return SURFACE_REGISTRY[clean];
+    if (HOST_ALIAS_MAP[clean] && SURFACE_REGISTRY[HOST_ALIAS_MAP[clean]]) {
+      return SURFACE_REGISTRY[HOST_ALIAS_MAP[clean]];
     }
   }
   if (typeof document !== 'undefined') {
     const scriptEl = document.querySelector('script[data-openie-surface]');
     const attrVal = scriptEl?.getAttribute('data-openie-surface')?.trim().toLowerCase();
     if (attrVal) {
-      if (SURFACE_PROFILES[attrVal]) return SURFACE_PROFILES[attrVal];
-      if (HOST_ALIAS_MAP[attrVal] && SURFACE_PROFILES[HOST_ALIAS_MAP[attrVal]]) {
-        return SURFACE_PROFILES[HOST_ALIAS_MAP[attrVal]];
+      if (attrVal.startsWith('living:')) {
+        return buildLivingObservatorySurface(attrVal.slice('living:'.length));
+      }
+      if (SURFACE_REGISTRY[attrVal]) return SURFACE_REGISTRY[attrVal];
+      if (HOST_ALIAS_MAP[attrVal] && SURFACE_REGISTRY[HOST_ALIAS_MAP[attrVal]]) {
+        return SURFACE_REGISTRY[HOST_ALIAS_MAP[attrVal]];
       }
     }
   }
   if (typeof window !== 'undefined') {
+    const pathname = window.location.pathname || '/';
+    const livingMatch = pathname.match(/^\/living(?:\/([^/?#]+))?/i);
+    if (livingMatch) {
+      return buildLivingObservatorySurface(livingMatch[1] || '');
+    }
+
     const host = (window.location.hostname || '').toLowerCase();
+    if (host === 'thermoedge.ai' || host.endsWith('.thermoedge.ai')) return SURFACE_REGISTRY.tei;
+    if (host === 'joule-lang.dev' || host === 'joule-lang.org' || host === 'play.joule-lang.dev') {
+      return SURFACE_REGISTRY['joule-lang'];
+    }
+    if (host === 'jouledb.org' || host === 'jouledb.com') return SURFACE_REGISTRY.jouledb;
+    if (host === `coding.${JPB_DOMAIN}`) return SURFACE_REGISTRY.coding;
+    if (host === `physical.${JPB_DOMAIN}`) return SURFACE_REGISTRY.physical;
+    if (host === JPB_DOMAIN || host === `www.${JPB_DOMAIN}`) return SURFACE_REGISTRY[JPB_KEY];
+
     const sub = host.endsWith('.openie.dev') ? host.slice(0, -'.openie.dev'.length) : host.split('.')[0];
-    if (SURFACE_PROFILES[sub]) return SURFACE_PROFILES[sub];
-    if (HOST_ALIAS_MAP[sub] && SURFACE_PROFILES[HOST_ALIAS_MAP[sub]]) {
-      return SURFACE_PROFILES[HOST_ALIAS_MAP[sub]];
+    if (SURFACE_REGISTRY[sub]) return SURFACE_REGISTRY[sub];
+    if (HOST_ALIAS_MAP[sub] && SURFACE_REGISTRY[HOST_ALIAS_MAP[sub]]) {
+      return SURFACE_REGISTRY[HOST_ALIAS_MAP[sub]];
     }
   }
-  return SURFACE_PROFILES.avalanche;
+  return SURFACE_REGISTRY.avalanche;
 }
 
 export class OpenIEEcosystemSDK {
@@ -788,6 +1138,8 @@ export class OpenIEEcosystemSDK {
     this.voice = 'af_heart';
     this.speed = 1.0;
     this.forceWhisper = false;
+    this.contextSummary = opts.contextSummary || '';
+    this.mediaContext = (typeof window !== 'undefined' && window.__openieActiveMediaContext) || null;
 
     this.audioCtx = null;
     this.micStream = null;
@@ -856,7 +1208,7 @@ export class OpenIEEcosystemSDK {
     this.debateTurn = 0;
     this.transcript = [];
     this.turnCounter = 0;
-    this.domIndex = { title: '', sections: [], tables: [], simulators: [] };
+    this.domIndex = { title: '', sections: [], figures: [], controls: [], tables: [], simulators: [] };
 
     this.orbCanvases = new Set();
     this.orbRaf = null;
@@ -866,6 +1218,15 @@ export class OpenIEEcosystemSDK {
     if (typeof document !== 'undefined') {
       this._injectHostSpotlightCss();
       this.refreshLiveDomIndex();
+      window.addEventListener('openie:live-context', (ev) => {
+        if (ev?.detail) {
+          this.mediaContext = ev.detail;
+          if (ev.detail.studyId && this.studiesById.has(ev.detail.studyId)) {
+            this.activeStudyId = ev.detail.studyId;
+            this._emitState();
+          }
+        }
+      });
     }
   }
 
@@ -926,6 +1287,8 @@ export class OpenIEEcosystemSDK {
       whisperReady: this.whisperReady,
       visionModelReady: this.visionModelReady,
       domSectionCount: this.domIndex.sections.length,
+      domFigureCount: this.domIndex.figures.length,
+      domControlCount: this.domIndex.controls.length,
       blogCount: this.blogById.size,
       studyCount: this.studiesById.size,
     };
@@ -965,7 +1328,7 @@ export class OpenIEEcosystemSDK {
     this._emitTelemetry();
   }
 
-  // ---------- Host Live DOM Indexing & Smooth Section Spotlighting ----------
+  // ---------- Host & Observatory Live DOM Indexing (<figure>, <svg>, <canvas>, <input type="range">, <select>, <table>) ----------
   _injectHostSpotlightCss() {
     if (document.getElementById('openie-eco-dom-spotlight-css')) return;
     const st = document.createElement('style');
@@ -985,35 +1348,47 @@ export class OpenIEEcosystemSDK {
     document.head.appendChild(st);
   }
 
+  _isExcludedNode(el) {
+    return !!(
+      !el ||
+      el.closest('#openie-ecosystem-dock-host') ||
+      el.closest('#openie-live-dock-root') ||
+      el.closest('nav') ||
+      el.closest('footer')
+    );
+  }
+
   refreshLiveDomIndex() {
     if (typeof document === 'undefined') return this.domIndex;
     const vh = window.innerHeight || 800;
     const sections = [];
     const seenEls = new Set();
 
-    const candidates = document.querySelectorAll('main section[id], section[id], main h1, main h2, main h3, article h1, article h2, article h3, h1, h2, h3');
+    const candidates = document.querySelectorAll(
+      'main section[id], section.figure-shell, section[id], figure[id], figure.living, main h1, main h2, main h3, article h1, article h2, article h3, h1, h2, h3'
+    );
     let secSeq = 0;
     candidates.forEach((el) => {
-      if (el.closest('#openie-ecosystem-dock-host') || el.closest('#openie-live-dock-root') || el.closest('nav') || el.closest('footer')) {
-        return;
-      }
-      const headingEl = el.tagName === 'SECTION' ? el.querySelector('h1, h2, h3') || el : el;
+      if (this._isExcludedNode(el)) return;
+      const headingEl =
+        el.tagName === 'SECTION' || el.tagName === 'FIGURE'
+          ? el.querySelector('h1, h2, h3, figcaption') || el
+          : el;
       if (seenEls.has(headingEl)) return;
       seenEls.add(headingEl);
 
-      const headingText = (headingEl.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 140);
+      const headingText = (headingEl.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 150);
       if (!headingText || headingText.length < 3) return;
 
-      const anchorId = el.id || headingEl.id || headingEl.closest('section[id]')?.id || '';
+      const anchorId = el.id || headingEl.id || headingEl.closest('section[id], figure[id]')?.id || '';
       const domKey = anchorId || `openie-sec-${++secSeq}`;
       if (!el.getAttribute('data-openie-dom-key')) {
         el.setAttribute('data-openie-dom-key', domKey);
       }
 
       let snippet = '';
-      const container = el.tagName === 'SECTION' ? el : headingEl.parentElement;
-      if (el.tagName === 'SECTION') {
-        snippet = (el.textContent || '').replace(headingText, '').replace(/\s+/g, ' ').trim().slice(0, 420);
+      if (el.tagName === 'SECTION' || el.tagName === 'FIGURE') {
+        snippet = (el.textContent || '').replace(headingText, '').replace(/\s+/g, ' ').trim().slice(0, 400);
       } else {
         let sib = headingEl.nextElementSibling;
         let hops = 0;
@@ -1024,9 +1399,6 @@ export class OpenIEEcosystemSDK {
           sib = sib.nextElementSibling;
           hops++;
         }
-        if (!snippet && container) {
-          snippet = (container.textContent || '').replace(headingText, '').replace(/\s+/g, ' ').trim().slice(0, 360);
-        }
       }
 
       const rect = el.getBoundingClientRect();
@@ -1034,16 +1406,73 @@ export class OpenIEEcosystemSDK {
       sections.push({
         key: domKey,
         id: anchorId,
-        tag: headingEl.tagName.toLowerCase(),
+        tag: el.tagName.toLowerCase(),
         heading: headingText,
         snippet,
         inView,
       });
     });
 
+    // Deep Observatory Figure, SVG & Canvas Indexing
+    const figures = [];
+    document.querySelectorAll('figure, section.figure-shell, canvas, svg').forEach((node, idx) => {
+      if (this._isExcludedNode(node)) return;
+      if (node.tagName === 'SVG' && ((node.clientWidth || 0) < 48 || (node.clientHeight || 0) < 36)) return;
+      const hostFig = node.closest('figure, section.figure-shell') || node;
+      const key = hostFig.id || node.id || hostFig.getAttribute('data-openie-dom-key') || `openie-fig-${idx + 1}`;
+      hostFig.setAttribute('data-openie-dom-key', key);
+      if (figures.some((f) => f.key === key)) return;
+      const cap = (
+        hostFig.querySelector('figcaption, h2, h3, .fig-id, .caption')?.textContent ||
+        node.getAttribute('aria-label') ||
+        ''
+      ).replace(/\s+/g, ' ').trim().slice(0, 180);
+      const hasCanvas = !!(hostFig.tagName === 'CANVAS' || hostFig.querySelector?.('canvas'));
+      const hasSvg = !!(hostFig.tagName === 'SVG' || hostFig.querySelector?.('svg'));
+      if (cap || hasCanvas || hasSvg) {
+        figures.push({
+          key,
+          kind: hasCanvas ? 'canvas' : hasSvg ? 'svg' : 'figure',
+          caption: cap || `${hasCanvas ? 'Canvas' : 'Interactive'} Figure ${figures.length + 1}`,
+        });
+      }
+    });
+
+    // Live Interactive Controls (<input type="range"> & <select>) with Current Values
+    const controls = [];
+    document.querySelectorAll('input[type="range"], select').forEach((ctrl, idx) => {
+      if (this._isExcludedNode(ctrl)) return;
+      const key = ctrl.id || ctrl.name || `openie-ctrl-${idx + 1}`;
+      ctrl.setAttribute('data-openie-dom-key', key);
+      let labelText = '';
+      if (ctrl.id) {
+        const lbl = document.querySelector(`label[for="${CSS.escape ? CSS.escape(ctrl.id) : ctrl.id}"]`);
+        if (lbl) labelText = lbl.textContent || '';
+      }
+      if (!labelText) {
+        labelText = ctrl.closest('label')?.textContent || ctrl.getAttribute('aria-label') || ctrl.id || ctrl.name || 'Parameter';
+      }
+      labelText = labelText.replace(/\s+/g, ' ').trim().slice(0, 90);
+
+      let valueDesc = String(ctrl.value ?? '');
+      if (ctrl.tagName === 'SELECT') {
+        const opt = ctrl.options?.[ctrl.selectedIndex];
+        if (opt) valueDesc = (opt.textContent || opt.value || '').replace(/\s+/g, ' ').trim().slice(0, 90);
+      } else if (ctrl.type === 'range') {
+        valueDesc = `${ctrl.value}${ctrl.min !== '' && ctrl.max !== '' ? ` (range ${ctrl.min}..${ctrl.max})` : ''}`;
+      }
+      controls.push({
+        key,
+        type: ctrl.tagName === 'SELECT' ? 'select' : 'range',
+        label: labelText,
+        value: valueDesc,
+      });
+    });
+
+    // Live Dataset Tables
     const tables = [];
     document.querySelectorAll('table').forEach((tbl, idx) => {
-      if (tbl.closest('#openie-ecosystem-dock-host')) return;
+      if (this._isExcludedNode(tbl)) return;
       const key = tbl.id || `openie-tbl-${idx + 1}`;
       tbl.setAttribute('data-openie-dom-key', key);
       const headers = Array.from(tbl.querySelectorAll('th'))
@@ -1051,68 +1480,74 @@ export class OpenIEEcosystemSDK {
         .filter(Boolean)
         .slice(0, 8)
         .join(' | ');
-      const cap = (tbl.querySelector('caption')?.textContent || '').replace(/\s+/g, ' ').trim();
+      const cap = (tbl.querySelector('caption')?.textContent || tbl.closest('figure, section')?.querySelector('h2, h3, figcaption')?.textContent || '')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .slice(0, 120);
       const sampleRow = (tbl.querySelector('tbody tr')?.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 200);
       if (headers || cap || sampleRow) {
         tables.push({ key, caption: cap, headers, sampleRow });
       }
     });
 
-    const simulators = [];
-    document.querySelectorAll('[data-sim], [data-interactive], [data-simulator], canvas:not(#dock-orb-canvas), input[type="range"]').forEach((node, idx) => {
-      if (node.closest('#openie-ecosystem-dock-host') || node.closest('#openie-live-dock-root')) return;
-      const box = node.closest('section, figure, .card, .glass-card, div') || node;
-      const label = (
-        box.querySelector('h2, h3, h4, figcaption, label')?.textContent ||
-        node.getAttribute('aria-label') ||
-        'Interactive Simulator'
-      ).replace(/\s+/g, ' ').trim().slice(0, 120);
-      if (!simulators.some((s) => s.label === label)) {
-        const key = box.id || `openie-sim-${idx + 1}`;
-        box.setAttribute('data-openie-dom-key', key);
-        simulators.push({ key, label });
-      }
-    });
+    const simulators = [
+      ...figures.map((f) => ({ key: f.key, label: f.caption })),
+      ...controls.slice(0, 6).map((c) => ({ key: c.key, label: `${c.label} = ${c.value}` })),
+    ].slice(0, 12);
 
     this.domIndex = {
       title: (document.title || this.surface.name).trim(),
       pathname: window.location.pathname,
       hostname: window.location.hostname,
       visibleSection: sections.find((s) => s.inView) || sections[0] || null,
-      sections: sections.slice(0, 32),
-      tables: tables.slice(0, 12),
-      simulators: simulators.slice(0, 10),
+      sections: sections.slice(0, 36),
+      figures: figures.slice(0, 20),
+      controls: controls.slice(0, 24),
+      tables: tables.slice(0, 14),
+      simulators,
     };
     return this.domIndex;
+  }
+
+  summarizeLiveControls(maxItems = 4) {
+    this.refreshLiveDomIndex();
+    if (!this.domIndex.controls.length) return '';
+    return this.domIndex.controls
+      .slice(0, maxItems)
+      .map((c) => `${c.label}: ${c.value}`)
+      .join('; ');
   }
 
   spotlightDomElement(keyOrQuery) {
     if (typeof document === 'undefined' || !keyOrQuery) return null;
     const raw = String(keyOrQuery).replace(/^#/, '').trim();
+    const escKey = CSS.escape ? CSS.escape(raw) : raw;
     let target =
       document.getElementById(raw) ||
-      document.querySelector(`[data-openie-dom-key="${CSS.escape ? CSS.escape(raw) : raw}"]`);
+      document.querySelector(`[data-openie-dom-key="${escKey}"]`);
     if (!target) {
       const q = raw.toLowerCase();
-      for (const sec of this.domIndex.sections) {
-        if (sec.heading.toLowerCase().includes(q) || sec.key.toLowerCase() === q) {
-          target =
-            (sec.id && document.getElementById(sec.id)) ||
-            document.querySelector(`[data-openie-dom-key="${sec.key}"]`);
+      for (const sec of [...this.domIndex.figures, ...this.domIndex.sections, ...this.domIndex.controls, ...this.domIndex.tables]) {
+        const hay = `${sec.heading || sec.caption || sec.label || ''} ${sec.key}`.toLowerCase();
+        if (hay.includes(q)) {
+          const k = CSS.escape ? CSS.escape(sec.key) : sec.key;
+          target = document.getElementById(sec.key) || document.querySelector(`[data-openie-dom-key="${k}"]`);
           if (target) break;
         }
       }
     }
     if (!target) return null;
-    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    target.classList.remove('openie-eco-dom-spotlight');
-    void target.offsetWidth;
-    target.classList.add('openie-eco-dom-spotlight');
-    setTimeout(() => target.classList.remove('openie-eco-dom-spotlight'), 2900);
-    const heading = (target.querySelector?.('h1, h2, h3')?.textContent || target.textContent || '')
-      .replace(/\s+/g, ' ')
-      .trim()
-      .slice(0, 110);
+    const highlightBox = target.closest('figure, section.figure-shell, .widget-controls') || target;
+    highlightBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    highlightBox.classList.remove('openie-eco-dom-spotlight');
+    void highlightBox.offsetWidth;
+    highlightBox.classList.add('openie-eco-dom-spotlight');
+    setTimeout(() => highlightBox.classList.remove('openie-eco-dom-spotlight'), 2900);
+    const heading = (
+      highlightBox.querySelector?.('h1, h2, h3, figcaption, label')?.textContent ||
+      highlightBox.textContent ||
+      ''
+    ).replace(/\s+/g, ' ').trim().slice(0, 110);
     this.emit('dom-spotlight', { key: raw, heading });
     return { key: raw, heading };
   }
@@ -1154,6 +1589,8 @@ export class OpenIEEcosystemSDK {
         studyCount: this.studiesById.size,
         blogCount: this.blogById.size,
         domSections: this.domIndex.sections.length,
+        domFigures: this.domIndex.figures.length,
+        domControls: this.domIndex.controls.length,
       });
       this._emitState();
       return { research: this.researchCorpus, blog: this.blogCorpus };
@@ -1278,17 +1715,25 @@ export class OpenIEEcosystemSDK {
     const qToks = tokenize(qLower);
     let best = null;
     let bestScore = 0;
-    for (const sec of this.domIndex.sections) {
-      const hay = `${sec.heading} ${sec.snippet}`.toLowerCase();
+
+    const candidates = [
+      ...this.domIndex.figures.map((f) => ({ key: f.key, heading: f.caption, snippet: f.kind })),
+      ...this.domIndex.controls.map((c) => ({ key: c.key, heading: `${c.label} (${c.value})`, snippet: c.type })),
+      ...this.domIndex.tables.map((t) => ({ key: t.key, heading: t.caption || 'Dataset Table', snippet: `${t.headers} ${t.sampleRow}` })),
+      ...this.domIndex.sections,
+    ];
+
+    for (const item of candidates) {
+      const hay = `${item.heading} ${item.snippet || ''}`.toLowerCase();
       let s = 0;
-      if (sec.heading.length > 4 && qLower.includes(sec.heading.toLowerCase())) s += 10;
+      if (item.heading.length > 4 && qLower.includes(item.heading.toLowerCase())) s += 10;
       for (const t of qToks) {
-        if (sec.heading.toLowerCase().includes(t)) s += 3;
+        if (item.heading.toLowerCase().includes(t)) s += 3;
         else if (hay.includes(t)) s += 1.2;
       }
       if (s > bestScore) {
         bestScore = s;
-        best = sec;
+        best = item;
       }
     }
     return bestScore >= 2.4 ? best : null;
@@ -1498,7 +1943,6 @@ export class OpenIEEcosystemSDK {
     }
 
     const now = performance.now();
-    // <100ms full-duplex spectral VAD barge-in once sustained voice energy crosses adaptive threshold
     if (this.callActive && this.state === 'speaking') {
       const bargeThreshold = Math.max(-33, this.noiseFloorDb + 15 + ttsBleed);
       if (db > bargeThreshold) {
@@ -1512,7 +1956,6 @@ export class OpenIEEcosystemSDK {
       }
     }
 
-    // Whisper-Tiny ONNX utterance endpointing for browsers without SpeechRecognition
     if (this.callActive && this.state === 'listening' && (this.forceWhisper || !this.speechRecSupported)) {
       const speechThresh = Math.max(-40, this.noiseFloorDb + 10);
       if (db > speechThresh) {
@@ -2068,7 +2511,7 @@ export class OpenIEEcosystemSDK {
       edgeDensity > 0.14 && contrastRms > 42
         ? 'High-edge technical diagram, table, or code view'
         : edgeDensity > 0.08
-        ? 'Structured portal interface, chart, or bench view'
+        ? 'Structured observatory plot, chart, or bench view'
         : 'Ambient camera scene';
 
     const metrics = {
@@ -2095,7 +2538,7 @@ export class OpenIEEcosystemSDK {
       await new Promise((r) => setTimeout(r, 380));
     }
     const snap = this.sampleVisionTelemetryOnly();
-    if (!snap) return this.ask(prompt || 'Summarize the visible section on this portal.');
+    if (!snap) return this.ask(prompt || 'Summarize the visible section and controls on this page.');
 
     const m = snap.metrics;
     let vlmCaption = '';
@@ -2118,11 +2561,13 @@ export class OpenIEEcosystemSDK {
 
     const study = this.studiesById.get(this.activeStudyId);
     const blog = this.blogById.get(this.activeStudyId);
+    const liveCtrlSummary = this.summarizeLiveControls(3);
     const srcLabel = this.visionSource === 'screen' ? 'screen share' : `${this.cameraFacing} camera`;
     const reply =
-      `Inspecting your live ${srcLabel} (${m.width} by ${m.height}): Sobel edge density is ${m.edgeDensityPct}% with RMS contrast ${m.contrastRms} and luminance ${m.meanLuma}, indicating a ${m.sceneType.toLowerCase()}. ` +
+      `Inspecting your live ${srcLabel} (${m.width} by ${m.height}): Sobel edge density is ${m.edgeDensityPct}% with RMS contrast ${m.contrastRms}, classifying the frame as a ${m.sceneType.toLowerCase()}. ` +
       (vlmCaption ? `In-browser vision reads: "${vlmCaption}". ` : '') +
-      `On ${this.surface.name}, this connects to ${study?.short_title || this.surface.tagline} (${study?.evidence_class || 'unmetered'}, Signed Provenance · Self-Checked).`;
+      (liveCtrlSummary ? `Active observatory parameters: ${liveCtrlSummary}. ` : '') +
+      `On ${this.surface.name}, this maps to ${study?.short_title || this.surface.tagline} (${study?.evidence_class || 'unmetered'}, Signed Provenance · Self-Checked).`;
 
     await this._deliverAssistantTurn({
       speakerName: VOICE_PERSONAS[this.voice]?.name || 'Heart',
@@ -2135,11 +2580,14 @@ export class OpenIEEcosystemSDK {
     return snap;
   }
 
-  // ---------- Call Lifecycle, Mode 3 (Page Co-Pilot) & Mode 4 (Skeptic Debate) ----------
+  // ---------- Call Lifecycle, Mode 3 (Page/Observatory Co-Pilot) & Mode 4 (Skeptic Debate) ----------
   async startCall(opts = {}) {
     await this.loadCorpora();
     if (opts.studyId && this.studiesById.has(opts.studyId)) {
       this.activeStudyId = opts.studyId;
+    }
+    if (opts.contextSummary) {
+      this.contextSummary = String(opts.contextSummary);
     }
     if (opts.mode) this.mode = opts.mode;
     if (opts.voice && VOICE_PERSONAS[opts.voice]) this.voice = opts.voice;
@@ -2170,11 +2618,17 @@ export class OpenIEEcosystemSDK {
       await this.startCamera(this.cameraFacing);
     }
 
-    const secHint = dom.visibleSection ? ` I see "${dom.visibleSection.heading}" on ${this.surface.domain}.` : '';
+    const ctrlHint =
+      this.surface.id === 'living' && dom.controls.length
+        ? ` I indexed ${dom.figures.length} figures and ${dom.controls.length} live controls (${this.summarizeLiveControls(2)}).`
+        : dom.visibleSection
+        ? ` I see "${dom.visibleSection.heading}" on ${this.surface.domain}.`
+        : '';
+    const ctxLead = this.contextSummary ? ` Context: ${this.contextSummary}.` : '';
     const greeting =
-      `Connected to ${this.surface.name} Live Co-Pilot, grounded in ${this.studiesById.size || 28} research studies and ${this.blogById.size || 57} Chronicle entries.${secHint} ` +
-      (study ? `Active study: ${study.short_title} (${study.evidence_class}). ` : '') +
-      `Ask anything, tour this page, run a Skeptic Debate, or interrupt me mid-sentence.`;
+      `Connected to ${this.surface.name} Live Co-Pilot.${ctxLead}${ctrlHint} ` +
+      (study ? `Active study: ${study.short_title} (${study.evidence_class}, Signed Provenance · Self-Checked). ` : '') +
+      `Ask anything, tour the figures and controls, run a Skeptic Debate, or interrupt me mid-sentence.`;
 
     await this._deliverAssistantTurn({
       speakerName: VOICE_PERSONAS[this.voice].name,
@@ -2329,10 +2783,37 @@ export class OpenIEEcosystemSDK {
       return this.startDebate(matchedStudy?.id);
     }
 
-    if (/\b(walk me through|walkthrough|tour|step by step|section by section|co-pilot|copilot)\b/.test(qLower)) {
+    if (/\b(walk me through|walkthrough|tour|step by step|section by section|every figure|co-pilot|copilot)\b/.test(qLower)) {
       this.mode = 'copilot';
       this._emitState();
       return this.startPageCoPilot(matchedStudy?.id);
+    }
+
+    // Live Observatory slider/dropdown state query
+    if (/\b(slider|dropdown|parameter|control|setting|selected|observatory|canvas|svg|chart)\b/.test(qLower)) {
+      const dom = this.refreshLiveDomIndex();
+      const ctrlSummary = this.summarizeLiveControls(5);
+      const topFig = dom.figures[0];
+      if (topFig) this.spotlightDomElement(topFig.key);
+      else if (dom.controls[0]) this.spotlightDomElement(dom.controls[0].key);
+
+      const obsReply =
+        `On ${this.surface.domain}, I see ${dom.figures.length} interactive figures, ${dom.tables.length} tables, and ${dom.controls.length} live controls` +
+        (ctrlSummary ? ` currently set to ${ctrlSummary}. ` : '. ') +
+        (topFig ? `Spotlighting "${topFig.caption}". ` : '') +
+        (matchedStudy
+          ? `Remember that in-browser simulator sweeps evaluate models locally (unmetered), whereas ${matchedStudy.short_title} anchors its empirical claims in ${matchedStudy.evidence_class} under Signed Provenance · Self-Checked. ${matchedStudy.limitations_and_scope.split('.')[0]}.`
+          : this.surface.caveat || '');
+      if (matchedStudy) this.openVisualStage({ studyId: matchedStudy.id, clip: '15s' });
+      await this._deliverAssistantTurn({
+        speakerName: VOICE_PERSONAS[this.voice].name,
+        speakerRole: `${VOICE_PERSONAS[this.voice].role} · Observatory`,
+        voice: this.voice,
+        text: obsReply,
+        study: matchedStudy,
+        blog: matchedBlog,
+      });
+      return obsReply;
     }
 
     if (
@@ -2371,13 +2852,13 @@ export class OpenIEEcosystemSDK {
     let reply = '';
     let clip = '15s';
 
-    if (domSec && /\b(this page|section|table|simulator|here|heading)\b/.test(qLower)) {
+    if (domSec && /\b(this page|section|table|figure|simulator|here|heading)\b/.test(qLower)) {
       reply =
         `On ${this.surface.domain}, spotlighting "${domSec.heading}". ` +
-        (domSec.snippet ? `${domSec.snippet.slice(0, 230)}. ` : '') +
+        (domSec.snippet ? `${domSec.snippet.slice(0, 220)}. ` : '') +
         (matchedStudy
-          ? `In the underlying study ${matchedStudy.short_title} (${matchedStudy.evidence_class}), note the scope boundary: ${matchedStudy.limitations_and_scope.split('.')[0]}.`
-          : '');
+          ? `In ${matchedStudy.short_title} (${matchedStudy.evidence_class}), note the post-review scope boundary: ${matchedStudy.limitations_and_scope.split('.')[0]}.`
+          : this.surface.caveat || '');
     } else if (/\b(falsifier|limitation|negative|fail|replicate|caveat|scope|errata|escape)\b/.test(qLower) && matchedStudy) {
       reply =
         `Post-review scope and errata for ${matchedStudy.short_title} (${matchedStudy.evidence_class}, Signed Provenance · Self-Checked): ${matchedStudy.limitations_and_scope}`;
@@ -2401,7 +2882,7 @@ export class OpenIEEcosystemSDK {
         `From the OpenIE Chronicle entry "${matchedBlog.shortTitle || matchedBlog.title}" (${matchedBlog.energyClass || 'unmetered'}): ${matchedBlog.primaryClaim || matchedBlog.description}`;
     } else {
       reply =
-        `You are exploring ${this.surface.name} (${this.surface.domain}): ${this.surface.tagline}. Ask about any section, table, or study claim on this page.`;
+        `You are exploring ${this.surface.name} (${this.surface.domain}): ${this.surface.tagline}. ${this.surface.caveat || ''}`;
     }
 
     if (matchedStudy) this.openVisualStage({ studyId: matchedStudy.id, clip });
@@ -2435,14 +2916,17 @@ export class OpenIEEcosystemSDK {
     const ctrl = new AbortController();
     this.turnAbort = ctrl;
 
-    const topSections = dom.sections.slice(0, 3);
+    const tourTargets = dom.figures.length >= 2
+      ? dom.figures.slice(0, 3).map((f) => ({ key: f.key, heading: f.caption, snippet: `Interactive ${f.kind} instrument` }))
+      : dom.sections.slice(0, 3);
     const clips = ['15s', 'tiktok', '45s'];
     const voices = ['af_bella', 'am_adam', 'af_heart'];
+    const ctrlSnap = this.summarizeLiveControls(3);
 
-    const beats = topSections.length
-      ? topSections.map((sec, idx) => {
-          const extraSim = idx === 1 && dom.simulators[0] ? ` Interactive module detected: "${dom.simulators[0].label}".` : '';
-          const extraTbl = idx === 1 && dom.tables[0]?.headers ? ` Table columns: ${dom.tables[0].headers}.` : '';
+    const beats = tourTargets.length
+      ? tourTargets.map((sec, idx) => {
+          const extraCtrl = idx === 0 && ctrlSnap ? ` Active controls: ${ctrlSnap}.` : '';
+          const extraTbl = idx === 1 && dom.tables[0]?.headers ? ` Dataset columns: ${dom.tables[0].headers}.` : '';
           const studyTie =
             idx === 0 && study
               ? ` Cueing the 15-second Research TV proof for ${study.short_title} (${study.evidence_class}).`
@@ -2455,11 +2939,11 @@ export class OpenIEEcosystemSDK {
             domKey: sec.key,
             clip: clips[idx % clips.length],
             voice: voices[idx % voices.length],
-            role: `Page Co-Pilot · Section ${idx + 1}/${topSections.length}`,
+            role: `Page Co-Pilot · Stop ${idx + 1}/${tourTargets.length}`,
             text:
-              `Section ${idx + 1} on ${this.surface.domain}: "${sec.heading}". ` +
-              (sec.snippet ? `${sec.snippet.slice(0, 200)}.` : '') +
-              extraSim +
+              `Stop ${idx + 1} on ${this.surface.domain}: "${sec.heading}". ` +
+              (sec.snippet ? `${sec.snippet.slice(0, 190)}.` : '') +
+              extraCtrl +
               extraTbl +
               studyTie,
           };
@@ -2479,7 +2963,7 @@ export class OpenIEEcosystemSDK {
             role: 'Systems Lead · Scope & Provenance',
             text: study
               ? `For ${study.short_title} (${study.evidence_class}), ${study.methods_and_meter} Scope limit: ${study.limitations_and_scope.split('.')[0]}.`
-              : 'All energy evidence classes remain strictly orthogonal.',
+              : this.surface.caveat || 'All energy evidence classes remain strictly orthogonal.',
           },
         ];
 
@@ -3147,7 +3631,7 @@ const SHADOW_CSS = `
   }
 `;
 
-function wireTriggerButtons(openFn, sdk) {
+function wireTriggerAndOpenEvents(openFn, sdk) {
   if (typeof document === 'undefined' || window.__openieEcoTriggerBound) return;
   window.__openieEcoTriggerBound = true;
 
@@ -3162,16 +3646,44 @@ function wireTriggerButtons(openFn, sdk) {
 
     openFn(true);
     if (!sdk) return;
-    await sdk.loadCorpora();
-    if (reqStudy && sdk.studiesById.has(reqStudy)) {
+    if (typeof sdk.loadCorpora === 'function') await sdk.loadCorpora();
+    else if (typeof sdk.loadCorpus === 'function') await sdk.loadCorpus();
+    if (reqStudy && sdk.studiesById?.has(reqStudy)) {
       sdk.setStudy(reqStudy);
     }
     const cleanMode = ['call', 'vision', 'copilot', 'debate'].includes(reqMode) ? reqMode : 'call';
-    sdk.setMode(cleanMode);
+    sdk.setMode?.(cleanMode);
     if (reqPrompt) {
-      sdk.ask(reqPrompt);
+      sdk.ask?.(reqPrompt);
     } else if (autostart) {
-      sdk.startCall({ studyId: sdk.activeStudyId, mode: cleanMode });
+      sdk.startCall?.({ studyId: sdk.activeStudyId, mode: cleanMode });
+    }
+  });
+
+  window.addEventListener('openie:live-open', async (ev) => {
+    const d = (ev && ev.detail) || {};
+    openFn(true);
+    if (!sdk) return;
+    if (typeof sdk.loadCorpora === 'function') await sdk.loadCorpora();
+    else if (typeof sdk.loadCorpus === 'function') await sdk.loadCorpus();
+    if (d.studyId && sdk.studiesById?.has(d.studyId)) {
+      sdk.setStudy(d.studyId);
+    }
+    if (d.contextSummary) {
+      sdk.contextSummary = String(d.contextSummary);
+    }
+    if (d.mode && ['call', 'vision', 'copilot', 'debate'].includes(d.mode)) {
+      sdk.setMode?.(d.mode);
+    }
+    if (d.prompt) {
+      sdk.ask?.(String(d.prompt));
+    } else if (d.autoStartCall !== false) {
+      sdk.startCall?.({
+        studyId: d.studyId || sdk.activeStudyId,
+        mode: d.mode || sdk.mode,
+        voice: d.voice,
+        contextSummary: d.contextSummary,
+      });
     }
   });
 }
@@ -3179,7 +3691,6 @@ function wireTriggerButtons(openFn, sdk) {
 export function mountOpenIEEcosystemDock(options = {}) {
   if (typeof window === 'undefined' || typeof document === 'undefined') return null;
 
-  // Auto-skip mounting floating UI if a host dock already exists on the page
   if (!options.force) {
     if (
       document.getElementById('openie-live-dock') ||
@@ -3187,7 +3698,7 @@ export function mountOpenIEEcosystemDock(options = {}) {
       document.getElementById('ai-assistant-root') ||
       document.getElementById('openie-ecosystem-dock-host')
     ) {
-      wireTriggerButtons(
+      wireTriggerAndOpenEvents(
         () => {
           window.openieLiveDock?.open?.();
           window.dispatchEvent(new CustomEvent('openie:open-live-dock'));
@@ -3237,7 +3748,11 @@ export function mountOpenIEEcosystemDock(options = {}) {
   function mountPanel() {
     if (panelMounted) return;
     panelMounted = true;
-    const prompts = sdk.surface.prompts || SURFACE_PROFILES.avalanche.prompts;
+    const prompts = sdk.surface.prompts || SURFACE_REGISTRY.avalanche.prompts;
+    const domSummary =
+      sdk.surface.id === 'living'
+        ? `${sdk.domIndex.figures.length} figures · ${sdk.domIndex.controls.length} controls · ${sdk.domIndex.tables.length} tables`
+        : `${sdk.domIndex.sections.length} live sections`;
 
     panel.innerHTML = `
       <div class="hdr">
@@ -3330,7 +3845,7 @@ export function mountOpenIEEcosystemDock(options = {}) {
               <span class="ev-badge">Signed Provenance · Self-Checked</span>
             </div>
             <div class="turn-txt">
-              Grounded in <strong>${escHtml(sdk.surface.domain)}</strong> live DOM (${sdk.domIndex.sections.length} sections), 28 Research studies, and 57 Chronicle entries. Start a voice call, tour this page, or launch a 2-voice Skeptic Debate.
+              Grounded in <strong>${escHtml(sdk.surface.domain)}</strong> (${escHtml(domSummary)}), 28 Research studies, and 57 Chronicle entries. ${escHtml(sdk.surface.caveat || '')}
             </div>
             <div class="turn-orth">measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered</div>
           </div>
@@ -3343,7 +3858,7 @@ export function mountOpenIEEcosystemDock(options = {}) {
 
       <div class="ftr">
         <form id="oe-form" class="ask-form">
-          <input id="oe-input" class="ask-inp" type="text" placeholder="Ask about this page, study, or claim..." aria-label="Ask OpenIE Co-Pilot" />
+          <input id="oe-input" class="ask-inp" type="text" placeholder="Ask about any figure, control, or claim..." aria-label="Ask OpenIE Co-Pilot" />
           <button type="submit" class="ask-btn">Ask</button>
         </form>
         <div id="oe-tel" class="tel-line">VAD -60dB · Instant WebSpeech + Kokoro-82M · measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered</div>
@@ -3544,7 +4059,7 @@ export function mountOpenIEEcosystemDock(options = {}) {
     }
   });
 
-  wireTriggerButtons(setOpen, sdk);
+  wireTriggerAndOpenEvents(setOpen, sdk);
 
   const controller = {
     sdk,

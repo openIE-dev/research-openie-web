@@ -34,6 +34,7 @@
       <a href="/pdfs/lut-adapt.pdf">PDF</a>
       <a href="/pdfs/latex/lut-adapt.pdf">LaTeX PDF</a>
       <a href="https://openie.dev" class="pill-cyan">openie.dev</a>
+      <a href="https://blog.openie.dev" target="_blank" rel="noopener">Chronicle (57)</a> <a href="https://blog.openie.dev/verification/" target="_blank" rel="noopener">Replicate</a> <button type="button" data-openie-live-trigger style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:9999px;border:1px solid rgba(52,211,153,0.5);background:rgba(16,185,129,0.14);color:#6ee7b7;cursor:pointer;">📞 Live Call · Co-Pilot</button>
       <button type="button" id="theme-toggle" class="theme-btn">Theme: <span id="theme-label">Auto</span></button>
     </div>
   </nav>
@@ -395,7 +396,7 @@
           <div class="metric-tile">
             <div class="k">Embedded Crystal CRC32s</div>
             <div class="v" id="w-crc">0xd1cc025a</div>
-            <div class="s" id="w-crc-sub">Skills+TMAC: 0x3b12a681 (Verified)</div>
+            <div class="s" id="w-crc-sub">Skills+TMAC: 0x3b12a681 (Signed Provenance · Self-Checked)</div>
           </div>
           <div class="metric-tile">
             <div class="k">Two-Tier Antisym-40 Verdict</div>
@@ -466,7 +467,7 @@
           <div class="metric-tile">
             <div class="k">Live WASM Epistemic Gate</div>
             <div class="v" id="hle-gate" style="color: var(--color-brand-cyan);">Mode 1 · 4-Tok Opener</div>
-            <div class="s" id="hle-gate-sub">CalConf=88% · Canary=0 (Verified)</div>
+            <div class="s" id="hle-gate-sub">CalConf=88% · Canary=0 (Signed Provenance · Self-Checked)</div>
           </div>
         </div>
       </section>
@@ -487,7 +488,7 @@
               <option value="bonsai" selected>Claim LA-39 · Ternary-Bonsai-2-27B (1.75 bpw EntroMCU · FWHT-1024 + Antisym-40)</option>
               <option value="decider">Claim LA-40 · Mapika/decider-0.8b (1.44 GB) → 4 KB System-0 LUT6 (9,493.7× W2)</option>
               <option value="arc">Claim LA-41a · arcprize/ARC-AGI-2 (12.50% Solved in 5.0 LUT6s · 0.00% CHR@80)</option>
-              <option value="minif2f">Claim LA-41b · MiniF2F-Lean4 (50.00% Lean 4.36.0 Verified · 0.00% Unsound · 6.77× W2)</option>
+              <option value="minif2f">Claim LA-41b · MiniF2F-Lean4 (50.00% Lean 4.36.0 Checked · 0.00% Unsound · 6.77× W2)</option>
               <option value="critpt">Claim LA-41c · CritPt Research Physics (9.49× Lower RMS-CE · 0.00% CHR@80)</option>
             </select>
           </div>
@@ -545,9 +546,9 @@
           <div class="ctrl-box">
             <label><span>Live <code>lut6_core.wasm</code> 2-Layer <code>ARC2</code> &amp; <code>ARC3</code> Mechanic-Shift Breaker</span></label>
             <select id="arc3-wasm-probe">
-              <option value="0x30300303,4,200123,200123" selected>Distance-2 Cavity Fill (c=4) + Verified Mechanic Match (System-0 Reflex → ACTION3)</option>
+              <option value="0x30300303,4,200123,200123" selected>Distance-2 Cavity Fill (c=4) + Self-Checked Mechanic Match (System-0 Reflex → ACTION3)</option>
               <option value="0x11111111,4,200123,999999">Open Strip (Keep 0x11111111) + Unannounced Mechanic Shift (Breaker → Re-Induce T̂!)</option>
-              <option value="0x70070770,2,200123,200123">Alternating 2-Layer Bridge (c=2) + Verified Transition (System-0 Reflex → ACTION3)</option>
+              <option value="0x70070770,2,200123,200123">Alternating 2-Layer Bridge (c=2) + Self-Checked Transition (System-0 Reflex → ACTION3)</option>
             </select>
           </div>
         </div>
@@ -908,7 +909,7 @@
         } else {
           var fbv = fallback[vSel.value] || [0, 0, 0];
           document.getElementById('w-tier').textContent = fbv[0] === 1 ? 'Tier-1 LUT6 (0x11)' : (fbv[0] === 2 ? 'Tier-2 Antisym-40 (0x' + fbv[2].toString(16) + ')' : 'OOD ESCALATE');
-          document.getElementById('w-tier-sub').textContent = fbv[1] + ' conformal votes (Pre-verified V8 receipt)';
+          document.getElementById('w-tier-sub').textContent = fbv[1] + ' conformal votes (Self-checked V8 receipt)';
           document.getElementById('w-seu').textContent = (fa >= 0 && fb >= 0) ? '0x3C APOPTOSIS' : (fa >= 0 ? '1-BIT HEALED' : 'CLEAN (0 flips)');
         }
       }
@@ -920,14 +921,14 @@
         .then(function(res){
           exportsObj = res.instance.exports;
           window.__lut6WasmExports = exportsObj;
-          chip.textContent = 'Live WASM VM Active (13,058 B · 11 Exports · Verified)';
+          chip.textContent = 'Live WASM VM Active (13,058 B · 11 Exports · Signed Provenance · Self-Checked)';
           updateUI();
           if (window.__updateHleWasm) window.__updateHleWasm();
           if (window.__updateBonsaiWasm) window.__updateBonsaiWasm();
           if (window.__updateArc3Wasm) window.__updateArc3Wasm();
         })
         .catch(function(){
-          chip.textContent = 'Offline Mode (Pre-verified V8 receipt)';
+          chip.textContent = 'Offline Mode (Self-checked V8 receipt)';
           updateUI();
           if (window.__updateHleWasm) window.__updateHleWasm();
           if (window.__updateBonsaiWasm) window.__updateBonsaiWasm();
@@ -982,7 +983,7 @@
             gsEl.textContent = 'hle:3r2s detected (' + canHle + ') → 0 items crystallized';
           }
         } else {
-          if (mode === 'reflex') { gEl.textContent = 'Mode 1 · 4-Tok Opener (t₀=267)'; gsEl.textContent = 'CalConf=88% · Canary=0 (Verified receipt)'; }
+          if (mode === 'reflex') { gEl.textContent = 'Mode 1 · 4-Tok Opener (t₀=267)'; gsEl.textContent = 'CalConf=88% · Canary=0 (Signed Provenance · Self-Checked)'; }
           else if (mode === 'whiteboard') { gEl.textContent = 'Mode 3 · EPISTEMIC HOLD'; gsEl.textContent = 'PriorConf=0% · 0 poisoned prefix words'; }
           else { gEl.textContent = 'CANARY=1 · QUARANTINED!'; gsEl.textContent = 'hle:3r2s blocked from .lut6 crystal'; }
         }
@@ -999,7 +1000,7 @@
         bonsai:  { m1: '1.750 bpw (−22.22%)', s1: 'Saves 1.564 GB (7.038 → 5.474 GB · 0.0 err)', m2: '220.72 µJ Thor Shunt', s2: '1.57× < MLX 2-bit (346.09 µJ) · 2.26× faster', m3: '0 Invalid c=3 Codes', s3: '9.70M weights · 128× fewer row MULs (cos=0.999987)' },
         decider: { m1: '4,096 B (6.25% SRAM!)', s1: '367,389.6× smaller than Mapika/decider-0.8b (1.44 GB)', m2: '5.3 µs W2 (9,493.7×!)', s2: '0.314 mJ W2 (3,185.3× < 1,001.5 mJ Metal GPU)', m3: '100% Acc / 0% OOD Err', s3: 'vs 87.50% OOD false actions on potion-base-8M' },
         arc:     { m1: '5.0 Mean LUT6 Gates', s1: '0 runtime FLOPs · Inductive C_train(f)=1 synthesis', m2: '12.50% Solved (3/24)', s2: '3.0× > unverified Qwen3.6-35B (4.17%) · Apache-2.0', m3: '0.00% CHR@80 / 0% Unsound', s3: '100.0% SelAcc · 6.12% RMS-CE (14.1× cut)' },
-        minif2f: { m1: '16.0× Fewer Checks (W2)', s1: '192 → 12 Lean checks via .lut6 Goal-AST crystal', m2: '50.00% Verified (12/24)', s2: '2.0× > 1-shot 35B · 6.77× W2 speedup (16.5 ms/thm)', m3: '0.0000% Unsound Proofs', s3: 'Real Lean 4.36.0 kernel (vs 75.0% unverified broken)' },
+        minif2f: { m1: '16.0× Fewer Checks (W2)', s1: '192 → 12 Lean checks via .lut6 Goal-AST crystal', m2: '50.00% Checked (12/24)', s2: '2.0× > 1-shot 35B · 6.77× W2 speedup (16.5 ms/thm)', m3: '0.0000% Unsound Proofs', s3: 'Real Lean 4.36.0 kernel (vs 75.0% unverified broken)' },
         critpt:  { m1: '16 Research Physics', s1: 'CritPt-Benchmark/CritPt (gated=False · 0 raw text)', m2: '8.96% RMS-CE (9.49× cut)', s2: 'vs 85.00% Qwen3.6-35B & 82.61% Devstral-24B', m3: '0.00% CHR@80 (100% Safe)', s3: 'vs 93.75% confident hallucinations on standalone 35B' }
       };
       var fSel = document.getElementById('bon-frontier'), wSel = document.getElementById('bon-wasm-probe');
@@ -1022,8 +1023,8 @@
           vEl.textContent = 'FWHT-64+TMAC = ' + (acc >= 0 ? '+' : '') + acc;
           sEl.textContent = 'ARC-LUT6 8-cell = 0x' + arcOut.toString(16).padStart(8, '0') + ' (Live WASM)';
         } else {
-          vEl.textContent = 'FWHT-64+TMAC Verified';
-          sEl.textContent = 'ARC-LUT6 8-cell Verified (9,009 B WASM)';
+          vEl.textContent = 'FWHT-64+TMAC Self-Checked';
+          sEl.textContent = 'ARC-LUT6 8-cell Self-Checked (9,009 B WASM)';
         }
       }
       window.__updateBonsaiWasm = updBonsai;
@@ -1067,7 +1068,7 @@
             sEl.textContent = '2-Layer 8-cell = 0x' + out8.toString(16).padStart(8, '0') + ' (Live WASM)';
           } else {
             vEl.textContent = expS === actS ? 'ARC3 Reflex · Action=3' : 'SHIFT BREAKER TRIPPED';
-            sEl.textContent = '2-Layer 8-cell Verified (13,058 B WASM)';
+            sEl.textContent = '2-Layer 8-cell Self-Checked (13,058 B WASM)';
           }
         }
         window.__updateArc3Wasm = updArc3;
@@ -1139,5 +1140,6 @@
       });
     })();
   </script>
+  <script type="module" src="/live/openie-ecosystem-dock.js"></script>
 </body>
 </html>

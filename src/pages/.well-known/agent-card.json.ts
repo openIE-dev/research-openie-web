@@ -8,9 +8,9 @@ export const GET: APIRoute = async () => {
   const card = {
     name: 'OpenIE Research',
     aliases: ['research.openie.dev', 'Open Interface Engineering Research'],
-    version: '1.1.0',
+    version: '1.2.0',
     description:
-      'Open-access research catalog, full-text Markdown twins, stamped PDFs, archival LaTeX sources, reproducibility digests, RCE language specification chapters, and interactive browser instruments from Open Interface Engineering, Inc.',
+      'Open-access research catalog, full-text Markdown twins, stamped PDFs, reproducibility digests, RCE language specification chapters, interactive /living/ observatories, Sovereign Multimodal Voice/Vision Co-Pilot (/live/ & openie-ecosystem-dock.js), and companion 57-entry Chronicle (blog.openie.dev) under Signed Provenance · Self-Checked and strict measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered non-mixing.',
     documentationUrl: `${BASE}/llms.txt`,
     provider: {
       organization: 'Open Interface Engineering, Inc.',
@@ -86,16 +86,44 @@ export const GET: APIRoute = async () => {
           `${BASE}/data/#deterministic-null`,
           `${BASE}/pdfs/stamps.json`,
           `${BASE}/changelog/`,
+          'https://blog.openie.dev/verification/',
+          'https://blog.openie.dev/llms.txt',
+        ],
+      },
+      {
+        id: 'engage_multimodal_live_copilot_and_chronicle',
+        name: 'Launch Sovereign Multimodal Voice/Vision Co-Pilot and query the 57-entry Chronicle',
+        description:
+          'Fetch /live/hmi-corpus.json (28 studies with Clopper-Pearson bounds, fired falsifiers, and Measured/Reported/Estimated/Unmetered separation) and https://blog.openie.dev/live/blog-corpus.json (57 Chronicle entries), embed https://research.openie.dev/live/openie-ecosystem-dock.js across *.openie.dev, or inspect canonical syndication at /syndication/ and /syndication/medium/<slug>/.',
+        inputModes: ['text/plain', 'application/json'],
+        outputModes: ['application/json', 'text/html', 'text/markdown'],
+        tags: ['multimodal', 'voice', 'vision', 'copilot', 'chronicle', 'provenance'],
+        examples: [
+          `${BASE}/live/`,
+          `${BASE}/live/hmi-corpus.json`,
+          `${BASE}/live/openie-ecosystem-dock.js`,
+          `${BASE}/syndication/`,
+          'https://blog.openie.dev',
+          'https://blog.openie.dev/live/blog-corpus.json',
+          'https://blog.openie.dev/syndication/',
         ],
       },
     ],
     supportedInterfaces: [
       { protocolBinding: 'https://llmstxt.org', protocolVersion: '1.0', url: `${BASE}/llms.txt` },
       { protocolBinding: 'https://llmstxt.org/full', protocolVersion: '1.0', url: `${BASE}/llms-full.txt` },
-      { protocolBinding: 'https://schema.org/DataCatalog', protocolVersion: '1.1.0', url: `${BASE}/catalog.json` },
+      { protocolBinding: 'https://llmstxt.org', protocolVersion: '1.0', url: 'https://blog.openie.dev/llms.txt' },
+      { protocolBinding: 'https://schema.org/DataCatalog', protocolVersion: '1.2.0', url: `${BASE}/catalog.json` },
+      { protocolBinding: 'https://schema.org/Dataset', protocolVersion: '1.0', url: `${BASE}/live/hmi-corpus.json` },
       { protocolBinding: 'https://webmachinelearning.github.io/webmcp', protocolVersion: 'draft', url: `${BASE}/webmcp-tools.js` },
       { protocolBinding: 'https://www.rfc-editor.org/rfc/rfc4287', protocolVersion: '1.0', url: `${BASE}/feed.xml` },
     ],
+    epistemicContract: {
+      provenanceStatus: 'Signed Provenance · Self-Checked',
+      externalPeerReviewed: false,
+      orthogonalityRule: 'measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered',
+      verificationUrl: 'https://blog.openie.dev/verification/',
+    },
     studyCount: exported.length,
     studyIds: exported.map((s) => s.id),
   };

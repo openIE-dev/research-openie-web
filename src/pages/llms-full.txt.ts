@@ -12,6 +12,9 @@ export const GET: APIRoute = async () => {
 > Structured JSON catalog: https://research.openie.dev/catalog.json
 > Agent card: https://research.openie.dev/.well-known/agent-card.json
 > Atom feed: https://research.openie.dev/feed.xml
+> OpenIE Chronicle (57 entries): https://blog.openie.dev (index: https://blog.openie.dev/llms.txt · JSON: https://blog.openie.dev/live/blog-corpus.json · verification & replication: https://blog.openie.dev/verification/ · syndication: https://blog.openie.dev/syndication/ & https://blog.openie.dev/medium/<slug>/)
+> Multimodal Live Voice, Vision & Co-Pilot: https://research.openie.dev/live/ · corpus: https://research.openie.dev/live/hmi-corpus.json · cross-origin SDK: https://research.openie.dev/live/openie-ecosystem-dock.js · broadcast co-pilots: https://research.openie.dev/tv/ , https://research.openie.dev/radio/ , https://research.openie.dev/syndication/medium/<slug>/ , https://research.openie.dev/living/<slug>/
+> Epistemic & energy contract: Signed Provenance · Self-Checked (BLAKE3 + Ed25519; not external peer review) | measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered (strictly orthogonal, never summed across classes) | Clopper-Pearson binomial bounds
 > Data and reproducibility digests: https://research.openie.dev/data/
 > Glossary: https://research.openie.dev/glossary/
 

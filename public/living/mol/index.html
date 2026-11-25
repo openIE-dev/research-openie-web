@@ -18,6 +18,8 @@
       <a href="index.html" class="active">Mixture of Limits</a>
       <a href="../fpga-sim/">FPGA sim</a>
       <a href="../README.md">README</a>
+    
+      <a href="https://blog.openie.dev" target="_blank" rel="noopener">Chronicle (57)</a> <a href="https://blog.openie.dev/verification/" target="_blank" rel="noopener">Replicate</a> <button type="button" data-openie-live-trigger style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:9999px;border:1px solid rgba(52,211,153,0.5);background:rgba(16,185,129,0.14);color:#6ee7b7;cursor:pointer;">📞 Live Call · Co-Pilot</button>
     </nav>
     </div>
 </header>
@@ -28,7 +30,7 @@
     <p class="subtitle">This page shows the P0 figure shells for the Mixture of Limits study. Claims stay ledger-safe with the paper.
       Analytical OpCounter and catalog <code>estimated_j</code> are not board power.
       Soft-ref path: Landauer is a labeled thermodynamic lower-bound estimate; <code>measured_j=None</code> unless Metered; <code>board_synth_claimed=false</code>.
-      Soft-ref <code>mol prove</code> (43 VERIFIED) is software constructive existence, not FPGA or board package energy.
+      Soft-ref <code>mol prove</code> (43 SELF-CHECKED) is software constructive existence, not FPGA or board package energy.
       Figures on this page are Unmetered or Estimated.
       Shannon, Landauer, Howard, Kolmogorov and related floors already name those bounds as settled theory. The remaining bottleneck is applied math and hardware embodiment.
       Study §8.4-§8.14: SOTA at the plateau under Mixture of Limits—once VoI is zero past the floor, optimize energy/compute (Lookup → Formula → Solver → Model LAST). Latents, Logical Intelligence (EBM + LLM + latent), World Labs, test-time, SSM/MoE efficiency, and plateau techniques (YOCO, DeepSeek-V4.1-Flash, HySparse2 / MiMo, Qwen, Kimi, Sarvam, …) are implementation options for plateau spend; floors still bind. Field KV bytes and API prices ≠ soft-ref measured_j.
@@ -143,7 +145,7 @@ refuse = lawful success + receipt</pre>
 
   <section id="mol-tab-02" class="figure-block">
     <h2><span class="id">mol-tab-02</span> How proof status maps to claims</h2>
-    <p>Soft-ref <code>mol prove</code> stamps <code>VERIFIED</code> onto paper <code>claim.*</code> ids (see study <a href="/papers/gates/#6-prove--claim-map">§6</a>). Soft-ref-only residuals stay on the roadmap. Do not escalate them to measured results.</p>
+    <p>Soft-ref <code>mol prove</code> stamps <code>Signed Provenance · Self-Checked</code> onto paper <code>claim.*</code> ids (see study <a href="/papers/gates/#6-prove--claim-map">§6</a>). Soft-ref-only residuals stay on the roadmap. Do not escalate them to measured results.</p>
     <ul>
       <li><strong>Proven path:</strong> Unmetered (plus Estimated where μ, Landauer, or fuel appear); <code>board_synth_claimed=false</code></li>
       <li><strong>Soft-ref only (pointer):</strong> live RAPL/NVML as default close; live wgpu presence; Ferric / BMI loop; klere-vm FPGA pJ; full Periodic Stack 258 + μ calib; trained Model leaf. See §6.3</li>
@@ -176,5 +178,6 @@ refuse = lawful success + receipt</pre>
 <footer class="site-footer">
   <p>OpenIE Research · living figures · not the paper · <a href="/papers/gates/#part-ii-the-cascade-mixture-of-limits">/papers/gates/#part-ii-the-cascade-mixture-of-limits</a></p>
 </footer>
+  <script type="module" src="/live/openie-ecosystem-dock.js"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#F59E0B">
   <meta name="color-scheme" content="dark light">
   <meta name="author" content="David Charlot">
-  <meta name="description" content="Interactive observatory for Satiation Benchmark (SATB): inspect live verified platform L0-L4 hardware attribution maps across 5 hardware archetypes — Apple M5 Max, NVIDIA Jetson AGX Thor (INA238/INA3221 measured_j), Framework AMD Strix Halo (0440 root:energy RAPL + amdgpu PPT), Intel Raptor Lake (RAPL psys + package-0), and Windows 11 (Intel i7-1165G7 + RTX 2060 rootless NVML reported_j & Win32 Job Objects) — plus Closed Cloud APIs, C1-C12 conformance, C12 determinism, observer cadences, and B-vs-C falsifiers.">
+  <meta name="description" content="Interactive observatory for Satiation Benchmark (SATB): inspect self-checked platform L0-L4 hardware attribution maps across 5 hardware archetypes — Apple M5 Max, NVIDIA Jetson AGX Thor (INA238/INA3221 measured_j), Framework AMD Strix Halo (0440 root:energy RAPL + amdgpu PPT), Intel Raptor Lake (RAPL psys + package-0), and Windows 11 (Intel i7-1165G7 + RTX 2060 rootless NVML reported_j & Win32 Job Objects) — plus Closed Cloud APIs, C1-C12 conformance, C12 determinism, observer cadences, and B-vs-C falsifiers.">
   <link rel="canonical" href="https://research.openie.dev/living/satb-harness/">
   <link rel="describedby" type="text/markdown" href="/llms.txt">
   <link rel="alternate" type="text/markdown" title="Satiation Benchmark: Reference Harness, Adapters, and Telemetry Attribution (Markdown)" href="/papers/satb-harness.md">
@@ -34,6 +34,7 @@
       <a href="/pdfs/satb-harness.pdf">PDF</a>
       <a href="/pdfs/latex/satb-harness.pdf">LaTeX PDF</a>
       <a href="https://openie.dev" class="pill-cyan">openie.dev</a>
+      <a href="https://blog.openie.dev" target="_blank" rel="noopener">Chronicle (57)</a> <a href="https://blog.openie.dev/verification/" target="_blank" rel="noopener">Replicate</a> <button type="button" data-openie-live-trigger style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:9999px;border:1px solid rgba(52,211,153,0.5);background:rgba(16,185,129,0.14);color:#6ee7b7;cursor:pointer;">📞 Live Call · Co-Pilot</button>
       <button type="button" id="theme-toggle" class="theme-btn">Theme: <span id="theme-label">Auto</span></button>
     </div>
   </nav>
@@ -56,10 +57,10 @@
       <section id="satb-diag-01" class="glass-card" style="margin-top: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
           <h2 style="margin: 0; font-size: 1.25rem;"><code>satb-diag-01</code> · Five-Host &amp; Cloud Telemetry Attribution Switcher (<code>L0–L4 × A1–N</code>)</h2>
-          <span class="chip chip-sim">5 Hardware Archetypes + Cloud Verified</span>
+          <span class="chip chip-sim">5 Hardware Archetypes · Signed Provenance · Self-Checked</span>
         </div>
         <p style="font-size: 0.9rem; margin-top: 0.6rem;">
-          Inspect live verified physical boundaries, rootless sysfs/kernel/Win32 permissions, and honest attribution labels across all five <code>SATB</code> silicon/OS archetypes (<code>macOS</code>, <code>Linux</code>, <code>Windows 11</code>) plus closed cloud APIs. Channels at different levels are recorded independently and never summed.
+          Inspect self-checked physical boundaries, rootless sysfs/kernel/Win32 permissions, and honest attribution labels across all five <code>SATB</code> silicon/OS archetypes (<code>macOS</code>, <code>Linux</code>, <code>Windows 11</code>) plus closed cloud APIs. Channels at different levels are recorded independently and never summed.
         </p>
         <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;" role="group" aria-label="Select target hardware platform">
           <button type="button" class="theme-btn plat-btn" data-plat="apple_silicon" aria-pressed="true" style="border-color: var(--color-brand-amber); color: var(--color-brand-amber);">Apple M5 Max (IOReport + rusage)</button>
@@ -78,7 +79,7 @@
                 <th style="padding: 0.45rem 0.5rem;">Channel / Sensor</th>
                 <th style="padding: 0.45rem 0.5rem;">Boundary Level</th>
                 <th style="padding: 0.45rem 0.5rem;">Best Label</th>
-                <th style="padding: 0.45rem 0.5rem;">Rootless Access &amp; Verified Hardware Behavior</th>
+                <th style="padding: 0.45rem 0.5rem;">Rootless Access &amp; Self-Checked Hardware Behavior</th>
               </tr>
             </thead>
             <tbody id="plat-tbody"></tbody>
@@ -176,7 +177,7 @@
       var PLATFORMS = {
         apple_silicon: {
           kpis: [
-            ['Host Verification', 'Verified Live', 'Apple M5 Max · 128 GB · macOS 27.2.1'],
+            ['Host Provenance', 'Signed Provenance · Self-Checked', 'Apple M5 Max · 128 GB · macOS 27.2.1'],
             ['Rootless Method', 'macmon + rusage_v6', 'Zero sudo · zero powermetrics'],
             ['Primary Energy Channel', 'L2 IOReport (A2)', 'reported_j (L0 plug not_available)'],
             ['Co-Tenant Isolation', 'L3 ri_energy_nj (D)', 'Per-PID kernel counter + Falsifier 6']
@@ -191,7 +192,7 @@
         },
         framework_amd: {
           kpis: [
-            ['Host Verification', 'Verified Live', 'AMD Ryzen AI Max+ 395 · 122.8 GiB · Linux 7.0.0-43'],
+            ['Host Provenance', 'Signed Provenance · Self-Checked', 'AMD Ryzen AI Max+ 395 · 122.8 GiB · Linux 7.0.0-43'],
             ['PLATYPUS Safety', '0440 root:energy', 'udev 90-energy-read.rules · world_readable = false'],
             ['Primary Energy Channel', 'L2 RAPL + amdgpu PPT', 'reported_j (24.34 µs read · 94.28 Hz @ 100 Hz)'],
             ['Step 7 & Falsifier 3', '0 µJ Residual', 'Kepler C errs −71.61% on DRAM+fsync Phase 2']
@@ -206,7 +207,7 @@
         },
         intel_raptor_lake: {
           kpis: [
-            ['Host Verification', 'Verified Live', 'Intel Core i9-13900H · 20t · Linux 7.0.0-43'],
+            ['Host Provenance', 'Signed Provenance · Self-Checked', 'Intel Core i9-13900H · 20t · Linux 7.0.0-43'],
             ['Dual L1 + L2 RAPL', 'psys + package-0', '4 domains (psys, pkg, core, uncore) mode 0444'],
             ['Cadence & Latency', '45.37 µs Read', '97.12 Hz achieved @ 100 Hz · 0 µJ Step-7 residual'],
             ['Falsifier 3 Verdict', '−72.89% Phase-2 Err', 'Kepler C over-credits compute +69.26% (triggered)']
@@ -221,14 +222,14 @@
         },
         jetson_thor: {
           kpis: [
-            ['Host Verification', 'Verified Live (measured_j)', 'NVIDIA Jetson AGX Thor · Linux 6.8.12-1021-tegra'],
+            ['Host Provenance', 'Signed Provenance · Self-Checked (measured_j)', 'NVIDIA Jetson AGX Thor · Linux 6.8.12-1021-tegra'],
             ['Physical Shunt Rails', 'TI INA238 + INA3221', 'hwmon6 VIN + hwmon5 ch1–ch3 all 0444 rootless'],
             ['I2C Cadence Physics', '2,948.8 µs Median', '66.55 Hz @ 100 Hz (8.9× macmon) · 9.49 Hz @ 100 ms'],
             ['Rail Separation & F6', 'VDD_GPU vs CPU_SOC', 'Co-tenant LLM isolated on ch1; A2 withheld (shared)']
           ],
           rows: [
             ['hwmon6 TI INA238 (i2c@44 VIN)', 'L1 platform (DC)', 'measured_j (A2 withheld)', '27.97 V carrier+module shunt: 122.12 J Phase 1, 99.02 J Phase 2; reflects ch1 GPU co-tenant swings'],
-            ['hwmon5 INA3221 ch3 VIN_SYS_5V0', 'L1 5 V rail', 'measured_j (0444)', 'Verified 0444 world-readable (5.08 V): 35.48 J total; 6.13% pre/post drift triggers Falsifier 6'],
+            ['hwmon5 INA3221 ch3 VIN_SYS_5V0', 'L1 5 V rail', 'measured_j (0444)', 'Self-checked 0444 world-readable (5.08 V): 35.48 J total; 6.13% pre/post drift triggers Falsifier 6'],
             ['hwmon5 INA3221 ch1 VDD_GPU', 'L2 GPU domain', 'measured_j (A1 if excl.)', 'Physically isolates live co-tenant llama-server (21.5–33.5 W, −36.1% F5 swing) from CPU/SoC probes'],
             ['hwmon5 INA3221 ch2 VDD_CPU_SOC_MSS', 'L2 CPU/SoC/MSS', 'B measured_j', '45.73 J (38.07 W) Compute vs 44.37 J (36.71 W) DRAM+fsync; Kepler C errs −70.01% (F3 triggered)'],
             ['NVML cumulative energy (mJ)', 'L2 GPU counter', 'Deferred (GPU lock)', 'Held untouched behind co-tenant GPU lock during CPU-only probe; C10 SIGKILL 9.544 ms mean']
@@ -236,14 +237,14 @@
         },
         windows_11_nvml: {
           kpis: [
-            ['Host Verification', 'Verified Live (Win11)', 'Intel Core i7-1165G7 + RTX 2060 · NT 10.0.26300'],
+            ['Host Provenance', 'Signed Provenance · Self-Checked (Win11)', 'Intel Core i7-1165G7 + RTX 2060 · NT 10.0.26300'],
             ['Rootless Basic Token', '0x20000 Non-Admin', 'nvml.dll mJ OK · CPU RAPL MSR 0x611 blocked (N)'],
             ['NVML FFI vs CLI', '1.17 ms vs 43.9 ms', '37.4× faster FFI · 64.64 Hz @ 100 Hz (NT tick)'],
             ['Win32 Job Object C10', '2.458 ms Reap (0 PID)', '50× faster than taskkill /F /T · 0 mJ Step-7 err']
           ],
           rows: [
             ['WMI EMI PowerMeter / L0 AC Plug', 'L0 / L1 platform', 'N (not_available)', '0 WMI EMI PowerMeter instances exposed on host; L0 AC wall plug unattached (measured_j = None)'],
-            ['nvml.dll nvmlDeviceGetTotalEnergyConsumption', 'L2 discrete GPU (mJ)', 'B reported_j (A1 if excl.)', 'Verified under Basic User 0x20000 token: 8.769 J + 8.816 J = 17.585 J (0 mJ Step-7 residual, 3.0% drift)'],
+            ['nvml.dll nvmlDeviceGetTotalEnergyConsumption', 'L2 discrete GPU (mJ)', 'B reported_j (A1 if excl.)', 'Self-checked under Basic User 0x20000 token: 8.769 J + 8.816 J = 17.585 J (0 mJ Step-7 residual, 3.0% drift)'],
             ['Intel RAPL MSR 0x611 (CPU Package)', 'L2 CPU package', 'N (ring-0 blocked)', 'Windows NT kernel + HVCI block unprivileged ring-3 MSR reads without custom kernel driver (barred by OQ-5)'],
             ['Win32 GetProcessTimes + QueryProcessCycleTime', 'L3 process / JobObj', 'C (activity shares)', '15.625 ms tick aliases Phase 2 to 5.06% share (−89.9% F3 err; −77.1% even using RDTSC cycles); SRUM excluded'],
             ['Win32 Job Object + NTFS C9 + MapViewOfFile', 'L3 / L4 conformance', 'Exact', 'Shape D 15027705736 (1,474.2 ns MSVC /O2); C9 149,747 B (0 CRLF diffs); C10 TerminateJobObject 2.458 ms']
@@ -251,7 +252,7 @@
         },
         closed_api: {
           kpis: [
-            ['Host Verification', 'Verified Live (32 Calls)', 'Anthropic · Cerebras · xAI via satb-proxy'],
+            ['Host Provenance', 'Signed Provenance · Self-Checked (32 Calls)', 'Anthropic · Cerebras · xAI via satb-proxy'],
             ['Server Energy Label', 'Strictly N (or P)', 'not_available unless per-request attested'],
             ['Fleet Medians Barred', '0.24 / 0.34 Wh Excluded', 'Never substituted into SATB receipts'],
             ['Exact Placement Axis', 'L4 Tokens + E3 USD', '100% exact proxy usage match (C7)']
@@ -260,7 +261,7 @@
             ['Remote provider server energy', 'L2 remote server', 'N (or P)', 'Literally "not_available" unless provider supplies per-request P with verbatim methodology'],
             ['Provider sustainability disclosures', 'Fleet median (barred)', 'Excluded', 'Google 0.24 Wh, OpenAI 0.34 Wh, Mistral 1.14 gCO2e are fleet medians and never enter receipts'],
             ['Local client L0–L3 counters', 'Client / sandbox host', 'D / A2 (host only)', 'Measures local /work tool execution only; never mislabelled as model inference energy'],
-            ['satb-proxy L4 logical ledger', 'L4 conversation', 'Exact', '100% exact prompt, cache, reasoning, and output tokens + dated list-price USD (32/32 verified)'],
+            ['satb-proxy L4 logical ledger', 'L4 conversation', 'Exact', '100% exact prompt, cache, reasoning, and output tokens + dated list-price USD (32/32 self-checked)'],
             ['Session start/end canary rung', 'Session validity', 'Void gate', 'Flags silent mid-session provider weight or quantization swaps behind fixed model_id']
           ]
         }
@@ -529,5 +530,6 @@
       }
     })();
   </script>
+  <script type="module" src="/live/openie-ecosystem-dock.js"></script>
 </body>
 </html>

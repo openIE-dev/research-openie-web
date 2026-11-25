@@ -55,6 +55,57 @@ const payloadJson = JSON.stringify({ feed, radar, foundry, ecosystem }).replace(
   var lastHighlightedTurn = -1;
   var totalLoopSec = Math.max(1, FEED.total_duration_sec || EPISODES.reduce(function (s, e) { return s + (e.duration_sec || 180); }, 0));
 
+  var EP_STUDY_FALLBACK = {
+    1: 'gates',
+    2: 'communication-avalanche',
+    3: 'rce',
+    4: 'deterministic-null',
+    5: 'game-engines',
+    6: 'lut-adapt',
+    7: 'time-as-an-index',
+    8: 'satb-harness',
+    9: 'eco-avalanche',
+    10: 'eco-stack',
+    11: 'eco-compute',
+    12: 'eco-synthesis',
+    13: 'eco-knowledge',
+    14: 'eco-database',
+    15: 'lut6-codon-nucleus',
+    16: 'communication-avalanche'
+  };
+
+  function resolveEpisodeStudyId(ep) {
+    if (!ep) return 'communication-avalanche';
+    if (Array.isArray(ep.studies) && ep.studies[0]) return ep.studies[0];
+    var cards = ep.cards || [];
+    for (var i = 0; i < cards.length; i++) {
+      var m = String(cards[i].href || '').match(/\/(?:papers|products)\/([a-z0-9-]+)\/?/i);
+      if (m) return m[1].toLowerCase();
+    }
+    return EP_STUDY_FALLBACK[ep.number] || 'communication-avalanche';
+  }
+
+  function publishRadioMediaContext() {
+    var deckSec = audio ? Number((audio.currentTime || 0).toFixed(2)) : 0;
+    var turn = findTurnAt(currentEp, deckSec);
+    var ctx = {
+      surface: 'radio',
+      episodeId: currentEp.id,
+      episodeNumber: currentEp.number,
+      episodeTitle: currentEp.title,
+      subtitle: currentEp.subtitle || '',
+      panel: currentEp.panel || [],
+      studyId: resolveEpisodeStudyId(currentEp),
+      currentSec: deckSec,
+      activeSpeaker: turn ? turn.speaker : ((currentEp.panel || ['Elena'])[0]),
+      transcriptSnippet: turn ? turn.text : (currentEp.summary || currentEp.subtitle || ''),
+      summary: currentEp.summary || currentEp.subtitle || ''
+    };
+    window.__openieActiveMediaContext = ctx;
+    window.dispatchEvent(new CustomEvent('openie:live-context', { detail: ctx }));
+    return ctx;
+  }
+
   function fmtSec(sec) {
     var s = Math.max(0, Math.floor(sec || 0));
     return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
@@ -220,6 +271,7 @@ const payloadJson = JSON.stringify({ feed, radar, foundry, ecosystem }).replace(
     currentEp = target;
     lastHighlightedTurn = -1;
     renderEpisodeDom(target);
+    publishRadioMediaContext();
     if (modePill && modeLabel) modePill.textContent = modeLabel;
 
     if (!audio) return;
@@ -282,7 +334,15 @@ const payloadJson = JSON.stringify({ feed, radar, foundry, ecosystem }).replace(
       if (audio.paused) audio.play().catch(function () {});
       else audio.pause();
     });
-    audio.addEventListener('play', function () { playBtn.textContent = '❚❚ Pause'; ensureWebAudio(); });
+    audio.addEventListener('play', function () {
+      playBtn.textContent = '❚❚ Pause';
+      ensureWebAudio();
+      var hmi = window.openieLiveHMI;
+      if (hmi && (hmi.state === 'speaking' || hmi.state === 'thinking')) {
+        hmi.bargeIn('radio-play');
+      }
+      publishRadioMediaContext();
+    });
     audio.addEventListener('pause', function () { playBtn.textContent = '▶ Play'; });
     audio.addEventListener('ended', function () {
       var idx = EPISODES.findIndex(function (e) { return e.id === currentEp.id; });
@@ -325,6 +385,7 @@ const payloadJson = JSON.stringify({ feed, radar, foundry, ecosystem }).replace(
       var activeTurn = findTurnAt(currentEp, t);
       if (activeTurn && activeTurn.turn_index !== lastHighlightedTurn) {
         lastHighlightedTurn = activeTurn.turn_index;
+        publishRadioMediaContext();
         if (speakerChip) {
           var pf = PERSONAS[activeTurn.speaker];
           speakerChip.textContent = activeTurn.speaker + (pf ? ' · ' + pf.title : ' · Speaking');
@@ -528,7 +589,104 @@ const payloadJson = JSON.stringify({ feed, radar, foundry, ecosystem }).replace(
       var live = getLiveRotationState();
       loadEpisode(live.episode.id, live.offset_sec, true, 'Mode: LIVE SYNCED');
       return live;
+    },
+    playEpisodeNumber: function (num, autoPlay) {
+      var ep = EPISODES.find(function (e) { return Number(e.number) === Number(num); });
+      if (!ep) return null;
+      loadEpisode(ep.id, 0, Boolean(autoPlay), 'Mode: Studio Call-In');
+      return ep;
+    },
+    nextEpisode: function (autoPlay) {
+      var idx = EPISODES.findIndex(function (e) { return e.id === currentEp.id; });
+      var nextEp = EPISODES[(idx + 1) % EPISODES.length];
+      loadEpisode(nextEp.id, 0, Boolean(autoPlay), 'Mode: Studio Call-In');
+      return nextEp;
+    },
+    prevEpisode: function (autoPlay) {
+      var idx = EPISODES.findIndex(function (e) { return e.id === currentEp.id; });
+      var prevEp = EPISODES[(idx - 1 + EPISODES.length) % EPISODES.length];
+      loadEpisode(prevEp.id, 0, Boolean(autoPlay), 'Mode: Studio Call-In');
+      return prevEp;
     }
   };
+
+  // Interactive Talk Radio Bridge: Studio Call-In, Auto-Ducking & Clean Restoration on Hangup
+  var savedRadioVolume = audio ? (audio.volume || 1.0) : 1.0;
+  var wasRadioPlayingBeforeCall = false;
+  var radioCallActive = false;
+  var savedModeLabel = modePill ? modePill.textContent : 'Mode: On-Demand Ready';
+
+  function duckAndPauseRadioForCall() {
+    if (!audio) return;
+    if (!radioCallActive) {
+      savedRadioVolume = audio.volume > 0.1 ? audio.volume : 1.0;
+      wasRadioPlayingBeforeCall = !audio.paused;
+      savedModeLabel = modePill ? modePill.textContent : 'Mode: On-Demand Ready';
+    }
+    radioCallActive = true;
+    audio.volume = 0.08;
+    if (!audio.paused) audio.pause();
+    if (modePill) modePill.textContent = 'Mode: 📞 STUDIO CALL-IN (Radio Ducked)';
+  }
+
+  function restoreRadioAfterHangup(forceResume) {
+    if (!audio) return;
+    var shouldResume = Boolean(forceResume || wasRadioPlayingBeforeCall);
+    radioCallActive = false;
+    wasRadioPlayingBeforeCall = false;
+    audio.volume = savedRadioVolume || 1.0;
+    if (modePill) modePill.textContent = savedModeLabel || 'Mode: On-Demand Ready';
+    if (shouldResume) {
+      ensureWebAudio();
+      audio.play().catch(function () {});
+    }
+  }
+
+  window.addEventListener('openie:live-call-state', function (ev) {
+    var snap = (ev && ev.detail) || {};
+    if (snap.callActive || snap.state === 'speaking') {
+      duckAndPauseRadioForCall();
+    } else if (radioCallActive && !snap.callActive && snap.state === 'idle') {
+      restoreRadioAfterHangup(false);
+    }
+  });
+
+  function launchRadioStudioCallIn() {
+    var ctx = publishRadioMediaContext();
+    duckAndPauseRadioForCall();
+    var epPad = String(ctx.episodeNumber || 1).padStart(2, '0');
+    var summaryText = 'Radio Episode ' + epPad + ' (' + ctx.episodeTitle + ') — ' + ctx.activeSpeaker + ': "' + String(ctx.transcriptSnippet || '').slice(0, 140) + '"';
+    window.dispatchEvent(
+      new CustomEvent('openie:live-open', {
+        detail: {
+          studyId: ctx.studyId,
+          contextSummary: summaryText,
+          mode: 'call',
+          autoStartCall: true
+        }
+      })
+    );
+  }
+
+  document.getElementById('radio-call-studio-btn')?.addEventListener('click', launchRadioStudioCallIn);
+  document.getElementById('radio-live-call-btn')?.addEventListener('click', launchRadioStudioCallIn);
+
+  window.addEventListener('openie:radio-command', function (ev) {
+    var d = (ev && ev.detail) || {};
+    var liveBusy = Boolean(window.openieLiveHMI && window.openieLiveHMI.callActive);
+    if (d.action === 'select-episode' && d.number) {
+      window.openieRadio.playEpisodeNumber(d.number, !liveBusy);
+    } else if (d.action === 'next-episode') {
+      window.openieRadio.nextEpisode(!liveBusy);
+    } else if (d.action === 'prev-episode') {
+      window.openieRadio.prevEpisode(!liveBusy);
+    } else if (d.action === 'resume-radio') {
+      restoreRadioAfterHangup(true);
+    } else if (d.action === 'pause-radio') {
+      duckAndPauseRadioForCall();
+    }
+  });
+
+  publishRadioMediaContext();
 })();
 </script>

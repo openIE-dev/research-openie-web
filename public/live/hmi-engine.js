@@ -227,6 +227,8 @@ export class OpenIELiveHMI {
     this.debateTurn = 0;
     this.transcript = [];
     this.turnCounter = 0;
+    this.contextSummary = '';
+    this.mediaContext = null;
 
     // Canvas2D Plasma Orbs
     this.orbCanvases = new Set();
@@ -235,8 +237,18 @@ export class OpenIELiveHMI {
     this.syntheticSpeechEnv = 0;
 
     if (typeof window !== 'undefined') {
+      this.mediaContext = window.__openieActiveMediaContext || null;
       this.activeStudyId = this.detectPageStudyId();
       this._injectSpotlightStyles();
+      window.addEventListener('openie:live-context', (ev) => {
+        if (ev?.detail) {
+          this.mediaContext = ev.detail;
+          if (!this.callActive && ev.detail.studyId && this.studiesById.has(ev.detail.studyId)) {
+            this.activeStudyId = ev.detail.studyId;
+            this._emitState();
+          }
+        }
+      });
     }
   }
 
@@ -356,6 +368,9 @@ export class OpenIELiveHMI {
       }
       const h = (window.location.hash || '').replace(/^#/, '').split(':')[0];
       if (h && h !== 'ecosystem-channels') return h.trim().toLowerCase();
+    }
+    if (p === '/radio' && window.__openieActiveMediaContext?.studyId) {
+      return window.__openieActiveMediaContext.studyId;
     }
     const mPaper = p.match(/\/(?:papers|products|about|living)\/([a-z0-9-]+)$/i);
     if (mPaper) {
@@ -1636,8 +1651,14 @@ export class OpenIELiveHMI {
 
   async startCall(opts = {}) {
     await this.loadCorpus();
+    const rCtx = typeof window !== 'undefined' ? window.__openieActiveMediaContext || this.mediaContext : this.mediaContext;
     if (opts.studyId && this.studiesById.has(opts.studyId)) {
       this.activeStudyId = opts.studyId;
+    } else if (rCtx?.studyId && this.studiesById.has(rCtx.studyId)) {
+      this.activeStudyId = rCtx.studyId;
+    }
+    if (opts.contextSummary) {
+      this.contextSummary = String(opts.contextSummary);
     }
     if (opts.mode) this.mode = opts.mode;
     if (opts.voice && VOICE_PERSONAS[opts.voice]) this.voice = opts.voice;
@@ -1667,13 +1688,27 @@ export class OpenIELiveHMI {
       await this.startCamera(this.cameraFacing);
     }
 
-    const secHint =
-      dom.visibleSection && dom.pathname !== '/live/' && dom.pathname !== '/live'
-        ? ` I can see you are reading "${dom.visibleSection.text}".`
-        : '';
-    const greeting = study
-      ? `OpenIE Live connected on ${study.short_title} (${study.evidence_class}).${secHint} Ask me anything, cue a visual proof film, or interrupt me mid-sentence at any time.`
-      : `OpenIE Live connected across all 28 post-review studies. Ask me anything or interrupt at any time.`;
+    const isRadio = typeof window !== 'undefined' && window.location.pathname.replace(/\/+$/, '') === '/radio' && rCtx;
+    let greeting;
+    if (isRadio) {
+      const epNum = String(rCtx.episodeNumber || 1).padStart(2, '0');
+      const spk = rCtx.activeSpeaker || 'the panel';
+      const snip = (rCtx.transcriptSnippet || rCtx.summary || '').slice(0, 140);
+      greeting =
+        `Live caller on the air in OpenIE Research Radio Studio for Episode ${epNum}: ${rCtx.episodeTitle || 'Roundtable'}! ` +
+        (snip ? `You jumped in right as ${spk} noted: "${snip}". ` : '') +
+        (study ? `Grounded in ${study.short_title} (${study.evidence_class}, Signed Provenance · Self-Checked). ` : '') +
+        `Challenge the hosts, ask for a Skeptic Debate, say "next episode" or "resume radio", or interrupt anytime!`;
+    } else {
+      const secHint =
+        dom.visibleSection && dom.pathname !== '/live/' && dom.pathname !== '/live'
+          ? ` I can see you are reading "${dom.visibleSection.text}".`
+          : '';
+      const ctxNote = this.contextSummary ? ` ${this.contextSummary}` : '';
+      greeting = study
+        ? `OpenIE Live connected on ${study.short_title} (${study.evidence_class}).${secHint}${ctxNote} Ask me anything, cue a visual proof film, or interrupt me mid-sentence at any time.`
+        : `OpenIE Live connected across all 28 post-review studies. Ask me anything or interrupt at any time.`;
+    }
 
     await this._deliverAssistantTurn({
       speakerName: VOICE_PERSONAS[this.voice].name,
@@ -1823,6 +1858,90 @@ export class OpenIELiveHMI {
     this._bumpBrowserHeuristic(0.006);
 
     const qLower = cleanQ.toLowerCase();
+
+    // 0. Interactive Talk Radio Studio Voice Commands on /radio/
+    if (typeof window !== 'undefined' && window.location.pathname.replace(/\/+$/, '') === '/radio') {
+      const epMatch = qLower.match(/\b(?:play|tune|switch to|load)?\s*episode\s*(\d{1,2})\b/);
+      if (epMatch) {
+        const epNum = parseInt(epMatch[1], 10);
+        window.dispatchEvent(new CustomEvent('openie:radio-command', { detail: { action: 'select-episode', number: epNum } }));
+        await new Promise((r) => setTimeout(r, 80));
+        const rCtx = window.__openieActiveMediaContext || this.mediaContext;
+        if (rCtx?.studyId && this.studiesById.has(rCtx.studyId)) this.setStudy(rCtx.studyId);
+        const st = this.studiesById.get(this.activeStudyId);
+        const msg = `Switched the Research Radio console to Episode ${String(epNum).padStart(2, '0')}: ${rCtx?.episodeTitle || 'Selected Broadcast'}. Grounded in ${st?.short_title || 'OpenIE Research'} (${st?.evidence_class || 'unmetered'}). Ask your question or say "resume radio" to listen!`;
+        await this._deliverAssistantTurn({
+          speakerName: VOICE_PERSONAS[this.voice].name,
+          speakerRole: `${VOICE_PERSONAS[this.voice].role} · Radio Studio`,
+          voice: this.voice,
+          text: msg,
+          study: st,
+          actions: st ? this._defaultActionsForStudy(st) : [],
+        });
+        return msg;
+      }
+      if (/\b(next episode|skip episode)\b/.test(qLower)) {
+        window.dispatchEvent(new CustomEvent('openie:radio-command', { detail: { action: 'next-episode' } }));
+        await new Promise((r) => setTimeout(r, 80));
+        const rCtx = window.__openieActiveMediaContext || this.mediaContext;
+        if (rCtx?.studyId && this.studiesById.has(rCtx.studyId)) this.setStudy(rCtx.studyId);
+        const st = this.studiesById.get(this.activeStudyId);
+        const msg = `Advanced to Episode ${String(rCtx?.episodeNumber || '').padStart(2, '0')}: ${rCtx?.episodeTitle || 'Next Broadcast'}. What would you like to ask the roundtable?`;
+        await this._deliverAssistantTurn({
+          speakerName: VOICE_PERSONAS[this.voice].name,
+          speakerRole: `${VOICE_PERSONAS[this.voice].role} · Radio Studio`,
+          voice: this.voice,
+          text: msg,
+          study: st,
+          actions: st ? this._defaultActionsForStudy(st) : [],
+        });
+        return msg;
+      }
+      if (/\b(previous episode|prev episode|prior episode)\b/.test(qLower)) {
+        window.dispatchEvent(new CustomEvent('openie:radio-command', { detail: { action: 'prev-episode' } }));
+        await new Promise((r) => setTimeout(r, 80));
+        const rCtx = window.__openieActiveMediaContext || this.mediaContext;
+        if (rCtx?.studyId && this.studiesById.has(rCtx.studyId)) this.setStudy(rCtx.studyId);
+        const st = this.studiesById.get(this.activeStudyId);
+        const msg = `Stepped back to Episode ${String(rCtx?.episodeNumber || '').padStart(2, '0')}: ${rCtx?.episodeTitle || 'Previous Broadcast'}.`;
+        await this._deliverAssistantTurn({
+          speakerName: VOICE_PERSONAS[this.voice].name,
+          speakerRole: `${VOICE_PERSONAS[this.voice].role} · Radio Studio`,
+          voice: this.voice,
+          text: msg,
+          study: st,
+          actions: st ? this._defaultActionsForStudy(st) : [],
+        });
+        return msg;
+      }
+      if (/\b(resume radio|continue radio|back to broadcast|unpause radio)\b/.test(qLower)) {
+        const msg = 'Handing the mic back to the Research Radio broadcast now.';
+        await this._deliverAssistantTurn({
+          speakerName: VOICE_PERSONAS[this.voice].name,
+          speakerRole: `${VOICE_PERSONAS[this.voice].role} · Radio Studio`,
+          voice: this.voice,
+          text: msg,
+          study: this.studiesById.get(this.activeStudyId),
+        });
+        this.endCall();
+        window.dispatchEvent(new CustomEvent('openie:radio-command', { detail: { action: 'resume-radio' } }));
+        return msg;
+      }
+      if (/\b(open study paper|open the paper|read study paper)\b/.test(qLower)) {
+        const st = this.studiesById.get(this.activeStudyId);
+        const paperHref = st?.path || '/#catalog';
+        const msg = `Opening the full manuscript for ${st?.short_title || 'the active study'} at ${paperHref}.`;
+        await this._deliverAssistantTurn({
+          speakerName: VOICE_PERSONAS[this.voice].name,
+          speakerRole: VOICE_PERSONAS[this.voice].role,
+          voice: this.voice,
+          text: msg,
+          study: st,
+        });
+        window.open(paperHref, '_blank', 'noopener');
+        return msg;
+      }
+    }
 
     // 1. Direct Camera / Screen inspection intent
     if (/\b(camera|webcam|screen|frame|holding|look at|inspect my)\b/.test(qLower)) {

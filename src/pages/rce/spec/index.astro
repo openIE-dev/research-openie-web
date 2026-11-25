@@ -12,6 +12,7 @@ const commitDay = data.commitDate ? new Date(`${data.commitDate}T00:00:00Z`).toL
   <h1>RCE language specification</h1>
   <div class="rs-bar">
     <button type="button" class="tts-btn" data-target="rs-ov" aria-pressed="false"><span aria-hidden="true">▶ </span><span class="tts-l">Listen to the overview</span></button>
+    <button type="button" data-openie-discuss-paper="rce" class="tts-btn" style="margin-left:0.5rem;border-color:rgba(52,211,153,0.45);color:#6ee7b7;">📞 Live Call · Spec Co-Pilot</button>
     <span class="tts-status" role="status"></span>
   </div>
   <div id="rs-ov" class="tts-text rs-intro" set:html={ov.sections[0].html} />
