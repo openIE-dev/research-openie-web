@@ -122,14 +122,24 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | TS 15066 force/pressure pair | twin::contact_pressure + pressure_limit_ok (gates built; certification open) | 3 |
 | Hierarchical JEPA seed | train::HierPredictor (intent→summary→Form, two levels) | 2 |
 | Fleet-scale chunked ingestion | trajectory::ingest_chunks (one dedup set + receipt across chunks) | 2 |
+| RTOS scheduling discipline | rtos::schedulable (Liu–Layland, refuse-above-bound) + cyclic_table | 5 |
+| Real-to-sim identification | twin::identify (grid-search dt; None when unexplained) | 2 |
+| Notified-body evidence bundle | trust::evidence_package (rce-evidence/1; attestation open) | 2 |
+| JEPA on canonicalization | train::canonical_pairs + HierPredictor (800 pairs, predicted beats raw) | 2 |
+| Measured grammar coverage | ingest::grammar_coverage + example on real tree-sitter grammars | 2 |
+
+Measured per-language named-node coverage (tree-sitter master, 25 Nov 2026):
+rust 23/169 = 13.6%, python 16/129 = 12.4%, go 11/112 = 9.8%, javascript 14/119 = 11.8%,
+java 13/151 = 8.6%. The construct matrix is 100%; this is the quantified per-language
+remainder (declarations, loops, types, patterns) — open, measured, not claimed complete.
 
 Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 264 (workspace) / 261 (monorepo), 0 failed. Physics fidelity, RTOS port,
-notified-body attestation and FormJEPA/FormEBM / tracing-JIT at production scale
-remain open edges.
+Suites 277 (workspace) / 274 (monorepo), 0 failed. Physics fidelity, RTOS port,
+notified-body attestation, full per-language grammars (measured remainder above) and
+FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
 
 ## New unknowns (registered in rce-gap-register.md)
 
