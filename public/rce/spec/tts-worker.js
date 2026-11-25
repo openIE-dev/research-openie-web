@@ -1,8 +1,6 @@
-// Runs Kokoro-82M off the main thread. WebGPU with the fp32 model when the
-// browser has a WebGPU adapter; otherwise WASM with the q8 model, using
-// threads when the page is cross-origin isolated.
-// Supports 4 staged sovereign voices (af_heart, af_bella, am_adam, bm_george)
-// and configurable speech speed while staying 100% backward-compatible with notebook.js.
+// Runs Kokoro-82M off the main thread using WASM q8 (never WebGPU half-precision, which
+// overflows 16-bit floats inside SineGen / iSTFT vocoder layers on Apple Silicon Metal).
+// Supports 4 staged voices (af_heart, af_bella, am_adam, bm_george) and speed.
 let modelP = null;
 let info = null;
 let genChain = Promise.resolve();
@@ -20,12 +18,10 @@ function emitProgress(payload) {
       loaded: payload?.loaded ?? null,
       total: payload?.total ?? null,
     });
-  } catch {
-    // Ignore progress serialization errors
-  }
+  } catch {}
 }
 
-async function load(base, force) {
+async function load(base) {
   const resolvedBase = base || (self.location.origin + '/rce/spec/');
   self.KOKORO_VOICE_BASE = resolvedBase + 'tts/voices/';
   const { KokoroTTS, env } = await import(resolvedBase + 'tts/kokoro.web.js');
@@ -34,44 +30,28 @@ async function load(base, force) {
   tf.remoteHost = resolvedBase + 'tts/models/';
   tf.remotePathTemplate = '{model}/';
   env.wasmPaths = resolvedBase + 'tts/ort/';
-  let gpu = false;
-  if (force !== 'wasm' && self.navigator.gpu) {
-    try { gpu = !!(await self.navigator.gpu.requestAdapter()); } catch { gpu = false; }
-  }
-  const threads = self.crossOriginIsolated ? Math.max(1, Math.min(8, (self.navigator.hardwareConcurrency || 4) - 1)) : 1;
+  const threads = self.crossOriginIsolated
+    ? Math.max(1, Math.min(8, (self.navigator.hardwareConcurrency || 4) - 1))
+    : 1;
   tf.backends.onnx.wasm.numThreads = threads;
   tf.backends.onnx.logLevel = 'error';
-  let dtype = force && force !== 'wasm' && force !== 'webgpu' ? force : gpu ? 'fp16' : 'q8';
-  let device = gpu ? 'webgpu' : 'wasm';
+  const device = 'wasm';
+  const dtype = 'q8';
   const t0 = performance.now();
-  let model, fellBack = null;
-  try {
-    model = await KokoroTTS.from_pretrained('Kokoro-82M-v1.0-ONNX', {
-      dtype,
-      device,
-      session_options: { logSeverityLevel: 3 },
-      progress_callback: emitProgress,
-    });
-  } catch (err) {
-    if (device !== 'webgpu') throw err;
-    fellBack = String(err);
-    device = 'wasm';
-    dtype = 'q8';
-    model = await KokoroTTS.from_pretrained('Kokoro-82M-v1.0-ONNX', {
-      dtype,
-      device,
-      session_options: { logSeverityLevel: 3 },
-      progress_callback: emitProgress,
-    });
-  }
+  const model = await KokoroTTS.from_pretrained('Kokoro-82M-v1.0-ONNX', {
+    dtype,
+    device,
+    session_options: { logSeverityLevel: 3 },
+    progress_callback: emitProgress,
+  });
   info = {
     device,
     dtype,
-    threads: device === 'wasm' ? threads : null,
+    threads,
     isolated: self.crossOriginIsolated,
     loadMs: Math.round(performance.now() - t0),
     voices: Array.from(STAGED_VOICES),
-    fellBack,
+    fellBack: null,
   };
   return model;
 }
@@ -91,9 +71,9 @@ function resolveSpeed(requested) {
 }
 
 self.onmessage = async (e) => {
-  const { id, base, text, voice, speed, force } = e.data || {};
+  const { id, base, text, voice, speed } = e.data || {};
   try {
-    modelP ||= load(base, force);
+    modelP ||= load(base);
     const model = await modelP;
     if (text == null) {
       self.postMessage({ id, ready: true, info });

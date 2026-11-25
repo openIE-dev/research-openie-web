@@ -46,7 +46,7 @@ const quickPrompts = [
       <div class="flex flex-wrap items-center gap-2.5 mb-3">
         <span class="section-label">OpenIE Multimodal Studio · /live/</span>
         <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-emerald-500/15 text-emerald-300 border border-emerald-400/35">
-          100% In-Browser WebGPU / WASM / WebAudio · Zero Paid APIs
+          ⚡ 24 kHz Native Studio S2S + 🛡️ Sovereign Kokoro-82M FP32 (32 kHz)
         </span>
         <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-amber/15 text-brand-amber border border-brand-amber/35">
           Signed Provenance · Self-Checked
@@ -102,10 +102,10 @@ const quickPrompts = [
           TTFA: <strong id="tel-ttfa" class="text-brand-amber">&lt;200 ms ready</strong>
         </span>
         <span class="text-brand-light">
-          TTS: <strong id="tel-tts-backend" class="text-emerald-300">Instant WebSpeech · Kokoro-82M Ready on Demand</strong>
+          TTS: <strong id="tel-tts-backend" class="text-emerald-300">Studio Live 24 kHz S2S (Aoede)</strong>
         </span>
         <span class="text-brand-light">
-          STT: <strong id="tel-stt-backend" class="text-brand-cyan">WebSpeech Interim</strong>
+          STT: <strong id="tel-stt-backend" class="text-brand-cyan">16 kHz Native Duplex AudioWorklet</strong>
         </span>
       </div>
       <div class="font-mono text-[10.5px] px-2.5 py-1 rounded bg-brand-amber/10 border border-brand-amber/30 text-brand-amber">
@@ -247,56 +247,90 @@ const quickPrompts = [
           </div>
         </div>
 
-        <!-- Voice Persona Selector (4 Neural Kokoro Voices) -->
-        <div class="glass-card p-4">
-          <div class="flex items-center justify-between mb-2.5">
-            <span class="font-mono text-[11px] uppercase tracking-wider text-brand-cyan">
-              Kokoro-82M Voice Persona
+        <!-- Engine Mode + 5 Expressive Studio Voices -->
+        <div class="glass-card p-4 space-y-3">
+          <div>
+            <span class="block font-mono text-[11px] uppercase tracking-wider text-emerald-300 mb-2">
+              Voice Engine Architecture
             </span>
-            <select
-              id="live-speed-select"
-              aria-label="Speech playback rate"
-              class="font-mono text-[11px] px-2 py-0.5 rounded bg-[#0b1020] border border-brand-border text-brand-light"
-            >
-              <option value="0.92">0.92x</option>
-              <option value="1" selected>1.0x</option>
-              <option value="1.1">1.1x</option>
-              <option value="1.2">1.2x</option>
-            </select>
+            <div class="grid grid-cols-1 gap-1.5 font-mono text-[11px]">
+              <button
+                type="button"
+                data-engine-btn="studio_s2s"
+                class="hmi-engine-btn hmi-voice-active p-2 rounded-lg border border-brand-border bg-white/[0.02] text-left cursor-pointer transition-all"
+              >
+                <div class="font-bold text-emerald-300">⚡ Studio Live · 24 kHz Human S2S</div>
+                <div class="font-body text-[10px] text-brand-slate">Full-duplex native speech-to-speech + 7 live tools</div>
+              </button>
+              <button
+                type="button"
+                data-engine-btn="sovereign_gpu"
+                class="hmi-engine-btn p-2 rounded-lg border border-brand-border bg-white/[0.02] text-left cursor-pointer transition-all"
+              >
+                <div class="font-bold text-brand-cyan">🛡️ Sovereign Local GPU · Kokoro FP32</div>
+                <div class="font-body text-[10px] text-brand-slate">OPFS SHA-256 cached · 32 kHz Blackman Sinc + Perth</div>
+              </button>
+            </div>
           </div>
-          <div class="grid grid-cols-2 gap-2" role="radiogroup" aria-label="Select neural voice persona">
-            <button
-              type="button"
-              data-voice-btn="af_heart"
-              class="hmi-voice-btn hmi-voice-active p-2.5 rounded-lg border border-brand-border bg-white/[0.02] text-left cursor-pointer transition-all"
-            >
-              <div class="font-mono text-xs font-bold text-brand-amber">Heart</div>
-              <div class="font-body text-[10.5px] text-brand-slate">Systems Host · US</div>
-            </button>
-            <button
-              type="button"
-              data-voice-btn="bm_george"
-              class="hmi-voice-btn p-2.5 rounded-lg border border-brand-border bg-white/[0.02] text-left cursor-pointer transition-all"
-            >
-              <div class="font-mono text-xs font-bold text-brand-cyan">George</div>
-              <div class="font-body text-[10.5px] text-brand-slate">Review Skeptic · UK</div>
-            </button>
-            <button
-              type="button"
-              data-voice-btn="af_bella"
-              class="hmi-voice-btn p-2.5 rounded-lg border border-brand-border bg-white/[0.02] text-left cursor-pointer transition-all"
-            >
-              <div class="font-mono text-xs font-bold text-emerald-300">Bella</div>
-              <div class="font-body text-[10.5px] text-brand-slate">Co-Pilot Guide · US</div>
-            </button>
-            <button
-              type="button"
-              data-voice-btn="am_adam"
-              class="hmi-voice-btn p-2.5 rounded-lg border border-brand-border bg-white/[0.02] text-left cursor-pointer transition-all"
-            >
-              <div class="font-mono text-xs font-bold text-indigo-300">Adam</div>
-              <div class="font-body text-[10.5px] text-brand-slate">Hardware &amp; RTL · US</div>
-            </button>
+
+          <div class="pt-2 border-t border-brand-border">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-mono text-[11px] uppercase tracking-wider text-brand-cyan">
+                5 Studio Voice Personas
+              </span>
+              <select
+                id="live-speed-select"
+                aria-label="Speech playback rate"
+                class="font-mono text-[11px] px-2 py-0.5 rounded bg-[#0b1020] border border-brand-border text-brand-light"
+              >
+                <option value="0.92">0.92x</option>
+                <option value="1" selected>1.0x</option>
+                <option value="1.1">1.1x</option>
+                <option value="1.2">1.2x</option>
+              </select>
+            </div>
+            <div class="grid grid-cols-2 gap-2" role="radiogroup" aria-label="Select studio voice persona">
+              <button
+                type="button"
+                data-voice-btn="Aoede"
+                class="hmi-voice-btn hmi-voice-active p-2 rounded-lg border border-brand-border bg-white/[0.02] text-left cursor-pointer transition-all"
+              >
+                <div class="font-mono text-xs font-bold text-brand-amber">Aoede</div>
+                <div class="font-body text-[10px] text-brand-slate">Warm Studio Host</div>
+              </button>
+              <button
+                type="button"
+                data-voice-btn="Charon"
+                class="hmi-voice-btn p-2 rounded-lg border border-brand-border bg-white/[0.02] text-left cursor-pointer transition-all"
+              >
+                <div class="font-mono text-xs font-bold text-brand-cyan">Charon</div>
+                <div class="font-body text-[10px] text-brand-slate">Analytical Skeptic</div>
+              </button>
+              <button
+                type="button"
+                data-voice-btn="Puck"
+                class="hmi-voice-btn p-2 rounded-lg border border-brand-border bg-white/[0.02] text-left cursor-pointer transition-all"
+              >
+                <div class="font-mono text-xs font-bold text-indigo-300">Puck</div>
+                <div class="font-body text-[10px] text-brand-slate">Systems Architect</div>
+              </button>
+              <button
+                type="button"
+                data-voice-btn="Kore"
+                class="hmi-voice-btn p-2 rounded-lg border border-brand-border bg-white/[0.02] text-left cursor-pointer transition-all"
+              >
+                <div class="font-mono text-xs font-bold text-emerald-300">Kore</div>
+                <div class="font-body text-[10px] text-brand-slate">Empirical Guide</div>
+              </button>
+              <button
+                type="button"
+                data-voice-btn="Fenrir"
+                class="hmi-voice-btn col-span-2 p-2 rounded-lg border border-brand-border bg-white/[0.02] text-left cursor-pointer transition-all"
+              >
+                <div class="font-mono text-xs font-bold text-pink-300">Fenrir · Deep Hardware Lead</div>
+                <div class="font-body text-[10px] text-brand-slate">Resonant Baritone · 24 kHz Native S2S</div>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -310,7 +344,7 @@ const quickPrompts = [
             <!-- Kokoro-82M TTS -->
             <div>
               <div class="flex items-center justify-between gap-2 mb-1">
-                <span class="text-brand-light">Kokoro-82M ONNX (4 Voices)</span>
+                <span class="text-brand-light">Kokoro-82M v1.0 FP32 WebGPU</span>
                 <button
                   id="btn-warm-kokoro"
                   type="button"
@@ -323,7 +357,7 @@ const quickPrompts = [
                 <div id="bar-kokoro" class="h-full bg-brand-amber transition-all duration-300" style="width: 0%"></div>
               </div>
               <div id="status-kokoro" class="text-[10px] text-brand-gray mt-0.5">
-                Auto-warms on Turn 1 (zero cold-wait silence)
+                Studio Live 24 kHz S2S active · Click to warm local FP32 GPU
               </div>
             </div>
 
@@ -793,7 +827,10 @@ const quickPrompts = [
           btn.setAttribute('aria-selected', String(active));
         });
 
-        // Voice buttons
+        // Engine & Voice buttons
+        document.querySelectorAll('[data-engine-btn]').forEach((btn) => {
+          btn.classList.toggle('hmi-voice-active', btn.getAttribute('data-engine-btn') === snap.engineMode);
+        });
         document.querySelectorAll('[data-voice-btn]').forEach((btn) => {
           btn.classList.toggle('hmi-voice-active', btn.getAttribute('data-voice-btn') === snap.voice);
         });
@@ -919,9 +956,14 @@ const quickPrompts = [
         }
       });
 
-      hmi.on('turn', (turn) => {
+      function renderStudioTurn(turn) {
         if (!transcriptList) return;
-        const div = document.createElement('div');
+        let div = transcriptList.querySelector(`[data-turn-id="${esc(turn.id)}"]`);
+        const isNew = !div;
+        if (!div) {
+          div = document.createElement('div');
+          div.setAttribute('data-turn-id', turn.id);
+        }
         if (turn.role === 'user') {
           div.className = 'p-3 rounded-xl border border-brand-cyan/30 bg-brand-cyan/[0.06] ml-6';
           div.innerHTML = `
@@ -962,9 +1004,12 @@ const quickPrompts = [
             div.appendChild(actRow);
           }
         }
-        transcriptList.appendChild(div);
+        if (isNew) transcriptList.appendChild(div);
         transcriptList.scrollTop = transcriptList.scrollHeight;
-      });
+      }
+
+      hmi.on('turn', renderStudioTurn);
+      hmi.on('turn-update', renderStudioTurn);
 
       hmi.on('error', ({ scope, message }) => {
         if (!transcriptList) return;
@@ -1019,6 +1064,12 @@ const quickPrompts = [
           if (m === 'debate') hmi.startDebate(hmi.activeStudyId);
           else if (m === 'copilot') hmi.startWalkthrough(hmi.activeStudyId);
           else if (m === 'vision' && !hmi.visionStream) hmi.startCamera();
+        });
+      });
+
+      document.querySelectorAll('[data-engine-btn]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          hmi.setEngineMode(btn.getAttribute('data-engine-btn'));
         });
       });
 

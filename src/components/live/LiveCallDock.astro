@@ -89,23 +89,29 @@
         </div>
 
         <div class="p-3 space-y-2.5 overflow-y-auto flex-1">
-          <!-- Mode Switcher + Study Picker -->
+          <!-- Engine Selector + Mode Switcher + Study & 5-Voice Picker -->
+          <div class="grid grid-cols-2 gap-1 font-mono text-[10px]">
+            <button type="button" data-dock-engine="studio_s2s" class="dock-eng-btn py-1.5 px-2 rounded border border-emerald-400/60 bg-emerald-500/15 text-emerald-200 font-semibold cursor-pointer truncate">⚡ Studio Live · 24 kHz S2S</button>
+            <button type="button" data-dock-engine="sovereign_gpu" class="dock-eng-btn py-1.5 px-2 rounded border border-brand-border bg-white/[0.02] text-brand-slate cursor-pointer truncate">🛡️ Sovereign GPU · Kokoro FP32</button>
+          </div>
+
           <div class="grid grid-cols-4 gap-1 font-mono text-[10.5px]">
             <button type="button" data-dock-mode="call" class="dock-m-btn py-1.5 px-1 rounded border border-brand-cyan/60 bg-brand-cyan/15 text-brand-white cursor-pointer">📞 Call</button>
             <button type="button" data-dock-mode="vision" class="dock-m-btn py-1.5 px-1 rounded border border-brand-border bg-white/[0.02] text-brand-slate cursor-pointer">📹 Vision</button>
             <button type="button" data-dock-mode="copilot" class="dock-m-btn py-1.5 px-1 rounded border border-brand-border bg-white/[0.02] text-brand-slate cursor-pointer">🧭 Tour</button>
-            <button type="button" data-dock-mode="debate" class="dock-m-btn py-1.5 px-1 rounded border border-brand-border bg-white/[0.02] text-brand-slate cursor-pointer">🎙 Debate</button>
+            <button type="button" data-dock-mode="debate" class="dock-m-btn py-1.5 px-1 rounded border border-brand-border bg-white/[0.02] text-brand-slate cursor-pointer">⚖️ Debate</button>
           </div>
 
           <div class="flex items-center gap-1.5">
             <select id="dock-study-select" aria-label="Select study" class="flex-1 font-mono text-[11px] px-2.5 py-1.5 rounded-lg bg-[#070b14] border border-brand-border text-brand-white min-w-0">
               <option value="${esc(hmi.activeStudyId)}">Loading 28 post-review studies...</option>
             </select>
-            <select id="dock-voice-select" aria-label="Select voice persona" class="font-mono text-[11px] px-2 py-1.5 rounded-lg bg-[#070b14] border border-brand-border text-brand-amber shrink-0">
-              <option value="af_heart">Heart (Host)</option>
-              <option value="bm_george">George (Skeptic)</option>
-              <option value="af_bella">Bella (Guide)</option>
-              <option value="am_adam">Adam (RTL)</option>
+            <select id="dock-voice-select" aria-label="Select studio voice persona" class="font-mono text-[11px] px-2 py-1.5 rounded-lg bg-[#070b14] border border-brand-border text-brand-amber shrink-0">
+              <option value="Aoede">Aoede (Warm Host)</option>
+              <option value="Charon">Charon (Skeptic)</option>
+              <option value="Puck">Puck (Architect)</option>
+              <option value="Kore">Kore (Guide)</option>
+              <option value="Fenrir">Fenrir (Hardware)</option>
             </select>
           </div>
 
@@ -178,7 +184,7 @@
             <button type="submit" class="font-mono text-[11px] font-bold px-3 py-1.5 rounded-lg bg-brand-amber text-brand-dark cursor-pointer">Ask</button>
           </form>
           <div id="dock-tel-line" class="font-mono text-[9.5px] text-brand-gray truncate">
-            VAD -60 dB · Instant TTS · 0.000 est_j (browser heuristic)
+            VAD -60 dB · Studio Live 24 kHz S2S · 0.000 est_j
           </div>
         </div>
       `;
@@ -229,6 +235,12 @@
             : 'font-mono text-[11px] font-bold px-2.5 py-1 rounded bg-emerald-400 text-[#06110e] cursor-pointer';
         }
         if (visionBox) visionBox.classList.toggle('hidden', !snap.visionActive);
+        panel.querySelectorAll('[data-dock-engine]').forEach((b) => {
+          const on = b.getAttribute('data-dock-engine') === snap.engineMode;
+          b.className = on
+            ? 'dock-eng-btn py-1.5 px-2 rounded border border-emerald-400/60 bg-emerald-500/15 text-emerald-200 font-semibold cursor-pointer truncate'
+            : 'dock-eng-btn py-1.5 px-2 rounded border border-brand-border bg-white/[0.02] text-brand-slate cursor-pointer truncate';
+        });
         panel.querySelectorAll('[data-dock-mode]').forEach((b) => {
           const on = b.getAttribute('data-dock-mode') === snap.mode;
           b.className = on
@@ -276,9 +288,14 @@
         }
       });
 
-      hmi.on('turn', (turn) => {
+      function renderDockTurn(turn) {
         if (!transcriptEl) return;
-        const item = document.createElement('div');
+        let item = transcriptEl.querySelector(`[data-turn-id="${esc(turn.id)}"]`);
+        const isNew = !item;
+        if (!item) {
+          item = document.createElement('div');
+          item.setAttribute('data-turn-id', turn.id);
+        }
         if (turn.role === 'user') {
           item.className = 'p-2 rounded-lg border border-brand-cyan/30 bg-brand-cyan/[0.07] ml-4 font-body text-[11.5px] text-brand-white';
           item.textContent = turn.text;
@@ -293,9 +310,12 @@
             <div class="font-body text-[11.5px] text-brand-light leading-snug">${esc(turn.text)}</div>
           `;
         }
-        transcriptEl.appendChild(item);
+        if (isNew) transcriptEl.appendChild(item);
         transcriptEl.scrollTop = transcriptEl.scrollHeight;
-      });
+      }
+
+      hmi.on('turn', renderDockTurn);
+      hmi.on('turn-update', renderDockTurn);
 
       document.getElementById('dock-close-btn')?.addEventListener('click', () => setDockOpen(false));
       document.getElementById('dock-orb-btn')?.addEventListener('click', () => {
@@ -314,6 +334,12 @@
 
       studySel?.addEventListener('change', () => hmi.setStudy(studySel.value));
       voiceSel?.addEventListener('change', () => hmi.setVoice(voiceSel.value));
+
+      panel.querySelectorAll('[data-dock-engine]').forEach((b) => {
+        b.addEventListener('click', () => {
+          hmi.setEngineMode(b.getAttribute('data-dock-engine'));
+        });
+      });
 
       panel.querySelectorAll('[data-dock-mode]').forEach((b) => {
         b.addEventListener('click', () => {

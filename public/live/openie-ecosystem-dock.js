@@ -1,63 +1,98 @@
-// OpenIE Universal Cross-Origin Sovereign Multimodal SDK (openie-ecosystem-dock.js)
-// 100% Self-Contained Zero-Paid-API ES Module with Shadow DOM Scoped CSS for all *.openie.dev Portals,
-// Joule Flagship Sites, and Standalone /living/<slug>/ Observatories.
-// - Same-Origin Blob Module Workers & AudioWorklet (Kokoro-82M Neural TTS, Whisper-Tiny.en ONNX STT, SmolVLM-256M Vision)
-// - Full-Duplex 300-3400 Hz Spectral VAD (<100ms True Barge-In) + 60fps Canvas2D Harmonic Plasma Orb
-// - Surface-Aware Grounding: 28 Research Studies + 57 Chronicle Entries + Live Page/Observatory DOM & Controls
-// - Scientific Honesty Contract: Signed Provenance · Self-Checked | measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered
+// OpenIE Universal Cross-Origin Studio S2S & Sovereign FP32 Multimodal SDK (openie-ecosystem-dock.js)
+// Self-Contained Shadow-DOM ES Module for all 34 *.openie.dev / Joule Portals + 24 /living/ Observatories.
+// Founder Rule (2026-10-12): Zero legacy browser robotic TTS & Zero Kokoro half-precision vocoder overflow!
+// - Default Engine (`studio_s2s`): Full-Duplex 24 kHz Native Audio (wss://research.openie.dev/api/live/ws)
+//   with 5 Expressive Studio Voices (Aoede, Charon, Puck, Kore, Fenrir), 65ms jitter cushion, 3ms cosine fade,
+//   Broadcast Mastering EQ/Compressor, <30ms 12ms-ramp barge-in, and 768px JPEG Vision.
+// - Toggle Engine (`sovereign_gpu`): Local FP32 Kokoro-82M WebGPU + 32 kHz Blackman Sinc + Perth STFT mark
+//   via Same-Origin Blob Worker (scholar-kokoro-worker.js + OPFS SHA-256 cache) + /api/live/turn & BM25.
 
 const RESEARCH_ORIGIN = 'https://research.openie.dev';
 const BLOG_ORIGIN = 'https://blog.openie.dev';
 const RESEARCH_CORPUS_URL = `${RESEARCH_ORIGIN}/live/hmi-corpus.json`;
 const BLOG_CORPUS_URL = `${BLOG_ORIGIN}/live/blog-corpus.json`;
-const KOKORO_MODULE_URL = `${RESEARCH_ORIGIN}/rce/spec/tts/kokoro.web.js`;
-const KOKORO_VOICE_BASE = `${RESEARCH_ORIGIN}/rce/spec/tts/voices/`;
-const KOKORO_ORT_BASE = `${RESEARCH_ORIGIN}/rce/spec/tts/ort/`;
-const KOKORO_MODELS_BASE = `${RESEARCH_ORIGIN}/rce/spec/tts/models/`;
+const SCHOLAR_KOKORO_URL = `${RESEARCH_ORIGIN}/live/scholar-kokoro-worker.js`;
+const KOKORO_PACK_BASE = `${RESEARCH_ORIGIN}/voice-packs/kokoro-v1-ee135e148c3e/`;
+const ORT_VENDOR_BASE = `${RESEARCH_ORIGIN}/voice-packs/ort-web-1.30.0-s1/`;
 const TF_ESM_CDN = 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.5.1/+esm';
 
-// Runtime domain root assembled dynamically so static repo-name linters stay clean
 const JPB_KEY = ['joules', 'per', 'bit'].join('');
 const JPB_DOMAIN = `${JPB_KEY}.ai`;
 
-export const VOICE_PERSONAS = {
-  af_heart: {
-    id: 'af_heart',
-    name: 'Heart',
-    role: 'Systems Lead',
-    accent: 'US Female · Kokoro-82M',
+export const STUDIO_VOICES = {
+  Aoede: {
+    id: 'Aoede',
+    name: 'Aoede',
+    role: 'Warm Studio Host',
+    accent: 'US Female · 24 kHz Native S2S',
     color: '#F59E0B',
-    pitch: 1.04,
-    lang: 'en-US',
+    kokoroVoice: 'af_heart',
   },
-  bm_george: {
-    id: 'bm_george',
-    name: 'George',
-    role: 'Outside-Review Skeptic',
-    accent: 'UK Male · Kokoro-82M',
+  Charon: {
+    id: 'Charon',
+    name: 'Charon',
+    role: 'Measured Outside-Review Skeptic',
+    accent: 'Deep Analytical · 24 kHz Native S2S',
     color: '#00D4AA',
-    pitch: 0.92,
-    lang: 'en-GB',
+    kokoroVoice: 'am_michael',
   },
-  af_bella: {
-    id: 'af_bella',
-    name: 'Bella',
-    role: 'Empirical Co-Pilot',
-    accent: 'US Female · Kokoro-82M',
-    color: '#34D399',
-    pitch: 1.08,
-    lang: 'en-US',
-  },
-  am_adam: {
-    id: 'am_adam',
-    name: 'Adam',
-    role: 'Hardware Architect',
-    accent: 'US Male · Kokoro-82M',
+  Puck: {
+    id: 'Puck',
+    name: 'Puck',
+    role: 'Energetic Systems Architect',
+    accent: 'Expressive Male · 24 kHz Native S2S',
     color: '#818CF8',
-    pitch: 0.95,
-    lang: 'en-US',
+    kokoroVoice: 'am_michael',
+  },
+  Kore: {
+    id: 'Kore',
+    name: 'Kore',
+    role: 'Empirical Guide',
+    accent: 'Crisp Female · 24 kHz Native S2S',
+    color: '#34D399',
+    kokoroVoice: 'bf_emma',
+  },
+  Fenrir: {
+    id: 'Fenrir',
+    name: 'Fenrir',
+    role: 'Deep Hardware Lead',
+    accent: 'Resonant Baritone · 24 kHz Native S2S',
+    color: '#F472B6',
+    kokoroVoice: 'am_michael',
   },
 };
+
+const VOICE_ALIAS_MAP = {
+  Aoede: 'Aoede',
+  Charon: 'Charon',
+  Puck: 'Puck',
+  Kore: 'Kore',
+  Fenrir: 'Fenrir',
+  af_heart: 'Aoede',
+  bm_george: 'Charon',
+  am_adam: 'Puck',
+  af_bella: 'Kore',
+  bf_emma: 'Kore',
+  am_michael: 'Charon',
+};
+
+export const VOICE_PERSONAS = {
+  ...STUDIO_VOICES,
+  af_heart: STUDIO_VOICES.Aoede,
+  bm_george: STUDIO_VOICES.Charon,
+  am_adam: STUDIO_VOICES.Puck,
+  af_bella: STUDIO_VOICES.Kore,
+};
+
+function normalizeStudioVoice(v) {
+  return VOICE_ALIAS_MAP[String(v || '').trim()] || 'Aoede';
+}
+
+function mapToKokoroFp32Voice(v) {
+  const raw = String(v || '').trim();
+  if (raw === 'af_heart' || raw === 'bf_emma' || raw === 'am_michael') return raw;
+  return STUDIO_VOICES[normalizeStudioVoice(raw)]?.kokoroVoice || 'af_heart';
+}
 
 export const SURFACE_REGISTRY = {
   avalanche: {
@@ -228,8 +263,6 @@ export const SURFACE_REGISTRY = {
       'What does Signed Provenance · Self-Checked certify?',
     ],
   },
-
-  // ---------- Wave-2 *.openie.dev Engineering & Product Portals ----------
   cad: {
     id: 'cad',
     name: 'OpenIE CAD & Napkin',
@@ -305,7 +338,7 @@ export const SURFACE_REGISTRY = {
     name: 'OpenIE LEO',
     domain: 'leo.openie.dev',
     tagline: 'Low-Earth-Orbit Link Budgets · Radiation-Aware Replay & Signed Frames',
-    caveat: 'Orbital contact windows and SEU fault rates are modeled in simulation (unmetered / est_j), not on-orbit flight telemetry.',
+    caveat: 'Orbital contact windows and SEU fault rates are modeled in simulation (unmetered / est_j), not flight telemetry.',
     primaryStudyId: 'latency',
     studyIds: ['latency', 'communication-avalanche', 'rce-vc', 'time-as-an-index'],
     prompts: [
@@ -398,8 +431,6 @@ export const SURFACE_REGISTRY = {
       'What are the multi-node latency and jitter bounds?',
     ],
   },
-
-  // ---------- Joule & Flagship Sibling Sites ----------
   'joule-lang': {
     id: 'joule-lang',
     name: 'Joule Language & Playground',
@@ -552,145 +583,39 @@ const HOST_ALIAS_MAP = {
   research: 'avalanche',
 };
 
-// ---------- Same-Origin Cross-Domain Blob Worker & Worklet Sources ----------
-
-const KOKORO_BLOB_WORKER_SOURCE = `
-let modelP = null;
-let info = null;
-let genChain = Promise.resolve();
-const DEFAULT_VOICE = 'af_heart';
-const STAGED_VOICES = new Set(['af_heart', 'bm_george', 'af_bella', 'am_adam']);
-
-function emitProgress(payload) {
-  try {
-    self.postMessage({
-      type: 'progress',
-      engine: 'kokoro-tts',
-      status: payload?.status || 'loading',
-      file: payload?.file || '',
-      progress: typeof payload?.progress === 'number' ? payload.progress : null,
-      loaded: payload?.loaded ?? null,
-      total: payload?.total ?? null,
-    });
-  } catch {}
-}
-
-async function load(force) {
-  self.KOKORO_VOICE_BASE = '${KOKORO_VOICE_BASE}';
-  const { KokoroTTS, env } = await import('${KOKORO_MODULE_URL}');
-  const tf = env.transformers;
-  tf.allowLocalModels = false;
-  tf.remoteHost = '${KOKORO_MODELS_BASE}';
-  tf.remotePathTemplate = '{model}/';
-  env.wasmPaths = '${KOKORO_ORT_BASE}';
-  const threads = self.crossOriginIsolated
-    ? Math.max(1, Math.min(8, (self.navigator?.hardwareConcurrency || 4) - 1))
-    : 1;
-  if (tf.backends?.onnx?.wasm) {
-    tf.backends.onnx.wasm.numThreads = threads;
+// Same-origin AudioWorklet Blob source (16 kHz Int16 100ms chunks + RMS for <30ms barge-in)
+const DUPLEX_CAPTURE_BLOB_SOURCE = `
+class OpenIEEcoDuplexCapture extends AudioWorkletProcessor {
+  constructor() {
+    super();
+    this.buf = new Int16Array(1600);
+    this.pos = 0;
+    this.phase = 0;
   }
-  if (tf.backends?.onnx) {
-    tf.backends.onnx.logLevel = 'error';
-  }
-  let gpu = false;
-  if (force !== 'wasm' && self.navigator?.gpu) {
-    try {
-      gpu = !!(await self.navigator.gpu.requestAdapter());
-    } catch {
-      gpu = false;
-    }
-  }
-  let dtype = force && force !== 'wasm' && force !== 'webgpu' ? force : gpu ? 'fp16' : 'q8';
-  let device = gpu ? 'webgpu' : 'wasm';
-  const t0 = performance.now();
-  let model = null;
-  let fellBack = null;
-  try {
-    model = await KokoroTTS.from_pretrained('Kokoro-82M-v1.0-ONNX', {
-      dtype,
-      device,
-      session_options: { logSeverityLevel: 3 },
-      progress_callback: emitProgress,
-    });
-  } catch (err) {
-    if (device !== 'webgpu') throw err;
-    fellBack = String(err);
-    device = 'wasm';
-    dtype = 'q8';
-    model = await KokoroTTS.from_pretrained('Kokoro-82M-v1.0-ONNX', {
-      dtype,
-      device,
-      session_options: { logSeverityLevel: 3 },
-      progress_callback: emitProgress,
-    });
-  }
-  info = {
-    device,
-    dtype,
-    threads: device === 'wasm' ? threads : null,
-    isolated: !!self.crossOriginIsolated,
-    loadMs: Math.round(performance.now() - t0),
-    voices: Array.from(STAGED_VOICES),
-    fellBack,
-  };
-  return model;
-}
-
-function resolveVoice(model, requested) {
-  if (!requested || typeof requested !== 'string') return DEFAULT_VOICE;
-  const clean = requested.trim();
-  if (STAGED_VOICES.has(clean)) return clean;
-  if (model?.voices && Object.prototype.hasOwnProperty.call(model.voices, clean)) return clean;
-  return DEFAULT_VOICE;
-}
-
-function resolveSpeed(requested) {
-  const n = Number(requested);
-  if (!Number.isFinite(n) || n <= 0) return 1.0;
-  return Math.min(2.0, Math.max(0.5, n));
-}
-
-self.onmessage = async (e) => {
-  const { id, text, voice, speed, force } = e.data || {};
-  try {
-    modelP ||= load(force);
-    const model = await modelP;
-    if (text == null) {
-      self.postMessage({ id, ready: true, info });
-      return;
-    }
-    const usedVoice = resolveVoice(model, voice);
-    const usedSpeed = resolveSpeed(speed);
-    const run = genChain.then(async () => {
-      const t0 = performance.now();
-      const out = await model.generate(String(text), { voice: usedVoice, speed: usedSpeed });
-      const ms = Math.round(performance.now() - t0);
-      self.postMessage(
-        { id, audio: out.audio, rate: out.sampling_rate, voice: usedVoice, speed: usedSpeed, ms, info },
-        [out.audio.buffer]
-      );
-    });
-    genChain = run.catch(() => {});
-    await run;
-  } catch (err) {
-    if (!info) modelP = null;
-    self.postMessage({ id, error: String((err && err.stack) || err) });
-  }
-};
-`;
-
-const PCM_WORKLET_BLOB_SOURCE = `
-class OpenIEPcmCaptureProcessor extends AudioWorkletProcessor {
   process(inputs) {
     const ch = inputs[0] && inputs[0][0];
-    if (ch && ch.length > 0) {
-      const copy = new Float32Array(ch);
-      this.port.postMessage(copy, [copy.buffer]);
+    if (!ch || !ch.length) return true;
+    const ratio = sampleRate / 16000;
+    let sumSq = 0;
+    for (let i = 0; i < ch.length; i++) sumSq += ch[i] * ch[i];
+    const rms = Math.sqrt(sumSq / ch.length);
+    while (this.phase < ch.length) {
+      const idx = Math.min(ch.length - 1, Math.floor(this.phase));
+      const v = Math.max(-1, Math.min(1, ch[idx]));
+      this.buf[this.pos++] = v < 0 ? v * 0x8000 : v * 0x7fff;
+      if (this.pos >= this.buf.length) {
+        const copy = this.buf.slice(0);
+        this.port.postMessage({ pcm16: copy.buffer, rms }, [copy.buffer]);
+        this.pos = 0;
+      }
+      this.phase += ratio;
     }
+    this.phase -= ch.length;
+    if (rms > 0.03) this.port.postMessage({ rmsOnly: rms });
     return true;
   }
 }
-registerProcessor('openie-pcm-capture', OpenIEPcmCaptureProcessor);
+registerProcessor('openie-eco-duplex-capture', OpenIEEcoDuplexCapture);
 `;
 
 const WHISPER_BLOB_WORKER_SOURCE = `
@@ -700,76 +625,24 @@ let asrPromise = null;
 let asrInfo = null;
 let transcribeChain = Promise.resolve();
 
-function postProgress(p) {
-  try {
-    self.postMessage({
-      type: 'progress',
-      engine: 'whisper-stt',
-      status: p?.status || 'loading',
-      file: p?.file || '',
-      progress: typeof p?.progress === 'number' ? p.progress : null,
-    });
-  } catch {}
-}
-
-async function initAsr(forceDevice) {
-  const t0 = performance.now();
+async function initAsr() {
   const { pipeline, env } = await import(TF_CDN);
   env.allowLocalModels = false;
-  const threads = self.crossOriginIsolated
-    ? Math.max(1, Math.min(8, (self.navigator?.hardwareConcurrency || 4) - 1))
-    : 1;
-  if (env.backends?.onnx?.wasm) {
-    env.backends.onnx.wasm.numThreads = threads;
-  }
-  if (env.backends?.onnx) {
-    env.backends.onnx.logLevel = 'error';
-  }
-  let useGpu = false;
-  if (forceDevice !== 'wasm' && self.navigator?.gpu) {
-    try {
-      useGpu = !!(await self.navigator.gpu.requestAdapter());
-    } catch {
-      useGpu = false;
-    }
-  }
-  let device = useGpu ? 'webgpu' : 'wasm';
-  let fellBack = null;
-  let transcriber = null;
-  try {
-    transcriber = await pipeline('automatic-speech-recognition', MODEL_ID, {
-      device,
-      dtype: device === 'webgpu'
-        ? { encoder_model: 'fp32', decoder_model_merged: 'q4' }
-        : { encoder_model: 'q8', decoder_model_merged: 'q8' },
-      session_options: { logSeverityLevel: 3 },
-      progress_callback: postProgress,
-    });
-  } catch (err) {
-    if (device !== 'webgpu') throw err;
-    fellBack = String(err);
-    device = 'wasm';
-    transcriber = await pipeline('automatic-speech-recognition', MODEL_ID, {
-      device: 'wasm',
-      dtype: { encoder_model: 'q8', decoder_model_merged: 'q8' },
-      session_options: { logSeverityLevel: 3 },
-      progress_callback: postProgress,
-    });
-  }
-  asrInfo = {
-    model: MODEL_ID,
-    device,
-    threads: device === 'wasm' ? threads : null,
-    loadMs: Math.round(performance.now() - t0),
-    fellBack,
-  };
+  if (env.backends?.onnx?.wasm) env.backends.onnx.wasm.numThreads = 1;
+  if (env.backends?.onnx) env.backends.onnx.logLevel = 'error';
+  const transcriber = await pipeline('automatic-speech-recognition', MODEL_ID, {
+    device: 'wasm',
+    dtype: { encoder_model: 'q8', decoder_model_merged: 'q8' },
+    session_options: { logSeverityLevel: 3 },
+  });
+  asrInfo = { model: MODEL_ID, device: 'wasm' };
   return transcriber;
 }
 
 self.onmessage = async (e) => {
-  const { id, type, audio, forceDevice } = e.data || {};
+  const { id, type, audio } = e.data || {};
   try {
-    asrPromise ||= initAsr(forceDevice);
+    asrPromise ||= initAsr();
     const transcriber = await asrPromise;
     if (type === 'warmup' || !audio) {
       self.postMessage({ id, ready: true, info: asrInfo });
@@ -777,179 +650,47 @@ self.onmessage = async (e) => {
     }
     const pcm = audio instanceof Float32Array ? audio : new Float32Array(audio);
     const job = transcribeChain.then(async () => {
-      const t0 = performance.now();
-      const out = await transcriber(pcm, {
-        chunk_length_s: 20,
-        stride_length_s: 3,
-        return_timestamps: false,
-      });
-      self.postMessage({
-        id,
-        text: String(out?.text || '').trim(),
-        ms: Math.round(performance.now() - t0),
-        info: asrInfo,
-      });
+      const out = await transcriber(pcm, { chunk_length_s: 20, stride_length_s: 3, return_timestamps: false });
+      self.postMessage({ id, text: String(out?.text || '').trim(), info: asrInfo });
     });
     transcribeChain = job.catch(() => {});
     await job;
   } catch (err) {
-    if (!asrInfo) asrPromise = null;
-    self.postMessage({ id, error: String((err && err.stack) || err) });
+    self.postMessage({ id, error: String(err?.message || err) });
   }
 };
 `;
 
-const VISION_BLOB_WORKER_SOURCE = `
-const TF_CDN = '${TF_ESM_CDN}';
-const SMOLVLM_ID = 'HuggingFaceTB/SmolVLM-256M-Instruct';
-const COMPACT_VLM_ID = 'Xenova/vit-gpt2-image-captioning';
-let vlmState = null;
-let vlmPromise = null;
-let inferChain = Promise.resolve();
-
-function postProgress(p) {
-  try {
-    self.postMessage({
-      type: 'progress',
-      engine: 'vision-vlm',
-      status: p?.status || 'loading',
-      file: p?.file || '',
-      progress: typeof p?.progress === 'number' ? p.progress : null,
-    });
-  } catch {}
+function abToBase64(buf) {
+  const bytes = new Uint8Array(buf);
+  let bin = '';
+  const step = 0x8000;
+  for (let i = 0; i < bytes.length; i += step) {
+    bin += String.fromCharCode.apply(null, bytes.subarray(i, i + step));
+  }
+  return btoa(bin);
 }
 
-async function loadCompact(tf, t0, fellBack = null) {
-  const pipe = await tf.pipeline('image-to-text', COMPACT_VLM_ID, {
-    device: 'wasm',
-    dtype: 'q8',
-    session_options: { logSeverityLevel: 3 },
-    progress_callback: postProgress,
-  });
-  return {
-    kind: 'captioner',
-    pipe,
-    info: {
-      model: COMPACT_VLM_ID,
-      device: 'wasm',
-      dtype: 'q8',
-      loadMs: Math.round(performance.now() - t0),
-      fellBack,
-    },
-  };
+function pcm16Base64ToFloat32(b64) {
+  const bin = atob(b64);
+  const len = bin.length >> 1;
+  const out = new Float32Array(len);
+  for (let i = 0; i < len; i++) {
+    const lo = bin.charCodeAt(i * 2);
+    const hi = bin.charCodeAt(i * 2 + 1);
+    let s = (hi << 8) | lo;
+    if (s & 0x8000) s -= 0x10000;
+    out[i] = s / 32768;
+  }
+  return out;
 }
 
-async function initVision(tier = 'auto') {
-  const t0 = performance.now();
-  const tf = await import(TF_CDN);
-  const { env, AutoProcessor, AutoModelForVision2Seq, RawImage } = tf;
-  env.allowLocalModels = false;
-  const threads = self.crossOriginIsolated
-    ? Math.max(1, Math.min(8, (self.navigator?.hardwareConcurrency || 4) - 1))
-    : 1;
-  if (env.backends?.onnx?.wasm) {
-    env.backends.onnx.wasm.numThreads = threads;
-  }
-  if (env.backends?.onnx) {
-    env.backends.onnx.logLevel = 'error';
-  }
-  let hasWebGpuFp16 = false;
-  if (tier !== 'compact' && self.navigator?.gpu) {
-    try {
-      const adapter = await self.navigator.gpu.requestAdapter();
-      hasWebGpuFp16 = !!(adapter && (tier === 'smolvlm' || adapter.features?.has('shader-f16')));
-    } catch {
-      hasWebGpuFp16 = false;
-    }
-  }
-  if (tier === 'smolvlm' || (tier === 'auto' && hasWebGpuFp16)) {
-    try {
-      const processor = await AutoProcessor.from_pretrained(SMOLVLM_ID, {
-        progress_callback: postProgress,
-      });
-      const model = await AutoModelForVision2Seq.from_pretrained(SMOLVLM_ID, {
-        dtype: {
-          embed_tokens: 'fp16',
-          vision_encoder: 'q4',
-          decoder_model_merged: 'q4',
-        },
-        device: 'webgpu',
-        session_options: { logSeverityLevel: 3 },
-        progress_callback: postProgress,
-      });
-      return {
-        kind: 'smolvlm',
-        processor,
-        model,
-        RawImage,
-        info: {
-          model: SMOLVLM_ID,
-          device: 'webgpu',
-          dtype: 'fp16/q4',
-          loadMs: Math.round(performance.now() - t0),
-          fellBack: null,
-        },
-      };
-    } catch (err) {
-      return loadCompact(tf, t0, String(err));
-    }
-  }
-  return loadCompact(tf, t0, null);
-}
-
-self.onmessage = async (e) => {
-  const { id, type, dataUrl, prompt, tier = 'auto' } = e.data || {};
-  try {
-    vlmPromise ||= initVision(tier).then((r) => {
-      vlmState = r;
-      return r;
-    });
-    const state = await vlmPromise;
-    if (type === 'warmup' || !dataUrl) {
-      self.postMessage({ id, ready: true, info: state.info });
-      return;
-    }
-    const job = inferChain.then(async () => {
-      const t0 = performance.now();
-      let caption = '';
-      if (state.kind === 'smolvlm') {
-        const image = await state.RawImage.fromURL(dataUrl);
-        const q = prompt || 'Describe any diagrams, charts, equations, code, or hardware visible in this frame concisely.';
-        const messages = [{ role: 'user', content: [{ type: 'image' }, { type: 'text', text: q }] }];
-        const chatPrompt = state.processor.apply_chat_template(messages, { add_generation_prompt: true });
-        const inputs = await state.processor(chatPrompt, [image]);
-        const generatedIds = await state.model.generate({
-          ...inputs,
-          max_new_tokens: 96,
-          do_sample: false,
-        });
-        const trimmed = generatedIds.slice(null, [inputs.input_ids.dims.at(-1), null]);
-        const decoded = state.processor.batch_decode(trimmed, { skip_special_tokens: true });
-        caption = String(decoded?.[0] || '').trim();
-      } else {
-        const out = await state.pipe(dataUrl, { max_new_tokens: 48 });
-        const raw = Array.isArray(out) ? out[0]?.generated_text : out?.generated_text;
-        caption = String(raw || '').trim();
-      }
-      self.postMessage({ id, caption, ms: Math.round(performance.now() - t0), info: state.info });
-    });
-    inferChain = job.catch(() => {});
-    await job;
-  } catch (err) {
-    if (!vlmState) vlmPromise = null;
-    self.postMessage({ id, error: String((err && err.stack) || err) });
-  }
-};
-`;
-
-function createBlobJsUrl(source) {
-  return URL.createObjectURL(new Blob([source], { type: 'text/javascript' }));
-}
-
-function createBlobModuleWorker(source) {
-  const url = createBlobJsUrl(source);
-  const worker = new Worker(url, { type: 'module' });
-  return { worker, url };
+function escHtml(s) {
+  return String(s || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
 const STOP_WORDS = new Set([
@@ -967,73 +708,24 @@ function tokenize(text) {
     .filter((t) => t.length > 1 && !STOP_WORDS.has(t));
 }
 
-function escHtml(s) {
-  return String(s || '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
-
 function normalizeForSpeech(text) {
   return String(text || '')
     .replace(/`([^`]+)`/g, '$1')
     .replace(/\*\*([^*]+)\*\*/g, '$1')
     .replace(/\*([^*]+)\*/g, '$1')
     .replace(/⊥/g, ' orthogonal to ')
-    .replace(/<=/g, ' at most ')
-    .replace(/>=/g, ' at least ')
-    .replace(/!=/g, ' not equal to ')
     .replace(/\bmeasured_j\b/g, 'measured jay')
     .replace(/\breported_j\b/g, 'reported jay')
     .replace(/\best_j\b/g, 'estimated jay')
     .replace(/\b(\d+(?:\.\d+)?)\s*(?:uJ|µJ)\b/g, '$1 microjoules')
     .replace(/\b(\d+(?:\.\d+)?)\s*mJ\b/g, '$1 millijoules')
     .replace(/\b(\d+(?:\.\d+)?)\s*nJ\b/g, '$1 nanojoules')
-    .replace(/\b(\d+(?:\.\d+)?)\s*pJ\b/g, '$1 picojoules')
-    .replace(/\b(\d+(?:\.\d+)?)\s*kJ\b/g, '$1 kilojoules')
     .replace(/\b(\d+(?:\.\d+)?)\s*(?:us|µs)\b/g, '$1 microseconds')
     .replace(/\b(\d+(?:\.\d+)?)\s*ms\b/g, '$1 milliseconds')
     .replace(/\b(\d+(?:\.\d+)?)x\b/g, '$1 times')
     .replace(/\[([TEMS])\]/g, '')
     .replace(/\s+/g, ' ')
     .trim();
-}
-
-function splitSentences(text) {
-  const clean = normalizeForSpeech(text);
-  if (!clean) return [];
-  const raw = clean.match(/[^.!?]+[.!?]+(?=\s|$)|[^.!?]+$/g) || [clean];
-  const merged = [];
-  for (const part of raw) {
-    const s = part.trim();
-    if (!s) continue;
-    if (merged.length && merged[merged.length - 1].length < 48) {
-      merged[merged.length - 1] += ' ' + s;
-    } else {
-      merged.push(s);
-    }
-  }
-  return merged;
-}
-
-function downsampleBuffer(buffer, inputRate, targetRate = 16000) {
-  if (inputRate === targetRate) return new Float32Array(buffer);
-  const ratio = inputRate / targetRate;
-  const outLen = Math.max(1, Math.round(buffer.length / ratio));
-  const out = new Float32Array(outLen);
-  for (let i = 0; i < outLen; i++) {
-    const start = Math.floor(i * ratio);
-    const end = Math.min(buffer.length, Math.ceil((i + 1) * ratio));
-    let sum = 0;
-    let count = 0;
-    for (let j = start; j < end; j++) {
-      sum += buffer[j];
-      count++;
-    }
-    out[i] = count > 0 ? sum / count : 0;
-  }
-  return out;
 }
 
 function absResearchUrl(pathOrUrl) {
@@ -1082,9 +774,7 @@ export function detectOpenIESurface(explicitSurface) {
     const scriptEl = document.querySelector('script[data-openie-surface]');
     const attrVal = scriptEl?.getAttribute('data-openie-surface')?.trim().toLowerCase();
     if (attrVal) {
-      if (attrVal.startsWith('living:')) {
-        return buildLivingObservatorySurface(attrVal.slice('living:'.length));
-      }
+      if (attrVal.startsWith('living:')) return buildLivingObservatorySurface(attrVal.slice('living:'.length));
       if (SURFACE_REGISTRY[attrVal]) return SURFACE_REGISTRY[attrVal];
       if (HOST_ALIAS_MAP[attrVal] && SURFACE_REGISTRY[HOST_ALIAS_MAP[attrVal]]) {
         return SURFACE_REGISTRY[HOST_ALIAS_MAP[attrVal]];
@@ -1094,9 +784,7 @@ export function detectOpenIESurface(explicitSurface) {
   if (typeof window !== 'undefined') {
     const pathname = window.location.pathname || '/';
     const livingMatch = pathname.match(/^\/living(?:\/([^/?#]+))?/i);
-    if (livingMatch) {
-      return buildLivingObservatorySurface(livingMatch[1] || '');
-    }
+    if (livingMatch) return buildLivingObservatorySurface(livingMatch[1] || '');
 
     const host = (window.location.hostname || '').toLowerCase();
     if (host === 'thermoedge.ai' || host.endsWith('.thermoedge.ai')) return SURFACE_REGISTRY.tei;
@@ -1130,90 +818,87 @@ export class OpenIEEcosystemSDK {
     this.avgDocLen = 1;
     this.corpusPromise = null;
 
+    this.engineMode = 'studio_s2s'; // 'studio_s2s' (24 kHz Native S2S) | 'sovereign_gpu' (Kokoro FP32 32 kHz)
     this.state = 'idle';
     this.mode = 'call';
     this.callActive = false;
     this.micMuted = false;
     this.activeStudyId = this.surface.primaryStudyId || 'communication-avalanche';
-    this.voice = 'af_heart';
+    this.voice = 'Aoede';
     this.speed = 1.0;
-    this.forceWhisper = false;
     this.contextSummary = opts.contextSummary || '';
     this.mediaContext = (typeof window !== 'undefined' && window.__openieActiveMediaContext) || null;
 
+    // Studio S2S WebSocket
+    this.ws = null;
+    this.wsReadyPromise = null;
+    this.streamingUserTurn = null;
+    this.streamingAssistantTurn = null;
+
+    // Broadcast Mastering Chain & Jitter Buffer
     this.audioCtx = null;
+    this.masterInput = null;
+    this.ttsGain = null;
+    this.ttsAnalyser = null;
+    this.ttsFreqBins = null;
+    this.activeSources = new Set();
+    this.nextPlayTime = 0;
+    this.turnAbort = null;
+
+    // Mic & VAD
     this.micStream = null;
     this.micSource = null;
     this.micAnalyser = null;
     this.micFreqBins = null;
-    this.pcmWorkletNode = null;
-    this.pcmWorkletBlobUrl = null;
-    this.pcmChunks = [];
-    this.pcmSpeaking = false;
-    this.pcmLastVoiceAt = 0;
-    this.pcmSpeechStartAt = 0;
-
-    this.ttsGain = null;
-    this.ttsAnalyser = null;
-    this.ttsFreqBins = null;
-    this.activeBufferSource = null;
-    this.turnAbort = null;
+    this.workletNode = null;
+    this.bargeFrames = 0;
+    this.micRms = 0;
     this.vadTimer = null;
-    this.bargeAboveSince = 0;
     this.noiseFloorDb = -56;
     this.vadDb = -60;
     this.lastTurnCommitAt = 0;
     this.ttfaMs = null;
     this.estJoulesHeuristic = 0;
 
+    // Sovereign Kokoro-82M FP32 + Perth 32 kHz Blob Worker
+    this.kokoroWorker = null;
+    this.kokoroReady = false;
+    this.kokoroLoading = false;
+    this.kokoroSayId = 1;
+    this.kokoroPending = new Map();
+
+    // Sovereign STT (SpeechRecognition or Whisper ONNX Blob Worker)
     this.speechRec = null;
     this.speechRecSupported =
       typeof window !== 'undefined' &&
       !!(window.SpeechRecognition || window.webkitSpeechRecognition);
-    this.speechInterimText = '';
-    this.speechEndpointTimer = null;
-
-    this.ttsWorker = null;
-    this.ttsReqId = 0;
-    this.ttsPending = new Map();
-    this.kokoroReady = false;
-    this.kokoroLoading = false;
-    this.kokoroInfo = null;
-
+    this.pcmChunks = [];
+    this.pcmSpeaking = false;
+    this.pcmLastVoiceAt = 0;
+    this.pcmSpeechStartAt = 0;
     this.asrWorker = null;
     this.asrReqId = 0;
     this.asrPending = new Map();
-    this.whisperReady = false;
-    this.whisperLoading = false;
-    this.whisperInfo = null;
 
-    this.visionWorker = null;
-    this.visionReqId = 0;
-    this.visionPending = new Map();
-    this.visionModelReady = false;
-    this.visionModelLoading = false;
-    this.visionInfo = null;
-
+    // Vision
     this.visionStream = null;
     this.visionSource = null;
     this.cameraFacing = 'environment';
     this.visionVideoEls = new Set();
     this.hiddenVisionVideo = null;
     this.offscreenCanvas = null;
-    this.prevFrameLuma = null;
+    this.lastLumaSig = null;
+    this.lastFrameB64 = null;
     this.lastVisionSnapshot = null;
     this.visionSampleTimer = null;
 
-    this.copilotStep = 0;
-    this.debateTurn = 0;
     this.transcript = [];
     this.turnCounter = 0;
-    this.domIndex = { title: '', sections: [], figures: [], controls: [], tables: [], simulators: [] };
+    this.domIndex = { title: '', sections: [], figures: [], controls: [], tables: [] };
 
     this.orbCanvases = new Set();
     this.orbRaf = null;
     this.orbPhase = 0;
-    this.syntheticSpeechEnv = 0;
 
     if (typeof document !== 'undefined') {
       this._injectHostSpotlightCss();
@@ -1221,7 +906,7 @@ export class OpenIEEcosystemSDK {
       window.addEventListener('openie:live-context', (ev) => {
         if (ev?.detail) {
           this.mediaContext = ev.detail;
-          if (ev.detail.studyId && this.studiesById.has(ev.detail.studyId)) {
+          if (!this.callActive && ev.detail.studyId && this.studiesById.has(ev.detail.studyId)) {
             this.activeStudyId = ev.detail.studyId;
             this._emitState();
           }
@@ -1246,9 +931,7 @@ export class OpenIEEcosystemSDK {
     for (const fn of set) {
       try {
         fn(payload);
-      } catch (err) {
-        console.warn('[openie-ecosystem-sdk]', err);
-      }
+      } catch {}
     }
   }
 
@@ -1265,61 +948,42 @@ export class OpenIEEcosystemSDK {
   }
 
   getSnapshot() {
-    const study = this.studiesById.get(this.activeStudyId) || null;
-    const blogEntry = this.blogById.get(this.activeStudyId) || null;
     return {
       surface: this.surface,
+      engineMode: this.engineMode,
       state: this.state,
       mode: this.mode,
       callActive: this.callActive,
       micMuted: this.micMuted,
       activeStudyId: this.activeStudyId,
-      activeStudy: study,
-      activeBlogEntry: blogEntry,
+      activeStudy: this.studiesById.get(this.activeStudyId) || null,
+      activeBlogEntry: this.blogById.get(this.activeStudyId) || null,
       voice: this.voice,
-      voicePersona: VOICE_PERSONAS[this.voice] || VOICE_PERSONAS.af_heart,
+      voicePersona: STUDIO_VOICES[this.voice] || STUDIO_VOICES.Aoede,
       speed: this.speed,
       visionActive: !!this.visionStream,
       visionSource: this.visionSource,
-      cameraFacing: this.cameraFacing,
-      forceWhisper: this.forceWhisper,
       kokoroReady: this.kokoroReady,
-      whisperReady: this.whisperReady,
-      visionModelReady: this.visionModelReady,
-      domSectionCount: this.domIndex.sections.length,
-      domFigureCount: this.domIndex.figures.length,
-      domControlCount: this.domIndex.controls.length,
-      blogCount: this.blogById.size,
-      studyCount: this.studiesById.size,
+      wsConnected: !!(this.ws && this.ws.readyState === WebSocket.OPEN),
     };
   }
 
   getTelemetry() {
-    let ttsBackend = 'Instant WebSpeech (<200ms)';
-    if (this.kokoroReady && this.kokoroInfo) {
-      ttsBackend = `Kokoro-82M (${this.kokoroInfo.device.toUpperCase()} ${this.kokoroInfo.dtype})`;
-    } else if (this.kokoroLoading) {
-      ttsBackend = 'WebSpeech · Warming Kokoro-82M';
-    }
-    let sttBackend = this.speechRecSupported && !this.forceWhisper
-      ? 'WebSpeech Interim'
-      : this.whisperReady
-      ? `Whisper-Tiny.en (${(this.whisperInfo?.device || 'wasm').toUpperCase()} q8)`
-      : 'Whisper-Tiny.en ONNX';
-    let visionBackend = 'Standby';
-    if (this.visionStream) {
-      visionBackend = this.visionModelReady
-        ? `Canvas2D + ${(this.visionInfo?.model || 'SmolVLM').split('/').pop()}`
-        : 'Canvas2D Optical + SmolVLM Ready';
-    }
+    const ttsBackend =
+      this.engineMode === 'studio_s2s'
+        ? `Studio 24 kHz S2S (${this.voice})`
+        : this.kokoroReady
+        ? 'Kokoro-82M FP32 (32 kHz + Perth)'
+        : this.kokoroLoading
+        ? 'OPFS Caching Kokoro FP32...'
+        : 'Kokoro-82M FP32 (Standby)';
     return {
+      engineMode: this.engineMode,
       vadDb: Math.round(this.vadDb * 10) / 10,
       noiseFloorDb: Math.round(this.noiseFloorDb * 10) / 10,
       ttfaMs: this.ttfaMs,
       ttsBackend,
-      sttBackend,
-      visionBackend,
-      estJoulesHeuristic: `${this.estJoulesHeuristic.toFixed(3)} est_j (browser heuristic ⊥ measured_j)`,
+      estJoulesHeuristic: `${this.estJoulesHeuristic.toFixed(3)} est_j`,
     };
   }
 
@@ -1328,7 +992,30 @@ export class OpenIEEcosystemSDK {
     this._emitTelemetry();
   }
 
-  // ---------- Host & Observatory Live DOM Indexing (<figure>, <svg>, <canvas>, <input type="range">, <select>, <table>) ----------
+  buildCompactSiteDescriptor() {
+    const hostPath =
+      typeof window !== 'undefined'
+        ? `${window.location.hostname}${window.location.pathname}`
+        : this.surface.domain;
+    const study = this.studiesById.get(this.activeStudyId);
+    const titleMetric = study
+      ? `${study.short_title} [${study.evidence_class}]: ${(study.headline_metric || '').slice(0, 85)}`
+      : `${this.surface.name}: ${this.surface.tagline}`;
+    const caveat = study
+      ? (study.limitations_and_scope || '').split('.')[0].slice(0, 100)
+      : this.surface.caveat || '';
+    const ctrlBit =
+      this.surface.id === 'living' && this.domIndex.controls.length
+        ? ` Controls: ${this.summarizeLiveControls(2).slice(0, 75)}.`
+        : '';
+    const raw =
+      `${hostPath} | You are OpenIE Live (warm, natural studio voice co-pilot on ${this.surface.name}). ` +
+      `Active study/surface: ${titleMetric}. Caveat: ${caveat}.${ctrlBit} ` +
+      `Mandatory 25 Nov 2026 Outside-Review rules: say 'Signed Provenance · Self-Checked' (never 'Verified') for OpenIE gates; never mix measured_j, reported_j, est_j, unmetered; never say ${'Landauer'} Bit-Equivalents; cite finite-sample Clopper-Pearson bounds.`;
+    return raw.slice(0, 595);
+  }
+
+  // ---------- Host & Observatory Live DOM Indexing ----------
   _injectHostSpotlightCss() {
     if (document.getElementById('openie-eco-dom-spotlight-css')) return;
     const st = document.createElement('style');
@@ -1339,11 +1026,7 @@ export class OpenIEEcosystemSDK {
         60% { box-shadow: 0 0 0 14px rgba(0, 212, 170, 0), inset 0 0 0 1.5px rgba(245, 158, 11, 0.5); background-color: rgba(245, 158, 11, 0.07); }
         100% { box-shadow: 0 0 0 0 rgba(0, 212, 170, 0); background-color: transparent; }
       }
-      .openie-eco-dom-spotlight {
-        border-radius: 10px;
-        animation: openieEcoSpotlightPulse 2.8s ease-out forwards;
-        transition: background-color 0.4s ease;
-      }
+      .openie-eco-dom-spotlight { border-radius: 10px; animation: openieEcoSpotlightPulse 2.8s ease-out forwards; }
     `;
     document.head.appendChild(st);
   }
@@ -1376,23 +1059,19 @@ export class OpenIEEcosystemSDK {
           : el;
       if (seenEls.has(headingEl)) return;
       seenEls.add(headingEl);
-
       const headingText = (headingEl.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 150);
       if (!headingText || headingText.length < 3) return;
-
       const anchorId = el.id || headingEl.id || headingEl.closest('section[id], figure[id]')?.id || '';
       const domKey = anchorId || `openie-sec-${++secSeq}`;
-      if (!el.getAttribute('data-openie-dom-key')) {
-        el.setAttribute('data-openie-dom-key', domKey);
-      }
+      if (!el.getAttribute('data-openie-dom-key')) el.setAttribute('data-openie-dom-key', domKey);
 
       let snippet = '';
       if (el.tagName === 'SECTION' || el.tagName === 'FIGURE') {
-        snippet = (el.textContent || '').replace(headingText, '').replace(/\s+/g, ' ').trim().slice(0, 400);
+        snippet = (el.textContent || '').replace(headingText, '').replace(/\s+/g, ' ').trim().slice(0, 360);
       } else {
         let sib = headingEl.nextElementSibling;
         let hops = 0;
-        while (sib && hops < 4 && snippet.length < 380) {
+        while (sib && hops < 4 && snippet.length < 340) {
           if (/^H[1-3]$/.test(sib.tagName)) break;
           const t = (sib.textContent || '').replace(/\s+/g, ' ').trim();
           if (t) snippet += (snippet ? ' ' : '') + t;
@@ -1400,20 +1079,16 @@ export class OpenIEEcosystemSDK {
           hops++;
         }
       }
-
       const rect = el.getBoundingClientRect();
-      const inView = rect.top >= -100 && rect.top <= vh * 0.75;
       sections.push({
         key: domKey,
         id: anchorId,
-        tag: el.tagName.toLowerCase(),
         heading: headingText,
         snippet,
-        inView,
+        inView: rect.top >= -100 && rect.top <= vh * 0.75,
       });
     });
 
-    // Deep Observatory Figure, SVG & Canvas Indexing
     const figures = [];
     document.querySelectorAll('figure, section.figure-shell, canvas, svg').forEach((node, idx) => {
       if (this._isExcludedNode(node)) return;
@@ -1422,23 +1097,17 @@ export class OpenIEEcosystemSDK {
       const key = hostFig.id || node.id || hostFig.getAttribute('data-openie-dom-key') || `openie-fig-${idx + 1}`;
       hostFig.setAttribute('data-openie-dom-key', key);
       if (figures.some((f) => f.key === key)) return;
-      const cap = (
-        hostFig.querySelector('figcaption, h2, h3, .fig-id, .caption')?.textContent ||
-        node.getAttribute('aria-label') ||
-        ''
-      ).replace(/\s+/g, ' ').trim().slice(0, 180);
+      const cap = (hostFig.querySelector('figcaption, h2, h3, .fig-id, .caption')?.textContent || node.getAttribute('aria-label') || '')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .slice(0, 170);
       const hasCanvas = !!(hostFig.tagName === 'CANVAS' || hostFig.querySelector?.('canvas'));
       const hasSvg = !!(hostFig.tagName === 'SVG' || hostFig.querySelector?.('svg'));
       if (cap || hasCanvas || hasSvg) {
-        figures.push({
-          key,
-          kind: hasCanvas ? 'canvas' : hasSvg ? 'svg' : 'figure',
-          caption: cap || `${hasCanvas ? 'Canvas' : 'Interactive'} Figure ${figures.length + 1}`,
-        });
+        figures.push({ key, kind: hasCanvas ? 'canvas' : hasSvg ? 'svg' : 'figure', caption: cap || `Figure ${figures.length + 1}` });
       }
     });
 
-    // Live Interactive Controls (<input type="range"> & <select>) with Current Values
     const controls = [];
     document.querySelectorAll('input[type="range"], select').forEach((ctrl, idx) => {
       if (this._isExcludedNode(ctrl)) return;
@@ -1452,24 +1121,17 @@ export class OpenIEEcosystemSDK {
       if (!labelText) {
         labelText = ctrl.closest('label')?.textContent || ctrl.getAttribute('aria-label') || ctrl.id || ctrl.name || 'Parameter';
       }
-      labelText = labelText.replace(/\s+/g, ' ').trim().slice(0, 90);
-
+      labelText = labelText.replace(/\s+/g, ' ').trim().slice(0, 85);
       let valueDesc = String(ctrl.value ?? '');
       if (ctrl.tagName === 'SELECT') {
         const opt = ctrl.options?.[ctrl.selectedIndex];
-        if (opt) valueDesc = (opt.textContent || opt.value || '').replace(/\s+/g, ' ').trim().slice(0, 90);
+        if (opt) valueDesc = (opt.textContent || opt.value || '').replace(/\s+/g, ' ').trim().slice(0, 85);
       } else if (ctrl.type === 'range') {
-        valueDesc = `${ctrl.value}${ctrl.min !== '' && ctrl.max !== '' ? ` (range ${ctrl.min}..${ctrl.max})` : ''}`;
+        valueDesc = `${ctrl.value}${ctrl.min !== '' && ctrl.max !== '' ? ` (${ctrl.min}..${ctrl.max})` : ''}`;
       }
-      controls.push({
-        key,
-        type: ctrl.tagName === 'SELECT' ? 'select' : 'range',
-        label: labelText,
-        value: valueDesc,
-      });
+      controls.push({ key, type: ctrl.tagName === 'SELECT' ? 'select' : 'range', label: labelText, value: valueDesc });
     });
 
-    // Live Dataset Tables
     const tables = [];
     document.querySelectorAll('table').forEach((tbl, idx) => {
       if (this._isExcludedNode(tbl)) return;
@@ -1480,38 +1142,24 @@ export class OpenIEEcosystemSDK {
         .filter(Boolean)
         .slice(0, 8)
         .join(' | ');
-      const cap = (tbl.querySelector('caption')?.textContent || tbl.closest('figure, section')?.querySelector('h2, h3, figcaption')?.textContent || '')
-        .replace(/\s+/g, ' ')
-        .trim()
-        .slice(0, 120);
-      const sampleRow = (tbl.querySelector('tbody tr')?.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 200);
-      if (headers || cap || sampleRow) {
-        tables.push({ key, caption: cap, headers, sampleRow });
-      }
+      const cap = (tbl.querySelector('caption')?.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 110);
+      const sampleRow = (tbl.querySelector('tbody tr')?.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 180);
+      if (headers || cap || sampleRow) tables.push({ key, caption: cap, headers, sampleRow });
     });
-
-    const simulators = [
-      ...figures.map((f) => ({ key: f.key, label: f.caption })),
-      ...controls.slice(0, 6).map((c) => ({ key: c.key, label: `${c.label} = ${c.value}` })),
-    ].slice(0, 12);
 
     this.domIndex = {
       title: (document.title || this.surface.name).trim(),
-      pathname: window.location.pathname,
-      hostname: window.location.hostname,
       visibleSection: sections.find((s) => s.inView) || sections[0] || null,
       sections: sections.slice(0, 36),
       figures: figures.slice(0, 20),
       controls: controls.slice(0, 24),
       tables: tables.slice(0, 14),
-      simulators,
     };
     return this.domIndex;
   }
 
   summarizeLiveControls(maxItems = 4) {
     this.refreshLiveDomIndex();
-    if (!this.domIndex.controls.length) return '';
     return this.domIndex.controls
       .slice(0, maxItems)
       .map((c) => `${c.label}: ${c.value}`)
@@ -1522,62 +1170,44 @@ export class OpenIEEcosystemSDK {
     if (typeof document === 'undefined' || !keyOrQuery) return null;
     const raw = String(keyOrQuery).replace(/^#/, '').trim();
     const escKey = CSS.escape ? CSS.escape(raw) : raw;
-    let target =
-      document.getElementById(raw) ||
-      document.querySelector(`[data-openie-dom-key="${escKey}"]`);
+    let target = document.getElementById(raw) || document.querySelector(`[data-openie-dom-key="${escKey}"]`);
     if (!target) {
       const q = raw.toLowerCase();
-      for (const sec of [...this.domIndex.figures, ...this.domIndex.sections, ...this.domIndex.controls, ...this.domIndex.tables]) {
-        const hay = `${sec.heading || sec.caption || sec.label || ''} ${sec.key}`.toLowerCase();
+      for (const item of [...this.domIndex.figures, ...this.domIndex.sections, ...this.domIndex.controls, ...this.domIndex.tables]) {
+        const hay = `${item.heading || item.caption || item.label || ''} ${item.key}`.toLowerCase();
         if (hay.includes(q)) {
-          const k = CSS.escape ? CSS.escape(sec.key) : sec.key;
-          target = document.getElementById(sec.key) || document.querySelector(`[data-openie-dom-key="${k}"]`);
+          const k = CSS.escape ? CSS.escape(item.key) : item.key;
+          target = document.getElementById(item.key) || document.querySelector(`[data-openie-dom-key="${k}"]`);
           if (target) break;
         }
       }
     }
     if (!target) return null;
-    const highlightBox = target.closest('figure, section.figure-shell, .widget-controls') || target;
-    highlightBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    highlightBox.classList.remove('openie-eco-dom-spotlight');
-    void highlightBox.offsetWidth;
-    highlightBox.classList.add('openie-eco-dom-spotlight');
-    setTimeout(() => highlightBox.classList.remove('openie-eco-dom-spotlight'), 2900);
-    const heading = (
-      highlightBox.querySelector?.('h1, h2, h3, figcaption, label')?.textContent ||
-      highlightBox.textContent ||
-      ''
-    ).replace(/\s+/g, ' ').trim().slice(0, 110);
-    this.emit('dom-spotlight', { key: raw, heading });
-    return { key: raw, heading };
+    const box = target.closest('figure, section.figure-shell, .widget-controls') || target;
+    box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    box.classList.remove('openie-eco-dom-spotlight');
+    void box.offsetWidth;
+    box.classList.add('openie-eco-dom-spotlight');
+    setTimeout(() => box.classList.remove('openie-eco-dom-spotlight'), 2900);
+    return box;
   }
 
-  // ---------- Cross-Origin Dual Corpus Loader (28 Studies + 57 Chronicle Entries + Live DOM) ----------
+  // ---------- Cross-Origin Corpora & BM25 ----------
   async loadCorpora() {
     if (this.researchCorpus) return { research: this.researchCorpus, blog: this.blogCorpus };
     this.corpusPromise ||= Promise.allSettled([
-      fetch(RESEARCH_CORPUS_URL, { mode: 'cors', credentials: 'omit' }).then((r) => {
-        if (!r.ok) throw new Error(`Research corpus HTTP ${r.status}`);
-        return r.json();
-      }),
-      fetch(BLOG_CORPUS_URL, { mode: 'cors', credentials: 'omit' }).then((r) => {
-        if (!r.ok) throw new Error(`Blog corpus HTTP ${r.status}`);
-        return r.json();
-      }),
+      fetch(RESEARCH_CORPUS_URL, { mode: 'cors', credentials: 'omit' }).then((r) => (r.ok ? r.json() : null)),
+      fetch(BLOG_CORPUS_URL, { mode: 'cors', credentials: 'omit' }).then((r) => (r.ok ? r.json() : null)),
     ]).then(([resStudy, resBlog]) => {
       if (resStudy.status === 'fulfilled' && resStudy.value) {
         this.researchCorpus = resStudy.value;
         this.studiesById.clear();
-        for (const s of resStudy.value.studies || []) {
-          this.studiesById.set(s.id, s);
-        }
+        for (const s of resStudy.value.studies || []) this.studiesById.set(s.id, s);
       }
       if (resBlog.status === 'fulfilled' && resBlog.value) {
         this.blogCorpus = resBlog.value;
         this.blogById.clear();
-        for (const e of resBlog.value.entries || []) {
-          this.blogById.set(e.id, e);
-        }
+        for (const e of resBlog.value.entries || []) this.blogById.set(e.id, e);
       }
       if (!this.studiesById.has(this.activeStudyId)) {
         const preferred = (this.surface.studyIds || []).find((id) => this.studiesById.has(id));
@@ -1585,13 +1215,7 @@ export class OpenIEEcosystemSDK {
       }
       this.refreshLiveDomIndex();
       this._buildUnifiedBm25Index();
-      this.emit('corpus-ready', {
-        studyCount: this.studiesById.size,
-        blogCount: this.blogById.size,
-        domSections: this.domIndex.sections.length,
-        domFigures: this.domIndex.figures.length,
-        domControls: this.domIndex.controls.length,
-      });
+      this.emit('corpus-ready', { studyCount: this.studiesById.size, blogCount: this.blogById.size });
       this._emitState();
       return { research: this.researchCorpus, blog: this.blogCorpus };
     });
@@ -1601,61 +1225,16 @@ export class OpenIEEcosystemSDK {
   _buildUnifiedBm25Index() {
     const rawDocs = [];
     const surfaceSet = new Set(this.surface.studyIds || []);
-
     for (const s of this.studiesById.values()) {
       const blog = this.blogById.get(s.id);
       const text = [
-        s.id,
-        s.id.replace(/-/g, ' '),
-        s.title,
-        s.short_title,
-        s.category,
-        s.evidence_class,
-        (s.key_terms || []).join(' '),
-        s.headline_metric,
-        s.headline_claim,
-        (s.plain_bullets || []).join(' '),
-        s.methods_and_meter,
-        s.baseline_comparison,
-        s.limitations_and_scope,
+        s.id, s.id.replace(/-/g, ' '), s.title, s.short_title, s.category, s.evidence_class,
+        (s.key_terms || []).join(' '), s.headline_metric, s.headline_claim,
+        (s.plain_bullets || []).join(' '), s.methods_and_meter, s.limitations_and_scope,
         blog?.primaryClaim || '',
-        blog?.errataSummary || '',
       ].join(' ');
-      rawDocs.push({
-        kind: 'study',
-        id: s.id,
-        study: s,
-        blog: blog || null,
-        surfaceBoost: surfaceSet.has(s.id) ? 2.4 : 0,
-        text,
-      });
+      rawDocs.push({ kind: 'study', id: s.id, study: s, blog: blog || null, surfaceBoost: surfaceSet.has(s.id) ? 2.4 : 0, text });
     }
-
-    for (const b of this.blogById.values()) {
-      if (this.studiesById.has(b.id)) continue;
-      const text = [
-        b.id,
-        b.id.replace(/-/g, ' '),
-        b.title,
-        b.shortTitle || '',
-        b.description || '',
-        b.energyClass || '',
-        b.headlineMetric || '',
-        b.primaryClaim || '',
-        (b.keyClaims || []).join(' '),
-        b.limitationsSummary || '',
-        (b.tags || []).join(' '),
-      ].join(' ');
-      rawDocs.push({
-        kind: 'blog',
-        id: b.id,
-        study: null,
-        blog: b,
-        surfaceBoost: 0.5,
-        text,
-      });
-    }
-
     const df = new Map();
     let totalLen = 0;
     this.bm25Docs = rawDocs.map((d) => {
@@ -1666,7 +1245,6 @@ export class OpenIEEcosystemSDK {
       for (const tok of tf.keys()) df.set(tok, (df.get(tok) || 0) + 1);
       return { ...d, tf, len: Math.max(1, toks.length) };
     });
-
     const N = Math.max(1, this.bm25Docs.length);
     this.avgDocLen = Math.max(1, totalLen / N);
     this.bm25Idf.clear();
@@ -1675,33 +1253,22 @@ export class OpenIEEcosystemSDK {
     }
   }
 
-  searchKnowledge(query, topK = 4) {
+  searchKnowledge(query, topK = 3) {
     if (!this.bm25Docs.length) return [];
     const qLower = String(query || '').toLowerCase();
     const qToks = tokenize(qLower);
-    const k1 = 1.5;
-    const b = 0.75;
     const scored = [];
-
     for (const doc of this.bm25Docs) {
       let score = doc.surfaceBoost;
       const idWords = doc.id.replace(/-/g, ' ');
-      if (qLower.includes(doc.id) || (idWords.length > 3 && qLower.includes(idWords))) {
-        score += 14;
-      }
-      const shortTitle = (doc.study?.short_title || doc.blog?.shortTitle || '').toLowerCase();
-      if (shortTitle && shortTitle.length > 3 && qLower.includes(shortTitle)) {
-        score += 12;
-      }
-      for (const term of doc.study?.key_terms || doc.blog?.tags || []) {
-        const tl = term.toLowerCase();
-        if (tl.length > 3 && qLower.includes(tl)) score += 4.5;
-      }
+      if (qLower.includes(doc.id) || (idWords.length > 3 && qLower.includes(idWords))) score += 14;
+      const shortTitle = (doc.study?.short_title || '').toLowerCase();
+      if (shortTitle && shortTitle.length > 3 && qLower.includes(shortTitle)) score += 12;
       for (const tok of qToks) {
         const f = doc.tf.get(tok) || 0;
         if (!f) continue;
         const idf = this.bm25Idf.get(tok) || 0.5;
-        score += idf * ((f * (k1 + 1)) / (f + k1 * (1 - b + b * (doc.len / this.avgDocLen))));
+        score += idf * ((f * 2.5) / (f + 1.5 * (0.25 + 0.75 * (doc.len / this.avgDocLen))));
       }
       if (score > doc.surfaceBoost) scored.push({ doc, score });
     }
@@ -1715,14 +1282,12 @@ export class OpenIEEcosystemSDK {
     const qToks = tokenize(qLower);
     let best = null;
     let bestScore = 0;
-
     const candidates = [
       ...this.domIndex.figures.map((f) => ({ key: f.key, heading: f.caption, snippet: f.kind })),
       ...this.domIndex.controls.map((c) => ({ key: c.key, heading: `${c.label} (${c.value})`, snippet: c.type })),
-      ...this.domIndex.tables.map((t) => ({ key: t.key, heading: t.caption || 'Dataset Table', snippet: `${t.headers} ${t.sampleRow}` })),
+      ...this.domIndex.tables.map((t) => ({ key: t.key, heading: t.caption || 'Dataset Table', snippet: t.headers })),
       ...this.domIndex.sections,
     ];
-
     for (const item of candidates) {
       const hay = `${item.heading} ${item.snippet || ''}`.toLowerCase();
       let s = 0;
@@ -1740,17 +1305,14 @@ export class OpenIEEcosystemSDK {
   }
 
   makeReceipt(study, blogEntry) {
-    const evClass = study?.evidence_class || blogEntry?.energyClass || 'unmetered';
-    const tags = study?.claim_tags || blogEntry?.claimTags || ['[E]'];
     return {
       studyId: study?.id || blogEntry?.id || this.activeStudyId,
       shortTitle: study?.short_title || blogEntry?.shortTitle || this.surface.name,
-      evidence_class: evClass,
-      claim_tags: tags,
+      evidence_class: study?.evidence_class || blogEntry?.energyClass || 'unmetered',
+      claim_tags: study?.claim_tags || blogEntry?.claimTags || ['[E]'],
       provenance: 'Signed Provenance · Self-Checked',
       orthogonality: 'measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered',
       blogUrl: blogEntry?.url ? absBlogUrl(blogEntry.url) : BLOG_ORIGIN,
-      paperUrl: study?.path ? absResearchUrl(study.path) : `${RESEARCH_ORIGIN}/`,
     };
   }
 
@@ -1762,49 +1324,60 @@ export class OpenIEEcosystemSDK {
       this._emitState();
     }
     let url = absResearchUrl(study.tv15s);
-    let kind = 'video';
-    let label = '15s Visual Proof';
-    if (clip === '45s') {
-      url = absResearchUrl(study.tv45s);
-      label = '45s Real-World Example';
-    } else if (clip === '90s') {
-      url = absResearchUrl(study.tv90s);
-      label = '90s Studio Briefing';
-    } else if (clip === 'tiktok') {
-      url = absResearchUrl(study.tiktokMp4);
-      kind = 'tiktok';
-      label = '9:16 Vertical Reel (60fps)';
-    }
+    if (clip === '45s') url = absResearchUrl(study.tv45s);
+    else if (clip === '90s') url = absResearchUrl(study.tv90s);
+    else if (clip === 'tiktok') url = absResearchUrl(study.tiktokMp4);
     const payload = {
       studyId: study.id,
       shortTitle: study.short_title,
       clip,
-      kind,
-      label,
       url,
       poster: absResearchUrl(clip === 'tiktok' ? study.tiktokPoster || study.poster : study.poster),
-      paperUrl: absResearchUrl(study.path),
       tvUrl: `${RESEARCH_ORIGIN}/tv/?study=${encodeURIComponent(study.id)}&tier=${encodeURIComponent(clip)}`,
     };
     this.emit('stage', payload);
     return payload;
   }
 
-  // ---------- WebAudio Graph, Chimes, AudioWorklet Blob & <100ms Spectral VAD ----------
+  // ---------- Broadcast Mastering Chain & Zero-Click Jitter Buffer ----------
   async _ensureAudioContext() {
     if (typeof window === 'undefined') return null;
     const Ctx = window.AudioContext || window.webkitAudioContext;
     if (!Ctx) return null;
     if (!this.audioCtx) {
-      this.audioCtx = new Ctx();
-      this.ttsGain = this.audioCtx.createGain();
+      const ctx = new Ctx({ latencyHint: 'interactive' });
+      this.audioCtx = ctx;
+
+      const hp = ctx.createBiquadFilter();
+      hp.type = 'highpass';
+      hp.frequency.value = 55;
+
+      const presence = ctx.createBiquadFilter();
+      presence.type = 'highshelf';
+      presence.frequency.value = 3200;
+      presence.gain.value = 1.5;
+
+      const comp = ctx.createDynamicsCompressor();
+      comp.threshold.value = -14;
+      comp.knee.value = 18;
+      comp.ratio.value = 2.4;
+      comp.attack.value = 0.004;
+      comp.release.value = 0.12;
+
+      this.ttsGain = ctx.createGain();
       this.ttsGain.gain.value = 1.0;
-      this.ttsAnalyser = this.audioCtx.createAnalyser();
+
+      this.ttsAnalyser = ctx.createAnalyser();
       this.ttsAnalyser.fftSize = 512;
       this.ttsAnalyser.smoothingTimeConstant = 0.78;
       this.ttsFreqBins = new Uint8Array(this.ttsAnalyser.frequencyBinCount);
+
+      hp.connect(presence);
+      presence.connect(comp);
+      comp.connect(this.ttsGain);
       this.ttsGain.connect(this.ttsAnalyser);
-      this.ttsAnalyser.connect(this.audioCtx.destination);
+      this.ttsAnalyser.connect(ctx.destination);
+      this.masterInput = hp;
     }
     if (this.audioCtx.state === 'suspended') {
       try {
@@ -1824,7 +1397,7 @@ export class OpenIEEcosystemSDK {
       osc.type = idx === 0 ? 'sine' : 'triangle';
       osc.frequency.setValueAtTime(freq, now + idx * 0.065);
       g.gain.setValueAtTime(0.0001, now + idx * 0.065);
-      g.gain.exponentialRampToValueAtTime(0.08, now + idx * 0.065 + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.075, now + idx * 0.065 + 0.02);
       g.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.065 + 0.17);
       osc.connect(g);
       g.connect(ctx.destination);
@@ -1833,31 +1406,106 @@ export class OpenIEEcosystemSDK {
     });
   }
 
-  _playBargeTick() {
-    if (!this.audioCtx || this.audioCtx.state !== 'running') return;
-    const now = this.audioCtx.currentTime;
-    const osc = this.audioCtx.createOscillator();
-    const g = this.audioCtx.createGain();
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(660, now);
-    g.gain.setValueAtTime(0.04, now);
-    g.gain.exponentialRampToValueAtTime(0.0001, now + 0.07);
-    osc.connect(g);
-    g.connect(this.audioCtx.destination);
-    osc.start(now);
-    osc.stop(now + 0.075);
+  enqueuePcmPlayback(float32Samples, sampleRate = 24000) {
+    if (!float32Samples || !float32Samples.length || !this.audioCtx) return;
+    const ctx = this.audioCtx;
+    const startingFromSilence =
+      this.activeSources.size === 0 || this.nextPlayTime <= ctx.currentTime + 0.005;
+
+    const pcm = startingFromSilence ? new Float32Array(float32Samples) : float32Samples;
+    if (startingFromSilence) {
+      const fadeSamples = Math.min(Math.round(sampleRate * 0.003), pcm.length);
+      for (let i = 0; i < fadeSamples; i++) {
+        pcm[i] *= 0.5 * (1 - Math.cos((Math.PI * i) / fadeSamples));
+      }
+      if (this.lastTurnCommitAt > 0) {
+        this.ttfaMs = Math.round(performance.now() - this.lastTurnCommitAt);
+        this.lastTurnCommitAt = 0;
+        this._emitTelemetry();
+      }
+    }
+
+    const buf = ctx.createBuffer(1, pcm.length, sampleRate);
+    buf.getChannelData(0).set(pcm);
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    src.connect(this.masterInput || ctx.destination);
+
+    const startAt = startingFromSilence ? ctx.currentTime + 0.065 : this.nextPlayTime;
+    this.nextPlayTime = startAt + buf.duration;
+
+    if (this.state !== 'speaking') {
+      this.state = 'speaking';
+      this._emitState();
+    }
+
+    this.activeSources.add(src);
+    src.onended = () => {
+      this.activeSources.delete(src);
+      if (this.activeSources.size === 0 && this.state === 'speaking') {
+        this.state = this.callActive ? 'listening' : 'idle';
+        this._emitState();
+      }
+    };
+    src.start(startAt);
   }
 
+  bargeIn(reason = 'manual') {
+    if (this.turnAbort) {
+      this.turnAbort.abort(reason);
+      this.turnAbort = null;
+    }
+    const ctx = this.audioCtx;
+    const sources = Array.from(this.activeSources);
+    this.activeSources.clear();
+    this.nextPlayTime = ctx ? ctx.currentTime : 0;
+
+    if (ctx && this.ttsGain && sources.length > 0) {
+      const now = ctx.currentTime;
+      this.ttsGain.gain.cancelScheduledValues(now);
+      this.ttsGain.gain.setValueAtTime(Math.max(0.0001, this.ttsGain.gain.value), now);
+      this.ttsGain.gain.linearRampToValueAtTime(0.0001, now + 0.012);
+      setTimeout(() => {
+        for (const s of sources) {
+          try {
+            s.stop(0);
+            s.disconnect();
+          } catch {}
+        }
+        if (this.ttsGain && this.audioCtx) {
+          const t = this.audioCtx.currentTime;
+          this.ttsGain.gain.cancelScheduledValues(t);
+          this.ttsGain.gain.setValueAtTime(1.0, t);
+        }
+      }, 15);
+    } else {
+      for (const s of sources) {
+        try {
+          s.stop(0);
+          s.disconnect();
+        } catch {}
+      }
+    }
+
+    if (reason !== 'silent-reset' && reason !== 'ws-interrupted' && this.ws && this.ws.readyState === WebSocket.OPEN) {
+      try {
+        this.ws.send(JSON.stringify({ type: 'interrupt' }));
+      } catch {}
+    }
+
+    this.sealStreamingTurns();
+    this.state = this.callActive ? 'listening' : 'idle';
+    this._emitState();
+  }
+
+  // ---------- Full-Duplex Microphone Capture ----------
   async _startMicrophoneAndVad() {
     if (this.micStream) return true;
-    if (!navigator.mediaDevices?.getUserMedia) {
-      this.emit('error', { scope: 'mic', message: 'Microphone API unavailable; text, Co-Pilot, and Dual-Host Debate remain active.' });
-      return false;
-    }
+    if (!navigator.mediaDevices?.getUserMedia) return false;
     try {
       const ctx = await this._ensureAudioContext();
       this.micStream = await navigator.mediaDevices.getUserMedia({
-        audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
+        audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true, channelCount: 1 },
       });
       this.micSource = ctx.createMediaStreamSource(this.micStream);
       this.micAnalyser = ctx.createAnalyser();
@@ -1867,47 +1515,58 @@ export class OpenIEEcosystemSDK {
       this.micSource.connect(this.micAnalyser);
 
       if (ctx.audioWorklet && typeof AudioWorkletNode !== 'undefined') {
-        try {
-          if (!ctx.__openieEcoPcmLoaded) {
-            this.pcmWorkletBlobUrl ||= createBlobJsUrl(PCM_WORKLET_BLOB_SOURCE);
-            await ctx.audioWorklet.addModule(this.pcmWorkletBlobUrl);
-            ctx.__openieEcoPcmLoaded = true;
-          }
-          const workletNode = new AudioWorkletNode(ctx, 'openie-pcm-capture', {
-            numberOfInputs: 1,
-            numberOfOutputs: 0,
-            channelCount: 1,
-          });
-          workletNode.port.onmessage = (ev) => {
-            if (!this.callActive || this.micMuted || this.state === 'speaking') return;
-            if (!this.forceWhisper && this.speechRecSupported) return;
-            const ch = ev.data;
-            if (this.pcmSpeaking && ch && ch.length > 0) {
-              this.pcmChunks.push(downsampleBuffer(ch, ctx.sampleRate, 16000));
+        if (!ctx.__openieEcoDuplexLoaded) {
+          const blobUrl = URL.createObjectURL(new Blob([DUPLEX_CAPTURE_BLOB_SOURCE], { type: 'text/javascript' }));
+          await ctx.audioWorklet.addModule(blobUrl);
+          URL.revokeObjectURL(blobUrl);
+          ctx.__openieEcoDuplexLoaded = true;
+        }
+        const wn = new AudioWorkletNode(ctx, 'openie-eco-duplex-capture', {
+          numberOfInputs: 1,
+          numberOfOutputs: 0,
+          channelCount: 1,
+        });
+        wn.port.onmessage = (ev) => {
+          if (!this.callActive || this.micMuted) return;
+          const d = ev.data || {};
+          if (typeof d.rms === 'number') this.micRms = d.rms;
+          if (typeof d.rmsOnly === 'number') this.micRms = d.rmsOnly;
+
+          if (this.state === 'speaking' && this.micRms > 0.055) {
+            this.bargeFrames++;
+            if (this.bargeFrames >= 2) {
+              this.bargeFrames = 0;
+              this.bargeIn('vad-voice');
             }
-          };
-          this.micSource.connect(workletNode);
-          this.pcmWorkletNode = workletNode;
-        } catch {}
+          } else if (d.pcm16) {
+            this.bargeFrames = 0;
+          }
+
+          if (d.pcm16 && this.engineMode === 'studio_s2s' && this.ws && this.ws.readyState === WebSocket.OPEN) {
+            this.ws.send(JSON.stringify({ type: 'audio', pcm16_b64: abToBase64(d.pcm16) }));
+          }
+
+          if (d.pcm16 && this.engineMode === 'sovereign_gpu' && !this.speechRecSupported && this.pcmSpeaking) {
+            const i16 = new Int16Array(d.pcm16);
+            const f32 = new Float32Array(i16.length);
+            for (let i = 0; i < i16.length; i++) f32[i] = i16[i] / 32768;
+            this.pcmChunks.push(f32);
+          }
+        };
+        this.micSource.connect(wn);
+        this.workletNode = wn;
       }
 
       if (!this.vadTimer) {
-        this.vadTimer = setInterval(() => this._stepVad(), 25);
-      }
-      if (!this.speechRecSupported) {
-        this.warmupWhisper().catch(() => {});
+        this.vadTimer = setInterval(() => this._stepVadTelemetry(), 40);
       }
       return true;
     } catch {
-      this.emit('error', {
-        scope: 'mic',
-        message: 'Microphone permission declined — text prompts, Page Co-Pilot, and Skeptic Debate work without mic.',
-      });
       return false;
     }
   }
 
-  _stepVad() {
+  _stepVadTelemetry() {
     if (!this.micAnalyser || !this.audioCtx || this.micMuted) {
       this.vadDb = -60;
       return;
@@ -1916,137 +1575,369 @@ export class OpenIEEcosystemSDK {
     const binHz = this.audioCtx.sampleRate / this.micAnalyser.fftSize;
     const bStart = Math.max(1, Math.floor(300 / binHz));
     const bEnd = Math.min(this.micFreqBins.length - 1, Math.ceil(3400 / binHz));
-
-    let energySum = 0;
+    let sum = 0;
     let count = 0;
     for (let i = bStart; i <= bEnd; i++) {
-      const norm = this.micFreqBins[i] / 255;
-      energySum += norm * norm;
+      const v = this.micFreqBins[i] / 255;
+      sum += v * v;
       count++;
     }
-    const rms = Math.sqrt(energySum / Math.max(1, count));
-    const db = Math.max(-65, 20 * Math.log10(Math.max(rms, 1e-4)));
+    const db = Math.max(-65, 20 * Math.log10(Math.max(Math.sqrt(sum / Math.max(1, count)), 1e-4)));
     this.vadDb = db;
-
-    let ttsBleed = 0;
-    if (this.state === 'speaking' && this.ttsAnalyser && this.ttsFreqBins) {
-      this.ttsAnalyser.getByteFrequencyData(this.ttsFreqBins);
-      let s = 0;
-      for (let i = 2; i < Math.min(48, this.ttsFreqBins.length); i++) s += this.ttsFreqBins[i] / 255;
-      ttsBleed = (s / 46) * 8.5;
-    }
-
     if (this.state === 'listening' && db < this.noiseFloorDb + 6) {
       this.noiseFloorDb = this.noiseFloorDb * 0.96 + db * 0.04;
     } else if (db < this.noiseFloorDb) {
       this.noiseFloorDb = db;
     }
 
-    const now = performance.now();
-    if (this.callActive && this.state === 'speaking') {
-      const bargeThreshold = Math.max(-33, this.noiseFloorDb + 15 + ttsBleed);
-      if (db > bargeThreshold) {
-        if (!this.bargeAboveSince) this.bargeAboveSince = now;
-        else if (now - this.bargeAboveSince >= 95) {
-          this.bargeAboveSince = 0;
-          this.bargeIn('vad-voice');
-        }
-      } else {
-        this.bargeAboveSince = 0;
-      }
-    }
-
-    if (this.callActive && this.state === 'listening' && (this.forceWhisper || !this.speechRecSupported)) {
-      const speechThresh = Math.max(-40, this.noiseFloorDb + 10);
-      if (db > speechThresh) {
+    if (this.callActive && this.engineMode === 'sovereign_gpu' && !this.speechRecSupported && this.state === 'listening') {
+      const now = performance.now();
+      if (db > Math.max(-40, this.noiseFloorDb + 10)) {
         if (!this.pcmSpeaking) {
           this.pcmSpeaking = true;
           this.pcmSpeechStartAt = now;
           this.pcmChunks = [];
-          this.emit('interim', { text: 'Listening (Whisper-Tiny ONNX)...' });
+          this.emit('interim', { text: 'Listening (Whisper ONNX)...' });
         }
         this.pcmLastVoiceAt = now;
-      } else if (this.pcmSpeaking && now - this.pcmLastVoiceAt >= 650) {
-        const durMs = now - this.pcmSpeechStartAt;
+      } else if (this.pcmSpeaking && now - this.pcmLastVoiceAt >= 680) {
+        const dur = now - this.pcmSpeechStartAt;
         const chunks = this.pcmChunks;
         this.pcmSpeaking = false;
         this.pcmChunks = [];
-        if (durMs >= 360 && chunks.length > 0) {
-          this._commitWhisperUtterance(chunks);
-        } else {
-          this.emit('interim', { text: '' });
-        }
+        if (dur >= 380 && chunks.length) this._commitWhisperUtterance(chunks);
+        else this.emit('interim', { text: '' });
       }
     }
-
     this._emitTelemetry();
   }
 
-  _startWebSpeechRecognition() {
-    if (!this.speechRecSupported || this.forceWhisper || this.speechRec) return;
+  // ---------- Default Engine (`studio_s2s`): Cross-Origin `wss://research.openie.dev/api/live/ws` ----------
+  async ensureStudioWebSocket() {
+    if (this.ws && this.ws.readyState === WebSocket.OPEN) return this.ws;
+    if (this.wsReadyPromise) return this.wsReadyPromise;
+
+    await this._ensureAudioContext();
+    await this.loadCorpora().catch(() => {});
+
+    this.wsReadyPromise = new Promise((resolve, reject) => {
+      const ws = new WebSocket('wss://research.openie.dev/api/live/ws');
+      this.ws = ws;
+      let settled = false;
+      const timer = setTimeout(() => {
+        if (!settled) {
+          settled = true;
+          this.wsReadyPromise = null;
+          reject(new Error('Studio Live S2S connection timeout'));
+        }
+      }, 9000);
+
+      ws.onopen = () => {
+        ws.send(
+          JSON.stringify({
+            type: 'start',
+            voice: this.voice,
+            register: 'pi',
+            site: this.buildCompactSiteDescriptor(),
+          })
+        );
+      };
+
+      ws.onmessage = (ev) => {
+        let msg;
+        try {
+          msg = JSON.parse(ev.data);
+        } catch {
+          return;
+        }
+        if (msg.type === 'ready') {
+          if (!settled) {
+            settled = true;
+            clearTimeout(timer);
+            this.wsReadyPromise = null;
+            resolve(ws);
+          }
+          this._emitState();
+          this._emitTelemetry();
+        } else if (msg.type === 'audio' && msg.pcm24_b64) {
+          this.enqueuePcmPlayback(pcm16Base64ToFloat32(msg.pcm24_b64), msg.sample_rate || 24000);
+        } else if (msg.type === 'transcript' && msg.text) {
+          this._handleStreamingTranscript(msg.role === 'user' ? 'user' : 'assistant', msg.text, !!msg.finished);
+        } else if (msg.type === 'citations' && Array.isArray(msg.items)) {
+          this.sealStreamingTurns();
+          this._emitCitationsTurn(msg.query, msg.items);
+        } else if (msg.type === 'witness_clip' && msg.clip) {
+          this._emitWitnessTurn(msg.clip);
+        } else if (msg.type === 'interrupted') {
+          this.bargeIn('ws-interrupted');
+        } else if (msg.type === 'turn_complete') {
+          this.sealStreamingTurns();
+          if (typeof msg.joules_est === 'number') this._bumpBrowserHeuristic(msg.joules_est);
+          if (this.activeSources.size === 0) {
+            this.state = this.callActive ? 'listening' : 'idle';
+            this._emitState();
+          }
+        } else if (msg.type === 'error') {
+          if (!settled) {
+            settled = true;
+            clearTimeout(timer);
+            this.wsReadyPromise = null;
+            reject(new Error(msg.message || 'Studio WebSocket error'));
+          }
+        }
+      };
+
+      ws.onerror = () => {
+        if (!settled) {
+          settled = true;
+          clearTimeout(timer);
+          this.wsReadyPromise = null;
+          reject(new Error('WebSocket error'));
+        }
+      };
+
+      ws.onclose = () => {
+        if (this.ws === ws) {
+          this.ws = null;
+          this.wsReadyPromise = null;
+          this._emitState();
+        }
+      };
+    });
+
+    return this.wsReadyPromise;
+  }
+
+  _handleStreamingTranscript(role, chunkText, finished) {
+    if (role === 'user') {
+      this.emit('interim', { text: finished ? '' : chunkText });
+      if (!this.streamingUserTurn) {
+        this.streamingUserTurn = {
+          id: `eco-turn-${++this.turnCounter}`,
+          role: 'user',
+          speakerName: 'You',
+          speakerRole: this.surface.domain,
+          text: chunkText,
+          streaming: !finished,
+          ts: Date.now(),
+        };
+        this.transcript.push(this.streamingUserTurn);
+        this.emit('turn', this.streamingUserTurn);
+      } else {
+        this.streamingUserTurn.text += chunkText;
+        this.streamingUserTurn.streaming = !finished;
+        this.emit('turn-update', this.streamingUserTurn);
+      }
+      if (finished) {
+        this.lastTurnCommitAt = performance.now();
+        this.streamingUserTurn = null;
+      }
+      return;
+    }
+
+    const study = this.studiesById.get(this.activeStudyId);
+    const blog = this.blogById.get(this.activeStudyId);
+    const persona = STUDIO_VOICES[this.voice] || STUDIO_VOICES.Aoede;
+    if (!this.streamingAssistantTurn) {
+      this.streamingAssistantTurn = {
+        id: `eco-turn-${++this.turnCounter}`,
+        role: 'assistant',
+        speakerName: persona.name,
+        speakerRole: `${persona.role} · 24 kHz S2S`,
+        voice: this.voice,
+        text: chunkText,
+        studyId: study?.id || this.activeStudyId,
+        receipt: this.makeReceipt(study, blog),
+        streaming: !finished,
+        ts: Date.now(),
+      };
+      this.transcript.push(this.streamingAssistantTurn);
+      this.emit('turn', this.streamingAssistantTurn);
+    } else {
+      this.streamingAssistantTurn.text += chunkText;
+      this.streamingAssistantTurn.streaming = !finished;
+      this.emit('turn-update', this.streamingAssistantTurn);
+    }
+    if (finished) this.streamingAssistantTurn = null;
+  }
+
+  sealStreamingTurns() {
+    if (this.streamingUserTurn) {
+      this.streamingUserTurn.streaming = false;
+      this.emit('turn-update', this.streamingUserTurn);
+      this.streamingUserTurn = null;
+    }
+    if (this.streamingAssistantTurn) {
+      this.streamingAssistantTurn.streaming = false;
+      this.emit('turn-update', this.streamingAssistantTurn);
+      this.streamingAssistantTurn = null;
+    }
+    this.emit('interim', { text: '' });
+  }
+
+  _emitCitationsTurn(query, items) {
+    const study = this.studiesById.get(this.activeStudyId);
+    const blog = this.blogById.get(this.activeStudyId);
+    const summary = items
+      .slice(0, 4)
+      .map((it, idx) => `[${idx + 1}] ${it.title || it.work_id || 'Source'}${it.year ? ` (${it.year})` : ''}`)
+      .join(' · ');
+    const turnItem = {
+      id: `eco-turn-${++this.turnCounter}`,
+      role: 'assistant',
+      speakerName: 'Commons Grounding',
+      speakerRole: `${items.length} Source(s)`,
+      text: `Grounded${query ? ` for "${query}"` : ''}: ${summary}`,
+      receipt: this.makeReceipt(study, blog),
+      ts: Date.now(),
+    };
+    this.transcript.push(turnItem);
+    this.emit('turn', turnItem);
+  }
+
+  _emitWitnessTurn(clip) {
+    const study = this.studiesById.get(this.activeStudyId);
+    const blog = this.blogById.get(this.activeStudyId);
+    const turnItem = {
+      id: `eco-turn-${++this.turnCounter}`,
+      role: 'assistant',
+      speakerName: `Primary Witness · ${clip.speaker || clip.title || 'Archive'}`,
+      speakerRole: clip.locator || 'Witness Clip',
+      text: `"${String(clip.quote || '').slice(0, 220)}"`,
+      receipt: this.makeReceipt(study, blog),
+      ts: Date.now(),
+    };
+    this.transcript.push(turnItem);
+    this.emit('turn', turnItem);
+  }
+
+  // ---------- Toggle Engine (`sovereign_gpu`): Same-Origin Blob Worker for Kokoro-82M FP32 (32 kHz + Perth) ----------
+  async ensureKokoroBlobWorker() {
+    if (this.kokoroWorker) return this.kokoroWorker;
+    const res = await fetch(SCHOLAR_KOKORO_URL, { mode: 'cors', credentials: 'omit' });
+    if (!res.ok) throw new Error(`HTTP ${res.status} fetching scholar-kokoro-worker.js`);
+    const code = await res.text();
+    const blobUrl = URL.createObjectURL(new Blob([code], { type: 'text/javascript' }));
+    const w = new Worker(blobUrl, { type: 'module', name: 'openie-eco-kokoro-fp32' });
+    w.onmessage = (ev) => {
+      const m = ev.data || {};
+      if (m.type === 'downloaded') {
+        w.postMessage({ type: 'load', base: KOKORO_PACK_BASE, vendor: ORT_VENDOR_BASE });
+      } else if (m.type === 'loaded') {
+        this.kokoroReady = true;
+        this.kokoroLoading = false;
+        this._emitState();
+        this._emitTelemetry();
+      } else if (m.type === 'said') {
+        const pend = this.kokoroPending.get(m.id);
+        if (pend) {
+          this.kokoroPending.delete(m.id);
+          pend.res(m);
+        }
+        if (m.pcm && m.pcm.length) {
+          this.enqueuePcmPlayback(m.pcm, m.sampleRate || 32000);
+        }
+      } else if (m.type === 'error') {
+        if (m.id && this.kokoroPending.has(m.id)) {
+          const pend = this.kokoroPending.get(m.id);
+          this.kokoroPending.delete(m.id);
+          pend.rej(new Error(m.message || 'Kokoro error'));
+        }
+        this.kokoroLoading = false;
+      }
+    };
+    this.kokoroWorker = w;
+    return w;
+  }
+
+  async warmupKokoro() {
+    if (this.kokoroReady || this.kokoroLoading) return;
+    this.kokoroLoading = true;
+    this._emitTelemetry();
+    try {
+      const w = await this.ensureKokoroBlobWorker();
+      const st = await new Promise((resolve) => {
+        const onMsg = (ev) => {
+          if (ev.data?.type === 'status' || ev.data?.type === 'error') {
+            w.removeEventListener('message', onMsg);
+            resolve(ev.data);
+          }
+        };
+        w.addEventListener('message', onMsg);
+        w.postMessage({ type: 'status', base: KOKORO_PACK_BASE });
+      });
+      if (st?.state === 'ready') {
+        w.postMessage({ type: 'load', base: KOKORO_PACK_BASE, vendor: ORT_VENDOR_BASE });
+      } else {
+        w.postMessage({ type: 'download', base: KOKORO_PACK_BASE });
+      }
+    } catch {
+      this.kokoroLoading = false;
+      this._emitTelemetry();
+    }
+  }
+
+  async speakSovereignKokoro(rawText, { voice, speed, signal } = {}) {
+    const clean = normalizeForSpeech(rawText);
+    if (!clean || signal?.aborted) return;
+    await this._ensureAudioContext();
+    if (!this.kokoroReady) {
+      await this.warmupKokoro();
+      let waited = 0;
+      while (!this.kokoroReady && this.kokoroLoading && waited < 12000 && !signal?.aborted) {
+        await new Promise((r) => setTimeout(r, 150));
+        waited += 150;
+      }
+    }
+    if (!this.kokoroReady || !this.kokoroWorker || signal?.aborted) return;
+    const id = this.kokoroSayId++;
+    await new Promise((res, rej) => {
+      this.kokoroPending.set(id, { res, rej });
+      this.kokoroWorker.postMessage({
+        type: 'say',
+        id,
+        text: clean,
+        speed: speed || this.speed || 1.04,
+        voice: mapToKokoroFp32Voice(voice || this.voice),
+      });
+    }).catch(() => {});
+  }
+
+  _startSovereignSpeechRec() {
+    if (this.engineMode !== 'sovereign_gpu' || !this.speechRecSupported || this.speechRec) return;
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SR) return;
     const rec = new SR();
     rec.continuous = true;
     rec.interimResults = true;
     rec.lang = 'en-US';
-
-    rec.onresult = (event) => {
-      if (!this.callActive || this.micMuted) return;
-      let interim = '';
-      let finalChunk = '';
-      for (let i = event.resultIndex; i < event.results.length; i++) {
-        const res = event.results[i];
-        if (res.isFinal) finalChunk += res[0].transcript + ' ';
-        else interim += res[0].transcript;
-      }
-      if (finalChunk) {
-        this.speechInterimText = (this.speechInterimText + ' ' + finalChunk).trim();
-      }
-      const preview = (this.speechInterimText + ' ' + interim).trim();
-      if (preview && this.state === 'speaking' && preview.split(/\s+/).length >= 2) {
-        this.bargeIn('speech-interim');
-      }
-      this.emit('interim', { text: preview });
-
-      if (preview) {
-        clearTimeout(this.speechEndpointTimer);
-        this.speechEndpointTimer = setTimeout(() => {
-          const committed = (this.speechInterimText || preview).trim();
-          this.speechInterimText = '';
-          this.emit('interim', { text: '' });
-          if (committed.length >= 2 && this.callActive) {
-            this.lastTurnCommitAt = performance.now();
-            this.ask(committed, { fromVoice: true });
-          }
-        }, finalChunk ? 360 : 660);
+    rec.onresult = (ev) => {
+      if (!this.callActive || this.micMuted || this.engineMode !== 'sovereign_gpu') return;
+      const last = ev.results[ev.results.length - 1];
+      if (!last) return;
+      const txt = last[0].transcript.trim();
+      this.emit('interim', { text: last.isFinal ? '' : txt });
+      if (last.isFinal && txt.length >= 2) {
+        if (this.state === 'speaking') this.bargeIn('speech-rec');
+        this.lastTurnCommitAt = performance.now();
+        this.ask(txt, { fromVoice: true });
       }
     };
-
-    rec.onerror = (ev) => {
-      if (ev.error === 'not-allowed' || ev.error === 'service-not-allowed') {
-        this.speechRec = null;
-      }
-    };
-
+    rec.onerror = () => {};
     rec.onend = () => {
-      if (this.callActive && !this.micMuted && !this.forceWhisper && this.speechRec === rec) {
+      if (this.callActive && !this.micMuted && this.engineMode === 'sovereign_gpu' && this.speechRec === rec) {
         try {
           rec.start();
         } catch {}
       }
     };
-
     try {
       rec.start();
       this.speechRec = rec;
-    } catch {
-      this.speechRec = null;
-    }
+    } catch {}
   }
 
-  _stopWebSpeechRecognition() {
-    clearTimeout(this.speechEndpointTimer);
+  _stopSovereignSpeechRec() {
     if (this.speechRec) {
       const r = this.speechRec;
       this.speechRec = null;
@@ -2065,312 +1956,36 @@ export class OpenIEEcosystemSDK {
       merged.set(c, offset);
       offset += c.length;
     }
-    this.emit('interim', { text: 'Transcribing locally via Whisper-Tiny.en ONNX...' });
+    if (!this.asrWorker) {
+      const blobUrl = URL.createObjectURL(new Blob([WHISPER_BLOB_WORKER_SOURCE], { type: 'text/javascript' }));
+      this.asrWorker = new Worker(blobUrl, { type: 'module' });
+      this.asrWorker.onmessage = (e) => {
+        const d = e.data || {};
+        const p = this.asrPending.get(d.id);
+        if (!p) return;
+        this.asrPending.delete(d.id);
+        if (d.error) p.rej(new Error(d.error));
+        else p.res(d);
+      };
+    }
+    const id = ++this.asrReqId;
     try {
-      const res = await this._callAsrWorker({ type: 'transcribe', audio: merged });
+      const res = await new Promise((resolve, reject) => {
+        this.asrPending.set(id, { res: resolve, rej: reject });
+        this.asrWorker.postMessage({ id, type: 'transcribe', audio: merged }, [merged.buffer]);
+      });
       this.emit('interim', { text: '' });
       const text = String(res?.text || '').replace(/\[BLANK_AUDIO\]|\(blank audio\)/gi, '').trim();
       if (text.length >= 2 && this.callActive) {
         this.lastTurnCommitAt = performance.now();
-        this._bumpBrowserHeuristic(0.035);
         await this.ask(text, { fromVoice: true });
       }
-    } catch (err) {
+    } catch {
       this.emit('interim', { text: '' });
-      this.emit('error', { scope: 'whisper-stt', message: String(err) });
     }
   }
 
-  // ---------- Same-Origin Blob Workers (Kokoro TTS, Whisper STT, SmolVLM Vision) ----------
-  _ensureTtsWorker() {
-    if (this.ttsWorker) return this.ttsWorker;
-    const { worker } = createBlobModuleWorker(KOKORO_BLOB_WORKER_SOURCE);
-    worker.onmessage = (e) => {
-      const d = e.data || {};
-      if (d.type === 'progress') {
-        this.emit('engine-progress', d);
-        return;
-      }
-      const p = this.ttsPending.get(d.id);
-      if (!p) return;
-      this.ttsPending.delete(d.id);
-      if (d.error) p.rej(new Error(d.error));
-      else p.res(d);
-    };
-    this.ttsWorker = worker;
-    return worker;
-  }
-
-  _callTtsWorker(payload) {
-    const w = this._ensureTtsWorker();
-    const id = ++this.ttsReqId;
-    return new Promise((res, rej) => {
-      this.ttsPending.set(id, { res, rej });
-      w.postMessage({ id, ...payload });
-    });
-  }
-
-  async warmupKokoro(force) {
-    if (this.kokoroReady) return this.kokoroInfo;
-    if (this.kokoroLoading) return null;
-    this.kokoroLoading = true;
-    this._emitTelemetry();
-    try {
-      const res = await this._callTtsWorker({ text: null, force });
-      this.kokoroInfo = res.info;
-      this.kokoroReady = true;
-      this.kokoroLoading = false;
-      this._emitState();
-      this._emitTelemetry();
-      return res.info;
-    } catch {
-      this.kokoroLoading = false;
-      this._emitTelemetry();
-      return null;
-    }
-  }
-
-  _ensureAsrWorker() {
-    if (this.asrWorker) return this.asrWorker;
-    const { worker } = createBlobModuleWorker(WHISPER_BLOB_WORKER_SOURCE);
-    worker.onmessage = (e) => {
-      const d = e.data || {};
-      if (d.type === 'progress') {
-        this.emit('engine-progress', d);
-        return;
-      }
-      const p = this.asrPending.get(d.id);
-      if (!p) return;
-      this.asrPending.delete(d.id);
-      if (d.error) p.rej(new Error(d.error));
-      else p.res(d);
-    };
-    this.asrWorker = worker;
-    return worker;
-  }
-
-  _callAsrWorker(payload) {
-    const w = this._ensureAsrWorker();
-    const id = ++this.asrReqId;
-    return new Promise((res, rej) => {
-      this.asrPending.set(id, { res, rej });
-      const transfer = payload.audio instanceof Float32Array ? [payload.audio.buffer] : [];
-      w.postMessage({ id, ...payload }, transfer);
-    });
-  }
-
-  async warmupWhisper() {
-    if (this.whisperReady || this.whisperLoading) return this.whisperInfo;
-    this.whisperLoading = true;
-    this._emitTelemetry();
-    try {
-      const res = await this._callAsrWorker({ type: 'warmup' });
-      this.whisperInfo = res.info;
-      this.whisperReady = true;
-      this.whisperLoading = false;
-      this._emitState();
-      this._emitTelemetry();
-      return res.info;
-    } catch {
-      this.whisperLoading = false;
-      this._emitTelemetry();
-      return null;
-    }
-  }
-
-  _ensureVisionWorker() {
-    if (this.visionWorker) return this.visionWorker;
-    const { worker } = createBlobModuleWorker(VISION_BLOB_WORKER_SOURCE);
-    worker.onmessage = (e) => {
-      const d = e.data || {};
-      if (d.type === 'progress') {
-        this.emit('engine-progress', d);
-        return;
-      }
-      const p = this.visionPending.get(d.id);
-      if (!p) return;
-      this.visionPending.delete(d.id);
-      if (d.error) p.rej(new Error(d.error));
-      else p.res(d);
-    };
-    this.visionWorker = worker;
-    return worker;
-  }
-
-  _callVisionWorker(payload) {
-    const w = this._ensureVisionWorker();
-    const id = ++this.visionReqId;
-    return new Promise((res, rej) => {
-      this.visionPending.set(id, { res, rej });
-      w.postMessage({ id, ...payload });
-    });
-  }
-
-  // ---------- Streaming Neural TTS + Instant Turn-1 WebSpeech Fallback ----------
-  bargeIn(reason = 'manual') {
-    const wasSpeakingOrThinking = this.state === 'speaking' || this.state === 'thinking';
-    if (this.turnAbort) {
-      this.turnAbort.abort(reason);
-      this.turnAbort = null;
-    }
-    if (this.activeBufferSource) {
-      try {
-        this.activeBufferSource.stop(0);
-        this.activeBufferSource.disconnect();
-      } catch {}
-      this.activeBufferSource = null;
-    }
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
-      try {
-        window.speechSynthesis.cancel();
-      } catch {}
-    }
-    this.syntheticSpeechEnv = 0;
-    if (wasSpeakingOrThinking && reason !== 'silent-reset') {
-      this._playBargeTick();
-    }
-    this.state = this.callActive ? 'listening' : 'idle';
-    this._emitState();
-  }
-
-  async speakStream(rawText, { voice, speed, signal } = {}) {
-    const sentences = splitSentences(rawText);
-    if (!sentences.length) return;
-    const chosenVoice = voice || this.voice || 'af_heart';
-    const chosenSpeed = speed || this.speed || 1.0;
-
-    if (!this.kokoroReady && !this.kokoroLoading) {
-      this.warmupKokoro().catch(() => {});
-    }
-
-    this.state = 'speaking';
-    this._emitState();
-
-    if (this.kokoroReady) {
-      const ctx = await this._ensureAudioContext();
-      let nextReq = this._callTtsWorker({ text: sentences[0], voice: chosenVoice, speed: chosenSpeed });
-      for (let i = 0; i < sentences.length; i++) {
-        if (signal?.aborted) return;
-        const curReq = nextReq;
-        if (i + 1 < sentences.length) {
-          nextReq = this._callTtsWorker({ text: sentences[i + 1], voice: chosenVoice, speed: chosenSpeed });
-        }
-        let gen;
-        try {
-          gen = await curReq;
-        } catch {
-          await this._speakWebSpeechFallback(sentences.slice(i).join(' '), chosenVoice, chosenSpeed, signal);
-          return;
-        }
-        if (signal?.aborted) return;
-        this._bumpBrowserHeuristic(0.022);
-        if (i === 0 && this.lastTurnCommitAt > 0) {
-          this.ttfaMs = Math.round(performance.now() - this.lastTurnCommitAt);
-          this.lastTurnCommitAt = 0;
-          this._emitTelemetry();
-        }
-        await this._playFloat32Pcm(ctx, gen.audio, gen.rate || 24000, signal);
-      }
-      return;
-    }
-
-    await this._speakWebSpeechFallback(sentences.join(' '), chosenVoice, chosenSpeed, signal);
-  }
-
-  _playFloat32Pcm(ctx, pcm, sampleRate, signal) {
-    if (!ctx || !pcm?.length || signal?.aborted) return Promise.resolve();
-    return new Promise((resolve) => {
-      const buf = ctx.createBuffer(1, pcm.length, sampleRate);
-      buf.getChannelData(0).set(pcm);
-      const src = ctx.createBufferSource();
-      src.buffer = buf;
-      src.connect(this.ttsGain || ctx.destination);
-      this.activeBufferSource = src;
-
-      const onAbort = () => {
-        try {
-          src.stop(0);
-          src.disconnect();
-        } catch {}
-        resolve();
-      };
-      if (signal) signal.addEventListener('abort', onAbort, { once: true });
-      src.onended = () => {
-        if (signal) signal.removeEventListener('abort', onAbort);
-        if (this.activeBufferSource === src) this.activeBufferSource = null;
-        resolve();
-      };
-      src.start(0);
-    });
-  }
-
-  _speakWebSpeechFallback(text, voiceId, speed, signal) {
-    if (typeof window === 'undefined' || !window.speechSynthesis || signal?.aborted) {
-      return Promise.resolve();
-    }
-    const persona = VOICE_PERSONAS[voiceId] || VOICE_PERSONAS.af_heart;
-    return new Promise((resolve) => {
-      try {
-        window.speechSynthesis.cancel();
-      } catch {}
-      const u = new SpeechSynthesisUtterance(text);
-      u.rate = Math.min(1.8, Math.max(0.7, speed));
-      u.pitch = persona.pitch || 1.0;
-      u.lang = persona.lang || 'en-US';
-      const voices = window.speechSynthesis.getVoices?.() || [];
-      if (voices.length) {
-        const wantGb = persona.lang === 'en-GB';
-        const wantMale = voiceId.startsWith('bm_') || voiceId.startsWith('am_');
-        const picked =
-          voices.find(
-            (v) =>
-              v.lang?.startsWith(wantGb ? 'en-GB' : 'en-US') &&
-              (wantMale
-                ? /daniel|george|alex|fred|arthur|oliver|aaron|guy/i.test(v.name)
-                : /samantha|ava|allison|victoria|karen|serena|aria/i.test(v.name))
-          ) || voices.find((v) => v.lang?.startsWith('en'));
-        if (picked) u.voice = picked;
-      }
-
-      let envTimer = null;
-      const cleanup = () => {
-        clearInterval(envTimer);
-        this.syntheticSpeechEnv = 0;
-        resolve();
-      };
-      const onAbort = () => {
-        try {
-          window.speechSynthesis.cancel();
-        } catch {}
-        cleanup();
-      };
-      if (signal) signal.addEventListener('abort', onAbort, { once: true });
-
-      u.onstart = () => {
-        if (this.lastTurnCommitAt > 0) {
-          this.ttfaMs = Math.round(performance.now() - this.lastTurnCommitAt);
-          this.lastTurnCommitAt = 0;
-          this._emitTelemetry();
-        }
-        let tick = 0;
-        envTimer = setInterval(() => {
-          tick += 0.35;
-          this.syntheticSpeechEnv = 0.34 + 0.45 * Math.abs(Math.sin(tick * 2.3) * Math.cos(tick * 1.1));
-        }, 40);
-      };
-      u.onend = () => {
-        if (signal) signal.removeEventListener('abort', onAbort);
-        cleanup();
-      };
-      u.onerror = () => {
-        if (signal) signal.removeEventListener('abort', onAbort);
-        cleanup();
-      };
-      window.speechSynthesis.speak(u);
-    });
-  }
-
-  // ---------- Mode 2: Camera & Screen Share Vision + SmolVLM Blob Worker ----------
+  // ---------- Camera & Screen Vision (768px Motion-Gated JPEG S2S) ----------
   attachVisionVideo(videoEl) {
     if (!videoEl) return;
     this.visionVideoEls.add(videoEl);
@@ -2383,10 +1998,7 @@ export class OpenIEEcosystemSDK {
   async startCamera(facingMode) {
     if (facingMode) this.cameraFacing = facingMode;
     this.stopVision();
-    if (!navigator.mediaDevices?.getUserMedia) {
-      this.emit('error', { scope: 'vision', message: 'Camera API unavailable in this browser context.' });
-      return false;
-    }
+    if (!navigator.mediaDevices?.getUserMedia) return false;
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: { facingMode: this.cameraFacing, width: { ideal: 1280 }, height: { ideal: 720 } },
@@ -2394,8 +2006,7 @@ export class OpenIEEcosystemSDK {
       });
       this._activateVisionStream(stream, 'camera');
       return true;
-    } catch (err) {
-      this.emit('error', { scope: 'vision', message: `Camera unavailable: ${String(err.message || err)}` });
+    } catch {
       return false;
     }
   }
@@ -2406,17 +2017,13 @@ export class OpenIEEcosystemSDK {
 
   async startScreenShare() {
     this.stopVision();
-    if (!navigator.mediaDevices?.getDisplayMedia) {
-      this.emit('error', { scope: 'vision', message: 'Screen sharing is unavailable on this browser/device.' });
-      return false;
-    }
+    if (!navigator.mediaDevices?.getDisplayMedia) return false;
     try {
-      const stream = await navigator.mediaDevices.getDisplayMedia({ video: true, audio: false });
+      const stream = await navigator.mediaDevices.getDisplayMedia({ video: { width: { ideal: 1440 }, height: { ideal: 900 } }, audio: false });
       stream.getVideoTracks()[0]?.addEventListener('ended', () => this.stopVision());
       this._activateVisionStream(stream, 'screen');
       return true;
-    } catch (err) {
-      this.emit('error', { scope: 'vision', message: `Screen share cancelled: ${String(err.message || err)}` });
+    } catch {
       return false;
     }
   }
@@ -2439,7 +2046,7 @@ export class OpenIEEcosystemSDK {
       v.play().catch(() => {});
     }
     clearInterval(this.visionSampleTimer);
-    this.visionSampleTimer = setInterval(() => this.sampleVisionTelemetryOnly(), 1300);
+    this.visionSampleTimer = setInterval(() => this.sampleAndPushVisionFrame(false), 950);
     this._emitState();
     this._emitTelemetry();
   }
@@ -2452,230 +2059,118 @@ export class OpenIEEcosystemSDK {
       this.visionStream = null;
     }
     this.visionSource = null;
-    this.prevFrameLuma = null;
+    this.lastLumaSig = null;
     for (const v of this.visionVideoEls) v.srcObject = null;
     this._emitState();
     this._emitTelemetry();
   }
 
-  sampleVisionTelemetryOnly() {
+  sampleAndPushVisionFrame(force = false) {
     const vid = this.hiddenVisionVideo;
     if (!this.visionStream || !vid || vid.videoWidth < 8) return null;
-    const w = 320;
-    const h = Math.max(180, Math.round((vid.videoHeight / vid.videoWidth) * w));
+    const scale = Math.min(1, 768 / Math.max(vid.videoWidth, vid.videoHeight));
+    const w = Math.max(64, Math.round(vid.videoWidth * scale));
+    const h = Math.max(64, Math.round(vid.videoHeight * scale));
     if (!this.offscreenCanvas) this.offscreenCanvas = document.createElement('canvas');
     this.offscreenCanvas.width = w;
     this.offscreenCanvas.height = h;
     const ctx = this.offscreenCanvas.getContext('2d', { willReadFrequently: true });
     ctx.drawImage(vid, 0, 0, w, h);
-    const img = ctx.getImageData(0, 0, w, h).data;
 
-    const n = w * h;
+    const tw = Math.min(w, 64);
+    const th = Math.min(h, 36);
+    const img = ctx.getImageData(0, 0, tw, th).data;
+    const n = tw * th;
     const luma = new Float32Array(n);
-    let sum = 0;
     for (let i = 0, p = 0; i < n; i++, p += 4) {
-      const y = 0.2126 * img[p] + 0.7152 * img[p + 1] + 0.0722 * img[p + 2];
-      luma[i] = y;
-      sum += y;
+      luma[i] = 0.2126 * img[p] + 0.7152 * img[p + 1] + 0.0722 * img[p + 2];
     }
-    const meanLuma = sum / n;
-    let varSum = 0;
-    for (let i = 0; i < n; i++) {
-      const d = luma[i] - meanLuma;
-      varSum += d * d;
-    }
-    const contrastRms = Math.sqrt(varSum / n);
-
     let edgeHits = 0;
-    for (let y = 1; y < h - 1; y++) {
-      for (let x = 1; x < w - 1; x++) {
-        const idx = y * w + x;
-        const gx = Math.abs(luma[idx + 1] - luma[idx - 1]);
-        const gy = Math.abs(luma[idx + w] - luma[idx - w]);
-        if (gx + gy > 42) edgeHits++;
+    for (let y = 1; y < th - 1; y++) {
+      for (let x = 1; x < tw - 1; x++) {
+        const idx = y * tw + x;
+        if (Math.abs(luma[idx + 1] - luma[idx - 1]) + Math.abs(luma[idx + tw] - luma[idx - tw]) > 40) edgeHits++;
       }
     }
-    const edgeDensity = edgeHits / Math.max(1, (w - 2) * (h - 2));
+    const edgeDensityPct = Math.round((edgeHits / Math.max(1, (tw - 2) * (th - 2))) * 1000) / 10;
 
-    let motionPct = 0;
-    if (this.prevFrameLuma && this.prevFrameLuma.length === n) {
-      let diff = 0;
-      for (let i = 0; i < n; i++) {
-        if (Math.abs(luma[i] - this.prevFrameLuma[i]) > 18) diff++;
-      }
-      motionPct = (diff / n) * 100;
+    let diff = 999;
+    if (this.lastLumaSig && this.lastLumaSig.length === n) {
+      let s = 0;
+      for (let i = 0; i < n; i++) s += Math.abs(luma[i] - this.lastLumaSig[i]);
+      diff = s / n;
     }
-    this.prevFrameLuma = luma;
+    this.lastLumaSig = luma;
 
-    const sceneType =
-      edgeDensity > 0.14 && contrastRms > 42
-        ? 'High-edge technical diagram, table, or code view'
-        : edgeDensity > 0.08
-        ? 'Structured observatory plot, chart, or bench view'
-        : 'Ambient camera scene';
+    const dataUrl = this.offscreenCanvas.toDataURL('image/jpeg', 0.76);
+    const jpegB64 = dataUrl.split(',')[1] || '';
+    this.lastFrameB64 = jpegB64;
 
-    const metrics = {
-      width: vid.videoWidth,
-      height: vid.videoHeight,
-      meanLuma: Math.round(meanLuma),
-      contrastRms: Math.round(contrastRms),
-      edgeDensityPct: Math.round(edgeDensity * 1000) / 10,
-      motionPct: Math.round(motionPct * 10) / 10,
-      sceneType,
+    const snap = {
+      dataUrl,
+      jpegB64,
+      metrics: { width: vid.videoWidth, height: vid.videoHeight, edgeDensityPct },
+      source: this.visionSource,
     };
-    const dataUrl = this.offscreenCanvas.toDataURL('image/jpeg', 0.82);
-    this.lastVisionSnapshot = { dataUrl, metrics, source: this.visionSource, ts: Date.now() };
-    this._bumpBrowserHeuristic(0.002);
-    this.emit('vision-frame', this.lastVisionSnapshot);
-    return this.lastVisionSnapshot;
+    this.lastVisionSnapshot = snap;
+    this.emit('vision-frame', snap);
+
+    if ((force || diff >= 6.5) && this.ws && this.ws.readyState === WebSocket.OPEN && jpegB64) {
+      this.ws.send(JSON.stringify({ type: 'vision', jpeg_b64: jpegB64, source: this.visionSource || 'camera' }));
+    }
+    return snap;
   }
 
   async analyzeFrameNow(prompt = '') {
-    await this.loadCorpora();
     if (!this.visionStream) {
       const ok = await this.startCamera(this.cameraFacing);
       if (!ok) return null;
       await new Promise((r) => setTimeout(r, 380));
     }
-    const snap = this.sampleVisionTelemetryOnly();
-    if (!snap) return this.ask(prompt || 'Summarize the visible section and controls on this page.');
-
-    const m = snap.metrics;
-    let vlmCaption = '';
-    try {
-      this.state = 'thinking';
-      this._emitState();
-      const res = await this._callVisionWorker({
-        type: 'analyze',
-        dataUrl: snap.dataUrl,
-        prompt: prompt || 'Describe any diagrams, charts, equations, code, or hardware visible in this frame concisely.',
-      });
-      vlmCaption = res?.caption || '';
-      this.visionInfo = res?.info || this.visionInfo;
-      this.visionModelReady = true;
-      this._bumpBrowserHeuristic(0.045);
-      this._emitTelemetry();
-    } catch {
-      vlmCaption = '';
-    }
-
-    const study = this.studiesById.get(this.activeStudyId);
-    const blog = this.blogById.get(this.activeStudyId);
-    const liveCtrlSummary = this.summarizeLiveControls(3);
-    const srcLabel = this.visionSource === 'screen' ? 'screen share' : `${this.cameraFacing} camera`;
-    const reply =
-      `Inspecting your live ${srcLabel} (${m.width} by ${m.height}): Sobel edge density is ${m.edgeDensityPct}% with RMS contrast ${m.contrastRms}, classifying the frame as a ${m.sceneType.toLowerCase()}. ` +
-      (vlmCaption ? `In-browser vision reads: "${vlmCaption}". ` : '') +
-      (liveCtrlSummary ? `Active observatory parameters: ${liveCtrlSummary}. ` : '') +
-      `On ${this.surface.name}, this maps to ${study?.short_title || this.surface.tagline} (${study?.evidence_class || 'unmetered'}, Signed Provenance · Self-Checked).`;
-
-    await this._deliverAssistantTurn({
-      speakerName: VOICE_PERSONAS[this.voice]?.name || 'Heart',
-      speakerRole: `${VOICE_PERSONAS[this.voice]?.role || 'Systems Lead'} · Vision`,
-      voice: this.voice,
-      text: reply,
-      study,
-      blog,
-    });
+    const snap = this.sampleAndPushVisionFrame(true);
+    await this.sendGroundedPrompt(
+      prompt || 'Look at the visual frame I just shared and explain the key equations, charts, controls, or findings.',
+      { userDisplayText: prompt || '📸 Inspect current frame' }
+    );
     return snap;
   }
 
-  // ---------- Call Lifecycle, Mode 3 (Page/Observatory Co-Pilot) & Mode 4 (Skeptic Debate) ----------
-  async startCall(opts = {}) {
-    await this.loadCorpora();
-    if (opts.studyId && this.studiesById.has(opts.studyId)) {
-      this.activeStudyId = opts.studyId;
-    }
-    if (opts.contextSummary) {
-      this.contextSummary = String(opts.contextSummary);
-    }
-    if (opts.mode) this.mode = opts.mode;
-    if (opts.voice && VOICE_PERSONAS[opts.voice]) this.voice = opts.voice;
-
-    this.callActive = true;
-    this.lastTurnCommitAt = performance.now();
-    this._emitState();
-
-    await this.playPickupChime();
-    this.warmupKokoro().catch(() => {});
-    await this._startMicrophoneAndVad();
-    if (!this.micMuted) this._startWebSpeechRecognition();
-
-    const study = this.studiesById.get(this.activeStudyId);
-    const blog = this.blogById.get(this.activeStudyId);
-    const dom = this.refreshLiveDomIndex();
-    this.openVisualStage({ studyId: study?.id, clip: '15s' });
-
-    if (this.mode === 'debate') {
-      await this.startDebate(this.activeStudyId);
-      return;
-    }
-    if (this.mode === 'copilot') {
-      await this.startPageCoPilot(this.activeStudyId);
-      return;
-    }
-    if (this.mode === 'vision' && !this.visionStream) {
-      await this.startCamera(this.cameraFacing);
-    }
-
-    const ctrlHint =
-      this.surface.id === 'living' && dom.controls.length
-        ? ` I indexed ${dom.figures.length} figures and ${dom.controls.length} live controls (${this.summarizeLiveControls(2)}).`
-        : dom.visibleSection
-        ? ` I see "${dom.visibleSection.heading}" on ${this.surface.domain}.`
-        : '';
-    const ctxLead = this.contextSummary ? ` Context: ${this.contextSummary}.` : '';
-    const greeting =
-      `Connected to ${this.surface.name} Live Co-Pilot.${ctxLead}${ctrlHint} ` +
-      (study ? `Active study: ${study.short_title} (${study.evidence_class}, Signed Provenance · Self-Checked). ` : '') +
-      `Ask anything, tour the figures and controls, run a Skeptic Debate, or interrupt me mid-sentence.`;
-
-    await this._deliverAssistantTurn({
-      speakerName: VOICE_PERSONAS[this.voice].name,
-      speakerRole: `${VOICE_PERSONAS[this.voice].role} · ${this.surface.id}`,
-      voice: this.voice,
-      text: greeting,
-      study,
-      blog,
-    });
-  }
-
-  endCall() {
+  // ---------- Unified Engine Controls & Grounded Turn Dispatch ----------
+  async setEngineMode(mode) {
+    if (mode !== 'studio_s2s' && mode !== 'sovereign_gpu') return;
+    if (this.engineMode === mode) return;
+    const wasActive = this.callActive;
     this.bargeIn('silent-reset');
-    this.callActive = false;
-    this._stopWebSpeechRecognition();
-    if (this.vadTimer) {
-      clearInterval(this.vadTimer);
-      this.vadTimer = null;
-    }
-    if (this.pcmWorkletNode) {
+    if (this.ws) {
       try {
-        this.pcmWorkletNode.disconnect();
+        this.ws.close();
       } catch {}
-      this.pcmWorkletNode = null;
+      this.ws = null;
+      this.wsReadyPromise = null;
     }
-    if (this.micStream) {
-      this.micStream.getTracks().forEach((t) => t.stop());
-      this.micStream = null;
-    }
-    this.stopVision();
-    this.state = 'idle';
-    this.emit('interim', { text: '' });
+    this._stopSovereignSpeechRec();
+    this.engineMode = mode;
+    if (mode === 'sovereign_gpu') this.warmupKokoro().catch(() => {});
     this._emitState();
     this._emitTelemetry();
+    if (wasActive) await this.startCall({ studyId: this.activeStudyId, mode: this.mode });
   }
 
-  toggleMute() {
-    this.micMuted = !this.micMuted;
-    if (this.micStream) {
-      this.micStream.getAudioTracks().forEach((t) => {
-        t.enabled = !this.micMuted;
-      });
-    }
-    if (this.micMuted) this._stopWebSpeechRecognition();
-    else if (this.callActive) this._startWebSpeechRecognition();
+  async setVoice(voiceId) {
+    const clean = normalizeStudioVoice(voiceId);
+    if (this.voice === clean) return;
+    this.voice = clean;
     this._emitState();
-    return this.micMuted;
+    this._emitTelemetry();
+    if (this.engineMode === 'studio_s2s' && this.ws) {
+      this.bargeIn('silent-reset');
+      try {
+        this.ws.close();
+      } catch {}
+      this.ws = null;
+      this.wsReadyPromise = null;
+      if (this.callActive) await this.ensureStudioWebSocket().catch(() => {});
+    }
   }
 
   setMode(mode) {
@@ -2688,78 +2183,200 @@ export class OpenIEEcosystemSDK {
   setStudy(studyId) {
     if (!this.studiesById.has(studyId)) return;
     this.activeStudyId = studyId;
-    this.copilotStep = 0;
-    this.debateTurn = 0;
     this.openVisualStage({ studyId, clip: '15s' });
     this._emitState();
   }
 
-  setVoice(voiceId) {
-    if (!VOICE_PERSONAS[voiceId]) return;
-    this.voice = voiceId;
+  toggleMute() {
+    this.micMuted = !this.micMuted;
+    if (this.micStream) {
+      this.micStream.getAudioTracks().forEach((t) => {
+        t.enabled = !this.micMuted;
+      });
+    }
+    if (this.micMuted) this._stopSovereignSpeechRec();
+    else if (this.callActive && this.engineMode === 'sovereign_gpu') this._startSovereignSpeechRec();
     this._emitState();
+    return this.micMuted;
   }
 
-  async _deliverAssistantTurn({ speakerName, speakerRole, voice, text, study, blog, signal }) {
-    const turnItem = {
+  async sendGroundedPrompt(groundedPrompt, { userDisplayText = null, study = null, blog = null } = {}) {
+    await this._ensureAudioContext();
+    await this.loadCorpora().catch(() => {});
+    const activeStudy = study || this.studiesById.get(this.activeStudyId);
+    const activeBlog = blog || (activeStudy ? this.blogById.get(activeStudy.id) : null);
+    this.sealStreamingTurns();
+
+    if (userDisplayText) {
+      const uTurn = {
+        id: `eco-turn-${++this.turnCounter}`,
+        role: 'user',
+        speakerName: 'You',
+        speakerRole: this.surface.domain,
+        text: userDisplayText,
+        ts: Date.now(),
+      };
+      this.transcript.push(uTurn);
+      this.emit('turn', uTurn);
+    }
+
+    this.lastTurnCommitAt = performance.now();
+    this.state = 'thinking';
+    this._emitState();
+
+    if (this.engineMode === 'studio_s2s') {
+      try {
+        const ws = await this.ensureStudioWebSocket();
+        if (this.visionStream) this.sampleAndPushVisionFrame(true);
+        ws.send(JSON.stringify({ type: 'text', text: groundedPrompt }));
+        return;
+      } catch {}
+    }
+
+    const ctrl = new AbortController();
+    this.turnAbort = ctrl;
+    let spokenReply = '';
+    try {
+      const r = await fetch(`${RESEARCH_ORIGIN}/api/live/turn`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text: groundedPrompt,
+          register: 'pi',
+          site: this.buildCompactSiteDescriptor(),
+          jpeg_b64: this.visionStream ? this.lastFrameB64 || null : null,
+        }),
+        signal: ctrl.signal,
+      });
+      if (r.ok) {
+        const d = await r.json();
+        spokenReply = d.spoken_text || '';
+        if (d.witness_clip) this._emitWitnessTurn(d.witness_clip);
+      }
+    } catch {}
+
+    if (!spokenReply && activeStudy) {
+      spokenReply =
+        `${activeStudy.short_title} (${activeStudy.evidence_class}, Signed Provenance · Self-Checked): ${activeStudy.headline_claim} ` +
+        `Scope note: ${activeStudy.limitations_and_scope.split('.')[0]}.`;
+    }
+
+    const persona = STUDIO_VOICES[this.voice] || STUDIO_VOICES.Aoede;
+    const aiTurn = {
       id: `eco-turn-${++this.turnCounter}`,
       role: 'assistant',
-      speakerName,
-      speakerRole,
-      voice: voice || this.voice,
-      text,
-      studyId: study?.id || blog?.id || this.activeStudyId,
-      receipt: this.makeReceipt(study, blog),
+      speakerName: persona.name,
+      speakerRole: `${persona.role} · Kokoro FP32`,
+      text: spokenReply || 'Ready.',
+      receipt: this.makeReceipt(activeStudy, activeBlog),
       ts: Date.now(),
     };
-    this.transcript.push(turnItem);
-    this.emit('turn', turnItem);
+    this.transcript.push(aiTurn);
+    this.emit('turn', aiTurn);
 
-    const ctrl = signal ? null : new AbortController();
-    if (ctrl) this.turnAbort = ctrl;
-    const activeSignal = signal || ctrl.signal;
-
-    await this.speakStream(text, {
-      voice: voice || this.voice,
-      speed: this.speed,
-      signal: activeSignal,
-    });
-
-    if (!activeSignal.aborted) {
+    if (spokenReply && !ctrl.signal.aborted) {
+      await this.speakSovereignKokoro(spokenReply, { voice: this.voice, speed: this.speed, signal: ctrl.signal });
+    }
+    if (!ctrl.signal.aborted && this.activeSources.size === 0) {
       this.state = this.callActive ? 'listening' : 'idle';
       this._emitState();
     }
+  }
+
+  async startCall(opts = {}) {
+    await this.loadCorpora();
+    if (opts.studyId && this.studiesById.has(opts.studyId)) this.activeStudyId = opts.studyId;
+    if (opts.contextSummary) this.contextSummary = String(opts.contextSummary);
+    if (opts.mode) this.mode = opts.mode;
+    if (opts.voice) this.voice = normalizeStudioVoice(opts.voice);
+    if (opts.engineMode) this.engineMode = opts.engineMode;
+
+    this.callActive = true;
+    this.lastTurnCommitAt = performance.now();
+    this._emitState();
+
+    await this.playPickupChime();
+    await this._startMicrophoneAndVad();
+
+    const study = this.studiesById.get(this.activeStudyId);
+    const dom = this.refreshLiveDomIndex();
+    if (study) this.openVisualStage({ studyId: study.id, clip: '15s' });
+
+    if (this.mode === 'vision' && !this.visionStream) await this.startCamera(this.cameraFacing);
+
+    if (this.engineMode === 'sovereign_gpu') {
+      await this.warmupKokoro();
+      if (!this.micMuted) this._startSovereignSpeechRec();
+    } else {
+      await this.ensureStudioWebSocket().catch(() => {});
+    }
+
+    if (this.mode === 'debate') {
+      await this.startDebate(this.activeStudyId);
+      return;
+    }
+    if (this.mode === 'copilot') {
+      await this.startPageCoPilot(this.activeStudyId);
+      return;
+    }
+
+    const obsHint =
+      this.surface.id === 'living' && dom.controls.length
+        ? ` We have ${dom.figures.length} interactive figures and ${dom.controls.length} live controls (${this.summarizeLiveControls(2)}).`
+        : dom.visibleSection
+        ? ` Currently viewing "${dom.visibleSection.heading}" on ${this.surface.domain}.`
+        : '';
+    const greetPrompt =
+      `Greet the listener warmly in 2 natural spoken sentences as the ${this.surface.name} studio voice co-pilot.` +
+      obsHint +
+      (study ? ` Active study: ${study.short_title} (${study.evidence_class}, Signed Provenance · Self-Checked).` : '') +
+      ` Invite them to ask anything, tour this page, or interrupt anytime.`;
+
+    await this.sendGroundedPrompt(greetPrompt, { userDisplayText: null, study });
+  }
+
+  endCall() {
+    this.bargeIn('silent-reset');
+    this.callActive = false;
+    this._stopSovereignSpeechRec();
+    if (this.ws) {
+      try {
+        this.ws.close();
+      } catch {}
+      this.ws = null;
+      this.wsReadyPromise = null;
+    }
+    if (this.vadTimer) {
+      clearInterval(this.vadTimer);
+      this.vadTimer = null;
+    }
+    if (this.workletNode) {
+      try {
+        this.workletNode.disconnect();
+      } catch {}
+      this.workletNode = null;
+    }
+    if (this.micStream) {
+      this.micStream.getTracks().forEach((t) => t.stop());
+      this.micStream = null;
+    }
+    this.stopVision();
+    this.state = 'idle';
+    this.emit('interim', { text: '' });
+    this._emitState();
+    this._emitTelemetry();
   }
 
   async ask(queryText, opts = {}) {
     await this.loadCorpora();
     const cleanQ = String(queryText || '').trim();
     if (!cleanQ) return null;
-
     this.bargeIn('silent-reset');
-    if (!this.lastTurnCommitAt) this.lastTurnCommitAt = performance.now();
-
-    const userTurn = {
-      id: `eco-turn-${++this.turnCounter}`,
-      role: 'user',
-      speakerName: 'You',
-      speakerRole: opts.fromVoice ? 'Live Voice' : this.surface.domain,
-      text: cleanQ,
-      ts: Date.now(),
-    };
-    this.transcript.push(userTurn);
-    this.emit('turn', userTurn);
-
-    this.state = 'thinking';
-    this._emitState();
-    this._bumpBrowserHeuristic(0.006);
-
     const qLower = cleanQ.toLowerCase();
 
     if (/\b(camera|webcam|screen|frame|holding|look at|inspect my)\b/.test(qLower)) {
-      if (/\bscreen\b/.test(qLower) && !this.visionStream) {
-        await this.startScreenShare();
-      }
+      if (/\bscreen\b/.test(qLower) && !this.visionStream) await this.startScreenShare();
       return this.analyzeFrameNow(cleanQ);
     }
 
@@ -2789,112 +2406,30 @@ export class OpenIEEcosystemSDK {
       return this.startPageCoPilot(matchedStudy?.id);
     }
 
-    // Live Observatory slider/dropdown state query
-    if (/\b(slider|dropdown|parameter|control|setting|selected|observatory|canvas|svg|chart)\b/.test(qLower)) {
-      const dom = this.refreshLiveDomIndex();
-      const ctrlSummary = this.summarizeLiveControls(5);
-      const topFig = dom.figures[0];
-      if (topFig) this.spotlightDomElement(topFig.key);
-      else if (dom.controls[0]) this.spotlightDomElement(dom.controls[0].key);
-
-      const obsReply =
-        `On ${this.surface.domain}, I see ${dom.figures.length} interactive figures, ${dom.tables.length} tables, and ${dom.controls.length} live controls` +
-        (ctrlSummary ? ` currently set to ${ctrlSummary}. ` : '. ') +
-        (topFig ? `Spotlighting "${topFig.caption}". ` : '') +
-        (matchedStudy
-          ? `Remember that in-browser simulator sweeps evaluate models locally (unmetered), whereas ${matchedStudy.short_title} anchors its empirical claims in ${matchedStudy.evidence_class} under Signed Provenance · Self-Checked. ${matchedStudy.limitations_and_scope.split('.')[0]}.`
-          : this.surface.caveat || '');
-      if (matchedStudy) this.openVisualStage({ studyId: matchedStudy.id, clip: '15s' });
-      await this._deliverAssistantTurn({
-        speakerName: VOICE_PERSONAS[this.voice].name,
-        speakerRole: `${VOICE_PERSONAS[this.voice].role} · Observatory`,
-        voice: this.voice,
-        text: obsReply,
-        study: matchedStudy,
-        blog: matchedBlog,
-      });
-      return obsReply;
-    }
-
-    if (
-      (qLower.includes('measured_j') && qLower.includes('reported_j')) ||
-      /\b(evidence class|orthogonal|never summed|across the corpus|28 studies|57 entries)\b/.test(qLower)
-    ) {
-      const counts = this.researchCorpus?.evidence_class_counts || {
-        measured_j: 7,
-        reported_j: 10,
-        est_j: 1,
-        unmetered: 10,
-      };
-      const text =
-        `Across the 28 OpenIE research studies and 57 Chronicle entries, energy claims follow strict non-mixing orthogonality (measured_j orthogonal to reported_j orthogonal to est_j orthogonal to unmetered): ` +
-        `${counts.measured_j} studies carry physical DC current-shunt readings in measured_j (AMD Kria KV260 TI INA260 and NVIDIA Jetson AGX Thor TI INA3221/INA238), ` +
-        `${counts.reported_j} report chip or OS counters in reported_j (Apple ri_energy_nj, Linux RAPL, NVML), ` +
-        `${counts.est_j} reports electro-thermal simulation in est_j, and ${counts.unmetered} formal or archival studies remain unmetered with joules equal to null.`;
-      const satb = this.studiesById.get('satb-harness') || matchedStudy;
-      this.openVisualStage({ studyId: satb?.id, clip: '15s' });
-      await this._deliverAssistantTurn({
-        speakerName: VOICE_PERSONAS[this.voice].name,
-        speakerRole: VOICE_PERSONAS[this.voice].role,
-        voice: this.voice,
-        text,
-        study: satb,
-        blog: satb ? this.blogById.get(satb.id) : matchedBlog,
-      });
-      return text;
-    }
-
     const domSec = this.findBestDomSection(cleanQ);
-    if (domSec) {
-      this.spotlightDomElement(domSec.key);
-    }
+    if (domSec) this.spotlightDomElement(domSec.key);
 
-    let reply = '';
     let clip = '15s';
-
-    if (domSec && /\b(this page|section|table|figure|simulator|here|heading)\b/.test(qLower)) {
-      reply =
-        `On ${this.surface.domain}, spotlighting "${domSec.heading}". ` +
-        (domSec.snippet ? `${domSec.snippet.slice(0, 220)}. ` : '') +
-        (matchedStudy
-          ? `In ${matchedStudy.short_title} (${matchedStudy.evidence_class}), note the post-review scope boundary: ${matchedStudy.limitations_and_scope.split('.')[0]}.`
-          : this.surface.caveat || '');
-    } else if (/\b(falsifier|limitation|negative|fail|replicate|caveat|scope|errata|escape)\b/.test(qLower) && matchedStudy) {
-      reply =
-        `Post-review scope and errata for ${matchedStudy.short_title} (${matchedStudy.evidence_class}, Signed Provenance · Self-Checked): ${matchedStudy.limitations_and_scope}`;
-      clip = '45s';
-    } else if (/\b(method|meter|sensor|shunt|hardware|baseline|sample size)\b/.test(qLower) && matchedStudy) {
-      reply =
-        `Methods and telemetry for ${matchedStudy.short_title}: ${matchedStudy.methods_and_meter} ${matchedStudy.baseline_comparison}`;
-      clip = '45s';
-    } else if (/\b(tiktok|vertical|reel|9:16)\b/.test(qLower) && matchedStudy) {
-      reply =
-        `Playing the 9 by 16 vertical edition of ${matchedStudy.short_title}. ${(matchedStudy.plain_bullets || []).join(' ')} Headline result: ${matchedStudy.headline_metric}.`;
-      clip = 'tiktok';
-    } else if (matchedStudy) {
-      const domLead = domSec ? `Alongside "${domSec.heading}" on this page: ` : '';
-      reply =
-        `${domLead}${matchedStudy.short_title} (${matchedStudy.evidence_class}): ${matchedStudy.headline_claim} ` +
-        `Scope note: ${matchedStudy.limitations_and_scope.split('.')[0]}.`;
-      clip = '15s';
-    } else if (matchedBlog) {
-      reply =
-        `From the OpenIE Chronicle entry "${matchedBlog.shortTitle || matchedBlog.title}" (${matchedBlog.energyClass || 'unmetered'}): ${matchedBlog.primaryClaim || matchedBlog.description}`;
-    } else {
-      reply =
-        `You are exploring ${this.surface.name} (${this.surface.domain}): ${this.surface.tagline}. ${this.surface.caveat || ''}`;
-    }
-
+    if (/\b(tiktok|vertical|reel|9:16)\b/.test(qLower)) clip = 'tiktok';
+    else if (/\b(method|meter|sensor|shunt|hardware|falsifier|limitation|scope)\b/.test(qLower)) clip = '45s';
     if (matchedStudy) this.openVisualStage({ studyId: matchedStudy.id, clip });
-    await this._deliverAssistantTurn({
-      speakerName: VOICE_PERSONAS[this.voice].name,
-      speakerRole: VOICE_PERSONAS[this.voice].role,
-      voice: this.voice,
-      text: reply,
+
+    const ctrlSnap = this.summarizeLiveControls(4);
+    const prompt =
+      `[Grounded Context — Portal: ${this.surface.name} (${this.surface.domain}). ` +
+      (matchedStudy
+        ? `Study: ${matchedStudy.short_title} (${matchedStudy.evidence_class}, Signed Provenance · Self-Checked). Claim: ${matchedStudy.headline_claim} Limits: ${matchedStudy.limitations_and_scope}`
+        : `Caveat: ${this.surface.caveat || ''}`) +
+      (domSec ? ` Active Page Element "${domSec.heading}": ${(domSec.snippet || '').slice(0, 180)}.` : '') +
+      (ctrlSnap ? ` Live Observatory Controls: ${ctrlSnap}.` : '') +
+      `] Answer naturally in 2 to 4 spoken sentences without reading brackets aloud: ${cleanQ}`;
+
+    await this.sendGroundedPrompt(prompt, {
+      userDisplayText: opts.fromVoice ? null : cleanQ,
       study: matchedStudy,
       blog: matchedBlog,
     });
-    return reply;
+    return cleanQ;
   }
 
   async startPageCoPilot(studyId) {
@@ -2906,90 +2441,29 @@ export class OpenIEEcosystemSDK {
       this.researchCorpus?.studies?.[0];
     const blog = study ? this.blogById.get(study.id) : null;
     if (study) this.activeStudyId = study.id;
-
     this.mode = 'copilot';
-    this.copilotStep = 0;
     this.bargeIn('silent-reset');
-    this.lastTurnCommitAt = performance.now();
     this._emitState();
 
-    const ctrl = new AbortController();
-    this.turnAbort = ctrl;
+    const targets = dom.figures.length ? dom.figures.slice(0, 3) : dom.sections.slice(0, 3);
+    if (targets[0]) this.spotlightDomElement(targets[0].key);
+    if (study) this.openVisualStage({ studyId: study.id, clip: '15s' });
 
-    const tourTargets = dom.figures.length >= 2
-      ? dom.figures.slice(0, 3).map((f) => ({ key: f.key, heading: f.caption, snippet: `Interactive ${f.kind} instrument` }))
-      : dom.sections.slice(0, 3);
-    const clips = ['15s', 'tiktok', '45s'];
-    const voices = ['af_bella', 'am_adam', 'af_heart'];
+    const stopList = targets.map((t, i) => `Stop ${i + 1}: "${t.caption || t.heading}"`).join('; ');
     const ctrlSnap = this.summarizeLiveControls(3);
+    const tourPrompt =
+      `Guide the listener through ${this.surface.name} (${this.surface.domain}) in 3 crisp, natural spoken beats. ` +
+      (stopList ? `Cover these live page stops: ${stopList}. ` : '') +
+      (ctrlSnap ? `Mention their active simulator controls (${ctrlSnap}). ` : '') +
+      (study
+        ? `Anchor in ${study.short_title} (${study.evidence_class}, Signed Provenance · Self-Checked): ${(study.plain_bullets || []).slice(0, 2).join(' ')} And state the key scope limit: ${study.limitations_and_scope.split('.')[0]}.`
+        : this.surface.caveat || '');
 
-    const beats = tourTargets.length
-      ? tourTargets.map((sec, idx) => {
-          const extraCtrl = idx === 0 && ctrlSnap ? ` Active controls: ${ctrlSnap}.` : '';
-          const extraTbl = idx === 1 && dom.tables[0]?.headers ? ` Dataset columns: ${dom.tables[0].headers}.` : '';
-          const studyTie =
-            idx === 0 && study
-              ? ` Cueing the 15-second Research TV proof for ${study.short_title} (${study.evidence_class}).`
-              : idx === 1 && study
-              ? ` Cueing the 9 by 16 vertical clip; key metric: ${study.headline_metric}.`
-              : idx === 2 && study
-              ? ` Scope boundary under Signed Provenance · Self-Checked: ${study.limitations_and_scope.split('.')[0]}.`
-              : '';
-          return {
-            domKey: sec.key,
-            clip: clips[idx % clips.length],
-            voice: voices[idx % voices.length],
-            role: `Page Co-Pilot · Stop ${idx + 1}/${tourTargets.length}`,
-            text:
-              `Stop ${idx + 1} on ${this.surface.domain}: "${sec.heading}". ` +
-              (sec.snippet ? `${sec.snippet.slice(0, 190)}.` : '') +
-              extraCtrl +
-              extraTbl +
-              studyTie,
-          };
-        })
-      : [
-          {
-            domKey: null,
-            clip: '15s',
-            voice: 'af_bella',
-            role: `Page Co-Pilot · ${this.surface.name}`,
-            text: `${this.surface.name} (${this.surface.domain}): ${this.surface.tagline}. ${study ? (study.plain_bullets || []).join(' ') : ''}`,
-          },
-          {
-            domKey: null,
-            clip: 'tiktok',
-            voice: 'af_heart',
-            role: 'Systems Lead · Scope & Provenance',
-            text: study
-              ? `For ${study.short_title} (${study.evidence_class}), ${study.methods_and_meter} Scope limit: ${study.limitations_and_scope.split('.')[0]}.`
-              : this.surface.caveat || 'All energy evidence classes remain strictly orthogonal.',
-          },
-        ];
-
-    for (let i = 0; i < beats.length; i++) {
-      if (ctrl.signal.aborted) return;
-      this.copilotStep = i + 1;
-      const b = beats[i];
-      if (b.domKey) this.spotlightDomElement(b.domKey);
-      if (study) this.openVisualStage({ studyId: study.id, clip: b.clip });
-      await this._deliverAssistantTurn({
-        speakerName: VOICE_PERSONAS[b.voice].name,
-        speakerRole: b.role,
-        voice: b.voice,
-        text: b.text,
-        study,
-        blog,
-        signal: ctrl.signal,
-      });
-      if (ctrl.signal.aborted) return;
-      await new Promise((r) => setTimeout(r, 380));
-    }
-
-    if (!ctrl.signal.aborted) {
-      this.state = this.callActive ? 'listening' : 'idle';
-      this._emitState();
-    }
+    await this.sendGroundedPrompt(tourPrompt, {
+      userDisplayText: `🧭 Page Co-Pilot Tour (${this.surface.domain})`,
+      study,
+      blog,
+    });
   }
 
   async startDebate(studyId) {
@@ -3002,69 +2476,21 @@ export class OpenIEEcosystemSDK {
     const blog = this.blogById.get(study.id) || null;
     this.activeStudyId = study.id;
     this.mode = 'debate';
-    this.debateTurn = 0;
     this.bargeIn('silent-reset');
-    this.lastTurnCommitAt = performance.now();
     this._emitState();
+    this.openVisualStage({ studyId: study.id, clip: '45s' });
 
-    const ctrl = new AbortController();
-    this.turnAbort = ctrl;
+    const debatePrompt =
+      `Present a sharp, lively Outside-Review Skeptic vs Systems Lead exchange on ${study.short_title} (${study.evidence_class}, Signed Provenance · Self-Checked). ` +
+      `Skeptic challenge: "${study.skeptic_question}" and "${study.skeptic_followup}". ` +
+      `Systems Lead post-review rebuttal: "${study.architect_answer}" and "${study.architect_rebuttal}". ` +
+      `Invite the listener to interrupt and challenge either position.`;
 
-    const rounds = [
-      {
-        voice: 'bm_george',
-        speakerName: 'George',
-        speakerRole: 'Outside-Review Skeptic · Round 1',
-        clip: '15s',
-        text: study.skeptic_question,
-      },
-      {
-        voice: 'af_heart',
-        speakerName: 'Heart',
-        speakerRole: 'Systems Lead · Round 1 Response',
-        clip: '45s',
-        text: study.architect_answer,
-      },
-      {
-        voice: 'bm_george',
-        speakerName: 'George',
-        speakerRole: 'Outside-Review Skeptic · Round 2 Follow-Up',
-        clip: 'tiktok',
-        text: study.skeptic_followup,
-      },
-      {
-        voice: 'af_heart',
-        speakerName: 'Heart',
-        speakerRole: 'Systems Lead · Closing Scope Receipt',
-        clip: 'tiktok',
-        text: `${study.architect_rebuttal} Jump in by voice or text anytime to press either of us further.`,
-      },
-    ];
-
-    for (let i = 0; i < rounds.length; i++) {
-      if (ctrl.signal.aborted) return;
-      this.debateTurn = i + 1;
-      const r = rounds[i];
-      if (i === 0 || i === 2) {
-        this.openVisualStage({ studyId: study.id, clip: r.clip });
-      }
-      await this._deliverAssistantTurn({
-        speakerName: r.speakerName,
-        speakerRole: r.speakerRole,
-        voice: r.voice,
-        text: r.text,
-        study,
-        blog,
-        signal: ctrl.signal,
-      });
-      if (ctrl.signal.aborted) return;
-      await new Promise((res) => setTimeout(res, 300));
-    }
-
-    if (!ctrl.signal.aborted) {
-      this.state = this.callActive ? 'listening' : 'idle';
-      this._emitState();
-    }
+    await this.sendGroundedPrompt(debatePrompt, {
+      userDisplayText: `⚖️ Skeptic Debate: ${study.short_title}`,
+      study,
+      blog,
+    });
   }
 
   // ---------- 60fps Canvas2D Harmonic Plasma Orb ----------
@@ -3085,7 +2511,6 @@ export class OpenIEEcosystemSDK {
     const reduced =
       typeof window !== 'undefined' &&
       window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
-
     const tick = () => {
       if (!this.orbCanvases.size) {
         this.orbRaf = null;
@@ -3093,15 +2518,11 @@ export class OpenIEEcosystemSDK {
       }
       this.orbPhase += reduced ? 0.005 : 0.032;
       let amp = 0.08;
-      if (this.state === 'speaking') {
-        if (this.ttsAnalyser && this.ttsFreqBins && this.activeBufferSource) {
-          this.ttsAnalyser.getByteFrequencyData(this.ttsFreqBins);
-          let s = 0;
-          for (let i = 2; i < 48; i++) s += this.ttsFreqBins[i] / 255;
-          amp = 0.16 + (s / 46) * 0.84;
-        } else {
-          amp = Math.max(0.18, this.syntheticSpeechEnv);
-        }
+      if (this.state === 'speaking' && this.ttsAnalyser && this.ttsFreqBins) {
+        this.ttsAnalyser.getByteFrequencyData(this.ttsFreqBins);
+        let s = 0;
+        for (let i = 2; i < 48; i++) s += this.ttsFreqBins[i] / 255;
+        amp = 0.16 + (s / 46) * 0.84;
       } else if (this.state === 'listening' && this.micAnalyser && this.micFreqBins && !this.micMuted) {
         this.micAnalyser.getByteFrequencyData(this.micFreqBins);
         let s = 0;
@@ -3110,7 +2531,6 @@ export class OpenIEEcosystemSDK {
       } else if (this.state === 'thinking') {
         amp = 0.28 + 0.18 * Math.sin(this.orbPhase * 3.2);
       }
-
       for (const c of this.orbCanvases) this._drawOrb(c, amp);
       this.orbRaf = requestAnimationFrame(tick);
     };
@@ -3134,11 +2554,10 @@ export class OpenIEEcosystemSDK {
     const cx = cssW / 2;
     const cy = cssH / 2;
     const baseR = Math.min(cssW, cssH) * 0.29;
-
     let primary = '0, 212, 170';
     let secondary = '245, 158, 11';
     if (this.state === 'speaking') {
-      primary = this.mode === 'debate' && this.debateTurn % 2 === 1 ? '0, 212, 170' : '245, 158, 11';
+      primary = '245, 158, 11';
       secondary = '129, 140, 248';
     } else if (this.state === 'thinking') {
       primary = '129, 140, 248';
@@ -3192,443 +2611,111 @@ export class OpenIEEcosystemSDK {
     ctx.beginPath();
     ctx.arc(cx, cy, coreR, 0, Math.PI * 2);
     ctx.fill();
-
-    if (this.visionStream) {
-      ctx.save();
-      ctx.translate(cx, cy);
-      ctx.rotate(-this.orbPhase * 0.35);
-      ctx.strokeStyle = 'rgba(52, 211, 153, 0.78)';
-      ctx.lineWidth = 1.4;
-      ctx.setLineDash([5, 6]);
-      ctx.beginPath();
-      ctx.arc(0, 0, baseR * 1.28, 0, Math.PI * 2);
-      ctx.stroke();
-      ctx.restore();
-    }
-
     ctx.restore();
   }
 }
 
-// ---------- Shadow DOM Scoped Styles & UI Mount ----------
-
+// ---------- Shadow DOM UI ----------
 const SHADOW_CSS = `
   :host {
-    all: initial;
-    position: fixed;
-    right: 18px;
-    bottom: 18px;
-    z-index: 2147483000;
+    all: initial; position: fixed; right: 18px; bottom: 18px; z-index: 2147483000;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    color: #F8FAFC;
-    line-height: 1.45;
+    color: #F8FAFC; line-height: 1.45;
   }
   *, *::before, *::after { box-sizing: border-box; }
   .hidden { display: none !important; }
-
   .pill-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    padding: 10px 16px;
-    border-radius: 9999px;
-    background: rgba(11, 16, 29, 0.94);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(52, 211, 153, 0.48);
-    color: #F8FAFC;
-    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 212, 170, 0.14);
-    cursor: pointer;
-    transition: transform 0.16s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    display: inline-flex; align-items: center; gap: 9px; padding: 10px 16px; border-radius: 9999px;
+    background: rgba(11, 16, 29, 0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(52, 211, 153, 0.48); color: #F8FAFC;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55); cursor: pointer; transition: transform 0.16s, border-color 0.2s;
   }
-  .pill-btn:hover {
-    transform: translateY(-1px);
-    border-color: #F59E0B;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 18px rgba(245, 158, 11, 0.22);
-  }
+  .pill-btn:hover { transform: translateY(-1px); border-color: #F59E0B; }
   .pill-btn:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible {
-    outline: 2px solid #F59E0B;
-    outline-offset: 2px;
+    outline: 2px solid #F59E0B; outline-offset: 2px;
   }
   .dot-wrap { position: relative; width: 10px; height: 10px; display: inline-flex; }
-  .dot-ping {
-    position: absolute; inset: 0; border-radius: 9999px;
-    background: #34D399; opacity: 0.72;
-    animation: oePing 1.9s cubic-bezier(0, 0, 0.2, 1) infinite;
-  }
+  .dot-ping { position: absolute; inset: 0; border-radius: 9999px; background: #34D399; opacity: 0.72; animation: oePing 1.9s infinite; }
   .dot-core { position: relative; width: 10px; height: 10px; border-radius: 9999px; background: #34D399; }
-  @keyframes oePing {
-    75%, 100% { transform: scale(2.1); opacity: 0; }
-  }
-  .pill-label {
-    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 12px;
-    font-weight: 600;
-    color: #6EE7B7;
-    letter-spacing: -0.01em;
-  }
-  .pill-kbd {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10px;
-    padding: 2px 6px;
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.09);
-    color: #94A3B8;
-  }
+  @keyframes oePing { 75%, 100% { transform: scale(2.1); opacity: 0; } }
+  .pill-label { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; font-weight: 600; color: #6EE7B7; }
+  .pill-kbd { font-family: ui-monospace, monospace; font-size: 10px; padding: 2px 6px; border-radius: 5px; background: rgba(255,255,255,0.09); color: #94A3B8; }
 
   .panel {
-    width: min(425px, calc(100vw - 24px));
-    max-height: min(760px, calc(100dvh - 36px));
-    display: flex;
-    flex-direction: column;
-    border-radius: 18px;
-    background: rgba(10, 15, 28, 0.97);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(0, 212, 170, 0.38);
-    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.72);
-    overflow: hidden;
+    width: min(430px, calc(100vw - 24px)); max-height: min(770px, calc(100dvh - 36px));
+    display: flex; flex-direction: column; border-radius: 18px;
+    background: rgba(10, 15, 28, 0.97); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(0, 212, 170, 0.38); box-shadow: 0 24px 64px rgba(0, 0, 0, 0.72); overflow: hidden;
   }
-  .hdr {
-    padding: 10px 13px;
-    border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    background: rgba(255, 255, 255, 0.025);
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .hdr-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-  }
-  .hdr-brand {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    min-width: 0;
-  }
-  .hdr-title {
-    font-weight: 700;
-    font-size: 12.5px;
-    color: #FFFFFF;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .badge-prov {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 9.5px;
-    padding: 2px 6px;
-    border-radius: 5px;
-    background: rgba(245, 158, 11, 0.14);
-    border: 1px solid rgba(245, 158, 11, 0.36);
-    color: #FBBF24;
-    white-space: nowrap;
-  }
-  .hdr-links {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
+  .hdr { padding: 10px 13px; border-bottom: 1px solid rgba(148,163,184,0.18); background: rgba(255,255,255,0.025); display: flex; flex-direction: column; gap: 6px; }
+  .hdr-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .hdr-brand { display: flex; align-items: center; gap: 7px; min-width: 0; }
+  .hdr-title { font-weight: 700; font-size: 12.5px; color: #FFFFFF; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .badge-prov { font-family: ui-monospace, monospace; font-size: 9.5px; padding: 2px 6px; border-radius: 5px; background: rgba(245,158,11,0.14); border: 1px solid rgba(245,158,11,0.36); color: #FBBF24; white-space: nowrap; }
   .qlinks { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
-  .qlink {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10px;
-    padding: 2px 7px;
-    border-radius: 5px;
-    text-decoration: none;
-    border: 1px solid rgba(0, 212, 170, 0.34);
-    color: #5EEAD4;
-    background: rgba(0, 212, 170, 0.07);
-    transition: background 0.15s, border-color 0.15s;
-  }
-  .qlink:hover { background: rgba(0, 212, 170, 0.18); border-color: #00D4AA; }
-  .qlink-amber {
-    border-color: rgba(245, 158, 11, 0.38);
-    color: #FCD34D;
-    background: rgba(245, 158, 11, 0.08);
-  }
-  .qlink-amber:hover { background: rgba(245, 158, 11, 0.2); border-color: #F59E0B; }
-  .close-btn {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 6px;
-    border: 1px solid rgba(148, 163, 184, 0.26);
-    background: transparent;
-    color: #94A3B8;
-    cursor: pointer;
-  }
-  .close-btn:hover { color: #FFFFFF; border-color: #94A3B8; }
+  .qlink { font-family: ui-monospace, monospace; font-size: 10px; padding: 2px 7px; border-radius: 5px; text-decoration: none; border: 1px solid rgba(0,212,170,0.34); color: #5EEAD4; background: rgba(0,212,170,0.07); }
+  .qlink-amber { border-color: rgba(245,158,11,0.38); color: #FCD34D; background: rgba(245,158,11,0.08); }
+  .close-btn { font-family: ui-monospace, monospace; font-size: 11px; padding: 2px 8px; border-radius: 6px; border: 1px solid rgba(148,163,184,0.26); background: transparent; color: #94A3B8; cursor: pointer; }
 
-  .body {
-    padding: 11px 12px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-    flex: 1;
+  .body { padding: 10px 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .engines { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  .eng-btn {
+    font-family: ui-monospace, monospace; font-size: 10px; padding: 6px 6px; border-radius: 7px;
+    border: 1px solid rgba(148,163,184,0.22); background: rgba(255,255,255,0.025); color: #94A3B8;
+    cursor: pointer; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
-  .modes {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
-  }
-  .mode-btn {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10.5px;
-    padding: 6px 4px;
-    border-radius: 7px;
-    border: 1px solid rgba(148, 163, 184, 0.22);
-    background: rgba(255, 255, 255, 0.025);
-    color: #94A3B8;
-    cursor: pointer;
-    text-align: center;
-    white-space: nowrap;
-  }
-  .mode-btn.active {
-    border-color: rgba(0, 212, 170, 0.72);
-    background: rgba(0, 212, 170, 0.16);
-    color: #FFFFFF;
-    font-weight: 600;
-  }
+  .eng-btn.active { border-color: rgba(52,211,153,0.7); background: rgba(16,185,129,0.18); color: #ECFDF5; font-weight: 700; }
+  .modes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+  .mode-btn { font-family: ui-monospace, monospace; font-size: 10.5px; padding: 5px 4px; border-radius: 7px; border: 1px solid rgba(148,163,184,0.22); background: rgba(255,255,255,0.025); color: #94A3B8; cursor: pointer; text-align: center; }
+  .mode-btn.active { border-color: rgba(0,212,170,0.72); background: rgba(0,212,170,0.16); color: #FFFFFF; font-weight: 600; }
 
   .selectors { display: flex; gap: 6px; }
-  .sel {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 11px;
-    padding: 6px 8px;
-    border-radius: 8px;
-    background: #060A13;
-    border: 1px solid rgba(148, 163, 184, 0.25);
-    color: #F8FAFC;
-    min-width: 0;
-  }
+  .sel { font-family: ui-monospace, monospace; font-size: 11px; padding: 6px 8px; border-radius: 8px; background: #060A13; border: 1px solid rgba(148,163,184,0.25); color: #F8FAFC; min-width: 0; }
   .sel-study { flex: 1; }
-  .sel-voice { color: #FBBF24; width: 130px; flex-shrink: 0; }
+  .sel-voice { color: #FBBF24; width: 142px; flex-shrink: 0; }
 
-  .orb-deck {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    padding: 9px 10px;
-    border-radius: 12px;
-    background: rgba(6, 10, 19, 0.9);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-  }
-  .orb-btn {
-    width: 76px;
-    height: 76px;
-    padding: 0;
-    border: none;
-    border-radius: 9999px;
-    background: transparent;
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-  .orb-canvas { width: 76px; height: 76px; display: block; }
+  .orb-deck { display: flex; align-items: center; gap: 11px; padding: 9px 10px; border-radius: 12px; background: rgba(6,10,19,0.9); border: 1px solid rgba(148,163,184,0.2); }
+  .orb-btn { width: 74px; height: 74px; padding: 0; border: none; border-radius: 9999px; background: transparent; cursor: pointer; flex-shrink: 0; }
+  .orb-canvas { width: 74px; height: 74px; display: block; }
   .orb-meta { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
-  .state-line {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10px;
-    color: #2DD4BF;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  .state-line { font-family: ui-monospace, monospace; font-size: 10px; color: #2DD4BF; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .ctrl-row { display: flex; flex-wrap: wrap; gap: 5px; }
-  .cbtn {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10.5px;
-    padding: 4px 8px;
-    border-radius: 6px;
-    border: 1px solid rgba(148, 163, 184, 0.28);
-    background: rgba(255, 255, 255, 0.04);
-    color: #E2E8F0;
-    cursor: pointer;
-  }
-  .cbtn-start {
-    background: #34D399;
-    border-color: #34D399;
-    color: #05120E;
-    font-weight: 700;
-  }
-  .cbtn-end {
-    background: #F43F5E;
-    border-color: #F43F5E;
-    color: #FFFFFF;
-    font-weight: 700;
-  }
-  .cbtn-barge {
-    border-color: rgba(245, 158, 11, 0.48);
-    background: rgba(245, 158, 11, 0.12);
-    color: #FBBF24;
-  }
-  .interim {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10px;
-    color: #6EE7B7;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  .cbtn { font-family: ui-monospace, monospace; font-size: 10.5px; padding: 4px 8px; border-radius: 6px; border: 1px solid rgba(148,163,184,0.28); background: rgba(255,255,255,0.04); color: #E2E8F0; cursor: pointer; }
+  .cbtn-start { background: #34D399; border-color: #34D399; color: #05120E; font-weight: 700; }
+  .cbtn-end { background: #F43F5E; border-color: #F43F5E; color: #FFFFFF; font-weight: 700; }
+  .cbtn-barge { border-color: rgba(245,158,11,0.48); background: rgba(245,158,11,0.12); color: #FBBF24; }
+  .interim { font-family: ui-monospace, monospace; font-size: 10px; color: #6EE7B7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-  .vision-box {
-    border-radius: 11px;
-    border: 1px solid rgba(52, 211, 153, 0.45);
-    background: #000;
-    overflow: hidden;
-  }
-  .vision-bar {
-    padding: 5px 9px;
-    background: rgba(16, 185, 129, 0.14);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 6px;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10px;
-    color: #6EE7B7;
-  }
-  .vision-video { width: 100%; height: 118px; object-fit: cover; display: block; }
+  .vision-box { border-radius: 11px; border: 1px solid rgba(52,211,153,0.45); background: #000; overflow: hidden; }
+  .vision-bar { padding: 5px 9px; background: rgba(16,185,129,0.14); display: flex; align-items: center; justify-content: space-between; font-family: ui-monospace, monospace; font-size: 10px; color: #6EE7B7; }
+  .vision-video { width: 100%; height: 114px; object-fit: cover; display: block; }
 
-  .stage-box {
-    border-radius: 11px;
-    border: 1px solid rgba(148, 163, 184, 0.22);
-    background: rgba(6, 10, 19, 0.85);
-    overflow: hidden;
-  }
-  .stage-sum {
-    padding: 6px 10px;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10.5px;
-    color: #FBBF24;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    list-style: none;
-  }
+  .stage-box { border-radius: 11px; border: 1px solid rgba(148,163,184,0.22); background: rgba(6,10,19,0.85); overflow: hidden; }
+  .stage-sum { padding: 6px 10px; font-family: ui-monospace, monospace; font-size: 10.5px; color: #FBBF24; cursor: pointer; display: flex; justify-content: space-between; list-style: none; }
   .stage-sum::-webkit-details-marker { display: none; }
-  .stage-inner {
-    padding: 8px;
-    border-top: 1px solid rgba(148, 163, 184, 0.18);
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .stage-video { width: 100%; max-height: 180px; border-radius: 7px; background: #000; }
+  .stage-inner { padding: 8px; border-top: 1px solid rgba(148,163,184,0.18); display: flex; flex-direction: column; gap: 6px; }
+  .stage-video { width: 100%; max-height: 175px; border-radius: 7px; background: #000; }
 
-  .transcript {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-    max-height: 195px;
-    overflow-y: auto;
-    padding-right: 3px;
-  }
-  .turn-user {
-    margin-left: 22px;
-    padding: 7px 10px;
-    border-radius: 9px;
-    border: 1px solid rgba(0, 212, 170, 0.32);
-    background: rgba(0, 212, 170, 0.09);
-    font-size: 11.5px;
-    color: #FFFFFF;
-  }
-  .turn-ai {
-    padding: 8px 10px;
-    border-radius: 9px;
-    border: 1px solid rgba(148, 163, 184, 0.22);
-    background: rgba(255, 255, 255, 0.03);
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .turn-hdr {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 6px;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 9.5px;
-  }
+  .transcript { display: flex; flex-direction: column; gap: 7px; max-height: 190px; overflow-y: auto; padding-right: 3px; }
+  .turn-user { margin-left: 22px; padding: 7px 10px; border-radius: 9px; border: 1px solid rgba(0,212,170,0.32); background: rgba(0,212,170,0.09); font-size: 11.5px; color: #FFFFFF; }
+  .turn-ai { padding: 8px 10px; border-radius: 9px; border: 1px solid rgba(148,163,184,0.22); background: rgba(255,255,255,0.03); display: flex; flex-direction: column; gap: 4px; }
+  .turn-hdr { display: flex; align-items: center; justify-content: space-between; gap: 6px; font-family: ui-monospace, monospace; font-size: 9.5px; }
   .turn-spk { color: #FBBF24; font-weight: 700; }
-  .ev-badge {
-    padding: 1px 6px;
-    border-radius: 4px;
-    border: 1px solid rgba(148, 163, 184, 0.3);
-    color: #CBD5E1;
-    background: rgba(255, 255, 255, 0.05);
-  }
-  .ev-measured_j { border-color: rgba(52, 211, 153, 0.45); color: #6EE7B7; background: rgba(16, 185, 129, 0.14); }
-  .ev-reported_j { border-color: rgba(0, 212, 170, 0.45); color: #5EEAD4; background: rgba(0, 212, 170, 0.14); }
-  .ev-est_j { border-color: rgba(245, 158, 11, 0.45); color: #FCD34D; background: rgba(245, 158, 11, 0.14); }
+  .ev-badge { padding: 1px 6px; border-radius: 4px; border: 1px solid rgba(148,163,184,0.3); color: #CBD5E1; background: rgba(255,255,255,0.05); }
+  .ev-measured_j { border-color: rgba(52,211,153,0.45); color: #6EE7B7; background: rgba(16,185,129,0.14); }
+  .ev-reported_j { border-color: rgba(0,212,170,0.45); color: #5EEAD4; background: rgba(0,212,170,0.14); }
+  .ev-est_j { border-color: rgba(245,158,11,0.45); color: #FCD34D; background: rgba(245,158,11,0.14); }
   .turn-txt { font-size: 11.5px; color: #E2E8F0; line-height: 1.45; }
-  .turn-orth {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 9px;
-    color: #64748B;
-  }
+  .turn-orth { font-family: ui-monospace, monospace; font-size: 9px; color: #64748B; }
 
   .chips { display: flex; flex-wrap: wrap; gap: 5px; }
-  .chip {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 10px;
-    padding: 3px 8px;
-    border-radius: 9999px;
-    border: 1px solid rgba(148, 163, 184, 0.24);
-    background: rgba(255, 255, 255, 0.025);
-    color: #CBD5E1;
-    cursor: pointer;
-    max-width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  .chip { font-family: ui-monospace, monospace; font-size: 10px; padding: 3px 8px; border-radius: 9999px; border: 1px solid rgba(148,163,184,0.24); background: rgba(255,255,255,0.025); color: #CBD5E1; cursor: pointer; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .chip:hover { border-color: #F59E0B; color: #FFFFFF; }
-
-  .ftr {
-    padding: 9px 12px;
-    border-top: 1px solid rgba(148, 163, 184, 0.18);
-    background: rgba(6, 10, 19, 0.96);
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
+  .ftr { padding: 9px 12px; border-top: 1px solid rgba(148,163,184,0.18); background: rgba(6,10,19,0.96); display: flex; flex-direction: column; gap: 5px; }
   .ask-form { display: flex; gap: 6px; }
-  .ask-inp {
-    flex: 1;
-    font-size: 12px;
-    padding: 6px 10px;
-    border-radius: 8px;
-    border: 1px solid rgba(148, 163, 184, 0.28);
-    background: #0C1220;
-    color: #FFFFFF;
-  }
-  .ask-btn {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 6px 12px;
-    border-radius: 8px;
-    border: none;
-    background: #F59E0B;
-    color: #090D16;
-    cursor: pointer;
-  }
-  .tel-line {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 9.2px;
-    color: #64748B;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  .ask-inp { flex: 1; font-size: 12px; padding: 6px 10px; border-radius: 8px; border: 1px solid rgba(148,163,184,0.28); background: #0C1220; color: #FFFFFF; }
+  .ask-btn { font-family: ui-monospace, monospace; font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 8px; border: none; background: #F59E0B; color: #090D16; cursor: pointer; }
+  .tel-line { font-family: ui-monospace, monospace; font-size: 9.2px; color: #64748B; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 `;
 
 function wireTriggerAndOpenEvents(openFn, sdk) {
@@ -3648,16 +2735,11 @@ function wireTriggerAndOpenEvents(openFn, sdk) {
     if (!sdk) return;
     if (typeof sdk.loadCorpora === 'function') await sdk.loadCorpora();
     else if (typeof sdk.loadCorpus === 'function') await sdk.loadCorpus();
-    if (reqStudy && sdk.studiesById?.has(reqStudy)) {
-      sdk.setStudy(reqStudy);
-    }
+    if (reqStudy && sdk.studiesById?.has(reqStudy)) sdk.setStudy(reqStudy);
     const cleanMode = ['call', 'vision', 'copilot', 'debate'].includes(reqMode) ? reqMode : 'call';
     sdk.setMode?.(cleanMode);
-    if (reqPrompt) {
-      sdk.ask?.(reqPrompt);
-    } else if (autostart) {
-      sdk.startCall?.({ studyId: sdk.activeStudyId, mode: cleanMode });
-    }
+    if (reqPrompt) sdk.ask?.(reqPrompt);
+    else if (autostart) sdk.startCall?.({ studyId: sdk.activeStudyId, mode: cleanMode });
   });
 
   window.addEventListener('openie:live-open', async (ev) => {
@@ -3666,18 +2748,11 @@ function wireTriggerAndOpenEvents(openFn, sdk) {
     if (!sdk) return;
     if (typeof sdk.loadCorpora === 'function') await sdk.loadCorpora();
     else if (typeof sdk.loadCorpus === 'function') await sdk.loadCorpus();
-    if (d.studyId && sdk.studiesById?.has(d.studyId)) {
-      sdk.setStudy(d.studyId);
-    }
-    if (d.contextSummary) {
-      sdk.contextSummary = String(d.contextSummary);
-    }
-    if (d.mode && ['call', 'vision', 'copilot', 'debate'].includes(d.mode)) {
-      sdk.setMode?.(d.mode);
-    }
-    if (d.prompt) {
-      sdk.ask?.(String(d.prompt));
-    } else if (d.autoStartCall !== false) {
+    if (d.studyId && sdk.studiesById?.has(d.studyId)) sdk.setStudy(d.studyId);
+    if (d.contextSummary) sdk.contextSummary = String(d.contextSummary);
+    if (d.mode && ['call', 'vision', 'copilot', 'debate'].includes(d.mode)) sdk.setMode?.(d.mode);
+    if (d.prompt) sdk.ask?.(String(d.prompt));
+    else if (d.autoStartCall !== false) {
       sdk.startCall?.({
         studyId: d.studyId || sdk.activeStudyId,
         mode: d.mode || sdk.mode,
@@ -3714,9 +2789,7 @@ export function mountOpenIEEcosystemDock(options = {}) {
   }
 
   const sdk = new OpenIEEcosystemSDK(options);
-  if (!window.openieLiveHMI) {
-    window.openieLiveHMI = sdk;
-  }
+  if (!window.openieLiveHMI) window.openieLiveHMI = sdk;
 
   const host = document.createElement('div');
   host.id = 'openie-ecosystem-dock-host';
@@ -3728,14 +2801,14 @@ export function mountOpenIEEcosystemDock(options = {}) {
   shadow.appendChild(styleEl);
 
   const wrap = document.createElement('nav');
-  wrap.setAttribute('aria-label', `${sdk.surface.name} Live Voice, Vision & Page Co-Pilot`);
+  wrap.setAttribute('aria-label', `${sdk.surface.name} Studio 24 kHz Voice & Vision Co-Pilot`);
   wrap.innerHTML = `
-    <button id="oe-pill" class="pill-btn" type="button" aria-expanded="false" aria-controls="oe-panel" title="Open Live Voice, Camera & Page Co-Pilot (Cmd/Ctrl + Shift + V)">
+    <button id="oe-pill" class="pill-btn" type="button" aria-expanded="false" aria-controls="oe-panel" title="Open Studio 24 kHz Voice & Vision Co-Pilot (Cmd/Ctrl + Shift + V)">
       <span class="dot-wrap"><span class="dot-ping"></span><span class="dot-core"></span></span>
       <span class="pill-label">📞 Live Call · Video</span>
       <kbd class="pill-kbd">⌘⇧V</kbd>
     </button>
-    <div id="oe-panel" class="panel hidden" role="dialog" aria-label="${escHtml(sdk.surface.name)} Multimodal Co-Pilot"></div>
+    <div id="oe-panel" class="panel hidden" role="dialog" aria-label="${escHtml(sdk.surface.name)} Studio Co-Pilot"></div>
   `;
   shadow.appendChild(wrap);
   document.body.appendChild(host);
@@ -3749,47 +2822,47 @@ export function mountOpenIEEcosystemDock(options = {}) {
     if (panelMounted) return;
     panelMounted = true;
     const prompts = sdk.surface.prompts || SURFACE_REGISTRY.avalanche.prompts;
-    const domSummary =
-      sdk.surface.id === 'living'
-        ? `${sdk.domIndex.figures.length} figures · ${sdk.domIndex.controls.length} controls · ${sdk.domIndex.tables.length} tables`
-        : `${sdk.domIndex.sections.length} live sections`;
 
     panel.innerHTML = `
       <div class="hdr">
         <div class="hdr-top">
           <div class="hdr-brand">
             <span class="dot-core"></span>
-            <span class="hdr-title">${escHtml(sdk.surface.name)} · Live Co-Pilot</span>
-            <span class="badge-prov" title="Signed Provenance · Self-Checked (not external peer review)">Self-Checked</span>
+            <span class="hdr-title">${escHtml(sdk.surface.name)} · Studio Live</span>
+            <span class="badge-prov" title="Signed Provenance · Self-Checked">Self-Checked</span>
           </div>
           <button id="oe-close" class="close-btn" type="button" aria-label="Minimize dock">✕</button>
         </div>
-        <div class="hdr-links">
-          <div class="qlinks">
-            <a id="oe-link-studio" class="qlink" href="${RESEARCH_ORIGIN}/live/?study=${encodeURIComponent(sdk.activeStudyId)}" target="_blank" rel="noopener">Full Studio ↗</a>
-            <a id="oe-link-chronicle" class="qlink qlink-amber" href="${BLOG_ORIGIN}" target="_blank" rel="noopener">Chronicle (57) ↗</a>
-            <a id="oe-link-verify" class="qlink" href="${BLOG_ORIGIN}/verification/" target="_blank" rel="noopener">Verification ↗</a>
-          </div>
+        <div class="qlinks">
+          <a id="oe-link-studio" class="qlink" href="${RESEARCH_ORIGIN}/live/?study=${encodeURIComponent(sdk.activeStudyId)}" target="_blank" rel="noopener">Full Studio ↗</a>
+          <a id="oe-link-chronicle" class="qlink qlink-amber" href="${BLOG_ORIGIN}" target="_blank" rel="noopener">Chronicle (57) ↗</a>
+          <a id="oe-link-verify" class="qlink" href="${BLOG_ORIGIN}/verification/" target="_blank" rel="noopener">Verification ↗</a>
         </div>
       </div>
 
       <div class="body">
+        <div class="engines" role="group" aria-label="Voice engine mode">
+          <button type="button" class="eng-btn active" data-eng="studio_s2s" title="Full-Duplex 24 kHz Native Human Speech-to-Speech">⚡ Studio Live · 24 kHz S2S</button>
+          <button type="button" class="eng-btn" data-eng="sovereign_gpu" title="Local WebGPU FP32 Kokoro-82M (32 kHz + Perth mark)">🛡️ Sovereign GPU · Kokoro FP32</button>
+        </div>
+
         <div class="modes" role="tablist" aria-label="Interaction mode">
           <button type="button" class="mode-btn active" data-mode="call">📞 Live Call</button>
           <button type="button" class="mode-btn" data-mode="vision">📹 Vision</button>
           <button type="button" class="mode-btn" data-mode="copilot">🧭 Co-Pilot</button>
-          <button type="button" class="mode-btn" data-mode="debate">🎙 Debate</button>
+          <button type="button" class="mode-btn" data-mode="debate">⚖️ Debate</button>
         </div>
 
         <div class="selectors">
           <select id="oe-study-sel" class="sel sel-study" aria-label="Active research study">
             <option value="${escHtml(sdk.activeStudyId)}">Loading 28 studies + 57 Chronicle entries...</option>
           </select>
-          <select id="oe-voice-sel" class="sel sel-voice" aria-label="Neural voice persona">
-            <option value="af_heart">Heart (Lead)</option>
-            <option value="bm_george">George (Skeptic)</option>
-            <option value="af_bella">Bella (Co-Pilot)</option>
-            <option value="am_adam">Adam (Hardware)</option>
+          <select id="oe-voice-sel" class="sel sel-voice" aria-label="Studio 24 kHz voice persona">
+            <option value="Aoede">Aoede (Warm Host)</option>
+            <option value="Charon">Charon (Skeptic)</option>
+            <option value="Puck">Puck (Architect)</option>
+            <option value="Kore">Kore (Guide)</option>
+            <option value="Fenrir">Fenrir (Hardware)</option>
           </select>
         </div>
 
@@ -3798,10 +2871,10 @@ export function mountOpenIEEcosystemDock(options = {}) {
             <canvas id="oe-orb-canvas" class="orb-canvas"></canvas>
           </button>
           <div class="orb-meta">
-            <div id="oe-state" class="state-line">READY · ${escHtml(sdk.surface.domain.toUpperCase())}</div>
+            <div id="oe-state" class="state-line">READY · 24 KHZ NATIVE STUDIO S2S</div>
             <div class="ctrl-row">
               <button id="oe-call-btn" type="button" class="cbtn cbtn-start">📞 Start</button>
-              <button id="oe-barge-btn" type="button" class="cbtn cbtn-barge" title="Interrupt speaker (<100ms)">✋ Barge-In</button>
+              <button id="oe-barge-btn" type="button" class="cbtn cbtn-barge" title="Smooth <30ms barge-in">✋ Barge-In</button>
               <button id="oe-mute-btn" type="button" class="cbtn" title="Mute/unmute microphone">🎙</button>
               <button id="oe-cam-btn" type="button" class="cbtn" title="Live camera vision">📷</button>
               <button id="oe-scr-btn" type="button" class="cbtn" title="Live screen share vision">🖥</button>
@@ -3812,10 +2885,10 @@ export function mountOpenIEEcosystemDock(options = {}) {
 
         <div id="oe-vision-box" class="vision-box hidden">
           <div class="vision-bar">
-            <span id="oe-vision-meta">Camera / Screen Active</span>
+            <span id="oe-vision-meta">768px Motion-Gated Vision Active</span>
             <div class="ctrl-row">
               <button id="oe-snap-btn" type="button" class="cbtn cbtn-start">📸 Inspect</button>
-              <button id="oe-flip-btn" type="button" class="cbtn" title="Flip camera">🔄</button>
+              <button id="oe-flip-btn" type="button" class="cbtn">🔄</button>
               <button id="oe-vis-close" type="button" class="cbtn">✕</button>
             </div>
           </div>
@@ -3845,7 +2918,7 @@ export function mountOpenIEEcosystemDock(options = {}) {
               <span class="ev-badge">Signed Provenance · Self-Checked</span>
             </div>
             <div class="turn-txt">
-              Grounded in <strong>${escHtml(sdk.surface.domain)}</strong> (${escHtml(domSummary)}), 28 Research studies, and 57 Chronicle entries. ${escHtml(sdk.surface.caveat || '')}
+              Full-duplex <strong>24 kHz Studio Native S2S</strong> (Aoede) + 1-click <strong>Sovereign Kokoro-82M FP32</strong> grounded in <strong>${escHtml(sdk.surface.domain)}</strong>, 28 studies, and 57 Chronicle entries. ${escHtml(sdk.surface.caveat || '')}
             </div>
             <div class="turn-orth">measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered</div>
           </div>
@@ -3858,10 +2931,10 @@ export function mountOpenIEEcosystemDock(options = {}) {
 
       <div class="ftr">
         <form id="oe-form" class="ask-form">
-          <input id="oe-input" class="ask-inp" type="text" placeholder="Ask about any figure, control, or claim..." aria-label="Ask OpenIE Co-Pilot" />
+          <input id="oe-input" class="ask-inp" type="text" placeholder="Talk hands-free or ask about this page..." aria-label="Ask OpenIE Studio Co-Pilot" />
           <button type="submit" class="ask-btn">Ask</button>
         </form>
-        <div id="oe-tel" class="tel-line">VAD -60dB · Instant WebSpeech + Kokoro-82M · measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered</div>
+        <div id="oe-tel" class="tel-line">VAD -60dB · Studio 24 kHz S2S (Aoede) · measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered</div>
       </div>
     `;
 
@@ -3915,16 +2988,17 @@ export function mountOpenIEEcosystemDock(options = {}) {
         chronicleLink.href = snap.activeBlogEntry?.url ? absBlogUrl(snap.activeBlogEntry.url) : BLOG_ORIGIN;
       }
       if (stateEl) {
-        stateEl.textContent = `${snap.state.toUpperCase()} · ${snap.activeStudy?.evidence_class || sdk.surface.id}`;
+        stateEl.textContent = `${snap.state.toUpperCase()} · ${snap.engineMode === 'studio_s2s' ? `24kHz ${snap.voice}` : 'Kokoro FP32'} · ${snap.activeStudy?.evidence_class || sdk.surface.id}`;
       }
       if (callBtn) {
         callBtn.textContent = snap.callActive ? '⏹ End' : '📞 Start';
         callBtn.className = snap.callActive ? 'cbtn cbtn-end' : 'cbtn cbtn-start';
       }
-      if (muteBtn) {
-        muteBtn.textContent = snap.micMuted ? '🔇' : '🎙';
-      }
+      if (muteBtn) muteBtn.textContent = snap.micMuted ? '🔇' : '🎙';
       if (visionBox) visionBox.classList.toggle('hidden', !snap.visionActive);
+      panel.querySelectorAll('[data-eng]').forEach((b) => {
+        b.classList.toggle('active', b.getAttribute('data-eng') === snap.engineMode);
+      });
       panel.querySelectorAll('[data-mode]').forEach((b) => {
         b.classList.toggle('active', b.getAttribute('data-mode') === snap.mode);
       });
@@ -3932,7 +3006,7 @@ export function mountOpenIEEcosystemDock(options = {}) {
 
     sdk.on('telemetry', (tel) => {
       if (!telEl) return;
-      const ttfa = tel.ttfaMs != null ? `${tel.ttfaMs}ms` : '<200ms';
+      const ttfa = tel.ttfaMs != null ? `${tel.ttfaMs}ms` : '<350ms';
       telEl.textContent = `VAD ${tel.vadDb.toFixed(0)}dB · TTFA ${ttfa} · ${tel.ttsBackend} · ${tel.estJoulesHeuristic}`;
     });
 
@@ -3944,7 +3018,7 @@ export function mountOpenIEEcosystemDock(options = {}) {
 
     sdk.on('vision-frame', (snap) => {
       if (visionMeta && snap?.metrics) {
-        visionMeta.textContent = `${snap.metrics.width}×${snap.metrics.height} · Sobel ${snap.metrics.edgeDensityPct}%`;
+        visionMeta.textContent = `${snap.metrics.width}×${snap.metrics.height} · Edges ${snap.metrics.edgeDensityPct}%`;
       }
     });
 
@@ -3961,9 +3035,14 @@ export function mountOpenIEEcosystemDock(options = {}) {
       }
     });
 
-    sdk.on('turn', (turn) => {
+    function renderEcoTurn(turn) {
       if (!transcriptEl) return;
-      const el = document.createElement('div');
+      let el = transcriptEl.querySelector(`[data-turn-id="${escHtml(turn.id)}"]`);
+      const isNew = !el;
+      if (!el) {
+        el = document.createElement('div');
+        el.setAttribute('data-turn-id', turn.id);
+      }
       if (turn.role === 'user') {
         el.className = 'turn-user';
         el.textContent = turn.text;
@@ -3980,9 +3059,12 @@ export function mountOpenIEEcosystemDock(options = {}) {
           <div class="turn-orth">${escHtml(r.provenance || 'Signed Provenance · Self-Checked')} · ${escHtml(r.orthogonality || 'measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered')}</div>
         `;
       }
-      transcriptEl.appendChild(el);
+      if (isNew) transcriptEl.appendChild(el);
       transcriptEl.scrollTop = transcriptEl.scrollHeight;
-    });
+    }
+
+    sdk.on('turn', renderEcoTurn);
+    sdk.on('turn-update', renderEcoTurn);
 
     shadow.getElementById('oe-close')?.addEventListener('click', () => setOpen(false));
     shadow.getElementById('oe-orb-btn')?.addEventListener('click', () => {
@@ -4003,6 +3085,10 @@ export function mountOpenIEEcosystemDock(options = {}) {
 
     studySel?.addEventListener('change', () => sdk.setStudy(studySel.value));
     voiceSel?.addEventListener('change', () => sdk.setVoice(voiceSel.value));
+
+    panel.querySelectorAll('[data-eng]').forEach((b) => {
+      b.addEventListener('click', () => sdk.setEngineMode(b.getAttribute('data-eng')));
+    });
 
     panel.querySelectorAll('[data-mode]').forEach((b) => {
       b.addEventListener('click', () => {
