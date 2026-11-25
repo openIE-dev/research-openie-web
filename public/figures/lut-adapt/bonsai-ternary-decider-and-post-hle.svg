@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="860" viewBox="0 0 1220 860" role="img" aria-labelledby="p35-t p35-d">
+  <title id="p35-t">Native Hadamard-Ternary 27B (Bonsai-2-27B) Zero-MUL EntroMCU/T-MAC, System-1 Neural Decider Downward Compilation, and Post-LastExam Open Benchmark Trilogy</title>
+  <desc id="p35-d">Four-panel synthesis of Claims LA-39 through LA-41 and 66 six-kernel Lean 4.36.0 theorems (1430 fleet): (A) prism-ml/Ternary-Bonsai-2-27B zero-copy audit showing lossless 36 B to 28 B (-22.22%) EntroMCU transcoding, exact shift-5 FWHT-1024, and Thor physical DC shunt measured_j gain (1.57x); (B) Mapika/decider-0.8b and potion-base-8M neural System-1 deciders vs downward-compiled 4 KB System-0 LUT6; (C) Post-LastExam open benchmark trilogy across ARC-AGI-2 inductive LUT6 synthesis, MiniF2F-Lean4 soundness-zero kernel gate, and CritPt physics calibration; and (D) 66 six-kernel proofs and zero-unsoundness hierarchy.</desc>
+  <defs>
+    <linearGradient id="bg35" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#060b16"/>
+      <stop offset="50%" stop-color="#0a1426"/>
+      <stop offset="100%" stop-color="#071a20"/>
+    </linearGradient>
+    <linearGradient id="g35-em" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="g35-am" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="g35-ro" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f43f5e"/><stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+    <linearGradient id="g35-vi" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1220" height="860" fill="url(#bg35)"/>
+  <text x="30" y="36" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18.2" font-weight="800">Hadamard-Ternary 27B Zero-MUL T-MAC, System-1&#x2192;System-0 Compilation &amp; Post-LastExam Trilogy</text>
+  <text x="30" y="56" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.0">Claims LA-19 (66 Thms / 1,430 Fleet), LA-39..LA-41  |  Thor Shunt measured_j (board_metered=true) Strictly Separated from Host reported_j</text>
+  <rect x="24" y="72" width="576" height="372" rx="12" fill="#0d1729" stroke="#22d3ee" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="42" y="98" fill="#22d3ee" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.2" font-weight="800">A. Claim LA-39 · Ternary-Bonsai-2-27B (Qwen3.8-27B) + EntroMCU &amp; FWHT-1024</text>
+  <text x="42" y="116" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.6">Audited 9,699,328 real weights: c=3 count=0, max|bias+scale|=0.0, err=0.0</text>
+  <rect x="42" y="128" width="540" height="86" rx="8" fill="#091120" stroke="#334155" stroke-width="1"/>
+  <text x="56" y="147" fill="#e2e8f0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.0" font-weight="700">128-Weight Hadamard-Ternary Group Packing (Lossless Bit-Exact, Saves 1.56 GB on 27B)</text>
+  <rect x="56" y="157" width="320" height="18" rx="4" fill="url(#g35-ro)"/>
+  <text x="384" y="170" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">MLX Affine-2: 36 B / 128w (2.25 bpw, 7.04 GB)</text>
+  <rect x="56" y="183" width="249" height="18" rx="4" fill="url(#g35-em)"/>
+  <text x="313" y="196" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">OpenIE EntroMCU: 28 B / 128w (1.75 bpw, 5.47 GB, -22.22%)</text>
+  <text x="42" y="236" fill="#e2e8f0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.0" font-weight="700">Window 12 (FWHT-1024 &gt;&gt; 5 + Antisym-40 T-MAC, 8 MULs/row) vs. Window 13 (MLX 2-Bit Dequant, 1,024 MULs/row)</text>
+  <text x="46" y="263" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.6" font-weight="600">Jetson AGX Thor DC Shunt (measured_j)</text>
+  <rect x="46" y="270" width="235" height="16" rx="4" fill="url(#g35-em)"/>
+  <text x="289" y="282" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">220.7 vs 346.1 uJ/op (1.57x CpJ, 2.26x spd)</text>
+  <text x="46" y="315" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.6" font-weight="600">AMD Ryzen AI Max+ 395 RAPL (reported_j)</text>
+  <rect x="46" y="322" width="222" height="16" rx="4" fill="url(#g35-vi)"/>
+  <text x="276" y="334" fill="#c4b5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">113.9 vs 168.9 uJ/op (1.48x CpJ)</text>
+  <text x="46" y="367" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.6" font-weight="600">Apple M5 Max Counter (reported_j)</text>
+  <rect x="46" y="374" width="232" height="16" rx="4" fill="url(#g35-am)"/>
+  <text x="286" y="386" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">27.54 vs 42.74 uJ/op (1.55x CpJ)</text>
+  <text x="42" y="428" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3">Theorem 60: 1024 = 4^5 = 32^2 -&gt; exact &gt;&gt; 5 shift (0 sqrt(2) floats) | Cosine vs MLX F32 = 0.999987</text>
+  <rect x="620" y="72" width="576" height="372" rx="12" fill="#0d1729" stroke="#a78bfa" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="638" y="98" fill="#c4b5fd" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.2" font-weight="800">B. Claim LA-40 · Neural System-1 Deciders vs. Compiled 4 KB System-0 LUT6</text>
+  <text x="638" y="116" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.6">64 Typed Wearable/Tool Decisions (Wave 1 + Wave 2 Paraphrases + Adversarial OOD) | 367,390x Smaller</text>
+  <rect x="638" y="132" width="540" height="62" rx="8" fill="#091120" stroke="#475569" stroke-width="1.2"/>
+  <text x="652" y="152" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.0" font-weight="700">minishlab/potion-base-8M <tspan fill="#94a3b8" font-size="9.5" font-weight="500">(Static Token Embedding System-1)</tspan></text>
+  <text x="652" y="172" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">Acc: 89.06% (W2: 90.62%) | OOD False: 87.5% | RMS-CE: 34.39%</text>
+  <text x="652" y="186" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.2">RAM: 28.836 MB (64KB Watch: 461.4x overflow) | 0.1553 ms/q | 18.7493 reported_mJ/q</text>
+  <rect x="638" y="204" width="540" height="62" rx="8" fill="#091120" stroke="#475569" stroke-width="1.2"/>
+  <text x="652" y="224" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.0" font-weight="700">Mapika/decider-0.8b <tspan fill="#94a3b8" font-size="9.5" font-weight="500">(1-Pass Calibrated Neural System-1)</tspan></text>
+  <text x="652" y="244" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">Acc: 100.0% (W2: 100.0%) | OOD False: 0.0% | RMS-CE: 13.55%</text>
+  <text x="652" y="258" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.2">RAM: 1435.1154 MB (64KB Watch: 22961.8x overflow) | 50.3165 ms/q | 1001.4543 reported_mJ/q</text>
+  <rect x="638" y="276" width="540" height="62" rx="8" fill="#081c1b" stroke="#10b981" stroke-width="1.2"/>
+  <text x="652" y="296" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.0" font-weight="700">OpenIE System-0 -&gt; System-1 MoL <tspan fill="#94a3b8" font-size="9.5" font-weight="500">(4 KB LUT6 + decider-0.8b Teacher)</tspan></text>
+  <text x="652" y="316" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">Acc: 100.0% (W2: 100.0%) | OOD False: 0.0% | RMS-CE: 5.21%</text>
+  <text x="652" y="330" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.2">RAM: 0.0039 MB (64KB Watch: 6.25%) | 5.5087 ms/q | 109.8485 reported_mJ/q</text>
+  <rect x="638" y="348" width="540" height="62" rx="8" fill="#081c1b" stroke="#10b981" stroke-width="1.2"/>
+  <text x="652" y="368" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.0" font-weight="700">OpenIE Compiled System-0 LUT6 Crystal <tspan fill="#94a3b8" font-size="9.5" font-weight="500">(Wave-2 Steady State, 4 KB)</tspan></text>
+  <text x="652" y="388" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">Acc: 100.0% (W2: 100.0%) | OOD False: 0.0% | RMS-CE: 5.21%</text>
+  <text x="652" y="402" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.2">RAM: 0.0039 MB (64KB Watch: 6.25%) | 0.0053 ms/q | 0.3144 reported_mJ/q</text>
+  <text x="638" y="430" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">Wave-2 Compiled System-0 LUT6 Speedup vs. Mapika/decider-0.8b (Metal): 9,493.7x (100% W2 Rung-0 Hit)</text>
+  <rect x="24" y="462" width="736" height="374" rx="12" fill="#0d1729" stroke="#10b981" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="42" y="488" fill="#6ee7b7" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.2" font-weight="800">C. Claim LA-41 · Post-LastExam Open Trilogy: ARC-AGI-2, MiniF2F-Lean4 &amp; CritPt Physics</text>
+  <text x="42" y="506" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">100% Open Apache-2.0 / gated=False · SHA-256 Pinned · 0 Raw Prompt/Grid/Proof/Code Strings Persisted</text>
+  <rect x="42" y="518" width="700" height="24" rx="5" fill="#1e293b"/>
+  <text x="52" y="534" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">Benchmark &amp; System</text>
+  <text x="454" y="534" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">Solved</text>
+  <text x="518" y="534" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">SelAcc</text>
+  <text x="584" y="534" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">CHR@80</text>
+  <text x="652" y="534" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">Unsound</text>
+  <rect x="42" y="548" width="700" height="28" rx="4" fill="#0b1324"/>
+  <text x="50" y="566" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1" font-weight="400">ARC-AGI-2: Unverified 1D Token Micro-LLM (uLM-28M / LF</text>
+  <text x="454" y="566" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">0.0%</text>
+  <text x="518" y="566" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">0.0%</text>
+  <text x="584" y="566" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">91.67%</text>
+  <text x="652" y="566" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">100.0%</text>
+  <rect x="42" y="580" width="700" height="28" rx="4" fill="#0f172a"/>
+  <text x="50" y="598" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1" font-weight="400">ARC-AGI-2: Unverified 1-Shot Spatial Mapper (No C_trai</text>
+  <text x="454" y="598" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">4.17%</text>
+  <text x="518" y="598" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">4.17%</text>
+  <text x="584" y="598" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">95.83%</text>
+  <text x="652" y="598" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">95.83%</text>
+  <rect x="42" y="612" width="700" height="28" rx="4" fill="#08201d"/>
+  <text x="50" y="630" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1" font-weight="700">ARC-AGI-2: Inductive ARC-LUT6 + C_train Exact Verifier</text>
+  <text x="454" y="630" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">12.5%</text>
+  <text x="518" y="630" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">100.0%</text>
+  <text x="584" y="630" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">0.0%</text>
+  <text x="652" y="630" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">0.0%</text>
+  <rect x="42" y="644" width="700" height="28" rx="4" fill="#0f172a"/>
+  <text x="50" y="662" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1" font-weight="400">MiniF2F-Lean4: Unverified Neural Tactic Emitter (No Le</text>
+  <text x="454" y="662" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">25.0%</text>
+  <text x="518" y="662" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">25.0%</text>
+  <text x="584" y="662" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">75.0%</text>
+  <text x="652" y="662" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">75.0%</text>
+  <rect x="42" y="676" width="700" height="28" rx="4" fill="#08201d"/>
+  <text x="50" y="694" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1" font-weight="700">MiniF2F-Lean4: MoL-Lean6 Wave 1 [Lean 4.36 Gate]</text>
+  <text x="454" y="694" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">50.0%</text>
+  <text x="518" y="694" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">100.0%</text>
+  <text x="584" y="694" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">0.0%</text>
+  <text x="652" y="694" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">0.0%</text>
+  <rect x="42" y="708" width="700" height="28" rx="4" fill="#08201d"/>
+  <text x="50" y="726" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1" font-weight="700">MiniF2F-Lean4: MoL-Lean6 Wave 2 [.lut6 Crystal]</text>
+  <text x="454" y="726" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">50.0%</text>
+  <text x="518" y="726" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">100.0%</text>
+  <text x="584" y="726" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">0.0%</text>
+  <text x="652" y="726" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">0.0%</text>
+  <rect x="42" y="740" width="700" height="28" rx="4" fill="#0b1324"/>
+  <text x="50" y="758" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1" font-weight="400">CritPt Physics: Standalone Frontier Model (Uncalibrate</text>
+  <text x="454" y="758" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">6.25%</text>
+  <text x="518" y="758" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">6.25%</text>
+  <text x="584" y="758" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">93.75%</text>
+  <text x="652" y="758" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">93.75%</text>
+  <rect x="42" y="772" width="700" height="28" rx="4" fill="#08201d"/>
+  <text x="50" y="790" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1" font-weight="700">CritPt Physics: MoL Epistemic + Dimensional/Numerical </text>
+  <text x="454" y="790" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">6.25%</text>
+  <text x="518" y="790" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">100.0%</text>
+  <text x="584" y="790" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">0.0%</text>
+  <text x="652" y="790" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4" font-weight="700">0.0%</text>
+  <text x="42" y="822" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3">ARC-LUT6 mean=5.0 LUT6s | MiniF2F W2 tactic checks cut 16.0x (6.77x spd) | CritPt RMS-CE cut 9.49x</text>
+  <rect x="776" y="462" width="420" height="374" rx="12" fill="#0d1729" stroke="#f59e0b" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="794" y="488" fill="#fde68a" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.2" font-weight="800">D. Claim LA-19 · 66 Proofs &amp; Soundness Ladder</text>
+  <text x="794" y="506" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">6/6 Independent Kernels · 1,430 Linux bwrap Fleet Theorems</text>
+  <rect x="794" y="522" width="384" height="62" rx="8" fill="#091120" stroke="#10b981" stroke-width="1.3"/>
+  <text x="808" y="541" fill="#10b981" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="800">Level 3 · Soundness-Zero Kernel</text>
+  <text x="808" y="559" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">MiniF2F-Lean4 (Lean 4.36.0 + 6 Kernels)</text>
+  <text x="808" y="575" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1">Necessary &amp; Sufficient -&gt; P[unsound] = 0</text>
+  <rect x="794" y="594" width="384" height="62" rx="8" fill="#091120" stroke="#22d3ee" stroke-width="1.3"/>
+  <text x="808" y="613" fill="#22d3ee" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="800">Level 2 · Demonstration-Exact</text>
+  <text x="808" y="631" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">ARC-AGI-2 (C_train(f)=1 -&gt; 5x LUT6)</text>
+  <text x="808" y="647" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1">0 Train-Inconsistent Rules Admitted</text>
+  <rect x="794" y="666" width="384" height="62" rx="8" fill="#091120" stroke="#a78bfa" stroke-width="1.3"/>
+  <text x="808" y="685" fill="#a78bfa" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="800">Level 1 · Necessary + Consensus</text>
+  <text x="808" y="703" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">LastExam / CritPt (Bounds + Dual-Model)</text>
+  <text x="808" y="719" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1">0.00% CHR@80, 5.37x-9.49x Lower RMS-CE</text>
+  <rect x="794" y="738" width="384" height="62" rx="8" fill="#091120" stroke="#f59e0b" stroke-width="1.3"/>
+  <text x="808" y="757" fill="#f59e0b" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="800">Level 0 · System-0 LUT6 + WASM</text>
+  <text x="808" y="775" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">8.80 KB lut6_core.wasm (8 #![no_std] Targets)</text>
+  <text x="808" y="791" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1">4 KB Page = 6.25% Watch SRAM, 0 FLOPs</text>
+  <text x="794" y="822" fill="#6ee7b7" font-family="ui-monospace, Menlo, monospace" font-size="9.3">TernaryHadamardArc.lean: Theorems 59..66 (0 sorry, 0 custom axioms)</text>
+</svg>

@@ -22,7 +22,7 @@
   </defs>
   <rect width="1220" height="860" fill="url(#bg34)"/>
   <text x="30" y="36" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18.8" font-weight="800">From Smartwatch 64 KB SRAM &amp; uLM-28M Glasses Openers to LastExam Epistemic Humility</text>
-  <text x="30" y="56" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.0">Claims LA-19 (58 Thms / 1422 Fleet), LA-36..LA-38  |  Thor Shunt measured_j != Host reported_j != Live Cortex-M55 DWT != Battery est_queries</text>
+  <text x="30" y="56" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.0">Claims LA-19 (66 Thms / 1430 Fleet), LA-36..LA-38  |  Thor Shunt measured_j != Host reported_j != Live Cortex-M55 DWT != Battery est_queries</text>
   <rect x="28" y="72" width="570" height="372" rx="12" fill="#0f172a" stroke="#10b981" stroke-opacity="0.6" stroke-width="1.5"/>
   <text x="46" y="98" fill="#34d399" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700">A. 64 KB Watch SRAM Fit &amp; 56-Bit 4-Token Opener Silicon (Claims LA-36 &amp; LA-38)</text>
   <text x="46" y="116" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">5,984 B (9.13% of nRF52832 64 KB SRAM) vs. 14.0 MB uLM-28M INT4 (&gt;213x overflow)</text>
@@ -184,7 +184,7 @@
   <text x="393" y="816" text-anchor="middle" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.2">cais/hle (sha=5a81a4c7) gated HTTP 403 respected (0 bypass); hle:3r2s canary guard = 0 exam items crystallized</text>
   <rect x="776" y="462" width="416" height="372" rx="12" fill="#0f172a" stroke="#a78bfa" stroke-opacity="0.6" stroke-width="1.5"/>
   <text x="794" y="488" fill="#c4b5fd" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700">D. 58-Theorem 6-Kernel Proof Suite (LA-19 / LA-38)</text>
-  <text x="794" y="506" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">WearableLastExam.lean (8 new thms) | 1,422 Linux bwrap fleet</text>
+  <text x="794" y="506" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.4">WearableLastExam.lean (8 new thms) | 1,430 Linux bwrap fleet</text>
   <rect x="792" y="522" width="384" height="35" rx="5" fill="#1e1b4b" fill-opacity="0.7" stroke="#6366f1" stroke-opacity="0.4"/>
   <text x="800" y="536" fill="#e0e7ff" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.2" font-weight="700">Thm 51: uLM-28M 56b+8b Bijection</text>
   <text x="800" y="550" fill="#a5b4fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">4x14b (|V|=12,288) + 8b CalHdr &lt;-&gt; uint64</text>
