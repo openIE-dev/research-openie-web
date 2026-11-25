@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits 级联中的向下 LUT6 编译：Beneš 路由布尔架构、共形唤醒门槛与前沿稀疏 MoE NVMe 按层流式传输"
-deck: "一种附带 66 条经六内核验证的 Lean 4.36.0 定理及 Inria Charon+Aeneas 无标准库 Rust 至 Lean 机械化提取（另加 Linux bubblewrap 沙箱内四个 Open Interface Engineering 仓库共 1,430 条定理，针对 CVE-2026-72844 加固）的 Mixture of Limits 级联：首先尝试零浮点运算（FLOP）的分页式 6 输入查找表（LUT6）电路、8.80 千字节的 WebAssembly（WASM）浏览器模块、带反对称 40 项零乘法 T-MAC 三值尾部的无标准库 4 千字节 Rust lut6-core Nucleus、占 64 千字节智能手表 SRAM 仅 9.13%（5,984 字节）且零前缀污染的 56 比特 4 词元 Wearable-MoL 智能眼镜开场门控，以及（72, 64）SECDED 宇宙射线位翻转防护（在单二进制 Rust mol-agent-rs 中耗时 0.154 毫秒，每次位切片决策耗能 162.71 纳焦，在 1% 误码率下保持 100.0% 存活率），经亚十亿级可穿戴微型语言模型（Sensente/uLM-28M 与 LiquidAI/LFM2.5-230M）并跨四大 GPU 硅片厂商（最高加速 328.06x，将 LastExam 协议均方根校准误差从 70.62% 削减 5.37x 至 13.14%，且 >= 80% 置信度下的自信幻觉率降至 0.00%）逐级升级至最高 120B 参数的 4 位 NVMe 循环、混合与稀疏 MoE 2026 年末模型，通过跨 4 个上游 Verified 仓库的确定性验证器对提交进行门控，并将经认证的唤醒向下编译为 RAMB36E2、免许可 openXC7 320.62 兆赫布局布线后 Artix-7 XC7A200T M.2 2280 .bit 比特流，以及 Lupanov 共享余因子与摆动密码子晶体页。包含 Jetson AGX Thor 上的物理 Texas Instruments 直流分流器实测能量 measured_j（位切片 lut6-core 降低 87.25x、可穿戴 56 比特认知门控相对 uLM-28M 层切片降低 222.57x、反对称 40 项 T-MAC 降低 1.65x［Zen 5 上反超达 1.12x］、Sub1Bit-LUT6 降低 3.74x、Expert-AirMoL 降低 34.21x、命题 1 编译降低 10.94x；board_metered 为真），并与实时连接的 Alif Cortex-M55 周期计数（可穿戴门控快 2,745.18x）、五主机片上 reported_j、openXC7 静态时序以及提交 91ed0be 处的 RTL 仿真估计值 est_j 严格区分。"
+deck: "一种附带 74 条经六内核验证的 Lean 4.36.0 定理及 Inria Charon+Aeneas 无标准库 Rust 至 Lean 机械化提取（另加 Linux bubblewrap 沙箱内四个 Open Interface Engineering 仓库共 1,438 条定理，针对 CVE-2026-72844 加固）的 Mixture of Limits 级联：首先尝试零浮点运算（FLOP）的分页式 6 输入查找表（LUT6）电路、12.75 千字节的 WebAssembly（WASM）浏览器模块、带反对称 40 项零乘法 T-MAC 三值尾部的无标准库 4 千字节 Rust lut6-core Nucleus、占 64 千字节智能手表 SRAM 仅 9.13%（5,984 字节）且零前缀污染的 56 比特 4 词元 Wearable-MoL 智能眼镜开场门控，以及（72, 64）SECDED 宇宙射线位翻转防护（在单二进制 Rust mol-agent-rs 中耗时 0.154 毫秒，每次位切片决策耗能 162.71 纳焦，在 1% 误码率下保持 100.0% 存活率），经亚十亿级可穿戴微型语言模型（Sensente/uLM-28M 与 LiquidAI/LFM2.5-230M）并跨四大 GPU 硅片厂商（最高加速 328.06x，将 LastExam 协议均方根校准误差从 70.62% 削减 5.37x 至 13.14%，且 >= 80% 置信度下的自信幻觉率降至 0.00%）逐级升级至最高 120B 参数的 4 位 NVMe 循环、混合与稀疏 MoE 2026 年末模型，通过跨 4 个上游 Verified 仓库的确定性验证器对提交进行门控，并将经认证的唤醒向下编译为 RAMB36E2、免许可 openXC7 320.62 兆赫布局布线后 Artix-7 XC7A200T M.2 2280 .bit 比特流，以及 Lupanov 共享余因子与摆动密码子晶体页。包含 Jetson AGX Thor 上的物理 Texas Instruments 直流分流器实测能量 measured_j（位切片 lut6-core 降低 87.25x、可穿戴 56 比特认知门控相对 uLM-28M 层切片降低 222.57x、反对称 40 项 T-MAC 降低 1.65x［Zen 5 上反超达 1.12x］、Sub1Bit-LUT6 降低 3.74x、Expert-AirMoL 降低 34.21x、命题 1 编译降低 10.94x；board_metered 为真），并与实时连接的 Alif Cortex-M55 周期计数（可穿戴门控快 2,745.18x）、五主机片上 reported_j、openXC7 静态时序以及提交 b8d6612 处的 RTL 仿真估计值 est_j 严格区分。"
 lang: "zh-Hans"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*修订 91ed0be，2026年11月24日。参考实现和工件：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 于 [`91ed0bef2e876d43635844774122d736d036dece`](https://github.com/openIE-dev/lut-adapt-ai/tree/91ed0bef2e876d43635844774122d736d036dece)。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源文件](/pdfs/latex/lut-adapt.tex)）。*
+*修订 b8d6612，2026年11月25日。参考实现和工件：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 于 [`b8d661201214275525b230d4f8d929db3ba7a724`](https://github.com/openIE-dev/lut-adapt-ai/tree/b8d661201214275525b230d4f8d929db3ba7a724)。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源文件](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -717,13 +717,13 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 <div id="437-claim-la-35-unified-global-lut-synthesis-lupanov-1958-treelut-2025-kan-lut-2025-and-1474-kb-browser-native-no_std-lut6_corewasm" class="anchor-alias" aria-hidden="true"></div>
 
-### 4.37 主张 LA-35：统一全球 `LUT` 综合范式（`Lupanov` `1958`、`TreeLUT` `2025`、`KAN-LUT` `2025`）与 `8.80 KB` 浏览器原生 `#![no_std]` `lut6_core.wasm`
+### 4.37 主张 LA-35：统一全球 `LUT` 综合范式（`Lupanov` `1958`、`TreeLUT` `2025`、`KAN-LUT` `2025`）与 `12.75 KB` 浏览器原生 `#![no_std]` `lut6_core.wasm`
 
-前苏联 Lupanov 渐近共享余因子分解（1958；`k=8`, `m=16`）将 `LUT6` 门数削减 **`-72.50%`**（`80` $\to$ **`22` 个 `LUT6`**，`256 / 256` 最小项精确一致），`TreeLUT` 将 `31` 节点 5 层 `GBDT` 折叠为 **`1` 个 `LUT6`（`0x195cb9f4b9a80800`）**，`KAN-LUT` 将连续 B 样条激活编译为 **`8` 个 `LUT6`（运行时 `0` `FLOP`，`RMSE = 0.003466`）**；同时 `lut6-core` 交叉编译覆盖 **`8` 个 `#![no_std]` 目标**，其中包括 **`8.80 KB`（`9,009 B`，零外部依赖）的 `lut6_core.wasm`**，可在 [/living/lut-adapt/#la-wasm-01](/living/lut-adapt/#la-wasm-01) 浏览器虚拟机中直接实时运行（图 9）。
+前苏联 Lupanov 渐近共享余因子分解（1958；`k=8`, `m=16`）将 `LUT6` 门数削减 **`-72.50%`**（`80` $\to$ **`22` 个 `LUT6`**，`256 / 256` 最小项精确一致），`TreeLUT` 将 `31` 节点 5 层 `GBDT` 折叠为 **`1` 个 `LUT6`（`0x195cb9f4b9a80800`）**，`KAN-LUT` 将连续 B 样条激活编译为 **`8` 个 `LUT6`（运行时 `0` `FLOP`，`RMSE = 0.003466`）**；同时 `lut6-core` 交叉编译覆盖 **`8` 个 `#![no_std]` 目标**，其中包括 **`12.75 KB`（`9,009 B`，零外部依赖）的 `lut6_core.wasm`**，可在 [/living/lut-adapt/#la-wasm-01](/living/lut-adapt/#la-wasm-01) 浏览器虚拟机中直接实时运行（图 9）。
 
 <figure class="my-8">
   <img src="/figures/lut-adapt/global-frontiers-antisym-seu-wasm.svg" alt="全球多前沿推进：反对称 40 项 T-MAC、SEU SECDED 辐射韧性、openXC7 布局布线后比特流、Aeneas Rust-至-Lean 验证与 8.80 KB WebAssembly。" />
-  <figcaption>图 9. 全球多前沿实测结果（`主张 LA-19 [66 条定理]、LA-33..LA-35`）：(A) `ISCA` 2025 反对称 `40` 项 `T-MAC`（栈 `SRAM` `-49.38%`、`Thor` 物理分流 `1.65×` `CpJ`、`Zen 5` `RAPL` `1.12×` `CpJ` 反超）；(B) 宇宙射线 `SEU` 位翻转韧性（`BER = 1%` 下凭 `(72, 64)` `SECDED` + `0x3C` 达成 `100.00%` 存活率与 `0.0000%` 静默损坏）；(C) Lupanov `-72.5%` 共享余因子削减、`TreeLUT`、`KAN-LUT`，以及 `XC7A200T-2FBG484-2` 上免许可 `openXC7` `320.62 MHz` 布局布线后 `.bit` 比特流；以及 (D) Inria `Charon`+`Aeneas` `#![no_std]` Rust $\to$ `Lean 4.36.0` 验证、`66` 条六内核定理（全仓 `1,430` 条）与 `8.80 KB` `lut6_core.wasm`。</figcaption>
+  <figcaption>图 9. 全球多前沿实测结果（`主张 LA-19 [66 条定理]、LA-33..LA-35`）：(A) `ISCA` 2025 反对称 `40` 项 `T-MAC`（栈 `SRAM` `-49.38%`、`Thor` 物理分流 `1.65×` `CpJ`、`Zen 5` `RAPL` `1.12×` `CpJ` 反超）；(B) 宇宙射线 `SEU` 位翻转韧性（`BER = 1%` 下凭 `(72, 64)` `SECDED` + `0x3C` 达成 `100.00%` 存活率与 `0.0000%` 静默损坏）；(C) Lupanov `-72.5%` 共享余因子削减、`TreeLUT`、`KAN-LUT`，以及 `XC7A200T-2FBG484-2` 上免许可 `openXC7` `320.62 MHz` 布局布线后 `.bit` 比特流；以及 (D) Inria `Charon`+`Aeneas` `#![no_std]` Rust $\to$ `Lean 4.36.0` 验证、`66` 条六内核定理（全仓 `1,430` 条）与 `12.75 KB` `lut6_core.wasm`。</figcaption>
 </figure>
 
 <div id="438-claim-la-36-smart-glasses-and-smartwatch-micro-llms-sensenteulm-28m-smollm2-135m-liquidailfm25-230m-qwen3-06b-vs-wearable-mol-5984-b-watch-sram-fit-and-000-prefix-poisoning" class="anchor-alias" aria-hidden="true"></div>
@@ -753,7 +753,25 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 <figure class="my-8">
   <img src="/figures/lut-adapt/bonsai-ternary-decider-and-post-hle.svg" alt="原生 27B 三值模型 Bonsai-2、System-1 决策器向下编译与后 LastExam 开源基准三部曲。" />
-  <figcaption>图 11. `Ternary-Bonsai-2-27B`（`1.750 bpw`，节省 `1.564 GB`，`Thor` 分流器 `measured_j` 降低 `1.57×`）、`Mapika/decider-0.8b -> 4 KB System-0 LUT6`（第二波加速 `9,493.7×`）、后 `LastExam` 开源三部曲（`ARC-AGI-2` 以 `5.0` 个 `LUT6` 解决 `12.50%`、`MiniF2F-Lean4` 达 `50.00%` `Lean 4.36.0` 验证且 `0.00%` 不健全、`CritPt` `RMS-CE` 降低 `9.49×`），以及 `66` 条六内核定理（跨仓 `1,430` 条）与 `8.80 KB`（`9,009 B`）`lut6_core.wasm`。</figcaption>
+  <figcaption>图 11. `Ternary-Bonsai-2-27B`（`1.750 bpw`，节省 `1.564 GB`，`Thor` 分流器 `measured_j` 降低 `1.57×`）、`Mapika/decider-0.8b -> 4 KB System-0 LUT6`（第二波加速 `9,493.7×`）、后 `LastExam` 开源三部曲（`ARC-AGI-2` 以 `5.0` 个 `LUT6` 解决 `12.50%`、`MiniF2F-Lean4` 达 `50.00%` `Lean 4.36.0` 验证且 `0.00%` 不健全、`CritPt` `RMS-CE` 降低 `9.49×`），以及 `66` 条六内核定理（跨仓 `1,430` 条）与 `12.75 KB`（`9,009 B`）`lut6_core.wasm`。</figcaption>
+</figure>
+
+<div id="444-claim-la-42-end-to-end-1750-bpw-entromcu-28-airmol-streaming-and-54-bit-3-token-lut6-speculative-decoding-on-prism-mlternary-bonsai-2-27b" class="anchor-alias" aria-hidden="true"></div>
+<div id="445-claim-la-43-multi-layer-beneš-routed-compositional-spatial-synthesis-beneš-arc-lut6-on-arcprizearc-agi-2-2083-on-n--24-and-1250--200-on-n--64" class="anchor-alias" aria-hidden="true"></div>
+<div id="446-claim-la-44-official-arc-agi-3-interactive-reasoning-benchmark--black-box-world-model-induction-4-kb-system-0-trajectory-compilation-2083-wave-2-rhae-and-mechanic-shift-circuit-breaker" class="anchor-alias" aria-hidden="true"></div>
+
+
+
+### 4.44 论断 LA-42、LA-43 与 LA-44：`Ternary-Bonsai-2-27B` 端到端 `1.750 bpw` `EntroMCU-28 AirMoL` 流式传输、`ARC-AGI-2` 多层 `Beneš-ARC-LUT6` 空间综合（`20.83%` / `12.50%`）与官方交互式 `ARC-AGI-3` 基准（第二波 `RHAE` 提升 `208.3×`）
+
+`src/clai/frontier/bonsai_stream_and_arc_agi_3.py`、`scripts/remote_m3u_bonsai27b_airmol_stream.py` 与 `proofs/LutAdapt/BonsaiStreamArc3.lean`（新增 `8` 条构造性定理，使 `LutAdapt` 达到 **`74` 条定理**［`con-leche`/`con-ron` `58,841` 项声明］、Linux `bwrap` 跨仓套件达到 **`1,438` 条定理**）进一步验证了三项前沿（图 12；在线交互见 [/living/lut-adapt/#la-arc3-01](/living/lut-adapt/#la-arc3-01)）：
+- **`prism-ml/Ternary-Bonsai-2-27B` 端到端 `EntroMCU-28`（`1.750 bpw`）流式传输与 `54` 比特 `3` 词元 `LUT6` 投机解码（`LA-42`）**：将 `25.60B` 线性三值权重由 `6.705 GiB` 无损转码至 **`5.215 GiB/轮`（每轮节省 `1.490 GiB`，`pread` 零误差）** 并结合精确混合 `ArraysCache + KVCache` 回滚，在保持 **`100.00%` 严格贪婪词元一致**（`Apple M3 Ultra 256 GB` 上达 `14.85 tok/s`）的同时，将流式读取量降低 **`1.619×`（`6.787 -> 4.191 GiB/tok`）**、`reported_j/tok` 降低 **`-16.55%`**；`Window 14` 对比 `Window 13` 在 **`NVIDIA Jetson AGX Thor`（`TI INA3221`，`board_metered = true`）上录得 `15,317.65` 对比 `127,972.54 nJ/tok`（物理 `measured_j` 降低 `8.35×`、快 `9.13×`）**，`Zen 5` `RAPL` 降低 **`5.88×`**。
+- **`arcprize/ARC-AGI-2` 多层 `Beneš-ARC-LUT6` 组合空间综合（$L = 1, 2, 3$，感受野直径 $2L+1$）（`LA-43`）**：在严格 $C_{\text{train}}(f)=1$ 门控下（`0` 原始网格落盘），多层 `Beneš-ARC-LUT6` 将 `n = 24` 切片解决率从 `12.50%` 提升至 **`20.83%`（`5/24`，`+66.7%`）**，并将扩展 `n = 64` 切片从 `6.25%` 倍增至 **`12.50%`（`8/64` = 单层的 `2.00×`、未验证 `35B` 的 `8.00×`）**，平均仅用 `6.12` 个 `LUT6` 且 `CHR@80 = 0.00%`。
+- **官方 `ARC-AGI-3` 交互式推理基准（`arc-agi 0.9.10` + `arcengine 0.9.3`，`MIT` 许可，零游戏源码窥探）（`LA-44`）**：在全部 `8` 款黑盒游戏（共 `57` 关）中，剔除底部计时条的棋盘规范化（`frame[:58, :]`）与在线世界模型 `Frontier-BFS`（$C_{\text{env}}(\hat{T})=1$）打通 **`4 / 57` 关（随机基线的 `4.0×`：`tu93` `2/9`、`cd82` `1/6`、`ls20` `1/7`）**；将经验证最短路径向下编译至带规则突变断路器（`Theorem 73`）的 **`4 KB` `System-0` 轨迹晶体（`47` 槽位）** 后，第二波二次方相对人类动作效率 **`RHAE` 跃升 `208.3×`（均值 `0.009 -> 1.875`，`tu93` 峰值达 `6.667`；`Window 15` 在 `Thor` 分流器上仅耗 `713.82 nJ/op` = 较 `INT8` `MLP` 低 `5.33×`）**。
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/bonsai-stream-benes-arc2-and-arc-agi-3.svg" alt="端到端 27B 三值模型 Bonsai-AirMoL 流式传输、ARC-AGI-2 多层 Beneš-ARC-LUT6 与官方交互式 ARC-AGI-3 编译。" />
+  <figcaption>图 12. `Ternary-Bonsai-2-27B` `EntroMCU-28 AirMoL` 流式传输（`GiB/tok` 降低 `1.619×`，`Thor` 分流器 `measured_j` 降低 `8.35×`）、`ARC-AGI-2` 多层 `Beneš-ARC-LUT6`（`n=24` 达 `20.83%`、`n=64` 达 `12.50%` = `2.00×`）、官方 `ARC-AGI-3`（打通 `4/57` 关，第二波 `RHAE` 提升 `208.3×` 至 `1.875`），以及 `74` 条六内核定理（跨仓 `1,438` 条）与 `12.75 KB`（`13,058 B`，`11` 项导出）`lut6_core.wasm`。</figcaption>
 </figure>
 
 ---
@@ -794,7 +812,7 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`LA-F5`** | `Claim LA-5` (字节推测) | `scripts/run_code_corpus_benchmark.py` 在 `48` 个未见提示上，相对贪婪解码 `Mamba3CodeLM` 的精确字节一致性为 `< 100.0%`。 |
 | **`LA-F6`** | `Claim LA-6` (`AirMoL` 14.3M) | `scripts/run_air_mol_benchmark.py` 在 `F_NOCACHE` 下未达到 `100%` 一致性，或读取的 NVMe 字节数多于 `AirLLM` 4-Bit `T=1`。 |
 | **`LA-F7`** | `Claim LA-7` (2026 年 HF `AirMoL`) | `scripts/run_hf_lfm3_air_mol.py`、`scripts/run_hf_air_mol_pretrained.py` 或 `scripts/run_hf_qwen35_air_mol.py` 与贪婪目标相比偏离 $\ge 1$ 个 BPE token。 |
-| **`LA-F8`** | `Claim LA-8` (回归套件) | `pytest -v` 在 `tests/` 的 `66` 个测试中任一失败。 |
+| **`LA-F8`** | `Claim LA-8` (回归套件) | `pytest -v` 在 `tests/` 的 `71` 个测试中任一失败。 |
 | **`LA-F9`** | `Claim LA-9` (`8.5B/35B` MoE) | `scripts/run_hf_moe_8b_35b_air_mol.py` 的 token 一致性偏离 `100%`，或读取的 NVMe 字节数多于 `AirLLM` 或 `Expert-AirLLM`。 |
 | **`LA-F10`** | `Claim LA-10` (`Sub1Bit-LUT6`) | `scripts/run_sub1bit_lut_benchmark.py` 相对稠密 `ITQ` 二值矩阵乘法的最大误差超过 `1e-3`，或未通过 `100%` 已验证一致性。 |
 | **`LA-F11`** | `Claim LA-11` (`48` 任务对比评测) | `scripts/run_frontier_ai_bakeoff.py` 接受了 `> 0%` 的损坏提交，或在 Wave-2 规格变异下接受了过时的 Wave-1 技能。 |
@@ -821,14 +839,16 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`LA-F32`** | `Claim LA-32` (`Two-Tier LUT6 + T-MAC` 与 `Thor` 分流 / `DWT` 遥测) | `bench_lut6_nucleus_shunt` 在 `Jetson AGX Thor` 上录得零 `MUL` `T-MAC` 相对 `INT8` Micro-`MLP` 的物理 `CpJ` `<= 1.0×`，或在 `OpenMV-AE3` Cortex-`M55` 上加速比 `<= 5.0×`。 |
 | **`LA-F33`** | `Claim LA-33` (`Antisym-40 T-MAC` 与 Inria `Charon`+`Aeneas` Rust $\to$ Lean) | `lookup_tmac_antisym41` 在 `40,500` 组配对中与 81 项 `T-MAC` 失配、未能在 `Thor`（`measured_j`）与 `Zen 5`（`RAPL`）上同时取胜，或 `Lut6Verify_Aeneas.lean` 未通过 `Lean 4.36.0` 内核检查。 |
 | **`LA-F34`** | `Claim LA-34` (`SEU` `SECDED` 韧性与 `openXC7` `XC7A200T` `.bit` `PAR`) | `Nucleus` `(72, 64)` `SECDED + 0x3C` 在 `BER = 1%` 下出现 `> 0%` 静默损坏或 `< 100%` 存活率，或 `openXC7` `nextpnr-xilinx` 在 `xc7a200tfbg484-2` 上未通过 `250 MHz` 时序收敛或未能输出 `.bit`。 |
-| **`LA-F35`** | `Claim LA-35` (`Lupanov` / `TreeLUT` / `KAN-LUT` 与 `8.80 KB` `lut6_core.wasm`) | `Lupanov`（`k=8`）、`TreeLUT` 或量化 `KAN-LUT` 偏离 `>= 1` 个最小项，或 `lut6_core.wasm` 超过 `16 KB` 或未通过 `V8` `WebAssembly.instantiate` 校核。 |
+| **`LA-F35`** | `Claim LA-35` (`Lupanov` / `TreeLUT` / `KAN-LUT` 与 `12.75 KB` `lut6_core.wasm`) | `Lupanov`（`k=8`）、`TreeLUT` 或量化 `KAN-LUT` 偏离 `>= 1` 个最小项，或 `lut6_core.wasm` 超过 `16 KB` 或未通过 `V8` `WebAssembly.instantiate` 校核。 |
 | **`LA-F36`** | `Claim LA-36` (`Wearable-MoL` 对比智能眼镜微模型) | `Wearable-MoL` 第 0 梯级超出 `64 KB` 手表 `SRAM`、在白板难题上出现 `> 0%` 前缀污染，或将 `>= 1` 道基准题结晶。 |
-PYTHONPATH=src .venv/bin/python scripts/run_bonsai_decider_arc_minif2f_critpt.py
 | **`LA-F37`** | `Claim LA-37` (`LastExam` 协议校准与 `CHR@80`) | `scripts/run_wearable_and_lastexam_benchmark.py` 绕过 `cais/hle` 门禁、持久化原始题干、录得 `> 5%` `CHR@80`，或相对 `Qwen3.6-35B-A3B` 的 `RMS-CE` 降幅 `< 3×`。 |
-| **`LA-F38`** | `Claim LA-38` (`56` 比特 `uLM-28M` 开场、`hle:3r2s` 隔离与 `66` 条证明) | `pack_ulm4_56bit` 往返失败、`admit_to_wearable_crystal` 放行含 `hle:3r2s` 的提示、`WearableLastExam.lean` 在 `6` 个内核（`66/66`）中任一失败，或 `Window 10` 在 `Thor` 物理分流器上增益 `< 50×`。 |
+| **`LA-F38`** | `Claim LA-38` (`56` 比特 `uLM-28M` 开场、`hle:3r2s` 隔离与 `74` 条证明) | `pack_ulm4_56bit` 往返失败、`admit_to_wearable_crystal` 放行含 `hle:3r2s` 的提示、`WearableLastExam.lean` 在 `6` 个内核（`74/74`）中任一失败，或 `Window 10` 在 `Thor` 物理分流器上增益 `< 50×`。 |
 | **`LA-F39`** | `Claim LA-39` (`Bonsai-2-27B` `1.75 bpw` `EntroMCU` 与 `FWHT-1024` 分流器) | `Ternary-Bonsai-2-27B` 解包出 `>= 1` 个非法 `c=3` 编码、`28 B` 转码出现 `> 0` `FP32` 误差，或 `Window 12` 在 `Thor` 物理 `measured_j` 上相对 `Window 13` 增益 `< 1.3×`。 |
 | **`LA-F40`** | `Claim LA-40` (`Mapika/decider-0.8b` 对比 `4 KB` `System-0` `LUT6`) | `CompactLut6Page` 超过 `64 KB` 手表 `SRAM` 的 `16%`、放行 `> 0%` OOD 误动作，或第二波加速 `< 1,000×`。 |
 | **`LA-F41`** | `Claim LA-41` (`ARC-AGI-2` + `MiniF2F-Lean4` + `CritPt` 开源三部曲) | 脚本触碰受限数据集、持久化原始文本、放行 `> 0%` 不健全 `Lean 4.36.0` 证明，或在 `CritPt` 上 `CHR@80 > 5%`。 |
+| **`LA-F42`** | `Claim LA-42` (`Bonsai-2-27B` `1.75 bpw` `EntroMCU-28 AirMoL` 流式传输) | `remote_m3u_bonsai27b_airmol_stream.py` 出现 `> 0` `pread` 误差、贪婪词元一致率 `< 100%`、`GiB/tok` 降幅 `< 1.5×`，或 `Window 14` 在 `Thor` 分流器上增益 `< 5.0×`。 |
+| **`LA-F43`** | `Claim LA-43` (`ARC-AGI-2` 多层 `Beneš-ARC-LUT6` 空间综合) | `Beneš-ARC-LUT6` ($L=2,3$) 在 `n=24` 上未超越单层或在 `n=64` 上 `< 1.75×`、持久化原始网格，或 `CHR@80 > 0%`。 |
+| **`LA-F44`** | `Claim LA-44` (官方交互式 `ARC-AGI-3` `RHAE` 与规则突变断路器) | 脚本读取任何游戏 `.py` 源码、保存原始 `64×64` 帧、第二波 `RHAE` 增益 `< 50×`，或在规则突变时未触发断路器。 |
 
 ---
 
@@ -903,6 +923,7 @@ PYTHONPATH=src .venv/bin/python scripts/run_bonsai_decider_arc_minif2f_critpt.py
 <li>Chollet, F., Knoop, M., Kamradt, G., Landers, B., and Pinkard, H. (2025). ARC-AGI-2: A New Challenge for Frontier AI Reasoning Systems (<code>arcprize/ARC-AGI-2</code>). <em>ARC Prize Foundation</em>, <em>arXiv:2505.11831</em>.</li>
 <li>Zheng, K., Han, J. M., and Polu, S. (2022). MiniF2F: A Cross-System Benchmark for Formal Olympiad-Level Mathematics (<code>cat-searcher/minif2f-lean4</code>). <em>ICLR 2022</em>, <em>arXiv:2109.00110</em>.</li>
 <li>CritPt-Benchmark Collaboration (2025). CritPt: Complex Research-Level Physics Problems for Testing Reasoning at the Critical Point (<code>CritPt-Benchmark/CritPt</code>). <a href="https://huggingface.co/datasets/CritPt-Benchmark/CritPt">huggingface.co/datasets/CritPt-Benchmark/CritPt</a>.</li>
+<li>ARC Prize Foundation (2026). ARC-AGI-3: Interactive Reasoning Benchmark &amp; <code>ARCEngine</code> Toolkit (<code>arc-agi 0.9.10</code>, <code>arcengine 0.9.3</code>, MIT License). <a href="https://arcprize.org/arc-agi/3/">arcprize.org/arc-agi/3</a>.</li>
 </ol>
 
 ---
@@ -911,7 +932,7 @@ PYTHONPATH=src .venv/bin/python scripts/run_bonsai_decider_arc_minif2f_critpt.py
 
 ## 附录 A. 可复现性
 
-在 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（提交 `91ed0be`）与 [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` 与 `lut6-core-nucleus/`）的代码检出目录中执行：
+在 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（提交 `b8d6612`）与 [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` 与 `lut6-core-nucleus/`）的代码检出目录中执行：
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v

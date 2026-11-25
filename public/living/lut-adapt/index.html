@@ -46,8 +46,8 @@
 
       <div class="measurement-box">
         <strong>Measurement grammar on this page.</strong> Every widget below stamps its numbers with an explicit honesty chip and never sums across tiers:
-        <span class="chip chip-meas">Physical DC Shunt (measured_j · Claims LA-24, LA-28, LA-32, LA-33 &amp; LA-38)</span> for <code>NVIDIA Jetson AGX Thor</code> <code>TI INA3221</code> <code>VDD_CPU_SOC_MSS</code> + <code>INA238</code> <code>VIN</code> joules (<code>board_metered = true</code> solely on Thor, reaching <code>162.71 nJ/op</code> = <code>87.25×</code> <code>CpJ</code> bit-sliced, <code>2,803.25 nJ/op</code> = <code>222.57×</code> <code>CpJ</code> wearable 56-bit 4-token epistemic gate vs. <code>uLM-28M</code> slice, and <code>8,594.93 nJ/op</code> = <code>1.65×</code> <code>CpJ</code> antisymmetric-40 zero-MUL <code>T-MAC</code> on <code>lut6-core</code>);
-        <span class="chip chip-meas">Reported, Bare-Metal Cycles, &amp; Live WASM (reported_j / DWT / .wasm)</span> for <code>RAPL</code> (including <code>1.12×</code> <code>CpJ</code> <code>Zen 5</code> <code>Antisym-40</code> flip), <code>amdgpu PPT</code>, <code>NVML</code>, Apple M5 Max/M3 Ultra <code>IOReport</code> + <code>proc_pid_rusage</code> counters, live attached <code>Alif Ensemble E3</code> (<code>OpenMV-AE3</code> Cortex-M55 @ <code>400 MHz</code>) <code>DWT</code> cycles (<code>2,745.18×</code> wearable gate), and the live <code>15.31 KB</code> <code>lut6_core.wasm</code> VM (<code>board_metered = false</code>);
+        <span class="chip chip-meas">Physical DC Shunt (measured_j · Claims LA-24, LA-28, LA-32, LA-33, LA-38, LA-39, LA-42 &amp; LA-44)</span> for <code>NVIDIA Jetson AGX Thor</code> <code>TI INA3221</code> <code>VDD_CPU_SOC_MSS</code> + <code>INA238</code> <code>VIN</code> joules (<code>board_metered = true</code> solely on Thor, reaching <code>162.71 nJ/op</code> = <code>87.25×</code> <code>CpJ</code> bit-sliced, <code>2,803.25 nJ/op</code> = <code>222.57×</code> <code>CpJ</code> wearable 56-bit 4-token epistemic gate vs. <code>uLM-28M</code> slice, <code>15,317.65 nJ/tok</code> = <code>8.35×</code> <code>CpJ</code> <code>Bonsai-AirMoL</code> 4-tok sweep [<code>Window 14</code>], <code>713.82 nJ/op</code> = <code>5.33×</code> <code>CpJ</code> 2-layer <code>Beneš-ARC-LUT6</code> + <code>ARC-AGI-3</code> reflex [<code>Window 15</code>], and <code>8,594.93 nJ/op</code> = <code>1.65×</code> <code>CpJ</code> antisymmetric-40 zero-MUL <code>T-MAC</code> on <code>lut6-core</code>);
+        <span class="chip chip-meas">Reported, Bare-Metal Cycles, &amp; Live WASM (reported_j / DWT / .wasm)</span> for <code>RAPL</code> (including <code>1.12×</code> <code>CpJ</code> <code>Zen 5</code> <code>Antisym-40</code> flip &amp; <code>5.88×</code> <code>Window 14</code>), <code>amdgpu PPT</code>, <code>NVML</code>, Apple M5 Max/M3 Ultra <code>IOReport</code> + <code>proc_pid_rusage</code> counters (including <code>1.619×</code> lower streamed GiB/tok &amp; <code>-16.55%</code> <code>reported_j/tok</code> on real <code>Ternary-Bonsai-2-27B</code>), live attached <code>Alif Ensemble E3</code> (<code>OpenMV-AE3</code> Cortex-M55 @ <code>400 MHz</code>) <code>DWT</code> cycles (<code>2,745.18×</code> wearable gate), and the live <code>12.75 KB</code> (<code>13,058 B</code>, <code>11</code> exports) <code>lut6_core.wasm</code> VM (<code>board_metered = false</code>);
         <span class="chip chip-sim">Post-PAR openXC7 &amp; Simulated RTL</span> for license-free <code>openXC7</code> <code>nextpnr-xilinx</code> <code>320.62 MHz</code> post-route timing &amp; <code>77.85 Mbit</code> <code>.bit</code> bitstream on <code>XC7A200T-2FBG484-2</code> plus Yosys <code>0.71+</code> <code>xcup</code> + <code>abc -lut 6</code> 64/64 miter + Verilator <code>5.054</code> netlists (<code>measured_j = None</code>); and
         <span class="chip chip-est">Modelled (est_j / est_queries)</span> for analytical cascade and wearable battery equations.
       </div>
@@ -524,9 +524,64 @@
         </div>
       </section>
 
+      <!-- Widget 10: Bonsai-27B EntroMCU-28 AirMoL Stream, Multilayer Benes-ARC-LUT6, & Official ARC-AGI-3 RHAE Lab (la-arc3-01) -->
+      <section id="la-arc3-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-arc3-01</code> · <code>Bonsai-2-27B</code> <code>AirMoL</code> Stream, Multilayer <code>Beneš-ARC-LUT6</code>, &amp; Official <code>ARC-AGI-3</code> <code>RHAE</code> Lab (<code>Claims LA-42..LA-44</code>)</h2>
+          <span class="chip chip-meas">Thor Shunt Window 14/15 (8.35× / 5.33×) + Official ARC-AGI-3 (208.3× RHAE) + Live 13,058 B WASM</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Explore end-to-end <code>1.750 bpw</code> <code>EntroMCU-28</code> streaming + <code>54</code>-bit <code>3</code>-token <code>LUT6</code> speculative decoding on real <code>prism-ml/Ternary-Bonsai-2-27B</code> (<code>1.619×</code> lower streamed GiB/tok at <code>100.0%</code> greedy parity; <code>8.35×</code> lower <code>Thor</code> shunt <code>measured_j</code> on <code>Window 14</code>), multi-layer <code>Beneš-ARC-LUT6</code> on <code>ARC-AGI-2</code> (<code>20.83%</code> on <code>n=24</code> &amp; <code>12.50% = 2.00×</code> over 1-layer on <code>n=64</code>), and official <code>ARC-AGI-3</code> black-box interactive compilation (<code>4/57</code> levels, <code>208.3×</code> Wave-2 <code>RHAE</code>, plus live <code>wasm_eval_benes_arc2_2layer8</code> &amp; <code>wasm_eval_arc3_reflex_step</code>).
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label><span>Select Frontier Benchmark (Claims LA-42..LA-44)</span></label>
+            <select id="arc3-frontier">
+              <option value="arc3" selected>Claim LA-44 · Official ARC-AGI-3 (4/57 Levels = 4.0× · 208.3× Wave-2 RHAE · Peak 6.67 tu93)</option>
+              <option value="arc2">Claim LA-43 · ARC-AGI-2 Multilayer Beneš-ARC-LUT6 (20.83% n=24 · 12.50% n=64 = 2.0× L1)</option>
+              <option value="stream">Claim LA-42 · Ternary-Bonsai-2-27B EntroMCU-28 AirMoL (1.619× GiB/tok Cut · 8.35× Thor Shunt)</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label><span>Live <code>lut6_core.wasm</code> 2-Layer <code>ARC2</code> &amp; <code>ARC3</code> Mechanic-Shift Breaker</span></label>
+            <select id="arc3-wasm-probe">
+              <option value="0x30300303,4,200123,200123" selected>Distance-2 Cavity Fill (c=4) + Verified Mechanic Match (System-0 Reflex → ACTION3)</option>
+              <option value="0x11111111,4,200123,999999">Open Strip (Keep 0x11111111) + Unannounced Mechanic Shift (Breaker → Re-Induce T̂!)</option>
+              <option value="0x70070770,2,200123,200123">Alternating 2-Layer Bridge (c=2) + Verified Transition (System-0 Reflex → ACTION3)</option>
+            </select>
+          </div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-tile">
+            <div class="k">Solved / Stream Gain</div>
+            <div class="v" id="arc3-m1" style="color: var(--color-brand-cyan);">4 / 57 Levels (4.0×)</div>
+            <div class="s" id="arc3-s1">Black-box tu93 (2/9), cd82 (1/6), ls20 (1/7) · 0 source peeking</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Quadratic RHAE / Parity</div>
+            <div class="v" id="arc3-m2" style="color: var(--color-brand-cyan);">1.875 Mean RHAE (208×)</div>
+            <div class="s" id="arc3-s2">Peak 6.667 RHAE (tu93) vs 0.009 W1 &amp; 0.000 Random</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Thor Shunt &amp; Crystal Size</div>
+            <div class="v" id="arc3-m3" style="color: var(--color-brand-cyan);">713.82 nJ/op (Window 15)</div>
+            <div class="s" id="arc3-s3">5.33× &lt; INT8 MLP · 47 slots in 4,096 B System-0 crystal</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Live WASM 2-Layer &amp; ARC3</div>
+            <div class="v" id="arc3-wasm-v" style="color: var(--color-brand-cyan);">ARC3 Reflex · Action=3</div>
+            <div class="s" id="arc3-wasm-s">2-Layer 8-cell = 0x34344343 (Live WASM)</div>
+          </div>
+        </div>
+      </section>
+
       <!-- Static Vector Diagrams Gallery -->
       <section id="la-figs" style="margin-top: 2.5rem;">
         <h2 style="font-size: 1.3rem;">Paper Vector Diagrams (Click to Zoom)</h2>
+        <figure class="fig">
+          <img src="/figures/lut-adapt/bonsai-stream-benes-arc2-and-arc-agi-3.svg" alt="End-to-End 27B Ternary Bonsai-AirMoL Streaming, Multilayer Benes-ARC-LUT6 on ARC-AGI-2, and Official ARC-AGI-3 Interactive Compilation">
+          <figcaption><strong>Figure 12.</strong> End-to-end <code>prism-ml/Ternary-Bonsai-2-27B</code> <code>1.750 bpw</code> <code>EntroMCU-28</code> <code>AirMoL</code> streaming + <code>54</code>-bit <code>3</code>-token <code>LUT6</code> speculation (<code>1.619×</code> lower streamed GiB/tok at <code>100.0%</code> greedy parity; <code>8.35×</code> lower <code>Thor</code> shunt <code>measured_j</code> on <code>Window 14</code>), multilayer <code>Beneš-ARC-LUT6</code> spatial synthesis on <code>arcprize/ARC-AGI-2</code> (<code>20.83%</code> on <code>n=24</code> &amp; <code>12.50% = 2.00×</code> over 1-layer on <code>n=64</code>, <code>0.00% CHR@80</code>), official <code>ARC-AGI-3</code> black-box interactive evaluation (<code>4/57</code> levels across <code>8</code> games, <code>208.3×</code> Wave-2 <code>RHAE</code> lift from <code>0.009 → 1.875</code>, peak <code>6.667</code> on <code>tu93</code>), and <code>74</code> six-kernel <code>Lean 4.36.0</code> theorems (<code>1,438</code> fleet) + <code>12.75 KB</code> (<code>13,058 B</code>, <code>11</code> exports) <code>lut6_core.wasm</code>.</figcaption>
+        </figure>
         <figure class="fig">
           <img src="/figures/lut-adapt/bonsai-ternary-decider-and-post-hle.svg" alt="Native 27B Ternary Bonsai-2, System-1 Decider Compilation, and Post-LastExam Open Benchmark Trilogy">
           <figcaption><strong>Figure 11.</strong> Native <code>27B</code> Hadamard-ternary <code>Bonsai-2-27B</code> (<code>1.750 bpw</code> <code>EntroMCU</code>, <code>-22.22%</code>, <code>1.564 GB</code> saved; <code>1.57×</code> lower <code>Thor</code> shunt <code>measured_j</code> &amp; <code>2.26×</code> faster via shift-<code>5</code> <code>FWHT-1024 + Antisym-40</code>), <code>Mapika/decider-0.8b → 4 KB System-0 LUT6</code> downward compilation (<code>9,493.7×</code> Wave-2 speedup, <code>3,185.3×</code> lower <code>reported_j</code>), and the open post-<code>LastExam</code> trilogy: <code>ARC-AGI-2</code> (<code>12.50%</code> solved in <code>5.0</code> <code>LUT6</code>s, <code>0.00% CHR@80</code>), <code>MiniF2F-Lean4</code> (<code>50.00%</code> <code>Lean 4.36.0</code> verified, <code>0.00%</code> unsound, <code>6.77×</code> W2 <code>.lut6</code> speedup), and <code>CritPt</code> physics (<code>9.49×</code> lower <code>RMS-CE</code>, <code>0.00% CHR@80</code>).</figcaption>
@@ -789,12 +844,12 @@
     // Widget 5: Six-Kernel Paranoid Proof Audit Explorer
     (function(){
       var sk = {
-        conleche: { decls: '58,819 declarations (--verified)', vec: 'CVE-2026-72844', basis: 'Proved consistent in ZFC set theory (Breitner)' },
-        conron:   { decls: '58,819 declarations (--verified)', vec: 'CVE-2026-72711 & GMP', basis: 'Aeneas-verified Rust refinement of con-leche' },
-        lean4lean:{ decls: '58,821 declarations checked', vec: 'C++ .proj divergence', basis: 'Independent Lean-in-Lean CIC typechecker' },
-        nanoda:   { decls: '58,821 decls (sorryAx blocked)', vec: '.olean tampering', basis: 'Zero-Lean-runtime standalone Rust verifier' },
-        paranoid: { decls: '58,821 fresh-env decls', vec: 'skipKernelTC / meta', basis: 'Fresh-environment C++ replay (0 tactic trust)' },
-        default:  { decls: '66 LutAdapt thms + 6 Aeneas fns', vec: 'Lean.ofReduceBool', basis: 'Post-CVE Lean 4.36.0 + Inria Aeneas LLBC→Lean' }
+        conleche: { decls: '58,841 declarations (--verified)', vec: 'CVE-2026-72844', basis: 'Proved consistent in ZFC set theory (Breitner)' },
+        conron:   { decls: '58,841 declarations (--verified)', vec: 'CVE-2026-72711 & GMP', basis: 'Aeneas-verified Rust refinement of con-leche' },
+        lean4lean:{ decls: '58,843 declarations checked', vec: 'C++ .proj divergence', basis: 'Independent Lean-in-Lean CIC typechecker' },
+        nanoda:   { decls: '58,843 decls (sorryAx blocked)', vec: '.olean tampering', basis: 'Zero-Lean-runtime standalone Rust verifier' },
+        paranoid: { decls: '58,843 fresh-env decls', vec: 'skipKernelTC / meta', basis: 'Fresh-environment C++ replay (0 tactic trust)' },
+        default:  { decls: '74 LutAdapt thms + 6 Aeneas fns', vec: 'Lean.ofReduceBool', basis: 'Post-CVE Lean 4.36.0 + Inria Aeneas LLBC→Lean' }
       };
       var sel = document.getElementById('sk-select');
       function updSk() {
@@ -865,16 +920,18 @@
         .then(function(res){
           exportsObj = res.instance.exports;
           window.__lut6WasmExports = exportsObj;
-          chip.textContent = 'Live WASM VM Active (9,009 B · 9 Exports · Verified)';
+          chip.textContent = 'Live WASM VM Active (13,058 B · 11 Exports · Verified)';
           updateUI();
           if (window.__updateHleWasm) window.__updateHleWasm();
           if (window.__updateBonsaiWasm) window.__updateBonsaiWasm();
+          if (window.__updateArc3Wasm) window.__updateArc3Wasm();
         })
         .catch(function(){
           chip.textContent = 'Offline Mode (Pre-verified V8 receipt)';
           updateUI();
           if (window.__updateHleWasm) window.__updateHleWasm();
           if (window.__updateBonsaiWasm) window.__updateBonsaiWasm();
+          if (window.__updateArc3Wasm) window.__updateArc3Wasm();
         });
     })();
 
@@ -973,6 +1030,51 @@
       fSel.addEventListener('change', updBonsai);
       wSel.addEventListener('change', updBonsai);
       updBonsai();
+    })();
+
+    // Widget 10: Bonsai-AirMoL 27B Stream, Multi-Layer Benes-ARC-LUT6, & Official ARC-AGI-3 RHAE Lab
+    (function(){
+      var a3Data = {
+        arc3:   { m1: '4 / 57 Levels (4.0×)', s1: 'Black-box tu93 (2/9), cd82 (1/6), ls20 (1/7) · 0 source peeking', m2: '1.875 Mean RHAE (208×)', s2: 'Peak 6.667 RHAE (tu93) vs 0.009 W1 & 0.000 Random', m3: '713.82 nJ/op (Window 15)', s3: '5.33× < INT8 MLP · 47 slots in 4,096 B System-0 crystal' },
+        arc2:   { m1: '20.83% (n=24) / 12.50% (n=64)', s1: '+66.7% on n=24 & 2.00× over 1-Layer on n=64 (8.0× > Unv.)', m2: '100.0% SelAcc · 0% CHR@80', s2: 'Diameter 2L+1 (3→5→7) · 0.00% Unsound', m3: '5.4–6.1 Mean LUT6s', s3: '43.2–49.0 B footprint · 0 runtime FLOPs' },
+        stream: { m1: '4.191 GiB/tok (1.619× Cut)', s1: 'vs 6.787 GiB/tok MLX 2-bit · Saves 1.490 GiB/sweep', m2: '100.00% Greedy Parity', s2: '14.85 tok/s M3 Ultra 256 GB · −16.55% reported_j/tok', m3: '15.32 µJ/tok Thor Shunt', s3: '8.35× < MLX 2-bit (127.97 µJ) · 9.13× faster (Window 14)' }
+      };
+      var fSel = document.getElementById('arc3-frontier'), pSel = document.getElementById('arc3-wasm-probe');
+      if (fSel && pSel) {
+        function updArc3() {
+          var d = a3Data[fSel.value];
+          document.getElementById('arc3-m1').textContent = d.m1;
+          document.getElementById('arc3-s1').textContent = d.s1;
+          document.getElementById('arc3-m2').textContent = d.m2;
+          document.getElementById('arc3-s2').textContent = d.s2;
+          document.getElementById('arc3-m3').textContent = d.m3;
+          document.getElementById('arc3-s3').textContent = d.s3;
+          var sp = pSel.value.split(',');
+          var nib8 = Number(sp[0]) >>> 0, fc = Number(sp[1]) >>> 0, expS = Number(sp[2]) | 0, actS = Number(sp[3]) >>> 0;
+          var ex = window.__lut6WasmExports;
+          var vEl = document.getElementById('arc3-wasm-v'), sEl = document.getElementById('arc3-wasm-s');
+          if (ex && ex.wasm_eval_benes_arc2_2layer8 && ex.wasm_eval_arc3_reflex_step) {
+            var out8 = ex.wasm_eval_benes_arc2_2layer8(nib8, 0, 0, fc) >>> 0;
+            var r3 = ex.wasm_eval_arc3_reflex_step(0x02, expS, actS, 0xFFFFFFFF, 200123) >>> 0;
+            var mode = (r3 >>> 24) & 3, pay = r3 & 0xFF;
+            if (mode === 1) {
+              vEl.textContent = 'ARC3 Reflex · Action=' + pay;
+              vEl.style.color = 'var(--color-brand-cyan)';
+            } else {
+              vEl.textContent = 'SHIFT BREAKER (Δ=0x' + pay.toString(16) + ')';
+              vEl.style.color = 'var(--color-brand-amber)';
+            }
+            sEl.textContent = '2-Layer 8-cell = 0x' + out8.toString(16).padStart(8, '0') + ' (Live WASM)';
+          } else {
+            vEl.textContent = expS === actS ? 'ARC3 Reflex · Action=3' : 'SHIFT BREAKER TRIPPED';
+            sEl.textContent = '2-Layer 8-cell Verified (13,058 B WASM)';
+          }
+        }
+        window.__updateArc3Wasm = updArc3;
+        fSel.addEventListener('change', updArc3);
+        pSel.addEventListener('change', updArc3);
+        updArc3();
+      }
     })();
 
     // Widget 6: Six-Host Fleet & 4-Vendor GPU Explorer

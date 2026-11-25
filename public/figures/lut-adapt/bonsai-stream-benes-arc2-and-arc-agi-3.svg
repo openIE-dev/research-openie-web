@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="860" viewBox="0 0 1220 860" role="img" aria-labelledby="p36-t p36-d">
+  <title id="p36-t">Bonsai-AirMoL 1.75 bpw 27B Streaming Speculation, Multi-Layer Benes ARC-AGI-2 Synthesis, and Official ARC-AGI-3 Interactive RHAE</title>
+  <desc id="p36-d">Four-panel summary of Claims LA-42 through LA-44 and 74 six-kernel Lean 4.36.0 theorems (1438 fleet): (A) Real prism-ml/Ternary-Bonsai-2-27B EntroMCU-28 1.750 bpw streaming and 54-bit 3-token LUT6 speculation on M3 Ultra 256GB (1.619x I/O cut, 100% greedy parity) plus Jetson AGX Thor DC shunt measured_j (8.35x CpJ); (B) Multi-layer Benes-ARC-LUT6 spatial cascades on ARC-AGI-2 (20.83% on n=24 and 12.50% on n=64, 100% selective accuracy, 0% CHR@80); (C) Official ARC-AGI-3 Interactive Reasoning Benchmark across 8 environments (57 levels) scored by EnvironmentScoreCalculator RHAE; and (D) 74 six-kernel theorems, 12.75 KB lut6_core.wasm, and R2 precompressed .br sidecar invariant.</desc>
+  <defs>
+    <linearGradient id="bg36" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#060b16"/>
+      <stop offset="50%" stop-color="#0a1426"/>
+      <stop offset="100%" stop-color="#071a20"/>
+    </linearGradient>
+    <linearGradient id="g36-em" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="g36-am" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="g36-ro" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f43f5e"/><stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+    <linearGradient id="g36-vi" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1220" height="860" fill="url(#bg36)"/>
+  <text x="30" y="36" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="17.8" font-weight="800">Bonsai-AirMoL 1.75 bpw 27B Streaming, Multi-Layer Beneš ARC-AGI-2 &amp; Official ARC-AGI-3 RHAE</text>
+  <text x="30" y="56" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.7">Claims LA-19 (74 Thms / 1,438 bwrap Fleet), LA-42..LA-44  |  Thor DC Shunt measured_j (board_metered=true) != Host reported_j  |  0 Raw Benchmark Grids/Frames/Text</text>
+  <rect x="24" y="72" width="576" height="372" rx="12" fill="#0d1729" stroke="#22d3ee" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="42" y="98" fill="#22d3ee" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.0" font-weight="800">A. Claim LA-42 · Real Ternary-Bonsai-2-27B EntroMCU-28 + 3-Tok LUT6 AirMoL</text>
+  <text x="42" y="116" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3">M3 Ultra 256GB End-to-End (|V|=248,320, 48 GatedDeltaNet + 16 FullAttn) · 100.0% Exact Greedy Parity</text>
+  <text x="44" y="140" fill="#e2e8f0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.2" font-weight="700">MLX 2-Bit Affine T=1 Baseline (2.25 bpw, 36 B/128w)</text>
+  <rect x="44" y="146" width="310" height="16" rx="4" fill="url(#g36-ro)"/>
+  <text x="362" y="158" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7" font-weight="700">6.787 GiB/tok (1.000x cut) · 14.35 tok/s · 0.055 J/tok</text>
+  <text x="44" y="194" fill="#e2e8f0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.2" font-weight="700">OpenIE EntroMCU-28 T=1 Lossless Stream (1.75 bpw, 0 pread err)</text>
+  <rect x="44" y="200" width="241" height="16" rx="4" fill="url(#g36-vi)"/>
+  <text x="293" y="212" fill="#c4b5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7" font-weight="700">5.279 GiB/tok (1.286x cut) · 14.35 tok/s · 0.055 J/tok</text>
+  <text x="44" y="248" fill="#e2e8f0" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.2" font-weight="700">OpenIE Bonsai-AirMoL (1.75 bpw + 54b 3-Tok LUT6 + Hybrid Rollback)</text>
+  <rect x="44" y="254" width="191" height="16" rx="4" fill="url(#g36-em)"/>
+  <text x="243" y="266" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7" font-weight="700">4.191 GiB/tok (1.619x cut) · 14.85 tok/s · 0.0459 J/tok</text>
+  <text x="42" y="304" fill="#fde68a" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.8" font-weight="700">Window 14 (EntroMCU-28 + FWHT-1024 + 4-Tok Burst) vs. Window 13 (MLX 2-Bit T=1) Silicon Energy:</text>
+  <rect x="44" y="314" width="235" height="15" rx="3.5" fill="url(#g36-em)"/>
+  <text x="50" y="325" fill="#060b16" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.8" font-weight="800">Jetson AGX Thor DC Shunt (measured</text>
+  <text x="287" y="326" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="700">15.3 vs 128.0 uJ/tok (8.35x CpJ, 9.13x spd)</text>
+  <rect x="44" y="348" width="195" height="15" rx="3.5" fill="url(#g36-vi)"/>
+  <text x="50" y="359" fill="#060b16" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.8" font-weight="800">AMD Ryzen AI Max+ 395 RAPL (report</text>
+  <text x="247" y="360" fill="#c4b5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="700">38.1 vs 224.4 uJ/tok (5.88x CpJ, 6.45x spd)</text>
+  <rect x="44" y="382" width="188" height="15" rx="3.5" fill="url(#g36-am)"/>
+  <text x="50" y="393" fill="#060b16" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.8" font-weight="800">Apple M3 Ultra Counter (reported_j</text>
+  <text x="240" y="394" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="700">5.66 vs 31.15 uJ/tok (5.51x CpJ, 10.09x spd)</text>
+  <text x="42" y="432" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">Saves 1.490 GiB/sweep (1,599,897,600 B) · 258/512 slots in 4 KB LUT6 · 59.04% 3-gram burst accept</text>
+  <rect x="620" y="72" width="576" height="372" rx="12" fill="#0d1729" stroke="#a78bfa" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="638" y="98" fill="#c4b5fd" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.0" font-weight="800">B. Claim LA-43 · Multi-Layer Beneš-ARC-LUT6 on ARC-AGI-2 (n=24 &amp; n=64)</text>
+  <text x="638" y="116" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.3">Theorem 70/71: Diameter 2L+1 (3&#x2192;5&#x2192;7) · Strictly C_train(f)=1 Gated · 0 Test-Grid Leakage</text>
+  <rect x="638" y="126" width="540" height="22" rx="4" fill="#1e293b"/>
+  <text x="646" y="141" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">Slice &amp; Synthesizer Cascade</text>
+  <text x="954" y="141" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">Solved</text>
+  <text x="1012" y="141" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">SelAcc</text>
+  <text x="1070" y="141" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">CHR@80</text>
+  <text x="1126" y="141" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9" font-weight="700">LUT6s</text>
+  <rect x="638" y="152" width="540" height="29" rx="4" fill="#1a1118"/>
+  <text x="646" y="170" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="400">n=24 · Unverified 1-Shot Spatial Mapper</text>
+  <text x="954" y="170" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">4.17%</text>
+  <text x="1012" y="170" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">4.17%</text>
+  <text x="1070" y="170" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">95.83%</text>
+  <text x="1128" y="170" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">4.0</text>
+  <rect x="638" y="185" width="540" height="29" rx="4" fill="#0b1929"/>
+  <text x="646" y="203" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="700">n=24 · 1-Layer ARC-LUT6 [D=3]</text>
+  <text x="954" y="203" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">12.5%</text>
+  <text x="1012" y="203" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">100.0%</text>
+  <text x="1070" y="203" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">0.0%</text>
+  <text x="1128" y="203" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">5.0</text>
+  <rect x="638" y="218" width="540" height="29" rx="4" fill="#08221e"/>
+  <text x="646" y="236" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="700">n=24 · 2-Layer Benes-ARC-LUT6 [D=5]</text>
+  <text x="954" y="236" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">20.83%</text>
+  <text x="1012" y="236" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">100.0%</text>
+  <text x="1070" y="236" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">0.0%</text>
+  <text x="1128" y="236" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">5.4</text>
+  <rect x="638" y="251" width="540" height="29" rx="4" fill="#08221e"/>
+  <text x="646" y="269" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="700">n=24 · 3-Layer Benes-ARC-LUT6 [D=7]</text>
+  <text x="954" y="269" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">20.83%</text>
+  <text x="1012" y="269" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">100.0%</text>
+  <text x="1070" y="269" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">0.0%</text>
+  <text x="1128" y="269" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">5.4</text>
+  <rect x="638" y="284" width="540" height="29" rx="4" fill="#1a1118"/>
+  <text x="646" y="302" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="400">n=64 · Unverified 1-Shot Spatial Mapper</text>
+  <text x="954" y="302" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">1.56%</text>
+  <text x="1012" y="302" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">1.56%</text>
+  <text x="1070" y="302" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">98.44%</text>
+  <text x="1128" y="302" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">4.0</text>
+  <rect x="638" y="317" width="540" height="29" rx="4" fill="#0b1929"/>
+  <text x="646" y="335" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="700">n=64 · 1-Layer ARC-LUT6 [D=3]</text>
+  <text x="954" y="335" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">6.25%</text>
+  <text x="1012" y="335" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">100.0%</text>
+  <text x="1070" y="335" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">0.0%</text>
+  <text x="1128" y="335" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">4.75</text>
+  <rect x="638" y="350" width="540" height="29" rx="4" fill="#0b1929"/>
+  <text x="646" y="368" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="700">n=64 · 2-Layer Benes-ARC-LUT6 [D=5]</text>
+  <text x="954" y="368" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">10.94%</text>
+  <text x="1012" y="368" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">100.0%</text>
+  <text x="1070" y="368" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">0.0%</text>
+  <text x="1128" y="368" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">5.29</text>
+  <rect x="638" y="383" width="540" height="29" rx="4" fill="#08221e"/>
+  <text x="646" y="401" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="700">n=64 · 3-Layer Benes-ARC-LUT6 [D=7]</text>
+  <text x="954" y="401" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0" font-weight="700">12.5%</text>
+  <text x="1012" y="401" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">100.0%</text>
+  <text x="1070" y="401" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">0.0%</text>
+  <text x="1128" y="401" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">6.12</text>
+  <text x="638" y="432" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.0">Matched n=24: 12.50% &#x2192; 20.83% (+66.7%) · Expanded n=64: 6.25% &#x2192; 12.50% (2.0x) · 0.00% Unsound</text>
+  <rect x="24" y="462" width="736" height="374" rx="12" fill="#0d1729" stroke="#10b981" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="42" y="488" fill="#6ee7b7" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.0" font-weight="800">C. Claim LA-44 · Official ARC-AGI-3 Interactive Reasoning Benchmark (RHAE)</text>
+  <text x="42" y="506" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.2">arc-agi 0.9.10 + arcengine 0.9.3 (MIT) · 8 Official Environments (57 Levels) · 100% Black-Box 64x64 Frames</text>
+  <rect x="42" y="518" width="700" height="24" rx="5" fill="#1e293b"/>
+  <text x="50" y="534" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1" font-weight="700">Interactive Agent Architecture</text>
+  <text x="428" y="534" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1" font-weight="700">Levels</text>
+  <text x="492" y="534" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1" font-weight="700">Mean RHAE</text>
+  <text x="576" y="534" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1" font-weight="700">Peak RHAE</text>
+  <text x="660" y="534" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1" font-weight="700">LUT6 Step%</text>
+  <rect x="42" y="548" width="700" height="44" rx="6" fill="#141827" stroke="#334155" stroke-width="1.1"/>
+  <text x="50" y="565" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1" font-weight="700">Random Action Starter Baseline</text>
+  <text x="50" y="582" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4">Actions: 7200 | Crystal: 0 B (0 slots) | Step: 283.86 us | Shift Breakers: 0</text>
+  <text x="428" y="566" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">1/57</text>
+  <text x="496" y="566" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">0.0</text>
+  <text x="582" y="566" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">0.001</text>
+  <text x="666" y="566" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">0.0%</text>
+  <rect x="42" y="598" width="700" height="44" rx="6" fill="#141827" stroke="#334155" stroke-width="1.1"/>
+  <text x="50" y="615" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1" font-weight="700">Memoryless Reactive Micro-Policy</text>
+  <text x="50" y="632" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4">Actions: 7200 | Crystal: 0 B (0 slots) | Step: 1310.45 us | Shift Breakers: 0</text>
+  <text x="428" y="616" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">0/57</text>
+  <text x="496" y="616" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">0.0</text>
+  <text x="582" y="616" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">0.0</text>
+  <text x="666" y="616" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">0.0%</text>
+  <rect x="42" y="648" width="700" height="44" rx="6" fill="#0b1b2e" stroke="#38bdf8" stroke-width="1.1"/>
+  <text x="50" y="665" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1" font-weight="700">Interactive-MoL Wave 1 (Cold Black-Box World-Model F</text>
+  <text x="50" y="682" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4">Actions: 7200 | Crystal: 0 B (47 slots) | Step: 501.25 us | Shift Breakers: 0</text>
+  <text x="428" y="666" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">4/57</text>
+  <text x="496" y="666" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">0.009</text>
+  <text x="582" y="666" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">0.038</text>
+  <text x="666" y="666" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">0.0%</text>
+  <rect x="42" y="698" width="700" height="44" rx="6" fill="#08241f" stroke="#10b981" stroke-width="1.1"/>
+  <text x="50" y="715" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.1" font-weight="700">Interactive-MoL Wave 2 (Compiled 4 KB System-0 Benes</text>
+  <text x="50" y="732" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4">Actions: 7200 | Crystal: 4096 B (47 slots) | Step: 389.37 us | Shift Breakers: 0</text>
+  <text x="428" y="716" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">4/57</text>
+  <text x="496" y="716" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">1.875</text>
+  <text x="582" y="716" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">6.667</text>
+  <text x="666" y="716" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">0.65%</text>
+  <rect x="42" y="756" width="700" height="66" rx="8" fill="#081a1a" stroke="#10b981" stroke-opacity="0.5"/>
+  <text x="54" y="776" fill="#6ee7b7" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.4" font-weight="800">Why Downward System-0 Compilation Matters Quadratically on ARC-AGI-3 (Theorem 72 &amp; Window 15):</text>
+  <text x="54" y="794" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">Official RHAE = min(115, 100 * (baseline / actions)^2): 4x exploration actions &#x2192; 16x quadratic score penalty!</text>
+  <text x="54" y="811" fill="#93c5fd" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">Window 15 (2-Layer ARC2 + ARC3 Reflex): Thor Shunt = 713.8 nJ/op (measured_j) · 81.3 ns/op</text>
+  <rect x="776" y="462" width="420" height="374" rx="12" fill="#0d1729" stroke="#f59e0b" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="794" y="488" fill="#fde68a" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.0" font-weight="800">D. 74 Proofs, 12.75 KB WASM &amp; Edge .br Sync</text>
+  <text x="794" y="506" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.2">6/6 Kernels · 1,438 Linux bwrap Fleet · 11 Live WASM Exports</text>
+  <rect x="794" y="522" width="384" height="62" rx="8" fill="#091120" stroke="#10b981" stroke-width="1.3"/>
+  <text x="808" y="541" fill="#10b981" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="800">1 · BonsaiStreamArc3.lean (74 LutAdapt Thms)</text>
+  <text x="808" y="559" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">13/74 Zero-Axiom · 52/74 Choice-Free · 0 sorry</text>
+  <text x="808" y="575" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">con-leche &amp; con-ron: 58,841 decls (--verified)</text>
+  <rect x="794" y="594" width="384" height="62" rx="8" fill="#091120" stroke="#22d3ee" stroke-width="1.3"/>
+  <text x="808" y="613" fill="#22d3ee" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="800">2 · Theorems 67..71 (Bonsai-AirMoL &amp; Beneš-ARC2)</text>
+  <text x="808" y="631" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">Exact 2/9 EntroMCU-28 cut · 54-bit 3-tok bijection</text>
+  <text x="808" y="647" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">Diameter 2L+1 &amp; constructive 2-layer separation</text>
+  <rect x="794" y="666" width="384" height="62" rx="8" fill="#091120" stroke="#a78bfa" stroke-width="1.3"/>
+  <text x="808" y="685" fill="#a78bfa" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="800">3 · Theorems 72..74 (ARC-AGI-3 RHAE &amp; Edge R2)</text>
+  <text x="808" y="703" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">Quadratic (B/A)^2 bound · 0 stale shift actions</text>
+  <text x="808" y="719" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">r2_sync .br sidecar sync -&gt; 0 stale edge shadows</text>
+  <rect x="794" y="738" width="384" height="62" rx="8" fill="#091120" stroke="#f59e0b" stroke-width="1.3"/>
+  <text x="808" y="757" fill="#f59e0b" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="800">4 · Browser Silicon Lab (12.75 KB = 13,058 B)</text>
+  <text x="808" y="775" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.9">wasm_eval_benes_arc2_2layer8 &amp; wasm_eval_arc3_reflex</text>
+  <text x="808" y="791" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">&lt;= 16 KB budget across all 8 #![no_std] targets!</text>
+  <text x="794" y="822" fill="#6ee7b7" font-family="ui-monospace, Menlo, monospace" font-size="9.0">site-ops/deploy/r2_sync.py: auto-syncs &amp; prunes .br sidecars (6f33577)</text>
+</svg>
