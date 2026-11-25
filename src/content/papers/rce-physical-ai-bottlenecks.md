@@ -127,6 +127,7 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | Notified-body evidence bundle | trust::evidence_package (rce-evidence/1; attestation open) | 2 |
 | JEPA on canonicalization | train::canonical_pairs + HierPredictor (800 pairs, predicted beats raw) | 2 |
 | Measured grammar coverage | ingest::grammar_coverage + example on real tree-sitter grammars | 2 |
+| Identified-plant admission | trajectory::identify_plant (gate against the plant that explains the corpus) | 2 |
 
 Measured per-language named-node coverage (tree-sitter master, 25 Nov 2026):
 rust 23/169 = 13.6%, python 16/129 = 12.4%, go 11/112 = 9.8%, javascript 14/119 = 11.8%,
@@ -137,9 +138,9 @@ Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 277 (workspace) / 274 (monorepo), 0 failed. Physics fidelity, RTOS port,
-notified-body attestation, full per-language grammars (measured remainder above) and
-FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
+Suites 279 (workspace) / 276 (monorepo), 0 failed. Physics fidelity, RTOS port,
+notified-body attestation, full per-language grammars (an IR-kind expansion, measured
+remainder above) and FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
 
 ## New unknowns (registered in rce-gap-register.md)
 
