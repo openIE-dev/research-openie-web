@@ -114,8 +114,15 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | EU/ISO evidence map | trust::eu_machinery_controls (2 built, 4 open attestation/standards) | 3 |
 | Measured latency receipts | fleet latency_us_per_act + aggregate_latency; live /energy + /fleet (38.96 µs/act @ ioreport) | 4 |
 | sim2real-gated ingestion | trajectory::ingest_gated (integral + distinct + twin-replay admission) | 4 |
+| One sovereign admission path | repo::ingest_episodes (code + episodes, isolated policy, audited) | 3 |
+| Collaborative force limits seed | twin::contact_force + force_limit_ok (spring-damper; ISO/TS 15066 partial) | 3 |
+| Dataset-standards interop seed | trajectory::manifest (rce-episode-manifest/1, name-free keys) | 1 |
 
-Suites 243 (workspace) / 240 (monorepo), 0 failed. Physics fidelity, RTOS port,
+Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
+(node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
+window — a reading, never a fabricated 0).
+
+Suites 250 (workspace) / 247 (monorepo), 0 failed. Physics fidelity, RTOS port,
 notified-body attestation and fleet-scale trajectory ingestion remain open edges.
 
 ## New unknowns (registered in rce-gap-register.md)
