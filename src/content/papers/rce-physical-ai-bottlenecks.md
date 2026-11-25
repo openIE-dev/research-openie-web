@@ -134,6 +134,8 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | Generics + async/await | Stmt GenericFn/GenericType/AsyncFn/Await, monomorphized + cooperative seed, LUT data; taxonomy 38 | 5 |
 | Whole-program replay gate | program::replay_admit + program_key (admission law extended to statements) | 4 |
 | Attributes/macros | Stmt Attribute/Macro mapped+emitted; macro execution refuses (open) | 4 |
+| Deterministic macro expansion | FnTable.macros + expand_macro (substitution+lift); Macro executes registered macros | 3 |
+| Whole-program G0 service | /admit_program (replay gate) + /run_program (key lookup, 1 µJ, 0 model calls); live x=10→22 | (live) |
 
 Measured per-language named-node coverage (tree-sitter master, 25 Nov 2026, after the
 gate-wiring + attributes/macros pass): rust 49/169 = 29.0%, python 29/129 = 22.5%,
@@ -145,7 +147,7 @@ Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 316 (workspace) / 313 (monorepo), 0 failed. Full rigid-body physics, RTOS port,
+Suites 319 (workspace) / 316 (monorepo), 0 failed. Full rigid-body physics, RTOS port,
 notified-body attestation, full per-language grammars (measured remainder above) and
 FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
 
