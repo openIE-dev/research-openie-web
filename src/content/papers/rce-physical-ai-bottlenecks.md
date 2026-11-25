@@ -117,13 +117,15 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | One sovereign admission path | repo::ingest_episodes (code + episodes, isolated policy, audited) | 3 |
 | Collaborative force limits seed | twin::contact_force + force_limit_ok (spring-damper; ISO/TS 15066 partial) | 3 |
 | Dataset-standards interop seed | trajectory::manifest (rce-episode-manifest/1, name-free keys) | 1 |
+| Trained proposer at receipt scale | train::receipt_corpus + train_on_corpus (2000 receipts, holdout acc 1.0; JEPA at scale open) | 3 |
 
 Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 250 (workspace) / 247 (monorepo), 0 failed. Physics fidelity, RTOS port,
-notified-body attestation and fleet-scale trajectory ingestion remain open edges.
+Suites 253 (workspace) / 250 (monorepo), 0 failed. Physics fidelity, RTOS port,
+notified-body attestation, fleet-scale trajectory ingestion and FormJEPA/FormEBM at
+production scale remain open edges.
 
 ## New unknowns (registered in rce-gap-register.md)
 
