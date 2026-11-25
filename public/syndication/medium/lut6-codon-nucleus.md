@@ -1,64 +1,86 @@
-# The 64-Codon Lookup Table Nucleus, Wobble Harmonics, and Fanless M.2 Silicon
+# The 4 KB LUT6 Page & 16 KB Nucleus: Counting-Parallel Motivation (2^6 = 4^3 = 64), Walsh-Hadamard Filtering, and M.2 Thermal Bounds
 
-*125–176 nJ Board Sensor · 38 ns Cycle · 55.2 °C M.2 Bound — How living genetic triplets and digital six-input truth tables share one sixty-four-state code—running verified skills on tiny chips and fanless M.2 cards.*
+*States upfront that 2^6 = 64 (LUT6 bits) and 4^3 = 64 (RNA codons) is a naming counting parallel—not a biological isomorphism—and separates Thor INA3221 measured_j, Cortex-M55 DWT cycles, and Artix-7 XC7A200T est_W/est_C.*
 
-> **Public Domain (`CC0-1.0`) · OpenIE Research Essay**  
-> **Canonical Primary Source**: [https://research.openie.dev/papers/lut-adapt/](https://research.openie.dev/papers/lut-adapt/)  
-> **Canonical Artifact ID**: `blake3:tv:b3baf367788259314785478a6d1b13dc0ac325cd6b7eb7f66e336f8394cac0be` · **Gate Invariant**: `human_in_gate = false`
+> **Signed Provenance · Self-Checked** (`human_in_gate = false`; automated build, benchmark, and proof-checking scripts ran without manual override — not externally peer-reviewed; see [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) and [Epistemic Glossary](https://blog.openie.dev/glossary/)).  
+> **Canonical Post-Review Essay (`rel="canonical"`)**: [https://blog.openie.dev/posts/lut6-codon-nucleus/](https://blog.openie.dev/posts/lut6-codon-nucleus/)  
+> **Primary Research Paper**: [https://research.openie.dev/papers/lut-adapt/](https://research.openie.dev/papers/lut-adapt/)  
+> **1-Command Replication Kit**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) · **Study Repository**: [https://github.com/openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)  
+> **Canonical Artifact ID**: `blake3:tv:b3baf367788259314785478a6d1b13dc0ac325cd6b7eb7f66e336f8394cac0be` · **Evidence Tags**: `[T]` · `[E]` · `[M]` · `[S]` · **Telemetry Class**: `measured_j`
 
 ---
 
-## Three Plain-Language Takeaways (Zero Acronym Soup)
+![4 KB LUT6 Nucleus — 64=64 naming parallel disclosure, Thor INA3221 measured_j, Cortex-M55 cycles, and XC7A200T M.2 est_C](https://research.openie.dev/media/tv/posters/lut6-codon-nucleus-poster.jpg)
+*4 KB `CompactLut6Page` (`sys/lut6-core`): upfront `2^6 = 4^3 = 64` naming-motivation disclosure, Thor `measured_j`, Cortex-M55 `DWT` cycles, and `XC7A200T` `est_W`/`est_C`. Dedicated to the public domain under `CC0-1.0`.*
 
-1. Living cells use sixty-four genetic triplets to store survival rules, and digital six-input lookup tables use the exact same sixty-four switches.
-2. Grouping four neighboring switch settings together absorbs small sensor or wording glitches while eliminating brittle high-frequency noise.
-3. A sixteen-kilobyte core runs verified skills in nanoseconds from four-dollar microcontrollers to fanless M.2 circuit cards, waking large models only on genuine novelty.
+## Key Claims & Audited Scope (`[T]` / `[E]` / `[M]` / `[S]`)
 
-![The 64-Codon Lookup Table Nucleus, Wobble Harmonics, and Fanless M.2 Silicon — OpenIE Research TV Studio Poster](https://research.openie.dev/media/tv/posters/lut6-codon-nucleus-poster.jpg)
-*Studio key visual for **64-Codon Lookup Nucleus & M.2 Silicon** (`Hardware, Silicon & OS` · 125–176 nJ Board Sensor · 38 ns Cycle · 55.2 °C M.2 Bound). Dedicated to the public domain under `CC0-1.0`.*
+1. **[M/T · Analogy Label: Counting Parallel, NOT Biological Isomorphism]** Upfront clarification (Critique #6): the numerical coincidence between **`2^6 = 64`** (entries in a 6-input Boolean `LUT6` truth table, packed in one `uint64` word or Xilinx `LUT6` primitive) and **`4^3 = 64`** (RNA nucleotide triplets) is a **combinatorial counting parallel used strictly as naming motivation** ("codon", "wobble", "operon", "nucleus")—**not a structural or biochemical isomorphism**. Biological genetic-code degeneracy is **not** shown to filter digital sensor noise; what `NucleusCodon.lean` proves `[T]` is a standard Boolean Walsh–Hadamard Fourier fact (Linial, Mansour & Nisan 1993): functions invariant across aligned 2-bit blocks (`0x0F << 4q`) have **exact `0` degree-`5` and degree-`6` Fourier coefficients** (vs. `28` high-degree AC energy on a brittle `1u64 << c` 1-hot mask).
+2. **[E · Strictly Separated Silicon Measurements]** On **`NVIDIA Jetson AGX Thor` (`TI INA3221 VDD_CPU_SOC_MSS`, `measured_j`)**, `lut6-core` uses **`162.56 nJ/op` (`5.45 ns`, `87.00x` CpJ vs. `14,143.46 nJ` `INT8` Micro-MLP)** in vertical bit-sliced mode, **`1,935.05 nJ` (`65.2 ns`, `7.31x`)** scalar, and **`8,594.93 nJ` (`1.65x`)** on the in-page `672 B` `Antisym-40` zero-`MUL` `T-MAC` fallback; on a **live USB-attached `Alif Ensemble E3` (`OpenMV-AE3` Cortex-M55 @ `400 MHz`, `board_metered = false`)**, it runs in **`684.57` `DWT` cycles (`1.72 us`, `173.83x` faster than `INT8` MLP)** scalar and **`2.68` cycles/op (`6.97 ns`)** bit-sliced, while fitting `16,400 B` (`25.06%`) of `64 KB` `SRAM` on `nRF52832` Cortex-M4F and `RV32IMAC` (`0` float instructions).
+3. **[M/E · M.2 `XC7A200T` Gateware & Thermal Failure Bound (`est_j`)]** Synthesizing (`Yosys 0.71+` + license-free `openXC7` `nextpnr-xilinx` closing post-PAR timing at **`320.62 MHz`** on `xc7a200tfbg484-2`) maps each `4,096 B` `CompactLut6Page` `1:1` into one `36 Kb` `RAMB36E1` with `(72, 64)` Hamming `SECDED` (`0 observed` silent corruption at `BER = 1%` in fault simulation vs. `54.56%` on `INT8` MLP). Analytical `DS181`/`UG475` modeling (`est_j`, **unprobed on physical M.2 rails**) projects **`0.86 est_W` and `55.2 est_C`** (`45 °C` ambient, passive heatsink) when external `DDR3` is held in reset—and **candidly flags thermal failure (`95.8 est_C > 85 °C` commercial limit)** if `DDR3 + PCIe x4` is enabled in a `0 LFM` bare slot without `>= 200 LFM` airflow (`63.2 est_C`).
 
-## Everyday Analogy & Why It Matters
+## Methods, Baselines, Sample Sizes (`N`) & Licensing Scope
 
-Think of a sturdy door lock that turns smoothly in winter cold versus a fragile lock that jams on tiny dust. Grouping four neighboring switch states absorbs minor sensor jitter or reworded phrasing cleanly. Direct circuit-board current sensors on Jetson Thor measure one hundred twenty-five to one hundred seventy-six nanojoules per lookup, cycle counters clock thirty-eight nanoseconds, and thermal physics holds fanless M.2 cards at fifty-five point two degrees Celsius.
+- **Hardware & Telemetry**: (1) `NVIDIA Jetson AGX Thor` (`TI INA3221 ch2 VDD_CPU_SOC_MSS` physical DC shunt, `measured_j`, `board_metered = true`); (2) `Apple M5 Max` (`L3` `reported_j`) & `AMD Ryzen AI Max+ 395` (`RAPL` pkg `reported_j`); (3) Live USB `OpenMV-AE3` (`Alif E3` Cortex-M55 @ `400 MHz` hardware `DWT` cycle counter, `board_metered = false`); (4) `Numato Aller A7` (`Artix-7 XC7A200T-2FBG484C`) `Verilator 5.054` `12,023`-cycle co-sim + `openXC7` post-PAR `.bit` + `673`-point `AMD DS181/UG475` coupled leakage model (`est_j` / `est_C`, `board_metered = false`).
+- **Workload & Suite**: `4,096 B` `CompactLut6Page` (`256` `LUT6`s + `672 B` `EntroMCU` `1.602 b/w` `Antisym-40 T-MAC` tail), `64/64` Yosys `abc -lut 6` Boolean miter vectors, `40` noisy skill paraphrases + `8` OOD abstention probes, `BER = 1.0%` (`10^-2`) SEU bit-flip injection, and `10,500` cross-family (`XC7A200T` vs. `XCK26`) RTL equivalence vectors.
+- **Baselines Compared**: 2-layer `INT8` (`64->32->16`) and `BF16` Micro-MLPs, unpruned `FiniteDiff DWN` (`64` gates vs. `23` `DiffLUT-Net` `-64.06%` and `16` wobble-pruned `-75.00%`), naive `80`-`LUT6` Shannon expansion vs. `22`-`LUT6` Lupanov (`-72.5%`), and `DDR3`-active vs. `DDR3`-tie-off M.2 gateware.
+- **Runs (`N`) & Uncertainty / Spread**: Thor shunt: `9`-window counterbalanced `ABBA` harness (`bench_lut6_nucleus_shunt.rs`). `XC7A200T` vs. `KV260` co-sim: `12,023` cycles / `10,500` vectors (`0` bit mismatches). `Charon + Aeneas` + `Lean 4.36.0`: `50–58` six-kernel-verified `LutAdapt` theorems (`0 sorry`).
+- **Cold vs. Warm Caching Scope**: Two immutable `ROM/MRAM` seed pages + two mutable `SRAM/DTCM` surgical overlay pages: 4-part Means Test refuses unamortized one-off tasks (`N = 1 < N_crit = 1.90`), unverified guesses (`delta < 1.0`), and high-entropy prose (`H = 4.85 > 1.25` bits), rolling drifted overlays (`rej = 3`) back to seed (`0x3C` rollback).
+- **Artifact & License Status**: `Apache-2.0` public code in `openIE-dev/lut-adapt-ai` (`sys/lut6-core/`, `15.31 KB` `lut6_core.wasm`) and `openIE-dev/openie-research-experiments` (`aller-a7-xc7a200t/`, `lut6-core-nucleus/`); self-checked, open for external replication.
 
-Four DNA letters read in triplets create sixty-four genetic codons, and six binary wires create sixty-four truth-table slots. Our sixteen-kilobyte bare-metal core pairs an unchangeable safety seed and sixty-four-state control loop with a reversible patch layer that rolls back automatically if errors appear. Memorizing isolated switch points leaks brittle high-frequency noise that breaks on minor wording shifts.
+## Naming Motivation vs. Mathematical Content (`2^6 = 64` vs. `4^3 = 64`)
 
-Twenty theorems checked across six independent Lean proof kernels prove four-state wobble grouping cancels top-degree noise to exact zero, while multilinear pruning cuts active truth tables sixty-four percent. Every hardware figure names its instrument: direct circuit-board current sensors on Jetson Thor measured one hundred twenty-five to one hundred seventy-six nanojoules per lookup, built-in cycle counters on an Alif microcontroller clocked thirty-eight nanoseconds, and noisy wakeups dropped eighty-seven to ninety-five percent. On a compact three-point-three-volt fanless M.2 reconfigurable card, physics thermal calculations show zero point eight six watts and a safe fifty-five point two degrees Celsius when onboard memory chips stay held asleep, versus ninety-five point eight degrees overheating if left awake.
+Why use biological terms (`codon`, `wobble`, `operon`, `apoptosis`) for a `#![no_std]` Rust and FPGA lookup-table format? **Solely as an intuitive naming mnemonic for a `4,096 B` binary page layout** `[M]`:
 
-## Inside the Mechanism & Candid Limits
+- **What is merely a counting coincidence:** A Xilinx 7-Series/UltraScale+ `LUT6` hardware primitive and a 64-bit CPU word (`uint64`) each hold `2^6 = 64` truth-table bits, matching the cardinality `4^3 = 64` of three-base nucleotide codons. That `64 = 64` equality is **not** a physical or evolutionary equivalence `[M]`.
 
-When edge devices memorize brittle exact bit patterns, a two-bit sensor fluctuation or a slightly reworded sentence misses the cache completely and wakes a power-hungry neural model from scratch. Worse still, chaining unverified neural guesses across many steps multiplies tiny error rates until multi-step workflows collapse, whereas compiling verified steps into exact lookup tables preserves reliability. Living cells solved this exact fragility problem billions of years ago inside the genetic code. Four chemical bases read three at a time form sixty-four triplets, yet cells group neighboring third-letter variants into sixteen four-triplet families so minor thermal or copying noise still builds the exact right protein without halting the cell.
+- **What is proved mathematically (`[T]`):** In Boolean harmonic analysis (Linial, Mansour & Nisan, JACM 1993), masking or grouping noisy low-order ADC bits so a `LUT6` output is constant across 4-state subcubes forces all degree-`5` and degree-`6` Walsh–Hadamard coefficients to vanish (`NucleusCodon.wobble_quartet_high_harmonic_cancels`), preventing `1`-hot point memorization (`0 observed` noisy-paraphrase hit rate) and holding `95.00%` hit rate (`100.0%` `40/40` when paired with the in-page `672 B` zero-`MUL` `T-MAC` tail) `[T, E]`.
 
-Six binary input wires address sixty-four switch slots inside a single sixty-four-bit computer word—matching biology's sixty-four triplets one for one. Our sixteen-kilobyte standalone Rust core combines an unchangeable factory reflex page, a sixty-four-state control loop, and a surgical patch overlay that suppresses eighty-seven to ninety-five percent of repeat model wakeups with zero silent corruption. Harmonic analysis explains why single-point memorization fails: lighting one slot out of sixty-four scatters brittle energy into fifth-order and sixth-order frequencies. Twenty theorems verified across six independent Lean proof kernels prove four-slot wobble grouping cancels those top frequencies to exact zero, aligning trace-to-code compilation—which shrinks two-minute agent replays to roughly one second—with sixty-four percent smaller truth-table networks.
+## Hardware Results Kept Strictly Separate by Substrate
 
-This three-dimensional view shows a gum-stick fanless M.2 reconfigurable circuit card slotted into a compact five-volt edge computer's three-point-three-volt rail. Physics thermal models show that holding the card's unused external memory chips continuously asleep in reset keeps board power at zero point eight six watts and junction temperature at fifty-five point two degrees Celsius, whereas leaving those memory chips active drives temperatures to ninety-five point eight degrees overheating. Every number states its physical evidence class plainly and never mixes instruments across hardware tiers. Direct circuit-board current sensors on Jetson Thor measured one hundred twenty-five to one hundred seventy-six nanojoules per lookup decision; built-in processor cycle counters on a live Alif microcontroller measured twelve point two cycles, or thirty-eight nanoseconds; and M.2 card temperatures remain physics thermal bounds.
+- **`NVIDIA Jetson AGX Thor` (`measured_j`, physical TI `INA3221` shunt) `[E]`:** `162.56 nJ/op` (`87.00x` CpJ vs. `INT8` Micro-MLP) vertically bit-sliced; `1,935.05 nJ` (`7.31x`) scalar; `8,594.93 nJ` (`1.65x`) `Antisym-40 T-MAC` (`-49.38%` stack `SRAM` via `ISCA 2025` mirror involution `T(80 - c) = -T(c)`, which also flipped AMD `Zen 5` `RAPL` `reported_j` from `0.68x` to `1.12x` CpJ over `INT8` MLP) `[E]`.
 
-Scientific candor requires stating what is not yet physically probed on a bench: M.2 card wattage and fifty-five-degree temperatures are analytical physics calculations until a physical M.2 card sits under inline rail sensors, creative open-ended writing bypasses lookup tables by design, and any drifted patch page automatically rolls back to the unchangeable factory seed.
+- **Bare-Metal `MCU` Targets (`DWT` cycles & static `ELF` audit, `board_metered = false`) `[E]`:** Cross-compiles with `0` float instructions across `8` targets (including `15.31 KB` `wasm32` and `25.06%` of `64 KB` `SRAM` on `nRF52832` and `RV32IMAC`), executing in `684.57` cycles (`1.72 us`) scalar and `10,655.8` cycles (`11.17x` faster than `119,001.9`-cycle `INT8` MLP) on live USB-attached `Alif E3` Cortex-M55 `[E]`.
 
-### Epistemic Evidence Tags (`[T]` / `[E]` / `[M]` / `[S]`)
+- **Artix-7 `XC7A200T` (`Numato Aller A7` M.2 2280, `est_j` / `est_C`) `[M, E]`:** Holds `365` `4 KB` pages on-die (`1.46 MB` `RAMB36E1`, `2.53x` `KV260` BRAM capacity) with `(72, 64)` `SECDED` (`100 observed` accuracy / `0 observed` silent corruption at `BER = 1%` simulated bit flips vs. `26.28%` accuracy / `37.0%` `NaN` on `BF16` MLP) and closes `openXC7` post-route timing at `320.62 MHz` `[E]`.
 
-- **`[T]` Theorem / Machine-Checked Formal Proof**
-- **`[E]` Empirical / Hardware-Instrumented Experiment**
-- **`[M]` Mathematical / Analytical Cost or Physics Model**
+## Limitations & Pre-Bench Hardware Gaps
 
-## How Energy Was Metered
+- **M.2 `XC7A200T` thermal & shunt gap (`LA-F30`):** All `XC7A200T` watt/Celsius figures (`0.86 est_W`, `55.2 est_C` with `DDR3` off; **`95.8 est_C` bare thermal failure** with `DDR3 + PCIe x4` at `0 LFM`) are analytical `est_j`/`est_C` calculations; physical M.2 `+3.3 V` Kelvin shunt (`INA228`) and `XADC`/thermocouple bench probing have **not yet been run** `[M]`.
 
-Open Interface Engineering enforces strict epistemic non-mixing across physical power rails, processor counters, and mathematical bounds (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition is forbidden by `ScientificGate`):
+- **6-input locality ceiling:** Functions requiring wide global arithmetic without tree/Lupanov decomposition exceed a single `4 KB` page and must escalate to `T-MAC` or neural rungs `[M]`.
 
-- **Acquisition Tier**: Board Sensor + Thermal Bound
-- **Plain-Language Disclosure**: Direct circuit-board current sensors on Jetson Thor, microcontroller cycle counters, and M.2 thermal physics bounds.
-- **Substrate Evidence Class**: `measured_j` (`board_metered = true`)
-- **Primary Reading**: `125.23 nJ (measured_j)`
-- **Meter or Formula**: NVIDIA Jetson AGX Thor physical TI INA3221 DC shunt (2-bit wobble DiffLUT-Net lookup)
-- **300 K Landauer Bit-Equivalents**: `4.3619e+13` bits (`E / (k_B · 300 K · ln 2)`)
+## Energy & Telemetry Scope
 
-## Continue the Discussion & Verify Every Byte
+Thor `INA3221` (`measured_j`), M5 Max / Zen 5 (`reported_j`), Cortex-M55 (`DWT` cycles), and `XC7A200T` (`est_j`) are reported in separate rows and never combined across classes.
+
+## Epistemic Non-Mixing & Telemetry Ledger
+
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
+
+- **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
+- **Acquisition Tier**: Thor Shunt ⊥ MCU Cycles ⊥ XC7A200T est_j
+- **Telemetry Disclosure**: 2^6 = 4^3 = 64 is a naming parallel only; separates Thor INA3221 measured_j (162.56 nJ/op), Cortex-M55 DWT cycles, and unprobed M.2 XC7A200T est_W/est_C.
+- **Evidence Class**: `measured_j` (`board_metered = true`)
+- **Catalog Anchor Reading**: `1.6256e-07 J (measured_j)`
+- **Sensor / Formula Scope**: NVIDIA Jetson AGX Thor TI INA3221 VDD_CPU_SOC_MSS DC shunt (162.56 nJ/op bit-sliced LUT6, measured_j; XC7A200T 0.86 est_W / 55.2 est_C is unprobed est_j)
+
+## Related Work & Primary Literature (`[S]`)
+
+- **Linial, Mansour & Nisan (JACM, 1993) & Lupanov (1958):** Boolean Walsh–Hadamard Fourier concentration of bounded-depth circuits and asymptotic shared-cofactor LUT synthesis `[S]`.
+- **Bacellar et al. (TMLR, July 2026), Khataei & Bazargan (TreeLUT, 2025) & Ye et al. (DiffLUT-Net, 2026):** Weightless/LUT-network SEU bit-flip resilience, GBDT-to-LUT compilation, and multilinear LUT pruning `[S]`.
+- **Mo et al. (LUT Tensor Core, ISCA 2025), Wei et al. (T-MAC, 2024) & Sanyal et al. (EntroMCU, ISVLSI 2026):** Antisymmetric ternary table lookup and base-3 `5`-trits/byte microcontroller compression `[S]`.
+- **Ho & Protzenko (Charon & Aeneas, ICFP 2022) & Project X-Ray / `openXC7` (`nextpnr-xilinx`):** Mechanical Rust-to-Lean functional translation and open-source Xilinx 7-Series bitstream generation `[S]`.
+
+## Replicate, Critique & Inspect Raw Artifacts
 
 <!-- x_thread_backlink_slot: {{X_THREAD_URL}} -->
-- **Watch in 15 Seconds or 3 Minutes**: Stream the native `9:16` Vertical Snackable ([`lut6-codon-nucleus-tiktok.mp4`](https://research.openie.dev/media/tv/tiktok/lut6-codon-nucleus-tiktok.mp4)) or explore all four captioned studio cuts (`15s`, `45s`, `90s`, and `3m` 3D cutaway documentary) on **[OpenIE Research TV](https://research.openie.dev/tv/?study=lut6-codon-nucleus)**.
-- **Join the Synchronized X (Twitter) Thread**: Reply, critique, or inspect the 5-post verification thread on **[X (Twitter)](https://x.com/search?q=%2264-Codon%20Lookup%20Nucleus%20%26%20M.2%20Silicon%22%20OR%20research.openie.dev%2Ftv%2F%3Fstudy%3Dlut6-codon-nucleus&src=typed_query)**.
-- **Query Grounded Prior Art & Signed WAI1 Receipts**: Explore linked lineage trails on **[The Commons (`scholar.askdavidc.ai`)](https://scholar.askdavidc.ai)**, read the full primary paper & PDF at **[`research.openie.dev/papers/lut-adapt/`](https://research.openie.dev/papers/lut-adapt/)**, and verify the Ed25519-signed `WAI1` binary container (`blake3:258ff5f5f8fee3fa…`) in **[`openie-artifact-substrate`](https://github.com/openIE-dev/openie-artifact-substrate/blob/main/catalog/envelopes/tv-lut6-codon-nucleus.wai)**.
+- **Canonical Post-Review Blog Dossier**: [https://blog.openie.dev/posts/lut6-codon-nucleus/](https://blog.openie.dev/posts/lut6-codon-nucleus/)
+- **Primary Research Manuscript & PDF**: [https://research.openie.dev/papers/lut-adapt/](https://research.openie.dev/papers/lut-adapt/) ([PDF](https://research.openie.dev/pdfs/lut-adapt.pdf))
+- **1-Command Public Replication Harness**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) and [https://github.com/openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)
+- **9:16 Vertical Snackable (`60fps`) & Research TV Cuts**: [https://research.openie.dev/media/tv/tiktok/lut6-codon-nucleus-tiktok.mp4](https://research.openie.dev/media/tv/tiktok/lut6-codon-nucleus-tiktok.mp4) · [OpenIE Research TV](https://research.openie.dev/tv/?study=lut6-codon-nucleus)
+- **Verification & Glossary Standards**: [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) · [Epistemic Glossary](https://blog.openie.dev/glossary/)
 
 ---
 
-*Summary & essay text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Code, verification gates, and `WAI1` schemas licensed under `Apache-2.0`.*
+*Prose and summary text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Public replication harnesses and `WAI1` schemas are licensed under `Apache-2.0` unless explicitly noted in the licensing ledger above.*

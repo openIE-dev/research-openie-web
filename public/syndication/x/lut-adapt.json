@@ -1,29 +1,35 @@
 {
-  "schema": "openie.x_thread_bundle.v1",
+  "schema": "openie.x_thread_bundle.v2",
   "study_id": "lut-adapt",
   "canonical_id": "blake3:tv:f5f2551c2e873bdc7af0ce1e380b0a888679c3ade804cbec637a62785734ec8d",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
   "license": "CC0-1.0",
   "post_count": 5,
-  "max_weighted_chars": 228,
+  "max_weighted_chars": 279,
   "card_video_uri": "/media/tv/tiktok/lut-adapt-tiktok.mp4",
   "fallback_video_uri": "/media/tv/films/lut-adapt-15s.mp4",
-  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/lut-adapt/",
+  "medium_crosslink_uri": "https://blog.openie.dev/posts/lut-adapt/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/lut-adapt/",
   "canonical_paper_url": "https://research.openie.dev/papers/lut-adapt/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+  "public_repo_url": "https://github.com/openIE-dev/lut-adapt-ai",
   "zero_urls_in_post_1": true,
   "posts": [
     {
       "position": 1,
       "role": "hook_video_card",
-      "text": "Downward Lookup Compilation\n\nHow to run giant coding models inside tiny laptop memory and turn verified answers into millisecond reflexes.\n\n[970 MB Active RAM · 91.7% Verified · 0% Broken]",
-      "weighted_chars": 188,
-      "raw_chars": 188,
+      "text": "LUT-Adapt & Mixture-of-Limits [T/E · measured_j / reported_j]\n\nJetson Thor TI INA3221 shunts (measured_j) recorded 162.56-162.71 nJ/op (87x CpJ vs INT8 MLP) on bit-sliced 80-LUT6 tables; on workstation reported_j, MoL + Qwen3.6-35B solved 44/48 (91.67%) coding tasks.",
+      "weighted_chars": 267,
+      "raw_chars": 267,
       "urls": [],
       "in_reply_to_position": null,
       "media": {
         "video_uri": "/media/tv/tiktok/lut-adapt-tiktok.mp4",
         "fallback_video_uri": "/media/tv/films/lut-adapt-15s.mp4",
-        "poster_uri": "/media/tv/posters/lut-adapt-poster.jpg",
-        "vtt_uri": "/media/tv/captions/lut-adapt-15s.vtt",
+        "poster_uri": "/media/tv/tiktok/lut-adapt-tiktok.jpg",
+        "vtt_uri": "/media/tv/tiktok/lut-adapt-tiktok.vtt",
         "aspect_ratio": "9:16",
         "resolution": "1080x1920",
         "fps": 60,
@@ -32,43 +38,47 @@
     },
     {
       "position": 2,
-      "role": "plain_points_1_2",
-      "text": "1/3 Most requests repeat solved patterns, so running a giant neural network every time wastes memory and energy.\n\n2/3 This cascade checks tiny truth tables first and streams specialist model slices from storage only when needed.",
-      "weighted_chars": 228,
-      "raw_chars": 228,
+      "role": "methods_and_sample_bounds",
+      "text": "1/2 Named arms & substrate separation:\n- Thor INA3221 measured_j: 87x LUT6 CpJ & 222.57x 56-bit wearable gate\n- Workstation reported_j: 44/48 (LA-17, Qwen3.6-35B + <think>) & 10/16 hard adversarial (LA-21, 24B+120B; 6/16 unsolved)\n- Cortex-M55 cycles & FPGA VCD est_j separated",
+      "weighted_chars": 277,
+      "raw_chars": 277,
       "urls": [],
       "in_reply_to_position": 1
     },
     {
       "position": 3,
-      "role": "plain_point_3_and_energy",
-      "text": "3/3 Once an automated test certifies a new answer, it compiles downward into a reusable millisecond skill.\n\nEnergy class: measured_j (164.44 nJ via physical board shunt; board_metered=true).",
-      "weighted_chars": 190,
-      "raw_chars": 190,
+      "role": "telemetry_and_scope_limits",
+      "text": "2/2 Cold vs warm & open limits:\n- LUT6 crystals compress recurring low-entropy skills (Wave 2/3); novel Olympiad items scored 0/16 (abstained)\n- Gated cais/hle HTTP 403 respected without bypass (32 open SuperGPQA/MathArena items used)\n- M.2 XC7A200T 0.86 est_W awaits rail shunts",
+      "weighted_chars": 279,
+      "raw_chars": 279,
       "urls": [],
       "in_reply_to_position": 2
     },
     {
       "position": 4,
-      "role": "machine_verification_gate",
-      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E]/[M] · WAI1 blake3:f5f2551c2e87… · CC0-1.0",
-      "weighted_chars": 207,
-      "raw_chars": 204,
-      "urls": [],
+      "role": "signed_provenance_self_checked",
+      "text": "Signed Provenance · Self-Checked (human_in_gate=false; not peer-reviewed):\n- Evidence: [T]/[E]/[M]/[S] · WAI1 blake3:f5f2551c2e87...\n- Verification: https://blog.openie.dev/verification/\n- Glossary: https://blog.openie.dev/glossary/",
+      "weighted_chars": 208,
+      "raw_chars": 232,
+      "urls": [
+        "https://blog.openie.dev/verification/",
+        "https://blog.openie.dev/glossary/"
+      ],
       "in_reply_to_position": 3
     },
     {
       "position": 5,
-      "role": "bidirectional_medium_and_paper_bridge",
-      "text": "Read & verify Downward Lookup Compilation (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/lut-adapt/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/lut-adapt/",
-      "weighted_chars": 171,
-      "raw_chars": 225,
+      "role": "canonical_blog_paper_and_replicate",
+      "text": "Read & replicate LUT-Adapt & Mixture-of-Limits Cascade (CC0-1.0):\n- Essay: https://blog.openie.dev/posts/lut-adapt/\n- Paper: https://research.openie.dev/papers/lut-adapt/\n- 1-cmd kit: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+      "weighted_chars": 168,
+      "raw_chars": 261,
       "urls": [
-        "https://research.openie.dev/syndication/medium/lut-adapt/",
-        "https://research.openie.dev/papers/lut-adapt/"
+        "https://blog.openie.dev/posts/lut-adapt/",
+        "https://research.openie.dev/papers/lut-adapt/",
+        "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
       ],
       "in_reply_to_position": 4
     }
   ],
-  "content_blake3": "81f789ac7a2c0c302bc4fdef66a5dccf40a7f4722f8e2f563d3df722f0c794b2"
+  "content_blake3": "1bb319a90275380bc46812ad2142a10980fc61946311b19320c806922d788fff"
 }

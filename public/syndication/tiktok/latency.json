@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "latency",
   "canonical_id": "blake3:tv:388791ddb736142eaa8a75aed41c6f6c61030a764040797bc8b9d36016833e40",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/latency/",
+  "canonical_paper_url": "https://research.openie.dev/papers/latency/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/latency-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/latency-15s.mp4",
-    "poster_uri": "/media/tv/posters/latency-poster.jpg",
-    "vtt_uri": "/media/tv/captions/latency-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/latency-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/latency-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 21.9,
     "safe_zone_verified": true,
-    "source_15s_sha256": "1c13a1d7099eef7539370f2f3e2aa2ca8957b86a63a8de09395541a73f6e996a"
+    "sha256": "1ea18cc2fe7b89c3a5b7fd56846cd7847ee4ebe6af372b21c3d0ebaf11d785d2"
   },
-  "caption_utf16_chars": 816,
+  "caption_utf16_chars": 889,
+  "caption": "Latency, Capex & 280x Price Decomposition — Plug power = 1.5%–11.8% of H100e hourly cost · 280x / (2x × 2x) = 70x (~74x; ~141x vs capex alone) software-driven price drop (unmetered)\n\nAcross 74 Epoch AI sites, plug electricity is 1.5%-11.8% of hourly H100e cost (capex is 8x-70x larger). Dividing the >280x GPT-3.5 price drop by both ~2x hardware trends leaves 70x (~74x; ~141x vs capex).\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: unmetered (Queuing/amortization derivations, 74 Epoch AI cluster records, and FY2025/2026 SEC 10-K/10-Q filings; joules = null.)\n• Essay: https://blog.openie.dev/posts/latency/\n• Paper: https://research.openie.dev/papers/latency/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#AiInfrastructure #CloudComputing #Gpu #TechEconomics #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "The Gap Between Possible and Deployed (Electricity < 12% of Task Cost · Switching Is the Moat)\nCheaper open AI methods sit on the shelf for months—held back by hardware write-offs and quarterly calendars until automation breaks lock-in.\n1) Open methods routinely run AI far more cheaply on existing machines, yet products often wait months or years to adopt them.\n2) Machine hardware costs far more per task than raw electricity, backed by both operating cash and circular supplier investments.\n3) Corporate calendars delay rollouts in quarterly steps until automation tools slash switching friction and force cheaper methods into production.\nEnergy class: unmetered (Historical + Market Audit) · CC0-1.0 · https://research.openie.dev/papers/latency/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "Latency, Capex & 280x Price Decomposition — Plug power = 1.5%–11.8% of H100e hourly cost · 280x / (2x × 2x) = 70x (~74x; ~141x vs capex alone) software-driven price drop (unmetered)\n\nAcross 74 Epoch AI sites, plug electricity is 1.5%-11.8% of hourly H100e cost (capex is 8x-70x larger). Dividing the >280x GPT-3.5 price drop by both ~2x hardware trends leaves 70x (~74x; ~141x vs capex).\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: unmetered (Queuing/amortization derivations, 74 Epoch AI cluster records, and FY2025/2026 SEC 10-K/10-Q filings; joules = null.)\n• Essay: https://blog.openie.dev/posts/latency/\n• Paper: https://research.openie.dev/papers/latency/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#AiInfrastructure #CloudComputing #Gpu #TechEconomics #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/latency-tiktok.mp4"
     }
   },
-  "content_blake3": "01493b73a9329aec70644de8862179ca3caea0158c6561f968ee279724fc1788"
+  "content_blake3": "ddc3f2510fc7e2b9c0940f77f67c51438cb2f17f298ede42bfb8dcc8f586b99d"
 }

@@ -1,29 +1,35 @@
 {
-  "schema": "openie.x_thread_bundle.v1",
+  "schema": "openie.x_thread_bundle.v2",
   "study_id": "latency",
   "canonical_id": "blake3:tv:388791ddb736142eaa8a75aed41c6f6c61030a764040797bc8b9d36016833e40",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
   "license": "CC0-1.0",
   "post_count": 5,
-  "max_weighted_chars": 260,
+  "max_weighted_chars": 271,
   "card_video_uri": "/media/tv/tiktok/latency-tiktok.mp4",
   "fallback_video_uri": "/media/tv/films/latency-15s.mp4",
-  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/latency/",
+  "medium_crosslink_uri": "https://blog.openie.dev/posts/latency/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/latency/",
   "canonical_paper_url": "https://research.openie.dev/papers/latency/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+  "public_repo_url": null,
   "zero_urls_in_post_1": true,
   "posts": [
     {
       "position": 1,
       "role": "hook_video_card",
-      "text": "The Gap Between Possible and Deployed\n\nCheaper open AI methods sit on the shelf for months—held back by hardware write-offs and quarterly calendars until automation breaks lock-in.\n\n[Electricity < 12% of Task Cost · Switching Is the Moat]",
-      "weighted_chars": 238,
-      "raw_chars": 238,
+      "text": "Latency, Capex & the 280x Inference Price Drop [M/S · unmetered]\n\nAcross 74 Epoch AI sites, plug electricity is 1.5%-11.8% of hourly H100e cost (capex is 8x-70x larger). Dividing the >280x GPT-3.5 price drop by both ~2x hardware trends leaves 70x (~74x; ~141x vs capex).",
+      "weighted_chars": 270,
+      "raw_chars": 270,
       "urls": [],
       "in_reply_to_position": null,
       "media": {
         "video_uri": "/media/tv/tiktok/latency-tiktok.mp4",
         "fallback_video_uri": "/media/tv/films/latency-15s.mp4",
-        "poster_uri": "/media/tv/posters/latency-poster.jpg",
-        "vtt_uri": "/media/tv/captions/latency-15s.vtt",
+        "poster_uri": "/media/tv/tiktok/latency-tiktok.jpg",
+        "vtt_uri": "/media/tv/tiktok/latency-tiktok.vtt",
         "aspect_ratio": "9:16",
         "resolution": "1080x1920",
         "fps": 60,
@@ -32,43 +38,47 @@
     },
     {
       "position": 2,
-      "role": "plain_points_1_2",
-      "text": "1/3 Open methods routinely run AI far more cheaply on existing machines, yet products often wait months or years to adopt them.\n\n2/3 Machine hardware costs far more per task than raw electricity, backed by both operating cash and circular supplier investments.",
-      "weighted_chars": 260,
-      "raw_chars": 260,
+      "role": "methods_and_sample_bounds",
+      "text": "1/2 Reconciled factor math:\n- Two-factor bound: 280 / (2 x 2) = 70x (~74x at 1.98 x 1.90); capex-weighted: 280 / 1.98 = ~141x since power is <12% of USD 0.83-2.50/hr cost\n- ~70x-141x came from serving software (vLLM, quantization, distillation), not silicon scaling [M/S]",
+      "weighted_chars": 271,
+      "raw_chars": 271,
       "urls": [],
       "in_reply_to_position": 1
     },
     {
       "position": 3,
-      "role": "plain_point_3_and_energy",
-      "text": "3/3 Corporate calendars delay rollouts in quarterly steps until automation tools slash switching friction and force cheaper methods into production.\n\nEnergy class: unmetered (Historical + Market Audit; joules=null, never faked as zero).",
-      "weighted_chars": 236,
-      "raw_chars": 236,
+      "role": "telemetry_and_scope_limits",
+      "text": "2/2 FY2025/26 SEC 10-K/10-Q bounds [S]:\n- NVIDIA disclosed ecosystem commitments (USD 42B) <= 19.5% of FY26 revenue (USD 215.9B)\n- Hyperscalers fund capex at 0.56x-0.94x OCF vs Oracle (1.74x) & CoreWeave (3.37x OCF, 67% MSFT share)\n- Unmetered (joules = null)",
+      "weighted_chars": 259,
+      "raw_chars": 259,
       "urls": [],
       "in_reply_to_position": 2
     },
     {
       "position": 4,
-      "role": "machine_verification_gate",
-      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[M]/[S] · WAI1 blake3:388791ddb736… · CC0-1.0",
-      "weighted_chars": 207,
-      "raw_chars": 204,
-      "urls": [],
+      "role": "signed_provenance_self_checked",
+      "text": "Signed Provenance · Self-Checked (human_in_gate=false; not peer-reviewed):\n- Evidence: [M]/[S] · WAI1 blake3:388791ddb736...\n- Verification: https://blog.openie.dev/verification/\n- Glossary: https://blog.openie.dev/glossary/",
+      "weighted_chars": 200,
+      "raw_chars": 224,
+      "urls": [
+        "https://blog.openie.dev/verification/",
+        "https://blog.openie.dev/glossary/"
+      ],
       "in_reply_to_position": 3
     },
     {
       "position": 5,
-      "role": "bidirectional_medium_and_paper_bridge",
-      "text": "Read & verify The Gap Between Possible and Deployed (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/latency/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/latency/",
-      "weighted_chars": 181,
-      "raw_chars": 231,
+      "role": "canonical_blog_paper_and_replicate",
+      "text": "Read & replicate Latency, Capex & 280x Price Decomposition (CC0-1.0):\n- Essay: https://blog.openie.dev/posts/latency/\n- Paper: https://research.openie.dev/papers/latency/\n- 1-cmd kit: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+      "weighted_chars": 172,
+      "raw_chars": 261,
       "urls": [
-        "https://research.openie.dev/syndication/medium/latency/",
-        "https://research.openie.dev/papers/latency/"
+        "https://blog.openie.dev/posts/latency/",
+        "https://research.openie.dev/papers/latency/",
+        "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
       ],
       "in_reply_to_position": 4
     }
   ],
-  "content_blake3": "b375328311a84c914e2b1a64ca8527052864bc4f18b8381d5200499ca8966ba2"
+  "content_blake3": "5632d1f981c338ff42490e28f6006de20290a254582f6c70ffef3e3b99f15fa8"
 }

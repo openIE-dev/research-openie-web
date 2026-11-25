@@ -1,66 +1,78 @@
-# Three Sciences, One Energy-Bounded Computing Map
+# The OpenIE Stack Map (stack.openie.dev): An Unmetered Conceptual Taxonomy Across Information Theory, Game Theory, and Mechanism Design
 
-*3 Sciences · 9 Periodic Stacks · 1 Joule Ledger — How information theory, game theory, and mechanism design fit together as three altitudes of one energy-bounded computing map.*
+*Clarifies that stack.openie.dev is an unmetered teaching map relating Information Theory, Game Theory, and Mechanism Design across 8 domain stacks—containing zero standalone hardware benchmarks.*
 
-> **Public Domain (`CC0-1.0`) · OpenIE Research Essay**  
-> **Canonical Primary Source**: [https://research.openie.dev/papers/agency/](https://research.openie.dev/papers/agency/)  
-> **Canonical Artifact ID**: `blake3:tv:f1be23b37b7c4b0d74ccaaf3952659250ac143aa9ea3116538cd2c3ac0d9d774` · **Gate Invariant**: `human_in_gate = false`
+> **Signed Provenance · Self-Checked** (`human_in_gate = false`; automated build, benchmark, and proof-checking scripts ran without manual override — not externally peer-reviewed; see [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) and [Epistemic Glossary](https://blog.openie.dev/glossary/)).  
+> **Canonical Post-Review Essay (`rel="canonical"`)**: [https://blog.openie.dev/posts/eco-stack/](https://blog.openie.dev/posts/eco-stack/)  
+> **Primary Research Paper**: [https://research.openie.dev/papers/agency/](https://research.openie.dev/papers/agency/)  
+> **1-Command Replication Kit**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate)  
+> **Canonical Artifact ID**: `blake3:tv:f1be23b37b7c4b0d74ccaaf3952659250ac143aa9ea3116538cd2c3ac0d9d774` · **Evidence Tags**: `[M]` · `[S]` · **Telemetry Class**: `unmetered`
 
 ---
 
-## Three Plain-Language Takeaways (Zero Acronym Soup)
+![OpenIE Stack Map — unmetered teaching map connecting Information Theory, Game Theory, and Mechanism Design](https://research.openie.dev/media/tv/posters/eco-stack-poster.jpg)
+*Pedagogical taxonomy (`stack.openie.dev`) arranging Information Theory, Game Theory, and Mechanism Design (`joules = null`, `unmetered`). Dedicated to the public domain under `CC0-1.0`.*
 
-1. Information theory, game theory, and mechanism design form three altitudes of one energy-bounded computing map.
-2. Information theory prices bits and heat, game theory maps strategic interaction, and mechanism design writes rules where honesty wins.
-3. Across every layer of computing, each permitted action must clear its physical energy floor and pass independent checks.
+## Key Claims & Audited Scope (`[T]` / `[E]` / `[M]` / `[S]`)
 
-![Three Sciences, One Energy-Bounded Computing Map — OpenIE Research TV Studio Poster](https://research.openie.dev/media/tv/posters/eco-stack-poster.jpg)
-*Studio key visual for **Three Sciences, One Computing Map** (`Foundations & Thermodynamics` · 3 Sciences · 9 Periodic Stacks · 1 Joule Ledger). Dedicated to the public domain under `CC0-1.0`.*
+1. **[M/S · Corrected Telemetry & Track Classification (`unmetered`)]** Earlier syndication metadata inherited `reported_j` from its linked foundation paper (`agency`). Because `stack.openie.dev` itself is a **purely conceptual teaching map with zero empirical benchmarks**, its classification is corrected here to **`unmetered` (`joules = null`, `framing-synthesis`)**.
+2. **[S · Three Classical Sciences Placed by Altitude]** Synthesizes **Information Theory** (Shannon 1948 channel/representation bounds; Landauer 1961 physical bit erasure) as the physical substrate, **Game Theory** (von Neumann & Morgenstern 1944; Nash 1950 equilibria) as strategic interaction over payoffs, and **Mechanism Design** (Hurwicz, Maskin & Myerson, 2007 Nobel lecture lineage) as rule/gate routing that aligns incentives or proposals with desired outcomes.
+3. **[M · Honest Cross-Portal Licensing Boundary]** While the `stack.openie.dev` web guide is openly readable, the eight domain stacks it indexes do **not** share one blanket software license: `rce`, `rce-vc`, `deterministic-null`, and `lut-adapt-ai` are `Apache-2.0` public repos, whereas `JouleDB` (`data.openie.dev`) and `Pattern-lang` (`synthesis.openie.dev`) use `BSL-1.1` with private core mirrors, and `JouleOS` remains private.
 
-## Everyday Analogy & Why It Matters
+## Methods, Baselines, Sample Sizes (`N`) & Licensing Scope
 
-Think of a busy city intersection. Physics governs tire grip and fuel burn, drivers react strategically to one another, and smart traffic lights create rules where waiting your turn beats cutting in. Viewing bit energy, strategy, and rule design as one connected stack lets engineers catch hidden waste and bad incentives before systems fail.
+- **Hardware & Telemetry**: Unmetered (`joules = null`, `board_metered = false`). Conceptual curriculum synthesis (`stack.openie.dev`).
+- **Workload & Suite**: No empirical benchmark suite executed on `stack.openie.dev`; organizes shared coordinate axes (`Thermodynamic class T`, `Verifiability V`, `Encoding regime R`) across `Compute`, `Data`, `Synthesis`, `Knowledge`, `State`, `Communication`, `Memory`, and `Verify` portals.
+- **Baselines Compared**: Qualitative contrast between treating computing subfields (compilers, databases, AI routing, distributed consensus) as isolated silos vs. projections sharing common cost/verification axes.
+- **Runs (`N`) & Uncertainty / Spread**: Not applicable (`N = 0` empirical trials in this overview portal).
+- **Cold vs. Warm Caching Scope**: Conceptual taxonomy only: classifies memoization/indexing as moving recurring work from online search axes to precomputed storage axes.
+- **Artifact & License Status**: Portal web pages public at `https://stack.openie.dev/` (`CC0-1.0` blog summary); no single repo encompasses all 8 stacks (see [Verification & Licensing Table](https://blog.openie.dev/verification/#licensing-and-availability)).
 
-For eighty years, universities taught electrical engineering, game theory, and economic mechanism design in separate departments with separate notation. Yet inside networked computers and multi-agent software, thermal noise, strategic shortcuts, and safety rules collide every single millisecond of operation. At ground level, Claude Shannon and Rolf Landauer price the minimum heat nature charges to send and erase bits reliably.
+## What `stack.openie.dev` Is—and What It Is Not
 
-One altitude higher, game theory maps how competing agents choose actions. At the top, mechanism design crafts rules where honesty wins. On stack dot openie dot dev, this single coordinate map organizes nine periodic tables—compute, memory, state machines, databases, communication, synthesis, formal proofs, knowledge claims, and goal-holding agents—pricing every design choice in real joules and microseconds.
+`stack.openie.dev` is an **architectural map and teaching index**, not a research experiment `[M]`. Its goal is to give readers one vocabulary before entering specialized papers: **Information Theory** asks what a representation or channel must pay in bits and physical work; **Game Theory** asks where interacting agents settle given fixed payoffs; and **Mechanism Design** asks what admission rules (`gates`, `auctions`, `commit protocols`) steer strategic or stochastic actors toward valid states `[S]`.
 
-When software protocols measure real electricity upfront and require independent verification before commit, cheap bluffing stops paying off and parsimonious engineering wins every time.
+## Shared Coordinate Axes Across the Domain Portals
 
-## Inside the Mechanism & Candid Limits
+Across the companion portals (`compute.openie.dev`, `data.openie.dev`, `synthesis.openie.dev`, `knowledge.openie.dev`, `avalanche.openie.dev`), three shared classification axes recur `[M]`: (1) **Cost regime (`T`)** separating bijective/index lookups from dense floating-point search; (2) **Verifiability (`V`)** separating proof-checked or oracle-tested outputs from uncalibrated prose; and (3) **Temporal/Provenance scope** tracking valid time and telemetry tier (`measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered`).
 
-Hardware teams work tirelessly to shave picojoules off transistor switches, only to watch software wrappers burn megawatts on endless retry loops, chatty text formats, or gamed benchmark leaderboards. Those costly breakdowns happen right at the seams where physical bit limits meet strategic incentives without shared rules. Imagine guiding cargo ships safely into a narrow harbor during a busy tide. Water depth, wind, and hull drag set hard physical limits; ship captains steer strategically around rival vessels for berth space; and harbor authorities design pilot lanes and inspection rules so reporting honest cargo weight beats cutting corners.
+## Limitations & Taxonomic Caveats
 
-Altitude one unites Claude Shannon's noisy-channel capacity limits with Rolf Landauer's minimum heat price for erasing memory bits at finite temperature. Altitude two brings John von Neumann and John Nash's mathematics of strategic equilibria among goal-seeking actors. Altitude three applies Leonid Hurwicz, Eric Maskin, and Roger Myerson's inverse question: given a safe outcome, what rules make truth optimal? Across all three altitudes, total task energy equals the sum over every active primitive of how often it runs multiplied by the physical joules each invocation dissipates inside its real hardware context.
+- **A taxonomy is a classification choice, not a physical principle:** Calling the domain maps "Periodic Stacks" is an organizational analogy to facet classification (Ranganathan 1933) and Mendeleev (1869); unlike chemical atomic number `Z`, software design axes are discrete human abstractions whose granularity can be subdivided differently `[M, S]`.
 
-Moving too slowly leaks standing idle power, while switching too frantically multiplies reset heat. In this three-dimensional landscape, the flat lower plane marks nature's thermodynamic bit floor, the middle ridges trace strategic equilibria among interacting agents, and the upper emerald ring marks metered commit gates—aligning all nine periodic tables from silicon transistor switches right up to autonomous multi-agent coordination across the open web. Using all three altitudes together delivered measurable wins across our companion research studies: completion-gated joule scoring stopped cheap-failing random baselines from gaming benchmarks across twenty thousand puzzle runs, while independent commit gates blocked every single unsafe action across two hundred nine thousand tests. Good science keeps unifying maps honest about their boundaries.
+- **Mixed software availability:** Readers must check each linked repository’s individual license (`Apache-2.0` vs. `BSL-1.1` vs. private) rather than assuming every portal ships open-source engine code.
 
-Placing bit heat, strategic incentives, and commit verification on one shared ledger exposes hidden blind spots fast, yet every individual cell across all nine periodic stacks still requires its own reproducible hardware measurements, pre-registered controls, and falsifiable checks.
+## Energy & Telemetry Scope
 
-### Epistemic Evidence Tags (`[T]` / `[E]` / `[M]` / `[S]`)
+Strictly `unmetered` (`joules = null`, `board_metered = false`).
 
-- **`[T]` Theorem / Machine-Checked Formal Proof**
-- **`[E]` Empirical / Hardware-Instrumented Experiment**
-- **`[M]` Mathematical / Analytical Cost or Physics Model**
+## Epistemic Non-Mixing & Telemetry Ledger
 
-## How Energy Was Metered
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
 
-Open Interface Engineering enforces strict epistemic non-mixing across physical power rails, processor counters, and mathematical bounds (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition is forbidden by `ScientificGate`):
+- **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
+- **Acquisition Tier**: Unmetered Conceptual Taxonomy
+- **Telemetry Disclosure**: Pedagogical overview map (stack.openie.dev) across Information Theory, Game Theory, and Mechanism Design; 0 benchmarks, joules = null.
+- **Evidence Class**: `unmetered` (`board_metered = false`)
+- **Catalog Anchor Reading**: `null` (`unmetered` — no hardware wattmeter or chip energy counter claimed)
+- **Sensor / Formula Scope**: Unmetered conceptual taxonomy overview on stack.openie.dev (joules = null)
 
-- **Acquisition Tier**: Physics + Chip Counter
-- **Plain-Language Disclosure**: Mathematical physics bounds paired with built-in chip energy counters across stack studies.
-- **Substrate Evidence Class**: `reported_j` (`board_metered = false`)
-- **Primary Reading**: `49.04 mJ (reported_j)`
-- **Meter or Formula**: On-chip CPU energy counter across periodic computing stack verification
-- **300 K Landauer Bit-Equivalents**: `1.7081e+19` bits (`E / (k_B · 300 K · ln 2)`)
+## Related Work & Primary Literature (`[S]`)
 
-## Continue the Discussion & Verify Every Byte
+- **Shannon (Bell Syst. Tech. J., 1948) & Landauer (IBM J. Res. Dev., 1961) / Bérut et al. (Nature, 2012):** Channel capacity, source entropy, and experimental verification of `k_B T ln 2` bit-erasure heat `[S]`.
+- **von Neumann & Morgenstern (1944) & Nash (PNAS, 1950):** Strategic games and equilibrium existence `[S]`.
+- **Hurwicz (1960/1973), Maskin (Rev. Econ. Stud., 1999) & Myerson (Math. Oper. Res., 1981):** Incentive-compatible mechanism design and revelation principles `[S]`.
+- **Ranganathan (Colon Classification, 1933) & Nisan & Roughgarden et al. (Algorithmic Game Theory, 2007):** Multi-faceted knowledge classification and computational mechanism design `[S]`.
+
+## Replicate, Critique & Inspect Raw Artifacts
 
 <!-- x_thread_backlink_slot: {{X_THREAD_URL}} -->
-- **Watch in 15 Seconds or 3 Minutes**: Stream the native `9:16` Vertical Snackable ([`eco-stack-tiktok.mp4`](https://research.openie.dev/media/tv/tiktok/eco-stack-tiktok.mp4)) or explore all four captioned studio cuts (`15s`, `45s`, `90s`, and `3m` 3D cutaway documentary) on **[OpenIE Research TV](https://research.openie.dev/tv/?study=eco-stack)**.
-- **Join the Synchronized X (Twitter) Thread**: Reply, critique, or inspect the 5-post verification thread on **[X (Twitter)](https://x.com/search?q=%22Three%20Sciences%2C%20One%20Computing%20Map%22%20OR%20research.openie.dev%2Ftv%2F%3Fstudy%3Deco-stack&src=typed_query)**.
-- **Query Grounded Prior Art & Signed WAI1 Receipts**: Explore linked lineage trails on **[The Commons (`scholar.askdavidc.ai`)](https://scholar.askdavidc.ai)**, read the full primary paper & PDF at **[`research.openie.dev/papers/agency/`](https://research.openie.dev/papers/agency/)**, and verify the Ed25519-signed `WAI1` binary container (`blake3:f92e2cccc453b339…`) in **[`openie-artifact-substrate`](https://github.com/openIE-dev/openie-artifact-substrate/blob/main/catalog/envelopes/tv-eco-stack.wai)**.
+- **Canonical Post-Review Blog Dossier**: [https://blog.openie.dev/posts/eco-stack/](https://blog.openie.dev/posts/eco-stack/)
+- **Primary Research Manuscript & PDF**: [https://research.openie.dev/papers/agency/](https://research.openie.dev/papers/agency/) ([PDF](https://research.openie.dev/pdfs/agency.pdf))
+- **1-Command Public Replication Harness**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate)
+- **9:16 Vertical Snackable (`60fps`) & Research TV Cuts**: [https://research.openie.dev/media/tv/tiktok/eco-stack-tiktok.mp4](https://research.openie.dev/media/tv/tiktok/eco-stack-tiktok.mp4) · [OpenIE Research TV](https://research.openie.dev/tv/?study=eco-stack)
+- **Verification & Glossary Standards**: [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) · [Epistemic Glossary](https://blog.openie.dev/glossary/)
 
 ---
 
-*Summary & essay text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Code, verification gates, and `WAI1` schemas licensed under `Apache-2.0`.*
+*Prose and summary text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Public replication harnesses and `WAI1` schemas are licensed under `Apache-2.0` unless explicitly noted in the licensing ledger above.*

@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "mei",
   "canonical_id": "blake3:tv:33f41b6dafca0a637986a28756e35c305743509289ac7774cfb84fcbc91804cb",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/mei/",
+  "canonical_paper_url": "https://research.openie.dev/products/mei/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/mei-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/mei-15s.mp4",
-    "poster_uri": "/media/tv/posters/mei-poster.jpg",
-    "vtt_uri": "/media/tv/captions/mei-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/mei-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/mei-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 22.9,
     "safe_zone_verified": true,
-    "source_15s_sha256": "07630f84ed19b45616f9ae5b877e51c316f7d98875a99baaa183f754857c6adf"
+    "sha256": "de70ccffe949f2a99fb19ee07a40510365d67ed44d97945066600d0e721acf4b"
   },
-  "caption_utf16_chars": 772,
+  "caption_utf16_chars": 875,
+  "caption": "MEI Coin-Cell Cold-Chain Simulation — 40/40 safety alerts preserved & 490/500 routine beacons refused in -20 °C simulation (2,680 JCR-1 receipts across 3 temps, est_j)\n\nIn datasheet/CAD simulation (est_j, 0 physical tags built), 10 uW over 8 yr = 2.52 kJ — exceeding a cold-derated CR2032 (~2.38 kJ nominal; 0 J unbuffered at -20 C) unless sleep <5 uW or CR2477/Li-SOCl2 is used.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: est_j (Analytical datasheet + cold-impedance discrete simulation (est_j); zero physical coin-cell tags fabricated or chamber-tested.)\n• Essay: https://blog.openie.dev/posts/mei/\n• Paper: https://research.openie.dev/products/mei/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#Iot #EmbeddedSystems #BatterySystems #ColdChain #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "Metabolic Intelligence (8-Yr Coin-Cell Schedule · 100% Cold Alerts Saved)\nMetabolic Intelligence gives computers a strict energy budget before they act—from a freezing coin-battery food tag to a hundred-megawatt campus.\n1) Give a computer a strict energy budget upfront, and design it to deliver the best verified answer inside that limit.\n2) A food-freshness sensor tag can budget a coin battery for eight years and drop routine chatter in freezing cargo so critical alerts survive.\n3) At the other extreme, a data center can follow power-grid caps by pausing flexible jobs and matching human reading speed.\nEnergy class: est_j (Electro-Thermal Model) · CC0-1.0 · https://research.openie.dev/products/mei/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "MEI Coin-Cell Cold-Chain Simulation — 40/40 safety alerts preserved & 490/500 routine beacons refused in -20 °C simulation (2,680 JCR-1 receipts across 3 temps, est_j)\n\nIn datasheet/CAD simulation (est_j, 0 physical tags built), 10 uW over 8 yr = 2.52 kJ — exceeding a cold-derated CR2032 (~2.38 kJ nominal; 0 J unbuffered at -20 C) unless sleep <5 uW or CR2477/Li-SOCl2 is used.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: est_j (Analytical datasheet + cold-impedance discrete simulation (est_j); zero physical coin-cell tags fabricated or chamber-tested.)\n• Essay: https://blog.openie.dev/posts/mei/\n• Paper: https://research.openie.dev/products/mei/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#Iot #EmbeddedSystems #BatterySystems #ColdChain #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/mei-tiktok.mp4"
     }
   },
-  "content_blake3": "ee1361e9bb29b3496a960b76ad060cfd7c5402c92a8e11190187e9f116c0c3ef"
+  "content_blake3": "bff51a1c9d33ee124eeaadeecc76673acbbba2fc8949d89d8902564792e82784"
 }

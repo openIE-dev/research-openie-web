@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "eco-avalanche",
   "canonical_id": "blake3:tv:f4c0b7df0176f02e56e35e3cc9703033be962f8c06fcd1865615c66741535bd1",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/eco-avalanche/",
+  "canonical_paper_url": "https://research.openie.dev/papers/communication-avalanche/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/eco-avalanche-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/eco-avalanche-15s.mp4",
-    "poster_uri": "/media/tv/posters/eco-avalanche-poster.jpg",
-    "vtt_uri": "/media/tv/captions/eco-avalanche-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/eco-avalanche-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/eco-avalanche-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 21.93,
     "safe_zone_verified": true,
-    "source_15s_sha256": "ec45d07425854ed8ed12e41073178b1aa2d6b0059e629d3ffc2829dc037c7c5c"
+    "sha256": "cc3ef9d0913dd07aec01766c0b431704a21ab8639ea38af677639eb62f1b7326"
   },
-  "caption_utf16_chars": 785,
+  "caption_utf16_chars": 943,
+  "caption": "Nine-Rung Study Guide (avalanche.openie.dev) — Educational Synthesis Portal (avalanche.openie.dev) · DES-10 98/100 tasks (1/100 false commit) vs <=49/100 solo camps (Thor INA3221 measured_j)\n\nEducational companion to communication-avalanche: labels the 3.8 Ga bio-to-AI rung map as ex-post framing, scopes 45 Lean consent theorems to abstract FSMs & separates Thor 927.3 uJ from desktop us.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: measured_j (Educational synthesis portal keeping Thor INA3221 measured_j (927.30 uJ / 50.13 us) separate from desktop reported_j (23.84-33.12 us).)\n• Essay: https://blog.openie.dev/posts/eco-avalanche/\n• Paper: https://research.openie.dev/papers/communication-avalanche/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#AiArchitecture #MultiAgentSystems #StudyGuide #ComputerScience #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "Nine-Rung Intelligence Avalanche (98 / 100 Verified Synthesis · 9x–27x Board Power Gain)\nWhy computer intelligence follows the same nine-step signal ratchet as life—and how compiling answers unlocks the next four steps.\n1) Across 3.8 billion years of biology and 76 years of computing, intelligence climbs a nine-step ladder through one repeating signal ratchet.\n2) Today's AI stalls at the fifth step—tool use—because routine jobs still wake giant models from scratch.\n3) Crossing the compilation threshold unlocks the top four steps by turning verified answers into fast, low-energy lookup reflexes.\nEnergy class: measured_j (Board Power Sensor) · CC0-1.0 · https://research.openie.dev/papers/communication-avalanche/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "Nine-Rung Study Guide (avalanche.openie.dev) — Educational Synthesis Portal (avalanche.openie.dev) · DES-10 98/100 tasks (1/100 false commit) vs <=49/100 solo camps (Thor INA3221 measured_j)\n\nEducational companion to communication-avalanche: labels the 3.8 Ga bio-to-AI rung map as ex-post framing, scopes 45 Lean consent theorems to abstract FSMs & separates Thor 927.3 uJ from desktop us.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: measured_j (Educational synthesis portal keeping Thor INA3221 measured_j (927.30 uJ / 50.13 us) separate from desktop reported_j (23.84-33.12 us).)\n• Essay: https://blog.openie.dev/posts/eco-avalanche/\n• Paper: https://research.openie.dev/papers/communication-avalanche/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#AiArchitecture #MultiAgentSystems #StudyGuide #ComputerScience #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/eco-avalanche-tiktok.mp4"
     }
   },
-  "content_blake3": "a1bcacb631b3ad7a24b5caec668432bb800868643e5c0a344a9fcf0aafada931"
+  "content_blake3": "ab5f09571d96a526b0dbb199b919e8813f80ee3078ed52bb0dd9b0fc999c30c8"
 }

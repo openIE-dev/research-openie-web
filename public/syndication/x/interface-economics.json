@@ -1,29 +1,35 @@
 {
-  "schema": "openie.x_thread_bundle.v1",
+  "schema": "openie.x_thread_bundle.v2",
   "study_id": "interface-economics",
   "canonical_id": "blake3:tv:6cee9f2f140f50dfe0d3b09bfab0b718b3f208c720a149f06e287da7d1412f55",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
   "license": "CC0-1.0",
   "post_count": 5,
-  "max_weighted_chars": 249,
+  "max_weighted_chars": 275,
   "card_video_uri": "/media/tv/tiktok/interface-economics-tiktok.mp4",
   "fallback_video_uri": "/media/tv/films/interface-economics-15s.mp4",
-  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/interface-economics/",
+  "medium_crosslink_uri": "https://blog.openie.dev/posts/interface-economics/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/interface-economics/",
   "canonical_paper_url": "https://research.openie.dev/papers/interface-economics/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+  "public_repo_url": null,
   "zero_urls_in_post_1": true,
   "posts": [
     {
       "position": 1,
       "role": "hook_video_card",
-      "text": "The Price of the Unexamined Interface\n\nChecking a software handoff is cheap, skipping it destroys spacecraft, and public-good economics explains why teams still skip it.\n\n[$327.6M Mars Loss vs Cheap Automated Handoff Checks]",
-      "weighted_chars": 224,
-      "raw_chars": 224,
+      "text": "Interface Economics: Handoff Cost Models [M/S · unmetered]\n\nUnmetered microeconomic & channel-coding model extending Coase (1937), Williamson (1979) & Marschak-Radner (1972) to software/agent APIs: typed gates win when spec + gate cost beats downstream error loss.",
+      "weighted_chars": 264,
+      "raw_chars": 264,
       "urls": [],
       "in_reply_to_position": null,
       "media": {
         "video_uri": "/media/tv/tiktok/interface-economics-tiktok.mp4",
         "fallback_video_uri": "/media/tv/films/interface-economics-15s.mp4",
-        "poster_uri": "/media/tv/posters/interface-economics-poster.jpg",
-        "vtt_uri": "/media/tv/captions/interface-economics-15s.vtt",
+        "poster_uri": "/media/tv/tiktok/interface-economics-tiktok.jpg",
+        "vtt_uri": "/media/tv/tiktok/interface-economics-tiktok.vtt",
         "aspect_ratio": "9:16",
         "resolution": "1080x1920",
         "fps": 60,
@@ -32,43 +38,47 @@
     },
     {
       "position": 2,
-      "role": "plain_points_1_2",
-      "text": "1/3 Single handoff failures carry exact price tags, like losing a $328M Mars mission over mismatched force units.\n\n2/3 Trillion-dollar national figures come from broad surveys and models of software quality, and none isolates handoff failures alone.",
-      "weighted_chars": 249,
-      "raw_chars": 249,
+      "role": "methods_and_sample_bounds",
+      "text": "1/2 Amortization vs exploration regimes [M]:\n- Across k unverified prose handoffs with error rate q, survival decays as (1 - q)^k\n- High-reuse production buses (N >> 1, high L_downstream) amortize upfront schema cost C_spec / N\n- On N=1 prototypes, rigid specs lose to prose",
+      "weighted_chars": 274,
+      "raw_chars": 274,
       "urls": [],
       "in_reply_to_position": 1
     },
     {
       "position": 3,
-      "role": "plain_point_3_and_energy",
-      "text": "3/3 Checking shared assumptions upfront is cheap, yet teams skip it because one group pays while everyone downstream benefits.\n\nEnergy class: unmetered (Historical + Economic Audit; joules=null, never faked as zero).",
-      "weighted_chars": 216,
-      "raw_chars": 216,
+      "role": "telemetry_and_scope_limits",
+      "text": "2/2 Theoretical scope & limits:\n- Closed-form inequalities are hand-derived stylized models [M] with zero firm RCTs or hardware wattmeters here (joules = null)\n- Real schemas incur ongoing maintenance cost under requirement drift\n- Handoff joules live in companion benchmarks",
+      "weighted_chars": 275,
+      "raw_chars": 275,
       "urls": [],
       "in_reply_to_position": 2
     },
     {
       "position": 4,
-      "role": "machine_verification_gate",
-      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [S]/[M] · WAI1 blake3:6cee9f2f140f… · CC0-1.0",
-      "weighted_chars": 203,
-      "raw_chars": 200,
-      "urls": [],
+      "role": "signed_provenance_self_checked",
+      "text": "Signed Provenance · Self-Checked (human_in_gate=false; not peer-reviewed):\n- Evidence: [M]/[S] · WAI1 blake3:6cee9f2f140f...\n- Verification: https://blog.openie.dev/verification/\n- Glossary: https://blog.openie.dev/glossary/",
+      "weighted_chars": 200,
+      "raw_chars": 224,
+      "urls": [
+        "https://blog.openie.dev/verification/",
+        "https://blog.openie.dev/glossary/"
+      ],
       "in_reply_to_position": 3
     },
     {
       "position": 5,
-      "role": "bidirectional_medium_and_paper_bridge",
-      "text": "Read & verify The Price of the Unexamined Interface (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/interface-economics/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/interface-economics/",
-      "weighted_chars": 181,
-      "raw_chars": 255,
+      "role": "canonical_blog_paper_and_replicate",
+      "text": "Read & replicate Interface Economics (Analytical Model) (CC0-1.0):\n- Essay: https://blog.openie.dev/posts/interface-economics/\n- Paper: https://research.openie.dev/papers/interface-economics/\n- 1-cmd kit: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+      "weighted_chars": 169,
+      "raw_chars": 282,
       "urls": [
-        "https://research.openie.dev/syndication/medium/interface-economics/",
-        "https://research.openie.dev/papers/interface-economics/"
+        "https://blog.openie.dev/posts/interface-economics/",
+        "https://research.openie.dev/papers/interface-economics/",
+        "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
       ],
       "in_reply_to_position": 4
     }
   ],
-  "content_blake3": "5f493e9611cc6056c0cb74cd2d008741dda731a7a16e6e1b69b8133534d14311"
+  "content_blake3": "14d8293d2de980646147f900eb01b2180d304a0cc0bbc1e80732a25d9c219bd2"
 }

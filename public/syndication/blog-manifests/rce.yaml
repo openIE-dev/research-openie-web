@@ -1,77 +1,97 @@
-# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+# OpenIE Post-Review Audited Blog Syndication Manifest (CC0-1.0)
 slug: "rce"
 
 metadata:
-  title: "The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming"
-  description: "Write a program once as one complete state-machine blueprint, check it in 49 millijoules, and emit matching code across languages."
-  date: "2026-11-24"
-  author: "David Charlot, Open Interface Engineering"
+  title: "The Reality Code Engine (RCE): Total State-Machine Specification, 49 mJ Single-Form Checks vs. 15.44 J Suite Scope, and Open Draft Theorems"
+  description: "Specifies RCE Draft 0.9 at openIE-dev/rce (f87d6af2): reconciles 49.04 mJ single-Form check vs 15.44 J 62-Form suite and 2,221/2,236 conformance clauses, and discloses 12 unproved draft-0.9 theorems alongside 97 completed Lean files."
+  date: "2026-11-25"
+  author: "Open Interface Engineering"
   category: "engineering"
-  tags: ["rce", "engineering", "open-science", "cc0", "reported-j"]
+  tags: ["formal-verification", "state-machines", "lean4", "programming-languages", "open-science"]
   featured: false
   draft: false
   toc: true
-  canonicalUrl: "https://research.openie.dev/papers/rce/"
+  provenanceStatus: "Signed Provenance · Self-Checked"
+  verificationUrl: "https://blog.openie.dev/verification/"
+  glossaryUrl: "https://blog.openie.dev/glossary/"
+  canonicalBlogUrl: "https://blog.openie.dev/posts/rce/"
+  canonicalUrl: "https://blog.openie.dev/posts/rce/"
+  primaryPaperUrl: "https://research.openie.dev/papers/rce/"
+  replicationKitUrl: "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
+  publicRepoUrl: "https://github.com/openIE-dev/rce"
+  energyClass: "reported_j"
   license: "CC0-1.0"
 
 hero:
   image: "rce-poster.jpg"
-  alt: "The Reality Code Engine — 2,221 Checks, 0 Failures · 49 mJ per Check"
+  alt: "Reality Code Engine — 49.04 mJ single-Form check, 15.44 J 62-Form suite, 2,221/2,236 conformance passes, and 12 open draft theorems — 49.04 mJ/Form check & 15.44 J across 62 Forms (M5 Max reported_j) · 2,221/2,236 conformance passes · 12 draft-0.9 theorems open"
 
 sections:
   - heading: null
     content: |
-      *Canonical Primary Source: [https://research.openie.dev/papers/rce/](https://research.openie.dev/papers/rce/) · Dedicated to the Public Domain (`CC0-1.0`)*
+      *Signed Provenance · Self-Checked (`human_in_gate = false`; [Verification](https://blog.openie.dev/verification/) · [Glossary](https://blog.openie.dev/glossary/)) · Canonical Post-Review Essay: [https://blog.openie.dev/posts/rce/](https://blog.openie.dev/posts/rce/) · Primary Paper: [https://research.openie.dev/papers/rce/](https://research.openie.dev/papers/rce/)*
 
-      Write a program once as one complete state-machine blueprint, check it in 49 millijoules, and emit matching code across languages.
+      In openIE-dev/rce (Apache-2.0, commit f87d6af2), external Apple M5 Max L3 counters recorded 49.04 mJ (7.32 ms, reported_j) for a single Form check and 15.44 J (2.32 s) across the full 62-Form check/run/emit suite while 2,221/2,236 normative conformance checks passed (0 failures, 15 reserved); 97 completed Lean 4.36.0 files pass 6/6 kernels with 0 sorry (1,264 source declarations / 5,393 constants), alongside 12 unproved draft-0.9 theorem statements in Appendix F.9.
 
-  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+  - heading: "Key Claims & Evidence Tags"
     content: |
-      1. You write a program once in one clear blueprint, and the computer generates matching code in many languages.
-      2. Every possible input must have a declared outcome up front, leaving nowhere for silent crashes to hide.
-      3. Once a repair passes every check, the engine saves and reuses it so nobody pays twice for one bug.
+      1. **[E · Reconciled `49.04 mJ` vs. `15.44 J` vs. `2,221` Checks (`reported_j`)]** Earlier summaries conflated three separate workloads from `rce-facts.json`: **`49.04 mJ` (`7.32 ms`, Apple M5 Max `L3` `reported_j`)** is the cost of **one single-Form `rce check` invocation**; **`15.44 J` (`2.32 s`, `~249 mJ/Form`)** is the cost of **checking, running, and multi-target emitting all `62` valid example Forms** (`60` top-level + `2` package Forms, alongside `13` syntax-reject and `73` type/admissibility-reject tests); and **`2,221 / 2,236` (`0` failures, `15` unsupported/reserved)** is the **normative conformance test count across `311` spec clauses** (not `2,221 × 49 mJ`). Moreover, `rce` CLI receipts themselves currently emit deterministic integer `C.6` fuel units rather than reading OS `host.Energy` counters natively (`§1`, `§6.3`).
+      2. **[T · Honest Lean 4.36.0 Proof Boundary]** Across `97` completed `.lean` files in `spec/lean/` (`f87d6af2`), **`0 sorry`, `0 opaque`, and `0 ofReduceBool`** appear across `1,264` source theorem/lemma declarations (`5,393` kernel theorem constants verified by all `6/6` independent checkers in `bwrap` at `22,354.77 J` Linux `RAPL` `reported_j`)—**alongside `12` unproved Draft-0.9 theorem statements in Appendix F.9 (`T42–T56` except `T48, T51, T53`), plus `T60` and parts of `T57, T59, T61`**, while Appendix C concurrency theorems (`T16–T31`) are proved on abstract models rather than the Rust evaluator.
+      3. **[T/E · Scoped Totality Guarantee]** Rather than claiming RCE "removes undefined crashes," its totality discipline **prevents stuck or non-terminating step evaluations within the modeled total Form core** (requiring every event either to step or record a state-preserving kept step `T8`), **excluding host OS failures, FFI boundaries, target-language compiler bugs, hardware faults, and open input-entry item `#15`**.
 
-  - heading: "Everyday Analogy & Why It Matters"
+  - heading: "Methods, Baselines & Artifact Scope"
     content: |
-      A short request like make checkout faster can mean ten different things, and rewriting it across server, browser, and mobile languages loses edge cases at every step. Writing one complete state-machine blueprint captures exact meaning once and keeps every target aligned. Every program in the Reality Code Engine is a total functional state machine.
+      - **Hardware & Telemetry**: Apple M5 Max (`128 GB`, macOS `27.2.1`, Darwin `L3` `ri_energy_nj` `reported_j`) for `49.04 mJ` single-Form check and `15.44 J` `62`-Form suite; x86-64 Linux `RAPL` `package-0` (`22,354.77 J`, `319.80 s` `reported_j`) for 6-kernel `lake check --paranoid`. `measured_j = null` (`board_metered = false`).
+      - **Workload & Suite**: `62` valid Form blueprints (`60` top-level + `2` package), `13` syntax-reject and `73` type/admissibility-reject negative tests, `2,236` normative conformance checks (`311` clauses), `837` Rust unit tests (`159` files), `77` canonical JSON vectors, and `97` Lean `4.36.0` proof files.
+      - **Baselines Compared**: Byte-for-byte trace parity across `4` reference emitters (`Rust`, `Python`, `JavaScript`, `Scala`; plus CLI `verilog`/`wasm` targets); literature context from DéjàVu GitHub clone density (`70%`, Lopes et al. 2017) and TBar `Defects4J` repair protocols (`§7–§8`, planned empirically in `rce-jepa`).
+      - **Runs (N) & Spread**: Conformance & Lean checks are deterministic (`2,221/2,236` pass, `0` fail; `6/6` Lean kernels pass). Apple M5 Max `49.04 mJ` (`7.32 ms`) and `15.44 J` (`2.32 s`): aggregate suite means recorded on `2026-11-22` in `rce-facts.json` (Spread: per-run SD/IQR not recorded in single-pass receipt summary).
+      - **Cold vs. Warm Scope**: Language specification separates cold candidate search (`G1–G3`) from `G0` content-addressed shape lookup keyed by nameless structural Form hash (`T7`); `rce` paper itself measures checker/language invariants while `rce-jepa` benchmarks `G0–G2` repair streams.
+      - **Artifact & License**: `Apache-2.0` public repository at `https://github.com/openIE-dev/rce` (`commit f87d6af2`) + browser playground (`openie-dev.github.io/rce`); self-checked by OpenIE, open for independent replication.
 
-      Each incoming event either advances the state cleanly or records an explicit kept step that leaves state untouched—and emitters then generate matching Rust, Python, JavaScript, and Scala. Across sixty-four Lean 4 proof modules totaling five thousand five hundred thirty-seven theorem constants and two thousand two hundred twenty-one active conformance checks, zero checks fail—and checking, running, and emitting all sixty-two example blueprints costs fifteen point four joules. Because accepted repairs are stored by structural shape and replayed in microseconds, the engine calls an AI model only when no stored solution or rule fits.
-
-  - heading: "Inside the Mechanism & Candid Limits"
+  - heading: "Reconciling Workload Scopes (`49.04 mJ`, `15.44 J`, and `2,221` Checks)"
     content: |
-      Ask a large language model to write code from scratch on every ticket and you pay full energy to sample a fresh statistical guess each time—even though empirical studies of public repositories show roughly seventy percent of files are close clones of work already solved elsewhere. Human requests carry wide ambiguity, yet every processor ultimately executes simple loads, stores, arithmetic, and jumps. Translating intent across hundreds of surface languages injects silent mismatches at the seams—for instance, negative three modulo two equals positive one in Python yet negative one in C. The Reality Code Engine replaces that leaky translation funnel with four steps.
+      Inspecting `src/data/rce-facts.json` and `§1 / §6.3` of `src/content/papers/rce.md` separates three numbers that short video/blog summaries previously compressed together `[E]`:
 
-      First, author intent once as a lossless state machine called a Form, carrying states, events, and an append-only step log. Second, pass grammar, type, ownership, and mutation checks. Third, emit byte-matching Rust, Python, JavaScript, and Scala. Fourth, store accepted fixes.
+      1. **`49.04 mJ` (`7.32 ms` on Apple M5 Max `L3` `ri_energy_nj`, `reported_j`):** External OS counter cost of **one single-Form `rce check` run**.
 
-      By construction, every input must either step cleanly to a declared state or record an explicit kept step—eliminating undefined crashes. When solving or repairing tasks, mechanisms run in strict order of energy cost: microsecond lookup first, guarded rewrite rules second, constraint search third, and neural models only last. Our three-dimensional polyhedron illustrates one checked state-machine core anchored by a hash-chained event log. Rather than maintaining four separate codebases that drift from their comments and from one another over years of edits, every target runtime is a verified mathematical projection of one master blueprint that replays identical event traces.
+      2. **`15.44 J` (`2.32 s` on Apple M5 Max `L3` `reported_j`):** External OS counter cost of running the **complete `62`-Form example suite** (syntax/type/totality checking plus multi-target Rust, Python, JS, and Scala trace verification across `60` standalone and `2` package Forms, `~249 mJ/Form` end-to-end).
 
-      At public commit one-seven-six-two-f-b-four-b, the Lean 4 audit verifies five thousand five hundred thirty-seven theorem constants across sixty-four modules with zero unproven placeholders. Two thousand two hundred twenty-one conformance checks and eight hundred thirty-seven Rust unit tests pass with zero failures, costing forty-nine millijoules per check and fifteen point four joules across all sixty-two example blueprints. Every open boundary is stated plainly: twelve newer draft-zero-point-nine theorems remain unproved, no production optimizing compiler ships yet, outside stochastic repairs reached two point five percent above their two percent promotion cap and remained in observation mode, and all energy figures come from chip counters without a wall meter.
+      3. **`2,221 / 2,236` Conformance Checks (`0` failures, `15` unsupported/reserved Draft-0.9 clauses):** Normative clause assertions across `311` specification rules (`104` core grammar rules / `1,028` LR states with `0` shift/reduce conflicts). Furthermore, `§1` candidly discloses that `openIE-dev/rce` main does **not** yet implement `rce host calibrate` or native `host.Energy` OS-counter receipts inside the checker binary; internal receipts record deterministic integer `C.6` fuel units `[E]`.
 
-  - heading: "How Energy Was Metered"
+  - heading: "Theorem Audit (`5,393` Constants vs. `12` Unproved Draft-0.9 Statements)"
     content: |
-      - **Acquisition Tier**: Chip Energy Counter
-      - **Disclosure**: Built-in Apple M5 Max chip counter (49.04 mJ per check); no wall power meter used.
-      - **Evidence Class**: `reported_j` (`49.04 mJ (reported_j)`)
-      - **Meter / Formula**: Apple M5 Max reported_j checker energy per total RCE Form check
+      Scientific precision requires reporting both proved and unproved parts of Draft 0.9 `[T]`:
 
-      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+      - **Completed Lean `4.36.0` proofs (`f87d6af2`):** `97` `.lean` files containing `1,264` hand-written `theorem`/`lemma` declarations elaborate to **`5,393` kernel theorem constants** (`5,537` under Lean `4.12.0` due to elaborator splitter differences) with **`0 sorry`, `0` custom axioms, `0 opaque`, and `0 Lean.ofReduceBool`**, accepted by all **`6/6` independent checkers** (`con-leche`, `con-ron`, `lean4lean`, `nanoda`, `leanchecker --paranoid`, and `Lean v4.36.0`) inside a networkless `bubblewrap` sandbox `[T]`.
+
+      - **Unproved Draft-0.9 statements & model gaps:** Appendix F.9 states theorems `T42–T56`, of which `T48`, `T51`, and `T53` are proved over models while **12 Draft-0.9 theorems remain unproved**; `T60` and full-alphabet/evaluator extensions of `T57`, `T59`, `T61`, and `T62` remain open in `spec/book/10-theorems.md`; and concurrency theorems `T16–T31` apply to abstract core models rather than mechanical extraction of the Rust reference checker `[T, E]`.
+
+  - heading: "Limitations: Identifiers, Comprehension, and Totality Boundaries"
+    content: |
+      - **Modeled core totality vs. real-world host faults:** Theorem `T8` guarantees every transition within a valid Form terminates in a new state or a logged kept step—preventing stuck evaluations *inside the modeled language core*, **not** OS OOM kills, FFI wrapper bugs, target-compiler miscompilations, or cosmic-ray bit flips (and entry-contract check `#15` in `§10` remains open) `[T, E]`.
+
+      - **Nameless hashing vs. LLM/human readability (`§2.1`):** While positional hashing (`T7`) canonicalizes variable names out of the Form digest, `§2.1` cites empirical software-comprehension studies (`[139]`) showing frontier LLMs lose `11–29` points of summarization/prediction accuracy when identifiers are stripped—meaning human/model side-tables carrying identifier concepts remain essential `[S]`.
+
+  - heading: "Energy & Telemetry Scope"
+    content: |
+      All reported joules (`49.04 mJ`, `15.44 J`, `22,354.77 J`) are `reported_j` chip counters (`measured_j = null`, `board_metered = false`). Relative to generating a multi-language repair via a local 35B LLM (`84.25 J` `reported_j` per candidate in `rce-jepa`), running `rce check` (`0.049 J`) costs **`1,718x` less on-chip `reported_j`** on workstations `[E]`.
 
 references:
   - id: 1
-    authors: "David Charlot, Open Interface Engineering"
-    title: "The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming"
+    authors: "Open Interface Engineering"
+    title: "The Reality Code Engine (RCE): Total State-Machine Specification, 49 mJ Single-Form Checks vs. 15.44 J Suite Scope, and Open Draft Theorems"
     publication: "OpenIE Research"
     year: 2026
     url: "https://research.openie.dev/papers/rce/"
 
 closing:
-  content: |
-    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=rce) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
-  cta:
-    primary:
-      text: "Read Primary Study & PDF"
-      url: "https://research.openie.dev/papers/rce/"
-    secondary:
-      text: "Watch on OpenIE Research TV"
-      url: "https://research.openie.dev/tv/?study=rce"
-  footer_text: "Summary text dedicated to the public domain under CC0-1.0."
+    content: |
+      Stream the 9:16 60fps vertical cut on [OpenIE Research TV](https://research.openie.dev/tv/?study=rce) or run the 1-command replication harness at [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate).
+    cta:
+      primary:
+        text: "Read Canonical Post-Review Dossier"
+        url: "https://blog.openie.dev/posts/rce/"
+      secondary:
+        text: "Primary Paper & 1-Command Replication"
+        url: "https://research.openie.dev/papers/rce/"
+    footer_text: "Signed Provenance · Self-Checked (not externally peer-reviewed). Summary text dedicated to the public domain under CC0-1.0."

@@ -1,63 +1,89 @@
-# The Communication Tool Avalanche: Thresholded Signal Externalization, Event-Driven Orchestration, and Coherence per Joule
+# The Communication Tool Avalanche: Cross-Host Shunt vs. Counter Handoff Audit, DES-10 Multi-Paradigm Routing (98/100), and Framing Boundaries
 
-*59 of 60 Fixes · 0 Bad Commits · 98% Combined — One scaling rule connects ancient bacteria, multi-agent AI teams, and consent-gated brain interfaces.*
+*Reconciles 927.30 uJ (Jetson AGX Thor INA3221 measured_j over 50.13 us) vs 23.84-33.12 us workstation latencies (reported_j), defines DES-10 98/100 (1% false commit) vs <=49/100 solo camps, and scopes bio analogies and 45 Lean consent theorems.*
 
-> **Public Domain (`CC0-1.0`) · OpenIE Research Essay**  
-> **Canonical Primary Source**: [https://research.openie.dev/papers/communication-avalanche/](https://research.openie.dev/papers/communication-avalanche/)  
-> **Canonical Artifact ID**: `blake3:tv:4f70aff689f283a093283c5442909832ad3d481af954a6c581fff29f0c4f7ec6` · **Gate Invariant**: `human_in_gate = false`
+> **Signed Provenance · Self-Checked** (`human_in_gate = false`; automated build, benchmark, and proof-checking scripts ran without manual override — not externally peer-reviewed; see [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) and [Epistemic Glossary](https://blog.openie.dev/glossary/)).  
+> **Canonical Post-Review Essay (`rel="canonical"`)**: [https://blog.openie.dev/posts/communication-avalanche/](https://blog.openie.dev/posts/communication-avalanche/)  
+> **Primary Research Paper**: [https://research.openie.dev/papers/communication-avalanche/](https://research.openie.dev/papers/communication-avalanche/)  
+> **1-Command Replication Kit**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) · **Study Repository**: [https://github.com/openIE-dev/openie-artifact-substrate](https://github.com/openIE-dev/openie-artifact-substrate)  
+> **Canonical Artifact ID**: `blake3:tv:4f70aff689f283a093283c5442909832ad3d481af954a6c581fff29f0c4f7ec6` · **Evidence Tags**: `[T]` · `[E]` · `[M]` · `[S]` · **Telemetry Class**: `measured_j`
 
 ---
 
-## Three Plain-Language Takeaways (Zero Acronym Soup)
+![The Communication Tool Avalanche — reconciled 927.30 uJ / 50.13 us Thor measured_j vs 23.84 us Core i9 reported_j and DES-10 98/100 benchmark](https://research.openie.dev/media/tv/posters/communication-avalanche-poster.jpg)
+*Flagship synthesis & benchmark audit: host-separated `927.30 uJ` (`50.13 us` Thor `measured_j`) vs. `23.84–33.12 us` workstation `reported_j`, `DES-10` `98/100` (`1%` false commit), and scoped formal/biological claims. Dedicated to the public domain under `CC0-1.0`.*
 
-1. From ancient microbes to modern AI, groups scale by sharing signals across strict thresholds and safety gates.
-2. Event-driven wakeups and signed checks block bad edits and deliver far more verified work per joule.
-3. Ten AI approaches unite through tiny compiled routines, while future brain links stay grounded in strict consent.
+## Key Claims & Audited Scope (`[T]` / `[E]` / `[M]` / `[S]`)
 
-![The Communication Tool Avalanche: Thresholded Signal Externalization, Event-Driven Orchestration, and Coherence per Joule — OpenIE Research TV Studio Poster](https://research.openie.dev/media/tv/posters/communication-avalanche-poster.jpg)
-*Studio key visual for **The Communication Tool Avalanche** (`Communication Avalanche & Bio` · 59 of 60 Fixes · 0 Bad Commits · 98% Combined). Dedicated to the public domain under `CC0-1.0`.*
+1. **[E · Reconciled `927.30 uJ` vs. `26 us` Across Separate Hosts (`CTA-E4`)]** Critique #4 noted that `927.30 uJ / 26 us` would imply `~36 W` on one event. Checking `CTA-E4` (`50,000` iterations of `1 KiB` Rust `BLAKE3 + Ed25519` verification) confirms they come from **different machines**: **`927.30 uJ` (`measured_j`, `3.89 mJ` `INA238 VIN`)** was measured on **`NVIDIA Jetson AGX Thor`** (`TI INA3221 ch2 VDD_CPU_SOC_MSS` whole CPU/SoC/MSS domain over **`50.13 us` `p50`**, `~18.5 W` domain draw—`75,374x` lower `measured_j` and `78,855x` lower latency than multi-agent natural-language prose relays), whereas **`23.84 us` `p50` (`642.38 uJ` pkg / `550.59 uJ` core `reported_j`; `25.95–27.04 us` in `CTA-E1`)** ran on **`Intel Core i9-13900H`**, **`29.54 us` (`90.81 uJ` `L3` `reported_j`)** on **`Apple M3 Ultra`**, and **`33.12 us` (`201.27 uJ` core `reported_j`)** on **`AMD Ryzen AI Max+ 395`**.
+2. **[E · Exact Definition of `"98% Combined"` (`CTA-E5`)]** On the frozen **`100`-task, `5`-regime deterministic-oracle benchmark (`20` tasks/regime `R1–R5`)**, routed 10-paradigm synthesis **`DES-10` (`GPT-OSS-120B` + SAT/FD + causal `do(X)` + `LUT6`/FSM + `Shape D` behind deterministic gates) solved `98 / 100` (`98.0%`) tasks with `1 / 100` (`1.0%`) false commit and `1 / 100` abstention** at `9.26x–26.87x` higher Thor `INA3221` `measured_j` coherence-per-joule—compared against **`<= 49 / 100` for every isolated paradigm `C1–C10`** (`C9` 3-agent NL debate `49/100` with **`51%` false commits**; `C1` solo LLM `48/100` with **`52%` false commits**; `C2` SAT/FD `30%`; `C8` `LUT6`/FSM `20%`; `C5` `Shape D` `16%`; `C4` MCTS `10%–11%`; `C7` `do(X)` `10%`; `C6`/`C10` `4%`; `C3` unverified EBM `0%`).
+3. **[M/T · Explicit Analogical & Biomedical Scope Boundaries]** (1) Mapping `24` biological signaling rungs (`CL01–CL24`, `3.8 Ga`) to `38` AI milestones (`AI01–AI38`, `1950–2026`) and agent models `CA-M1..CA-M5` is an **ex-post interpretive framing**, strictly separate from falsifiable `CTA-E1..E7` benchmarks; and (2) the **`45` Lean `4.36.0` theorems (`CTA-T1..T45`, `0 sorry` across `6/6` kernels in `bwrap`) verify an abstract mathematical state-machine model of opt-in consent (`g_i(s_i, m) = 1`)—NOT a clinical, biophysical, or hardware safety guarantee for human brains** (as the paper itself documents: invasive human BCI readout `BM07/BM08` is `~15–19 bit/s`, `BrainNet` is `~0.02–0.5 bit/s`, and `16/16` `EV01–EV16` extracellular-vesicle CNS studies are preclinical animal/in-vitro models with `0` Phase III human trials).
 
-## Everyday Analogy & Why It Matters
+## Methods, Baselines, Sample Sizes (`N`) & Licensing Scope
 
-Chaining four unchecked AI agents acts like a noisy game of telephone, letting eight broken code edits slip through out of sixty. Living cell colonies survive by slamming microscopic pores shut the instant a neighbor ruptures. Combining quiet event wakeups with twenty-six-microsecond cryptographic checks matched a giant model's fifty-nine of sixty repairs while delivering nearly fifteen times better verified work per joule than unchecked chains.
+- **Hardware & Telemetry**: (1) `measured_j` (`board_metered = true`): `NVIDIA Jetson AGX Thor` (`TI INA3221 ch2 VDD_CPU_SOC_MSS` L2 + `INA238 VIN` L1 @ `500 Hz` `ABBA` windows) for `CTA-E4` and `CTA-E5`; (2) `reported_j` (`board_metered = false`): `Intel Core i9-13900H` (`RAPL` pkg/core), `Apple M3 Ultra` & `Apple M5 Max` (`Darwin L3 ri_energy_nj`), and `AMD Ryzen AI Max+ 395` (`RAPL` core/pkg) for `CTA-E1..E4`.
+- **Workload & Suite**: `CTA-E1/E4`: `50,000` iterations of `1 KiB` `WAI1` (`BLAKE3 + Ed25519`) envelope sign/verify vs. JSON/prose multi-agent handoffs; `CTA-E2`: `60`-task multi-hop pipeline (`59/60` verified close, `0/60` silent drift); `CTA-E5`: `100`-task, `5`-regime (`20` tasks × `R1` arithmetic/logic, `R2` causal `do(X)`, `R3` FSM/parity, `R4` exact retrieval, `R5` code/spec synthesis) 10-camp evaluation; `45` Lean `4.36.0` theorems (`QuorumRatchet`, `OrchestrationFlow`, `EnzymaticSynthesis`); `CA-M1..CA-M5` stylized biological simulations.
+- **Baselines Compared**: Multi-agent natural-language prose relays (`AutoGen`/`ChatDev`-style debate `C9`: `49/100` accuracy, `51/100` false commits, `69.89 J`/handoff on Thor) and solo `GPT-OSS-120B` (`C1`: `48/100`, `52/100` false commits) vs. binary `WAI1` envelopes + routed `DES-10` (`98/100` accuracy, `1/100` false commit).
+- **Runs (`N`) & Uncertainty / Spread**: `CTA-E4`: `N = 50,000` iterations per host (`p50` latencies: `50.13 us` Thor, `23.84 us` Core i9, `29.54 us` M3 Ultra, `33.12 us` Ryzen AI Max+ 395). `CTA-E2`: `N = 60` tasks (`59/60`, Wilson 95% CI `91.1%–99.7%`). `CTA-E5`: `N = 100` tasks (`98/100` `DES-10`, `1/100` false commit). `CA-M1..M5`: seeded agent-based simulations (`[M]`).
+- **Cold vs. Warm Caching Scope**: `CTA-E2` and `CTA-E5` evaluate **cold (`F_NOCACHE`)** task instances first (`59/60` and `98/100`); post-gate crystallization (`Proposition 1` stationary horizon) is accounted separately so memoized hits never inflate cold multi-paradigm accuracy.
+- **Artifact & License Status**: Primary manuscript (`CC0-1.0`) at `research.openie.dev/papers/communication-avalanche/`, `WAI1` binary envelope/signer crate at `openIE-dev/openie-artifact-substrate` (`Apache-2.0`), and study portal at `openIE-dev/avalanche-openie-web`; full `CTA-E1..E7` orchestration scripts partially internal (self-checked, not externally peer-reviewed).
 
-Bacteria save up to ninety-nine percent of signaling energy by waiting for a chemical quorum before acting, and filamentous microbes seal damaged neighbors in zero point three seconds—saving ninety-five percent of the colony versus zero percent without gates. Our orchestrator applies that exact three-phase ratchet to software agents: sleep at zero polling cost until incoming signals cross a threshold, verify signed envelopes in twenty-six microseconds, and compile solved discoveries downward into tiny reusable digital routines. On sixty Python code repairs, gated routing hit fifty-nine passes with zero bad commits and contained all two hundred injected channel faults.
+## Host-Separated Handoff Telemetry (`CTA-E4`) & `DES-10` (`CTA-E5`)
 
-Across a hundred-task suite where ten isolated AI approaches each stalled below forty-nine percent, compiled synthesis reached ninety-eight percent. Forty-five machine-checked mathematical proofs guarantee strict opt-in autonomy for future neural interfaces while clearly separating preclinical rodent cellular rescue studies from unproven human clinical treatments today.
+Presenting the per-host table from `CTA-E4` (`1 KiB` `BLAKE3 + Ed25519` verification over `N = 50,000` iterations) removes any cross-machine confusion between Jetson Thor shunt energy and desktop clock speed `[E]`:
 
-## Inside the Mechanism & Candid Limits
+- Host & Architecture: **`NVIDIA Jetson AGX Thor` (`aarch64` Tegra)** — Telemetry Tier (`board_metered`): **`measured_j`: `TI INA3221 VDD_CPU_SOC_MSS` (`true`)** — `p50` Verify Latency: **`50.13 us`** — Energy per `1 KiB` Verify: **`927.30 uJ` (`3.89 mJ` `VIN`)** — Scope Note: Whole CPU/SoC/MSS rail (`~18.5 W`); `75,374x` < NL prose relay
+- Host & Architecture: `Intel Core i9-13900H` (`x86-64` Linux) — Telemetry Tier (`board_metered`): `reported_j`: `RAPL` pkg / core (`false`) — `p50` Verify Latency: `23.84 us` (`25.95–27.04 us` `E1`) — Energy per `1 KiB` Verify: `642.38 uJ` pkg (`550.59 uJ` core) — Scope Note: Faster out-of-order x86 clock, modeled counter
+- Host & Architecture: `Apple M3 Ultra` (`arm64` macOS) — Telemetry Tier (`board_metered`): `reported_j`: Darwin `L3 ri_energy_nj` (`false`) — `p50` Verify Latency: `29.54 us` — Energy per `1 KiB` Verify: `90.81 uJ` (`L3` process) — Scope Note: Excludes unattributed DRAM/system rails
+- Host & Architecture: `AMD Ryzen AI Max+ 395` (`Zen 5` Linux) — Telemetry Tier (`board_metered`): `reported_j`: `RAPL` core (`false`) — `p50` Verify Latency: `33.12 us` — Energy per `1 KiB` Verify: `201.27 uJ` core — Scope Note: Modeled per-core counter
 
-Across three point eight billion years of biological evolution and seventy-six years of artificial intelligence, simply growing an isolated cell or single model hits steep metabolic walls long before complex problems are solved. Yet wiring unverified AI chatbots into an open group chat backfires badly, multiplying errors down the chain while constant polling burns watts. Pre-registered simulations across twenty-four evolutionary transitions confirm one conserved scaling operator: bacteria save ninety-nine percent of metabolic cost behind quorum thresholds, calcium-gated pores lift colony survival from zero to ninety-five percent, topological flocks stay connected under fourfold expansion, and verified external archives preserve one hundred percent of cultural skill. Auditing thirty-eight AI milestones from early expert systems to modern language models reveals why isolated paradigms stall.
+In `CTA-E5` (`100` frozen tasks across `5` regimes × `20` tasks), every single-paradigm camp failed outside its native regime (`C1` solo `GPT-OSS-120B` `48/100` with `52%` false commits; `C9` 3-agent prose debate `49/100` with `51%` false commits; symbolic `C2` `30/100`; causal `C7` `10/100`), whereas routing each subproblem through typed binary envelopes and deterministic checkers (`DES-10`) closed **`98 / 100` (`98.0%`)** with **`1 / 100` (`1.0%`) false commit** `[E]`.
 
-Replacing verbose natural-language chat handoffs with twenty-six-microsecond cryptographic checks, quiet kernel event wakeups, and tiny compiled binary routines makes cross-agent handoffs more than seventy-five thousand times leaner and faster. Coherence per joule divides confirmed task completions by compute, messaging, and idle energy combined across every participant. Zero-clock event wakeups eliminate empty polls and cut Linux socket energy more than twofold compared with thousand-hertz polling, while minimum-cost flow routing automatically bypasses corrupted channels in just two point four microseconds. This three-dimensional cutaway pairs a calcium-gated cyanobacterial pore assembly on the left with an opt-in multi-electrode neural bridge on the right, showing visually why reversible physical and cryptographic circuit breakers must stand in place before living cells, software agents, or future neural interfaces ever share state.
+## Framing Qualifiers: Evolutionary Rungs & Formal Consent Theorems
 
-Tested across five computers—including direct Tegra circuit-board power shunts measuring nine hundred twenty-seven microjoules per signed kilobyte edge—gated orchestration matched fifty-nine of sixty code fixes at twice a giant model's efficiency, contained all two hundred injected faults, and lifted ten-method synthesis from forty-nine to ninety-eight percent. Forty-five zero-gap Lean four theorems prove opt-in autonomy invariants that block coercive neural input without custom axioms. Tegra board shunt joules stay strictly separated from workstation chip counters, current human intracortical readout is stated honestly at fifteen to nineteen bits per second, and all sixteen cellular vesicle studies remain preclinical animal models.
+- **Biological ratchet (`CL01–CL24`) & stylized models (`CA-M1..CA-M5`) `[M, S]`:** Agent simulations `CA-M1..CA-M5` (`95.49%–99.17%` thresholded quorum signaling savings vs. continuous broadcast; `Physarum` tube pruning; Boids `k = 7` topological cohesion) are low-dimensional mathematical illustrations of published biology models—they motivate thresholded event-driven orchestration (`Rung 4–6`), **not** cross-kingdom equivalence proofs `[M, S]`.
 
-### Epistemic Evidence Tags (`[T]` / `[E]` / `[M]` / `[S]`)
+- **Why `45` Lean theorems (`CTA-T1..T45`) do NOT certify BCI safety `[T, S]`:** In `OrchestrationFlow.lean`, opt-in consent is modeled as a pure predicate `g_i(s_i, m) = 1` on abstract state transitions `[T]`. Real neural tissue interfaces face physical electrode degradation, non-stationary spike decoding (`~15–19 bit/s` in human intracortical trials `BM07/BM08`, Willett et al. *Nature* 2021/2023), and `0` Phase III human CNS extracellular-vesicle trials (`EV01–EV16`)—domains governed by biomedical engineering and clinical ethics, never by discrete typecheckers `[S]`.
 
-- **`[T]` Theorem / Machine-Checked Formal Proof**
-- **`[E]` Empirical / Hardware-Instrumented Experiment**
-- **`[M]` Mathematical / Analytical Cost or Physics Model**
-- **`[S]` Survey / Historical Price or Accounting Audit**
+## Limitations, `1%` Gate Escape & Partial Code Availability
 
-## How Energy Was Metered
+- **Gates reduce but do not remove false commits (`1/100` in `DES-10`):** Even on `CTA-E5`, `DES-10` admitted `1` false commit (`1.0%`) and abstained on `1` task (`1.0%`), demonstrating empirically that an imperfect oracle check can still pass an incorrect edge-case candidate `[E]`.
 
-Open Interface Engineering enforces strict epistemic non-mixing across physical power rails, processor counters, and mathematical bounds (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition is forbidden by `ScientificGate`):
+- **Benchmark stratification bias:** `CTA-E5` weights five distinct computational regimes equally (`20%` each); on pure open-ended natural-language chat (`Z3`), symbolic/causal/LUT6 specialists contribute `0%` and `DES-10` reduces to `C1` `[M]`.
 
-- **Acquisition Tier**: Board Sensor + Chip Counter
-- **Plain-Language Disclosure**: Tegra board power shunts plus chip counters across four workstations; separated.
-- **Substrate Evidence Class**: `measured_j` (`board_metered = true`)
-- **Primary Reading**: `927.30 µJ (measured_j)`
-- **Meter or Formula**: NVIDIA Jetson AGX Thor physical TI INA3221 VDD_CPU_SOC_MSS L2 DC current-shunt (1 KiB attested edge check)
-- **300 K Landauer Bit-Equivalents**: `3.2299e+17` bits (`E / (k_B · 300 K · ln 2)`)
+- **Artifact boundary:** While `openIE-dev/openie-artifact-substrate` (`WAI1` `BLAKE3+Ed25519`) and `openIE-dev/lut-adapt-ai` are public `Apache-2.0` repos, packaging all `CTA-E1..E7` orchestration scripts into a single standalone public repo remains open.
 
-## Continue the Discussion & Verify Every Byte
+## Energy & Telemetry Scope
+
+Thor `INA3221`/`INA238` (`measured_j`) and desktop `RAPL`/`IOReport` (`reported_j`) are strictly segregated across all tables and claims (`measured_j ⊥ reported_j`).
+
+## Epistemic Non-Mixing & Telemetry Ledger
+
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
+
+- **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
+- **Acquisition Tier**: Thor DC Shunt ⊥ Desktop Counters
+- **Telemetry Disclosure**: 927.30 uJ over 50.13 us full 1 KiB verify turn on Jetson Thor INA3221 (measured_j) vs 23.84-27.04 us (~26 us) gate step on Core i9 RAPL (reported_j).
+- **Evidence Class**: `measured_j` (`board_metered = true`)
+- **Catalog Anchor Reading**: `0.0009273 J (measured_j)`
+- **Sensor / Formula Scope**: NVIDIA Jetson AGX Thor TI INA3221 VDD_CPU_SOC_MSS DC shunt (927.30 uJ over 50.13 us full 1 KiB verify turn; desktop ~26 us gate steps are reported_j)
+
+## Related Work & Primary Literature (`[S]`)
+
+- **Du et al. (ICML 2024), Liang et al. (EMNLP 2024) & Cemri et al. (MAST Multi-Agent Failure Taxonomy, 2025):** Multi-agent natural-language debate and empirical failure modes of unconstrained prose handoffs `[S]`.
+- **Kambhampati et al. (LLM-Modulo Frameworks, ICML 2024), Pearl (Causality, 2009) & Moura & Bjørner (Z3, TACAS 2008):** Verifier-guided neuro-symbolic architectures, `do`-calculus, and SMT solving integrated in `DES-10` `[S]`.
+- **O’Connor et al. (BLAKE3, 2020) & Bernstein et al. (Ed25519, CHES 2011):** High-speed cryptographic hashing and public-key signatures underlying `WAI1` envelopes `[S]`.
+- **Willett et al. (Nature 2021, 2023), Maynard Smith & Szathmáry (1995) & Miller & Bassler (Annu. Rev. Microbiol., 2001):** Human intracortical BCI bit-rate measurements (`~15–19 bit/s`), evolutionary transitions, and bacterial quorum sensing cited in the framing sections `[S]`.
+
+## Replicate, Critique & Inspect Raw Artifacts
 
 <!-- x_thread_backlink_slot: {{X_THREAD_URL}} -->
-- **Watch in 15 Seconds or 3 Minutes**: Stream the native `9:16` Vertical Snackable ([`communication-avalanche-tiktok.mp4`](https://research.openie.dev/media/tv/tiktok/communication-avalanche-tiktok.mp4)) or explore all four captioned studio cuts (`15s`, `45s`, `90s`, and `3m` 3D cutaway documentary) on **[OpenIE Research TV](https://research.openie.dev/tv/?study=communication-avalanche)**.
-- **Join the Synchronized X (Twitter) Thread**: Reply, critique, or inspect the 5-post verification thread on **[X (Twitter)](https://x.com/search?q=%22The%20Communication%20Tool%20Avalanche%22%20OR%20research.openie.dev%2Ftv%2F%3Fstudy%3Dcommunication-avalanche&src=typed_query)**.
-- **Query Grounded Prior Art & Signed WAI1 Receipts**: Explore linked lineage trails on **[The Commons (`scholar.askdavidc.ai`)](https://scholar.askdavidc.ai)**, read the full primary paper & PDF at **[`research.openie.dev/papers/communication-avalanche/`](https://research.openie.dev/papers/communication-avalanche/)**, and verify the Ed25519-signed `WAI1` binary container (`blake3:cc104c68e0e86182…`) in **[`openie-artifact-substrate`](https://github.com/openIE-dev/openie-artifact-substrate/blob/main/catalog/envelopes/tv-communication-avalanche.wai)**.
+- **Canonical Post-Review Blog Dossier**: [https://blog.openie.dev/posts/communication-avalanche/](https://blog.openie.dev/posts/communication-avalanche/)
+- **Primary Research Manuscript & PDF**: [https://research.openie.dev/papers/communication-avalanche/](https://research.openie.dev/papers/communication-avalanche/) ([PDF](https://research.openie.dev/pdfs/communication-avalanche.pdf))
+- **1-Command Public Replication Harness**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) and [https://github.com/openIE-dev/openie-artifact-substrate](https://github.com/openIE-dev/openie-artifact-substrate)
+- **9:16 Vertical Snackable (`60fps`) & Research TV Cuts**: [https://research.openie.dev/media/tv/tiktok/communication-avalanche-tiktok.mp4](https://research.openie.dev/media/tv/tiktok/communication-avalanche-tiktok.mp4) · [OpenIE Research TV](https://research.openie.dev/tv/?study=communication-avalanche)
+- **Verification & Glossary Standards**: [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) · [Epistemic Glossary](https://blog.openie.dev/glossary/)
 
 ---
 
-*Summary & essay text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Code, verification gates, and `WAI1` schemas licensed under `Apache-2.0`.*
+*Prose and summary text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Public replication harnesses and `WAI1` schemas are licensed under `Apache-2.0` unless explicitly noted in the licensing ledger above.*

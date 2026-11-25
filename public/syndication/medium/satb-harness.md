@@ -1,61 +1,82 @@
-# Satiation Benchmark: Reference Harness, Adapters, and Telemetry Attribution
+# Satiation Benchmark (SATB) Harness: 5-Host Telemetry Audit, Kepler Splitting Errors, and Co-Tenant Falsifiers
 
-*12 of 12 Checks · 5 Computers · 0 Replay Drift — How to stop agent wrappers and sloppy power estimates from distorting AI benchmark leaderboards.*
+*Cross-platform audit of the sequential Rust SATB harness (12/12 C1-C12 checks) across Jetson AGX Thor DC shunts and 4 counter hosts, exposing 32.6%-89.9% CPU-splitting errors and Windows tick aliasing.*
 
-> **Public Domain (`CC0-1.0`) · OpenIE Research Essay**  
-> **Canonical Primary Source**: [https://research.openie.dev/papers/satb-harness/](https://research.openie.dev/papers/satb-harness/)  
-> **Canonical Artifact ID**: `blake3:tv:87f465518d6db67ded6205ef9c2b11b5ec15f9216f750aa4dd9caf236e1d3238` · **Gate Invariant**: `human_in_gate = false`
+> **Signed Provenance · Self-Checked** (`human_in_gate = false`; automated build, benchmark, and proof-checking scripts ran without manual override — not externally peer-reviewed; see [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) and [Epistemic Glossary](https://blog.openie.dev/glossary/)).  
+> **Canonical Post-Review Essay (`rel="canonical"`)**: [https://blog.openie.dev/posts/satb-harness/](https://blog.openie.dev/posts/satb-harness/)  
+> **Primary Research Paper**: [https://research.openie.dev/papers/satb-harness/](https://research.openie.dev/papers/satb-harness/)  
+> **1-Command Replication Kit**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) · **Study Repository**: [https://github.com/openIE-dev/openie-artifact-substrate](https://github.com/openIE-dev/openie-artifact-substrate)  
+> **Canonical Artifact ID**: `blake3:tv:87f465518d6db67ded6205ef9c2b11b5ec15f9216f750aa4dd9caf236e1d3238` · **Evidence Tags**: `[E]` · `[M]` · `[S]` · **Telemetry Class**: `measured_j`
 
 ---
 
-## Three Plain-Language Takeaways (Zero Acronym Soup)
+![SATB Harness — 5-host telemetry audit exposing 32.59%-89.88% proportional splitting errors](https://research.openie.dev/media/tv/posters/satb-harness-poster.jpg)
+*Five-host SATB conformance and telemetry attribution audit (Thor INA238/INA3221 measured_j + 4 reported_j hosts; L0 wall analyzer unattached). Dedicated to the public domain under `CC0-1.0`.*
 
-1. Changing the wrapper around an AI model can swing scores as much as swapping the model.
-2. This test harness locks prompts, memory trimming, and tools so every AI takes the exact same exam.
-3. Across five computer types, it separates real board sensors from chip counters and blocks noisy power estimates.
+## Key Claims & Audited Scope (`[T]` / `[E]` / `[M]` / `[S]`)
 
-![Satiation Benchmark: Reference Harness, Adapters, and Telemetry Attribution — OpenIE Research TV Studio Poster](https://research.openie.dev/media/tv/posters/satb-harness-poster.jpg)
-*Studio key visual for **Satiation Benchmark Harness** (`Null & Benchmarks` · 12 of 12 Checks · 5 Computers · 0 Replay Drift). Dedicated to the public domain under `CC0-1.0`.*
+1. **[E · 5-Host Deterministic Replay]** The sequential Rust `SATB` harness (`ContextRule_v0` 80% oldest-tool-output elision, `Truncate_v0` `8 + 8 KiB` cap) passed **`12/12` conformance checks (`C1–C12`)** and replayed `Shape D` (`15027705736`) and `C9` (`149,747 B`) with **0 byte diffs** across macOS `arm64`, Tegra Linux `aarch64`, two x86-64 Linux hosts, and bare-metal Windows 11 Pro.
+2. **[E · Falsifiers 2 & 3: Attribution Errors]** Comparing ground-truth rail/counter deltas against cloud-native CPU-utilization proportional splitting (`Kepler` heuristic) revealed **32.59% to 89.88% energy attribution error** (`Falsifier 2`), while Windows `GetProcessTimes` `15.625 ms` scheduler-tick aliasing undercounted short subprocess bursts by **-89.88%** (`Falsifier 3`, resolved only via `QueryProcessCycleTime` + `TerminateJobObject` `2.458 ms` cleanup).
+3. **[E · Falsifier 6: Shared-Host Honesty]** Whenever pre/post idle power drifted by `> 5.0%` due to co-tenant OS activity, `Falsifier 6` automatically withheld net marginal attribution (`A1 = null`) while preserving raw unattributed `measured_j` / `reported_j` logs.
 
-## Everyday Analogy & Why It Matters
+## Methods, Baselines, Sample Sizes (`N`) & Licensing Scope
 
-Giving the exact same language model a different command wrapper shifted coding scores by seventeen points, while popular cloud tools that split server power by CPU share erred by up to ninety percent. Locking the wrapper in Rust and labeling board sensors separately from chip counters makes model comparisons genuinely reproducible across macOS, Linux, and Windows machines.
+- **Hardware & Telemetry**: (1) NVIDIA Jetson AGX Thor (`TI INA238 VIN` L1 + 3-channel `INA3221 VDD_GPU / VDD_CPU_SOC_MSS / VIN_SYS_5V0` L2 DC shunts, `measured_j`); (2) Apple M5 Max (`IOReport` L2 + `ri_energy_nj` L3 `reported_j`); (3) AMD Ryzen AI Max+ 395 (`0440 root:energy` `RAPL` L2 + Radeon 8060S `PPT` `reported_j`); (4) Intel Core i9-13900H (`RAPL psys` L1 + `pkg-0` L2 `reported_j`); (5) Windows 11 Pro (`Core i7-1165G7` + `RTX 2060` `nvml.dll` L2 `reported_j`). External AC wall analyzer (`L0`): not attached.
+- **Workload & Suite**: `12` harness conformance suites (`C1–C12`: truncation, context elision, timeout job-tree kill `C10`, canonical JSON/receipt replay `C9`) plus counterbalanced CPU, memory-bandwidth, and GPU-offload attribution stress workloads.
+- **Baselines Compared**: Kepler-style CPU-time-ratio energy attribution (`Falsifier 2`), Win32 `GetProcessTimes` tick accounting (`Falsifier 3`), and naive single-baseline idle subtraction (`Falsifier 6`).
+- **Runs (`N`) & Uncertainty / Spread**: `12/12` conformance pass across all `5` hosts (`0` byte diffs); attribution error range `32.59%–89.88%` across memory/GPU stress pairs; co-tenant drift threshold fixed at `5.0%` pre/post quiescent shift.
+- **Cold vs. Warm Caching Scope**: Loopback proxy explicitly logs `Shape D` exact-replay hits separately from live `Shape M/H/I` model invocations so cached runs cannot masquerade as fresh inference.
+- **Artifact & License Status**: Envelope/non-mixing linter public in `openIE-dev/openie-artifact-substrate` (`Apache-2.0`); full multi-host raw telemetry CSVs published on `research.openie.dev` (`CC0-1.0` text).
 
-Imagine timing sprinters on tracks of different lengths and then guessing their calorie burn by shoe size. That happens whenever AI benchmarks mix different history-trimming wrappers and split shared server watts by processor time alone. Our sequential Rust harness fixes six safe workspace tools, trims old outputs above eighty percent window capacity using zero hidden model calls, hashes a five-part system fingerprint, and routes external command-line coding agents through one audited local proxy.
+## Problem, Telemetry Taxonomy (`L0–L4 × A1–N`) & Scope
 
-Across Apple Silicon, Tegra circuit-board power shunts, two Linux workstations, and bare-metal Windows eleven, replay transcripts matched to the exact byte across twelve checks, while live endpoint probes caught cloud models drifting even when temperature was locked to zero. Physical board shunt joules, built-in chip counters, and logical token counts never get blended into one fuzzy number, and automatic drift checks withhold net attribution whenever background jobs share the host.
+Software energy papers routinely treat container CPU-share heuristics, OS process counters, and physical DC shunts as interchangeable "joules." `SATB` defines a two-dimensional provenance lattice crossing **sensor boundary** (`L0` AC wall plug, `L1` whole-board DC input, `L2` SoC/package domain, `L3` kernel per-process counter, `L4` analytical proxy) with **attribution discipline** (`A1` isolated quiesced net delta, `A2` unisolated gross delta, `D` kernel-assigned, `N` withheld) `[M, E]`.
 
-## Inside the Mechanism & Candid Limits
+## Five-Host Audit Results & Exposed Attribution Failures
 
-When two engineering teams test the exact same AI model and report wildly different pass rates or energy bills, the model itself often is not the cause at all. Hidden conversation summarizers, shell-quoting failures, and uncalibrated power formulas quietly alter the exam behind the scenes without ever appearing on the public leaderboard. On a public terminal coding benchmark, changing only the surrounding wrapper shifted the very same model's task score by seventeen percentage points. Our evaluation contract holds one sequential Rust wrapper completely fixed for raw models while auditing third-party coding tools as complete systems behind one local proxy bridge.
+- **Physical shunt vs. proportional-CPU heuristics (`Falsifier 2`) `[E]`:** On Jetson AGX Thor (`INA238` + `INA3221` `measured_j`) and dual-counter workstations (`reported_j`), memory-bound and GPU-dispatched tasks consumed minimal CPU ticks while drawing substantial DRAM/GPU rail power, causing `Kepler`-style CPU-utilization splitting to misattribute **32.59% to 89.88%** of actual energy `[E]`.
 
-Inside every attempt, the harness executes strictly one tool call at a time inside a network-blocked workspace with eight-kilobyte head-and-tail output caps. Whenever conversation history exceeds eighty percent capacity, it deterministically replaces the oldest tool outputs while keeping the eight newest intact, terminating stray process trees cleanly inside ten milliseconds. Many cloud sustainability dashboards estimate a program's energy bill by multiplying whole-server power by its processor time share. Across sequential compute-and-storage phases and Windows fifteen-millisecond clock ticks, our live hardware audit proved that shortcut misattributes energy by thirty-two point six to eighty-nine point nine percent.
+- **Windows scheduler-tick aliasing (`Falsifier 3`) `[E]`:** On bare-metal Windows 11 Pro (`Core i7-1165G7` + `RTX 2060`), `GetProcessTimes` quantizes execution to `15.625 ms` (`64 Hz`) clock interrupts, undercounting short bursts by **-89.88%**; switching to hardware `QueryProcessCycleTime` plus `TerminateJobObject` (`2.458 ms` tree teardown in `C10`) closed the gap `[E]`.
 
-This three-dimensional ring connects five live computers around one deterministic core: a Tegra developer kit wired with physical whole-board and three-channel current shunts, an Apple workstation, two Linux desktops with isolated energy-group permissions, and a bare-metal Windows eleven laptop reading rootless discrete graphics counters with millisecond job cleanup. All five computers reproduced our million-record lookup checksum and a hundred-fifty-kilobyte fourteen-turn transcript with zero byte or newline differences across operating systems, matched external coding agent completion at up to three-times lower prompt and cache token volume, and caught repeated zero-temperature output drift across three cloud vendors. Physical circuit-board shunt joules on the Tegra kit stay strictly separated from built-in chip counters on the other four machines and are never summed into one blended column. Because background services shared the hosts during capture, net subtracted claims are withheld, and unavailable cloud or unprivileged Windows CPU watts stay honestly blank.
+- **PLATYPUS-safe rootless Linux `RAPL` `[E]`:** Following `CVE-2020-8694` (`PLATYPUS`), Linux `powercap` files default to `0400 root:root`; `SATB` documents dedicated `0440 root:energy` group provisioning on dedicated test benches rather than `sudo` benchmark execution `[E, S]`.
 
-### Epistemic Evidence Tags (`[T]` / `[E]` / `[M]` / `[S]`)
+## Limitations, Unmetered `L0` Wall Boundary & Falsifier 6
 
-- **`[T]` Theorem / Machine-Checked Formal Proof**
-- **`[E]` Empirical / Hardware-Instrumented Experiment**
+- **No `L0` AC wall-plug power analyzer:** `L0` (`PSU` losses + AC power factor, e.g., Yokogawa WT310E) was **not attached** on any of the five hosts (`L0 = unmetered`) `[E]`.
 
-## How Energy Was Metered
+- **Shared-host refusal (`Falsifier 6`):** Whenever background OS tasks shifted pre/post idle baselines by `> 5.0%`, `SATB` refused to emit net `A1` marginal joules—a conservative refusal that fired repeatedly on busy developer machines (e.g., `109/170` whole-chip windows in `ai-reads-human`) `[E]`.
 
-Open Interface Engineering enforces strict epistemic non-mixing across physical power rails, processor counters, and mathematical bounds (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition is forbidden by `ScientificGate`):
+## Energy & Telemetry Scope
 
-- **Acquisition Tier**: Board Sensor + Chip Counter
-- **Plain-Language Disclosure**: Board power shunts on Tegra kit plus chip counters on four hosts; never summed.
-- **Substrate Evidence Class**: `measured_j` (`board_metered = true`)
-- **Primary Reading**: `1.42 mJ (measured_j)`
-- **Meter or Formula**: NVIDIA Jetson AGX Thor physical TI INA238 whole-board VIN L1 & 3-channel INA3221 DC shunt
-- **300 K Landauer Bit-Equivalents**: `4.9460e+17` bits (`E / (k_B · 300 K · ln 2)`)
+Only Jetson AGX Thor `INA238`/`INA3221` channels carry `measured_j`; Apple M5 Max (`IOReport`/`ri_energy_nj`), AMD Strix Halo (`RAPL`/`PPT`), Intel Raptor Lake (`RAPL`), and Windows 11 (`NVML`) are strictly `reported_j`, never summed or directly ratioed against `measured_j` `[E]`.
 
-## Continue the Discussion & Verify Every Byte
+## Epistemic Non-Mixing & Telemetry Ledger
+
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
+
+- **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
+- **Acquisition Tier**: DC Shunt + 4-Host Counters (Non-Mixed)
+- **Telemetry Disclosure**: Jetson AGX Thor TI INA238/INA3221 DC shunts (measured_j) kept strictly separate from 4 reported_j hosts; L0 AC wall meter unattached.
+- **Evidence Class**: `measured_j` (`board_metered = true`)
+- **Catalog Anchor Reading**: `0.00142 J (measured_j)`
+- **Sensor / Formula Scope**: NVIDIA Jetson AGX Thor physical TI INA238 VIN L1 & 3-channel INA3221 L2 DC shunts (strictly separated from 4 reported_j hosts)
+
+## Related Work & Primary Literature (`[S]`)
+
+- **Amaral et al. (Kepler, IEEE CLOUD 2023):** Kubernetes eBPF/counter proportional container power estimation audited by `Falsifier 2` `[S]`.
+- **Lipp et al. (PLATYPUS, IEEE S&P 2021):** Power side-channel attacks motivating root-restricted Linux `powercap` permissions (`CVE-2020-8694`) `[S]`.
+- **Khan et al. (ACM TOMPECS 2018) & Yang et al. (NVML accuracy, 2024):** Validation and sampling-window limits of Intel `RAPL` and NVIDIA `NVML` counters `[S]`.
+- **CodeCarbon & Scaphandre:** Open-source host energy trackers compared against `SATB` `L0–L4 × A1–N` provenance gating `[S]`.
+
+## Replicate, Critique & Inspect Raw Artifacts
 
 <!-- x_thread_backlink_slot: {{X_THREAD_URL}} -->
-- **Watch in 15 Seconds or 3 Minutes**: Stream the native `9:16` Vertical Snackable ([`satb-harness-tiktok.mp4`](https://research.openie.dev/media/tv/tiktok/satb-harness-tiktok.mp4)) or explore all four captioned studio cuts (`15s`, `45s`, `90s`, and `3m` 3D cutaway documentary) on **[OpenIE Research TV](https://research.openie.dev/tv/?study=satb-harness)**.
-- **Join the Synchronized X (Twitter) Thread**: Reply, critique, or inspect the 5-post verification thread on **[X (Twitter)](https://x.com/search?q=%22Satiation%20Benchmark%20Harness%22%20OR%20research.openie.dev%2Ftv%2F%3Fstudy%3Dsatb-harness&src=typed_query)**.
-- **Query Grounded Prior Art & Signed WAI1 Receipts**: Explore linked lineage trails on **[The Commons (`scholar.askdavidc.ai`)](https://scholar.askdavidc.ai)**, read the full primary paper & PDF at **[`research.openie.dev/papers/satb-harness/`](https://research.openie.dev/papers/satb-harness/)**, and verify the Ed25519-signed `WAI1` binary container (`blake3:416e37c55ad850b5…`) in **[`openie-artifact-substrate`](https://github.com/openIE-dev/openie-artifact-substrate/blob/main/catalog/envelopes/tv-satb-harness.wai)**.
+- **Canonical Post-Review Blog Dossier**: [https://blog.openie.dev/posts/satb-harness/](https://blog.openie.dev/posts/satb-harness/)
+- **Primary Research Manuscript & PDF**: [https://research.openie.dev/papers/satb-harness/](https://research.openie.dev/papers/satb-harness/) ([PDF](https://research.openie.dev/pdfs/satb-harness.pdf))
+- **1-Command Public Replication Harness**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) and [https://github.com/openIE-dev/openie-artifact-substrate](https://github.com/openIE-dev/openie-artifact-substrate)
+- **9:16 Vertical Snackable (`60fps`) & Research TV Cuts**: [https://research.openie.dev/media/tv/tiktok/satb-harness-tiktok.mp4](https://research.openie.dev/media/tv/tiktok/satb-harness-tiktok.mp4) · [OpenIE Research TV](https://research.openie.dev/tv/?study=satb-harness)
+- **Verification & Glossary Standards**: [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) · [Epistemic Glossary](https://blog.openie.dev/glossary/)
 
 ---
 
-*Summary & essay text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Code, verification gates, and `WAI1` schemas licensed under `Apache-2.0`.*
+*Prose and summary text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Public replication harnesses and `WAI1` schemas are licensed under `Apache-2.0` unless explicitly noted in the licensing ledger above.*

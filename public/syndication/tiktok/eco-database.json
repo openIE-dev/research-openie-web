@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "eco-database",
   "canonical_id": "blake3:tv:74a6c924643a078e785536a03514eee6983c488a2a00381e2186933fe3a7688e",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/eco-database/",
+  "canonical_paper_url": "https://research.openie.dev/papers/rce/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/eco-database-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/eco-database-15s.mp4",
-    "poster_uri": "/media/tv/posters/eco-database-poster.jpg",
-    "vtt_uri": "/media/tv/captions/eco-database-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/eco-database-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/eco-database-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 21.37,
     "safe_zone_verified": true,
-    "source_15s_sha256": "e1b41fa26484859429996a142c500b4ee85221bd4e0169f56984f78df13ce011"
+    "sha256": "b70dd037c8dbdde02f58b2f4382bffd7239698d83a98f4d8397f900ef39abd7e"
   },
-  "caption_utf16_chars": 747,
+  "caption_utf16_chars": 923,
+  "caption": "Data Systems Stack & JouleDB Scope — 10-axis taxonomy (1,260,000 cells, unmetered) · 0.325 us / 1.77 uJ DNULLMM1 34-record mmap probe (M5 Max reported_j) · JouleDB core BSL-1.1/private\n\nSeparates 3 artifacts: (1) data.openie.dev's unmetered 10-axis map (1.26M cells + illustrative canvas), (2) DNULLMM1's 34-record mmap probe (0.325 us / 1.77 uJ M5 Max reported_j), and (3) BSL-1.1 JouleDB.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: reported_j (Unmetered 1.26M-cell taxonomy + M5 Max L3 reported_j (1.771 uJ) on a static 34-record DNULLMM1 mmap table; JouleDB core is BSL-1.1/private.)\n• Essay: https://blog.openie.dev/posts/eco-database/\n• Paper: https://research.openie.dev/papers/rce/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#Databases #StorageEngines #DataSystems #SystemsEngineering #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "Sub-Microsecond State & Verifiable Logs (0.325 Microsecond Lookup · 1.77 Microjoules · 0 Drift)\nHow tamper-evident logs, dual-time indexes, and zero-copy memory maps turn expensive recomputation into sub-microsecond reads.\n1) Conventional software burns needless time and electricity unpacking text and recalculating answers it already solved.\n2) Immutable fingerprint-chained logs and bitemporal indexes let any machine replay exact past states without guesswork.\n3) Zero-copy memory-mapped lookup stores turn repeated work into sub-microsecond reads costing under two microjoules.\nEnergy class: reported_j (Chip Energy Counter) · CC0-1.0 · https://research.openie.dev/papers/rce/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "Data Systems Stack & JouleDB Scope — 10-axis taxonomy (1,260,000 cells, unmetered) · 0.325 us / 1.77 uJ DNULLMM1 34-record mmap probe (M5 Max reported_j) · JouleDB core BSL-1.1/private\n\nSeparates 3 artifacts: (1) data.openie.dev's unmetered 10-axis map (1.26M cells + illustrative canvas), (2) DNULLMM1's 34-record mmap probe (0.325 us / 1.77 uJ M5 Max reported_j), and (3) BSL-1.1 JouleDB.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: reported_j (Unmetered 1.26M-cell taxonomy + M5 Max L3 reported_j (1.771 uJ) on a static 34-record DNULLMM1 mmap table; JouleDB core is BSL-1.1/private.)\n• Essay: https://blog.openie.dev/posts/eco-database/\n• Paper: https://research.openie.dev/papers/rce/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#Databases #StorageEngines #DataSystems #SystemsEngineering #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/eco-database-tiktok.mp4"
     }
   },
-  "content_blake3": "031465b17213efa79b5a02a8e491413f99984d25f3d567ec49b507612c73cc86"
+  "content_blake3": "de7e8ad24e43681c7231509a9109be48311b6a8a2e838a5a66f8bf23c1262a5d"
 }

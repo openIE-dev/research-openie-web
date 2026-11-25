@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "time-as-an-index",
   "canonical_id": "blake3:tv:8c0f52b355033650a2de30ded99d38f44343f6ae6b1f00c5244304f6651c6b26",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/time-as-an-index/",
+  "canonical_paper_url": "https://research.openie.dev/papers/time-as-an-index/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/time-as-an-index-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/time-as-an-index-15s.mp4",
-    "poster_uri": "/media/tv/posters/time-as-an-index-poster.jpg",
-    "vtt_uri": "/media/tv/captions/time-as-an-index-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/time-as-an-index-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/time-as-an-index-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 23.37,
     "safe_zone_verified": true,
-    "source_15s_sha256": "a4acfd39559139d19fe07d45b614847363cc8a55b9f83b6548021765604e8ef5"
+    "sha256": "2f91055af279113cdddc4ca00ac3ff556ad2abfc7192c8f28082a5c29df52654"
   },
-  "caption_utf16_chars": 679,
+  "caption_utf16_chars": 838,
+  "caption": "Time as an Index — 31 Lean 4.36.0 theorems [T] · 0/32,768 SHA-256 spectral bins below p = 10^-6 (N = 65,536, unmetered)\n\nAcross 31 six-kernel Lean 4.36.0 theorems over discrete oracle models and N=65,536 SHA-256 spectral tests (0 / 32,768 FFT bins below Bonferroni p=10^-6), O(1) 'future lookup' reduces to salted-away Hellman precomputation.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: unmetered (Lean 4.36.0 proofs and seeded 65,536-digest SHA-256 spectral checks only; joules = null.)\n• Essay: https://blog.openie.dev/posts/time-as-an-index/\n• Paper: https://research.openie.dev/papers/time-as-an-index/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#Cryptography #FormalVerification #Lean4 #ComputerScience #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "Time as an Index (31 Machine-Checked Proofs · 0 Time Shortcuts)\nWhat would happen to digital security if tomorrow's calculations could be looked up like a table today?\n1) Inside a mathematical time loop, almost every digital lock would break at once except a one-time secret pad.\n2) In known physics, no quantum trick, analog circuit, or reported anomaly sends readable answers backward in time.\n3) Every fast lookup of a future answer is work paid upfront, which fresh random values defeat immediately.\nEnergy class: unmetered (Physics Math Bound) · CC0-1.0 · https://research.openie.dev/papers/time-as-an-index/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "Time as an Index — 31 Lean 4.36.0 theorems [T] · 0/32,768 SHA-256 spectral bins below p = 10^-6 (N = 65,536, unmetered)\n\nAcross 31 six-kernel Lean 4.36.0 theorems over discrete oracle models and N=65,536 SHA-256 spectral tests (0 / 32,768 FFT bins below Bonferroni p=10^-6), O(1) 'future lookup' reduces to salted-away Hellman precomputation.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: unmetered (Lean 4.36.0 proofs and seeded 65,536-digest SHA-256 spectral checks only; joules = null.)\n• Essay: https://blog.openie.dev/posts/time-as-an-index/\n• Paper: https://research.openie.dev/papers/time-as-an-index/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#Cryptography #FormalVerification #Lean4 #ComputerScience #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/time-as-an-index-tiktok.mp4"
     }
   },
-  "content_blake3": "40d720441399d4d6189012d56683275622e98661e4479be7ad20dc85521389d9"
+  "content_blake3": "b5cc08edff6a4841267033951a68b1b46a036d0893daf860fbf479927ed9ec02"
 }

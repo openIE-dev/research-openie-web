@@ -1,63 +1,82 @@
-# The Price of the Unexamined Interface
+# Interface Economics: Analytical Cost Models of Ambiguity, Verification Boundaries, and Handoff Contracts
 
-*$327.6M Mars Loss vs Cheap Automated Handoff Checks — Checking a software handoff is cheap, skipping it destroys spacecraft, and public-good economics explains why teams still skip it.*
+*An unmetered microeconomic and information-theoretic cost model comparing ambiguous natural-language handoffs against typed, deterministically verified interfaces.*
 
-> **Public Domain (`CC0-1.0`) · OpenIE Research Essay**  
-> **Canonical Primary Source**: [https://research.openie.dev/papers/interface-economics/](https://research.openie.dev/papers/interface-economics/)  
-> **Canonical Artifact ID**: `blake3:tv:6cee9f2f140f50dfe0d3b09bfab0b718b3f208c720a149f06e287da7d1412f55` · **Gate Invariant**: `human_in_gate = false`
+> **Signed Provenance · Self-Checked** (`human_in_gate = false`; automated build, benchmark, and proof-checking scripts ran without manual override — not externally peer-reviewed; see [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) and [Epistemic Glossary](https://blog.openie.dev/glossary/)).  
+> **Canonical Post-Review Essay (`rel="canonical"`)**: [https://blog.openie.dev/posts/interface-economics/](https://blog.openie.dev/posts/interface-economics/)  
+> **Primary Research Paper**: [https://research.openie.dev/papers/interface-economics/](https://research.openie.dev/papers/interface-economics/)  
+> **1-Command Replication Kit**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate)  
+> **Canonical Artifact ID**: `blake3:tv:6cee9f2f140f50dfe0d3b09bfab0b718b3f208c720a149f06e287da7d1412f55` · **Evidence Tags**: `[M]` · `[S]` · **Telemetry Class**: `unmetered`
 
 ---
 
-## Three Plain-Language Takeaways (Zero Acronym Soup)
+![Interface Economics — analytical transaction-cost model of typed vs ambiguous handoffs (unmetered)](https://research.openie.dev/media/tv/posters/interface-economics-poster.jpg)
+*Analytical transaction-cost and channel-coding model of interface boundaries (joules = null, unmetered). Dedicated to the public domain under `CC0-1.0`.*
 
-1. Single handoff failures carry exact price tags, like losing a three-hundred-twenty-eight-million-dollar Mars mission over mismatched force units.
-2. Trillion-dollar national figures come from broad surveys and models of software quality, and none isolates handoff failures alone.
-3. Checking shared assumptions upfront is cheap, yet teams skip it because one group pays while everyone downstream benefits.
+## Key Claims & Audited Scope (`[T]` / `[E]` / `[M]` / `[S]`)
 
-![The Price of the Unexamined Interface — OpenIE Research TV Studio Poster](https://research.openie.dev/media/tv/posters/interface-economics-poster.jpg)
-*Studio key visual for **The Price of the Unexamined Interface** (`Economics & Cadence` · $327.6M Mars Loss vs Cheap Automated Handoff Checks). Dedicated to the public domain under `CC0-1.0`.*
+1. **[M · Analytical Cost Model, unmetered]** Models handoff cost as the sum of upfront specification cost `C_spec`, serialization/channel work `C_chan`, boundary verification `C_gate`, and probability-weighted downstream failure remediation `p_err * L_downstream`—showing analytically that typed deterministic gates dominate when `C_spec + C_gate < Delta p_err * L_downstream`.
+2. **[M · Regime Reversal When Exploration Dominates]** Explicitly identifies the counter-regime: on one-off exploratory prototypes (`N_reuse = 1`) with low failure severity (`L_downstream` small) and fluid requirements, heavy upfront formalization **loses** to lightweight natural-language iteration.
+3. **[S · Classical Institutional Lineage]** Connects software API/gate design directly to Coasean transaction costs, Williamsonian incomplete contracts, and Marschak–Radner team theory without claiming empirical field-experiment validation in this paper.
 
-## Everyday Analogy & Why It Matters
+## Methods, Baselines, Sample Sizes (`N`) & Licensing Scope
 
-On the Mars Climate Orbiter, one team sent thruster data in pound-force seconds while navigation read newton-seconds. Each program worked on its own, yet an unwritten handoff assumption cost a three-hundred-twenty-eight-million-dollar space project. Because AI generated code crosses these exact same seams even faster, embedding units and ranges into machine-checked contracts makes closing handoffs cheaper than skipping them.
+- **Hardware & Telemetry**: Unmetered (`joules = null`, `board_metered = false`). Closed-form algebraic cost-accounting propositions and literature synthesis.
+- **Workload & Suite**: No empirical software or organizational dataset collected in this study.
+- **Baselines Compared**: Analytical comparison: unverified prose handoffs (`C_spec` low, `p_err` high) vs. schema-typed, gate-checked handoffs (`C_spec` paid once, amortized over `N` calls).
+- **Runs (`N`) & Uncertainty / Spread**: Not applicable (`N = 0` empirical runs; hand-derived algebraic inequalities `[M]`, not proof-assistant formalized).
+- **Cold vs. Warm Caching Scope**: Models amortization over `N` repeated interface crossings: upfront schema design behaves like compilation, requiring `N > N_crit` crossings before net savings turn positive.
+- **Artifact & License Status**: Public-domain manuscript (`CC0-1.0`) at `research.openie.dev/papers/interface-economics/`; self-checked, not externally peer-reviewed.
 
-On Ariane 5's first flight, guidance software reused from Ariane 4 assumed a smaller horizontal velocity than the new rocket produced, destroying four science satellites and forcing a two-hundred-fourteen-million European-currency recovery mission to fly again. Industry presentations routinely mash audited accident budgets together with executive opinion polls into fake multi-trillion-dollar totals. Our ledger keeps exact accounted losses strictly separate from fifty-nine-point-five-billion-dollar testing models, eighty-five-billion-dollar developer time surveys, and trillion-dollar software quality estimates.
+## Problem, Scope & Theoretical Boundary
 
-Standards economics explains why fragile handoffs persist year after year: a checked interface is a public good with private upfront costs. One upstream team pays sprint hours today to specify exact units and bounds, while every downstream user collects the avoided outages. When shared machine-checked representations carry units, versions, and operating ranges automatically by construction, the private cost to any single team of closing a software handoff drops toward the tiny cost of running the check itself.
+Why do software teams and multi-agent pipelines spend so much effort translating structured state into English prose and parsing it back out? `interface-economics` treats this question as an **unmetered analytical modeling essay (`[M]`, `[S]`)**, extending transaction-cost economics (Coase 1937; Williamson 1979) and team information theory (Marschak & Radner 1972) to human-machine and agent-to-agent APIs `[S]`. No live enterprise RCT or hardware joule meter is run in this paper.
 
-## Inside the Mechanism & Candid Limits
+## Analytical Trade-Off: Upfront Specification vs. Downstream Remediation
 
-An interface is any handoff where one group's output becomes another group's input—from theorists who specify behavior to builders who write code, or between two levels of a software and hardware stack. Catastrophic failures routinely strike not because one module miscalculated internally, but because both sides trusted an unwritten assumption nobody checked. The space agency's Mars Surveyor 1998 project spent three hundred twenty-seven point six million dollars before thruster impulses sent in pound-force seconds were read as metric newton-seconds. Three years earlier, Ariane 5 Flight 501 lost four Cluster satellites when reused guidance software exceeded an unchecked horizontal velocity envelope on launch.
+Across a chain of `k` sequential handoffs where each unverified step admits a subtle interpretation error with probability `q`, end-to-end survival decays exponentially as `(1 - q)^k` `[M]`:
 
-Our study enforces one strict accounting rule: every published figure carries its exact evidence kind and is never added to incompatible estimates. Audited single-incident losses sit beside national economic models—like fifteen point eight billion dollars a year for construction interoperability and two point four one trillion for poor software quality—without synthetic sums. When an unexamined mismatch slips past a boundary, it travels upward looking like well-formed input to every layer above it, charging technical-debt interest on every later change. Formally, an explicit boundary check pays off whenever its tiny per-crossing cost stays below violation probability times summed losses across all downstream levels.
+- **Amortized production interfaces (`N >> 1`, high `L_downstream`):** Paying a fixed schema and verifier cost once collapses `q` on covered invariants and amortizes `C_spec / N` toward zero across repeated calls `[M]`.
 
-Our three-dimensional funnel visualizes cross-team payloads passing through a machine-checked boundary gate that verifies physical units, numeric bounds, and operating envelopes before commit. In machine-learning pipelines and automated code generation alike, most hidden technical debt sits in glue code, configuration, and undeclared consumers right outside the model. Decades of compatibility economics prove why rational teams under-provide interface specs: writing and checking boundary invariants is a private cost today that produces a shared public good for everyone else. Automated code generators cross these exact same seams, so generating code faster without checking boundaries simply compounds integration debt.
+- **Exploratory one-offs (`N = 1`, shifting goals):** When the human principal does not yet know which product feature to build, rigid formal interfaces lock in premature assumptions and cost more than conversational prototyping `[M]`.
 
-Because no primary source isolates a single national dollar figure for interface failures alone, this essay refuses to invent one. Instead, Section 7 defines three checkable protocols—blind mishap coding with bootstrap intervals, seeded fault injection measured in both joules and dollars, and prose-versus-machine-checked handoff trials—to test every proposition directly.
+## Limitations & Falsifiers
 
-### Epistemic Evidence Tags (`[T]` / `[E]` / `[M]` / `[S]`)
+- **Hand-derived stylized parameters:** Propositions assume stationary error probabilities and separable specification costs; in real organizations, specification maintenance incurs ongoing versioning overhead whenever upstream requirements drift `[M, S]`.
 
-- **`[S]` Survey / Historical Price or Accounting Audit**
-- **`[M]` Mathematical / Analytical Cost or Physics Model**
+- **No empirical parameter estimation here:** Empirical measurements of prose vs. binary handoff overhead (`75,374x` Thor `measured_j` in `CTA-E4` and `2,053.8x` parse `reported_j` in `ai-reads-human`) live in companion engineering studies, not in this economic framing note.
 
-## How Energy Was Metered
+## Energy & Telemetry Scope
 
-Open Interface Engineering enforces strict epistemic non-mixing across physical power rails, processor counters, and mathematical bounds (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition is forbidden by `ScientificGate`):
+Strictly `unmetered` (`joules = null`, `board_metered = false`). References to compute waste in the prose represent abstract cost terms rather than instrumented watt-seconds.
 
-- **Acquisition Tier**: Historical + Economic Audit
-- **Plain-Language Disclosure**: Primary failure accounts and economic studies; no physical power meter used.
-- **Substrate Evidence Class**: `unmetered` (`board_metered = false`)
-- **Primary Reading**: `unmetered (joules = null; never fabricated as zero)`
-- **Meter or Formula**: Accounted handoff-failure cost catalog (separated by evidence kind); unmetered
-- **300 K Landauer Bit-Equivalents**: `null` (unmetered study — analytical/archival scope)
+## Epistemic Non-Mixing & Telemetry Ledger
 
-## Continue the Discussion & Verify Every Byte
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
+
+- **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
+- **Acquisition Tier**: Unmetered Analytical Cost Model
+- **Telemetry Disclosure**: Closed-form microeconomic handoff model and institutional literature synthesis; 0 field trials, joules = null.
+- **Evidence Class**: `unmetered` (`board_metered = false`)
+- **Catalog Anchor Reading**: `null` (`unmetered` — no hardware wattmeter or chip energy counter claimed)
+- **Sensor / Formula Scope**: Unmetered transaction-cost and interface-contract analytical model (joules = null)
+
+## Related Work & Primary Literature (`[S]`)
+
+- **Coase (Economica, 1937) & Williamson (Journal of Legal and Economic Studies, 1979):** Transaction-cost theory of firm and contract boundaries `[S]`.
+- **Marschak & Radner (1972) & Arrow (1974):** Economic theory of teams and organizational information channels `[S]`.
+- **Parnas (CACM, 1972) & Meyer (IEEE Computer, 1992):** Information-hiding module boundaries and Design by Contract `[S]`.
+- **Simon (1971):** Designing organizations for an information-rich world where attention and verification, not raw text generation, are the scarce bottleneck `[S]`.
+
+## Replicate, Critique & Inspect Raw Artifacts
 
 <!-- x_thread_backlink_slot: {{X_THREAD_URL}} -->
-- **Watch in 15 Seconds or 3 Minutes**: Stream the native `9:16` Vertical Snackable ([`interface-economics-tiktok.mp4`](https://research.openie.dev/media/tv/tiktok/interface-economics-tiktok.mp4)) or explore all four captioned studio cuts (`15s`, `45s`, `90s`, and `3m` 3D cutaway documentary) on **[OpenIE Research TV](https://research.openie.dev/tv/?study=interface-economics)**.
-- **Join the Synchronized X (Twitter) Thread**: Reply, critique, or inspect the 5-post verification thread on **[X (Twitter)](https://x.com/search?q=%22The%20Price%20of%20the%20Unexamined%20Interface%22%20OR%20research.openie.dev%2Ftv%2F%3Fstudy%3Dinterface-economics&src=typed_query)**.
-- **Query Grounded Prior Art & Signed WAI1 Receipts**: Explore linked lineage trails on **[The Commons (`scholar.askdavidc.ai`)](https://scholar.askdavidc.ai)**, read the full primary paper & PDF at **[`research.openie.dev/papers/interface-economics/`](https://research.openie.dev/papers/interface-economics/)**, and verify the Ed25519-signed `WAI1` binary container (`blake3:776df432e2b46160…`) in **[`openie-artifact-substrate`](https://github.com/openIE-dev/openie-artifact-substrate/blob/main/catalog/envelopes/tv-interface-economics.wai)**.
+- **Canonical Post-Review Blog Dossier**: [https://blog.openie.dev/posts/interface-economics/](https://blog.openie.dev/posts/interface-economics/)
+- **Primary Research Manuscript & PDF**: [https://research.openie.dev/papers/interface-economics/](https://research.openie.dev/papers/interface-economics/) ([PDF](https://research.openie.dev/pdfs/interface-economics.pdf))
+- **1-Command Public Replication Harness**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate)
+- **9:16 Vertical Snackable (`60fps`) & Research TV Cuts**: [https://research.openie.dev/media/tv/tiktok/interface-economics-tiktok.mp4](https://research.openie.dev/media/tv/tiktok/interface-economics-tiktok.mp4) · [OpenIE Research TV](https://research.openie.dev/tv/?study=interface-economics)
+- **Verification & Glossary Standards**: [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) · [Epistemic Glossary](https://blog.openie.dev/glossary/)
 
 ---
 
-*Summary & essay text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Code, verification gates, and `WAI1` schemas licensed under `Apache-2.0`.*
+*Prose and summary text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Public replication harnesses and `WAI1` schemas are licensed under `Apache-2.0` unless explicitly noted in the licensing ledger above.*

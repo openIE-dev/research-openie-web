@@ -1,64 +1,86 @@
-# Time as an Index: What It Would Take to Look Up Tomorrow
+# Time as an Index: Formal Complexity Horizons, Precomputation Bounds, and SHA-256 Spectral Controls
 
-*31 Machine-Checked Proofs · 0 Time Shortcuts — What would happen to digital security if tomorrow's calculations could be looked up like a table today?*
+*Formal Lean 4 proofs over oracle/CTC models (31 theorems), Hellman time-memory tradeoffs, and 65,536-digest SHA-256 spectral null tests (unmetered formal/simulation study).*
 
-> **Public Domain (`CC0-1.0`) · OpenIE Research Essay**  
-> **Canonical Primary Source**: [https://research.openie.dev/papers/time-as-an-index/](https://research.openie.dev/papers/time-as-an-index/)  
-> **Canonical Artifact ID**: `blake3:tv:8c0f52b355033650a2de30ded99d38f44343f6ae6b1f00c5244304f6651c6b26` · **Gate Invariant**: `human_in_gate = false`
+> **Signed Provenance · Self-Checked** (`human_in_gate = false`; automated build, benchmark, and proof-checking scripts ran without manual override — not externally peer-reviewed; see [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) and [Epistemic Glossary](https://blog.openie.dev/glossary/)).  
+> **Canonical Post-Review Essay (`rel="canonical"`)**: [https://blog.openie.dev/posts/time-as-an-index/](https://blog.openie.dev/posts/time-as-an-index/)  
+> **Primary Research Paper**: [https://research.openie.dev/papers/time-as-an-index/](https://research.openie.dev/papers/time-as-an-index/)  
+> **1-Command Replication Kit**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) · **Study Repository**: [https://github.com/openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)  
+> **Canonical Artifact ID**: `blake3:tv:8c0f52b355033650a2de30ded99d38f44343f6ae6b1f00c5244304f6651c6b26` · **Evidence Tags**: `[T]` · `[E]` · `[M]` · `[S]` · **Telemetry Class**: `unmetered`
 
 ---
 
-## Three Plain-Language Takeaways (Zero Acronym Soup)
+![Time as an Index — 31 Lean 4.36.0 theorems and N = 65,536 SHA-256 spectral null checks (unmetered)](https://research.openie.dev/media/tv/posters/time-as-an-index-poster.jpg)
+*Formal complexity horizons, Hellman precomputation tradeoffs, and SHA-256 spectral null tests (joules = null, unmetered). Dedicated to the public domain under `CC0-1.0`.*
 
-1. Inside a mathematical time loop, almost every digital lock would break at once except a one-time secret pad.
-2. In known physics, no quantum trick, analog circuit, or reported anomaly sends readable answers backward in time.
-3. Every fast lookup of a future answer is work paid upfront, which fresh random values defeat immediately.
+## Key Claims & Audited Scope (`[T]` / `[E]` / `[M]` / `[S]`)
 
-![Time as an Index: What It Would Take to Look Up Tomorrow — OpenIE Research TV Studio Poster](https://research.openie.dev/media/tv/posters/time-as-an-index-poster.jpg)
-*Studio key visual for **Time as an Index** (`Foundations & Thermodynamics` · 31 Machine-Checked Proofs · 0 Time Shortcuts). Dedicated to the public domain under `CC0-1.0`.*
+1. **[T · Lean 4.36.0, 6/6 kernels]** `Horizon.lean` and `Paradox.lean` machine-check **31 primary theorems** (`50` theorem/lemma declarations, `58,796` kernel declarations verified by `con-leche` and `con-ron` inside Linux `bubblewrap` with `0 sorry`, `0 opaque`, and `0 ofReduceBool`) formalizing causal-cone exclusivity, fixed-point consistency, and salt-invalidated precomputation over abstract discrete models.
+2. **[E/M · Deterministic Simulation, unmetered]** Across `N = 65,536` `SHA-256` digests (`32,768` FFT spectral bins in experiment `F5` and `M1–M8`), **0 spectral bins** crossed the Bonferroni-corrected significance threshold `p = 10^-6`, matching an unindexed white-noise null.
+3. **[S · Literature Synthesis]** Known closed-timelike-curve complexity classes (`D-CTC = PSPACE`, `P-CTC = PP`, Aaronson & Watrous 2009) collapse computationally bounded ciphers inside hypothetical fixed-point loops while leaving information-theoretic one-time pads intact; outside such loops, every real O(1) lookup is amortized Hellman precomputation (`T * M^2 = N^2`).
 
-## Everyday Analogy & Why It Matters
+## Methods, Baselines, Sample Sizes (`N`) & Licensing Scope
 
-You can print a giant answer book for fixed puzzles only by solving every single puzzle ahead of time. Roll fresh dice right before asking the question, and that entire pre-printed book stops working. Thirty-one machine-checked mathematical proofs confirm that without physical time loops, fresh random challenges and information-theoretic one-time secret pads keep future states safely unindexed.
+- **Hardware & Telemetry**: Unmetered (`joules = null`, `board_metered = false`). Lean `4.36.0` `lake check --paranoid` executed inside Linux `bubblewrap` (`bwrap`); deterministic Python/Rust spectral scripts without hardware power probes.
+- **Workload & Suite**: `31` formal theorems (`50` total Lean declarations), `M1–M8` discrete horizon/tradeoff simulations, `F5` `SHA-256` FFT spectral scan (`N = 65,536` digests), and a `195`-entry anomaly/paradox literature catalog (`TA001–TA081`, `AA01–AA40`, `P01–P74`).
+- **Baselines Compared**: Uniform pseudorandom white-noise null (`Bonferroni alpha = 10^-6` across `32,768` bins) for `F5`; unsalted vs. salted Hellman rainbow-table amortization curves for `M1–M8`.
+- **Runs (`N`) & Uncertainty / Spread**: Deterministic seeded `SHA-256` counter sweep (`N = 65,536` digests; exact reproducible max spectral peak within Gaussian/exponential null envelope; single seeded sweep, multi-seed variance not needed for deterministic hash check but limits sample horizon to `2^16`).
+- **Cold vs. Warm Caching Scope**: Explicitly models offline precomputation ("warm rainbow table") vs. salted per-instance cold evaluation: adding an `s`-bit fresh salt multiplies precomputation table work by `2^s`, forcing cold online work.
+- **Artifact & License Status**: Primary paper and `195`-entry catalog (`CC0-1.0`); proof check logs and scripts self-checked by OpenIE (`Apache-2.0` subset; not externally peer-reviewed).
 
-Every password hash, digital signature, and time-locked puzzle assumes nature offers no index into the end of a calculation without running the steps in between. If future states had addresses, sequential brute-force security would vanish overnight. We audited four candidate shortcuts: mathematical time loops, quantum retrocausal circuits, analog settling hardware, and precomputed lookup tables.
+## Problem, Scope & Framing Qualifiers
 
-Outside theoretical time loops, every apparent shortcut pays upfront in discarded runs, exponential energy noise, or full prior search. Thirty-one machine-checked theorems verify our horizon bounds with zero unproven gaps, sixty-five thousand five hundred thirty-six cryptographic hash tests show zero frequency shortcuts, and auditing one hundred ninety-five anomaly and paradox reports leaves zero verified signals from tomorrow. Adding a fresh random value at query time dropped precomputed table hits from thirty-four percent all the way down to zero across two hundred trials, binding computation firmly to the present moment.
+This study asks a foundational boundary question: what separates sequential computation from spatial array indexing? Rather than claiming exotic physical effects, the paper proves and catalogs why "looking up tomorrow" is impossible in standard quantum and classical physics `[S, T]`. All CTC results (`PSPACE` / `PP` collapse of hardness assumptions) apply strictly to hypothetical Deutschian mathematical fixed-point models, not to realizable laboratory hardware `[S, T]`.
 
-## Inside the Mechanism & Candid Limits
+## Mechanism, Formal Proofs & Spectral Results
 
-Software already indexes recorded history in temporal databases and deterministic replay debuggers. So what stops a machine from indexing tomorrow's state the exact same way? If future states could be queried directly like rows in a table, public-key signatures, symmetric block ciphers, and proof-of-work puzzles would shatter in one query. In formal time-loop math, forcing a classical or quantum bit sent into its own past to return unchanged creates a self-consistent fixed point that surfaces hard answers without running the search—sparing only information-theoretic one-time pads whose random keys carry zero mathematical link to the secret message.
+Three results anchor the paper:
 
-In real laboratory physics, quantum delayed-choice experiments obey exact marginal no-signalling so future measurement choices never shift earlier statistics. Postselected teleportation discards exponentially many failed trials—needing four thousand ninety-six runs on six-bit circuits where simple guessing needs thirty-two—while analog settling hardware shifts exponential hardness into thermal noise or frequency precision. Without physical time loops, every working fast lookup of a deterministic function is precomputation paid in advance. Online lookup steps multiplied by squared memory equals the squared state space, achieved only after paying the full exhaustive table fill upfront and dissipating nature's minimum heat floor for every erased bit.
+- **Machine-checked horizon & salt theorems `[T]`:** Across `Horizon.lean` and `Paradox.lean` (`31` theorems verified across all `6/6` independent Lean checkers with `0 sorry`), any state-indexed lookup table over an deterministic transition must pay at least linear offline state-visitation work prior to query arrival, and prepending a fresh unpredictable salt renders pre-built index tables statistically independent of the target.
 
-This three-dimensional torus contrasts theoretical closed time loops along the outer ring against relativistic light-cone causal horizons and upfront lookup cubes at the center, illustrating visually why rewriting past steps incurs causal replay overhead and why no precomputed table can index a fresh random salt chosen after setup. Lean four mechanically checked thirty-one horizon and paradox theorems with zero unproven placeholders or custom axioms. Sixty-five thousand five hundred thirty-six consecutive cryptographic digests showed zero anomalous frequency bins, fresh block challenges drove table reuse from thirty-four percent down to zero, and auditing one hundred ninety-five anomaly and paradox entries found zero future signals. Every substantive claim across the study carries an explicit tag separating established physics, machine-checked theorems, testable conjectures, and debunked folklore.
+- **Hellman precomputation tradeoff `[S, M]`:** Hellman (1980) and Oechslin (2003) show that unsalted inversions trade online time `T` against precomputed memory `M` along `T * M^2 = N^2` `[S]`. Simulated curves (`M1–M8`) illustrate how Bitcoin block-header chaining and TLS/Argon2 nonces reset the precomputation horizon to zero before each challenge exists `[M]`.
 
-No hardware power sensor was attached, no real-world time loop is claimed in nature, and net vacuum energy harvest over any closed physical cycle equals strictly zero.
+- **Finite-sample `SHA-256` spectral control `[E]`:** Applying a `65,536`-point discrete Fourier analysis across sequential `SHA-256` outputs yields `0 / 32,768` frequency bins below `p = 10^-6` `[E]`.
 
-### Epistemic Evidence Tags (`[T]` / `[E]` / `[M]` / `[S]`)
+## Limitations, Negative Results & Falsifiers
 
-- **`[T]` Theorem / Machine-Checked Formal Proof**
-- **`[M]` Mathematical / Analytical Cost or Physics Model**
-- **`[S]` Survey / Historical Price or Accounting Audit**
+- **Finite spectral power:** Testing `N = 65,536` (`2^16`) `SHA-256` digests rules out gross linear periodicities at that sample size; it is **not** a cryptanalytic security proof against algebraic or differential attacks `[M]`.
 
-## How Energy Was Metered
+- **Abstract axiom boundary:** Lean theorems verify discrete mathematical definitions of causal cones, fixed points, and finite maps; physical no-signalling and Gabor `Delta t * Delta f >= 1/(4 pi)` bounds rest on established physics literature `[S]`, not proof-assistant axioms.
 
-Open Interface Engineering enforces strict epistemic non-mixing across physical power rails, processor counters, and mathematical bounds (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition is forbidden by `ScientificGate`):
+- **Catalog scope:** The `195` cataloged timing/frequency anomalies (`TA001–TA081`, `AA01–AA40`, `P01–P74`) synthesize published metrology glitches (e.g., OPERA loose fiber connector), oscillator tolerances, and logical paradoxes from secondary and primary literature `[S]`.
 
-- **Acquisition Tier**: Physics Math Bound
-- **Plain-Language Disclosure**: Mathematical proofs and physics simulations only; no hardware power meter used.
-- **Substrate Evidence Class**: `unmetered` (`board_metered = false`)
-- **Primary Reading**: `unmetered (joules = null; never fabricated as zero)`
-- **Meter or Formula**: Formal Lean 4.36.0 & SHA-256 spectral study; no hardware power meter attached
-- **300 K Landauer Bit-Equivalents**: `null` (unmetered study — analytical/archival scope)
+## Energy & Telemetry Scope
 
-## Continue the Discussion & Verify Every Byte
+No hardware power meter or OS energy counter was used to support any claim in this study (`energyClass = unmetered`, `joules = null`, `board_metered = false`). Thermodynamic discussions inside the manuscript refer analytically to classical literature bounds rather than measured silicon energy.
+
+## Epistemic Non-Mixing & Telemetry Ledger
+
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
+
+- **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
+- **Acquisition Tier**: Unmetered Formal & Spectral Study
+- **Telemetry Disclosure**: Lean 4.36.0 proofs and seeded 65,536-digest SHA-256 spectral checks only; joules = null.
+- **Evidence Class**: `unmetered` (`board_metered = false`)
+- **Catalog Anchor Reading**: `null` (`unmetered` — no hardware wattmeter or chip energy counter claimed)
+- **Sensor / Formula Scope**: Unmetered formal complexity proofs and deterministic SHA-256 spectral simulation (joules = null)
+
+## Related Work & Primary Literature (`[S]`)
+
+- **Deutsch (1991) & Aaronson & Watrous (Proc. R. Soc. A, 2009):** Quantum mechanics near closed timelike curves and the exact equivalence `CTC_BQP = CTC_P = PSPACE` `[S]`.
+- **Hellman (IEEE Trans. Inf. Theory, 1980) & Oechslin (CRYPTO 2003):** Cryptanalytic time-memory tradeoffs (`T * M^2 = N^2`) and rainbow tables `[S]`.
+- **Bennett, Brassard, Crépeau & Maurer (1995) & Shannon (1949):** Information-theoretic secrecy of one-time pads and privacy amplification `[S]`.
+- **Gabor (J. IEE, 1946) & Peres (1995):** Time-frequency uncertainty limit on finite-window spectral estimation and quantum no-signalling theorems `[S]`.
+
+## Replicate, Critique & Inspect Raw Artifacts
 
 <!-- x_thread_backlink_slot: {{X_THREAD_URL}} -->
-- **Watch in 15 Seconds or 3 Minutes**: Stream the native `9:16` Vertical Snackable ([`time-as-an-index-tiktok.mp4`](https://research.openie.dev/media/tv/tiktok/time-as-an-index-tiktok.mp4)) or explore all four captioned studio cuts (`15s`, `45s`, `90s`, and `3m` 3D cutaway documentary) on **[OpenIE Research TV](https://research.openie.dev/tv/?study=time-as-an-index)**.
-- **Join the Synchronized X (Twitter) Thread**: Reply, critique, or inspect the 5-post verification thread on **[X (Twitter)](https://x.com/search?q=%22Time%20as%20an%20Index%22%20OR%20research.openie.dev%2Ftv%2F%3Fstudy%3Dtime-as-an-index&src=typed_query)**.
-- **Query Grounded Prior Art & Signed WAI1 Receipts**: Explore linked lineage trails on **[The Commons (`scholar.askdavidc.ai`)](https://scholar.askdavidc.ai)**, read the full primary paper & PDF at **[`research.openie.dev/papers/time-as-an-index/`](https://research.openie.dev/papers/time-as-an-index/)**, and verify the Ed25519-signed `WAI1` binary container (`blake3:518a6918c5e2ba46…`) in **[`openie-artifact-substrate`](https://github.com/openIE-dev/openie-artifact-substrate/blob/main/catalog/envelopes/tv-time-as-an-index.wai)**.
+- **Canonical Post-Review Blog Dossier**: [https://blog.openie.dev/posts/time-as-an-index/](https://blog.openie.dev/posts/time-as-an-index/)
+- **Primary Research Manuscript & PDF**: [https://research.openie.dev/papers/time-as-an-index/](https://research.openie.dev/papers/time-as-an-index/) ([PDF](https://research.openie.dev/pdfs/time-as-an-index.pdf))
+- **1-Command Public Replication Harness**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) and [https://github.com/openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)
+- **9:16 Vertical Snackable (`60fps`) & Research TV Cuts**: [https://research.openie.dev/media/tv/tiktok/time-as-an-index-tiktok.mp4](https://research.openie.dev/media/tv/tiktok/time-as-an-index-tiktok.mp4) · [OpenIE Research TV](https://research.openie.dev/tv/?study=time-as-an-index)
+- **Verification & Glossary Standards**: [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) · [Epistemic Glossary](https://blog.openie.dev/glossary/)
 
 ---
 
-*Summary & essay text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Code, verification gates, and `WAI1` schemas licensed under `Apache-2.0`.*
+*Prose and summary text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Public replication harnesses and `WAI1` schemas are licensed under `Apache-2.0` unless explicitly noted in the licensing ledger above.*

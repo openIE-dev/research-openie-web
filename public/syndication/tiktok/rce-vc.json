@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "rce-vc",
   "canonical_id": "blake3:tv:86d270c120708d4df299264a57fb54a861630fd2bcb2841abc701873d365b3b0",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/rce-vc/",
+  "canonical_paper_url": "https://research.openie.dev/papers/rce-vc/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/rce-vc-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/rce-vc-15s.mp4",
-    "poster_uri": "/media/tv/posters/rce-vc-poster.jpg",
-    "vtt_uri": "/media/tv/captions/rce-vc-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/rce-vc-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/rce-vc-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 23.4,
     "safe_zone_verified": true,
-    "source_15s_sha256": "aee24664241c9e57c28a7a834b3c1d2dbec2e9cd10153dd2d0c4dbcd822d2189"
+    "sha256": "1d71495ddac8a5881cfc8c6a673acb67c2e2d780fe18b1bc48c2900505f1f1fe"
   },
-  "caption_utf16_chars": 712,
+  "caption_utf16_chars": 878,
+  "caption": "RCE-VC Structural Admission Prototype — 317–365 uJ/unit admission at 100k units (M5 Max L3 reported_j) · v0.1.0 prototype (external git merge-ort corpus not yet benchmarked)\n\nIn openIE-dev/rce-vc (v0.1.0, 49 offline tests), single-unit edits admit into a 100k-unit 16-way Merkle trie in 69.7-73.6 us and 317.2-365.4 uJ (M5 Max L3 reported_j) — a prototype contract, not a Git benchmark.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: reported_j (Apple M5 Max subprocess ri_energy_nj L3 counter (317.2-365.4 uJ/unit admission at 100k units); measured_j = null.)\n• Essay: https://blog.openie.dev/posts/rce-vc/\n• Paper: https://research.openie.dev/papers/rce-vc/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#VersionControl #Git #Rust #SoftwareEngineering #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "RCE-VC (70 µs & 317 µJ Admission @ 100,000 Items)\nLet humans and AI swarms commit in parallel: check changes against 100,000 name-free items in 70 microseconds while staying on Git.\n1) Many people and AI agents can submit code at once, and a named check admits changes or records why not.\n2) Tracking code by name-free functions instead of text lines lets unrelated edits land together without pointless merge wars.\n3) Developers keep using ordinary Git while admission against one hundred thousand items finishes in about seventy microseconds.\nEnergy class: reported_j (Chip Energy Counter) · CC0-1.0 · https://research.openie.dev/papers/rce-vc/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "RCE-VC Structural Admission Prototype — 317–365 uJ/unit admission at 100k units (M5 Max L3 reported_j) · v0.1.0 prototype (external git merge-ort corpus not yet benchmarked)\n\nIn openIE-dev/rce-vc (v0.1.0, 49 offline tests), single-unit edits admit into a 100k-unit 16-way Merkle trie in 69.7-73.6 us and 317.2-365.4 uJ (M5 Max L3 reported_j) — a prototype contract, not a Git benchmark.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: reported_j (Apple M5 Max subprocess ri_energy_nj L3 counter (317.2-365.4 uJ/unit admission at 100k units); measured_j = null.)\n• Essay: https://blog.openie.dev/posts/rce-vc/\n• Paper: https://research.openie.dev/papers/rce-vc/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#VersionControl #Git #Rust #SoftwareEngineering #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/rce-vc-tiktok.mp4"
     }
   },
-  "content_blake3": "2c20a33481d237057007393a8080dd1a70e0c9d7f9578dcad20d96761703b469"
+  "content_blake3": "39f6a8bcdf14a3bdfbab0e62b3c882abd4337ce5fe8861ec7c12530fe9b7deb9"
 }

@@ -1,29 +1,35 @@
 {
-  "schema": "openie.x_thread_bundle.v1",
+  "schema": "openie.x_thread_bundle.v2",
   "study_id": "gates",
   "canonical_id": "blake3:tv:b6075421aa4a225d509d07481bc5a850f9e1dc14424cd92bd9abe3ebe93260a3",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
   "license": "CC0-1.0",
   "post_count": 5,
-  "max_weighted_chars": 224,
+  "max_weighted_chars": 271,
   "card_video_uri": "/media/tv/tiktok/gates-tiktok.mp4",
   "fallback_video_uri": "/media/tv/films/gates-15s.mp4",
-  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/gates/",
+  "medium_crosslink_uri": "https://blog.openie.dev/posts/gates/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/gates/",
   "canonical_paper_url": "https://research.openie.dev/papers/gates/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+  "public_repo_url": "https://github.com/openIE-dev/mixture-of-limits",
   "zero_urls_in_post_1": true,
   "posts": [
     {
       "position": 1,
       "role": "hook_video_card",
-      "text": "Metered Commit Gates: Energy-to-Correct-Completion for Agentic Systems\n\nWhy computers must check before taking undoable actions, start with the cheapest tool, and log every joule.\n\n[11,428 Picojoules per Hardware Gate Check]",
-      "weighted_chars": 224,
-      "raw_chars": 224,
+      "text": "Metered Commit Gates [E/M · measured_j]\n\nOn AMD Kria KV260, whole-SOM VCC_SOM TI INA260 halt-vs-run slopes recorded 11,428 pJ/cycle (11.43 nJ, SE=129 pJ, N=4 25s passes at 25 MHz); 209,261 simulated checks observed 0 false allows (95% UB <= 1.43e-5).",
+      "weighted_chars": 250,
+      "raw_chars": 250,
       "urls": [],
       "in_reply_to_position": null,
       "media": {
         "video_uri": "/media/tv/tiktok/gates-tiktok.mp4",
         "fallback_video_uri": "/media/tv/films/gates-15s.mp4",
-        "poster_uri": "/media/tv/posters/gates-poster.jpg",
-        "vtt_uri": "/media/tv/captions/gates-15s.vtt",
+        "poster_uri": "/media/tv/tiktok/gates-tiktok.jpg",
+        "vtt_uri": "/media/tv/tiktok/gates-tiktok.vtt",
         "aspect_ratio": "9:16",
         "resolution": "1080x1920",
         "fps": 60,
@@ -32,43 +38,47 @@
     },
     {
       "position": 2,
-      "role": "plain_points_1_2",
-      "text": "1/3 A computer should not take an irreversible action until an independent check confirms it is safe.\n\n2/3 It should try the cheapest method first and wake a large AI model only when simpler tools miss.",
-      "weighted_chars": 202,
-      "raw_chars": 202,
+      "role": "methods_and_sample_bounds",
+      "text": "1/2 Sensor & Clopper-Pearson bounds:\n- 11.43 nJ/cycle (~1.43 nJ/lane) spans whole SOM (PS+PL+DDR+regs); 98 pJ seed delta (~1.96 mA) is inconclusive near INA260's 1.25 mA LSB\n- 0 / 209,261 simulated false allows (95% UB <= 1.43e-5, 79 refusals; sim != universal proof)",
+      "weighted_chars": 267,
+      "raw_chars": 267,
       "urls": [],
       "in_reply_to_position": 1
     },
     {
       "position": 3,
-      "role": "plain_point_3_and_energy",
-      "text": "3/3 Every decision is written to a receipt with the energy it used, so anyone can audit it later.\n\nEnergy class: measured_j (11.43 nJ via physical board shunt; board_metered=true).",
-      "weighted_chars": 180,
-      "raw_chars": 180,
+      "role": "telemetry_and_scope_limits",
+      "text": "2/2 Predicate disagreement & caching:\n- NI-4 showed passivity vs CBF gates disagree on edge states — a gate enforces only its encoded math predicate\n- 16.7x MoL call cut assumes stationary Zipf(1.1) repeats (1.0x cold)\n- KV260 measured_j kept separate from software est_j",
+      "weighted_chars": 271,
+      "raw_chars": 271,
       "urls": [],
       "in_reply_to_position": 2
     },
     {
       "position": 4,
-      "role": "machine_verification_gate",
-      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E] · WAI1 blake3:b6075421aa4a… · CC0-1.0",
-      "weighted_chars": 203,
-      "raw_chars": 200,
-      "urls": [],
+      "role": "signed_provenance_self_checked",
+      "text": "Signed Provenance · Self-Checked (human_in_gate=false; not peer-reviewed):\n- Evidence: [E]/[M]/[S] · WAI1 blake3:b6075421aa4a...\n- Verification: https://blog.openie.dev/verification/\n- Glossary: https://blog.openie.dev/glossary/",
+      "weighted_chars": 204,
+      "raw_chars": 228,
+      "urls": [
+        "https://blog.openie.dev/verification/",
+        "https://blog.openie.dev/glossary/"
+      ],
       "in_reply_to_position": 3
     },
     {
       "position": 5,
-      "role": "bidirectional_medium_and_paper_bridge",
-      "text": "Read & verify Metered Commit Gates (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/gates/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/gates/",
-      "weighted_chars": 164,
-      "raw_chars": 210,
+      "role": "canonical_blog_paper_and_replicate",
+      "text": "Read & replicate Metered Commit Gates (CC0-1.0):\n- Essay: https://blog.openie.dev/posts/gates/\n- Paper: https://research.openie.dev/papers/gates/\n- 1-cmd kit: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+      "weighted_chars": 151,
+      "raw_chars": 236,
       "urls": [
-        "https://research.openie.dev/syndication/medium/gates/",
-        "https://research.openie.dev/papers/gates/"
+        "https://blog.openie.dev/posts/gates/",
+        "https://research.openie.dev/papers/gates/",
+        "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
       ],
       "in_reply_to_position": 4
     }
   ],
-  "content_blake3": "d8ed75a43c939452c870045a127e7976a0fc1e3bc6d1ed27254f7f0ab3a88785"
+  "content_blake3": "4cfd213534035ddadb39a70306f2f6023c7fa479b60cb8b6eda69942bd41cb28"
 }

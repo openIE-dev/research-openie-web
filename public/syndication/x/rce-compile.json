@@ -1,29 +1,35 @@
 {
-  "schema": "openie.x_thread_bundle.v1",
+  "schema": "openie.x_thread_bundle.v2",
   "study_id": "rce-compile",
   "canonical_id": "blake3:tv:d561a8e7e445f1878caa5144e08df2f7cbe006ff65dba485bc787c7361a7027a",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
   "license": "CC0-1.0",
   "post_count": 5,
-  "max_weighted_chars": 237,
+  "max_weighted_chars": 271,
   "card_video_uri": "/media/tv/tiktok/rce-compile-tiktok.mp4",
   "fallback_video_uri": "/media/tv/films/rce-compile-15s.mp4",
-  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/rce-compile/",
+  "medium_crosslink_uri": "https://blog.openie.dev/posts/rce-compile/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/rce-compile/",
   "canonical_paper_url": "https://research.openie.dev/papers/rce-compile/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+  "public_repo_url": "https://github.com/openIE-dev/openie-research-experiments",
   "zero_urls_in_post_1": true,
   "posts": [
     {
       "position": 1,
       "role": "hook_video_card",
-      "text": "RCE Compile\n\nThirty percent of maximum-optimization builds never earn back their compile energy—unless positional caching cuts warm rebuilds 448 times.\n\n[448.5x Rebuild Energy Cut · 0/500 Mix-Ups]",
-      "weighted_chars": 196,
-      "raw_chars": 196,
+      "text": "Compile-Time Verification Payback & De Bruijn Caching [E/M · reported_j]\n\nPre-compiling librce_rt.rlib cuts cold rustc -O3 compile energy 20.07x on AMD Zen 5 and 15.44x on idle Intel Core i9; warm De Bruijn cache hits cut single-file rebuilds up to 448.5x.",
+      "weighted_chars": 256,
+      "raw_chars": 256,
       "urls": [],
       "in_reply_to_position": null,
       "media": {
         "video_uri": "/media/tv/tiktok/rce-compile-tiktok.mp4",
         "fallback_video_uri": "/media/tv/films/rce-compile-15s.mp4",
-        "poster_uri": "/media/tv/posters/rce-compile-poster.jpg",
-        "vtt_uri": "/media/tv/captions/rce-compile-15s.vtt",
+        "poster_uri": "/media/tv/tiktok/rce-compile-tiktok.jpg",
+        "vtt_uri": "/media/tv/tiktok/rce-compile-tiktok.vtt",
         "aspect_ratio": "9:16",
         "resolution": "1080x1920",
         "fps": 60,
@@ -32,43 +38,47 @@
     },
     {
       "position": 2,
-      "role": "plain_points_1_2",
-      "text": "1/3 Real compilers break any single descriptive law, so this study establishes a seven-part yardstick to measure them.\n\n2/3 Maximum compiler optimization burns upfront chip energy that never pays back on up to thirty percent of programs.",
-      "weighted_chars": 237,
-      "raw_chars": 237,
+      "role": "methods_and_sample_bounds",
+      "text": "1/2 Per-host Linux RAPL core/PP0 reported_j (20 kernels x 15 tiers):\n- Cold prelude cut: 20.07x on Ryzen AI Max+ 395 (56.29->2.81 J) & 15.44x on idle Core i9-13900H (84.40->5.47 J)\n- De Bruijn cache (de Bruijn 1972): 0/500 mutant collisions vs 150/150 naive ID-strip bugs",
+      "weighted_chars": 271,
+      "raw_chars": 271,
       "urls": [],
       "in_reply_to_position": 1
     },
     {
       "position": 3,
-      "role": "plain_point_3_and_energy",
-      "text": "3/3 Fingerprinting code by variable position reuses compiled builds safely, cutting warm Rust compile energy over four hundred times.\n\nEnergy class: reported_j (2.810 J chip counter; board_metered=false, never mixed with shunts).",
-      "weighted_chars": 229,
-      "raw_chars": 229,
+      "role": "telemetry_and_scope_limits",
+      "text": "2/2 Candid boundaries:\n- Refutes any universal descriptive compiler rule -> proposed 7-part contract\n- Up to 448.5x (rustc -O3) & 167.8x (clang -O3) apply ONLY on warm renamed single-file hits (1.0x cold)\n- -O2->-O3 never paid back on 20-30% of kernels; measured_j=null",
+      "weighted_chars": 269,
+      "raw_chars": 269,
       "urls": [],
       "in_reply_to_position": 2
     },
     {
       "position": 4,
-      "role": "machine_verification_gate",
-      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E]/[S] · WAI1 blake3:d561a8e7e445… · CC0-1.0",
-      "weighted_chars": 207,
-      "raw_chars": 204,
-      "urls": [],
+      "role": "signed_provenance_self_checked",
+      "text": "Signed Provenance · Self-Checked (human_in_gate=false; not peer-reviewed):\n- Evidence: [E]/[M]/[S] · WAI1 blake3:d561a8e7e445...\n- Verification: https://blog.openie.dev/verification/\n- Glossary: https://blog.openie.dev/glossary/",
+      "weighted_chars": 204,
+      "raw_chars": 228,
+      "urls": [
+        "https://blog.openie.dev/verification/",
+        "https://blog.openie.dev/glossary/"
+      ],
       "in_reply_to_position": 3
     },
     {
       "position": 5,
-      "role": "bidirectional_medium_and_paper_bridge",
-      "text": "Read & verify RCE Compile (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/rce-compile/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/rce-compile/",
-      "weighted_chars": 155,
-      "raw_chars": 213,
+      "role": "canonical_blog_paper_and_replicate",
+      "text": "Read & replicate RCE Compile Normal-Form & Cache Audit (CC0-1.0):\n- Essay: https://blog.openie.dev/posts/rce-compile/\n- Paper: https://research.openie.dev/papers/rce-compile/\n- 1-cmd kit: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+      "weighted_chars": 168,
+      "raw_chars": 265,
       "urls": [
-        "https://research.openie.dev/syndication/medium/rce-compile/",
-        "https://research.openie.dev/papers/rce-compile/"
+        "https://blog.openie.dev/posts/rce-compile/",
+        "https://research.openie.dev/papers/rce-compile/",
+        "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
       ],
       "in_reply_to_position": 4
     }
   ],
-  "content_blake3": "4cf374240da43f95e5b68c6ad3dd6e5f3fb180eb1b783c55e30d78cd9e94ac25"
+  "content_blake3": "3e94e41932a53aba7d92e0e4436587702ae03a78a1aa74483a6f8ac2f94a602e"
 }

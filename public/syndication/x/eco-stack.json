@@ -1,29 +1,35 @@
 {
-  "schema": "openie.x_thread_bundle.v1",
+  "schema": "openie.x_thread_bundle.v2",
   "study_id": "eco-stack",
   "canonical_id": "blake3:tv:f1be23b37b7c4b0d74ccaaf3952659250ac143aa9ea3116538cd2c3ac0d9d774",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
   "license": "CC0-1.0",
   "post_count": 5,
-  "max_weighted_chars": 255,
+  "max_weighted_chars": 278,
   "card_video_uri": "/media/tv/tiktok/eco-stack-tiktok.mp4",
   "fallback_video_uri": "/media/tv/films/eco-stack-15s.mp4",
-  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/eco-stack/",
+  "medium_crosslink_uri": "https://blog.openie.dev/posts/eco-stack/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/eco-stack/",
   "canonical_paper_url": "https://research.openie.dev/papers/agency/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+  "public_repo_url": null,
   "zero_urls_in_post_1": true,
   "posts": [
     {
       "position": 1,
       "role": "hook_video_card",
-      "text": "Three Sciences, One Energy-Bounded Computing Map\n\nHow information theory, game theory, and mechanism design fit together as three altitudes of one energy-bounded computing map.\n\n[3 Sciences · 9 Periodic Stacks · 1 Joule Ledger]",
-      "weighted_chars": 227,
-      "raw_chars": 227,
+      "text": "The OpenIE Stack Map (stack.openie.dev) [M/S · unmetered]\n\nReclassified from reported_j to unmetered (joules = null): stack.openie.dev is a conceptual teaching taxonomy indexing 8 domain portals across Information Theory, Game Theory & Mechanism Design (0 lab runs).",
+      "weighted_chars": 266,
+      "raw_chars": 266,
       "urls": [],
       "in_reply_to_position": null,
       "media": {
         "video_uri": "/media/tv/tiktok/eco-stack-tiktok.mp4",
         "fallback_video_uri": "/media/tv/films/eco-stack-15s.mp4",
-        "poster_uri": "/media/tv/posters/eco-stack-poster.jpg",
-        "vtt_uri": "/media/tv/captions/eco-stack-15s.vtt",
+        "poster_uri": "/media/tv/tiktok/eco-stack-tiktok.jpg",
+        "vtt_uri": "/media/tv/tiktok/eco-stack-tiktok.vtt",
         "aspect_ratio": "9:16",
         "resolution": "1080x1920",
         "fps": 60,
@@ -32,43 +38,47 @@
     },
     {
       "position": 2,
-      "role": "plain_points_1_2",
-      "text": "1/3 Information theory, game theory, and mechanism design form three altitudes of one energy-bounded computing map.\n\n2/3 Information theory prices bits and heat, game theory maps strategic interaction, and mechanism design writes rules where honesty wins.",
-      "weighted_chars": 255,
-      "raw_chars": 255,
+      "role": "methods_and_sample_bounds",
+      "text": "1/2 Three classical sciences by altitude [S]:\n- Substrate: Shannon (1948) channel bounds & Landauer (1961) k_B T ln 2 bit-erasure heat\n- Strategy: von Neumann-Morgenstern (1944) & Nash (1950)\n- Admission rules: Hurwicz, Maskin & Myerson incentive-compatible mechanism design",
+      "weighted_chars": 274,
+      "raw_chars": 274,
       "urls": [],
       "in_reply_to_position": 1
     },
     {
       "position": 3,
-      "role": "plain_point_3_and_energy",
-      "text": "3/3 Across every layer of computing, each permitted action must clear its physical energy floor and pass independent checks.\n\nEnergy class: reported_j (49.04 mJ chip counter; board_metered=false, never mixed with shunts).",
-      "weighted_chars": 221,
-      "raw_chars": 221,
+      "role": "telemetry_and_scope_limits",
+      "text": "2/2 Taxonomic & license scope:\n- 'Periodic Stacks' is a faceted classification choice (Ranganathan 1933), not an atomic physical constant\n- Mixed repo licenses: rce, rce-vc, deterministic-null & lut-adapt-ai are Apache-2.0; JouleDB & Pattern-lang are BSL-1.1; JouleOS is private",
+      "weighted_chars": 278,
+      "raw_chars": 278,
       "urls": [],
       "in_reply_to_position": 2
     },
     {
       "position": 4,
-      "role": "machine_verification_gate",
-      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E]/[M] · WAI1 blake3:f1be23b37b7c… · CC0-1.0",
-      "weighted_chars": 207,
-      "raw_chars": 204,
-      "urls": [],
+      "role": "signed_provenance_self_checked",
+      "text": "Signed Provenance · Self-Checked (human_in_gate=false; not peer-reviewed):\n- Evidence: [M]/[S] · WAI1 blake3:f1be23b37b7c...\n- Verification: https://blog.openie.dev/verification/\n- Glossary: https://blog.openie.dev/glossary/",
+      "weighted_chars": 200,
+      "raw_chars": 224,
+      "urls": [
+        "https://blog.openie.dev/verification/",
+        "https://blog.openie.dev/glossary/"
+      ],
       "in_reply_to_position": 3
     },
     {
       "position": 5,
-      "role": "bidirectional_medium_and_paper_bridge",
-      "text": "Read & verify Three Sciences, One Computing Map (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/eco-stack/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/agency/",
-      "weighted_chars": 177,
-      "raw_chars": 228,
+      "role": "canonical_blog_paper_and_replicate",
+      "text": "Read & replicate OpenIE Stack Conceptual Map (Unmetered) (CC0-1.0):\n- Essay: https://blog.openie.dev/posts/eco-stack/\n- Paper: https://research.openie.dev/papers/agency/\n- 1-cmd kit: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+      "weighted_chars": 170,
+      "raw_chars": 260,
       "urls": [
-        "https://research.openie.dev/syndication/medium/eco-stack/",
-        "https://research.openie.dev/papers/agency/"
+        "https://blog.openie.dev/posts/eco-stack/",
+        "https://research.openie.dev/papers/agency/",
+        "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
       ],
       "in_reply_to_position": 4
     }
   ],
-  "content_blake3": "1e85d502fad1c777f525252a1ffd1fdad644135e5d21b21079fe90b1baa465dd"
+  "content_blake3": "a8c21309170c3a66a5144091f479a6029f23822cc1b233cfa1e6bc480a27d95f"
 }

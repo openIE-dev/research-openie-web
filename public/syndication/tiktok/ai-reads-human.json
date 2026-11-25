@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "ai-reads-human",
   "canonical_id": "blake3:tv:354d34ae4d1f4445cf393cc82d84c99ac2bac5585366b86e02521716baa3112c",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/ai-reads-human/",
+  "canonical_paper_url": "https://research.openie.dev/papers/ai-reads-human/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/ai-reads-human-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/ai-reads-human-15s.mp4",
-    "poster_uri": "/media/tv/posters/ai-reads-human-poster.jpg",
-    "vtt_uri": "/media/tv/captions/ai-reads-human-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/ai-reads-human-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/ai-reads-human-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 21.73,
     "safe_zone_verified": true,
-    "source_15s_sha256": "5d3e8ebde35332f034f089f3eb756d39ab984167d3ea79e4968049ece4c7f6a8"
+    "sha256": "f47748a679a4d75cf836c07b12c671678013500125c81cc8a90a97d8adc54ae8"
   },
-  "caption_utf16_chars": 750,
+  "caption_utf16_chars": 926,
+  "caption": "Serialization & Tokenization Energy Tax — 280.4 nJ fixed binary vs. 2,212 nJ JSON & 27,679 nJ tiktoken/record (M5 Max L3 reported_j) · 109/170 L2 windows rejected for drift\n\nAcross 20,000 seeded records in CPython 3.13 on Apple M5 Max (L3 ri_energy_nj), 23 B binary unpack used 280.4 nJ/rec vs 2,212.1 nJ for json.loads (7.89x) and 27,679.2 nJ for tiktoken cl100k_base (98.7x).\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: reported_j (Apple M5 Max subprocess proc_pid_rusage ri_energy_nj L3 reported_j across 20,000 synthetic records (109/170 whole-chip L2 windows rejected for >5% drift).)\n• Essay: https://blog.openie.dev/posts/ai-reads-human/\n• Paper: https://research.openie.dev/papers/ai-reads-human/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#Serialization #Llm #Python #SystemsEngineering #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "\"AI\" Reads Human (Up to 2,054x Extra Chip Energy Reading Human Text)\nWhen two machines talk in text formats designed for human eyes, they burn up to two thousand times more chip energy.\n1) Computers often swap data in text formats written for human eyes, forcing machines to spend extra energy reading them back.\n2) Reading indented configuration text took over two thousand times more chip energy per record than reading compact machine numbers directly.\n3) Chopping text into AI word pieces burned twelve times more chip energy than parsing the text, before any model ran.\nEnergy class: reported_j (Chip Energy Counter) · CC0-1.0 · https://research.openie.dev/papers/ai-reads-human/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "Serialization & Tokenization Energy Tax — 280.4 nJ fixed binary vs. 2,212 nJ JSON & 27,679 nJ tiktoken/record (M5 Max L3 reported_j) · 109/170 L2 windows rejected for drift\n\nAcross 20,000 seeded records in CPython 3.13 on Apple M5 Max (L3 ri_energy_nj), 23 B binary unpack used 280.4 nJ/rec vs 2,212.1 nJ for json.loads (7.89x) and 27,679.2 nJ for tiktoken cl100k_base (98.7x).\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: reported_j (Apple M5 Max subprocess proc_pid_rusage ri_energy_nj L3 reported_j across 20,000 synthetic records (109/170 whole-chip L2 windows rejected for >5% drift).)\n• Essay: https://blog.openie.dev/posts/ai-reads-human/\n• Paper: https://research.openie.dev/papers/ai-reads-human/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#Serialization #Llm #Python #SystemsEngineering #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/ai-reads-human-tiktok.mp4"
     }
   },
-  "content_blake3": "b80df38956f452e7ebdd8c0dca4ffa7d64e93ea8e0446b7d6a503e6e9d01f00e"
+  "content_blake3": "f0849edc352fc2b64ac2baa2695d5c0e71a9be4c55e9a77504e3248705b2e5c3"
 }

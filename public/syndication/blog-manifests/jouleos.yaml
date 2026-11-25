@@ -1,75 +1,91 @@
-# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+# OpenIE Post-Review Audited Blog Syndication Manifest (CC0-1.0)
 slug: "jouleos"
 
 metadata:
-  title: "The Search for JouleOS"
-  description: "Today's operating systems schedule clock slices, not energy—so we mapped what an agent machine must require and tested its core rules in Rust."
-  date: "2026-11-24"
-  author: "David Charlot, Open Interface Engineering"
+  title: "JouleOS: An Unmetered Operating-System Design Proposal, Provenance-Lattice Checks (78,400 Pairs), and Prior Energy-OS Lineage"
+  description: "Explicitly scopes JouleOS as an unmetered architectural proposal (core OS repo private; ~10^5x README figure unverified), clarifies 78,400 = 280 x 280 provenance-lattice monotonicity checks, and cites ECOSystem, Cinder, Linux EAS, and RAPL."
+  date: "2026-11-25"
+  author: "Open Interface Engineering"
   category: "product"
-  tags: ["jouleos", "product", "open-science", "cc0", "unmetered"]
+  tags: ["operating-systems", "systems-architecture", "energy-accounting", "rust", "open-science"]
   featured: false
   draft: false
   toc: true
-  canonicalUrl: "https://research.openie.dev/products/jouleos/"
+  provenanceStatus: "Signed Provenance · Self-Checked"
+  verificationUrl: "https://blog.openie.dev/verification/"
+  glossaryUrl: "https://blog.openie.dev/glossary/"
+  canonicalBlogUrl: "https://blog.openie.dev/posts/jouleos/"
+  canonicalUrl: "https://blog.openie.dev/posts/jouleos/"
+  primaryPaperUrl: "https://research.openie.dev/products/jouleos/"
+  replicationKitUrl: "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
+  publicRepoUrl: "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
+  energyClass: "unmetered"
   license: "CC0-1.0"
 
 hero:
   image: "jouleos-poster.jpg"
-  alt: "The Search for JouleOS — 310 Passing Rust Tests · 78,400 Provenance Checks"
+  alt: "JouleOS Design Proposal — unmetered architecture review, 280x280=78,400 lattice checks, and ECOSystem/Cinder lineage — Design Proposal & Architecture Specification (unmetered, joules = null) · 78,400 = 280×280 Rust provenance-lattice pair checks"
 
 sections:
   - heading: null
     content: |
-      *Canonical Primary Source: [https://research.openie.dev/products/jouleos/](https://research.openie.dev/products/jouleos/) · Dedicated to the Public Domain (`CC0-1.0`)*
+      *Signed Provenance · Self-Checked (`human_in_gate = false`; [Verification](https://blog.openie.dev/verification/) · [Glossary](https://blog.openie.dev/glossary/)) · Canonical Post-Review Essay: [https://blog.openie.dev/posts/jouleos/](https://blog.openie.dev/posts/jouleos/) · Primary Paper: [https://research.openie.dev/products/jouleos/](https://research.openie.dev/products/jouleos/)*
 
-      Today's operating systems schedule clock slices, not energy—so we mapped what an agent machine must require and tested its core rules in Rust.
+      Reviews JouleOS strictly as an unmetered operating-system design proposal (joules = null; core OS repository is private and its internal ~10^5x README ratio is an unverified claim, not a measurement), clarifies that 78,400 refers to 280 × 280 exhaustive provenance-lattice monotonicity state-pair checks in the companion jcp-satb-cad-spine Rust crate suite (310 unit tests, 0 silent promotions), and situates the design directly within Linux EAS, cpufreq/schedutil, powercap RAPL, ECOSystem (2002), and Cinder (2011).
 
-  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+  - heading: "Key Claims & Evidence Tags"
     content: |
-      1. Modern computers stack many separate software layers, and today's AI agents are bolted on top without changing the floor underneath.
-      2. None of those underlying layers asks, before an agent acts, how much energy the action will spend or whether it fits.
-      3. A machine built for agents must meter energy honestly, grant strict budgets, and refuse any action that breaks its limit.
+      1. **[M/E · Unmetered Design Proposal Disclosure]** `JouleOS` is an **unmetered architectural specification and design review (`energyClass = unmetered`, `joules = null`, `board_metered = false`)**—not a benchmarked production kernel beating Linux or macOS on hardware wattmeters. As disclosed in `src/content/products/jouleos.md`, the core JouleOS source tree is currently private, and an internal README’s `~10^5x` efficiency phrase is explicitly flagged as an **unverified project aspiration**, not an empirical measurement.
+      2. **[E · Reconciling the `78,400` Count]** Earlier summaries gave two conflicting descriptions of `78,400`. In the audited `jcp-satb-cad-spine` Rust workspace (`310` passing tests across 7 crates), **`78,400` is `280 × 280` ordered pairs of `(SATB sensor boundary L0..L4 × attribution discipline A1..N × mechanism)` states** exhaustively tested for meet-semilattice monotonicity (`0` silent provenance upgrades when combining heterogeneous energy channels)—it is **not** `78,400` kernel boot runs or hardware power traces.
+      3. **[S · Explicit Prior OS Energy Lineage]** JouleOS’s two-phase `hold`/`settle` capability budgets directly descend from **ECOSystem’s `currentcy` abstraction (Zeng et al., ASPLOS 2002)** and **Cinder’s hierarchical `reserves` and `taps` (Roy et al., EuroSys 2011)**, layered atop modern **Linux Energy Aware Scheduling (`EAS`), `cpufreq`/`schedutil`, and Intel/AMD `powercap` `RAPL` counters**.
 
-  - heading: "Everyday Analogy & Why It Matters"
+  - heading: "Methods, Baselines & Artifact Scope"
     content: |
-      Modern agent sandboxes jail file access or count virtual instructions, yet elevated commands still escape onto the host kernel, and one virtual instruction spends wildly different physical energy depending on memory traffic, cache misses, and chip frequency. Our review maps ten distinct jobs from bare silicon up to the human screen. It specifies a schedule that tries cheap deterministic checks before language models, signed energy grants that only shrink when delegated to sub-tasks, and tool outputs treated strictly as passive untrusted data.
+      - **Hardware & Telemetry**: Unmetered (`joules = null`, `board_metered = false`). Static architectural review plus deterministic Rust unit/property execution over provenance-lattice types (`jcp-satb-cad-spine`).
+      - **Workload & Suite**: `310` Rust unit/property tests across `7` specification crates, including exhaustive `280 × 280 = 78,400` lattice-join monotonicity checks and two-phase `hold`/`settle` ledger conservation checks.
+      - **Baselines Compared**: Qualitative architectural comparison against POSIX time-slice scheduling, Linux `EAS` / `schedutil`, `powercap` `RAPL`, `ECOSystem` (2002), and `Cinder` (2011). **Empirical OS scheduler benchmark vs. Linux/seL4: not run in this study.**
+      - **Runs (N) & Spread**: Deterministic finite-lattice exhaustion (`N = 78,400` state pairs, `0` monotonicity violations; `310/310` unit tests passing; zero stochastic variance).
+      - **Cold vs. Warm Scope**: Specifies kernel-level memoization of deterministic pure receipts (`JCR-1`) invalidated whenever capability/binary hashes change; not benchmarked on live syscall workloads here.
+      - **Artifact & License**: Design review (`CC0-1.0`) public at `research.openie.dev/products/jouleos/`; core JouleOS tree is **private / externally unreproduced** (shared envelope primitives in `openIE-dev/openie-artifact-substrate`, `Apache-2.0`).
 
-      Our reference Rust spine passes all three hundred ten conformance tests for crash-safe two-phase energy holds and signed binary receipts, while proving exhaustively across seventy-eight thousand four hundred pairs that software estimates can never masquerade as physical hardware measurements. By separating verified software checks from unverified bare-metal kernel claims, this design guide gives systems engineers a concrete, checkable blueprint for building agent machines governed by energy law.
-
-  - heading: "Inside the Mechanism & Candid Limits"
+  - heading: "Scope Honesty: Design Specification vs. Shipped Kernel"
     content: |
-      New agent-safety platforms add sandboxes, external watchdogs, and policy wrappers on top of Linux, macOS, or Windows kernels. That engineering solves real file and network containment problems, yet it treats the underlying process model as permanently fixed—where an agent remains an ordinary guest program and no kernel gates commits on certified energy bounds. Before naming any commercial product, our study teaches the ten-step stack from bare silicon, chip, board, and firmware through instruction sets, hardware abstraction, kernels, compilers, and programs right up to the human interface. Even formally verified microkernels prove functional C code correctness while saying nothing at all about joules or power limits.
+      Operating-system research has a thirty-year history of energy-first resource management—from **Odyssey (Flinn & Satyanarayanan, SOSP 1999)**, **ECOSystem (Zeng et al., ASPLOS 2002)**, and **Cinder (Roy et al., EuroSys 2011)** to shipping **Linux Energy Aware Scheduling (`EAS`)**, **`cpufreq`/`schedutil`**, and **`powercap` `RAPL`** `[S]`. Presenting JouleOS candidly requires stating upfront what exists today and what does not `[E]`:
 
-      Closing that architectural gap requires four linked open contracts: an energy-oriented schedule ordered cheapest operator first rather than billed in tokens, narrowing capability-and-joule grants checked outside the AI model, transactional commits bounded by preconditions, postconditions, invariants, and joule ceilings, and an eight-step isolation ladder carrying honest hardware or estimator meter tags. Even built-in processor energy counters on modern chips are partly mathematical models rather than inline wire shunts, missing operand-level variations. Our monotone lattice algebra tests all seventy-eight thousand four hundred pairs of sensor boundaries and attribution rules so combining a hardware shunt with an estimate always preserves the weaker label. In our three-dimensional stack view, authorization runs strictly outside the language model, and every tool response arrives tagged as untrusted passive data rather than executable instructions so poisoned prompts cannot hijack control.
+      - **What is verified today `[E]`:** A `7`-crate Rust specification spine (`310` tests) enforcing two-phase `hold`/`settle` joule-reserve accounting (preventing concurrent child tasks from double-spending a shared battery reserve) and checking **`280 × 280 = 78,400` pairs** of provenance tags so an analytical `est_j` (`L4`) or modeled `RAPL` (`L2`, see Schöne et al. 2021 on AMD Zen 2) reading can never silently promote to physical shunt `measured_j` (`L1`).
 
-      Before any actuation begins, the runtime reserves a crash-safe energy hold and settles a hash-chained cryptographic receipt afterward. Across seven Rust workspace crates, three hundred ten automated conformance tests verify deterministic binary encoding without floating-point ambiguity, reject revoked, duplicate, or over-budget calls, replay exact ledger balances after simulated power loss, and automatically drop net energy splits whenever host idle power drifts past five percent. This white paper is written as an honest architectural review and requirement guide, never an inflated product pitch. Ratios cited from the private Joule Operating System repository—such as hundred-thousand-fold corpus efficiency claims—are explicitly flagged as unverified project claims rather than measurements, and bare-metal external power metering remains unset.
+      - **What is NOT measured or public `[E]`:** Bare-metal interrupt latency, page-table/IPC overhead against Linux or `seL4`, hardware wall-meter joules (`joules = null`), and the private core JouleOS repository (whose internal `~10^5x` README claim is explicitly withdrawn from evidentiary status in the primary review).
 
-  - heading: "How Energy Was Metered"
+  - heading: "How `JouleOS` Builds on `ECOSystem`, `Cinder`, and Linux `EAS`"
     content: |
-      - **Acquisition Tier**: Verified Software + Model
-      - **Disclosure**: Verified software tests and analytical models; no bare-metal power meter used.
-      - **Evidence Class**: `unmetered` (`unmetered (joules = null; never fabricated as zero)`)
-      - **Meter / Formula**: Operating-system energy-grant architecture & 310-test Rust spine review; unmetered
+      Where **ECOSystem** unified device power under `currentcy` epoch allocations and **Cinder** introduced capability-delegated `reserves` and rate-limiting `taps` on HiStar `[S]`, JouleOS proposes two specific extensions for agentic workloads `[M]`: (1) **provenance-typed energy accounts** (`measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered`) so kernel scheduling policies know whether a rail reading came from a physical TI `INA3221` shunt or a modeled counter, and (2) **two-phase `hold`/`settle` commit receipts (`JCR-1`)** tied to task admission gates `[M]`.
 
-      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+  - heading: "Limitations & Falsifiers"
+    content: |
+      - **Accounting overhead risk:** If per-syscall `hold`/`settle` bookkeeping and `Ed25519` receipt batching consume more energy than dynamic voltage/frequency scaling or task refusal saves, net system energy worsens (analogous to `R-F1` in `agency`) `[M]`.
+
+      - **Private core tree:** External researchers cannot audit or build the private JouleOS kernel repository until source release.
+
+  - heading: "Energy & Telemetry Scope"
+    content: |
+      Strictly `unmetered` (`joules = null`, `board_metered = false`).
 
 references:
   - id: 1
-    authors: "David Charlot, Open Interface Engineering"
-    title: "The Search for JouleOS"
+    authors: "Open Interface Engineering"
+    title: "JouleOS: An Unmetered Operating-System Design Proposal, Provenance-Lattice Checks (78,400 Pairs), and Prior Energy-OS Lineage"
     publication: "OpenIE Research"
     year: 2026
     url: "https://research.openie.dev/products/jouleos/"
 
 closing:
-  content: |
-    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=jouleos) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
-  cta:
-    primary:
-      text: "Read Primary Study & PDF"
-      url: "https://research.openie.dev/products/jouleos/"
-    secondary:
-      text: "Watch on OpenIE Research TV"
-      url: "https://research.openie.dev/tv/?study=jouleos"
-  footer_text: "Summary text dedicated to the public domain under CC0-1.0."
+    content: |
+      Stream the 9:16 60fps vertical cut on [OpenIE Research TV](https://research.openie.dev/tv/?study=jouleos) or run the 1-command replication harness at [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate).
+    cta:
+      primary:
+        text: "Read Canonical Post-Review Dossier"
+        url: "https://blog.openie.dev/posts/jouleos/"
+      secondary:
+        text: "Primary Paper & 1-Command Replication"
+        url: "https://research.openie.dev/products/jouleos/"
+    footer_text: "Signed Provenance · Self-Checked (not externally peer-reviewed). Summary text dedicated to the public domain under CC0-1.0."

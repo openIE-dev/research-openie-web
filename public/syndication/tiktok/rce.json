@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "rce",
   "canonical_id": "blake3:tv:6d19f6f263097e58b92f17fb3d4a4745f98bc5a2496157ac1c25b7fa22c2cb24",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/rce/",
+  "canonical_paper_url": "https://research.openie.dev/papers/rce/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/rce-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/rce-15s.mp4",
-    "poster_uri": "/media/tv/posters/rce-poster.jpg",
-    "vtt_uri": "/media/tv/captions/rce-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/rce-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/rce-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 21.73,
     "safe_zone_verified": true,
-    "source_15s_sha256": "d82c5d7891d96400a195e3c4c95c73f818412f055dfd8f5c930183029aa949be"
+    "sha256": "22bceef6ca5e6b386c8157d77d982ec84719b5a760fcebf57e997f2bebe8cc98"
   },
-  "caption_utf16_chars": 685,
+  "caption_utf16_chars": 852,
+  "caption": "Reality Code Engine (RCE) — 49.04 mJ/Form check & 15.44 J across 62 Forms (M5 Max reported_j) · 2,221/2,236 conformance passes · 12 draft-0.9 theorems open\n\nReconciles three metrics in openIE-dev/rce@f87d6af2: 49.04 mJ single-Form check vs 15.44 J full 62-Form suite (Apple M5 Max L3 reported_j) and 2,221 / 2,236 conformance passes (15 reserved).\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: reported_j (External Apple M5 Max L3 ri_energy_nj (49.04 mJ single Form check; 15.44 J across 62-Form suite); measured_j = null.)\n• Essay: https://blog.openie.dev/posts/rce/\n• Paper: https://research.openie.dev/papers/rce/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#FormalVerification #StateMachines #Lean4 #ProgrammingLanguages #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "The Reality Code Engine (2,221 Checks, 0 Failures · 49 mJ per Check)\nWrite a program once as one complete state-machine blueprint, check it in 49 millijoules, and emit matching code across languages.\n1) You write a program once in one clear blueprint, and the computer generates matching code in many languages.\n2) Every possible input must have a declared outcome up front, leaving nowhere for silent crashes to hide.\n3) Once a repair passes every check, the engine saves and reuses it so nobody pays twice for one bug.\nEnergy class: reported_j (Chip Energy Counter) · CC0-1.0 · https://research.openie.dev/papers/rce/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "Reality Code Engine (RCE) — 49.04 mJ/Form check & 15.44 J across 62 Forms (M5 Max reported_j) · 2,221/2,236 conformance passes · 12 draft-0.9 theorems open\n\nReconciles three metrics in openIE-dev/rce@f87d6af2: 49.04 mJ single-Form check vs 15.44 J full 62-Form suite (Apple M5 Max L3 reported_j) and 2,221 / 2,236 conformance passes (15 reserved).\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: reported_j (External Apple M5 Max L3 ri_energy_nj (49.04 mJ single Form check; 15.44 J across 62-Form suite); measured_j = null.)\n• Essay: https://blog.openie.dev/posts/rce/\n• Paper: https://research.openie.dev/papers/rce/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#FormalVerification #StateMachines #Lean4 #ProgrammingLanguages #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/rce-tiktok.mp4"
     }
   },
-  "content_blake3": "22099d97e5858bae992e1fc5c9547e3d5d520e5ec2f0f6fdab52638b0c87ca89"
+  "content_blake3": "1d5b46bf118d0b0f4ce92bbaca864a265a7ab467fe5a85f674b68439a4d3c937"
 }

@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "satb-harness",
   "canonical_id": "blake3:tv:87f465518d6db67ded6205ef9c2b11b5ec15f9216f750aa4dd9caf236e1d3238",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/satb-harness/",
+  "canonical_paper_url": "https://research.openie.dev/papers/satb-harness/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/satb-harness-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/satb-harness-15s.mp4",
-    "poster_uri": "/media/tv/posters/satb-harness-poster.jpg",
-    "vtt_uri": "/media/tv/captions/satb-harness-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/satb-harness-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/satb-harness-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 21.03,
     "safe_zone_verified": true,
-    "source_15s_sha256": "40ae18b7223ad0e7bd5a8839ed32a10227f577097be652e501e533e23cf463ed"
+    "sha256": "8d55127c4ec9a784a6fccc77d59ac19f171e3173c54afb09024e164f4bc878ba"
   },
-  "caption_utf16_chars": 664,
+  "caption_utf16_chars": 878,
+  "caption": "SATB Telemetry & Harness Audit — 12/12 C1–C12 checks across 5 hosts · 32.6%–89.9% CPU-proportional attribution error exposed (Thor measured_j & 4 reported_j hosts)\n\nAcross 5 hosts (Jetson AGX Thor TI INA238/INA3221 DC shunts + 4 counter hosts), the Rust SATB harness passed 12/12 replay checks while exposing 32.59%-89.88% Kepler CPU-splitting errors.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: measured_j (Jetson AGX Thor TI INA238/INA3221 DC shunts (measured_j) kept strictly separate from 4 reported_j hosts; L0 AC wall meter unattached.)\n• Essay: https://blog.openie.dev/posts/satb-harness/\n• Paper: https://research.openie.dev/papers/satb-harness/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#Benchmarking #Telemetry #Rust #SystemsEngineering #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "Satiation Benchmark Harness (12 of 12 Checks · 5 Computers · 0 Replay Drift)\nHow to stop agent wrappers and sloppy power estimates from distorting AI benchmark leaderboards.\n1) Changing the wrapper around an AI model can swing scores as much as swapping the model.\n2) This test harness locks prompts, memory trimming, and tools so every AI takes the exact same exam.\n3) Across five computer types, it separates real board sensors from chip counters and blocks noisy power estimates.\nEnergy class: measured_j (Board Sensor + Chip Counter) · CC0-1.0 · https://research.openie.dev/papers/satb-harness/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "SATB Telemetry & Harness Audit — 12/12 C1–C12 checks across 5 hosts · 32.6%–89.9% CPU-proportional attribution error exposed (Thor measured_j & 4 reported_j hosts)\n\nAcross 5 hosts (Jetson AGX Thor TI INA238/INA3221 DC shunts + 4 counter hosts), the Rust SATB harness passed 12/12 replay checks while exposing 32.59%-89.88% Kepler CPU-splitting errors.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: measured_j (Jetson AGX Thor TI INA238/INA3221 DC shunts (measured_j) kept strictly separate from 4 reported_j hosts; L0 AC wall meter unattached.)\n• Essay: https://blog.openie.dev/posts/satb-harness/\n• Paper: https://research.openie.dev/papers/satb-harness/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#Benchmarking #Telemetry #Rust #SystemsEngineering #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/satb-harness-tiktok.mp4"
     }
   },
-  "content_blake3": "4d91e604380288922eda8224a6f9937322ba95b2ceb19da2ced752c6d8caca67"
+  "content_blake3": "d3bf63814506bc6d38d37f49ca1449f9cebaa053435684b31d2bfe978755d70a"
 }

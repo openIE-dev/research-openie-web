@@ -1,29 +1,35 @@
 {
-  "schema": "openie.x_thread_bundle.v1",
+  "schema": "openie.x_thread_bundle.v2",
   "study_id": "eco-compute",
   "canonical_id": "blake3:tv:ad930ba0ee7548a998e3394cd5510ac8de44a6b78cc7e5dabdfa264ddfc4cd8f",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
   "license": "CC0-1.0",
   "post_count": 5,
-  "max_weighted_chars": 251,
+  "max_weighted_chars": 277,
   "card_video_uri": "/media/tv/tiktok/eco-compute-tiktok.mp4",
   "fallback_video_uri": "/media/tv/films/eco-compute-15s.mp4",
-  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/eco-compute/",
-  "canonical_paper_url": "https://research.openie.dev/papers/rce-compile/",
+  "medium_crosslink_uri": "https://blog.openie.dev/posts/eco-compute/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/eco-compute/",
+  "canonical_paper_url": "https://research.openie.dev/papers/gates/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+  "public_repo_url": "https://github.com/openIE-dev/lut-adapt-ai",
   "zero_urls_in_post_1": true,
   "posts": [
     {
       "position": 1,
       "role": "hook_video_card",
-      "text": "Why Every Bit Pays Joules: The Compute Substrate\n\nWhy every digital bit pays real electrical joules—and how power-rail sensors, zero-clock sleep, and lookup circuits cut waste.\n\n[927 Microjoules Shunt Edge · 20x Compile Cut]",
-      "weighted_chars": 224,
-      "raw_chars": 224,
+      "text": "The Compute Stack (compute.openie.dev) [E/M/S · measured_j]\n\nMaps 258 primitives across 33 families while qualifying its primary hardware anchor: 11,428 pJ/cycle (11.43 nJ, SE=129 pJ, N=4 25s passes) is a whole-SOM KV260 INA260 reading; 98 pJ seed delta is inconclusive.",
+      "weighted_chars": 270,
+      "raw_chars": 270,
       "urls": [],
       "in_reply_to_position": null,
       "media": {
         "video_uri": "/media/tv/tiktok/eco-compute-tiktok.mp4",
         "fallback_video_uri": "/media/tv/films/eco-compute-15s.mp4",
-        "poster_uri": "/media/tv/posters/eco-compute-poster.jpg",
-        "vtt_uri": "/media/tv/captions/eco-compute-15s.vtt",
+        "poster_uri": "/media/tv/tiktok/eco-compute-tiktok.jpg",
+        "vtt_uri": "/media/tv/tiktok/eco-compute-tiktok.vtt",
         "aspect_ratio": "9:16",
         "resolution": "1080x1920",
         "fps": 60,
@@ -32,43 +38,47 @@
     },
     {
       "position": 2,
-      "role": "plain_points_1_2",
-      "text": "1/3 Every calculation is a physical event where flipping switches on silicon spends real electrical energy in joules.\n\n2/3 Honest hardware audits separate power-rail current sensors from chip counters, while sleeping at zero clock cycles between jobs.",
-      "weighted_chars": 251,
-      "raw_chars": 251,
+      "role": "methods_and_sample_bounds",
+      "text": "1/2 Shunt anchors vs analytical cells:\n- KV260 VCC_SOM (PS+PL+DDR+regs) 11.43 nJ/cycle & Thor INA3221 162.56 nJ/op LUT6 / 927.30 uJ verify are measured_j\n- Zen 5 20.07x & Core i9 15.44x prelude cuts are Linux RAPL reported_j\n- 257/258 portal cells are Horowitz/analytical [M/S]",
+      "weighted_chars": 277,
+      "raw_chars": 277,
       "urls": [],
       "in_reply_to_position": 1
     },
     {
       "position": 3,
-      "role": "plain_point_3_and_energy",
-      "text": "3/3 Single-cycle Boolean lookup circuits replace power-hungry floating-point arithmetic on repeated decisions with tiny hardware steps.\n\nEnergy class: measured_j (927.30 µJ via physical board shunt; board_metered=true).",
-      "weighted_chars": 219,
-      "raw_chars": 219,
+      "role": "telemetry_and_scope_limits",
+      "text": "2/2 Sensor floor & toolchain status:\n- 98.0 pJ (~1.96 mA at 5V) sits near INA260's 1.25 mA LSB and needs an isolated VCCINT Kelvin shunt\n- Portal jlandauer CLI is a private prototype; open RTL replication uses Yosys + openXC7 + Verilator in lut-adapt-ai (Apache-2.0)",
+      "weighted_chars": 266,
+      "raw_chars": 266,
       "urls": [],
       "in_reply_to_position": 2
     },
     {
       "position": 4,
-      "role": "machine_verification_gate",
-      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E]/[M] · WAI1 blake3:ad930ba0ee75… · CC0-1.0",
-      "weighted_chars": 207,
-      "raw_chars": 204,
-      "urls": [],
+      "role": "signed_provenance_self_checked",
+      "text": "Signed Provenance · Self-Checked (human_in_gate=false; not peer-reviewed):\n- Evidence: [E]/[M]/[S] · WAI1 blake3:ad930ba0ee75...\n- Verification: https://blog.openie.dev/verification/\n- Glossary: https://blog.openie.dev/glossary/",
+      "weighted_chars": 204,
+      "raw_chars": 228,
+      "urls": [
+        "https://blog.openie.dev/verification/",
+        "https://blog.openie.dev/glossary/"
+      ],
       "in_reply_to_position": 3
     },
     {
       "position": 5,
-      "role": "bidirectional_medium_and_paper_bridge",
-      "text": "Read & verify Why Every Bit Pays Joules (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/eco-compute/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/rce-compile/",
-      "weighted_chars": 169,
-      "raw_chars": 227,
+      "role": "canonical_blog_paper_and_replicate",
+      "text": "Read & replicate Compute Stack Taxonomy & KV260 Shunt Scope (CC0-1.0):\n- Essay: https://blog.openie.dev/posts/eco-compute/\n- Paper: https://research.openie.dev/papers/gates/\n- 1-cmd kit: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+      "weighted_chars": 173,
+      "raw_chars": 264,
       "urls": [
-        "https://research.openie.dev/syndication/medium/eco-compute/",
-        "https://research.openie.dev/papers/rce-compile/"
+        "https://blog.openie.dev/posts/eco-compute/",
+        "https://research.openie.dev/papers/gates/",
+        "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
       ],
       "in_reply_to_position": 4
     }
   ],
-  "content_blake3": "4bac51787c87bffc696c47deabd7e8a01ab3b5fa092e2c7c10a700ac91adc382"
+  "content_blake3": "6c31ba39d265db3ade76c8eb4fd83ce12229c7547e9d24f15c6a027717939fbe"
 }

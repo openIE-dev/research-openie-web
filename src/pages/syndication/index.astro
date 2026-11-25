@@ -6,9 +6,14 @@ import syndicationCatalog from '../../data/syndication-catalog.json';
 import tiktokSnackables from '../../data/tiktok-snackables.json';
 
 const SITE = 'https://research.openie.dev';
+const VERIFICATION_URL = 'https://blog.openie.dev/verification/';
+const GLOSSARY_URL = 'https://blog.openie.dev/glossary/';
+const REPLICATE_URL = 'https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate';
+
 const S: any = syndicationCatalog;
 const M: any = S.summary_metrics ?? {};
 const studies = (S.studies ?? []) as any[];
+const flagships = (S.flagship_launch_pack ?? []) as any[];
 const tiktokById: Record<string, any> = Object.fromEntries(
   ((tiktokSnackables.studies ?? []) as any[]).map((t) => [t.id, t])
 );
@@ -21,30 +26,30 @@ const enrichedStudies = studies.map((st) => {
     ...st,
     medium_markdown: mdText,
     tiktok_real: {
-      video_url: tk.video_url ?? `/media/tv/tiktok/${st.id}-tiktok.mp4`,
-      poster_url: tk.poster_url ?? `/media/tv/tiktok/${st.id}-tiktok.jpg`,
-      vtt_url: tk.vtt_url ?? `/media/tv/tiktok/${st.id}-tiktok.vtt`,
+      video_url: st.tiktok?.video_uri ?? tk.video_url ?? `/media/tv/tiktok/${st.id}-tiktok.mp4`,
+      poster_url: st.tiktok?.poster_uri ?? tk.poster_url ?? `/media/tv/tiktok/${st.id}-tiktok.jpg`,
+      vtt_url: st.tiktok?.vtt_uri ?? tk.vtt_url ?? `/media/tv/tiktok/${st.id}-tiktok.vtt`,
       duration_s: tk.duration_s ?? st.short_vertical_9x16?.duration_s ?? 22,
       bytes: tk.bytes ?? 0,
       sha256: tk.sha256 ?? st.short_vertical_9x16?.sha256 ?? '',
-      blake3: tk.blake3 ?? '',
-      tiktok_caption: tk.tiktok_caption ?? '',
-      tiktok_api_v2_init_payload: tk.tiktok_api_v2_init_payload ?? null,
+      blake3: st.tiktok?.content_blake3 ?? tk.blake3 ?? '',
+      tiktok_caption: st.tiktok?.caption ?? tk.tiktok_caption ?? '',
+      tiktok_api_v2_init_payload: st.tiktok?.api_v2_init_payload ?? tk.tiktok_api_v2_init_payload ?? null,
     },
   };
 });
 
 const initialStudy =
-  enrichedStudies.find((s) => s.id === 'communication-avalanche') ?? enrichedStudies[0];
+  enrichedStudies.find((s) => s.id === 'deterministic-null') ?? enrichedStudies[0];
 const ecoMatrix = S.ecosystems ?? { tiers: [] };
 const ecoTiers = (ecoMatrix.tiers ?? []) as any[];
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: 'OpenIE Planetary Syndication Studio — X ↔ Medium Automation, 9:16 TikTok Snackables & 6-Tier Ecosystem Matrix',
+  name: 'OpenIE Planetary Syndication Studio — Post-Review Audited Flagship Launch Kit, X ↔ Medium Automation & 9:16 TikTok Snackables',
   description:
-    'Deterministic zero-human-gate projections from signed WAI1 artifacts into 28 9:16 (1080x1920 @ 60fps) TikTok vertical films, 28 bidirectional X (Twitter) 5-post threads, 28 canonical Medium essays, and 33 outbound/inbound research ecosystems.',
+    'Post-review-remediated syndication bundles (Signed Provenance · Self-Checked) across 28 9:16 (1080x1920 @ 60fps) TikTok vertical films, 28 bidirectional X (Twitter) 5-post threads, 28 canonical Medium imports (blog.openie.dev/posts/<slug>/), and 1-command GitHub replication kits.',
   url: `${SITE}/syndication/`,
   license: 'https://creativecommons.org/publicdomain/zero/1.0/',
 };
@@ -55,8 +60,8 @@ const clientPayload = JSON.stringify({
 ---
 
 <Layout
-  title="Planetary Syndication Studio — X ↔ Medium Automation, 9:16 TikTok Snackables & Ecosystem Map"
-  description="Deterministic X (Twitter) ↔ Medium bidirectional syndication, 28 native 9:16 (1080x1920 @ 60fps, -14 LUFS) TikTok vertical snackables, and the complete 6-tier OpenIE outbound broadcast and inbound ingestion ecosystem matrix."
+  title="Planetary Syndication Studio — Flagship 3 Launch Kit, X ↔ Medium Automation & 9:16 TikTok Snackables"
+  description="Post-review-audited syndication workbench (Signed Provenance · Self-Checked): Flagship 3 Launch Kit, X ↔ Medium bidirectional RSS bridge, 28 native 9:16 (1080x1920 @ 60fps) TikTok snackables, and 1-command replication links."
 >
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
@@ -68,25 +73,48 @@ const clientPayload = JSON.stringify({
       <div class="flex flex-wrap items-center gap-2.5 mb-4">
         <span class="section-label">Planetary Syndication &amp; Ecosystem Bus · /syndication/</span>
         <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-emerald-500/15 text-emerald-300 border border-emerald-400/35">
-          28 × 9:16 TikTok MP4s (1080×1920 @ 60fps · -14 LUFS)
+          Signed Provenance · Self-Checked
         </span>
         <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-amber/15 text-brand-amber border border-brand-amber/35">
-          28 Medium Canonical Essays ↔ 140 X Posts (&le;280 Weighted Chars)
+          28 Medium Canonical Imports ↔ 140 X Posts (&le;280 Weighted Chars)
         </span>
         <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/35">
-          {ecoMatrix.tier_count ?? 6} Tiers · {ecoMatrix.ecosystem_entry_count ?? 33} Ecosystems · CC0-1.0
+          28 × 9:16 TikTok MP4s (1080×1920 @ 60fps · -14 LUFS) · CC0-1.0
         </span>
       </div>
 
       <h1 class="font-display text-3xl md:text-5xl font-bold tracking-tight text-brand-white leading-tight mb-4">
         Planetary <span class="text-brand-amber">Syndication</span> &amp; <span class="text-brand-cyan">Ecosystem</span> Bus
       </h1>
-      <p class="font-body text-base md:text-lg text-brand-slate max-w-4xl leading-relaxed mb-6">
-        Every signed <code class="font-mono text-brand-cyan">WAI1</code> research record projects deterministically—with zero human review gates—into <strong>native 9:16 TikTok / Shorts / Reels vertical cuts</strong>, <strong>bidirectional X (Twitter) ↔ Medium threads and illustrated essays</strong>, <strong>resilient public-domain mirrors</strong>, and <strong>inbound literature &amp; agent-bus harvesters</strong>.
+      <p class="font-body text-base md:text-lg text-brand-slate max-w-4xl leading-relaxed mb-4">
+        Every signed <code class="font-mono text-brand-cyan">WAI1</code> research record projects deterministically into <strong>native 9:16 TikTok / Shorts / Reels vertical cuts</strong>, <strong>bidirectional X (Twitter) ↔ Medium 5-post threads and illustrated essays</strong>, and <strong>1-command public replication kits</strong>—carrying explicit <code class="font-mono text-emerald-300">measured_j &perp; reported_j &perp; est_j &perp; unmetered</code> boundaries and finite-sample statistical bounds.
       </p>
+
+      <div class="p-3.5 rounded-xl bg-[#0b1224] border border-emerald-400/30 font-mono text-xs text-brand-slate flex flex-wrap items-center justify-between gap-3 mb-6">
+        <div>
+          <strong class="text-emerald-300">Gate &amp; Peer-Review Disclosure (`human_in_gate = false`):</strong>{' '}
+          All syndication bundles carry <strong>Signed Provenance · Self-Checked</strong> status (cryptographically signed &amp; internally audited by Open Interface Engineering, not externally peer-reviewed).
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href={VERIFICATION_URL} target="_blank" rel="noopener noreferrer" class="text-brand-cyan no-underline hover:underline font-semibold">
+            Verification &amp; Licensing ↗
+          </a>
+          <a href={GLOSSARY_URL} target="_blank" rel="noopener noreferrer" class="text-brand-amber no-underline hover:underline font-semibold">
+            Epistemic Glossary ↗
+          </a>
+          <a href={REPLICATE_URL} target="_blank" rel="noopener noreferrer" class="text-emerald-300 no-underline hover:underline font-semibold">
+            1-Command Replicate Kit ↗
+          </a>
+        </div>
+      </div>
 
       <!-- KPI Strip -->
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div class="glass-card p-3.5">
+          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">Flagship Launch</div>
+          <div class="font-display text-2xl font-bold text-emerald-300 mt-1">Top 3</div>
+          <div class="font-mono text-[11px] text-brand-slate">Post-Review Audited</div>
+        </div>
         <div class="glass-card p-3.5">
           <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">9:16 TikTok Fleet</div>
           <div class="font-display text-2xl font-bold text-emerald-300 mt-1">28 / 28</div>
@@ -95,34 +123,32 @@ const clientPayload = JSON.stringify({
         <div class="glass-card p-3.5">
           <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">X Thread Fleet</div>
           <div class="font-display text-2xl font-bold text-brand-amber mt-1">{M.x_posts_total ?? 140}</div>
-          <div class="font-mono text-[11px] text-brand-slate">28 × 5 Posts · Max {M.x_max_weighted_chars_observed ?? 279}/280</div>
+          <div class="font-mono text-[11px] text-brand-slate">28 × 5 Posts · Max {M.x_max_weighted_chars_observed ?? 275}/280</div>
         </div>
         <div class="glass-card p-3.5">
           <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">Medium + Blog</div>
           <div class="font-display text-2xl font-bold text-brand-cyan mt-1">28 + 28</div>
-          <div class="font-mono text-[11px] text-brand-slate">rel=canonical + YAML</div>
+          <div class="font-mono text-[11px] text-brand-slate">blog.openie.dev Canonical</div>
         </div>
         <div class="glass-card p-3.5">
           <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">Ecosystems Wired</div>
-          <div class="font-display text-2xl font-bold text-brand-white mt-1">{ecoMatrix.ecosystem_entry_count ?? 33}</div>
+          <div class="font-display text-2xl font-bold text-brand-white mt-1">{ecoMatrix.ecosystem_entry_count ?? 36}</div>
           <div class="font-mono text-[11px] text-brand-slate">Across 6 Outbound/Inbound Tiers</div>
-        </div>
-        <div class="glass-card p-3.5">
-          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">Literary + Civic</div>
-          <div class="font-display text-2xl font-bold text-brand-amber mt-1">{ecoMatrix.publishos_literary_archive_count ?? 22} + {ecoMatrix.parliaments_count ?? 5}</div>
-          <div class="font-mono text-[11px] text-brand-slate">Archives + Parliaments</div>
         </div>
         <div class="glass-card p-3.5">
           <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">BLAKE3 Ledger</div>
           <div class="font-display text-2xl font-bold text-emerald-300 mt-1">{S.ledger?.entry_count ?? 112}</div>
-          <div class="font-mono text-[11px] text-brand-slate">Idempotent Zero-Dup</div>
+          <div class="font-mono text-[11px] text-brand-slate">Signed · Self-Checked</div>
         </div>
       </div>
 
       <!-- Jump Navigation -->
       <nav aria-label="Syndication studio sections" class="mt-6 flex flex-wrap gap-2">
+        <a href="#flagship-launch-kit" class="font-mono text-xs px-3 py-1.5 rounded-md bg-emerald-400 text-[#06121a] font-bold no-underline">
+          ★ Flagship 3 Launch Kit (Post-Review Audited)
+        </a>
         <a href="#interactive-studio" class="font-mono text-xs px-3 py-1.5 rounded-md bg-brand-amber text-brand-dark font-semibold no-underline">
-          1. Interactive 9:16 TikTok + X ↔ Medium Workbench
+          1. Interactive 28-Study Workbench
         </a>
         <a href="#x-medium-automation" class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-amber">
           2. How X ↔ Medium Automation Works
@@ -139,12 +165,120 @@ const clientPayload = JSON.stringify({
       </nav>
     </header>
 
+    <!-- SPOTLIGHT BANNER: FLAGSHIP 3 LAUNCH KIT (POST-REVIEW AUDITED) -->
+    <section id="flagship-launch-kit" class="scroll-mt-24 glass-card p-5 md:p-7 mb-12 border-t-2 border-t-brand-amber">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 mb-6 border-b border-brand-border">
+        <div>
+          <div class="flex flex-wrap items-center gap-2 mb-1.5">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-brand-amber font-bold">
+              25 Nov 2026 Outside-Review Recommended Sequence
+            </span>
+            <span class="px-2 py-0.5 rounded font-mono text-[10px] bg-emerald-500/15 text-emerald-300 border border-emerald-400/35">
+              Signed Provenance · Self-Checked
+            </span>
+          </div>
+          <h2 class="font-display text-2xl md:text-3xl font-bold text-brand-white m-0">
+            Flagship 3 Launch Kit <span class="text-emerald-300">(Post-Review Audited)</span>
+          </h2>
+          <p class="font-body text-sm text-brand-slate max-w-3xl mt-1.5 mb-0">
+            Our three narrowest, externally checkable empirical benchmarks—ready for 1-click Medium canonical import (<code class="font-mono text-brand-cyan">medium.com/p/import</code> &rarr; <code class="font-mono text-emerald-300">open-interface-engineering</code>), native <code class="font-mono text-brand-amber">9:16 60fps</code> TikTok posting, and automatic RSS-triggered 5-post X threads.
+          </p>
+        </div>
+        <div class="font-mono text-[11px] text-brand-slate bg-[#0b1020] p-3 rounded-xl border border-brand-border">
+          <div><strong class="text-brand-cyan">Step 1:</strong> Click <em>Copy Blog URL + Import</em> &rarr; paste in Medium</div>
+          <div><strong class="text-brand-amber">Step 2:</strong> Add to <code class="text-emerald-300">open-interface-engineering</code> + 5 tags</div>
+          <div><strong class="text-emerald-300">Step 3:</strong> <code class="text-brand-white">openie-medium-x-sync.timer</code> posts X thread</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        {flagships.map((f: any) => (
+          <div class="p-4 rounded-2xl border border-brand-border bg-[#0b1020] flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+                <span class="font-mono text-[11px] font-bold text-brand-amber">
+                  Flagship #{f.rank} · `{f.id}`
+                </span>
+                <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/30">
+                  {f.evidence_badge}
+                </span>
+              </div>
+
+              <h3 class="font-display text-lg font-bold text-brand-white leading-snug mb-2">
+                {f.flagship_title}
+              </h3>
+
+              <p class="font-body text-xs text-brand-slate leading-relaxed mb-3">
+                {f.narrow_claim}
+              </p>
+
+              <div class="p-2.5 rounded-lg bg-[#070b16] border border-brand-border/80 font-mono text-[10.5px] space-y-1.5 mb-3">
+                <div>
+                  <span class="text-brand-gray">Medium Import (`rel="canonical"`):</span>{' '}
+                  <a href={f.medium_import_url} target="_blank" rel="noopener noreferrer" class="text-brand-cyan break-all no-underline hover:underline">
+                    {f.medium_import_url}
+                  </a>
+                </div>
+                <div>
+                  <span class="text-brand-gray">5 Medium Tags (`{f.medium_publication}`):</span>{' '}
+                  <span class="text-emerald-300">{(f.medium_tags ?? []).join(', ')}</span>
+                </div>
+                <div class="flex flex-wrap gap-x-3 gap-y-1 pt-1 border-t border-brand-border/50">
+                  <a href={`/papers/${f.id}/`} class="text-brand-amber no-underline hover:underline">Primary Paper →</a>
+                  <a href={f.public_repo_url} target="_blank" rel="noopener noreferrer" class="text-emerald-300 no-underline hover:underline">GitHub Repo ↗</a>
+                  <a href={f.replication_kit_url} target="_blank" rel="noopener noreferrer" class="text-brand-cyan no-underline hover:underline">1-Cmd Replicate ↗</a>
+                  {f.companion_url && (
+                    <a href={f.companion_url} target="_blank" rel="noopener noreferrer" class="text-brand-light no-underline hover:underline">
+                      {f.companion_label ?? 'Companion'} ↗
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-2 pt-2 border-t border-brand-border/60">
+              <button
+                type="button"
+                data-flagship-import={f.medium_import_url}
+                class="flagship-import-btn w-full font-mono text-xs px-3 py-2 rounded-lg bg-emerald-400 text-[#06121a] font-bold cursor-pointer border-none hover:opacity-90"
+              >
+                ⚡ Copy Blog URL + Open medium.com/p/import ↗
+              </button>
+              <div class="grid grid-cols-3 gap-1.5">
+                <a
+                  href={`/media/tv/tiktok/${f.id}-tiktok.mp4`}
+                  download
+                  class="text-center font-mono text-[11px] px-2 py-1.5 rounded-lg border border-emerald-400/40 text-emerald-300 no-underline hover:bg-emerald-500/15"
+                >
+                  ⬇ 9:16 MP4
+                </a>
+                <button
+                  type="button"
+                  data-flagship-x={f.id}
+                  class="flagship-copy-x-btn font-mono text-[11px] px-2 py-1.5 rounded-lg border border-brand-amber/40 text-brand-amber bg-transparent cursor-pointer hover:bg-brand-amber/15"
+                >
+                  Copy 5 X Posts
+                </button>
+                <button
+                  type="button"
+                  data-flagship-load={f.id}
+                  class="flagship-load-btn font-mono text-[11px] px-2 py-1.5 rounded-lg border border-brand-cyan/40 text-brand-cyan bg-transparent cursor-pointer hover:bg-brand-cyan/15"
+                >
+                  Workbench ↓
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
     <!-- SECTION 1: INTERACTIVE 28-STUDY WORKBENCH (9:16 TIKTOK + 5-POST X THREAD + MEDIUM CANONICAL) -->
     <section id="interactive-studio" class="scroll-mt-24 glass-card p-5 md:p-7 mb-12 border-t-2 border-t-emerald-400">
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 mb-6 border-b border-brand-border">
         <div>
           <div class="font-mono text-[11px] uppercase tracking-wider text-emerald-300 mb-1">
-            Single Canonical Source → Synchronized Short-Form, Thread, &amp; Long-Form Projections
+            Post-Review Audited Source → Synchronized Short-Form, Thread, &amp; Canonical Blog/Medium Projections
           </div>
           <h2 class="font-display text-2xl md:text-3xl font-bold text-brand-white m-0">
             9:16 TikTok Snackable + <span class="text-brand-amber">X (Twitter)</span> ↔ <span class="text-brand-cyan">Medium</span> Studio
@@ -160,7 +294,7 @@ const clientPayload = JSON.stringify({
           >
             {enrichedStudies.map((st) => (
               <option value={st.id} selected={st.id === initialStudy.id}>
-                {st.short_title} ({st.category})
+                {st.short_title} ({st.energy_cost_j.evidence_class})
               </option>
             ))}
           </select>
@@ -211,11 +345,18 @@ const clientPayload = JSON.stringify({
                 ⬇ Download 9:16 MP4
               </a>
               <a
+                id="syn-vtt-tiktok"
+                href={initialStudy.tiktok_real.vtt_url}
+                class="font-mono text-xs px-2.5 py-2 rounded-lg border border-brand-border text-brand-light no-underline hover:border-emerald-400"
+              >
+                .vtt
+              </a>
+              <a
                 id="syn-json-tiktok"
                 href={initialStudy.tiktok.bundle_uri}
-                class="font-mono text-xs px-3 py-2 rounded-lg border border-brand-border text-brand-light no-underline hover:border-emerald-400"
+                class="font-mono text-xs px-2.5 py-2 rounded-lg border border-brand-border text-brand-light no-underline hover:border-emerald-400"
               >
-                API v2 JSON
+                JSON
               </a>
             </div>
             <button
@@ -223,12 +364,12 @@ const clientPayload = JSON.stringify({
               type="button"
               class="w-full font-mono text-xs px-3 py-2 rounded-lg border border-emerald-400/45 text-emerald-200 hover:bg-emerald-500/15 cursor-pointer bg-transparent"
             >
-              Copy Ready-to-Post TikTok Caption + Hashtags
+              Copy Post-Review TikTok Caption + Hashtags
             </button>
             <div class="p-2.5 rounded-lg bg-[#0b1020] border border-brand-border font-mono text-[10.5px] text-brand-slate leading-relaxed">
-              <div><strong class="text-emerald-300">Safe Zone Verified:</strong> x: 56..924, y: 164..1485 (clears TikTok top search bar, right action rail, &amp; bottom marquee)</div>
+              <div><strong class="text-emerald-300">Safe Zone Checked:</strong> x: 56..924, y: 164..1485 (clears TikTok search bar, right action rail &amp; bottom marquee)</div>
               <div id="syn-tiktok-meta" class="mt-1 text-brand-gray">
-                Duration: {initialStudy.tiktok_real.duration_s}s · AIGC Studio Voice Disclosed (`is_aigc: true`)
+                Duration: {initialStudy.tiktok_real.duration_s}s · Signed Provenance · Self-Checked · AIGC Voice (`is_aigc: true`)
               </div>
             </div>
           </div>
@@ -238,7 +379,7 @@ const clientPayload = JSON.stringify({
         <div class="lg:col-span-4 glass-card p-4 border border-brand-amber/30">
           <div class="flex items-center justify-between gap-2 mb-3">
             <span class="font-mono text-[11px] uppercase tracking-wider text-brand-amber font-semibold">
-              𝕏 5-Post Verification Thread
+              𝕏 5-Post Thread · Signed · Self-Checked
             </span>
             <span id="syn-x-max-badge" class="font-mono text-[10px] px-2 py-0.5 rounded bg-brand-amber/15 text-brand-amber border border-brand-amber/30">
               Max {initialStudy.x_thread.max_weighted_chars}/280 Chars · 0 URLs in #1
@@ -295,7 +436,7 @@ const clientPayload = JSON.stringify({
         <div class="lg:col-span-4 glass-card p-4 border border-brand-cyan/30">
           <div class="flex items-center justify-between gap-2 mb-3">
             <span class="font-mono text-[11px] uppercase tracking-wider text-brand-cyan font-semibold">
-              Medium Canonical Essay + YAML
+              Medium Canonical Import + YAML
             </span>
             <span id="syn-med-stats" class="font-mono text-[10px] px-2 py-0.5 rounded bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/30">
               {initialStudy.medium.word_count} words · {initialStudy.medium.reading_time_min} min read
@@ -311,36 +452,49 @@ const clientPayload = JSON.stringify({
                 @openie ↗
               </a>
             </div>
+
             <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray mb-1">
-              Canonical Primary Source (`rel="canonical"`)
+              Medium 1-Click Canonical Import URL (`rel="canonical"`)
             </div>
             <a
-              id="syn-med-canon"
-              href={initialStudy.paper_url}
-              class="font-mono text-xs text-brand-cyan break-all no-underline hover:underline"
+              id="syn-med-import-url"
+              href={initialStudy.medium.medium_import_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-mono text-xs text-brand-amber break-all no-underline hover:underline font-semibold"
             >
-              {initialStudy.medium.canonical_source_url}
+              {initialStudy.medium.medium_import_url}
             </a>
-            <div class="mt-2 font-mono text-[10px] uppercase tracking-wider text-brand-gray mb-1">
-              Medium 1-Click Story Import URL (`medium.com/p/import`)
+
+            <div class="mt-2 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[10.5px]">
+              <a id="syn-med-paper" href={initialStudy.paper_url} class="text-brand-cyan no-underline hover:underline">
+                Primary Paper →
+              </a>
+              <a id="syn-med-replicate" href={initialStudy.replication_kit_url} target="_blank" rel="noopener noreferrer" class="text-emerald-300 no-underline hover:underline">
+                1-Cmd Replicate ↗
+              </a>
+              <a href={VERIFICATION_URL} target="_blank" rel="noopener noreferrer" class="text-brand-slate no-underline hover:underline">
+                Verification ↗
+              </a>
             </div>
-            <div class="flex items-center gap-2">
-              <code id="syn-med-import-url" class="font-mono text-[11px] text-brand-amber break-all">
-                {`${SITE}${initialStudy.medium.canonical_import_uri}`}
-              </code>
+
+            <div class="mt-2 font-mono text-[10px] text-brand-slate">
+              <span class="text-brand-gray">5 Medium Tags:</span>{' '}
+              <span id="syn-med-tags" class="text-emerald-300">{(initialStudy.medium.tags ?? []).join(', ')}</span>
             </div>
+
             <button
               id="syn-launch-medium-import"
               type="button"
               class="mt-2.5 w-full font-mono text-xs px-3 py-2 rounded-lg bg-emerald-400 text-[#06121a] font-bold cursor-pointer border-none hover:opacity-90"
             >
-              ⚡ Copy Import URL + Open medium.com/p/import ↗
+              ⚡ Copy Blog Canonical URL + Open medium.com/p/import ↗
             </button>
           </div>
 
           <pre
             id="syn-med-preview"
-            class="p-3 rounded-xl border border-brand-border bg-[#0b1020] whitespace-pre-wrap font-mono text-[11px] text-brand-light leading-relaxed max-h-[340px] overflow-y-auto m-0"
+            class="p-3 rounded-xl border border-brand-border bg-[#0b1020] whitespace-pre-wrap font-mono text-[11px] text-brand-light leading-relaxed max-h-[320px] overflow-y-auto m-0"
           >{initialStudy.medium_markdown}</pre>
 
           <div class="mt-3.5 grid grid-cols-2 gap-2">
@@ -356,14 +510,14 @@ const clientPayload = JSON.stringify({
               type="button"
               class="font-mono text-xs px-3 py-2 rounded-lg border border-brand-cyan/45 text-brand-cyan hover:bg-brand-cyan/15 cursor-pointer bg-transparent"
             >
-              Copy Import URL
+              Copy Blog Import URL
             </button>
             <a
               id="syn-open-med-html"
               href={initialStudy.medium.canonical_import_uri}
               class="text-center font-mono text-xs px-3 py-2 rounded-lg border border-brand-border text-brand-light no-underline hover:border-brand-cyan"
             >
-              Open Canonical Essay →
+              Local Import Mirror →
             </a>
             <a
               id="syn-open-yaml"
@@ -380,7 +534,7 @@ const clientPayload = JSON.stringify({
     <!-- SECTION 2: BIDIRECTIONAL X <-> MEDIUM AUTOMATION ARCHITECTURE -->
     <section id="x-medium-automation" class="scroll-mt-24 mb-12">
       <div class="mb-5">
-        <span class="section-label">Deterministic Closed Loop · openie_syndicate</span>
+        <span class="section-label">Deterministic Closed Loop · openie_syndicate · Signed Provenance · Self-Checked</span>
         <h2 class="font-display text-2xl md:text-3xl font-bold text-brand-white mt-1">
           How <span class="text-brand-amber">X (Twitter)</span> ↔ <span class="text-brand-cyan">Medium</span> Bidirectional Automation Works
         </h2>
@@ -389,13 +543,13 @@ const clientPayload = JSON.stringify({
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div class="glass-card p-5 border-t-2 border-t-brand-amber">
           <div class="font-mono text-xs text-brand-amber font-bold mb-2">
-            Flow 1 · Canonical WAI1 → Medium + X Pair
+            Flow 1 · Post-Review Blog Dossier → Medium Canonical Import
           </div>
           <p class="font-body text-sm text-brand-slate leading-relaxed mb-3">
-            `scripts/syndicate.py --mode publish` publishes (or stages) the `CC0-1.0` Medium essay with `canonicalUrl` pointing to `research.openie.dev/papers/&lt;id&gt;/`, injects the live `medium.com` URL into Post 5 of the 5-tweet X bundle, uploads the `9:16` snackable MP4 via RFC 5849 OAuth 1.0a chunked media upload on Post 1 (zero external URLs in Post 1 for full feed reach), chains Posts 2–5, and resolves `&#123;&#123;X_THREAD_URL&#125;&#125;` in the Medium backlink slot.
+            Paste `https://blog.openie.dev/posts/&lt;slug&gt;/` into `https://medium.com/p/import` and publish under `medium.com/open-interface-engineering` with the 5 curated tags. Medium automatically records `&lt;link rel="canonical"&gt;` back to `blog.openie.dev/posts/&lt;slug&gt;/` while preserving links to the primary research paper (`research.openie.dev/papers/&lt;slug&gt;/`) and 1-command GitHub replication kit.
           </p>
           <div class="font-mono text-[11px] text-brand-cyan">
-            Fallback when Medium API token is absent: `/feeds/medium.xml` + `/syndication/medium/&lt;id&gt;/` (`&lt;link rel="canonical"&gt;`).
+            Mirror &amp; RSS feed also live at `/feeds/medium.xml` + `/syndication/medium/&lt;slug&gt;/`.
           </div>
         </div>
 
@@ -404,7 +558,7 @@ const clientPayload = JSON.stringify({
             Flow 2 · Live Medium RSS Watcher (`open-interface-engineering` &amp; `@openie`) → X
           </div>
           <p class="font-body text-sm text-brand-slate leading-relaxed mb-3">
-            Every 15 minutes, our systemd timer polls `https://medium.com/feed/open-interface-engineering` and `https://medium.com/feed/@openie`, checks the `BLAKE3` `SyndicationLedger` so no essay is ever tweeted twice, matches OpenIE canonical links (or titles) to their verified 5-post `9:16` video thread, and posts (or queues) the thread linking directly to your live Medium story.
+            Every 15 minutes, `openie-medium-x-sync.timer` polls `https://medium.com/feed/open-interface-engineering` and `https://medium.com/feed/@openie`, checks the `BLAKE3` `SyndicationLedger` so no essay is ever tweeted twice, matches the canonical `blog.openie.dev/posts/&lt;slug&gt;/` URL (or title) to its post-review-audited 5-post `9:16` video thread, and posts the thread with `Signed Provenance · Self-Checked` and replication links.
           </p>
           <div class="font-mono text-[11px] text-emerald-300">
             Zero Medium API token needed — publishing on Medium triggers X automatically.
@@ -416,7 +570,7 @@ const clientPayload = JSON.stringify({
             Flow 3 · X Self-Reply Threads → Medium + Root Reply
           </div>
           <p class="font-body text-sm text-brand-slate leading-relaxed mb-3">
-            `scripts/syndicate.py --mode sync-x-to-medium` reads X timeline tweets (`GET /2/users/&#123;id&#125;/tweets` or 6h Rung Radar pulses), filters strictly to author self-replies, compiles multi-tweet threads into an illustrated `CC0-1.0` Medium digest preserving `canonicalUrl` + epistemic energy tags, publishes to Medium, and replies on the X thread root with the live Medium link.
+            `scripts/syndicate.py --mode sync-x-to-medium` reads X timeline tweets (`GET /2/users/&#123;id&#125;/tweets`), filters strictly to author self-replies, compiles multi-tweet threads into an illustrated `CC0-1.0` Medium digest preserving `canonicalUrl`, epistemic tags (`[T]`/`[E]`/`[M]`/`[S]`), and `Signed Provenance · Self-Checked` disclosures, and replies on the X thread root.
           </p>
           <div class="font-mono text-[11px] text-brand-amber">
             Tested against official RFC 5849 OAuth 1.0a &amp; X 23-char URL weight vectors.
@@ -488,7 +642,7 @@ const clientPayload = JSON.stringify({
     </section>
   </div>
 
-  <script is:inline define:vars={{ clientPayload, SITE }}>
+  <script is:inline define:vars={{ clientPayload }}>
   (function () {
     const DATA = JSON.parse(clientPayload);
     const BY_ID = Object.fromEntries((DATA.studies || []).map((s) => [s.id, s]));
@@ -497,6 +651,7 @@ const clientPayload = JSON.stringify({
     const videoEl = document.getElementById('syn-tiktok-video');
     const trackEl = document.getElementById('syn-tiktok-track');
     const dlTiktokEl = document.getElementById('syn-dl-tiktok');
+    const vttTiktokEl = document.getElementById('syn-vtt-tiktok');
     const jsonTiktokEl = document.getElementById('syn-json-tiktok');
     const copyTiktokBtn = document.getElementById('syn-copy-tiktok-caption');
     const tiktokMetaEl = document.getElementById('syn-tiktok-meta');
@@ -508,8 +663,10 @@ const clientPayload = JSON.stringify({
     const xJsonEl = document.getElementById('syn-x-json');
 
     const medStatsEl = document.getElementById('syn-med-stats');
-    const medCanonEl = document.getElementById('syn-med-canon');
     const medImportUrlEl = document.getElementById('syn-med-import-url');
+    const medPaperEl = document.getElementById('syn-med-paper');
+    const medReplicateEl = document.getElementById('syn-med-replicate');
+    const medTagsEl = document.getElementById('syn-med-tags');
     const medPreviewEl = document.getElementById('syn-med-preview');
     const copyMedMdBtn = document.getElementById('syn-copy-med-md');
     const copyImportBtn = document.getElementById('syn-copy-import-url');
@@ -517,10 +674,16 @@ const clientPayload = JSON.stringify({
     const openMedHtmlEl = document.getElementById('syn-open-med-html');
     const openYamlEl = document.getElementById('syn-open-yaml');
 
-    let activeId = selectEl ? selectEl.value : 'communication-avalanche';
+    let activeId = selectEl ? selectEl.value : 'deterministic-null';
 
     function esc(s) {
       return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function formatXThreadText(st) {
+      return (st.x_thread.posts || [])
+        .map((p) => '--- Post ' + p.position + '/5 (' + p.weighted_chars + '/280) ---\n' + p.text)
+        .join('\n\n');
     }
 
     function renderStudy(studyId, autoplay) {
@@ -538,10 +701,11 @@ const clientPayload = JSON.stringify({
         if (autoplay) videoEl.play().catch(() => {});
       }
       if (dlTiktokEl) dlTiktokEl.href = st.tiktok_real.video_url;
+      if (vttTiktokEl) vttTiktokEl.href = st.tiktok_real.vtt_url;
       if (jsonTiktokEl) jsonTiktokEl.href = st.tiktok.bundle_uri;
       if (tiktokMetaEl) {
         tiktokMetaEl.textContent =
-          'Duration: ' + st.tiktok_real.duration_s + 's · AIGC Studio Voice Disclosed (is_aigc: true)';
+          'Duration: ' + st.tiktok_real.duration_s + 's · Signed Provenance · Self-Checked · AIGC Voice (is_aigc: true)';
       }
 
       // 2. X 5-post thread column
@@ -587,12 +751,14 @@ const clientPayload = JSON.stringify({
         medStatsEl.textContent =
           st.medium.word_count + ' words · ' + st.medium.reading_time_min + ' min read';
       }
-      if (medCanonEl) {
-        medCanonEl.href = st.paper_url;
-        medCanonEl.textContent = st.medium.canonical_source_url;
+      const importUrl = st.medium.medium_import_url || ('https://blog.openie.dev/posts/' + st.id + '/');
+      if (medImportUrlEl) {
+        medImportUrlEl.href = importUrl;
+        medImportUrlEl.textContent = importUrl;
       }
-      const importUrl = SITE + st.medium.canonical_import_uri;
-      if (medImportUrlEl) medImportUrlEl.textContent = importUrl;
+      if (medPaperEl) medPaperEl.href = st.paper_url;
+      if (medReplicateEl) medReplicateEl.href = st.replication_kit_url;
+      if (medTagsEl) medTagsEl.textContent = (st.medium.tags || []).join(', ');
       if (medPreviewEl) medPreviewEl.textContent = st.medium_markdown;
       if (openMedHtmlEl) openMedHtmlEl.href = st.medium.canonical_import_uri;
       if (openYamlEl) openYamlEl.href = st.medium.blog_manifest_uri;
@@ -609,9 +775,9 @@ const clientPayload = JSON.stringify({
       const st = BY_ID[activeId];
       if (!st) return;
       navigator.clipboard?.writeText(st.tiktok_real.tiktok_caption || '').then(() => {
-        copyTiktokBtn.textContent = 'Copied TikTok Caption!';
+        copyTiktokBtn.textContent = 'Copied Post-Review TikTok Caption!';
         setTimeout(() => {
-          copyTiktokBtn.textContent = 'Copy Ready-to-Post TikTok Caption + Hashtags';
+          copyTiktokBtn.textContent = 'Copy Post-Review TikTok Caption + Hashtags';
         }, 1600);
       });
     });
@@ -619,10 +785,7 @@ const clientPayload = JSON.stringify({
     copyXBtn?.addEventListener('click', () => {
       const st = BY_ID[activeId];
       if (!st) return;
-      const joined = (st.x_thread.posts || [])
-        .map((p) => '--- Post ' + p.position + '/5 (' + p.weighted_chars + '/280) ---\n' + p.text)
-        .join('\n\n');
-      navigator.clipboard?.writeText(joined).then(() => {
+      navigator.clipboard?.writeText(formatXThreadText(st)).then(() => {
         copyXBtn.textContent = 'Copied 5-Post Thread!';
         setTimeout(() => {
           copyXBtn.textContent = 'Copy All 5 X Posts';
@@ -644,11 +807,11 @@ const clientPayload = JSON.stringify({
     copyImportBtn?.addEventListener('click', () => {
       const st = BY_ID[activeId];
       if (!st) return;
-      const url = SITE + st.medium.canonical_import_uri;
+      const url = st.medium.medium_import_url || ('https://blog.openie.dev/posts/' + st.id + '/');
       navigator.clipboard?.writeText(url).then(() => {
-        copyImportBtn.textContent = 'Copied URL!';
+        copyImportBtn.textContent = 'Copied Blog URL!';
         setTimeout(() => {
-          copyImportBtn.textContent = 'Copy Import URL';
+          copyImportBtn.textContent = 'Copy Blog Import URL';
         }, 1600);
       });
     });
@@ -656,13 +819,50 @@ const clientPayload = JSON.stringify({
     launchImportBtn?.addEventListener('click', () => {
       const st = BY_ID[activeId];
       if (!st) return;
-      const url = SITE + st.medium.canonical_import_uri;
+      const url = st.medium.medium_import_url || ('https://blog.openie.dev/posts/' + st.id + '/');
       navigator.clipboard?.writeText(url).catch(() => {});
-      launchImportBtn.textContent = '✓ URL Copied — Paste (Cmd+V) in Medium Tab!';
+      launchImportBtn.textContent = '✓ Copied ' + url + ' — Paste in Medium!';
       window.open('https://medium.com/p/import', '_blank', 'noopener,noreferrer');
       setTimeout(() => {
-        launchImportBtn.textContent = '⚡ Copy Import URL + Open medium.com/p/import ↗';
+        launchImportBtn.textContent = '⚡ Copy Blog Canonical URL + Open medium.com/p/import ↗';
       }, 3200);
+    });
+
+    document.querySelectorAll('.flagship-import-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const url = btn.getAttribute('data-flagship-import') || '';
+        navigator.clipboard?.writeText(url).catch(() => {});
+        const orig = btn.textContent;
+        btn.textContent = '✓ Blog URL Copied — Paste in Medium!';
+        window.open('https://medium.com/p/import', '_blank', 'noopener,noreferrer');
+        setTimeout(() => {
+          btn.textContent = orig;
+        }, 2800);
+      });
+    });
+
+    document.querySelectorAll('.flagship-copy-x-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-flagship-x') || '';
+        const st = BY_ID[id];
+        if (!st) return;
+        const orig = btn.textContent;
+        navigator.clipboard?.writeText(formatXThreadText(st)).then(() => {
+          btn.textContent = '✓ Copied!';
+          setTimeout(() => {
+            btn.textContent = orig;
+          }, 1800);
+        });
+      });
+    });
+
+    document.querySelectorAll('.flagship-load-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-flagship-load') || '';
+        if (!BY_ID[id]) return;
+        renderStudy(id, false);
+        document.getElementById('interactive-studio')?.scrollIntoView({ behavior: 'smooth' });
+      });
     });
 
     const qp = new URLSearchParams(window.location.search);

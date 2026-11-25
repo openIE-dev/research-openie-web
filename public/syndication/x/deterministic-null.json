@@ -1,29 +1,35 @@
 {
-  "schema": "openie.x_thread_bundle.v1",
+  "schema": "openie.x_thread_bundle.v2",
   "study_id": "deterministic-null",
   "canonical_id": "blake3:tv:d3018098f6b08132cb47527bca323e5c8236e9193f1375feffa9ebd20c21305c",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
   "license": "CC0-1.0",
   "post_count": 5,
-  "max_weighted_chars": 209,
+  "max_weighted_chars": 269,
   "card_video_uri": "/media/tv/tiktok/deterministic-null-tiktok.mp4",
   "fallback_video_uri": "/media/tv/films/deterministic-null-15s.mp4",
-  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/deterministic-null/",
+  "medium_crosslink_uri": "https://blog.openie.dev/posts/deterministic-null/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/deterministic-null/",
   "canonical_paper_url": "https://research.openie.dev/papers/deterministic-null/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+  "public_repo_url": "https://github.com/openIE-dev/deterministic-null",
   "zero_urls_in_post_1": true,
   "posts": [
     {
       "position": 1,
       "role": "hook_video_card",
-      "text": "Deterministic Null\n\nWhy AI benchmarks need a placebo control group, and where giant models actually beat a simple lookup table.\n\n[9 of 10 Bounded Ties · 3.59x Repeat Energy Cut]",
-      "weighted_chars": 177,
-      "raw_chars": 177,
+      "text": "The Deterministic Null [E · reported_j]\n\nAgainst a SHA-256 pre-committed zero-model lookup arm (Shape D, bit-exact in Rust/C++20/Go/Julia/Python), 6 LLMs tied or trailed on 9/10 bounded template cells (N=2,840) — yet led +45.8 to +95.0 pp on open suites.",
+      "weighted_chars": 254,
+      "raw_chars": 254,
       "urls": [],
       "in_reply_to_position": null,
       "media": {
         "video_uri": "/media/tv/tiktok/deterministic-null-tiktok.mp4",
         "fallback_video_uri": "/media/tv/films/deterministic-null-15s.mp4",
-        "poster_uri": "/media/tv/posters/deterministic-null-poster.jpg",
-        "vtt_uri": "/media/tv/captions/deterministic-null-15s.vtt",
+        "poster_uri": "/media/tv/tiktok/deterministic-null-tiktok.jpg",
+        "vtt_uri": "/media/tv/tiktok/deterministic-null-tiktok.vtt",
         "aspect_ratio": "9:16",
         "resolution": "1080x1920",
         "fps": 60,
@@ -32,43 +38,48 @@
     },
     {
       "position": 2,
-      "role": "plain_points_1_2",
-      "text": "1/3 Most AI benchmarks skip a zero-model control group that tests what simple lookup already solves.\n\n2/3 On bounded math and database tasks, a frozen lookup table matched cloud AI on nine of ten tests.",
-      "weighted_chars": 202,
-      "raw_chars": 202,
+      "role": "methods_and_sample_bounds",
+      "text": "1/2 Cold generalization vs bounded templates:\n- Track-A (N=2,840, K_eff=6-12 saturation): 9/10 single-turn ties vs zero-model Shape D\n- Open Track-B (BFCL v3, tau-bench, BigCodeBench, N=1,190): LLMs led +45.83 to +95.00 pp\n- SWE-bench repos: Opus 5.5 5/6 vs Shape D 0/6",
+      "weighted_chars": 269,
+      "raw_chars": 269,
       "urls": [],
       "in_reply_to_position": 1
     },
     {
       "position": 3,
-      "role": "plain_point_3_and_energy",
-      "text": "3/3 On open coding tasks AI leaped ahead, while caching verified answers cut repeat energy three point six times.\n\nEnergy class: reported_j (1.77 µJ chip counter; board_metered=false, never mixed with shunts).",
-      "weighted_chars": 209,
-      "raw_chars": 209,
+      "role": "telemetry_and_scope_limits",
+      "text": "2/2 Scope & limits:\n- t=2 replay (5/6 at 0 calls) is exact hash-addressed recall, NOT unseen generalization; AST/spec edits invalidate cache\n- Zipf(0.85) cut local M5 Max L3 reported_j 3.59x (1.77 uJ mmap probe; measured_j=null, cloud API watts unmetered)",
+      "weighted_chars": 255,
+      "raw_chars": 255,
       "urls": [],
       "in_reply_to_position": 2
     },
     {
       "position": 4,
-      "role": "machine_verification_gate",
-      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E] · WAI1 blake3:d3018098f6b0… · CC0-1.0",
-      "weighted_chars": 203,
-      "raw_chars": 200,
-      "urls": [],
+      "role": "signed_provenance_self_checked",
+      "text": "Signed Provenance · Self-Checked (human_in_gate=false; not peer-reviewed):\n- Evidence: [E]/[M]/[S] · WAI1 blake3:d3018098f6b0...\n- Verification: https://blog.openie.dev/verification/\n- Glossary: https://blog.openie.dev/glossary/",
+      "weighted_chars": 204,
+      "raw_chars": 228,
+      "urls": [
+        "https://blog.openie.dev/verification/",
+        "https://blog.openie.dev/glossary/"
+      ],
       "in_reply_to_position": 3
     },
     {
       "position": 5,
-      "role": "bidirectional_medium_and_paper_bridge",
-      "text": "Read & verify Deterministic Null (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/deterministic-null/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/deterministic-null/",
-      "weighted_chars": 162,
-      "raw_chars": 234,
+      "role": "canonical_blog_paper_and_replicate",
+      "text": "Read & replicate Deterministic Null Baseline (CC0-1.0 / Apache-2.0):\n- Essay: https://blog.openie.dev/posts/deterministic-null/\n- Paper: https://research.openie.dev/papers/deterministic-null/\n- Repo: https://github.com/openIE-dev/deterministic-null\n- 1-cmd kit: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+      "weighted_chars": 203,
+      "raw_chars": 339,
       "urls": [
-        "https://research.openie.dev/syndication/medium/deterministic-null/",
-        "https://research.openie.dev/papers/deterministic-null/"
+        "https://blog.openie.dev/posts/deterministic-null/",
+        "https://research.openie.dev/papers/deterministic-null/",
+        "https://github.com/openIE-dev/deterministic-null",
+        "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
       ],
       "in_reply_to_position": 4
     }
   ],
-  "content_blake3": "3ac41d93db705acb062fb4e8436c80de0684c45bb198585151d5a8e272d9d253"
+  "content_blake3": "993a5f0292afe07a2676f13dd8632992d19514c91befab860a95689c236a2ff0"
 }

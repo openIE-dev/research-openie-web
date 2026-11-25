@@ -1,75 +1,91 @@
-# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+# OpenIE Post-Review Audited Blog Syndication Manifest (CC0-1.0)
 slug: "eco-database"
 
 metadata:
-  title: "Sub-Microsecond State, Memory, and Verifiable Logs"
-  description: "How tamper-evident logs, dual-time indexes, and zero-copy memory maps turn expensive recomputation into sub-microsecond reads."
-  date: "2026-11-24"
-  author: "David Charlot, Open Interface Engineering"
+  title: "The Data Systems Stack (data.openie.dev): 10-Axis Coordinate Taxonomy (1.26M Cells), DNULLMM1 mmap Scope, and Honest JouleDB BSL-1.1 Status"
+  description: "Separates data.openie.dev’s unmetered 10-axis taxonomy (1,260,000 cells + illustrative canvas) from DNULLMM1’s 34-record mmap lookup (0.325 us / 1.77 uJ reported_j) and discloses that JouleDB is BSL-1.1 with private core source and zero DuckDB/ClickHouse benchmarks here."
+  date: "2026-11-25"
+  author: "Open Interface Engineering"
   category: "engineering"
-  tags: ["eco-database", "engineering", "open-science", "cc0", "reported-j"]
+  tags: ["databases", "storage-engines", "data-systems", "systems-engineering", "open-science"]
   featured: false
   draft: false
   toc: true
-  canonicalUrl: "https://research.openie.dev/papers/rce/"
+  provenanceStatus: "Signed Provenance · Self-Checked"
+  verificationUrl: "https://blog.openie.dev/verification/"
+  glossaryUrl: "https://blog.openie.dev/glossary/"
+  canonicalBlogUrl: "https://blog.openie.dev/posts/eco-database/"
+  canonicalUrl: "https://blog.openie.dev/posts/eco-database/"
+  primaryPaperUrl: "https://research.openie.dev/papers/rce/"
+  replicationKitUrl: "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
+  publicRepoUrl: "https://github.com/openIE-dev/deterministic-null"
+  energyClass: "reported_j"
   license: "CC0-1.0"
 
 hero:
   image: "eco-database-poster.jpg"
-  alt: "Sub-Microsecond State & Verifiable Logs — 0.325 Microsecond Lookup · 1.77 Microjoules · 0 Drift"
+  alt: "Data Systems Stack — 1.26M-cell 10-axis taxonomy, DNULLMM1 34-record mmap scope, and JouleDB BSL-1.1 disclosure — 10-axis taxonomy (1,260,000 cells, unmetered) · 0.325 us / 1.77 uJ DNULLMM1 34-record mmap probe (M5 Max reported_j) · JouleDB core BSL-1.1/private"
 
 sections:
   - heading: null
     content: |
-      *Canonical Primary Source: [https://research.openie.dev/papers/rce/](https://research.openie.dev/papers/rce/) · Dedicated to the Public Domain (`CC0-1.0`)*
+      *Signed Provenance · Self-Checked (`human_in_gate = false`; [Verification](https://blog.openie.dev/verification/) · [Glossary](https://blog.openie.dev/glossary/)) · Canonical Post-Review Essay: [https://blog.openie.dev/posts/eco-database/](https://blog.openie.dev/posts/eco-database/) · Primary Paper: [https://research.openie.dev/papers/rce/](https://research.openie.dev/papers/rce/)*
 
-      How tamper-evident logs, dual-time indexes, and zero-copy memory maps turn expensive recomputation into sub-microsecond reads.
+      Clarifies three distinct artifacts previously conflated under eco-database: (1) data.openie.dev defines an unmetered 10-axis data-system taxonomy (5·12·4·7·5·7·5·4·6·5 = 1,260,000 discrete cells) with an illustrative HTML5 impedance visualizer; (2) the 0.325 us / 1.771 uJ reading (Apple M5 Max L3 reported_j) comes from POSIX mmap lookups over a static 34-record DNULLMM1 store in rce-jepa—NOT a full transactional/analytical DBMS; and (3) JouleDB (openIE-dev/jouledb) is licensed under BSL-1.1 with its core storage engine in a private internal mirror (crates.io ships an installer stub) and was not benchmarked head-to-head against DuckDB, ClickHouse, or PostgreSQL here.
 
-  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+  - heading: "Key Claims & Evidence Tags"
     content: |
-      1. Conventional software burns needless time and electricity unpacking text and recalculating answers it already solved.
-      2. Immutable fingerprint-chained logs and bitemporal indexes let any machine replay exact past states without guesswork.
-      3. Zero-copy memory-mapped lookup stores turn repeated work into sub-microsecond reads costing under two microjoules.
+      1. **[M · `data.openie.dev` Is a `1,260,000`-Cell Design Taxonomy, Not a DBMS Benchmark]** `data.openie.dev` classifies storage and retrieval engines along **10 orthogonal axes** (`⟨W, S, T, C, D, Q, V, R, N, tau⟩` with cardinalities `5 × 12 × 4 × 7 × 5 × 7 × 5 × 4 × 6 × 5 = 1,260,000` discrete cells), and its interactive `/instrument` animation uses **illustrative unit weights (`0.4, 1.6, 9, 22`)**, not hardware joule readings.
+      2. **[E · Exact Scope of `0.325 us` & `1.77 uJ` (`reported_j`)]** The **`0.3246 us` (`324.6 ns`)** latency and **`1.771 uJ` (`1,771.3 nJ` Apple M5 Max `L3` `ri_energy_nj` `reported_j`)** figure comes from **`40,000` read-only POSIX `mmap` hash probes into a frozen `34`-record `DNULLMM1` binary lookup table** (`rce-jepa` `[B33]`)—demonstrating zero-copy exact-key lookup speed, **not** concurrent SQL joins, MVCC transactions, WAL fsync durability, or OLAP scans.
+      3. **[S/E · Candid `JouleDB` Licensing & Missing External DBMS Baselines]** Companion product **`JouleDB` (`openIE-dev/jouledb`) is licensed under `BSL-1.1`**, its **full core storage-engine source currently lives in a private internal mirror** (the `crates.io` crate is an installer stub rather than full engine source), and **no head-to-head TPC-H, ClickBench, or YCSB joule benchmark against `DuckDB`, `ClickHouse`, `RocksDB`, or `PostgreSQL` is reported here**.
 
-  - heading: "Everyday Analogy & Why It Matters"
+  - heading: "Methods, Baselines & Artifact Scope"
     content: |
-      Software teams usually treat databases, state machines, and memory caches as separate worlds that serialize text back and forth endlessly. Physically, storing a verified answer in aligned memory is simply freezing past computation so no machine ever pays for it twice. Across database dot openie dot dev and data dot openie dot dev, every state change clears a sixty-nine point seven microsecond safety gate before appending to a tamper-evident fingerprint-linked log indexed by both valid world time and recorded write time.
+      - **Hardware & Telemetry**: `DNULLMM1` `mmap` microbenchmark (`rce-jepa`): Apple M5 Max (`128 GB`, macOS `proc_pid_rusage` `ri_energy_nj` `L3` `reported_j`; `measured_j = null`). `data.openie.dev` taxonomy & browser canvas: `unmetered` (`joules = null`).
+      - **Workload & Suite**: `40,000` POSIX `mmap` exact-digest lookups over a frozen `34`-record `DNULLMM1` store (`sha256: d92a57b4...`), paired with the `10`-axis combinatoric impossibility pruning analysis on `data.openie.dev`.
+      - **Baselines Compared**: `DNULLMM1` `mmap` Gear-0 lookup (`1.771 uJ` `reported_j`) vs. cold neural repair generation (`84.25 J` local `35B` `reported_j` in `rce-jepa`). **External DBMS baselines (`DuckDB`, `ClickHouse`, `SQLite`, `RocksDB`): not benchmarked in this study.**
+      - **Runs (N) & Spread**: `N = 40,000` sequential/seeded `mmap` probes (`mean 0.3246 us`, `9,516.5` instructions, `mean 1.771 uJ` `L3` `reported_j`; Spread: per-probe percentile/SD not itemized in aggregate log).
+      - **Cold vs. Warm Scope**: Warm OS page-cached `mmap` over a tiny (`34`-record) immutable file; large out-of-RAM NVMe working sets (`io_uring` / page-fault misses) and write-ahead log `fsync` costs are not exercised.
+      - **Artifact & License**: Taxonomy text (`CC0-1.0`) on `data.openie.dev`; `DNULLMM1` binary reader (`Apache-2.0`) in `openIE-dev/deterministic-null`; **`JouleDB` (`openIE-dev/jouledb`) is `BSL-1.1` with private core mirror and `crates.io` installer stub — externally unreproduced**.
 
-      Reading a verified entry from our zero-copy memory-mapped store took zero point three two five microseconds and one point seven seven microjoules on built-in chip counters, while deterministic logs replayed twenty-five thousand five hundred frames identically across three operating systems. Mapping ten storage and state coordinates onto real joules and microseconds clarifies exactly when to compute fresh and when to read directly from memory.
-
-  - heading: "Inside the Mechanism & Candid Limits"
+  - heading: "Storage–Query Impedance & Classical Database Energy Literature"
     content: |
-      Typical cloud software overwrites database rows in place—permanently destroying exact audit history—while copying and re-parsing the exact same payload across four or five intermediate text buffers on every single network request. When an autonomous software agent or distributed workflow misbehaves, engineers cannot replay the exact world state it actually saw. Careful accountants never erase ink from a bound ledger; they append dated entries linked in strict sequence so any past afternoon's exact balance reconstructs without guesswork, then place direct physical thumb tabs on verified totals so reading a settled figure takes one quick glance with zero manual copying. Our data architecture unites database dot openie dot dev, data dot openie dot dev, state dot openie dot dev, and memory dot openie dot dev across ten shared physical coordinates.
+      The central insight of `data.openie.dev`—that query cost is governed by **storage–workload impedance** (the structural distance between physical layout `S`, such as B-trees, PAX/columnar runs, CSR graphs, or HNSW vectors, and query zone `W`)—builds directly on **Idreos et al.’s *Periodic Table of Data Structures / Data Calculator* (SIGMOD 2018)** and **Stonebraker & Cetintemel’s *"One Size Fits All: An Idea Whose Time Has Come and Gone"* (ICDE 2005)** `[S]`.
 
-      Every state update clears an invariant safety check, appends to a cryptographic fingerprint chain with dual timestamps, and maps directly into aligned virtual memory pages ready for instant hardware reads. Spending sixty-nine point seven microseconds once to check state invariants and seal a versioned commit unlocks millions of subsequent zero-copy reads at zero point three two five microseconds each—turning heavy repeated computation, query planning, and text parsing into tiny, deterministic pointer arithmetic across resident memory. This three-dimensional polyhedron reveals the central cyan state crystal protected inside a transparent memory shell, ringed by six invariant check stations where five emerald gates admit verified state transitions cleanly into the durable log and the sixth rose gate isolates, refuses, and logs any rejected fault. Audited with built-in processor energy counters on quiet test hosts, zero-copy memory-mapped case lookups averaged just one point seven seven microjoules per query without allocating heap memory.
+      Crucially, classical database energy research established important boundary findings that temper naive hardware claims `[S]`: **Harizopoulos, Shah, Meza & Ranganathan (CIDR 2009)** and **Tsirogiannis, Harizopoulos & Shah (SIGMOD 2010)** showed on enterprise servers that **the most time-efficient query plan (e.g., columnar projection or indexed probe over full table scan) is almost always the most energy-efficient database plan** because high server idle power makes runtime minimization dominant `[S]`.
 
-      Replaying fixed-point deterministic state logs across Linux, macOS, and Windows machines yielded zero bit differences across twenty-five thousand five hundred frames. Transparent systems engineering always states its exact physical boundary upfront without marketing spin: sub-microsecond, microjoule lookups hold when working pages sit warm in fast RAM, whereas first-time page faults from cold solid-state drives or remote archival object stores still pay full storage transfer latency and energy.
-
-  - heading: "How Energy Was Metered"
+  - heading: "Separating `DNULLMM1` (`34` Records), `data.openie.dev`, and `JouleDB` (`BSL-1.1`)"
     content: |
-      - **Acquisition Tier**: Chip Energy Counter
-      - **Disclosure**: Built-in processor energy counters and three-OS deterministic replay across 25,500 frames.
-      - **Evidence Class**: `reported_j` (`1.77 µJ (reported_j)`)
-      - **Meter / Formula**: On-chip CPU energy counter for sub-microsecond canonical state lookup
+      To remove any impression that `0.325 us / 1.77 uJ` represents a general-purpose SQL engine beating modern analytical databases `[E]`:
 
-      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+      - **`DNULLMM1` (`Apache-2.0` in `openIE-dev/deterministic-null`):** A compact, immutable `mmap` hash table used as Gear-0 exact-match cache (`34` records in the `1.771 uJ` M5 Max `L3` `reported_j` test) `[E]`.
+
+      - **`JouleDB` (`BSL-1.1` at `openIE-dev/jouledb`):** A commercial/source-restricted database project whose core engine currently resides in a private internal repository (with an installer stub on `crates.io`). Until public reproducible benchmarks against **DuckDB (Raasveldt & Mühleisen, SIGMOD 2019)**, **ClickHouse (Schulze et al., VLDB 2024)**, and **SQLite/RocksDB** are published with open harness scripts, `JouleDB` claims carry **zero externally reproduced empirical weight** on this blog.
+
+  - heading: "Limitations & Open Benchmarks"
+    content: |
+      - **Tiny RAM-resident `mmap` table:** `34` records fit entirely inside Apple M5 Max L1/L2 CPU cache; cold NVMe random 4 KiB reads (`~50–100 us`), `fsync` durability barriers, and vectorized multi-million-row aggregations (`DuckDB` / `ClickHouse`) cost orders of magnitude more time and energy `[M, S]`.
+
+  - heading: "Energy & Telemetry Scope"
+    content: |
+      Only the `34`-record `DNULLMM1` `mmap` probe (`1.771 uJ`) is `reported_j` (`Apple M5 Max L3`, `measured_j = null`); `data.openie.dev`’s `1,260,000`-cell map is `unmetered`.
 
 references:
   - id: 1
-    authors: "David Charlot, Open Interface Engineering"
-    title: "Sub-Microsecond State, Memory, and Verifiable Logs"
+    authors: "Open Interface Engineering"
+    title: "The Data Systems Stack (data.openie.dev): 10-Axis Coordinate Taxonomy (1.26M Cells), DNULLMM1 mmap Scope, and Honest JouleDB BSL-1.1 Status"
     publication: "OpenIE Research"
     year: 2026
     url: "https://research.openie.dev/papers/rce/"
 
 closing:
-  content: |
-    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=eco-database) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
-  cta:
-    primary:
-      text: "Read Primary Study & PDF"
-      url: "https://research.openie.dev/papers/rce/"
-    secondary:
-      text: "Watch on OpenIE Research TV"
-      url: "https://research.openie.dev/tv/?study=eco-database"
-  footer_text: "Summary text dedicated to the public domain under CC0-1.0."
+    content: |
+      Stream the 9:16 60fps vertical cut on [OpenIE Research TV](https://research.openie.dev/tv/?study=eco-database) or run the 1-command replication harness at [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate).
+    cta:
+      primary:
+        text: "Read Canonical Post-Review Dossier"
+        url: "https://blog.openie.dev/posts/eco-database/"
+      secondary:
+        text: "Primary Paper & 1-Command Replication"
+        url: "https://research.openie.dev/papers/rce/"
+    footer_text: "Signed Provenance · Self-Checked (not externally peer-reviewed). Summary text dedicated to the public domain under CC0-1.0."

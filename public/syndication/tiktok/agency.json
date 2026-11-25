@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "agency",
   "canonical_id": "blake3:tv:7da82d901b877b47d94327d99418d995f9ba998d898a17a75f32efebd8f3708f",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/agency/",
+  "canonical_paper_url": "https://research.openie.dev/papers/agency/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/agency-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/agency-15s.mp4",
-    "poster_uri": "/media/tv/posters/agency-poster.jpg",
-    "vtt_uri": "/media/tv/captions/agency-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/agency-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/agency-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 22.3,
     "safe_zone_verified": true,
-    "source_15s_sha256": "30222839a829a8835bcd481098e5822034a8e610d3bddf0b8249e6693364ed2e"
+    "sha256": "09d876cc05c5f7c1b479a403d5d109bbef89033317bd5b0a4fd630c8d674d622"
   },
-  "caption_utf16_chars": 646,
+  "caption_utf16_chars": 846,
+  "caption": "Goal-Holding Agents Under Budget Guards — 36/5,400 pre-fix vs. 0/10,800 post-fix overspends · tight-budget gain did not replicate (CPU counter, reported_j)\n\nAcross 30 Sudoku tasks, Run 1 caught a pre-fix boundary bug: 36 / 5,400 episodes overspent (R-F2). Moving comparison + receipt logging inside the guard cut overspends to 0 / 10,800 (0 / 5,400 per half).\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: reported_j (macOS Darwin ri_energy_nj L3 & Linux RAPL L2 on-chip counters; measured_j = null (no wall meter).)\n• Essay: https://blog.openie.dev/posts/agency/\n• Paper: https://research.openie.dev/papers/agency/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#AiAgents #ComputerScience #Benchmarking #EnergyEfficiency #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "Thermodynamic Bounds & Optimal Tempo (Finish Right First, Then Rank by Joules)\nThree plain truths about what makes a system an agent, why pace matters, and how energy ranks intelligence.\n1) An agent must aim at a goal, act on the world, and stay within an energy budget.\n2) Physics prices every decision, creating one optimal pace between slow idle drain and frantic switching waste.\n3) Among systems that finish a task correctly, the smarter one is whichever spent less energy.\nEnergy class: reported_j (Chip Energy Counter) · CC0-1.0 · https://research.openie.dev/papers/agency/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "Goal-Holding Agents Under Budget Guards — 36/5,400 pre-fix vs. 0/10,800 post-fix overspends · tight-budget gain did not replicate (CPU counter, reported_j)\n\nAcross 30 Sudoku tasks, Run 1 caught a pre-fix boundary bug: 36 / 5,400 episodes overspent (R-F2). Moving comparison + receipt logging inside the guard cut overspends to 0 / 10,800 (0 / 5,400 per half).\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: reported_j (macOS Darwin ri_energy_nj L3 & Linux RAPL L2 on-chip counters; measured_j = null (no wall meter).)\n• Essay: https://blog.openie.dev/posts/agency/\n• Paper: https://research.openie.dev/papers/agency/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#AiAgents #ComputerScience #Benchmarking #EnergyEfficiency #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/agency-tiktok.mp4"
     }
   },
-  "content_blake3": "ff9e33e86e30aa4da29359f76c1c9f40c71958659f41a0fbc3eee7e845180de0"
+  "content_blake3": "33bb3487a560fccc386abfe0288a2353b25f46634cddda41110516e0d7f7dc53"
 }

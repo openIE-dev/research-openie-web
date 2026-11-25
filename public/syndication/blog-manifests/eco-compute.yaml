@@ -1,79 +1,87 @@
-# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+# OpenIE Post-Review Audited Blog Syndication Manifest (CC0-1.0)
 slug: "eco-compute"
 
 metadata:
-  title: "Why Every Bit Pays Joules: The Compute Substrate"
-  description: "Why every digital bit pays real electrical joules—and how power-rail sensors, zero-clock sleep, and lookup circuits cut waste."
-  date: "2026-11-24"
-  author: "David Charlot, Open Interface Engineering"
+  title: "The Compute Stack (compute.openie.dev): 258-Primitive Taxonomy, KV260 Whole-SOM INA260 Scope (11.43 nJ), and Toolchain Status"
+  description: "Maps 258 computational primitives across 33 families on compute.openie.dev, qualifying the 11.43 nJ KV260 whole-SOM INA260 reading (and inconclusive 98 pJ seed delta) from gates.md and separating Thor shunt vs Zen 5 RAPL figures."
+  date: "2026-11-25"
+  author: "Open Interface Engineering"
   category: "energy"
-  tags: ["eco-compute", "energy", "open-science", "cc0", "measured-j"]
+  tags: ["computer-architecture", "fpga", "hardware", "energy-efficiency", "open-science"]
   featured: false
   draft: false
   toc: true
-  canonicalUrl: "https://research.openie.dev/papers/rce-compile/"
+  provenanceStatus: "Signed Provenance · Self-Checked"
+  verificationUrl: "https://blog.openie.dev/verification/"
+  glossaryUrl: "https://blog.openie.dev/glossary/"
+  canonicalBlogUrl: "https://blog.openie.dev/posts/eco-compute/"
+  canonicalUrl: "https://blog.openie.dev/posts/eco-compute/"
+  primaryPaperUrl: "https://research.openie.dev/papers/gates/"
+  replicationKitUrl: "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
+  publicRepoUrl: "https://github.com/openIE-dev/lut-adapt-ai"
+  energyClass: "measured_j"
   license: "CC0-1.0"
 
 hero:
   image: "eco-compute-poster.jpg"
-  alt: "Why Every Bit Pays Joules — 927 Microjoules Shunt Edge · 20x Compile Cut"
+  alt: "Compute Stack — 258-primitive taxonomy and qualified 11.43 nJ KV260 whole-SOM INA260 shunt reading — 258-primitive taxonomy (compute.openie.dev) · anchored by 11.43 nJ/cycle KV260 whole-SOM INA260 shunt (measured_j; 98 pJ seed delta inconclusive)"
 
 sections:
   - heading: null
     content: |
-      *Canonical Primary Source: [https://research.openie.dev/papers/rce-compile/](https://research.openie.dev/papers/rce-compile/) · Dedicated to the Public Domain (`CC0-1.0`)*
+      *Signed Provenance · Self-Checked (`human_in_gate = false`; [Verification](https://blog.openie.dev/verification/) · [Glossary](https://blog.openie.dev/glossary/)) · Canonical Post-Review Essay: [https://blog.openie.dev/posts/eco-compute/](https://blog.openie.dev/posts/eco-compute/) · Primary Paper: [https://research.openie.dev/papers/gates/](https://research.openie.dev/papers/gates/)*
 
-      Why every digital bit pays real electrical joules—and how power-rail sensors, zero-clock sleep, and lookup circuits cut waste.
+      Presents compute.openie.dev as a 258-primitive, 33-family computational taxonomy paired with specific companion hardware anchors: 11,428 pJ/cycle (11.43 nJ, SE = 129 pJ across N = 4 interleaved 25 s passes at 25 MHz) whole-SOM TI INA260 power-slope average on AMD Kria KV260 (with an inconclusive 98 pJ seed delta near the 1.25 mA INA260 step, measured_j in gates.md) and 162.56 nJ/op LUT6 / 927.30 uJ verify shunts on Jetson AGX Thor (measured_j), while noting that JLandauer CLI tooling on compute.openie.dev is not yet released as a public open-source repo.
 
-  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+  - heading: "Key Claims & Evidence Tags"
     content: |
-      1. Every calculation is a physical event where flipping switches on silicon spends real electrical energy in joules.
-      2. Honest hardware audits separate power-rail current sensors from chip counters, while sleeping at zero clock cycles between jobs.
-      3. Single-cycle Boolean lookup circuits replace power-hungry floating-point arithmetic on repeated decisions with tiny hardware steps.
+      1. **[E · Whole-SOM KV260 `INA260` Qualification (`measured_j`)]** Per Critique #5, the **`11,428 pJ` (`11.43 nJ`, `SE = 129 pJ`)** figure referenced across the compute stack is **not** an isolated single-gate transistor reading: it is a **whole-SOM module (`VCC_SOM` `5.04 V`: Cortex-A53 PS + UltraScale+ PL + DDR4 + regulators) TI `INA260` halt-vs-run power-slope average (`+0.2857 W`, `SE = 0.0032 W`)** across **`N = 4` interleaved `25 s` `A/B/A` windows (`~4 Hz` sampling, `~6.25 × 10^8` 8-lane gate cycles/window at `25 MHz`, `~1.43 nJ/lane`)** on AMD Kria KV260—and its companion **`98.0 pJ` (`SE = 30.8 pJ`, `~1.96 mA`)** seed-fabric delta sits near the `INA260` **`1.25 mA` current LSB** and is **inconclusive**.
+      2. **[E · Non-Mixing Separation of Companion Anchors]** Earlier `eco-compute` headlines juxtaposed `927 uJ` (`measured_j` on Jetson AGX Thor `INA3221 VDD_CPU_SOC_MSS` over `50.13 us` for `1 KiB` `BLAKE3+Ed25519` verify in `CTA-E4`) with `20x` (`20.07x` Linux `RAPL` core `reported_j` `librce_rt.rlib` compile cut on AMD Zen 5 in `rce-compile`). Both are now explicitly labeled by host and telemetry class and never combined.
+      3. **[M/S · Taxonomy & `JLandauer` Availability Scope]** `compute.openie.dev` organizes **`258` computational primitives across `33` families** (boolean/wire permutations, fixed-point ALU, associative search, systolic MACs) using published silicon literature (Horowitz 2014) and analytical cost bands; `257` of those `258` portal cells are analytical/literature placements rather than in-house board-shunt measurements, and the `jlandauer` CLI shown on the portal product page is an internal toolchain prototype, not a public `Apache-2.0` package.
 
-  - heading: "Everyday Analogy & Why It Matters"
+  - heading: "Methods, Baselines & Artifact Scope"
     content: |
-      Built-in processor energy counters work like a dashboard fuel estimate—helpful over long trips, yet blind to sub-millisecond bursts and shared background noise. Physical current-shunt sensors sit directly on the circuit-board power rail and measure real electrical draw. On compute dot openie dot dev, we organize two hundred fifty-eight primitives across thirty-three families.
+      - **Hardware & Telemetry**: Hardware anchors from companion papers: AMD Kria KV260 TI `INA260` `VCC_SOM` (`measured_j`, `gates.md`) and NVIDIA Jetson AGX Thor TI `INA3221` `VDD_CPU_SOC_MSS` (`measured_j`, `lut-adapt.md` & `communication-avalanche.md`); `AMD Ryzen AI Max+ 395` `RAPL` (`reported_j`, `rce-compile.md`). Portal `258`-primitive table (`compute.openie.dev/src/data/stack.json`) is analytical/literature (`[M]`/`[S]`).
+      - **Workload & Suite**: `258`-primitive / `33`-family taxonomy on `compute.openie.dev`; KV260 `25 MHz` 8-lane commit gate (`~6.25 × 10^8` cycles/window); Thor `lut6-core` bit-sliced/scalar evaluation and `1 KiB` `BLAKE3+Ed25519` verify.
+      - **Baselines Compared**: KV260 halted vs. `25 MHz` clocked SOM (`A/B/A`); Thor `lut6-core` (`162.56 nJ/op`) vs. `INT8` Micro-MLP (`14,143.46 nJ/op` = `87.00x` CpJ).
+      - **Runs (N) & Spread**: KV260 `INA260`: `N = 4` interleaved `25 s` `A/B/A` passes (`11,428 pJ/cycle`, `SE = 129 pJ`; `98.0 pJ`, `SE = 30.8 pJ` inconclusive). Thor `INA3221`: `4/4` counterbalanced `ABBA` windows (`< 0.06%` GPU rail drift).
+      - **Cold vs. Warm Scope**: Stateless hardware datapaths (`0` dynamic cache in KV260 LUT fabric; deterministic `SRAM`/`BRAM` pages in `lut6-core`).
+      - **Artifact & License**: Web taxonomy public (`compute.openie.dev`, prose `CC0-1.0`); `lut6-core` and `XC7A200T` RTL public (`Apache-2.0` in `openIE-dev/lut-adapt-ai` & `openIE-dev/openie-research-experiments`); `jlandauer` CLI source private.
 
-      First, halt idle clocks until real work arrives; second, compile dynamic code into tight binaries; third, run frozen decisions in single-cycle Boolean lookup circuits. Compiling interpreted validation loops into native machine code cut measured energy twentyfold. On edge modules equipped with inline power-rail current shunts, compiled execution drew nine hundred twenty-seven point three microjoules while paged lookup arrays ran at two hundred fifty megahertz.
-
-      Whether an energy reading comes from a physical wire shunt, a processor counter, or a circuit simulation, stating its exact instrument keeps engineering honest.
-
-  - heading: "Inside the Mechanism & Candid Limits"
+  - heading: "Taxonomy vs. Physical Rail Metering on `compute.openie.dev`"
     content: |
-      High-level software treats loops, text parsing, and wide decimal matrix math as if digital symbols floated completely free of physical matter. Down inside the silicon package, every needless clock tick and wide floating-point multiplier charges and drains millions of microscopic capacitors straight into waste heat. Imagine auditing a factory's monthly electricity bill using only rough runtime timers attached to half the motors. Built-in software energy counters inside laptops and servers smooth over rapid spikes and miss sub-millisecond tasks completely, whereas inline current-sense resistors across board power rails measure real voltage and current directly.
+      `compute.openie.dev` maps `258` hardware and algorithmic primitives across `33` families—from zero-gate wire permutations (Beneš 1965; Waksman 1968) up to dense floating-point matrix units `[M, S]`. An outside reader must know clearly which numbers come from physical shunts vs. analytical coordinate placement `[E]`:
 
-      Our compute catalog on compute dot openie dot dev charts two hundred fifty-eight hardware and operating-system primitives spanning room-temperature logic, reversible circuits, and cold-temperature physics bounds. Systems rest at zero active clock cycles between events, wake in microseconds on real inputs, and route recurring checks into six-input Boolean lookup tables. Total electrical energy per completed job combines standing baseline power leaked while waiting plus dynamic switching joules paid on each active clock cycle. Event-driven sleep eliminates idle clock spin between arrivals, while replacing wide floating-point arithmetic with direct truth-table lookups collapses switching cost per decision.
+      - **Physical `measured_j` anchors:** (a) **AMD Kria KV260 (`gates.md`):** `11,428 pJ/cycle` (`11.43 nJ`, `SE = 129 pJ`) whole-SOM `VCC_SOM` `INA260` slope across `N = 4` `25 s` passes at `25 MHz`, with `98.0 pJ` (`SE = 30.8 pJ`) seed delta inconclusive near the `1.25 mA` `INA260` LSB; (b) **NVIDIA Jetson AGX Thor (`lut-adapt.md`, `communication-avalanche.md`):** `162.56 nJ/op` bit-sliced `LUT6` (`87.00x` vs. `INT8` MLP) and `927.30 uJ` (`50.13 us`) `1 KiB` `BLAKE3+Ed25519` verify on `INA3221 VDD_CPU_SOC_MSS` `[E]`.
 
-      This three-dimensional hardware cutaway shows the dark metallic carrier board, glowing amber supply rails monitored by inline current shunts, and a dense checkerboard of cyan and emerald Boolean lookup tiles ringed by a hardware enable latch that clocks only active memory pages at two hundred fifty megahertz with deterministic timing. Across controlled hardware experiments, compiling interpreted rule checks into deterministic native binaries reduced measured energy twenty point zero seven times without changing a single output bit. Direct circuit-board power sensors recorded nine hundred twenty-seven point three microjoules on edge inference rails and eleven thousand four hundred twenty-eight picojoules per hardware safety-gate cycle. Rigorous hardware science never blurs measured watts with modeled estimates on the same chart.
+      - **Workstation `reported_j` anchors (`rce-compile.md`):** `20.07x` (`Zen 5`) and `15.44x` (`Core i9-13900H`) Linux `RAPL` core compile reductions from factoring `librce_rt.rlib` `[E]`.
 
-      Board-rail current readings come straight from physical inline sensors, whereas our fifteen point six milliwatt clock-gated lookup array figure is explicitly labeled as a post-synthesis timing and power model awaiting custom silicon fabrication.
-
-  - heading: "How Energy Was Metered"
+  - heading: "Limitations, Sensor Resolution Floors & Toolchain Status"
     content: |
-      - **Acquisition Tier**: Board Power Sensor
-      - **Disclosure**: Direct circuit-board current sensors on edge rails; gate-level circuit figures stay labeled models.
-      - **Evidence Class**: `measured_j` (`927.30 µJ (measured_j)`)
-      - **Meter / Formula**: NVIDIA Jetson AGX Thor physical TI INA3221 DC current-shunt substrate measurement
+      - **Board-level vs. isolated-transistor telemetry:** Neither `VCC_SOM` on KV260 nor `VDD_CPU_SOC_MSS` on Thor isolates single combinational gates from clock trees, L2/MSS interconnects, and regulator quiescent draw; isolating sub-milliamperes on FPGA rails requires inline Kelvin shunts (`INA228`) on `VCCINT` `[E]`.
 
-      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+      - **Unpublished `jlandauer` CLI:** The `jlandauer` synthesis/simulation commands illustrated on `compute.openie.dev/products/jlandauer` represent an internal prototype; open-source hardware reproduction today uses the `Yosys + openXC7 + Verilator` scripts in `openIE-dev/lut-adapt-ai` and `openIE-dev/openie-research-experiments` `[E]`.
+
+  - heading: "Energy & Telemetry Scope"
+    content: |
+      KV260 `INA260` (`11.43 nJ`) and Thor `INA3221` (`162.56 nJ`, `927.30 uJ`) are `measured_j`; Zen 5 / Core i9 `RAPL` (`20.07x`, `15.44x`) are `reported_j`; the `258`-primitive catalog entries are analytical/literature classifications (`[M]`/`[S]`).
 
 references:
   - id: 1
-    authors: "David Charlot, Open Interface Engineering"
-    title: "Why Every Bit Pays Joules: The Compute Substrate"
+    authors: "Open Interface Engineering"
+    title: "The Compute Stack (compute.openie.dev): 258-Primitive Taxonomy, KV260 Whole-SOM INA260 Scope (11.43 nJ), and Toolchain Status"
     publication: "OpenIE Research"
     year: 2026
-    url: "https://research.openie.dev/papers/rce-compile/"
+    url: "https://research.openie.dev/papers/gates/"
 
 closing:
-  content: |
-    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=eco-compute) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
-  cta:
-    primary:
-      text: "Read Primary Study & PDF"
-      url: "https://research.openie.dev/papers/rce-compile/"
-    secondary:
-      text: "Watch on OpenIE Research TV"
-      url: "https://research.openie.dev/tv/?study=eco-compute"
-  footer_text: "Summary text dedicated to the public domain under CC0-1.0."
+    content: |
+      Stream the 9:16 60fps vertical cut on [OpenIE Research TV](https://research.openie.dev/tv/?study=eco-compute) or run the 1-command replication harness at [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate).
+    cta:
+      primary:
+        text: "Read Canonical Post-Review Dossier"
+        url: "https://blog.openie.dev/posts/eco-compute/"
+      secondary:
+        text: "Primary Paper & 1-Command Replication"
+        url: "https://research.openie.dev/papers/gates/"
+    footer_text: "Signed Provenance · Self-Checked (not externally peer-reviewed). Summary text dedicated to the public domain under CC0-1.0."

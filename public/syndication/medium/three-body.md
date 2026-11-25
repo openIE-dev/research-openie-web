@@ -1,63 +1,88 @@
-# The Pursuit of AGI Resolves the Three-Body Problem in Computing
+# Specification, Proposer, and Gate: The "Three-Body" Software Design Metaphor for Verifiable Automation
 
-*Checked Handoffs Stop Bug Cascades Cold — Big software disasters hide in unwritten guesses between theorists, builders, and users—machine-checked handoffs lock the stack.*
+*An unmetered architectural framing paper using "Three-Body" strictly as a structural metaphor for separating Specifications, Proposers, and Deterministic Gates—not celestial mechanics.*
 
-> **Public Domain (`CC0-1.0`) · OpenIE Research Essay**  
-> **Canonical Primary Source**: [https://research.openie.dev/papers/three-body/](https://research.openie.dev/papers/three-body/)  
-> **Canonical Artifact ID**: `blake3:tv:16e4e4b439081a0ed33c49753fe852f5ef4a4ac5f32d4bdf70826f08da0e7738` · **Gate Invariant**: `human_in_gate = false`
+> **Signed Provenance · Self-Checked** (`human_in_gate = false`; automated build, benchmark, and proof-checking scripts ran without manual override — not externally peer-reviewed; see [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) and [Epistemic Glossary](https://blog.openie.dev/glossary/)).  
+> **Canonical Post-Review Essay (`rel="canonical"`)**: [https://blog.openie.dev/posts/three-body/](https://blog.openie.dev/posts/three-body/)  
+> **Primary Research Paper**: [https://research.openie.dev/papers/three-body/](https://research.openie.dev/papers/three-body/)  
+> **1-Command Replication Kit**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate)  
+> **Canonical Artifact ID**: `blake3:tv:16e4e4b439081a0ed33c49753fe852f5ef4a4ac5f32d4bdf70826f08da0e7738` · **Evidence Tags**: `[M]` · `[S]` · **Telemetry Class**: `unmetered`
 
 ---
 
-## Three Plain-Language Takeaways (Zero Acronym Soup)
+![Specification, Proposer, and Gate — structural software design metaphor (unmetered)](https://research.openie.dev/media/tv/posters/three-body-poster.jpg)
+*Structural design metaphor separating Specification, Proposer, and Deterministic Gate roles (unmetered framing paper; not celestial mechanics). Dedicated to the public domain under `CC0-1.0`.*
 
-1. Most major computer failures start at the handoffs between teams or system layers, not inside individual parts.
-2. The culprit is usually an unwritten guess crossing a boundary, such as which physical units a number uses.
-3. When every boundary guess is written down and machine-checked, fixing one problem stays fixed without breaking upper layers.
+## Key Claims & Audited Scope (`[T]` / `[E]` / `[M]` / `[S]`)
 
-![The Pursuit of AGI Resolves the Three-Body Problem in Computing — OpenIE Research TV Studio Poster](https://research.openie.dev/media/tv/posters/three-body-poster.jpg)
-*Studio key visual for **The Three-Body Problem in Computing** (`Foundations & Thermodynamics` · Checked Handoffs Stop Bug Cascades Cold). Dedicated to the public domain under `CC0-1.0`.*
+1. **[M · Explicit Metaphor Disclosure]** "Three-Body" in this essay is a **naming metaphor** for three interacting software roles (`Specification`, `Candidate Proposer`, `Deterministic Gate`); it invokes **no equations or chaos proofs from Poincaré/Newtonian gravitational three-body mechanics**.
+2. **[M/S · Architectural Separation]** Coupling specification intent and acceptance authority inside a single stochastic generator makes silent drift undetectable; isolating an executable gate (`tests`, `typechecker`, `SAT/SMT`, or `proof kernel`) turns stochastic generation into bounded trial-and-check.
+3. **[S · Cross-Study Scope]** This paper performs **zero new empirical runs** (`joules = null`, `unmetered`); concrete falsifiers and failure modes of imperfect specifications (such as Goodharting weak test suites) are evaluated in companion studies (`gates`, `deterministic-null`, and `rce-jepa`).
 
-## Everyday Analogy & Why It Matters
+## Methods, Baselines, Sample Sizes (`N`) & Licensing Scope
 
-Space engineers lost the Mars Climate Orbiter because one team sent thruster data in pounds while another read metric newtons. Like three orbiting stars, theorists, builders, and users drift chaotically whenever handoffs go unchecked. Because autonomous AI agents cannot rely on unspoken office folklore, making software safe for AI forces every boundary assumption into a machine-checked contract.
+- **Hardware & Telemetry**: Unmetered (`joules = null`, `board_metered = false`). Conceptual software-architecture and interface-contract synthesis.
+- **Workload & Suite**: No empirical benchmark suite executed in this manuscript; analyzes role separation across specification-proposer-verifier pipelines.
+- **Baselines Compared**: Qualitative comparison against two-party human-prompt-to-LLM commit loops and unverified multi-agent natural-language debate.
+- **Runs (`N`) & Uncertainty / Spread**: Not applicable (`N = 0` empirical trials in this framing paper; quantitative claims reside in companion empirical papers).
+- **Cold vs. Warm Caching Scope**: Conceptual discussion only: notes that gated outputs can be indexed for exact recall only while the specification hash remains unchanged.
+- **Artifact & License Status**: Public-domain essay text (`CC0-1.0`) on `research.openie.dev` and `blog.openie.dev`; no proprietary code required.
 
-The Ariane 5 rocket broke apart forty seconds into its maiden flight because inertial guidance code reused from slower Ariane 4 overflowed a sixteen-bit velocity number. Earlier, Mars Climate Orbiter burned up over pound-versus-newton thruster units—both unwritten guesses crossing a team handoff. Computing couples three distinct roles: theorists who state mathematical models, makers who build chips and compilers, and users who run real workloads.
+## Problem, Scope & Metaphor Disclosure
 
-Just as Lagrange points stabilize three orbiting bodies by locking their relative frame, explicit machine-checked contracts prevent boundary drift across all three. Independent Csmith fuzzing uncovered hundreds of wrong-code bugs in every C compiler tested except CompCert's machine-checked middle passes, while the verified seL4 operating-system kernel and formal cloud blueprints eliminated whole bug classes inside their stated contracts. Pursuing artificial general intelligence across every layer of the software stack leaves zero room for hallway folklore—turning chaotic whack-a-mole debugging into steady, lasting repairs.
+Upfront scope note: the title phrase *"Three-Body"* is used strictly as a **structural software metaphor** for a triad of distinct engineering artifacts—**(1) Specification**, **(2) Proposer**, and **(3) Deterministic Gate**—not as an application of gravitational orbital mechanics or Lyapunov chaos theory `[M]`. Earlier short summaries leaned on physical analogies without stating immediately that this manuscript is an unmetered architectural synthesis (`joules = null`).
 
-## Inside the Mechanism & Candid Limits
+In two-party LLM coding workflows, a human prompt asks a generative model both to interpret an underspecified goal and to judge whether its own patch succeeded `[S]`. Whenever model weights approximate acceptance checks heuristically, syntax errors, subtle regressions, and hallucinated APIs pass silently into production `[S]`.
 
-Every software team knows the frustration: every unit test passes in isolation, the mathematical theorem holds, the processor meets its datasheet, yet the combined system crashes in production—and fixing one bug quietly breaks two downstream callers that depended on undocumented edge behavior. In physics, two bodies orbit in clean closed form, yet adding a third led Henri Poincaré to discover deterministic chaos where tiny mismatches grow exponentially. Still, Joseph-Louis Lagrange proved three bodies stay stable at co-rotating triangle points where spacecraft now park—because stability lives in balanced relations between the bodies. Computing has its own three coherent bodies: theorists who write specifications, makers who build hardware, compilers, and libraries, and users who run real workloads and uncover unspoken needs.
+## Mechanism: Decoupling Proposal Entropy from Gate Soundness
 
-Mars Climate Orbiter was lost to pound-versus-newton unit drift, and Ariane 5 broke up over an unstated velocity envelope reused from slower Ariane 4. Decades of systems research—from Melvin Conway's org-chart mirroring and David Parnas's module boundaries to Tony Hoare's contracts, end-to-end checks, and Nancy Leveson's interaction safety—converge on one clear proposition: a local repair stays fixed at its own level and everywhere above it if and only if every assumption crossing a handoff is stated and machine-checked. Our three-dimensional gyroscopic model renders specification, implementation, and operation as three coupled rings. When handoff bands stay dashed and unwritten, tiny mismatches cascade across levels; when physical units, numeric ranges, interface versions, and state transitions pass explicit machine gates at the center, all three rings hold lockstep.
+The paper formalizes a classic computer-science separation of concerns in modern agentic pipelines `[M, S]`:
 
-Empirical landmarks confirm both sides of the boundary. John Regehr and Xuejun Yang's Csmith fuzzer found hundreds of silent wrong-code bugs across mainstream C compilers, yet zero inside CompCert's machine-checked middle passes. Likewise, the verified seL4 microkernel and formal cloud state blueprints eliminate whole defect classes inside their checked seams. Even CompCert exhibited bugs inside its unverified C front-end parser, proving verification protects only what lies inside the stated contract.
+- **Specification (`sigma`):** Declares typed invariants, postconditions, resource caps, or reference test traces independent of how a candidate solution is found.
 
-Orbital gravity serves strictly as structural analogy rather than physical force, no energy meter is claimed here, and pursuing general AI across the entire stack is what finally forces every handoff contract into machine-checked form.
+- **Proposer (`P`):** Any search mechanism—cached lookup, symbolic solver, small local model, or frontier LLM—free to explore high-entropy candidates without commit authority.
 
-### Epistemic Evidence Tags (`[T]` / `[E]` / `[M]` / `[S]`)
+- **Deterministic Gate (`G`):** A reproducible checker (`C(z) in {0, 1}`) that either admits the candidate with a signed receipt or returns diagnostic counterexamples without mutating protected state `[M]`.
 
-- **`[T]` Theorem / Machine-Checked Formal Proof**
-- **`[S]` Survey / Historical Price or Accounting Audit**
+## Limitations, Specification Bottlenecks & Failure Modes
 
-## How Energy Was Metered
+- **A gate is only as strong as its specification:** As documented in program-repair literature (Qi et al., ISSTA 2015; Wang, Pradel & Liu, ICSE 2026), proposers routinely pass weak or incomplete unit-test gates with overfitting patches that break unstated invariants `[S]`. Separating the gate prevents *gate-bypass* bugs, not *specification-omission* bugs `[M]`.
 
-Open Interface Engineering enforces strict epistemic non-mixing across physical power rails, processor counters, and mathematical bounds (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition is forbidden by `ScientificGate`):
+- **Formal specification authoring cost:** Writing complete formal postconditions or mutation-adequate test suites requires upfront human engineering effort (explicitly registered as falsifier `RJ-F2` in `rce-jepa`) `[M]`.
 
-- **Acquisition Tier**: Theory + Case Audit
-- **Plain-Language Disclosure**: Structural interface proof and historical failure audit; no power meter claimed.
-- **Substrate Evidence Class**: `unmetered` (`board_metered = false`)
-- **Primary Reading**: `unmetered (joules = null; never fabricated as zero)`
-- **Meter or Formula**: Architectural interface-assumption & verified-systems synthesis; unmetered
-- **300 K Landauer Bit-Equivalents**: `null` (unmetered study — analytical/archival scope)
+- **Zero standalone empirical data:** Readers seeking measured pass rates, counterexample loops, or hardware joules should consult `deterministic-null`, `gates`, and `rce-jepa` rather than treating this framing essay as an experimental proof.
 
-## Continue the Discussion & Verify Every Byte
+## Energy & Telemetry Scope
+
+This study is strictly `unmetered` (`joules = null`, `board_metered = false`). Energy trade-offs between cheap local verification gates and expensive neural proposers are stated analytically as cost-ratio conditions (`C_gate << E_proposer`) and measured empirically in companion papers.
+
+## Epistemic Non-Mixing & Telemetry Ledger
+
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
+
+- **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
+- **Acquisition Tier**: Unmetered Design Metaphor Essay
+- **Telemetry Disclosure**: Conceptual software-architecture metaphor (Specification, Proposer, Deterministic Gate); 0 hardware runs, joules = null.
+- **Evidence Class**: `unmetered` (`board_metered = false`)
+- **Catalog Anchor Reading**: `null` (`unmetered` — no hardware wattmeter or chip energy counter claimed)
+- **Sensor / Formula Scope**: Unmetered architectural framing synthesis (joules = null; 'Three-Body' is strictly a software role metaphor)
+
+## Related Work & Primary Literature (`[S]`)
+
+- **Hoare (CACM 1969) & Dijkstra (CACM 1975):** Pre/postcondition axiomatic semantics and guarded-command program derivation `[S]`.
+- **Blum & Kannan (JACM 1995) & Necula (POPL 1997):** Designing programs that check their work and Proof-Carrying Code decoupling untrusted producers from small trusted verifiers `[S]`.
+- **Qi et al. (Kali, ISSTA 2015) & Wang, Pradel & Liu (ICSE 2026):** Empirical demonstrations of test-suite overfitting in automated patch generation and `SWE-bench` `[S]`.
+- **Kambhampati et al. (LLM-Modulo Frameworks, ICML 2024) & Sun et al. (Clover, 2024):** Pairing stochastic LLM proposers with external sound verifiers `[S]`.
+
+## Replicate, Critique & Inspect Raw Artifacts
 
 <!-- x_thread_backlink_slot: {{X_THREAD_URL}} -->
-- **Watch in 15 Seconds or 3 Minutes**: Stream the native `9:16` Vertical Snackable ([`three-body-tiktok.mp4`](https://research.openie.dev/media/tv/tiktok/three-body-tiktok.mp4)) or explore all four captioned studio cuts (`15s`, `45s`, `90s`, and `3m` 3D cutaway documentary) on **[OpenIE Research TV](https://research.openie.dev/tv/?study=three-body)**.
-- **Join the Synchronized X (Twitter) Thread**: Reply, critique, or inspect the 5-post verification thread on **[X (Twitter)](https://x.com/search?q=%22The%20Three-Body%20Problem%20in%20Computing%22%20OR%20research.openie.dev%2Ftv%2F%3Fstudy%3Dthree-body&src=typed_query)**.
-- **Query Grounded Prior Art & Signed WAI1 Receipts**: Explore linked lineage trails on **[The Commons (`scholar.askdavidc.ai`)](https://scholar.askdavidc.ai)**, read the full primary paper & PDF at **[`research.openie.dev/papers/three-body/`](https://research.openie.dev/papers/three-body/)**, and verify the Ed25519-signed `WAI1` binary container (`blake3:c7471e0d2df5c738…`) in **[`openie-artifact-substrate`](https://github.com/openIE-dev/openie-artifact-substrate/blob/main/catalog/envelopes/tv-three-body.wai)**.
+- **Canonical Post-Review Blog Dossier**: [https://blog.openie.dev/posts/three-body/](https://blog.openie.dev/posts/three-body/)
+- **Primary Research Manuscript & PDF**: [https://research.openie.dev/papers/three-body/](https://research.openie.dev/papers/three-body/) ([PDF](https://research.openie.dev/pdfs/three-body.pdf))
+- **1-Command Public Replication Harness**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate)
+- **9:16 Vertical Snackable (`60fps`) & Research TV Cuts**: [https://research.openie.dev/media/tv/tiktok/three-body-tiktok.mp4](https://research.openie.dev/media/tv/tiktok/three-body-tiktok.mp4) · [OpenIE Research TV](https://research.openie.dev/tv/?study=three-body)
+- **Verification & Glossary Standards**: [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) · [Epistemic Glossary](https://blog.openie.dev/glossary/)
 
 ---
 
-*Summary & essay text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Code, verification gates, and `WAI1` schemas licensed under `Apache-2.0`.*
+*Prose and summary text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Public replication harnesses and `WAI1` schemas are licensed under `Apache-2.0` unless explicitly noted in the licensing ledger above.*

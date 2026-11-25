@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "communication-avalanche",
   "canonical_id": "blake3:tv:4f70aff689f283a093283c5442909832ad3d481af954a6c581fff29f0c4f7ec6",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/communication-avalanche/",
+  "canonical_paper_url": "https://research.openie.dev/papers/communication-avalanche/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/communication-avalanche-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/communication-avalanche-15s.mp4",
-    "poster_uri": "/media/tv/posters/communication-avalanche-poster.jpg",
-    "vtt_uri": "/media/tv/captions/communication-avalanche-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/communication-avalanche-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/communication-avalanche-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 22.67,
     "safe_zone_verified": true,
-    "source_15s_sha256": "14a0e976e36558a7f50a9cb9480737a7f51c8e2e96703f289f7c3756c4d69e8e"
+    "sha256": "a2041b8b9423950ee935d4da7a64f1f4116b3a33c2933c18846ef489ee153a1d"
   },
-  "caption_utf16_chars": 710,
+  "caption_utf16_chars": 936,
+  "caption": "The Communication Tool Avalanche — 927.30 uJ / 50.13 us verify on Thor shunt (measured_j; 23.8–33.1 us on desktop reported_j) · DES-10 98/100 tasks vs <=49/100 solo camps\n\n1 KiB Rust BLAKE3+Ed25519 handoff verify used 927.30 uJ over 50.13 us full turn on Jetson Thor INA3221 (measured_j) vs 23.84-27.04 us (~26 us) gate step on Core i9 RAPL (reported_j).\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: measured_j (927.30 uJ over 50.13 us full 1 KiB verify turn on Jetson Thor INA3221 (measured_j) vs 23.84-27.04 us (~26 us) gate step on Core i9 RAPL (reported_j).)\n• Essay: https://blog.openie.dev/posts/communication-avalanche/\n• Paper: https://research.openie.dev/papers/communication-avalanche/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#MultiAgentSystems #DistributedSystems #Cryptography #NeuroSymbolic #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "The Communication Tool Avalanche (59 of 60 Fixes · 0 Bad Commits · 98% Combined)\nOne scaling rule connects ancient bacteria, multi-agent AI teams, and consent-gated brain interfaces.\n1) From ancient microbes to modern AI, groups scale by sharing signals across strict thresholds and safety gates.\n2) Event-driven wakeups and signed checks block bad edits and deliver far more verified work per joule.\n3) Ten AI approaches unite through tiny compiled routines, while future brain links stay grounded in strict consent.\nEnergy class: measured_j (Board Sensor + Chip Counter) · CC0-1.0 · https://research.openie.dev/papers/communication-avalanche/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "The Communication Tool Avalanche — 927.30 uJ / 50.13 us verify on Thor shunt (measured_j; 23.8–33.1 us on desktop reported_j) · DES-10 98/100 tasks vs <=49/100 solo camps\n\n1 KiB Rust BLAKE3+Ed25519 handoff verify used 927.30 uJ over 50.13 us full turn on Jetson Thor INA3221 (measured_j) vs 23.84-27.04 us (~26 us) gate step on Core i9 RAPL (reported_j).\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: measured_j (927.30 uJ over 50.13 us full 1 KiB verify turn on Jetson Thor INA3221 (measured_j) vs 23.84-27.04 us (~26 us) gate step on Core i9 RAPL (reported_j).)\n• Essay: https://blog.openie.dev/posts/communication-avalanche/\n• Paper: https://research.openie.dev/papers/communication-avalanche/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#MultiAgentSystems #DistributedSystems #Cryptography #NeuroSymbolic #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/communication-avalanche-tiktok.mp4"
     }
   },
-  "content_blake3": "ccf3b86d65e4bb494485be9bb49e8bc6aaf97af56ee914397374898f50d34299"
+  "content_blake3": "df7e391a15870c5f869a4239c52d1e3d1d238d2901d2ad524799c49a19dd4edc"
 }

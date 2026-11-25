@@ -1,77 +1,89 @@
-# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+# OpenIE Post-Review Audited Blog Syndication Manifest (CC0-1.0)
 slug: "eco-synthesis"
 
 metadata:
-  title: "Route First, Generate Last: The Synthesis Cascade"
-  description: "Why smart systems route through fast lookup tables and exact verifiers first—waking large models only on genuine novelty."
-  date: "2026-11-24"
-  author: "David Charlot, Open Interface Engineering"
+  title: "The Synthesis Stack (synthesis.openie.dev): 7-Axis AI Taxonomy, 29/32 BigCodeBench Slice Scope, and Pattern-lang BSL-1.1 Status"
+  description: "Frames synthesis.openie.dev’s 7-axis taxonomy, qualifies 90.6% (29/32 BigCodeBench slice, 95% UB <= 10.9% on 0/32 broken commits, 970 MB AirMoL RAM in lut-adapt), and discloses Pattern-lang is BSL-1.1 source-restricted."
+  date: "2026-11-25"
+  author: "Open Interface Engineering"
   category: "engineering"
-  tags: ["eco-synthesis", "engineering", "open-science", "cc0", "reported-j"]
+  tags: ["model-routing", "code-generation", "edge-ai", "software-engineering", "open-science"]
   featured: false
   draft: false
   toc: true
-  canonicalUrl: "https://research.openie.dev/papers/lut-adapt/"
+  provenanceStatus: "Signed Provenance · Self-Checked"
+  verificationUrl: "https://blog.openie.dev/verification/"
+  glossaryUrl: "https://blog.openie.dev/glossary/"
+  canonicalBlogUrl: "https://blog.openie.dev/posts/eco-synthesis/"
+  canonicalUrl: "https://blog.openie.dev/posts/eco-synthesis/"
+  primaryPaperUrl: "https://research.openie.dev/papers/lut-adapt/"
+  replicationKitUrl: "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
+  publicRepoUrl: "https://github.com/openIE-dev/lut-adapt-ai"
+  energyClass: "reported_j"
   license: "CC0-1.0"
 
 hero:
   image: "eco-synthesis-poster.jpg"
-  alt: "Route First, Generate Last — 90.6% Open Coding · 0.00% Broken Commits · 970 MB RAM"
+  alt: "Synthesis Stack — 7-axis AI taxonomy, 29/32 BigCodeBench slice with N=32 statistical bound, and Pattern-lang BSL-1.1 disclosure — 7-axis synthesis taxonomy (synthesis.openie.dev) · 29/32 (90.6%) BigCodeBench slice & 970 MB AirMoL stream (M5 Max reported_j) · Pattern-lang BSL-1.1"
 
 sections:
   - heading: null
     content: |
-      *Canonical Primary Source: [https://research.openie.dev/papers/lut-adapt/](https://research.openie.dev/papers/lut-adapt/) · Dedicated to the Public Domain (`CC0-1.0`)*
+      *Signed Provenance · Self-Checked (`human_in_gate = false`; [Verification](https://blog.openie.dev/verification/) · [Glossary](https://blog.openie.dev/glossary/)) · Canonical Post-Review Essay: [https://blog.openie.dev/posts/eco-synthesis/](https://blog.openie.dev/posts/eco-synthesis/) · Primary Paper: [https://research.openie.dev/papers/lut-adapt/](https://research.openie.dev/papers/lut-adapt/)*
 
-      Why smart systems route through fast lookup tables and exact verifiers first—waking large models only on genuine novelty.
+      Maps AI systems ("AI is software") onto a 7-axis taxonomy on synthesis.openie.dev while grounding its three headline numbers in lut-adapt-ai (Apache-2.0): 29/32 (90.62%) pass rate on a 32-task BigCodeBench v0.1.3 slice behind a unit-test gate (0/32 broken commits admitted -> 95% Clopper-Pearson upper bound <= 10.89% on N = 32, NOT universal zero risk) and 970 MB peak RAM streaming 34.66B Qwen3.6-35B-A3B via AirMoL (Apple M5 Max reported_j), and explicitly disclosing that companion Pattern-lang (openIE-dev/pattern-lang) is BSL-1.1 source-restricted.
 
-  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+  - heading: "Key Claims & Evidence Tags"
     content: |
-      1. Generating fresh text from scratch for already-solved problems wastes electricity and invites avoidable mistakes.
-      2. An energy-ordered cascade checks microjoule lookup tables and exact verifiers first, waking large models only on genuine novelty.
-      3. Every accepted answer passes deterministic checks and crystallizes downward into a fast, reusable lookup skill.
+      1. **[E · Qualified `90.6%` (`29/32`), Finite-`N` Gate Bound, and `970 MB` RAM (`reported_j`)]** Grounding the earlier summary’s three headline metrics in `openIE-dev/lut-adapt-ai`: **`90.62%` is `29 / 32` tasks solved** on a `32`-task `BigCodeBench v0.1.3` evaluation slice; **`0 / 32` broken commits admitted** behind the unit-test gate carries a finite-sample **95% Clopper–Pearson upper bound of `<= 10.89%` on `N = 32`** (and gates catch only bugs covered by the task’s unit tests, never proving `0 observed` universal defect risk); and **`970 MB` peak RAM** comes from layer-streamed `AirMoL` SSD paging of `Qwen3.6-35B-A3B` (`34.66B` total / `3B` active sparse-MoE, trading higher NVMe I/O latency against DRAM capacity on memory-constrained hosts).
+      2. **[M/S · 7-Axis Synthesis Taxonomy (`Z1 / Z2 / Z3`)]** `synthesis.openie.dev` classifies "Digital Information Synthesis" (`AI ⊆ Software`) across 7 axes (`⟨Z, E, T, P, I, V, R⟩`) and three problem zones: **`Z1` bounded determinism** (arithmetic, parsing, exact lookup), **`Z2` calibrated verifier-backed hybrids** (code repair, formal math), and **`Z3` open-ended synthesis** (creative prose, underspecified design where generative models remain primary).
+      3. **[S · Honest `Pattern-lang` (`BSL-1.1`) Disclosure]** While the cascade benchmarks run on open-source `Apache-2.0` code (`openIE-dev/lut-adapt-ai` and `openIE-dev/mixture-of-limits`), companion **`Pattern-lang` (`openIE-dev/pattern-lang`) is licensed under `BSL-1.1` with source-restricted core compiler internals** and is not claimed as an externally replicated open-source artifact.
 
-  - heading: "Everyday Analogy & Why It Matters"
+  - heading: "Methods, Baselines & Artifact Scope"
     content: |
-      Across real software engineering and scientific computing, most daily requests repeat structural patterns already solved thousands of times before. Treating every single prompt like an unsolved mystery forces massive neural networks to burn heavy electrical power re-deriving known work from scratch. On synthesis dot openie dot dev, every task steps down an energy-ordered ladder.
+      - **Hardware & Telemetry**: Empirical cascade runs (`lut-adapt-ai`): Apple M5 Max (`128 GB`, macOS `IOReport`/`ri_energy_nj` `reported_j`, `board_metered = false`) plus `AirMoL` memory-capped SSD streaming harness (`970 MB` RSS). `synthesis.openie.dev` 7-axis portal is conceptual (`unmetered`).
+      - **Workload & Suite**: `32`-task `BigCodeBench v0.1.3` slice (`29/32` solved), `48`-task coding bakeoff (`44/48 = 91.67%` in `LA-17`), `16`-task hard adversarial suite (`10/16 = 62.50%` in `LA-21`), and `Qwen3.6-35B-A3B` `AirMoL` layer-streaming memory test.
+      - **Baselines Compared**: Always-frontier dense/MoE invocation in full RAM (`~25.2 GB` `INT4` for `Qwen3.6-35B-A3B`) vs. Rung-0 `LUT6`/`.mol/` routing + `AirMoL` (`970 MB` RSS) behind a deterministic test gate.
+      - **Runs (N) & Spread**: `N = 32` `BigCodeBench` slice (`29/32 = 90.62%`, Wilson 95% CI `75.8%–96.8%`; `0/32` gate false-admits -> 95% Clopper–Pearson UB `<= 10.89%`).
+      - **Cold vs. Warm Scope**: Cold `BigCodeBench` tasks require neural generation (`35B` / `24B`) + unit-test gating; `.mol/` / `LUT6` sub-microjoule hits occur only on recurring canonicalized intents after first verified completion.
+      - **Artifact & License**: Cascade scripts public (`Apache-2.0`) at `https://github.com/openIE-dev/lut-adapt-ai` and `openIE-dev/mixture-of-limits`; **`Pattern-lang` (`openIE-dev/pattern-lang`) is `BSL-1.1` source-restricted**; portal text `CC0-1.0`.
 
-      Microjoule lookup tables and exact deterministic solvers answer recurring patterns first; only genuine misses stream active slices of a thirty-five-billion-parameter model inside nine hundred seventy megabytes of RAM. Across open multi-library Python coding suites, this synthesis cascade solved ninety point six two percent of tasks and ninety-one point six seven percent of our forty-eight-task benchmark, while closing forty out of forty iterative repairs with zero broken repository commits. Whenever a new candidate patch passes deterministic test gates, it crystallizes downward into fast lookup memory so tomorrow's repeat request finishes cleanly in microseconds.
-
-  - heading: "Inside the Mechanism & Candid Limits"
+  - heading: "Three Problem Zones (`Z1, Z2, Z3`) & Prior Routing Literature"
     content: |
-      Conventional cloud AI services route a simple one-line date parser and a brand-new physics simulation through the exact same giant language model every single time. That uniform pipeline demands tens of gigabytes of costly server memory, burns watts re-solving familiar chores, and still risks subtle hallucinations on deterministic rules. Think of how a well-organized teaching hospital works every day. Routine checkups follow fast, proven checklists in minutes; automated labs run exact diagnostic panels; and full surgical teams assemble only for genuinely rare cases—then distill what worked into updated clinical protocols for everyone.
+      `synthesis.openie.dev` argues against routing `Z1` closed-form lookups and `Z2` verifier-checkable code tasks unconditionally through `700 W` datacenter GPUs `[M]`. This design sits directly atop established ML-systems work: **FrugalGPT (Chen, Zaharia & Zou, 2023)** and **RouteLLM (Ong et al., ICLR 2025)** route easy prompts to cheap models; **Speculative Decoding (Leviathan et al., ICML 2023; Medusa; EAGLE-2)** drafts tokens cheaply and verifies in parallel; **Outlines (Willard & Louf, 2023), Synchromesh (Poesia et al., 2022), PICARD (Scholak et al., 2021), and `llama.cpp` GBNF** constrain token grammars; **AirLLM (2023)** streams layers from SSD; and **BitNet b1.58 (Ma et al., 2024)** lowers ternary weights `[S]`.
 
-      Our synthesis cascade on synthesis dot openie dot dev orders every solver strictly by energy-to-verified-completion. First come memory-mapped lookup tables requiring zero decimal arithmetic. Second come exact parsers, type checkers, and constraint solvers. Third come sparse specialist slices streamed on demand from local storage.
-
-      Fourth comes an unforgiving automated test gate before commit. Real software and engineering workloads follow a steep power-law distribution where a compact head of recurring patterns drives the vast majority of daily traffic. Each time a novel miss clears its verification tests and compiles downward into a lookup entry, average energy per task plunges toward microjoules while latency drops from seconds to microseconds. In this three-dimensional architecture model, the bright cyan crystal at the center holds zero-copy compiled lookup skills ready for instant replay, encircled by an amber orbit of streamed specialist model slices and emerald verification latches that reject every single test-breaking edit before it can touch version history.
-
-      Streaming only the active specialist weights needed per prompt kept resident memory below nine hundred seventy megabytes on everyday consumer laptops while achieving ninety point six two percent on open multi-library coding tasks, forty out of forty on iterative refinement, zero broken commits, and three point six times lower repeat energy. Scientific clarity requires naming the exact regime where compilation cannot shortcut work: truly unprecedented one-off inventions with zero shared sub-structure must still pay full specialist synthesis and automated test energy on their very first encounter, paying back that investment only when related patterns recur.
-
-  - heading: "How Energy Was Metered"
+  - heading: "Statistical Honesty on `29/32`, `0` Broken Commits, and `970 MB` Streaming"
     content: |
-      - **Acquisition Tier**: Chip Energy Counter
-      - **Disclosure**: Built-in processor energy counters and strict 970 MB RAM limits on open coding benchmarks.
-      - **Evidence Class**: `reported_j` (`42.40 mJ (reported_j)`)
-      - **Meter / Formula**: On-chip GPU/CPU energy counter for Wave-3 compiled synthesis cascade replay
+      - **Sample-size qualification (`N = 32` slice vs. full `1,140`-task `BigCodeBench`) `[E]`:** The `90.62%` (`29/32`) result comes from a `32`-task `BigCodeBench v0.1.3` subset (full `BigCodeBench` has `1,140` tasks; see `deterministic-null` Track-B for broader cold increments). Observing `0` broken commits across `32` gated tasks bounds per-task test-escape rate only to `<= 10.89%` (`95%` Clopper–Pearson) and remains subject to unit-test completeness `[E, M]`.
 
-      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+      - **Latency trade-off of `970 MB` `AirMoL` paging `[E]`:** Streaming inactive sparse-MoE experts from NVMe flash allows a `34.66B` checkpoint to execute inside `970 MB` RAM on edge laptops, but pays SSD read latency whenever uncached experts activate `[E]`.
+
+  - heading: "Limitations & `Pattern-lang` Licensing Scope"
+    content: |
+      - **`Z3` open-ended tasks have no binary gate:** Creative writing, open brainstorming, and subjective summarization live in `Z3`, where deterministic pass/fail gates (`C(z) = 1`) do not exist and learned preference routers (`RouteLLM`) apply instead `[M, S]`.
+
+      - **`Pattern-lang` is `BSL-1.1`:** Readers replicating empirical numbers should use `openIE-dev/lut-adapt-ai` (`Apache-2.0`), not the source-restricted `openIE-dev/pattern-lang` repository.
+
+  - heading: "Energy & Telemetry Scope"
+    content: |
+      Empirical `BigCodeBench` and `AirMoL` runs use Apple M5 Max `reported_j` (`measured_j = null`); macro `945 TWh` datacenter figures on `synthesis.openie.dev` are cited from IEA projections `[S]`.
 
 references:
   - id: 1
-    authors: "David Charlot, Open Interface Engineering"
-    title: "Route First, Generate Last: The Synthesis Cascade"
+    authors: "Open Interface Engineering"
+    title: "The Synthesis Stack (synthesis.openie.dev): 7-Axis AI Taxonomy, 29/32 BigCodeBench Slice Scope, and Pattern-lang BSL-1.1 Status"
     publication: "OpenIE Research"
     year: 2026
     url: "https://research.openie.dev/papers/lut-adapt/"
 
 closing:
-  content: |
-    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=eco-synthesis) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
-  cta:
-    primary:
-      text: "Read Primary Study & PDF"
-      url: "https://research.openie.dev/papers/lut-adapt/"
-    secondary:
-      text: "Watch on OpenIE Research TV"
-      url: "https://research.openie.dev/tv/?study=eco-synthesis"
-  footer_text: "Summary text dedicated to the public domain under CC0-1.0."
+    content: |
+      Stream the 9:16 60fps vertical cut on [OpenIE Research TV](https://research.openie.dev/tv/?study=eco-synthesis) or run the 1-command replication harness at [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate).
+    cta:
+      primary:
+        text: "Read Canonical Post-Review Dossier"
+        url: "https://blog.openie.dev/posts/eco-synthesis/"
+      secondary:
+        text: "Primary Paper & 1-Command Replication"
+        url: "https://research.openie.dev/papers/lut-adapt/"
+    footer_text: "Signed Provenance · Self-Checked (not externally peer-reviewed). Summary text dedicated to the public domain under CC0-1.0."

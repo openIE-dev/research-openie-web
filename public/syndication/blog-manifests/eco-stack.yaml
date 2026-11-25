@@ -1,79 +1,87 @@
-# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+# OpenIE Post-Review Audited Blog Syndication Manifest (CC0-1.0)
 slug: "eco-stack"
 
 metadata:
-  title: "Three Sciences, One Energy-Bounded Computing Map"
-  description: "How information theory, game theory, and mechanism design fit together as three altitudes of one energy-bounded computing map."
-  date: "2026-11-24"
-  author: "David Charlot, Open Interface Engineering"
+  title: "The OpenIE Stack Map (stack.openie.dev): An Unmetered Conceptual Taxonomy Across Information Theory, Game Theory, and Mechanism Design"
+  description: "Clarifies that stack.openie.dev is an unmetered teaching map relating Information Theory, Game Theory, and Mechanism Design across 8 domain stacks—containing zero standalone hardware benchmarks."
+  date: "2026-11-25"
+  author: "Open Interface Engineering"
   category: "research"
-  tags: ["eco-stack", "research", "open-science", "cc0", "reported-j"]
+  tags: ["information-theory", "game-theory", "mechanism-design", "computer-science", "open-science"]
   featured: false
   draft: false
   toc: true
-  canonicalUrl: "https://research.openie.dev/papers/agency/"
+  provenanceStatus: "Signed Provenance · Self-Checked"
+  verificationUrl: "https://blog.openie.dev/verification/"
+  glossaryUrl: "https://blog.openie.dev/glossary/"
+  canonicalBlogUrl: "https://blog.openie.dev/posts/eco-stack/"
+  canonicalUrl: "https://blog.openie.dev/posts/eco-stack/"
+  primaryPaperUrl: "https://research.openie.dev/papers/agency/"
+  replicationKitUrl: "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
+  publicRepoUrl: "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
+  energyClass: "unmetered"
   license: "CC0-1.0"
 
 hero:
   image: "eco-stack-poster.jpg"
-  alt: "Three Sciences, One Computing Map — 3 Sciences · 9 Periodic Stacks · 1 Joule Ledger"
+  alt: "OpenIE Stack Map — unmetered teaching map connecting Information Theory, Game Theory, and Mechanism Design — Unmetered Conceptual Map (stack.openie.dev) · 3 Foundational Theories × 8 Domain Taxonomies (joules = null, [M]/[S])"
 
 sections:
   - heading: null
     content: |
-      *Canonical Primary Source: [https://research.openie.dev/papers/agency/](https://research.openie.dev/papers/agency/) · Dedicated to the Public Domain (`CC0-1.0`)*
+      *Signed Provenance · Self-Checked (`human_in_gate = false`; [Verification](https://blog.openie.dev/verification/) · [Glossary](https://blog.openie.dev/glossary/)) · Canonical Post-Review Essay: [https://blog.openie.dev/posts/eco-stack/](https://blog.openie.dev/posts/eco-stack/) · Primary Paper: [https://research.openie.dev/papers/agency/](https://research.openie.dev/papers/agency/)*
 
-      How information theory, game theory, and mechanism design fit together as three altitudes of one energy-bounded computing map.
+      Presents stack.openie.dev strictly as an unmetered conceptual and pedagogical overview ("Three names, one substrate": Information Theory, Game Theory, and Mechanism Design) indexing OpenIE’s eight domain coordinate taxonomies, with zero standalone hardware measurements or formal theorems of its own (unmetered; underlying stack repos span Apache-2.0, BSL-1.1, and private trees).
 
-  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+  - heading: "Key Claims & Evidence Tags"
     content: |
-      1. Information theory, game theory, and mechanism design form three altitudes of one energy-bounded computing map.
-      2. Information theory prices bits and heat, game theory maps strategic interaction, and mechanism design writes rules where honesty wins.
-      3. Across every layer of computing, each permitted action must clear its physical energy floor and pass independent checks.
+      1. **[M/S · Corrected Telemetry & Track Classification (`unmetered`)]** Earlier syndication metadata inherited `reported_j` from its linked foundation paper (`agency`). Because `stack.openie.dev` itself is a **purely conceptual teaching map with zero empirical benchmarks**, its classification is corrected here to **`unmetered` (`joules = null`, `framing-synthesis`)**.
+      2. **[S · Three Classical Sciences Placed by Altitude]** Synthesizes **Information Theory** (Shannon 1948 channel/representation bounds; Landauer 1961 physical bit erasure) as the physical substrate, **Game Theory** (von Neumann & Morgenstern 1944; Nash 1950 equilibria) as strategic interaction over payoffs, and **Mechanism Design** (Hurwicz, Maskin & Myerson, 2007 Nobel lecture lineage) as rule/gate routing that aligns incentives or proposals with desired outcomes.
+      3. **[M · Honest Cross-Portal Licensing Boundary]** While the `stack.openie.dev` web guide is openly readable, the eight domain stacks it indexes do **not** share one blanket software license: `rce`, `rce-vc`, `deterministic-null`, and `lut-adapt-ai` are `Apache-2.0` public repos, whereas `JouleDB` (`data.openie.dev`) and `Pattern-lang` (`synthesis.openie.dev`) use `BSL-1.1` with private core mirrors, and `JouleOS` remains private.
 
-  - heading: "Everyday Analogy & Why It Matters"
+  - heading: "Methods, Baselines & Artifact Scope"
     content: |
-      For eighty years, universities taught electrical engineering, game theory, and economic mechanism design in separate departments with separate notation. Yet inside networked computers and multi-agent software, thermal noise, strategic shortcuts, and safety rules collide every single millisecond of operation. At ground level, Claude Shannon and Rolf Landauer price the minimum heat nature charges to send and erase bits reliably.
+      - **Hardware & Telemetry**: Unmetered (`joules = null`, `board_metered = false`). Conceptual curriculum synthesis (`stack.openie.dev`).
+      - **Workload & Suite**: No empirical benchmark suite executed on `stack.openie.dev`; organizes shared coordinate axes (`Thermodynamic class T`, `Verifiability V`, `Encoding regime R`) across `Compute`, `Data`, `Synthesis`, `Knowledge`, `State`, `Communication`, `Memory`, and `Verify` portals.
+      - **Baselines Compared**: Qualitative contrast between treating computing subfields (compilers, databases, AI routing, distributed consensus) as isolated silos vs. projections sharing common cost/verification axes.
+      - **Runs (N) & Spread**: Not applicable (`N = 0` empirical trials in this overview portal).
+      - **Cold vs. Warm Scope**: Conceptual taxonomy only: classifies memoization/indexing as moving recurring work from online search axes to precomputed storage axes.
+      - **Artifact & License**: Portal web pages public at `https://stack.openie.dev/` (`CC0-1.0` blog summary); no single repo encompasses all 8 stacks (see [Verification & Licensing Table](https://blog.openie.dev/verification/#licensing-and-availability)).
 
-      One altitude higher, game theory maps how competing agents choose actions. At the top, mechanism design crafts rules where honesty wins. On stack dot openie dot dev, this single coordinate map organizes nine periodic tables—compute, memory, state machines, databases, communication, synthesis, formal proofs, knowledge claims, and goal-holding agents—pricing every design choice in real joules and microseconds.
-
-      When software protocols measure real electricity upfront and require independent verification before commit, cheap bluffing stops paying off and parsimonious engineering wins every time.
-
-  - heading: "Inside the Mechanism & Candid Limits"
+  - heading: "What `stack.openie.dev` Is—and What It Is Not"
     content: |
-      Hardware teams work tirelessly to shave picojoules off transistor switches, only to watch software wrappers burn megawatts on endless retry loops, chatty text formats, or gamed benchmark leaderboards. Those costly breakdowns happen right at the seams where physical bit limits meet strategic incentives without shared rules. Imagine guiding cargo ships safely into a narrow harbor during a busy tide. Water depth, wind, and hull drag set hard physical limits; ship captains steer strategically around rival vessels for berth space; and harbor authorities design pilot lanes and inspection rules so reporting honest cargo weight beats cutting corners.
+      `stack.openie.dev` is an **architectural map and teaching index**, not a research experiment `[M]`. Its goal is to give readers one vocabulary before entering specialized papers: **Information Theory** asks what a representation or channel must pay in bits and physical work; **Game Theory** asks where interacting agents settle given fixed payoffs; and **Mechanism Design** asks what admission rules (`gates`, `auctions`, `commit protocols`) steer strategic or stochastic actors toward valid states `[S]`.
 
-      Altitude one unites Claude Shannon's noisy-channel capacity limits with Rolf Landauer's minimum heat price for erasing memory bits at finite temperature. Altitude two brings John von Neumann and John Nash's mathematics of strategic equilibria among goal-seeking actors. Altitude three applies Leonid Hurwicz, Eric Maskin, and Roger Myerson's inverse question: given a safe outcome, what rules make truth optimal? Across all three altitudes, total task energy equals the sum over every active primitive of how often it runs multiplied by the physical joules each invocation dissipates inside its real hardware context.
-
-      Moving too slowly leaks standing idle power, while switching too frantically multiplies reset heat. In this three-dimensional landscape, the flat lower plane marks nature's thermodynamic bit floor, the middle ridges trace strategic equilibria among interacting agents, and the upper emerald ring marks metered commit gates—aligning all nine periodic tables from silicon transistor switches right up to autonomous multi-agent coordination across the open web. Using all three altitudes together delivered measurable wins across our companion research studies: completion-gated joule scoring stopped cheap-failing random baselines from gaming benchmarks across twenty thousand puzzle runs, while independent commit gates blocked every single unsafe action across two hundred nine thousand tests. Good science keeps unifying maps honest about their boundaries.
-
-      Placing bit heat, strategic incentives, and commit verification on one shared ledger exposes hidden blind spots fast, yet every individual cell across all nine periodic stacks still requires its own reproducible hardware measurements, pre-registered controls, and falsifiable checks.
-
-  - heading: "How Energy Was Metered"
+  - heading: "Shared Coordinate Axes Across the Domain Portals"
     content: |
-      - **Acquisition Tier**: Physics + Chip Counter
-      - **Disclosure**: Mathematical physics bounds paired with built-in chip energy counters across stack studies.
-      - **Evidence Class**: `reported_j` (`49.04 mJ (reported_j)`)
-      - **Meter / Formula**: On-chip CPU energy counter across periodic computing stack verification
+      Across the companion portals (`compute.openie.dev`, `data.openie.dev`, `synthesis.openie.dev`, `knowledge.openie.dev`, `avalanche.openie.dev`), three shared classification axes recur `[M]`: (1) **Cost regime (`T`)** separating bijective/index lookups from dense floating-point search; (2) **Verifiability (`V`)** separating proof-checked or oracle-tested outputs from uncalibrated prose; and (3) **Temporal/Provenance scope** tracking valid time and telemetry tier (`measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered`).
 
-      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+  - heading: "Limitations & Taxonomic Caveats"
+    content: |
+      - **A taxonomy is a classification choice, not a physical principle:** Calling the domain maps "Periodic Stacks" is an organizational analogy to facet classification (Ranganathan 1933) and Mendeleev (1869); unlike chemical atomic number `Z`, software design axes are discrete human abstractions whose granularity can be subdivided differently `[M, S]`.
+
+      - **Mixed software availability:** Readers must check each linked repository’s individual license (`Apache-2.0` vs. `BSL-1.1` vs. private) rather than assuming every portal ships open-source engine code.
+
+  - heading: "Energy & Telemetry Scope"
+    content: |
+      Strictly `unmetered` (`joules = null`, `board_metered = false`).
 
 references:
   - id: 1
-    authors: "David Charlot, Open Interface Engineering"
-    title: "Three Sciences, One Energy-Bounded Computing Map"
+    authors: "Open Interface Engineering"
+    title: "The OpenIE Stack Map (stack.openie.dev): An Unmetered Conceptual Taxonomy Across Information Theory, Game Theory, and Mechanism Design"
     publication: "OpenIE Research"
     year: 2026
     url: "https://research.openie.dev/papers/agency/"
 
 closing:
-  content: |
-    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=eco-stack) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
-  cta:
-    primary:
-      text: "Read Primary Study & PDF"
-      url: "https://research.openie.dev/papers/agency/"
-    secondary:
-      text: "Watch on OpenIE Research TV"
-      url: "https://research.openie.dev/tv/?study=eco-stack"
-  footer_text: "Summary text dedicated to the public domain under CC0-1.0."
+    content: |
+      Stream the 9:16 60fps vertical cut on [OpenIE Research TV](https://research.openie.dev/tv/?study=eco-stack) or run the 1-command replication harness at [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate).
+    cta:
+      primary:
+        text: "Read Canonical Post-Review Dossier"
+        url: "https://blog.openie.dev/posts/eco-stack/"
+      secondary:
+        text: "Primary Paper & 1-Command Replication"
+        url: "https://research.openie.dev/papers/agency/"
+    footer_text: "Signed Provenance · Self-Checked (not externally peer-reviewed). Summary text dedicated to the public domain under CC0-1.0."

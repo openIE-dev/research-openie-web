@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "lut-adapt",
   "canonical_id": "blake3:tv:f5f2551c2e873bdc7af0ce1e380b0a888679c3ade804cbec637a62785734ec8d",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/lut-adapt/",
+  "canonical_paper_url": "https://research.openie.dev/papers/lut-adapt/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/lut-adapt-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/lut-adapt-15s.mp4",
-    "poster_uri": "/media/tv/posters/lut-adapt-poster.jpg",
-    "vtt_uri": "/media/tv/captions/lut-adapt-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/lut-adapt-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/lut-adapt-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 22.53,
     "safe_zone_verified": true,
-    "source_15s_sha256": "f5c9fb550824cf94b46fd5c1eb364f91b3f6f3f82e18cc4ba38c4a537c5c2b37"
+    "sha256": "bc47616e18c3ef4c7578f32c873792fe79f0cbc171843f923cd9a3203939524c"
   },
-  "caption_utf16_chars": 689,
+  "caption_utf16_chars": 921,
+  "caption": "LUT-Adapt & Mixture-of-Limits Cascade — 87.25x–222.57x Thor INA3221 shunt CpJ on LUT6/wearable ops (measured_j) · 91.67% (44/48) Qwen3.6-35B & 62.50% (10/16) 24B+120B gated coding (reported_j)\n\nJetson Thor TI INA3221 shunts (measured_j) recorded 162.56-162.71 nJ/op (87x CpJ vs INT8 MLP) on bit-sliced 80-LUT6 tables; on workstation reported_j, MoL + Qwen3.6-35B solved 44/48 (91.67%) coding tasks.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: measured_j (Thor TI INA3221/INA238 shunts (measured_j) kept strictly separate from workstation reported_j, Cortex-M55 DWT cycles, and FPGA VCD est_j.)\n• Essay: https://blog.openie.dev/posts/lut-adapt/\n• Paper: https://research.openie.dev/papers/lut-adapt/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#EdgeAi #Fpga #MachineLearning #EnergyEfficiency #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "Downward Lookup Compilation (970 MB Active RAM · 91.7% Verified · 0% Broken)\nHow to run giant coding models inside tiny laptop memory and turn verified answers into millisecond reflexes.\n1) Most requests repeat solved patterns, so running a giant neural network every time wastes memory and energy.\n2) This cascade checks tiny truth tables first and streams specialist model slices from storage only when needed.\n3) Once an automated test certifies a new answer, it compiles downward into a reusable millisecond skill.\nEnergy class: measured_j (Chip Energy Counter) · CC0-1.0 · https://research.openie.dev/papers/lut-adapt/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "LUT-Adapt & Mixture-of-Limits Cascade — 87.25x–222.57x Thor INA3221 shunt CpJ on LUT6/wearable ops (measured_j) · 91.67% (44/48) Qwen3.6-35B & 62.50% (10/16) 24B+120B gated coding (reported_j)\n\nJetson Thor TI INA3221 shunts (measured_j) recorded 162.56-162.71 nJ/op (87x CpJ vs INT8 MLP) on bit-sliced 80-LUT6 tables; on workstation reported_j, MoL + Qwen3.6-35B solved 44/48 (91.67%) coding tasks.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: measured_j (Thor TI INA3221/INA238 shunts (measured_j) kept strictly separate from workstation reported_j, Cortex-M55 DWT cycles, and FPGA VCD est_j.)\n• Essay: https://blog.openie.dev/posts/lut-adapt/\n• Paper: https://research.openie.dev/papers/lut-adapt/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#EdgeAi #Fpga #MachineLearning #EnergyEfficiency #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/lut-adapt-tiktok.mp4"
     }
   },
-  "content_blake3": "09e091bb24bb4ee0f7fb88274ceb95f1d481e792eb01afa36345689d0cf34d52"
+  "content_blake3": "4ad31302dc86751aaa1f2a2b7676d8abcc2fd897c101e928658190bedbdccfd5"
 }

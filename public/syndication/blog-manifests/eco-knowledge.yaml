@@ -1,75 +1,89 @@
-# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+# OpenIE Post-Review Audited Blog Syndication Manifest (CC0-1.0)
 slug: "eco-knowledge"
 
 metadata:
-  title: "Time-Indexed Claims and Six-Kernel Proof Verification"
-  description: "Why trustworthy knowledge requires dated provenance to stop citation laundering—and six independent proof kernels for mathematics."
-  date: "2026-11-24"
-  author: "David Charlot, Open Interface Engineering"
+  title: "The Knowledge Claim Schema (knowledge.openie.dev): Seven Epistemic Axes, Bitemporal Lineage, and Corrected Six-Kernel Proof Counts"
+  description: "Defines knowledge.openie.dev’s unmetered 7-axis claim schema (valid/transaction/reference time, granularity, scope, certainty, provenance) and corrects cross-repo Lean proof counts (132 6-kernel theorems + 5,393 RCE constants alongside 12 open RCE draft theorems)."
+  date: "2026-11-25"
+  author: "Open Interface Engineering"
   category: "research"
-  tags: ["eco-knowledge", "research", "open-science", "cc0", "reported-j"]
+  tags: ["knowledge-graphs", "databases", "provenance", "formal-verification", "open-science"]
   featured: false
   draft: false
   toc: true
-  canonicalUrl: "https://research.openie.dev/papers/time-as-an-index/"
+  provenanceStatus: "Signed Provenance · Self-Checked"
+  verificationUrl: "https://blog.openie.dev/verification/"
+  glossaryUrl: "https://blog.openie.dev/glossary/"
+  canonicalBlogUrl: "https://blog.openie.dev/posts/eco-knowledge/"
+  canonicalUrl: "https://blog.openie.dev/posts/eco-knowledge/"
+  primaryPaperUrl: "https://research.openie.dev/papers/time-as-an-index/"
+  replicationKitUrl: "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
+  publicRepoUrl: "https://github.com/openIE-dev/rce"
+  energyClass: "unmetered"
   license: "CC0-1.0"
 
 hero:
   image: "eco-knowledge-poster.jpg"
-  alt: "Time-Indexed Claims & Six-Kernel Proofs — 5,496 Six-Kernel Theorems · 0 Skipped Proofs"
+  alt: "Knowledge Claim Schema — 7 epistemic axes (valid/transaction/reference time) and audited 6-kernel Lean proof counts — Unmetered 7-axis claim schema (knowledge.openie.dev) · 1,422 6-kernel Lean declarations audited (with 12 open draft-0.9 theorems in RCE)"
 
 sections:
   - heading: null
     content: |
-      *Canonical Primary Source: [https://research.openie.dev/papers/time-as-an-index/](https://research.openie.dev/papers/time-as-an-index/) · Dedicated to the Public Domain (`CC0-1.0`)*
+      *Signed Provenance · Self-Checked (`human_in_gate = false`; [Verification](https://blog.openie.dev/verification/) · [Glossary](https://blog.openie.dev/glossary/)) · Canonical Post-Review Essay: [https://blog.openie.dev/posts/eco-knowledge/](https://blog.openie.dev/posts/eco-knowledge/) · Primary Paper: [https://research.openie.dev/papers/time-as-an-index/](https://research.openie.dev/papers/time-as-an-index/)*
 
-      Why trustworthy knowledge requires dated provenance to stop citation laundering—and six independent proof kernels for mathematics.
+      Defines a structured knowledge claim on knowledge.openie.dev as an unmetered 7-axis tuple ⟨V_t, T_t, R_t, G, S, C, P⟩ (valid time, transaction time, reference time, granularity, scope, calibrated certainty, provenance), while correcting the fleet Lean 4.36.0 proof summary to separate source theorem declarations (1,422 across 4 suites in bwrap 6-kernel lake check --paranoid; 5,393 elaborated RCE constants) from the 12 unproved draft-0.9 theorem statements in openIE-dev/rce.
 
-  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+  - heading: "Key Claims & Evidence Tags"
     content: |
-      1. Claims without timestamps and source roots go stale fast and let copied summaries masquerade as independent evidence.
-      2. Every recorded claim carries valid time, recorded time, reference frame, scale, scope, certainty, and anti-laundering provenance.
-      3. Checking mathematical theorems across six independent Lean proof kernels eliminates single-compiler blind spots completely.
+      1. **[M/S · Unmetered 7-Axis Epistemic Schema]** `knowledge.openie.dev` specifies a factual claim as **`claim = ⟨V_t, T_t, R_t, G, S, C, P⟩`**—requiring three distinct timestamps (**Valid Time** when true in the world, **Transaction Time** when recorded in the ledger, and **Reference Time** when queried), two domain bounds (**Granularity** and **Scope**), and two epistemic anchors (**Calibrated Certainty** and **Cryptographic/Source Provenance**). Because `knowledge.openie.dev` runs no power-instrumented experiment of its own, its `energyClass` is corrected to **`unmetered` (`joules = null`)**.
+      2. **[T · Reconciled Fleet Lean `4.36.0` Counts & Open RCE Draft Theorems]** Earlier headlines wrote `"5,496 Six-Kernel Theorems · 0 Skipped Proofs"`, mixing elaborated RCE kernel constants (`5,393`, which include auxiliary equation/splitter constants from `1,264` source declarations) with source theorem counts from sibling repos while omitting open draft items. Exact `bwrap` 6-kernel (`con-leche`, `con-ron`, `lean4lean`, `nanoda`, `leanchecker --paranoid`, `Lean v4.36.0`) counts are: **`1,264` source declarations (`5,393` kernel constants) in `rce` (`0 sorry` in completed files, alongside `12` unproved Draft-0.9 theorem statements in Appendix F.9)**, **`58` theorems in `lut-adapt`**, **`45` theorems (`53` decls) in `communication-avalanche`**, and **`31` theorems (`50` decls) in `time-as-an-index`**.
+      3. **[S · Direct Lineage in Bitemporal Databases & Provenance Standards]** Connects AI hallucination prevention directly to **Snodgrass & Ahn’s bitemporal relational model (SIGMOD 1985 / SQL:2011)**, **W3C PROV-DM (2013)**, and **Wikidata statement qualifiers (Vrandečić & Krötzsch, 2014)**.
 
-  - heading: "Everyday Analogy & Why It Matters"
+  - heading: "Methods, Baselines & Artifact Scope"
     content: |
-      A patient blood-pressure reading from Tuesday and a tax rate from nineteen ninety-eight are both genuine facts that turn into costly errors once stripped of dates. Worse yet, automated summaries routinely cite secondary summaries until unverified guesses look like established consensus. On knowledge dot openie dot dev, no statement floats bare in memory.
+      - **Hardware & Telemetry**: `knowledge.openie.dev` schema definition is `unmetered` (`joules = null`). Companion Linux `bubblewrap` 6-kernel `lake check --paranoid` audit over `openIE-dev/rce` recorded `22,354.77 J` (`319.80 s`) Linux `RAPL` `package-0` `reported_j`.
+      - **Workload & Suite**: Formal 7-axis epistemic schema specification on `knowledge.openie.dev` plus 4-repository `Lean 4.36.0` 6-kernel verification (`openie_fleet_six_kernel_paranoid_audit.csv`).
+      - **Baselines Compared**: Unqualified natural-language token strings (stripping valid/transaction timestamps and source provenance during static weight compression) vs. 7-axis provenance-preserving retrieval records.
+      - **Runs (N) & Spread**: Deterministic proof-kernel verification (`6/6` independent checkers agree with `0 sorry`, `0 opaque`, `0 ofReduceBool` on all compiled `.lean` modules). **Empirical RAG benchmark (e.g., NaturalQuestions, HotpotQA, FreshQA): not run on `knowledge.openie.dev`.**
+      - **Cold vs. Warm Scope**: Specifies exact cache-staleness rules via the temporal triad (`V_t, T_t, R_t`): immutable mathematical theorems (`[T]`) may be cached indefinitely, whereas time-varying empirical facts (`[E]`/`[S]`) expire when `R_t` exits `[V_t_start, V_t_end]`.
+      - **Artifact & License**: Portal text (`CC0-1.0`) at `knowledge.openie.dev`; `rce` and `lut-adapt-ai` Lean proofs (`Apache-2.0`); self-checked, not externally peer-reviewed.
 
-      Every recorded claim stores valid world time, ledger write time, reference clock frame, measurement scale, explicit boundary scope, certainty level, and a directed graph back to primary sources. For mathematical statements, proof dot openie dot dev checks formal derivations in Lean four point three six across six independently written proof kernels—verifying five thousand four hundred ninety-six theorem constants with zero skipped proofs or opaque shortcuts. Keeping dated physical sensor readings, simulation runs, open scientific hypotheses, and six-kernel mathematical proofs visibly separate lets humans and machines build reliable knowledge on trustworthy ground.
-
-  - heading: "Inside the Mechanism & Candid Limits"
+  - heading: "Why Static Weight Compression Strips Epistemic Coordinates"
     content: |
-      Today's language models and search indexes ingest millions of web pages as flat, undated strings of text without preserving when or where a measurement held true. Stripping away timestamps, experimental operating conditions, and original source lineage makes a century-old physical theorem look identical to a retracted rumor copied across twenty blogs. Think of a careful investigative reporter who checks five newspaper stories and realizes all five quoted one anonymous post, paired with a structural bridge engineer who checks critical load equations across six separately written verification tools so no single compiler bug, typo, or silent blind spot can ever hide. Every knowledge record on knowledge dot openie dot dev binds seven explicit coordinates together in one auditable structure: valid time in nature, transaction time when written to the ledger, reference clock frame, resolution granularity, operating scope, certainty class—theorem, empirical test, model run, or open question—and primary root provenance.
+      Training a language model on dated web snapshots compresses millions of time-bound, source-specific statements (`"the API rate limit in v2.1 on 2024-05-01 is 100 req/min"`) into shared floating-point weights where `Valid Time`, `Transaction Time`, `Scope`, and `Provenance` are lost `[M, S]`. Extending **Snodgrass & Ahn (1985)** from bitemporal (`V_t, T_t`) to tritemporal (`V_t, T_t, R_t`) plus granularity, scope, conformal calibration (`C`), and hash/citation provenance (`P`) separates invariants that belong in compiled logic/weights from transient facts that must be retrieved with axes intact `[M, S]`.
 
-      Rather than rewarding viral repetition across copied web summaries, our anti-laundering rule evaluates evidential weight strictly across non-overlapping primary roots in the provenance graph. Ten thousand echoed summaries of one unverified claim collapse cleanly back to weight one—or straight down to zero whenever no primary empirical test exists at the root. In this three-dimensional torus, interlocking cyan and amber rings trace valid world time and recorded ledger time around an inner core of primary measurements, while the outer emerald ring represents six independent Lean four point three six proof kernels auditing every formal deduction step by step without shortcuts. Across our formal verification library on proof dot openie dot dev, all five thousand four hundred ninety-six exported theorem constants passed all six independent proof checkers with zero unproved placeholders, zero opaque trust bypasses, and zero unchecked reflection shortcuts, paired with our one-hundred-ninety-five-entry dated time ledger.
-
-      Intellectual honesty requires stating the exact boundary of formal mathematics upfront: even six independent proof kernels guarantee only that conclusions follow deductively from written axioms. Confirming that a real silicon circuit board, battery rail, or wireless communication link obeys those axioms in nature always demands reproducible physical lab tests.
-
-  - heading: "How Energy Was Metered"
+  - heading: "Transparent Accounting of Six-Kernel Lean Proofs"
     content: |
-      - **Acquisition Tier**: Chip Energy Counter
-      - **Disclosure**: Deterministic six-kernel Lean 4.36.0 verification runs and 195-entry dated ledger.
-      - **Evidence Class**: `reported_j` (`49.04 mJ (reported_j)`)
-      - **Meter / Formula**: On-chip CPU energy counter per deterministic six-kernel proof verification batch
+      Running six independent Lean `4.36.0` typecheckers (`con-leche`, `con-ron`, `lean4lean`, `nanoda`, `leanchecker --paranoid`, and `Lean`) inside network-isolated `bubblewrap` guards against single-implementation kernel bugs (`0 sorry`, `0` custom axioms, `0 opaque`, `0 ofReduceBool`) `[T]`. However, two crucial caveats govern what that audit proves `[T, M]`:
 
-      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+      - **Kernel constants vs. source theorems & unproved Draft-0.9 items:** `5,393` in `rce` counts kernel theorem constants generated from `1,264` source declarations, and `rce` Appendix F.9 still lists **12 unproved Draft-0.9 theorem statements** (`rce-facts.json`).
+
+      - **Formal axioms != empirical truth:** Six proof kernels certify that a theorem follows deductively from its stated Lean definitions; they do **not** validate physical sensor calibration or real-world market assumptions `[M]`.
+
+  - heading: "Limitations & Missing Retrieval Benchmarks"
+    content: |
+      - **No end-to-end FreshQA / bitemporal RAG evaluation here:** `knowledge.openie.dev` defines the schema contract; quantitative calibration experiments (`5.37x` lower `RMS` calibration error on `32` `SuperGPQA/AIME/HMMT` items) live in `lut-adapt` (`LA-37`) `[E]`.
+
+  - heading: "Energy & Telemetry Scope"
+    content: |
+      `knowledge.openie.dev` is `unmetered` (`joules = null`).
 
 references:
   - id: 1
-    authors: "David Charlot, Open Interface Engineering"
-    title: "Time-Indexed Claims and Six-Kernel Proof Verification"
+    authors: "Open Interface Engineering"
+    title: "The Knowledge Claim Schema (knowledge.openie.dev): Seven Epistemic Axes, Bitemporal Lineage, and Corrected Six-Kernel Proof Counts"
     publication: "OpenIE Research"
     year: 2026
     url: "https://research.openie.dev/papers/time-as-an-index/"
 
 closing:
-  content: |
-    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=eco-knowledge) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
-  cta:
-    primary:
-      text: "Read Primary Study & PDF"
-      url: "https://research.openie.dev/papers/time-as-an-index/"
-    secondary:
-      text: "Watch on OpenIE Research TV"
-      url: "https://research.openie.dev/tv/?study=eco-knowledge"
-  footer_text: "Summary text dedicated to the public domain under CC0-1.0."
+    content: |
+      Stream the 9:16 60fps vertical cut on [OpenIE Research TV](https://research.openie.dev/tv/?study=eco-knowledge) or run the 1-command replication harness at [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate).
+    cta:
+      primary:
+        text: "Read Canonical Post-Review Dossier"
+        url: "https://blog.openie.dev/posts/eco-knowledge/"
+      secondary:
+        text: "Primary Paper & 1-Command Replication"
+        url: "https://research.openie.dev/papers/time-as-an-index/"
+    footer_text: "Signed Provenance · Self-Checked (not externally peer-reviewed). Summary text dedicated to the public domain under CC0-1.0."

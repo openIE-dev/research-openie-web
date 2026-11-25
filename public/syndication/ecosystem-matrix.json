@@ -1,7 +1,7 @@
 {
   "schema": "openie.ecosystem_matrix.v1",
-  "version": "1.0.0",
-  "updated": "2026-11-24",
+  "version": "1.1.0",
+  "updated": "2026-11-25",
   "human_in_gate": false,
   "text_and_summary_license": "CC0-1.0",
   "code_and_schema_license": "Apache-2.0",
@@ -40,10 +40,10 @@
           "protocol": "YAML Post Manifest (`build-post.js`) + RSS + Canonical Link",
           "surface": "https://blog.openie.dev",
           "license": "CC0-1.0",
-          "status": "staged_manifests_ready",
+          "status": "live_post_review_remediated",
           "capabilities": [
-            "28 deterministic YAML blog manifests (`public/syndication/blog-manifests/*.yaml`)",
-            "Canonical URL linkage back to primary OpenIE studies"
+            "28 post-review-audited Era II study dossiers live at https://blog.openie.dev/posts/<slug>/",
+            "Canonical Medium Story Import source (medium.com/p/import -> open-interface-engineering) + YAML manifests"
           ]
         },
         {
@@ -102,9 +102,9 @@
           "license": "CC0-1.0",
           "status": "live_rss_watcher_active",
           "capabilities": [
-            "Forward: Canonical Artifact -> 28 illustrated Medium essays (`medium.com/open-interface-engineering`) + 28 5-post X threads (<=280 weighted chars, 0 URLs in Post 1 + native 9:16 video card)",
-            "Reverse 1 (Active 15m Timer): Polls `medium.com/feed/open-interface-engineering` & `medium.com/feed/@openie` -> BLAKE3 deduplicated X video threads (`sync_medium_rss_to_x`)",
-            "Reverse 2: X self-reply timeline threads -> compiled Medium essays + thread-root backlink reply (`sync_x_threads_to_medium`)"
+            "Forward: Post-review blog dossier (https://blog.openie.dev/posts/<slug>/) -> Medium canonical import (open-interface-engineering) + 28 5-post X threads (<=280 weighted chars, 0 URLs in Post 1 + native 9:16 video card)",
+            "Reverse 1 (Active 15m Timer): Polls medium.com/feed/open-interface-engineering & medium.com/feed/@openie -> BLAKE3 deduplicated X video threads (sync_medium_rss_to_x)",
+            "Reverse 2: X self-reply timeline threads -> compiled Medium essays + thread-root backlink reply (sync_x_threads_to_medium)"
           ]
         },
         {
@@ -116,7 +116,7 @@
           "license": "CC0-1.0",
           "status": "staged_and_tested",
           "capabilities": [
-            "28 1080x1920 60fps 9:16 safe-zone verified vertical snackables (`/media/tv/tiktok/<id>-tiktok.mp4`)",
+            "28 1080x1920 60fps 9:16 safe-zone checked vertical snackables (`/media/tv/tiktok/<id>-tiktok.mp4`)",
             "Honest `is_aigc: true` studio voice disclosure + BLAKE3 deduplication"
           ]
         },
@@ -142,7 +142,7 @@
           "license": "CC0-1.0",
           "status": "connector_ready",
           "capabilities": [
-            "9:16 1080x1920 safe-zone verified vertical snackable reels + cover frame"
+            "9:16 1080x1920 safe-zone checked vertical snackable reels + cover frame"
           ]
         },
         {
@@ -166,7 +166,7 @@
           "license": "CC0-1.0",
           "status": "staged_and_tested",
           "capabilities": [
-            "300-char root/parent CID-chained threads with verified rich-text link facets"
+            "300-char root/parent CID-chained threads with byte-sliced rich-text link facets"
           ]
         },
         {
@@ -199,7 +199,7 @@
       "tier": 3,
       "id": "resilient_public_mirrors",
       "name": "Resilient Archival Mirrors & Open Audio Syndication",
-      "description": "Censorship-resistant, bit-verified public mirrors for video, audio, papers, and WAI1 envelopes.",
+      "description": "Censorship-resistant, digest-checked public mirrors for video, audio, papers, and WAI1 envelopes.",
       "ecosystems": [
         {
           "id": "internet-archive",
@@ -370,7 +370,7 @@
           "license": "CC0-1.0",
           "status": "live",
           "capabilities": [
-            "69 AAC concept anchors + 36 W3C SKOS concepts verified by `AccessibilityGate` (`<=18` words/sentence)"
+            "69 AAC concept anchors + 36 W3C SKOS concepts checked by `AccessibilityGate` (`<=18` words/sentence)"
           ]
         },
         {
@@ -536,9 +536,10 @@
       ]
     }
   ],
-  "study_count": 28,
-  "x_post_count_total": 140,
-  "x_max_weighted_chars_observed": 278,
-  "ledger_blake3": "dbe25e548ead94a2a5935e51cecf77987405b4e9a0444f4dcb340d986c77cd88",
-  "matrix_blake3": "c853f10cde8dd99c3ae0e9c119b0dedaa97d3c17ca002b5291bd1c81d39c516c"
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "x_max_weighted_chars_observed": 280,
+  "ledger_blake3": "6ca758a94572a848f935a60999ea9ddc0224c3f4b9572d2ec5d9e117399918fc",
+  "matrix_blake3": "1a2c26800b578b3d0ffdc71cebfd41b7e3656bb3c30f4ac6bfe1a46bb8332cbb"
 }

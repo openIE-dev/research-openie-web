@@ -1,77 +1,91 @@
-# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+# OpenIE Post-Review Audited Blog Syndication Manifest (CC0-1.0)
 slug: "gates"
 
 metadata:
-  title: "Metered Commit Gates: Energy-to-Correct-Completion for Agentic Systems"
-  description: "Why computers must check before taking undoable actions, start with the cheapest tool, and log every joule."
-  date: "2026-11-24"
-  author: "David Charlot, Open Interface Engineering"
+  title: "Metered Commit Gates: KV260 Whole-SOM Shunt Measurements, Statistical Safety Bounds, and Cascade Scope"
+  description: "Whole-SOM TI INA260 shunt power-slope readings on AMD Kria KV260 (11.43 nJ/cycle, N = 4 A/B/A passes), inconclusive 98 pJ seed delta near sensor floor, and Clopper-Pearson bounds over 209,261 simulated checks."
+  date: "2026-11-25"
+  author: "Open Interface Engineering"
   category: "energy"
-  tags: ["gates", "energy", "open-science", "cc0", "measured-j"]
+  tags: ["embedded-systems", "fpga", "safety-engineering", "energy-efficiency", "open-science"]
   featured: false
   draft: false
   toc: true
-  canonicalUrl: "https://research.openie.dev/papers/gates/"
+  provenanceStatus: "Signed Provenance · Self-Checked"
+  verificationUrl: "https://blog.openie.dev/verification/"
+  glossaryUrl: "https://blog.openie.dev/glossary/"
+  canonicalBlogUrl: "https://blog.openie.dev/posts/gates/"
+  canonicalUrl: "https://blog.openie.dev/posts/gates/"
+  primaryPaperUrl: "https://research.openie.dev/papers/gates/"
+  replicationKitUrl: "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
+  publicRepoUrl: "https://github.com/openIE-dev/mixture-of-limits"
+  energyClass: "measured_j"
   license: "CC0-1.0"
 
 hero:
   image: "gates-poster.jpg"
-  alt: "Metered Commit Gates — 11,428 Picojoules per Hardware Gate Check"
+  alt: "Metered Commit Gates — 11.43 nJ/cycle whole-SOM KV260 INA260 reading and 209,261-trial Clopper-Pearson bound — 11.43 nJ/cycle whole-SOM average (KV260 INA260 shunt, measured_j) · 0/209,261 simulated false allows (95% UB <= 1.43e-5)"
 
 sections:
   - heading: null
     content: |
-      *Canonical Primary Source: [https://research.openie.dev/papers/gates/](https://research.openie.dev/papers/gates/) · Dedicated to the Public Domain (`CC0-1.0`)*
+      *Signed Provenance · Self-Checked (`human_in_gate = false`; [Verification](https://blog.openie.dev/verification/) · [Glossary](https://blog.openie.dev/glossary/)) · Canonical Post-Review Essay: [https://blog.openie.dev/posts/gates/](https://blog.openie.dev/posts/gates/) · Primary Paper: [https://research.openie.dev/papers/gates/](https://research.openie.dev/papers/gates/)*
 
-      Why computers must check before taking undoable actions, start with the cheapest tool, and log every joule.
+      On an AMD Kria KV260 board, whole-SOM VCC_SOM TI INA260 halt-vs-run power-slope metering measured 11,428 pJ/cycle (11.43 nJ, SE = 129 pJ across N = 4 interleaved 25 s passes at 25 MHz, measured_j) while a 98 pJ seed-fabric delta remained inconclusive near the 1.25 mA sensor step; in software simulation, 209,261 pendulum checks observed 0 false allows (95% Clopper-Pearson upper bound <= 1.43e-5) alongside predicate disagreements in NI-4.
 
-  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+  - heading: "Key Claims & Evidence Tags"
     content: |
-      1. A computer should not take an irreversible action until an independent check confirms it is safe.
-      2. It should try the cheapest method first and wake a large AI model only when simpler tools miss.
-      3. Every decision is written to a receipt with the energy it used, so anyone can audit it later.
+      1. **[E · measured_j, KV260 TI INA260 Whole-SOM Shunt]** Stepping an 8-lane gate fabric at `25 MHz` (`2.4999 × 10^7` gate cycles/s, `~6.25 × 10^8` cycles per `25 s` window) raised whole-module `VCC_SOM` power by `+0.2857 W` (`SE = 0.0032 W` across `N = 4` interleaved A/B/A passes at `~4 Hz`), yielding **11,428 pJ/cycle (`11.43 nJ`, `SE = 129 pJ`, or `~1.43 nJ` per lane decision)** across PS + PL + DDR + regulators combined—whereas a **98.0 pJ (`SE = 30.8 pJ`, `+0.0098 W` ≈ `1.96 mA` at `5 V`)** seed-fabric delta sits near the `INA260` `1.25 mA` current step and is **explicitly inconclusive**.
+      2. **[E/M · Simulated Safety Gate Bound]** Across `209,261` simulated inverted-pendulum states (`21^3 = 9,261` grid + `200,000` near-threshold Monte Carlo samples against `Vdot <= epsilon`), the gate recorded **0 observed false allows in 209,261 simulated trials (95% Clopper–Pearson upper bound <= 1.43 × 10^-5, ~1.4 per 100,000, under the tested state generator, with 79/209,261 = 0.038% conservative false refusals; grid/Monte Carlo simulation cannot prove universal absence of bugs)**.
+      3. **[M · Cold vs. Assumed Zipf Caching]** The reported `16.7x` frontier-call reduction in the Mixture-of-Limits (`MoL`) cascade comes from an **assumed stationary `Zipf(s = 1.1)` repeat-arrival stream** where verified answers memoize into exact lookup; on **all-novel cold arrivals, cache reuse is `1.0x` (zero call savings)**, and cached entries must be invalidated whenever specifications change.
 
-  - heading: "Everyday Analogy & Why It Matters"
+  - heading: "Methods, Baselines & Artifact Scope"
     content: |
-      Think of how a hospital pharmacy or airplane cockpit separates suggesting an action from executing it. An AI model can propose whatever clever step it likes, while an independent deterministic gate holds the sole key to external tools. Instead of waking a massive neural network on routine tasks, our cascade tries table lookup first, then simple formulas, then exact solvers, and finally a model, stopping the instant a check passes or refusing cleanly when remaining budget runs low.
+      - **Hardware & Telemetry**: Hardware rung: AMD Kria KV260 (`XCK26` UltraScale+ SOM) instrumented via onboard TI `INA260` I2C shunt across whole-module `VCC_SOM` (`5.04 V` rail; `1.25 mA` current LSB, `5 mA` max offset, `0.15%` gain error; `measured_j`). Software simulations (`NI-1..NI-4`, `MoL` Zipf curves): analytical op-counters and Python/Rust simulation (`est_j` / `[M]`).
+      - **Workload & Suite**: KV260: `25 MHz` 8-lane pipelined LUT/comparator commit-gate fabric (`~6.25 × 10^8` cycles per `25 s` window). Software: `209,261` discrete pendulum Lyapunov (`Vdot`) and Control Barrier Function (`CBF`) checks (`NI-1..NI-4`) plus synthetic `Zipf(s = 1.1)` cascade streams.
+      - **Baselines Compared**: KV260: halted-clock vs. free-running `25 MHz` gate fabric on the same SOM (`A/B/A` difference). Software: unguarded actuator pass-through and always-frontier single-tier invocation.
+      - **Runs (N) & Spread**: KV260 `INA260`: `N = 4` interleaved `A/B/A` passes (`15 s` thermal settle + `25 s` sampling at `~4 Hz` ≈ `100` readings/window), mean `11,428 pJ/cycle`, `SE = 129 pJ` (`+0.2857 W`, `SE = 0.0032 W`); seed-fabric delta `98.0 pJ`, `SE = 30.8 pJ` (inconclusive near `1.25 mA` LSB). Pendulum simulation: `N = 209,261` deterministic states (`95%` Clopper–Pearson UB `<= 1.43 × 10^-5`).
+      - **Cold vs. Warm Scope**: Hardware gate is stateless combinational/pipelined (`0` cache). Software `MoL` cascade separates cold first-exposure misses (`0%` hit rate) from warm `Zipf(s = 1.1)` memoized hits (`16.7x` call reduction only under stationary task repetition; requires hash invalidation on spec edits).
+      - **Artifact & License**: Manuscript and CSV logs (`CC0-1.0`); `openIE-dev/mixture-of-limits` (`Apache-2.0`); KV260 bitstream/bench scripts self-checked by OpenIE, not externally replicated.
 
-      Across more than two hundred nine thousand simulated control checks, the discrete safety gate allowed zero unsafe actions. On real programmable hardware with an inline circuit-board power sensor, one whole-module gate cycle measured eleven thousand four hundred twenty-eight picojoules. Model-generated suggestions are never silently relabeled as guaranteed rules, and every allowed or refused step writes its exact reason and labeled energy source to a permanent receipt for later inspection.
-
-  - heading: "Inside the Mechanism & Candid Limits"
+  - heading: "Problem, Scope & Sensor Boundary"
     content: |
-      Chatbots can recover from a clumsy sentence by writing another polite paragraph, yet autonomous software tools cross real-world boundaries that cannot be rolled back once executed. Even cheap per-word AI becomes wasteful and dangerous when ten unverified guesses corrupt records, trigger expensive rollbacks, and force human cleanup afterward. Imagine a hospital pharmacy where routine refills follow an exact printed checklist, unusual prescriptions escalate to a specialist, and a physical barcode lock refuses to open the drawer if dosage or allergy limits fail. Neither raw speed nor model cleverness ever gets an informal side channel around that gate.
+      A commit gate interposes a fast, deterministic admissibility check between an untrusted proposer and an irreversible state change `[M]`. Earlier blog headlines presented `11.43 nJ` and `zero bad commits` without naming the whole-module rail boundary, sensor quantization step, or finite-sample statistical bound. Grounding directly in `src/content/papers/gates.md` restores all three engineering qualifiers `[E]`.
 
-      Every irreversible action passes through four strict runtime records in our Rust reference implementation. First comes an untrusted proposal that cannot authorize itself. Second comes a joint certificate requiring table permission, energy budget headroom, and optional safety barriers. Third comes commit or typed refusal, and fourth comes a timestamped receipt.
-
-      By classic sequential search theory, trying gears in decreasing order of pass probability divided by energy cost minimizes expected spend across every workload. Measuring total energy to correct completion penalizes every failed retry and refusal, showing clearly why spending picojoules on early deterministic checks saves whole joules of wasted model runs. This three-dimensional hardware cutaway shows eight parallel safety gates checking rule tables, energy budgets, and safety barriers together at twenty-five megahertz on reconfigurable silicon, while an onboard circuit-board current sensor measures real module supply power across interleaved start-and-stop runs and matches software decisions step for step. Across two hundred nine thousand two hundred sixty-one fixed-point control checks, the discrete gate recorded zero unsafe approvals and only seventy-nine cautious refusals, while blocking unsafe external tool calls before execution.
-
-      Interleaved hardware board-sensor measurements recorded eleven thousand four hundred twenty-eight picojoules per gate cycle across four passes. Every energy figure states plainly how it was obtained and what remains unmeasured. Our eleven-thousand-picojoule hardware reading spans the whole vision module supply rather than an isolated core rail, a tiny ninety-eight-picojoule seed test stayed inconclusive near sensor resolution, and software operation counts stay clearly labeled as analytical estimates.
-
-  - heading: "How Energy Was Metered"
+  - heading: "KV260 Whole-SOM Shunt Measurement & Pendulum Simulation"
     content: |
-      - **Acquisition Tier**: Board Power Sensor
-      - **Disclosure**: Direct circuit-board power sensor on vision module; software runs stay estimates.
-      - **Evidence Class**: `measured_j` (`11.43 nJ (measured_j)`)
-      - **Meter / Formula**: AMD Kria KV260 whole-module physical board power shunt (11,428 pJ per hardware commit gate check)
+      - **Whole-SOM `INA260` power-slope protocol `[E, measured_j]`:** On AMD Kria KV260, the onboard TI `INA260` sits on `VCC_SOM` (`~5.04 V`), metering the entire System-on-Module (ARM Cortex-A53 PS, UltraScale+ PL fabric, DDR4 memory, and DC-DC regulators) rather than an isolated core LUT rail. Across `N = 4` interleaved `A/B/A` halt-vs-run passes (`15 s` settle, `25 s` capture at `~4 Hz` while stepping `2.4999 × 10^7` 8-lane cycles/s = `~6.25 × 10^8` cycles/window), active clocking added `+0.2857 W` (`SE = 0.0032 W`), giving **11,428 pJ/cycle (`11.43 nJ`, `SE = 129 pJ`, or `~1.43 nJ/lane`)** `[E]`.
 
-      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+      - **Inconclusive sub-LSB seed delta `[E]`:** Comparing two internal LUT seed configurations shifted `VCC_SOM` power by only `+0.0098 W` (`98.0 pJ/cycle`, `SE = 30.8 pJ`), or `~1.96 mA` at `5 V`—barely `1.5x` the `INA260` `1.25 mA` ADC step (`5 mA` max offset). The primary paper therefore classifies the `98 pJ` isolated-logic estimate as **inconclusive** without a dedicated low-ohm core-rail shunt `[E]`.
+
+      - **Simulated Lyapunov/CBF gate (`209,261` states) `[E, M]`:** Evaluating quantized integer gate checks over `9,261` uniform grid points (`21^3`) plus `200,000` boundary-concentrated Monte Carlo draws produced **0 observed false allows in 209,261 simulated trials (95% Clopper–Pearson upper bound <= 1.43 × 10^-5, ~1.4 per 100,000, under the tested fault generator; fuzzing/simulation cannot prove absence of bugs)** and `79` (`0.038%`) conservative boundary refusals caused by fixed-point guard margins `[E]`.
+
+  - heading: "Limitations, Predicate Disagreement (`NI-4`) & Caching Scope"
+    content: |
+      - **Different safety predicates admit different actions (`NI-4`) `[E]`:** In experiment `NI-4`, comparing a port-Hamiltonian passivity gate (`lut_and_safe_ph`: `0` `Vdot` violations, `4` barrier `h < 0` excursions) against a Control Barrier Function set-invariance gate (`cbf_energy_set`: `0` `h < 0` excursions, `3` `Vdot` spikes) showed explicit disagreement—proving that a gate enforces only the exact mathematical predicate encoded, not generic physical safety `[E]`.
+
+      - **Zipfian memoization vs. cold generalization `[M]`:** The `MoL` software simulation (`16.7x` fewer frontier model invocations) models an idealized `Zipf(s = 1.1)` workload where identical canonicalized tasks recur frequently. On strictly unique cold inputs, the lookup rung misses `100%` of the time and adds gate-check overhead `[M]`.
+
+  - heading: "Energy & Telemetry Scope"
+    content: |
+      Only the KV260 `VCC_SOM` `INA260` reading (`11.43 nJ/cycle`) carries `measured_j` status; software `OpCounter` constants in the paper (such as placeholder `1 pJ` LUT weights) are `est_j` analytical weights explicitly excluded from hardware claims `[E, M]`. Relative to a `~50–100 J` workstation LLM call (`reported_j` in companion studies), a microsecond-scale deterministic gate check is orders of magnitude smaller, though cross-tier (`measured_j` vs `reported_j`) numbers are never ratioed directly (`measured_j ⊥ reported_j`).
 
 references:
   - id: 1
-    authors: "David Charlot, Open Interface Engineering"
-    title: "Metered Commit Gates: Energy-to-Correct-Completion for Agentic Systems"
+    authors: "Open Interface Engineering"
+    title: "Metered Commit Gates: KV260 Whole-SOM Shunt Measurements, Statistical Safety Bounds, and Cascade Scope"
     publication: "OpenIE Research"
     year: 2026
     url: "https://research.openie.dev/papers/gates/"
 
 closing:
-  content: |
-    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=gates) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
-  cta:
-    primary:
-      text: "Read Primary Study & PDF"
-      url: "https://research.openie.dev/papers/gates/"
-    secondary:
-      text: "Watch on OpenIE Research TV"
-      url: "https://research.openie.dev/tv/?study=gates"
-  footer_text: "Summary text dedicated to the public domain under CC0-1.0."
+    content: |
+      Stream the 9:16 60fps vertical cut on [OpenIE Research TV](https://research.openie.dev/tv/?study=gates) or run the 1-command replication harness at [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate).
+    cta:
+      primary:
+        text: "Read Canonical Post-Review Dossier"
+        url: "https://blog.openie.dev/posts/gates/"
+      secondary:
+        text: "Primary Paper & 1-Command Replication"
+        url: "https://research.openie.dev/papers/gates/"
+    footer_text: "Signed Provenance · Self-Checked (not externally peer-reviewed). Summary text dedicated to the public domain under CC0-1.0."

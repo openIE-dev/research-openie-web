@@ -1,29 +1,35 @@
 {
-  "schema": "openie.x_thread_bundle.v1",
+  "schema": "openie.x_thread_bundle.v2",
   "study_id": "rce-jepa",
   "canonical_id": "blake3:tv:019888e27dfd3fb4b49ea3e29a210c3c3de5f4565c4d71c3b42ed1e7f5114b8e",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
   "license": "CC0-1.0",
   "post_count": 5,
-  "max_weighted_chars": 223,
+  "max_weighted_chars": 278,
   "card_video_uri": "/media/tv/tiktok/rce-jepa-tiktok.mp4",
   "fallback_video_uri": "/media/tv/films/rce-jepa-15s.mp4",
-  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/rce-jepa/",
+  "medium_crosslink_uri": "https://blog.openie.dev/posts/rce-jepa/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/rce-jepa/",
   "canonical_paper_url": "https://research.openie.dev/papers/rce-jepa/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+  "public_repo_url": "https://github.com/openIE-dev/rce",
   "zero_urls_in_post_1": true,
   "posts": [
     {
       "position": 1,
       "role": "hook_video_card",
-      "text": "RCE-JEPA: World Coding, with JEPA as Premise\n\nPredict program meaning instead of raw words, let a 49-millijoule checker decide, and cut recurring frontier calls 16.7 times.\n\n[40/40 Hard Tasks Solved · 16.7x Fewer Big Calls]",
-      "weighted_chars": 223,
-      "raw_chars": 223,
+      "text": "RCE-JEPA Latent Form Repair [E · reported_j]\n\nOn the 151-task RCE repair ladder, deterministic rungs a..e closed 111/151 (73.5%) at 0 model calls, 8.42M FormJEPA-v1 closed 27/40 residuals (474.8 mJ Zen 5 RAPL), and <=5-turn Opus/Sonnet 5.5 closed 40/40.",
+      "weighted_chars": 253,
+      "raw_chars": 253,
       "urls": [],
       "in_reply_to_position": null,
       "media": {
         "video_uri": "/media/tv/tiktok/rce-jepa-tiktok.mp4",
         "fallback_video_uri": "/media/tv/films/rce-jepa-15s.mp4",
-        "poster_uri": "/media/tv/posters/rce-jepa-poster.jpg",
-        "vtt_uri": "/media/tv/captions/rce-jepa-15s.vtt",
+        "poster_uri": "/media/tv/tiktok/rce-jepa-tiktok.jpg",
+        "vtt_uri": "/media/tv/tiktok/rce-jepa-tiktok.vtt",
         "aspect_ratio": "9:16",
         "resolution": "1080x1920",
         "fps": 60,
@@ -32,43 +38,47 @@
     },
     {
       "position": 2,
-      "role": "plain_points_1_2",
-      "text": "1/3 Instead of guessing raw code word by word, small models predict compact summaries of program meaning.\n\n2/3 Any AI model may propose a candidate program, but a fast, strict checker alone decides what passes.",
-      "weighted_chars": 210,
-      "raw_chars": 210,
+      "role": "methods_and_sample_bounds",
+      "text": "1/2 Candid EBM negatives & OOD ceiling:\n- Raw FormJEPA-v1 L2 hit 0.618 H5 AUROC; FormEBM-v2 inverted to 0.2585 on multi-line H15 edits\n- Span-normalized FormEBM-v3 reached 0.9437 unseen H5 AUROC, yet plateaued at 0.5278 cross-task OOD AUROC on multi-module crypto APIs",
+      "weighted_chars": 268,
+      "raw_chars": 268,
       "urls": [],
       "in_reply_to_position": 1
     },
     {
       "position": 3,
-      "role": "plain_point_3_and_energy",
-      "text": "3/3 Checking costs over seventeen hundred times less energy than generating, and saved fixes cut big AI calls sixteenfold.\n\nEnergy class: reported_j (49.04 mJ chip counter; board_metered=false, never mixed with shunts).",
-      "weighted_chars": 219,
-      "raw_chars": 219,
+      "role": "telemetry_and_scope_limits",
+      "text": "2/2 Rung-f quarantine & cold/warm scope:\n- rce repair criterion returned holds:false (3/119 = 2.5% > 2.0%), keeping neural rung f in observe mode\n- 16.67x Zipf(0.85) cut is warm DNULLMM1 recall, not cold transfer; H3/H4/H6 remain open\n- Drifted APU pkg withheld; measured_j=null",
+      "weighted_chars": 278,
+      "raw_chars": 278,
       "urls": [],
       "in_reply_to_position": 2
     },
     {
       "position": 4,
-      "role": "machine_verification_gate",
-      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E]/[M] · WAI1 blake3:019888e27dfd… · CC0-1.0",
-      "weighted_chars": 207,
-      "raw_chars": 204,
-      "urls": [],
+      "role": "signed_provenance_self_checked",
+      "text": "Signed Provenance · Self-Checked (human_in_gate=false; not peer-reviewed):\n- Evidence: [E]/[M]/[S] · WAI1 blake3:019888e27dfd...\n- Verification: https://blog.openie.dev/verification/\n- Glossary: https://blog.openie.dev/glossary/",
+      "weighted_chars": 204,
+      "raw_chars": 228,
+      "urls": [
+        "https://blog.openie.dev/verification/",
+        "https://blog.openie.dev/glossary/"
+      ],
       "in_reply_to_position": 3
     },
     {
       "position": 5,
-      "role": "bidirectional_medium_and_paper_bridge",
-      "text": "Read & verify RCE-JEPA (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/rce-jepa/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/rce-jepa/",
-      "weighted_chars": 152,
-      "raw_chars": 204,
+      "role": "canonical_blog_paper_and_replicate",
+      "text": "Read & replicate RCE-JEPA Latent Repair & Residual Cascade (CC0-1.0):\n- Essay: https://blog.openie.dev/posts/rce-jepa/\n- Paper: https://research.openie.dev/papers/rce-jepa/\n- 1-cmd kit: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+      "weighted_chars": 172,
+      "raw_chars": 263,
       "urls": [
-        "https://research.openie.dev/syndication/medium/rce-jepa/",
-        "https://research.openie.dev/papers/rce-jepa/"
+        "https://blog.openie.dev/posts/rce-jepa/",
+        "https://research.openie.dev/papers/rce-jepa/",
+        "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
       ],
       "in_reply_to_position": 4
     }
   ],
-  "content_blake3": "725db0ff7c28e17a9ce2f840733057ca65399af876f3fb49fe872be3818b2822"
+  "content_blake3": "1b80498dc305f411c69c5ae595e50e7339ca4f822c11eaf21dc6cb727ba72df7"
 }

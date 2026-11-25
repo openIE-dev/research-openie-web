@@ -1,64 +1,86 @@
-# Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins
+# Deterministic Cross-Platform Simulation Steps: Reconciling 1.69 mJ/Tick and the 7,728x Python-vs-C++20 Ratio
 
-*0 Replay Drift Across 3 OSes · 9/9 Suites Pass — Write a game once: exact whole-number physics holds zero drift across Windows, macOS, and Linux, while GPU pixels stay behind a one-way gate.*
+*Verifies bit-identical 100,000-tick Q32.32 integer state steps across 8 languages and 4 CPU architectures, clarifying that 1.694 mJ/tick and 7,728x are Linux RAPL reported_j comparing C++20 -O3 against interpreted rce emit python (not Unity/Godot).*
 
-> **Public Domain (`CC0-1.0`) · OpenIE Research Essay**  
-> **Canonical Primary Source**: [https://research.openie.dev/papers/game-engines/](https://research.openie.dev/papers/game-engines/)  
-> **Canonical Artifact ID**: `blake3:tv:77911a4ef555be4fc2b485790d43a76cff398719ebebd3b0f3f9c1fffa353adb` · **Gate Invariant**: `human_in_gate = false`
+> **Signed Provenance · Self-Checked** (`human_in_gate = false`; automated build, benchmark, and proof-checking scripts ran without manual override — not externally peer-reviewed; see [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) and [Epistemic Glossary](https://blog.openie.dev/glossary/)).  
+> **Canonical Post-Review Essay (`rel="canonical"`)**: [https://blog.openie.dev/posts/game-engines/](https://blog.openie.dev/posts/game-engines/)  
+> **Primary Research Paper**: [https://research.openie.dev/papers/game-engines/](https://research.openie.dev/papers/game-engines/)  
+> **1-Command Replication Kit**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) · **Study Repository**: [https://github.com/openIE-dev/rce](https://github.com/openIE-dev/rce)  
+> **Canonical Artifact ID**: `blake3:tv:77911a4ef555be4fc2b485790d43a76cff398719ebebd3b0f3f9c1fffa353adb` · **Evidence Tags**: `[E]` · `[M]` · `[S]` · **Telemetry Class**: `unmetered`
 
 ---
 
-## Three Plain-Language Takeaways (Zero Acronym Soup)
+![Deterministic Simulation Steps — 0 mismatches across 32 language-host cells and 1.694 mJ C++20 vs 13.09 J Python reported_j](https://research.openie.dev/media/tv/posters/game-engines-poster.jpg)
+*Cross-platform `Q32.32` lockstep parity (`32/32` cells) and reconciled `1.694 mJ/tick` (`C++20 -O3`) vs. `13,090.57 mJ/tick` (`CPython 3.14`) `reported_j` ratio (`7,728x`). Dedicated to the public domain under `CC0-1.0`.*
 
-1. Using exact whole-number physics, one game blueprint replays identically for hours across Windows, macOS, Linux, and major engines.
-2. Standard decimal math drifts across operating systems within thirty-seven frames, and chaotic collisions quickly amplify tiny rounding gaps.
-3. Graphics cards vary slightly pixel by pixel, so visual rendering must sit downstream behind a strict one-way tolerance gate.
+## Key Claims & Audited Scope (`[T]` / `[E]` / `[M]` / `[S]`)
 
-![Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins — OpenIE Research TV Studio Poster](https://research.openie.dev/media/tv/posters/game-engines-poster.jpg)
-*Studio key visual for **Writing a Game Once** (`Reality Code Engine` · 0 Replay Drift Across 3 OSes · 9/9 Suites Pass). Dedicated to the public domain under `CC0-1.0`.*
+1. **[E · Reconciled Telemetry Class & Both Sides of `7,728x` (`reported_j`)]** Earlier metadata paired `board_metered = false` (`measured_j = null`) with an unqualified `"1.7 mJ"` and `"> 7,000x"` headline. Grounded in `GE-H5` (`src/content/papers/game-engines.md`), **both numbers are Intel Core i9-13900H Linux `intel-rapl:0` socket `reported_j` over `500` ticks of `N = 10,000` `Q32.32` fixed-point actors**: compiled **`C++20` (`clang++ -O3`) used `1.694 mJ/tick` (`0.0583 ms/tick`, `p99 = 0.0654 ms`)**, `Wasm32` (`Node V8`) used `2.211 mJ/tick` (`0.0724 ms`), and `Rust -O3` used `3.673 mJ/tick` (`0.1248 ms`), compared against **boxed interpreted `rce emit python` (`CPython 3.14`) at `13,090.57 mJ/tick` (`13.09 J/tick`, `564.58 ms/tick`)**—a **`7,728x` (`C++20`)** and **`3,564x–7,728x` speedup/energy cut over interpreted Python**, **not** over commercial C++/C# engines (`Unity Burst/DOTS`, `Unreal`, `Godot`).
+2. **[E · `32/32` Cross-Architecture Lockstep Parity]** Replacing IEEE-754 floats (whose `FMA` contraction, x87/SSE rounding, and transcendental libraries diverge across chips) with `Q32.32` fixed-point integer Forms yielded **`0` state-hash divergences across `100,000` ticks** in all `32` cells (`8` target languages × `4` architectures: `macOS arm64`, `Linux aarch64`, `Linux x86-64`, `Windows x86-64`) in `GE-H1`.
+3. **[E · Scope Boundary: State Logic Only, Not Rendering or Mesh Physics]** Benchmarks step pure deterministic gameplay/kinematic state transitions; GPU rasterization/raytracing, triangle-mesh broadphase/narrowphase collision, audio mixing, and multithreaded ECS job stealing remain outside scope.
 
-## Everyday Analogy & Why It Matters
+> **Telemetry & Frame-Budget Scope Note**: The primary `game-engines` study (`GE-H1` through `GE-H4` and `GE-H6` through `GE-H9`) is an **`unmetered` cross-OS determinism and pixel-tolerance investigation (`measured_j = null`, `board_metered = false`)** citing external `16.67 ms` / `20 ms` frame-budget orders of magnitude (such as GameRule's `65 µs/actor` `308`-actor `20 ms` ceiling `[S]`). In `GE-H5`, the `1.694 mJ/tick` vs. `13,090.57 mJ/tick` (`7,728x`) Intel Core i9 Linux `RAPL` `reported_j` ratio measures compiled `C++20 -O3` against boxed interpreted `CPython 3.14` emitted from the same Form — **never** against native commercial C++/C# engines (`Unity`, `Unreal`, `Godot`).
 
-In a chaotic billiard break, a microscopic decimal rounding gap between Windows and macOS snowballs into a totally different game within seconds. Whole-number physics locks the score, while graphics cards paint the screen. Writing game rules once as a checked blueprint cuts Unity C-sharp code seventy-six percent, steps ten thousand actors in fifty-eight microseconds, and replays hour-long matches cleanly.
+## Methods, Baselines, Sample Sizes (`N`) & Licensing Scope
 
-Game studios burn fortunes rewriting the same gameplay across Unity, Unreal, Bevy, and Godot—or hunting baffling multiplayer desynchronizations. The breakthrough comes from separating layers that require exact bit-for-bit agreement from layers that only paint pixels. We place physics simulation and gameplay scripts inside one checked Reality Code Engine blueprint using sixty-four-bit fixed-point whole numbers, static wiring checks that catch ninety-eight point five percent of broken scene and signal links, and a strict one-way rendering wall.
+- **Hardware & Telemetry**: `GE-H5` 10k-actor scaling: `Intel Core i9-13900H` Linux `powercap` `intel-rapl:0` socket `L2` + core `PP0` `reported_j` (`measured_j = null`, `board_metered = false`). `GE-H1` 100k-tick parity: `Apple Silicon` (`ri_energy_nj` `L3` `0.073–13.60 J`), `Linux x86-64` (`RAPL` `1.89–181.87 J`), `Linux aarch64`, and `Windows x86-64`.
+- **Workload & Suite**: `GE-H1`: `100,000`-tick deterministic arena state machine emitted to `8` targets (`C++20`, `Rust`, `Zig/C`, `Go`, `Wasm32`, `JavaScript`, `Scala/JVM`, `Python`). `GE-H5`: `N = 10,000` `Q32.32` fixed-point bouncing/interacting actors stepped for `500` ticks.
+- **Baselines Compared**: Compiled native/Wasm RCE emitters (`C++20 -O3`, `Wasm32`, `Rust -O3`) vs. reference interpreted `rce emit python` (`CPython 3.14`); floating-point cross-compiler drift probe vs. `Q32.32` integer arithmetic. **External commercial game engines (`Unity`, `Unreal`, `Godot`, `Bevy`): not benchmarked in `GE-H5`.**
+- **Runs (`N`) & Uncertainty / Spread**: `GE-H1`: `32` language×host cells × `100,000` ticks (`0` bit mismatches). `GE-H5`: `500` consecutive ticks at `N = 10,000` actors (`C++20` mean `0.0583 ms/tick`, `p99 = 0.0654 ms`, `1.694 mJ/tick` socket / `1.454 mJ` core `reported_j`).
+- **Cold vs. Warm Caching Scope**: Warm in-memory tick loop (`V8` JIT warmed prior to `Wasm32`/`JS` steady-state window; zero cross-tick memoization since actor positions mutate every tick).
+- **Artifact & License Status**: Core emitters public in `openIE-dev/rce` (`Apache-2.0`); benchmark tables and primary paper (`CC0-1.0`) at `research.openie.dev/papers/game-engines/`; self-checked, not externally peer-reviewed.
 
-Across thirty compiler-and-machine combinations and three one-hour replays driven by forty-five-kilobyte input logs alone, whole-number simulation hit zero state mismatches. Meanwhile all twenty-eight DirectX 12, Apple Metal, and Vulkan hardware pairs stayed within two tiny color steps. Compiled C plus plus projections step ten thousand actors in point zero five eight milliseconds—using over seven thousand times less chip energy than interpreted Python—and match all thirty-six headless Godot tasks tick for tick.
+## Reconciling `joules = null` Metadata with `1.694 mJ/tick` and `7,728x`
 
-## Inside the Mechanism & Candid Limits
+In OpenIE’s manuscript frontmatter, `board_metered: false` indicates `measured_j = null` (no physical inline DC shunt or wall wattmeter was attached), **not** the absence of on-chip CPU counters. Setting this post’s `energyClass` explicitly to `reported_j` and naming both sides of the ratio removes all ambiguity `[E]`:
 
-Modern game engines tangle gameplay rules, rigid-body collisions, scene asset links, and graphics shaders into one big loop. Even with strict floating-point compiler flags enabled, standard sine and cosine libraries on Windows, macOS, and Linux disagree within ten to thirty-seven frames—shattering cross-machine multiplayer replays in less than one second. Picture a break shot on a billiard table: every collision multiplies any microscopic angle error exponentially along its chaos slope. Across eight hundred forty paired chaotic trajectories, tightening initial decimal precision more than four trillionfold bought only six to fourteen extra seconds before simulated worlds diverged completely.
+- **Numerator (`13,090.57 mJ/tick`, `564.58 ms/tick`):** Reference `rce emit python` running on `CPython 3.14`, which allocates boxed Python `int` objects on every `Q32.32` fixed-point multiply-shift across `10,000` actors `[E]`.
 
-Our nine-suite empirical study draws a sharp architectural line. Upstream, simulation and gameplay scripts run in sixty-four-bit fixed-point whole-number arithmetic inside one checked blueprint, while static manifest checks catch one hundred twenty-eight of one hundred thirty broken scene and signal faults before launch. Downstream, graphics shaders only read state. Upstream, deterministic whole-number arithmetic holds every state checkpoint identical across Rust, C plus plus, WebAssembly, JavaScript, and Python—replaying three full one-hour, two-hundred-sixteen-thousand-frame sessions across Windows, Linux, and macOS from forty-four-point-six-kilobyte input logs alone, up to two hundred ninety times smaller than compressed state snapshots.
+- **Denominator (`1.694 mJ/tick` socket / `1.454 mJ` core, `0.0583 ms/tick`):** Unboxed `int64_t` `C++20` (`clang++ -O3`) generated from the **exact same RCE Form**, achieving a **`7,728x` lower socket `reported_j`** (`5,921x` for `Node V8 Wasm32` at `2.211 mJ/tick`; `3,564x` for `Rust -O3` at `3.673 mJ/tick` due to extra bounds/struct-copy checks in the emitted Rust projection) `[E]`.
 
-This three-dimensional gyroscopic arena shows Apple Silicon macOS, Zen and Intel Linux, and bare-metal Windows 11 locked in exact simulation phase across thirty host-and-language combinations—while an unguarded floating-point ghost trajectory peels away within frames whenever transcendental functions or fused multiply-add instructions enter collisions. Across seventeen game behaviors from Haunted Jaunt, Survival Shooter, and Tanks, blueprints cut behavior code seventy-six percent versus Unity C-sharp, sixty-one percent versus Bevy Rust, and fifty-two percent versus Godot script with zero trace mismatches. Compiled C plus plus steps ten thousand actors in fifty-eight microseconds and one point seven millijoules, and thirty-six Godot tasks match tick-for-tick. Testing eight hardware graphics endpoints across DirectX 12, Apple Metal, and Vulkan proved a crucial negative boundary: even on the exact same Nvidia or Intel card, switching DirectX 12 to Vulkan flips one tiny color step out of two hundred fifty-five.
+This `7,728x` figure therefore measures the **interpreter boxing tax removed by multi-target native codegen**, not a speedup over handwritten C++ or Unity Burst/DOTS `[E]`.
 
-Perceptual tolerance passes all twenty-eight hardware pairs cleanly, all nine falsifier suites stand closed, and chip counters claim no wall power meter.
+## Deterministic Lockstep & Replay Verification (`GE-H1`)
 
-### Epistemic Evidence Tags (`[T]` / `[E]` / `[M]` / `[S]`)
+Multiplayer rollback netcode (GGPO) and simulation replay require identical state hashes from identical input logs across heterogeneous client CPUs (`arm64` Apple/Snapdragon vs. `x86-64` AMD/Intel, browser `Wasm32` vs. native server) `[S]`. By banning hardware-dependent IEEE-754 rounding from core transition Forms and compiling one `Q32.32` specification across `8` targets, all `32` host×language combinations produced identical `SHA-256` state digests after `100,000` steps `[E]`.
 
-- **`[T]` Theorem / Machine-Checked Formal Proof**
-- **`[E]` Empirical / Hardware-Instrumented Experiment**
-- **`[M]` Mathematical / Analytical Cost or Physics Model**
+## Limitations & Unbenchmarked Subsystems
 
-## How Energy Was Metered
+- **Not a full game engine:** A production engine spends most frame power in GPU shader execution, VRAM bandwidth, skeletal animation, GJK/EPA convex-hull collision, and spatial audio—none of which are modeled in `10,000`-actor 2D/kinematic state stepping `[E]`.
 
-Open Interface Engineering enforces strict epistemic non-mixing across physical power rails, processor counters, and mathematical bounds (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition is forbidden by `ScientificGate`):
+- **Single-threaded step:** Multi-core data-oriented ECS schedulers (`Bevy`, `Flecs`, `Unity DOTS`) and SIMD `AVX2`/`NEON` vectorization of emitted loops remain open work `[E]`.
 
-- **Acquisition Tier**: Chip Energy Counter
-- **Plain-Language Disclosure**: Built-in macOS and Linux chip counters across 6 machines; no wall meter used.
-- **Substrate Evidence Class**: `unmetered` (`board_metered = false`)
-- **Primary Reading**: `unmetered (joules = null; never fabricated as zero)`
-- **Meter or Formula**: Six-host Q32.32 lockstep & wgpu PSNR/SSIM reproducibility audit; measured_j unset
-- **300 K Landauer Bit-Equivalents**: `null` (unmetered study — analytical/archival scope)
+## Energy & Telemetry Scope
 
-## Continue the Discussion & Verify Every Byte
+All joule values are Linux `intel-rapl:0` (`L2`) and macOS `ri_energy_nj` (`L3`) `reported_j` (`measured_j = null`, `board_metered = false`), compared strictly within the `Intel Core i9-13900H` `GE-H5` run.
+
+## Epistemic Non-Mixing & Telemetry Ledger
+
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
+
+- **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
+- **Acquisition Tier**: Unmetered Determinism Study (External Frame Budgets)
+- **Telemetry Disclosure**: Unmetered cross-OS Q32.32 replay & GPU pixel-tolerance study citing external 16.67-20 ms frame-budget orders of magnitude (GE-H5 RAPL compares C++20 vs boxed Python only).
+- **Evidence Class**: `unmetered` (`board_metered = false`)
+- **Catalog Anchor Reading**: `null` (`unmetered` — no hardware wattmeter or chip energy counter claimed)
+- **Sensor / Formula Scope**: Unmetered cross-OS Q32.32 determinism & wgpu tolerance audit citing external 20 ms frame-budget literature [S] (GE-H5 Core i9 RAPL reported_j compares C++20 vs boxed Python only; measured_j = null)
+
+## Related Work & Primary Literature (`[S]`)
+
+- **Bettner & Terrano (Age of Empires, GDC 2001) & Cannon (GGPO Rollback Netcode, 2009):** Deterministic input-log lockstep and rollback networking in commercial games `[S]`.
+- **Monniaux (ACM TOPLAS, 2008):** Pitfalls of verifying floating-point computations across x86/ARM compilers and FMA instructions `[S]`.
+- **Pereira et al. (SLE 2017) & Berger, Parnin & Vitek (2023):** Cross-language CPU `RAPL` energy comparisons and interpreter vs. native execution caveats `[S]`.
+- **Unity DOTS / Burst, Bevy ECS & Box2D v3:** Production deterministic/data-oriented simulation architectures `[S]`.
+
+## Replicate, Critique & Inspect Raw Artifacts
 
 <!-- x_thread_backlink_slot: {{X_THREAD_URL}} -->
-- **Watch in 15 Seconds or 3 Minutes**: Stream the native `9:16` Vertical Snackable ([`game-engines-tiktok.mp4`](https://research.openie.dev/media/tv/tiktok/game-engines-tiktok.mp4)) or explore all four captioned studio cuts (`15s`, `45s`, `90s`, and `3m` 3D cutaway documentary) on **[OpenIE Research TV](https://research.openie.dev/tv/?study=game-engines)**.
-- **Join the Synchronized X (Twitter) Thread**: Reply, critique, or inspect the 5-post verification thread on **[X (Twitter)](https://x.com/search?q=%22Writing%20a%20Game%20Once%22%20OR%20research.openie.dev%2Ftv%2F%3Fstudy%3Dgame-engines&src=typed_query)**.
-- **Query Grounded Prior Art & Signed WAI1 Receipts**: Explore linked lineage trails on **[The Commons (`scholar.askdavidc.ai`)](https://scholar.askdavidc.ai)**, read the full primary paper & PDF at **[`research.openie.dev/papers/game-engines/`](https://research.openie.dev/papers/game-engines/)**, and verify the Ed25519-signed `WAI1` binary container (`blake3:5896457ae35ac9d2…`) in **[`openie-artifact-substrate`](https://github.com/openIE-dev/openie-artifact-substrate/blob/main/catalog/envelopes/tv-game-engines.wai)**.
+- **Canonical Post-Review Blog Dossier**: [https://blog.openie.dev/posts/game-engines/](https://blog.openie.dev/posts/game-engines/)
+- **Primary Research Manuscript & PDF**: [https://research.openie.dev/papers/game-engines/](https://research.openie.dev/papers/game-engines/) ([PDF](https://research.openie.dev/pdfs/game-engines.pdf))
+- **1-Command Public Replication Harness**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) and [https://github.com/openIE-dev/rce](https://github.com/openIE-dev/rce)
+- **9:16 Vertical Snackable (`60fps`) & Research TV Cuts**: [https://research.openie.dev/media/tv/tiktok/game-engines-tiktok.mp4](https://research.openie.dev/media/tv/tiktok/game-engines-tiktok.mp4) · [OpenIE Research TV](https://research.openie.dev/tv/?study=game-engines)
+- **Verification & Glossary Standards**: [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) · [Epistemic Glossary](https://blog.openie.dev/glossary/)
 
 ---
 
-*Summary & essay text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Code, verification gates, and `WAI1` schemas licensed under `Apache-2.0`.*
+*Prose and summary text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Public replication harnesses and `WAI1` schemas are licensed under `Apache-2.0` unless explicitly noted in the licensing ledger above.*

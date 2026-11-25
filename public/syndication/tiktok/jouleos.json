@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "jouleos",
   "canonical_id": "blake3:tv:7dc57a2972460389e4fabd076f069c237545d6154f816d489335f8b3eed65e07",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/jouleos/",
+  "canonical_paper_url": "https://research.openie.dev/products/jouleos/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/jouleos-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/jouleos-15s.mp4",
-    "poster_uri": "/media/tv/posters/jouleos-poster.jpg",
-    "vtt_uri": "/media/tv/captions/jouleos-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/jouleos-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/jouleos-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 21.77,
     "safe_zone_verified": true,
-    "source_15s_sha256": "0d7aada77251749cf6b1a793be68ee8cebd8d2acc75d49acc422f6b1f0e8b7c4"
+    "sha256": "fcd8bba0afc318bbdcde768089e8898f5b70070571f10991fb09beb9d2d9e33a"
   },
-  "caption_utf16_chars": 775,
+  "caption_utf16_chars": 901,
+  "caption": "JouleOS Design Proposal (Unmetered) — Design Proposal & Architecture Specification (unmetered, joules = null) · 78,400 = 280×280 Rust provenance-lattice pair checks\n\nScoped explicitly as an unmetered OS architectural proposal (joules = null; core OS repo private; internal ~10^5x README aspiration unverified), with 78,400 = 280x280 Rust provenance-lattice checks.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: unmetered (Unmetered operating-system design specification (joules = null; core OS repo private; 78,400 = 280x280 Rust provenance-lattice pair checks).)\n• Essay: https://blog.openie.dev/posts/jouleos/\n• Paper: https://research.openie.dev/products/jouleos/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#OperatingSystems #SystemsArchitecture #EnergyAccounting #Rust #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "The Search for JouleOS (310 Passing Rust Tests · 78,400 Provenance Checks)\nToday's operating systems schedule clock slices, not energy—so we mapped what an agent machine must require and tested its core rules in Rust.\n1) Modern computers stack many separate software layers, and today's AI agents are bolted on top without changing the floor underneath.\n2) None of those underlying layers asks, before an agent acts, how much energy the action will spend or whether it fits.\n3) A machine built for agents must meter energy honestly, grant strict budgets, and refuse any action that breaks its limit.\nEnergy class: unmetered (Verified Software + Model) · CC0-1.0 · https://research.openie.dev/products/jouleos/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "JouleOS Design Proposal (Unmetered) — Design Proposal & Architecture Specification (unmetered, joules = null) · 78,400 = 280×280 Rust provenance-lattice pair checks\n\nScoped explicitly as an unmetered OS architectural proposal (joules = null; core OS repo private; internal ~10^5x README aspiration unverified), with 78,400 = 280x280 Rust provenance-lattice checks.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: unmetered (Unmetered operating-system design specification (joules = null; core OS repo private; 78,400 = 280x280 Rust provenance-lattice pair checks).)\n• Essay: https://blog.openie.dev/posts/jouleos/\n• Paper: https://research.openie.dev/products/jouleos/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#OperatingSystems #SystemsArchitecture #EnergyAccounting #Rust #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/jouleos-tiktok.mp4"
     }
   },
-  "content_blake3": "966c40232a25c95ca82068d50ded2be0ec86d2ae0f6527c29bfdcebce457f30e"
+  "content_blake3": "9aa0969ff83cb148b77d18d59d6c0a76ba02f5b9e163c9ceeb6fad48d4096b9a"
 }

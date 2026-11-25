@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "eco-compute",
   "canonical_id": "blake3:tv:ad930ba0ee7548a998e3394cd5510ac8de44a6b78cc7e5dabdfa264ddfc4cd8f",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/eco-compute/",
+  "canonical_paper_url": "https://research.openie.dev/papers/gates/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/eco-compute-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/eco-compute-15s.mp4",
-    "poster_uri": "/media/tv/posters/eco-compute-poster.jpg",
-    "vtt_uri": "/media/tv/captions/eco-compute-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/eco-compute-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/eco-compute-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 22.3,
     "safe_zone_verified": true,
-    "source_15s_sha256": "8b08de48adc3af02f03c8c142ada2f73f6256a33b3a137182e9dabd7826e9c47"
+    "sha256": "5b193133436817fdb2d62a96c467cb9966781668ef3a167d56c736bbd5130657"
   },
-  "caption_utf16_chars": 755,
+  "caption_utf16_chars": 949,
+  "caption": "Compute Stack Taxonomy & KV260 Shunt Scope — 258-primitive taxonomy (compute.openie.dev) · anchored by 11.43 nJ/cycle KV260 whole-SOM INA260 shunt (measured_j; 98 pJ seed delta inconclusive)\n\nMaps 258 primitives across 33 families while qualifying its primary hardware anchor: 11,428 pJ/cycle (11.43 nJ, SE=129 pJ, N=4 25s passes) is a whole-SOM KV260 INA260 reading; 98 pJ seed delta is inconclusive.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: measured_j (258-primitive analytical taxonomy anchored by KV260 whole-SOM INA260 shunt (11.43 nJ/cycle measured_j; 98 pJ seed delta inconclusive); jlandauer CLI private.)\n• Essay: https://blog.openie.dev/posts/eco-compute/\n• Paper: https://research.openie.dev/papers/gates/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#ComputerArchitecture #Fpga #Hardware #EnergyEfficiency #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "Why Every Bit Pays Joules (927 Microjoules Shunt Edge · 20x Compile Cut)\nWhy every digital bit pays real electrical joules—and how power-rail sensors, zero-clock sleep, and lookup circuits cut waste.\n1) Every calculation is a physical event where flipping switches on silicon spends real electrical energy in joules.\n2) Honest hardware audits separate power-rail current sensors from chip counters, while sleeping at zero clock cycles between jobs.\n3) Single-cycle Boolean lookup circuits replace power-hungry floating-point arithmetic on repeated decisions with tiny hardware steps.\nEnergy class: measured_j (Board Power Sensor) · CC0-1.0 · https://research.openie.dev/papers/rce-compile/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "Compute Stack Taxonomy & KV260 Shunt Scope — 258-primitive taxonomy (compute.openie.dev) · anchored by 11.43 nJ/cycle KV260 whole-SOM INA260 shunt (measured_j; 98 pJ seed delta inconclusive)\n\nMaps 258 primitives across 33 families while qualifying its primary hardware anchor: 11,428 pJ/cycle (11.43 nJ, SE=129 pJ, N=4 25s passes) is a whole-SOM KV260 INA260 reading; 98 pJ seed delta is inconclusive.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: measured_j (258-primitive analytical taxonomy anchored by KV260 whole-SOM INA260 shunt (11.43 nJ/cycle measured_j; 98 pJ seed delta inconclusive); jlandauer CLI private.)\n• Essay: https://blog.openie.dev/posts/eco-compute/\n• Paper: https://research.openie.dev/papers/gates/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#ComputerArchitecture #Fpga #Hardware #EnergyEfficiency #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/eco-compute-tiktok.mp4"
     }
   },
-  "content_blake3": "458f0ddfa30c9fd7271f893803555722ab8e1f84220839c51d02d18804404892"
+  "content_blake3": "7a759749e47de05cf0647ec9691e4465bed9297e0bc28062dc48776950e651f3"
 }

@@ -1,65 +1,84 @@
-# "AI" Reads Human: Human Language Encoding at Machine Speed and the Energy Cost
+# "AI" Reads Human: Serialization, Tokenization, and Per-Process Parse Energy Across 34 Workloads
 
-*Up to 2,054x Extra Chip Energy Reading Human Text — When two machines talk in text formats designed for human eyes, they burn up to two thousand times more chip energy.*
+*Measures parse time, token bloat across 5 tokenizers, and Apple M5 Max per-process ri_energy_nj (reported_j) on a 20,000-record synthetic corpus while reporting 109/170 shared-host IOReport drift rejections.*
 
-> **Public Domain (`CC0-1.0`) · OpenIE Research Essay**  
-> **Canonical Primary Source**: [https://research.openie.dev/papers/ai-reads-human/](https://research.openie.dev/papers/ai-reads-human/)  
-> **Canonical Artifact ID**: `blake3:tv:354d34ae4d1f4445cf393cc82d84c99ac2bac5585366b86e02521716baa3112c` · **Gate Invariant**: `human_in_gate = false`
+> **Signed Provenance · Self-Checked** (`human_in_gate = false`; automated build, benchmark, and proof-checking scripts ran without manual override — not externally peer-reviewed; see [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) and [Epistemic Glossary](https://blog.openie.dev/glossary/)).  
+> **Canonical Post-Review Essay (`rel="canonical"`)**: [https://blog.openie.dev/posts/ai-reads-human/](https://blog.openie.dev/posts/ai-reads-human/)  
+> **Primary Research Paper**: [https://research.openie.dev/papers/ai-reads-human/](https://research.openie.dev/papers/ai-reads-human/)  
+> **1-Command Replication Kit**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) · **Study Repository**: [https://github.com/openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)  
+> **Canonical Artifact ID**: `blake3:tv:354d34ae4d1f4445cf393cc82d84c99ac2bac5585366b86e02521716baa3112c` · **Evidence Tags**: `[E]` · `[S]` · **Telemetry Class**: `reported_j`
 
 ---
 
-## Three Plain-Language Takeaways (Zero Acronym Soup)
+![AI Reads Human — 280.4 nJ binary vs 2,212 nJ JSON and 27,679 nJ tiktoken per record (reported_j)](https://research.openie.dev/media/tv/posters/ai-reads-human-poster.jpg)
+*Per-record parse and tokenization energy on Apple M5 Max L3 ri_energy_nj (reported_j) plus 109/170 whole-chip IOReport drift rejections. Dedicated to the public domain under `CC0-1.0`.*
 
-1. Computers often swap data in text formats written for human eyes, forcing machines to spend extra energy reading them back.
-2. Reading indented configuration text took over two thousand times more chip energy per record than reading compact machine numbers directly.
-3. Chopping text into AI word pieces burned twelve times more chip energy than parsing the text, before any model ran.
+## Key Claims & Audited Scope (`[T]` / `[E]` / `[M]` / `[S]`)
 
-!["AI" Reads Human: Human Language Encoding at Machine Speed and the Energy Cost — OpenIE Research TV Studio Poster](https://research.openie.dev/media/tv/posters/ai-reads-human-poster.jpg)
-*Studio key visual for **"AI" Reads Human** (`Null & Benchmarks` · Up to 2,054x Extra Chip Energy Reading Human Text). Dedicated to the public domain under `CC0-1.0`.*
+1. **[E · reported_j, Apple M5 Max `ri_energy_nj` L3]** On `20,000` seeded records (`seed = 20261016`, CPython `3.13`), `struct.iter_unpack` on a `23 B` fixed binary record (using a shared 24-word dictionary) consumed **280.4 nJ/record**, vs. **2,212.1 nJ (`7.89x`)** for `json.loads`, **69,922.1 nJ (`249.4x`)** for C `libyaml`, **575,799.3 nJ (`2,053.8x`)** for pure-Python `PyYAML`, and **27,679.2 nJ (`98.7x` binary / `12.5x` `json.loads`)** just to tokenize compact JSON with `tiktoken` (`cl100k_base`) before any GPU neural layer runs.
+2. **[E · Negative Result 1: Base64/Hex Does Not Save LLM Tokens]** Dumping the `23 B` binary layout as text for an LLM yielded **`20.3` tokens/record in Base64 (`0.89x` CSV)** and **`22.7` tokens/record in Hex (`0.99x` CSV vs. `22.9` for CSV, `36.2` compact JSON, `51.4` YAML, `65.6` pretty JSON)**—showing that text-tokenized LLMs do not benefit from binary wire formats unless binary tool payloads bypass the text context window.
+3. **[E · Negative Result 2: `109/170` Shared-Host Drift Rejections]** Whole-chip `IOReport` (`L2`) subtraction failed `Falsifier 6` (`> 5.0%` pre/post idle drift) on **109 of 170 measurement windows** on active laptops, motivating worker-subprocess `proc_pid_rusage` (`L3`) isolation and leaving inline hardware `measured_j` and GPU prefill/decode (`M4`) explicitly open.
 
-## Everyday Analogy & Why It Matters
+> **Founding Companion Essay**: Read alongside the foundational problem statement, [The Hidden Energy Crisis at Every Interface](https://blog.openie.dev/posts/the-hidden-energy-crisis-at-every-interface/).
 
-Imagine two calculators mailing spelled-out paragraphs to each other instead of passing numbers directly. Software agents routinely turn clean memory into punctuated text, only for the next program to parse every character back. The practical fix is clear: let machines exchange compact binary records with other machines, and render friendly text only on screen when a person asks to read it.
+## Methods, Baselines, Sample Sizes (`N`) & Licensing Scope
 
-Formats full of curly braces, commas, and indented spaces were designed so people could inspect files comfortably in text editors. Yet modern AI tool pipelines pass millions of those verbose text records strictly from machine to machine without a human ever looking. We named this extra work the impedance tax and tested thirty-four parsing and word-splitting workloads across twenty thousand records.
+- **Hardware & Telemetry**: Timing baseline: 8-vCPU Linux Xeon (`Python 3.13.5`, minimum of `9` repeats; no `RAPL` exposed). Energy campaign: Apple M5 Max (`macOS` worker subprocess `proc_pid_rusage(RUSAGE_INFO_V6).ri_energy_nj` `L3` `reported_j`, alongside audited whole-chip `IOReport` `L2` `reported_j`; `measured_j = null`, `board_metered = false`).
+- **Workload & Suite**: `34` parse and tokenization workloads over a synthetic seeded `20,000`-record corpus (`id`, 3-word name, `float`, `bool`, 3 tags, 31-bit `int`), plus 5 open tokenizers (`cl100k_base`, `o200k_base`, `GPT-2`, `Mistral-7B-v0.1`, `Qwen2.5-0.5B`) and parser-differential hazard checks (`Node v20.19.2`, `jq 1.7`, `PyYAML 6.0.2`, `lxml 6.1.3`).
+- **Baselines Compared**: `23 B` fixed binary (`struct.iter_unpack` with shared 24-word table), CSV (`RFC 4180`), compact/pretty JSON (`RFC 8259`), C `libyaml` & pure-Python YAML (`1.2.2`), XML (`lxml`), Markdown (`CommonMark 0.31.2`), and `CBOR` (`RFC 8949`). Compiled C/Rust zero-copy parsers (`simdjson`, `Cap’n Proto`, `FlatBuffers`): planned (`M8`), not yet benchmarked here.
+- **Runs (`N`) & Uncertainty / Spread**: Xeon timing: `N = 9` repeats over `20,000` records (min reported: `116 ns` binary, `904 ns` JSON, `85,300 ns` `libyaml`). Apple M5 Max energy: `N = 5` windows × `34` workloads = `170` windows (`109/170` `L2` whole-chip windows flagged for `> 5%` idle drift; subprocess `L3` means reported in `parse_energy.tsv`).
+- **Cold vs. Warm Caching Scope**: In-memory buffer parsing after warm-up import; shared 24-word dictionary for the `23 B` binary format must be pre-agreed by hash (explicitly noted in Figure 8 so binary byte size is not overstated).
+- **Artifact & License Status**: Work-in-progress manuscript (`CC0-1.0`) and full scripts/logs (`MIT OR Apache-2.0`) in `openIE-dev/openie-research-experiments`; self-checked, open for external replication.
 
-Running each pass inside an isolated worker process on an Apple processor cleanly separated tiny parsing costs from noisy background laptop activity. Unpacking a twenty-three-byte binary record used two hundred eighty nanojoules. Standard bracketed text used nearly eight times more, compiled indented text used two hundred forty-nine times more, and pure Python indented text burned two thousand fifty-four times more chip energy.
+## Problem, Work-in-Progress Scope & Library Caveats
 
-Even adding two spaces of pretty indentation more than doubled AI word-splitting energy to seventy-one microjoules per record. Keep internal machine pipes compact and binary, and format text only when people read.
+The primary paper explicitly labels itself a **work in progress** and highlights four methodological boundaries upfront `[E]`: (1) parsers perform unequal object-allocation work (`struct.iter_unpack` returns tuples whereas `json.loads` and `PyYAML` allocate typed dicts/lists); (2) measurements thus far run inside `CPython 3.13` rather than native C++/Rust SIMD parsers (`simdjson`, `serde`, `FlatBuffers`, planned as `M8`); (3) the `20,000`-record corpus is synthetic and identifier-light; and (4) GPU transformer prefill/decode joules (`M4`) and inline wall-meter `measured_j` remain unmeasured `[E]`.
 
-## Inside the Mechanism & Candid Limits
+## Parse Energy, Token Bloat & Parser-Differential Hazards
 
-Why do two servers sitting inches apart exchange data in spelled-out English punctuation? Over four decades, web specifications put human readability ahead of machine efficiency so engineers could inspect messages in text editors. When autonomous AI agents arrived, developers stacked millions of automated tool calls right on top of those chatty formats. Picture two factory robots turning every bolt measurement into a typed business letter, sealing the envelope, and hiring a clerk on the other side to read every digit back into memory.
+- **Subprocess `ri_energy_nj` (`L3 reported_j`) across formats `[E]`:** Isolating each of the `34` workloads in a fresh macOS worker process resolved a **2,053.8x** CPU energy span across the same `20,000` records: `280.4 nJ/rec` (`struct` binary) -> `2,212.1 nJ/rec` (`json.loads`, `7.89x`) -> `27,679.2 nJ/rec` (`tiktoken cl100k_base` on compact JSON, `98.7x` binary and `12.5x` `json.loads`) -> `69,922.1 nJ/rec` (`PyYAML + C libyaml`, `249.4x`) -> `575,799.3 nJ/rec` (pure-Python `PyYAML`, `2,053.8x`) `[E]`.
 
-Worse yet, loose text rules smuggle silent bugs, like indented configuration parsers reading Norway's two-letter country code as a false value. To put exact physical units on this impedance tax, we built a reproducible corpus of twenty thousand structured records across twelve formats. Every parser and AI word-piece splitter ran five shuffled rounds inside its own dedicated worker process, recording the operating system's built-in per-process chip energy counter alongside whole-chip power sensors. The measured energy curve spans more than three orders of magnitude for the exact same underlying data.
+- **Five-tokenizer inflation `[E]`:** Relative to CSV (`22.9` `cl100k_base` tokens/rec), compact JSON uses `36.2` (`1.58x`), YAML `51.4` (`2.24x`), and indent-2 JSON `65.6` (`2.86x`; `2.22x` under `Qwen2.5` to `3.66x` under `GPT-2`) `[E]`.
 
-Fixed binary unpacking sits at the floor at two hundred eighty nanojoules per record, standard bracketed text climbs nearly eightfold, compiled indented text jumps two hundred forty-nine-fold, and pure Python indented text reaches five hundred seventy-six microjoules. Our three-dimensional funnel contrasts sprawling clouds of braces, quotation marks, and repeated field names against dense twenty-three-byte binary records backed by a shared word table. Simply adding two spaces of pretty indentation to structured text inflated AI word-splitting energy two and a half times to seventy-one microjoules per record just to scan blank spaces. Across all one hundred seventy measurement windows, chopping compact structured text into AI word pieces burned twenty-seven thousand six hundred seventy-nine nanojoules per record.
+- **Interoperability hazards in human-first formats `[E, S]`:** Differential tests confirmed `9007199254740993` (`2^53 + 1`) parses exactly in Python `json` while silently rounding to `...992` in Node `JSON.parse`, duplicate JSON keys behave unpredictably (`RFC 8259 §4`), and Python `json` accepts non-standard `NaN`/`Infinity` by default `[E, S]`.
 
-That single pre-processing step spent twelve and a half times more CPU energy than parsing the text itself, and ninety-nine times more than reading binary, before any GPU ran. Scientific rigor means stating clearly what counters can and cannot prove. Our five-percent idle-drift check caught background co-tenant noise on one hundred nine of one hundred seventy whole-chip laptop windows, confirming why isolated per-process chip counters were essential, while external wall-meter power probes and GPU model inference energy remain explicitly planned.
+## Limitations & Negative Results
 
-### Epistemic Evidence Tags (`[T]` / `[E]` / `[M]` / `[S]`)
+- **Why `109/170` whole-chip windows were rejected:** Unisolated laptop `IOReport` (`L2`) drifted by `> 5.0%` on `109` of `170` runs (`64.1%`), proving that whole-package subtraction on active workstations cannot reliably resolve microjoule-per-record deltas `[E]`.
 
-- **`[E]` Empirical / Hardware-Instrumented Experiment**
-- **`[M]` Mathematical / Analytical Cost or Physics Model**
+- **Binary-as-text fails for LLMs:** Encoding the `23 B` binary struct into Base64 (`20.3` tok/rec) or Hex (`22.7` tok/rec) saves almost nothing over CSV (`22.9` tok/rec) while destroying legibility—confirming that binary formats help machine-to-machine buses (`CBOR`, `Protobuf`), whereas LLM context savings require field projection or grammar-constrained structured decoding `[E]`.
 
-## How Energy Was Metered
+## Energy & Telemetry Scope
 
-Open Interface Engineering enforces strict epistemic non-mixing across physical power rails, processor counters, and mathematical bounds (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition is forbidden by `ScientificGate`):
+All joule numbers in this study are macOS kernel `proc_pid_rusage` (`ri_energy_nj`, `L3 reported_j`) CPU-model estimates (`measured_j = null`, `board_metered = false`). Background LLM GPU inference figures cited in the paper (`3–4 J/output token` on 65B LLaMA in Samsi et al. 2023; `0.047 kWh/1,000` generations in Luccioni et al. FAccT 2024 V1.1) are external literature `[S]`, not measurements from this setup.
 
-- **Acquisition Tier**: Chip Energy Counter
-- **Plain-Language Disclosure**: Built-in Apple chip counters per worker process; no wall power meter attached.
-- **Substrate Evidence Class**: `reported_j` (`board_metered = false`)
-- **Primary Reading**: `280.40 nJ (reported_j)`
-- **Meter or Formula**: Apple M5 Max L3 per-process reported_j fixed binary struct parse cost per record
-- **300 K Landauer Bit-Equivalents**: `9.7667e+13` bits (`E / (k_B · 300 K · ln 2)`)
+## Epistemic Non-Mixing & Telemetry Ledger
 
-## Continue the Discussion & Verify Every Byte
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
+
+- **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
+- **Acquisition Tier**: Subprocess On-Chip Counter (reported_j)
+- **Telemetry Disclosure**: Apple M5 Max subprocess proc_pid_rusage ri_energy_nj L3 reported_j across 20,000 synthetic records (109/170 whole-chip L2 windows rejected for >5% drift).
+- **Evidence Class**: `reported_j` (`board_metered = false`)
+- **Catalog Anchor Reading**: `2.804e-07 J (reported_j)`
+- **Sensor / Formula Scope**: Apple M5 Max subprocess proc_pid_rusage ri_energy_nj L3 reported_j (280.4 nJ/rec fixed binary vs 2,212.1 nJ JSON & 27,679.2 nJ tiktoken; measured_j = null)
+
+## Related Work & Primary Literature (`[S]`)
+
+- **RFC 8949 (CBOR, Bormann & Hoffman 2020) & RFC 8785 (JCS, Rundgren et al. 2020):** Standard deterministic binary and canonical JSON wire encodings `[S]`.
+- **Protocol Buffers, Apache Avro, Cap’n Proto & Langdale & Lemire (simdjson, VLDB J. 2019):** Schema-typed binary serialization and gigabyte-per-second SIMD JSON parsing `[S]`.
+- **Willard & Louf (Outlines, 2023), Poesia et al. (Synchromesh, ICLR 2022) & Scholak et al. (PICARD, EMNLP 2021):** Finite-state and incremental-parsing constrained decoding for language models `[S]`.
+- **Samsi et al. (IEEE HPEC 2023) & Luccioni, Jernite & Strubell (ACM FAccT 2024 V1.1):** Empirical GPU energy benchmarks of LLM text generation `[S]`.
+
+## Replicate, Critique & Inspect Raw Artifacts
 
 <!-- x_thread_backlink_slot: {{X_THREAD_URL}} -->
-- **Watch in 15 Seconds or 3 Minutes**: Stream the native `9:16` Vertical Snackable ([`ai-reads-human-tiktok.mp4`](https://research.openie.dev/media/tv/tiktok/ai-reads-human-tiktok.mp4)) or explore all four captioned studio cuts (`15s`, `45s`, `90s`, and `3m` 3D cutaway documentary) on **[OpenIE Research TV](https://research.openie.dev/tv/?study=ai-reads-human)**.
-- **Join the Synchronized X (Twitter) Thread**: Reply, critique, or inspect the 5-post verification thread on **[X (Twitter)](https://x.com/search?q=%22%22AI%22%20Reads%20Human%22%20OR%20research.openie.dev%2Ftv%2F%3Fstudy%3Dai-reads-human&src=typed_query)**.
-- **Query Grounded Prior Art & Signed WAI1 Receipts**: Explore linked lineage trails on **[The Commons (`scholar.askdavidc.ai`)](https://scholar.askdavidc.ai)**, read the full primary paper & PDF at **[`research.openie.dev/papers/ai-reads-human/`](https://research.openie.dev/papers/ai-reads-human/)**, and verify the Ed25519-signed `WAI1` binary container (`blake3:4e8a6fbc9dbbb299…`) in **[`openie-artifact-substrate`](https://github.com/openIE-dev/openie-artifact-substrate/blob/main/catalog/envelopes/tv-ai-reads-human.wai)**.
+- **Canonical Post-Review Blog Dossier**: [https://blog.openie.dev/posts/ai-reads-human/](https://blog.openie.dev/posts/ai-reads-human/)
+- **Primary Research Manuscript & PDF**: [https://research.openie.dev/papers/ai-reads-human/](https://research.openie.dev/papers/ai-reads-human/) ([PDF](https://research.openie.dev/pdfs/ai-reads-human.pdf))
+- **1-Command Public Replication Harness**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) and [https://github.com/openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)
+- **9:16 Vertical Snackable (`60fps`) & Research TV Cuts**: [https://research.openie.dev/media/tv/tiktok/ai-reads-human-tiktok.mp4](https://research.openie.dev/media/tv/tiktok/ai-reads-human-tiktok.mp4) · [OpenIE Research TV](https://research.openie.dev/tv/?study=ai-reads-human)
+- **Verification & Glossary Standards**: [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) · [Epistemic Glossary](https://blog.openie.dev/glossary/)
 
 ---
 
-*Summary & essay text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Code, verification gates, and `WAI1` schemas licensed under `Apache-2.0`.*
+*Prose and summary text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Public replication harnesses and `WAI1` schemas are licensed under `Apache-2.0` unless explicitly noted in the licensing ledger above.*

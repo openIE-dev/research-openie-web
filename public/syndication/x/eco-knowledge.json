@@ -1,29 +1,35 @@
 {
-  "schema": "openie.x_thread_bundle.v1",
+  "schema": "openie.x_thread_bundle.v2",
   "study_id": "eco-knowledge",
   "canonical_id": "blake3:tv:fc3012f98ba403ab92bbd58bd833bdb65b3b7bd8b104449efe5cdf4a805cee5a",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
   "license": "CC0-1.0",
   "post_count": 5,
-  "max_weighted_chars": 256,
+  "max_weighted_chars": 278,
   "card_video_uri": "/media/tv/tiktok/eco-knowledge-tiktok.mp4",
   "fallback_video_uri": "/media/tv/films/eco-knowledge-15s.mp4",
-  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/eco-knowledge/",
+  "medium_crosslink_uri": "https://blog.openie.dev/posts/eco-knowledge/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/eco-knowledge/",
   "canonical_paper_url": "https://research.openie.dev/papers/time-as-an-index/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+  "public_repo_url": "https://github.com/openIE-dev/rce",
   "zero_urls_in_post_1": true,
   "posts": [
     {
       "position": 1,
       "role": "hook_video_card",
-      "text": "Time-Indexed Claims and Six-Kernel Proof Verification\n\nWhy trustworthy knowledge requires dated provenance to stop citation laundering—and six independent proof kernels for mathematics.\n\n[5,496 Six-Kernel Theorems · 0 Skipped Proofs]",
-      "weighted_chars": 233,
-      "raw_chars": 233,
+      "text": "The Knowledge Claim Schema (knowledge.openie.dev) [T/M/S · unmetered]\n\nDefines an unmetered 7-axis tritemporal claim tuple <V_t, T_t, R_t, G, S, C, P> (joules=null) while reconciling 6-kernel Lean 4.36.0 counts: 1,422 source decls alongside 12 open RCE draft theorems.",
+      "weighted_chars": 268,
+      "raw_chars": 268,
       "urls": [],
       "in_reply_to_position": null,
       "media": {
         "video_uri": "/media/tv/tiktok/eco-knowledge-tiktok.mp4",
         "fallback_video_uri": "/media/tv/films/eco-knowledge-15s.mp4",
-        "poster_uri": "/media/tv/posters/eco-knowledge-poster.jpg",
-        "vtt_uri": "/media/tv/captions/eco-knowledge-15s.vtt",
+        "poster_uri": "/media/tv/tiktok/eco-knowledge-tiktok.jpg",
+        "vtt_uri": "/media/tv/tiktok/eco-knowledge-tiktok.vtt",
         "aspect_ratio": "9:16",
         "resolution": "1080x1920",
         "fps": 60,
@@ -32,43 +38,47 @@
     },
     {
       "position": 2,
-      "role": "plain_points_1_2",
-      "text": "1/3 Claims without timestamps and source roots go stale fast and let copied summaries masquerade as independent evidence.\n\n2/3 Every recorded claim carries valid time, recorded time, reference frame, scale, scope, certainty, and anti-laundering provenance.",
-      "weighted_chars": 256,
-      "raw_chars": 256,
+      "role": "methods_and_sample_bounds",
+      "text": "1/2 Tritemporal lineage & proof audit:\n- Extends Snodgrass & Ahn (SIGMOD 1985) bitemporal SQL, W3C PROV-DM (2013) & Wikidata qualifiers [S]\n- Separates 1,264 RCE source decls (5,393 constants; 12 Appendix F.9 Draft-0.9 items unproved), 58 lut-adapt, 45 CTA & 31 horizon theorems",
+      "weighted_chars": 278,
+      "raw_chars": 278,
       "urls": [],
       "in_reply_to_position": 1
     },
     {
       "position": 3,
-      "role": "plain_point_3_and_energy",
-      "text": "3/3 Checking mathematical theorems across six independent Lean proof kernels eliminates single-compiler blind spots completely.\n\nEnergy class: reported_j (49.04 mJ chip counter; board_metered=false, never mixed with shunts).",
-      "weighted_chars": 224,
-      "raw_chars": 224,
+      "role": "telemetry_and_scope_limits",
+      "text": "2/2 Formal vs empirical scope:\n- 6 independent Lean checkers in bwrap certify deductive validity from stated axioms — NOT physical sensor calibration\n- No FreshQA/HotpotQA RAG benchmark was run on knowledge.openie.dev itself (calibration lives in lut-adapt LA-37)\n- Unmetered",
+      "weighted_chars": 275,
+      "raw_chars": 275,
       "urls": [],
       "in_reply_to_position": 2
     },
     {
       "position": 4,
-      "role": "machine_verification_gate",
-      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E] · WAI1 blake3:fc3012f98ba4… · CC0-1.0",
-      "weighted_chars": 203,
-      "raw_chars": 200,
-      "urls": [],
+      "role": "signed_provenance_self_checked",
+      "text": "Signed Provenance · Self-Checked (human_in_gate=false; not peer-reviewed):\n- Evidence: [T]/[M]/[S] · WAI1 blake3:fc3012f98ba4...\n- Verification: https://blog.openie.dev/verification/\n- Glossary: https://blog.openie.dev/glossary/",
+      "weighted_chars": 204,
+      "raw_chars": 228,
+      "urls": [
+        "https://blog.openie.dev/verification/",
+        "https://blog.openie.dev/glossary/"
+      ],
       "in_reply_to_position": 3
     },
     {
       "position": 5,
-      "role": "bidirectional_medium_and_paper_bridge",
-      "text": "Read & verify Time-Indexed Claims & Six-Kernel Proofs (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/eco-knowledge/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/time-as-an-index/",
-      "weighted_chars": 183,
-      "raw_chars": 248,
+      "role": "canonical_blog_paper_and_replicate",
+      "text": "Read & replicate Seven-Axis Knowledge Schema & Proof Audit (CC0-1.0):\n- Essay: https://blog.openie.dev/posts/eco-knowledge/\n- Paper: https://research.openie.dev/papers/time-as-an-index/\n- 1-cmd kit: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+      "weighted_chars": 172,
+      "raw_chars": 276,
       "urls": [
-        "https://research.openie.dev/syndication/medium/eco-knowledge/",
-        "https://research.openie.dev/papers/time-as-an-index/"
+        "https://blog.openie.dev/posts/eco-knowledge/",
+        "https://research.openie.dev/papers/time-as-an-index/",
+        "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
       ],
       "in_reply_to_position": 4
     }
   ],
-  "content_blake3": "69cd3d6679b10ee01a9571d518ebea96cde22d82697652e1b8de422987359bc9"
+  "content_blake3": "89914fb38d3ed2d6eec2247a42d1dca16f688c5cd6a2bf371fa2b1383d16f46d"
 }

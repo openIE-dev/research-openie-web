@@ -1,61 +1,82 @@
-# RCE-VC: Law of Version Control
+# RCE-VC: A Proposed Structural Version-Control Prototype, Rename Behavior, Key Collisions, and Git Comparison Scope
 
-*70 µs & 317 µJ Admission @ 100,000 Items — Let humans and AI swarms commit in parallel: check changes against 100,000 name-free items in 70 microseconds while staying on Git.*
+*Presents openIE-dev/rce-vc (v0.1.0, 49 offline tests) as a proposed structural VCS prototype (317-365 uJ/unit M5 Max reported_j), disclosing structural key collisions on identical bodies and zero external merge-benchmark runs vs git merge-ort.*
 
-> **Public Domain (`CC0-1.0`) · OpenIE Research Essay**  
-> **Canonical Primary Source**: [https://research.openie.dev/papers/rce-vc/](https://research.openie.dev/papers/rce-vc/)  
-> **Canonical Artifact ID**: `blake3:tv:86d270c120708d4df299264a57fb54a861630fd2bcb2841abc701873d365b3b0` · **Gate Invariant**: `human_in_gate = false`
+> **Signed Provenance · Self-Checked** (`human_in_gate = false`; automated build, benchmark, and proof-checking scripts ran without manual override — not externally peer-reviewed; see [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) and [Epistemic Glossary](https://blog.openie.dev/glossary/)).  
+> **Canonical Post-Review Essay (`rel="canonical"`)**: [https://blog.openie.dev/posts/rce-vc/](https://blog.openie.dev/posts/rce-vc/)  
+> **Primary Research Paper**: [https://research.openie.dev/papers/rce-vc/](https://research.openie.dev/papers/rce-vc/)  
+> **1-Command Replication Kit**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) · **Study Repository**: [https://github.com/openIE-dev/rce-vc](https://github.com/openIE-dev/rce-vc)  
+> **Canonical Artifact ID**: `blake3:tv:86d270c120708d4df299264a57fb54a861630fd2bcb2841abc701873d365b3b0` · **Evidence Tags**: `[E]` · `[M]` · `[S]` · **Telemetry Class**: `reported_j`
 
 ---
 
-## Three Plain-Language Takeaways (Zero Acronym Soup)
+![RCE-VC — 317-365 uJ/unit structural trie admission prototype with explicit Git comparison and collision scope](https://research.openie.dev/media/tv/posters/rce-vc-poster.jpg)
+*Proposed `rce-vc` `v0.1.0` prototype (`openIE-dev/rce-vc@aba99fce`): `100,000`-unit trie admission `reported_j`, rename handling, and structural collision caveats. Dedicated to the public domain under `CC0-1.0`.*
 
-1. Many people and AI agents can submit code at once, and a named check admits changes or records why not.
-2. Tracking code by name-free functions instead of text lines lets unrelated edits land together without pointless merge wars.
-3. Developers keep using ordinary Git while admission against one hundred thousand items finishes in about seventy microseconds.
+## Key Claims & Audited Scope (`[T]` / `[E]` / `[M]` / `[S]`)
 
-![RCE-VC: Law of Version Control — OpenIE Research TV Studio Poster](https://research.openie.dev/media/tv/posters/rce-vc-poster.jpg)
-*Studio key visual for **RCE-VC** (`Reality Code Engine` · 70 µs & 317 µJ Admission @ 100,000 Items). Dedicated to the public domain under `CC0-1.0`.*
+1. **[M/E · Proposed Prototype Contract, Not a physical principle]** `rce-vc` (`v0.1.0`, `49` offline tests across 6 Rust crates at `aba99fce`) is a **proposed structural repository admission contract**, not a principle of nature—and **was not benchmarked head-to-head on conflict-resolution precision/recall against `git merge-ort`, GumTree, Spork, or Mergiraf (`Merge-Bench` / `CONGRA`) in this study** (`§9`).
+2. **[E · Apple M5 Max `L3 reported_j` with Spread]** Admitting a single unit change into a `100,000`-unit persistent 16-way Merkle trie (`O(log_16 U)` path copy, re-checking only affected dependents) took **69.69 us (min–max `63.5–84.1 us`)** and **365.35 uJ (`346.4–395.7 uJ`, `N = 5` trials of `320` admissions)**, or **73.56 us (`69.3–75.7 us`)** and **317.21 uJ (`278.9–369.0 uJ`, `N = 3` sustained trials of `32,000` admissions)** in Darwin `L3` `ri_energy_nj` `reported_j`.
+3. **[M/E · Renames vs. Name-Free Key Collisions]** Because `rcevc-keys` hashes normalized de Bruijn token bodies (`SHA-256` over `"rcevc/unit/v1"`, positional body, and dependency keys), renaming a function updates its parent slot binding (`name-only` equivalence) without changing `key(u)`—**however, two distinct functions with identical normalized structure and dependencies (such as `f(x, y) = x + y` and `g(a, b) = a + b` in untyped code) collide onto the exact same `key(u)`**, remaining separate in the parent directory trie only via named slot bindings while sharing conflict-reuse keys if edited identically.
 
-## Everyday Analogy & Why It Matters
+## Methods, Baselines, Sample Sizes (`N`) & Licensing Scope
 
-When ten AI coding helpers improve ten separate functions inside one Python file, line-based Git panics like ten chefs fighting over one sheet of paper. Indexing individual functions lets every non-overlapping edit land cleanly. Teams keep their everyday Git commands while a standalone Rust engine gates every change in three hundred seventeen microjoules and reuses accepted conflict fixes.
+- **Hardware & Telemetry**: Apple M5 Max (`128 GB`, macOS `27.2.1`, `proc_pid_rusage` `ri_energy_nj` `L3` `reported_j`; `board_metered = false`, `measured_j = null`). Internal `est_uj` cost-table placeholders (`424–439 mJ`) were `~1,200x` higher than measured `L3` `reported_j` and are kept strictly separate.
+- **Workload & Suite**: `49` offline Rust unit/property tests (`rcevc-{types,keys,trie,merge,git,cli}`: RCE Form, Rust, Python, JSON splitters, merge commutativity, replay determinism) plus synthetic `100,000`-unit single-admission microbenchmarks.
+- **Baselines Compared**: Whole-repository linear re-hashing/re-checking (`O(U)`) vs. 16-way Merkle path copy + reverse-dependency closure (`O(log_16 U + |affected|)`). **External baseline: not benchmarked head-to-head against `git merge-ort`, Mergiraf, or Spork on public conflict corpora in this study.**
+- **Runs (`N`) & Uncertainty / Spread**: `N = 5` trials × `320` admissions (`mean 69.69 us` [`63.5–84.1 us`], `mean 365.35 uJ` [`346.4–395.7 uJ`]); `N = 3` sustained trials × `32,000` admissions (`mean 73.56 us` [`69.3–75.7 us`], `mean 317.21 uJ` [`278.9–369.0 uJ`]).
+- **Cold vs. Warm Caching Scope**: Content-addressed CAS + conflict-resolution store keyed by canonical unordered conflict signature `(base_key, {side_keys})`: exact recurring conflict shapes reuse verified resolutions, whereas novel semantic conflicts require human/proposer resolution.
+- **Artifact & License Status**: `Apache-2.0` public repository at `https://github.com/openIE-dev/rce-vc` (`commit aba99fce`); self-checked by OpenIE, open for external inspection and replication.
 
-Branching and line-diffing worked fine when small human teams merged a few pull requests a day. When dozens of automated tools refactor comments, variable names, and helper functions every second, text lines manufacture fake conflicts nonstop. Our standalone Rust reference splits Rust and Python files into top-level items keyed by normalized structure rather than names.
+## How `rce-vc` Compares Conceptually to Git (`merge-ort`), AST Merge, and CRDTs
 
-Non-overlapping dependency closures merge without waiting, real overlaps rank by pre-stated cost, and exact original bytes project back to Git. Across forty-nine offline tests with unsafe Rust forbidden, admitting a change into a one-hundred-thousand-unit repository takes sixty-nine point seven to seventy-three point six microseconds and three hundred seventeen to three hundred sixty-five microjoules on an Apple M5 Max chip counter. This standalone reference runs on ordinary Rust and Python repositories today without requiring the Reality Code Engine language, while keeping kernel chip energy readings strictly separate from nominal cost tables.
+Git’s `merge-ort` engine performs fast 3-way line-diff merging with heuristic file-rename detection (`50%` similarity index) and **zero semantic gate checking**: two branches that rename or edit adjacent declarations can merge cleanly at the text level while breaking compilation or behavioral invariants `[S]`. Syntax-aware tools like **GumTree (Falleri et al., ASE 2014)**, **JDime / Spork (Larsén et al., 2022)**, and **Mergiraf** lift merging from lines to ASTs, while **CRDTs (Shapiro et al., 2011)** and **Darcs/Pijul patch algebras** guarantee algebraic convergence without type/test soundness `[S]`. `rce-vc` explores a complementary point: indexing top-level semantic units in a 16-way Merkle trie and requiring a declared admission gate (`G0` parse -> `G1` typecheck -> `G2` tests/trace) before advancing a ref `[E]`.
 
-## Inside the Mechanism & Candid Limits
+## Rename Handling vs. Structural Key Collisions (`f(x,y)=x+y` vs. `g(a,b)=a+b`)
 
-Traditional version control was built around files, folder paths, and line numbers. Rename a helper function, adjust formatting, or let twenty coding agents improve distinct functions inside one module, and classic branches stall waiting for humans to untangle false text conflicts that have nothing to do with program meaning. Imagine a kitchen library where fixing one recipe forced you to lock the entire cookbook shelf. By splitting Rust and Python source files into top-level structural items while preserving exact original bytes alongside them, writers continue using ordinary Git files and commands while the engine tracks true item dependencies.
+Critique #12 asked how name-free de Bruijn unit keys handle renames and structurally identical functions. In `rce-vc` (`§3–§4`) `[E, M]`:
 
-Implemented in pure safe Rust with forty-nine offline tests and zero network dependencies, the workspace combines three focused crates: a deterministic core with persistent hash trees and an assurance boundary that blocks stale race updates, an offline parser that extracts name-free item keys, and a lossless Git history bridge with atomic reference swaps. Two concurrent changes commute whenever neither writes into the dependency neighborhood read or affected by the other—guaranteeing identical repository roots in either arrival order. Because unchanged subtrees share cryptographic hashes in constant time, diffing a hundred-thousand-item repository walks only the tiny slice that actually changed rather than scanning everything. This three-dimensional view shows concurrent writers submitting against one canonical state ring.
+- **Pure renames:** Parent module nodes map `slot_name -> (key(u), content_digest(u))`. Renaming `calc_tax` to `compute_tax` moves the slot binding while `key(u)` stays invariant, enabling `rce-vc` to verify a `name-only` refactor by checking multiset equality of unit keys without re-running downstream unit tests `[E]`.
 
-Every submission appends an auditable hash-chained log entry—either admitted with a cost receipt or refused with a recorded reason—and accepted conflict fixes are stored by name-free signature so recurring clashes resolve automatically before any AI model is asked. Against a repository of one hundred thousand units across ten thousand modules at commit a-b-a-nine-nine-f-c-e, initial sealing finishes in one point two four seconds, and each admission completes in roughly seventy microseconds—over thirteen thousand admissions per second on a single core—burning three hundred seventeen to three hundred sixty-five microjoules. This reference is completely independent of the Reality Code Engine language, and it keeps Apple M5 Max kernel energy counters strictly separate from its internal integer cost table. TypeScript item splitting, Git packfile compression, thousand-repository replay corpora, and external wall-plug power meters remain open future milestones.
+- **Structural collision hazard on identical bodies:** Because `key(u)` strips parameter and self names, two distinct functions in the same project with identical normalized token bodies and dependency keys—for example `def add_meters(x, y): return x + y` and `def add_seconds(a, b): return a + b` in untyped Python—**produce the exact same `key(u)`** `[M, E]`. While the parent module trie keeps both named slots (`add_meters` and `add_seconds`) distinct via `content_digest` (`H(body, dep_names)`), unit-key-indexed caches deduplicate them onto one node, and same-body helper functions without distinct return/unit types cannot be told apart by `key(u)` alone `[M]`.
 
-### Epistemic Evidence Tags (`[T]` / `[E]` / `[M]` / `[S]`)
+## Limitations & Unbuilt Milestones (`§9`)
 
-- **`[T]` Theorem / Machine-Checked Formal Proof**
-- **`[E]` Empirical / Hardware-Instrumented Experiment**
+- **No external merge-conflict benchmark yet:** Replay evaluation against `git merge-ort`, `Spork`, and `Mergiraf` on real open-source merge histories (`Merge-Bench`, `CONGRA`) is an unexecuted milestone `[E]`.
 
-## How Energy Was Metered
+- **Prototype scope gaps:** Cross-file Rust/Python dependency extraction currently resolves intra-file symbol tables only; TypeScript splitting, native Git packfile streaming (`gix` instead of loose objects), symlinks, executable mode bits, and submodules are not yet implemented in `v0.1.0` `[E]`.
 
-Open Interface Engineering enforces strict epistemic non-mixing across physical power rails, processor counters, and mathematical bounds (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition is forbidden by `ScientificGate`):
+## Energy & Telemetry Scope
 
-- **Acquisition Tier**: Chip Energy Counter
-- **Plain-Language Disclosure**: Apple M5 Max chip counter (317–365 µJ) plus stated table; no wall power meter.
-- **Substrate Evidence Class**: `reported_j` (`board_metered = false`)
-- **Primary Reading**: `317.00 µJ (reported_j)`
-- **Meter or Formula**: Apple M5 Max L3 reported_j single-core admission check against 100,000 repository units
-- **300 K Landauer Bit-Equivalents**: `1.1042e+17` bits (`E / (k_B · 300 K · ln 2)`)
+The `317.21–365.35 uJ` single-unit admission figure is Apple M5 Max per-process `ri_energy_nj` (`L3 reported_j`, `measured_j = null`), measuring in-memory/CAS Merkle trie updates plus affected-unit checks—not full-project `cargo test` execution `[E]`.
 
-## Continue the Discussion & Verify Every Byte
+## Epistemic Non-Mixing & Telemetry Ledger
+
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
+
+- **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
+- **Acquisition Tier**: On-Chip Counter (reported_j)
+- **Telemetry Disclosure**: Apple M5 Max subprocess ri_energy_nj L3 counter (317.2-365.4 uJ/unit admission at 100k units); measured_j = null.
+- **Evidence Class**: `reported_j` (`board_metered = false`)
+- **Catalog Anchor Reading**: `0.00031721 J (reported_j)`
+- **Sensor / Formula Scope**: Apple M5 Max Darwin proc_pid_rusage ri_energy_nj L3 per-unit trie admission counter (317.21-365.35 uJ; measured_j = null)
+
+## Related Work & Primary Literature (`[S]`)
+
+- **Git `merge-ort` (Newren, 2021) & Khanna, Kunal & Pierce (2007):** Industrial 3-way line merge with rename heuristics and formal investigation of `diff3` `[S]`.
+- **Falleri et al. (GumTree, ASE 2014), Larsén et al. (Spork, IEEE TSE 2022) & Mergiraf:** Fine-grained AST diffing and structured 3-way merge `[S]`.
+- **Shapiro, Preguiça, Baquero & Zawirski (CRDTs, SSS 2011) & Mimram & Di Giusto (Pijul, 2013):** Commutative state/operation convergence and categorical patch theory `[S]`.
+- **Unison Language (Chiusano & Bjarnason, 2019):** Content-addressed definitions keyed by nameless syntax hashes `[S]`.
+
+## Replicate, Critique & Inspect Raw Artifacts
 
 <!-- x_thread_backlink_slot: {{X_THREAD_URL}} -->
-- **Watch in 15 Seconds or 3 Minutes**: Stream the native `9:16` Vertical Snackable ([`rce-vc-tiktok.mp4`](https://research.openie.dev/media/tv/tiktok/rce-vc-tiktok.mp4)) or explore all four captioned studio cuts (`15s`, `45s`, `90s`, and `3m` 3D cutaway documentary) on **[OpenIE Research TV](https://research.openie.dev/tv/?study=rce-vc)**.
-- **Join the Synchronized X (Twitter) Thread**: Reply, critique, or inspect the 5-post verification thread on **[X (Twitter)](https://x.com/search?q=%22RCE-VC%22%20OR%20research.openie.dev%2Ftv%2F%3Fstudy%3Drce-vc&src=typed_query)**.
-- **Query Grounded Prior Art & Signed WAI1 Receipts**: Explore linked lineage trails on **[The Commons (`scholar.askdavidc.ai`)](https://scholar.askdavidc.ai)**, read the full primary paper & PDF at **[`research.openie.dev/papers/rce-vc/`](https://research.openie.dev/papers/rce-vc/)**, and verify the Ed25519-signed `WAI1` binary container (`blake3:b5b6a9fa2e610217…`) in **[`openie-artifact-substrate`](https://github.com/openIE-dev/openie-artifact-substrate/blob/main/catalog/envelopes/tv-rce-vc.wai)**.
+- **Canonical Post-Review Blog Dossier**: [https://blog.openie.dev/posts/rce-vc/](https://blog.openie.dev/posts/rce-vc/)
+- **Primary Research Manuscript & PDF**: [https://research.openie.dev/papers/rce-vc/](https://research.openie.dev/papers/rce-vc/) ([PDF](https://research.openie.dev/pdfs/rce-vc.pdf))
+- **1-Command Public Replication Harness**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) and [https://github.com/openIE-dev/rce-vc](https://github.com/openIE-dev/rce-vc)
+- **9:16 Vertical Snackable (`60fps`) & Research TV Cuts**: [https://research.openie.dev/media/tv/tiktok/rce-vc-tiktok.mp4](https://research.openie.dev/media/tv/tiktok/rce-vc-tiktok.mp4) · [OpenIE Research TV](https://research.openie.dev/tv/?study=rce-vc)
+- **Verification & Glossary Standards**: [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) · [Epistemic Glossary](https://blog.openie.dev/glossary/)
 
 ---
 
-*Summary & essay text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Code, verification gates, and `WAI1` schemas licensed under `Apache-2.0`.*
+*Prose and summary text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Public replication harnesses and `WAI1` schemas are licensed under `Apache-2.0` unless explicitly noted in the licensing ledger above.*

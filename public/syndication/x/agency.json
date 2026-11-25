@@ -1,29 +1,35 @@
 {
-  "schema": "openie.x_thread_bundle.v1",
+  "schema": "openie.x_thread_bundle.v2",
   "study_id": "agency",
   "canonical_id": "blake3:tv:7da82d901b877b47d94327d99418d995f9ba998d898a17a75f32efebd8f3708f",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
   "license": "CC0-1.0",
   "post_count": 5,
-  "max_weighted_chars": 217,
+  "max_weighted_chars": 274,
   "card_video_uri": "/media/tv/tiktok/agency-tiktok.mp4",
   "fallback_video_uri": "/media/tv/films/agency-15s.mp4",
-  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/agency/",
+  "medium_crosslink_uri": "https://blog.openie.dev/posts/agency/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/agency/",
   "canonical_paper_url": "https://research.openie.dev/papers/agency/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+  "public_repo_url": "https://github.com/openIE-dev/openie-research-experiments",
   "zero_urls_in_post_1": true,
   "posts": [
     {
       "position": 1,
       "role": "hook_video_card",
-      "text": "Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents\n\nThree plain truths about what makes a system an agent, why pace matters, and how energy ranks intelligence.\n\n[Finish Right First, Then Rank by Joules]",
-      "weighted_chars": 217,
-      "raw_chars": 217,
+      "text": "Goal-Holding Agents Under Budget Guards [E/M · reported_j]\n\nAcross 30 Sudoku tasks, Run 1 caught a pre-fix boundary bug: 36 / 5,400 episodes overspent (R-F2). Moving comparison + receipt logging inside the guard cut overspends to 0 / 10,800 (0 / 5,400 per half).",
+      "weighted_chars": 262,
+      "raw_chars": 262,
       "urls": [],
       "in_reply_to_position": null,
       "media": {
         "video_uri": "/media/tv/tiktok/agency-tiktok.mp4",
         "fallback_video_uri": "/media/tv/films/agency-15s.mp4",
-        "poster_uri": "/media/tv/posters/agency-poster.jpg",
-        "vtt_uri": "/media/tv/captions/agency-15s.vtt",
+        "poster_uri": "/media/tv/tiktok/agency-tiktok.jpg",
+        "vtt_uri": "/media/tv/tiktok/agency-tiktok.vtt",
         "aspect_ratio": "9:16",
         "resolution": "1080x1920",
         "fps": 60,
@@ -32,43 +38,47 @@
     },
     {
       "position": 2,
-      "role": "plain_points_1_2",
-      "text": "1/3 An agent must aim at a goal, act on the world, and stay within an energy budget.\n\n2/3 Physics prices every decision, creating one optimal pace between slow idle drain and frantic switching waste.",
-      "weighted_chars": 199,
-      "raw_chars": 199,
+      "role": "methods_and_sample_bounds",
+      "text": "1/2 Fired falsifiers & failed tight-budget replication:\n- Post-fix: 0 / 10,800 overspends (95% Clopper-Pearson <= 3.42e-4) on Darwin ri_energy_nj & cycle-accounted Linux\n- Sub-ms Linux RAPL missed 0.04 ms acts (320-327 overspends)\n- Run 1 tight-budget gain did NOT replicate",
+      "weighted_chars": 274,
+      "raw_chars": 274,
       "urls": [],
       "in_reply_to_position": 1
     },
     {
       "position": 3,
-      "role": "plain_point_3_and_energy",
-      "text": "3/3 Among systems that finish a task correctly, the smarter one is whichever spent less energy.\n\nEnergy class: reported_j (85.00 mJ chip counter; board_metered=false, never mixed with shunts).",
-      "weighted_chars": 192,
-      "raw_chars": 192,
+      "role": "telemetry_and_scope_limits",
+      "text": "2/2 Telemetry & physics scope:\n- Falsifiers R-F1, R-F4 (Kendall tau-b = -0.037), R-F5 (CV > 0.25) & R-F6 fired\n- CPU runs sit 14-15 orders above k_B T ln 2 (cited strictly for unit positivity e_act > 0, not tight floor)\n- OS/chip reported_j only (measured_j = null)",
+      "weighted_chars": 265,
+      "raw_chars": 265,
       "urls": [],
       "in_reply_to_position": 2
     },
     {
       "position": 4,
-      "role": "machine_verification_gate",
-      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E]/[M] · WAI1 blake3:7da82d901b87… · CC0-1.0",
-      "weighted_chars": 207,
-      "raw_chars": 204,
-      "urls": [],
+      "role": "signed_provenance_self_checked",
+      "text": "Signed Provenance · Self-Checked (human_in_gate=false; not peer-reviewed):\n- Evidence: [E]/[M]/[S] · WAI1 blake3:7da82d901b87...\n- Verification: https://blog.openie.dev/verification/\n- Glossary: https://blog.openie.dev/glossary/",
+      "weighted_chars": 204,
+      "raw_chars": 228,
+      "urls": [
+        "https://blog.openie.dev/verification/",
+        "https://blog.openie.dev/glossary/"
+      ],
       "in_reply_to_position": 3
     },
     {
       "position": 5,
-      "role": "bidirectional_medium_and_paper_bridge",
-      "text": "Read & verify Thermodynamic Bounds & Optimal Tempo (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/agency/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/agency/",
-      "weighted_chars": 180,
-      "raw_chars": 228,
+      "role": "canonical_blog_paper_and_replicate",
+      "text": "Read & replicate Goal-Holding Agents Under Budget Guards (CC0-1.0):\n- Essay: https://blog.openie.dev/posts/agency/\n- Paper: https://research.openie.dev/papers/agency/\n- 1-cmd kit: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+      "weighted_chars": 170,
+      "raw_chars": 257,
       "urls": [
-        "https://research.openie.dev/syndication/medium/agency/",
-        "https://research.openie.dev/papers/agency/"
+        "https://blog.openie.dev/posts/agency/",
+        "https://research.openie.dev/papers/agency/",
+        "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
       ],
       "in_reply_to_position": 4
     }
   ],
-  "content_blake3": "4b6011d4fb1c6fb9434dd31151a927a765464a15a5a4f72cdb0af50e0376a557"
+  "content_blake3": "d4e54c6c9ff362acb7c74831c2a84afeb67f6a1b7ebc36d8bddf1f963257848d"
 }

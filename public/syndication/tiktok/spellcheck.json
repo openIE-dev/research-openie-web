@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "spellcheck",
   "canonical_id": "blake3:tv:6fec7c11e477aee4e0bba694ae09890629609e44ddb85fae7d3ac0e859e31090",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/spellcheck/",
+  "canonical_paper_url": "https://research.openie.dev/papers/spellcheck/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/spellcheck-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/spellcheck-15s.mp4",
-    "poster_uri": "/media/tv/posters/spellcheck-poster.jpg",
-    "vtt_uri": "/media/tv/captions/spellcheck-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/spellcheck-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/spellcheck-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 21.47,
     "safe_zone_verified": true,
-    "source_15s_sha256": "c8a415c5823f84f856fe077bddbbeb3a8be6ce38907edfdf21a809ba2c27e1a7"
+    "sha256": "01de053fac1e8348ae7e544ec3e70b0628e0019af12424028673793428ca8381"
   },
-  "caption_utf16_chars": 738,
+  "caption_utf16_chars": 824,
+  "caption": "Spell Check Archival Price Trace — USD 200 standalone WordCheck (Jan 1981) -> bundled OS/Hunspell USD 0 license archival trace (unmetered, [S])\n\nTraces primary retail ads from USD 200 standalone Commodore PET WordCheck (Compute!, Jan 1981) and USD 89-99 Grammatik to OS-bundled zero-license routines — scoped strictly to bounded local tools.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: unmetered (Dated retail software price archive (1968-1993) and bundling synthesis; joules = null.)\n• Essay: https://blog.openie.dev/posts/spellcheck/\n• Paper: https://research.openie.dev/papers/spellcheck/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#ComputingHistory #SoftwareEconomics #Technology #Bundling #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "Spell Check is Global ($200 Standalone Box -> $0 Feature for 7B+ People)\nSpell check went from a two-hundred-dollar standalone luxury to a free global reflex once local compute cost hit near zero.\n1) People once paid hundreds of dollars for standalone spell check, yet today it comes free inside every phone and browser.\n2) Spell check became free because checking a word costs almost nothing to run right inside the writing tool you own.\n3) Other forms of computer intelligence will reach seven billion people only when they run cheaply on everyday local devices.\nEnergy class: unmetered (Historical Price Audit) · CC0-1.0 · https://research.openie.dev/papers/spellcheck/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "Spell Check Archival Price Trace — USD 200 standalone WordCheck (Jan 1981) -> bundled OS/Hunspell USD 0 license archival trace (unmetered, [S])\n\nTraces primary retail ads from USD 200 standalone Commodore PET WordCheck (Compute!, Jan 1981) and USD 89-99 Grammatik to OS-bundled zero-license routines — scoped strictly to bounded local tools.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: unmetered (Dated retail software price archive (1968-1993) and bundling synthesis; joules = null.)\n• Essay: https://blog.openie.dev/posts/spellcheck/\n• Paper: https://research.openie.dev/papers/spellcheck/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#ComputingHistory #SoftwareEconomics #Technology #Bundling #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/spellcheck-tiktok.mp4"
     }
   },
-  "content_blake3": "4805953826d27e86f52cbffd894205971ecea6f7ebfabc165f8c8de3be0d7d53"
+  "content_blake3": "7311803e6d5bbe7df4eb2a254d754ebe72e04ce17d2cc2e2058364bbc659a720"
 }

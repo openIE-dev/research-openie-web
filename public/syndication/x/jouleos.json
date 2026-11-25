@@ -1,29 +1,35 @@
 {
-  "schema": "openie.x_thread_bundle.v1",
+  "schema": "openie.x_thread_bundle.v2",
   "study_id": "jouleos",
   "canonical_id": "blake3:tv:7dc57a2972460389e4fabd076f069c237545d6154f816d489335f8b3eed65e07",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
   "license": "CC0-1.0",
   "post_count": 5,
-  "max_weighted_chars": 259,
+  "max_weighted_chars": 274,
   "card_video_uri": "/media/tv/tiktok/jouleos-tiktok.mp4",
   "fallback_video_uri": "/media/tv/films/jouleos-15s.mp4",
-  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/jouleos/",
+  "medium_crosslink_uri": "https://blog.openie.dev/posts/jouleos/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/jouleos/",
   "canonical_paper_url": "https://research.openie.dev/products/jouleos/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+  "public_repo_url": null,
   "zero_urls_in_post_1": true,
   "posts": [
     {
       "position": 1,
       "role": "hook_video_card",
-      "text": "The Search for JouleOS\n\nToday's operating systems schedule clock slices, not energy—so we mapped what an agent machine must require and tested its core rules in Rust.\n\n[310 Passing Rust Tests · 78,400 Provenance Checks]",
-      "weighted_chars": 219,
-      "raw_chars": 219,
+      "text": "JouleOS: Operating-System Design Specification [E/M/S · unmetered]\n\nScoped explicitly as an unmetered OS architectural proposal (joules = null; core OS repo private; internal ~10^5x README aspiration unverified), with 78,400 = 280x280 Rust provenance-lattice checks.",
+      "weighted_chars": 266,
+      "raw_chars": 266,
       "urls": [],
       "in_reply_to_position": null,
       "media": {
         "video_uri": "/media/tv/tiktok/jouleos-tiktok.mp4",
         "fallback_video_uri": "/media/tv/films/jouleos-15s.mp4",
-        "poster_uri": "/media/tv/posters/jouleos-poster.jpg",
-        "vtt_uri": "/media/tv/captions/jouleos-15s.vtt",
+        "poster_uri": "/media/tv/tiktok/jouleos-tiktok.jpg",
+        "vtt_uri": "/media/tv/tiktok/jouleos-tiktok.vtt",
         "aspect_ratio": "9:16",
         "resolution": "1080x1920",
         "fps": 60,
@@ -32,43 +38,47 @@
     },
     {
       "position": 2,
-      "role": "plain_points_1_2",
-      "text": "1/3 Modern computers stack many separate software layers, and today's AI agents are bolted on top without changing the floor underneath.\n\n2/3 None of those underlying layers asks, before an agent acts, how much energy the action will spend or whether it fits.",
-      "weighted_chars": 259,
-      "raw_chars": 259,
+      "role": "methods_and_sample_bounds",
+      "text": "1/2 Verified Rust spine vs prior OS lineage:\n- jcp-satb-cad-spine (310 unit tests) checks all 280 x 280 provenance-tag pairs so est_j/RAPL never silently promote to shunt measured_j\n- Builds on Odyssey (1999), ECOSystem (2002), Cinder (2011), Linux EAS, schedutil & RAPL [S]",
+      "weighted_chars": 274,
+      "raw_chars": 274,
       "urls": [],
       "in_reply_to_position": 1
     },
     {
       "position": 3,
-      "role": "plain_point_3_and_energy",
-      "text": "3/3 A machine built for agents must meter energy honestly, grant strict budgets, and refuse any action that breaks its limit.\n\nEnergy class: unmetered (Verified Software + Model; joules=null, never faked as zero).",
-      "weighted_chars": 213,
-      "raw_chars": 213,
+      "role": "telemetry_and_scope_limits",
+      "text": "2/2 Candid limits & unrun benchmarks:\n- Not a shipped kernel benchmarked against Linux or seL4 on hardware wattmeters (joules = null, board_metered = false)\n- Per-syscall hold/settle & Ed25519 receipt overhead risks net loss if unbatched\n- Core JouleOS tree remains private",
+      "weighted_chars": 273,
+      "raw_chars": 273,
       "urls": [],
       "in_reply_to_position": 2
     },
     {
       "position": 4,
-      "role": "machine_verification_gate",
-      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E]/[S] · WAI1 blake3:7dc57a297246… · CC0-1.0",
-      "weighted_chars": 207,
-      "raw_chars": 204,
-      "urls": [],
+      "role": "signed_provenance_self_checked",
+      "text": "Signed Provenance · Self-Checked (human_in_gate=false; not peer-reviewed):\n- Evidence: [E]/[M]/[S] · WAI1 blake3:7dc57a297246...\n- Verification: https://blog.openie.dev/verification/\n- Glossary: https://blog.openie.dev/glossary/",
+      "weighted_chars": 204,
+      "raw_chars": 228,
+      "urls": [
+        "https://blog.openie.dev/verification/",
+        "https://blog.openie.dev/glossary/"
+      ],
       "in_reply_to_position": 3
     },
     {
       "position": 5,
-      "role": "bidirectional_medium_and_paper_bridge",
-      "text": "Read & verify The Search for JouleOS (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/jouleos/\n• Primary paper, PDF & receipts: https://research.openie.dev/products/jouleos/",
+      "role": "canonical_blog_paper_and_replicate",
+      "text": "Read & replicate JouleOS Design Proposal (Unmetered) (CC0-1.0):\n- Essay: https://blog.openie.dev/posts/jouleos/\n- Paper: https://research.openie.dev/products/jouleos/\n- 1-cmd kit: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
       "weighted_chars": 166,
-      "raw_chars": 218,
+      "raw_chars": 257,
       "urls": [
-        "https://research.openie.dev/syndication/medium/jouleos/",
-        "https://research.openie.dev/products/jouleos/"
+        "https://blog.openie.dev/posts/jouleos/",
+        "https://research.openie.dev/products/jouleos/",
+        "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
       ],
       "in_reply_to_position": 4
     }
   ],
-  "content_blake3": "a9b51148345a9bd8c8cb76f46eb8721b0e9acb17db917a14f5ac741500dc7699"
+  "content_blake3": "41b0d0280fb436ba9729036cef685dab8e732c478e1b011291d62ce14499816a"
 }

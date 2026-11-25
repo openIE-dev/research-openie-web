@@ -1,63 +1,77 @@
-# The Nine-Rung Computer Intelligence Avalanche
+# The Nine-Rung Study Guide (avalanche.openie.dev): Ex-Post Biological Framing vs. Falsifiable Multi-Paradigm Benchmarks
 
-*98 / 100 Verified Synthesis · 9x–27x Board Power Gain — Why computer intelligence follows the same nine-step signal ratchet as life—and how compiling answers unlocks the next four steps.*
+*Presents avalanche.openie.dev as an educational synthesis portal: labels the 3.8 Ga bio-to-AI rung ladder as ex-post interpretive framing, clarifies abstract Lean consent theorems, and keeps Thor 927.30 uJ (50.13 us) separate from workstation 23.8-29.5 us latencies.*
 
-> **Public Domain (`CC0-1.0`) · OpenIE Research Essay**  
-> **Canonical Primary Source**: [https://research.openie.dev/papers/communication-avalanche/](https://research.openie.dev/papers/communication-avalanche/)  
-> **Canonical Artifact ID**: `blake3:tv:f4c0b7df0176f02e56e35e3cc9703033be962f8c06fcd1865615c66741535bd1` · **Gate Invariant**: `human_in_gate = false`
+> **Signed Provenance · Self-Checked** (`human_in_gate = false`; automated build, benchmark, and proof-checking scripts ran without manual override — not externally peer-reviewed; see [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) and [Epistemic Glossary](https://blog.openie.dev/glossary/)).  
+> **Canonical Post-Review Essay (`rel="canonical"`)**: [https://blog.openie.dev/posts/eco-avalanche/](https://blog.openie.dev/posts/eco-avalanche/)  
+> **Primary Research Paper**: [https://research.openie.dev/papers/communication-avalanche/](https://research.openie.dev/papers/communication-avalanche/)  
+> **1-Command Replication Kit**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) · **Study Repository**: [https://github.com/openIE-dev/avalanche-openie-web](https://github.com/openIE-dev/avalanche-openie-web)  
+> **Canonical Artifact ID**: `blake3:tv:f4c0b7df0176f02e56e35e3cc9703033be962f8c06fcd1865615c66741535bd1` · **Evidence Tags**: `[T]` · `[E]` · `[M]` · `[S]` · **Telemetry Class**: `measured_j`
 
 ---
 
-## Three Plain-Language Takeaways (Zero Acronym Soup)
+![Nine-Rung Study Guide — ex-post biological framing disclosure, DES-10 98/100 benchmark, and Thor vs workstation telemetry separation](https://research.openie.dev/media/tv/posters/eco-avalanche-poster.jpg)
+*Educational study guide (`avalanche.openie.dev`): ex-post 9-rung framing separated from falsifiable `CTA-E1..E7` benchmarks and abstract Lean consent models. Dedicated to the public domain under `CC0-1.0`.*
 
-1. Across 3.8 billion years of biology and 76 years of computing, intelligence climbs a nine-step ladder through one repeating signal ratchet.
-2. Today's AI stalls at the fifth step—tool use—because routine jobs still wake giant models from scratch.
-3. Crossing the compilation threshold unlocks the top four steps by turning verified answers into fast, low-energy lookup reflexes.
+## Key Claims & Audited Scope (`[T]` / `[E]` / `[M]` / `[S]`)
 
-![The Nine-Rung Computer Intelligence Avalanche — OpenIE Research TV Studio Poster](https://research.openie.dev/media/tv/posters/eco-avalanche-poster.jpg)
-*Studio key visual for **Nine-Rung Intelligence Avalanche** (`Communication Avalanche & Bio` · 98 / 100 Verified Synthesis · 9x–27x Board Power Gain). Dedicated to the public domain under `CC0-1.0`.*
+1. **[M/S · Ex-Post Pedagogical Framing vs. Falsifiable Engineering]** On `avalanche.openie.dev`, aligning `24` evolutionary signaling milestones (`CL01–CL24`, quorum sensing to writing) with `38` AI milestones (`AI01–AI38`, 1950–2026) across 9 rungs is an **ex-post interpretive and educational framing**—useful for teaching why stateless tool loops (`Rungs 1–5`) re-pay inference costs on recurring patterns, **not** a deductive proof that silicon software must recapitulate biological phylogeny.
+2. **[T · Scope of the `45` `CTA` Lean `4.36.0` Consent Theorems]** The `45` theorems in `QuorumRatchet.lean`, `OrchestrationFlow.lean`, and `EnzymaticSynthesis.lean` (part of `132` portal-highlighted 6-kernel theorems) verify an **abstract discrete state-machine property**—that an agent transition gated by `g_i(s_i, m) = 1` rejects unconsented messages—**NOT a clinical, neurobiological, or hardware safety guarantee for human brain-computer interfaces**.
+3. **[E · Finite-Sample Gate Counts & Host Separation]** Replaces the portal banner’s shorthand `"zero-escape shorthand"` with exact finite-sample counts (`0` broken commits admitted on `59/60` `CTA-E2` tasks, `44/48` `MoL` tasks, and `29/32` `BigCodeBench` slice tasks—bounded by sample size `N` and unit-test coverage, while `CTA-E5` `DES-10` observed **`1 / 100` (`1.0%`) false commit** alongside `98/100` solves!), and separates Thor `927.30 uJ` (`50.13 us`, `measured_j`) from faster desktop `23.84–29.54 us` (`reported_j`) hosts.
 
-## Everyday Analogy & Why It Matters
+## Methods, Baselines, Sample Sizes (`N`) & Licensing Scope
 
-Imagine if your brain had to calculate every heartbeat and footstep consciously from scratch. Biology survived by practicing new motions once, then pushing proven patterns into fast spinal reflexes. Modern AI burns megawatts recalculating solved tasks at step five; compiling certified answers downward unlocks quiet wakeups, tiny lookup circuits, and global scale.
+- **Hardware & Telemetry**: Educational Astro portal (`openIE-dev/avalanche-openie-web`) summarizing primary measurements from `communication-avalanche.md` (`NVIDIA Jetson AGX Thor` TI `INA3221` `VDD_CPU_SOC_MSS` `measured_j` + `Core i9-13900H` / `M3 Ultra` / `Ryzen AI Max+ 395` `reported_j`) and `lut-adapt.md`.
+- **Workload & Suite**: Summarizes `CTA-E1..E7` (`50,000`-iteration `1 KiB` `BLAKE3+Ed25519` verify, `60`-task `CTA-E2` handoff suite, `100`-task 5-regime `CTA-E5` 10-camp benchmark) and `CA-M1..CA-M5` stylized biological agent simulations.
+- **Baselines Compared**: Ten isolated AI paradigm camps (`C1` solo LLM `48/100`, `C9` 3-agent NL debate `49/100`, `C2` SAT/FD `30/100`, `C8` LUT6/FSM `20/100`, `C5` Shape D `16/100`, `C4` MCTS `10–11/100`, `C7` causal `do(X)` `10/100`, `C6`/`C10` `4/100`, `C3` EBM `0/100`) vs. routed `DES-10` (`98/100`).
+- **Runs (`N`) & Uncertainty / Spread**: `CTA-E5`: `N = 100` tasks (`20` per regime `R1–R5`; `DES-10` `98/100` solved, `1/100` false commit, `1/100` abstention). `CTA-E4`: `N = 50,000` `1 KiB` verify iterations (`p50 = 50.13 us` on Thor; `23.84–33.12 us` on workstations).
+- **Cold vs. Warm Caching Scope**: Separates Phase-1 stateless cold inference (`Delta T = 1`, `F_NOCACHE` cold verification) from Phase-2 post-verification crystallization (`Delta T > Delta T*` stationary amortization horizon).
+- **Artifact & License Status**: Portal web source public at `https://github.com/openIE-dev/avalanche-openie-web` (`CC0-1.0` text); `WAI1` signing crate in `openIE-dev/openie-artifact-substrate` (`Apache-2.0`); full `CTA-E1..E7` scripts partially in `research-openie-web` / internal lab trees.
 
-Across three point eight billion years of evolution, microbes, cells, and nervous systems scaled collective intelligence using one repeating three-step ratchet: standardize a cheap signal, filter out noise below a sharp threshold, and lock verified winners into durable memory. Over seventy-six years, computing climbed five ephemeral steps: indexed access, fluent generation, reasoning checks, networked transport, and tool use. Yet routing routine tool calls through giant neural networks every single time burns vast electricity until verified answers compile downward.
+## Separating Pedagogical Analogy from Falsifiable Claims
 
-When ten distinct AI traditions exchange compact verified routines instead of verbose prose, benchmark completion jumps from forty-nine percent solo to ninety-eight percent, while physical circuit-board power sensors record nine-to-twenty-seven-fold gains in verified work per joule. On avalanche dot openie dot dev, every forecast across month, quarter, year, and decade windows names a concrete physical test that could prove it wrong, keeping science open and accountable.
+`avalanche.openie.dev` was built as an interactive reader companion to `communication-avalanche`, offering dual "Visionary / Scientist" explanation registers `[M]`. To prevent the accessible register from overstating what was proved:
 
-## Inside the Mechanism & Candid Limits
+- **Interpretive history (`[S]/[M]`):** Grouping quorum sensing (`Nealson et al. 1970`), slime-mold network pruning (`Tero et al., Science 2010`), and major evolutionary transitions (`Maynard Smith & Szathmáry 1995`) alongside 1950–2026 AI architectures is a **conceptual lens**, not a quantitative principle predicting calendar dates of future AI breakthroughs `[S, M]`.
 
-Today's frontier AI systems can draft code, call external software tools, and search databases, yet every routine request still wakes billions of numerical weights from scratch. Pouring more megawatts into data centers buys raw capability at steep electrical cost, leaving the software industry bottlenecked at step five of a nine-step intelligence ladder. Think back to your very first afternoon balancing a bicycle down a quiet street. At first your conscious cortex burned intense focus correcting every tiny wobble, but once your nervous system verified what worked, it compiled balance downward into fast cerebellar and spinal reflexes so your mind could scan the road ahead.
+- **Falsifiable engineering (`[E]/[T]`):** Whether binary `BLAKE3 + Ed25519` envelopes beat natural-language prose handoffs in energy and drift (`CTA-E2, E4`), whether routing across specialized solvers beats solo LLMs on a 5-regime benchmark (`CTA-E5`), and whether Proposition 1’s compile break-even (`Delta T* = E_compile / (p0 * (c_wake - c0))`) holds on Thor (`LA-24`) are concrete, falsifiable software measurements `[E, T]`.
 
-Comparing major evolutionary leaps—from bacterial quorum sensing and myelinated nerves to spoken human language—against seventy-six years of computer science reveals the exact same three-part ratchet at every jump. First, make signaling cheap; second, gate action behind a strict verification threshold; third, compile proven solutions into fast, low-energy memory. Below the compilation threshold, every repeated question pays the full electrical bill of cold-start neural generation. Once automated checks certify a solution and freeze it into a compact lookup table or deterministic routine, verified completions per joule surge upward across steps six, seven, eight, and nine without losing accuracy.
+## Limitations: Benchmark Construction & Finite-Sample Gate Escape
 
-Our three-dimensional ratchet view shows noisy candidate proposals entering on the left, clearing strict emerald verification rings at the center, and crystallizing into quiet event-driven wakeups at step six, single-cycle Boolean lookup circuits at step seven, tamper-evident provenance at step eight, and energy-scheduled operating systems at step nine. In controlled experiments uniting ten classic AI paradigms—spanning symbolic search, Bayesian inference, evolutionary routines, and neural world models—no single method passed half our hundred-task suite alone, yet compiled synthesis passed ninety-eight tasks while inline circuit-board current sensors measured nine-to-twenty-seven-fold gains in verified work per joule. Scientific honesty demands separating today's lab measurements from tomorrow's predictions across eighteen dated milestones spanning one month to ten years, each paired with a concrete falsifier test. And wherever long-horizon steps touch human neural links, strict opt-in consent, local power limits, and instant user revocation remain absolute.
+- **Curated 5-regime benchmark (`CTA-E5`):** Because `CTA-E5` intentionally allocates `20` tasks each to exact constraint solving, causal `do(X)` calculus, state-machine parity, lookup, and synthesis, isolated single-paradigm baselines (`C1–C10`) are structurally capped on out-of-domain slices while routed `DES-10` dispatches each slice to its matching tool—and even `DES-10` still recorded **`1 / 100` (`1.0%`) false commit** where an imperfect check let a wrong answer pass `[E]`.
 
-### Epistemic Evidence Tags (`[T]` / `[E]` / `[M]` / `[S]`)
+- **Consent theorems are formal, not biomedical:** `CTA-T1..T45` prove properties of boolean filter functions over discrete message types in Lean 4; human neural interfaces remain governed by low bit-rate hardware physics (`~15–19 bit/s` invasive BCI readout) and clinical regulation `[S, T]`.
 
-- **`[T]` Theorem / Machine-Checked Formal Proof**
-- **`[E]` Empirical / Hardware-Instrumented Experiment**
-- **`[M]` Mathematical / Analytical Cost or Physics Model**
-- **`[S]` Survey / Historical Price or Accounting Audit**
+## Energy & Telemetry Scope
 
-## How Energy Was Metered
+Portal summaries preserve strict telemetry separation between `NVIDIA Jetson AGX Thor` TI `INA3221` DC shunts (`measured_j`) and workstation `RAPL`/`IOReport` counters (`reported_j`).
 
-Open Interface Engineering enforces strict epistemic non-mixing across physical power rails, processor counters, and mathematical bounds (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition is forbidden by `ScientificGate`):
+## Epistemic Non-Mixing & Telemetry Ledger
 
-- **Acquisition Tier**: Board Power Sensor
-- **Plain-Language Disclosure**: Direct circuit-board power sensor on edge hardware; forecast horizons stay open predictions.
-- **Substrate Evidence Class**: `measured_j` (`board_metered = true`)
-- **Primary Reading**: `927.30 µJ (measured_j)`
-- **Meter or Formula**: NVIDIA Jetson AGX Thor physical TI INA3221 & INA238 board power sensor (DES-10 attested synthesis)
-- **300 K Landauer Bit-Equivalents**: `3.2299e+17` bits (`E / (k_B · 300 K · ln 2)`)
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
 
-## Continue the Discussion & Verify Every Byte
+- **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
+- **Acquisition Tier**: Study Guide (Thor Shunt ⊥ Desktop Counters)
+- **Telemetry Disclosure**: Educational synthesis portal keeping Thor INA3221 measured_j (927.30 uJ / 50.13 us) separate from desktop reported_j (23.84-33.12 us).
+- **Evidence Class**: `measured_j` (`board_metered = true`)
+- **Catalog Anchor Reading**: `0.0009273 J (measured_j)`
+- **Sensor / Formula Scope**: Summarizes Jetson AGX Thor TI INA3221 measured_j (927.30 uJ / 50.13 us) strictly separated from desktop reported_j in communication-avalanche
+
+## Related Work & Primary Literature (`[S]`)
+
+- **Maynard Smith & Szathmáry (The Major Transitions in Evolution, 1995) & Tero et al. (Science, 2010):** Evolutionary information-ratchet transitions and *Physarum* transport-network optimization `[S]`.
+- **Du et al. (Multiagent Debate, ICML 2024) & Cemri et al. (Why Do Multi-Agent LLM Systems Fail?, 2025):** Multi-agent natural-language debate baselines and compounding prose-relay failure modes `[S]`.
+- **Kambhampati et al. (LLM-Modulo, ICML 2024) & FrugalGPT (Chen et al., 2023):** Neuro-symbolic verifier loops and cost-routed model cascades `[S]`.
+
+## Replicate, Critique & Inspect Raw Artifacts
 
 <!-- x_thread_backlink_slot: {{X_THREAD_URL}} -->
-- **Watch in 15 Seconds or 3 Minutes**: Stream the native `9:16` Vertical Snackable ([`eco-avalanche-tiktok.mp4`](https://research.openie.dev/media/tv/tiktok/eco-avalanche-tiktok.mp4)) or explore all four captioned studio cuts (`15s`, `45s`, `90s`, and `3m` 3D cutaway documentary) on **[OpenIE Research TV](https://research.openie.dev/tv/?study=eco-avalanche)**.
-- **Join the Synchronized X (Twitter) Thread**: Reply, critique, or inspect the 5-post verification thread on **[X (Twitter)](https://x.com/search?q=%22Nine-Rung%20Intelligence%20Avalanche%22%20OR%20research.openie.dev%2Ftv%2F%3Fstudy%3Deco-avalanche&src=typed_query)**.
-- **Query Grounded Prior Art & Signed WAI1 Receipts**: Explore linked lineage trails on **[The Commons (`scholar.askdavidc.ai`)](https://scholar.askdavidc.ai)**, read the full primary paper & PDF at **[`research.openie.dev/papers/communication-avalanche/`](https://research.openie.dev/papers/communication-avalanche/)**, and verify the Ed25519-signed `WAI1` binary container (`blake3:1ed9d751fd932372…`) in **[`openie-artifact-substrate`](https://github.com/openIE-dev/openie-artifact-substrate/blob/main/catalog/envelopes/tv-eco-avalanche.wai)**.
+- **Canonical Post-Review Blog Dossier**: [https://blog.openie.dev/posts/eco-avalanche/](https://blog.openie.dev/posts/eco-avalanche/)
+- **Primary Research Manuscript & PDF**: [https://research.openie.dev/papers/communication-avalanche/](https://research.openie.dev/papers/communication-avalanche/) ([PDF](https://research.openie.dev/pdfs/communication-avalanche.pdf))
+- **1-Command Public Replication Harness**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) and [https://github.com/openIE-dev/avalanche-openie-web](https://github.com/openIE-dev/avalanche-openie-web)
+- **9:16 Vertical Snackable (`60fps`) & Research TV Cuts**: [https://research.openie.dev/media/tv/tiktok/eco-avalanche-tiktok.mp4](https://research.openie.dev/media/tv/tiktok/eco-avalanche-tiktok.mp4) · [OpenIE Research TV](https://research.openie.dev/tv/?study=eco-avalanche)
+- **Verification & Glossary Standards**: [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) · [Epistemic Glossary](https://blog.openie.dev/glossary/)
 
 ---
 
-*Summary & essay text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Code, verification gates, and `WAI1` schemas licensed under `Apache-2.0`.*
+*Prose and summary text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Public replication harnesses and `WAI1` schemas are licensed under `Apache-2.0` unless explicitly noted in the licensing ledger above.*

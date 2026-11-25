@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "gates",
   "canonical_id": "blake3:tv:b6075421aa4a225d509d07481bc5a850f9e1dc14424cd92bd9abe3ebe93260a3",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/gates/",
+  "canonical_paper_url": "https://research.openie.dev/papers/gates/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/gates-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/gates-15s.mp4",
-    "poster_uri": "/media/tv/posters/gates-poster.jpg",
-    "vtt_uri": "/media/tv/captions/gates-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/gates-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/gates-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 21.87,
     "safe_zone_verified": true,
-    "source_15s_sha256": "f29dda7b557d9212cb245561454aafc08a84d747ab58506834ef0ea273679c30"
+    "sha256": "871851bb37b231246cd504a916850a6057b4756a613ced1e3b666f73064ffff9"
   },
-  "caption_utf16_chars": 635,
+  "caption_utf16_chars": 869,
+  "caption": "Metered Commit Gates — 11.43 nJ/cycle whole-SOM average (KV260 INA260 shunt, measured_j) · 0/209,261 simulated false allows (95% UB <= 1.43e-5)\n\nOn AMD Kria KV260, whole-SOM VCC_SOM TI INA260 halt-vs-run slopes recorded 11,428 pJ/cycle (11.43 nJ, SE=129 pJ, N=4 25s passes at 25 MHz); 209,261 simulated checks observed 0 false allows (95% UB <= 1.43e-5).\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: measured_j (AMD Kria KV260 whole-SOM VCC_SOM TI INA260 shunt (11.43 nJ/cycle, N=4 passes); 98 pJ seed delta inconclusive near 1.25 mA LSB.)\n• Essay: https://blog.openie.dev/posts/gates/\n• Paper: https://research.openie.dev/papers/gates/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#EmbeddedSystems #Fpga #SafetyEngineering #EnergyEfficiency #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "Metered Commit Gates (11,428 Picojoules per Hardware Gate Check)\nWhy computers must check before taking undoable actions, start with the cheapest tool, and log every joule.\n1) A computer should not take an irreversible action until an independent check confirms it is safe.\n2) It should try the cheapest method first and wake a large AI model only when simpler tools miss.\n3) Every decision is written to a receipt with the energy it used, so anyone can audit it later.\nEnergy class: measured_j (Board Power Sensor) · CC0-1.0 · https://research.openie.dev/papers/gates/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "Metered Commit Gates — 11.43 nJ/cycle whole-SOM average (KV260 INA260 shunt, measured_j) · 0/209,261 simulated false allows (95% UB <= 1.43e-5)\n\nOn AMD Kria KV260, whole-SOM VCC_SOM TI INA260 halt-vs-run slopes recorded 11,428 pJ/cycle (11.43 nJ, SE=129 pJ, N=4 25s passes at 25 MHz); 209,261 simulated checks observed 0 false allows (95% UB <= 1.43e-5).\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: measured_j (AMD Kria KV260 whole-SOM VCC_SOM TI INA260 shunt (11.43 nJ/cycle, N=4 passes); 98 pJ seed delta inconclusive near 1.25 mA LSB.)\n• Essay: https://blog.openie.dev/posts/gates/\n• Paper: https://research.openie.dev/papers/gates/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#EmbeddedSystems #Fpga #SafetyEngineering #EnergyEfficiency #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/gates-tiktok.mp4"
     }
   },
-  "content_blake3": "6a177e77aef5cef9f2eef6aa9207a64762c7d6fffc6e4e3ec8dbcbf183b564df"
+  "content_blake3": "3cf8c6106123b1fb303c708b37f2e00e7adf4af81f7ae829fb7df807ef0d2cd9"
 }

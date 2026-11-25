@@ -1,64 +1,80 @@
-# RCE Compile: A Law of Compilation, Tested as a Normal Form Against Real Compilers
+# RCE Compile: A Proposed 7-Part Compiler Normal-Form Contract, Per-Machine Prelude Cuts, and De Bruijn Warm-Cache Bounds
 
-*448.5x Rebuild Energy Cut · 0/500 Mix-Ups — Thirty percent of maximum-optimization builds never earn back their compile energy—unless positional caching cuts warm rebuilds 448 times.*
+*Refutes a descriptive "Unified Compiler Rule" in favor of a proposed 7-part contract, separating Zen 5 (20.07x) vs Core i9 (15.44x) prelude cuts and up to 448.5x best-case warm De Bruijn cache hits (Linux RAPL reported_j).*
 
-> **Public Domain (`CC0-1.0`) · OpenIE Research Essay**  
-> **Canonical Primary Source**: [https://research.openie.dev/papers/rce-compile/](https://research.openie.dev/papers/rce-compile/)  
-> **Canonical Artifact ID**: `blake3:tv:d561a8e7e445f1878caa5144e08df2f7cbe006ff65dba485bc787c7361a7027a` · **Gate Invariant**: `human_in_gate = false`
+> **Signed Provenance · Self-Checked** (`human_in_gate = false`; automated build, benchmark, and proof-checking scripts ran without manual override — not externally peer-reviewed; see [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) and [Epistemic Glossary](https://blog.openie.dev/glossary/)).  
+> **Canonical Post-Review Essay (`rel="canonical"`)**: [https://blog.openie.dev/posts/rce-compile/](https://blog.openie.dev/posts/rce-compile/)  
+> **Primary Research Paper**: [https://research.openie.dev/papers/rce-compile/](https://research.openie.dev/papers/rce-compile/)  
+> **1-Command Replication Kit**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) · **Study Repository**: [https://github.com/openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)  
+> **Canonical Artifact ID**: `blake3:tv:d561a8e7e445f1878caa5144e08df2f7cbe006ff65dba485bc787c7361a7027a` · **Evidence Tags**: `[E]` · `[M]` · `[S]` · **Telemetry Class**: `reported_j`
 
 ---
 
-## Three Plain-Language Takeaways (Zero Acronym Soup)
+![RCE Compile — 20.07x Zen 5 and 15.44x Core i9 prelude compile cuts and up to 448.5x best-case warm De Bruijn cache hit](https://research.openie.dev/media/tv/posters/rce-compile-poster.jpg)
+*Proposed 7-part Compiler Form contract, per-machine Linux RAPL `reported_j` compile payback, and De Bruijn warm-cache vs. cold-build separation. Dedicated to the public domain under `CC0-1.0`.*
 
-1. Real compilers break any single descriptive law, so this study establishes a seven-part yardstick to measure them.
-2. Maximum compiler optimization burns upfront chip energy that never pays back on up to thirty percent of programs.
-3. Fingerprinting code by variable position reuses compiled builds safely, cutting warm Rust compile energy over four hundred times.
+## Key Claims & Audited Scope (`[T]` / `[E]` / `[M]` / `[S]`)
 
-![RCE Compile: A Law of Compilation, Tested as a Normal Form Against Real Compilers — OpenIE Research TV Studio Poster](https://research.openie.dev/media/tv/posters/rce-compile-poster.jpg)
-*Studio key visual for **RCE Compile** (`Reality Code Engine` · 448.5x Rebuild Energy Cut · 0/500 Mix-Ups). Dedicated to the public domain under `CC0-1.0`.*
+1. **[M/S · Proposed Normal-Form Contract, Not a principle of Nature]** The primary paper explicitly **refutes** the hypothesis that existing compilers obey a single "Unified Compiler Rule," restating it as a **proposed 7-part engineering contract (`R, L, C, K, U, E, G`)** and disclosing in Appendix A that `38` of `55` audited external claims rested on `[S]`/`[K]` snippet checks (`14` partly overstated, `4` contradicted, `17` not found).
+2. **[E · Per-Machine Cold Prelude & Optimization Payback (`reported_j`)]** Across `20` integer/fixed-point kernels × `15` compiler tiers (`300/300` matching checksums), factoring RCE’s emitted Rust runtime into pre-compiled `librce_rt.rlib` cut median per-kernel `rustc -O3` core `reported_j` **`20.07x` (`56.29 J -> 2.81 J` core, `896.93 J -> 27.05 J` pkg, `24.58x` faster, lowering payback vs. Node JS from `31,080` to `1,079` runs)** on **`AMD Ryzen AI Max+ 395` (`Zen 5`, pinned CPU 0, co-tenant load on other cores noted)**, and replicated at **`15.44x` `PP0` core (`84.40 J -> 5.47 J`, `104.56 J -> 6.85 J` pkg = `15.26x`)** on an **idle dedicated `Intel Core i9-13900H` (`4.46 W` idle pkg)**—while `-O2` to `-O3` **never paid back** its extra compile joules on `20%–30%` of kernels.
+3. **[E · Warm De Bruijn Cache Hit (`up to 448.5x`) vs. Cold Build]** Crediting **N. G. de Bruijn (1972)** for nameless positional variable indexing (`v0 - v1` vs. `v1 - v0`), `E5-Scale` (`245` base programs, `500` verified semantic mutants, `29,890` cross-program pairs) recorded **`0 / 500` false hits** (whereas naive identifier-stripping collided on **`150 / 150` (`100%`)** variable-swap bugs) and cut rebuild work **up to `448.5x` (`1.166 J -> 2.60 mJ` `rustc -O3` core `reported_j`)** and **`167.8x` (`0.682 J -> 4.07 mJ` `clang -O3`)** **strictly on warm cache hits over alpha-renamed single-file kernels (`66.7%–69.2%` rename hit rate; `1.0x` on cold unseen builds)**.
 
-## Everyday Analogy & Why It Matters
+## Methods, Baselines, Sample Sizes (`N`) & Licensing Scope
 
-Developers turn on maximum optimization out of habit. Yet spending tens of joules compiling a short-lived tool is like grinding an axe for hours to chop one twig—unless you reuse the blade. Pre-compiling shared runtime code once and indexing builds by variable binding positions slashes compilation energy while catching every swapped-variable bug.
+- **Hardware & Telemetry**: (1) `E4-Energy` / `E4-Prelude` / `E5-Scale`: `AMD Ryzen AI Max+ 395` (`Zen 5`, 32 logical CPUs, pinned CPU 0, Linux `RAPL` core + pkg `reported_j`; co-tenants present on non-pinned cores); (2) Wave 5 idle replication: dedicated `Intel Core i9-13900H` (`Raptor Lake`, `4.46 W` idle pkg, Linux `RAPL` `PP0` + pkg `reported_j`); (3) `E5` Wasm/object key study: `Intel Xeon @ 2.80 GHz` (`Ubuntu 24.04.5`, `clang 18.1.3`, `rustc 1.97.0`, unmetered hash comparison). `measured_j = null` (`board_metered = false`).
+- **Workload & Suite**: `E1`: cross-directory/rename byte reproducibility; `E4-Energy`: `20` self-contained integer/fixed-point kernels × `15` C/Rust/Wasm/JS/Python tiers (`300` cells); `E5`: `360` x86-64 objects, `144` Mach-O objects, `288` Wasm objects, `288` linked Wasm modules (`26,208` cross-kernel pairs, `9,328` IR mutations); `E5-Scale`: `185` `W1` RCE Forms + `60` C/Rust/Python kernels + `500` verified semantic mutants.
+- **Baselines Compared**: Raw `SHA-256` source/command hash (`ccache`-style), comment/whitespace-stripped hash, naive AST identifier-stripping (`ID - ID`), and De Bruijn positional canonicalization (`de Bruijn 1972`, `Maziarz et al. PLDI 2021`); inlined RCE Rust prelude vs. pre-compiled `librce_rt.rlib`.
+- **Runs (`N`) & Uncertainty / Spread**: `E4`: `20` kernels (medians and per-kernel payback distributions reported; `20%–30%` of kernels never recover `-O2 -> -O3` compile energy; `R^2 = 0.9999` for `power × time` vs. `0.1154` for static Wasm IR size). `E5-Scale`: deterministic over `245` programs, `29,890` pairs, and `500` mutants.
+- **Cold vs. Warm Caching Scope**: Explicitly separated: `448.5x` (`rustc -O3`), `167.8x` (`clang -O3`), and `17.15x` (`rce check+emit`) apply **only on warm De Bruijn cache hits** (`69.2%` hit rate on `185` renamed RCE Forms; `66.7%` on `60` renamed C/Rust/Python kernels). Cold first-time builds pay `100%` of compiler cost plus `2.60–4.59 mJ` canonicalizer overhead.
+- **Artifact & License Status**: Kernels, mutant generators, and `E4`/`E5` scripts public in `openIE-dev/openie-research-experiments` and `openIE-dev/rce` (`Apache-2.0`); self-checked by OpenIE, open for independent replication.
 
-We tested a sweeping claim—that every compiler lowers canonical forms while tracking energy and preserving meaning—against twelve real compiler families. In practice, none tracks joules, none hashes name-free code, and automated fuzzers have uncovered thousands of C compiler bugs. Restating compilation as a seven-part standard lets us measure exact payback horizons across twenty kernels and fifteen toolchain tiers: optimized C beats Python after twenty-four hundred ninety runs, while shared Rust runtime libraries cut build energy twentyfold.
+## From Refuted "principle" to Proposed Normal-Form Contract & Lineage
 
-Simply erasing variable names caused one hundred fifty dangerous cache collisions whenever two variables swapped roles. Replacing names with De Bruijn binding positions hit zero false matches across five hundred verified mutants and cut warm C and Rust rebuilds up to four hundred forty-eight times. All energy figures come from built-in Linux processor counters rather than an external wall wattmeter, and every external citation carries an explicit verification badge.
+The manuscript opens by testing—and **refuting**—the claim that real compilers (`gcc`, `clang`, `rustc`, `Go`, `GHC`, `XLA`, `CompCert`) already satisfy a unified "Unified Compiler Rule" `[E, S]`. Instead, it defines a **proposed 7-part `Compiler Form` contract** (`Representation R`, `Lowering L`, `Cost C`, `Checker K`, `Reuse U`, `Energy E`, `Gate G`). Nameless positional variable indexing in `R` directly applies **N. G. de Bruijn (1972)** lambda-calculus indices and **Maziarz et al. (PLDI 2021)** alpha-equivalent IR hashing, sitting alongside incremental build systems such as **`ccache`, Bazel, Adapton (Hammer et al., PLDI 2014), and Rust’s Salsa query engine** `[S]`.
 
-## Inside the Mechanism & Candid Limits
+## Per-Machine Compile Payback (`Zen 5` vs. `Core i9-13900H`) & Warm-Cache Scope
 
-An assistant system proposed a sweeping Law of Compilation claiming every compiler preserves meaning across canonical forms toward physical Landauer limits. Checked against twelve real compiler families—spanning C, Rust, Fortran, Haskell, verified CompCert, and tensor compilers—that universal description flatly failed on every major clause. Claiming every building already has fire sprinklers is false; writing a clear fire code lets inspectors measure every building honestly. Rewriting three clauses turns the refuted description into a seven-part normal form with four explicit equivalence levels and computable size and energy bounds.
+- **Cold compile amortization (`E4-Energy` & `E4-Prelude`) `[E]`:** Lowering Python to `clang -O3` requires a median of **`2,490` executions** to pay back compilation joules; stepping from `-O0` to `-O3` requires **`53,464` to `102,720` runs**; and `-O2` to `-O3` **never pays back on `20%–30%` of the 20 kernels**. Pre-compiling RCE’s shared runtime into `librce_rt.rlib` cut per-kernel `rustc -O3` compile energy **`20.07x` (`56.29 J -> 2.81 J` core `reported_j`) on `AMD Ryzen AI Max+ 395` (`Zen 5`)** and **`15.44x` (`84.40 J -> 5.47 J` `PP0` `reported_j`) on an idle dedicated `Intel Core i9-13900H`** `[E]`.
 
-We compiled and executed twenty deterministic integer and fixed-point kernels across fifteen toolchains, verifying all three hundred output checksums. Pre-compiling the Reality Code Engine runtime once into a shared library cut emitted Rust compile energy twenty-point-one times, dropping its payback horizon against JavaScript from thirty-one thousand runs to one thousand seventy-nine. Lowering from Python to optimized C pays back after a median of twenty-four hundred ninety runs, whereas jumping from unoptimized builds to level-three optimization demands fifty-three thousand to one hundred two thousand runs—and stepping from level two to level three never recovers its extra compile energy on up to thirty percent of kernels. Meanwhile static code size predicts runtime energy poorly compared with timed execution profiling.
+- **Why De Bruijn positions beat naive ID-stripping (`E5-Scale`) `[E]`:** Naive identifier stripping (`x - y` -> `ID - ID`) falsely collided on **`150 / 150` (`100%`)** variable-swap bugs (`30.0%` false-hit rate overall), whereas De Bruijn slot numbering (`v0 - v1` vs. `v1 - v0`) yielded **`0 / 500` mutant collisions** and **`0 / 29,890` cross-program collisions**. On **best-case warm cache hits** when rebuilding alpha-renamed single-file kernels on pinned CPU 0, De Bruijn lookup (`2.60–4.07 mJ`) avoided `1.166 J` `rustc -O3` (**`448.5x`**) and `0.682 J` `clang -O3` (**`167.8x`**) rebuilds `[E]`.
 
-Our three-dimensional model traces source lowering through explicit equivalence levels into a name-free positional fingerprint. Rather than keying build caches on developer variable names—or blindly stripping names—De Bruijn indexing numbers each variable by how many binding scopes away it was declared, preserving exact data-flow wiring while ignoring harmless renames. Scaled across one hundred eighty-five Reality Code Engine blueprints, sixty C, Rust, and Python kernels, and five hundred test-verified semantic mutants, naive name-stripping suffered one hundred fifty collisions—failing on every single swapped-variable pair. Positional De Bruijn hashing achieved zero false matches while cutting warm C rebuild energy one hundred sixty-eight times and Rust four hundred forty-eight times.
+## Limitations, IR Debug-Path Misses & Literature Snippet Audit
 
-Three honest boundaries remain: byte-for-byte compiler output comparisons across three machines left unexplained binary differences even after path remapping, all energy figures come from on-chip Linux counters rather than a wall wattmeter, and external sources seen only as search snippets carry explicit disclosure badges.
+- **Debug-path & comment misses (`E5` & `E5-Scale`) `[E]`:** Linked Rust Wasm modules missed on `9/96` two-directory and renamed pairs at `opt-level=0/1` because embedded panic column/path strings differed in the data segment; similarly, raw `rce fmt nameless` preserves `#` comments unless stripped prior to hashing (`128/185` = `69.2%` alpha-rename hit rate) `[E]`.
 
-### Epistemic Evidence Tags (`[T]` / `[E]` / `[M]` / `[S]`)
+- **Single-file integer scope & `[S]`/`[K]` citation limits:** `E4`/`E5-Scale` cover single-file integer/fixed-point kernels without multi-TU C++ headers, LTO, or GPU shaders; and Appendix A flags `38/55` background literature claims as snippet-level checks requiring primary-text verification (`§9`) `[S]`.
 
-- **`[T]` Theorem / Machine-Checked Formal Proof**
-- **`[E]` Empirical / Hardware-Instrumented Experiment**
-- **`[S]` Survey / Historical Price or Accounting Audit**
+## Energy & Telemetry Scope
 
-## How Energy Was Metered
+All joule measurements are Regime-B Linux `powercap` `RAPL` core/`PP0` and package `reported_j` (`measured_j = null`, `board_metered = false`), where `power × wall_time` explained `99.99%` of `RAPL` variance (`R^2 = 0.9999`) compared with `11.54%` for static Wasm byte size `[E]`.
 
-Open Interface Engineering enforces strict epistemic non-mixing across physical power rails, processor counters, and mathematical bounds (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition is forbidden by `ScientificGate`):
+## Epistemic Non-Mixing & Telemetry Ledger
 
-- **Acquisition Tier**: Chip Energy Counter
-- **Plain-Language Disclosure**: Built-in Linux chip energy counters across 300 builds; no wall power meter used.
-- **Substrate Evidence Class**: `reported_j` (`board_metered = false`)
-- **Primary Reading**: `2.810 J (reported_j)`
-- **Meter or Formula**: Linux Zen 5 & Core i9-13900H RAPL core reported_j per pre-compiled librce_rt.rlib kernel build
-- **300 K Landauer Bit-Equivalents**: `9.7876e+20` bits (`E / (k_B · 300 K · ln 2)`)
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
 
-## Continue the Discussion & Verify Every Byte
+- **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
+- **Acquisition Tier**: Linux RAPL Counter (reported_j)
+- **Telemetry Disclosure**: Linux powercap RAPL core/PP0 & package counters on AMD Zen 5 (20.07x prelude cut) and idle Intel Core i9-13900H (15.44x); measured_j = null.
+- **Evidence Class**: `reported_j` (`board_metered = false`)
+- **Catalog Anchor Reading**: `2.81 J (reported_j)`
+- **Sensor / Formula Scope**: Linux powercap RAPL core/PP0 reported_j on AMD Ryzen AI Max+ 395 (2.81 J with librce_rt.rlib; 2.60 mJ warm De Bruijn cache hit) & Intel Core i9-13900H (5.47 J)
+
+## Related Work & Primary Literature (`[S]`)
+
+- **de Bruijn (Indag. Math., 1972) & Maziarz et al. (PLDI 2021):** Nameless positional lambda-term indexing and hashing modulo alpha-equivalence `[S]`.
+- **Hammer et al. (Adapton, PLDI 2014), Rust Salsa, `ccache` & Bazel:** Demand-driven incremental computation and content-addressed build caching `[S]`.
+- **Leroy (CompCert, CACM 2009) & Lopes et al. (Alive2, PLDI 2021):** Verified compilation and translation validation `[S]`.
+- **Lattner et al. (MLIR, CGO 2021), Chen et al. (TVM, OSDI 2018), Halide & XLA:** Multi-level IR lowering and cost-guided schedule search `[S]`.
+
+## Replicate, Critique & Inspect Raw Artifacts
 
 <!-- x_thread_backlink_slot: {{X_THREAD_URL}} -->
-- **Watch in 15 Seconds or 3 Minutes**: Stream the native `9:16` Vertical Snackable ([`rce-compile-tiktok.mp4`](https://research.openie.dev/media/tv/tiktok/rce-compile-tiktok.mp4)) or explore all four captioned studio cuts (`15s`, `45s`, `90s`, and `3m` 3D cutaway documentary) on **[OpenIE Research TV](https://research.openie.dev/tv/?study=rce-compile)**.
-- **Join the Synchronized X (Twitter) Thread**: Reply, critique, or inspect the 5-post verification thread on **[X (Twitter)](https://x.com/search?q=%22RCE%20Compile%22%20OR%20research.openie.dev%2Ftv%2F%3Fstudy%3Drce-compile&src=typed_query)**.
-- **Query Grounded Prior Art & Signed WAI1 Receipts**: Explore linked lineage trails on **[The Commons (`scholar.askdavidc.ai`)](https://scholar.askdavidc.ai)**, read the full primary paper & PDF at **[`research.openie.dev/papers/rce-compile/`](https://research.openie.dev/papers/rce-compile/)**, and verify the Ed25519-signed `WAI1` binary container (`blake3:40ae166a45868cfa…`) in **[`openie-artifact-substrate`](https://github.com/openIE-dev/openie-artifact-substrate/blob/main/catalog/envelopes/tv-rce-compile.wai)**.
+- **Canonical Post-Review Blog Dossier**: [https://blog.openie.dev/posts/rce-compile/](https://blog.openie.dev/posts/rce-compile/)
+- **Primary Research Manuscript & PDF**: [https://research.openie.dev/papers/rce-compile/](https://research.openie.dev/papers/rce-compile/) ([PDF](https://research.openie.dev/pdfs/rce-compile.pdf))
+- **1-Command Public Replication Harness**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) and [https://github.com/openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)
+- **9:16 Vertical Snackable (`60fps`) & Research TV Cuts**: [https://research.openie.dev/media/tv/tiktok/rce-compile-tiktok.mp4](https://research.openie.dev/media/tv/tiktok/rce-compile-tiktok.mp4) · [OpenIE Research TV](https://research.openie.dev/tv/?study=rce-compile)
+- **Verification & Glossary Standards**: [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) · [Epistemic Glossary](https://blog.openie.dev/glossary/)
 
 ---
 
-*Summary & essay text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Code, verification gates, and `WAI1` schemas licensed under `Apache-2.0`.*
+*Prose and summary text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Public replication harnesses and `WAI1` schemas are licensed under `Apache-2.0` unless explicitly noted in the licensing ledger above.*

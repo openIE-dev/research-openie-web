@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "satiation",
   "canonical_id": "blake3:tv:3ea9cd43444f33d5bae2a87a6c253bc8b45889597003b30a4b10f956c078b304",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/satiation/",
+  "canonical_paper_url": "https://research.openie.dev/papers/satiation/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/satiation-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/satiation-15s.mp4",
-    "poster_uri": "/media/tv/posters/satiation-poster.jpg",
-    "vtt_uri": "/media/tv/captions/satiation-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/satiation-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/satiation-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 20.6,
     "safe_zone_verified": true,
-    "source_15s_sha256": "f56e1a89e3148c0deb5520dd4edf06cf26345fdd4e329880fe147e82774fe3bb"
+    "sha256": "a51381df52a4886af442c4171b8f0db96bda3756f95f16c0efe92db14bfd119b"
   },
-  "caption_utf16_chars": 643,
+  "caption_utf16_chars": 827,
+  "caption": "Task Satiation vs. Aggregate Rebound — Per-Task Satiation [M] vs. Macro Jevons Rebound when Elasticity > 1 [S] (unmetered economic synthesis)\n\nAnalytical synthesis separating micro-level task satiation — where extra tokens after a sound gate passes C(z)=1 add zero utility — from macro Jevons rebound when cheaper AI expands fleet power.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: unmetered (Analytical micro-satiation vs macro Jevons rebound model citing IEA TWh series; joules = null.)\n• Essay: https://blog.openie.dev/posts/satiation/\n• Paper: https://research.openie.dev/papers/satiation/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#Economics #EnergyEfficiency #DataCenters #AiInfrastructure #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "Task Satiation vs. Aggregate Rebound (One Job Finishes · Total Jobs Still Grow)\nEvery single task has a hard finish line—even while cheaper AI sparks millions of new tasks across the economy.\n1) Every job has a finish line, and extra computer work after that point is pure waste.\n2) Cheaper computer work still inspires people to start many more jobs, so total use keeps rising.\n3) Money prices for AI are falling fast, but the physical electricity it burns is never free.\nEnergy class: unmetered (Theory + Price Audit) · CC0-1.0 · https://research.openie.dev/papers/satiation/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "Task Satiation vs. Aggregate Rebound — Per-Task Satiation [M] vs. Macro Jevons Rebound when Elasticity > 1 [S] (unmetered economic synthesis)\n\nAnalytical synthesis separating micro-level task satiation — where extra tokens after a sound gate passes C(z)=1 add zero utility — from macro Jevons rebound when cheaper AI expands fleet power.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: unmetered (Analytical micro-satiation vs macro Jevons rebound model citing IEA TWh series; joules = null.)\n• Essay: https://blog.openie.dev/posts/satiation/\n• Paper: https://research.openie.dev/papers/satiation/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#Economics #EnergyEfficiency #DataCenters #AiInfrastructure #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/satiation-tiktok.mp4"
     }
   },
-  "content_blake3": "c93a8abce3667fc65c7277aa79ee9a8bdfe75b528d0c04eac737af15fce0f2ea"
+  "content_blake3": "63f7c01e5b5aa414b744be3f1e93d088ebaf3cadef980299aa1556bf3673f527"
 }

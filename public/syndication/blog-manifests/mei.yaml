@@ -1,77 +1,99 @@
-# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+# OpenIE Post-Review Audited Blog Syndication Manifest (CC0-1.0)
 slug: "mei"
 
 metadata:
-  title: "Metabolic Intelligence: Budget-Native Compute from Tag to Campus"
-  description: "Metabolic Intelligence gives computers a strict energy budget before they act—from a freezing coin-battery food tag to a hundred-megawatt campus."
-  date: "2026-11-24"
-  author: "David Charlot, Open Interface Engineering"
+  title: "Minimum Energy Intelligence (MEI): 8-Year Coin-Cell Budget Math, -20 °C Brownout Simulation, and All Five Event Counts"
+  description: "Product/CAD simulation audit (est_j, 0 physical tags cycled): shows exact 8-yr 10 uW = 2.52 kJ vs CR2032 ~2.38 kJ cold-derated capacity math and reconciles 10,000 wakeups, 500 beacons, 490 refusals, 40/40 cold alerts, and 2,680 JCR-1 receipts."
+  date: "2026-11-25"
+  author: "Open Interface Engineering"
   category: "product"
-  tags: ["mei", "product", "open-science", "cc0", "est-j"]
+  tags: ["iot", "embedded-systems", "battery-systems", "cold-chain", "open-science"]
   featured: false
   draft: false
   toc: true
-  canonicalUrl: "https://research.openie.dev/products/mei/"
+  provenanceStatus: "Signed Provenance · Self-Checked"
+  verificationUrl: "https://blog.openie.dev/verification/"
+  glossaryUrl: "https://blog.openie.dev/glossary/"
+  canonicalBlogUrl: "https://blog.openie.dev/posts/mei/"
+  canonicalUrl: "https://blog.openie.dev/posts/mei/"
+  primaryPaperUrl: "https://research.openie.dev/products/mei/"
+  replicationKitUrl: "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
+  publicRepoUrl: "https://github.com/openIE-dev/openie-artifact-substrate"
+  energyClass: "est_j"
   license: "CC0-1.0"
 
 hero:
   image: "mei-poster.jpg"
-  alt: "Metabolic Intelligence — 8-Yr Coin-Cell Schedule · 100% Cold Alerts Saved"
+  alt: "Minimum Energy Intelligence — 8-year 2.52 kJ vs CR2032 cold derating math and 40/40 -20 C simulated alert survival — 40/40 safety alerts preserved & 490/500 routine beacons refused in -20 °C simulation (2,680 JCR-1 receipts across 3 temps, est_j)"
 
 sections:
   - heading: null
     content: |
-      *Canonical Primary Source: [https://research.openie.dev/products/mei/](https://research.openie.dev/products/mei/) · Dedicated to the Public Domain (`CC0-1.0`)*
+      *Signed Provenance · Self-Checked (`human_in_gate = false`; [Verification](https://blog.openie.dev/verification/) · [Glossary](https://blog.openie.dev/glossary/)) · Canonical Post-Review Essay: [https://blog.openie.dev/posts/mei/](https://blog.openie.dev/posts/mei/) · Primary Paper: [https://research.openie.dev/products/mei/](https://research.openie.dev/products/mei/)*
 
-      Metabolic Intelligence gives computers a strict energy budget before they act—from a freezing coin-battery food tag to a hundred-megawatt campus.
+      In datasheet-calibrated CAD/SPICE-style discrete simulation (est_j, board_metered = false; zero physical tags fabricated), continuous 10 uW draw over 8 years requires 2,524.6 J (~2.52 kJ), exceeding a cold-derated 3 V 220 mAh CR2032 (~2,376 J nominal, 2,059 J at +4 °C, 0 J unbuffered at -20 °C where R_int hits 71.78 ohm) unless sleep drops below ~5 uW or a larger CR2477/Li-SOCl2 cell + buffer cap is used; across 10,000 simulated wakeups at -20 °C (500 routine beacons + 40 excursion alerts), two-phase hold/settle grant sharding refused 490 routine beacons to preserve 40/40 alerts, emitting 2,680 Ed25519 JCR-1 receipts across +25/+4/-20 °C.
 
-  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+  - heading: "Key Claims & Evidence Tags"
     content: |
-      1. Give a computer a strict energy budget upfront, and design it to deliver the best verified answer inside that limit.
-      2. A food-freshness sensor tag can budget a coin battery for eight years and drop routine chatter in freezing cargo so critical alerts survive.
-      3. At the other extreme, a data center can follow power-grid caps by pausing flexible jobs and matching human reading speed.
+      1. **[M/S · Explicit 8-Year Coin-Cell Arithmetic (`est_j`)]** `10 uW × 8 yr × 3.15576 × 10^7 s/yr = 2,524.6 J ≈ 2.52 kJ` (the primary review’s `9.9 uW` STM32U3 + duty-cycled BME690 schedule spends `312 J/yr = 2,499 J` over `8 yr`). **Candid battery gap:** a standard `3.0 V, 220 mAh` `CR2032` holds **`~2,376 J` nominal** (`2,430 J` at `225 mAh` in `cad-sim`, `2,538 J` at `235 mAh` `+21 °C` datasheet) *before* `~1%/yr` self-discharge and cold impedance derating (`2,193 J` usable to `2.0 V` at `+25 °C`, `2,059 J` at `+4 °C`, and **`0 J` unbuffered under `12 mA` BLE TX pulses at `-20 °C`** where internal resistance `R_int` jumps `6x` from `12.0 ohm` to `71.78 ohm`, sagging terminal voltage to `1.951 V < 2.00 V` brownout). True 8-year service therefore requires **either `< 5 uW` duty-cycled sleep (`5.1 uW` with `nRF54L15 = ~1.29 kJ` over `8 yr`) or a larger `CR2477` / `Li-SOCl2` primary cell** plus a pulse buffer capacitor.
+      2. **[M/E · All Five Event Counts Reconciled (`10,000`, `500`, `490`, `40`, `2,680`)]** Each simulated ambient trace (`+25 °C`, `+4 °C`, `-20 °C`) steps **`10,000` scheduled sensor wakeups** containing **`500` routine BLE beacon attempts** and **`40` safety-critical temperature-excursion alert attempts** (`540` radio attempts/trace). At `-20 °C`, two-phase `hold`/`settle` grant sharding (`35 mJ` safety reserve) **refuses `490` of `500` routine beacons** (`10` allowed) so **`40 / 40` (`100%`) safety alerts succeed** (vs. brownout collapse on an unsharded baseline). Because each allowed TX writes **`2` `JCR-1` receipts** (`hold` + `settle`) and each refusal writes **`1` receipt**, the three traces emit `1,080` (`+25 °C`: `540 × 2`) + `1,010` (`+4 °C`: `470 × 2 + 70`) + `590` (`-20 °C`: `50 × 2 + 490`) = **`2,680` Ed25519-signed `det-CBOR` `JCR-1` receipts**.
+      3. **[M · Simulation Scope Disclosure]** Every tag and campus-fleet number in `mei` comes from component datasheets (`STM32U3`, `nRF54L15`, `BME690`, Energizer `CR2032`) and discrete Python/Rust simulation (`est_j`, `board_metered = false`); no physical tag has undergone environmental chamber testing.
 
-  - heading: "Everyday Analogy & Why It Matters"
+  - heading: "Methods, Baselines & Artifact Scope"
     content: |
-      At room temperature, a ten-microwatt sensing schedule lets a coin battery run roughly eight years. Inside a minus-twenty-degree freezer truck, internal battery resistance jumps nearly sixfold to seventy-two ohms, causing unbudgeted wireless bursts to sag below two volts and brown out. Metabolic Intelligence prices both energy spent and decision error before acting.
+      - **Hardware & Telemetry**: Analytical/simulated (`est_j`, `board_metered = false`, `measured_j = null`). Component parameters drawn from published STM32U385, Nordic nRF54L15, Bosch BME690, and Energizer CR2032 temperature-impedance datasheets.
+      - **Workload & Suite**: Three `10,000`-wakeup cold-chain excursion simulations (`+25 °C`, `+4 °C`, `-20 °C`), each scheduling `500` routine BLE status beacons + `40` critical excursion alerts (`1,620` total TX attempts, `2,680` `JCR-1` receipts).
+      - **Baselines Compared**: Unsharded greedy FIFO battery consumption (which exhausts pulse headroom on routine beacons and drops `-20 °C` safety alerts via `V_term < 2.00 V` brownout) vs. two-phase `hold`/`settle` safety-reserve grant sharding (`35 mJ` reserve + `100 uF–470 uF` pulse buffer model).
+      - **Runs (N) & Spread**: Deterministic `1`-scenario-per-temperature trace (`N = 3` temperatures × `10,000` wakeups; Spread: Monte Carlo cell-to-cell `R_int` manufacturing variance not modeled in single-curve datasheet simulation).
+      - **Cold vs. Warm Scope**: Not a caching workload; models electro-thermal battery internal-resistance (`R_int`) transitions from warm `+25 °C` (`12.0 ohm`) to cold `-20 °C` (`71.78 ohm`).
+      - **Artifact & License**: Architecture review and simulation tables public (`CC0-1.0`) at `research.openie.dev/products/mei/`; `det-CBOR`/Ed25519 primitives in `openIE-dev/openie-artifact-substrate` (`Apache-2.0`); CAD/simulation repo partially internal.
 
-      On the tag, a lightweight binding classifier needs just one thousand seven hundred twenty-three instructions—about ninety-two nanojoules—while split energy grants protect a dedicated thirty-five-millijoule reserve for critical temperature alarms. Across ten thousand simulated cold-chain wakeups, refusing four hundred ninety routine beacons preserved all forty safety alerts without fail. On a modeled hundred-megawatt campus speaking real grid-signaling protocols, ordered controls plus server sleep held zero minutes over cap.
-
-      Complete two-layer circuit board layouts, component tables, and three-dimensional enclosure models ship openly, with every single figure labeled as datasheet or simulation until physical boards return from fabrication.
-
-  - heading: "Inside the Mechanism & Candid Limits"
+  - heading: "8-Year Coin-Cell Energy Arithmetic & Cold-Chain Derating"
     content: |
-      Conventional computers treat energy as an accounting bill read only after the work finishes, running full tilt until a coin battery browns out or a power breaker trips. Yet physics shows moving data costs far more than arithmetic, and information value theory proves an observation isn't worth spending joules on unless it can change your next decision. A food-freshness sensor tag inside a minus-twenty-degree cargo container and a hundred-megawatt AI campus during a summer grid peak face the exact same structural challenge. Both operate under hard physical power ceilings where naive bursts crash the system unless routine background work yields smoothly to urgent safety commitments.
+      Critique #6 flagged that `10 uW` continuous power over `8 years` exceeds a real `CR2032` once derating is included. Showing the full ledger from `src/content/products/mei.md` confirms that critique `[M, S]`:
 
-      Metabolic Intelligence turns budgeting into four concrete calculations: pick a stored lookup or closed formula whenever it closes the decision, space sensor readings to match how fast freshness drifts, reserve a signed two-phase energy hold before waking the radio, and settle the exact used remainder into non-volatile memory afterward. At data-center scale, streaming chat words three times faster than any person can read shrinks GPU batch sizes and multiplies energy per answer nearly fivefold. Matching output speed to human reading pace and routing routine questions to smaller models roughly doubles useful work per megawatt across modern clusters. Our three-dimensional cutaway inspects the open reference tag package: a thirty-two-by-twenty-four-millimeter two-layer circuit board certified with zero design-rule errors, a low-power Bluetooth microcontroller, a hundred-milliohm inline current sensor, non-volatile receipt memory, and a vented thirty-six-by-twenty-eight-millimeter snap-fit enclosure with lanyard mount.
+      - **Demand side:** `10.0 uW × 8 × 365.25 × 86,400 s = 2,524.6 J` (`2.52 kJ`; at `9.9 uW` = `2,499 J`, plus BLE TX bursts) `[M]`.
 
-      When minus-twenty-degree cold raised modeled coin-battery resistance nearly sixfold to seventy-two ohms, two-phase budget gates refused four hundred ninety of five hundred routine beacons so forty out of forty safety alerts survived across two thousand six hundred eighty signed receipts, while node sleep kept every modeled hundred-megawatt campus scenario at zero minutes over cap. Every single number carries its true provenance: our circuit board manufacturing files, bill of materials, component placement tables, and three-dimensional enclosure geometry are open fabrication designs, and our cold-chain battery runs and campus caps are electro-thermal and plant simulations until assembled boards return from fabrication for physical cold-chamber bench metering.
+      - **Supply side (`CR2032`, `3.0 V` nominal):** `220 mAh` = `792 C` ≈ **`2,376 J`** (`225 mAh` = `2,430 J`; `235 mAh` Energizer datasheet = `2,538 J` at `+21 °C` low-drain). After `~1%/yr` shelf self-discharge (`~8%` over 8 yr) and `2.0 V` cutoff impedance losses, usable energy drops to **`2,193 J` at `+25 °C`** and **`2,059 J` at `+4 °C`**; at **`-20 °C` without a parallel pulse capacitor**, `R_int = 71.78 ohm` causes immediate `12 mA` TX brownout (`1.951 V < 2.00 V`, `0 J` unbuffered radio capacity) `[M, S]`.
 
-  - heading: "How Energy Was Metered"
+      - **Engineering consequence:** Achieving an 8-year sealed cold-chain rating requires **either** lowering quiescent draw to `~5.1 uW` (`~1.29 kJ` over 8 yr, e.g., `nRF54L15` + sparser gas-sensor duty cycling) **or** stepping up to a **`CR2477` (`1,000 mAh ≈ 10.8 kJ`) / `Li-SOCl2` primary cell** paired with a low-leakage pulse buffer capacitor `[M, S]`.
+
+  - heading: "Reconciling All Five Simulation Event Counts (`10,000 / 500 / 490 / 40 / 2,680`)"
     content: |
-      - **Acquisition Tier**: Electro-Thermal Model
-      - **Disclosure**: Datasheet schedules and cold-chain battery simulations; physical board unmetered.
-      - **Evidence Class**: `est_j` (`245.00 µJ (est_j)`)
-      - **Meter / Formula**: Analytical CR2032 datasheet & STM32WBA52 + FRAM electro-thermal schedule per JCP wakeup at -20 C
+      The five integers in earlier summaries come from one accounting identity across the three simulated temperature traces (`+25 °C`, `+4 °C`, `-20 °C`) `[E, M]`:
 
-      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+      - **`10,000`:** Total scheduled sensor-check wakeups per temperature trace.
+
+      - **`500` and `40`:** Scheduled routine BLE status beacons (`500`) and critical cold-chain excursion alerts (`40`) inside each `10,000`-wakeup trace (`540` total TX requests/trace).
+
+      - **`490` refused / `40` preserved (`-20 °C`):** Under `-20 °C` impedance derating, the routine shard exhausts after `10` beacons and **refuses `490` routine beacons** (`1` refusal receipt each), protecting the `35 mJ` emergency reserve so all **`40 / 40` critical excursion alerts** transmit cleanly (`50` total allowed sends × `2` receipts + `490` refusals × `1` receipt = `590` receipts at `-20 °C`).
+
+      - **`2,680` total `JCR-1` receipts:** Summing `+25 °C` (`540` allowed × `2` = `1,080`), `+4 °C` (`470` allowed × `2` + `70` refused = `1,010`), and `-20 °C` (`50` allowed × `2` + `490` refused = `590`) equals **`2,680` deterministic CBOR (`det-CBOR`) Ed25519-verified receipts** `[E]`.
+
+  - heading: "Limitations & Chamber Validation Requirements"
+    content: |
+      - **Zero physical hardware measurements (`est_j` only):** Passivation-layer growth on lithium anodes, MLCC DC-bias/low-temperature capacitance loss (`X7R`/`X5R` at `-20 °C`), crystal startup drift, and flash write wear must be measured in environmental chamber hardware (`LA-F` / `MEI-F` bench protocol) before any production lifetime claim is made `[M]`.
+
+  - heading: "Energy & Telemetry Scope"
+    content: |
+      Strictly `est_j` (`board_metered = false`, `measured_j = null`, `reported_j = null`), modeled from vendor datasheet curves.
 
 references:
   - id: 1
-    authors: "David Charlot, Open Interface Engineering"
-    title: "Metabolic Intelligence: Budget-Native Compute from Tag to Campus"
+    authors: "Open Interface Engineering"
+    title: "Minimum Energy Intelligence (MEI): 8-Year Coin-Cell Budget Math, -20 °C Brownout Simulation, and All Five Event Counts"
     publication: "OpenIE Research"
     year: 2026
     url: "https://research.openie.dev/products/mei/"
 
 closing:
-  content: |
-    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=mei) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
-  cta:
-    primary:
-      text: "Read Primary Study & PDF"
-      url: "https://research.openie.dev/products/mei/"
-    secondary:
-      text: "Watch on OpenIE Research TV"
-      url: "https://research.openie.dev/tv/?study=mei"
-  footer_text: "Summary text dedicated to the public domain under CC0-1.0."
+    content: |
+      Stream the 9:16 60fps vertical cut on [OpenIE Research TV](https://research.openie.dev/tv/?study=mei) or run the 1-command replication harness at [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate).
+    cta:
+      primary:
+        text: "Read Canonical Post-Review Dossier"
+        url: "https://blog.openie.dev/posts/mei/"
+      secondary:
+        text: "Primary Paper & 1-Command Replication"
+        url: "https://research.openie.dev/products/mei/"
+    footer_text: "Signed Provenance · Self-Checked (not externally peer-reviewed). Summary text dedicated to the public domain under CC0-1.0."

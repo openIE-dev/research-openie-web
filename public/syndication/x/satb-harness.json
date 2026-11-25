@@ -1,29 +1,35 @@
 {
-  "schema": "openie.x_thread_bundle.v1",
+  "schema": "openie.x_thread_bundle.v2",
   "study_id": "satb-harness",
   "canonical_id": "blake3:tv:87f465518d6db67ded6205ef9c2b11b5ec15f9216f750aa4dd9caf236e1d3238",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
   "license": "CC0-1.0",
   "post_count": 5,
-  "max_weighted_chars": 223,
+  "max_weighted_chars": 268,
   "card_video_uri": "/media/tv/tiktok/satb-harness-tiktok.mp4",
   "fallback_video_uri": "/media/tv/films/satb-harness-15s.mp4",
-  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/satb-harness/",
+  "medium_crosslink_uri": "https://blog.openie.dev/posts/satb-harness/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/satb-harness/",
   "canonical_paper_url": "https://research.openie.dev/papers/satb-harness/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+  "public_repo_url": "https://github.com/openIE-dev/openie-artifact-substrate",
   "zero_urls_in_post_1": true,
   "posts": [
     {
       "position": 1,
       "role": "hook_video_card",
-      "text": "Satiation Benchmark: Reference Harness, Adapters, and Telemetry Attribution\n\nHow to stop agent wrappers and sloppy power estimates from distorting AI benchmark leaderboards.\n\n[12 of 12 Checks · 5 Computers · 0 Replay Drift]",
-      "weighted_chars": 223,
-      "raw_chars": 223,
+      "text": "SATB Benchmark & Telemetry Audit [E · measured_j / reported_j]\n\nAcross 5 hosts (Jetson AGX Thor TI INA238/INA3221 DC shunts + 4 counter hosts), the Rust SATB harness passed 12/12 replay checks while exposing 32.59%-89.88% Kepler CPU-splitting errors.",
+      "weighted_chars": 250,
+      "raw_chars": 250,
       "urls": [],
       "in_reply_to_position": null,
       "media": {
         "video_uri": "/media/tv/tiktok/satb-harness-tiktok.mp4",
         "fallback_video_uri": "/media/tv/films/satb-harness-15s.mp4",
-        "poster_uri": "/media/tv/posters/satb-harness-poster.jpg",
-        "vtt_uri": "/media/tv/captions/satb-harness-15s.vtt",
+        "poster_uri": "/media/tv/tiktok/satb-harness-tiktok.jpg",
+        "vtt_uri": "/media/tv/tiktok/satb-harness-tiktok.vtt",
         "aspect_ratio": "9:16",
         "resolution": "1080x1920",
         "fps": 60,
@@ -32,43 +38,47 @@
     },
     {
       "position": 2,
-      "role": "plain_points_1_2",
-      "text": "1/3 Changing the wrapper around an AI model can swing scores as much as swapping the model.\n\n2/3 This test harness locks prompts, memory trimming, and tools so every AI takes the exact same exam.",
-      "weighted_chars": 195,
-      "raw_chars": 195,
+      "role": "methods_and_sample_bounds",
+      "text": "1/2 Exposed attribution errors:\n- C1-C12 & Shape D / C9 replay: 0 byte diffs across macOS arm64, Tegra Linux, 2 x86-64 Linux hosts & Windows 11\n- Falsifier 2: CPU-share splitting erred 32.59%-89.88% on DRAM/GPU loads\n- Falsifier 3: Win32 15.625 ms ticks missed -89.88%",
+      "weighted_chars": 268,
+      "raw_chars": 268,
       "urls": [],
       "in_reply_to_position": 1
     },
     {
       "position": 3,
-      "role": "plain_point_3_and_energy",
-      "text": "3/3 Across five computer types, it separates real board sensors from chip counters and blocks noisy power estimates.\n\nEnergy class: measured_j (1.42 mJ via physical board shunt; board_metered=true).",
-      "weighted_chars": 198,
-      "raw_chars": 198,
+      "role": "telemetry_and_scope_limits",
+      "text": "2/2 Shared-host honesty & L0 scope:\n- Falsifier 6 withholds net marginal A1 joules whenever pre/post idle power drifts > 5.0%\n- Thor INA238/INA3221 (measured_j) is never summed with M5 Max, Zen 5, Core i9, or NVML (reported_j)\n- AC wall meter (L0) was not attached",
+      "weighted_chars": 264,
+      "raw_chars": 264,
       "urls": [],
       "in_reply_to_position": 2
     },
     {
       "position": 4,
-      "role": "machine_verification_gate",
-      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E] · WAI1 blake3:87f465518d6d… · CC0-1.0",
-      "weighted_chars": 203,
-      "raw_chars": 200,
-      "urls": [],
+      "role": "signed_provenance_self_checked",
+      "text": "Signed Provenance · Self-Checked (human_in_gate=false; not peer-reviewed):\n- Evidence: [E]/[M]/[S] · WAI1 blake3:87f465518d6d...\n- Verification: https://blog.openie.dev/verification/\n- Glossary: https://blog.openie.dev/glossary/",
+      "weighted_chars": 204,
+      "raw_chars": 228,
+      "urls": [
+        "https://blog.openie.dev/verification/",
+        "https://blog.openie.dev/glossary/"
+      ],
       "in_reply_to_position": 3
     },
     {
       "position": 5,
-      "role": "bidirectional_medium_and_paper_bridge",
-      "text": "Read & verify Satiation Benchmark Harness (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/satb-harness/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/satb-harness/",
-      "weighted_chars": 171,
-      "raw_chars": 231,
+      "role": "canonical_blog_paper_and_replicate",
+      "text": "Read & replicate SATB Telemetry & Harness Audit (CC0-1.0):\n- Essay: https://blog.openie.dev/posts/satb-harness/\n- Paper: https://research.openie.dev/papers/satb-harness/\n- 1-cmd kit: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+      "weighted_chars": 161,
+      "raw_chars": 260,
       "urls": [
-        "https://research.openie.dev/syndication/medium/satb-harness/",
-        "https://research.openie.dev/papers/satb-harness/"
+        "https://blog.openie.dev/posts/satb-harness/",
+        "https://research.openie.dev/papers/satb-harness/",
+        "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
       ],
       "in_reply_to_position": 4
     }
   ],
-  "content_blake3": "3e60e27198b09d28bc4ece44813970acdb93b12d8bb8b14f3cbbe23d5dddda93"
+  "content_blake3": "b02934c580fccc96e662cc68851bcf58d83e6e4662c16bb30aa1be60448eb0fb"
 }

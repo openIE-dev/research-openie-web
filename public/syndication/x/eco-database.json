@@ -1,29 +1,35 @@
 {
-  "schema": "openie.x_thread_bundle.v1",
+  "schema": "openie.x_thread_bundle.v2",
   "study_id": "eco-database",
   "canonical_id": "blake3:tv:74a6c924643a078e785536a03514eee6983c488a2a00381e2186933fe3a7688e",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
   "license": "CC0-1.0",
   "post_count": 5,
-  "max_weighted_chars": 244,
+  "max_weighted_chars": 275,
   "card_video_uri": "/media/tv/tiktok/eco-database-tiktok.mp4",
   "fallback_video_uri": "/media/tv/films/eco-database-15s.mp4",
-  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/eco-database/",
+  "medium_crosslink_uri": "https://blog.openie.dev/posts/eco-database/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/eco-database/",
   "canonical_paper_url": "https://research.openie.dev/papers/rce/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+  "public_repo_url": "https://github.com/openIE-dev/deterministic-null",
   "zero_urls_in_post_1": true,
   "posts": [
     {
       "position": 1,
       "role": "hook_video_card",
-      "text": "Sub-Microsecond State, Memory, and Verifiable Logs\n\nHow tamper-evident logs, dual-time indexes, and zero-copy memory maps turn expensive recomputation into sub-microsecond reads.\n\n[0.325 Microsecond Lookup · 1.77 Microjoules · 0 Drift]",
-      "weighted_chars": 235,
-      "raw_chars": 235,
+      "text": "The Data Systems Stack (data.openie.dev) [E/M/S · reported_j]\n\nSeparates 3 artifacts: (1) data.openie.dev's unmetered 10-axis map (1.26M cells + illustrative canvas), (2) DNULLMM1's 34-record mmap probe (0.325 us / 1.77 uJ M5 Max reported_j), and (3) BSL-1.1 JouleDB.",
+      "weighted_chars": 267,
+      "raw_chars": 267,
       "urls": [],
       "in_reply_to_position": null,
       "media": {
         "video_uri": "/media/tv/tiktok/eco-database-tiktok.mp4",
         "fallback_video_uri": "/media/tv/films/eco-database-15s.mp4",
-        "poster_uri": "/media/tv/posters/eco-database-poster.jpg",
-        "vtt_uri": "/media/tv/captions/eco-database-15s.vtt",
+        "poster_uri": "/media/tv/tiktok/eco-database-tiktok.jpg",
+        "vtt_uri": "/media/tv/tiktok/eco-database-tiktok.vtt",
         "aspect_ratio": "9:16",
         "resolution": "1080x1920",
         "fps": 60,
@@ -32,43 +38,47 @@
     },
     {
       "position": 2,
-      "role": "plain_points_1_2",
-      "text": "1/3 Conventional software burns needless time and electricity unpacking text and recalculating answers it already solved.\n\n2/3 Immutable fingerprint-chained logs and bitemporal indexes let any machine replay exact past states without guesswork.",
-      "weighted_chars": 244,
-      "raw_chars": 244,
+      "role": "methods_and_sample_bounds",
+      "text": "1/2 Exact scope of 0.325 us / 1.77 uJ:\n- Measured over 40,000 read-only POSIX mmap probes into a static 34-record RAM-cached DNULLMM1 table (Apache-2.0 in deterministic-null) — NOT SQL joins, MVCC, NVMe misses, or WAL fsync\n- Cites Idreos (2018) & Harizopoulos (2009) [S]",
+      "weighted_chars": 271,
+      "raw_chars": 271,
       "urls": [],
       "in_reply_to_position": 1
     },
     {
       "position": 3,
-      "role": "plain_point_3_and_energy",
-      "text": "3/3 Zero-copy memory-mapped lookup stores turn repeated work into sub-microsecond reads costing under two microjoules.\n\nEnergy class: reported_j (1.77 µJ chip counter; board_metered=false, never mixed with shunts).",
-      "weighted_chars": 214,
-      "raw_chars": 214,
+      "role": "telemetry_and_scope_limits",
+      "text": "2/2 Candid JouleDB license & missing baselines:\n- JouleDB (openIE-dev/jouledb) is BSL-1.1 with its core engine in a private mirror (crates.io is an installer stub)\n- Zero head-to-head TPC-H, ClickBench, or YCSB benchmarks vs DuckDB, ClickHouse, or PostgreSQL are claimed here",
+      "weighted_chars": 275,
+      "raw_chars": 275,
       "urls": [],
       "in_reply_to_position": 2
     },
     {
       "position": 4,
-      "role": "machine_verification_gate",
-      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E]/[M] · WAI1 blake3:74a6c924643a… · CC0-1.0",
-      "weighted_chars": 207,
-      "raw_chars": 204,
-      "urls": [],
+      "role": "signed_provenance_self_checked",
+      "text": "Signed Provenance · Self-Checked (human_in_gate=false; not peer-reviewed):\n- Evidence: [E]/[M]/[S] · WAI1 blake3:74a6c924643a...\n- Verification: https://blog.openie.dev/verification/\n- Glossary: https://blog.openie.dev/glossary/",
+      "weighted_chars": 204,
+      "raw_chars": 228,
+      "urls": [
+        "https://blog.openie.dev/verification/",
+        "https://blog.openie.dev/glossary/"
+      ],
       "in_reply_to_position": 3
     },
     {
       "position": 5,
-      "role": "bidirectional_medium_and_paper_bridge",
-      "text": "Read & verify Sub-Microsecond State & Verifiable Logs (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/eco-database/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/rce/",
-      "weighted_chars": 183,
-      "raw_chars": 234,
+      "role": "canonical_blog_paper_and_replicate",
+      "text": "Read & replicate Data Systems Stack & JouleDB Scope (CC0-1.0):\n- Essay: https://blog.openie.dev/posts/eco-database/\n- Paper: https://research.openie.dev/papers/rce/\n- 1-cmd kit: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+      "weighted_chars": 165,
+      "raw_chars": 255,
       "urls": [
-        "https://research.openie.dev/syndication/medium/eco-database/",
-        "https://research.openie.dev/papers/rce/"
+        "https://blog.openie.dev/posts/eco-database/",
+        "https://research.openie.dev/papers/rce/",
+        "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
       ],
       "in_reply_to_position": 4
     }
   ],
-  "content_blake3": "9e1eb6239fd7c89427bbbe2deed1967e51c325e5e16106f8f23487f56d2e7904"
+  "content_blake3": "5a821f4a52fa9cafc5faf8d507c75a170a792bc6ec5a5ba929d59ebd07951653"
 }

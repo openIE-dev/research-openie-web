@@ -1,75 +1,91 @@
-# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+# OpenIE Post-Review Audited Blog Syndication Manifest (CC0-1.0)
 slug: "spellcheck"
 
 metadata:
-  title: "Spell Check is Global: The Future of Computer Intelligence in the Hands of the Many (7B+), Not the Few"
-  description: "Spell check went from a two-hundred-dollar standalone luxury to a free global reflex once local compute cost hit near zero."
-  date: "2026-11-24"
-  author: "David Charlot, Open Interface Engineering"
-  category: "research"
-  tags: ["spellcheck", "research", "open-science", "cc0", "unmetered"]
+  title: "Spell Check as an Existence Proof: Archival Price Trace from USD 200 Standalone Packages to Bundled Zero"
+  description: "Primary-source archival history tracing isolated-word spell checking from USD 200 standalone PC software (1981) and USD 89-99 grammar tools to OS-bundled zero-license-price libraries—with explicit narrow-domain limits."
+  date: "2026-11-25"
+  author: "Open Interface Engineering"
+  category: "product"
+  tags: ["computing-history", "software-economics", "technology", "bundling", "open-science"]
   featured: false
   draft: false
   toc: true
-  canonicalUrl: "https://research.openie.dev/papers/spellcheck/"
+  provenanceStatus: "Signed Provenance · Self-Checked"
+  verificationUrl: "https://blog.openie.dev/verification/"
+  glossaryUrl: "https://blog.openie.dev/glossary/"
+  canonicalBlogUrl: "https://blog.openie.dev/posts/spellcheck/"
+  canonicalUrl: "https://blog.openie.dev/posts/spellcheck/"
+  primaryPaperUrl: "https://research.openie.dev/papers/spellcheck/"
+  replicationKitUrl: "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
+  publicRepoUrl: "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
+  energyClass: "unmetered"
   license: "CC0-1.0"
 
 hero:
   image: "spellcheck-poster.jpg"
-  alt: "Spell Check is Global — $200 Standalone Box -> $0 Feature for 7B+ People"
+  alt: "Spell Check Archival Price Trace — USD 200 WordCheck (1981) to bundled zero-price Hunspell/OS routines — USD 200 standalone WordCheck (Jan 1981) -> bundled OS/Hunspell USD 0 license archival trace (unmetered, [S])"
 
 sections:
   - heading: null
     content: |
-      *Canonical Primary Source: [https://research.openie.dev/papers/spellcheck/](https://research.openie.dev/papers/spellcheck/) · Dedicated to the Public Domain (`CC0-1.0`)*
+      *Signed Provenance · Self-Checked (`human_in_gate = false`; [Verification](https://blog.openie.dev/verification/) · [Glossary](https://blog.openie.dev/glossary/)) · Canonical Post-Review Essay: [https://blog.openie.dev/posts/spellcheck/](https://blog.openie.dev/posts/spellcheck/) · Primary Paper: [https://research.openie.dev/papers/spellcheck/](https://research.openie.dev/papers/spellcheck/)*
 
-      Spell check went from a two-hundred-dollar standalone luxury to a free global reflex once local compute cost hit near zero.
+      Traces dated retail advertisements and product histories showing isolated-word spell check moving from a USD 200.00 standalone Commodore PET package (Compute!, Jan 1981) and USD 89–99 Grammatik add-ons (1988–1989) to bundled word-processor features (1983–1992) and zero-license-price local OS libraries—serving strictly as a narrow existence proof for bounded zero-marginal-cost routines, not open-ended reasoning (unmetered archival study).
 
-  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+  - heading: "Key Claims & Evidence Tags"
     content: |
-      1. People once paid hundreds of dollars for standalone spell check, yet today it comes free inside every phone and browser.
-      2. Spell check became free because checking a word costs almost nothing to run right inside the writing tool you own.
-      3. Other forms of computer intelligence will reach seven billion people only when they run cheaply on everyday local devices.
+      1. **[S · Dated Primary Retail Archive]** Documents exact published prices: HP 9100A desktop calculator at **USD 4,900** (1968 brochure), HP-35 at **USD 395** (Jan 1972) to **USD 195** (early 1975), Micro Computer Industries `WordCheck` for Commodore PET 32K at **USD 200.00** (*Compute!*, Jan 1981, issue 8, p. 119), `Grammatik II` at **USD 89** (*Chicago Tribune*, 10 Apr 1988), and `Grammatik III` at **USD 99** (*START*, Nov 1989), followed by bundling into `WordPerfect 3.0` (`Alt-F5`, Oct 1983), `MS Word 2.0` (~1985), `WordPerfect 5.2` (`Grammatik 5` included, Nov 1992), and `Hunspell` (`USD 0` MPL/GPL/LGPL library license).
+      2. **[M/S · Narrow Existence Proof, Not Universal Forecast]** As stated in `§3.2` of the primary paper, spell check proves that *some* capabilities once sold as standalone "computer intelligence" commoditize to bundled zero price when two conditions hold: **near-zero local marginal execution cost** and **tight complementarity with an existing user surface**—it does **not** prove that open-ended datacenter reasoning will follow the same trajectory.
+      3. **[S · Global Access Gap]** Even bundled local tools reach the `~4.7B–5.5B` connected mobile/internet population (GSMA / ITU 2024) rather than all `> 7B` people, whereas high-price datacenter subscriptions reach a tiny fraction.
 
-  - heading: "Everyday Analogy & Why It Matters"
+  - heading: "Methods, Baselines & Artifact Scope"
     content: |
-      Imagine mailing every sentence you write to a distant typing bureau and paying by the word just to spot a typo. That sounds ridiculous for spelling today, yet renting every answer from a remote cloud server is still how frontier AI operates. In 1982, engineers compressed thirty thousand English words into twenty-six thousand sixteen-bit machine words so ordinary minicomputers could check documents locally without a network.
+      - **Hardware & Telemetry**: Unmetered (`joules = null`, `board_metered = false`). Primary/secondary archival source reading of vintage magazine advertisements, museum brochures, software chronologies, and ITU/GSMA reports.
+      - **Workload & Suite**: Historical price and bundling timeline across electronic calculators (`1968–1975`), spreadsheets (`1979–1986`), and isolated-word spell/grammar checkers (`1961–2026`).
+      - **Baselines Compared**: Standalone retail software SKUs (`WordCheck`, `Grammatik II/III`) vs. bundled host-application features (`WordPerfect`, `Microsoft Word`, macOS/iOS/Android system spell services, `Hunspell`).
+      - **Runs (N) & Spread**: Archival point quotes with exact source discrepancies preserved rather than smoothed (e.g., Datamath vs. Finseth `hpdata` dates on HP-35 cuts from `USD 395` -> `USD 295` -> `USD 225` -> `USD 195`; missing exact month durations explicitly noted in `§2`).
+      - **Cold vs. Warm Scope**: Algorithmic shift from timeshared PDP-10 (`SPELL`, 1971) to hashed/affix-compressed RAM dictionaries (`McIlroy 1982` `~30,000` words in `64 KB` PDP-11 address space; `Hunspell` affix tries) running locally on every keystroke.
+      - **Artifact & License**: Public-domain archival essay (`CC0-1.0`) at `research.openie.dev/papers/spellcheck/`; self-checked, not externally peer-reviewed.
 
-      Within a decade, word processors, web browsers, and mobile keyboards absorbed spell checking completely at zero separate price. Our dated price ledger tracks electronic calculators from four-thousand-nine-hundred-dollar desktop units and standalone two-hundred-dollar spell checkers in 1981 down through eighty-nine-dollar grammar packages to open libraries and compact one-point-four-megabyte phone keyboard models. Global reach follows the everyday hardware people already carry in their hands—nearly six billion mobile subscribers and over three hundred billion embedded chips—once verified skills run locally at negligible energy.
-
-  - heading: "Inside the Mechanism & Candid Limits"
+  - heading: "Problem, Scope & Why Existence Proofs Differ from Analogies"
     content: |
-      Even after frontier chat crossed eight hundred million weekly users, scarcity pricing still holds capabilities inside rented data centers and sells monthly access to the few who can pay. History shows that computer skills reach more than seven billion people only when separate per-seat and per-word invoices disappear completely. Open a January 1981 computer magazine and you find WordCheck for dual-disk personal computers advertised at a list price of two hundred dollars, followed by eighty-nine-dollar and ninety-nine-dollar grammar add-ons in the late 1980s. Back then, proofreading software was a premium standalone purchase, just like early electronic desk calculators.
+      The primary paper draws a sharp methodological line in `§3.2`: an analogy claims *"AI is like spell check,"* whereas an **existence proof** exhibits one completed historical trajectory (`Damerau 1964` edit distance -> `Gorin 1971` PDP-10 `SPELL` -> `McIlroy 1982` Unix `spell` -> `1981` `USD 200` retail PC disk -> bundled OS keystroke routine) and identifies the exact cost conditions that made bundling inevitable `[S, M]`.
 
-      Spell check vanished as a separate product because engineers deliberately shrunk the procedure onto the machine that already held the document. Prefix stripping and hashing packed thirty thousand English words into twenty-six thousand machine words in 1982, and open-source morphological checkers later shipped free inside browsers, office suites, and operating systems. Economics explains why the separate price fell all the way to zero. Checking a word is most useful right beside the cursor where you are already writing, and once local dictionary lookup plus one-letter edit formulas cost almost zero energy to run, metering each check made less sense than bundling it free.
-
-      Our three-dimensional global cadence model contrasts centralized high-wattage server hubs against the installed fleet people already own—five point eight billion mobile subscribers worldwide, over two point three billion active phones and tablets in one ecosystem alone, and more than three hundred ten billion cumulative microcontroller chips. A capability completes the automation path when five strict conditions hold: the work sits on ordinary hardware already in hand, runs as a local routine rather than a remote bureau job, fits everyday memory and battery envelopes, requires no frontier data-center rental, and returns an accurate answer without cutting corners. Every single figure on our price tape cites its exact dated advertisement, museum brochure, or release note, leaving unprinted months blank instead of inventing smooth curves. Nor do we guess energy numbers for closed phone keyboards—the documented historical transition from two hundred dollars to bundled zero speaks clearly for itself.
-
-  - heading: "How Energy Was Metered"
+  - heading: "Archival Price Record & Bundling Transition"
     content: |
-      - **Acquisition Tier**: Historical Price Audit
-      - **Disclosure**: Dated historical software prices and economic model; no hardware watts measured.
-      - **Evidence Class**: `unmetered` (`unmetered (joules = null; never fabricated as zero)`)
-      - **Meter / Formula**: Historical marginal-cost & software-bundling price archive; unmetered
+      Every price point in the paper is tied to a specific printed artifact, keeping source gaps explicit `[S]`:
 
-      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+      - **Standalone retail era (`1980–1989`):** Micro Computer Industries advertised `WordCheck` for dual-disk `32K` Commodore PET/CBM systems at **USD 200.00** in *Compute!* (January 1981, p. 119). Reference Software sold standalone grammar/style checkers `Grammatik II` at **USD 89** (*Chicago Tribune*, April 1988) and `Grammatik III` at **USD 99** (*START*, November 1989) `[S]`.
+
+      - **Absorption into editors and OS layers (`1983–present`):** WordPerfect `3.0` bound `Spellcheck` to `Alt-F5` inside its **USD 495** word processor (October 1983); Microsoft Word `2.0` bundled a licensed Software Heaven dictionary (~1985, per Richard Brodie); WordPerfect `5.2` absorbed `Grammatik 5` (November 1992) weeks before acquiring Reference Software (January 1993); and `Hunspell` removed separate licensing fees across LibreOffice, Firefox, Chrome, and macOS `[S]`.
+
+  - heading: "Limitations & Non-Generalizability Caveats"
+    content: |
+      - **Isolated-word checking vs. context-dependent synthesis:** Kukich (1992) separated nonword detection and isolated-word correction from context-dependent semantic/discourse repair. Only the first two fit in kilobyte affix tables at near-zero marginal cost; context-heavy rewriting still invokes larger statistical models `[S]`.
+
+      - **Incomplete invoice series:** Magazine list prices (`MSRP`) are not inflation-adjusted street transaction averages, and intermediate discount durations between catalog editions are unrecorded `[S]`.
+
+  - heading: "Energy & Telemetry Scope"
+    content: |
+      Strictly `unmetered` (`joules = null`, `board_metered = false`). Historical memory footprints (`32 KB` PET, `64 KB` PDP-11 `spell` Bloom/hash compression) come from published documentation `[S]`, not power bench measurements.
 
 references:
   - id: 1
-    authors: "David Charlot, Open Interface Engineering"
-    title: "Spell Check is Global: The Future of Computer Intelligence in the Hands of the Many (7B+), Not the Few"
+    authors: "Open Interface Engineering"
+    title: "Spell Check as an Existence Proof: Archival Price Trace from USD 200 Standalone Packages to Bundled Zero"
     publication: "OpenIE Research"
     year: 2026
     url: "https://research.openie.dev/papers/spellcheck/"
 
 closing:
-  content: |
-    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=spellcheck) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
-  cta:
-    primary:
-      text: "Read Primary Study & PDF"
-      url: "https://research.openie.dev/papers/spellcheck/"
-    secondary:
-      text: "Watch on OpenIE Research TV"
-      url: "https://research.openie.dev/tv/?study=spellcheck"
-  footer_text: "Summary text dedicated to the public domain under CC0-1.0."
+    content: |
+      Stream the 9:16 60fps vertical cut on [OpenIE Research TV](https://research.openie.dev/tv/?study=spellcheck) or run the 1-command replication harness at [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate).
+    cta:
+      primary:
+        text: "Read Canonical Post-Review Dossier"
+        url: "https://blog.openie.dev/posts/spellcheck/"
+      secondary:
+        text: "Primary Paper & 1-Command Replication"
+        url: "https://research.openie.dev/papers/spellcheck/"
+    footer_text: "Signed Provenance · Self-Checked (not externally peer-reviewed). Summary text dedicated to the public domain under CC0-1.0."

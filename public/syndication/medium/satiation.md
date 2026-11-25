@@ -1,68 +1,80 @@
-# Task Satiation vs. Aggregate Rebound in AI Demand
+# Task Satiation vs. Aggregate Jevons Rebound: Bounded UnitSpecs Meet Elastic Fleet Demand
 
-*One Job Finishes · Total Jobs Still Grow — Every single task has a hard finish line—even while cheaper AI sparks millions of new tasks across the economy.*
+*Separates per-task verification satiation (where extra compute after C(z)=1 adds zero utility) from macro-scale Jevons rebound, where cheaper per-task AI historically expands total electricity demand.*
 
-> **Public Domain (`CC0-1.0`) · OpenIE Research Essay**  
-> **Canonical Primary Source**: [https://research.openie.dev/papers/satiation/](https://research.openie.dev/papers/satiation/)  
-> **Canonical Artifact ID**: `blake3:tv:3ea9cd43444f33d5bae2a87a6c253bc8b45889597003b30a4b10f956c078b304` · **Gate Invariant**: `human_in_gate = false`
+> **Signed Provenance · Self-Checked** (`human_in_gate = false`; automated build, benchmark, and proof-checking scripts ran without manual override — not externally peer-reviewed; see [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) and [Epistemic Glossary](https://blog.openie.dev/glossary/)).  
+> **Canonical Post-Review Essay (`rel="canonical"`)**: [https://blog.openie.dev/posts/satiation/](https://blog.openie.dev/posts/satiation/)  
+> **Primary Research Paper**: [https://research.openie.dev/papers/satiation/](https://research.openie.dev/papers/satiation/)  
+> **1-Command Replication Kit**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate)  
+> **Canonical Artifact ID**: `blake3:tv:3ea9cd43444f33d5bae2a87a6c253bc8b45889597003b30a4b10f956c078b304` · **Evidence Tags**: `[M]` · `[S]` · **Telemetry Class**: `unmetered`
 
 ---
 
-## Three Plain-Language Takeaways (Zero Acronym Soup)
+![Task Satiation vs Aggregate Rebound — per-task satiation under C(z)=1 vs macro Jevons elasticity](https://research.openie.dev/media/tv/posters/satiation-poster.jpg)
+*Analytical separation between single-task specification satiation and fleet-wide Jevons rebound (joules = null, unmetered). Dedicated to the public domain under `CC0-1.0`.*
 
-1. Every job has a finish line, and extra computer work after that point is pure waste.
-2. Cheaper computer work still inspires people to start many more jobs, so total use keeps rising.
-3. Money prices for AI are falling fast, but the physical electricity it burns is never free.
+## Key Claims & Audited Scope (`[T]` / `[E]` / `[M]` / `[S]`)
 
-![Task Satiation vs. Aggregate Rebound in AI Demand — OpenIE Research TV Studio Poster](https://research.openie.dev/media/tv/posters/satiation-poster.jpg)
-*Studio key visual for **Task Satiation vs. Aggregate Rebound** (`Economics & Cadence` · One Job Finishes · Total Jobs Still Grow). Dedicated to the public domain under `CC0-1.0`.*
+1. **[M · Micro-Level Task Satiation]** On any task governed by a sound binary completeness check `C(z) = 1` (such as an exact compile+test repair or proved theorem), marginal utility of extra tokens after the first verified hit is zero—contrasting with open-ended creative or adversarial loops that lack a stopping criterion.
+2. **[M/S · Macro-Level Rebound Caveat]** Micro-efficiency **does not guarantee lower grid electricity**: under the standard elasticity identity `d ln E_total / d ln eta = epsilon_d - 1`, cutting joules per task expands the set of economically viable automated workflows and **raises total fleet power** whenever demand price elasticity `epsilon_d > 1` (backfire / Jevons paradox).
+3. **[S · Empirical Macro Context]** Synthesizes Nordhaus (1996) lighting lumen-price history (`> 1,000x` efficiency gain paired with rising total lighting electricity share) and IEA (2024/2026) global datacenter electricity projections (`~415 TWh` toward `~945 TWh` by 2030).
 
-## Everyday Analogy & Why It Matters
+## Methods, Baselines, Sample Sizes (`N`) & Licensing Scope
 
-Think of washing a dish: once the plate is clean, washing it ten more times wastes hot water. Yet when soap gets ten times cheaper, new restaurants open and total water use still climbs. Good software defines a clear written finish check and stops spending the instant a job is done, instead of mistaking endless chatter for real progress.
+- **Hardware & Telemetry**: Unmetered (`joules = null`, `board_metered = false`). Analytical microeconomic stopping-time models paired with published macro-energy elasticity literature.
+- **Workload & Suite**: No primary hardware benchmark run in this study; synthesizes historical efficiency/rebound series and IEA datacenter electricity reports.
+- **Baselines Compared**: Closed-specification gated tasks (`C(z) in {0,1}` finite stopping rule) vs. unbounded best-of-N / open-ended quality tournaments.
+- **Runs (`N`) & Uncertainty / Spread**: Not applicable (`N = 0` primary lab trials; cites published IEA scenario ranges and Sorrell 2009 econometric elasticity intervals).
+- **Cold vs. Warm Caching Scope**: Notes that exact-match caching lowers marginal cost on recurring queries toward zero, further steepening the micro price drop that drives new extensive-margin adoption.
+- **Artifact & License Status**: Public-domain manuscript (`CC0-1.0`) at `research.openie.dev/papers/satiation/`; self-checked, not externally peer-reviewed.
 
-Once an accounting ledger balances or a bug patch passes its tests, running an AI loop longer adds zero value and can even undo working code. Confusing the finish line of one task with all tasks across an economy distorts both software pricing and power-grid forecasts. We split total computing demand into two distinct numbers: effort per job and total number of jobs.
+## Problem: Why Micro-Efficiency Claims Overshoot Macro Grid Reality
 
-A written completion check puts a hard ceiling on each individual chore, while plunging unit prices steadily pull millions of brand-new chores off the sidelines. Published industry series show the dollar cost of fixed AI benchmark performance falling roughly thirteenfold per year since twenty twenty-three. Yet moving data across silicon memory chips, driving physical motors, and delivering trusted human clinical care never become free.
+Engineering blogs routinely extrapolate a `10x` or `100x` kernel energy reduction into an equivalent cut in global datacenter power. `satiation` was written specifically to **reject that naive extrapolation** `[M, S]`. By separating the **intensive margin** (joules spent to close one fixed task) from the **extensive margin** (how many tasks society chooses to run once each task costs millicents instead of dollars), the paper reconciles bounded per-task verification with rising aggregate AI power draw `[M, S]`.
 
-Products that optimize time-on-screen or bill by raw word counts reward wasted retries past the finish line, whereas completion-gated systems stop immediately and save real electricity.
+## Two Regimes: Bounded UnitSpecs vs. Elastic Extensive Margins
 
-## Inside the Mechanism & Candid Limits
+- **Bounded per-task satiation `[M]`:** When a caller needs a specific file parsed, a deterministic state step run, or a bug patched against a sound specification, stopping immediately upon `C(z) = 1` removes wasted post-solution sampling (such as `30x` same-task agent token variance documented by Bai, Huang & Wang 2026) `[M, S]`.
 
-Today two loud stories talk past each other. Market bulls draw upward demand curves assuming every single prompt wants ten times more compute forever, while skeptics argue that finite chores cap the entire AI industry. Both get the math wrong because they blur one single job into the entire economy. In eighteen sixty-five, economist William Stanley Jevons observed that more efficient steam engines cut the coal needed for one factory task, yet drove Britain to burn far more coal overall as new industries became affordable.
+- **Extensive-margin Jevons rebound `[S, M]`:** Jevons (1865), Khazzoom (1980), Brookes (1990), Saunders (1992), and Nordhaus (1996) demonstrate that drastic reductions in the cost of an intermediate input (coal per horsepower-hour, watts per lumen, or joules per verified inference) induce substitution and new application categories `[S]`. Even if every individual coding check drops `100x` in energy, running continuous background verification across millions of repositories can increase aggregate kWh `[M]`.
 
-One clean dish needs zero extra soap, even while cheaper soap opens busy new kitchens across town. Turning consumer satiation theory into working software takes four steps. First, state a concrete completion check in plain rules—tests green, ledger discrepancy zero, or hospital handoff checklist signed. Second, stop calling models the instant that check turns true.
+## Limitations & Unresolved Elasticity Parameters
 
-Third, block extra calls that undo completion. Fourth, track new task arrivals separately. John Maynard Keynes distinguished finite practical chores from open-ended status competition. On any finite chore, value rises until the written check passes and then flattens to zero—or turns negative when extra chatter introduces errors.
+- **Demand elasticity for AI tasks is unmeasured:** Whether long-run price elasticity `epsilon_d` for verified software/automation tasks sits below `1` (partial rebound, net energy savings) or above `1` (Jevons backfire) is an open empirical macro-econometric question not measured here `[M, S]`.
 
-Across the wider queue, however, forty-seven percent quarterly price drops invite previously uneconomic chores. Our three-dimensional surface separates single-task effort along one axis from economy-wide task count along the second and physical energy on the vertical axis. Past each job's finish line sits a flat zero-value plateau, while total workload climbs above an unyielding thermodynamic floor of silicon memory movement and data-center cooling. Epoch AI documents fixed-capability inference prices dropping roughly thirteen times a year since twenty twenty-three, and nine to nine hundred times across benchmarks, aided by compact typed decision models.
+- **Positional / adversarial arms races do not satiate:** Tasks with relative payoffs (high-frequency trading, ad-auction bidding, cyber offense/defense) lack a finite `C(z) = 1` satiation point regardless of gate design `[M]`.
 
-Yet as William Baumol explained, cheaper digital text never makes nursing time, legal accountability, physical actuators, or grid megawatts free. Scientific clarity demands stating what remains unmeasured. This paper establishes operational definitions and audits published price series, historical technology cycles, attention markets, and silicon chip energy physics; it does not report a randomized field trial, a completion-detector error rate, an econometric rebound fit, or any circuit-board or wall-plug power reading.
+## Energy & Telemetry Scope
 
-### Epistemic Evidence Tags (`[T]` / `[E]` / `[M]` / `[S]`)
+This study is `unmetered` (`joules = null`, `board_metered = false`); datacenter terawatt-hour figures (`~415 TWh` to `~945 TWh`) are cited directly from International Energy Agency (IEA) reports `[S]`.
 
-- **`[T]` Theorem / Machine-Checked Formal Proof**
-- **`[M]` Mathematical / Analytical Cost or Physics Model**
-- **`[S]` Survey / Historical Price or Accounting Audit**
+## Epistemic Non-Mixing & Telemetry Ledger
 
-## How Energy Was Metered
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
 
-Open Interface Engineering enforces strict epistemic non-mixing across physical power rails, processor counters, and mathematical bounds (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition is forbidden by `ScientificGate`):
+- **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
+- **Acquisition Tier**: Unmetered Economic Synthesis
+- **Telemetry Disclosure**: Analytical micro-satiation vs macro Jevons rebound model citing IEA TWh series; joules = null.
+- **Evidence Class**: `unmetered` (`board_metered = false`)
+- **Catalog Anchor Reading**: `null` (`unmetered` — no hardware wattmeter or chip energy counter claimed)
+- **Sensor / Formula Scope**: Unmetered economic stopping-time and Jevons elasticity synthesis (joules = null)
 
-- **Acquisition Tier**: Theory + Price Audit
-- **Plain-Language Disclosure**: Economic theory and published AI price series; no chip or wall power meter used.
-- **Substrate Evidence Class**: `unmetered` (`board_metered = false`)
-- **Primary Reading**: `unmetered (joules = null; never fabricated as zero)`
-- **Meter or Formula**: Analytical microeconomic task-satiation vs aggregate-rebound derivation; unmetered
-- **300 K Landauer Bit-Equivalents**: `null` (unmetered study — analytical/archival scope)
+## Related Work & Primary Literature (`[S]`)
 
-## Continue the Discussion & Verify Every Byte
+- **Jevons (1865), Khazzoom (Energy J., 1980) & Saunders (Energy J., 1992):** Foundational theory of resource rebound and growth-inducing efficiency gains `[S]`.
+- **Sorrell (UKERC Review, 2009) & Gillingham, Rapson & Wagner (Rev. Environ. Econ. Policy, 2016):** Empirical bounds on direct, indirect, and economy-wide rebound effects `[S]`.
+- **Nordhaus (NBER, 1996):** Two-century price-per-lumen and lighting demand series `[S]`.
+- **International Energy Agency (IEA Energy and AI, 2024–2026):** Global datacenter electricity baselines and 2030 scenario projections `[S]`.
+
+## Replicate, Critique & Inspect Raw Artifacts
 
 <!-- x_thread_backlink_slot: {{X_THREAD_URL}} -->
-- **Watch in 15 Seconds or 3 Minutes**: Stream the native `9:16` Vertical Snackable ([`satiation-tiktok.mp4`](https://research.openie.dev/media/tv/tiktok/satiation-tiktok.mp4)) or explore all four captioned studio cuts (`15s`, `45s`, `90s`, and `3m` 3D cutaway documentary) on **[OpenIE Research TV](https://research.openie.dev/tv/?study=satiation)**.
-- **Join the Synchronized X (Twitter) Thread**: Reply, critique, or inspect the 5-post verification thread on **[X (Twitter)](https://x.com/search?q=%22Task%20Satiation%20vs.%20Aggregate%20Rebound%22%20OR%20research.openie.dev%2Ftv%2F%3Fstudy%3Dsatiation&src=typed_query)**.
-- **Query Grounded Prior Art & Signed WAI1 Receipts**: Explore linked lineage trails on **[The Commons (`scholar.askdavidc.ai`)](https://scholar.askdavidc.ai)**, read the full primary paper & PDF at **[`research.openie.dev/papers/satiation/`](https://research.openie.dev/papers/satiation/)**, and verify the Ed25519-signed `WAI1` binary container (`blake3:fe221c963d5a1043…`) in **[`openie-artifact-substrate`](https://github.com/openIE-dev/openie-artifact-substrate/blob/main/catalog/envelopes/tv-satiation.wai)**.
+- **Canonical Post-Review Blog Dossier**: [https://blog.openie.dev/posts/satiation/](https://blog.openie.dev/posts/satiation/)
+- **Primary Research Manuscript & PDF**: [https://research.openie.dev/papers/satiation/](https://research.openie.dev/papers/satiation/) ([PDF](https://research.openie.dev/pdfs/satiation.pdf))
+- **1-Command Public Replication Harness**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate)
+- **9:16 Vertical Snackable (`60fps`) & Research TV Cuts**: [https://research.openie.dev/media/tv/tiktok/satiation-tiktok.mp4](https://research.openie.dev/media/tv/tiktok/satiation-tiktok.mp4) · [OpenIE Research TV](https://research.openie.dev/tv/?study=satiation)
+- **Verification & Glossary Standards**: [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) · [Epistemic Glossary](https://blog.openie.dev/glossary/)
 
 ---
 
-*Summary & essay text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Code, verification gates, and `WAI1` schemas licensed under `Apache-2.0`.*
+*Prose and summary text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Public replication harnesses and `WAI1` schemas are licensed under `Apache-2.0` unless explicitly noted in the licensing ledger above.*

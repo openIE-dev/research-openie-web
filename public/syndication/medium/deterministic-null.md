@@ -1,61 +1,86 @@
-# Deterministic Null: A Pre-Registered Control Experiment for Neural and Agentic Substrates
+# Deterministic Null: A Hash-Precommitted Zero-Model Baseline Across 6 LLMs and Public Coding/Tool Suites
 
-*9 of 10 Bounded Ties · 3.59x Repeat Energy Cut — Why AI benchmarks need a placebo control group, and where giant models actually beat a simple lookup table.*
+*Evaluates a 5-language zero-model deterministic baseline (Shape D: N0/N1) committed via OpenTimestamps and drand against 6 LLMs across 4,030 instances and 6 upstream SWE-bench Verified repos.*
 
-> **Public Domain (`CC0-1.0`) · OpenIE Research Essay**  
-> **Canonical Primary Source**: [https://research.openie.dev/papers/deterministic-null/](https://research.openie.dev/papers/deterministic-null/)  
-> **Canonical Artifact ID**: `blake3:tv:d3018098f6b08132cb47527bca323e5c8236e9193f1375feffa9ebd20c21305c` · **Gate Invariant**: `human_in_gate = false`
+> **Signed Provenance · Self-Checked** (`human_in_gate = false`; automated build, benchmark, and proof-checking scripts ran without manual override — not externally peer-reviewed; see [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) and [Epistemic Glossary](https://blog.openie.dev/glossary/)).  
+> **Canonical Post-Review Essay (`rel="canonical"`)**: [https://blog.openie.dev/posts/deterministic-null/](https://blog.openie.dev/posts/deterministic-null/)  
+> **Primary Research Paper**: [https://research.openie.dev/papers/deterministic-null/](https://research.openie.dev/papers/deterministic-null/)  
+> **1-Command Replication Kit**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) · **Study Repository**: [https://github.com/openIE-dev/deterministic-null](https://github.com/openIE-dev/deterministic-null)  
+> **Canonical Artifact ID**: `blake3:tv:d3018098f6b08132cb47527bca323e5c8236e9193f1375feffa9ebd20c21305c` · **Evidence Tags**: `[E]` · `[M]` · `[S]` · **Telemetry Class**: `reported_j`
 
 ---
 
-## Three Plain-Language Takeaways (Zero Acronym Soup)
+![Deterministic Null — 9/10 bounded Track-A ties vs +45.8 to +95.0 pp LLM lead on open public benchmarks](https://research.openie.dev/media/tv/posters/deterministic-null-poster.jpg)
+*Hash-precommitted zero-model deterministic baseline vs. 6 LLMs across 4,030 instances and 6 SWE-bench Verified repos (openIE-dev/deterministic-null, Apache-2.0). Dedicated to the public domain under `CC0-1.0`.*
 
-1. Most AI benchmarks skip a zero-model control group that tests what simple lookup already solves.
-2. On bounded math and database tasks, a frozen lookup table matched cloud AI on nine of ten tests.
-3. On open coding tasks AI leaped ahead, while caching verified answers cut repeat energy three point six times.
+## Key Claims & Audited Scope (`[T]` / `[E]` / `[M]` / `[S]`)
 
-![Deterministic Null: A Pre-Registered Control Experiment for Neural and Agentic Substrates — OpenIE Research TV Studio Poster](https://research.openie.dev/media/tv/posters/deterministic-null-poster.jpg)
-*Studio key visual for **Deterministic Null** (`Null & Benchmarks` · 9 of 10 Bounded Ties · 3.59x Repeat Energy Cut). Dedicated to the public domain under `CC0-1.0`.*
+1. **[E · Hash-Precommitted Zero-Model Baseline]** `Shape D` (`strict N0` exact hash lookup + `dev-crystallized N1` nearest-token retrieval, implemented bit-identically in Rust, C++20, Go, Julia, and Python) locked its lookup-store digest and evaluation seeds before test scoring using OpenTimestamps Bitcoin Calendar proofs and League of Entropy `drand` rounds `6663734` and `6664089`—providing a **hash-precommitted lookup store** (not an external peer-reviewed clinical registry).
+2. **[E · Cold Open Generalization vs. Bounded Templates]** Across **all 6 core models** (`Claude Opus 5.5`, `Claude Sonnet 5.5`, `OpenAI gpt-oss-120b`, `xAI Grok 4.20`, `Alibaba Qwen 3.6 35B-A3B`, and `Google Gemma 4 E4B-it`), single-turn prompts failed to beat `Shape D` on `9 of 10` bounded Track-A template cells (`N = 2,840`, where post-run audit noted `K_eff = 6–12` template saturation), whereas on **unique external public suites (`N = 1,190`: `BFCL v3`, `tau-bench Retail`, `BigCodeBench v0.1.3`, `SWE-bench Verified` localization)** LLMs led by **+45.83 to +95.00 percentage points**, and on **6 real upstream `SWE-bench Verified` repos** cold `Shape D` solved **`0/6`** while `Opus 5.5` solved **`5/6`** (`Sonnet 5.5` `4/6`, `Grok 4.20` `1/6`).
+3. **[E · Exact Recall vs. Generalization (`reported_j`)]** Replaying the `5/6` verified `SWE-bench` patches at `t = 2` (`0` LLM calls) demonstrates **exact hash-addressed recall**, not unseen bug generalization, and invalidates whenever repo commits or test specs change; on a `600`-request `Zipf(s = 0.85)` stream over `220` `BigCodeBench` tasks, online verified crystallization cut model calls and local `reported_j` by **3.59x (`167` vs. `600` calls)**.
 
-## Everyday Analogy & Why It Matters
+## Methods, Baselines, Sample Sizes (`N`) & Licensing Scope
 
-Doctors never approve a new drug without testing it against a sugar pill. Yet AI leaderboards routinely pit one giant neural model against another without asking what a fast recipe book of verified examples solves. Testing a zero-model baseline first separates marketing hype from real reasoning, and saving verified answers turns expensive breakthroughs into cheap instant lookups the next time they appear.
+- **Hardware & Telemetry**: Local models (`Qwen 3.6 35B-A3B`, `Gemma 4 E4B-it`) and `Shape D` (`DNULLMM1`) instrumented on Apple M5 Max (`128 GB`, macOS Darwin `ri_energy_nj` L3 `reported_j`; `board_metered = false`, `measured_j = null`). Cloud API models (`Opus 5.5`, `Sonnet 5.5`, `gpt-oss-120b`, `Grok 4.20`) have `reported_j = null` (token/USD cost logged).
+- **Workload & Suite**: `4,030` held-out instances (`2,840` Track-A bounded formal/structured instances across 10 cells + `1,190` Track-B unique public instances across `BFCL v3`, `tau-bench Retail`, `BigCodeBench v0.1.3`, and `SWE-bench Verified` 12-way localization) plus `6` full upstream `SWE-bench Verified` git repositories (`psf/requests-5414`, `pytest-dev/pytest-10051`, `pytest-dev/pytest-10356`, `mwaskom/seaborn-3069`, `sympy/sympy-23824`, `sympy/sympy-17655`).
+- **Baselines Compared**: Zero-model deterministic baseline (`Shape D`: `N0` exact FNV-1a/SHA-256 lookup and `N1` dev-split bigram/Jaccard nearest template) plus classical `CDCL+DRAT` SAT solver `B1` on `unique_3sat_drat`, compared against 6 LLMs (plus `DeepSeek V4 Flash`, `Qwen 3.8 Max`, and `Gemini 2.5 Flash` in `exp-002`/`exp-003` probes).
+- **Runs (`N`) & Uncertainty / Spread**: `N = 4,030` paired per-item McNemar/exact binomial comparisons (`p < 10^-6` on Track-B `+45.83` to `+95.00` pp increments); `N = 6` full repo patch evaluations; `N = 600` `Zipf(0.85)` online requests. Single deterministic greedy (`temp = 0`) pass per model-item cell (multi-temperature sampling variance not recorded).
+- **Cold vs. Warm Caching Scope**: Strictly separated: Track-B and `t = 1` `SWE-bench` measure **cold zero-hit novelty** (`0/6` `Shape D`, `+60.00` pp `BFCL v3`, `+95.00` pp `BigCodeBench`); `t = 2` replay (`5/6`) and `Zipf(0.85)` (`3.59x` call cut) measure **warm verified recall** keyed by exact task/tree digest (stale immediately upon spec or AST change).
+- **Artifact & License Status**: `Apache-2.0` public replication kit at `https://github.com/openIE-dev/deterministic-null` (all 5 languages + `drand`/`OpenTimestamps` proofs); self-checked by OpenIE, ready for external replication.
 
-If two hundred-billion-parameter models both score ninety-nine percent on a structured benchmark, did either one actually need a neural network at decision time? Without a zero-model control group on the exact same exam, nobody can tell the difference. We built an eight-step integer lookup table verified bit-for-bit across Rust, Go, Python, Julia, and C plus plus, then anchored its digital fingerprints onto public Bitcoin calendar proofs before public randomness beacons generated four thousand thirty fresh held-out problems.
+## Problem, Terminology Corrections & Hash-Precommitment Scope
 
-Across two thousand eight hundred forty bounded math and database problems, cloud models beat the frozen table on only unindexed customer phrasing, yet jumped forty-four to ninety-five percentage points ahead across four externally authored software engineering benchmarks. When newly verified neural fixes are written back into the lookup store, realistic skewed workloads cut recurring model calls and local chip energy by three point five nine times.
+Two terminology clarifications address critiques of the earlier blog summary. First, we refer to `Shape D` directly as a **zero-model deterministic baseline** rather than clinical *"placebo"* metaphors: `Shape D` executes zero neural weights, pairing `N0` (exact canonical input digest lookup) with `N1` (deterministic token-overlap template selection from a frozen development split) `[E]`. Second, OpenTimestamps Bitcoin Calendar proofs and League of Entropy `drand` beacons (`6663734` and `6664089`) created a **hash-precommitted lookup store**—proving cryptographically that the `DNULLMM1` binary table and seed schedule existed before test evaluation, which is narrower than an externally peer-reviewed clinical statistical analysis plan `[E]`.
 
-## Inside the Mechanism & Candid Limits
+## Results Across All 6 Models and External Public Benchmarks
 
-Modern AI evaluations routinely compare one language model against another, leaving a foundational scientific question unmeasured: how much task completion actually needed a neural network at decision time, and how much could a fixed integer lookup procedure over verified prior examples already solve for free? Just as clinical drug trials seal their treatment protocols before patients enroll, we anchored our frozen lookup store's digital fingerprint onto Bitcoin calendar proofs before public randomness beacons existed, and capped per-task helper code at four kilobytes and fifty thousand operations so no hidden solver could sneak inside. At test time, the control loop observes an input, reduces features using pure sixty-four-bit signed integers with zero floating-point instructions, probes a read-only memory-mapped hash table in half a microsecond, and acts with zero model calls. Rust, Go, Python, Julia, and C plus plus match bit-for-bit across one million records.
+Evaluating **Claude Opus 5.5, Claude Sonnet 5.5, OpenAI `gpt-oss-120b`, xAI Grok 4.20, Alibaba Qwen 3.6 35B-A3B, and Google Gemma 4 E4B-it** across `4,030` instances cleanly separates template memorization from genuine open-domain synthesis `[E]`:
 
-Subtracting control accuracy from neural accuracy reveals a sharp boundary governed by how often genuinely unseen patterns arrive in the workload stream. Where structural templates saturate early, frozen integer lookup matches giant models at zero call cost; where open-world software recombines freely, neural synthesis shines and then seeds future instant lookups. This three-dimensional crystal depicts our frozen binary lookup table locked before public randomness rounds existed. Paired evaluation lanes route every fresh test problem simultaneously to zero-model controls, classical deductive solvers, local open-weight models on Apple Silicon, and six multi-vendor cloud frontier systems under identical scoring rules.
+- **Track-A Bounded Template Regime (`N = 2,840`, 10 cells):** Single-turn models tied or trailed `N1` on `9 of 10` bounded structured cells; only `Opus 5.5` beat `Shape D` (`+36.40` pp) on unindexed Tier-2 `tau2_sqlite` paraphrases. On `unique_3sat_drat` (`N = 50`), a `1,024`-token output cap truncated `Opus 5.5` at `5.2%`, whereas raising thinking budget to `8,192` tokens reached `49/50` (`98%`), 6-turn `O(m)` clause-violation feedback reached `50/50` (`100%`), and classical `CDCL+DRAT` solver `B1` solved `50/50` in `< 1 ms` with zero neural compute `[E]`.
 
-Single-turn cloud models beat the frozen table on just one of ten bounded cells, while multi-turn clause feedback solved fifty of fifty logic formulas that a free classical solver also closed. Across public coding suites and six real upstream repository bugs—five patched and replayed at zero model calls—frontier models leaped up to ninety-five points ahead. Every measurement boundary stays completely transparent from start to finish. Local workstation energy comes from built-in Apple chip counters rather than an external wall meter, closed cloud server watts are recorded strictly as unavailable instead of guessed from fleet averages, and busy-host baseline drift drops net subtractions automatically.
+- **Track-B Unique External Public Benchmarks (`N = 1,190`):** Where tasks require unseen code synthesis or novel schema composition, LLMs decisively beat `Shape D`: **`+60.00` pp on `BFCL v3`**, **`+60.45` pp on `tau-bench Retail`**, **`+95.00` pp on `BigCodeBench v0.1.3`**, and **`+52.80` pp on `SWE-bench Verified` 12-way file localization** (with `exp-003` recording `+45.83` pp for `gpt-oss-120b` and `+44.17` pp for `Grok 4.20`) `[E]`.
 
-### Epistemic Evidence Tags (`[T]` / `[E]` / `[M]` / `[S]`)
+- **Upstream `SWE-bench Verified` Repositories (`N = 6` real git trees):** Cold `Shape D` patched **`0/6`** repositories; `Claude Opus 5.5` passed full repository test suites on **`5/6`**, `Sonnet 5.5` on **`4/6`**, and `Grok 4.20` on **`1/6`** `[E]`.
 
-- **`[T]` Theorem / Machine-Checked Formal Proof**
-- **`[E]` Empirical / Hardware-Instrumented Experiment**
+## Limitations, Negative Results & Caching Separation
 
-## How Energy Was Metered
+- **Track-A template saturation (`K_eff = 6–12`):** A post-run audit documented in the primary paper showed that several Track-A bounded generators sampled from only `6` to `12` underlying structural templates, explaining why `N1` saturated them easily `[E]`.
 
-Open Interface Engineering enforces strict epistemic non-mixing across physical power rails, processor counters, and mathematical bounds (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition is forbidden by `ScientificGate`):
+- **Nearest-neighbor overfitting (`N1 < N0` on `tau-bench Retail`):** Greedy bigram matching (`N1`, `25.9%`) actually underperformed strict abstaining lookup (`N0`, `39.6%`) on `tau-bench Retail` by pasting superficially similar but semantically wrong tool arguments `[E]`.
 
-- **Acquisition Tier**: Chip Energy Counter
-- **Plain-Language Disclosure**: Built-in Apple chip energy counters; cloud server watts unavailable and unguessed.
-- **Substrate Evidence Class**: `reported_j` (`board_metered = false`)
-- **Primary Reading**: `1.77 µJ (reported_j)`
-- **Meter or Formula**: Apple M5 Max Darwin proc_pid_rusage / IOReport warm DNULLMM1 Gear-0 replay counter
-- **300 K Landauer Bit-Equivalents**: `6.1686e+14` bits (`E / (k_B · 300 K · ln 2)`)
+- **Exact recall vs. unseen generalization:** Re-running the `6` `SWE-bench` repos at `t = 2` after crystallizing verified `t = 1` patches yields `5/6` hits at `0` LLM calls—demonstrating **content-addressed memoization (`exact recall`)**, not transfer to new issues. Any commit that alters target AST digests or test contracts invalidates the cached entry (`3.59x` call and `reported_j` savings on `BigCodeBench` holds specifically under the tested `Zipf(0.85)` repeat distribution) `[E, M]`.
 
-## Continue the Discussion & Verify Every Byte
+## Energy & Telemetry Scope
+
+All local energy figures (`Shape D` sub-`2 uJ` `mmap` probes vs. multi-joule local `Qwen 3.6` / `Gemma 4` inference) come from Apple M5 Max Darwin `ri_energy_nj` (`reported_j`, `board_metered = false`) `[E]`. Cloud frontier models do not expose host power counters and are accounted strictly by token counts and API USD billing (`reported_j = null`).
+
+## Epistemic Non-Mixing & Telemetry Ledger
+
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
+
+- **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
+- **Acquisition Tier**: On-Chip Counter (reported_j)
+- **Telemetry Disclosure**: Apple M5 Max Darwin ri_energy_nj L3 counter on local Shape D & open-weight runs; cloud API watts unmetered.
+- **Evidence Class**: `reported_j` (`board_metered = false`)
+- **Catalog Anchor Reading**: `1.771e-06 J (reported_j)`
+- **Sensor / Formula Scope**: Apple M5 Max Darwin proc_pid_rusage ri_energy_nj L3 warm DNULLMM1 mmap lookup counter (measured_j = null)
+
+## Related Work & Primary Literature (`[S]`)
+
+- **Jimenez et al. (SWE-bench, ICLR 2024) & Zhuo et al. (BigCodeBench, ICLR 2025):** Public repository-level software engineering and function-synthesis benchmarks `[S]`.
+- **Yan et al. (BFCL v3, 2024) & Yao et al. (tau-bench, 2024):** Berkeley Function-Calling Leaderboard and retail/airline tool-agent benchmarks `[S]`.
+- **Good (Biometrika, 1953) & Kolodner (1992):** Good-Turing missing-mass estimation for unseen event rates and classical case-based reasoning `[S]`.
+- **GPTCache (Bang, 2023) & FrugalGPT (Chen et al., 2023):** Semantic/exact request caching and multi-model cost cascades `[S]`.
+
+## Replicate, Critique & Inspect Raw Artifacts
 
 <!-- x_thread_backlink_slot: {{X_THREAD_URL}} -->
-- **Watch in 15 Seconds or 3 Minutes**: Stream the native `9:16` Vertical Snackable ([`deterministic-null-tiktok.mp4`](https://research.openie.dev/media/tv/tiktok/deterministic-null-tiktok.mp4)) or explore all four captioned studio cuts (`15s`, `45s`, `90s`, and `3m` 3D cutaway documentary) on **[OpenIE Research TV](https://research.openie.dev/tv/?study=deterministic-null)**.
-- **Join the Synchronized X (Twitter) Thread**: Reply, critique, or inspect the 5-post verification thread on **[X (Twitter)](https://x.com/search?q=%22Deterministic%20Null%22%20OR%20research.openie.dev%2Ftv%2F%3Fstudy%3Ddeterministic-null&src=typed_query)**.
-- **Query Grounded Prior Art & Signed WAI1 Receipts**: Explore linked lineage trails on **[The Commons (`scholar.askdavidc.ai`)](https://scholar.askdavidc.ai)**, read the full primary paper & PDF at **[`research.openie.dev/papers/deterministic-null/`](https://research.openie.dev/papers/deterministic-null/)**, and verify the Ed25519-signed `WAI1` binary container (`blake3:5e66182b4c3deef0…`) in **[`openie-artifact-substrate`](https://github.com/openIE-dev/openie-artifact-substrate/blob/main/catalog/envelopes/tv-deterministic-null.wai)**.
+- **Canonical Post-Review Blog Dossier**: [https://blog.openie.dev/posts/deterministic-null/](https://blog.openie.dev/posts/deterministic-null/)
+- **Primary Research Manuscript & PDF**: [https://research.openie.dev/papers/deterministic-null/](https://research.openie.dev/papers/deterministic-null/) ([PDF](https://research.openie.dev/pdfs/deterministic-null.pdf))
+- **1-Command Public Replication Harness**: [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate) and [https://github.com/openIE-dev/deterministic-null](https://github.com/openIE-dev/deterministic-null)
+- **9:16 Vertical Snackable (`60fps`) & Research TV Cuts**: [https://research.openie.dev/media/tv/tiktok/deterministic-null-tiktok.mp4](https://research.openie.dev/media/tv/tiktok/deterministic-null-tiktok.mp4) · [OpenIE Research TV](https://research.openie.dev/tv/?study=deterministic-null)
+- **Verification & Glossary Standards**: [Verification & AI-Use Disclosure](https://blog.openie.dev/verification/) · [Epistemic Glossary](https://blog.openie.dev/glossary/)
 
 ---
 
-*Summary & essay text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Code, verification gates, and `WAI1` schemas licensed under `Apache-2.0`.*
+*Prose and summary text dedicated to the public domain under [`CC0-1.0`](https://creativecommons.org/publicdomain/zero/1.0/). Public replication harnesses and `WAI1` schemas are licensed under `Apache-2.0` unless explicitly noted in the licensing ledger above.*

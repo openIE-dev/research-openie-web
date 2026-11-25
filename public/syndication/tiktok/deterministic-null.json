@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "deterministic-null",
   "canonical_id": "blake3:tv:d3018098f6b08132cb47527bca323e5c8236e9193f1375feffa9ebd20c21305c",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/deterministic-null/",
+  "canonical_paper_url": "https://research.openie.dev/papers/deterministic-null/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/deterministic-null-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/deterministic-null-15s.mp4",
-    "poster_uri": "/media/tv/posters/deterministic-null-poster.jpg",
-    "vtt_uri": "/media/tv/captions/deterministic-null-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/deterministic-null-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/deterministic-null-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 23.47,
     "safe_zone_verified": true,
-    "source_15s_sha256": "fe2cbfc22b06791737072d4d35ead6b253bc6cf90c47485672f66e9d54e9aced"
+    "sha256": "2fc59118a6729f5a919fa19f7de3fd3edc3fb1b2b6670a6af33529b9b5e11468"
   },
-  "caption_utf16_chars": 668,
+  "caption_utf16_chars": 878,
+  "caption": "Deterministic Null Baseline — 9/10 Track-A bounded ties vs. 6 LLMs · +45.8 to +95.0 pp LLM lead on open SWE/BFCL suites (reported_j)\n\nAgainst a SHA-256 pre-committed zero-model lookup arm (Shape D, bit-exact in Rust/C++20/Go/Julia/Python), 6 LLMs tied or trailed on 9/10 bounded template cells (N=2,840) — yet led +45.8 to +95.0 pp on open suites.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: reported_j (Apple M5 Max Darwin ri_energy_nj L3 counter on local Shape D & open-weight runs; cloud API watts unmetered.)\n• Essay: https://blog.openie.dev/posts/deterministic-null/\n• Paper: https://research.openie.dev/papers/deterministic-null/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#AiBenchmarks #SoftwareEngineering #Reproducibility #ComputerScience #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "Deterministic Null (9 of 10 Bounded Ties · 3.59x Repeat Energy Cut)\nWhy AI benchmarks need a placebo control group, and where giant models actually beat a simple lookup table.\n1) Most AI benchmarks skip a zero-model control group that tests what simple lookup already solves.\n2) On bounded math and database tasks, a frozen lookup table matched cloud AI on nine of ten tests.\n3) On open coding tasks AI leaped ahead, while caching verified answers cut repeat energy three point six times.\nEnergy class: reported_j (Chip Energy Counter) · CC0-1.0 · https://research.openie.dev/papers/deterministic-null/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "Deterministic Null Baseline — 9/10 Track-A bounded ties vs. 6 LLMs · +45.8 to +95.0 pp LLM lead on open SWE/BFCL suites (reported_j)\n\nAgainst a SHA-256 pre-committed zero-model lookup arm (Shape D, bit-exact in Rust/C++20/Go/Julia/Python), 6 LLMs tied or trailed on 9/10 bounded template cells (N=2,840) — yet led +45.8 to +95.0 pp on open suites.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: reported_j (Apple M5 Max Darwin ri_energy_nj L3 counter on local Shape D & open-weight runs; cloud API watts unmetered.)\n• Essay: https://blog.openie.dev/posts/deterministic-null/\n• Paper: https://research.openie.dev/papers/deterministic-null/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#AiBenchmarks #SoftwareEngineering #Reproducibility #ComputerScience #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/deterministic-null-tiktok.mp4"
     }
   },
-  "content_blake3": "d3f5e3307d6ad5e05e765ad83286ff898c1befd6f61b6b1f524088adef2bb681"
+  "content_blake3": "ab7e1d37def7c4493e36c61f9a012b424b83dbfbb4cff92ca33ae5f6ac303993"
 }

@@ -1,29 +1,35 @@
 {
-  "schema": "openie.x_thread_bundle.v1",
+  "schema": "openie.x_thread_bundle.v2",
   "study_id": "eco-synthesis",
   "canonical_id": "blake3:tv:7aa479ced7a5cc1a84a07d286ab1d6143f62fe59ceaf75750190ae134730de3e",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
   "license": "CC0-1.0",
   "post_count": 5,
-  "max_weighted_chars": 252,
+  "max_weighted_chars": 279,
   "card_video_uri": "/media/tv/tiktok/eco-synthesis-tiktok.mp4",
   "fallback_video_uri": "/media/tv/films/eco-synthesis-15s.mp4",
-  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/eco-synthesis/",
+  "medium_crosslink_uri": "https://blog.openie.dev/posts/eco-synthesis/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/eco-synthesis/",
   "canonical_paper_url": "https://research.openie.dev/papers/lut-adapt/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+  "public_repo_url": "https://github.com/openIE-dev/lut-adapt-ai",
   "zero_urls_in_post_1": true,
   "posts": [
     {
       "position": 1,
       "role": "hook_video_card",
-      "text": "Route First, Generate Last: The Synthesis Cascade\n\nWhy smart systems route through fast lookup tables and exact verifiers first—waking large models only on genuine novelty.\n\n[90.6% Open Coding · 0.00% Broken Commits · 970 MB RAM]",
-      "weighted_chars": 229,
-      "raw_chars": 229,
+      "text": "The Synthesis Stack (synthesis.openie.dev) [E/M/S · reported_j]\n\nMaps AI routing across 7 axes (Z1 lookup, Z2 verifier-backed code/math, Z3 open prose), qualifies 90.62% as 29/32 on a BigCodeBench slice (0/32 escapes -> 95% UB <= 10.89%) & notes Pattern-lang is BSL-1.1.",
+      "weighted_chars": 270,
+      "raw_chars": 270,
       "urls": [],
       "in_reply_to_position": null,
       "media": {
         "video_uri": "/media/tv/tiktok/eco-synthesis-tiktok.mp4",
         "fallback_video_uri": "/media/tv/films/eco-synthesis-15s.mp4",
-        "poster_uri": "/media/tv/posters/eco-synthesis-poster.jpg",
-        "vtt_uri": "/media/tv/captions/eco-synthesis-15s.vtt",
+        "poster_uri": "/media/tv/tiktok/eco-synthesis-tiktok.jpg",
+        "vtt_uri": "/media/tv/tiktok/eco-synthesis-tiktok.vtt",
         "aspect_ratio": "9:16",
         "resolution": "1080x1920",
         "fps": 60,
@@ -32,43 +38,47 @@
     },
     {
       "position": 2,
-      "role": "plain_points_1_2",
-      "text": "1/3 Generating fresh text from scratch for already-solved problems wastes electricity and invites avoidable mistakes.\n\n2/3 An energy-ordered cascade checks microjoule lookup tables and exact verifiers first, waking large models only on genuine novelty.",
-      "weighted_chars": 252,
-      "raw_chars": 252,
+      "role": "methods_and_sample_bounds",
+      "text": "1/2 Sample bounds, NVMe latency & lineage:\n- 29/32 is a 32-task slice (full BigCodeBench has 1,140 tasks); unit-test gates cover only tested invariants\n- 970 MB AirMoL streams Qwen3.6-35B-A3B from SSD (trading flash latency for RAM)\n- Builds on FrugalGPT, RouteLLM & Outlines [S]",
+      "weighted_chars": 279,
+      "raw_chars": 279,
       "urls": [],
       "in_reply_to_position": 1
     },
     {
       "position": 3,
-      "role": "plain_point_3_and_energy",
-      "text": "3/3 Every accepted answer passes deterministic checks and crystallizes downward into a fast, reusable lookup skill.\n\nEnergy class: reported_j (42.40 mJ chip counter; board_metered=false, never mixed with shunts).",
-      "weighted_chars": 212,
-      "raw_chars": 212,
+      "role": "telemetry_and_scope_limits",
+      "text": "2/2 Open-ended limits & repo licenses:\n- Z3 creative prose has no binary C(z)=1 gate\n- Pattern-lang (openIE-dev/pattern-lang) is BSL-1.1 source-restricted; open Apache-2.0 cascade scripts live in openIE-dev/lut-adapt-ai & mixture-of-limits\n- M5 Max reported_j (measured_j = null)",
+      "weighted_chars": 279,
+      "raw_chars": 279,
       "urls": [],
       "in_reply_to_position": 2
     },
     {
       "position": 4,
-      "role": "machine_verification_gate",
-      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[E]/[M] · WAI1 blake3:7aa479ced7a5… · CC0-1.0",
-      "weighted_chars": 207,
-      "raw_chars": 204,
-      "urls": [],
+      "role": "signed_provenance_self_checked",
+      "text": "Signed Provenance · Self-Checked (human_in_gate=false; not peer-reviewed):\n- Evidence: [E]/[M]/[S] · WAI1 blake3:7aa479ced7a5...\n- Verification: https://blog.openie.dev/verification/\n- Glossary: https://blog.openie.dev/glossary/",
+      "weighted_chars": 204,
+      "raw_chars": 228,
+      "urls": [
+        "https://blog.openie.dev/verification/",
+        "https://blog.openie.dev/glossary/"
+      ],
       "in_reply_to_position": 3
     },
     {
       "position": 5,
-      "role": "bidirectional_medium_and_paper_bridge",
-      "text": "Read & verify Route First, Generate Last (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/eco-synthesis/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/lut-adapt/",
-      "weighted_chars": 170,
-      "raw_chars": 228,
+      "role": "canonical_blog_paper_and_replicate",
+      "text": "Read & replicate Synthesis Stack & Pattern-lang Scope (CC0-1.0):\n- Essay: https://blog.openie.dev/posts/eco-synthesis/\n- Paper: https://research.openie.dev/papers/lut-adapt/\n- 1-cmd kit: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+      "weighted_chars": 167,
+      "raw_chars": 264,
       "urls": [
-        "https://research.openie.dev/syndication/medium/eco-synthesis/",
-        "https://research.openie.dev/papers/lut-adapt/"
+        "https://blog.openie.dev/posts/eco-synthesis/",
+        "https://research.openie.dev/papers/lut-adapt/",
+        "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
       ],
       "in_reply_to_position": 4
     }
   ],
-  "content_blake3": "99f76a7e128b7bcf3cee9dccc98b771d510e3cbb7237227676408f14c0b219f1"
+  "content_blake3": "55f153a9c56b57fad64da6baf2fb7388a2365b5262bd351daa3dc62baa7f73de"
 }

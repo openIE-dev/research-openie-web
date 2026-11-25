@@ -2,24 +2,30 @@
   "schema": "openie.tiktok_post_bundle.v2",
   "study_id": "lut6-codon-nucleus",
   "canonical_id": "blake3:tv:b3baf367788259314785478a6d1b13dc0ac325cd6b7eb7f66e336f8394cac0be",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/lut6-codon-nucleus/",
+  "canonical_paper_url": "https://research.openie.dev/papers/lut-adapt/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
   "license": "CC0-1.0",
   "short_vertical_9x16": {
     "video_uri": "/media/tv/tiktok/lut6-codon-nucleus-tiktok.mp4",
-    "fallback_video_uri": "/media/tv/films/lut6-codon-nucleus-15s.mp4",
-    "poster_uri": "/media/tv/posters/lut6-codon-nucleus-poster.jpg",
-    "vtt_uri": "/media/tv/captions/lut6-codon-nucleus-15s.vtt",
+    "poster_uri": "/media/tv/tiktok/lut6-codon-nucleus-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/lut6-codon-nucleus-tiktok.vtt",
     "resolution": "1080x1920",
     "fps": 60,
     "duration_s": 27.38,
     "safe_zone_verified": true,
-    "source_15s_sha256": "0492893bff32d68e9d1a87edd6545e80f1585f5eb09f43a2e767f27a83f6ce0a"
+    "sha256": "6d4abc481c38205e09f2af1aba13f5049bb674dc04dad9afeffb25af959eada7"
   },
-  "caption_utf16_chars": 897,
+  "caption_utf16_chars": 945,
+  "caption": "4 KB LUT6 Nucleus & M.2 FPGA Port — 162.56 nJ/op bit-sliced & 1,935 nJ scalar LUT6 (Thor INA3221 measured_j) · 0.86 est_W / 55.2 est_C M.2 XC7A200T (est_j; 64=64 is naming motivation only)\n\nScope note: 2^6=64 (LUT6 bits) and 4^3=64 (RNA triplets) is strictly a counting parallel for naming — NOT a biological isomorphism. Separates Thor INA3221 measured_j (162.56 nJ/op), MCU cycles & XC7A200T est_j.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: measured_j (2^6 = 4^3 = 64 is a naming parallel only; separates Thor INA3221 measured_j (162.56 nJ/op), Cortex-M55 DWT cycles, and unprobed M.2 XC7A200T est_W/est_C.)\n• Essay: https://blog.openie.dev/posts/lut6-codon-nucleus/\n• Paper: https://research.openie.dev/papers/lut-adapt/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#Fpga #EmbeddedRust #BooleanFunctions #EdgeAi #OpenIE",
   "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
   "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
   "api_v2_init_payload": {
     "post_info": {
-      "title": "64-Codon Lookup Nucleus & M.2 Silicon (125–176 nJ Board Sensor · 38 ns Cycle · 55.2 °C M.2 Bound)\nHow living genetic triplets and digital six-input truth tables share one sixty-four-state code—running verified skills on tiny chips and fanless M.2 cards.\n1) Living cells use sixty-four genetic triplets to store survival rules, and digital six-input lookup tables use the exact same sixty-four switches.\n2) Grouping four neighboring switch settings together absorbs small sensor or wording glitches while eliminating brittle high-frequency noise.\n3) A sixteen-kilobyte core runs verified skills in nanoseconds from four-dollar microcontrollers to fanless M.2 circuit cards, waking large models only on genuine novelty.\nEnergy class: measured_j (Board Sensor + Thermal Bound) · CC0-1.0 · https://research.openie.dev/papers/lut-adapt/\n#OpenScience #ComputerScience #VerifiedAI #Thermodynamics #OpenIE",
+      "title": "4 KB LUT6 Nucleus & M.2 FPGA Port — 162.56 nJ/op bit-sliced & 1,935 nJ scalar LUT6 (Thor INA3221 measured_j) · 0.86 est_W / 55.2 est_C M.2 XC7A200T (est_j; 64=64 is naming motivation only)\n\nScope note: 2^6=64 (LUT6 bits) and 4^3=64 (RNA triplets) is strictly a counting parallel for naming — NOT a biological isomorphism. Separates Thor INA3221 measured_j (162.56 nJ/op), MCU cycles & XC7A200T est_j.\n\n• Provenance: Signed Provenance · Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n• Telemetry: measured_j (2^6 = 4^3 = 64 is a naming parallel only; separates Thor INA3221 measured_j (162.56 nJ/op), Cortex-M55 DWT cycles, and unprobed M.2 XC7A200T est_W/est_C.)\n• Essay: https://blog.openie.dev/posts/lut6-codon-nucleus/\n• Paper: https://research.openie.dev/papers/lut-adapt/\n• Replicate: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate\n#Fpga #EmbeddedRust #BooleanFunctions #EdgeAi #OpenIE",
       "privacy_level": "PUBLIC_TO_EVERYONE",
       "disable_duet": false,
       "disable_comment": false,
@@ -34,5 +40,5 @@
       "video_url": "https://research.openie.dev/media/tv/tiktok/lut6-codon-nucleus-tiktok.mp4"
     }
   },
-  "content_blake3": "7c5dd8157e3c5bf856fd82faa4a1b9c05a8262a38e4e146435f498abdbdebc44"
+  "content_blake3": "bd5ed401ca2a3864c3bf7a75e0daa3afe897703a7e039e12de8f4cc6c97d5905"
 }

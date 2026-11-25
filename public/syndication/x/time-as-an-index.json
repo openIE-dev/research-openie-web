@@ -1,29 +1,35 @@
 {
-  "schema": "openie.x_thread_bundle.v1",
+  "schema": "openie.x_thread_bundle.v2",
   "study_id": "time-as-an-index",
   "canonical_id": "blake3:tv:8c0f52b355033650a2de30ded99d38f44343f6ae6b1f00c5244304f6651c6b26",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
   "license": "CC0-1.0",
   "post_count": 5,
-  "max_weighted_chars": 230,
+  "max_weighted_chars": 273,
   "card_video_uri": "/media/tv/tiktok/time-as-an-index-tiktok.mp4",
   "fallback_video_uri": "/media/tv/films/time-as-an-index-15s.mp4",
-  "medium_crosslink_uri": "https://research.openie.dev/syndication/medium/time-as-an-index/",
+  "medium_crosslink_uri": "https://blog.openie.dev/posts/time-as-an-index/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/time-as-an-index/",
   "canonical_paper_url": "https://research.openie.dev/papers/time-as-an-index/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+  "public_repo_url": "https://github.com/openIE-dev/openie-research-experiments",
   "zero_urls_in_post_1": true,
   "posts": [
     {
       "position": 1,
       "role": "hook_video_card",
-      "text": "Time as an Index: What It Would Take to Look Up Tomorrow\n\nWhat would happen to digital security if tomorrow's calculations could be looked up like a table today?\n\n[31 Machine-Checked Proofs · 0 Time Shortcuts]",
-      "weighted_chars": 209,
-      "raw_chars": 209,
+      "text": "Time as an Index [T/E/M · unmetered]\n\nAcross 31 six-kernel Lean 4.36.0 theorems over discrete oracle models and N=65,536 SHA-256 spectral tests (0 / 32,768 FFT bins below Bonferroni p=10^-6), O(1) 'future lookup' reduces to salted-away Hellman precomputation.",
+      "weighted_chars": 259,
+      "raw_chars": 259,
       "urls": [],
       "in_reply_to_position": null,
       "media": {
         "video_uri": "/media/tv/tiktok/time-as-an-index-tiktok.mp4",
         "fallback_video_uri": "/media/tv/films/time-as-an-index-15s.mp4",
-        "poster_uri": "/media/tv/posters/time-as-an-index-poster.jpg",
-        "vtt_uri": "/media/tv/captions/time-as-an-index-15s.vtt",
+        "poster_uri": "/media/tv/tiktok/time-as-an-index-tiktok.jpg",
+        "vtt_uri": "/media/tv/tiktok/time-as-an-index-tiktok.vtt",
         "aspect_ratio": "9:16",
         "resolution": "1080x1920",
         "fps": 60,
@@ -32,43 +38,47 @@
     },
     {
       "position": 2,
-      "role": "plain_points_1_2",
-      "text": "1/3 Inside a mathematical time loop, almost every digital lock would break at once except a one-time secret pad.\n\n2/3 In known physics, no quantum trick, analog circuit, or reported anomaly sends readable answers backward in time.",
-      "weighted_chars": 230,
-      "raw_chars": 230,
+      "role": "methods_and_sample_bounds",
+      "text": "1/2 Formal & spectral bounds:\n- Horizon.lean & Paradox.lean: 31 theorems (0 sorry across 6/6 Lean checkers in bwrap) on causal cones & per-query salts\n- Hellman (1980) T*M^2 = N^2 resets to cold work under fresh nonces\n- 195-entry literature catalog of timing anomalies [S]",
+      "weighted_chars": 273,
+      "raw_chars": 273,
       "urls": [],
       "in_reply_to_position": 1
     },
     {
       "position": 3,
-      "role": "plain_point_3_and_energy",
-      "text": "3/3 Every fast lookup of a future answer is work paid upfront, which fresh random values defeat immediately.\n\nEnergy class: unmetered (Physics Math Bound; joules=null, never faked as zero).",
-      "weighted_chars": 189,
-      "raw_chars": 189,
+      "role": "telemetry_and_scope_limits",
+      "text": "2/2 Scope & limits:\n- CTC collapse results (D-CTC=PSPACE, Aaronson & Watrous 2009) model hypothetical fixed-point loops, not lab hardware\n- N=65,536 SHA-256 FFT scan rules out gross 2^16 periodicity, NOT cryptanalytic security\n- Strictly unmetered (joules = null)",
+      "weighted_chars": 263,
+      "raw_chars": 263,
       "urls": [],
       "in_reply_to_position": 2
     },
     {
       "position": 4,
-      "role": "machine_verification_gate",
-      "text": "Verified with 0 human review gates (human_in_gate=false):\n• Deterministic Shape-D null controls, Ed25519 receipts & epistemic non-mixing gates\n• Evidence: [T]/[M]/[S] · WAI1 blake3:8c0f52b35503… · CC0-1.0",
-      "weighted_chars": 207,
-      "raw_chars": 204,
-      "urls": [],
+      "role": "signed_provenance_self_checked",
+      "text": "Signed Provenance · Self-Checked (human_in_gate=false; not peer-reviewed):\n- Evidence: [T]/[E]/[M]/[S] · WAI1 blake3:8c0f52b35503...\n- Verification: https://blog.openie.dev/verification/\n- Glossary: https://blog.openie.dev/glossary/",
+      "weighted_chars": 208,
+      "raw_chars": 232,
+      "urls": [
+        "https://blog.openie.dev/verification/",
+        "https://blog.openie.dev/glossary/"
+      ],
       "in_reply_to_position": 3
     },
     {
       "position": 5,
-      "role": "bidirectional_medium_and_paper_bridge",
-      "text": "Read & verify Time as an Index (CC0-1.0):\n• Illustrated plain-language essay: https://research.openie.dev/syndication/medium/time-as-an-index/\n• Primary paper, PDF & receipts: https://research.openie.dev/papers/time-as-an-index/",
-      "weighted_chars": 160,
-      "raw_chars": 228,
+      "role": "canonical_blog_paper_and_replicate",
+      "text": "Read & replicate Time as an Index (CC0-1.0):\n- Essay: https://blog.openie.dev/posts/time-as-an-index/\n- Paper: https://research.openie.dev/papers/time-as-an-index/\n- 1-cmd kit: https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate",
+      "weighted_chars": 147,
+      "raw_chars": 254,
       "urls": [
-        "https://research.openie.dev/syndication/medium/time-as-an-index/",
-        "https://research.openie.dev/papers/time-as-an-index/"
+        "https://blog.openie.dev/posts/time-as-an-index/",
+        "https://research.openie.dev/papers/time-as-an-index/",
+        "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
       ],
       "in_reply_to_position": 4
     }
   ],
-  "content_blake3": "891293148fd6eac60fa85b55b75a9cc34b546c8543b169f5f47ce7fae83ea618"
+  "content_blake3": "b220c6207d82fe8f5b5eb0f261fe91e26148f7d1782fdf65db0cf65758c5e719"
 }

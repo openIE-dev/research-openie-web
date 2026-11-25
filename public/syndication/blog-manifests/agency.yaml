@@ -1,77 +1,95 @@
-# OpenIE Deterministic Blog Syndication Manifest (CC0-1.0)
+# OpenIE Post-Review Audited Blog Syndication Manifest (CC0-1.0)
 slug: "agency"
 
 metadata:
-  title: "Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents"
-  description: "Three plain truths about what makes a system an agent, why pace matters, and how energy ranks intelligence."
-  date: "2026-11-24"
-  author: "David Charlot, Open Interface Engineering"
-  category: "energy"
-  tags: ["agency", "energy", "open-science", "cc0", "reported-j"]
+  title: "Goal-Holding Agents Under Budget Guards: Pre- and Post-Fix Overspend Audit and Replication Limits"
+  description: "Pre-fix (36/5,400 overspends) and post-fix (0/10,800 overspends) budget-guard experiments across 30 Sudoku tasks, fired falsifiers (R-F1..R-F6), non-replicating tight-budget gains, and on-chip reported_j limits."
+  date: "2026-11-25"
+  author: "Open Interface Engineering"
+  category: "research"
+  tags: ["ai-agents", "computer-science", "benchmarking", "energy-efficiency", "open-science"]
   featured: false
   draft: false
   toc: true
-  canonicalUrl: "https://research.openie.dev/papers/agency/"
+  provenanceStatus: "Signed Provenance · Self-Checked"
+  verificationUrl: "https://blog.openie.dev/verification/"
+  glossaryUrl: "https://blog.openie.dev/glossary/"
+  canonicalBlogUrl: "https://blog.openie.dev/posts/agency/"
+  canonicalUrl: "https://blog.openie.dev/posts/agency/"
+  primaryPaperUrl: "https://research.openie.dev/papers/agency/"
+  replicationKitUrl: "https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate"
+  publicRepoUrl: "https://github.com/openIE-dev/openie-research-experiments"
+  energyClass: "reported_j"
   license: "CC0-1.0"
 
 hero:
   image: "agency-poster.jpg"
-  alt: "Thermodynamic Bounds & Optimal Tempo — Finish Right First, Then Rank by Joules"
+  alt: "Goal-Holding Agents Under Budget Guards — pre-fix 36/5,400 vs post-fix 0/10,800 overspends and fired falsifiers — 36/5,400 pre-fix vs. 0/10,800 post-fix overspends · tight-budget gain did not replicate (CPU counter, reported_j)"
 
 sections:
   - heading: null
     content: |
-      *Canonical Primary Source: [https://research.openie.dev/papers/agency/](https://research.openie.dev/papers/agency/) · Dedicated to the Public Domain (`CC0-1.0`)*
+      *Signed Provenance · Self-Checked (`human_in_gate = false`; [Verification](https://blog.openie.dev/verification/) · [Glossary](https://blog.openie.dev/glossary/)) · Canonical Post-Review Essay: [https://blog.openie.dev/posts/agency/](https://blog.openie.dev/posts/agency/) · Primary Paper: [https://research.openie.dev/papers/agency/](https://research.openie.dev/papers/agency/)*
 
-      Three plain truths about what makes a system an agent, why pace matters, and how energy ranks intelligence.
+      Moving comparison and receipt bookkeeping inside the budget guard cut simulated/counter episode overspends from 36/5,400 (Run 1, firing R-F2) to 0/10,800 (preregistered Run 2, Darwin ri_energy_nj and cycle-modeled Linux, reported_j), while the exploratory tight-budget task gain (+2.65 tasks at B = 1.0) failed to replicate and multiple falsifiers (R-F1..R-F6) fired.
 
-  - heading: "Three Plain-Language Takeaways (Zero Acronym Soup)"
+  - heading: "Key Claims & Evidence Tags"
     content: |
-      1. An agent must aim at a goal, act on the world, and stay within an energy budget.
-      2. Physics prices every decision, creating one optimal pace between slow idle drain and frantic switching waste.
-      3. Among systems that finish a task correctly, the smarter one is whichever spent less energy.
+      1. **[E · reported_j, Darwin ri_energy_nj & Linux RAPL]** Before fixing the guard boundary, **36 of 5,400 episodes** overspent their declared budget in exploratory Run 1 (firing falsifier `R-F2`); moving goal comparison and receipt logging inside the guard reduced overspends to **0 of 10,800 episodes** (`0/5,400` per half) in preregistered Run 2 and Machine 2 Part B cycle accounting, whereas Machine 2 Part A raw Linux `RAPL` per-act checks recorded **320–327 overspends per condition** because `0.04 ms` acts fell below `~1 ms` `RAPL` counter update granularity.
+      2. **[E · Negative Result & Fired Falsifiers]** Exploratory Run 1 showed `+2.65` extra closed Sudoku tasks at tight budget `B = 1.0`, but **that tight-budget gain did not replicate** in preregistered Run 2 or on Machine 2 (shared-task joules were statistically indistinguishable, and only loose-budget `B = 2.0` closure `+2.8` / `+0.825` tasks replicated); falsifiers `R-F1` (guard overhead), `R-F4` (cross-machine ranking reversal `Kendall tau-b = -0.037`), `R-F5` (`CV > 0.25` on unquiesced hosts), and `R-F6` (integrated derivative mismatch) also fired.
+      3. **[M · Unit Positivity, Not Tight Hardware Floor]** Comparing macro-CPU episode joules (`3.6 × 10^14` to `5.0 × 10^15` times `k_B T ln 2`) against Landauer bit-erasure checks bookkeeping sign positivity (`R-F7`), **not** tight operational proximity to physical thermodynamic limits on out-of-order processors.
 
-  - heading: "Everyday Analogy & Why It Matters"
+  - heading: "Methods, Baselines & Artifact Scope"
     content: |
-      Picture driving across a wide desert on a strict fuel grant. Idling in traffic burns baseline power without moving you forward, while sprinting at top speed multiplies switching heat until your tank runs dry before reaching town. To qualify as an agent, a system locks in a testable prediction before acting, changes the outside world rather than editing its own sensors, updates its internal state from the outcome, and writes a clean refusal receipt whenever the energy budget falls short.
+      - **Hardware & Telemetry**: Machine 1: Apple Silicon macOS (`proc_pid_rusage` `ri_energy_nj` L3 `reported_j`). Machine 2: x86-64 Linux (`powercap` `intel-rapl` package counter L2 `reported_j` in Part A; calibrated cycle counter in Part B). Unquiesced hosts (`quiet_window = no`); no external DC shunt or AC wall meter (`measured_j = null`).
+      - **Workload & Suite**: 30 bounded constraint-propagation and backtracking Sudoku episodes evaluated across 3 budget levels (`B = 0.5, 1.0, 2.0` normalized units).
+      - **Baselines Compared**: Three internal controller arms: adaptive tempo/cascade (`sigma-selector`), fixed heuristic cascade, and goal-blind unguarded loop. External LLM/solver baselines: not benchmarked in this study.
+      - **Runs (N) & Spread**: Run 1: `N = 5,400` episodes (`20` seeds × `3` arms × `3` budgets × `30` tasks). Preregistered Run 2: `N = 10,800` episodes (`40` seeds, split into two `5,400`-episode halves). Machine 2: `N = 10,800` episodes per part. Episode energy `CV > 0.25` at binding budgets (`R-F5` fired).
+      - **Cold vs. Warm Scope**: Stateless per-episode solver resets (`0` cross-episode solution memoization); OS page cache warm across sequential seeds.
+      - **Artifact & License**: Primary manuscript and falsifier tables public (`CC0-1.0`); experiment summaries in `openIE-dev/openie-research-experiments` (`Apache-2.0`, self-checked, externally unreproduced).
 
-      Across more than twenty thousand puzzle episodes on two laptops, an unguided random baseline looked great on raw bits per joule only because its fast failures were cheap, whereas gating by full task completion ranked our goal-holding selectors accurately. Stop mistaking brute energy spend for intelligence. Demand a verified correct answer first, enforce hard energy budgets with transparent refusal receipts, and rank every passing system strictly by total joules spent.
-
-  - heading: "Inside the Mechanism & Candid Limits"
+  - heading: "Problem, Scope & Framing Qualifiers"
     content: |
-      Today's AI scoreboards celebrate whichever system gets the highest raw score, ignoring whether one answer burned a thousand watts or a thousandth of a watt. Pouring more electricity into a machine can buy capability, yet true intelligence means solving the exact same problem parsimoniously with minimal energy. Imagine balancing an upright broomstick on your palm while walking on a strict calorie budget. Wait too long between corrections and the stick tips away while baseline metabolism drains your reserves; twitch too frantically and every rapid muscle reset dumps extra heat into the air for tiny gains.
+      The primary paper defines an engineered goal-holding agent operationally as a control loop maintaining a target predicate under an explicit energy budget `[M]`. Earlier blog summaries compressed a heavily qualified, self-critical manuscript into sweeping thermodynamic slogans. In reality, modern out-of-order CPUs operate `14` to `15` orders of magnitude above `k_B T ln 2` (`3.6 × 10^14` to `5.0 × 10^15` times the `300 K` Landauer floor in these runs) `[E]`. Referencing Landauer in the formal model serves strictly to enforce positive physical units (`e_act > 0`, falsifier `R-F7`), not to claim that high-level software schedulers approach physical bit-erasure limits `[M]`.
 
-      The framework stacks three layers in a fixed order. First comes eligibility: fix a discriminating prediction beforehand, physically push on the outside world rather than editing your own sensors, update internal memory from the result, and stay inside your joule grant or log a refusal receipt. Next come speed limits, then hindsight intelligence. Every time a machine compares an outcome and resets memory over a closed cycle, physics charges a minimum heat floor per erased bit while idle circuits leak steady baseline watts.
-
-      Dividing useful task velocity by both costs combined traces a smooth arch peaking at one optimal action pace where marginal drag equals baseline drain. In this three-dimensional landscape, the flat lower plane marks nature's minimum heat price for updating a single bit of memory at room temperature. Steep walls on either side show slow idle battery drain and frantic high-speed heat waste, framing one golden ridge where verified progress per joule reaches its physical maximum. Across pre-registered forty-seed puzzle benchmarks on two computers, moving receipt writing inside the budget guard reduced overspends to zero across ten thousand eight hundred runs.
-
-      Requiring task completion first stopped a cheap-failing random baseline from gaming raw bit rates, while our threshold selector closed more tasks than a fixed cascade at loose budgets. Scientific honesty requires reporting every failed check alongside every success. Tight-budget selector gains from our first exploratory run did not replicate, shared tasks used equal energy, and built-in Linux chip counters missed sub-millisecond steps completely, proving why dedicated quiet hosts and external wall or circuit-board power sensors must come next.
-
-  - heading: "How Energy Was Metered"
+  - heading: "Mechanism, Experimental Results & Guard Fix"
     content: |
-      - **Acquisition Tier**: Chip Energy Counter
-      - **Disclosure**: Built-in laptop chip energy counters and physics bounds; no external wall meter.
-      - **Evidence Class**: `reported_j` (`85.00 mJ (reported_j)`)
-      - **Meter / Formula**: Linux & Darwin on-chip CPU package energy counters per puzzle episode (no external board shunt)
+      The experimental harness compares three internal control arms (`sigma-selector` adaptive routing, fixed cascade, and goal-blind baseline) across `30` Sudoku constraint tasks at three budget caps (`B = 0.5, 1.0, 2.0`) `[E]`. A central engineering lesson came from an accounting bug caught between Run 1 and Run 2:
 
-      Energy classes (`measured_j`, `reported_j`, `est_j`, `unmetered`) are strictly partitioned and never summed across boundaries.
+      - **Exploratory Run 1 (Pre-Fix, `N = 5,400` episodes):** Goal-comparison and receipt-emission costs executed *after* the pre-act budget check. As a result, **36 of 5,400 episodes** overspent their cap (`9` `sigma-selector` and `7` fixed-cascade episodes at `B = 1.0`, plus `20` goal-blind episodes at `B = 0.5`), firing falsifier `R-F2` `[E]`.
+
+      - **Preregistered Run 2 (Post-Fix, `N = 10,800` episodes across two `5,400`-episode halves):** Reserving worst-case comparison plus receipt cost inside the guard before committing an act reduced overspends to **0 of 10,800 episodes** (`0/5,400` in each half; 95% Clopper–Pearson upper bound `<= 3.42 × 10^-4` per episode under the tested workload) on Darwin `ri_energy_nj` and Machine 2 Part B cycle accounting `[E]`.
+
+      - **Sub-Millisecond Counter Aliasing (Machine 2 Part A):** When the guard instead polled raw Linux `RAPL` package counters directly on `~0.04 ms` solver acts, `RAPL` updated only every `~1 ms` (`[S]`, Khan et al., 2018), letting dozens of unbilled micro-acts slip past stale readings and causing **320 to 327 overspends per condition** `[E]`.
+
+  - heading: "Limitations, Negative Results & Fired Falsifiers"
+    content: |
+      Unlike promotional summaries, the primary manuscript documents six fired falsifiers and a failed replication that narrow what this study supports `[E]`:
+
+      - **Tight-budget gain did not replicate:** Run 1 suggested `+2.65` additional solved tasks for `sigma-selector` at `B = 1.0`, but preregistered Run 2 and Machine 2 Part B showed **no tight-budget advantage**, and energy per solved task on mutually completed instances was equal (`R-F3` fired in Run 1). Only the loose-budget (`B = 2.0`) closure gain (`+2.8` tasks on Machine 1; `+0.825` on Machine 2 Part B) replicated `[E]`.
+
+      - **Cross-host ranking instability & host noise:** Cross-substrate progress-per-joule rank correlation reversed on Machine 2 (`Kendall tau-b = -0.037`, firing `R-F4`), binding-budget coefficient of variation exceeded `0.25` (`R-F5`) because background OS daemons were not quiesced (`quiet_window = no`), guard bookkeeping overhead fired `R-F1` on tiny steps, and integrated `iota` rankings diverged from mean `J*` (`R-F6`) `[E]`.
+
+  - heading: "Energy & Telemetry Scope"
+    content: |
+      All energy readings in this study are operating-system or on-chip `reported_j` estimates (`macOS proc_pid_rusage ri_energy_nj` L3 and `Linux powercap RAPL` L2; `measured_j = null`, `board_metered = false`) `[E]`. Relative comparisons are valid only within the same host and counter channel on coarse multi-millisecond windows; fine-grained act accounting requires deterministic cycle/instruction budgets calibrated against external DC shunts rather than sub-millisecond `RAPL` polling `[E]`.
 
 references:
   - id: 1
-    authors: "David Charlot, Open Interface Engineering"
-    title: "Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents"
+    authors: "Open Interface Engineering"
+    title: "Goal-Holding Agents Under Budget Guards: Pre- and Post-Fix Overspend Audit and Replication Limits"
     publication: "OpenIE Research"
     year: 2026
     url: "https://research.openie.dev/papers/agency/"
 
 closing:
-  content: |
-    Watch the 15-second vertical snackable and 3-minute 3D documentary on [OpenIE Research TV](https://research.openie.dev/tv/?study=agency) or explore grounded prior art on [The Commons](https://scholar.askdavidc.ai).
-  cta:
-    primary:
-      text: "Read Primary Study & PDF"
-      url: "https://research.openie.dev/papers/agency/"
-    secondary:
-      text: "Watch on OpenIE Research TV"
-      url: "https://research.openie.dev/tv/?study=agency"
-  footer_text: "Summary text dedicated to the public domain under CC0-1.0."
+    content: |
+      Stream the 9:16 60fps vertical cut on [OpenIE Research TV](https://research.openie.dev/tv/?study=agency) or run the 1-command replication harness at [https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate](https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate).
+    cta:
+      primary:
+        text: "Read Canonical Post-Review Dossier"
+        url: "https://blog.openie.dev/posts/agency/"
+      secondary:
+        text: "Primary Paper & 1-Command Replication"
+        url: "https://research.openie.dev/papers/agency/"
+    footer_text: "Signed Provenance · Self-Checked (not externally peer-reviewed). Summary text dedicated to the public domain under CC0-1.0."
