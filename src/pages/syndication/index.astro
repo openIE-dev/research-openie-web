@@ -303,6 +303,14 @@ const clientPayload = JSON.stringify({
           </div>
 
           <div class="p-3 rounded-xl border border-brand-border bg-[#0b1020] mb-3">
+            <div class="flex flex-wrap items-center justify-between gap-1.5 mb-2 pb-2 border-b border-brand-border/60 font-mono text-[10.5px]">
+              <a href="https://medium.com/open-interface-engineering" target="_blank" rel="noopener noreferrer" class="text-emerald-300 no-underline hover:underline font-semibold">
+                Pub: medium.com/open-interface-engineering ↗
+              </a>
+              <a href="https://medium.com/@openie" target="_blank" rel="noopener noreferrer" class="text-brand-amber no-underline hover:underline">
+                @openie ↗
+              </a>
+            </div>
             <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray mb-1">
               Canonical Primary Source (`rel="canonical"`)
             </div>
@@ -321,6 +329,13 @@ const clientPayload = JSON.stringify({
                 {`${SITE}${initialStudy.medium.canonical_import_uri}`}
               </code>
             </div>
+            <button
+              id="syn-launch-medium-import"
+              type="button"
+              class="mt-2.5 w-full font-mono text-xs px-3 py-2 rounded-lg bg-emerald-400 text-[#06121a] font-bold cursor-pointer border-none hover:opacity-90"
+            >
+              ⚡ Copy Import URL + Open medium.com/p/import ↗
+            </button>
           </div>
 
           <pre
@@ -386,13 +401,13 @@ const clientPayload = JSON.stringify({
 
         <div class="glass-card p-5 border-t-2 border-t-brand-cyan">
           <div class="font-mono text-xs text-brand-cyan font-bold mb-2">
-            Flow 2 · Medium RSS → Automatic X Thread
+            Flow 2 · Live Medium RSS Watcher (`open-interface-engineering` &amp; `@openie`) → X
           </div>
           <p class="font-body text-sm text-brand-slate leading-relaxed mb-3">
-            `scripts/syndicate.py --mode sync-rss-to-x` polls any Medium author or publication RSS feed (`MEDIUM_RSS_URL`), strips tracking query parameters, checks the `BLAKE3` `SyndicationLedger` so no essay is ever tweeted twice, matches OpenIE canonical links to their verified 5-post video thread, or synthesizes a clean 4-post thread (`&le;280` weighted chars) for standalone Medium field notes.
+            Every 15 minutes, our systemd timer polls `https://medium.com/feed/open-interface-engineering` and `https://medium.com/feed/@openie`, checks the `BLAKE3` `SyndicationLedger` so no essay is ever tweeted twice, matches OpenIE canonical links (or titles) to their verified 5-post `9:16` video thread, and posts (or queues) the thread linking directly to your live Medium story.
           </p>
           <div class="font-mono text-[11px] text-emerald-300">
-            Zero duplicate posts guaranteed via content-addressed BLAKE3 ledger keys.
+            Zero Medium API token needed — publishing on Medium triggers X automatically.
           </div>
         </div>
 
@@ -498,6 +513,7 @@ const clientPayload = JSON.stringify({
     const medPreviewEl = document.getElementById('syn-med-preview');
     const copyMedMdBtn = document.getElementById('syn-copy-med-md');
     const copyImportBtn = document.getElementById('syn-copy-import-url');
+    const launchImportBtn = document.getElementById('syn-launch-medium-import');
     const openMedHtmlEl = document.getElementById('syn-open-med-html');
     const openYamlEl = document.getElementById('syn-open-yaml');
 
@@ -635,6 +651,18 @@ const clientPayload = JSON.stringify({
           copyImportBtn.textContent = 'Copy Import URL';
         }, 1600);
       });
+    });
+
+    launchImportBtn?.addEventListener('click', () => {
+      const st = BY_ID[activeId];
+      if (!st) return;
+      const url = SITE + st.medium.canonical_import_uri;
+      navigator.clipboard?.writeText(url).catch(() => {});
+      launchImportBtn.textContent = '✓ URL Copied — Paste (Cmd+V) in Medium Tab!';
+      window.open('https://medium.com/p/import', '_blank', 'noopener,noreferrer');
+      setTimeout(() => {
+        launchImportBtn.textContent = '⚡ Copy Import URL + Open medium.com/p/import ↗';
+      }, 3200);
     });
 
     const qp = new URLSearchParams(window.location.search);

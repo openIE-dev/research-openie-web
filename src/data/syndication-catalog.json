@@ -1323,15 +1323,15 @@
         "ecosystems": [
           {
             "id": "x-medium-bidirectional-bridge",
-            "name": "X (Twitter) <-> Medium Bidirectional Automation",
+            "name": "X (Twitter) <-> Medium (@openie · open-interface-engineering)",
             "direction": "bidirectional",
-            "protocol": "RFC 5849 OAuth 1.0a Media Upload + X API v2 + Medium REST v1 + Canonical Story Import + RSS 2.0",
-            "surface": "https://api.x.com/2/tweets <-> https://api.medium.com/v1",
+            "protocol": "Live Medium RSS (`medium.com/feed/open-interface-engineering` + `@openie`) + Canonical Story Import (`medium.com/p/import`) + RFC 5849 OAuth 1.0a Media Upload + X API v2",
+            "surface": "https://medium.com/open-interface-engineering · https://medium.com/@openie <-> https://api.x.com/2/tweets",
             "license": "CC0-1.0",
-            "status": "staged_and_tested",
+            "status": "live_rss_watcher_active",
             "capabilities": [
-              "Forward: Canonical Artifact -> 28 illustrated Medium essays + 28 5-post X threads (<=280 weighted chars, 0 URLs in Post 1 + native 9:16 video card)",
-              "Reverse 1: Medium RSS XML -> BLAKE3 deduplicated X threads (`sync_medium_rss_to_x`)",
+              "Forward: Canonical Artifact -> 28 illustrated Medium essays (`medium.com/open-interface-engineering`) + 28 5-post X threads (<=280 weighted chars, 0 URLs in Post 1 + native 9:16 video card)",
+              "Reverse 1 (Active 15m Timer): Polls `medium.com/feed/open-interface-engineering` & `medium.com/feed/@openie` -> BLAKE3 deduplicated X video threads (`sync_medium_rss_to_x`)",
               "Reverse 2: X self-reply timeline threads -> compiled Medium essays + thread-root backlink reply (`sync_x_threads_to_medium`)"
             ]
           },
@@ -6797,5 +6797,5 @@
       ]
     }
   ],
-  "catalog_blake3": "d3c663a6df98bfaa34571b105990b995c8d76b25738fe0b46841fc661e8a3955"
+  "catalog_blake3": "a72a13b3438a45da6743e6e580897f9374515b27b1469c54cddffab5ca7987a7"
 }
