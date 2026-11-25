@@ -1,0 +1,429 @@
+---
+// Universal Floating Live Voice, Vision & Co-Pilot Call Dock mounted across research.openie.dev.
+// Wrapped in a semantic <nav> landmark so keyboard/screen-reader navigation is direct and clean,
+// and auto-hidden on /live/ where the full-screen Multimodal Studio is open.
+---
+
+<nav
+  id="openie-live-dock-root"
+  aria-label="Live voice, video, and paper co-pilot dock"
+  class="fixed bottom-5 right-5 z-120 print:hidden"
+>
+  <!-- Floating Launcher Pill -->
+  <button
+    id="openie-dock-pill"
+    type="button"
+    aria-expanded="false"
+    aria-controls="openie-dock-panel"
+    title="Open Live Voice, Camera & Paper Co-Pilot (Cmd/Ctrl + Shift + V)"
+    class="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#0c1220]/95 backdrop-blur-xl border border-emerald-400/45 text-brand-white shadow-2xl hover:border-brand-amber cursor-pointer transition-all"
+  >
+    <span class="relative flex h-2.5 w-2.5">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
+    </span>
+    <span class="font-mono text-xs font-semibold text-emerald-300">📞 Live Call · Video</span>
+    <kbd class="hidden sm:inline-block font-mono text-[10px] px-1.5 py-0.5 rounded bg-white/10 text-brand-slate">
+      ⌘⇧V
+    </kbd>
+  </button>
+
+  <!-- Expanded Slide-Over Multimodal Dock Panel (populated/wired on client init) -->
+  <div
+    id="openie-dock-panel"
+    class="hidden fixed bottom-4 right-4 w-[calc(100vw-2rem)] sm:w-[410px] max-h-[calc(100dvh-5.5rem)] flex-col rounded-2xl bg-[#0b101d]/96 backdrop-blur-2xl border border-brand-cyan/35 shadow-2xl overflow-hidden"
+  ></div>
+</nav>
+
+<script type="module" is:inline>
+  import { getOpenIELiveHMI } from '/live/hmi-engine.js';
+
+  (function initLiveCallDock() {
+    const root = document.getElementById('openie-live-dock-root');
+    const pill = document.getElementById('openie-dock-pill');
+    const panel = document.getElementById('openie-dock-panel');
+    if (!root || !pill || !panel) return;
+
+    const cleanPath = window.location.pathname.replace(/\/+$/, '');
+    if (cleanPath === '/live') {
+      root.style.display = 'none';
+      return;
+    }
+
+    const hmi = getOpenIELiveHMI();
+    if (!hmi) return;
+
+    let dockOpen = false;
+    let mounted = false;
+
+    function esc(s) {
+      return String(s || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    function badgeClass(evClass) {
+      if (evClass === 'measured_j') return 'bg-emerald-500/15 text-emerald-300 border-emerald-400/40';
+      if (evClass === 'reported_j') return 'bg-brand-cyan/15 text-brand-cyan border-brand-cyan/40';
+      if (evClass === 'est_j') return 'bg-brand-amber/15 text-brand-amber border-brand-amber/40';
+      return 'bg-white/5 text-brand-slate border-brand-border';
+    }
+
+    function mountPanelDom() {
+      if (mounted) return;
+      mounted = true;
+
+      panel.innerHTML = `
+        <div class="px-3.5 py-2.5 border-b border-brand-border flex items-center justify-between gap-2 bg-white/[0.02]">
+          <div class="flex items-center gap-2 min-w-0">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+            <span class="font-display text-xs font-bold text-brand-white truncate">OpenIE Live · Co-Pilot</span>
+            <span class="font-mono text-[9.5px] px-1.5 py-0.5 rounded bg-brand-amber/15 text-brand-amber border border-brand-amber/30 shrink-0">Self-Checked</span>
+          </div>
+          <div class="flex items-center gap-1.5 shrink-0">
+            <a id="dock-studio-link" href="/live/" class="font-mono text-[10.5px] px-2 py-0.5 rounded border border-brand-cyan/40 text-brand-cyan no-underline hover:bg-brand-cyan/10">Studio ↗</a>
+            <button id="dock-close-btn" type="button" aria-label="Minimize live call dock" class="font-mono text-xs px-2 py-0.5 rounded border border-brand-border text-brand-slate hover:text-brand-white bg-transparent cursor-pointer">✕</button>
+          </div>
+        </div>
+
+        <div class="p-3 space-y-2.5 overflow-y-auto flex-1">
+          <!-- Mode Switcher + Study Picker -->
+          <div class="grid grid-cols-4 gap-1 font-mono text-[10.5px]">
+            <button type="button" data-dock-mode="call" class="dock-m-btn py-1.5 px-1 rounded border border-brand-cyan/60 bg-brand-cyan/15 text-brand-white cursor-pointer">📞 Call</button>
+            <button type="button" data-dock-mode="vision" class="dock-m-btn py-1.5 px-1 rounded border border-brand-border bg-white/[0.02] text-brand-slate cursor-pointer">📹 Vision</button>
+            <button type="button" data-dock-mode="copilot" class="dock-m-btn py-1.5 px-1 rounded border border-brand-border bg-white/[0.02] text-brand-slate cursor-pointer">🧭 Tour</button>
+            <button type="button" data-dock-mode="debate" class="dock-m-btn py-1.5 px-1 rounded border border-brand-border bg-white/[0.02] text-brand-slate cursor-pointer">🎙 Debate</button>
+          </div>
+
+          <div class="flex items-center gap-1.5">
+            <select id="dock-study-select" aria-label="Select study" class="flex-1 font-mono text-[11px] px-2.5 py-1.5 rounded-lg bg-[#070b14] border border-brand-border text-brand-white min-w-0">
+              <option value="${esc(hmi.activeStudyId)}">Loading 28 post-review studies...</option>
+            </select>
+            <select id="dock-voice-select" aria-label="Select voice persona" class="font-mono text-[11px] px-2 py-1.5 rounded-lg bg-[#070b14] border border-brand-border text-brand-amber shrink-0">
+              <option value="af_heart">Heart (Host)</option>
+              <option value="bm_george">George (Skeptic)</option>
+              <option value="af_bella">Bella (Guide)</option>
+              <option value="am_adam">Adam (RTL)</option>
+            </select>
+          </div>
+
+          <!-- Compact Plasma Orb + Call/Vision Controls -->
+          <div class="rounded-xl border border-brand-border bg-[#070b14]/90 p-2.5 flex items-center gap-3">
+            <button id="dock-orb-btn" type="button" aria-label="Start call or barge in" class="w-20 h-20 rounded-full bg-transparent border-none p-0 cursor-pointer shrink-0">
+              <canvas id="dock-orb-canvas" class="w-20 h-20 block"></canvas>
+            </button>
+            <div class="flex-1 min-w-0 space-y-1.5">
+              <div id="dock-state-label" class="font-mono text-[10px] text-brand-cyan truncate">READY · ZERO COLD WAIT</div>
+              <div class="flex flex-wrap gap-1.5">
+                <button id="dock-call-btn" type="button" class="font-mono text-[11px] font-bold px-2.5 py-1 rounded bg-emerald-400 text-[#06110e] cursor-pointer">📞 Start</button>
+                <button id="dock-barge-btn" type="button" class="font-mono text-[11px] px-2 py-1 rounded border border-brand-amber/45 text-brand-amber bg-brand-amber/10 cursor-pointer">✋ Jump In</button>
+                <button id="dock-cam-btn" type="button" class="font-mono text-[11px] px-2 py-1 rounded border border-brand-cyan/40 text-brand-cyan bg-brand-cyan/10 cursor-pointer">📷</button>
+                <button id="dock-screen-btn" type="button" class="font-mono text-[11px] px-2 py-1 rounded border border-brand-border text-brand-light bg-transparent cursor-pointer">🖥</button>
+              </div>
+              <div id="dock-interim" class="hidden font-mono text-[10px] text-emerald-300 truncate"></div>
+            </div>
+          </div>
+
+          <!-- Live Camera / Screen Share Mini Viewfinder -->
+          <div id="dock-vision-box" class="hidden rounded-xl border border-emerald-400/40 bg-black overflow-hidden">
+            <div class="px-2.5 py-1 bg-emerald-500/10 flex items-center justify-between font-mono text-[10px]">
+              <span id="dock-vision-meta" class="text-emerald-300 truncate">Vision Active</span>
+              <div class="flex items-center gap-1">
+                <button id="dock-snap-btn" type="button" class="px-1.5 py-0.5 rounded bg-emerald-400 text-[#06110e] font-bold cursor-pointer">📸 Inspect</button>
+                <button id="dock-stop-vis-btn" type="button" class="px-1.5 py-0.5 rounded border border-rose-400/40 text-rose-300 bg-transparent cursor-pointer">✕</button>
+              </div>
+            </div>
+            <video id="dock-vision-video" autoplay muted playsinline class="w-full h-28 object-cover"></video>
+          </div>
+
+          <!-- Compact Visual Proof Stage -->
+          <details id="dock-stage-details" class="rounded-xl border border-brand-border bg-[#070b14]/80 overflow-hidden">
+            <summary class="px-2.5 py-1.5 font-mono text-[10.5px] text-brand-amber cursor-pointer flex items-center justify-between">
+              <span id="dock-stage-title">🎬 Visual Proof Stage (15s / 9:16 / /living/)</span>
+              <span class="text-brand-gray">▾</span>
+            </summary>
+            <div class="p-2 border-t border-brand-border space-y-1.5">
+              <div class="flex gap-1 font-mono text-[10px]">
+                <button type="button" data-dock-clip="15s" class="px-2 py-0.5 rounded border border-brand-amber text-brand-amber bg-brand-amber/10 cursor-pointer">15s</button>
+                <button type="button" data-dock-clip="45s" class="px-2 py-0.5 rounded border border-brand-border text-brand-light bg-transparent cursor-pointer">45s</button>
+                <button type="button" data-dock-clip="tiktok" class="px-2 py-0.5 rounded border border-emerald-400/40 text-emerald-300 bg-transparent cursor-pointer">9:16</button>
+                <button type="button" data-dock-clip="living" class="px-2 py-0.5 rounded border border-brand-cyan/40 text-brand-cyan bg-transparent cursor-pointer">/living/</button>
+              </div>
+              <video id="dock-stage-video" controls muted playsinline preload="none" class="w-full rounded aspect-video bg-black"></video>
+              <iframe id="dock-stage-iframe" title="Living figure preview" class="hidden w-full h-44 rounded border-0 bg-black" loading="lazy"></iframe>
+            </div>
+          </details>
+
+          <!-- Rolling Transcript -->
+          <div id="dock-transcript" class="space-y-2 max-h-48 overflow-y-auto pr-1">
+            <div class="p-2.5 rounded-lg border border-brand-border bg-white/[0.02] font-body text-[11.5px] text-brand-slate leading-snug">
+              Ask about this page, click <strong>🧭 Tour</strong> for a guided walkthrough, or run a 2-voice <strong>🎙 Debate</strong>.
+            </div>
+          </div>
+
+          <!-- Quick Prompts -->
+          <div class="flex flex-wrap gap-1">
+            <button type="button" data-dock-prompt="Walk me through this study with video" class="font-mono text-[10px] px-2 py-0.5 rounded-full border border-brand-border text-brand-light hover:border-brand-amber bg-white/[0.02] cursor-pointer">🎬 Walkthrough</button>
+            <button type="button" data-dock-prompt="Debate this study like a skeptical reviewer" class="font-mono text-[10px] px-2 py-0.5 rounded-full border border-brand-border text-brand-light hover:border-brand-amber bg-white/[0.02] cursor-pointer">🎙 Skeptic Debate</button>
+            <button type="button" data-dock-prompt="What are the post-review limitations and fired falsifiers?" class="font-mono text-[10px] px-2 py-0.5 rounded-full border border-brand-border text-brand-light hover:border-brand-amber bg-white/[0.02] cursor-pointer">🧪 Falsifiers</button>
+          </div>
+        </div>
+
+        <!-- Prompt Composer + Telemetry Footer -->
+        <div class="p-2.5 border-t border-brand-border bg-[#070b14]/95 space-y-1.5">
+          <form id="dock-ask-form" class="flex gap-1.5">
+            <input id="dock-ask-input" type="text" placeholder="Ask about this paper or section..." aria-label="Ask Live Co-Pilot" class="flex-1 font-body text-xs px-2.5 py-1.5 rounded-lg bg-[#0c1220] border border-brand-border text-brand-white focus:border-brand-amber focus:outline-none" />
+            <button type="submit" class="font-mono text-[11px] font-bold px-3 py-1.5 rounded-lg bg-brand-amber text-brand-dark cursor-pointer">Ask</button>
+          </form>
+          <div id="dock-tel-line" class="font-mono text-[9.5px] text-brand-gray truncate">
+            VAD -60 dB · Instant TTS · 0.000 est_j (browser heuristic)
+          </div>
+        </div>
+      `;
+
+      const orbCanvas = document.getElementById('dock-orb-canvas');
+      const visionVideo = document.getElementById('dock-vision-video');
+      const studySel = document.getElementById('dock-study-select');
+      const voiceSel = document.getElementById('dock-voice-select');
+      const callBtn = document.getElementById('dock-call-btn');
+      const stateLabel = document.getElementById('dock-state-label');
+      const interimEl = document.getElementById('dock-interim');
+      const visionBox = document.getElementById('dock-vision-box');
+      const visionMeta = document.getElementById('dock-vision-meta');
+      const stageDetails = document.getElementById('dock-stage-details');
+      const stageTitle = document.getElementById('dock-stage-title');
+      const stageVideo = document.getElementById('dock-stage-video');
+      const stageIframe = document.getElementById('dock-stage-iframe');
+      const transcriptEl = document.getElementById('dock-transcript');
+      const studioLink = document.getElementById('dock-studio-link');
+      const telLine = document.getElementById('dock-tel-line');
+
+      hmi.attachOrbCanvas(orbCanvas);
+      hmi.attachVisionVideo(visionVideo);
+
+      function populateStudies() {
+        if (!hmi.corpus?.studies?.length || !studySel) return;
+        studySel.innerHTML = hmi.corpus.studies
+          .map(
+            (s) =>
+              `<option value="${esc(s.id)}" ${s.id === hmi.activeStudyId ? 'selected' : ''}>${esc(s.short_title)} [${esc(s.evidence_class)}]</option>`
+          )
+          .join('');
+        if (studioLink) studioLink.href = `/live/?study=${encodeURIComponent(hmi.activeStudyId)}`;
+      }
+
+      hmi.loadCorpus().then(populateStudies).catch(() => {});
+      hmi.on('corpus-ready', populateStudies);
+
+      hmi.on('state', (snap) => {
+        if (studySel && studySel.value !== snap.activeStudyId) studySel.value = snap.activeStudyId;
+        if (voiceSel && voiceSel.value !== snap.voice) voiceSel.value = snap.voice;
+        if (studioLink) studioLink.href = `/live/?study=${encodeURIComponent(snap.activeStudyId)}`;
+        if (stateLabel) stateLabel.textContent = `${snap.state.toUpperCase()} · ${snap.activeStudy?.evidence_class || 'ready'}`;
+        if (callBtn) {
+          callBtn.textContent = snap.callActive ? '⏹ End' : '📞 Start';
+          callBtn.className = snap.callActive
+            ? 'font-mono text-[11px] font-bold px-2.5 py-1 rounded bg-rose-500 text-white cursor-pointer'
+            : 'font-mono text-[11px] font-bold px-2.5 py-1 rounded bg-emerald-400 text-[#06110e] cursor-pointer';
+        }
+        if (visionBox) visionBox.classList.toggle('hidden', !snap.visionActive);
+        panel.querySelectorAll('[data-dock-mode]').forEach((b) => {
+          const on = b.getAttribute('data-dock-mode') === snap.mode;
+          b.className = on
+            ? 'dock-m-btn py-1.5 px-1 rounded border border-brand-cyan/60 bg-brand-cyan/15 text-brand-white cursor-pointer'
+            : 'dock-m-btn py-1.5 px-1 rounded border border-brand-border bg-white/[0.02] text-brand-slate cursor-pointer';
+        });
+      });
+
+      hmi.on('telemetry', (tel) => {
+        if (!telLine) return;
+        const ttfa = tel.ttfaMs != null ? `${tel.ttfaMs}ms` : '<200ms';
+        telLine.textContent = `VAD ${tel.vadDb.toFixed(0)}dB · TTFA ${ttfa} · ${tel.ttsBackend.split(' ')[0]} · ${tel.estJoulesHeuristic}`;
+      });
+
+      hmi.on('interim', ({ text }) => {
+        if (!interimEl) return;
+        interimEl.textContent = text ? `"${text}"` : '';
+        interimEl.classList.toggle('hidden', !text);
+      });
+
+      hmi.on('vision-frame', (snap) => {
+        if (visionMeta && snap?.metrics) {
+          visionMeta.textContent = `${snap.metrics.width}×${snap.metrics.height} · Edges ${snap.metrics.edgeDensityPct}%`;
+        }
+      });
+
+      hmi.on('stage', (st) => {
+        if (!dockOpen) return;
+        if (stageDetails) stageDetails.open = true;
+        if (stageTitle) stageTitle.textContent = `🎬 ${st.shortTitle} · ${st.clip}`;
+        if (st.kind === 'living') {
+          stageVideo?.classList.add('hidden');
+          stageVideo?.pause();
+          stageIframe?.classList.remove('hidden');
+          if (stageIframe && stageIframe.getAttribute('src') !== st.url) stageIframe.src = st.url;
+        } else {
+          stageIframe?.classList.add('hidden');
+          stageVideo?.classList.remove('hidden');
+          if (stageVideo && stageVideo.getAttribute('src') !== st.url) {
+            stageVideo.poster = st.poster || '';
+            stageVideo.src = st.url;
+            stageVideo.muted = true;
+            stageVideo.play().catch(() => {});
+          }
+        }
+      });
+
+      hmi.on('turn', (turn) => {
+        if (!transcriptEl) return;
+        const item = document.createElement('div');
+        if (turn.role === 'user') {
+          item.className = 'p-2 rounded-lg border border-brand-cyan/30 bg-brand-cyan/[0.07] ml-4 font-body text-[11.5px] text-brand-white';
+          item.textContent = turn.text;
+        } else {
+          const r = turn.receipt || {};
+          item.className = 'p-2.5 rounded-lg border border-brand-border bg-white/[0.03] space-y-1';
+          item.innerHTML = `
+            <div class="flex items-center justify-between gap-1 font-mono text-[9.5px]">
+              <span class="text-brand-amber font-bold">${esc(turn.speakerName)}</span>
+              <span class="px-1.5 py-0.5 rounded border ${badgeClass(r.evidence_class)}">${esc(r.evidence_class || 'unmetered')} ${(r.claim_tags || []).map(esc).join('')}</span>
+            </div>
+            <div class="font-body text-[11.5px] text-brand-light leading-snug">${esc(turn.text)}</div>
+          `;
+        }
+        transcriptEl.appendChild(item);
+        transcriptEl.scrollTop = transcriptEl.scrollHeight;
+      });
+
+      document.getElementById('dock-close-btn')?.addEventListener('click', () => setDockOpen(false));
+      document.getElementById('dock-orb-btn')?.addEventListener('click', () => {
+        if (!hmi.callActive) hmi.startCall();
+        else if (hmi.state === 'speaking' || hmi.state === 'thinking') hmi.bargeIn('dock-orb');
+      });
+      callBtn?.addEventListener('click', () => {
+        if (hmi.callActive) hmi.endCall();
+        else hmi.startCall();
+      });
+      document.getElementById('dock-barge-btn')?.addEventListener('click', () => hmi.bargeIn('dock-btn'));
+      document.getElementById('dock-cam-btn')?.addEventListener('click', () => hmi.startCamera());
+      document.getElementById('dock-screen-btn')?.addEventListener('click', () => hmi.startScreenShare());
+      document.getElementById('dock-snap-btn')?.addEventListener('click', () => hmi.analyzeFrameNow());
+      document.getElementById('dock-stop-vis-btn')?.addEventListener('click', () => hmi.stopVision());
+
+      studySel?.addEventListener('change', () => hmi.setStudy(studySel.value));
+      voiceSel?.addEventListener('change', () => hmi.setVoice(voiceSel.value));
+
+      panel.querySelectorAll('[data-dock-mode]').forEach((b) => {
+        b.addEventListener('click', () => {
+          const m = b.getAttribute('data-dock-mode');
+          hmi.setMode(m);
+          if (m === 'debate') hmi.startDebate(hmi.activeStudyId);
+          else if (m === 'copilot') hmi.startWalkthrough(hmi.activeStudyId);
+          else if (m === 'vision' && !hmi.visionStream) hmi.startCamera();
+        });
+      });
+
+      panel.querySelectorAll('[data-dock-clip]').forEach((b) => {
+        b.addEventListener('click', () => {
+          hmi.openVisualStage({
+            studyId: hmi.activeStudyId,
+            clip: b.getAttribute('data-dock-clip'),
+          });
+        });
+      });
+
+      panel.querySelectorAll('[data-dock-prompt]').forEach((b) => {
+        b.addEventListener('click', () => {
+          const p = b.getAttribute('data-dock-prompt');
+          if (p) hmi.ask(p);
+        });
+      });
+
+      document.getElementById('dock-ask-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const inp = document.getElementById('dock-ask-input');
+        const val = inp?.value?.trim();
+        if (!val) return;
+        inp.value = '';
+        hmi.ask(val);
+      });
+    }
+
+    function setDockOpen(open) {
+      dockOpen = !!open;
+      if (dockOpen) mountPanelDom();
+      pill.setAttribute('aria-expanded', String(dockOpen));
+      pill.classList.toggle('hidden', dockOpen);
+      panel.classList.toggle('hidden', !dockOpen);
+      panel.classList.toggle('flex', dockOpen);
+    }
+
+    pill.addEventListener('click', () => setDockOpen(!dockOpen));
+
+    // Global shortcut: Cmd+Shift+V / Ctrl+Shift+V toggles dock; Escape closes drawer
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key.toLowerCase() === 'v') {
+        e.preventDefault();
+        setDockOpen(!dockOpen);
+      } else if (e.key === 'Escape' && dockOpen) {
+        setDockOpen(false);
+      }
+    });
+
+    // Wire PaperLayout "📞 Discuss Paper (Voice + Video)" action button
+    document.querySelectorAll('[data-openie-discuss-paper]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const pid = btn.getAttribute('data-openie-discuss-paper') || hmi.detectPageStudyId();
+        setDockOpen(true);
+        await hmi.loadCorpus();
+        if (pid) hmi.setStudy(pid);
+        hmi.startCall({ studyId: pid, mode: 'call' });
+      });
+    });
+
+    // Inject lightweight "🎙 Discuss section" / "🎙 Discuss" triggers on paper headings & figures
+    const prose = document.querySelector('.paper-prose');
+    if (prose) {
+      prose.querySelectorAll('h2[id]').forEach((h2) => {
+        if (h2.querySelector('.hmi-inline-discuss-btn')) return;
+        const headingLabel = (h2.textContent || '').trim();
+        const slug = h2.id;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'hmi-inline-discuss-btn';
+        btn.textContent = '🎙 Discuss section';
+        btn.setAttribute('aria-label', `Discuss section ${headingLabel} with Live Co-Pilot`);
+        btn.addEventListener('click', async (ev) => {
+          ev.preventDefault();
+          ev.stopPropagation();
+          setDockOpen(true);
+          await hmi.loadCorpus();
+          hmi.scrollToSection(slug);
+          hmi.ask(`Explain section "${headingLabel}" and how it fits this study's scope.`, { sectionSlug: slug });
+        });
+        h2.appendChild(btn);
+      });
+
+      prose.querySelectorAll('figure, .fig').forEach((fig, idx) => {
+        const cap = fig.querySelector('figcaption');
+        if (!cap || cap.querySelector('.hmi-inline-discuss-btn')) return;
+        const figId = fig.id || `paper-fig-${idx + 1}`;
+        fig.id = figId;
+        const capPreview = (cap.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 90);
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'hmi-inline-discuss-btn';
+        btn.textContent = '🎙 Discuss figure';
+        btn.addEventListener('click', async (ev) => {
+          ev.preventDefault();
+          setDockOpen(true);
+          await hmi.loadCorpus();
+          hmi.scrollToSection(figId);
+          hmi.ask(`Walk me through this figure (${capPreview}) and its telemetry class.`, { sectionSlug: figId });
+        });
+        cap.appendChild(btn);
+      });
+    }
+  })();
+</script>

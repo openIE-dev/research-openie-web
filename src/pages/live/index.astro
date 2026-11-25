@@ -1,0 +1,1113 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import tvCatalog from '../../data/tv-catalog.json';
+
+const initialStudies = (tvCatalog.studies as any[]).map((s) => ({
+  id: s.id,
+  short_title: s.short_title,
+  category: s.category,
+}));
+
+const quickPrompts = [
+  {
+    label: '⚖️ Compare measured_j vs reported_j (28 studies)',
+    prompt: 'Compare measured_j vs reported_j across the 28 studies',
+  },
+  {
+    label: '🎬 Walk through Deterministic Null with video',
+    prompt: 'Walk me through Deterministic Null with video',
+  },
+  {
+    label: '🎙 Debate RCE-Compile 448.5x like a skeptic',
+    prompt: "Debate RCE-Compile's 448.5x claim like a skeptical reviewer",
+  },
+  {
+    label: '📷 Inspect my camera / screen',
+    prompt: 'Inspect my camera / screen',
+  },
+  {
+    label: '🧪 Fired falsifiers in Goal-Holding Agents',
+    prompt: 'Which falsifiers fired in Goal-Holding Agents and what failed to replicate?',
+  },
+  {
+    label: '🔌 KV260 11.43 nJ whole-SOM vs 98 pJ delta',
+    prompt: 'Explain KV260 11.43 nJ whole-SOM shunt readings vs the inconclusive 98 pJ seed delta in Metered Commit Gates',
+  },
+];
+---
+
+<Layout
+  title="OpenIE Research Live — Multimodal Voice Call, Vision & Co-Pilot Studio"
+  description="Full-duplex sovereign browser voice calls, live webcam and screen-share vision inspection, interactive paper walkthroughs, and dual-host skeptical debates across all 28 post-review OpenIE studies—with zero paid cloud APIs."
+>
+  <section class="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 pt-8 pb-20">
+    <!-- Studio Header -->
+    <div class="mb-5">
+      <div class="flex flex-wrap items-center gap-2.5 mb-3">
+        <span class="section-label">OpenIE Multimodal Studio · /live/</span>
+        <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-emerald-500/15 text-emerald-300 border border-emerald-400/35">
+          100% In-Browser WebGPU / WASM / WebAudio · Zero Paid APIs
+        </span>
+        <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-amber/15 text-brand-amber border border-brand-amber/35">
+          Signed Provenance · Self-Checked
+        </span>
+        <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/35">
+          measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered
+        </span>
+      </div>
+
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+        <div>
+          <h1 class="font-display text-3xl md:text-4xl font-bold tracking-tight text-brand-white">
+            Open<span class="text-brand-cyan">IE</span> Research <span class="text-emerald-400">Live</span>
+          </h1>
+          <p class="font-body text-sm md:text-base text-brand-slate max-w-3xl mt-1.5 leading-relaxed">
+            Talk hands-free with the Open Interface Engineering research corpus across all 28 post-review studies:
+            instant pickup (<code class="font-mono text-brand-cyan">&lt;80 ms</code> grounded retrieval +
+            <code class="font-mono text-brand-amber">&lt;100 ms</code> voice barge-in), 4 sovereign
+            <code class="font-mono text-brand-cyan">Kokoro-82M</code> neural voices, live camera &amp; screen vision,
+            synchronized visual proof films, and two-host skeptical debates.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 shrink-0">
+          <a
+            href="/tv/"
+            class="font-mono text-xs px-3 py-1.5 rounded-lg border border-brand-amber/40 text-brand-amber no-underline hover:bg-brand-amber/10 transition-colors"
+          >
+            Research TV (140 Films) →
+          </a>
+          <a
+            href="/radio/"
+            class="font-mono text-xs px-3 py-1.5 rounded-lg border border-brand-cyan/40 text-brand-cyan no-underline hover:bg-brand-cyan/10 transition-colors"
+          >
+            Research Radio (16 WAI1) →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Browser Compute Telemetry Strip -->
+    <div
+      id="live-telemetry-strip"
+      role="status"
+      aria-live="off"
+      class="glass-card px-4 py-2.5 mb-5 flex flex-wrap items-center justify-between gap-3 border border-brand-cyan/25 bg-[#0b101b]/80"
+    >
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-1.5 font-mono text-[11px]">
+        <span class="inline-flex items-center gap-1.5 text-brand-light">
+          <span id="tel-vad-dot" class="inline-block w-2 h-2 rounded-full bg-brand-gray transition-colors"></span>
+          VAD: <strong id="tel-vad-db" class="text-brand-cyan">-60.0 dB</strong>
+        </span>
+        <span class="text-brand-light">
+          TTFA: <strong id="tel-ttfa" class="text-brand-amber">&lt;200 ms ready</strong>
+        </span>
+        <span class="text-brand-light">
+          TTS: <strong id="tel-tts-backend" class="text-emerald-300">Instant WebSpeech · Kokoro-82M Ready on Demand</strong>
+        </span>
+        <span class="text-brand-light">
+          STT: <strong id="tel-stt-backend" class="text-brand-cyan">WebSpeech Interim</strong>
+        </span>
+      </div>
+      <div class="font-mono text-[10.5px] px-2.5 py-1 rounded bg-brand-amber/10 border border-brand-amber/30 text-brand-amber">
+        <span id="tel-est-j">0.000 est_j (browser heuristic — never summed with measured_j)</span>
+      </div>
+    </div>
+
+    <!-- 4 Interactive HMI Mode Switcher -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 mb-6" role="tablist" aria-label="Multimodal Studio Modes">
+      <button
+        type="button"
+        role="tab"
+        aria-selected="true"
+        data-mode-btn="call"
+        class="hmi-mode-btn hmi-mode-active glass-card p-3.5 text-left cursor-pointer transition-all"
+      >
+        <div class="font-mono text-xs font-bold text-brand-white flex items-center justify-between">
+          <span>📞 Live Call</span>
+          <span class="text-[10px] text-emerald-300">Full-Duplex</span>
+        </div>
+        <div class="font-body text-[11.5px] text-brand-slate mt-1">
+          Hands-free spoken Q&amp;A with &lt;100 ms voice barge-in across 28 studies.
+        </div>
+      </button>
+
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        data-mode-btn="vision"
+        class="hmi-mode-btn glass-card p-3.5 text-left cursor-pointer transition-all"
+      >
+        <div class="font-mono text-xs font-bold text-brand-white flex items-center justify-between">
+          <span>📹 Camera &amp; Screen Vision</span>
+          <span class="text-[10px] text-brand-cyan">On-Device VLM</span>
+        </div>
+        <div class="font-body text-[11.5px] text-brand-slate mt-1">
+          Hold up diagrams, printed equations, or hardware, or share a window for spoken inspection.
+        </div>
+      </button>
+
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        data-mode-btn="copilot"
+        class="hmi-mode-btn glass-card p-3.5 text-left cursor-pointer transition-all"
+      >
+        <div class="font-mono text-xs font-bold text-brand-white flex items-center justify-between">
+          <span>🧭 Co-Pilot Walkthrough</span>
+          <span class="text-[10px] text-brand-amber">Film + Sim</span>
+        </div>
+        <div class="font-body text-[11.5px] text-brand-slate mt-1">
+          Guided 3-beat tour cueing 15s/45s Research TV proof clips and /living/ simulators.
+        </div>
+      </button>
+
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        data-mode-btn="debate"
+        class="hmi-mode-btn glass-card p-3.5 text-left cursor-pointer transition-all"
+      >
+        <div class="font-mono text-xs font-bold text-brand-white flex items-center justify-between">
+          <span>🎙 Dual-Host Debate</span>
+          <span class="text-[10px] text-indigo-300">2 Voices</span>
+        </div>
+        <div class="font-body text-[11.5px] text-brand-slate mt-1">
+          Systems Lead vs Outside-Review Skeptic debate live—jump in at any moment.
+        </div>
+      </button>
+    </div>
+
+    <!-- Main 3-Column Studio Workspace -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <!-- LEFT COLUMN: Study Selector, Voice Personas & Sovereign Neural Engine Drawer -->
+      <div class="lg:col-span-3 space-y-4">
+        <!-- Study Selector Card -->
+        <div class="glass-card p-4">
+          <label for="live-study-select" class="block font-mono text-[11px] uppercase tracking-wider text-brand-amber mb-2">
+            Active Study (All 28 Post-Review Cards)
+          </label>
+          <select
+            id="live-study-select"
+            class="w-full font-mono text-xs px-3 py-2 rounded-lg bg-[#0b1020] border border-brand-border text-brand-white focus:border-brand-amber focus:outline-none"
+          >
+            {initialStudies.map((s) => (
+              <option value={s.id} selected={s.id === 'communication-avalanche'}>
+                {s.short_title} ({s.category})
+              </option>
+            ))}
+          </select>
+
+          <div id="live-study-card" class="mt-3 pt-3 border-t border-brand-border space-y-2">
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span
+                id="card-evidence-pill"
+                class="px-2 py-0.5 rounded font-mono text-[10.5px] font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-400/40"
+              >
+                measured_j
+              </span>
+              <span
+                id="card-claim-tags"
+                class="px-2 py-0.5 rounded font-mono text-[10.5px] bg-white/5 text-brand-cyan border border-brand-border"
+              >
+                [T] [E] [M] [S]
+              </span>
+            </div>
+            <div class="font-mono text-[10px] text-brand-gray">
+              Signed Provenance · Self-Checked
+            </div>
+            <p id="card-headline-metric" class="font-mono text-[11.5px] text-brand-amber leading-snug m-0">
+              Loading post-review study card...
+            </p>
+            <div class="pt-1 flex flex-wrap gap-1.5 font-mono text-[11px]">
+              <a
+                id="card-link-paper"
+                href="/papers/communication-avalanche/"
+                class="px-2.5 py-1 rounded bg-brand-amber text-brand-dark font-semibold no-underline hover:opacity-90"
+              >
+                Paper →
+              </a>
+              <a
+                id="card-link-living"
+                href="/living/communication-avalanche/"
+                class="px-2.5 py-1 rounded border border-brand-cyan/40 text-brand-cyan no-underline hover:bg-brand-cyan/10"
+              >
+                /living/
+              </a>
+              <a
+                id="card-link-pdf"
+                href="/pdfs/communication-avalanche.pdf"
+                class="px-2.5 py-1 rounded border border-brand-border text-brand-light no-underline hover:border-brand-amber"
+              >
+                PDF
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Voice Persona Selector (4 Neural Kokoro Voices) -->
+        <div class="glass-card p-4">
+          <div class="flex items-center justify-between mb-2.5">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-brand-cyan">
+              Kokoro-82M Voice Persona
+            </span>
+            <select
+              id="live-speed-select"
+              aria-label="Speech playback rate"
+              class="font-mono text-[11px] px-2 py-0.5 rounded bg-[#0b1020] border border-brand-border text-brand-light"
+            >
+              <option value="0.92">0.92x</option>
+              <option value="1" selected>1.0x</option>
+              <option value="1.1">1.1x</option>
+              <option value="1.2">1.2x</option>
+            </select>
+          </div>
+          <div class="grid grid-cols-2 gap-2" role="radiogroup" aria-label="Select neural voice persona">
+            <button
+              type="button"
+              data-voice-btn="af_heart"
+              class="hmi-voice-btn hmi-voice-active p-2.5 rounded-lg border border-brand-border bg-white/[0.02] text-left cursor-pointer transition-all"
+            >
+              <div class="font-mono text-xs font-bold text-brand-amber">Heart</div>
+              <div class="font-body text-[10.5px] text-brand-slate">Systems Host · US</div>
+            </button>
+            <button
+              type="button"
+              data-voice-btn="bm_george"
+              class="hmi-voice-btn p-2.5 rounded-lg border border-brand-border bg-white/[0.02] text-left cursor-pointer transition-all"
+            >
+              <div class="font-mono text-xs font-bold text-brand-cyan">George</div>
+              <div class="font-body text-[10.5px] text-brand-slate">Review Skeptic · UK</div>
+            </button>
+            <button
+              type="button"
+              data-voice-btn="af_bella"
+              class="hmi-voice-btn p-2.5 rounded-lg border border-brand-border bg-white/[0.02] text-left cursor-pointer transition-all"
+            >
+              <div class="font-mono text-xs font-bold text-emerald-300">Bella</div>
+              <div class="font-body text-[10.5px] text-brand-slate">Co-Pilot Guide · US</div>
+            </button>
+            <button
+              type="button"
+              data-voice-btn="am_adam"
+              class="hmi-voice-btn p-2.5 rounded-lg border border-brand-border bg-white/[0.02] text-left cursor-pointer transition-all"
+            >
+              <div class="font-mono text-xs font-bold text-indigo-300">Adam</div>
+              <div class="font-body text-[10.5px] text-brand-slate">Hardware &amp; RTL · US</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Sovereign Neural Engine Drawer -->
+        <details class="glass-card p-4 group" open>
+          <summary class="font-mono text-[11px] uppercase tracking-wider text-emerald-300 cursor-pointer list-none flex items-center justify-between">
+            <span>⚡ Sovereign Neural Engines</span>
+            <span class="text-brand-gray group-open:rotate-180 transition-transform">▾</span>
+          </summary>
+          <div class="mt-3 pt-3 border-t border-brand-border space-y-3 font-mono text-[11px]">
+            <!-- Kokoro-82M TTS -->
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1">
+                <span class="text-brand-light">Kokoro-82M ONNX (4 Voices)</span>
+                <button
+                  id="btn-warm-kokoro"
+                  type="button"
+                  class="px-2 py-0.5 rounded border border-brand-amber/40 text-brand-amber bg-brand-amber/10 hover:bg-brand-amber/20 cursor-pointer text-[10px]"
+                >
+                  Warm Up
+                </button>
+              </div>
+              <div class="w-full h-1.5 rounded bg-white/5 overflow-hidden">
+                <div id="bar-kokoro" class="h-full bg-brand-amber transition-all duration-300" style="width: 0%"></div>
+              </div>
+              <div id="status-kokoro" class="text-[10px] text-brand-gray mt-0.5">
+                Auto-warms on Turn 1 (zero cold-wait silence)
+              </div>
+            </div>
+
+            <!-- Whisper-Tiny.en ONNX STT -->
+            <div>
+              <label class="flex items-center justify-between gap-2 cursor-pointer">
+                <span class="text-brand-light">Neural Whisper ONNX STT</span>
+                <input id="toggle-whisper-stt" type="checkbox" class="accent-emerald-400 cursor-pointer" />
+              </label>
+              <div class="w-full h-1.5 rounded bg-white/5 overflow-hidden mt-1">
+                <div id="bar-whisper" class="h-full bg-brand-cyan transition-all duration-300" style="width: 0%"></div>
+              </div>
+              <div id="status-whisper" class="text-[10px] text-brand-gray mt-0.5">
+                onnx-community/whisper-tiny.en (q8 WASM/WebGPU)
+              </div>
+            </div>
+
+            <!-- Vision-Language Model -->
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1">
+                <span class="text-brand-light">Vision VLM (SmolVLM / ViT)</span>
+                <button
+                  id="btn-warm-vision"
+                  type="button"
+                  class="px-2 py-0.5 rounded border border-brand-cyan/40 text-brand-cyan bg-brand-cyan/10 hover:bg-brand-cyan/20 cursor-pointer text-[10px]"
+                >
+                  Warm Up
+                </button>
+              </div>
+              <div class="w-full h-1.5 rounded bg-white/5 overflow-hidden">
+                <div id="bar-vision" class="h-full bg-emerald-400 transition-all duration-300" style="width: 0%"></div>
+              </div>
+              <div id="status-vision" class="text-[10px] text-brand-gray mt-0.5">
+                Instant Canvas2D metrics + on-demand ONNX VLM
+              </div>
+            </div>
+
+            <!-- Opt-In WebGPU LLM -->
+            <div>
+              <label class="flex items-center justify-between gap-2 cursor-pointer">
+                <span class="text-brand-light">⚡ Deep Neural LLM (Opt-In)</span>
+                <input id="toggle-deep-llm" type="checkbox" class="accent-amber-400 cursor-pointer" />
+              </label>
+              <div class="w-full h-1.5 rounded bg-white/5 overflow-hidden mt-1">
+                <div id="bar-llm" class="h-full bg-indigo-400 transition-all duration-300" style="width: 0%"></div>
+              </div>
+              <div id="status-llm" class="text-[10px] text-brand-gray mt-0.5">
+                Grounded &lt;80 ms BM25 active · optional SmolLM2-360M
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- CENTER COLUMN: 60fps Harmonic Plasma Orb + PiP Camera/Screen Viewfinder + Visual Proof Stage -->
+      <div class="lg:col-span-5 space-y-4">
+        <!-- Harmonic Plasma Orb Deck -->
+        <div class="glass-card p-5 relative overflow-hidden">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span
+              id="live-state-pill"
+              class="px-2.5 py-1 rounded-full font-mono text-[10.5px] font-semibold bg-white/5 text-brand-light border border-brand-border"
+            >
+              IDLE · READY TO CONNECT
+            </span>
+            <span class="font-mono text-[10.5px] text-brand-gray">
+              Tap Orb or press <kbd class="px-1.5 py-0.5 rounded bg-white/5 text-brand-light">Space</kbd> to Barge In
+            </span>
+          </div>
+
+          <!-- Central 60fps Canvas2D Orb + Floating PiP Camera/Screen Viewfinder -->
+          <div class="relative flex flex-col items-center justify-center py-2">
+            <button
+              id="live-orb-trigger"
+              type="button"
+              aria-label="Start live voice call or interrupt active speech"
+              class="relative w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-transparent border-none cursor-pointer flex items-center justify-center focus:outline-none"
+            >
+              <canvas id="live-orb-canvas" class="w-full h-full block"></canvas>
+            </button>
+
+            <!-- Live Interim Caption Ribbon -->
+            <div
+              id="live-interim-banner"
+              class="hidden mt-2 px-3.5 py-1.5 rounded-full bg-brand-cyan/15 border border-brand-cyan/40 font-mono text-xs text-brand-cyan max-w-full truncate"
+            ></div>
+
+            <!-- Live PiP Camera / Screen Viewfinder -->
+            <div
+              id="live-vision-pip"
+              class="hidden w-full mt-3 rounded-xl overflow-hidden border border-emerald-400/45 bg-[#070b14] shadow-2xl"
+            >
+              <div class="px-3 py-1.5 bg-emerald-500/10 border-b border-emerald-400/30 flex items-center justify-between gap-2 font-mono text-[10.5px]">
+                <span id="vision-source-label" class="text-emerald-300 font-semibold">
+                  📷 Live Camera Feed Active
+                </span>
+                <div class="flex items-center gap-1.5">
+                  <button
+                    id="btn-flip-cam"
+                    type="button"
+                    class="px-2 py-0.5 rounded border border-brand-border text-brand-light hover:border-brand-cyan cursor-pointer bg-transparent"
+                  >
+                    🔄 Flip
+                  </button>
+                  <button
+                    id="btn-stop-vision"
+                    type="button"
+                    class="px-2 py-0.5 rounded border border-rose-400/40 text-rose-300 hover:bg-rose-500/15 cursor-pointer bg-transparent"
+                  >
+                    ✕ Stop
+                  </button>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 p-3 items-center">
+                <div class="sm:col-span-7 rounded-lg overflow-hidden bg-black aspect-video border border-brand-border">
+                  <video
+                    id="live-vision-video"
+                    autoplay
+                    muted
+                    playsinline
+                    class="w-full h-full object-cover"
+                  ></video>
+                </div>
+                <div class="sm:col-span-5 font-mono text-[10.5px] space-y-1.5 text-brand-slate">
+                  <div class="text-brand-white font-semibold">Frame Telemetry</div>
+                  <div id="vision-metrics-line">Awaiting keyframe...</div>
+                  <div id="vision-scene-line" class="text-brand-cyan"></div>
+                  <div id="vision-vlm-caption" class="text-brand-amber italic"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Primary Call, Mic, Barge-In & Vision Action Bar -->
+          <div class="mt-3 pt-3 border-t border-brand-border flex flex-wrap items-center justify-center gap-2">
+            <button
+              id="btn-call-toggle"
+              type="button"
+              class="font-mono text-xs font-bold px-4 py-2.5 rounded-lg bg-emerald-400 text-[#06110e] hover:opacity-90 cursor-pointer transition-all shadow-lg"
+            >
+              📞 Start Live Call
+            </button>
+            <button
+              id="btn-mute-toggle"
+              type="button"
+              class="font-mono text-xs px-3 py-2.5 rounded-lg border border-brand-border text-brand-light hover:border-brand-amber cursor-pointer bg-white/[0.02] transition-all"
+            >
+              🎤 Mic On
+            </button>
+            <button
+              id="btn-barge-in"
+              type="button"
+              class="font-mono text-xs px-3 py-2.5 rounded-lg border border-brand-amber/45 text-brand-amber bg-brand-amber/10 hover:bg-brand-amber/20 cursor-pointer transition-all"
+            >
+              ✋ Jump In
+            </button>
+            <button
+              id="btn-start-cam"
+              type="button"
+              class="font-mono text-xs px-3 py-2.5 rounded-lg border border-brand-cyan/40 text-brand-cyan bg-brand-cyan/10 hover:bg-brand-cyan/20 cursor-pointer transition-all"
+            >
+              📷 Camera
+            </button>
+            <button
+              id="btn-start-screen"
+              type="button"
+              class="font-mono text-xs px-3 py-2.5 rounded-lg border border-brand-border text-brand-light hover:border-brand-cyan cursor-pointer bg-white/[0.02] transition-all"
+            >
+              🖥 Screen
+            </button>
+            <button
+              id="btn-analyze-frame"
+              type="button"
+              class="font-mono text-xs px-3 py-2.5 rounded-lg border border-emerald-400/40 text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 cursor-pointer transition-all"
+            >
+              📸 Analyze Frame
+            </button>
+          </div>
+        </div>
+
+        <!-- Inline Visual Proof Stage (15s / 45s / 90s / 9:16 TikTok / /living/ Simulator) -->
+        <div class="glass-card p-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-brand-border">
+            <div>
+              <div class="font-mono text-xs font-bold text-brand-white">
+                Inline Visual Proof Stage
+              </div>
+              <div id="stage-subtitle" class="font-mono text-[10.5px] text-brand-gray">
+                Synchronized Research TV films &amp; interactive /living/ instruments (audio-ducked during speech)
+              </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-1.5" role="group" aria-label="Visual proof asset selector">
+              <button
+                type="button"
+                data-stage-clip="15s"
+                class="hmi-stage-btn hmi-stage-active font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-light cursor-pointer"
+              >
+                15s
+              </button>
+              <button
+                type="button"
+                data-stage-clip="45s"
+                class="hmi-stage-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-light cursor-pointer"
+              >
+                45s
+              </button>
+              <button
+                type="button"
+                data-stage-clip="90s"
+                class="hmi-stage-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-light cursor-pointer"
+              >
+                90s
+              </button>
+              <button
+                type="button"
+                data-stage-clip="tiktok"
+                class="hmi-stage-btn font-mono text-[11px] px-2.5 py-1 rounded border border-emerald-400/40 text-emerald-300 cursor-pointer"
+              >
+                9:16
+              </button>
+              <button
+                type="button"
+                data-stage-clip="living"
+                class="hmi-stage-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-cyan/40 text-brand-cyan cursor-pointer"
+              >
+                /living/
+              </button>
+            </div>
+          </div>
+
+          <div
+            id="stage-video-wrap"
+            class="rounded-xl overflow-hidden border border-brand-border bg-[#070b14] aspect-video relative"
+          >
+            <video
+              id="live-stage-video"
+              controls
+              playsinline
+              muted
+              preload="metadata"
+              poster="/media/tv/posters/communication-avalanche-poster.jpg"
+              class="w-full h-full object-contain bg-[#070b14]"
+            ></video>
+          </div>
+
+          <div
+            id="stage-iframe-wrap"
+            class="hidden rounded-xl overflow-hidden border border-brand-cyan/35 bg-[#070b14] h-[340px]"
+          >
+            <iframe
+              id="live-stage-iframe"
+              title="Interactive living figure simulator"
+              class="w-full h-full border-0 bg-[#070b14]"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Live Rolling Transcript with Epistemic Badges & Quick-Prompt Chips -->
+      <div class="lg:col-span-4 glass-card p-4 flex flex-col h-[700px]">
+        <div class="flex items-center justify-between pb-3 mb-3 border-b border-brand-border">
+          <div>
+            <div class="font-mono text-xs font-bold text-brand-white">
+              Live Grounded Transcript &amp; Epistemic Receipts
+            </div>
+            <div class="font-mono text-[10px] text-brand-gray">
+              Every study turn carries its post-review evidence class &amp; claim tags
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button
+              id="btn-export-transcript"
+              type="button"
+              class="font-mono text-[10.5px] px-2 py-1 rounded border border-brand-border text-brand-slate hover:text-brand-amber cursor-pointer bg-transparent"
+            >
+              Export .md
+            </button>
+            <button
+              id="btn-clear-transcript"
+              type="button"
+              class="font-mono text-[10.5px] px-2 py-1 rounded border border-brand-border text-brand-slate hover:text-brand-white cursor-pointer bg-transparent"
+            >
+              Clear
+            </button>
+          </div>
+        </div>
+
+        <!-- Rolling Messages -->
+        <div
+          id="live-transcript-list"
+          role="log"
+          aria-live="polite"
+          class="flex-1 overflow-y-auto space-y-3 pr-1"
+        >
+          <div class="p-3.5 rounded-xl border border-brand-border bg-white/[0.02] text-xs text-brand-slate leading-relaxed">
+            <div class="font-mono text-[10.5px] text-brand-cyan mb-1">
+              Studio Ready · Zero Cold-Wait Architecture
+            </div>
+            Click <strong>📞 Start Live Call</strong>, tap the plasma orb, launch a <strong>🎙 Dual-Host Debate</strong>,
+            or pick any prompt chip below. Every response preserves the 4 orthogonal evidence classes
+            (<code class="font-mono text-emerald-300">measured_j</code>,
+            <code class="font-mono text-brand-cyan">reported_j</code>,
+            <code class="font-mono text-brand-amber">est_j</code>,
+            <code class="font-mono text-brand-slate">unmetered</code>) under
+            <strong>Signed Provenance · Self-Checked</strong>.
+          </div>
+        </div>
+
+        <!-- Quick-Prompt Chips -->
+        <div class="pt-3 mt-2 border-t border-brand-border">
+          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray mb-1.5">
+            Quick Prompts
+          </div>
+          <div class="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto pb-1">
+            {quickPrompts.map((qp) => (
+              <button
+                type="button"
+                data-quick-prompt={qp.prompt}
+                class="font-mono text-[10.5px] px-2.5 py-1 rounded-full border border-brand-border bg-white/[0.03] text-brand-light hover:border-brand-amber hover:text-brand-amber cursor-pointer transition-colors text-left"
+              >
+                {qp.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <!-- Text + Voice Prompt Composer -->
+        <form id="live-ask-form" class="mt-2.5 flex items-center gap-2">
+          <input
+            id="live-ask-input"
+            type="text"
+            placeholder="Ask any study, cue video, or challenge the skeptic..."
+            aria-label="Ask the OpenIE Multimodal Studio"
+            class="flex-1 font-body text-xs px-3 py-2.5 rounded-lg bg-[#0b1020] border border-brand-border text-brand-white placeholder:text-brand-gray focus:border-brand-amber focus:outline-none"
+          />
+          <button
+            type="submit"
+            class="font-mono text-xs font-semibold px-3.5 py-2.5 rounded-lg bg-brand-amber text-brand-dark hover:opacity-90 cursor-pointer shrink-0"
+          >
+            Send
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <style is:global>
+    .hmi-mode-active {
+      border-color: rgba(0, 212, 170, 0.7) !important;
+      background: rgba(0, 212, 170, 0.09) !important;
+      box-shadow: 0 0 0 1px rgba(0, 212, 170, 0.22);
+    }
+    .hmi-voice-active {
+      border-color: rgba(245, 158, 11, 0.75) !important;
+      background: rgba(245, 158, 11, 0.12) !important;
+    }
+    .hmi-stage-active {
+      border-color: #f59e0b !important;
+      background: rgba(245, 158, 11, 0.16) !important;
+      color: #ffffff !important;
+    }
+  </style>
+
+  <script type="module" is:inline>
+    import { getOpenIELiveHMI } from '/live/hmi-engine.js';
+
+    const hmi = getOpenIELiveHMI();
+    if (hmi) {
+      const orbCanvas = document.getElementById('live-orb-canvas');
+      const orbTrigger = document.getElementById('live-orb-trigger');
+      const statePill = document.getElementById('live-state-pill');
+      const interimBanner = document.getElementById('live-interim-banner');
+      const studySelect = document.getElementById('live-study-select');
+      const speedSelect = document.getElementById('live-speed-select');
+      const callBtn = document.getElementById('btn-call-toggle');
+      const muteBtn = document.getElementById('btn-mute-toggle');
+      const bargeBtn = document.getElementById('btn-barge-in');
+      const startCamBtn = document.getElementById('btn-start-cam');
+      const flipCamBtn = document.getElementById('btn-flip-cam');
+      const startScreenBtn = document.getElementById('btn-start-screen');
+      const stopVisionBtn = document.getElementById('btn-stop-vision');
+      const analyzeFrameBtn = document.getElementById('btn-analyze-frame');
+      const visionPip = document.getElementById('live-vision-pip');
+      const visionVideo = document.getElementById('live-vision-video');
+      const visionSourceLabel = document.getElementById('vision-source-label');
+      const visionMetricsLine = document.getElementById('vision-metrics-line');
+      const visionSceneLine = document.getElementById('vision-scene-line');
+      const visionVlmCaption = document.getElementById('vision-vlm-caption');
+
+      const stageVideoWrap = document.getElementById('stage-video-wrap');
+      const stageVideo = document.getElementById('live-stage-video');
+      const stageIframeWrap = document.getElementById('stage-iframe-wrap');
+      const stageIframe = document.getElementById('live-stage-iframe');
+      const stageSubtitle = document.getElementById('stage-subtitle');
+
+      const transcriptList = document.getElementById('live-transcript-list');
+      const askForm = document.getElementById('live-ask-form');
+      const askInput = document.getElementById('live-ask-input');
+
+      hmi.attachOrbCanvas(orbCanvas);
+      hmi.attachVisionVideo(visionVideo);
+
+      function esc(s) {
+        return String(s || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+      }
+
+      function badgeColors(evClass) {
+        if (evClass === 'measured_j') return 'bg-emerald-500/15 text-emerald-300 border-emerald-400/40';
+        if (evClass === 'reported_j') return 'bg-brand-cyan/15 text-brand-cyan border-brand-cyan/40';
+        if (evClass === 'est_j') return 'bg-brand-amber/15 text-brand-amber border-brand-amber/40';
+        return 'bg-white/5 text-brand-slate border-brand-border';
+      }
+
+      function syncStudyCard(study) {
+        if (!study) return;
+        const evPill = document.getElementById('card-evidence-pill');
+        const tagsPill = document.getElementById('card-claim-tags');
+        const metricEl = document.getElementById('card-headline-metric');
+        const linkPaper = document.getElementById('card-link-paper');
+        const linkLiving = document.getElementById('card-link-living');
+        const linkPdf = document.getElementById('card-link-pdf');
+
+        if (evPill) {
+          evPill.className = 'px-2 py-0.5 rounded font-mono text-[10.5px] font-semibold border ' + badgeColors(study.evidence_class);
+          evPill.textContent = study.evidence_class;
+        }
+        if (tagsPill) tagsPill.textContent = (study.claim_tags || []).join(' ');
+        if (metricEl) metricEl.textContent = study.headline_metric;
+        if (linkPaper) linkPaper.href = study.path;
+        if (linkLiving) linkLiving.href = study.livingPath;
+        if (linkPdf) linkPdf.href = study.pdfPath;
+      }
+
+      hmi.on('corpus-ready', ({ corpus }) => {
+        if (studySelect && corpus?.studies?.length) {
+          const cur = hmi.activeStudyId;
+          studySelect.innerHTML = corpus.studies
+            .map(
+              (s) =>
+                `<option value="${esc(s.id)}" ${s.id === cur ? 'selected' : ''}>${esc(s.short_title)} · [${esc(s.evidence_class)}]</option>`
+            )
+            .join('');
+        }
+        const active = hmi.studiesById.get(hmi.activeStudyId);
+        if (active) {
+          syncStudyCard(active);
+          hmi.openVisualStage({ studyId: active.id, clip: '15s' });
+        }
+      });
+
+      hmi.loadCorpus().catch(() => {});
+
+      hmi.on('state', (snap) => {
+        if (studySelect && studySelect.value !== snap.activeStudyId) {
+          studySelect.value = snap.activeStudyId;
+        }
+        if (snap.activeStudy) syncStudyCard(snap.activeStudy);
+
+        // Mode buttons
+        document.querySelectorAll('[data-mode-btn]').forEach((btn) => {
+          const active = btn.getAttribute('data-mode-btn') === snap.mode;
+          btn.classList.toggle('hmi-mode-active', active);
+          btn.setAttribute('aria-selected', String(active));
+        });
+
+        // Voice buttons
+        document.querySelectorAll('[data-voice-btn]').forEach((btn) => {
+          btn.classList.toggle('hmi-voice-active', btn.getAttribute('data-voice-btn') === snap.voice);
+        });
+
+        // State pill & Call button
+        const labels = {
+          idle: snap.callActive ? 'CONNECTED · STANDBY' : 'IDLE · CLICK START OR TAP ORB',
+          listening: snap.micMuted ? 'MIC MUTED · TEXT READY' : 'LISTENING · FULL-DUPLEX VAD ACTIVE',
+          thinking: 'THINKING · GROUNDING POST-REVIEW CARD',
+          speaking: 'SPEAKING · SPEAK OR TAP ORB TO BARGE IN (<100 ms)',
+        };
+        if (statePill) statePill.textContent = labels[snap.state] || snap.state.toUpperCase();
+
+        if (callBtn) {
+          callBtn.textContent = snap.callActive ? '⏹ End Call' : '📞 Start Live Call';
+          callBtn.className = snap.callActive
+            ? 'font-mono text-xs font-bold px-4 py-2.5 rounded-lg bg-rose-500 text-white hover:opacity-90 cursor-pointer transition-all shadow-lg'
+            : 'font-mono text-xs font-bold px-4 py-2.5 rounded-lg bg-emerald-400 text-[#06110e] hover:opacity-90 cursor-pointer transition-all shadow-lg';
+        }
+        if (muteBtn) {
+          muteBtn.textContent = snap.micMuted ? '🔇 Unmute Mic' : '🎤 Mic On';
+        }
+        if (visionPip) {
+          visionPip.classList.toggle('hidden', !snap.visionActive);
+        }
+        if (visionSourceLabel && snap.visionActive) {
+          visionSourceLabel.textContent =
+            snap.visionSource === 'screen'
+              ? '🖥 Live Screen Share Active (0.75 fps telemetry)'
+              : `📷 Live Camera (${snap.cameraFacing}) Active`;
+        }
+      });
+
+      hmi.on('telemetry', (tel) => {
+        const vadEl = document.getElementById('tel-vad-db');
+        const vadDot = document.getElementById('tel-vad-dot');
+        const ttfaEl = document.getElementById('tel-ttfa');
+        const ttsEl = document.getElementById('tel-tts-backend');
+        const sttEl = document.getElementById('tel-stt-backend');
+        const estEl = document.getElementById('tel-est-j');
+
+        if (vadEl) vadEl.textContent = `${tel.vadDb.toFixed(1)} dB`;
+        if (vadDot) {
+          vadDot.className =
+            tel.vadDb > tel.noiseFloorDb + 10
+              ? 'inline-block w-2 h-2 rounded-full bg-emerald-400'
+              : 'inline-block w-2 h-2 rounded-full bg-brand-gray';
+        }
+        if (ttfaEl && tel.ttfaMs != null) ttfaEl.textContent = `${tel.ttfaMs} ms`;
+        if (ttsEl) ttsEl.textContent = tel.ttsBackend;
+        if (sttEl) sttEl.textContent = tel.sttBackend;
+        if (estEl) estEl.textContent = tel.estJoulesHeuristic;
+      });
+
+      hmi.on('interim', ({ text }) => {
+        if (!interimBanner) return;
+        interimBanner.textContent = text ? `🎙 "${text}"` : '';
+        interimBanner.classList.toggle('hidden', !text);
+      });
+
+      hmi.on('engine-progress', (ev) => {
+        const pct = ev.progress != null ? Math.min(100, Math.max(5, Math.round(ev.progress))) : ev.status === 'ready' ? 100 : 25;
+        if (ev.engine === 'kokoro-tts') {
+          const bar = document.getElementById('bar-kokoro');
+          const st = document.getElementById('status-kokoro');
+          if (bar) bar.style.width = `${pct}%`;
+          if (st) st.textContent = ev.status === 'ready' ? `Ready (${ev.info?.device || 'onnx'} ${ev.info?.dtype || ''})` : `${ev.status} ${ev.file || ''}`;
+        } else if (ev.engine === 'whisper-stt') {
+          const bar = document.getElementById('bar-whisper');
+          const st = document.getElementById('status-whisper');
+          if (bar) bar.style.width = `${pct}%`;
+          if (st) st.textContent = ev.status === 'ready' ? `Whisper ONNX Ready (${ev.info?.device || 'wasm'})` : `${ev.status} ${ev.file || ''}`;
+        } else if (ev.engine === 'vision-vlm') {
+          const bar = document.getElementById('bar-vision');
+          const st = document.getElementById('status-vision');
+          if (bar) bar.style.width = `${pct}%`;
+          if (st) st.textContent = ev.status === 'ready' ? `VLM Ready (${ev.info?.model?.split('/').pop() || 'ONNX'})` : `${ev.status} ${ev.file || ''}`;
+        } else if (ev.engine === 'webgpu-llm') {
+          const bar = document.getElementById('bar-llm');
+          const st = document.getElementById('status-llm');
+          if (bar) bar.style.width = `${pct}%`;
+          if (st) st.textContent = ev.status === 'ready' ? `Local LLM Ready (${ev.info?.device || 'webgpu'})` : `${ev.status} ${ev.file || ''}`;
+        }
+      });
+
+      hmi.on('vision-frame', (snap) => {
+        if (!snap?.metrics) return;
+        const m = snap.metrics;
+        if (visionMetricsLine) {
+          visionMetricsLine.textContent = `${m.width}×${m.height} · Luma ${m.meanLuma} · Contrast ${m.contrastRms} · Edges ${m.edgeDensityPct}% · Motion ${m.motionPct}%`;
+        }
+        if (visionSceneLine) visionSceneLine.textContent = m.sceneType;
+        if (visionVlmCaption) {
+          visionVlmCaption.textContent = snap.caption ? `VLM: "${snap.caption}"` : '';
+        }
+      });
+
+      hmi.on('stage', (st) => {
+        document.querySelectorAll('[data-stage-clip]').forEach((btn) => {
+          btn.classList.toggle('hmi-stage-active', btn.getAttribute('data-stage-clip') === st.clip);
+        });
+        if (stageSubtitle) {
+          stageSubtitle.textContent = `${st.shortTitle} — ${st.label}`;
+        }
+        if (st.kind === 'living') {
+          stageVideoWrap?.classList.add('hidden');
+          stageVideo?.pause();
+          stageIframeWrap?.classList.remove('hidden');
+          if (stageIframe && stageIframe.getAttribute('src') !== st.url) {
+            stageIframe.src = st.url;
+          }
+        } else {
+          stageIframeWrap?.classList.add('hidden');
+          stageVideoWrap?.classList.remove('hidden');
+          if (stageVideo) {
+            stageVideo.poster = st.poster || '';
+            if (stageVideo.getAttribute('src') !== st.url) {
+              stageVideo.src = st.url;
+              stageVideo.muted = true;
+              stageVideo.play().catch(() => {});
+            }
+          }
+        }
+      });
+
+      hmi.on('turn', (turn) => {
+        if (!transcriptList) return;
+        const div = document.createElement('div');
+        if (turn.role === 'user') {
+          div.className = 'p-3 rounded-xl border border-brand-cyan/30 bg-brand-cyan/[0.06] ml-6';
+          div.innerHTML = `
+            <div class="font-mono text-[10px] text-brand-cyan mb-1">${esc(turn.speakerName)} · ${esc(turn.speakerRole)}</div>
+            <div class="font-body text-xs text-brand-white leading-relaxed">${esc(turn.text)}</div>
+          `;
+        } else {
+          const r = turn.receipt || {};
+          div.className = 'p-3.5 rounded-xl border border-brand-border bg-white/[0.03] mr-3 space-y-2';
+          div.innerHTML = `
+            <div class="flex flex-wrap items-center justify-between gap-1.5">
+              <span class="font-mono text-[10.5px] font-bold text-brand-amber">${esc(turn.speakerName)} · <span class="text-brand-slate font-normal">${esc(turn.speakerRole)}</span></span>
+              <span class="px-2 py-0.5 rounded font-mono text-[10px] border ${badgeColors(r.evidence_class)}">${esc(r.evidence_class || 'unmetered')} ${(r.claim_tags || []).map(esc).join(' ')}</span>
+            </div>
+            <div class="font-body text-xs text-brand-light leading-relaxed">${esc(turn.text)}</div>
+            <div class="font-mono text-[9.5px] text-brand-gray">${esc(r.provenance || 'Signed Provenance · Self-Checked')} · ${esc(r.orthogonality || '')}</div>
+          `;
+          if (turn.actions && turn.actions.length) {
+            const actRow = document.createElement('div');
+            actRow.className = 'pt-1 flex flex-wrap gap-1.5';
+            turn.actions.forEach((a) => {
+              if (a.type === 'link') {
+                const linkEl = document.createElement('a');
+                linkEl.setAttribute('href', a.href);
+                linkEl.className = 'font-mono text-[10px] px-2 py-0.5 rounded border border-brand-border text-brand-cyan no-underline hover:border-brand-cyan';
+                linkEl.textContent = a.label;
+                actRow.appendChild(linkEl);
+              } else {
+                const actBtn = document.createElement('button');
+                actBtn.type = 'button';
+                actBtn.setAttribute('data-turn-stage', a.clip);
+                actBtn.setAttribute('data-turn-study', a.studyId);
+                actBtn.className = 'font-mono text-[10px] px-2 py-0.5 rounded border border-brand-border text-brand-amber hover:border-brand-amber bg-transparent cursor-pointer';
+                actBtn.textContent = a.label;
+                actRow.appendChild(actBtn);
+              }
+            });
+            div.appendChild(actRow);
+          }
+        }
+        transcriptList.appendChild(div);
+        transcriptList.scrollTop = transcriptList.scrollHeight;
+      });
+
+      hmi.on('error', ({ scope, message }) => {
+        if (!transcriptList) return;
+        const note = document.createElement('div');
+        note.className = 'p-2.5 rounded-lg border border-brand-amber/35 bg-brand-amber/10 font-mono text-[10.5px] text-brand-amber';
+        note.textContent = `[${scope}] ${message}`;
+        transcriptList.appendChild(note);
+        transcriptList.scrollTop = transcriptList.scrollHeight;
+      });
+
+      // Controls wiring
+      orbTrigger?.addEventListener('click', () => {
+        if (!hmi.callActive) hmi.startCall();
+        else if (hmi.state === 'speaking' || hmi.state === 'thinking') hmi.bargeIn('orb-tap');
+        else hmi.ask('Give me the post-review briefing and limitations for the active study.');
+      });
+
+      callBtn?.addEventListener('click', () => {
+        if (hmi.callActive) hmi.endCall();
+        else hmi.startCall();
+      });
+
+      muteBtn?.addEventListener('click', () => hmi.toggleMute());
+      bargeBtn?.addEventListener('click', () => {
+        hmi.bargeIn('jump-in-btn');
+        askInput?.focus();
+      });
+
+      startCamBtn?.addEventListener('click', () => {
+        hmi.setMode('vision');
+        hmi.startCamera();
+      });
+      flipCamBtn?.addEventListener('click', () => hmi.flipCamera());
+      startScreenBtn?.addEventListener('click', () => {
+        hmi.setMode('vision');
+        hmi.startScreenShare();
+      });
+      stopVisionBtn?.addEventListener('click', () => hmi.stopVision());
+      analyzeFrameBtn?.addEventListener('click', () => hmi.analyzeFrameNow());
+
+      studySelect?.addEventListener('change', () => {
+        hmi.setStudy(studySelect.value);
+      });
+      speedSelect?.addEventListener('change', () => {
+        hmi.setSpeed(Number(speedSelect.value));
+      });
+
+      document.querySelectorAll('[data-mode-btn]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const m = btn.getAttribute('data-mode-btn');
+          hmi.setMode(m);
+          if (m === 'debate') hmi.startDebate(hmi.activeStudyId);
+          else if (m === 'copilot') hmi.startWalkthrough(hmi.activeStudyId);
+          else if (m === 'vision' && !hmi.visionStream) hmi.startCamera();
+        });
+      });
+
+      document.querySelectorAll('[data-voice-btn]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          hmi.setVoice(btn.getAttribute('data-voice-btn'));
+        });
+      });
+
+      document.querySelectorAll('[data-stage-clip]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          hmi.openVisualStage({
+            studyId: hmi.activeStudyId,
+            clip: btn.getAttribute('data-stage-clip'),
+          });
+        });
+      });
+
+      document.querySelectorAll('[data-quick-prompt]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const p = btn.getAttribute('data-quick-prompt');
+          if (p) hmi.ask(p);
+        });
+      });
+
+      transcriptList?.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-turn-stage]');
+        if (!btn) return;
+        hmi.openVisualStage({
+          studyId: btn.getAttribute('data-turn-study') || hmi.activeStudyId,
+          clip: btn.getAttribute('data-turn-stage'),
+        });
+      });
+
+      askForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const val = askInput?.value?.trim();
+        if (!val) return;
+        askInput.value = '';
+        hmi.ask(val);
+      });
+
+      document.getElementById('btn-warm-kokoro')?.addEventListener('click', () => hmi.warmupKokoro());
+      document.getElementById('btn-warm-vision')?.addEventListener('click', () => hmi.warmupVision('auto'));
+      document.getElementById('toggle-whisper-stt')?.addEventListener('change', (e) => {
+        hmi.setForceWhisper(e.target.checked);
+      });
+      document.getElementById('toggle-deep-llm')?.addEventListener('change', (e) => {
+        hmi.setDeepLlm(e.target.checked);
+      });
+
+      document.getElementById('btn-clear-transcript')?.addEventListener('click', () => {
+        if (transcriptList) transcriptList.innerHTML = '';
+        hmi.transcript = [];
+      });
+
+      document.getElementById('btn-export-transcript')?.addEventListener('click', () => {
+        const lines = [
+          '# OpenIE Research Live — Grounded Session Transcript',
+          `Generated: ${new Date().toISOString()}`,
+          'Provenance: Signed Provenance · Self-Checked (measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered)',
+          '',
+          ...hmi.transcript.map((t) =>
+            t.role === 'user'
+              ? `### You (${t.speakerRole})\n${t.text}\n`
+              : `### ${t.speakerName} (${t.speakerRole}) [${t.receipt?.evidence_class || 'unmetered'} ${(t.receipt?.claim_tags || []).join(' ')}]\n${t.text}\n`
+          ),
+        ];
+        const blob = new Blob([lines.join('\n')], { type: 'text/markdown;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `openie-live-transcript-${hmi.activeStudyId}.md`;
+        a.click();
+      });
+
+      // Spacebar Barge-In when not typing inside an input/textarea/select
+      document.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' && !['INPUT', 'TEXTAREA', 'SELECT', 'VIDEO'].includes(document.activeElement?.tagName || '')) {
+          if (hmi.state === 'speaking' || hmi.state === 'thinking') {
+            e.preventDefault();
+            hmi.bargeIn('spacebar');
+          }
+        }
+      });
+
+      // Support ?mode=debate|copilot|vision&autostart=1 deep links
+      const urlParams = new URLSearchParams(window.location.search);
+      const qMode = urlParams.get('mode');
+      if (qMode) hmi.setMode(qMode);
+    }
+  </script>
+</Layout>

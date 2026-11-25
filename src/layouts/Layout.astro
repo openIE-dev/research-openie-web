@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import 'katex/dist/katex.min.css';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import LiveCallDock from '../components/live/LiveCallDock.astro';
 import { LANGS, NAV_EN } from '../i18n';
 import { studies } from '../data/studyList';
 
@@ -85,6 +86,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
         <a href="/living/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">{N.figures}</a>
         <a href="/tv/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-amber no-underline hover:text-brand-white transition-colors">TV</a>
         <a href="/radio/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-cyan no-underline hover:text-brand-white transition-colors">Radio</a>
+        <a href="/live/" class="font-body text-[13px] max-md:text-lg font-medium text-emerald-400 no-underline hover:text-brand-white transition-colors inline-flex items-center gap-1.5"><span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Live</a>
         <a href="/syndication/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Syndication</a>
         <a href="/tutorials/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Tutorials</a>
         <a href="/data/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Data</a>
@@ -127,6 +129,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
               <a href="/living/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Figures</a>
               <a href="/tv/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Research TV (140 films)</a>
               <a href="/radio/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Research Radio</a>
+              <a href="/live/" class="block font-body text-[12px] text-emerald-300 no-underline hover:text-brand-cyan transition-colors">Research Live (Voice &amp; Video)</a>
               <a href="/syndication/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Syndication (X · Medium · TikTok)</a>
               <a href="/blueprint/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Unsiloeing blueprint</a>
               <a href="/tutorials/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Interactive tutorials</a>
@@ -180,6 +183,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
         © Open Interface Engineering, Inc. Research, free to read, on how to use less energy.
       </div>
     </footer>
+
+    <LiveCallDock />
 
     <script>
       const btn = document.getElementById('mobile-menu-btn');
