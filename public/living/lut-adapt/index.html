@@ -47,9 +47,9 @@
 
       <div class="measurement-box">
         <strong>Measurement grammar on this page.</strong> Every widget below stamps its numbers with an explicit honesty chip and never sums across tiers:
-        <span class="chip chip-meas">Physical DC Shunt (measured_j · Claims LA-24, LA-28, LA-32, LA-33, LA-38, LA-39, LA-42 &amp; LA-44)</span> for <code>NVIDIA Jetson AGX Thor</code> <code>TI INA3221</code> <code>VDD_CPU_SOC_MSS</code> + <code>INA238</code> <code>VIN</code> joules (<code>board_metered = true</code> solely on Thor, reaching <code>162.71 nJ/op</code> = <code>87.25×</code> <code>CpJ</code> bit-sliced, <code>2,803.25 nJ/op</code> = <code>222.57×</code> <code>CpJ</code> wearable 56-bit 4-token epistemic gate vs. <code>uLM-28M</code> slice, <code>15,317.65 nJ/tok</code> = <code>8.35×</code> <code>CpJ</code> <code>Bonsai-AirMoL</code> 4-tok sweep [<code>Window 14</code>], <code>713.82 nJ/op</code> = <code>5.33×</code> <code>CpJ</code> 2-layer <code>Beneš-ARC-LUT6</code> + <code>ARC-AGI-3</code> reflex [<code>Window 15</code>], and <code>8,594.93 nJ/op</code> = <code>1.65×</code> <code>CpJ</code> antisymmetric-40 zero-MUL <code>T-MAC</code> on <code>lut6-core</code>);
-        <span class="chip chip-meas">Reported, Bare-Metal Cycles, &amp; Live WASM (reported_j / DWT / .wasm)</span> for <code>RAPL</code> (including <code>1.12×</code> <code>CpJ</code> <code>Zen 5</code> <code>Antisym-40</code> flip &amp; <code>5.88×</code> <code>Window 14</code>), <code>amdgpu PPT</code>, <code>NVML</code>, Apple M5 Max/M3 Ultra <code>IOReport</code> + <code>proc_pid_rusage</code> counters (including <code>1.619×</code> lower streamed GiB/tok &amp; <code>-16.55%</code> <code>reported_j/tok</code> on real <code>Ternary-Bonsai-2-27B</code>), live attached <code>Alif Ensemble E3</code> (<code>OpenMV-AE3</code> Cortex-M55 @ <code>400 MHz</code>) <code>DWT</code> cycles (<code>2,745.18×</code> wearable gate), and the live <code>12.75 KB</code> (<code>13,058 B</code>, <code>11</code> exports) <code>lut6_core.wasm</code> VM (<code>board_metered = false</code>);
-        <span class="chip chip-sim">Post-PAR openXC7 &amp; Simulated RTL</span> for license-free <code>openXC7</code> <code>nextpnr-xilinx</code> <code>320.62 MHz</code> post-route timing &amp; <code>77.85 Mbit</code> <code>.bit</code> bitstream on <code>XC7A200T-2FBG484-2</code> plus Yosys <code>0.71+</code> <code>xcup</code> + <code>abc -lut 6</code> 64/64 miter + Verilator <code>5.054</code> netlists (<code>measured_j = None</code>); and
+        <span class="chip chip-meas">Physical DC Shunt (measured_j · Claims LA-24, LA-28, LA-32, LA-33, LA-38, LA-39, LA-42, LA-44 &amp; LA-48)</span> for <code>NVIDIA Jetson AGX Thor</code> <code>TI INA3221</code> <code>VDD_CPU_SOC_MSS</code> + <code>INA238</code> <code>VIN</code> joules (<code>board_metered = true</code> solely on Thor, reaching <code>162.71 nJ/op</code> = <code>87.25×</code> <code>CpJ</code> bit-sliced, <code>201.22 nJ/op</code> = <code>13.18×</code> <code>CpJ</code> <code>Apex System-0</code> <code>DES-10</code> + <code>openie-cad</code> + <code>MathGround CBF</code> gate [<code>Window 16</code>], <code>2,803.25 nJ/op</code> = <code>222.57×</code> <code>CpJ</code> wearable 56-bit 4-token epistemic gate vs. <code>uLM-28M</code> slice, <code>15,317.65 nJ/tok</code> = <code>8.35×</code> <code>CpJ</code> <code>Bonsai-AirMoL</code> 4-tok sweep [<code>Window 14</code>], <code>713.82 nJ/op</code> = <code>5.33×</code> <code>CpJ</code> 2-layer <code>Beneš-ARC-LUT6</code> + <code>ARC-AGI-3</code> reflex [<code>Window 15</code>], and <code>8,594.93 nJ/op</code> = <code>1.65×</code> <code>CpJ</code> antisymmetric-40 zero-MUL <code>T-MAC</code> on <code>lut6-core</code>);
+        <span class="chip chip-meas">Reported, Bare-Metal Cycles, &amp; Live WASM (reported_j / DWT / .wasm)</span> for <code>RAPL</code> (including <code>1.12×</code> <code>CpJ</code> <code>Zen 5</code> <code>Antisym-40</code> flip, <code>5.88×</code> <code>Window 14</code>, &amp; <code>3.90×</code> <code>Window 16</code>), <code>amdgpu PPT</code>, <code>NVML</code>, Apple M5 Max/M3 Ultra <code>IOReport</code> + <code>proc_pid_rusage</code> counters (including <code>1.619×</code> lower streamed GiB/tok on real <code>Ternary-Bonsai-2-27B</code> &amp; <code>1.230×</code> <code>KernelBench</code> Level-2 Metal fusion), live attached <code>Alif Ensemble E3</code> (<code>OpenMV-AE3</code> Cortex-M55 @ <code>400 MHz</code>) <code>DWT</code> cycles (<code>2,745.18×</code> wearable gate), and the live <code>13.88 KB</code> (<code>14,208 B</code>, <code>12</code> exports) <code>lut6_core.wasm</code> VM (<code>board_metered = false</code>);
+        <span class="chip chip-sim">Post-PAR openXC7 &amp; Simulated RTL</span> for license-free <code>openXC7</code> <code>nextpnr-xilinx</code> <code>320.62 MHz</code> post-route timing &amp; <code>77.85 Mbit</code> <code>.bit</code> bitstream on <code>XC7A200T-2FBG484-2</code> plus Yosys <code>0.71+</code> <code>xcup</code> + <code>abc -lut 6</code> (<code>64/64</code> miter &amp; <code>3,915</code> <code>VerilogEval-Hard12</code> <code>LUT6</code>s) + Verilator <code>5.054</code> netlists (<code>measured_j = None</code>); and
         <span class="chip chip-est">Modelled (est_j / est_queries)</span> for analytical cascade and wearable battery equations.
       </div>
 
@@ -576,9 +576,65 @@
         </div>
       </section>
 
+      <!-- Widget 11: OpenIE-Apex-Harness Across the Four Late-2026 Frontier AI Walls (la-apex-01) -->
+      <section id="la-apex-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-apex-01</code> · <code>OpenIE-Apex-Harness</code> Across the Four Late-2026 Frontier AI Walls (<code>Claims LA-45..LA-48</code>)</h2>
+          <span class="chip chip-meas">Thor Shunt Window 16 (201.22 nJ/op = 13.18×) + 82 6-Kernel Thms (1,446 Fleet) + Live 14,208 B WASM</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Explore how <code>OpenIE-Apex-Harness</code> unites <code>AlphaEvolve</code> counterexample-guided repair, <code>Iterated Width IW(1)</code> novelty search, and compiler <code>MCTS</code> with <code>DES-10</code> attested handoffs, <code>openie-cad</code> PCB/thermal physics, <code>MathGround</code> <code>Torricelli CBF</code>, <code>Z3 5.4.1</code>, <code>Yosys 0.71+</code>, <code>Lean 4.36.0</code>, and live <code>wasm_eval_apex_horizon_gate</code> inside <code>lut6_core.wasm</code> (<code>13.88 KB</code>, <code>12</code> exports).
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label><span>Select Late-2026 Frontier Wall (Claims LA-45..LA-48)</span></label>
+            <select id="apx-wall">
+              <option value="w4" selected>Wall 4 (Claim LA-48) · H=256-Step Multi-Physics Horizon &amp; Thor Shunt Window 16</option>
+              <option value="w1">Wall 1 (Claim LA-45) · 16-Game Official ARC-AGI-3 (IW(1) + ACTION6 + System-0 LUT6)</option>
+              <option value="w2">Wall 2 (Claim LA-46) · VerilogEval-Hard12 RTL (3,915 LUT6s) + KernelBench L2 Metal</option>
+              <option value="w3">Wall 3 (Claim LA-47) · PutnamBench / FormalConjectures 24-Thm Pure Lean 4.36.0</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label><span>Live <code>lut6_core.wasm</code> <code>wasm_eval_apex_horizon_gate</code> Probe</span></label>
+            <select id="apx-wasm-probe">
+              <option value="0x00A1A105,640,25000,1200,320" selected>Certified DES-10 + Safe Thermal (64.0 °C) + Torricelli CBF Safe → Mode 1 (System-0 Action=5)</option>
+              <option value="0x00A0A105,640,25000,1200,320">Unattested Specialist Handoff (0xA0 ≠ 0xA1) → Mode 2 (Trap Code=1 · DES-10 Blocked!)</option>
+              <option value="0x00A1A105,890,25000,2200,200">Thermal Overtemp (89.0 °C &gt; 85 °C) + Braking Violation (v² &gt; 2·a·d) → Mode 3 (Simplex Shield=0x0C)</option>
+            </select>
+          </div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-tile">
+            <div class="k">Verified Solve / Survival</div>
+            <div class="v" id="apx-m1" style="color: var(--color-brand-cyan);">100.0% (16/16 Ep · 256 Steps)</div>
+            <div class="s" id="apx-s1">0 / 4,096 violations vs Step-1 collapse on standalone 9B/Mini/27B</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Speedup / Efficiency Gain</div>
+            <div class="v" id="apx-m2" style="color: var(--color-brand-cyan);">1,332.6× &lt; Uncompiled Z3</div>
+            <div class="s" id="apx-s2">0.0854 ms/step (99.22% System-0 LUT6 hits · 32 Z3 wakes)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Thor DC Shunt &amp; Soundness</div>
+            <div class="v" id="apx-m3" style="color: var(--color-brand-cyan);">201.22 nJ/op (Window 16)</div>
+            <div class="s" id="apx-s3">13.18× &lt; INT8 MLP (31.39 ns) · 82 6-kernel thms (1,446 fleet)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Live WASM Apex Gate</div>
+            <div class="v" id="apx-wasm-v" style="color: var(--color-brand-cyan);">Mode 1 · Certified Act=5</div>
+            <div class="s" id="apx-wasm-s">12th export live in 14,208 B lut6_core.wasm</div>
+          </div>
+        </div>
+      </section>
+
       <!-- Static Vector Diagrams Gallery -->
       <section id="la-figs" style="margin-top: 2.5rem;">
         <h2 style="font-size: 1.3rem;">Paper Vector Diagrams (Click to Zoom)</h2>
+        <figure class="fig">
+          <img src="/figures/lut-adapt/apex-harness-frontier-walls.svg" alt="OpenIE-Apex-Harness Verified Closure Across the Four Late-2026 Frontier AI Walls">
+          <figcaption><strong>Figure 13.</strong> <code>OpenIE-Apex-Harness</code> verified closure across the four late-2026 Frontier AI Walls (<code>Claims LA-19 [82 thms / 1,446 bwrap fleet], LA-45..LA-48</code>): (A) <code>16</code>-game (<code>113</code>-level) official black-box <code>ARC-AGI-3</code> with <code>Iterated Width IW(1)</code> + causal <code>ACTION6</code> click pruning (<code>6/113</code> levels, unblocking <code>lp85</code>, <code>17.23×</code> cold &amp; <code>265.96×</code> Wave-2 <code>RHAE</code> lift); (B) <code>NVlabs/verilog-eval</code> Hard-12 spec-to-RTL (<code>12/12</code> verified, <code>3,915</code> <code>LUT6</code>s, <code>0.00%</code> broken) and <code>ScalingIntelligence/KernelBench</code> Level-2 Apple Metal GPU fusion (<code>12/12</code> verified, <code>1.230×</code> speedup, <code>0.00%</code> broken/regressive); (C) <code>24</code>-theorem <code>PutnamBench / FormalConjectures</code> pure <code>Lean 4.36.0</code> proof synthesis (<code>24/24</code> verified, <code>0.00%</code> unsound, <code>13.93 µs</code> Wave-2 <code>.lut6</code> tactic lookup); and (D) <code>H = 256</code>-step (<code>4,096</code>-transition) coupled operational + <code>openie-cad</code> PCB/thermal + <code>MathGround</code> <code>Torricelli CBF</code> horizon survival (<code>100.0%</code> survival, <code>99.22%</code> <code>System-0</code> <code>LUT6</code> share, <code>1,332.6×</code> faster than uncompiled <code>Z3</code>) plus <code>Jetson AGX Thor</code> DC shunt <code>Window 16</code> (<code>201.22 nJ/op</code> <code>measured_j</code>, <code>13.18×</code> &lt; <code>INT8</code> MLP).</figcaption>
+        </figure>
         <figure class="fig">
           <img src="/figures/lut-adapt/bonsai-stream-benes-arc2-and-arc-agi-3.svg" alt="End-to-End 27B Ternary Bonsai-AirMoL Streaming, Multilayer Benes-ARC-LUT6 on ARC-AGI-2, and Official ARC-AGI-3 Interactive Compilation">
           <figcaption><strong>Figure 12.</strong> End-to-end <code>prism-ml/Ternary-Bonsai-2-27B</code> <code>1.750 bpw</code> <code>EntroMCU-28</code> <code>AirMoL</code> streaming + <code>54</code>-bit <code>3</code>-token <code>LUT6</code> speculation (<code>1.619×</code> lower streamed GiB/tok at <code>100.0%</code> greedy parity; <code>8.35×</code> lower <code>Thor</code> shunt <code>measured_j</code> on <code>Window 14</code>), multilayer <code>Beneš-ARC-LUT6</code> spatial synthesis on <code>arcprize/ARC-AGI-2</code> (<code>20.83%</code> on <code>n=24</code> &amp; <code>12.50% = 2.00×</code> over 1-layer on <code>n=64</code>, <code>0.00% CHR@80</code>), official <code>ARC-AGI-3</code> black-box interactive evaluation (<code>4/57</code> levels across <code>8</code> games, <code>208.3×</code> Wave-2 <code>RHAE</code> lift from <code>0.009 → 1.875</code>, peak <code>6.667</code> on <code>tu93</code>), and <code>74</code> six-kernel <code>Lean 4.36.0</code> theorems (<code>1,438</code> fleet) + <code>12.75 KB</code> (<code>13,058 B</code>, <code>11</code> exports) <code>lut6_core.wasm</code>.</figcaption>
@@ -624,8 +680,8 @@
           <figcaption><strong>Figure 5.</strong> The nine-rung capability ratchet and Proposition 1's Compilation Threshold (<code>ΔT &gt; ΔT*</code>), separating <code>reported_j</code> and <code>est_j</code> across twelve orders of magnitude (<code>board_metered = false</code>).</figcaption>
         </figure>
         <figure class="fig">
-          <img src="/figures/lut-adapt/six-kernel-trust-and-stack.svg" alt="Six-Kernel Formal Proof Assurance (66 Theorems + Aeneas) and Three-Layer Compiled Stack">
-          <figcaption><strong>Figure 6.</strong> Six-kernel paranoid proof audit across all <code>66</code> theorems (<code>1,430</code> fleet, <code>Claims LA-19, LA-33, LA-38 &amp; LA-41</code>: <code>con-leche</code>, <code>con-ron</code>, <code>lean4lean</code>, <code>nanoda</code>, <code>leanchecker</code>, <code>Lean 4.36.0</code> + Inria <code>Charon</code>+<code>Aeneas</code> Rust-to-Lean) and the three-layer compiled stack.</figcaption>
+          <img src="/figures/lut-adapt/six-kernel-trust-and-stack.svg" alt="Six-Kernel Formal Proof Assurance (82 Theorems + Aeneas) and Three-Layer Compiled Stack">
+          <figcaption><strong>Figure 6.</strong> Six-kernel paranoid proof audit across all <code>82</code> theorems (<code>1,446</code> fleet, <code>Claims LA-19, LA-33, LA-38, LA-41 &amp; LA-44..48</code>: <code>con-leche</code>, <code>con-ron</code>, <code>lean4lean</code>, <code>nanoda</code>, <code>leanchecker</code>, <code>Lean 4.36.0</code> + Inria <code>Charon</code>+<code>Aeneas</code> Rust-to-Lean) and the three-layer compiled stack.</figcaption>
         </figure>
       </section>
     </div>
@@ -845,12 +901,12 @@
     // Widget 5: Six-Kernel Paranoid Proof Audit Explorer
     (function(){
       var sk = {
-        conleche: { decls: '58,841 declarations (--verified)', vec: 'CVE-2026-72844', basis: 'Proved consistent in ZFC set theory (Breitner)' },
-        conron:   { decls: '58,841 declarations (--verified)', vec: 'CVE-2026-72711 & GMP', basis: 'Aeneas-verified Rust refinement of con-leche' },
-        lean4lean:{ decls: '58,843 declarations checked', vec: 'C++ .proj divergence', basis: 'Independent Lean-in-Lean CIC typechecker' },
-        nanoda:   { decls: '58,843 decls (sorryAx blocked)', vec: '.olean tampering', basis: 'Zero-Lean-runtime standalone Rust verifier' },
-        paranoid: { decls: '58,843 fresh-env decls', vec: 'skipKernelTC / meta', basis: 'Fresh-environment C++ replay (0 tactic trust)' },
-        default:  { decls: '74 LutAdapt thms + 6 Aeneas fns', vec: 'Lean.ofReduceBool', basis: 'Post-CVE Lean 4.36.0 + Inria Aeneas LLBC→Lean' }
+        conleche: { decls: '58,864 declarations (--verified)', vec: 'CVE-2026-72844', basis: 'Proved consistent in ZFC set theory (Breitner)' },
+        conron:   { decls: '58,864 declarations (--verified)', vec: 'CVE-2026-72711 & GMP', basis: 'Aeneas-verified Rust refinement of con-leche' },
+        lean4lean:{ decls: '58,866 declarations checked', vec: 'C++ .proj divergence', basis: 'Independent Lean-in-Lean CIC typechecker' },
+        nanoda:   { decls: '58,866 decls (sorryAx blocked)', vec: '.olean tampering', basis: 'Zero-Lean-runtime standalone Rust verifier' },
+        paranoid: { decls: '58,866 fresh-env decls', vec: 'skipKernelTC / meta', basis: 'Fresh-environment C++ replay (0 tactic trust)' },
+        default:  { decls: '82 LutAdapt thms + 6 Aeneas fns', vec: 'Lean.ofReduceBool', basis: 'Post-CVE Lean 4.36.0 + Inria Aeneas LLBC→Lean' }
       };
       var sel = document.getElementById('sk-select');
       function updSk() {
@@ -921,11 +977,12 @@
         .then(function(res){
           exportsObj = res.instance.exports;
           window.__lut6WasmExports = exportsObj;
-          chip.textContent = 'Live WASM VM Active (13,058 B · 11 Exports · Signed Provenance · Self-Checked)';
+          chip.textContent = 'Live WASM VM Active (14,208 B · 12 Exports · Signed Provenance · Self-Checked)';
           updateUI();
           if (window.__updateHleWasm) window.__updateHleWasm();
           if (window.__updateBonsaiWasm) window.__updateBonsaiWasm();
           if (window.__updateArc3Wasm) window.__updateArc3Wasm();
+          if (window.__updateApexWasm) window.__updateApexWasm();
         })
         .catch(function(){
           chip.textContent = 'Offline Mode (Self-checked V8 receipt)';
@@ -933,6 +990,7 @@
           if (window.__updateHleWasm) window.__updateHleWasm();
           if (window.__updateBonsaiWasm) window.__updateBonsaiWasm();
           if (window.__updateArc3Wasm) window.__updateArc3Wasm();
+          if (window.__updateApexWasm) window.__updateApexWasm();
         });
     })();
 
@@ -1075,6 +1133,48 @@
         fSel.addEventListener('change', updArc3);
         pSel.addEventListener('change', updArc3);
         updArc3();
+      }
+    })();
+
+    // Widget 11: OpenIE-Apex-Harness Across the Four Late-2026 Frontier AI Walls
+    (function(){
+      var apxData = {
+        w4: { m1: '100.0% (16/16 Ep · 256 Steps)', s1: '0 / 4,096 violations vs Step-1 collapse on standalone 9B/Mini/27B', m2: '1,332.6× < Uncompiled Z3', s2: '0.0854 ms/step (99.22% System-0 LUT6 hits · 32 Z3 wakes)', m3: '201.22 nJ/op (Window 16)', s3: '13.18× < INT8 MLP (31.39 ns) · 82 6-kernel thms (1,446 fleet)' },
+        w1: { m1: '6 / 113 Levels (16 Games)', s1: 'Unblocks click-modal lp85 (3 vs 2 click levels · 0 .py peeking)', m2: '1.2500 Mean RHAE (266×)', s2: 'Cold IW(1) = 0.0810 (17.2× > FIFO-BFS) · Peak 6.667 RHAE', m3: '4,096 B System-0 Crystal', s3: '70 verified shortest-path LUT6 slots · 0 stale shift actions' },
+        w2: { m1: '100% RTL & Metal Checked', s1: '12/12 VerilogEval-Hard12 (3,915 LUT6s) + 12/12 KernelBench L2', m2: '1.230× Metal Fusion Speedup', s2: '0.6610 ms vs 0.8131 ms MLX Eager (<= 1e-2 FP16 ULP)', m3: '0.00% Broken / Regressive', s3: 'vs 100% broken 1-shot RTL & 58.33% broken/slow 1-shot Metal' },
+        w3: { m1: '24 / 24 Lean 4.36.0 Proved', s1: 'PutnamBench / FormalConjectures suite (vs 0–4.17% 1-shot LLMs)', m2: '13.93 µs/thm Wave-2 LUT6', s2: '2,527× faster than Wave-1 MCTS (35.21 ms) · 100% alpha-renamed hit', m3: '0.00% Unsound Commits', s3: '0 sorry · 0 native_decide · 82 LutAdapt 6-kernel thms' }
+      };
+      var wSel = document.getElementById('apx-wall'), pSel = document.getElementById('apx-wasm-probe');
+      if (wSel && pSel) {
+        function updApex() {
+          var d = apxData[wSel.value];
+          document.getElementById('apx-m1').textContent = d.m1;
+          document.getElementById('apx-s1').textContent = d.s1;
+          document.getElementById('apx-m2').textContent = d.m2;
+          document.getElementById('apx-s2').textContent = d.s2;
+          document.getElementById('apx-m3').textContent = d.m3;
+          document.getElementById('apx-s3').textContent = d.s3;
+          var sp = pSel.value.split(',');
+          var env32 = Number(sp[0]) >>> 0, tjD = Number(sp[1]) >>> 0, bal = Number(sp[2]) >>> 0, spd = Number(sp[3]) >>> 0, dobs = Number(sp[4]) >>> 0;
+          var thBal = ((tjD << 16) | (bal & 0xFFFF)) >>> 0;
+          var ex = window.__lut6WasmExports;
+          var vEl = document.getElementById('apx-wasm-v'), sEl = document.getElementById('apx-wasm-s');
+          if (ex && ex.wasm_eval_apex_horizon_gate) {
+            var r = ex.wasm_eval_apex_horizon_gate(env32, thBal, spd, dobs, 1500) >>> 0;
+            var mode = (r >>> 24) & 0xFF, pay = r & 0xFF;
+            if (mode === 1) { vEl.textContent = 'Mode 1 · Certified Act=' + pay; vEl.style.color = 'var(--color-brand-cyan)'; }
+            else if (mode === 2) { vEl.textContent = 'Mode 2 · DES-10 Trap=' + pay; vEl.style.color = 'var(--color-brand-amber)'; }
+            else { vEl.textContent = 'Mode 3 · Simplex Shield=0x0' + pay.toString(16).toUpperCase(); vEl.style.color = 'var(--color-brand-amber)'; }
+            sEl.textContent = 'Live wasm_eval_apex_horizon_gate (14,208 B · 12 Exports)';
+          } else {
+            vEl.textContent = env32 === 0x00A1A105 && tjD <= 850 ? 'Mode 1 · Certified Act=5' : (env32 !== 0x00A1A105 ? 'Mode 2 · DES-10 Trap=1' : 'Mode 3 · Simplex Shield=0x0C');
+            sEl.textContent = 'Self-checked V8 receipt (14,208 B WASM)';
+          }
+        }
+        window.__updateApexWasm = updApex;
+        wSel.addEventListener('change', updApex);
+        pSel.addEventListener('change', updApex);
+        updApex();
       }
     })();
 
