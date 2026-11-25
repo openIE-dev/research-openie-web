@@ -118,14 +118,18 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | Collaborative force limits seed | twin::contact_force + force_limit_ok (spring-damper; ISO/TS 15066 partial) | 3 |
 | Dataset-standards interop seed | trajectory::manifest (rce-episode-manifest/1, name-free keys) | 1 |
 | Trained proposer at receipt scale | train::receipt_corpus + train_on_corpus (2000 receipts, holdout acc 1.0; JEPA at scale open) | 3 |
+| Tracing-JIT seed | jit::TracingJit (hot-subtree compile-once, content guards, deopt) | 4 |
+| TS 15066 force/pressure pair | twin::contact_pressure + pressure_limit_ok (gates built; certification open) | 3 |
+| Hierarchical JEPA seed | train::HierPredictor (intent→summary→Form, two levels) | 2 |
+| Fleet-scale chunked ingestion | trajectory::ingest_chunks (one dedup set + receipt across chunks) | 2 |
 
 Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 253 (workspace) / 250 (monorepo), 0 failed. Physics fidelity, RTOS port,
-notified-body attestation, fleet-scale trajectory ingestion and FormJEPA/FormEBM at
-production scale remain open edges.
+Suites 264 (workspace) / 261 (monorepo), 0 failed. Physics fidelity, RTOS port,
+notified-body attestation and FormJEPA/FormEBM / tracing-JIT at production scale
+remain open edges.
 
 ## New unknowns (registered in rce-gap-register.md)
 
