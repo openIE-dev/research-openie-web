@@ -131,18 +131,19 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | IR-kind expansion (whole-program) | Stmt let/assign/for/import/type/fn executed+lifted+emitted as LUT data; taxonomy 34 | 11 |
 | Match/patterns + local fns/calls | Stmt Match/LetFn/Call/LetCall, per-call scope + fuel guard, LUT data; taxonomy 35 | 7 |
 | Physics-fidelity sim2real seed | twin::Plant2 (gravity+drag+restitution) + simulate2 + identify2 | 6 |
+| Generics + async/await | Stmt GenericFn/GenericType/AsyncFn/Await, monomorphized + cooperative seed, LUT data; taxonomy 38 | 5 |
 
 Measured per-language named-node coverage (tree-sitter master, 25 Nov 2026, after the
-match/closure pass): rust 39/169 = 23.1%, python 25/129 = 19.4%, go 19/112 = 17.0%,
-javascript 29/119 = 24.4%, java 24/151 = 15.9%. The 35-construct matrix is 100% across 47
-languages; the per-language remainder (generics, attributes, macros, async/await)
+generics/async pass): rust 46/169 = 27.2%, python 28/129 = 21.7%, go 21/112 = 18.8%,
+javascript 30/119 = 25.2%, java 28/151 = 18.5%. The 38-construct matrix is 100% across 47
+languages; the per-language remainder (attributes, macros, language-specific declarations)
 is open, measured, not claimed complete.
 
 Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 303 (workspace) / 300 (monorepo), 0 failed. Full rigid-body physics, RTOS port,
+Suites 308 (workspace) / 305 (monorepo), 0 failed. Full rigid-body physics, RTOS port,
 notified-body attestation, full per-language grammars (measured remainder above) and
 FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
 
