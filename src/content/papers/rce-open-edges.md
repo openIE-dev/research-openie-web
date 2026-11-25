@@ -44,16 +44,17 @@ hybrid is built.
 The fleet's bare-metal meters (macOS IOReport package rails, Linux RAPL) turn `Modelled` into
 `Measured`: each node measures the energy delta of an execution window, tags the source, and the
 fleet aggregates to total/mean µJ-per-act. Falsified on this node: 500k acts, positive bare-metal
-delta, source tagged. **Frontier:** collecting readings across the whole fleet (the protocol is
-built; the remote nodes' readings are aggregated when supplied). A node that cannot measure errors —
-never a fabricated 0.
+delta, source tagged. **Cross-node aggregation BUILT + LIVE:** `/energy` per node + `/fleet?nodes=…`
+collects over HTTP and totals (node-a 3µJ + node-b 4µJ = 7µJ / 400k acts, `ioreport`), merged to
+openIE-dev/rce main. A node that cannot measure errors — never a fabricated 0.
 
 ## What remains (the scaling frontier, not faked)
 
 - Full grammar coverage per language (lift) and full construct coverage (emit).
 - Trained FormJEPA/FormEBM at scale; arbitrary intent→Form synthesis.
 - A tracing/optimizing JIT.
-- Fleet-wide wall-metered aggregation (remote nodes) and a production energy receipt pipeline.
+- Scaling wall-metered aggregation to the full remote fleet + a production energy receipt pipeline
+  (cross-node HTTP aggregation is built and live).
 
 These are engineering/data scale, not new science; the mechanisms are built and falsified.
 
