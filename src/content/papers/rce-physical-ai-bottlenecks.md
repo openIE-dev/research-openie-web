@@ -102,6 +102,20 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | Teleop data rigs | Grabette €490 / Gripette €120 BOM | LinkedIn pulse | sovereign refinery + dedup |
 | Waiting agents | 100 KB on AWS Infinity | exec summary (AWS Oct 2026) | G0 lookup ≈1 µJ, wake by joule |
 
+## Parity closes (2026-11-25, second pass — built, tested, on main)
+
+| Close | Mechanism | Tests |
+|---|---|---|
+| Memory-bound mind | fabric::place_within + memory_kib (Thor-class vs HW3-class budgets) | 4 |
+| Dataset provenance | trajectory::ingest + dispute (content-keyed dedup across sources) | 4 |
+| Measured WCET | realtime::measure_lookup (wall clock, worst of N, Measured) | 3 |
+| Compile spike off-loop | jit::DeadlineJit (interpret now, compile in maintenance slots) | 3 |
+| sim2real gate seed | twin::admit_controller (double-integrator plant spectest) | 4 |
+| EU/ISO evidence map | trust::eu_machinery_controls (2 built, 4 open attestation/standards) | 3 |
+
+Suites 235 (workspace) / 232 (monorepo), 0 failed. Physics fidelity, RTOS port,
+notified-body attestation and fleet-scale trajectory ingestion remain open edges.
+
 ## New unknowns (registered in rce-gap-register.md)
 
 Deadline/WCET model (now seed-built); memory-budget placement (seed-built); JIT compile-spike
