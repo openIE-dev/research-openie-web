@@ -52,7 +52,7 @@ Local measurements use Apple M5 Max `L3` `ri_energy_nj` and AMD Ryzen AI Max+ 39
 
 ## Epistemic Non-Mixing & Telemetry Ledger
 
-Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` ⊥ `reported_j` ⊥ `est_j` ⊥ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
 
 - **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
 - **Acquisition Tier**: On-Chip Counter (reported_j)

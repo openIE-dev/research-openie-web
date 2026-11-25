@@ -56,7 +56,7 @@ All energy readings in this study are operating-system or on-chip `reported_j` e
 
 ## Epistemic Non-Mixing & Telemetry Ledger
 
-Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` ⊥ `reported_j` ⊥ `est_j` ⊥ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
 
 - **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
 - **Acquisition Tier**: On-Chip Counter (reported_j)

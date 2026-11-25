@@ -33,6 +33,7 @@ async function loadCompactCaptioner(tf, t0, fellBackReason = null) {
   const captioner = await pipeline('image-to-text', COMPACT_VLM_ID, {
     device: 'wasm',
     dtype: 'q8',
+    session_options: { logSeverityLevel: 3 },
     progress_callback: postProgress,
   });
   return {
@@ -59,6 +60,9 @@ async function initVision(tier = 'auto') {
   if (env.backends?.onnx?.wasm) {
     env.backends.onnx.wasm.numThreads = threads;
   }
+  if (env.backends?.onnx) {
+    env.backends.onnx.logLevel = 'error';
+  }
 
   let hasWebGpuFp16 = false;
   if (tier !== 'compact' && self.navigator?.gpu) {
@@ -82,6 +86,7 @@ async function initVision(tier = 'auto') {
           decoder_model_merged: 'q4',
         },
         device: 'webgpu',
+        session_options: { logSeverityLevel: 3 },
         progress_callback: postProgress,
       });
       return {

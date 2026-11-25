@@ -40,6 +40,7 @@ async function load(base, force) {
   }
   const threads = self.crossOriginIsolated ? Math.max(1, Math.min(8, (self.navigator.hardwareConcurrency || 4) - 1)) : 1;
   tf.backends.onnx.wasm.numThreads = threads;
+  tf.backends.onnx.logLevel = 'error';
   let dtype = force && force !== 'wasm' && force !== 'webgpu' ? force : gpu ? 'fp16' : 'q8';
   let device = gpu ? 'webgpu' : 'wasm';
   const t0 = performance.now();
@@ -48,6 +49,7 @@ async function load(base, force) {
     model = await KokoroTTS.from_pretrained('Kokoro-82M-v1.0-ONNX', {
       dtype,
       device,
+      session_options: { logSeverityLevel: 3 },
       progress_callback: emitProgress,
     });
   } catch (err) {
@@ -58,6 +60,7 @@ async function load(base, force) {
     model = await KokoroTTS.from_pretrained('Kokoro-82M-v1.0-ONNX', {
       dtype,
       device,
+      session_options: { logSeverityLevel: 3 },
       progress_callback: emitProgress,
     });
   }

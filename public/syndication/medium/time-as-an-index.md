@@ -56,7 +56,7 @@ No hardware power meter or OS energy counter was used to support any claim in th
 
 ## Epistemic Non-Mixing & Telemetry Ledger
 
-Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` ⊥ `reported_j` ⊥ `est_j` ⊥ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
 
 - **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
 - **Acquisition Tier**: Unmetered Formal & Spectral Study

@@ -36,6 +36,9 @@ async function initAsr(forceDevice) {
   if (env.backends?.onnx?.wasm) {
     env.backends.onnx.wasm.numThreads = threads;
   }
+  if (env.backends?.onnx) {
+    env.backends.onnx.logLevel = 'error';
+  }
 
   let useGpu = false;
   if (forceDevice !== 'wasm' && self.navigator?.gpu) {
@@ -57,6 +60,7 @@ async function initAsr(forceDevice) {
       dtype: device === 'webgpu'
         ? { encoder_model: 'fp32', decoder_model_merged: 'q4' }
         : { encoder_model: 'q8', decoder_model_merged: 'q8' },
+      session_options: { logSeverityLevel: 3 },
       progress_callback: postProgress,
     });
   } catch (err) {
@@ -66,6 +70,7 @@ async function initAsr(forceDevice) {
     transcriber = await pipeline('automatic-speech-recognition', MODEL_ID, {
       device: 'wasm',
       dtype: { encoder_model: 'q8', decoder_model_merged: 'q8' },
+      session_options: { logSeverityLevel: 3 },
       progress_callback: postProgress,
     });
   }

@@ -52,7 +52,7 @@ Only the KV260 `VCC_SOM` `INA260` reading (`11.43 nJ/cycle`) carries `measured_j
 
 ## Epistemic Non-Mixing & Telemetry Ledger
 
-Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` ⊥ `reported_j` ⊥ `est_j` ⊥ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
 
 - **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
 - **Acquisition Tier**: Whole-SOM DC Shunt (measured_j)

@@ -48,7 +48,7 @@ KV260 `INA260` (`11.43 nJ`) and Thor `INA3221` (`162.56 nJ`, `927.30 uJ`) are `m
 
 ## Epistemic Non-Mixing & Telemetry Ledger
 
-Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` $\perp$ `reported_j` $\perp$ `est_j` $\perp$ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
+Open Interface Engineering enforces strict non-mixing across physical rail shunts, on-chip counters, datasheet models, and uninstrumented analyses (`measured_j` ⊥ `reported_j` ⊥ `est_j` ⊥ `unmetered` — cross-class addition or direct cross-tier ratioing is blocked):
 
 - **Provenance Gate**: `Signed Provenance · Self-Checked` (`human_in_gate = false`)
 - **Acquisition Tier**: 258-Primitive Map + KV260 Shunt Anchor

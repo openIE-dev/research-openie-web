@@ -747,23 +747,31 @@ export class OpenIELiveHMI {
       this.micTimeDomain = new Float32Array(this.micAnalyser.fftSize);
       this.micSource.connect(this.micAnalyser);
 
-      // Capture 16 kHz mono utterances for Tier-2 Whisper ONNX STT fallback
-      if (ctx.createScriptProcessor) {
-        const proc = ctx.createScriptProcessor(4096, 1, 1);
-        const silentGain = ctx.createGain();
-        silentGain.gain.value = 0;
-        proc.onaudioprocess = (ev) => {
-          if (!this.callActive || this.micMuted || this.state === 'speaking') return;
-          if (!this.forceWhisper && this.speechRecSupported) return;
-          const ch = ev.inputBuffer.getChannelData(0);
-          if (this.pcmSpeaking) {
-            this.pcmChunks.push(downsampleBuffer(ch, ctx.sampleRate, 16000));
+      // Capture 16 kHz mono utterances for Tier-2 Whisper ONNX STT fallback via AudioWorkletNode
+      if (ctx.audioWorklet && typeof AudioWorkletNode !== 'undefined') {
+        try {
+          if (!ctx.__openiePcmWorkletLoaded) {
+            await ctx.audioWorklet.addModule('/live/pcm-capture-worklet.js');
+            ctx.__openiePcmWorkletLoaded = true;
           }
-        };
-        this.micSource.connect(proc);
-        proc.connect(silentGain);
-        silentGain.connect(ctx.destination);
-        this.pcmProcessor = proc;
+          const workletNode = new AudioWorkletNode(ctx, 'openie-pcm-capture', {
+            numberOfInputs: 1,
+            numberOfOutputs: 0,
+            channelCount: 1,
+          });
+          workletNode.port.onmessage = (ev) => {
+            if (!this.callActive || this.micMuted || this.state === 'speaking') return;
+            if (!this.forceWhisper && this.speechRecSupported) return;
+            const ch = ev.data;
+            if (this.pcmSpeaking && ch && ch.length > 0) {
+              this.pcmChunks.push(downsampleBuffer(ch, ctx.sampleRate, 16000));
+            }
+          };
+          this.micSource.connect(workletNode);
+          this.pcmProcessor = workletNode;
+        } catch {
+          // AudioWorklet optional fallback if unsupported
+        }
       }
 
       if (!this.vadTimer) {

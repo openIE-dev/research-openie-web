@@ -214,7 +214,13 @@ const clientPayload = JSON.stringify({
 
               <div class="p-2.5 rounded-lg bg-[#070b16] border border-brand-border/80 font-mono text-[10.5px] space-y-1.5 mb-3">
                 <div>
-                  <span class="text-brand-gray">Medium Import (`rel="canonical"`):</span>{' '}
+                  <span class="text-brand-gray">Clean Medium Import HTML:</span>{' '}
+                  <a href={`${SITE}/syndication/medium/${f.id}/`} target="_blank" rel="noopener noreferrer" class="text-emerald-300 break-all no-underline hover:underline">
+                    {`${SITE}/syndication/medium/${f.id}/`}
+                  </a>
+                </div>
+                <div>
+                  <span class="text-brand-gray">Embedded `rel="canonical"`:</span>{' '}
                   <a href={f.medium_import_url} target="_blank" rel="noopener noreferrer" class="text-brand-cyan break-all no-underline hover:underline">
                     {f.medium_import_url}
                   </a>
@@ -239,11 +245,27 @@ const clientPayload = JSON.stringify({
             <div class="space-y-2 pt-2 border-t border-brand-border/60">
               <button
                 type="button"
-                data-flagship-import={f.medium_import_url}
+                data-flagship-import={`${SITE}/syndication/medium/${f.id}/`}
                 class="flagship-import-btn w-full font-mono text-xs px-3 py-2 rounded-lg bg-emerald-400 text-[#06121a] font-bold cursor-pointer border-none hover:opacity-90"
               >
-                ⚡ Copy Blog URL + Open medium.com/p/import ↗
+                ⚡ 1. Copy Clean Import URL + Open medium.com/p/import ↗
               </button>
+              <div class="grid grid-cols-2 gap-1.5">
+                <button
+                  type="button"
+                  data-flagship-copy-text={f.narrow_claim}
+                  class="flagship-copy-meta-btn font-mono text-[11px] px-2 py-1.5 rounded-lg border border-brand-cyan/40 text-brand-cyan bg-transparent cursor-pointer hover:bg-brand-cyan/15"
+                >
+                  2. Copy Subtitle
+                </button>
+                <button
+                  type="button"
+                  data-flagship-copy-text={(f.medium_tags ?? []).join(', ')}
+                  class="flagship-copy-meta-btn font-mono text-[11px] px-2 py-1.5 rounded-lg border border-emerald-400/40 text-emerald-300 bg-transparent cursor-pointer hover:bg-emerald-500/15"
+                >
+                  3. Copy 5 Tags
+                </button>
+              </div>
               <div class="grid grid-cols-3 gap-1.5">
                 <a
                   href={`/media/tv/tiktok/${f.id}-tiktok.mp4`}
@@ -819,12 +841,12 @@ const clientPayload = JSON.stringify({
     launchImportBtn?.addEventListener('click', () => {
       const st = BY_ID[activeId];
       if (!st) return;
-      const url = st.medium.medium_import_url || ('https://blog.openie.dev/posts/' + st.id + '/');
+      const url = 'https://research.openie.dev' + (st.medium.canonical_import_uri || ('/syndication/medium/' + st.id + '/'));
       navigator.clipboard?.writeText(url).catch(() => {});
-      launchImportBtn.textContent = '✓ Copied ' + url + ' — Paste in Medium!';
+      launchImportBtn.textContent = '✓ Copied Clean Import URL — Paste in Medium!';
       window.open('https://medium.com/p/import', '_blank', 'noopener,noreferrer');
       setTimeout(() => {
-        launchImportBtn.textContent = '⚡ Copy Blog Canonical URL + Open medium.com/p/import ↗';
+        launchImportBtn.textContent = '⚡ Copy Clean Import URL + Open medium.com/p/import ↗';
       }, 3200);
     });
 
@@ -833,11 +855,23 @@ const clientPayload = JSON.stringify({
         const url = btn.getAttribute('data-flagship-import') || '';
         navigator.clipboard?.writeText(url).catch(() => {});
         const orig = btn.textContent;
-        btn.textContent = '✓ Blog URL Copied — Paste in Medium!';
+        btn.textContent = '✓ Clean Import URL Copied — Paste in Medium!';
         window.open('https://medium.com/p/import', '_blank', 'noopener,noreferrer');
         setTimeout(() => {
           btn.textContent = orig;
         }, 2800);
+      });
+    });
+
+    document.querySelectorAll('.flagship-copy-meta-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const txt = btn.getAttribute('data-flagship-copy-text') || '';
+        navigator.clipboard?.writeText(txt).catch(() => {});
+        const orig = btn.textContent;
+        btn.textContent = '✓ Copied!';
+        setTimeout(() => {
+          btn.textContent = orig;
+        }, 1600);
       });
     });
 
