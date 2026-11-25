@@ -130,6 +130,7 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | Identified-plant admission | trajectory::identify_plant (gate against the plant that explains the corpus) | 2 |
 | IR-kind expansion (whole-program) | Stmt let/assign/for/import/type/fn executed+lifted+emitted as LUT data; taxonomy 34 | 11 |
 | Match/patterns + local fns/calls | Stmt Match/LetFn/Call/LetCall, per-call scope + fuel guard, LUT data; taxonomy 35 | 7 |
+| Physics-fidelity sim2real seed | twin::Plant2 (gravity+drag+restitution) + simulate2 + identify2 | 6 |
 
 Measured per-language named-node coverage (tree-sitter master, 25 Nov 2026, after the
 match/closure pass): rust 39/169 = 23.1%, python 25/129 = 19.4%, go 19/112 = 17.0%,
@@ -141,7 +142,7 @@ Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 297 (workspace) / 294 (monorepo), 0 failed. Physics fidelity, RTOS port,
+Suites 303 (workspace) / 300 (monorepo), 0 failed. Full rigid-body physics, RTOS port,
 notified-body attestation, full per-language grammars (measured remainder above) and
 FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
 
