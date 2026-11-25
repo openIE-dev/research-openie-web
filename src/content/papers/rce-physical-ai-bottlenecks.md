@@ -128,19 +128,21 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | JEPA on canonicalization | train::canonical_pairs + HierPredictor (800 pairs, predicted beats raw) | 2 |
 | Measured grammar coverage | ingest::grammar_coverage + example on real tree-sitter grammars | 2 |
 | Identified-plant admission | trajectory::identify_plant (gate against the plant that explains the corpus) | 2 |
+| IR-kind expansion (whole-program) | Stmt let/assign/for/import/type/fn executed+lifted+emitted as LUT data; taxonomy 34 | 11 |
 
-Measured per-language named-node coverage (tree-sitter master, 25 Nov 2026):
-rust 23/169 = 13.6%, python 16/129 = 12.4%, go 11/112 = 9.8%, javascript 14/119 = 11.8%,
-java 13/151 = 8.6%. The construct matrix is 100%; this is the quantified per-language
-remainder (declarations, loops, types, patterns) — open, measured, not claimed complete.
+Measured per-language named-node coverage (tree-sitter master, 25 Nov 2026, after the
+whole-program expansion): rust 36/169 = 21.3%, python 22/129 = 17.1%, go 19/112 = 17.0%,
+javascript 25/119 = 21.0%, java 21/151 = 13.9%. The 34-construct matrix is 100% across 47
+languages; the per-language remainder (patterns, generics, attributes, macros, closures)
+is open, measured, not claimed complete.
 
 Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 279 (workspace) / 276 (monorepo), 0 failed. Physics fidelity, RTOS port,
-notified-body attestation, full per-language grammars (an IR-kind expansion, measured
-remainder above) and FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
+Suites 290 (workspace) / 287 (monorepo), 0 failed. Physics fidelity, RTOS port,
+notified-body attestation, full per-language grammars (measured remainder above) and
+FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
 
 ## New unknowns (registered in rce-gap-register.md)
 
