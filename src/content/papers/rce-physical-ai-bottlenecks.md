@@ -132,18 +132,20 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | Match/patterns + local fns/calls | Stmt Match/LetFn/Call/LetCall, per-call scope + fuel guard, LUT data; taxonomy 35 | 7 |
 | Physics-fidelity sim2real seed | twin::Plant2 (gravity+drag+restitution) + simulate2 + identify2 | 6 |
 | Generics + async/await | Stmt GenericFn/GenericType/AsyncFn/Await, monomorphized + cooperative seed, LUT data; taxonomy 38 | 5 |
+| Whole-program replay gate | program::replay_admit + program_key (admission law extended to statements) | 4 |
+| Attributes/macros | Stmt Attribute/Macro mapped+emitted; macro execution refuses (open) | 4 |
 
 Measured per-language named-node coverage (tree-sitter master, 25 Nov 2026, after the
-generics/async pass): rust 46/169 = 27.2%, python 28/129 = 21.7%, go 21/112 = 18.8%,
-javascript 30/119 = 25.2%, java 28/151 = 18.5%. The 38-construct matrix is 100% across 47
-languages; the per-language remainder (attributes, macros, language-specific declarations)
-is open, measured, not claimed complete.
+gate-wiring + attributes/macros pass): rust 49/169 = 29.0%, python 29/129 = 22.5%,
+go 21/112 = 18.8%, javascript 31/119 = 26.1%, java 29/151 = 19.2%. The 40-construct matrix is
+100% across 47 languages; the per-language remainder (language-specific declarations, exotic
+nodes) is open, measured, not claimed complete.
 
 Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 308 (workspace) / 305 (monorepo), 0 failed. Full rigid-body physics, RTOS port,
+Suites 316 (workspace) / 313 (monorepo), 0 failed. Full rigid-body physics, RTOS port,
 notified-body attestation, full per-language grammars (measured remainder above) and
 FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
 
