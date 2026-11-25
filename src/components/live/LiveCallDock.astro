@@ -82,6 +82,7 @@
             <span class="font-mono text-[9.5px] px-1.5 py-0.5 rounded bg-brand-amber/15 text-brand-amber border border-brand-amber/30 shrink-0">Self-Checked</span>
           </div>
           <div class="flex items-center gap-1.5 shrink-0">
+            <a id="dock-chronicle-link" href="https://blog.openie.dev" class="font-mono text-[10.5px] px-2 py-0.5 rounded border border-brand-amber/40 text-brand-amber no-underline hover:bg-brand-amber/10">Chronicle ↗</a>
             <a id="dock-studio-link" href="/live/" class="font-mono text-[10.5px] px-2 py-0.5 rounded border border-brand-cyan/40 text-brand-cyan no-underline hover:bg-brand-cyan/10">Studio ↗</a>
             <button id="dock-close-btn" type="button" aria-label="Minimize live call dock" class="font-mono text-xs px-2 py-0.5 rounded border border-brand-border text-brand-slate hover:text-brand-white bg-transparent cursor-pointer">✕</button>
           </div>
@@ -360,6 +361,17 @@
     }
 
     pill.addEventListener('click', () => setDockOpen(!dockOpen));
+
+    window.openieLiveDock = {
+      open: () => setDockOpen(true),
+      close: () => setDockOpen(false),
+      toggle: () => setDockOpen(!dockOpen),
+      isOpen: () => dockOpen,
+    };
+
+    window.addEventListener('openie:open-live-dock', () => {
+      setDockOpen(true);
+    });
 
     // Global shortcut: Cmd+Shift+V / Ctrl+Shift+V toggles dock; Escape closes drawer
     document.addEventListener('keydown', (e) => {

@@ -403,6 +403,77 @@ const ecosystemJson = JSON.stringify(ecosystem);
     if (playlistMode) stepTopic(1, true);
   });
 
+  // Bidirectional Voice + Video Co-Pilot Bridge: ensure /tv/ playback and Live Call speech never talk over each other
+  function pauseAndDuckTvMedia() {
+    playlistMode = null;
+    if (videoEl && !videoEl.paused) {
+      videoEl.pause();
+    }
+    const auxEl = document.getElementById('tv-aux-audio');
+    if (auxEl && !auxEl.paused) {
+      auxEl.pause();
+    }
+  }
+
+  videoEl?.addEventListener('play', () => {
+    const hmi = window.openieLiveHMI;
+    if (hmi && (hmi.state === 'speaking' || hmi.state === 'thinking')) {
+      hmi.bargeIn('tv-video-play');
+    }
+  });
+
+  let prevCallActive = false;
+  window.addEventListener('openie:live-call-state', (ev) => {
+    const snap = (ev && ev.detail) || {};
+    if ((snap.callActive && !prevCallActive) || snap.state === 'speaking') {
+      pauseAndDuckTvMedia();
+    }
+    prevCallActive = Boolean(snap.callActive);
+  });
+
+  document.getElementById('tv-discuss-film-btn')?.addEventListener('click', async () => {
+    pauseAndDuckTvMedia();
+    window.dispatchEvent(
+      new CustomEvent('openie:open-live-dock', {
+        detail: { studyId: activeStudyId, tier: activeTier },
+      })
+    );
+    if (window.openieLiveDock && typeof window.openieLiveDock.open === 'function') {
+      window.openieLiveDock.open();
+    }
+    let hmi = window.openieLiveHMI;
+    if (!hmi) {
+      try {
+        const mod = await import('/live/hmi-engine.js');
+        hmi = mod.getOpenIELiveHMI();
+      } catch (_) {}
+    }
+    if (hmi) {
+      await hmi.loadCorpus();
+      hmi.setStudy(activeStudyId);
+      hmi.startCall({ studyId: activeStudyId, mode: 'call' });
+    }
+  });
+
+  // Allow hmi-engine.js and voice commands to switch the active study or slot on /tv/
+  window.addEventListener('openie:tv-select-study', (ev) => {
+    const d = (ev && ev.detail) || {};
+    const sid = d.studyId || d.study_id || d.id;
+    const rawTier = d.tier || d.slot || d.clip;
+    if (!sid || !byId[sid]) return;
+    playlistMode = null;
+    activeStudyId = sid;
+    if (rawTier && rawTier !== 'living') {
+      activeTier = normalizeTier(rawTier);
+    }
+    const hmiBusy = Boolean(
+      window.openieLiveHMI &&
+      (window.openieLiveHMI.callActive || window.openieLiveHMI.state === 'speaking')
+    );
+    if (hmiBusy) pauseAndDuckTvMedia();
+    updateUIState(Boolean(d.autoplay) && !hmiBusy);
+  });
+
   document.addEventListener('keydown', (e) => {
     const tag = (e.target?.tagName || '').toLowerCase();
     if (tag === 'input' || tag === 'textarea' || tag === 'select' || e.metaKey || e.ctrlKey || e.altKey) return;
@@ -444,6 +515,13 @@ const ecosystemJson = JSON.stringify(ecosystem);
 
   window.openieTV = {
     version: CATALOG.version,
+    getActive() {
+      return {
+        study_id: activeStudyId,
+        tier: activeTier,
+        study: byId[activeStudyId] || null,
+      };
+    },
     listFilms() {
       const out = [];
       for (const s of STUDIES) {

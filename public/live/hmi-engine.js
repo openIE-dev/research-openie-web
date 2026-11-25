@@ -264,7 +264,11 @@ export class OpenIELiveHMI {
   }
 
   _emitState() {
-    this.emit('state', this.getSnapshot());
+    const snap = this.getSnapshot();
+    this.emit('state', snap);
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('openie:live-call-state', { detail: snap }));
+    }
   }
 
   _emitTelemetry() {
@@ -345,6 +349,14 @@ export class OpenIELiveHMI {
     if (qStudy) return qStudy.trim().toLowerCase();
 
     const p = window.location.pathname.replace(/\/+$/, '');
+    if (p === '/tv') {
+      if (window.openieTV && typeof window.openieTV.getActive === 'function') {
+        const act = window.openieTV.getActive();
+        if (act?.study_id) return act.study_id;
+      }
+      const h = (window.location.hash || '').replace(/^#/, '').split(':')[0];
+      if (h && h !== 'ecosystem-channels') return h.trim().toLowerCase();
+    }
     const mPaper = p.match(/\/(?:papers|products|about|living)\/([a-z0-9-]+)$/i);
     if (mPaper) {
       const slug = mPaper[1].toLowerCase();
@@ -615,6 +627,10 @@ export class OpenIELiveHMI {
       url = study.tv90s;
       vttUrl = study.tv90sVtt || '';
       label = '90s Full Studio Briefing';
+    } else if (clip === '180s') {
+      url = study.tv180s || study.tv90s;
+      vttUrl = '';
+      label = '3m Deep Cut · 3D Architecture';
     } else if (clip === 'tiktok') {
       url = study.tiktokMp4;
       vttUrl = '';
@@ -641,6 +657,17 @@ export class OpenIELiveHMI {
       pdfPath: study.pdfPath,
     };
     this.emit('stage', payload);
+    if (typeof window !== 'undefined' && window.location.pathname.replace(/\/+$/, '') === '/tv') {
+      window.dispatchEvent(
+        new CustomEvent('openie:tv-select-study', {
+          detail: {
+            studyId: study.id,
+            tier: clip === 'living' ? null : clip,
+            autoplay: false,
+          },
+        })
+      );
+    }
     return payload;
   }
 
@@ -1896,6 +1923,14 @@ export class OpenIELiveHMI {
       reply =
         `Cueing the 9 by 16 vertical edition of ${matchedStudy.short_title}. In plain words: ${(matchedStudy.plain_bullets || []).join(' ')} Key post-review metric: ${matchedStudy.headline_metric}.`;
       stageClip = 'tiktok';
+    } else if (/\b(180s|3m|3-minute|3 minute|three minute|deep cut)\b/.test(qLower)) {
+      reply =
+        `Switching to the 3-minute deep cut of ${matchedStudy.short_title} (${matchedStudy.evidence_class}). ${matchedStudy.headline_claim}`;
+      stageClip = '180s';
+    } else if (/\b(90s|90-second|90 second|full briefing)\b/.test(qLower)) {
+      reply =
+        `Switching to the 90-second studio briefing of ${matchedStudy.short_title} (${matchedStudy.evidence_class}). ${matchedStudy.headline_claim}`;
+      stageClip = '90s';
     } else {
       reply =
         `${matchedStudy.short_title} (${matchedStudy.evidence_class}): ${matchedStudy.headline_claim} ` +
