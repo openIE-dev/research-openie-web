@@ -9,6 +9,7 @@ import path from 'node:path';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const ledger = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/claim-ledger.json'), 'utf8'));
+const studyIds = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/studies.json'), 'utf8')).studies.map((s) => s.id));
 const WORDS = new RegExp(ledger.status_words, 'g');
 
 const TARGETS = [
@@ -17,6 +18,15 @@ const TARGETS = [
 ];
 const EXT = /\.(md|astro|json|txt|js|ts)$/;
 
+function isUnpublishedContentNote(relPath) {
+  const m = relPath.match(/^src\/content\/(papers|products)\/([^/]+)\.md$/);
+  if (!m) return false;
+  const [, kind, slug] = m;
+  if (studyIds.has(slug)) return false;
+  if (fs.existsSync(path.join(ROOT, 'src/pages', kind, `${slug}.astro`))) return false;
+  return true;
+}
+
 function walk(p, out) {
   if (p.startsWith('src/content/translations')) return; // translations follow the English source, which is linted
   const abs = path.join(ROOT, p);
@@ -24,7 +34,10 @@ function walk(p, out) {
   const st = fs.statSync(abs);
   if (st.isDirectory()) {
     for (const f of fs.readdirSync(abs)) walk(path.join(p, f), out);
-  } else if (EXT.test(p)) out.push(p.split(path.sep).join('/'));
+  } else if (EXT.test(p)) {
+    const rel = p.split(path.sep).join('/');
+    if (!isUnpublishedContentNote(rel)) out.push(rel);
+  }
 }
 
 function globToRe(g) {
