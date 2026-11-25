@@ -137,6 +137,13 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | Deterministic macro expansion | FnTable.macros + expand_macro (substitution+lift); Macro executes registered macros | 3 |
 | Whole-program G0 service | /admit_program (replay gate) + /run_program (key lookup, 1 µJ, 0 model calls); live x=10→22 | (live) |
 | Cooperative async scheduler | program::Scheduler (round-robin, await yields, fuel/round bounded) | 4 |
+| Typed monomorphization | types.rs (I64/I128/Bool + vars), monomorphize per-instantiation checks, exec_typed range checks | 6 |
+| Rate-monotonic priority dispatch | rtos::priority_dispatch (deterministic, refuse if unschedulable) | 3 |
+| Two-boundary contact physics | twin::Plant3/simulate3 (floor+ceiling, restitution, friction) | 3 |
+
+Non-buildable fronts are registered as OPEN-EXTERNAL in rce-gap-register.md with the exact
+external decision each needs (notified body, SOC2 auditor, RTOS port choice, fleet financing,
+training-compute budget). Nothing there is claimed done.
 
 Measured per-language named-node coverage (tree-sitter master, 25 Nov 2026, after the
 gate-wiring + attributes/macros pass): rust 49/169 = 29.0%, python 29/129 = 22.5%,
@@ -148,7 +155,7 @@ Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 323 (workspace) / 320 (monorepo), 0 failed. Full rigid-body physics, RTOS port,
+Suites 335 (workspace) / 332 (monorepo), 0 failed. Full rigid-body physics, RTOS port,
 notified-body attestation, full per-language grammars (measured remainder above) and
 FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
 
