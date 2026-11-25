@@ -112,8 +112,10 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | Compile spike off-loop | jit::DeadlineJit (interpret now, compile in maintenance slots) | 3 |
 | sim2real gate seed | twin::admit_controller (double-integrator plant spectest) | 4 |
 | EU/ISO evidence map | trust::eu_machinery_controls (2 built, 4 open attestation/standards) | 3 |
+| Measured latency receipts | fleet latency_us_per_act + aggregate_latency; live /energy + /fleet (38.96 µs/act @ ioreport) | 4 |
+| sim2real-gated ingestion | trajectory::ingest_gated (integral + distinct + twin-replay admission) | 4 |
 
-Suites 235 (workspace) / 232 (monorepo), 0 failed. Physics fidelity, RTOS port,
+Suites 243 (workspace) / 240 (monorepo), 0 failed. Physics fidelity, RTOS port,
 notified-body attestation and fleet-scale trajectory ingestion remain open edges.
 
 ## New unknowns (registered in rce-gap-register.md)
