@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits カスケードにおける下方 LUT6 コンパイル：Beneš ルーティング・ブールファブリック、コンフォーマル起動ゲート、およびフロンティア疎 MoE NVMe ストリーミング"
-deck: "6カーネル検証済みの Lean 4.36.0 定理 90 件および Inria Charon+Aeneas による機械的 #![no_std] Rust→Lean 抽出（さらに Linux bubblewrap サンドボックス内の Open Interface Engineering リポジトリ 4 件にわたる 1,454 定理を含み、CVE-2026-72844 対策強化済み）を備えた Mixture of Limits カスケードは、まずゼロ浮動小数点演算（FLOP）のページング式 6 入力ルックアップテーブル（LUT6）回路、15.80 キロバイトの WebAssembly（WASM）ブラウザモジュール、反対称 40 エントリ・ゼロ乗算 T-MAC 三値テールを備えた 4 キロバイトの Rust lut6-core Nucleus、プレフィックス汚染 0.00% の 56 ビット 4 トークン開幕応答を備えた 5,984 バイト（64 キロバイト・スマートウォッチ SRAM の 9.13%）の Wearable-MoL、および（72, 64）SECDED 宇宙線ビット反転保護を試行する（単一バイナリ Rust mol-agent-rs で 0.154 ミリ秒、ビットスライス判定あたり 162.71 ナノジュール、ビット誤り率 1% で生存率 100.0%）。さらにサブ10億パラメータのウェアラブル小型言語モデル（Sensente/uLM-28M、LiquidAI/LFM2.5-230M）および 4 つの GPU シリコンベンダー（最大 328.06x 高速化、LastExam プロトコル RMS 較正誤差を 70.62% から 13.14% へ 5.37x 削減し確信度 >= 80% での誤答 CHR@80 を 0.00% へ低減）にわたり最大 120B パラメータの 4 ビット NVMe ループ型・ハイブリッド・疎 MoE 2026 年後半モデルへ段階的にエスカレーションし、上流 Verified リポジトリ 4 件でコミットをゲート制御したうえで、認証済みの起動結果を RAMB36E2、ライセンス不要の openXC7 320.62 メガヘルツ配置配線後 Artix-7 XC7A200T M.2 2280 .bit ビットストリーム、Lupanov 共有余因子およびゆらぎコドン結晶ページへ下方コンパイルする。Jetson AGX Thor 上の物理 Texas Instruments DC シャント measured_j 実測値（ビットスライスで 87.25x、uLM-28M 層スライス比でウェアラブル 56 ビット認識論ゲート 222.57x、反対称 40 エントリ T-MAC で 1.65x［Zen 5 では 1.12x］、Sub1Bit-LUT6 で 3.90x、Expert-AirMoL で 34.21x、命題 1 で 10.94x；board_metered は真）を含み、Alif Cortex-M55 サイクル数（ウェアラブルゲート 2,905.18x）、reported_j カウンタ、openXC7 静的タイミング、およびコミット c38ed90 における RTL 推定値 est_j から厳密に分離して報告する。"
+deck: "6カーネル検証済みの Lean 4.36.0 定理 98 件および Inria Charon+Aeneas による機械的 #![no_std] Rust→Lean 抽出（さらに Linux bubblewrap サンドボックス内の Open Interface Engineering リポジトリ 4 件にわたる 1,463 定理を含み、CVE-2026-72844 対策強化済み）を備えた Mixture of Limits カスケードは、まずゼロ浮動小数点演算（FLOP）のページング式 6 入力ルックアップテーブル（LUT6）回路、14.77 キロバイトの WebAssembly（WASM）ブラウザモジュール、反対称 40 エントリ・ゼロ乗算 T-MAC 三値テールを備えた 4 キロバイトの Rust lut6-core Nucleus、プレフィックス汚染 0.00% の 56 ビット 4 トークン開幕応答を備えた 5,984 バイト（64 キロバイト・スマートウォッチ SRAM の 9.13%）の Wearable-MoL、および（72, 64）SECDED 宇宙線ビット反転保護を試行する（単一バイナリ Rust mol-agent-rs で 0.154 ミリ秒、ビットスライス判定あたり 162.71 ナノジュール、ビット誤り率 1% で生存率 100.0%）。さらにサブ10億パラメータのウェアラブル小型言語モデル（Sensente/uLM-28M、LiquidAI/LFM2.5-230M）および 4 つの GPU シリコンベンダー（最大 328.06x 高速化、LastExam プロトコル RMS 較正誤差を 70.62% から 13.14% へ 5.37x 削減し確信度 >= 80% での誤答 CHR@80 を 0.00% へ低減）にわたり最大 120B パラメータの 4 ビット NVMe ループ型・ハイブリッド・疎 MoE 2026 年後半モデルへ段階的にエスカレーションし、上流 Verified リポジトリ 4 件でコミットをゲート制御したうえで、認証済みの起動結果を RAMB36E2、ライセンス不要の openXC7 320.62 メガヘルツ配置配線後 Artix-7 XC7A200T M.2 2280 .bit ビットストリーム、Lupanov 共有余因子およびゆらぎコドン結晶ページへ下方コンパイルする。Jetson AGX Thor 上の物理 Texas Instruments DC シャント measured_j 実測値（ビットスライスで 87.25x、uLM-28M 層スライス比でウェアラブル 56 ビット認識論ゲート 222.57x、反対称 40 エントリ T-MAC で 1.65x［Zen 5 では 1.12x］、Sub1Bit-LUT6 で 3.90x、Expert-AirMoL で 34.21x、命題 1 で 10.94x；board_metered は真）を含み、Alif Cortex-M55 サイクル数（ウェアラブルゲート 2,905.18x）、reported_j カウンタ、openXC7 静的タイミング、およびコミット 560bd86 における RTL 推定値 est_j から厳密に分離して報告する。"
 lang: "ja"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*改訂 c38ed90、2026年11月25日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) の [`c38ed90655fff49e7904c90ab916330e4b5ecfc9`](https://github.com/openIE-dev/lut-adapt-ai/tree/c38ed90655fff49e7904c90ab916330e4b5ecfc9)。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX版PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
+*改訂 560bd86、2026年11月25日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) の [`560bd8697ad35860ca885d0bc4e2a2161a92e90b`](https://github.com/openIE-dev/lut-adapt-ai/tree/560bd8697ad35860ca885d0bc4e2a2161a92e90b)。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX版PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: Mixture of Limits、カスケード規則（Metered Commit Gates Part II [same house]より）</li>
-<li>LA: 本研究で用いる主張 (claim) および反証子 (falsifier) の接頭辞 (LA-1 から LA-52、LA-F1 から LA-F52)</li>
+<li>LA: 本研究で用いる主張 (claim) および反証子 (falsifier) の接頭辞 (LA-1 から LA-55、LA-F1 から LA-F55)</li>
 <li>LUT、LUT6、INIT: ルックアップテーブル、6入力Xilinx UltraScale+ブール原始子、およびその64ビット真理値表初期化マスク</li>
 <li>BRAM、RAMB36E2、URAM: ブロックRAM、36-KbitデュアルポートUltraScale+ブロックRAM原始子（xck26では144個）、およびUltraRAM</li>
 <li>CLB、FF、DSP、DSP48、KV260: 構成可能ロジックブロック、フリップフロップ、デジタル信号処理スライス、およびAMD Kria KV260ボード（xck26）</li>
@@ -49,6 +49,7 @@ complete: true
 <li>ABBA, AGX, AI, DC, FWHT, INA238, INA3221, MSS, NT, PPT, RDNA, RPL, RTX, RUSAGE_INFO_V6, TI, VDD, VDD_CPU_SOC_MSS, VDD_GPU, VIN, XNU: カウンタバランス型 A-B-B-A 試行順序、Autonomous-Grade Compute モジュール群、人工知能、直流、高速ウォルシュ・アダマール変換、Texas Instruments インライン電力モニタ（基板全体 VIN 用 INA238 および 3 チャネル INA3221 レール）、メモリサブシステム、Windows NT カーネル群、Package Power Tracking、Radeon DNA グラフィックスアーキテクチャ、Raptor Lake モバイルプラットフォーム、Ray Tracing Texel eXtreme、Darwin Resource Usage Info v6 構造体、Texas Instruments、ドレイン供給電源レール、Tegra CPU/SoC/メモリ電源レール、Tegra GPU 電源レール、基板電圧入力レール、および Darwin X is Not Unix カーネル</li>
 <li>ABI, AC, ADC, AE3, A2B, CRC32, CYCCNT, DTCM, DWT, E3, E4, E4B, ELF, ELFs, FCCM, FSM, GPT, INT8, ISVLSI, LSB, M0, M55, MCU, MRAM, PALUTE, PIO, Q4, ROM, RP2040, SHA256, SPI, ST, XL: アプリケーションバイナリインタフェース、非定数交流フーリエエネルギー、アナログ-デジタル変換器、Alif Ensemble E3 OpenMV-AE3 マイクロコントローラボード、活性 20 億パラメータ疎アーキテクチャ接尾辞、32 ビット IEEE 巡回冗長検査、Arm Data Watchpoint and Trace サイクルカウンタレジスタ、データ密結合メモリ、Data Watchpoint and Trace ユニット、Alif Ensemble E3/E4 マイクロコントローラシリーズ、実効 40 億エッジパラメータ接尾辞、Executable and Linkable Format ファームウェア像、Field-Programmable Custom Computing Machines シンポジウム、有限状態機械、Generative Pre-trained Transformer（正規化 nGPT）、8 ビット整数量子化、International Symposium on VLSI、最下位ビット、Arm Cortex-M0+ および Cortex-M55 マイクロコントローラコア、マイクロコントローラユニット、磁気抵抗不揮発性 RAM、Processing-In-Memory Acceleration via Lookup Table、プログラマブル入出力ペリフェラル、4 ビット量子化ブロック形式（Q4_K_XL）、読み出し専用メモリ、Raspberry Pi デュアル Cortex-M0+ マイクロコントローラ、256 ビット Secure Hash Algorithm、Serial Peripheral Interface バス、Straight-Through 推定器、および特大サイズ量子化ブロック接尾辞</li>
 <li>BAR0, BGA, BLE, CEM, CMOS, CSR, DDR3, DS181, DSP48E1, ECC, FBG484, FPC, GPIO, GTP, HAT, HPL, I2C, JEDEC, LFM, M4F, MIG, ODT, PCIe, PHY, QCM6490, QFAA, RAMB36E1, RISC, RV32IMAC, SSTL15, SYSMON, UG475, XADC, XC7A200T, XCK26, XCZU9EG, ZCU102: PCIe ベースアドレスレジスタ 0、ボールグリッドアレイ、Bluetooth Low Energy、Card Electromechanical PCIe スロット仕様、相補型金属酸化膜半導体、制御・状態レジスタ、DDR3 同期 DRAM、AMD Artix-7 FPGA DC/AC スイッチング特性データシート DS181、Xilinx 7-Series デジタル信号処理スライス、誤り訂正符号、484 ボール 23x23 mm リッドレス・フリップチップ BGA パッケージ、フレキシブルプリント基板リボン、汎用入出力、Artix-7 マルチギガビットシリアルトランシーバ、Hardware Attached on Top 40 ピン拡張ヘッダ、TSMC 28 nm High-Performance Low-Power プロセス、Inter-Integrated Circuit バス、JEDEC 熱試験基板規格、毎分リニアフィート風速単位、Arm Cortex-M4F マイクロコントローラコア、Xilinx 7-Series Memory Interface Generator、オンダイ終端、Peripheral Component Interconnect Express、物理メモリインタフェース層、Particle Tachyon 上の Qualcomm Dragonwing SoC、Nordic 48 ピン QFN nRF52832 パッケージ接尾辞、Xilinx 7-Series 36 Kbit デュアルポート Block RAM 原始子（XC7A200T に 365 個）、縮小命令セットコンピュータ、32 ビット RISC-V 整数/乗算/アトミック/圧縮命令セット、Stub Series Terminated Logic 1.5 V I/O 規格、Xilinx System Monitor 温度・電圧監視ブロック、AMD 7-Series FPGA パッケージ・ピン配置仕様書 UG475、Xilinx 7-Series デュアル 12 ビット ADC、AMD Artix-7 200T FPGA（Numato Aller A7 M.2 2280）、AMD Kria K26 SOM FPGA、AMD Zynq UltraScale+ MPSoC FPGA、および AMD ZCU102 評価ボード</li>
+<li>SIW: ランドマーク誘導型直列化反復幅探索 (Serialized Iterated Width)</li>
 </ul>
 
 本研究では、以下のすべての表にわたって5つの根拠クラスを相互に分離して扱う。
@@ -806,6 +807,17 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
   <figcaption>図 14. コンパイル済みエージェンシー測定（`主張 LA-19 [90 定理 / 1,454 bwrap フリート]、LA-49..LA-52`）：(A) 公式 `16` ゲーム `ARC-AGI-3` の関係幅 `2` `IW(2) + Beneš-LUT6`（第1波 `7/113`・第2波 `8/113` 突破、最大 `RHAE` `10.7143`）；(B) `7` 基盤 `waiOS` 適合性（`BLAKE3 = a541323b...`、`142.55 MHz` `openXC7` `.bit`）と `HeteroMosaic-MoL`（全 `GPU` 比 `80.44×` 低減）；(C) `0.1056-0.4498 bpw` `JouleBit-LUT6`（`Thor` `measured_j` `30.92×` 低減、`JpCT` `3.41×` 低減）；(D) `256` 課題決定論的帰無・`Scholar-Codifier` スイート（精度 `100.0%`、第2波エネルギー `7.38 × 10^6×` 低減）。</figcaption>
 </figure>
 
+### 4.49 主張 LA-53、LA-54 および LA-55：公式 `16` ゲーム `ARC-AGI-3` におけるランドマーク直列化 `SIW(2) + Beneš-LUT6` と 2 バンク `8 KB` ボールト（`7` ゲーム `9/113` レベル、平均 `RHAE = 2.2520`）、実機 `Bonsai-2-27B` コールド／ウォーム `JouleBit-LUT6` ストリーミング（`Thor` シャント `2.991×`）、および `111.45 MHz` ゼロ `DSP` `openXC7` ゲートウェア
+
+- **ランドマーク直列化 `SIW(2)` と 2 バンク `8 KB` `System-0` ボールト（`LA-53`）**：`OpenIE-Apex SIW(2)` は盤面進行ランドマークで幅 `2` 新規性表をリセットし、大型キャンバスを `6 px` 内部格子で細分化（`.py` ソース参照 `0`、生フレーム保存 `0`）することで、**`7/16` ゲームで `9/113`（`7.96%`）レベル（クリック系 `6` レベル、`m0r0` を `17` 手・`s5i5` を `13` 手で新規突破）**を解決します。さらに 2 バンク構成（`8,192 B` = **`64 KB` ウォッチ `SRAM` の `12.50%`**）により `r11l` の第 2 波ハッシュ衝突を解消し（ブレーカ作動 `0`、`r11l` の `RHAE` を **`67.6×` の `4.7619`** へ向上）、`16` ゲーム平均 `RHAE` を **`+49.7%`（`1.5045 -> 2.2520`、最大 `10.7143`）**引き上げます。
+- **実機 `prism-ml/Ternary-Bonsai-2-27B` コールド／ウォーム `JouleBit-LUT6` ストリーミングと `Window 19` シャント（`LA-54`）**：実 `[248320, 5120]` `lm_head` に対する逐次ランク `1` Hadamard `LUT6` デフレーション（`QAT` `0`、二値 `MAC` `0`、`M3 Ultra 256 GB` で `.jbit6` `pread` `3.340 GiB/s`）は実 `27B` 隠れ状態 `96` 個で **`65.62%` top-`1` 一致（余弦 `0.8855`）**を達成し、**未知のコールド第 1 波でも `< 1` スイープ/トークン（`1.049 tok/sweep`、`4.970 GiB/tok`）**を突破、ウォーム第 2 波で **`1.325 tok/sweep`（`3.935 GiB/tok` = `MLX` `2` ビット比 `1.725×` 低減）**、かつ `100.00%` 貪欲一致のまま最小 **`JpCT = 0.0534 J/tok`** を達成します。`Window 19` では `Jetson AGX Thor` 物理 `DC` シャント `measured_j` を **`2.991×` 低減（`23,766.49` 対 `71,077.26 nJ/op`、`3.129×` 高速、`board_metered = true`）**します。
+- **`111.45 MHz` ゼロ `DSP48E1` `openXC7` `.bit`、`14.77 KB` `14` エクスポート `WASM`、および `98` 件の 6 カーネル証明（`LA-55`）**：`clai_siw2_joulebit_xc7a200t_top` は **`111.45 MHz`** ポスト `PAR` タイミングを達成し（`653` `SLICE_LUTX`、`0` `DSP48E1`、`64/64` `RTL` 一致、`9,730,773 B` `.bit`、`board_metered = false`）、`lut6_core.wasm` は **`14.77 KB`（`15,121 B <= 16 KB`、`14` エクスポート）**へ縮小、`SerializedIwJouleBit27B.lean` により `LA-19` は **`98` 件の 6 カーネル `Lean 4.36.0` 定理（`bwrap` フリート合計 `1,463` 件）**へ拡大します。
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/siw2-arc3-and-joulebit-27b.svg" alt="ランドマーク直列化 SIW(2) ARC-AGI-3、実機 27B コールド／ウォーム JouleBit-LUT6 ストリーミング、Window 19 Thor シャント、および 111.45 MHz openXC7 ゲートウェア。" />
+  <figcaption>図 15. ランドマーク `SIW(2)` および実機 `27B` `JouleBit-LUT6` 測定（`主張 LA-19 [98 定理 / 1,463 bwrap フリート]、LA-53..LA-55`）：(A) 公式 `16` ゲーム `ARC-AGI-3` の `SIW(2)` と 2 バンク `8 KB` ボールト（`7` ゲーム `9/113` 突破、`+m0r0/+s5i5`、平均 `RHAE = 2.2520`、衝突 `0`）；(B) `M3 Ultra 256 GB` 上の実機 `Ternary-Bonsai-2-27B` ストリーミング（コールド `1.049` / ウォーム `1.325 tok/sweep`、`0.0534 J/tok` `JpCT`、一致率 `100%`）；(C) `Window 19`（`Thor` `measured_j` `2.991×` 低減、`3.129×` 高速）；(D) `111.45 MHz` `openXC7` `.bit`（`0` `DSP48E1`）、`14.77 KB`（`14` エクスポート）`lut6_core.wasm`、および `98` 件の 6 カーネル証明。</figcaption>
+</figure>
+
 ---
 
 <div id="5-related-work-and-convergence-observations" class="anchor-alias" aria-hidden="true"></div>
@@ -889,6 +901,9 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 | **`LA-F50`** | `Claim LA-50` (`7` 基盤 `waiOS` 適合性および `HeteroMosaic-MoL`) | `7` 基盤のいずれかが `BLAKE3 = a541323b...` から逸脱する、第 77 行故障 `4ac7c4fb...` で停止しない、改ざん `Ed25519` 署名を受理する、`Thor` 以外で `board_metered = true` を付与する、または `HeteroMosaic-MoL` が全 `GPU` 比 `< 50×` に留まる。 |
 | **`LA-F51`** | `Claim LA-51` (`0.1056-0.4498 bpw` `JouleBit-LUT6` 対 `LittleBit-2` `JpCT`) | `JouleBit-LUT6` が `> 0` `QAT` トークンまたは実行時二値 `MAC` を使用する、`100.00%` Greedy 一致を失う、または `Thor` `Window 18` シャント `< 20×` / Cortex-`M55` `DWT` `< 50×` に留まる。 |
 | **`LA-F52`** | `Claim LA-52` (`256` 課題帰無スイート、`90` 証明、および `13` エクスポート `WASM`) | 構造化 `D1-D4` で帰無精度 `< 100%`、非構造化 `D5-D8` で `Scholar-Codifier + MoL` `< 100%`、6カーネル証明が `< 90` / `< 1,454` 件、または `lut6_core.wasm` が `16,384 B` を超える。 |
+| **`LA-F53`** | `Claim LA-53` (`16` ゲーム `ARC-AGI-3` ランドマーク `SIW(2)` と `8 KB` ボールト) | ゲーム `.py` を参照、生フレームを保存、突破数・ゲーム数・平均 `RHAE` で `IW(2)` を厳密に上回らない、第2波で衝突 `> 0`、または `8,192 B` を超える。 |
+| **`LA-F54`** | `Claim LA-54` (実機 `Bonsai-2-27B` `JouleBit-LUT6` ストリーミングと `Window 19`) | `QAT` `> 0`、`100.00%` 一致から逸脱、コールド第1波で `<= 1.000 tok/sweep`、`JpCT` で劣後、または `Window 19` が `Thor` `measured_j` 利得を失う。 |
+| **`LA-F55`** | `Claim LA-55` (`111.45 MHz` `openXC7`、`14` エクスポート `WASM`、`98` 証明) | `DSP48E1` `> 0`、`64/64` `RTL` 一致や `100 MHz` `PAR` に失敗、6カーネル証明が `< 98` / `< 1,463` 件、または `lut6_core.wasm` が `16,384 B` を超える。 |
 
 ---
 
@@ -980,7 +995,7 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 
 ## 付録A. 再現性
 
-[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit 1ab5c6e`）および [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` および `lut6-core-nucleus/`）のチェックアウトから以下を実行する：
+[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit 560bd86`）および [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` および `lut6-core-nucleus/`）のチェックアウトから以下を実行する：
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v

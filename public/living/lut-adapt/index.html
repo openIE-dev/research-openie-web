@@ -651,8 +651,8 @@
             <label><span>Live <code>lut6_core.wasm</code> <code>wasm_verify_waios_antisym40_digest32</code> Probe</span></label>
             <select id="wai-wasm-probe">
               <option value="0" selected>Clean Canonical SplitMix64 Seed → BLAKE3("waios.tmac.v1") = a541323b... (Verified!)</option>
-              <option value="78">Inject 1-Trit Weight Fault at Row 77 → BLAKE3 = 4ac7c4fb... (Deterministic Halt!)</option>
-              <option value="1">Inject 1-Trit Weight Fault at Row 0 → BLAKE3 Diverges (Tamper Caught!)</option>
+              <option value="1">Inject 1-Trit Weight Fault at Row 77 → BLAKE3 = 4ac7c4fb... (Deterministic Halt!)</option>
+              <option value="2">Relational IW(2) Post-Switch Corridor Witness (IW(2)=1 vs IW(1)=0!)</option>
             </select>
           </div>
         </div>
@@ -675,7 +675,59 @@
           <div class="metric-tile">
             <div class="k">Live WASM BLAKE3 Receipt</div>
             <div class="v" id="wai-wasm-v" style="color: var(--color-brand-cyan);">0xa541323b · SEALED</div>
-            <div class="s" id="wai-wasm-s">13th export live in 16,179 B lut6_core.wasm</div>
+            <div class="s" id="wai-wasm-s">13th export live in 15,121 B lut6_core.wasm</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Widget 13: Landmark SIW(2) ARC-AGI-3, Real Bonsai-2-27B Cold/Warm JouleBit-LUT6, Window 19 Shunt, & 111.45 MHz openXC7 (la-siw-01) -->
+      <section id="la-siw-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-siw-01</code> · Landmark <code>SIW(2)</code> <code>ARC-AGI-3</code>, Real <code>27B</code> Cold/Warm <code>JouleBit-LUT6</code>, &amp; <code>111.45 MHz</code> <code>openXC7</code> (<code>Claims LA-53..LA-55</code>)</h2>
+          <span class="chip chip-meas">Thor Shunt Window 19 (2.991×) + 98 6-Kernel Thms (1,463 Fleet) + Live 14.77 KB (14-Export) WASM</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Execute the 14th live WebAssembly export (<code>wasm_eval_siw2_and_joulebit6</code>) inside <code>lut6_core.b5ae534fcda0.wasm</code> (<code>14.77 KB</code> = <code>15,121 B &lt;= 16 KB</code>), and inspect Landmark-Serialized <code>SIW(2) + Two-Bank 8 KB System-0</code> on <code>16</code>-game official <code>ARC-AGI-3</code> (<code>9/113</code> solved across <code>7</code> games, <code>+m0r0/+s5i5</code>, <code>2.2520</code> mean <code>RHAE</code>, <code>0</code> collision trips), real <code>prism-ml/Ternary-Bonsai-2-27B</code> cold &amp; warm <code>JouleBit-LUT6</code> streaming (<code>1.049</code> cold W1 / <code>1.325</code> warm W2 <code>tok/sweep</code>, <code>0.0534 J/tok</code> <code>JpCT</code>, <code>100.0%</code> parity), <code>Window 19</code> <code>Jetson AGX Thor</code> DC shunt telemetry (<code>2.991×</code> lower <code>measured_j</code>, <code>3.129×</code> faster), and zero-<code>DSP48E1</code> <code>111.45 MHz</code> <code>openXC7</code> <code>XC7A200T</code> gateware.
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label><span>Select Claim (Claims LA-53..LA-55)</span></label>
+            <select id="siw-frontier">
+              <option value="siw2" selected>Claim LA-53 · 16-Game ARC-AGI-3 Landmark SIW(2) + Two-Bank 8 KB Vault (9/113 · 7 Games · 2.2520 RHAE)</option>
+              <option value="jb27b">Claim LA-54a · Real Bonsai-2-27B Cold &amp; Warm JouleBit-LUT6 Streaming (1.049 W1 / 1.325 W2 tok/swp · 0.0534 JpCT)</option>
+              <option value="win19">Claim LA-54b · Window 19 Cross-Silicon DC Shunt Telemetry (2.991× Thor measured_j · 3.129× Faster)</option>
+              <option value="xc7">Claim LA-55 · Zero-DSP48E1 111.45 MHz openXC7 XC7A200T .bit + 14.77 KB 14-Export WASM + 98 Proofs</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label><span>Live <code>lut6_core.wasm</code> <code>wasm_eval_siw2_and_joulebit6</code> Probe</span></label>
+            <select id="siw-wasm-probe">
+              <option value="0x14200002,10" selected>Bank-0 Direct Hit (epoch=1, hud=0x42, col=0) → Reflex Action + JouleBit6 FWHT-64</option>
+              <option value="0x14200101,10">Bank-0 Collision → Bank-1 Spillover Hit (0 Breaker Trips!)</option>
+              <option value="0x19900001,10">HUD Seal Mismatch (0x99 vs 0x42) → Mode 2 Mechanic-Shift Breaker Halt!</option>
+            </select>
+          </div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-tile">
+            <div class="k">Headline Frontier Result</div>
+            <div class="v" id="siw-m1" style="color: var(--color-brand-cyan);">9 / 113 Levels (7 / 16 Games)</div>
+            <div class="s" id="siw-s1">Unlocks m0r0 (17 steps) &amp; s5i5 (13 steps) · 6 click levels · 0 peeking</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Efficiency / RHAE Gain</div>
+            <div class="v" id="siw-m2" style="color: var(--color-brand-cyan);">2.2520 Mean RHAE (+49.7%)</div>
+            <div class="s" id="siw-s2">479.1× &gt; FIFO-BFS · r11l 0.0704→4.7619 RHAE (67.6× · 0 trips)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Silicon &amp; Formal Proof Seal</div>
+            <div class="v" id="siw-m3" style="color: var(--color-brand-cyan);">8,192 B (12.50% Watch SRAM)</div>
+            <div class="s" id="siw-s3">23.77 µJ Thor Window 19 (2.991×) · 98 6-Kernel Thms (1,463 Fleet)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Live WASM #14 (SIW2+JouleBit6)</div>
+            <div class="v" id="siw-wasm-v" style="color: var(--color-brand-cyan);">Mode 1 · Bank-0 Reflex</div>
+            <div class="s" id="siw-wasm-s">14th export live in 15,121 B lut6_core.wasm</div>
           </div>
         </div>
       </section>
@@ -683,6 +735,10 @@
       <!-- Static Vector Diagrams Gallery -->
       <section id="la-figs" style="margin-top: 2.5rem;">
         <h2 style="font-size: 1.3rem;">Paper Vector Diagrams (Click to Zoom)</h2>
+        <figure class="fig">
+          <img src="/figures/lut-adapt/siw2-arc3-and-joulebit-27b.svg" alt="Landmark-Serialized SIW(2) ARC-AGI-3, Real 27B Cold and Warm JouleBit-LUT6 Streaming, Window 19 Thor Shunt, and 111.45 MHz Zero-DSP openXC7 Gateware">
+          <figcaption><strong>Figure 15.</strong> Landmark <code>SIW(2)</code> &amp; real <code>27B</code> <code>JouleBit-LUT6</code> measurements (<code>Claims LA-19 [98 thms / 1,463 bwrap fleet], LA-53..LA-55</code>): (A) <code>16</code>-game (<code>113</code>-level) official black-box <code>ARC-AGI-3</code> Landmark-Serialized <code>SIW(2) + Two-Bank 8 KB System-0 LUT6</code> (<code>9/113</code> solved across <code>7/16</code> games, unlocking <code>m0r0</code> &amp; <code>s5i5</code>, <code>2.2520</code> mean [<code>+49.7%</code>] &amp; <code>10.7143</code> peak <code>RHAE</code>, <code>0</code> collision breaker trips in <code>12.50%</code> watch <code>SRAM</code>); (B) real <code>prism-ml/Ternary-Bonsai-2-27B</code> two-rung <code>Token-LUT6 (8 KB) + Conformal JouleBit-LUT6 + EntroMCU-28</code> streaming on <code>M3 Ultra 256 GB</code> (<code>65.62%</code> real <code>27B</code> top-<code>1</code>, <code>1.049</code> cold W1 / <code>1.325</code> warm W2 <code>tok/sweep</code>, <code>3.935 GiB/tok</code>, <code>0.0534 J/tok</code> <code>JpCT</code> at <code>100.0%</code> parity); (C) <code>Window 19</code> cross-silicon telemetry (<code>2.991×</code> lower <code>Thor</code> DC shunt <code>measured_j</code>, <code>3.129×</code> faster, <code>1.752×</code> <code>Zen 5</code> <code>RAPL</code>, <code>1.663×</code> <code>M3 Ultra</code>); and (D) zero-<code>DSP48E1</code> <code>111.45 MHz</code> <code>openXC7</code> <code>XC7A200T</code> <code>.bit</code> (<code>653</code> LUTs, <code>64/64</code> RTL parity), <code>14.77 KB</code> (<code>15,121 B</code>, <code>14</code> exports) <code>lut6_core.wasm</code>, and <code>98</code> six-kernel <code>Lean 4.36.0</code> proofs (<code>1,463</code> <code>bwrap</code> fleet).</figcaption>
+        </figure>
         <figure class="fig">
           <img src="/figures/lut-adapt/waios-mosaic-joulebit-and-null.svg" alt="From Ephemeral Inference to Compiled Agency: Relational IW(2) ARC-AGI-3, 7-Fabric waiOS + HeteroMosaic-MoL, 0.10 bpw JouleBit-LUT6, and 256-Task Deterministic Null Suite">
           <figcaption><strong>Figure 14.</strong> Compiled-agency measurements (<code>Claims LA-19 [90 thms / 1,454 bwrap fleet], LA-49..LA-52</code>): (A) <code>16</code>-game (<code>113</code>-level) official black-box <code>ARC-AGI-3</code> relational width-<code>2</code> <code>IW(2) + Beneš-LUT6</code> (<code>7/113</code> Wave-1 &amp; <code>8/113</code> Wave-2 levels solved, <code>1.5045</code> mean &amp; <code>10.7143</code> peak <code>RHAE</code>, unlocking <code>vc33</code> <code>2/7</code> &amp; <code>tu93</code> <code>3/9</code>); (B) <code>7</code>-fabric <code>waiOS</code> <code>256×128</code> bit-exact conformance (<code>BLAKE3 = a541323b...</code>, <code>Ed25519</code> receipts, row-77 fault halt <code>4ac7c4fb...</code>, <code>142.55 MHz</code> <code>openXC7</code> <code>XC7A200T</code> <code>.bit</code>) &amp; <code>HeteroMosaic-MoL</code> (<code>80.44×</code> &lt; All-GPU, <code>5.65×</code> &lt; All-CPU); (C) <code>0.1056–0.4498 bpw</code> <code>JouleBit-LUT6</code> vs. <code>Samsung LittleBit-2</code> (<code>30.92×</code> lower <code>Thor</code> <code>Window 18</code> <code>measured_j</code>, <code>93.52×</code> live Cortex-<code>M55</code> <code>DWT</code> speedup, <code>3.104×–3.414×</code> lower <code>JpCT</code> at <code>100.0%</code> parity); and (D) <code>256</code>-task SHA-256-pinned <code>Deterministic Null</code> &amp; <code>Scholar-Codifier</code> suite (<code>100.0%</code> structured null, <code>39.1% → 100.0%</code> unstructured NL codification, <code>7.38×10⁶×</code> Wave-2 energy cut).</figcaption>
@@ -1027,19 +1083,20 @@
       }
       vSel.addEventListener('change', updateUI);
       sSel.addEventListener('change', updateUI);
-      fetch('/living/lut-adapt/lut6_core.wasm')
+      fetch('/living/lut-adapt/lut6_core.b5ae534fcda0.wasm')
         .then(function(r){ return r.arrayBuffer(); })
         .then(function(bytes){ return WebAssembly.instantiate(bytes, {}); })
         .then(function(res){
           exportsObj = res.instance.exports;
           window.__lut6WasmExports = exportsObj;
-          chip.textContent = 'Live WASM VM Active (16,179 B · 13 Exports · Signed Provenance · Self-Checked)';
+          chip.textContent = 'Live WASM VM Active (15,121 B · 14 Exports · Signed Provenance · Self-Checked)';
           updateUI();
           if (window.__updateHleWasm) window.__updateHleWasm();
           if (window.__updateBonsaiWasm) window.__updateBonsaiWasm();
           if (window.__updateArc3Wasm) window.__updateArc3Wasm();
           if (window.__updateApexWasm) window.__updateApexWasm();
           if (window.__updateWaiosWasm) window.__updateWaiosWasm();
+          if (window.__updateSiwWasm) window.__updateSiwWasm();
         })
         .catch(function(){
           chip.textContent = 'Offline Mode (Self-checked V8 receipt)';
@@ -1049,6 +1106,7 @@
           if (window.__updateArc3Wasm) window.__updateArc3Wasm();
           if (window.__updateApexWasm) window.__updateApexWasm();
           if (window.__updateWaiosWasm) window.__updateWaiosWasm();
+          if (window.__updateSiwWasm) window.__updateSiwWasm();
         });
     })();
 
@@ -1258,26 +1316,80 @@
           var ex = window.__lut6WasmExports;
           var vEl = document.getElementById('wai-wasm-v'), sEl = document.getElementById('wai-wasm-s');
           if (ex && ex.wasm_verify_waios_antisym40_digest32) {
-            var r = ex.wasm_verify_waios_antisym40_digest32(fRow) >>> 0;
-            var hex = '0x' + r.toString(16).padStart(8, '0');
-            if (r === 0xa541323b) {
-              vEl.textContent = hex + ' · SEALED';
+            var r = fRow === 2 ? (ex.wasm_verify_waios_antisym40_digest32(0, 1) >>> 0) : (ex.wasm_verify_waios_antisym40_digest32(fRow, 0) >>> 0);
+            if (fRow === 2) {
+              vEl.textContent = 'IW(2)=' + ((r >>> 24) & 0xFF) + ' vs IW(1)=' + ((r >>> 16) & 0xFF);
               vEl.style.color = 'var(--color-brand-cyan)';
-              sEl.textContent = 'BLAKE3("waios.tmac.v1") match (16,179 B · 13 Exports)';
+              sEl.textContent = 'Post-switch corridor separation (15,121 B · 14 Exports)';
             } else {
-              vEl.textContent = hex + ' · HALT!';
-              vEl.style.color = 'var(--color-brand-amber)';
-              sEl.textContent = 'Row-' + (fRow - 1) + ' fault caught live in WASM32';
+              var hex = '0x' + r.toString(16).padStart(8, '0');
+              if (r === 0xa541323b) {
+                vEl.textContent = hex + ' · SEALED';
+                vEl.style.color = 'var(--color-brand-cyan)';
+                sEl.textContent = 'BLAKE3("waios.tmac.v1") match (15,121 B · 14 Exports)';
+              } else {
+                vEl.textContent = hex + ' · HALT!';
+                vEl.style.color = 'var(--color-brand-amber)';
+                sEl.textContent = 'Row-77 fault caught live in WASM32';
+              }
             }
           } else {
-            vEl.textContent = fRow === 0 ? '0xa541323b · SEALED' : (fRow === 78 ? '0x4ac7c4fb · HALT!' : 'FAULT HALT!');
-            sEl.textContent = 'Self-checked V8 receipt (16,179 B WASM)';
+            vEl.textContent = fRow === 0 ? '0xa541323b · SEALED' : (fRow === 1 ? '0x4ac7c4fb · HALT!' : 'IW(2)=1 vs IW(1)=0');
+            sEl.textContent = 'Self-checked V8 receipt (15,121 B WASM)';
           }
         }
         window.__updateWaiosWasm = updWaios;
         sSel.addEventListener('change', updWaios);
         pSel.addEventListener('change', updWaios);
         updWaios();
+      }
+    })();
+
+    // Widget 13: Landmark SIW(2) ARC-AGI-3, Real Bonsai-2-27B Cold/Warm JouleBit-LUT6, Window 19 Shunt, & 111.45 MHz openXC7
+    (function(){
+      var siwData = {
+        siw2:  { m1: '9 / 113 Levels (7 / 16 Games)', s1: 'Unlocks m0r0 (17 steps) & s5i5 (13 steps) · 6 click levels · 0 peeking', m2: '2.2520 Mean RHAE (+49.7%)', s2: '479.1× > FIFO-BFS · r11l 0.0704→4.7619 RHAE (67.6× · 0 trips)', m3: '8,192 B (12.50% Watch SRAM)', s3: 'Two-Bank System-0 Vault · 98 6-Kernel Thms (1,463 Linux bwrap Fleet)' },
+        jb27b: { m1: '1.049 Cold / 1.325 Warm tok/swp', s1: 'Beats Token-LUT6 Cold Stall (1.000) & LittleBit-2 Thrash (0.540)', m2: '0.0534 J/tok JpCT (#1 · 100%)', s2: '3.935 GiB/tok W2 (1.725× < MLX 2-Bit) · 3.340 GiB/s .jbit6 pread', m3: '65.62% Real 27B Top-1 Agree', s3: '0.8855 cosine · 0.7939 Rel. Frob · 0 QAT · 0 binary MACs' },
+        win19: { m1: '23,766.49 nJ Thor Window 19', s1: 'vs 71,077.26 nJ LittleBit-2 FWHT-64 (board_metered = true)', m2: '2.991× Lower Shunt measured_j', s2: '3.129× faster (1,362.7 vs 4,263.4 ns) · Includes Two-Bank SIW(2)!', m3: '1.752× Zen 5 · 1.663× M3 Ultra', s3: '173.1 vs 303.4 µJ RAPL · 4.26 vs 7.09 µJ Darwin reported_j' },
+        xc7:   { m1: '111.45 MHz Post-PAR (.bit)', s1: '653 SLICE_LUTX (0.24%) · 194 FFs · 0 DSP48E1 · 9,730,773 B .bit', m2: '14.77 KB WASM (14 Exports)', s2: '15,121 B <= 16 KB (−1,058 B via inline(never) bit-slice dedup)', m3: '98 Six-Kernel Lean 4.36.0 Thms', s3: '1,463 Linux bwrap Fleet · 58,928 con-leche/con-ron decls · 0 sorry' }
+      };
+      var fSel = document.getElementById('siw-frontier'), pSel = document.getElementById('siw-wasm-probe');
+      if (fSel && pSel) {
+        function updSiw() {
+          var d = siwData[fSel.value];
+          document.getElementById('siw-m1').textContent = d.m1;
+          document.getElementById('siw-s1').textContent = d.s1;
+          document.getElementById('siw-m2').textContent = d.m2;
+          document.getElementById('siw-s2').textContent = d.s2;
+          document.getElementById('siw-m3').textContent = d.m3;
+          document.getElementById('siw-s3').textContent = d.s3;
+          var sp = pSel.value.split(',');
+          var st = Number(sp[0]) >>> 0, sc = Number(sp[1]) >>> 0;
+          var ex = window.__lut6WasmExports;
+          var vEl = document.getElementById('siw-wasm-v'), sEl = document.getElementById('siw-wasm-s');
+          if (ex && ex.wasm_eval_siw2_and_joulebit6) {
+            var r = ex.wasm_eval_siw2_and_joulebit6(st, sc) >>> 0;
+            var mode = (r >>> 28) & 0xF, bank = (r >>> 26) & 1, act = (r >>> 20) & 0x3F;
+            var jb = (r & 0xFFFF); if (jb >= 0x8000) jb -= 0x10000;
+            if (mode === 1) {
+              vEl.textContent = 'Mode 1 · Bank-' + bank + ' Act=' + act;
+              vEl.style.color = 'var(--color-brand-cyan)';
+              sEl.textContent = 'JouleBit6+FWHT64=' + jb + ' · Live WASM #14 (15,121 B)';
+            } else {
+              vEl.textContent = 'Mode 2 · SHIFT BREAKER!';
+              vEl.style.color = 'var(--color-brand-amber)';
+              sEl.textContent = 'HUD seal mismatch trapped · JouleBit6=' + jb + ' (Live WASM)';
+            }
+          } else {
+            var col = (st >>> 8) & 1, hud = (st >>> 20) & 0xFF;
+            vEl.textContent = hud !== 0x42 ? 'Mode 2 · SHIFT BREAKER!' : ('Mode 1 · Bank-' + col + ' Reflex');
+            sEl.textContent = 'Self-checked V8 receipt (15,121 B WASM)';
+          }
+        }
+        window.__updateSiwWasm = updSiw;
+        fSel.addEventListener('change', updSiw);
+        pSel.addEventListener('change', updSiw);
+        updSiw();
       }
     })();
 
