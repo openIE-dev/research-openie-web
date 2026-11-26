@@ -30,11 +30,21 @@ const ecosystemJson = JSON.stringify(ecosystem);
     'shorts': 'tiktok',
   };
   const byId = Object.fromEntries(STUDIES.map((s) => [s.id, s]));
+  const STUDY_ALIASES = {
+    'compiled-agency': 'from-ephemeral-inference-to-compiled-agency',
+  };
+  function resolveStudyId(raw) {
+    if (!raw) return '';
+    const s = String(raw).trim();
+    return STUDY_ALIASES[s] || s;
+  }
 
-  let activeStudyId = byId['communication-avalanche'] ? 'communication-avalanche' : (STUDIES[0]?.id || 'agency');
+  let activeStudyId = byId['from-ephemeral-inference-to-compiled-agency']
+    ? 'from-ephemeral-inference-to-compiled-agency'
+    : (byId['communication-avalanche'] ? 'communication-avalanche' : (STUDIES[0]?.id || 'agency'));
   let activeTier = '90s';
   let playlistMode = null; // null | '15s' | '90s'
-  let activeCategory = 'All 27';
+  let activeCategory = 'All 29';
   let activeChannelId = null; // null | 'avalanche' | 'stack' | 'compute' | 'synthesis' | 'knowledge' | 'database'
   let searchQuery = '';
   let playbackRate = 1.0;
@@ -458,7 +468,7 @@ const ecosystemJson = JSON.stringify(ecosystem);
   // Allow hmi-engine.js and voice commands to switch the active study or slot on /tv/
   window.addEventListener('openie:tv-select-study', (ev) => {
     const d = (ev && ev.detail) || {};
-    const sid = d.studyId || d.study_id || d.id;
+    const sid = resolveStudyId(d.studyId || d.study_id || d.id);
     const rawTier = d.tier || d.slot || d.clip;
     if (!sid || !byId[sid]) return;
     playlistMode = null;
@@ -495,7 +505,7 @@ const ecosystemJson = JSON.stringify(ecosystem);
 
   const params = new URLSearchParams(window.location.search);
   const qChannel = params.get('channel');
-  const qStudy = params.get('study');
+  const qStudy = resolveStudyId(params.get('study'));
   const qTier = params.get('tier');
   const rawHash = (window.location.hash || '').replace(/^#/, '');
   if (qChannel && CHANNELS_BY_ID[qChannel]) {
@@ -508,7 +518,8 @@ const ecosystemJson = JSON.stringify(ecosystem);
     activeStudyId = qStudy;
     if (qTier) activeTier = normalizeTier(qTier);
   } else if (rawHash && rawHash !== 'ecosystem-channels') {
-    const [hId, hTier] = rawHash.split(':');
+    const [rawHId, hTier] = rawHash.split(':');
+    const hId = resolveStudyId(rawHId);
     if (hId && byId[hId]) activeStudyId = hId;
     if (hTier) activeTier = normalizeTier(hTier);
   }
@@ -550,16 +561,17 @@ const ecosystemJson = JSON.stringify(ecosystem);
       return out;
     },
     play(studyId, tier = '90s') {
-      if (!byId[studyId]) throw new Error('Unknown studyId: ' + studyId);
+      const rId = resolveStudyId(studyId);
+      if (!byId[rId]) throw new Error('Unknown studyId: ' + studyId);
       const cleanTier = normalizeTier(tier);
       playlistMode = null;
-      activeStudyId = studyId;
+      activeStudyId = rId;
       activeTier = cleanTier;
       updateUIState(true);
-      return { study_id: activeStudyId, tier: activeTier, video_url: byId[studyId].tiers[cleanTier].video_url };
+      return { study_id: activeStudyId, tier: activeTier, video_url: byId[rId].tiers[cleanTier].video_url };
     },
     getTranscript(studyId, tier = '90s') {
-      const s = byId[studyId];
+      const s = byId[resolveStudyId(studyId)];
       if (!s) return null;
       const cleanTier = normalizeTier(tier);
       const td = s.tiers[cleanTier];

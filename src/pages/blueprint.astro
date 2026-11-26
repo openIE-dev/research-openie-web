@@ -118,7 +118,7 @@ const clientPayload = JSON.stringify({
         </div>
         <div class="glass-card p-3.5">
           <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">Easy-Read + AD</div>
-          <div class="font-display text-2xl font-bold text-brand-amber mt-1">{M.easy_read_studies}/28 · {M.audio_described_films}/28</div>
+          <div class="font-display text-2xl font-bold text-brand-amber mt-1">{M.easy_read_studies}/{M.catalog_studies ?? 29} · {M.audio_described_films}/{M.catalog_studies ?? 29}</div>
           <div class="font-mono text-[11px] text-brand-slate">100% Catalog · WCAG 2.2 AA</div>
         </div>
         <div class="glass-card p-3.5">
@@ -130,24 +130,24 @@ const clientPayload = JSON.stringify({
 
       <!-- Quick Section Jump Nav -->
       <nav aria-label="Blueprint sections" class="mt-6 flex flex-wrap gap-2">
-        <a href="#planetary-player" class="font-mono text-xs px-3 py-1.5 rounded-md bg-brand-amber text-brand-dark font-semibold no-underline">1. 50-Language 15s &amp; 28/28 AD Player</a>
+        <a href="#planetary-player" class="font-mono text-xs px-3 py-1.5 rounded-md bg-brand-amber text-brand-dark font-semibold no-underline">1. 50-Language 15s &amp; 29/29 AD Player</a>
         <a href="#gate-scoreboard" class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-amber">2. 620-Variant Gate Matrix (T1 + T2)</a>
-        <a href="#accessibility" class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-cyan">3. 28/28 Easy Read, AD &amp; AAC</a>
+        <a href="#accessibility" class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-cyan">3. 29/29 Easy Read, AD &amp; AAC</a>
         <a href="#wai1-inspector" class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-amber">4. Schema &amp; WAI1 Inspector</a>
         <a href="#blueprint-text" class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-cyan">5. Full Blueprint (§§1–10)</a>
         <a href="/syndication/" class="font-mono text-xs px-3 py-1.5 rounded-md border border-emerald-400/45 text-emerald-300 bg-emerald-500/10 no-underline hover:bg-emerald-500/20">6. 9:16 TikTok + X ↔ Medium &amp; 6-Tier Ecosystem Studio →</a>
       </nav>
     </header>
 
-    <!-- INTERACTIVE 50-LANGUAGE (TIER-1 + TIER-2) 15S PLAIN-WORDS PLAYER + 28/28 ACCESSIBILITY SWITCHER -->
+    <!-- INTERACTIVE 50-LANGUAGE (TIER-1 + TIER-2) 15S PLAIN-WORDS PLAYER + 29/29 ACCESSIBILITY SWITCHER -->
     <section id="planetary-player" class="scroll-mt-24 glass-card p-5 md:p-7 mb-12 border-t-2 border-t-brand-amber">
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 mb-6 border-b border-brand-border">
         <div>
           <div class="font-mono text-[11px] uppercase tracking-wider text-brand-amber mb-1">
-            Step 5 &amp; §5 Live Projection · {totalPassed} Neural Audio &amp; WebVTT Variants ({totalAudioMb} MB Stereo -16 LUFS Bundle) + 28/28 AD
+            Step 5 &amp; §5 Live Projection · {totalPassed} Neural Audio &amp; WebVTT Variants ({totalAudioMb} MB Stereo -16 LUFS Bundle) + 29/29 AD
           </div>
           <h2 class="font-display text-2xl md:text-3xl font-bold text-brand-white m-0">
-            Planetary 50-Language <span class="text-brand-amber">15s Plain-Words</span> &amp; 28/28 Accessibility Theater
+            Planetary 50-Language <span class="text-brand-amber">15s Plain-Words</span> &amp; 29/29 Accessibility Theater
           </h2>
         </div>
 
@@ -167,7 +167,7 @@ const clientPayload = JSON.stringify({
             aria-pressed="false"
             class="bp-mode-btn font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-border text-brand-light cursor-pointer transition-all"
           >
-            📖 Easy Read + Symbols (28/28)
+            📖 Easy Read + Symbols (29/29)
           </button>
           <button
             id="bp-mode-ad"
@@ -175,22 +175,22 @@ const clientPayload = JSON.stringify({
             aria-pressed="false"
             class="bp-mode-btn font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-border text-brand-light cursor-pointer transition-all"
           >
-            🎧 Audio Description (28/28 .ad.m4a)
+            🎧 Audio Description (29/29 .ad.m4a)
           </button>
         </div>
       </div>
 
-      <!-- Full 28-Study Selector + Quick Flagship Pills -->
+      <!-- Full 29-Study Selector + Quick Flagship Pills -->
       <div class="mb-4">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
           <div class="font-mono text-[11px] text-brand-gray">
-            Select Any of All 28 Research TV Studies (20 Tier-1 Languages + AD + Easy-Read on All 28 · 50 Languages on Core Flagships):
+            Select Any of All {M.catalog_studies ?? 29} Research TV Studies (Tier-1 Languages + AD + Easy-Read on All Studies · 50 Languages on Core Flagships):
           </div>
           <div class="flex items-center gap-2">
-            <label for="bp-study-select" class="font-mono text-[11px] text-brand-cyan">All 28 Studies:</label>
+            <label for="bp-study-select" class="font-mono text-[11px] text-brand-cyan">All {M.catalog_studies ?? 29} Studies:</label>
             <select
               id="bp-study-select"
-              aria-label="Choose any of the 28 Research TV studies"
+              aria-label="Choose any Research TV study"
               class="font-mono text-xs px-3 py-1.5 rounded-lg bg-[#0b1020] border border-brand-border text-brand-white focus:border-brand-amber"
             >
               {artifacts.map((art) => (

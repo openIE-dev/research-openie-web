@@ -1,15 +1,15 @@
 {
   "title": "OpenIE Research TV Catalog",
-  "version": "3.1.0",
-  "study_count": 28,
-  "film_count": 112,
+  "version": "3.2.0",
+  "study_count": 29,
+  "film_count": 116,
   "tiers": [
     "15s",
     "45s",
     "90s",
     "180s"
   ],
-  "tts_model": "ElevenLabs eleven_v4 (21-Presenter Global Studio Ensemble across 28 Studies; edge-tts neural fallback)",
+  "tts_model": "ElevenLabs eleven_v4 (21-Presenter Global Studio Ensemble across 29 Studies; edge-tts neural fallback)",
   "categories": [
     "Foundations & Thermodynamics",
     "Reality Code Engine",
@@ -21,6 +21,398 @@
   "studio_disclosure": "Every study and flagship *.openie.dev channel opener begins with its three plain-language takeaways—free of unexplained acronyms—and expands across four depth slots (15s, 45s, 90s, and 3 minutes) narrated by a global studio voice ensemble via ElevenLabs eleven_v4.",
   "metering_contract": "Every energy number states in plain words how it was obtained: direct circuit-board power sensors (in Metered Commit Gates, Satiation Benchmark Harness, and The Communication Tool Avalanche), built-in computer chip counters, or mathematical physics bounds.",
   "studies": [
+    {
+      "id": "from-ephemeral-inference-to-compiled-agency",
+      "aliases": [
+        "compiled-agency"
+      ],
+      "title": "From Ephemeral Inference to Compiled Agency: A Position Paper on Verifiable, Energy-Accounted Computing",
+      "short_title": "From Ephemeral Inference to Compiled Agency",
+      "category": "Hardware, Silicon & OS",
+      "paper_url": "/syndication/medium/from-ephemeral-inference-to-compiled-agency/",
+      "pdf_url": "/pdfs/lut-adapt.pdf",
+      "figures_url": "/living/compiled-agency/",
+      "about_url": "/data/",
+      "tutorial_lab_id": "lab-13-compiled-agency",
+      "narrator_name": "Cecily",
+      "narrator_profile": "Documentary Host · African American English",
+      "plain_bullets": [
+        "Advanced computing becomes affordable for everyone when expensive neural models act as a last resort behind fast local lookup tables, search indexes, and exact solvers.",
+        "Compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly.",
+        "One integer kernel checked by cryptographic hashes produces the exact same answer across processors, graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes."
+      ],
+      "headline_metric": "26.58× Kria & 16.26× Thor Shunt Cascade Cut · 81.86× Float Unpack Tax (@ cb5b641)",
+      "epistemic_tags": [
+        "T",
+        "E",
+        "M"
+      ],
+      "energy_tier": "Board Power Sensor (DC Shunts)",
+      "energy_disclosure": "Signed Provenance · Self-Checked (@ cb5b641). Direct 5V SOM DC shunt on AMD Kria and rail shunt on Jetson Thor, strictly orthogonal to chip counters, analytical estimates, and unmetered work.",
+      "cutaway_3d": "09_compiled_agency_cascade_shunt",
+      "poster_url": "/media/tv/posters/from-ephemeral-inference-to-compiled-agency-poster.jpg",
+      "tiers": {
+        "15s": {
+          "video_url": "/media/tv/films/from-ephemeral-inference-to-compiled-agency-15s.mp4",
+          "vtt_url": "/media/tv/captions/from-ephemeral-inference-to-compiled-agency-15s.vtt",
+          "duration_s": 32.42,
+          "bytes": 5001756,
+          "sha256": "819c24f51cc2826963d7f79a38201a7f2bdffde8ebe6463cf32d562cd2b6d589",
+          "hook": "Three plain-language takeaways from our capstone position paper: lookup-first cascades, the 81.86x runtime decompression tax, and bit-exact integer execution across six fabrics.",
+          "transcript": "First, advanced computing becomes affordable for everyone when expensive neural models act as a last resort behind fast local lookup tables, search indexes, and exact solvers. Second, compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly. Third, one integer kernel checked by cryptographic hashes produces the exact same answer across processors, graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes.",
+          "cues": [
+            {
+              "start": 0.24,
+              "end": 5.15,
+              "text": "First, advanced computing becomes affordable for everyone when expensive neural models act as"
+            },
+            {
+              "start": 5.15,
+              "end": 9.426,
+              "text": "a last resort behind fast local lookup tables, search indexes, and exact solvers."
+            },
+            {
+              "start": 9.586,
+              "end": 14.82,
+              "text": "Second, compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers"
+            },
+            {
+              "start": 14.82,
+              "end": 20.055,
+              "text": "at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly."
+            },
+            {
+              "start": 20.215,
+              "end": 25.922,
+              "text": "Third, one integer kernel checked by cryptographic hashes produces the exact same answer across processors,"
+            },
+            {
+              "start": 25.922,
+              "end": 32.002,
+              "text": "graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes."
+            }
+          ]
+        },
+        "45s": {
+          "video_url": "/media/tv/films/from-ephemeral-inference-to-compiled-agency-45s.mp4",
+          "vtt_url": "/media/tv/captions/from-ephemeral-inference-to-compiled-agency-45s.vtt",
+          "duration_s": 67.18,
+          "bytes": 7858317,
+          "sha256": "53ce62a1b83292be94e2948c965ca4d798d93fe632a2d984c63575706618d126",
+          "hook": "How a 4-stage lookup-first cascade and packed integer kernels cut Kria board shunt energy 26.58x and Jetson Thor energy 16.26x (@ cb5b641).",
+          "transcript": "First, advanced computing becomes affordable for everyone when expensive neural models act as a last resort behind fast local lookup tables, search indexes, and exact solvers. Second, compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly. Third, one integer kernel checked by cryptographic hashes produces the exact same answer across processors, graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes. Think of how spellcheck became free everywhere: stage one resolves known inputs by instant lookup, stage two searches zero-copy trigram indexes, stage three runs packed integer solvers, and stage four wakes frontier models only on novelty before crystallizing verified answers downward. On direct circuit-board current shunts at commit cb5b641, unpacking sub-bit weights to floating-point burned 81.86 times more energy than eight-bit integers, whereas our four-stage cascade cut Kria energy 26.58 times and Jetson Thor energy 16.26 times under Signed Provenance, Self-Checked.",
+          "cues": [
+            {
+              "start": 0.28,
+              "end": 5.19,
+              "text": "First, advanced computing becomes affordable for everyone when expensive neural models act as"
+            },
+            {
+              "start": 5.19,
+              "end": 9.466,
+              "text": "a last resort behind fast local lookup tables, search indexes, and exact solvers."
+            },
+            {
+              "start": 9.626,
+              "end": 14.86,
+              "text": "Second, compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers"
+            },
+            {
+              "start": 14.86,
+              "end": 20.095,
+              "text": "at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly."
+            },
+            {
+              "start": 20.255,
+              "end": 25.962,
+              "text": "Third, one integer kernel checked by cryptographic hashes produces the exact same answer across processors,"
+            },
+            {
+              "start": 25.962,
+              "end": 32.042,
+              "text": "graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes."
+            },
+            {
+              "start": 32.202,
+              "end": 36.744,
+              "text": "Think of how spellcheck became free everywhere: stage one resolves known inputs by"
+            },
+            {
+              "start": 36.744,
+              "end": 42.395,
+              "text": "instant lookup, stage two searches zero-copy trigram indexes, stage three runs packed integer solvers,"
+            },
+            {
+              "start": 42.395,
+              "end": 47.935,
+              "text": "and stage four wakes frontier models only on novelty before crystallizing verified answers downward."
+            },
+            {
+              "start": 48.095,
+              "end": 54.607,
+              "text": "On direct circuit-board current shunts at commit cb5b641, unpacking sub-bit weights to floating-point"
+            },
+            {
+              "start": 54.607,
+              "end": 60.411,
+              "text": "burned 81.86 times more energy than eight-bit integers, whereas our four-stage cascade cut"
+            },
+            {
+              "start": 60.411,
+              "end": 66.666,
+              "text": "Kria energy 26.58 times and Jetson Thor energy 16.26 times under Signed Provenance, Self-Checked."
+            }
+          ]
+        },
+        "90s": {
+          "video_url": "/media/tv/films/from-ephemeral-inference-to-compiled-agency-90s.mp4",
+          "vtt_url": "/media/tv/captions/from-ephemeral-inference-to-compiled-agency-90s.vtt",
+          "duration_s": 119.08,
+          "bytes": 11491192,
+          "sha256": "95c3090a9e854e0425976f8ffb8070d5a3ac50de52a0bc66b670c812e8817c88",
+          "hook": "Full capstone briefing across all 6 Shots on Goal (@ cb5b641): 1,500-task null triage, Kria & Thor physical shunts, 6-fabric waiOS ring, and 1,315 Digital Well recipes.",
+          "transcript": "First, advanced computing becomes affordable for everyone when expensive neural models act as a last resort behind fast local lookup tables, search indexes, and exact solvers. Second, compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly. Third, one integer kernel checked by cryptographic hashes produces the exact same answer across processors, graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes. Across fifteen hundred deterministic control tasks, zero-model lookup beat neural baselines by 61.60 percentage points on structured tool schemas and 20.80 points on Boolean satisfiability at 1.41 to 2.09 microjoules net shunt energy, cleanly isolating the 12.80 point open coding triage gap. On an AMD Kria five-volt board shunt with 0.09 to 0.11 percent idle drift, unpacking 0.1517 bits-per-weight matrices to 32-bit floats burned 63,335.56 microjoules gross—81.86 times worse than eight-bit integers—while packed integer Walsh-Hadamard, exclusive-NOR, bit-count, and nibble lookup dropped to 187.49 microjoules gross and 10.30 microjoules net. One hash-verified integer kernel matched bit-for-bit across ten lanes and six fabrics—processor, Radeon 8060S Vulkan graphics, split processor-graphics, WebAssembly vectors, Verilog hardware logic, and a 1,444-byte bare-metal microcontroller—halting on single-weight tamper alongside 1,315 Planetary Digital Well lowering recipes. End to end, the four-stage spellcheck cascade cut Kria shunt energy 26.58 times gross and 24.49 times net, cut Jetson Thor shunt energy 16.26 times, and avoided 38.46 times of stage-four calls. All receipts are Signed Provenance, Self-Checked—not externally peer-reviewed—with shunt, chip-counter, estimated, and unmetered joules kept strictly separate.",
+          "cues": [
+            {
+              "start": 0.32,
+              "end": 5.23,
+              "text": "First, advanced computing becomes affordable for everyone when expensive neural models act as"
+            },
+            {
+              "start": 5.23,
+              "end": 9.506,
+              "text": "a last resort behind fast local lookup tables, search indexes, and exact solvers."
+            },
+            {
+              "start": 9.666,
+              "end": 14.9,
+              "text": "Second, compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers"
+            },
+            {
+              "start": 14.9,
+              "end": 20.135,
+              "text": "at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly."
+            },
+            {
+              "start": 20.295,
+              "end": 26.002,
+              "text": "Third, one integer kernel checked by cryptographic hashes produces the exact same answer across processors,"
+            },
+            {
+              "start": 26.002,
+              "end": 32.082,
+              "text": "graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes."
+            },
+            {
+              "start": 32.242,
+              "end": 39.221,
+              "text": "Across fifteen hundred deterministic control tasks, zero-model lookup beat neural baselines by 61.60 percentage"
+            },
+            {
+              "start": 39.221,
+              "end": 44.69,
+              "text": "points on structured tool schemas and 20.80 points on Boolean satisfiability at 1.41 to"
+            },
+            {
+              "start": 44.69,
+              "end": 50.475,
+              "text": "2.09 microjoules net shunt energy, cleanly isolating the 12.80 point open coding triage gap."
+            },
+            {
+              "start": 50.635,
+              "end": 56.818,
+              "text": "On an AMD Kria five-volt board shunt with 0.09 to 0.11 percent idle drift, unpacking"
+            },
+            {
+              "start": 56.818,
+              "end": 66.976,
+              "text": "0.1517 bits-per-weight matrices to 32-bit floats burned 63,335.56 microjoules gross—81.86 times worse than eight-bit integers—while packed"
+            },
+            {
+              "start": 66.976,
+              "end": 76.546,
+              "text": "integer Walsh-Hadamard, exclusive-NOR, bit-count, and nibble lookup dropped to 187.49 microjoules gross and 10.30 microjoules net."
+            },
+            {
+              "start": 76.706,
+              "end": 82.645,
+              "text": "One hash-verified integer kernel matched bit-for-bit across ten lanes and six fabrics—processor,"
+            },
+            {
+              "start": 82.645,
+              "end": 89.204,
+              "text": "Radeon 8060S Vulkan graphics, split processor-graphics, WebAssembly vectors, Verilog hardware logic, and a"
+            },
+            {
+              "start": 89.204,
+              "end": 97.0,
+              "text": "1,444-byte bare-metal microcontroller—halting on single-weight tamper alongside 1,315 Planetary Digital Well lowering recipes."
+            },
+            {
+              "start": 97.16,
+              "end": 102.924,
+              "text": "End to end, the four-stage spellcheck cascade cut Kria shunt energy 26.58 times gross and 24.49"
+            },
+            {
+              "start": 102.924,
+              "end": 108.809,
+              "text": "times net, cut Jetson Thor shunt energy 16.26 times, and avoided 38.46 times of stage-four calls."
+            },
+            {
+              "start": 108.809,
+              "end": 118.456,
+              "text": "All receipts are Signed Provenance, Self-Checked—not externally peer-reviewed—with shunt, chip-counter, estimated, and unmetered joules kept strictly separate."
+            }
+          ]
+        },
+        "180s": {
+          "video_url": "/media/tv/films/from-ephemeral-inference-to-compiled-agency-180s.mp4",
+          "vtt_url": "/media/tv/captions/from-ephemeral-inference-to-compiled-agency-180s.vtt",
+          "duration_s": 218.73,
+          "bytes": 21927336,
+          "sha256": "24af7e7d9bae608c530396696976a1f86fa6c7fcf165aa1106dd5aa0dfcaa1bc",
+          "hook": "Three-minute capstone deep cut into From Ephemeral Inference to Compiled Agency: all 6 Shots on Goal (@ cb5b641), 3D dual-shunt hardware cutaway, 6-fabric waiOS ring, and epistemic boundaries.",
+          "transcript": "First, advanced computing becomes affordable for everyone when expensive neural models act as a last resort behind fast local lookup tables, search indexes, and exact solvers. Second, compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly. Third, one integer kernel checked by cryptographic hashes produces the exact same answer across processors, graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes. Waking giant neural models from scratch for already-solved structure wastes electricity and obscures where models genuinely help. Across fifteen hundred tasks in our Deterministic Null Suite, frozen lookup led neural baselines by 61.60 percentage points on tool schemas and 20.80 points on Boolean satisfiability at 1.41 to 2.09 microjoules net shunt energy, isolating the 12.80 point open compositional coding advantage. Compiled agency routes every request through four energy-ordered stages: constant-time hash lookup first, zero-copy trigram retrieval second, packed integer mosaic transforms and exact solvers third, and frontier neural models fourth as a genuine last resort. Verified stage-four outputs crystallize downward into reusable skills across 1,315 lowering recipes in the Planetary Digital Well. Memory footprint is not physical energy. On an AMD Kria vision module five-volt direct-current shunt—passing falsifier check six with 0.09 to 0.11 percent idle drift—compressing weights to 0.1517 bits per weight but unpacking them to 32-bit floats at runtime burned 63,335.56 microjoules gross and 3,813.32 microjoules net, 81.86 times gross and 71.91 times net worse than eight-bit integers at 773.74 microjoules. Keeping computation inside packed integer Walsh-Hadamard transforms, exclusive-NOR gates, bit-counts, and four-bit nibble tables dropped Kria shunt energy to 187.49 microjoules gross and 10.30 microjoules net—4.13 to 5.15 times below eight-bit integers on Kria and 7.95 times below on NVIDIA Jetson Thor. Across the full four-stage spellcheck cascade, Kria shunt energy fell 26.58 times gross and 24.49 times net, Thor shunt energy fell 16.26 times, and stage-four model calls dropped 38.46 times. Portability without floating-point drift requires an exact integer contract. Across ten execution lanes spanning six distinct hardware fabrics—central processor, Radeon 8060S Vulkan graphics card, split processor-plus-graphics, browser WebAssembly vector instructions, Icarus Verilog hardware logic, and a 1,444-byte bare-metal 32-bit microcontroller—one cryptographic-hash-verified kernel recorded zero drift across four hundred checks and halted immediately when row seventy-seven was altered. This three-dimensional hardware cutaway shows the four-stage lookup-to-integer cascade mounted across inline five-volt module and system-on-chip current shunts, ringed by six bit-exact execution fabrics. Every energy receipt enforces strict non-mixing orthogonality: physical direct-current shunt joules, built-in chip energy counters, analytical model estimates, and unmetered formal proofs are never summed or blended into hybrid ratios. Scientific integrity requires stating verification status plainly. Every artifact in openIE-research-experiments at commit cb5b641 carries cryptographic digests and signatures under Signed Provenance, Self-Checked: self-audited by Open Interface Engineering and not yet externally journal peer-reviewed or independently replicated by an outside lab, with full hardware scripts published so any bench can test and falsify every number.",
+          "cues": [
+            {
+              "start": 0.36,
+              "end": 5.27,
+              "text": "First, advanced computing becomes affordable for everyone when expensive neural models act as"
+            },
+            {
+              "start": 5.27,
+              "end": 9.546,
+              "text": "a last resort behind fast local lookup tables, search indexes, and exact solvers."
+            },
+            {
+              "start": 9.706,
+              "end": 14.94,
+              "text": "Second, compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers"
+            },
+            {
+              "start": 14.94,
+              "end": 20.175,
+              "text": "at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly."
+            },
+            {
+              "start": 20.335,
+              "end": 26.042,
+              "text": "Third, one integer kernel checked by cryptographic hashes produces the exact same answer across processors,"
+            },
+            {
+              "start": 26.042,
+              "end": 32.122,
+              "text": "graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes."
+            },
+            {
+              "start": 32.282,
+              "end": 41.167,
+              "text": "Waking giant neural models from scratch for already-solved structure wastes electricity and obscures where models genuinely help. Across fifteen hundred"
+            },
+            {
+              "start": 41.167,
+              "end": 48.533,
+              "text": "tasks in our Deterministic Null Suite, frozen lookup led neural baselines by 61.60 percentage points on tool schemas and 20.80"
+            },
+            {
+              "start": 48.533,
+              "end": 56.776,
+              "text": "points on Boolean satisfiability at 1.41 to 2.09 microjoules net shunt energy, isolating the 12.80 point open compositional coding advantage."
+            },
+            {
+              "start": 56.936,
+              "end": 64.87,
+              "text": "Compiled agency routes every request through four energy-ordered stages: constant-time hash lookup first, zero-copy trigram retrieval second,"
+            },
+            {
+              "start": 64.87,
+              "end": 71.003,
+              "text": "packed integer mosaic transforms and exact solvers third, and frontier neural models fourth as a genuine last"
+            },
+            {
+              "start": 71.003,
+              "end": 78.768,
+              "text": "resort. Verified stage-four outputs crystallize downward into reusable skills across 1,315 lowering recipes in the Planetary Digital Well."
+            },
+            {
+              "start": 78.928,
+              "end": 89.379,
+              "text": "Memory footprint is not physical energy. On an AMD Kria vision module five-volt direct-current shunt—passing falsifier check six with 0.09"
+            },
+            {
+              "start": 89.379,
+              "end": 98.922,
+              "text": "to 0.11 percent idle drift—compressing weights to 0.1517 bits per weight but unpacking them to 32-bit floats at runtime burned"
+            },
+            {
+              "start": 98.922,
+              "end": 110.131,
+              "text": "63,335.56 microjoules gross and 3,813.32 microjoules net, 81.86 times gross and 71.91 times net worse than eight-bit integers at 773.74 microjoules."
+            },
+            {
+              "start": 110.291,
+              "end": 123.177,
+              "text": "Keeping computation inside packed integer Walsh-Hadamard transforms, exclusive-NOR gates, bit-counts, and four-bit nibble tables dropped Kria shunt energy to 187.49 microjoules gross and 10.30"
+            },
+            {
+              "start": 123.177,
+              "end": 133.782,
+              "text": "microjoules net—4.13 to 5.15 times below eight-bit integers on Kria and 7.95 times below on NVIDIA Jetson Thor. Across the full four-stage spellcheck cascade,"
+            },
+            {
+              "start": 133.782,
+              "end": 143.514,
+              "text": "Kria shunt energy fell 26.58 times gross and 24.49 times net, Thor shunt energy fell 16.26 times, and stage-four model calls dropped 38.46 times."
+            },
+            {
+              "start": 143.674,
+              "end": 152.69,
+              "text": "Portability without floating-point drift requires an exact integer contract. Across ten execution lanes spanning six distinct hardware fabrics—central processor,"
+            },
+            {
+              "start": 152.69,
+              "end": 161.931,
+              "text": "Radeon 8060S Vulkan graphics card, split processor-plus-graphics, browser WebAssembly vector instructions, Icarus Verilog hardware logic, and a 1,444-byte bare-metal"
+            },
+            {
+              "start": 161.931,
+              "end": 171.284,
+              "text": "32-bit microcontroller—one cryptographic-hash-verified kernel recorded zero drift across four hundred checks and halted immediately when row seventy-seven was altered."
+            },
+            {
+              "start": 171.444,
+              "end": 179.664,
+              "text": "This three-dimensional hardware cutaway shows the four-stage lookup-to-integer cascade mounted across inline five-volt module and system-on-chip current shunts,"
+            },
+            {
+              "start": 179.664,
+              "end": 187.473,
+              "text": "ringed by six bit-exact execution fabrics. Every energy receipt enforces strict non-mixing orthogonality: physical direct-current shunt joules, built-in"
+            },
+            {
+              "start": 187.473,
+              "end": 193.896,
+              "text": "chip energy counters, analytical model estimates, and unmetered formal proofs are never summed or blended into hybrid ratios."
+            },
+            {
+              "start": 194.056,
+              "end": 203.132,
+              "text": "Scientific integrity requires stating verification status plainly. Every artifact in openIE-research-experiments at commit cb5b641 carries cryptographic digests and"
+            },
+            {
+              "start": 203.132,
+              "end": 211.656,
+              "text": "signatures under Signed Provenance, Self-Checked: self-audited by Open Interface Engineering and not yet externally journal peer-reviewed or independently"
+            },
+            {
+              "start": 211.656,
+              "end": 217.965,
+              "text": "replicated by an outside lab, with full hardware scripts published so any bench can test and falsify every number."
+            }
+          ]
+        }
+      }
+    },
     {
       "id": "agency",
       "title": "Thermodynamic Bounds and an Optimal Tempo for Goal-Holding Agents",

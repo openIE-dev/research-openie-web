@@ -1,0 +1,74 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — from-ephemeral-inference-to-compiled-agency (90s) Narrator Cecily
+
+1
+00:00:00.320 --> 00:00:05.230
+First, advanced computing becomes affordable for everyone when expensive neural models act as
+
+2
+00:00:05.230 --> 00:00:09.506
+a last resort behind fast local lookup tables, search indexes, and exact solvers.
+
+3
+00:00:09.666 --> 00:00:14.900
+Second, compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers
+
+4
+00:00:14.900 --> 00:00:20.135
+at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly.
+
+5
+00:00:20.295 --> 00:00:26.002
+Third, one integer kernel checked by cryptographic hashes produces the exact same answer across processors,
+
+6
+00:00:26.002 --> 00:00:32.082
+graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes.
+
+7
+00:00:32.242 --> 00:00:39.221
+Across fifteen hundred deterministic control tasks, zero-model lookup beat neural baselines by 61.60 percentage
+
+8
+00:00:39.221 --> 00:00:44.690
+points on structured tool schemas and 20.80 points on Boolean satisfiability at 1.41 to
+
+9
+00:00:44.690 --> 00:00:50.475
+2.09 microjoules net shunt energy, cleanly isolating the 12.80 point open coding triage gap.
+
+10
+00:00:50.635 --> 00:00:56.818
+On an AMD Kria five-volt board shunt with 0.09 to 0.11 percent idle drift, unpacking
+
+11
+00:00:56.818 --> 00:01:06.976
+0.1517 bits-per-weight matrices to 32-bit floats burned 63,335.56 microjoules gross—81.86 times worse than eight-bit integers—while packed
+
+12
+00:01:06.976 --> 00:01:16.546
+integer Walsh-Hadamard, exclusive-NOR, bit-count, and nibble lookup dropped to 187.49 microjoules gross and 10.30 microjoules net.
+
+13
+00:01:16.706 --> 00:01:22.645
+One hash-verified integer kernel matched bit-for-bit across ten lanes and six fabrics—processor,
+
+14
+00:01:22.645 --> 00:01:29.204
+Radeon 8060S Vulkan graphics, split processor-graphics, WebAssembly vectors, Verilog hardware logic, and a
+
+15
+00:01:29.204 --> 00:01:37.000
+1,444-byte bare-metal microcontroller—halting on single-weight tamper alongside 1,315 Planetary Digital Well lowering recipes.
+
+16
+00:01:37.160 --> 00:01:42.924
+End to end, the four-stage spellcheck cascade cut Kria shunt energy 26.58 times gross and 24.49
+
+17
+00:01:42.924 --> 00:01:48.809
+times net, cut Jetson Thor shunt energy 16.26 times, and avoided 38.46 times of stage-four calls.
+
+18
+00:01:48.809 --> 00:01:58.456
+All receipts are Signed Provenance, Self-Checked—not externally peer-reviewed—with shunt, chip-counter, estimated, and unmetered joules kept strictly separate.

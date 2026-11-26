@@ -99,17 +99,24 @@ const tvPlanetaryPayload = JSON.stringify({
 const ecosystemChannels = {
   ...ecosystemChannelsRaw,
   channels: (ecosystemChannelsRaw.channels || []).map((ch: any) => {
-    if ((ch.id === 'avalanche' || ch.id === 'compute') && !(ch.tv_studies || []).includes('lut6-codon-nucleus')) {
-      return { ...ch, tv_studies: [...(ch.tv_studies || []), 'lut6-codon-nucleus'] };
+    let list = [...(ch.tv_studies || [])];
+    if ((ch.id === 'avalanche' || ch.id === 'compute' || ch.id === 'synthesis') && !list.includes('from-ephemeral-inference-to-compiled-agency')) {
+      list = ['from-ephemeral-inference-to-compiled-agency', ...list];
     }
-    return ch;
+    if ((ch.id === 'avalanche' || ch.id === 'compute') && !list.includes('lut6-codon-nucleus')) {
+      list = [...list, 'lut6-codon-nucleus'];
+    }
+    return { ...ch, tv_studies: list };
   }),
 };
-const initialStudy = studies.find((s) => s.id === 'communication-avalanche') ?? studies[0];
+const initialStudy =
+  studies.find((s) => s.id === 'from-ephemeral-inference-to-compiled-agency') ??
+  studies.find((s) => s.id === 'communication-avalanche') ??
+  studies[0];
 const initialTier = initialStudy.tiers['90s'] ?? Object.values(initialStudy.tiers)[0];
 
 const categories = [
-  'All 28',
+  'All 29',
   'Foundations & Thermodynamics',
   'Reality Code Engine',
   'Null & Benchmarks',
@@ -137,7 +144,7 @@ const isoDuration = (sec: number) => `PT${Math.max(1, Math.round(sec))}S`;
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'OpenIE Research TV — 112 Plain-Language Research & Ecosystem Films Across 28 Topics',
+  name: 'OpenIE Research TV — 116 Plain-Language Research & Ecosystem Films Across 29 Topics',
   description: tvCatalog.studio_disclosure,
   numberOfItems: tvCatalog.film_count,
   itemListElement: studies.flatMap((s, sIdx) =>
@@ -169,8 +176,8 @@ const jsonLd = {
 ---
 
 <Layout
-  title="OpenIE Research TV — 112 Plain-Language Research Films (15s to 3m)"
-  description="Watch all 28 OpenIE research studies and *.openie.dev channel openers across four plain-language depth slots (15s Three Plain Points, 45s Everyday Example, 90s Full Briefing, and 3-Minute 3D Deep Cut)—starting with the three layperson takeaways and free of unexplained acronyms."
+  title="OpenIE Research TV — 116 Plain-Language Research Films (15s to 3m)"
+  description="Watch all 29 OpenIE research studies (led by Capstone Study #29 From Ephemeral Inference to Compiled Agency) and *.openie.dev channel openers across four plain-language depth slots (15s Three Plain Points, 45s Everyday Example, 90s Full Briefing, and 3-Minute 3D Deep Cut)—starting with the three layperson takeaways and free of unexplained acronyms."
 >
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
@@ -182,7 +189,7 @@ const jsonLd = {
       <div class="flex flex-wrap items-center gap-3 mb-3">
         <span class="section-label">OpenIE Broadcast Studio · /tv/</span>
         <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-amber/15 text-brand-amber border border-brand-amber/30">
-          28 Topics × (4 Horizontal + 9:16 TikTok Vertical) = 140 Films
+          29 Topics × (4 Horizontal + 9:16 TikTok Vertical) = 145 Films
         </span>
         <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/30">
           Plain Words First · Zero Acronym Soup · Global Voices
@@ -194,7 +201,7 @@ const jsonLd = {
           6 *.openie.dev Channels ↓
         </a>
         <a href="/blueprint/" class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-amber/15 text-brand-amber border border-brand-amber/40 no-underline hover:bg-brand-amber/25 transition-colors">
-          {uMetrics.active_languages ?? 50}-Language 15s · {uMetrics.easy_read_studies ?? 28}/28 Easy Read &amp; AD Blueprint →
+          {uMetrics.active_languages ?? 50}-Language 15s · {uMetrics.easy_read_studies ?? 29}/29 Easy Read &amp; AD Blueprint →
         </a>
         <a href="/glossary/concepts.json" class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-white/5 text-brand-cyan border border-brand-cyan/30 no-underline hover:border-brand-cyan transition-colors">
           AAC concepts.json
@@ -209,13 +216,13 @@ const jsonLd = {
 
       <div class="glass-card p-4 md:p-5 border-l-4 border-l-brand-amber">
         <div class="font-mono text-[11px] uppercase tracking-wider text-brand-amber mb-1.5">
-          Plain-Language Guarantee &amp; How Energy Is Labeled
+          Plain-Language Guarantee · Signed Provenance · Self-Checked · Orthogonal Energy Classes
         </div>
         <p class="font-body text-[13px] text-brand-light leading-relaxed m-0">
-          No film assumes insider jargon or unexplained acronyms. Every study is narrated by its own studio presenter via <code class="font-mono text-brand-cyan">ElevenLabs eleven_v4</code>, and every energy claim states plainly how it was obtained:
-          <strong>direct circuit-board power sensors</strong> (physical current sensors attached to the hardware in <em>Metered Commit Gates</em>, <em>Satiation Benchmark Harness</em>, and <em>The Communication Tool Avalanche</em>),
-          <strong>built-in computer chip counters</strong> (processor and operating-system energy counters),
-          or <strong>mathematical physics bounds</strong>.
+          No film assumes insider jargon or unexplained acronyms. Every study is narrated by its own studio presenter via <code class="font-mono text-brand-cyan">ElevenLabs eleven_v4</code> under <strong>Signed Provenance · Self-Checked</strong> (not yet externally peer-reviewed), and every energy claim keeps four evidence classes strictly orthogonal (<code class="font-mono text-emerald-300">measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered</code>):
+          <strong>direct circuit-board power shunts</strong> (physical current sensors in <em>From Ephemeral Inference to Compiled Agency</em>, <em>Metered Commit Gates</em>, <em>Satiation Benchmark Harness</em>, and <em>The Communication Tool Avalanche</em>),
+          <strong>built-in computer chip counters</strong>,
+          <strong>analytical estimates</strong>, or <strong>unmetered formal work</strong>.
         </p>
       </div>
     </div>
@@ -244,7 +251,7 @@ const jsonLd = {
 
         <div class="flex flex-wrap items-center gap-2">
           <button type="button" data-playlist-btn="tiktok" aria-pressed="false" class="tv-playlist-btn font-mono text-xs px-3 py-2 rounded-lg border border-emerald-400/45 text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 cursor-pointer transition-all">
-            ▶ Reel All 28 TikToks (9:16)
+            ▶ Reel All 29 TikToks (9:16)
           </button>
           <button type="button" data-playlist-btn="15s" aria-pressed="false" class="tv-playlist-btn font-mono text-xs px-3 py-2 rounded-lg border border-brand-amber/40 text-brand-amber bg-brand-amber/10 hover:bg-brand-amber/20 cursor-pointer transition-all">
             ▶ Play All 15s (3 Points)
@@ -418,13 +425,13 @@ const jsonLd = {
               </div>
             </div>
 
-            <!-- Extended Audio Description Inline Geometry Drawer (28 / 28 Studies) -->
+            <!-- Extended Audio Description Inline Geometry Drawer (29 / 29 Studies) -->
             <div id="tv-ad-drawer" class="hidden mt-3 pt-3 border-t border-emerald-400/30">
               <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
                 <span class="font-mono text-[11px] uppercase tracking-wider text-emerald-300 font-semibold">
-                  Extended Audio Description · 28/28 Catalog Visual Geometry · WCAG 2.2 AA
+                  Extended Audio Description · 29/29 Catalog Visual Geometry · WCAG 2.2 AA
                 </span>
-                <a id="tv-ad-vtt-link" href="/media/tv/accessibility/communication-avalanche-15s.ad.vtt" class="font-mono text-[11px] text-emerald-300 no-underline hover:underline">
+                <a id="tv-ad-vtt-link" href="/media/tv/accessibility/from-ephemeral-inference-to-compiled-agency-15s.ad.vtt" class="font-mono text-[11px] text-emerald-300 no-underline hover:underline">
                   WebVTT (.ad.vtt) ↗
                 </a>
               </div>
@@ -432,7 +439,7 @@ const jsonLd = {
               <div id="tv-ad-cues" class="grid grid-cols-1 md:grid-cols-3 gap-2"></div>
             </div>
 
-            <!-- Easy Read + SKOS AAC Symbol Drawer (28 / 28 Studies) -->
+            <!-- Easy Read + SKOS AAC Symbol Drawer (29 / 29 Studies) -->
             <div id="tv-easyread-drawer" class="hidden mt-3 pt-3 border-t border-brand-cyan/30">
               <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
                 <div>
@@ -443,7 +450,7 @@ const jsonLd = {
                 </div>
                 <div class="flex items-center gap-2 font-mono text-[11px]">
                   <a id="tv-er-guide-link" href="/media/tv/accessibility/easy-read-index.html" class="text-brand-amber no-underline hover:underline">
-                    28-Study Guide ↗
+                    29-Study Guide ↗
                   </a>
                   <span class="text-brand-gray">·</span>
                   <a href="/glossary/concepts.json" class="text-brand-cyan no-underline hover:underline">
@@ -585,14 +592,14 @@ const jsonLd = {
         <input
           id="tv-search-input"
           type="search"
-          placeholder="Search 28 topics, 3-bullet summaries & transcripts..."
+          placeholder="Search 29 topics, 3-bullet summaries & transcripts..."
           aria-label="Search studies, plain-word bullets, and film transcripts"
           class="font-body text-sm px-3.5 py-2 rounded-lg bg-white/5 border border-brand-border text-brand-white placeholder:text-brand-gray focus:border-brand-amber w-full md:w-80"
         />
       </div>
     </div>
     <div id="tv-visible-count" class="font-mono text-xs text-brand-gray mb-5">
-      28 / 28 studies shown (140 horizontal + 9:16 films)
+      29 / 29 studies shown (145 horizontal + 9:16 films)
     </div>
 
     <!-- 28-Topic × 4-Tier Visual Grid (Each Card Leads With Its 3 Plain-Words Bullets) -->
@@ -929,7 +936,7 @@ const jsonLd = {
 
       if (adActive) {
         if (auxStatus) auxStatus.textContent = '🎧 Extended Audio Description Active · Stereo -16 LUFS (.ad.m4a)';
-        if (auxGateBadge) auxGateBadge.textContent = 'WCAG 2.2 AA · 28/28 Catalog';
+        if (auxGateBadge) auxGateBadge.textContent = 'WCAG 2.2 AA · 29/29 Catalog';
         if (pBulletsBox) pBulletsBox.classList.add('hidden');
       } else if (varObj) {
         const lLabel = lgMeta ? (lgMeta.native + ' · ' + lgMeta.name) : varObj.lang;

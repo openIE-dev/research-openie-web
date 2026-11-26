@@ -1,0 +1,110 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — from-ephemeral-inference-to-compiled-agency (180s) Narrator Cecily
+
+1
+00:00:00.360 --> 00:00:05.270
+First, advanced computing becomes affordable for everyone when expensive neural models act as
+
+2
+00:00:05.270 --> 00:00:09.546
+a last resort behind fast local lookup tables, search indexes, and exact solvers.
+
+3
+00:00:09.706 --> 00:00:14.940
+Second, compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers
+
+4
+00:00:14.940 --> 00:00:20.175
+at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly.
+
+5
+00:00:20.335 --> 00:00:26.042
+Third, one integer kernel checked by cryptographic hashes produces the exact same answer across processors,
+
+6
+00:00:26.042 --> 00:00:32.122
+graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes.
+
+7
+00:00:32.282 --> 00:00:41.167
+Waking giant neural models from scratch for already-solved structure wastes electricity and obscures where models genuinely help. Across fifteen hundred
+
+8
+00:00:41.167 --> 00:00:48.533
+tasks in our Deterministic Null Suite, frozen lookup led neural baselines by 61.60 percentage points on tool schemas and 20.80
+
+9
+00:00:48.533 --> 00:00:56.776
+points on Boolean satisfiability at 1.41 to 2.09 microjoules net shunt energy, isolating the 12.80 point open compositional coding advantage.
+
+10
+00:00:56.936 --> 00:01:04.870
+Compiled agency routes every request through four energy-ordered stages: constant-time hash lookup first, zero-copy trigram retrieval second,
+
+11
+00:01:04.870 --> 00:01:11.003
+packed integer mosaic transforms and exact solvers third, and frontier neural models fourth as a genuine last
+
+12
+00:01:11.003 --> 00:01:18.768
+resort. Verified stage-four outputs crystallize downward into reusable skills across 1,315 lowering recipes in the Planetary Digital Well.
+
+13
+00:01:18.928 --> 00:01:29.379
+Memory footprint is not physical energy. On an AMD Kria vision module five-volt direct-current shunt—passing falsifier check six with 0.09
+
+14
+00:01:29.379 --> 00:01:38.922
+to 0.11 percent idle drift—compressing weights to 0.1517 bits per weight but unpacking them to 32-bit floats at runtime burned
+
+15
+00:01:38.922 --> 00:01:50.131
+63,335.56 microjoules gross and 3,813.32 microjoules net, 81.86 times gross and 71.91 times net worse than eight-bit integers at 773.74 microjoules.
+
+16
+00:01:50.291 --> 00:02:03.177
+Keeping computation inside packed integer Walsh-Hadamard transforms, exclusive-NOR gates, bit-counts, and four-bit nibble tables dropped Kria shunt energy to 187.49 microjoules gross and 10.30
+
+17
+00:02:03.177 --> 00:02:13.782
+microjoules net—4.13 to 5.15 times below eight-bit integers on Kria and 7.95 times below on NVIDIA Jetson Thor. Across the full four-stage spellcheck cascade,
+
+18
+00:02:13.782 --> 00:02:23.514
+Kria shunt energy fell 26.58 times gross and 24.49 times net, Thor shunt energy fell 16.26 times, and stage-four model calls dropped 38.46 times.
+
+19
+00:02:23.674 --> 00:02:32.690
+Portability without floating-point drift requires an exact integer contract. Across ten execution lanes spanning six distinct hardware fabrics—central processor,
+
+20
+00:02:32.690 --> 00:02:41.931
+Radeon 8060S Vulkan graphics card, split processor-plus-graphics, browser WebAssembly vector instructions, Icarus Verilog hardware logic, and a 1,444-byte bare-metal
+
+21
+00:02:41.931 --> 00:02:51.284
+32-bit microcontroller—one cryptographic-hash-verified kernel recorded zero drift across four hundred checks and halted immediately when row seventy-seven was altered.
+
+22
+00:02:51.444 --> 00:02:59.664
+This three-dimensional hardware cutaway shows the four-stage lookup-to-integer cascade mounted across inline five-volt module and system-on-chip current shunts,
+
+23
+00:02:59.664 --> 00:03:07.473
+ringed by six bit-exact execution fabrics. Every energy receipt enforces strict non-mixing orthogonality: physical direct-current shunt joules, built-in
+
+24
+00:03:07.473 --> 00:03:13.896
+chip energy counters, analytical model estimates, and unmetered formal proofs are never summed or blended into hybrid ratios.
+
+25
+00:03:14.056 --> 00:03:23.132
+Scientific integrity requires stating verification status plainly. Every artifact in openIE-research-experiments at commit cb5b641 carries cryptographic digests and
+
+26
+00:03:23.132 --> 00:03:31.656
+signatures under Signed Provenance, Self-Checked: self-audited by Open Interface Engineering and not yet externally journal peer-reviewed or independently
+
+27
+00:03:31.656 --> 00:03:37.965
+replicated by an outside lab, with full hardware scripts published so any bench can test and falsify every number.

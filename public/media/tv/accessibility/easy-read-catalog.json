@@ -1,15 +1,64 @@
 {
   "schema": "openie.accessibility.easy_read.v1",
   "version": "2.0.0",
-  "updated": "2026-11-24",
+  "updated": "2026-11-26",
   "license": "https://creativecommons.org/publicdomain/zero/1.0/",
   "spdx_license": "CC0-1.0",
   "wcag_conformance": "WCAG 2.2 Level AA",
-  "study_count": 28,
-  "audio_described_flagship_count": 28,
-  "audio_described_study_count": 28,
+  "study_count": 29,
+  "audio_described_flagship_count": 29,
+  "audio_described_study_count": 29,
   "concepts_anchor_url": "/glossary/concepts.json",
   "studies": [
+    {
+      "study_id": "from-ephemeral-inference-to-compiled-agency",
+      "flagship_slug": "from-ephemeral-inference-to-compiled-agency",
+      "canonical_id": "art:easyread:from-ephemeral-inference-to-compiled-agency:77bc4a91c3a88289",
+      "short_title": "From Ephemeral Inference to Compiled Agency",
+      "easy_title": "Lookup First, Integer Kernels, and Real Shunt Energy",
+      "category": "Hardware, Silicon & OS",
+      "reading_level": "Easy Read · One Idea Per Sentence · Zero Unexplained Acronyms",
+      "wcag_level": "WCAG 2.2 AA",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "symbol_tags": [
+        {
+          "unicode": "🪜",
+          "core_word": "cascade",
+          "label": "Lookup tables first"
+        },
+        {
+          "unicode": "🔌",
+          "core_word": "shunt",
+          "label": "81.86x float unpack tax avoided"
+        },
+        {
+          "unicode": "🛡️",
+          "core_word": "exact",
+          "label": "Same integer answer on 6 fabrics"
+        }
+      ],
+      "one_idea_sentences": [
+        "This capstone position paper explains how to make advanced computing fast, verifiable, and affordable.",
+        "Advanced computing becomes affordable for everyone when expensive neural models act as a last resort behind fast local lookup tables, search indexes, and exact solvers.",
+        "Compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly.",
+        "One integer kernel checked by cryptographic hashes produces the exact same answer across processors, graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes.",
+        "Key result: 26.58 times Kria and 16.26 times Jetson Thor board shunt energy cuts across the four-stage cascade.",
+        "Real direct-current shunt sensors measured hardware energy under Signed Provenance, Self-Checked."
+      ],
+      "plain_bullets": [
+        "Advanced computing becomes affordable for everyone when expensive neural models act as a last resort behind fast local lookup tables, search indexes, and exact solvers.",
+        "Compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly.",
+        "One integer kernel checked by cryptographic hashes produces the exact same answer across processors, graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes."
+      ],
+      "energy_plain_note": "Real direct-current shunt sensors measured hardware energy under Signed Provenance, Self-Checked.",
+      "links": {
+        "tv_15s": "/tv/?study=from-ephemeral-inference-to-compiled-agency&tier=15s",
+        "paper_url": "/syndication/medium/from-ephemeral-inference-to-compiled-agency/",
+        "figures_url": "/living/compiled-agency/",
+        "audio_description_vtt": "/media/tv/accessibility/from-ephemeral-inference-to-compiled-agency-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/from-ephemeral-inference-to-compiled-agency-15s.ad.m4a"
+      }
+    },
     {
       "study_id": "agency",
       "flagship_slug": "agency",

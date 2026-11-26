@@ -1,0 +1,50 @@
+WEBVTT
+NOTE OpenIE Research TV v3.0 — from-ephemeral-inference-to-compiled-agency (45s) Narrator Cecily
+
+1
+00:00:00.280 --> 00:00:05.190
+First, advanced computing becomes affordable for everyone when expensive neural models act as
+
+2
+00:00:05.190 --> 00:00:09.466
+a last resort behind fast local lookup tables, search indexes, and exact solvers.
+
+3
+00:00:09.626 --> 00:00:14.860
+Second, compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers
+
+4
+00:00:14.860 --> 00:00:20.095
+at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly.
+
+5
+00:00:20.255 --> 00:00:25.962
+Third, one integer kernel checked by cryptographic hashes produces the exact same answer across processors,
+
+6
+00:00:25.962 --> 00:00:32.042
+graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes.
+
+7
+00:00:32.202 --> 00:00:36.744
+Think of how spellcheck became free everywhere: stage one resolves known inputs by
+
+8
+00:00:36.744 --> 00:00:42.395
+instant lookup, stage two searches zero-copy trigram indexes, stage three runs packed integer solvers,
+
+9
+00:00:42.395 --> 00:00:47.935
+and stage four wakes frontier models only on novelty before crystallizing verified answers downward.
+
+10
+00:00:48.095 --> 00:00:54.607
+On direct circuit-board current shunts at commit cb5b641, unpacking sub-bit weights to floating-point
+
+11
+00:00:54.607 --> 00:01:00.411
+burned 81.86 times more energy than eight-bit integers, whereas our four-stage cascade cut
+
+12
+00:01:00.411 --> 00:01:06.666
+Kria energy 26.58 times and Jetson Thor energy 16.26 times under Signed Provenance, Self-Checked.

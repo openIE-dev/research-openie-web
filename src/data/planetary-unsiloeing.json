@@ -33,7 +33,7 @@
     }
   },
   "summary_metrics": {
-    "catalog_studies": 28,
+    "catalog_studies": 29,
     "flagship_films": 8,
     "tier2_flagship_films": 2,
     "active_languages": 47,
@@ -65,8 +65,8 @@
     "total_tier1_audio_mb": 104.52,
     "total_tier2_audio_mb": 12.35,
     "total_ad_audio_mb": 11.24,
-    "easy_read_studies": 28,
-    "audio_described_films": 28,
+    "easy_read_studies": 29,
+    "audio_described_films": 29,
     "aac_concepts_count": 36,
     "aac_max_plain_words": 16
   },
@@ -262,6 +262,94 @@
     ]
   },
   "canonical_artifacts": [
+    {
+      "canonical_id": "art:study:from-ephemeral-inference-to-compiled-agency:b0cb03409161923f",
+      "slug": "from-ephemeral-inference-to-compiled-agency",
+      "tv_id": "from-ephemeral-inference-to-compiled-agency",
+      "flagship": false,
+      "tier2_50": false,
+      "short_title": "From Ephemeral Inference to Compiled Agency",
+      "title": "From Ephemeral Inference to Compiled Agency: A Position Paper on Verifiable, Energy-Accounted Computing",
+      "category": "Hardware, Silicon & OS",
+      "headline_metric": "26.58× Kria & 16.26× Thor Shunt Cascade Cut · 81.86× Float Unpack Tax (@ cb5b641)",
+      "difficulty_rung": "Rung 1→9 · Capstone 4-Stage Lookup-First Cascade & 6-Fabric Integer Kernel",
+      "avalanche_rung": 9,
+      "energy_cost_j": {
+        "value": 1.03e-05,
+        "label": "measured_j",
+        "note": "10.30 uJ net / 187.49 uJ gross Kria INA260 packed integer; 26.58x cascade cut (@ cb5b641)"
+      },
+      "provenance_chain": [
+        {
+          "step": 1,
+          "actor": "openie-research-experiments",
+          "digest": "blake3:cb5b641a541323b4ac7c4fb0",
+          "role": "6-of-6 Shots on Goal receipts (@ cb5b641) · Signed Provenance · Self-Checked"
+        },
+        {
+          "step": 2,
+          "actor": "openie-tv-v3-studio",
+          "digest": "blake3:b0cb03409161923f31408735",
+          "role": "4-slot 1080p60 Research TV + AD + Easy-Read projection"
+        }
+      ],
+      "verification_status": {
+        "gate": "SIGNED_PROVENANCE_SELF_CHECKED",
+        "passed_variants": 1,
+        "total_variants": 1,
+        "flagged_variants": 0,
+        "mean_comet_calibrated": 0.985,
+        "mean_labse_cosine": 1.0,
+        "mean_backtrans_chrfpp": 100.0,
+        "mean_backtrans_bleu": 100.0
+      },
+      "modality_variants": {
+        "paper_url": "/syndication/medium/from-ephemeral-inference-to-compiled-agency/",
+        "pdf_url": "/pdfs/lut-adapt.pdf",
+        "figures_url": "/living/compiled-agency/",
+        "tv_15s_url": "/tv/?study=from-ephemeral-inference-to-compiled-agency&tier=15s",
+        "tv_15s_video_url": "/media/tv/films/from-ephemeral-inference-to-compiled-agency-15s.mp4",
+        "tv_45s_video_url": "/media/tv/films/from-ephemeral-inference-to-compiled-agency-45s.mp4",
+        "tv_90s_video_url": "/media/tv/films/from-ephemeral-inference-to-compiled-agency-90s.mp4",
+        "tv_180s_video_url": "/media/tv/films/from-ephemeral-inference-to-compiled-agency-180s.mp4",
+        "poster_url": "/media/tv/posters/from-ephemeral-inference-to-compiled-agency-poster.jpg",
+        "easy_read_url": "/media/tv/accessibility/easy-read-index.html#study-from-ephemeral-inference-to-compiled-agency",
+        "audio_description_m4a": "/media/tv/accessibility/from-ephemeral-inference-to-compiled-agency-15s.ad.m4a",
+        "audio_description_vtt": "/media/tv/accessibility/from-ephemeral-inference-to-compiled-agency-15s.ad.vtt",
+        "aac_concepts_url": "/glossary/concepts.json",
+        "tier1_audio_pattern": "/media/tv/planetary-15s/audio/from-ephemeral-inference-to-compiled-agency/{lang}.m4a",
+        "tier1_vtt_pattern": "/media/tv/planetary-15s/captions/from-ephemeral-inference-to-compiled-agency/{lang}.vtt",
+        "commons_trail_url": "https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/",
+        "repo_or_corpus_url": "https://github.com/openIE-dev/openie-research-experiments/tree/cb5b641"
+      },
+      "license": {
+        "summaries_and_accessibility": "CC0-1.0",
+        "schema_and_wai_envelope": "Apache-2.0"
+      },
+      "interchange_envelope": {
+        "magic": "WAI1",
+        "magic_hex": "57414931",
+        "envelope_version": "1.0.0",
+        "canonical_id": "art:study:from-ephemeral-inference-to-compiled-agency:b0cb03409161923f",
+        "media_type": "application/vnd.openie.artifact+json",
+        "payload_bytes": 683,
+        "blake3_256": "b0cb03409161923f314087354917dbb2430903a0a7fae563e4e6f279ffb464ae",
+        "sha256": "1816b8af81525680a7da6781dd0d33fbe928765dd704fae50d2fa5c79c7b7edd",
+        "attestation_digest": "f7f7d72b2b76c5529dd85dde2af8bd616af1fa59e241b2d7fd2c286ecc2ee40b",
+        "capability_dispatch": [
+          "http-range",
+          "rss-enclosure",
+          "mcp-resource",
+          "a2a-artifact"
+        ],
+        "energy_accounting": {
+          "joules": 1.03e-05,
+          "label": "measured_j"
+        },
+        "avalanche_rung": 9,
+        "license": "CC0-1.0"
+      }
+    },
     {
       "canonical_id": "art:study:agency:38749a1b7cfbc2b3",
       "slug": "agency",
@@ -4863,6 +4951,33 @@
   ],
   "audio_descriptions": [
     {
+      "study_slug": "from-ephemeral-inference-to-compiled-agency",
+      "tv_id": "from-ephemeral-inference-to-compiled-agency",
+      "cutaway_3d": "09_compiled_agency_cascade_shunt",
+      "visual_overview": "Dark obsidian studio canvas pairing three plain-language cards with a rotating 3D four-stage lookup-to-integer cascade mounted on gold Kria and Jetson Thor direct-current shunt rails, encircled by a six-fabric bit-exact verification ring.",
+      "voice": "en-GB-SoniaNeural (Audio Description) + en-US-AvaNeural (Takeaways)",
+      "duration_s": 80.29,
+      "audio_bytes": 669896,
+      "ad_audio_url": "/media/tv/accessibility/from-ephemeral-inference-to-compiled-agency-15s.ad.m4a",
+      "ad_vtt_url": "/media/tv/accessibility/from-ephemeral-inference-to-compiled-agency-15s.ad.vtt",
+      "canonical_id": "art:ad15s:from-ephemeral-inference-to-compiled-agency:0fe4e46a5fc014e5",
+      "blake3_256": "0fe4e46a5fc014e5b17310868bc9be571aa5c637ee2c4ac5ba1caab4e858d149",
+      "cues": [
+        {
+          "visual": "Visual scene one: Card one glows amber beside a 3D four-stage hardware cascade stepping from emerald constant-time hash lookup and cyan trigram indexes to an amber packed-integer core, keeping the stage-four glass dome asleep.",
+          "takeaway": "First, advanced computing becomes affordable for everyone when expensive neural models act as a last resort behind fast local lookup tables, search indexes, and exact solvers."
+        },
+        {
+          "visual": "Visual scene two: Card two turns cyan as a tall rose floating-point decompression spike is quarantined at eighty-one point eight six times higher board power, while the packed integer core runs cool on inline five-volt shunt rails.",
+          "takeaway": "Second, compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly."
+        },
+        {
+          "visual": "Visual scene three: Card three locks in emerald as six glowing fabric nodes—processor, graphics, split, WebAssembly, hardware logic, and bare-metal microcontroller—orbit at zero drift with instant tamper halt.",
+          "takeaway": "Third, one integer kernel checked by cryptographic hashes produces the exact same answer across processors, graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes."
+        }
+      ]
+    },
+    {
       "study_slug": "agency",
       "tv_id": "agency",
       "cutaway_3d": "07_thermodynamic_tempo_manifold",
@@ -5620,6 +5735,55 @@
     }
   ],
   "easy_read_flagship": [
+    {
+      "study_id": "from-ephemeral-inference-to-compiled-agency",
+      "flagship_slug": "from-ephemeral-inference-to-compiled-agency",
+      "canonical_id": "art:easyread:from-ephemeral-inference-to-compiled-agency:77bc4a91c3a88289",
+      "short_title": "From Ephemeral Inference to Compiled Agency",
+      "easy_title": "Lookup First, Integer Kernels, and Real Shunt Energy",
+      "category": "Hardware, Silicon & OS",
+      "reading_level": "Easy Read · One Idea Per Sentence · Zero Unexplained Acronyms",
+      "wcag_level": "WCAG 2.2 AA",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "symbol_tags": [
+        {
+          "unicode": "🪜",
+          "core_word": "cascade",
+          "label": "Lookup tables first"
+        },
+        {
+          "unicode": "🔌",
+          "core_word": "shunt",
+          "label": "81.86x float unpack tax avoided"
+        },
+        {
+          "unicode": "🛡️",
+          "core_word": "exact",
+          "label": "Same integer answer on 6 fabrics"
+        }
+      ],
+      "one_idea_sentences": [
+        "This capstone position paper explains how to make advanced computing fast, verifiable, and affordable.",
+        "Advanced computing becomes affordable for everyone when expensive neural models act as a last resort behind fast local lookup tables, search indexes, and exact solvers.",
+        "Compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly.",
+        "One integer kernel checked by cryptographic hashes produces the exact same answer across processors, graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes.",
+        "Key result: 26.58 times Kria and 16.26 times Jetson Thor board shunt energy cuts across the four-stage cascade.",
+        "Real direct-current shunt sensors measured hardware energy under Signed Provenance, Self-Checked."
+      ],
+      "plain_bullets": [
+        "Advanced computing becomes affordable for everyone when expensive neural models act as a last resort behind fast local lookup tables, search indexes, and exact solvers.",
+        "Compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly.",
+        "One integer kernel checked by cryptographic hashes produces the exact same answer across processors, graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes."
+      ],
+      "energy_plain_note": "Real direct-current shunt sensors measured hardware energy under Signed Provenance, Self-Checked.",
+      "links": {
+        "tv_15s": "/tv/?study=from-ephemeral-inference-to-compiled-agency&tier=15s",
+        "paper_url": "/syndication/medium/from-ephemeral-inference-to-compiled-agency/",
+        "figures_url": "/living/compiled-agency/",
+        "audio_description_vtt": "/media/tv/accessibility/from-ephemeral-inference-to-compiled-agency-15s.ad.vtt",
+        "audio_description_m4a": "/media/tv/accessibility/from-ephemeral-inference-to-compiled-agency-15s.ad.m4a"
+      }
+    },
     {
       "study_id": "agency",
       "flagship_slug": "agency",
@@ -7540,6 +7704,31 @@
     }
   ],
   "variants": [
+    {
+      "canonical_id": "art:tv15s:from-ephemeral-inference-to-compiled-agency:en:a5cb039e685e264c",
+      "study_slug": "from-ephemeral-inference-to-compiled-agency",
+      "tv_id": "from-ephemeral-inference-to-compiled-agency",
+      "tier": 1,
+      "lang": "en",
+      "dir": "ltr",
+      "voice": "en-US-AvaNeural",
+      "duration_s": 39.19,
+      "audio_url": "/media/tv/planetary-15s/audio/from-ephemeral-inference-to-compiled-agency/en.m4a",
+      "vtt_url": "/media/tv/planetary-15s/captions/from-ephemeral-inference-to-compiled-agency/en.vtt",
+      "gate_status": "PASS_FIRST_TRY",
+      "ship_allowed": true,
+      "attempts": 1,
+      "comet_calibrated": 0.985,
+      "labse_cosine": 1.0,
+      "me5_cosine": 0.96,
+      "backtrans_chrfpp": 100.0,
+      "backtrans_bleu": 100.0,
+      "bullets": [
+        "First, advanced computing becomes affordable for everyone when expensive neural models act as a last resort behind fast local lookup tables, search indexes, and exact solvers.",
+        "Second, compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly.",
+        "Third, one integer kernel checked by cryptographic hashes produces the exact same answer across processors, graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes."
+      ]
+    },
     {
       "canonical_id": "art:tv15s:agency:en:0af7e6aeec6a7b41",
       "study_slug": "agency",
