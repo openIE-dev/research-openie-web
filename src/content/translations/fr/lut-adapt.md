@@ -1,6 +1,6 @@
 ---
 title: "Compilation descendante vers LUT6 dans une cascade Mixture of Limits : tissus booléens routés par Beneš, portes d'éveil conformes et diffusion NVMe Sparse-MoE de pointe"
-deck: "Une cascade Mixture of Limits dotée de 106 théorèmes Lean 4.36.0 vérifiés par six noyaux et d'une extraction mécanique de Rust sans bibliothèque standard vers Lean via Inria Charon+Aeneas (plus 1,470 théorèmes sur quatre dépôts Open Interface Engineering confinés sous Linux bubblewrap, durcis contre CVE-2026-72844) qui essaie d'abord des circuits paginés de table de correspondance à 6 entrées (LUT6) à zéro opération flottante (FLOP), un module navigateur WebAssembly (WASM) de 15.22 kilooctets (15 exports), un Nucleus Rust lut6-core de 4 / 16 kilooctets (4 banques sur 25 jeux officiels ARC-AGI-3 avec BFWS [14/183 niveaux, 2.4488 RHAE], réparation Multimodal & Pro à 100% avec 0% commits défectueux, et Planetary Digital Well réduisant de 4.092x le shunt Thor Window 20) doté d'une queue ternaire antisymétrique à 40 entrées sans multiplication T-MAC, un étage Wearable-MoL de 5,984 octets (9.13% des 64 kilooctets de SRAM de montre connectée) à amorce 56 bits de 4 tokens sans empoisonnement de préfixe, et une protection (72, 64) SECDED contre les rayons cosmiques (0.154 milliseconde dans mol-agent-rs, 162.71 nanojoules par décision tranchée au bit et 100.0% de survie à 1% de taux d'erreur binaire), escalade à travers les micro-LLM portables sous le milliard de paramètres (Sensente/uLM-28M et LiquidAI/LFM2.5-230M) et les modèles bouclés, hybrides et épars Mixture-of-Experts (MoE) 4 bits sur NVMe de fin 2026 jusqu'à 120B paramètres sur quatre fondeurs GPU (jusqu'à 328.06x d'accélération, divisant par 5.37x l'erreur quadratique moyenne de calibration LastExam de 70.62% à 13.14% avec 0.00% d'hallucinations confiantes >= 80%), contrôle les validations sur 4 dépôts amont Verified et compile les éveils certifiés de manière descendante vers des blocs RAMB36E2, des flux binaires .bit post-PAR à 320.62 et 106.55 mégahertz sans licence via openXC7 sur Artix-7 XC7A200T M.2 2280 et des pages cristallines de Lupanov et à codons wobble. Inclut des relevés physiques de shunt DC Texas Instruments measured_j sur Jetson AGX Thor (87.25x tranché au bit, 222.57x porte épistémique portable 56 bits face à uLM-28M, 4.092x Window 20, 1.65x queue T-MAC antisymétrique [et 1.12x sur Zen 5], 3.90x Sub1Bit-LUT6, 34.21x Expert-AirMoL et 10.94x Proposition 1 ; board_metered vaut vrai) strictement séparés des cycles Alif Cortex-M55 (2,905.18x sur la porte portable), des compteurs reported_j, de l'analyse temporelle post-PAR openXC7 et des estimations RTL est_j au commit feeb08b."
+deck: "Une cascade Mixture of Limits dotée de 114 théorèmes Lean 4.36.0 vérifiés par six noyaux et d'une extraction mécanique de Rust sans bibliothèque standard vers Lean via Inria Charon+Aeneas (plus 1,478 théorèmes sur quatre dépôts Open Interface Engineering confinés sous Linux bubblewrap, durcis contre CVE-2026-72844) qui essaie d'abord des circuits paginés de table de correspondance à 6 entrées (LUT6) à zéro opération flottante (FLOP), un module navigateur WebAssembly (WASM) de 15.84 kilooctets (16 exports), un Nucleus Rust lut6-core de 4 / 32 kilooctets (8 banques à majorité >50% [13/25 = 52.00% jeux, 16/183 niveaux, 2.3543 / 3.0441 RHAE] sur les 25 jeux officiels ARC-AGI-3 via R-BFWS, EnigmaEval/ZeroBench à 100%, horizon Vending-BALROG de 1,000 pas à 100% réduisant de 3.204x le shunt Thor Window 21 et de 4.092x Window 20) doté d'une queue ternaire antisymétrique à 40 entrées sans multiplication T-MAC, un étage Wearable-MoL de 5,984 octets (9.13% des 64 kilooctets de SRAM de montre connectée) à amorce 56 bits de 4 tokens sans empoisonnement de préfixe, et une protection (72, 64) SECDED contre les rayons cosmiques (0.154 milliseconde dans mol-agent-rs, 162.71 nanojoules par décision tranchée au bit et 100.0% de survie à 1% de taux d'erreur binaire), escalade à travers les micro-LLM portables sous le milliard de paramètres (Sensente/uLM-28M et LiquidAI/LFM2.5-230M) et les modèles bouclés, hybrides et épars Mixture-of-Experts (MoE) 4 bits sur NVMe de fin 2026 jusqu'à 120B paramètres sur quatre fondeurs GPU (jusqu'à 328.06x d'accélération, divisant par 5.37x l'erreur quadratique moyenne de calibration LastExam de 70.62% à 13.14% avec 0.00% d'hallucinations confiantes >= 80%), contrôle les validations sur 4 dépôts amont Verified et compile les éveils certifiés de manière descendante vers des blocs RAMB36E2, des flux binaires .bit post-PAR à 320.62, 106.55 et 109.15 mégahertz sans licence via openXC7 sur Artix-7 XC7A200T M.2 2280 et des pages cristallines de Lupanov et à codons wobble. Inclut des relevés physiques de shunt DC Texas Instruments measured_j sur Jetson AGX Thor (87.25x tranché au bit, 222.57x porte épistémique portable 56 bits face à uLM-28M, 4.092x Window 20, 1.65x queue T-MAC antisymétrique [et 1.12x sur Zen 5], 3.90x Sub1Bit-LUT6, 34.21x Expert-AirMoL et 10.94x Proposition 1 ; board_metered vaut vrai) strictement séparés des cycles Alif Cortex-M55 (2,905.18x sur la porte portable), des compteurs reported_j, de l'analyse temporelle post-PAR openXC7 et des estimations RTL est_j au commit 0c8bfba."
 lang: "fr"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*Révision feeb08b, 25 novembre 2026. Implémentation de référence et artefacts : [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) à [`feeb08bd89ee4e5b6957385c80a0d27d8901f19c`](https://github.com/openIE-dev/lut-adapt-ai/tree/feeb08bd89ee4e5b6957385c80a0d27d8901f19c). Résumé des données : [/data/#lut-adapt](/data/#lut-adapt). PDF LaTeX : [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([source](/pdfs/latex/lut-adapt.tex)).*
+*Révision 0c8bfba, 25 novembre 2026. Implémentation de référence et artefacts : [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) à [`0c8bfba7be3afd9cf312b73a1b85027bf8da3019`](https://github.com/openIE-dev/lut-adapt-ai/tree/0c8bfba7be3afd9cf312b73a1b85027bf8da3019). Résumé des données : [/data/#lut-adapt](/data/#lut-adapt). PDF LaTeX : [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([source](/pdfs/latex/lut-adapt.tex)).*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ Cette étude examine comment un système informatique peut compiler, de manière
 
 <ul id="terms">
 <li>MoL : Mixture of Limits, la règle en cascade provenant de Metered Commit Gates Part II [same house]</li>
-<li>LA : préfixe de revendication et de falsification (LA-1 à LA-55, LA-F1 à LA-F55) utilisé dans cette étude</li>
+<li>LA : préfixe de revendication et de falsification (LA-1 à LA-63, LA-F1 à LA-F63) utilisé dans cette étude</li>
 <li>LUT, LUT6, INIT : table de correspondance, primitive booléenne Xilinx UltraScale+ à 6 entrées, et son masque d'initialisation de table de vérité 64 bits</li>
 <li>BRAM, RAMB36E2, URAM : RAM de bloc, primitive UltraScale+ à double port de 36 Kbit (144 sur xck26), et UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260 : bloc logique configurable, bascule, tranche de traitement du signal numérique, et carte AMD Kria KV260 (xck26)</li>
@@ -991,11 +991,17 @@ La décomposition asymptotique à cofacteurs partagés de Lupanov (1958 ; `k=8`,
 
 ## Annexe A. Reproductibilité
 
-Depuis les checkouts de [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit feeb08b`) et [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` et `lut6-core-nucleus/`) :
+Depuis les checkouts de [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 0c8bfba`) et [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` et `lut6-core-nucleus/`) :
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
 (cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase41_arc3_rbfws_25env_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase41_enigma_zerobench_and_horizon1000.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase41_window21_five_silicon.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_rbfws8_enigma_par.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase40_arc3_bfws_25env_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase40_multimodal_and_well_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase38_arc3_iw2_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase38_waios_joulebit_null.py
 PYTHONPATH=src .venv/bin/python scripts/run_openxc7_apex_waios_par.py

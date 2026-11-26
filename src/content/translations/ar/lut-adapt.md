@@ -1,6 +1,6 @@
 ---
 title: "التصريف الهابط إلى LUT6 في تسلسل Mixture of Limits: أنسجة منطقية بوليانية موجَّهة بشبكة Beneš، وبوابات إيقاظ مطابقة، وبث طبقات NVMe لنموذج Frontier Sparse-MoE"
-deck: "تسلسل Mixture of Limits مزوَّد بـ 106 مبرهنات في Lean 4.36.0 متحقَّقٍ منها عبر ستّ نوى مع استخراج آلي لشيفرة Rust الخالية من المكتبة القياسية إلى Lean عبر Inria Charon+Aeneas (إلى جانب 1,470 مبرهنة عبر أربعة مستودعات تابعة لـ Open Interface Engineering داخل صناديق عزل bubblewrap في Linux، ومقسّاة ضد CVE-2026-72844)، يجرّب أولاً دوائر جداول البحث ذات 6 مداخل (LUT6) المقسّمة إلى صفحات دون أي عمليات فاصلة عائمة (FLOP)، ووحدة WebAssembly (WASM) للمتصفح بحجم 15.22 كيلوبايت (15 تصديراً)، ونواة Nucleus بلغة Rust الخالية من المكتبة القياسية lut6-core بحجم 4 كيلوبايت / 16 كيلوبايت (4 بنوك على 25 لعبة ARC-AGI-3 عبر BFWS محققاً 14/183 مستوى و2.4488 RHAE، وإصلاح Multimodal & Pro بنسبة 100%، وPlanetary Digital Well بخفض 4.092x على مفرع Thor في Window 20) مع ذيل ثلاثي مضاد للتناظر من 40 مدخلاً بلا ضرب T-MAC، وطبقة Wearable-MoL بحجم 5,984 بايت (9.13% من ذاكرة SRAM لساعة ذكية بحجم 64 كيلوبايت) بافتتاحية 56 بت من 4 رموز وصفر تسميم للبادئة، وحماية (72, 64) SECDED ضد انقلابات البت الإشعاعية (0.154 مللي ثانية في mol-agent-rs، و162.71 نانوجول لكل قرار مشرَّح بالبتات، وبقاء بنسبة 100.0% عند معدل خطأ بت 1%)، ويصعّد عبر نماذج الميكرو القابلة للارتداء دون المليار معامل (Sensente/uLM-28M وLiquidAI/LFM2.5-230M) ونماذج أواخر 2026 الحلقية والهجينة والمتناثرة Mixture-of-Experts (MoE) بدقة 4 بت عبر NVMe حتى 120B معامل عبر أربعة مصنّعي GPU (حتى 328.06x تسريعاً، خافضاً خطأ معايرة RMS لبروتوكول LastExam بمقدار 5.37x من 70.62% إلى 13.14% مع 0.00% هلوسات واثقة >= 80%)، ويحرس الالتزامات على 4 مستودعات Verified، ويصرّف حالات الإيقاظ المصدَّقة هابطاً إلى ذاكرات RAMB36E2 وتيارات بت .bit مفتوحة عبر openXC7 بتردد 320.62 و106.55 ميغاهرتز لشريحة Artix-7 XC7A200T M.2 2280 وصفحات Lupanov وwobble. يتضمن قراءات مفرِّعات التيار المستمر الفيزيائية measured_j على Jetson AGX Thor (87.25x في lut6-core المشرَّح بالبتات، و222.57x في البوابة المعرفية القابلة للارتداء مقابل uLM-28M، و4.092x في Window 20، و1.65x في ذيل T-MAC المضاد للتناظر [و1.12x على Zen 5]، و3.90x في Sub1Bit-LUT6، و34.21x في Expert-AirMoL، و10.94x في القضية 1؛ وقيمة board_metered هي true) مفصولة بصرامة عن دورات Alif Cortex-M55 (2,905.18x على البوابة القابلة للارتداء)، وعدّادات reported_j، وتوقيت openXC7 بعد PAR، وتقديرات est_j عند الالتزام feeb08b."
+deck: "تسلسل Mixture of Limits مزوَّد بـ 114 مبرهنة في Lean 4.36.0 متحقَّقٍ منها عبر ستّ نوى مع استخراج آلي لشيفرة Rust الخالية من المكتبة القياسية إلى Lean عبر Inria Charon+Aeneas (إلى جانب 1,478 مبرهنة عبر أربعة مستودعات تابعة لـ Open Interface Engineering داخل صناديق عزل bubblewrap في Linux، ومقسّاة ضد CVE-2026-72844)، يجرّب أولاً دوائر جداول البحث ذات 6 مداخل (LUT6) المقسّمة إلى صفحات دون أي عمليات فاصلة عائمة (FLOP)، ووحدة WebAssembly (WASM) للمتصفح بحجم 15.84 كيلوبايت (16 تصديراً)، ونواة Nucleus بلغة Rust الخالية من المكتبة القياسية lut6-core بحجم 4 كيلوبايت / 32 كيلوبايت (8 بنوك بأغلبية >50% [13/25 = 52.00% لعبة و16/183 مستوى] على ARC-AGI-3 عبر R-BFWS محققة 2.3543 / 3.0441 RHAE، وEnigmaEval/ZeroBench بنسبة 100%، وأفق Vending-BALROG لـ 1,000 خطوة بنسبة بقاء 100% وخفض 3.204x على مفرع Thor في Window 21، و4.092x في Window 20) مع ذيل ثلاثي مضاد للتناظر من 40 مدخلاً بلا ضرب T-MAC، وطبقة Wearable-MoL بحجم 5,984 بايت (9.13% من ذاكرة SRAM لساعة ذكية بحجم 64 كيلوبايت) بافتتاحية 56 بت من 4 رموز وصفر تسميم للبادئة، وحماية (72, 64) SECDED ضد انقلابات البت الإشعاعية (0.154 مللي ثانية في mol-agent-rs، و162.71 نانوجول لكل قرار مشرَّح بالبتات، وبقاء بنسبة 100.0% عند معدل خطأ بت 1%)، ويصعّد عبر نماذج الميكرو القابلة للارتداء دون المليار معامل (Sensente/uLM-28M وLiquidAI/LFM2.5-230M) ونماذج أواخر 2026 الحلقية والهجينة والمتناثرة Mixture-of-Experts (MoE) بدقة 4 بت عبر NVMe حتى 120B معامل عبر أربعة مصنّعي GPU (حتى 328.06x تسريعاً، خافضاً خطأ معايرة RMS لبروتوكول LastExam بمقدار 5.37x من 70.62% إلى 13.14% مع 0.00% هلوسات واثقة >= 80%)، ويحرس الالتزامات على 4 مستودعات Verified، ويصرّف حالات الإيقاظ المصدَّقة هابطاً إلى ذاكرات RAMB36E2 وتيارات بت .bit مفتوحة عبر openXC7 بتردد 320.62 و106.55 و109.15 ميغاهرتز لشريحة Artix-7 XC7A200T M.2 2280 وصفحات Lupanov وwobble. يتضمن قراءات مفرِّعات التيار المستمر الفيزيائية measured_j على Jetson AGX Thor (87.25x في lut6-core المشرَّح بالبتات، و222.57x في البوابة المعرفية القابلة للارتداء مقابل uLM-28M، و4.092x في Window 20، و1.65x في ذيل T-MAC المضاد للتناظر [و1.12x على Zen 5]، و3.90x في Sub1Bit-LUT6، و34.21x في Expert-AirMoL، و10.94x في القضية 1؛ وقيمة board_metered هي true) مفصولة بصرامة عن دورات Alif Cortex-M55 (2,905.18x على البوابة القابلة للارتداء)، وعدّادات reported_j، وتوقيت openXC7 بعد PAR، وتقديرات est_j عند الالتزام 0c8bfba."
 lang: "ar"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*المراجعة feeb08b، 25 نوفمبر 2026. التنفيذ المرجعي والمصنوعات: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) عند [`feeb08bd89ee4e5b6957385c80a0d27d8901f19c`](https://github.com/openIE-dev/lut-adapt-ai/tree/feeb08bd89ee4e5b6957385c80a0d27d8901f19c). ملخص البيانات: [/data/#lut-adapt](/data/#lut-adapt). ملف LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([المصدر](/pdfs/latex/lut-adapt.tex)).*
+*المراجعة 0c8bfba، 25 نوفمبر 2026. التنفيذ المرجعي والمصنوعات: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) عند [`0c8bfba7be3afd9cf312b73a1b85027bf8da3019`](https://github.com/openIE-dev/lut-adapt-ai/tree/0c8bfba7be3afd9cf312b73a1b85027bf8da3019). ملخص البيانات: [/data/#lut-adapt](/data/#lut-adapt). ملف LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([المصدر](/pdfs/latex/lut-adapt.tex)).*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: مزيج الحدود، قاعدة التسلسل من بوابات الالتزام المقاسة الجزء الثاني [same house]</li>
-<li>LA: بادئة الادعاء والمكذب (LA-1 إلى LA-55، LA-F1 إلى LA-F55) المستخدمة في هذه الدراسة</li>
+<li>LA: بادئة الادعاء والمكذب (LA-1 إلى LA-63، LA-F1 إلى LA-F63) المستخدمة في هذه الدراسة</li>
 <li>LUT, LUT6, INIT: جدول بحث، بدائية بوليانية من Xilinx UltraScale+ ذات 6 مداخل، وقناع تهيئة جدول الحقيقة 64-بت</li>
 <li>BRAM, RAMB36E2, URAM: ذاكرة كتلية، البدائية 36-كيبت ذات منفذين من UltraScale+ (144 على xck26)، و UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260: كتلة منطقية قابلة للتهيئة، فليب-فلوب، شريحة معالجة إشارة رقمية، ولوحة AMD Kria KV260 (xck26)</li>
@@ -989,11 +989,17 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 ## الملحق أ. إعادة الإنتاج
 
-من نسختين مستخرجتين من [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit feeb08b`) و[openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` و`lut6-core-nucleus/`):
+من نسختين مستخرجتين من [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 0c8bfba`) و[openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` و`lut6-core-nucleus/`):
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
 (cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase41_arc3_rbfws_25env_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase41_enigma_zerobench_and_horizon1000.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase41_window21_five_silicon.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_rbfws8_enigma_par.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase40_arc3_bfws_25env_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase40_multimodal_and_well_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase38_arc3_iw2_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase38_waios_joulebit_null.py
 PYTHONPATH=src .venv/bin/python scripts/run_openxc7_apex_waios_par.py

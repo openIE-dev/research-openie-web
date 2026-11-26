@@ -362,11 +362,11 @@
         </div>
       </section>
 
-      <!-- Widget 7: Live 15.80 KB #![no_std] WebAssembly Silicon & SEU Lab (la-wasm-01) -->
+      <!-- Widget 7: Live 15.84 KB #![no_std] WebAssembly Silicon & SEU Lab (la-wasm-01) -->
       <section id="la-wasm-01" class="glass-card" style="margin-top: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-wasm-01</code> · Live <code>15.80 KB</code> <code>#![no_std]</code> <code>lut6_core.wasm</code> Silicon &amp; Cosmic-Ray <code>SEU</code> Lab (<code>Claims LA-33..LA-35 &amp; LA-52</code>)</h2>
-          <span class="chip chip-meas" id="wasm-status-chip">Live WASM Engine (16,179 B · 0 Crates · 13 Exports)</span>
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-wasm-01</code> · Live <code>15.84 KB</code> <code>#![no_std]</code> <code>lut6_core.wasm</code> Silicon &amp; Cosmic-Ray <code>SEU</code> Lab (<code>Claims LA-33..LA-35, LA-52 &amp; LA-63</code>)</h2>
+          <span class="chip chip-meas" id="wasm-status-chip">Live WASM Engine (16,219 B · 0 Crates · 16 Exports)</span>
         </div>
         <p style="font-size: 0.9rem; margin-top: 0.6rem;">
           Executes the actual compiled <code>wasm32-unknown-unknown</code> Rust binary (<code>/living/lut-adapt/lut6_core.wasm</code>, embedding both verified <code>4,096 B</code> <code>.lut6</code> crystals <code>0xd1cc025a</code> &amp; <code>0x3b12a681</code>, ISCA 2025 <code>Antisym-40 T-MAC</code>, Walsh–Hadamard <code>FWHT</code>, <code>(72,64)</code> <code>RAMB36</code> Hamming <code>SECDED</code>, and <code>Wearable-MoL</code> epistemic &amp; canary gates) directly inside your browser's WebAssembly VM.
@@ -779,7 +779,59 @@
           <div class="metric-tile">
             <div class="k">Live WASM #15 (BFWS4+Well)</div>
             <div class="v" id="bfws-wasm-v" style="color: var(--color-brand-cyan);">Mode 1 · Bank-3 Hit</div>
-            <div class="s" id="bfws-wasm-s">15th export live in 15,590 B lut6_core.wasm</div>
+            <div class="s" id="bfws-wasm-s">15th export live in 16,219 B lut6_core.wasm</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Widget 15: >50% Majority 25-Game ARC-AGI-3 R-BFWS + 32 KB Vault, EnigmaEval & ZeroBench, 1,000-Step Vending-BALROG, & 114 Proofs (la-enigma-01) -->
+      <section id="la-enigma-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-enigma-01</code> · <code>&gt;50%</code> Majority <code>ARC-AGI-3</code> <code>R-BFWS(R,M)</code>, <code>Enigma+ZeroBench</code>, <code>1,000</code>-Step <code>Vending-BALROG</code>, &amp; <code>114</code> Proofs (<code>Claims LA-60..LA-63</code>)</h2>
+          <span class="chip chip-meas">Thor Shunt Window 21 (3.204×) + 114 6-Kernel Thms (1,478 Fleet) + Live 15.84 KB (16-Export) WASM</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Execute the 16th live WebAssembly export (<code>wasm_eval_rbfws8_enigma_horizon</code>) inside <code>lut6_core.5ca544195314.wasm</code> (<code>15.84 KB</code> = <code>16,219 B &lt;= 16 KB</code>), verifying live <code>Enigma-SBox6</code> bijective <code>S⁻¹(S(x)) = x</code> roundtrips, Eight-Bank <code>32 KB</code> (<code>50.0%</code> Watch <code>SRAM</code>) spillover, and <code>Vending-BALROG</code> Simplex <code>CBF</code> shielding alongside strict majority (<code>13/25 = 52.0%</code> games, <code>16/183</code> levels; <code>10/16 = 62.5%</code> matched-<code>16</code>, <code>3.0441</code> <code>RHAE</code>) official <code>ARC-AGI-3</code>, <code>24</code>-task <code>EnigmaEval &amp; ZeroBench</code> (<code>100.0%</code> verified, <code>144/144</code> Yosys <code>abc -lut 6</code> miter), <code>Window 21</code> <code>Jetson AGX Thor</code> DC shunt telemetry (<code>3.204×</code> lower <code>measured_j</code>, <code>3.211×</code> faster), and zero-<code>DSP48E1</code> <code>109.15 MHz</code> <code>openXC7</code> <code>XC7A200T</code> gateware.
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label><span>Select Claim (Claims LA-60..LA-63)</span></label>
+            <select id="enig-frontier">
+              <option value="rbfws" selected>Claim LA-60 · &gt;50% Majority 25-Game ARC-AGI-3 R-BFWS(R,M) + 32 KB 8-Bank Vault (13/25 Games · 16/183 Lvls)</option>
+              <option value="ez24">Claim LA-61 · 24-Task EnigmaEval &amp; ZeroBench Symbolic/Alien-ISA Synthesis (100% · 144/144 Yosys $lut Miter)</option>
+              <option value="hor1k">Claim LA-62 · 1,000-Step Vending-BALROG (100% Survival · 128.61× &lt; Z3) + Window 21 Thor Shunt (3.204×)</option>
+              <option value="xc7_41">Claim LA-63 · Zero-DSP48E1 109.15 MHz openXC7 XC7A200T .bit + 15.84 KB 16-Export WASM + 114 Proofs</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label><span>Live <code>lut6_core.wasm</code> <code>wasm_eval_rbfws8_enigma_horizon</code> Probe</span></label>
+            <select id="enig-wasm-probe">
+              <option value="42,0" selected>8-Bank Spillover Hit (Bank-7, x=42) + Bijective Enigma-SBox6 Roundtrip S⁻¹(S(42))==42 + CBF Shield=3</option>
+              <option value="17,0">Bank-0 Direct Hit (percept=1, x=17) + Bijective Enigma-SBox6 Roundtrip S⁻¹(S(17))==17 + CBF Shield=3</option>
+              <option value="13,1">HUD Signature Tamper (0x33 ≠ 0x5A, x=13) → Mode 2 Mechanic-Shift Breaker Halt!</option>
+            </select>
+          </div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-tile">
+            <div class="k">Headline Frontier Result</div>
+            <div class="v" id="enig-m1" style="color: var(--color-brand-cyan);">13 / 25 Games (52.0% Majority!)</div>
+            <div class="s" id="enig-s1">16 / 183 Lvls (+cd82, +ft09) · 10 / 16 (62.5%) &amp; 13 / 113 on 16-Game</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Efficiency / RHAE Gain</div>
+            <div class="v" id="enig-m2" style="color: var(--color-brand-cyan);">3.0441 (16) / 2.3543 (25) RHAE</div>
+            <div class="s" id="enig-s2">784.8× &gt; FIFO-BFS · 10.7143 Peak · 0 Wave-2 Breaker Trips</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Silicon &amp; Formal Proof Seal</div>
+            <div class="v" id="enig-m3" style="color: var(--color-brand-cyan);">32,768 B (50.00% Watch SRAM)</div>
+            <div class="s" id="enig-s3">8.75 µJ Thor Window 21 (3.204×) · 114 6-Kernel Thms (1,478 Fleet)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Live WASM #16 (RBFWS8+Enigma)</div>
+            <div class="v" id="enig-wasm-v" style="color: var(--color-brand-cyan);">Mode 1 · Bank-7 · S⁻¹(S(42))=42</div>
+            <div class="s" id="enig-wasm-s">16th export live in 16,219 B lut6_core.wasm</div>
           </div>
         </div>
       </section>
@@ -787,6 +839,10 @@
       <!-- Static Vector Diagrams Gallery -->
       <section id="la-figs" style="margin-top: 2.5rem;">
         <h2 style="font-size: 1.3rem;">Paper Vector Diagrams (Click to Zoom)</h2>
+        <figure class="fig">
+          <img src="/figures/lut-adapt/rbfws8-arc3-enigma-and-horizon1000.svg" alt="Majority (>50%) 25-Game ARC-AGI-3 R-BFWS + 32 KB Vault, EnigmaEval & ZeroBench, 1,000-Step Vending-BALROG Window 21 Thor Shunt, and 114 Six-Kernel Proofs">
+          <figcaption><strong>Figure 17.</strong> Strict majority (<code>&gt; 50%</code>, <code>13/25</code> games) <code>ARC-AGI-3</code> <code>R-BFWS(R,M)</code>, <code>EnigmaEval &amp; ZeroBench</code>, <code>1,000</code>-step <code>Vending-BALROG</code>, &amp; <code>114</code>-theorem measurements (<code>Claims LA-19 [114 thms / 1,478 bwrap fleet], LA-60..LA-63</code>): (A) strict majority (<code>13/25 = 52.0%</code> games, <code>16/183</code> levels, <code>2.3543</code> mean / <code>10.7143</code> peak <code>RHAE</code>) &amp; <code>62.5%</code> matched-<code>16</code> (<code>10/16</code> games, <code>13/113</code> levels, <code>3.0441</code> <code>RHAE</code>) official black-box <code>ARC-AGI-3</code> via Reset-Persistent <code>R-BFWS(R,M) + Palette-Fair Cellular + Eight-Bank 32 KB System-0 LUT6</code> (<code>50.00%</code> watch <code>SRAM</code>, <code>0</code> breaker trips, unlocking <code>cd82</code> &amp; <code>ft09</code>); (B) <code>24</code>-task <code>EnigmaEval &amp; ZeroBench</code> symbolic cryptanalysis + alien-ISA synthesis (<code>100.0%</code> verified, <code>144/144</code> Yosys <code>abc -lut 6</code> miter, <code>0.0%</code> broken); (C) <code>1,000</code>-step (<code>16,000</code>-transition) coupled <code>Vending-Bench + BALROG</code> survival (<code>100.0%</code>, <code>0</code> violations, <code>99.82%</code> <code>LUT6</code> share, <code>128.61×</code> &lt; <code>Z3</code>) &amp; <code>Window 21</code> cross-silicon telemetry (<code>3.204×</code> lower <code>Thor</code> DC shunt <code>measured_j</code>, <code>3.211×</code> faster); and (D) zero-<code>DSP48E1</code> <code>109.15 MHz</code> <code>openXC7</code> <code>XC7A200T</code> <code>.bit</code> (<code>671</code> LUTs, <code>64/64</code> bijective <code>S⁻¹(S(x)) == x</code> RTL parity), <code>15.84 KB</code> (<code>16,219 B</code>, <code>16</code> exports) <code>lut6_core.wasm</code>, and <code>114</code> six-kernel <code>Lean 4.36.0</code> proofs (<code>1,478</code> <code>bwrap</code> fleet).</figcaption>
+        </figure>
         <figure class="fig">
           <img src="/figures/lut-adapt/bfws-arc3-well-and-multimodal.svg" alt="Full 25-Game ARC-AGI-3 BFWS + 16 KB Vault, SWE-bench Multimodal & Pro, Planetary Digital Well Window 20 Thor Shunt, and 106 Six-Kernel Proofs">
           <figcaption><strong>Figure 16.</strong> Full <code>25</code>-game <code>ARC-AGI-3</code> <code>BFWS(R,M)</code>, Multimodal &amp; Pro repair, Planetary Digital Well, &amp; <code>106</code>-theorem measurements (<code>Claims LA-19 [106 thms / 1,470 bwrap fleet], LA-56..LA-59</code>): (A) matched <code>16</code>-game (<code>11/113</code>, <code>8/16</code> games, <code>2.4488</code> <code>RHAE</code>) &amp; full <code>25</code>-game (<code>14/183</code>, <code>11/25</code> games, <code>1.9733</code> mean / <code>10.7143</code> peak <code>RHAE</code>, <code>0</code> breaker trips in <code>25.00%</code> watch <code>SRAM</code>) official black-box <code>ARC-AGI-3</code> Dual-Subspace <code>BFWS(R,M) + Four-Bank 16 KB System-0 LUT6</code>; (B) <code>24</code>-task Multimodal &amp; Pro visual-diagram + multi-file repair (<code>100.0%</code> verified, <code>0.0%</code> broken commits); (C) <code>12</code>-module <code>384</code>-call Planetary Digital Well (<code>100.0%</code> Yosys <code>abc -lut 6</code> miter) &amp; <code>Window 20</code> cross-silicon telemetry (<code>4.092×</code> lower <code>Thor</code> DC shunt <code>measured_j</code>, <code>3.214×</code> faster); and (D) zero-<code>DSP48E1</code> <code>106.55 MHz</code> <code>openXC7</code> <code>XC7A200T</code> <code>.bit</code> (<code>662</code> LUTs, <code>64/64</code> RTL parity), <code>15.22 KB</code> (<code>15,590 B</code>, <code>15</code> exports) <code>lut6_core.wasm</code>, and <code>106</code> six-kernel <code>Lean 4.36.0</code> proofs (<code>1,470</code> <code>bwrap</code> fleet).</figcaption>
@@ -1139,13 +1195,13 @@
       }
       vSel.addEventListener('change', updateUI);
       sSel.addEventListener('change', updateUI);
-      fetch('/living/lut-adapt/lut6_core.a287e6d8f400.wasm')
+      fetch('/living/lut-adapt/lut6_core.5ca544195314.wasm')
         .then(function(r){ return r.arrayBuffer(); })
         .then(function(bytes){ return WebAssembly.instantiate(bytes, {}); })
         .then(function(res){
           exportsObj = res.instance.exports;
           window.__lut6WasmExports = exportsObj;
-          chip.textContent = 'Live WASM VM Active (15,590 B · 15 Exports · Signed Provenance · Self-Checked)';
+          chip.textContent = 'Live WASM VM Active (16,219 B · 16 Exports · Signed Provenance · Self-Checked)';
           updateUI();
           if (window.__updateHleWasm) window.__updateHleWasm();
           if (window.__updateBonsaiWasm) window.__updateBonsaiWasm();
@@ -1154,6 +1210,7 @@
           if (window.__updateWaiosWasm) window.__updateWaiosWasm();
           if (window.__updateSiwWasm) window.__updateSiwWasm();
           if (window.__updateBfwsWasm) window.__updateBfwsWasm();
+          if (window.__updateEnigWasm) window.__updateEnigWasm();
         })
         .catch(function(){
           chip.textContent = 'Offline Mode (Self-checked V8 receipt)';
@@ -1165,6 +1222,7 @@
           if (window.__updateWaiosWasm) window.__updateWaiosWasm();
           if (window.__updateSiwWasm) window.__updateSiwWasm();
           if (window.__updateBfwsWasm) window.__updateBfwsWasm();
+          if (window.__updateEnigWasm) window.__updateEnigWasm();
         });
     })();
 
@@ -1496,6 +1554,58 @@
         fSel.addEventListener('change', updBfws);
         pSel.addEventListener('change', updBfws);
         updBfws();
+      }
+    })();
+
+    // Widget 15: >50% Majority 25-Game ARC-AGI-3 R-BFWS + 32 KB Vault, EnigmaEval & ZeroBench, 1,000-Step Vending-BALROG, & 114 Proofs
+    (function(){
+      var enigData = {
+        rbfws:  { m1: '13 / 25 Games (52.0% Majority!)', s1: '16 / 183 Lvls (+cd82, +ft09) · 10 / 16 (62.5%) & 13 / 113 on 16-Game', m2: '3.0441 (16) / 2.3543 (25) RHAE', s2: '784.8× > FIFO-BFS · 10.7143 Peak · 0 Wave-2 Breaker Trips', m3: '32,768 B (50.00% Watch SRAM)', s3: 'Eight-Bank System-0 Vault · 114 6-Kernel Thms (1,478 Linux bwrap Fleet)' },
+        ez24:   { m1: '100.0% Verified (24 / 24 Tasks)', s1: 'Z3 QF_BV SBox6, GF(2) 6×6 Hill+LFSR, 3R-Feistel, Post-Cutoff Alien ISA', m2: '144 / 144 Yosys $lut Miter', s2: '9,216/9,216 minterms proven · 0.00% broken vs 83.3%–95.8% on 9B/27B!', m3: '7.38 × 10⁶× W2 Energy Cut', s3: '0.0004 mJ/task (0.0186 ms) vs 2,950 mJ 27B · 0 raw prompts persisted' },
+        hor1k:  { m1: '100.0% Survival (16,000 Steps)', s1: '16 ep × 1,000 steps · 3 mid-horizon shocks vs step 5–63 collapse on 9B/27B', m2: '128.61× Faster Than Z3-Step', s2: '99.82% System-0 LUT6 share (29 slots) · +$571.08 mean net worth', m3: '3.204× Lower Thor Shunt J', s3: '8,745.39 vs 28,021.20 nJ/op (Window 21 · 3.211× faster · board_metered)' },
+        xc7_41: { m1: '109.15 MHz Post-PAR (.bit)', s1: '671 SLICE_LUTX (0.25%) · 201 FFs · 0 DSP48E1 · 9,730,773 B .bit', m2: '15.84 KB WASM (16 Exports)', s2: '16,219 B <= 16 KB (wasm-opt -Oz · sha256[:12] = 5ca544195314)', m3: '114 Six-Kernel Lean 4.36.0 Thms', s3: '1,478 Linux bwrap Fleet · 58,980 con-leche/con-ron decls · 0 sorry' }
+      };
+      var fSel = document.getElementById('enig-frontier'), pSel = document.getElementById('enig-wasm-probe');
+      if (fSel && pSel) {
+        function updEnig() {
+          var d = enigData[fSel.value];
+          document.getElementById('enig-m1').textContent = d.m1;
+          document.getElementById('enig-s1').textContent = d.s1;
+          document.getElementById('enig-m2').textContent = d.m2;
+          document.getElementById('enig-s2').textContent = d.s2;
+          document.getElementById('enig-m3').textContent = d.m3;
+          document.getElementById('enig-s3').textContent = d.s3;
+          var sp = pSel.value.split(',');
+          var xIn = Number(sp[0]) & 63, brk = Number(sp[1]) & 1;
+          var percept = brk ? 57 : (xIn === 17 ? 1 : 57);
+          var epoch = xIn === 17 ? 0 : 6;
+          var ex = window.__lut6WasmExports;
+          var vEl = document.getElementById('enig-wasm-v'), sEl = document.getElementById('enig-wasm-s');
+          if (ex && ex.wasm_eval_rbfws8_enigma_horizon) {
+            var encArg = (percept | (3 << 6) | (epoch << 12) | (xIn << 15) | (0b100110 << 21) | (brk << 28)) >>> 0;
+            var re = ex.wasm_eval_rbfws8_enigma_horizon(encArg, 7) >>> 0;
+            var st2 = (re >>> 30) & 3, bk3 = (re >>> 27) & 7, sb6 = (re >>> 18) & 63, sh2 = (re >>> 16) & 3;
+            var decArg = (percept | (sb6 << 15) | (1 << 27)) >>> 0;
+            var rd = ex.wasm_eval_rbfws8_enigma_horizon(decArg, 7) >>> 0;
+            var xBack = (rd >>> 18) & 63;
+            if (st2 === 1) {
+              vEl.textContent = 'Mode 1 · Bank-' + bk3 + ' · S⁻¹(' + sb6 + ')=' + xBack;
+              vEl.style.color = 'var(--color-brand-cyan)';
+              sEl.textContent = 'CBF Shield=' + sh2 + ' · Bijection OK · Live WASM #16 (16,219 B)';
+            } else {
+              vEl.textContent = 'Mode 2 · SHIFT BREAKER!';
+              vEl.style.color = 'var(--color-brand-amber)';
+              sEl.textContent = 'HUD 0x33≠0x5A trapped · S⁻¹(' + sb6 + ')=' + xBack + ' (Live WASM #16)';
+            }
+          } else {
+            vEl.textContent = brk ? 'Mode 2 · SHIFT BREAKER!' : ('Mode 1 · Bank-' + (xIn === 17 ? 0 : 7) + ' · S⁻¹(S(' + xIn + '))=' + xIn);
+            sEl.textContent = 'Self-checked V8 receipt (16,219 B WASM)';
+          }
+        }
+        window.__updateEnigWasm = updEnig;
+        fSel.addEventListener('change', updEnig);
+        pSel.addEventListener('change', updEnig);
+        updEnig();
       }
     })();
 

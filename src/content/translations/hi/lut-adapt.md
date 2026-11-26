@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits कैस्केड में अधोमुखी LUT6 संकलन: Beneš-रूट किए गए बूलियन फ़ैब्रिक, कन्फ़ॉर्मल वेक द्वार और फ्रंटियर स्पार्स-MoE NVMe स्ट्रीमिंग"
-deck: "106 छह-कर्नेल-सत्यापित Lean 4.36.0 प्रमेयों और Inria Charon+Aeneas यांत्रिक मानक-पुस्तकालय-रहित Rust-से-Lean निष्कर्षण (साथ ही Linux bubblewrap सैंडबॉक्स में चार Open Interface Engineering रिपॉज़िटरी में 1,470 प्रमेयों, CVE-2026-72844-सुदृढ़ीकृत) वाला एक Mixture of Limits कैस्केड, जो पहले शून्य-फ्लोटिंग-पॉइंट-ऑपरेशन (FLOP) वाले पेज्ड 6-इनपुट लुक-अप टेबल (LUT6) सर्किटों, 15.22-किलोबाइट WebAssembly (WASM) ब्राउज़र मॉड्यूल (15 निर्यात), प्रतिसममित 40-प्रविष्टि शून्य-गुणन T-MAC टर्नरी टेल वाले 4/16-किलोबाइट Rust lut6-core Nucleus (25 आधिकारिक ARC-AGI-3 खेलों पर BFWS [14/183 स्तर, 2.4488 RHAE], 100% सत्यापित Multimodal & Pro मरम्मत, और Window 20 में 4.092x Thor शंट कमी के साथ Planetary Digital Well), शून्य प्रीफ़िक्स पॉइज़निंग वाले 5,984-बाइट Wearable-MoL चरण (स्मार्टवॉच के 64-किलोबाइट SRAM का 9.13%), और (72, 64) SECDED ब्रह्मांडीय-किरण बिट-फ़्लिप सुरक्षा को आज़माता है (एकल-बाइनरी Rust mol-agent-rs में 0.154 मिलीसेकंड, प्रति बिट-स्लाइस्ड निर्णय 162.71 नैनोजूल, 1% बिट-त्रुटि दर पर 100.0% उत्तरजीविता), सब-बिलियन वियरेबल माइक्रो-LLM (Sensente/uLM-28M और LiquidAI/LFM2.5-230M) तथा चार GPU सिलिकॉन विक्रेताओं (328.06x तक गति-वृद्धि, LastExam RMS अंशांकन त्रुटि को 70.62% से 5.37x घटाकर 13.14% और >= 80% पर 0.00% अति-आत्मविश्वासी मतिभ्रम) पर 120B पैरामीटर तक के 4-बिट NVMe लूप्ड, हाइब्रिड और स्पार्स MoE अंतिम-2026 मॉडलों में आरोहण करता है, 4 अपस्ट्रीम Verified रिपॉज़िटरी में कमिटों को द्वारबद्ध करता है, और प्रमाणित वेक्स को RAMB36E2, लाइसेंस-मुक्त openXC7 320.62 और 106.55-मेगाहर्ट्ज़ पोस्ट-PAR Artix-7 XC7A200T M.2 2280 .bit बिटस्ट्रीम तथा Lupanov और वॉबल-कोडॉन क्रिस्टल पृष्ठों में अधोमुखी संकलित करता है। इसमें Jetson AGX Thor पर भौतिक Texas Instruments DC शंट measured_j माप (87.25x बिट-स्लाइस्ड lut6-core, uLM-28M की तुलना में 222.57x वियरेबल 56-बिट एपिस्टेमिक गेट, Window 20 में 4.092x, 1.65x प्रतिसममित-40 T-MAC [तथा Zen 5 पर 1.12x], 3.90x Sub1Bit-LUT6, 34.21x Expert-AirMoL, और 10.94x प्रस्थापना 1 संकलन; board_metered सत्य है) शामिल हैं, जिन्हें लाइव Alif Cortex-M55 चक्रों (2,905.18x वियरेबल गेट), reported_j काउंटरों, openXC7 पोस्ट-PAR टाइमिंग और कमिट feeb08b पर RTL est_j अनुमानों से कड़ाई से पृथक रखा गया है।"
+deck: "114 छह-कर्नेल-सत्यापित Lean 4.36.0 प्रमेयों और Inria Charon+Aeneas यांत्रिक मानक-पुस्तकालय-रहित Rust-से-Lean निष्कर्षण (साथ ही Linux bubblewrap सैंडबॉक्स में चार Open Interface Engineering रिपॉज़िटरी में 1,478 प्रमेयों, CVE-2026-72844-सुदृढ़ीकृत) वाला एक Mixture of Limits कैस्केड, जो पहले शून्य-फ्लोटिंग-पॉइंट-ऑपरेशन (FLOP) वाले पेज्ड 6-इनपुट लुक-अप टेबल (LUT6) सर्किटों, 15.84-किलोबाइट WebAssembly (WASM) ब्राउज़र मॉड्यूल (16 निर्यात), प्रतिसममित 40-प्रविष्टि शून्य-गुणन T-MAC टर्नरी टेल वाले 4/32-किलोबाइट Rust lut6-core Nucleus (25 आधिकारिक ARC-AGI-3 खेलों पर R-BFWS से >50% बहुमत [13/25 = 52.00% खेल, 16/183 स्तर, 2.3543 / 3.0441 RHAE], 100% EnigmaEval/ZeroBench संश्लेषण, 1,000-चरण Vending-BALROG उत्तरजीविता व Window 21 में 3.204x तथा Window 20 में 4.092x Thor शंट कमी), शून्य प्रीफ़िक्स पॉइज़निंग वाले 5,984-बाइट Wearable-MoL चरण (स्मार्टवॉच के 64-किलोबाइट SRAM का 9.13%), और (72, 64) SECDED ब्रह्मांडीय-किरण बिट-फ़्लिप सुरक्षा को आज़माता है (एकल-बाइनरी Rust mol-agent-rs में 0.154 मिलीसेकंड, प्रति बिट-स्लाइस्ड निर्णय 162.71 नैनोजूल, 1% बिट-त्रुटि दर पर 100.0% उत्तरजीविता), सब-बिलियन वियरेबल माइक्रो-LLM (Sensente/uLM-28M और LiquidAI/LFM2.5-230M) तथा चार GPU सिलिकॉन विक्रेताओं (328.06x तक गति-वृद्धि, LastExam RMS अंशांकन त्रुटि को 70.62% से 5.37x घटाकर 13.14% और >= 80% पर 0.00% अति-आत्मविश्वासी मतिभ्रम) पर 120B पैरामीटर तक के 4-बिट NVMe लूप्ड, हाइब्रिड और स्पार्स MoE अंतिम-2026 मॉडलों में आरोहण करता है, 4 अपस्ट्रीम Verified रिपॉज़िटरी में कमिटों को द्वारबद्ध करता है, और प्रमाणित वेक्स को RAMB36E2, लाइसेंस-मुक्त openXC7 320.62, 106.55 और 109.15-मेगाहर्ट्ज़ पोस्ट-PAR Artix-7 XC7A200T M.2 2280 .bit बिटस्ट्रीम तथा Lupanov और वॉबल-कोडॉन क्रिस्टल पृष्ठों में अधोमुखी संकलित करता है। इसमें Jetson AGX Thor पर भौतिक Texas Instruments DC शंट measured_j माप (87.25x बिट-स्लाइस्ड lut6-core, uLM-28M की तुलना में 222.57x वियरेबल 56-बिट एपिस्टेमिक गेट, Window 20 में 4.092x, 1.65x प्रतिसममित-40 T-MAC [तथा Zen 5 पर 1.12x], 3.90x Sub1Bit-LUT6, 34.21x Expert-AirMoL, और 10.94x प्रस्थापना 1 संकलन; board_metered सत्य है) शामिल हैं, जिन्हें लाइव Alif Cortex-M55 चक्रों (2,905.18x वियरेबल गेट), reported_j काउंटरों, openXC7 पोस्ट-PAR टाइमिंग और कमिट 0c8bfba पर RTL est_j अनुमानों से कड़ाई से पृथक रखा गया है।"
 lang: "hi"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*संशोधन feeb08b, 25 नवंबर 2026. संदर्भ कार्यान्वयन और कलाकृतियाँ: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) पर [`feeb08bd89ee4e5b6957385c80a0d27d8901f19c`](https://github.com/openIE-dev/lut-adapt-ai/tree/feeb08bd89ee4e5b6957385c80a0d27d8901f19c). डेटा सारांश: [/data/#lut-adapt](/data/#lut-adapt). LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([source](/pdfs/latex/lut-adapt.tex)).*
+*संशोधन 0c8bfba, 25 नवंबर 2026. संदर्भ कार्यान्वयन और कलाकृतियाँ: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) पर [`0c8bfba7be3afd9cf312b73a1b85027bf8da3019`](https://github.com/openIE-dev/lut-adapt-ai/tree/0c8bfba7be3afd9cf312b73a1b85027bf8da3019). डेटा सारांश: [/data/#lut-adapt](/data/#lut-adapt). LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([source](/pdfs/latex/lut-adapt.tex)).*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: Mixture of Limits, Metered Commit Gates Part II से cascade नियम [same house]</li>
-<li>LA: इस अध्ययन में उपयोग किए गए दावा और फ़ाल्सिफ़ायर उपसर्ग (LA-1 से LA-55, LA-F1 से LA-F55)</li>
+<li>LA: इस अध्ययन में उपयोग किए गए दावा और फ़ाल्सिफ़ायर उपसर्ग (LA-1 से LA-63, LA-F1 से LA-F63)</li>
 <li>LUT, LUT6, INIT: लुक-अप टेबल, 6-इनपुट Xilinx UltraScale+ बूलियन प्रिमिटिव, और इसका 64-बिट ट्रुथ-टेबल इनिशियलाइज़ेशन मास्क</li>
 <li>BRAM, RAMB36E2, URAM: ब्लॉक RAM, 36-Kbit डुअल-पोर्ट UltraScale+ ब्लॉक RAM प्रिमिटिव (xck26 पर 144), और UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260: कॉन्फ़िगर करने योग्य लॉजिक ब्लॉक, फ्लिप-फ्लॉप, डिजिटल सिग्नल प्रोसेसिंग स्लाइस, और AMD Kria KV260 बोर्ड (xck26)</li>
@@ -994,11 +994,17 @@ Lupanov का साझा-सहगुणक अपघटन (1958; `k=8`, `m=
 
 ## परिशिष्ट ए. पुनरुत्पादनशीलता
 
-[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit feeb08b`) और [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` और `lut6-core-nucleus/`) के चेकआउट से:
+[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 0c8bfba`) और [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` और `lut6-core-nucleus/`) के चेकआउट से:
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
 (cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase41_arc3_rbfws_25env_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase41_enigma_zerobench_and_horizon1000.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase41_window21_five_silicon.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_rbfws8_enigma_par.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase40_arc3_bfws_25env_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase40_multimodal_and_well_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase38_arc3_iw2_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase38_waios_joulebit_null.py
 PYTHONPATH=src .venv/bin/python scripts/run_openxc7_apex_waios_par.py

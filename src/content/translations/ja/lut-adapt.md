@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits カスケードにおける下方 LUT6 コンパイル：Beneš ルーティング・ブールファブリック、コンフォーマル起動ゲート、およびフロンティア疎 MoE NVMe ストリーミング"
-deck: "6カーネル検証済みの Lean 4.36.0 定理 106 件および Inria Charon+Aeneas による機械的 #![no_std] Rust→Lean 抽出（さらに Linux bubblewrap サンドボックス内の Open Interface Engineering リポジトリ 4 件にわたる 1,470 定理を含み、CVE-2026-72844 対策強化済み）を備えた Mixture of Limits カスケードは、まずゼロ浮動小数点演算（FLOP）のページング式 6 入力ルックアップテーブル（LUT6）回路、15.22 キロバイト（15 エクスポート）の WebAssembly（WASM）ブラウザモジュール、反対称 40 エントリ・ゼロ乗算 T-MAC 三値テールを備えた 4/16 キロバイトの Rust lut6-core Nucleus（公式 25 ゲーム ARC-AGI-3 の BFWS［14/183 レベル、2.4488 RHAE］、破損コミット 0% の 100% Multimodal & Pro 修復、および Window 20 で Thor シャント 4.092x 削減を達成する Planetary Digital Well）、プレフィックス汚染 0.00% の 56 ビット 4 トークン開幕応答を備えた 5,984 バイト（64 キロバイト・スマートウォッチ SRAM の 9.13%）の Wearable-MoL、および（72, 64）SECDED 宇宙線ビット反転保護を試行する（単一バイナリ Rust mol-agent-rs で 0.154 ミリ秒、ビットスライス判定あたり 162.71 ナノジュール、ビット誤り率 1% で生存率 100.0%）。さらにサブ10億パラメータのウェアラブル小型言語モデル（Sensente/uLM-28M、LiquidAI/LFM2.5-230M）および 4 つの GPU シリコンベンダー（最大 328.06x 高速化、LastExam プロトコル RMS 較正誤差を 70.62% から 13.14% へ 5.37x 削減し確信度 >= 80% での誤答 CHR@80 を 0.00% へ低減）にわたり最大 120B パラメータの 4 ビット NVMe ループ型・ハイブリッド・疎 MoE 2026 年後半モデルへ段階的にエスカレーションし、上流 Verified リポジトリ 4 件でコミットをゲート制御したうえで、認証済みの起動結果を RAMB36E2、ライセンス不要の openXC7 320.62 および 106.55 メガヘルツ配置配線後 Artix-7 XC7A200T M.2 2280 .bit ビットストリーム、Lupanov 共有余因子およびゆらぎコドン結晶ページへ下方コンパイルする。Jetson AGX Thor 上の物理 Texas Instruments DC シャント measured_j 実測値（ビットスライスで 87.25x、uLM-28M 層スライス比でウェアラブル 56 ビット認識論ゲート 222.57x、Window 20 で 4.092x、反対称 40 エントリ T-MAC で 1.65x［Zen 5 では 1.12x］、Sub1Bit-LUT6 で 3.90x、Expert-AirMoL で 34.21x、命題 1 で 10.94x；board_metered は真）を含み、Alif Cortex-M55 サイクル数（ウェアラブルゲート 2,905.18x）、reported_j カウンタ、openXC7 静的タイミング、およびコミット feeb08b における RTL 推定値 est_j から厳密に分離して報告する。"
+deck: "6カーネル検証済みの Lean 4.36.0 定理 114 件および Inria Charon+Aeneas による機械的 #![no_std] Rust→Lean 抽出（さらに Linux bubblewrap サンドボックス内の Open Interface Engineering リポジトリ 4 件にわたる 1,478 定理を含み、CVE-2026-72844 対策強化済み）を備えた Mixture of Limits カスケードは、まずゼロ浮動小数点演算（FLOP）のページング式 6 入力ルックアップテーブル（LUT6）回路、15.84 キロバイト（16 エクスポート）の WebAssembly（WASM）ブラウザモジュール、反対称 40 エントリ・ゼロ乗算 T-MAC 三値テールを備えた 4/32 キロバイトの Rust lut6-core Nucleus（公式 25 ゲーム ARC-AGI-3 の R-BFWS で過半数 >50%［13/25 = 52.00% ゲーム、16/183 レベル、2.3543 / 3.0441 RHAE］、100% EnigmaEval/ZeroBench 合成、1,000 ステップ Vending-BALROG 生存および Window 21 で Thor シャント 3.204x・Window 20 で 4.092x 削減）、プレフィックス汚染 0.00% の 56 ビット 4 トークン開幕応答を備えた 5,984 バイト（64 キロバイト・スマートウォッチ SRAM の 9.13%）の Wearable-MoL、および（72, 64）SECDED 宇宙線ビット反転保護を試行する（単一バイナリ Rust mol-agent-rs で 0.154 ミリ秒、ビットスライス判定あたり 162.71 ナノジュール、ビット誤り率 1% で生存率 100.0%）。さらにサブ10億パラメータのウェアラブル小型言語モデル（Sensente/uLM-28M、LiquidAI/LFM2.5-230M）および 4 つの GPU シリコンベンダー（最大 328.06x 高速化、LastExam プロトコル RMS 較正誤差を 70.62% から 13.14% へ 5.37x 削減し確信度 >= 80% での誤答 CHR@80 を 0.00% へ低減）にわたり最大 120B パラメータの 4 ビット NVMe ループ型・ハイブリッド・疎 MoE 2026 年後半モデルへ段階的にエスカレーションし、上流 Verified リポジトリ 4 件でコミットをゲート制御したうえで、認証済みの起動結果を RAMB36E2、ライセンス不要の openXC7 320.62、106.55 および 109.15 メガヘルツ配置配線後 Artix-7 XC7A200T M.2 2280 .bit ビットストリーム、Lupanov 共有余因子およびゆらぎコドン結晶ページへ下方コンパイルする。Jetson AGX Thor 上の物理 Texas Instruments DC シャント measured_j 実測値（ビットスライスで 87.25x、uLM-28M 層スライス比でウェアラブル 56 ビット認識論ゲート 222.57x、Window 20 で 4.092x、反対称 40 エントリ T-MAC で 1.65x［Zen 5 では 1.12x］、Sub1Bit-LUT6 で 3.90x、Expert-AirMoL で 34.21x、命題 1 で 10.94x；board_metered は真）を含み、Alif Cortex-M55 サイクル数（ウェアラブルゲート 2,905.18x）、reported_j カウンタ、openXC7 静的タイミング、およびコミット 0c8bfba における RTL 推定値 est_j から厳密に分離して報告する。"
 lang: "ja"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*改訂 feeb08b、2026年11月25日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) の [`feeb08bd89ee4e5b6957385c80a0d27d8901f19c`](https://github.com/openIE-dev/lut-adapt-ai/tree/feeb08bd89ee4e5b6957385c80a0d27d8901f19c)。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX版PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
+*改訂 0c8bfba、2026年11月25日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) の [`0c8bfba7be3afd9cf312b73a1b85027bf8da3019`](https://github.com/openIE-dev/lut-adapt-ai/tree/0c8bfba7be3afd9cf312b73a1b85027bf8da3019)。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX版PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: Mixture of Limits、カスケード規則（Metered Commit Gates Part II [same house]より）</li>
-<li>LA: 本研究で用いる主張 (claim) および反証子 (falsifier) の接頭辞 (LA-1 から LA-55、LA-F1 から LA-F55)</li>
+<li>LA: 本研究で用いる主張 (claim) および反証子 (falsifier) の接頭辞 (LA-1 から LA-63、LA-F1 から LA-F63)</li>
 <li>LUT、LUT6、INIT: ルックアップテーブル、6入力Xilinx UltraScale+ブール原始子、およびその64ビット真理値表初期化マスク</li>
 <li>BRAM、RAMB36E2、URAM: ブロックRAM、36-KbitデュアルポートUltraScale+ブロックRAM原始子（xck26では144個）、およびUltraRAM</li>
 <li>CLB、FF、DSP、DSP48、KV260: 構成可能ロジックブロック、フリップフロップ、デジタル信号処理スライス、およびAMD Kria KV260ボード（xck26）</li>
@@ -995,11 +995,17 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 
 ## 付録A. 再現性
 
-[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit feeb08b`）および [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` および `lut6-core-nucleus/`）のチェックアウトから以下を実行する：
+[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit 0c8bfba`）および [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` および `lut6-core-nucleus/`）のチェックアウトから以下を実行する：
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
 (cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase41_arc3_rbfws_25env_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase41_enigma_zerobench_and_horizon1000.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase41_window21_five_silicon.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_rbfws8_enigma_par.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase40_arc3_bfws_25env_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase40_multimodal_and_well_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase38_arc3_iw2_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase38_waios_joulebit_null.py
 PYTHONPATH=src .venv/bin/python scripts/run_openxc7_apex_waios_par.py

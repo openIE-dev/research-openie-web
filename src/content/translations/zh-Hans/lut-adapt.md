@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits 级联中的向下 LUT6 编译：Beneš 路由布尔架构、共形唤醒门槛与前沿稀疏 MoE NVMe 按层流式传输"
-deck: "一种附带 106 条经六内核验证的 Lean 4.36.0 定理及 Inria Charon+Aeneas 无标准库 Rust 至 Lean 机械化提取（另加 Linux bubblewrap 沙箱内四个 Open Interface Engineering 仓库共 1,470 条定理，针对 CVE-2026-72844 加固）的 Mixture of Limits 级联：首先尝试零浮点运算（FLOP）的分页式 6 输入查找表（LUT6）电路、15.22 千字节（15 项导出）的 WebAssembly（WASM）浏览器模块、带反对称 40 项零乘法 T-MAC 三值尾部的无标准库 4 / 16 千字节 Rust lut6-core Nucleus（全量 25 款 ARC-AGI-3 游戏 BFWS［14/183 关卡，2.4488 RHAE］、100% 零破损 Multimodal & Pro 修复以及 Window 20 实现 4.092x Thor 分流降低的 Planetary Digital Well）、占 64 千字节智能手表 SRAM 仅 9.13%（5,984 字节）且零前缀污染的 56 比特 4 词元 Wearable-MoL 智能眼镜开场门控，以及（72, 64）SECDED 宇宙射线位翻转防护（在单二进制 Rust mol-agent-rs 中耗时 0.154 毫秒，每次位切片决策耗能 162.71 纳焦，在 1% 误码率下保持 100.0% 存活率），经亚十亿级可穿戴微型语言模型（Sensente/uLM-28M 与 LiquidAI/LFM2.5-230M）并跨四大 GPU 硅片厂商（最高加速 328.06x，将 LastExam 协议均方根校准误差从 70.62% 削减 5.37x 至 13.14%，且 >= 80% 置信度下的自信幻觉率降至 0.00%）逐级升级至最高 120B 参数的 4 位 NVMe 循环、混合与稀疏 MoE 2026 年末模型，通过跨 4 个上游 Verified 仓库的确定性验证器对提交进行门控，并将经认证的唤醒向下编译为 RAMB36E2、免许可 openXC7 320.62 与 106.55 兆赫布局布线后 Artix-7 XC7A200T M.2 2280 .bit 比特流，以及 Lupanov 共享余因子与摆动密码子晶体页。包含 Jetson AGX Thor 上的物理 Texas Instruments 直流分流器实测能量 measured_j（位切片 lut6-core 降低 87.25x、可穿戴 56 比特认知门控相对 uLM-28M 层切片降低 222.57x、Window 20 降低 4.092x、反对称 40 项 T-MAC 降低 1.65x［Zen 5 上反超达 1.12x］、Sub1Bit-LUT6 降低 3.90x、Expert-AirMoL 降低 34.21x、命题 1 编译降低 10.94x；board_metered 为真），并与实时连接的 Alif Cortex-M55 周期计数（可穿戴门控快 2,905.18x）、五主机片上 reported_j、openXC7 静态时序以及提交 feeb08b 处的 RTL 仿真估计值 est_j 严格区分。"
+deck: "一种附带 114 条经六内核验证的 Lean 4.36.0 定理及 Inria Charon+Aeneas 无标准库 Rust 至 Lean 机械化提取（另加 Linux bubblewrap 沙箱内四个 Open Interface Engineering 仓库共 1,478 条定理，针对 CVE-2026-72844 加固）的 Mixture of Limits 级联：首先尝试零浮点运算（FLOP）的分页式 6 输入查找表（LUT6）电路、15.84 千字节（16 项导出）的 WebAssembly（WASM）浏览器模块、带反对称 40 项零乘法 T-MAC 三值尾部的无标准库 4 / 32 千字节 Rust lut6-core Nucleus（全量 25 款 ARC-AGI-3 游戏 R-BFWS 过半数 >50%［13/25 = 52.00% 款，16/183 关卡，2.3543 / 3.0441 RHAE］、100% EnigmaEval/ZeroBench 综合、1,000 步 Vending-BALROG 100% 存活及 Window 21 实现 3.204x 与 Window 20 实现 4.092x Thor 分流降低）、占 64 千字节智能手表 SRAM 仅 9.13%（5,984 字节）且零前缀污染的 56 比特 4 词元 Wearable-MoL 智能眼镜开场门控，以及（72, 64）SECDED 宇宙射线位翻转防护（在单二进制 Rust mol-agent-rs 中耗时 0.154 毫秒，每次位切片决策耗能 162.71 纳焦，在 1% 误码率下保持 100.0% 存活率），经亚十亿级可穿戴微型语言模型（Sensente/uLM-28M 与 LiquidAI/LFM2.5-230M）并跨四大 GPU 硅片厂商（最高加速 328.06x，将 LastExam 协议均方根校准误差从 70.62% 削减 5.37x 至 13.14%，且 >= 80% 置信度下的自信幻觉率降至 0.00%）逐级升级至最高 120B 参数的 4 位 NVMe 循环、混合与稀疏 MoE 2026 年末模型，通过跨 4 个上游 Verified 仓库的确定性验证器对提交进行门控，并将经认证的唤醒向下编译为 RAMB36E2、免许可 openXC7 320.62、106.55 与 109.15 兆赫布局布线后 Artix-7 XC7A200T M.2 2280 .bit 比特流，以及 Lupanov 共享余因子与摆动密码子晶体页。包含 Jetson AGX Thor 上的物理 Texas Instruments 直流分流器实测能量 measured_j（位切片 lut6-core 降低 87.25x、可穿戴 56 比特认知门控相对 uLM-28M 层切片降低 222.57x、Window 20 降低 4.092x、反对称 40 项 T-MAC 降低 1.65x［Zen 5 上反超达 1.12x］、Sub1Bit-LUT6 降低 3.90x、Expert-AirMoL 降低 34.21x、命题 1 编译降低 10.94x；board_metered 为真），并与实时连接的 Alif Cortex-M55 周期计数（可穿戴门控快 2,905.18x）、五主机片上 reported_j、openXC7 静态时序以及提交 0c8bfba 处的 RTL 仿真估计值 est_j 严格区分。"
 lang: "zh-Hans"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*修订 feeb08b，2026年11月25日。参考实现和工件：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 于 [`feeb08bd89ee4e5b6957385c80a0d27d8901f19c`](https://github.com/openIE-dev/lut-adapt-ai/tree/feeb08bd89ee4e5b6957385c80a0d27d8901f19c)。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源文件](/pdfs/latex/lut-adapt.tex)）。*
+*修订 0c8bfba，2026年11月25日。参考实现和工件：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 于 [`0c8bfba7be3afd9cf312b73a1b85027bf8da3019`](https://github.com/openIE-dev/lut-adapt-ai/tree/0c8bfba7be3afd9cf312b73a1b85027bf8da3019)。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源文件](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: Mixture of Limits，即 Metered Commit Gates 第二部分中的级联规则 [同系列]</li>
-<li>LA: 本研究使用的主张与证伪前缀（LA-1 至 LA-55，LA-F1 至 LA-F55）</li>
+<li>LA: 本研究使用的主张与证伪前缀（LA-1 至 LA-63，LA-F1 至 LA-F63）</li>
 <li>LUT, LUT6, INIT: 查找表（look-up table）、6 输入 Xilinx UltraScale+ 布尔原语，以及其 64 位真值表初始化掩码</li>
 <li>BRAM, RAMB36E2, URAM: 块随机存储器（Block RAM）、36 Kbit 双端口 UltraScale+ 块 RAM 原语（xck26 上为 144 个），以及 UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260: 可配置逻辑块（configurable logic block）、触发器（flip-flop）、数字信号处理片（digital signal processing slice）、DSP48 原语，以及 AMD Kria KV260 开发板（xck26）</li>
@@ -999,11 +999,17 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 ## 附录 A. 可复现性
 
-在 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（提交 `feeb08b`）与 [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` 与 `lut6-core-nucleus/`）的代码检出目录中执行：
+在 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（提交 `0c8bfba`）与 [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` 与 `lut6-core-nucleus/`）的代码检出目录中执行：
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
 (cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase41_arc3_rbfws_25env_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase41_enigma_zerobench_and_horizon1000.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase41_window21_five_silicon.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_rbfws8_enigma_par.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase40_arc3_bfws_25env_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase40_multimodal_and_well_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase38_arc3_iw2_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase38_waios_joulebit_null.py
 PYTHONPATH=src .venv/bin/python scripts/run_openxc7_apex_waios_par.py
