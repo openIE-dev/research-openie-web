@@ -144,9 +144,13 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | 2D rigid-body contact | twin::Body2/simulate_body (box, restitution, friction-induced spin) | 3 |
 | Emission checked by real toolchains | examples/emit_proof.rs: one Form to C/Rust/Python, clang/rustc/python3 all print 14 | (live) |
 
-Non-buildable fronts are registered as OPEN-EXTERNAL in rce-gap-register.md with the exact
-external decision each needs (notified body, SOC2 auditor, RTOS port choice, fleet financing,
-training-compute budget). Nothing there is claimed done.
+The former "external decision" fronts are now OPEN-TRACKS in rce-gap-register.md: no-pay
+routes found by search (module-A self-assessment by freezing competence at admission; seL4 /
+Zephyr + free SIL3 self-test library instead of a paid RTOS licence; open evidence + SLSA
+instead of a paid audit; owned fleet instead of debt; reuse + federated/hybrid training
+instead of paid GPU). Scale built on owned hardware: federated averaging over 4 shards at
+20k receipts matches centralized (0.9975); a native Accelerate/AMX BLAS trainer matches the
+scalar loop (0.9970); mosaic-style hybrid partitioning with admission control.
 
 Measured per-language named-node coverage (tree-sitter master, 25 Nov 2026, after the
 gate-wiring + attributes/macros pass): rust 49/169 = 29.0%, python 29/129 = 22.5%,
@@ -158,7 +162,7 @@ Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 342 (workspace) / 339 (monorepo), 0 failed. Multi-body physics, real IO/threads, RTOS port,
+Suites 349 (workspace) / 346 (monorepo), 0 failed. Multi-body physics, real IO/threads, RTOS port,
 notified-body attestation, full per-language grammars (measured remainder above) and
 FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
 
