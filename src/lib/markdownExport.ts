@@ -288,6 +288,15 @@ export function getRceSpecChapters() {
 
 export const LIVING_INSTRUMENTS = [
   {
+    id: 'compiled-agency',
+    title: 'Compiled Agency · Sub-Bit Tax, 4-Stage Cascade & Shot #6 Multi-Substrate Observatory (ca-sim-01..03)',
+    path: '/living/compiled-agency/',
+    url: `${BASE}/living/compiled-agency/`,
+    paper_id: 'lut-adapt',
+    controls: ['board (kv260, thor, i9_rapl, ryzen_rapl)', 'mode (gross, net, vin, core)', 'point (0.0000..8.0000 bpw)', 'kernel (packed, naive)', 'zipf (0.00..1.40)', 'dmax (0..2)', 'tau (1500..9000)', 'dt (100..50000)'],
+    description: 'Interactive 4-substrate hardware observatory (AMD Kria KV260 TI INA260 & NVIDIA Jetson AGX Thor TI INA3221/INA238 physical DC shunt measured_j + Intel Core i9-13900H & AMD Ryzen AI Max+ 395 Linux RAPL reported_j @ 813eb96): 14-point sub-bit SVD + Walsh-Hadamard decompression impedance curve, 75-cell (Zipf s x d_max x tau) 4-stage lookup-first cascade simulator, and live in-browser waiOS 256x128 BLAKE3 (a541323b...) & row-77 tamper-halt verifier.',
+  },
+  {
     id: 'deterministic-null',
     title: 'Deterministic Null Control Observatory (dn-diag-01..03)',
     path: '/living/deterministic-null/',

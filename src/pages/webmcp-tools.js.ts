@@ -141,6 +141,30 @@ export const GET: APIRoute = async () => {
       chronicle_url: 'https://blog.openie.dev/posts/satb-harness/',
       hardware_requirements: 'Commodity x86_64 or ARM64 (Rust toolchain)',
       scope: 'Re-runs the 12/12 C1-C12 deterministic replay checks, 280x280 provenance-lattice non-mixing suite, Clopper-Pearson confidence bounds, and Kepler CPU-proportional attribution error checks (32.59%-89.88%).'
+    },
+    {
+      id: 'littlebit-joule',
+      title: 'Sub-Bit SVD + Walsh-Hadamard Decompression Impedance Benchmark (Shot #2 & Shot #6)',
+      license: 'Apache-2.0',
+      repo_url: 'https://github.com/openIE-dev/openie-research-experiments/tree/813eb9698ff179fd34d6877c5247bb2b9125ca86/kits/littlebit-joule',
+      runner_url: 'https://github.com/openIE-dev/openie-research-experiments/blob/813eb9698ff179fd34d6877c5247bb2b9125ca86/kits/littlebit-joule/run_kit.sh',
+      observatory_url: 'https://research.openie.dev/living/compiled-agency/#ca-sim-01',
+      paper_url: 'https://research.openie.dev/papers/lut-adapt/',
+      chronicle_url: 'https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/',
+      hardware_requirements: 'Standard Linux/macOS C + Python (optional TI INA260/INA3221 sysfs shunts or Linux RAPL)',
+      scope: 'Reproduces the 14-point bitwidth_curve (0.0000 bpw 4 KiB Deterministic Null LUT at 96.33% through 0.1517 bpw r=22 packed integer vs naive FP32 unpack to 8.00 bpw INT8) with Shot #6 KV260 INA260 (81.86x unpack penalty vs 4.13x gross / 5.15x net packed-int gain) and Jetson AGX Thor INA3221 (19.08x penalty vs 7.95x gain) measured_j receipts.'
+    },
+    {
+      id: 'waios-mosaic-cascade',
+      title: 'Cross-ISA waiOS 256x128 Invariance & 75-Cell 4-Stage Cascade Kit (Shots #3, #5 & #6)',
+      license: 'Apache-2.0',
+      repo_url: 'https://github.com/openIE-dev/openie-research-experiments/tree/813eb9698ff179fd34d6877c5247bb2b9125ca86/kits/waios-mosaic-cascade',
+      runner_url: 'https://github.com/openIE-dev/openie-research-experiments/blob/813eb9698ff179fd34d6877c5247bb2b9125ca86/kits/waios-mosaic-cascade/run_kit.sh',
+      observatory_url: 'https://research.openie.dev/living/compiled-agency/#ca-sim-02',
+      paper_url: 'https://research.openie.dev/papers/lut-adapt/',
+      chronicle_url: 'https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/',
+      hardware_requirements: 'Standard Linux/macOS pthreads C + Python (optional TI INA260/INA3221 shunts or Linux RAPL)',
+      scope: 'Verifies 5-lane cross-ISA waiOS 256x128 BLAKE3 == a541323b... (0/400 pthread schedule disagreements, w[77,0] tamper -> 4ac7c4fb... halt) and runs the 1,000-query 4-stage cascade + 75-cell (Zipf s x d_max x tau) sweep (26.58x KV260 INA260 & 16.26x Thor INA3221 measured_j, 18.33x i9-13900H & 20.78x Ryzen RAPL reported_j, isolated from 38.46x Stage-4 est_j).'
     }
   ];
 
@@ -286,8 +310,10 @@ export const GET: APIRoute = async () => {
       verification_url: VERIFICATION_URL,
       independent_replication_url: VERIFICATION_URL + '#independent-replication',
       orthogonality_rule: 'measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered',
-      one_command_runner: 'git clone https://github.com/openIE-dev/openie-research-experiments.git && cd openie-research-experiments && ./replicate/run_replication.sh',
+      one_command_runner: 'git clone https://github.com/openIE-dev/openie-research-experiments.git && cd openie-research-experiments && ./replicate/run_replication.sh && ./kits/littlebit-joule/run_kit.sh && ./kits/waios-mosaic-cascade/run_kit.sh',
       replicate_tree_url: 'https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate',
+      shot6_commit: '813eb9698ff179fd34d6877c5247bb2b9125ca86',
+      compiled_agency_observatory_url: 'https://research.openie.dev/living/compiled-agency/',
       kit_count: kits.length,
       kits: kits
     };
@@ -510,15 +536,15 @@ export const GET: APIRoute = async () => {
     },
     {
       name: 'openie_search_chronicle_57',
-      title: 'Search All 57 Era 0 / Era I / Era II OpenIE Chronicle Entries',
-      description: 'Fetches and searches https://blog.openie.dev/live/blog-corpus.json across all 57 Chronicle entries (20 Era 0 whitepapers + 9 Era I founding essays + 28 Era II studies), returning title, era, canonical URL (https://blog.openie.dev/posts/<slug>/), clean Medium importer URL, energy evidence class, and November 25, 2026 errata/caveats. Read-only.',
+      title: 'Search All 58 Era 0 / Era I / Era II OpenIE Chronicle Entries',
+      description: 'Fetches and searches https://blog.openie.dev/live/blog-corpus.json across all 58 Chronicle entries (20 Era 0 whitepapers + 9 Era I founding essays + 28 Era II studies + Capstone Compiled Agency synthesis), returning title, era, canonical URL (https://blog.openie.dev/posts/<slug>/), clean Medium importer URL, energy evidence class, and November 25, 2026 errata/caveats. Read-only.',
       inputSchema: {
         type: 'object',
         properties: {
-          query: { type: 'string', maxLength: 240, description: 'Keyword, slug, metric, or topic to search across all 57 entries (omit or empty string to list entries).' },
-          era: { type: 'string', enum: ['all', 'era0', 'era1', 'era2'], description: 'Optional era filter: era0 (20 whitepapers), era1 (9 founding essays), era2 (28 Nov 2026 studies), or all.' },
+          query: { type: 'string', maxLength: 240, description: 'Keyword, slug, metric, or topic to search across all 58 entries (omit or empty string to list entries).' },
+          era: { type: 'string', enum: ['all', 'era0', 'era1', 'era2'], description: 'Optional era filter: era0 (20 whitepapers), era1 (9 founding essays), era2 (28 Nov 2026 studies + capstone), or all.' },
           energy_class: { type: 'string', enum: ['all', 'measured_j', 'reported_j', 'est_j', 'unmetered'], description: 'Optional orthogonal energy class filter.' },
-          limit: { type: 'integer', minimum: 1, maximum: 57, description: 'Maximum entries to return (default 12).' }
+          limit: { type: 'integer', minimum: 1, maximum: 64, description: 'Maximum entries to return (default 12).' }
         },
         additionalProperties: false
       },
@@ -529,12 +555,12 @@ export const GET: APIRoute = async () => {
     },
     {
       name: 'openie_get_replication_kits',
-      title: 'Get Standalone Apache-2.0 External Replication Kits & Ed25519 Key',
-      description: 'Returns the 3 standalone Apache-2.0 external replication kits (deterministic-null, ai-reads-human, satb-harness), the OpenIE Ed25519 publisher public key (1fa743eb5abeae11d37f11d17c19b2744e3213fa0ba7ae69f624d8a3e5214110), 1-command runner, and https://blog.openie.dev/verification/. Read-only.',
+      title: 'Get Standalone Apache-2.0 External Replication Kits (5 Kits @ 813eb96) & Ed25519 Key',
+      description: 'Returns all 5 standalone Apache-2.0 external replication kits (replicate/ suites deterministic-null, ai-reads-human, satb-harness plus Shot #6 multi-substrate kits/littlebit-joule and kits/waios-mosaic-cascade @ 813eb96 with Thor INA3221 & KV260 INA260 measured_j), https://research.openie.dev/living/compiled-agency/, the OpenIE Ed25519 publisher public key (1fa743eb5abeae11d37f11d17c19b2744e3213fa0ba7ae69f624d8a3e5214110), and https://blog.openie.dev/verification/. Read-only.',
       inputSchema: {
         type: 'object',
         properties: {
-          kit_id: { type: 'string', enum: ['all', 'ai-reads-human', 'deterministic-null', 'satb-harness'], description: 'Optional kit filter (default "all").' }
+          kit_id: { type: 'string', enum: ['all', 'ai-reads-human', 'deterministic-null', 'satb-harness', 'littlebit-joule', 'waios-mosaic-cascade'], description: 'Optional kit filter (default "all").' }
         },
         additionalProperties: false
       },

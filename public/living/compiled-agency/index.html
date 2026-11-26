@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F59E0B">
+  <meta name="color-scheme" content="dark light">
+  <meta name="author" content="Open Interface Engineering">
+  <meta name="description" content="Interactive Compiled Agency observatory (Shots #2, #3, #5 &amp; #6 @ 813eb96): explore AMD Kria KV260 TI INA260 and NVIDIA Jetson AGX Thor TI INA3221/INA238 physical DC shunt measured_j alongside Linux RAPL reported_j across the 14-point sub-bit decompression impedance curve, the 75-cell (Zipf s x d_max x tau) 4-stage lookup-first cascade, and live in-browser waiOS 256x128 BLAKE3 tamper-halt verification.">
+  <link rel="canonical" href="https://research.openie.dev/living/compiled-agency/">
+  <link rel="describedby" type="text/markdown" href="/llms.txt">
+  <link rel="alternate" type="application/json" title="Shot #6 Multi-Substrate Receipts JSON" href="data/shot6_multi_substrate.json">
+  <title>Living Observatory · Compiled Agency: Sub-Bit Impedance, 4-Stage Cascade &amp; Shot #6 Shunts | OpenIE Research</title>
+  <script src="/webmcp-tools.js" defer></script>
+  <script>
+    (function(){
+      var stored = localStorage.getItem('oe-theme');
+      var theme = stored && ['dark','light','auto'].indexOf(stored) !== -1 ? stored : 'auto';
+      var resolved = theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme;
+      document.documentElement.setAttribute('data-theme', resolved);
+      document.documentElement.style.colorScheme = resolved;
+    })();
+  </script>
+  <link rel="stylesheet" href="openie.css">
+  <style>
+    .ca-wrap { max-width: 72rem; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .chip-rose { color: #fb7185; border-color: rgba(251, 113, 133, 0.48); background: rgba(251, 113, 133, 0.10); }
+    html[data-theme="light"] .chip-rose { color: #be123c; background: rgba(251, 113, 133, 0.12); }
+    .substrate-bar {
+      margin-top: 1.35rem;
+      padding: 1.1rem 1.25rem;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 212, 170, 0.38);
+      background: linear-gradient(135deg, rgba(0, 212, 170, 0.08), rgba(245, 158, 11, 0.05));
+    }
+    html[data-theme="light"] .substrate-bar {
+      background: linear-gradient(135deg, rgba(13, 148, 136, 0.08), rgba(245, 158, 11, 0.08));
+    }
+    .board-tabs { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 0.65rem; margin-top: 0.75rem; }
+    .board-tab {
+      text-align: left;
+      padding: 0.7rem 0.85rem;
+      border-radius: 9px;
+      border: 1px solid var(--color-brand-border);
+      background: rgba(10, 10, 15, 0.55);
+      color: var(--color-brand-light);
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: all 0.15s ease;
+    }
+    html[data-theme="light"] .board-tab { background: rgba(255, 255, 255, 0.92); }
+    .board-tab:hover { border-color: var(--color-brand-cyan); }
+    .board-tab.active {
+      border-color: var(--color-brand-cyan);
+      background: rgba(0, 212, 170, 0.13);
+      box-shadow: 0 0 0 1px rgba(0, 212, 170, 0.35);
+    }
+    .board-tab .bt-top { display: flex; justify-content: space-between; align-items: center; gap: 0.4rem; font-family: var(--font-mono); font-size: 10.5px; }
+    .board-tab .bt-name { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: var(--color-brand-white); margin-top: 0.25rem; }
+    .board-tab .bt-sub { font-family: var(--font-mono); font-size: 10.5px; color: var(--color-brand-slate); margin-top: 0.18rem; }
+    .f6-banner {
+      margin-top: 0.75rem;
+      padding: 0.65rem 0.9rem;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      line-height: 1.5;
+    }
+    .f6-pass { border: 1px solid rgba(0, 212, 170, 0.42); background: rgba(0, 212, 170, 0.09); color: var(--color-brand-light); }
+    .f6-warn { border: 1px solid rgba(245, 158, 11, 0.55); background: rgba(245, 158, 11, 0.11); color: var(--color-brand-light); }
+    .svg-frame {
+      margin-top: 1.1rem;
+      border: 1px solid var(--color-brand-border);
+      border-radius: 10px;
+      background: rgba(8, 10, 18, 0.72);
+      padding: 0.75rem;
+      overflow-x: auto;
+    }
+    html[data-theme="light"] .svg-frame { background: #f8fafc; }
+    .funnel-track {
+      display: flex;
+      width: 100%;
+      height: 32px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--color-brand-border);
+      margin-top: 0.85rem;
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .funnel-seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #061016;
+      white-space: nowrap;
+      overflow: hidden;
+      transition: width 0.22s ease;
+    }
+    .est-isolated-box {
+      margin-top: 1.1rem;
+      padding: 1rem 1.15rem;
+      border-radius: 10px;
+      border: 1.5px dashed rgba(245, 158, 11, 0.6);
+      background: rgba(245, 158, 11, 0.07);
+    }
+    .action-pill-btn {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 0.45rem 0.85rem;
+      border-radius: 7px;
+      border: 1px solid var(--color-brand-border);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--color-brand-white);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .action-pill-btn:hover { border-color: var(--color-brand-cyan); background: rgba(0, 212, 170, 0.12); }
+    .action-pill-btn.primary { background: var(--color-brand-cyan); color: #051310; border-color: transparent; }
+    .action-pill-btn.danger { border-color: rgba(251, 113, 133, 0.55); color: #fda4af; background: rgba(251, 113, 133, 0.12); }
+    html[data-theme="light"] .action-pill-btn.danger { color: #be123c; }
+    .receipt-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 1rem; }
+    .receipt-table th, .receipt-table td { border: 1px solid var(--color-brand-border); padding: 0.5rem 0.6rem; text-align: left; vertical-align: top; }
+    .receipt-table th { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-brand-white); background: rgba(255, 255, 255, 0.04); }
+    html[data-theme="light"] .receipt-table th { background: #f1f5f9; }
+    .mono-hash { font-family: var(--font-mono); font-size: 11px; word-break: break-all; }
+    .preset-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.45rem; }
+    .preset-chip {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      padding: 0.2rem 0.5rem;
+      border-radius: 5px;
+      border: 1px solid var(--color-brand-border);
+      background: transparent;
+      color: var(--color-brand-slate);
+      cursor: pointer;
+    }
+    .preset-chip:hover, .preset-chip.active { border-color: var(--color-brand-amber); color: var(--color-brand-amber); background: rgba(245, 158, 11, 0.1); }
+  </style>
+</head>
+<body class="grid-bg">
+  <nav class="nav-glass" aria-label="Main navigation">
+    <a href="https://research.openie.dev/" class="brand-logo">Open<span class="brand-cyan">IE</span> <span class="brand-amber">Research</span></a>
+    <div class="nav-links">
+      <a href="/">Catalog</a>
+      <a href="/living/">Figures Hub</a>
+      <a href="/living/compiled-agency/" class="active">Compiled Agency</a>
+      <a href="/papers/lut-adapt/">LUT6 &amp; AirMoL</a>
+      <a href="/data/#lut-adapt">Data &amp; Receipts</a>
+      <a href="data/shot6_multi_substrate.json" class="pill-cyan">Raw JSON</a>
+      <a href="https://blog.openie.dev" target="_blank" rel="noopener">Chronicle (58)</a>
+      <a href="https://blog.openie.dev/verification/" target="_blank" rel="noopener">Replicate</a>
+      <button type="button" data-openie-live-trigger style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:9999px;border:1px solid rgba(52,211,153,0.5);background:rgba(16,185,129,0.14);color:#6ee7b7;cursor:pointer;">📞 Live Call · Co-Pilot</button>
+      <button type="button" id="theme-toggle" class="theme-btn">Theme: <span id="theme-label">Auto</span></button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="ca-wrap">
+      <p class="cite-label" style="color: var(--color-brand-amber);">OpenIE Research · /living/compiled-agency/ · Shot #6 Multi-Substrate Hardware Observatory</p>
+      <h1 class="hero-title" style="max-width: none;">Compiled Agency: Sub-Bit Impedance Tax, 4-Stage Lookup Cascade &amp; Shot #6 Physical Shunt Rails</h1>
+      <p class="author-line">
+        Open Interface Engineering · Source pin:
+        <a href="https://github.com/openIE-dev/openie-research-experiments/tree/813eb9698ff179fd34d6877c5247bb2b9125ca86" target="_blank" rel="noopener" style="color: var(--color-brand-cyan);"><code>openIE-dev/openie-research-experiments @ 813eb96</code></a>
+        · Capstone companion:
+        <a href="https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/" target="_blank" rel="noopener" style="color: var(--color-brand-amber);">From Ephemeral Inference to Compiled Agency ↗</a>
+      </p>
+
+      <!-- 1. Measurement Grammar & Strict Non-Mixing Disclosure -->
+      <div class="measurement-box" style="max-width: none;">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.5rem;margin-bottom:0.55rem;">
+          <strong>Measurement grammar &amp; provenance scope (<code>Signed Provenance · Self-Checked</code> · <code>human_in_gate = false</code> · <code>0</code> external peer reviews).</strong>
+          <code style="font-family:var(--font-mono);font-size:11px;color:var(--color-brand-cyan);">measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered</code>
+        </div>
+        Every curve, ratio, and bar below is stamped with its exact evidence class and <strong>never summed or cross-ratioed across classes</strong>:
+        <div style="display:flex;flex-wrap:wrap;gap:0.45rem;margin-top:0.55rem;">
+          <span class="chip chip-meas">Physical DC Shunt · measured_j (AMD Kria KV260 TI INA260 233 Hz &amp; Jetson AGX Thor TI INA3221/INA238 203 Hz)</span>
+          <span class="chip chip-sim">On-Chip Counter · reported_j (Intel Core i9-13900H &amp; AMD Ryzen AI Max+ 395 Linux powercap RAPL · board_metered = false)</span>
+          <span class="chip chip-meas">Bit-Exact Digest · BLAKE3 + Ed25519 (waiOS 256×128 a541323b… · 0/400 schedule drift)</span>
+          <span class="chip chip-est">Isolated Cloud Reference · est_j (Stage-4 remote calls @ 1.50 J/call · mixed_or_summed = false)</span>
+        </div>
+      </div>
+
+      <!-- Global Substrate & Rail Selector -->
+      <section class="substrate-bar" aria-label="Global hardware substrate and rail selector">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:0.75rem;">
+          <div>
+            <span style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-brand-cyan);font-weight:600;">
+              Active Hardware Substrate (<code>?board=kv260|thor|i9_rapl|ryzen_rapl</code>)
+            </span>
+            <div id="sub-host-detail" style="font-family:var(--font-mono);font-size:11.5px;color:var(--color-brand-slate);margin-top:0.15rem;"></div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:0.5rem;">
+            <label for="sel-rail-mode" style="font-family:var(--font-mono);font-size:11px;color:var(--color-brand-light);">Rail / Accounting:</label>
+            <select id="sel-rail-mode" style="font-family:var(--font-mono);font-size:11.5px;padding:0.38rem 0.6rem;border-radius:6px;border:1px solid var(--color-brand-border);background:var(--color-brand-dark);color:var(--color-brand-white);"></select>
+            <button type="button" id="btn-copy-sim-url" class="action-pill-btn">🔗 Copy Shareable Simulator URL</button>
+          </div>
+        </div>
+
+        <div class="board-tabs" role="tablist" aria-label="Select hardware substrate">
+          <button type="button" class="board-tab active" data-board="kv260" role="tab" aria-selected="true">
+            <div class="bt-top"><span class="chip chip-meas">measured_j · 233 Hz</span><span>F6 PASS (0.09%)</span></div>
+            <div class="bt-name">AMD Kria KV260</div>
+            <div class="bt-sub">TI INA260 (ina260_u14) SOM 5V DC · Gross &amp; A1/A2 Δmeasured_j</div>
+          </button>
+          <button type="button" class="board-tab" data-board="thor" role="tab" aria-selected="false">
+            <div class="bt-top"><span class="chip chip-meas">measured_j · 203 Hz</span><span>F6 Gated (&gt;5%)</span></div>
+            <div class="bt-name">NVIDIA Jetson AGX Thor</div>
+            <div class="bt-sub">TI INA3221 VDD_CPU_SOC_MSS + INA238 VIN Carrier</div>
+          </button>
+          <button type="button" class="board-tab" data-board="i9_rapl" role="tab" aria-selected="false">
+            <div class="bt-top"><span class="chip chip-sim">reported_j · RAPL</span><span>20 Trials</span></div>
+            <div class="bt-name">Intel Core i9-13900H</div>
+            <div class="bt-sub">Linux powercap package-0 &amp; core · board_metered = false</div>
+          </button>
+          <button type="button" class="board-tab" data-board="ryzen_rapl" role="tab" aria-selected="false">
+            <div class="bt-top"><span class="chip chip-sim">reported_j · RAPL</span><span>20 Trials</span></div>
+            <div class="bt-name">AMD Ryzen AI Max+ 395</div>
+            <div class="bt-sub">Linux powercap package-0 &amp; core · board_metered = false</div>
+          </button>
+        </div>
+
+        <div id="sub-f6-banner" class="f6-banner f6-pass"></div>
+      </section>
+
+      <!-- WIDGET 1 (#ca-sim-01): Weight Bit-Width & Sub-Bit Decompression Impedance Tax -->
+      <section id="ca-sim-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+          <h2 style="margin:0;font-size:1.25rem;"><code>ca-sim-01</code> · Weight Bit-Width &amp; Sub-Bit Decompression Impedance Tax Simulator (Shots #2 &amp; #6)</h2>
+          <span id="w1-evidence-chip" class="chip chip-meas">Physical DC Shunt · measured_j</span>
+        </div>
+        <p style="font-size:0.9rem;margin-top:0.55rem;">
+          Compressing a <code>512 × 512</code> weight matrix (<code>262,144 B</code> <code>INT8</code>) down to <strong><code>0.1517 bits/weight</code></strong> (<code>r = 22</code> SVD + binary latent factors + Walsh–Hadamard internal rotation = <code>4,972 B</code>, <code>52.72×</code> smaller than <code>INT8</code>) saves joules <em>only</em> when executed in a <strong>packed integer kernel</strong> (<code>FWHT + XNOR + popcount + 4-bit LUT</code>). Unpacking sub-bit factors into <code>FP32</code> at runtime triggers a severe <strong>decompression impedance tax</strong> (<code>81.86×</code> gross / <code>71.91×</code> net higher <code>measured_j</code> than <code>INT8</code> on <code>KV260 INA260</code>; <code>19.08×</code> on <code>Jetson Thor INA3221</code>), while the <code>4 KiB</code> Deterministic Null LUT solves <code>96.33%</code> (<code>1,156 / 1,200</code>) in <code>~1.5 µJ</code>, isolating the exact <code>3.67 pp</code> non-lookup tail.
+        </p>
+
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label for="s-bpw-idx">
+              <span>SVD Rank / Weight Bit-Width Step</span>
+              <span id="v-bpw-label" style="color:var(--color-brand-amber);">0.1517 bpw (r=22 · Default)</span>
+            </label>
+            <input type="range" id="s-bpw-idx" min="0" max="8" step="1" value="3">
+            <div class="preset-row" id="bpw-presets">
+              <button type="button" class="preset-chip" data-bpw-idx="0">0.0000 LUT</button>
+              <button type="button" class="preset-chip" data-bpw-idx="1">0.0962 (r=8)</button>
+              <button type="button" class="preset-chip" data-bpw-idx="2">0.1200 (r=14)</button>
+              <button type="button" class="preset-chip active" data-bpw-idx="3">0.1517 (r=22)</button>
+              <button type="button" class="preset-chip" data-bpw-idx="4">0.1914 (r=32)</button>
+              <button type="button" class="preset-chip" data-bpw-idx="5">0.2549 (r=48)</button>
+              <button type="button" class="preset-chip" data-bpw-idx="6">2.00 Ternary</button>
+              <button type="button" class="preset-chip" data-bpw-idx="7">4.00 INT4</button>
+              <button type="button" class="preset-chip" data-bpw-idx="8">8.00 INT8</button>
+            </div>
+          </div>
+
+          <div class="ctrl-box">
+            <label for="sel-subbit-kernel">
+              <span>Sub-Bit Execution Kernel</span>
+              <span id="v-kernel-badge" style="color:var(--color-brand-cyan);">Packed Integer</span>
+            </label>
+            <select id="sel-subbit-kernel">
+              <option value="packed" selected>Packed Integer · FWHT + XNOR + popcount + 4-bit LUT (Zero Float Unpack)</option>
+              <option value="naive">Naive Runtime FP32 Decompress · Materializes 512×512 Float Matrix (Impedance Tax)</option>
+            </select>
+            <div id="w1-curve-note" style="margin-top:0.45rem;font-family:var(--font-mono);font-size:10.5px;color:var(--color-brand-gray);"></div>
+          </div>
+        </div>
+
+        <div class="metric-grid" aria-live="polite">
+          <div class="metric-tile">
+            <div class="k">Weight Footprint</div>
+            <div class="v" id="w1-bytes">4,972 B</div>
+            <div class="s" id="w1-comp">52.72× vs INT8 (262,144 B)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Held-Out Accuracy (N=1,200)</div>
+            <div class="v" id="w1-acc">100.00%</div>
+            <div class="s" id="w1-acc-sub">1,200 / 1,200 (+3.67 pp over 4 KiB LUT)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k" id="w1-ej-k">Energy / Correct Decision</div>
+            <div class="v" id="w1-ej" style="color:var(--color-brand-cyan);">187.54 µJ</div>
+            <div class="s" id="w1-ej-sub">measured_j · 54.06 µs · 164 shunt samples</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Same-Meter Ratio vs INT8</div>
+            <div class="v" id="w1-ratio">4.13× Gain</div>
+            <div class="s" id="w1-ratio-sub">337.9× lower than Naive FP32 Unpack</div>
+          </div>
+        </div>
+
+        <div class="svg-frame">
+          <svg id="svg-bitwidth-curve" viewBox="0 0 760 285" width="100%" height="auto" role="img" aria-label="14-point log10 energy per correct decision versus weight bit-width curve"></svg>
+        </div>
+      </section>
+
+      <!-- WIDGET 2 (#ca-sim-02): 4-Stage Lookup-First Cascade & 75-Cell Zipf Sweep -->
+      <section id="ca-sim-02" class="glass-card" style="margin-top: 2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+          <h2 style="margin:0;font-size:1.25rem;"><code>ca-sim-02</code> · 4-Stage Lookup-First Cascade, 75-Cell <code>(Zipf s × d_max × τ)</code> Grid &amp; Horizon Simulator (Shots #5 &amp; #6)</h2>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+            <span id="w2-cell-badge" class="chip chip-meas">Exact Measured Grid Cell</span>
+            <span id="w2-evidence-chip" class="chip chip-meas">Physical DC Shunt · measured_j</span>
+          </div>
+        </div>
+        <p style="font-size:0.9rem;margin-top:0.55rem;">
+          Explore the measured <code>75</code>-cell hardware grid over traffic recurrence skew <code>Zipf s ∈ [0.00, 1.40]</code>, Stage-2 trigram + Damerau–Levenshtein edit radius <code>d_max ∈ {0, 1, 2}</code>, and Stage-3 <code>waiOS</code> integer Mosaic confidence margin <code>τ ∈ {1500..9000}</code>. On the canonical <code>1,000</code>-query workload (<code>55.0%</code> Stage-1 <code>O(1)</code> LUT, <code>25.0%</code> Stage-2 edit gate, <code>17.4%</code> Stage-3 <code>waiOS</code> Mosaic, <code>2.6%</code> Stage-4 escalation), the cascade cuts same-rail <code>measured_j</code> by <strong><code>26.58×</code> gross / <code>24.49×</code> net on <code>KV260 INA260</code></strong> and <strong><code>16.26×</code> on <code>Jetson Thor INA3221</code></strong> (<code>18.33×</code> <code>i9-13900H</code> &amp; <code>20.78×</code> <code>Ryzen AI Max+ 395</code> <code>reported_j</code>).
+        </p>
+
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label for="s-zipf">
+              <span>Traffic Recurrence Zipf Skew s</span>
+              <span id="v-zipf" style="color:var(--color-brand-amber);">s = 0.85</span>
+            </label>
+            <input type="range" id="s-zipf" min="0" max="1.40" step="0.05" value="0.85">
+            <div class="preset-row">
+              <button type="button" class="preset-chip zipf-chip" data-zipf="0.00">0.00 Uniform</button>
+              <button type="button" class="preset-chip zipf-chip" data-zipf="0.50">0.50</button>
+              <button type="button" class="preset-chip zipf-chip active" data-zipf="0.85">0.85 Default</button>
+              <button type="button" class="preset-chip zipf-chip" data-zipf="1.15">1.15</button>
+              <button type="button" class="preset-chip zipf-chip" data-zipf="1.40">1.40 Heavy</button>
+            </div>
+          </div>
+
+          <div class="ctrl-box">
+            <label for="sel-dmax">
+              <span>Stage-2 Trigram + Edit Gate d_max</span>
+              <span id="v-dmax" style="color:var(--color-brand-cyan);">Edit ≤ 2</span>
+            </label>
+            <select id="sel-dmax">
+              <option value="0">d_max = 0 · Stage-2 Disabled (Exact LUT → Mosaic)</option>
+              <option value="1">d_max = 1 · Damerau–Levenshtein Distance ≤ 1</option>
+              <option value="2" selected>d_max = 2 · Trigram + Edit Distance ≤ 2 (Default)</option>
+            </select>
+          </div>
+
+          <div class="ctrl-box">
+            <label for="sel-tau">
+              <span>Stage-3 waiOS Mosaic Margin τ</span>
+              <span id="v-tau" style="color:var(--color-brand-cyan);">τ = 4500</span>
+            </label>
+            <select id="sel-tau">
+              <option value="1500">τ = 1500 (Aggressive Local Absorb)</option>
+              <option value="3000">τ = 3000</option>
+              <option value="4500" selected>τ = 4500 (Canonical Margin · Default)</option>
+              <option value="6500">τ = 6500</option>
+              <option value="9000">τ = 9000 (Conservative Escalation)</option>
+            </select>
+          </div>
+
+          <div class="ctrl-box">
+            <label for="s-dt">
+              <span>Deployment Horizon ΔT (queries)</span>
+              <span id="v-dt" style="color:var(--color-brand-amber);">1,000 queries</span>
+            </label>
+            <input type="range" id="s-dt" min="100" max="50000" step="100" value="1000">
+            <div id="w2-breakeven-sub" style="margin-top:0.35rem;font-family:var(--font-mono);font-size:10.5px;color:var(--color-brand-gray);"></div>
+          </div>
+        </div>
+
+        <!-- 4-Stage Routing Funnel -->
+        <div style="margin-top:0.9rem;">
+          <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.4rem;font-family:var(--font-mono);font-size:11px;color:var(--color-brand-light);">
+            <span id="w2-funnel-title">4-Stage Query Routing Funnel (1,000-query grid slice)</span>
+            <span id="w2-funnel-acc" style="color:var(--color-brand-cyan);">End-to-End Accuracy: 99.50%</span>
+          </div>
+          <div class="funnel-track" role="img" aria-label="4-stage cascade routing percentages">
+            <div id="f-seg-1" class="funnel-seg" style="width:43%;background:#00d4aa;" title="Stage 1: O(1) Hash LUT">S1 LUT 43%</div>
+            <div id="f-seg-2" class="funnel-seg" style="width:23%;background:#38bdf8;" title="Stage 2: Trigram + Edit Gate">S2 Edit 23%</div>
+            <div id="f-seg-3" class="funnel-seg" style="width:25%;background:#a78bfa;" title="Stage 3: waiOS Integer Mosaic">S3 Mosaic 25%</div>
+            <div id="f-seg-4" class="funnel-seg" style="width:9%;background:#f59e0b;" title="Stage 4: Escalation Gate">S4 9%</div>
+          </div>
+        </div>
+
+        <div class="metric-grid" aria-live="polite">
+          <div class="metric-tile">
+            <div class="k">Selected Grid Cell Energy</div>
+            <div class="v" id="w2-grid-ej" style="color:var(--color-brand-cyan);">—</div>
+            <div class="s" id="w2-grid-sub">—</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Canonical 1,000-Query Gain</div>
+            <div class="v" id="w2-canon-gain">26.58×</div>
+            <div class="s" id="w2-canon-sub">685.43 vs 18,221.99 µJ/correct</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Local Absorb Share (S1+S2+S3)</div>
+            <div class="v" id="w2-local-pct">91.4%</div>
+            <div class="s" id="w2-local-sub">Stage-1+2 Zero-NN: 66.0%</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Compilation Horizon ΔT vs ΔT*</div>
+            <div class="v" id="w2-dt-verdict" style="color:var(--color-brand-cyan);">AMORTIZED</div>
+            <div class="s" id="w2-dt-sub">ΔT* = 14 queries on active rail</div>
+          </div>
+        </div>
+
+        <div class="svg-frame">
+          <svg id="svg-cascade-bars" viewBox="0 0 760 215" width="100%" height="auto" role="img" aria-label="Same-meter local silicon energy comparison across 4-Stage Cascade, Always-Mosaic, and Always-Dense"></svg>
+        </div>
+
+        <!-- Strictly Isolated Stage-4 Cloud Escalation Box (est_j) -->
+        <div class="est-isolated-box">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+            <strong style="font-family:var(--font-mono);font-size:11.5px;color:var(--color-brand-amber);">
+              STRICTLY ISOLATED ANALYTICAL CLOUD ESCALATION REFERENCE (<code>evidence_class = est_j</code> · <code>mixed_or_summed = false</code>)
+            </strong>
+            <span class="chip chip-est">Never Added to measured_j or reported_j</span>
+          </div>
+          <p id="w2-est-copy" style="margin:0.45rem 0 0;font-size:0.85rem;color:var(--color-brand-light);font-family:var(--font-mono);line-height:1.55;"></p>
+        </div>
+      </section>
+
+      <!-- WIDGET 3 (#ca-sim-03): Live In-Browser waiOS 256x128 Reference Check & 4-ISA Signed Receipt Ledger -->
+      <section id="ca-sim-03" class="glass-card" style="margin-top: 2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+          <h2 style="margin:0;font-size:1.25rem;"><code>ca-sim-03</code> · Live Browser <code>waiOS</code> <code>256×128</code> Verifier (<code>a541323b…</code>), Tamper Halt &amp; 4-ISA Signed Receipts (Shots #3 &amp; #6)</h2>
+          <span class="chip chip-meas">Pure-JS BigInt LCG + BLAKE3("waios.tmac.v1")</span>
+        </div>
+        <p style="font-size:0.9rem;margin-top:0.55rem;">
+          Run the exact <code>0xDEADBEEFCAFEBABE</code> 64-bit LCG <code>auditInput</code> (<code>256 × 128</code> ternary weights + <code>128</code> <code>int8</code> activations) and domain-separated <code>BLAKE3</code> (<code>derive_key("waios.tmac.v1", int32_le_bytes)</code>) right inside your browser across all <strong>3 integer execution lanes</strong> (<code>Scalar i32</code>, <code>Packed 2-Bit Popcount</code>, and <code>T-MAC 4-Bit Pair-LUT</code>), or inject the canonical single-weight fault (<code>w[77,0]: 0 → 1</code>, where <code>acts[0] = -26</code>) to trigger <code>4ac7c4fb…</code> and deterministic <code>WaiosDisagreementHaltError · Receipt Refused</code>.
+        </p>
+
+        <div style="display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:0.85rem;align-items:center;">
+          <button type="button" id="btn-waios-clean" class="action-pill-btn primary">▶ Run All 3 Browser Lanes (Clean 0xDEADBEEFCAFEBABE)</button>
+          <button type="button" id="btn-waios-tamper" class="action-pill-btn danger">⚡ Inject Single-Weight Tamper (w[77,0]: 0 → 1)</button>
+          <span id="waios-elapsed" style="font-family:var(--font-mono);font-size:11px;color:var(--color-brand-gray);"></span>
+        </div>
+
+        <div id="waios-verdict-box" class="f6-banner f6-pass" style="margin-top:0.85rem;"></div>
+
+        <div class="metric-grid" style="margin-top:0.85rem;">
+          <div class="metric-tile">
+            <div class="k">Lane 1 · Scalar i32</div>
+            <div class="v" id="wl-1" style="font-size:1rem;">a541323b1365…</div>
+            <div class="s" id="wl-1-s">Direct int32 inner product</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Lane 2 · 2-Bit Popcount</div>
+            <div class="v" id="wl-2" style="font-size:1rem;">a541323b1365…</div>
+            <div class="s" id="wl-2-s">7 bit-planes · 0 multiplies</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Lane 3 · T-MAC 4-Bit LUT</div>
+            <div class="v" id="wl-3" style="font-size:1rem;">a541323b1365…</div>
+            <div class="s" id="wl-3-s">packTernary [pair*rows+row]</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Pooled Cross-ISA Schedule Drift</div>
+            <div class="v" style="color:var(--color-brand-cyan);">0 / 400</div>
+            <div class="s">95% Clopper–Pearson ≤ 0.00746</div>
+          </div>
+        </div>
+
+        <h3 style="font-size:1.05rem;margin:1.5rem 0 0.4rem;">4-Substrate Cross-ISA Conformance &amp; Signed Receipt Ledger (<code>@ 813eb96</code>)</h3>
+        <div style="overflow-x:auto;">
+          <table class="receipt-table">
+            <thead>
+              <tr>
+                <th>Silicon Substrate &amp; ISA</th>
+                <th>Meter &amp; Evidence Class</th>
+                <th>Native Lanes &amp; Pthread Drift</th>
+                <th>Kit 4 (<code>littlebit-joule</code>) Receipt BLAKE3</th>
+                <th>Kit 5 (<code>waios-mosaic</code>) Receipt BLAKE3</th>
+              </tr>
+            </thead>
+            <tbody id="receipt-ledger-tbody"></tbody>
+          </table>
+        </div>
+
+        <div style="margin-top:1.15rem;">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-brand-amber);margin-bottom:0.35rem;">
+            1-Command Standalone External Replication (<code>Apache-2.0</code> · Commodity Linux/macOS + Optional INA260/INA3221/RAPL):
+          </div>
+          <pre style="margin:0;padding:0.8rem 1rem;border-radius:8px;border:1px solid var(--color-brand-border);background:rgba(10,10,15,0.7);font-family:var(--font-mono);font-size:11.5px;color:var(--color-brand-cyan);overflow-x:auto;"><code>git clone https://github.com/openIE-dev/openie-research-experiments &amp;&amp; cd openie-research-experiments &amp;&amp; ./kits/littlebit-joule/run_kit.sh &amp;&amp; ./kits/waios-mosaic-cascade/run_kit.sh</code></pre>
+          <div id="bundle-sig-line" style="margin-top:0.45rem;font-family:var(--font-mono);font-size:10.5px;color:var(--color-brand-gray);word-break:break-all;"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-copy">
+      © Open Interface Engineering, Inc. · Compiled Agency Multi-Substrate Observatory (<code>@ 813eb96</code>) · <code>Signed Provenance · Self-Checked</code> (<code>measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered</code>) ·
+      <a href="/living/" style="color:var(--color-brand-cyan);">Living Figures Hub</a> ·
+      <a href="/data/#lut-adapt" style="color:var(--color-brand-cyan);">Data &amp; Receipts</a> ·
+      <a href="data/shot6_multi_substrate.json" style="color:var(--color-brand-amber);">shot6_multi_substrate.json</a>
+    </div>
+  </footer>
+
+  <!-- Zero-network-latency inlined Shot #6 multi-substrate curves & 75-cell grid -->
+  <script id="shot6-inline-data" type="application/json">{"commit":"813eb9698ff179fd34d6877c5247bb2b9125ca86","waiosRef":"a541323b13653ed36515ff24ef08deb7dfa771e570a434712708fb72552f46f0","waiosTamper":"4ac7c4fbc2f2a031ac4f3c0e485867fb689d24d4872bdb1b0a6bc80cf88b69dc","bundleReceipts":{"lbBlake3":"d98ef9c9ea40d07de84d63b2ecccdd9ab27f9e29f16070a6400ec23b6b8301c7","lbPub":"00ed3b27cbeb8861ba46843d07d241b78b70261806929e3860b67a55876d69e2","wmBlake3":"09d009b20ef5c8a79118a7da52729d65c21d4f2201f631b5c74eb1ec93619fe7","wmPub":"9942729b1943d5f2343e1d040895f3b7bda52eb51463ae6831381d81bf8ea83f"},"substrates":{"kv260":{"id":"kv260","shortName":"AMD Kria KV260 (Cortex-A53)","sensorLabel":"TI INA260 SOM_5V_DC (~233 Hz)","evidence_class":"measured_j","board_metered":true,"cpu":"ZynqMP KV260 revB (Cortex-A53, aarch64)","os":"Linux 6.8.0-1036-xilinx aarch64","regimes":{"deterministic_null_lut":{"key":"deterministic_null_lut","bpw":0,"bytes":4096,"acc":0.963333,"correct":1156,"wallNs":422.89,"grossUj":1.4927,"netUj":0.1079,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":148.5},"dense_int8_baseline":{"key":"dense_int8_baseline","bpw":8,"bytes":262144,"acc":1,"correct":1200,"wallNs":220138.29,"grossUj":773.7394,"netUj":53.0285,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":183},"subbit_naive_float_unpack":{"key":"subbit_naive_float_unpack","bpw":0.1517,"bytes":4972,"acc":1,"correct":1200,"wallNs":18184589.95,"grossUj":63335.56,"netUj":3813.3249,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":5034},"littlebit_joule_packed_int":{"key":"littlebit_joule_packed_int","bpw":0.1517,"bytes":4972,"acc":1,"correct":1200,"wallNs":54022.14,"grossUj":187.4928,"netUj":10.2965,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":180.5}},"curve":[{"key":"deterministic_null_lut","bpw":0,"bytes":4096,"acc":0.963333,"correct":1156,"wallNs":423.02,"grossUj":1.4941,"netUj":0.1057,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":128},{"key":"littlebit_packed_int_r8","bpw":0.0962,"bytes":3152,"acc":1,"correct":1200,"wallNs":36991.17,"grossUj":128.2735,"netUj":6.1771,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":166},{"key":"subbit_naive_fp32_unpack_r8","bpw":0.0962,"bytes":3152,"acc":1,"correct":1200,"wallNs":7922078.92,"grossUj":27338.9858,"netUj":1334.3233,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":2180},{"key":"littlebit_packed_int_r14","bpw":0.12,"bytes":3932,"acc":1,"correct":1200,"wallNs":45201.72,"grossUj":157.0567,"netUj":8.0241,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":164},{"key":"subbit_naive_fp32_unpack_r14","bpw":0.12,"bytes":3932,"acc":1,"correct":1200,"wallNs":12389854.1,"grossUj":42913.0317,"netUj":2262.708,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":3422},{"key":"littlebit_packed_int_r22","bpw":0.1517,"bytes":4972,"acc":1,"correct":1200,"wallNs":54058.15,"grossUj":187.5389,"netUj":10.5725,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":164},{"key":"subbit_naive_fp32_unpack_r22","bpw":0.1517,"bytes":4972,"acc":1,"correct":1200,"wallNs":18185946.48,"grossUj":63368.6183,"netUj":3474.577,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":5013},{"key":"littlebit_packed_int_r32","bpw":0.1914,"bytes":6272,"acc":1,"correct":1200,"wallNs":65988.09,"grossUj":229.0365,"netUj":13.1106,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":164},{"key":"subbit_naive_fp32_unpack_r32","bpw":0.1914,"bytes":6272,"acc":1,"correct":1200,"wallNs":24953856.91,"grossUj":87150.11,"netUj":5410.8231,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":6872},{"key":"littlebit_packed_int_r48","bpw":0.2549,"bytes":8352,"acc":1,"correct":1200,"wallNs":84834.9,"grossUj":293.979,"netUj":16.6228,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":166},{"key":"subbit_naive_fp32_unpack_r48","bpw":0.2549,"bytes":8352,"acc":1,"correct":1200,"wallNs":35924370.22,"grossUj":125458.7375,"netUj":7457.4721,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":10024},{"key":"ternary_2bpw","bpw":2,"bytes":65540,"acc":1,"correct":1200,"wallNs":365471.77,"grossUj":1278.475,"netUj":70.0221,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":206},{"key":"int4_4bpw","bpw":4,"bytes":131076,"acc":1,"correct":1200,"wallNs":184556.83,"grossUj":644.3886,"netUj":38.458,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":207},{"key":"dense_int8_8bpw","bpw":8,"bytes":262144,"acc":1,"correct":1200,"wallNs":220734.43,"grossUj":774.6568,"netUj":49.194,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":186}],"pipelines":{"cascade":{"wallUs":196.99,"grossUj":685.43,"netUj":40.49,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":183.5},"mosaic":{"wallUs":417.117,"grossUj":1456.18,"netUj":90.47,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":194},"dense":{"wallUs":5262.908,"grossUj":18221.99,"netUj":991.71,"vinUj":null,"pkgUj":null,"coreUj":null,"shuntN":1212}},"grid":[{"s":0,"d":0,"tau":1500,"acc":0.985,"s1":0.1,"s2":0,"s3":0.852,"s4":0.048,"wallUs":513.386,"grossUj":1791.607,"netUj":104.159,"vinUj":null,"pkgUj":null,"s4Calls":48},{"s":0,"d":0,"tau":3000,"acc":0.985,"s1":0.1,"s2":0,"s3":0.808,"s4":0.092,"wallUs":749.122,"grossUj":2620.891,"netUj":158.599,"vinUj":null,"pkgUj":null,"s4Calls":92},{"s":0,"d":0,"tau":4500,"acc":0.985,"s1":0.1,"s2":0,"s3":0.77,"s4":0.13,"wallUs":952.721,"grossUj":3337.661,"netUj":206.163,"vinUj":null,"pkgUj":null,"s4Calls":130},{"s":0,"d":0,"tau":6500,"acc":0.985,"s1":0.1,"s2":0,"s3":0.76,"s4":0.14,"wallUs":1006.017,"grossUj":3509.803,"netUj":203.125,"vinUj":null,"pkgUj":null,"s4Calls":140},{"s":0,"d":0,"tau":9000,"acc":0.985,"s1":0.1,"s2":0,"s3":0.76,"s4":0.14,"wallUs":1005.882,"grossUj":3503.503,"netUj":197.268,"vinUj":null,"pkgUj":null,"s4Calls":140},{"s":0,"d":1,"tau":1500,"acc":0.985,"s1":0.1,"s2":0.091,"s3":0.761,"s4":0.048,"wallUs":491.042,"grossUj":1719.589,"netUj":105.582,"vinUj":null,"pkgUj":null,"s4Calls":48},{"s":0,"d":1,"tau":3000,"acc":0.985,"s1":0.1,"s2":0.091,"s3":0.717,"s4":0.092,"wallUs":726.453,"grossUj":2535.76,"netUj":147.983,"vinUj":null,"pkgUj":null,"s4Calls":92},{"s":0,"d":1,"tau":4500,"acc":0.985,"s1":0.1,"s2":0.091,"s3":0.679,"s4":0.13,"wallUs":929.835,"grossUj":3237.561,"netUj":181.288,"vinUj":null,"pkgUj":null,"s4Calls":130},{"s":0,"d":1,"tau":6500,"acc":0.985,"s1":0.1,"s2":0.091,"s3":0.669,"s4":0.14,"wallUs":983.809,"grossUj":3433.258,"netUj":199.576,"vinUj":null,"pkgUj":null,"s4Calls":140},{"s":0,"d":1,"tau":9000,"acc":0.985,"s1":0.1,"s2":0.091,"s3":0.669,"s4":0.14,"wallUs":983.973,"grossUj":3432.139,"netUj":197.916,"vinUj":null,"pkgUj":null,"s4Calls":140},{"s":0,"d":2,"tau":1500,"acc":0.985,"s1":0.1,"s2":0.181,"s3":0.671,"s4":0.048,"wallUs":465.345,"grossUj":1627.272,"netUj":97.727,"vinUj":null,"pkgUj":null,"s4Calls":48},{"s":0,"d":2,"tau":3000,"acc":0.985,"s1":0.1,"s2":0.181,"s3":0.627,"s4":0.092,"wallUs":701.316,"grossUj":2452.541,"netUj":147.386,"vinUj":null,"pkgUj":null,"s4Calls":92},{"s":0,"d":2,"tau":4500,"acc":0.985,"s1":0.1,"s2":0.181,"s3":0.589,"s4":0.13,"wallUs":904.663,"grossUj":3149.982,"netUj":176.445,"vinUj":null,"pkgUj":null,"s4Calls":130},{"s":0,"d":2,"tau":6500,"acc":0.985,"s1":0.1,"s2":0.181,"s3":0.579,"s4":0.14,"wallUs":958.467,"grossUj":3339.778,"netUj":189.392,"vinUj":null,"pkgUj":null,"s4Calls":140},{"s":0,"d":2,"tau":9000,"acc":0.985,"s1":0.1,"s2":0.181,"s3":0.579,"s4":0.14,"wallUs":958.15,"grossUj":3336.751,"netUj":187.407,"vinUj":null,"pkgUj":null,"s4Calls":140},{"s":0.5,"d":0,"tau":1500,"acc":0.991,"s1":0.28,"s2":0,"s3":0.679,"s4":0.041,"wallUs":422.08,"grossUj":1475.843,"netUj":92.603,"vinUj":null,"pkgUj":null,"s4Calls":41},{"s":0.5,"d":0,"tau":3000,"acc":0.991,"s1":0.28,"s2":0,"s3":0.63,"s4":0.09,"wallUs":683.352,"grossUj":2390.845,"netUj":151.366,"vinUj":null,"pkgUj":null,"s4Calls":90},{"s":0.5,"d":0,"tau":4500,"acc":0.991,"s1":0.28,"s2":0,"s3":0.615,"s4":0.105,"wallUs":762.767,"grossUj":2659.091,"netUj":159.351,"vinUj":null,"pkgUj":null,"s4Calls":105},{"s":0.5,"d":0,"tau":6500,"acc":0.991,"s1":0.28,"s2":0,"s3":0.61,"s4":0.11,"wallUs":789.225,"grossUj":2754.011,"netUj":167.563,"vinUj":null,"pkgUj":null,"s4Calls":110},{"s":0.5,"d":0,"tau":9000,"acc":0.991,"s1":0.28,"s2":0,"s3":0.61,"s4":0.11,"wallUs":789.8,"grossUj":2764.785,"netUj":176.452,"vinUj":null,"pkgUj":null,"s4Calls":110},{"s":0.5,"d":1,"tau":1500,"acc":0.991,"s1":0.28,"s2":0.105,"s3":0.574,"s4":0.041,"wallUs":395.944,"grossUj":1383.122,"netUj":85.534,"vinUj":null,"pkgUj":null,"s4Calls":41},{"s":0.5,"d":1,"tau":3000,"acc":0.991,"s1":0.28,"s2":0.105,"s3":0.525,"s4":0.09,"wallUs":656.674,"grossUj":2287.693,"netUj":135.641,"vinUj":null,"pkgUj":null,"s4Calls":90},{"s":0.5,"d":1,"tau":4500,"acc":0.991,"s1":0.28,"s2":0.105,"s3":0.51,"s4":0.105,"wallUs":736.798,"grossUj":2570.199,"netUj":155.564,"vinUj":null,"pkgUj":null,"s4Calls":105},{"s":0.5,"d":1,"tau":6500,"acc":0.991,"s1":0.28,"s2":0.105,"s3":0.505,"s4":0.11,"wallUs":763.227,"grossUj":2659.54,"netUj":158.292,"vinUj":null,"pkgUj":null,"s4Calls":110},{"s":0.5,"d":1,"tau":9000,"acc":0.991,"s1":0.28,"s2":0.105,"s3":0.505,"s4":0.11,"wallUs":763.694,"grossUj":2667.527,"netUj":164.751,"vinUj":null,"pkgUj":null,"s4Calls":110},{"s":0.5,"d":2,"tau":1500,"acc":0.991,"s1":0.28,"s2":0.21,"s3":0.469,"s4":0.041,"wallUs":366.225,"grossUj":1278.843,"netUj":78.652,"vinUj":null,"pkgUj":null,"s4Calls":41},{"s":0.5,"d":2,"tau":3000,"acc":0.991,"s1":0.28,"s2":0.21,"s3":0.42,"s4":0.09,"wallUs":627.394,"grossUj":2192.924,"netUj":136.827,"vinUj":null,"pkgUj":null,"s4Calls":90},{"s":0.5,"d":2,"tau":4500,"acc":0.991,"s1":0.28,"s2":0.21,"s3":0.405,"s4":0.105,"wallUs":707.151,"grossUj":2478.395,"netUj":160.918,"vinUj":null,"pkgUj":null,"s4Calls":105},{"s":0.5,"d":2,"tau":6500,"acc":0.991,"s1":0.28,"s2":0.21,"s3":0.4,"s4":0.11,"wallUs":734.014,"grossUj":2562.101,"netUj":156.59,"vinUj":null,"pkgUj":null,"s4Calls":110},{"s":0.5,"d":2,"tau":9000,"acc":0.991,"s1":0.28,"s2":0.21,"s3":0.4,"s4":0.11,"wallUs":733.757,"grossUj":2554.54,"netUj":149.872,"vinUj":null,"pkgUj":null,"s4Calls":110},{"s":0.85,"d":0,"tau":1500,"acc":0.995,"s1":0.433,"s2":0,"s3":0.526,"s4":0.041,"wallUs":377.397,"grossUj":1320.651,"netUj":83.922,"vinUj":null,"pkgUj":null,"s4Calls":41},{"s":0.85,"d":0,"tau":3000,"acc":0.995,"s1":0.433,"s2":0,"s3":0.492,"s4":0.075,"wallUs":557.637,"grossUj":1946.955,"netUj":119.58,"vinUj":null,"pkgUj":null,"s4Calls":75},{"s":0.85,"d":0,"tau":4500,"acc":0.995,"s1":0.433,"s2":0,"s3":0.481,"s4":0.086,"wallUs":615.738,"grossUj":2149.269,"netUj":131.495,"vinUj":null,"pkgUj":null,"s4Calls":86},{"s":0.85,"d":0,"tau":6500,"acc":0.995,"s1":0.433,"s2":0,"s3":0.479,"s4":0.088,"wallUs":626.229,"grossUj":2181.397,"netUj":129.246,"vinUj":null,"pkgUj":null,"s4Calls":88},{"s":0.85,"d":0,"tau":9000,"acc":0.995,"s1":0.433,"s2":0,"s3":0.479,"s4":0.088,"wallUs":626.361,"grossUj":2185.43,"netUj":132.845,"vinUj":null,"pkgUj":null,"s4Calls":88},{"s":0.85,"d":1,"tau":1500,"acc":0.995,"s1":0.433,"s2":0.115,"s3":0.411,"s4":0.041,"wallUs":348.276,"grossUj":1216.612,"netUj":75.312,"vinUj":null,"pkgUj":null,"s4Calls":41},{"s":0.85,"d":1,"tau":3000,"acc":0.995,"s1":0.433,"s2":0.115,"s3":0.377,"s4":0.075,"wallUs":528.751,"grossUj":1845.889,"netUj":113.172,"vinUj":null,"pkgUj":null,"s4Calls":75},{"s":0.85,"d":1,"tau":4500,"acc":0.995,"s1":0.433,"s2":0.115,"s3":0.366,"s4":0.086,"wallUs":586.9,"grossUj":2046.618,"netUj":123.346,"vinUj":null,"pkgUj":null,"s4Calls":86},{"s":0.85,"d":1,"tau":6500,"acc":0.995,"s1":0.433,"s2":0.115,"s3":0.364,"s4":0.088,"wallUs":597.745,"grossUj":2086.748,"netUj":127.939,"vinUj":null,"pkgUj":null,"s4Calls":88},{"s":0.85,"d":1,"tau":9000,"acc":0.995,"s1":0.433,"s2":0.115,"s3":0.364,"s4":0.088,"wallUs":597.523,"grossUj":2084.384,"netUj":126.301,"vinUj":null,"pkgUj":null,"s4Calls":88},{"s":0.85,"d":2,"tau":1500,"acc":0.995,"s1":0.433,"s2":0.23,"s3":0.296,"s4":0.041,"wallUs":315.84,"grossUj":1102.736,"netUj":67.727,"vinUj":null,"pkgUj":null,"s4Calls":41},{"s":0.85,"d":2,"tau":3000,"acc":0.995,"s1":0.433,"s2":0.23,"s3":0.262,"s4":0.075,"wallUs":496.159,"grossUj":1734.25,"netUj":108.337,"vinUj":null,"pkgUj":null,"s4Calls":75},{"s":0.85,"d":2,"tau":4500,"acc":0.995,"s1":0.433,"s2":0.23,"s3":0.251,"s4":0.086,"wallUs":554.605,"grossUj":1931.433,"netUj":113.992,"vinUj":null,"pkgUj":null,"s4Calls":86},{"s":0.85,"d":2,"tau":6500,"acc":0.995,"s1":0.433,"s2":0.23,"s3":0.249,"s4":0.088,"wallUs":565.017,"grossUj":1969.017,"netUj":117.454,"vinUj":null,"pkgUj":null,"s4Calls":88},{"s":0.85,"d":2,"tau":9000,"acc":0.995,"s1":0.433,"s2":0.23,"s3":0.249,"s4":0.088,"wallUs":565.101,"grossUj":1972.381,"netUj":120.545,"vinUj":null,"pkgUj":null,"s4Calls":88},{"s":1.15,"d":0,"tau":1500,"acc":0.997,"s1":0.583,"s2":0,"s3":0.382,"s4":0.035,"wallUs":302.693,"grossUj":1056.066,"netUj":60.386,"vinUj":null,"pkgUj":null,"s4Calls":35},{"s":1.15,"d":0,"tau":3000,"acc":0.997,"s1":0.583,"s2":0,"s3":0.356,"s4":0.061,"wallUs":439.947,"grossUj":1532.866,"netUj":85.703,"vinUj":null,"pkgUj":null,"s4Calls":61},{"s":1.15,"d":0,"tau":4500,"acc":0.997,"s1":0.583,"s2":0,"s3":0.347,"s4":0.07,"wallUs":487.793,"grossUj":1702.125,"netUj":97.578,"vinUj":null,"pkgUj":null,"s4Calls":70},{"s":1.15,"d":0,"tau":6500,"acc":0.997,"s1":0.583,"s2":0,"s3":0.347,"s4":0.07,"wallUs":487.783,"grossUj":1699.148,"netUj":94.635,"vinUj":null,"pkgUj":null,"s4Calls":70},{"s":1.15,"d":0,"tau":9000,"acc":0.997,"s1":0.583,"s2":0,"s3":0.347,"s4":0.07,"wallUs":487.76,"grossUj":1701.244,"netUj":96.806,"vinUj":null,"pkgUj":null,"s4Calls":70},{"s":1.15,"d":1,"tau":1500,"acc":0.997,"s1":0.583,"s2":0.106,"s3":0.276,"s4":0.035,"wallUs":275.859,"grossUj":967.477,"netUj":60.066,"vinUj":null,"pkgUj":null,"s4Calls":35},{"s":1.15,"d":1,"tau":3000,"acc":0.997,"s1":0.583,"s2":0.106,"s3":0.25,"s4":0.061,"wallUs":413.379,"grossUj":1442.407,"netUj":82.637,"vinUj":null,"pkgUj":null,"s4Calls":61},{"s":1.15,"d":1,"tau":4500,"acc":0.997,"s1":0.583,"s2":0.106,"s3":0.241,"s4":0.07,"wallUs":460.9,"grossUj":1603.771,"netUj":87.687,"vinUj":null,"pkgUj":null,"s4Calls":70},{"s":1.15,"d":1,"tau":6500,"acc":0.997,"s1":0.583,"s2":0.106,"s3":0.241,"s4":0.07,"wallUs":460.932,"grossUj":1611.481,"netUj":95.294,"vinUj":null,"pkgUj":null,"s4Calls":70},{"s":1.15,"d":1,"tau":9000,"acc":0.997,"s1":0.583,"s2":0.106,"s3":0.241,"s4":0.07,"wallUs":461.148,"grossUj":1611.761,"netUj":94.86,"vinUj":null,"pkgUj":null,"s4Calls":70},{"s":1.15,"d":2,"tau":1500,"acc":0.997,"s1":0.583,"s2":0.213,"s3":0.169,"s4":0.035,"wallUs":245.514,"grossUj":856.016,"netUj":48.424,"vinUj":null,"pkgUj":null,"s4Calls":35},{"s":1.15,"d":2,"tau":3000,"acc":0.997,"s1":0.583,"s2":0.213,"s3":0.143,"s4":0.061,"wallUs":383.115,"grossUj":1333.663,"netUj":73.443,"vinUj":null,"pkgUj":null,"s4Calls":61},{"s":1.15,"d":2,"tau":4500,"acc":0.997,"s1":0.583,"s2":0.213,"s3":0.134,"s4":0.07,"wallUs":430.626,"grossUj":1498.9,"netUj":82.398,"vinUj":null,"pkgUj":null,"s4Calls":70},{"s":1.15,"d":2,"tau":6500,"acc":0.997,"s1":0.583,"s2":0.213,"s3":0.134,"s4":0.07,"wallUs":430.939,"grossUj":1506.086,"netUj":88.554,"vinUj":null,"pkgUj":null,"s4Calls":70},{"s":1.15,"d":2,"tau":9000,"acc":0.997,"s1":0.583,"s2":0.213,"s3":0.134,"s4":0.07,"wallUs":430.843,"grossUj":1501.485,"netUj":84.27,"vinUj":null,"pkgUj":null,"s4Calls":70},{"s":1.4,"d":0,"tau":1500,"acc":0.999,"s1":0.72,"s2":0,"s3":0.256,"s4":0.024,"wallUs":205.47,"grossUj":716.794,"netUj":42.462,"vinUj":null,"pkgUj":null,"s4Calls":24},{"s":1.4,"d":0,"tau":3000,"acc":0.999,"s1":0.72,"s2":0,"s3":0.229,"s4":0.051,"wallUs":348.182,"grossUj":1219.104,"netUj":76.407,"vinUj":null,"pkgUj":null,"s4Calls":51},{"s":1.4,"d":0,"tau":4500,"acc":0.999,"s1":0.72,"s2":0,"s3":0.225,"s4":0.055,"wallUs":369.296,"grossUj":1286.705,"netUj":74.713,"vinUj":null,"pkgUj":null,"s4Calls":55},{"s":1.4,"d":0,"tau":6500,"acc":0.999,"s1":0.72,"s2":0,"s3":0.225,"s4":0.055,"wallUs":369.151,"grossUj":1288.749,"netUj":77.232,"vinUj":null,"pkgUj":null,"s4Calls":55},{"s":1.4,"d":0,"tau":9000,"acc":0.999,"s1":0.72,"s2":0,"s3":0.225,"s4":0.055,"wallUs":369.266,"grossUj":1285.816,"netUj":73.921,"vinUj":null,"pkgUj":null,"s4Calls":55},{"s":1.4,"d":1,"tau":1500,"acc":0.999,"s1":0.72,"s2":0.1,"s3":0.156,"s4":0.024,"wallUs":179.787,"grossUj":627.172,"netUj":37.128,"vinUj":null,"pkgUj":null,"s4Calls":24},{"s":1.4,"d":1,"tau":3000,"acc":0.999,"s1":0.72,"s2":0.1,"s3":0.129,"s4":0.051,"wallUs":322.555,"grossUj":1126.485,"netUj":67.893,"vinUj":null,"pkgUj":null,"s4Calls":51},{"s":1.4,"d":1,"tau":4500,"acc":0.999,"s1":0.72,"s2":0.1,"s3":0.125,"s4":0.055,"wallUs":343.372,"grossUj":1196.147,"netUj":69.235,"vinUj":null,"pkgUj":null,"s4Calls":55},{"s":1.4,"d":1,"tau":6500,"acc":0.999,"s1":0.72,"s2":0.1,"s3":0.125,"s4":0.055,"wallUs":343.644,"grossUj":1200.185,"netUj":72.379,"vinUj":null,"pkgUj":null,"s4Calls":55},{"s":1.4,"d":1,"tau":9000,"acc":0.999,"s1":0.72,"s2":0.1,"s3":0.125,"s4":0.055,"wallUs":343.477,"grossUj":1195.652,"netUj":68.393,"vinUj":null,"pkgUj":null,"s4Calls":55},{"s":1.4,"d":2,"tau":1500,"acc":0.999,"s1":0.72,"s2":0.199,"s3":0.057,"s4":0.024,"wallUs":152.029,"grossUj":530.606,"netUj":31.661,"vinUj":null,"pkgUj":null,"s4Calls":24},{"s":1.4,"d":2,"tau":3000,"acc":0.999,"s1":0.72,"s2":0.199,"s3":0.03,"s4":0.051,"wallUs":294.747,"grossUj":1029.588,"netUj":62.26,"vinUj":null,"pkgUj":null,"s4Calls":51},{"s":1.4,"d":2,"tau":4500,"acc":0.999,"s1":0.72,"s2":0.199,"s3":0.026,"s4":0.055,"wallUs":315.81,"grossUj":1098.204,"netUj":61.745,"vinUj":null,"pkgUj":null,"s4Calls":55},{"s":1.4,"d":2,"tau":6500,"acc":0.999,"s1":0.72,"s2":0.199,"s3":0.026,"s4":0.055,"wallUs":315.74,"grossUj":1100.617,"netUj":64.39,"vinUj":null,"pkgUj":null,"s4Calls":55},{"s":1.4,"d":2,"tau":9000,"acc":0.999,"s1":0.72,"s2":0.199,"s3":0.026,"s4":0.055,"wallUs":315.777,"grossUj":1098.403,"netUj":62.056,"vinUj":null,"pkgUj":null,"s4Calls":55}],"receipts":{"lbBlake3":"543cd838cbedee79ae522201d069c240395e5fd43de742b8c05ebfd40ba31603","wmBlake3":"96f6b286de508d94812ebfca9ff68a89b1614296025136659f0dcf7a8f458b0a"}},"thor":{"id":"thor","shortName":"NVIDIA Jetson AGX Thor (ARMv9)","sensorLabel":"TI INA3221 VDD_CPU_SOC_MSS + INA238 VIN (~203 Hz)","evidence_class":"measured_j","board_metered":true,"cpu":"NVIDIA Jetson AGX Thor Developer Kit (14-core aarch64)","os":"Linux 6.8.12-1021-tegra aarch64","regimes":{"deterministic_null_lut":{"key":"deterministic_null_lut","bpw":0,"bytes":4096,"acc":0.963333,"correct":1156,"wallNs":49.33,"grossUj":0.9283,"netUj":0,"vinUj":1.7848,"pkgUj":null,"coreUj":null,"shuntN":98.5},"dense_int8_baseline":{"key":"dense_int8_baseline","bpw":8,"bytes":262144,"acc":1,"correct":1200,"wallNs":43164.95,"grossUj":829.9391,"netUj":0,"vinUj":1507.7177,"pkgUj":null,"coreUj":null,"shuntN":171},"subbit_naive_float_unpack":{"key":"subbit_naive_float_unpack","bpw":0.1517,"bytes":4972,"acc":1,"correct":1200,"wallNs":850610.2,"grossUj":15839.3354,"netUj":0,"vinUj":30585.5717,"pkgUj":null,"coreUj":null,"shuntN":211.5},"littlebit_joule_packed_int":{"key":"littlebit_joule_packed_int","bpw":0.1517,"bytes":4972,"acc":1,"correct":1200,"wallNs":5845.68,"grossUj":104.443,"netUj":0,"vinUj":202.9402,"pkgUj":null,"coreUj":null,"shuntN":165.5}},"curve":[{"key":"deterministic_null_lut","bpw":0,"bytes":4096,"acc":0.963333,"correct":1156,"wallNs":53.8,"grossUj":0.682,"netUj":null,"vinUj":1.5238,"pkgUj":null,"coreUj":null,"shuntN":56},{"key":"littlebit_packed_int_r8","bpw":0.0962,"bytes":3152,"acc":1,"correct":1200,"wallNs":4173.27,"grossUj":59.2836,"netUj":null,"vinUj":127.6856,"pkgUj":null,"coreUj":null,"shuntN":140},{"key":"subbit_naive_fp32_unpack_r8","bpw":0.0962,"bytes":3152,"acc":1,"correct":1200,"wallNs":449012.9,"grossUj":5702.3873,"netUj":null,"vinUj":12668.3898,"pkgUj":null,"coreUj":null,"shuntN":222},{"key":"littlebit_packed_int_r14","bpw":0.12,"bytes":3932,"acc":1,"correct":1200,"wallNs":5108.44,"grossUj":60.7669,"netUj":null,"vinUj":140.1045,"pkgUj":null,"coreUj":null,"shuntN":146},{"key":"subbit_naive_fp32_unpack_r14","bpw":0.12,"bytes":3932,"acc":1,"correct":1200,"wallNs":631170.31,"grossUj":7960.2567,"netUj":null,"vinUj":18144.2717,"pkgUj":null,"coreUj":null,"shuntN":156},{"key":"littlebit_packed_int_r22","bpw":0.1517,"bytes":4972,"acc":1,"correct":1200,"wallNs":5964.15,"grossUj":79.7773,"netUj":null,"vinUj":182.4545,"pkgUj":null,"coreUj":null,"shuntN":139},{"key":"subbit_naive_fp32_unpack_r22","bpw":0.1517,"bytes":4972,"acc":1,"correct":1200,"wallNs":837813.53,"grossUj":13038.9017,"netUj":null,"vinUj":26514.8988,"pkgUj":null,"coreUj":null,"shuntN":207},{"key":"littlebit_packed_int_r32","bpw":0.1914,"bytes":6272,"acc":1,"correct":1200,"wallNs":6833.72,"grossUj":92.6395,"netUj":null,"vinUj":195.2679,"pkgUj":null,"coreUj":null,"shuntN":140},{"key":"subbit_naive_fp32_unpack_r32","bpw":0.1914,"bytes":6272,"acc":1,"correct":1200,"wallNs":1145863.42,"grossUj":20378.6821,"netUj":null,"vinUj":43515.1208,"pkgUj":null,"coreUj":null,"shuntN":266},{"key":"littlebit_packed_int_r48","bpw":0.2549,"bytes":8352,"acc":1,"correct":1200,"wallNs":8937.4,"grossUj":244.13,"netUj":null,"vinUj":418.3818,"pkgUj":null,"coreUj":null,"shuntN":137},{"key":"subbit_naive_fp32_unpack_r48","bpw":0.2549,"bytes":8352,"acc":1,"correct":1200,"wallNs":1587405.35,"grossUj":45628.2521,"netUj":null,"vinUj":75918.2467,"pkgUj":null,"coreUj":null,"shuntN":374},{"key":"ternary_2bpw","bpw":2,"bytes":65540,"acc":1,"correct":1200,"wallNs":84845.03,"grossUj":2278.1423,"netUj":null,"vinUj":3940.9399,"pkgUj":null,"coreUj":null,"shuntN":139},{"key":"int4_4bpw","bpw":4,"bytes":131076,"acc":1,"correct":1200,"wallNs":29038.8,"grossUj":664.3051,"netUj":null,"vinUj":1165.17,"pkgUj":null,"coreUj":null,"shuntN":142},{"key":"dense_int8_8bpw","bpw":8,"bytes":262144,"acc":1,"correct":1200,"wallNs":42588.18,"grossUj":915.9645,"netUj":null,"vinUj":1631.5665,"pkgUj":null,"coreUj":null,"shuntN":146}],"pipelines":{"cascade":{"wallUs":24.524,"grossUj":530.39,"netUj":null,"vinUj":981.55,"pkgUj":null,"coreUj":null,"shuntN":164},"mosaic":{"wallUs":77.679,"grossUj":1579.24,"netUj":null,"vinUj":3016.01,"pkgUj":null,"coreUj":null,"shuntN":177},"dense":{"wallUs":409.941,"grossUj":8622.51,"netUj":null,"vinUj":16479.77,"pkgUj":null,"coreUj":null,"shuntN":168}},"grid":[{"s":0,"d":0,"tau":1500,"acc":0.985,"s1":0.1,"s2":0,"s3":0.852,"s4":0.048,"wallUs":81.208,"grossUj":1441.605,"netUj":null,"vinUj":2771.658,"pkgUj":null,"s4Calls":48},{"s":0,"d":0,"tau":3000,"acc":0.985,"s1":0.1,"s2":0,"s3":0.808,"s4":0.092,"wallUs":99.657,"grossUj":1758.144,"netUj":null,"vinUj":3724.63,"pkgUj":null,"s4Calls":92},{"s":0,"d":0,"tau":4500,"acc":0.985,"s1":0.1,"s2":0,"s3":0.77,"s4":0.13,"wallUs":115.525,"grossUj":2700.451,"netUj":null,"vinUj":4664.209,"pkgUj":null,"s4Calls":130},{"s":0,"d":0,"tau":6500,"acc":0.985,"s1":0.1,"s2":0,"s3":0.76,"s4":0.14,"wallUs":119.627,"grossUj":2196.282,"netUj":null,"vinUj":4045.883,"pkgUj":null,"s4Calls":140},{"s":0,"d":0,"tau":9000,"acc":0.985,"s1":0.1,"s2":0,"s3":0.76,"s4":0.14,"wallUs":119.593,"grossUj":2075.535,"netUj":null,"vinUj":4038.077,"pkgUj":null,"s4Calls":140},{"s":0,"d":1,"tau":1500,"acc":0.985,"s1":0.1,"s2":0.091,"s3":0.761,"s4":0.048,"wallUs":75.36,"grossUj":1281.209,"netUj":null,"vinUj":2521.509,"pkgUj":null,"s4Calls":48},{"s":0,"d":1,"tau":3000,"acc":0.985,"s1":0.1,"s2":0.091,"s3":0.717,"s4":0.092,"wallUs":93.742,"grossUj":1579.198,"netUj":null,"vinUj":3107.097,"pkgUj":null,"s4Calls":92},{"s":0,"d":1,"tau":4500,"acc":0.985,"s1":0.1,"s2":0.091,"s3":0.679,"s4":0.13,"wallUs":109.594,"grossUj":1753.258,"netUj":null,"vinUj":3551.903,"pkgUj":null,"s4Calls":130},{"s":0,"d":1,"tau":6500,"acc":0.985,"s1":0.1,"s2":0.091,"s3":0.669,"s4":0.14,"wallUs":113.728,"grossUj":1888.595,"netUj":null,"vinUj":3906.756,"pkgUj":null,"s4Calls":140},{"s":0,"d":1,"tau":9000,"acc":0.985,"s1":0.1,"s2":0.091,"s3":0.669,"s4":0.14,"wallUs":113.72,"grossUj":1869.549,"netUj":null,"vinUj":3784.383,"pkgUj":null,"s4Calls":140},{"s":0,"d":2,"tau":1500,"acc":0.985,"s1":0.1,"s2":0.181,"s3":0.671,"s4":0.048,"wallUs":69.25,"grossUj":1202.356,"netUj":null,"vinUj":2386.782,"pkgUj":null,"s4Calls":48},{"s":0,"d":2,"tau":3000,"acc":0.985,"s1":0.1,"s2":0.181,"s3":0.627,"s4":0.092,"wallUs":87.611,"grossUj":1510.743,"netUj":null,"vinUj":2999.533,"pkgUj":null,"s4Calls":92},{"s":0,"d":2,"tau":4500,"acc":0.985,"s1":0.1,"s2":0.181,"s3":0.589,"s4":0.13,"wallUs":103.48,"grossUj":1760.138,"netUj":null,"vinUj":3500.497,"pkgUj":null,"s4Calls":130},{"s":0,"d":2,"tau":6500,"acc":0.985,"s1":0.1,"s2":0.181,"s3":0.579,"s4":0.14,"wallUs":107.669,"grossUj":1817.646,"netUj":null,"vinUj":3630.984,"pkgUj":null,"s4Calls":140},{"s":0,"d":2,"tau":9000,"acc":0.985,"s1":0.1,"s2":0.181,"s3":0.579,"s4":0.14,"wallUs":107.661,"grossUj":1800.608,"netUj":null,"vinUj":3584.79,"pkgUj":null,"s4Calls":140},{"s":0.5,"d":0,"tau":1500,"acc":0.991,"s1":0.28,"s2":0,"s3":0.679,"s4":0.041,"wallUs":68.267,"grossUj":1097.055,"netUj":null,"vinUj":2268.692,"pkgUj":null,"s4Calls":41},{"s":0.5,"d":0,"tau":3000,"acc":0.991,"s1":0.28,"s2":0,"s3":0.63,"s4":0.09,"wallUs":86.055,"grossUj":1453.419,"netUj":null,"vinUj":2926.321,"pkgUj":null,"s4Calls":90},{"s":0.5,"d":0,"tau":4500,"acc":0.991,"s1":0.28,"s2":0,"s3":0.615,"s4":0.105,"wallUs":92.263,"grossUj":1581.177,"netUj":null,"vinUj":3137.109,"pkgUj":null,"s4Calls":105},{"s":0.5,"d":0,"tau":6500,"acc":0.991,"s1":0.28,"s2":0,"s3":0.61,"s4":0.11,"wallUs":94.317,"grossUj":1609.056,"netUj":null,"vinUj":3184.938,"pkgUj":null,"s4Calls":110},{"s":0.5,"d":0,"tau":9000,"acc":0.991,"s1":0.28,"s2":0,"s3":0.61,"s4":0.11,"wallUs":94.338,"grossUj":1604.959,"netUj":null,"vinUj":3204.775,"pkgUj":null,"s4Calls":110},{"s":0.5,"d":1,"tau":1500,"acc":0.991,"s1":0.28,"s2":0.105,"s3":0.574,"s4":0.041,"wallUs":58.965,"grossUj":1018.18,"netUj":null,"vinUj":2130.302,"pkgUj":null,"s4Calls":41},{"s":0.5,"d":1,"tau":3000,"acc":0.991,"s1":0.28,"s2":0.105,"s3":0.525,"s4":0.09,"wallUs":82.039,"grossUj":1937.674,"netUj":null,"vinUj":3528.717,"pkgUj":null,"s4Calls":90},{"s":0.5,"d":1,"tau":4500,"acc":0.991,"s1":0.28,"s2":0.105,"s3":0.51,"s4":0.105,"wallUs":85.617,"grossUj":1631.701,"netUj":null,"vinUj":2905.796,"pkgUj":null,"s4Calls":105},{"s":0.5,"d":1,"tau":6500,"acc":0.991,"s1":0.28,"s2":0.105,"s3":0.505,"s4":0.11,"wallUs":87.653,"grossUj":1517.451,"netUj":null,"vinUj":2973.052,"pkgUj":null,"s4Calls":110},{"s":0.5,"d":1,"tau":9000,"acc":0.991,"s1":0.28,"s2":0.105,"s3":0.505,"s4":0.11,"wallUs":87.653,"grossUj":1490.083,"netUj":null,"vinUj":2985.169,"pkgUj":null,"s4Calls":110},{"s":0.5,"d":2,"tau":1500,"acc":0.991,"s1":0.28,"s2":0.21,"s3":0.469,"s4":0.041,"wallUs":51.824,"grossUj":881.154,"netUj":null,"vinUj":1754.62,"pkgUj":null,"s4Calls":41},{"s":0.5,"d":2,"tau":3000,"acc":0.991,"s1":0.28,"s2":0.21,"s3":0.42,"s4":0.09,"wallUs":72.209,"grossUj":1170.347,"netUj":null,"vinUj":2339.734,"pkgUj":null,"s4Calls":90},{"s":0.5,"d":2,"tau":4500,"acc":0.991,"s1":0.28,"s2":0.21,"s3":0.405,"s4":0.105,"wallUs":78.401,"grossUj":1239.936,"netUj":null,"vinUj":2558.72,"pkgUj":null,"s4Calls":105},{"s":0.5,"d":2,"tau":6500,"acc":0.991,"s1":0.28,"s2":0.21,"s3":0.4,"s4":0.11,"wallUs":81.091,"grossUj":1299.525,"netUj":null,"vinUj":2730.481,"pkgUj":null,"s4Calls":110},{"s":0.5,"d":2,"tau":9000,"acc":0.991,"s1":0.28,"s2":0.21,"s3":0.4,"s4":0.11,"wallUs":80.505,"grossUj":1351.972,"netUj":null,"vinUj":2660.106,"pkgUj":null,"s4Calls":110},{"s":0.85,"d":0,"tau":1500,"acc":0.995,"s1":0.433,"s2":0,"s3":0.526,"s4":0.041,"wallUs":57.126,"grossUj":965.961,"netUj":null,"vinUj":1985.814,"pkgUj":null,"s4Calls":41},{"s":0.85,"d":0,"tau":3000,"acc":0.995,"s1":0.433,"s2":0,"s3":0.492,"s4":0.075,"wallUs":69.184,"grossUj":1203.305,"netUj":null,"vinUj":2395.949,"pkgUj":null,"s4Calls":75},{"s":0.85,"d":0,"tau":4500,"acc":0.995,"s1":0.433,"s2":0,"s3":0.481,"s4":0.086,"wallUs":73.696,"grossUj":1282.265,"netUj":null,"vinUj":2525.699,"pkgUj":null,"s4Calls":86},{"s":0.85,"d":0,"tau":6500,"acc":0.995,"s1":0.433,"s2":0,"s3":0.479,"s4":0.088,"wallUs":74.586,"grossUj":1297.405,"netUj":null,"vinUj":2541.841,"pkgUj":null,"s4Calls":88},{"s":0.85,"d":0,"tau":9000,"acc":0.995,"s1":0.433,"s2":0,"s3":0.479,"s4":0.088,"wallUs":74.583,"grossUj":1289.88,"netUj":null,"vinUj":2527.853,"pkgUj":null,"s4Calls":88},{"s":0.85,"d":1,"tau":1500,"acc":0.995,"s1":0.433,"s2":0.115,"s3":0.411,"s4":0.041,"wallUs":47.726,"grossUj":823.826,"netUj":null,"vinUj":1621.957,"pkgUj":null,"s4Calls":41},{"s":0.85,"d":1,"tau":3000,"acc":0.995,"s1":0.433,"s2":0.115,"s3":0.377,"s4":0.075,"wallUs":61.755,"grossUj":1065.83,"netUj":null,"vinUj":2108.966,"pkgUj":null,"s4Calls":75},{"s":0.85,"d":1,"tau":4500,"acc":0.995,"s1":0.433,"s2":0.115,"s3":0.366,"s4":0.086,"wallUs":66.333,"grossUj":1141.272,"netUj":null,"vinUj":2260.532,"pkgUj":null,"s4Calls":86},{"s":0.85,"d":1,"tau":6500,"acc":0.995,"s1":0.433,"s2":0.115,"s3":0.364,"s4":0.088,"wallUs":67.142,"grossUj":1158.213,"netUj":null,"vinUj":2288.974,"pkgUj":null,"s4Calls":88},{"s":0.85,"d":1,"tau":9000,"acc":0.995,"s1":0.433,"s2":0.115,"s3":0.364,"s4":0.088,"wallUs":67.149,"grossUj":1157.839,"netUj":null,"vinUj":2285.061,"pkgUj":null,"s4Calls":88},{"s":0.85,"d":2,"tau":1500,"acc":0.995,"s1":0.433,"s2":0.23,"s3":0.296,"s4":0.041,"wallUs":40.006,"grossUj":696.31,"netUj":null,"vinUj":1379.132,"pkgUj":null,"s4Calls":41},{"s":0.85,"d":2,"tau":3000,"acc":0.995,"s1":0.433,"s2":0.23,"s3":0.262,"s4":0.075,"wallUs":54.157,"grossUj":991.117,"netUj":null,"vinUj":2102.381,"pkgUj":null,"s4Calls":75},{"s":0.85,"d":2,"tau":4500,"acc":0.995,"s1":0.433,"s2":0.23,"s3":0.251,"s4":0.086,"wallUs":58.664,"grossUj":1366.639,"netUj":null,"vinUj":2368.347,"pkgUj":null,"s4Calls":86},{"s":0.85,"d":2,"tau":6500,"acc":0.995,"s1":0.433,"s2":0.23,"s3":0.249,"s4":0.088,"wallUs":59.401,"grossUj":1112.018,"netUj":null,"vinUj":2035.15,"pkgUj":null,"s4Calls":88},{"s":0.85,"d":2,"tau":9000,"acc":0.995,"s1":0.433,"s2":0.23,"s3":0.249,"s4":0.088,"wallUs":59.39,"grossUj":1040.72,"netUj":null,"vinUj":2055.908,"pkgUj":null,"s4Calls":88},{"s":1.15,"d":0,"tau":1500,"acc":0.997,"s1":0.583,"s2":0,"s3":0.382,"s4":0.035,"wallUs":44.385,"grossUj":755.576,"netUj":null,"vinUj":1520.617,"pkgUj":null,"s4Calls":35},{"s":1.15,"d":0,"tau":3000,"acc":0.997,"s1":0.583,"s2":0,"s3":0.356,"s4":0.061,"wallUs":53.237,"grossUj":931.123,"netUj":null,"vinUj":1825.084,"pkgUj":null,"s4Calls":61},{"s":1.15,"d":0,"tau":4500,"acc":0.997,"s1":0.583,"s2":0,"s3":0.347,"s4":0.07,"wallUs":56.93,"grossUj":928.969,"netUj":null,"vinUj":1854.789,"pkgUj":null,"s4Calls":70},{"s":1.15,"d":0,"tau":6500,"acc":0.997,"s1":0.583,"s2":0,"s3":0.347,"s4":0.07,"wallUs":56.914,"grossUj":917.651,"netUj":null,"vinUj":1925.115,"pkgUj":null,"s4Calls":70},{"s":1.15,"d":0,"tau":9000,"acc":0.997,"s1":0.583,"s2":0,"s3":0.347,"s4":0.07,"wallUs":56.903,"grossUj":971.045,"netUj":null,"vinUj":1876.09,"pkgUj":null,"s4Calls":70},{"s":1.15,"d":1,"tau":1500,"acc":0.997,"s1":0.583,"s2":0.106,"s3":0.276,"s4":0.035,"wallUs":35.624,"grossUj":606.908,"netUj":null,"vinUj":1235.43,"pkgUj":null,"s4Calls":35},{"s":1.15,"d":1,"tau":3000,"acc":0.997,"s1":0.583,"s2":0.106,"s3":0.25,"s4":0.061,"wallUs":46.366,"grossUj":826.73,"netUj":null,"vinUj":1636.046,"pkgUj":null,"s4Calls":61},{"s":1.15,"d":1,"tau":4500,"acc":0.997,"s1":0.583,"s2":0.106,"s3":0.241,"s4":0.07,"wallUs":50.065,"grossUj":893.626,"netUj":null,"vinUj":1757.734,"pkgUj":null,"s4Calls":70},{"s":1.15,"d":1,"tau":6500,"acc":0.997,"s1":0.583,"s2":0.106,"s3":0.241,"s4":0.07,"wallUs":50.06,"grossUj":891.986,"netUj":null,"vinUj":1751.313,"pkgUj":null,"s4Calls":70},{"s":1.15,"d":1,"tau":9000,"acc":0.997,"s1":0.583,"s2":0.106,"s3":0.241,"s4":0.07,"wallUs":50.102,"grossUj":911.314,"netUj":null,"vinUj":1760.727,"pkgUj":null,"s4Calls":70},{"s":1.15,"d":2,"tau":1500,"acc":0.997,"s1":0.583,"s2":0.213,"s3":0.169,"s4":0.035,"wallUs":28.479,"grossUj":503.366,"netUj":null,"vinUj":975.499,"pkgUj":null,"s4Calls":35},{"s":1.15,"d":2,"tau":3000,"acc":0.997,"s1":0.583,"s2":0.213,"s3":0.143,"s4":0.061,"wallUs":39.23,"grossUj":693.54,"netUj":null,"vinUj":1359.975,"pkgUj":null,"s4Calls":61},{"s":1.15,"d":2,"tau":4500,"acc":0.997,"s1":0.583,"s2":0.213,"s3":0.134,"s4":0.07,"wallUs":42.933,"grossUj":749.216,"netUj":null,"vinUj":1481.534,"pkgUj":null,"s4Calls":70},{"s":1.15,"d":2,"tau":6500,"acc":0.997,"s1":0.583,"s2":0.213,"s3":0.134,"s4":0.07,"wallUs":42.923,"grossUj":746.531,"netUj":null,"vinUj":1485.344,"pkgUj":null,"s4Calls":70},{"s":1.15,"d":2,"tau":9000,"acc":0.997,"s1":0.583,"s2":0.213,"s3":0.134,"s4":0.07,"wallUs":42.877,"grossUj":762.025,"netUj":null,"vinUj":1534.63,"pkgUj":null,"s4Calls":70},{"s":1.4,"d":0,"tau":1500,"acc":0.999,"s1":0.72,"s2":0,"s3":0.256,"s4":0.024,"wallUs":30.518,"grossUj":531.604,"netUj":null,"vinUj":1048.58,"pkgUj":null,"s4Calls":24},{"s":1.4,"d":0,"tau":3000,"acc":0.999,"s1":0.72,"s2":0,"s3":0.229,"s4":0.051,"wallUs":39.822,"grossUj":693.816,"netUj":null,"vinUj":1426.065,"pkgUj":null,"s4Calls":51},{"s":1.4,"d":0,"tau":4500,"acc":0.999,"s1":0.72,"s2":0,"s3":0.225,"s4":0.055,"wallUs":41.489,"grossUj":963.754,"netUj":null,"vinUj":1870.006,"pkgUj":null,"s4Calls":55},{"s":1.4,"d":0,"tau":6500,"acc":0.999,"s1":0.72,"s2":0,"s3":0.225,"s4":0.055,"wallUs":41.489,"grossUj":830.645,"netUj":null,"vinUj":1421.929,"pkgUj":null,"s4Calls":55},{"s":1.4,"d":0,"tau":9000,"acc":0.999,"s1":0.72,"s2":0,"s3":0.225,"s4":0.055,"wallUs":41.464,"grossUj":726.374,"netUj":null,"vinUj":1410.397,"pkgUj":null,"s4Calls":55},{"s":1.4,"d":1,"tau":1500,"acc":0.999,"s1":0.72,"s2":0.1,"s3":0.156,"s4":0.024,"wallUs":22.228,"grossUj":385.614,"netUj":null,"vinUj":759.352,"pkgUj":null,"s4Calls":24},{"s":1.4,"d":1,"tau":3000,"acc":0.999,"s1":0.72,"s2":0.1,"s3":0.129,"s4":0.051,"wallUs":33.35,"grossUj":578.732,"netUj":null,"vinUj":1140.14,"pkgUj":null,"s4Calls":51},{"s":1.4,"d":1,"tau":4500,"acc":0.999,"s1":0.72,"s2":0.1,"s3":0.125,"s4":0.055,"wallUs":35,"grossUj":590.699,"netUj":null,"vinUj":1178.495,"pkgUj":null,"s4Calls":55},{"s":1.4,"d":1,"tau":6500,"acc":0.999,"s1":0.72,"s2":0.1,"s3":0.125,"s4":0.055,"wallUs":34.992,"grossUj":566.776,"netUj":null,"vinUj":1143.293,"pkgUj":null,"s4Calls":55},{"s":1.4,"d":1,"tau":9000,"acc":0.999,"s1":0.72,"s2":0.1,"s3":0.125,"s4":0.055,"wallUs":34.999,"grossUj":562.227,"netUj":null,"vinUj":1141.41,"pkgUj":null,"s4Calls":55},{"s":1.4,"d":2,"tau":1500,"acc":0.999,"s1":0.72,"s2":0.199,"s3":0.057,"s4":0.024,"wallUs":15.587,"grossUj":250.732,"netUj":null,"vinUj":531.926,"pkgUj":null,"s4Calls":24},{"s":1.4,"d":2,"tau":3000,"acc":0.999,"s1":0.72,"s2":0.199,"s3":0.03,"s4":0.051,"wallUs":26.728,"grossUj":453.573,"netUj":null,"vinUj":890.025,"pkgUj":null,"s4Calls":51},{"s":1.4,"d":2,"tau":4500,"acc":0.999,"s1":0.72,"s2":0.199,"s3":0.026,"s4":0.055,"wallUs":28.348,"grossUj":480.321,"netUj":null,"vinUj":980.852,"pkgUj":null,"s4Calls":55},{"s":1.4,"d":2,"tau":6500,"acc":0.999,"s1":0.72,"s2":0.199,"s3":0.026,"s4":0.055,"wallUs":28.335,"grossUj":501.729,"netUj":null,"vinUj":984.42,"pkgUj":null,"s4Calls":55},{"s":1.4,"d":2,"tau":9000,"acc":0.999,"s1":0.72,"s2":0.199,"s3":0.026,"s4":0.055,"wallUs":28.33,"grossUj":503.667,"netUj":null,"vinUj":976.281,"pkgUj":null,"s4Calls":55}],"receipts":{"lbBlake3":"000a74f59877a5e3282c2c739ac0a9872e26987c0e6400e5660fc4bd64687f85","wmBlake3":"43f3e91f004d38a58c2e0cf97d656cb242c9f071f7c2920ba2274fc831c33592"}},"i9_rapl":{"id":"i9_rapl","shortName":"Intel Core i9-13900H (x86_64)","sensorLabel":"Linux powercap RAPL package-0 & core","evidence_class":"reported_j","board_metered":false,"cpu":"13th Gen Intel(R) Core(TM) i9-13900H","os":"Linux 7.0.0-43-generic x86_64","regimes":{"deterministic_null_lut":{"key":"deterministic_null_lut","bpw":0,"bytes":4096,"acc":0.9633,"correct":1156,"wallNs":38.01,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1.1175,"coreUj":0.9092,"shuntN":null},"dense_int8_baseline":{"key":"dense_int8_baseline","bpw":8,"bytes":262144,"acc":1,"correct":1200,"wallNs":11713.76,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":387.3771,"coreUj":325.9355,"shuntN":null},"subbit_naive_float_unpack":{"key":"subbit_naive_float_unpack","bpw":0.1517,"bytes":4972,"acc":1,"correct":1200,"wallNs":603508.04,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":20192.1677,"coreUj":16715.3026,"shuntN":null},"littlebit_joule_packed_int":{"key":"littlebit_joule_packed_int","bpw":0.1517,"bytes":4972,"acc":1,"correct":1200,"wallNs":2949.02,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":81.1941,"coreUj":65.5361,"shuntN":null}},"curve":null,"pipelines":{"cascade":{"wallUs":10.672,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":267.45,"coreUj":209.21,"shuntN":null},"mosaic":{"wallUs":32.07,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":759.77,"coreUj":570.66,"shuntN":null},"dense":{"wallUs":182.355,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":4902.29,"coreUj":3889.88,"shuntN":null}},"grid":null,"receipts":{"lbBlake3":"8b8f2d5d253b609dc34a669bd2f8e8bcb69a1da779c61f89f63b47c99efd7413","wmBlake3":"eb360104252adeee3bc87ac1c92407eacfd1455071394f20d8f7cb843d71d963"}},"ryzen_rapl":{"id":"ryzen_rapl","shortName":"AMD Ryzen AI Max+ 395 (x86_64)","sensorLabel":"Linux powercap RAPL package-0 & core","evidence_class":"reported_j","board_metered":false,"cpu":"AMD RYZEN AI MAX+ 395 w/ Radeon 8060S","os":"Linux 7.0.0-43-generic x86_64","regimes":{"deterministic_null_lut":{"key":"deterministic_null_lut","bpw":0,"bytes":4096,"acc":0.963333,"correct":1156,"wallNs":52.32,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":7.1541,"coreUj":0.3998,"shuntN":null},"dense_int8_baseline":{"key":"dense_int8_baseline","bpw":8,"bytes":262144,"acc":1,"correct":1200,"wallNs":17917.9,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2438.6416,"coreUj":138.6751,"shuntN":null},"subbit_naive_float_unpack":{"key":"subbit_naive_float_unpack","bpw":0.1517,"bytes":4972,"acc":1,"correct":1200,"wallNs":830892.33,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":113371.8019,"coreUj":6619.0825,"shuntN":null},"littlebit_joule_packed_int":{"key":"littlebit_joule_packed_int","bpw":0.1517,"bytes":4972,"acc":1,"correct":1200,"wallNs":5405.9,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":732.1151,"coreUj":44.9329,"shuntN":null}},"curve":[{"key":"deterministic_null_lut","bpw":0,"bytes":4096,"acc":0.963333,"correct":1156,"wallNs":49.79,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":6.7937,"coreUj":0.417,"shuntN":null},{"key":"littlebit_packed_int_r8","bpw":0.0962,"bytes":3152,"acc":1,"correct":1200,"wallNs":3869.01,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":513.2264,"coreUj":31.4988,"shuntN":null},{"key":"subbit_naive_fp32_unpack_r8","bpw":0.0962,"bytes":3152,"acc":1,"correct":1200,"wallNs":352729.81,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":46115.2268,"coreUj":2830.2802,"shuntN":null},{"key":"littlebit_packed_int_r14","bpw":0.12,"bytes":3932,"acc":1,"correct":1200,"wallNs":3119.03,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":249.7658,"coreUj":15.3291,"shuntN":null},{"key":"subbit_naive_fp32_unpack_r14","bpw":0.12,"bytes":3932,"acc":1,"correct":1200,"wallNs":375019.46,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":31746.2906,"coreUj":1948.3998,"shuntN":null},{"key":"littlebit_packed_int_r22","bpw":0.1517,"bytes":4972,"acc":1,"correct":1200,"wallNs":5452.69,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":723.9648,"coreUj":44.4327,"shuntN":null},{"key":"subbit_naive_fp32_unpack_r22","bpw":0.1517,"bytes":4972,"acc":1,"correct":1200,"wallNs":741791.94,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":94059.7719,"coreUj":5772.8332,"shuntN":null},{"key":"littlebit_packed_int_r32","bpw":0.1914,"bytes":6272,"acc":1,"correct":1200,"wallNs":4052.66,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":151.093,"coreUj":9.2732,"shuntN":null},{"key":"subbit_naive_fp32_unpack_r32","bpw":0.1914,"bytes":6272,"acc":1,"correct":1200,"wallNs":664576.76,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":31585.2577,"coreUj":1938.5165,"shuntN":null},{"key":"littlebit_packed_int_r48","bpw":0.2549,"bytes":8352,"acc":1,"correct":1200,"wallNs":5010.48,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":184.4793,"coreUj":11.3222,"shuntN":null},{"key":"subbit_naive_fp32_unpack_r48","bpw":0.2549,"bytes":8352,"acc":1,"correct":1200,"wallNs":938584.78,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":44467.5212,"coreUj":2729.1538,"shuntN":null},{"key":"ternary_2bpw","bpw":2,"bytes":65540,"acc":1,"correct":1200,"wallNs":31088.78,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1476.326,"coreUj":90.6082,"shuntN":null},{"key":"int4_4bpw","bpw":4,"bytes":131076,"acc":1,"correct":1200,"wallNs":19780.9,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1245.5922,"coreUj":76.4471,"shuntN":null},{"key":"dense_int8_8bpw","bpw":8,"bytes":262144,"acc":1,"correct":1200,"wallNs":11401.26,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":528.7535,"coreUj":32.4518,"shuntN":null}],"pipelines":{"cascade":{"wallUs":10.67,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":793.56,"coreUj":29.47,"shuntN":null},"mosaic":{"wallUs":29.753,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2553.79,"coreUj":148.47,"shuntN":null},"dense":{"wallUs":213.508,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":16493.2,"coreUj":1077.33,"shuntN":null}},"grid":[{"s":0,"d":0,"tau":1500,"acc":0.985,"s1":0.1,"s2":0,"s3":0.852,"s4":0.048,"wallUs":32.39,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2076.698,"s4Calls":48},{"s":0,"d":0,"tau":3000,"acc":0.985,"s1":0.1,"s2":0,"s3":0.808,"s4":0.092,"wallUs":41.859,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":3143.037,"s4Calls":92},{"s":0,"d":0,"tau":4500,"acc":0.985,"s1":0.1,"s2":0,"s3":0.77,"s4":0.13,"wallUs":49.958,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":3163.954,"s4Calls":130},{"s":0,"d":0,"tau":6500,"acc":0.985,"s1":0.1,"s2":0,"s3":0.76,"s4":0.14,"wallUs":52.818,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":3004.209,"s4Calls":140},{"s":0,"d":0,"tau":9000,"acc":0.985,"s1":0.1,"s2":0,"s3":0.76,"s4":0.14,"wallUs":52.56,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2502.639,"s4Calls":140},{"s":0,"d":1,"tau":1500,"acc":0.985,"s1":0.1,"s2":0.091,"s3":0.761,"s4":0.048,"wallUs":29.949,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1423.151,"s4Calls":48},{"s":0,"d":1,"tau":3000,"acc":0.985,"s1":0.1,"s2":0.091,"s3":0.717,"s4":0.092,"wallUs":40.455,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1919.979,"s4Calls":92},{"s":0,"d":1,"tau":4500,"acc":0.985,"s1":0.1,"s2":0.091,"s3":0.679,"s4":0.13,"wallUs":48.48,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2288.373,"s4Calls":130},{"s":0,"d":1,"tau":6500,"acc":0.985,"s1":0.1,"s2":0.091,"s3":0.669,"s4":0.14,"wallUs":49.663,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2331.167,"s4Calls":140},{"s":0,"d":1,"tau":9000,"acc":0.985,"s1":0.1,"s2":0.091,"s3":0.669,"s4":0.14,"wallUs":49.522,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2324.179,"s4Calls":140},{"s":0,"d":2,"tau":1500,"acc":0.985,"s1":0.1,"s2":0.181,"s3":0.671,"s4":0.048,"wallUs":27.663,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1335.621,"s4Calls":48},{"s":0,"d":2,"tau":3000,"acc":0.985,"s1":0.1,"s2":0.181,"s3":0.627,"s4":0.092,"wallUs":37.092,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2106.544,"s4Calls":92},{"s":0,"d":2,"tau":4500,"acc":0.985,"s1":0.1,"s2":0.181,"s3":0.589,"s4":0.13,"wallUs":45.091,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2526.996,"s4Calls":130},{"s":0,"d":2,"tau":6500,"acc":0.985,"s1":0.1,"s2":0.181,"s3":0.579,"s4":0.14,"wallUs":47.455,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2772.119,"s4Calls":140},{"s":0,"d":2,"tau":9000,"acc":0.985,"s1":0.1,"s2":0.181,"s3":0.579,"s4":0.14,"wallUs":49.154,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":4432.199,"s4Calls":140},{"s":0.5,"d":0,"tau":1500,"acc":0.991,"s1":0.28,"s2":0,"s3":0.679,"s4":0.041,"wallUs":26.347,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1605.495,"s4Calls":41},{"s":0.5,"d":0,"tau":3000,"acc":0.991,"s1":0.28,"s2":0,"s3":0.63,"s4":0.09,"wallUs":36.391,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2066.544,"s4Calls":90},{"s":0.5,"d":0,"tau":4500,"acc":0.991,"s1":0.28,"s2":0,"s3":0.615,"s4":0.105,"wallUs":39.453,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2126.14,"s4Calls":105},{"s":0.5,"d":0,"tau":6500,"acc":0.991,"s1":0.28,"s2":0,"s3":0.61,"s4":0.11,"wallUs":40.646,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2303.18,"s4Calls":110},{"s":0.5,"d":0,"tau":9000,"acc":0.991,"s1":0.28,"s2":0,"s3":0.61,"s4":0.11,"wallUs":40.663,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2268.982,"s4Calls":110},{"s":0.5,"d":1,"tau":1500,"acc":0.991,"s1":0.28,"s2":0.105,"s3":0.574,"s4":0.041,"wallUs":23.657,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1344.319,"s4Calls":41},{"s":0.5,"d":1,"tau":3000,"acc":0.991,"s1":0.28,"s2":0.105,"s3":0.525,"s4":0.09,"wallUs":34.134,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1931.434,"s4Calls":90},{"s":0.5,"d":1,"tau":4500,"acc":0.991,"s1":0.28,"s2":0.105,"s3":0.51,"s4":0.105,"wallUs":37.416,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2132.95,"s4Calls":105},{"s":0.5,"d":1,"tau":6500,"acc":0.991,"s1":0.28,"s2":0.105,"s3":0.505,"s4":0.11,"wallUs":38.667,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2470.643,"s4Calls":110},{"s":0.5,"d":1,"tau":9000,"acc":0.991,"s1":0.28,"s2":0.105,"s3":0.505,"s4":0.11,"wallUs":39.135,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2224.6,"s4Calls":110},{"s":0.5,"d":2,"tau":1500,"acc":0.991,"s1":0.28,"s2":0.21,"s3":0.469,"s4":0.041,"wallUs":21.406,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1210.703,"s4Calls":41},{"s":0.5,"d":2,"tau":3000,"acc":0.991,"s1":0.28,"s2":0.21,"s3":0.42,"s4":0.09,"wallUs":31.729,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1854.788,"s4Calls":90},{"s":0.5,"d":2,"tau":4500,"acc":0.991,"s1":0.28,"s2":0.21,"s3":0.405,"s4":0.105,"wallUs":34.906,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1981.695,"s4Calls":105},{"s":0.5,"d":2,"tau":6500,"acc":0.991,"s1":0.28,"s2":0.21,"s3":0.4,"s4":0.11,"wallUs":35.993,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1973.268,"s4Calls":110},{"s":0.5,"d":2,"tau":9000,"acc":0.991,"s1":0.28,"s2":0.21,"s3":0.4,"s4":0.11,"wallUs":35.98,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1963.903,"s4Calls":110},{"s":0.85,"d":0,"tau":1500,"acc":0.995,"s1":0.433,"s2":0,"s3":0.526,"s4":0.041,"wallUs":22.284,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1228.613,"s4Calls":41},{"s":0.85,"d":0,"tau":3000,"acc":0.995,"s1":0.433,"s2":0,"s3":0.492,"s4":0.075,"wallUs":29.477,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1564.627,"s4Calls":75},{"s":0.85,"d":0,"tau":4500,"acc":0.995,"s1":0.433,"s2":0,"s3":0.481,"s4":0.086,"wallUs":31.763,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1743.193,"s4Calls":86},{"s":0.85,"d":0,"tau":6500,"acc":0.995,"s1":0.433,"s2":0,"s3":0.479,"s4":0.088,"wallUs":32.111,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1501.589,"s4Calls":88},{"s":0.85,"d":0,"tau":9000,"acc":0.995,"s1":0.433,"s2":0,"s3":0.479,"s4":0.088,"wallUs":32.087,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1487.83,"s4Calls":88},{"s":0.85,"d":1,"tau":1500,"acc":0.995,"s1":0.433,"s2":0.115,"s3":0.411,"s4":0.041,"wallUs":19.666,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":925.6,"s4Calls":41},{"s":0.85,"d":1,"tau":3000,"acc":0.995,"s1":0.433,"s2":0.115,"s3":0.377,"s4":0.075,"wallUs":26.87,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1234.936,"s4Calls":75},{"s":0.85,"d":1,"tau":4500,"acc":0.995,"s1":0.433,"s2":0.115,"s3":0.366,"s4":0.086,"wallUs":29.202,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1364.314,"s4Calls":86},{"s":0.85,"d":1,"tau":6500,"acc":0.995,"s1":0.433,"s2":0.115,"s3":0.364,"s4":0.088,"wallUs":29.631,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1377.258,"s4Calls":88},{"s":0.85,"d":1,"tau":9000,"acc":0.995,"s1":0.433,"s2":0.115,"s3":0.364,"s4":0.088,"wallUs":29.631,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1367.691,"s4Calls":88},{"s":0.85,"d":2,"tau":1500,"acc":0.995,"s1":0.433,"s2":0.23,"s3":0.296,"s4":0.041,"wallUs":17.15,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":810.138,"s4Calls":41},{"s":0.85,"d":2,"tau":3000,"acc":0.995,"s1":0.433,"s2":0.23,"s3":0.262,"s4":0.075,"wallUs":29.317,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":3945.576,"s4Calls":75},{"s":0.85,"d":2,"tau":4500,"acc":0.995,"s1":0.433,"s2":0.23,"s3":0.251,"s4":0.086,"wallUs":34.154,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":5465.758,"s4Calls":86},{"s":0.85,"d":2,"tau":6500,"acc":0.995,"s1":0.433,"s2":0.23,"s3":0.249,"s4":0.088,"wallUs":34.348,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":5493.01,"s4Calls":88},{"s":0.85,"d":2,"tau":9000,"acc":0.995,"s1":0.433,"s2":0.23,"s3":0.249,"s4":0.088,"wallUs":31.638,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":5062.51,"s4Calls":88},{"s":1.15,"d":0,"tau":1500,"acc":0.997,"s1":0.583,"s2":0,"s3":0.382,"s4":0.035,"wallUs":18.616,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2980.532,"s4Calls":35},{"s":1.15,"d":0,"tau":3000,"acc":0.997,"s1":0.583,"s2":0,"s3":0.356,"s4":0.061,"wallUs":24.54,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":3863.272,"s4Calls":61},{"s":1.15,"d":0,"tau":4500,"acc":0.997,"s1":0.583,"s2":0,"s3":0.347,"s4":0.07,"wallUs":26.49,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":3634.391,"s4Calls":70},{"s":1.15,"d":0,"tau":6500,"acc":0.997,"s1":0.583,"s2":0,"s3":0.347,"s4":0.07,"wallUs":26.548,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":3111.894,"s4Calls":70},{"s":1.15,"d":0,"tau":9000,"acc":0.997,"s1":0.583,"s2":0,"s3":0.347,"s4":0.07,"wallUs":26.076,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2919.872,"s4Calls":70},{"s":1.15,"d":1,"tau":1500,"acc":0.997,"s1":0.583,"s2":0.106,"s3":0.276,"s4":0.035,"wallUs":15.888,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1705.953,"s4Calls":35},{"s":1.15,"d":1,"tau":3000,"acc":0.997,"s1":0.583,"s2":0.106,"s3":0.25,"s4":0.061,"wallUs":21.738,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2114.367,"s4Calls":61},{"s":1.15,"d":1,"tau":4500,"acc":0.997,"s1":0.583,"s2":0.106,"s3":0.241,"s4":0.07,"wallUs":23.806,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2339.552,"s4Calls":70},{"s":1.15,"d":1,"tau":6500,"acc":0.997,"s1":0.583,"s2":0.106,"s3":0.241,"s4":0.07,"wallUs":23.992,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2407.812,"s4Calls":70},{"s":1.15,"d":1,"tau":9000,"acc":0.997,"s1":0.583,"s2":0.106,"s3":0.241,"s4":0.07,"wallUs":23.911,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2416.613,"s4Calls":70},{"s":1.15,"d":2,"tau":1500,"acc":0.997,"s1":0.583,"s2":0.213,"s3":0.169,"s4":0.035,"wallUs":13.402,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1355.822,"s4Calls":35},{"s":1.15,"d":2,"tau":3000,"acc":0.997,"s1":0.583,"s2":0.213,"s3":0.143,"s4":0.061,"wallUs":19.178,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1918.713,"s4Calls":61},{"s":1.15,"d":2,"tau":4500,"acc":0.997,"s1":0.583,"s2":0.213,"s3":0.134,"s4":0.07,"wallUs":21.187,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":2130.177,"s4Calls":70},{"s":1.15,"d":2,"tau":6500,"acc":0.997,"s1":0.583,"s2":0.213,"s3":0.134,"s4":0.07,"wallUs":20.946,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1861.876,"s4Calls":70},{"s":1.15,"d":2,"tau":9000,"acc":0.997,"s1":0.583,"s2":0.213,"s3":0.134,"s4":0.07,"wallUs":20.817,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1825.869,"s4Calls":70},{"s":1.4,"d":0,"tau":1500,"acc":0.999,"s1":0.72,"s2":0,"s3":0.256,"s4":0.024,"wallUs":12.284,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1092.598,"s4Calls":24},{"s":1.4,"d":0,"tau":3000,"acc":0.999,"s1":0.72,"s2":0,"s3":0.229,"s4":0.051,"wallUs":18.209,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1599.207,"s4Calls":51},{"s":1.4,"d":0,"tau":4500,"acc":0.999,"s1":0.72,"s2":0,"s3":0.225,"s4":0.055,"wallUs":19.284,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1774.497,"s4Calls":55},{"s":1.4,"d":0,"tau":6500,"acc":0.999,"s1":0.72,"s2":0,"s3":0.225,"s4":0.055,"wallUs":19.255,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1799.722,"s4Calls":55},{"s":1.4,"d":0,"tau":9000,"acc":0.999,"s1":0.72,"s2":0,"s3":0.225,"s4":0.055,"wallUs":19.289,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1832.91,"s4Calls":55},{"s":1.4,"d":1,"tau":1500,"acc":0.999,"s1":0.72,"s2":0.1,"s3":0.156,"s4":0.024,"wallUs":10.138,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":974.085,"s4Calls":24},{"s":1.4,"d":1,"tau":3000,"acc":0.999,"s1":0.72,"s2":0.1,"s3":0.129,"s4":0.051,"wallUs":16.137,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1674.538,"s4Calls":51},{"s":1.4,"d":1,"tau":4500,"acc":0.999,"s1":0.72,"s2":0.1,"s3":0.125,"s4":0.055,"wallUs":16.938,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1797.837,"s4Calls":55},{"s":1.4,"d":1,"tau":6500,"acc":0.999,"s1":0.72,"s2":0.1,"s3":0.125,"s4":0.055,"wallUs":16.913,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1867.92,"s4Calls":55},{"s":1.4,"d":1,"tau":9000,"acc":0.999,"s1":0.72,"s2":0.1,"s3":0.125,"s4":0.055,"wallUs":17.32,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1948.67,"s4Calls":55},{"s":1.4,"d":2,"tau":1500,"acc":0.999,"s1":0.72,"s2":0.199,"s3":0.057,"s4":0.024,"wallUs":7.771,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":863.229,"s4Calls":24},{"s":1.4,"d":2,"tau":3000,"acc":0.999,"s1":0.72,"s2":0.199,"s3":0.03,"s4":0.051,"wallUs":13.549,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1493.45,"s4Calls":51},{"s":1.4,"d":2,"tau":4500,"acc":0.999,"s1":0.72,"s2":0.199,"s3":0.026,"s4":0.055,"wallUs":14.489,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1642.977,"s4Calls":55},{"s":1.4,"d":2,"tau":6500,"acc":0.999,"s1":0.72,"s2":0.199,"s3":0.026,"s4":0.055,"wallUs":14.42,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1603.028,"s4Calls":55},{"s":1.4,"d":2,"tau":9000,"acc":0.999,"s1":0.72,"s2":0.199,"s3":0.026,"s4":0.055,"wallUs":14.564,"grossUj":null,"netUj":null,"vinUj":null,"pkgUj":1561.112,"s4Calls":55}],"receipts":{"lbBlake3":"964ddc0847f527f2d2d1b2d3f0c69c6b3d55fa53d725af38fcf4cc12619bd5a1","wmBlake3":"67117ec6707dade809db484912d79a139e2dd89b7f950e2367cbe616dbed8005"}}}}</script>
+
+  <script>
+  (function () {
+    'use strict';
+
+    // Theme toggle
+    var themeBtn = document.getElementById('theme-toggle');
+    var themeLabel = document.getElementById('theme-label');
+    var THEMES = ['auto', 'dark', 'light'];
+    function applyTheme(t) {
+      localStorage.setItem('oe-theme', t);
+      var res = t === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : t;
+      document.documentElement.setAttribute('data-theme', res);
+      document.documentElement.style.colorScheme = res;
+      if (themeLabel) themeLabel.textContent = t.charAt(0).toUpperCase() + t.slice(1);
+    }
+    applyTheme(localStorage.getItem('oe-theme') || 'auto');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', function () {
+        var cur = localStorage.getItem('oe-theme') || 'auto';
+        applyTheme(THEMES[(THEMES.indexOf(cur) + 1) % THEMES.length]);
+      });
+    }
+
+    var DATA = JSON.parse(document.getElementById('shot6-inline-data').textContent);
+
+    var BPW_STEPS = [
+      { idx: 0, bpw: 0.0000, rank: null, label: '0.0000 bpw (4 KiB Deterministic Null LUT)', packedKey: 'deterministic_null_lut', naiveKey: 'deterministic_null_lut' },
+      { idx: 1, bpw: 0.0962, rank: 8,    label: '0.0962 bpw (r = 8 · 3,152 B)',              packedKey: 'littlebit_packed_int_r8',  naiveKey: 'subbit_naive_fp32_unpack_r8' },
+      { idx: 2, bpw: 0.1200, rank: 14,   label: '0.1200 bpw (r = 14 · 3,932 B)',             packedKey: 'littlebit_packed_int_r14', naiveKey: 'subbit_naive_fp32_unpack_r14' },
+      { idx: 3, bpw: 0.1517, rank: 22,   label: '0.1517 bpw (r = 22 · 4,972 B · Default)',   packedKey: 'littlebit_packed_int_r22', naiveKey: 'subbit_naive_fp32_unpack_r22' },
+      { idx: 4, bpw: 0.1914, rank: 32,   label: '0.1914 bpw (r = 32 · 6,272 B)',             packedKey: 'littlebit_packed_int_r32', naiveKey: 'subbit_naive_fp32_unpack_r32' },
+      { idx: 5, bpw: 0.2549, rank: 48,   label: '0.2549 bpw (r = 48 · 8,352 B)',             packedKey: 'littlebit_packed_int_r48', naiveKey: 'subbit_naive_fp32_unpack_r48' },
+      { idx: 6, bpw: 2.0000, rank: null, label: '2.0000 bpw (Ternary · 65,540 B)',           packedKey: 'ternary_2bpw',             naiveKey: 'ternary_2bpw' },
+      { idx: 7, bpw: 4.0000, rank: null, label: '4.0000 bpw (INT4 · 131,076 B)',             packedKey: 'int4_4bpw',                naiveKey: 'int4_4bpw' },
+      { idx: 8, bpw: 8.0000, rank: null, label: '8.0000 bpw (Dense INT8 · 262,144 B)',       packedKey: 'dense_int8_8bpw',          naiveKey: 'dense_int8_8bpw' }
+    ];
+
+    var RAIL_OPTIONS = {
+      kv260: [
+        { value: 'gross', label: 'Gross SOM_5V_DC Rail (measured_j · TI INA260)' },
+        { value: 'net',   label: 'Net-Above-Idle A1/A2 Δmeasured_j (0.09% drift · F6 PASS)' }
+      ],
+      thor: [
+        { value: 'gross', label: 'Primary VDD_CPU_SOC_MSS Rail (measured_j · TI INA3221)' },
+        { value: 'vin',   label: 'Whole-Carrier VIN Rail (measured_j · TI INA238)' }
+      ],
+      i9_rapl: [
+        { value: 'gross', label: 'RAPL package-0 Counter (reported_j · powercap)' },
+        { value: 'core',  label: 'RAPL core Counter (reported_j · powercap)' }
+      ],
+      ryzen_rapl: [
+        { value: 'gross', label: 'RAPL package-0 Counter (reported_j · powercap)' },
+        { value: 'core',  label: 'RAPL core Counter (reported_j · powercap)' }
+      ]
+    };
+
+    var state = {
+      board: 'kv260',
+      mode: 'gross',
+      bpwIdx: 3,
+      kernel: 'packed',
+      zipf: 0.85,
+      dmax: 2,
+      tau: 4500,
+      dt: 1000
+    };
+
+    function fmtNum(n, dec) {
+      if (n === null || n === undefined || isNaN(n)) return 'n/a';
+      return Number(n).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+    }
+
+    function fmtUj(uj) {
+      if (uj === null || uj === undefined || isNaN(uj)) return 'n/a';
+      if (uj >= 10000) return fmtNum(uj / 1000, 2) + ' mJ';
+      if (uj >= 100) return fmtNum(uj, 2) + ' µJ';
+      return fmtNum(uj, 4) + ' µJ';
+    }
+
+    function validModeForBoard(board, reqMode) {
+      var opts = RAIL_OPTIONS[board] || RAIL_OPTIONS.kv260;
+      for (var i = 0; i < opts.length; i++) {
+        if (opts[i].value === reqMode) return reqMode;
+      }
+      return opts[0].value;
+    }
+
+    function loadStateFromUrl() {
+      var qp = new URLSearchParams(window.location.search);
+      var b = qp.get('board');
+      if (b && DATA.substrates[b]) state.board = b;
+      var m = qp.get('mode');
+      if (m) state.mode = validModeForBoard(state.board, m);
+      else state.mode = validModeForBoard(state.board, state.mode);
+
+      var pt = qp.get('point');
+      if (pt) {
+        for (var i = 0; i < BPW_STEPS.length; i++) {
+          if (BPW_STEPS[i].packedKey === pt || BPW_STEPS[i].naiveKey === pt || String(BPW_STEPS[i].bpw) === pt) {
+            state.bpwIdx = i;
+            if (BPW_STEPS[i].naiveKey === pt && BPW_STEPS[i].packedKey !== pt) state.kernel = 'naive';
+            break;
+          }
+        }
+      }
+      var k = qp.get('kernel');
+      if (k === 'packed' || k === 'naive') state.kernel = k;
+
+      var z = parseFloat(qp.get('zipf'));
+      if (!isNaN(z)) state.zipf = Math.max(0, Math.min(1.4, Math.round(z * 20) / 20));
+      var dm = parseInt(qp.get('dmax'), 10);
+      if ([0, 1, 2].indexOf(dm) !== -1) state.dmax = dm;
+      var tau = parseInt(qp.get('tau'), 10);
+      if ([1500, 3000, 4500, 6500, 9000].indexOf(tau) !== -1) state.tau = tau;
+      var dt = parseInt(qp.get('dt'), 10);
+      if (!isNaN(dt)) state.dt = Math.max(100, Math.min(50000, dt));
+    }
+
+    function buildShareUrl() {
+      var step = BPW_STEPS[state.bpwIdx] || BPW_STEPS[3];
+      var ptKey = state.kernel === 'naive' ? step.naiveKey : step.packedKey;
+      var params = new URLSearchParams();
+      params.set('board', state.board);
+      params.set('mode', state.mode);
+      params.set('point', ptKey);
+      if (state.kernel === 'naive') params.set('kernel', 'naive');
+      params.set('zipf', state.zipf.toFixed(2));
+      params.set('dmax', String(state.dmax));
+      params.set('tau', String(state.tau));
+      params.set('dt', String(state.dt));
+      return window.location.pathname + '?' + params.toString();
+    }
+
+    function syncUrlSilent() {
+      try {
+        window.history.replaceState(null, '', buildShareUrl());
+      } catch (_e) {}
+    }
+
+    function pointEnergy(sub, pt, mode) {
+      if (!pt) return null;
+      if (sub.evidence_class === 'measured_j') {
+        if (mode === 'net' && pt.netUj !== null && pt.netUj !== undefined) return pt.netUj;
+        if (mode === 'vin' && pt.vinUj !== null && pt.vinUj !== undefined) return pt.vinUj;
+        return pt.grossUj;
+      }
+      if (mode === 'core' && pt.coreUj !== null && pt.coreUj !== undefined) return pt.coreUj;
+      return pt.pkgUj;
+    }
+
+    function getCurveMap(sub) {
+      var map = {};
+      if (sub.curve && sub.curve.length) {
+        for (var i = 0; i < sub.curve.length; i++) map[sub.curve[i].key] = sub.curve[i];
+        return { map: map, full14: true };
+      }
+      // i9_rapl v1 has exact 4 headline regimes; calibrate intermediate curve points from Ryzen x86_64 relative stage ratios while marking non-anchor points clearly
+      var ryzCurve = DATA.substrates.ryzen_rapl.curve || [];
+      var rLut = sub.regimes.deterministic_null_lut;
+      var rInt8 = sub.regimes.dense_int8_baseline;
+      var rPack = sub.regimes.littlebit_joule_packed_int;
+      var rNaive = sub.regimes.subbit_naive_float_unpack;
+      map.deterministic_null_lut = rLut;
+      map.dense_int8_8bpw = rInt8;
+      map.littlebit_packed_int_r22 = rPack;
+      map.subbit_naive_fp32_unpack_r22 = rNaive;
+      var ryzMap = {};
+      for (var j = 0; j < ryzCurve.length; j++) ryzMap[ryzCurve[j].key] = ryzCurve[j];
+      var packScale = (rPack.pkgUj || 81.19) / ((ryzMap.littlebit_packed_int_r22 && ryzMap.littlebit_packed_int_r22.pkgUj) || 723.96);
+      var naiveScale = (rNaive.pkgUj || 20192.17) / ((ryzMap.subbit_naive_fp32_unpack_r22 && ryzMap.subbit_naive_fp32_unpack_r22.pkgUj) || 94059.77);
+      var denseScale = (rInt8.pkgUj || 387.38) / ((ryzMap.dense_int8_8bpw && ryzMap.dense_int8_8bpw.pkgUj) || 528.75);
+      for (var k = 0; k < ryzCurve.length; k++) {
+        var rc = ryzCurve[k];
+        if (map[rc.key]) continue;
+        var sc = rc.key.indexOf('naive') !== -1 ? naiveScale : (rc.bpw >= 2 ? denseScale : packScale);
+        map[rc.key] = {
+          key: rc.key,
+          bpw: rc.bpw,
+          bytes: rc.bytes,
+          acc: rc.acc,
+          correct: rc.correct,
+          wallNs: rc.wallNs * sc,
+          pkgUj: rc.pkgUj * sc,
+          coreUj: rc.pkgUj * sc * ((rPack.coreUj || 65.54) / (rPack.pkgUj || 81.19)),
+          calibratedFrom4Regime: true
+        };
+      }
+      return { map: map, full14: false };
+    }
+
+    function renderSubstrateBar() {
+      var sub = DATA.substrates[state.board];
+      document.querySelectorAll('[data-board]').forEach(function (btn) {
+        var on = btn.getAttribute('data-board') === state.board;
+        btn.classList.toggle('active', on);
+        btn.setAttribute('aria-selected', String(on));
+      });
+
+      var railSel = document.getElementById('sel-rail-mode');
+      var opts = RAIL_OPTIONS[state.board] || RAIL_OPTIONS.kv260;
+      state.mode = validModeForBoard(state.board, state.mode);
+      railSel.innerHTML = opts.map(function (o) {
+        return '<option value="' + o.value + '"' + (o.value === state.mode ? ' selected' : '') + '>' + o.label + '</option>';
+      }).join('');
+
+      document.getElementById('sub-host-detail').textContent =
+        sub.cpu + ' · ' + sub.os + ' · ' + sub.sensorLabel;
+
+      var f6 = document.getElementById('sub-f6-banner');
+      if (state.board === 'kv260') {
+        f6.className = 'f6-banner f6-pass';
+        f6.innerHTML = '<strong>Falsifier 6 Stationarity PASS (KV260 TI INA260 <code>ina260_u14</code>):</strong> Pre/post idle <code>SOM_5V_DC</code> rail held at <code>3.271–3.274 W</code> (<code>0.09%–0.11%</code> drift ≤ <code>5.0%</code> gate across <code>~233 Hz</code> sysfs sampling). Both <strong>Gross SOM Rail <code>measured_j</code></strong> and <strong>A1/A2 Net-Above-Idle <code>Δmeasured_j</code></strong> are licensed and selectable above.';
+      } else if (state.board === 'thor') {
+        f6.className = 'f6-banner f6-warn';
+        f6.innerHTML = '<strong>Falsifier 6 Shared-Host Drift Gate Active (Jetson AGX Thor TI INA3221 + INA238):</strong> Pre/post idle drifted <code>39.78%</code> (Kit 4: <code>27.32 W → 18.25 W</code>) and <code>5.76%</code> (Kit 5) &gt; <code>5.0%</code> threshold due to shared-host background daemons (<code>VDD_GPU = 0.0 W</code> verified). Per Falsifier 6, single-window <code>A1/A2</code> net subtraction is <strong>withheld</strong>; inspect unsubtracted <code>VDD_CPU_SOC_MSS</code> or whole-carrier <code>INA238 VIN</code> <code>measured_j</code>.';
+      } else {
+        f6.className = 'f6-banner f6-pass';
+        f6.innerHTML = '<strong>On-Chip Counter Scope (<code>evidence_class = reported_j</code> · <code>board_metered = false</code> · <code>measured_j = null</code>):</strong> Energy read from Linux <code>/sys/class/powercap/intel-rapl:0/energy_uj</code> across <code>20</code> trials. Never combined with KV260 or Thor DC shunt <code>measured_j</code>.';
+      }
+    }
+
+    function renderWidget1() {
+      var sub = DATA.substrates[state.board];
+      var cm = getCurveMap(sub);
+      var map = cm.map;
+      var step = BPW_STEPS[state.bpwIdx] || BPW_STEPS[3];
+
+      document.getElementById('v-bpw-label').textContent = step.label;
+      document.getElementById('s-bpw-idx').value = String(state.bpwIdx);
+      document.getElementById('sel-subbit-kernel').value = state.kernel;
+      document.getElementById('v-kernel-badge').textContent =
+        state.kernel === 'naive' ? 'Naive FP32 Unpack (Tax)' : 'Packed Integer';
+      document.getElementById('v-kernel-badge').style.color =
+        state.kernel === 'naive' ? '#fb7185' : 'var(--color-brand-cyan)';
+
+      document.querySelectorAll('[data-bpw-idx]').forEach(function (b) {
+        b.classList.toggle('active', parseInt(b.getAttribute('data-bpw-idx'), 10) === state.bpwIdx);
+      });
+
+      var evChip = document.getElementById('w1-evidence-chip');
+      evChip.className = sub.evidence_class === 'measured_j' ? 'chip chip-meas' : 'chip chip-sim';
+      evChip.textContent = sub.evidence_class === 'measured_j'
+        ? ('Physical DC Shunt · measured_j (' + state.mode.toUpperCase() + ')')
+        : ('Linux RAPL · reported_j (' + state.mode.toUpperCase() + ')');
+
+      var activeKey = state.kernel === 'naive' ? step.naiveKey : step.packedKey;
+      var pt = map[activeKey] || map[step.packedKey];
+      var ptPack = map[step.packedKey];
+      var ptNaive = map[step.naiveKey];
+      var ptInt8 = map.dense_int8_8bpw;
+
+      var eVal = pointEnergy(sub, pt, state.mode);
+      var eInt8 = pointEnergy(sub, ptInt8, state.mode);
+      var ePack = pointEnergy(sub, ptPack, state.mode);
+      var eNaive = pointEnergy(sub, ptNaive, state.mode);
+
+      // Use exact 8-trial/20-trial headline regime numbers when at canonical r=22 (idx=3) or LUT (idx=0) or INT8 (idx=8)
+      if (state.bpwIdx === 3) {
+        var hReg = state.kernel === 'naive' ? sub.regimes.subbit_naive_float_unpack : sub.regimes.littlebit_joule_packed_int;
+        if (hReg) {
+          eVal = pointEnergy(sub, hReg, state.mode);
+          eInt8 = pointEnergy(sub, sub.regimes.dense_int8_baseline, state.mode);
+          ePack = pointEnergy(sub, sub.regimes.littlebit_joule_packed_int, state.mode);
+          eNaive = pointEnergy(sub, sub.regimes.subbit_naive_float_unpack, state.mode);
+          pt = hReg;
+        }
+      }
+
+      var bytes = pt ? pt.bytes : 4972;
+      document.getElementById('w1-bytes').textContent = bytes.toLocaleString('en-US') + ' B';
+      document.getElementById('w1-comp').textContent =
+        step.idx === 0
+          ? '4.00 KiB O(1) Quadrant Lookup Table (64.0× < INT8)'
+          : fmtNum(262144 / bytes, 2) + '× smaller than INT8 (262,144 B)';
+
+      var accPct = pt ? pt.acc * 100 : 100;
+      document.getElementById('w1-acc').textContent = fmtNum(accPct, 2) + '%';
+      document.getElementById('w1-acc-sub').textContent =
+        (pt && pt.correct ? pt.correct.toLocaleString('en-US') : '1,200') +
+        ' / 1,200 held-out (' + (accPct >= 99.99 ? '+3.67 pp tail closed over LUT' : '3.67 pp residual needs Stage 3') + ')';
+
+      var w1EjEl = document.getElementById('w1-ej');
+      w1EjEl.textContent = fmtUj(eVal);
+      w1EjEl.style.color = (state.kernel === 'naive' && step.rank) ? '#fb7185' : 'var(--color-brand-cyan)';
+
+      var wallUs = pt && pt.wallNs ? (pt.wallNs / 1000) : 0;
+      var sampleBit = sub.evidence_class === 'measured_j' && pt && pt.shuntN
+        ? (' · ' + Math.round(pt.shuntN) + ' shunt samples')
+        : '';
+      document.getElementById('w1-ej-sub').textContent =
+        sub.evidence_class + ' · ' + (wallUs >= 1000 ? fmtNum(wallUs / 1000, 2) + ' ms' : fmtNum(wallUs, 2) + ' µs') + '/correct' + sampleBit;
+
+      var ratioEl = document.getElementById('w1-ratio');
+      var ratioSubEl = document.getElementById('w1-ratio-sub');
+      if (eVal && eInt8) {
+        if (eVal <= eInt8) {
+          ratioEl.textContent = fmtNum(eInt8 / eVal, 2) + '× Lower J';
+          ratioEl.style.color = 'var(--color-brand-cyan)';
+        } else {
+          ratioEl.textContent = fmtNum(eVal / eInt8, 2) + '× Penalty!';
+          ratioEl.style.color = '#fb7185';
+        }
+        if (step.rank && ePack && eNaive) {
+          ratioSubEl.textContent = 'Packed beats Naive FP32 unpack by ' + fmtNum(eNaive / ePack, 1) + '× on same rail';
+        } else {
+          ratioSubEl.textContent = 'Same-meter ratio against 8.00 bpw Dense INT8 (' + fmtUj(eInt8) + ')';
+        }
+      }
+
+      document.getElementById('w1-curve-note').textContent = cm.full14
+        ? '14/14 directly metered curve points on this substrate (click any node on chart to inspect).'
+        : (pt && pt.calibratedFrom4Regime
+            ? 'i9-13900H v1 receipt anchors 4 exact regimes (LUT, r=22 Packed, r=22 Naive, INT8); intermediate rank scaled from x86_64 curve.'
+            : 'Exact 20-trial i9-13900H RAPL receipt anchor.');
+
+      // Render SVG Log-Energy vs Bit-Width Curve
+      var svg = document.getElementById('svg-bitwidth-curve');
+      var W = 760, H = 285, padL = 68, padR = 26, padT = 26, padB = 46;
+      var plotW = W - padL - padR, plotH = H - padT - padB;
+
+      function xOfIdx(idx) {
+        return padL + (idx / 8) * plotW;
+      }
+
+      var allEnergies = [];
+      BPW_STEPS.forEach(function (st) {
+        var ep = pointEnergy(sub, map[st.packedKey], state.mode);
+        var en = pointEnergy(sub, map[st.naiveKey], state.mode);
+        if (ep > 0) allEnergies.push(ep);
+        if (en > 0) allEnergies.push(en);
+      });
+      var minLog = Math.floor(Math.log10(Math.max(0.05, Math.min.apply(null, allEnergies))));
+      var maxLog = Math.ceil(Math.log10(Math.max(10, Math.max.apply(null, allEnergies))));
+      if (maxLog <= minLog) maxLog = minLog + 4;
+
+      function yOfE(e) {
+        var lg = Math.log10(Math.max(1e-3, e));
+        return padT + (1 - (lg - minLog) / (maxLog - minLog)) * plotH;
+      }
+
+      var out = [];
+      // Horizontal log grid lines
+      for (var lg = minLog; lg <= maxLog; lg++) {
+        var gy = yOfE(Math.pow(10, lg));
+        var lbl = lg >= 3 ? (Math.pow(10, lg - 3) + ' mJ') : (lg >= 0 ? (Math.pow(10, lg) + ' µJ') : (Math.pow(10, lg + 3) + ' nJ'));
+        out.push('<line x1="' + padL + '" y1="' + gy.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + gy.toFixed(1) + '" stroke="rgba(148,163,184,0.16)" stroke-dasharray="3,3"/>');
+        out.push('<text x="' + (padL - 8) + '" y="' + (gy + 4).toFixed(1) + '" text-anchor="end" fill="#94a3b8" font-family="JetBrains Mono,monospace" font-size="10">' + lbl + '</text>');
+      }
+
+      // Dense INT8 horizontal reference line
+      if (eInt8 > 0) {
+        var yInt8 = yOfE(eInt8);
+        out.push('<line x1="' + padL + '" y1="' + yInt8.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + yInt8.toFixed(1) + '" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="6,4"/>');
+        out.push('<text x="' + (W - padR - 4) + '" y="' + (yInt8 - 6).toFixed(1) + '" text-anchor="end" fill="#cbd5e1" font-family="JetBrains Mono,monospace" font-size="10">Dense INT8 Baseline (' + fmtUj(eInt8) + ')</text>');
+      }
+
+      // Naive FP32 Decompress curve (indices 1..5 connected to 6..8)
+      var naivePts = [];
+      for (var ni = 1; ni <= 5; ni++) {
+        var ne = pointEnergy(sub, map[BPW_STEPS[ni].naiveKey], state.mode);
+        if (ne > 0) naivePts.push(xOfIdx(ni).toFixed(1) + ',' + yOfE(ne).toFixed(1));
+      }
+      if (naivePts.length > 1) {
+        out.push('<polyline fill="none" stroke="#fb7185" stroke-width="2.6" points="' + naivePts.join(' ') + '"/>');
+      }
+
+      // Packed Integer curve (indices 0..8)
+      var packedPts = [];
+      for (var pi = 0; pi <= 8; pi++) {
+        var pe = pointEnergy(sub, map[BPW_STEPS[pi].packedKey], state.mode);
+        if (pe > 0) packedPts.push(xOfIdx(pi).toFixed(1) + ',' + yOfE(pe).toFixed(1));
+      }
+      if (packedPts.length > 1) {
+        out.push('<polyline fill="none" stroke="#00d4aa" stroke-width="2.8" points="' + packedPts.join(' ') + '"/>');
+      }
+
+      // X-axis labels & interactive nodes
+      var shortX = ['0.00 LUT', '0.096 r8', '0.120 r14', '0.152 r22', '0.191 r32', '0.255 r48', '2.0 Tern', '4.0 INT4', '8.0 INT8'];
+      BPW_STEPS.forEach(function (st, idx) {
+        var cx = xOfIdx(idx);
+        out.push('<text x="' + cx.toFixed(1) + '" y="' + (H - 14) + '" text-anchor="middle" fill="' + (idx === state.bpwIdx ? '#f59e0b' : '#94a3b8') + '" font-family="JetBrains Mono,monospace" font-size="10" font-weight="' + (idx === state.bpwIdx ? '700' : '400') + '">' + shortX[idx] + '</text>');
+
+        var ep = pointEnergy(sub, map[st.packedKey], state.mode);
+        if (ep > 0) {
+          var yp = yOfE(ep);
+          var selP = (idx === state.bpwIdx && (state.kernel === 'packed' || !st.rank));
+          if (selP) out.push('<circle cx="' + cx.toFixed(1) + '" cy="' + yp.toFixed(1) + '" r="10" fill="rgba(0,212,170,0.22)" stroke="#00d4aa" stroke-width="1.5"/>');
+          out.push('<circle class="svg-pt" data-pt-idx="' + idx + '" data-pt-kern="packed" cx="' + cx.toFixed(1) + '" cy="' + yp.toFixed(1) + '" r="' + (selP ? 5.5 : 4.2) + '" fill="' + (idx === 0 ? '#38bdf8' : '#00d4aa') + '" stroke="#0a0a0f" stroke-width="1.2" style="cursor:pointer"><title>' + st.label + ' Packed: ' + fmtUj(ep) + '</title></circle>');
+        }
+        if (st.rank) {
+          var en = pointEnergy(sub, map[st.naiveKey], state.mode);
+          if (en > 0) {
+            var yn = yOfE(en);
+            var selN = (idx === state.bpwIdx && state.kernel === 'naive');
+            if (selN) out.push('<circle cx="' + cx.toFixed(1) + '" cy="' + yn.toFixed(1) + '" r="10" fill="rgba(251,113,133,0.25)" stroke="#fb7185" stroke-width="1.5"/>');
+            out.push('<circle class="svg-pt" data-pt-idx="' + idx + '" data-pt-kern="naive" cx="' + cx.toFixed(1) + '" cy="' + yn.toFixed(1) + '" r="' + (selN ? 5.5 : 4.2) + '" fill="#fb7185" stroke="#0a0a0f" stroke-width="1.2" style="cursor:pointer"><title>' + st.label + ' Naive FP32 Unpack: ' + fmtUj(en) + '</title></circle>');
+          }
+        }
+      });
+
+      // Legend
+      out.push('<rect x="' + (padL + 8) + '" y="' + (padT + 4) + '" width="10" height="10" rx="2" fill="#00d4aa"/>');
+      out.push('<text x="' + (padL + 23) + '" y="' + (padT + 13) + '" fill="#00d4aa" font-family="JetBrains Mono,monospace" font-size="10.5">Packed Integer (FWHT + XNOR + popcount)</text>');
+      out.push('<rect x="' + (padL + 295) + '" y="' + (padT + 4) + '" width="10" height="10" rx="2" fill="#fb7185"/>');
+      out.push('<text x="' + (padL + 310) + '" y="' + (padT + 13) + '" fill="#fb7185" font-family="JetBrains Mono,monospace" font-size="10.5">Naive Runtime FP32 Unpack (Impedance Tax)</text>');
+
+      svg.innerHTML = out.join('');
+      svg.querySelectorAll('.svg-pt').forEach(function (c) {
+        c.addEventListener('click', function () {
+          state.bpwIdx = parseInt(c.getAttribute('data-pt-idx'), 10);
+          state.kernel = c.getAttribute('data-pt-kern') || 'packed';
+          updateAll();
+        });
+      });
+    }
+
+    function lookupCascadeCell(sub, zipf, dmax, tau) {
+      var gridSrc = (sub.grid && sub.grid.length) ? sub.grid : DATA.substrates.kv260.grid;
+      var hasOwnGrid = !!(sub.grid && sub.grid.length);
+      var S_GRID = [0.0, 0.50, 0.85, 1.15, 1.40];
+
+      function findExact(sVal) {
+        for (var i = 0; i < gridSrc.length; i++) {
+          var g = gridSrc[i];
+          if (Math.abs(g.s - sVal) < 1e-4 && g.d === dmax && g.tau === tau) return g;
+        }
+        return gridSrc[0];
+      }
+
+      function cellEnergyOnSub(cell) {
+        if (hasOwnGrid) {
+          if (sub.evidence_class === 'measured_j') {
+            if (state.mode === 'net' && cell.netUj !== null && cell.netUj !== undefined) return cell.netUj;
+            if (state.mode === 'vin' && cell.vinUj !== null && cell.vinUj !== undefined) return cell.vinUj;
+            return cell.grossUj;
+          }
+          if (state.mode === 'core' && sub.pipelines.cascade.coreUj && sub.pipelines.cascade.pkgUj) {
+            return cell.pkgUj * (sub.pipelines.cascade.coreUj / sub.pipelines.cascade.pkgUj);
+          }
+          return cell.pkgUj;
+        }
+        // i9_rapl v1: scale from i9's measured 3-pipeline stage costs (LUT ~1.12 uJ, Sparse ~28 uJ, Mosaic 759.77 uJ, Dense 4902.29 uJ)
+        var coreRatio = state.mode === 'core' ? (sub.pipelines.cascade.coreUj / sub.pipelines.cascade.pkgUj) : 1.0;
+        var eEst = (cell.s1 * 1.12 + cell.s2 * 28.0 + cell.s3 * sub.pipelines.mosaic.pkgUj + cell.s4 * sub.pipelines.dense.pkgUj) * coreRatio;
+        return eEst;
+      }
+
+      var loS = S_GRID[0], hiS = S_GRID[S_GRID.length - 1];
+      for (var i = 0; i < S_GRID.length; i++) {
+        if (Math.abs(S_GRID[i] - zipf) < 1e-4) {
+          var ex = findExact(S_GRID[i]);
+          return {
+            exact: hasOwnGrid,
+            calibratedI9: !hasOwnGrid,
+            s1: ex.s1, s2: ex.s2, s3: ex.s3, s4: ex.s4,
+            acc: ex.acc,
+            wallUs: hasOwnGrid ? ex.wallUs : (ex.wallUs * (sub.pipelines.cascade.wallUs / DATA.substrates.kv260.pipelines.cascade.wallUs)),
+            energyUj: cellEnergyOnSub(ex),
+            stage4CallsPer1k: ex.s4Calls
+          };
+        }
+        if (S_GRID[i] < zipf) loS = S_GRID[i];
+        if (S_GRID[i] > zipf) { hiS = S_GRID[i]; break; }
+      }
+      var cLo = findExact(loS), cHi = findExact(hiS);
+      var t = hiS > loS ? (zipf - loS) / (hiS - loS) : 0;
+      var lerp = function (a, b) { return a + (b - a) * t; };
+      return {
+        exact: false,
+        calibratedI9: !hasOwnGrid,
+        s1: lerp(cLo.s1, cHi.s1),
+        s2: lerp(cLo.s2, cHi.s2),
+        s3: lerp(cLo.s3, cHi.s3),
+        s4: lerp(cLo.s4, cHi.s4),
+        acc: lerp(cLo.acc, cHi.acc),
+        wallUs: lerp(cLo.wallUs, cHi.wallUs),
+        energyUj: lerp(cellEnergyOnSub(cLo), cellEnergyOnSub(cHi)),
+        stage4CallsPer1k: Math.round(lerp(cLo.s4Calls, cHi.s4Calls))
+      };
+    }
+
+    function pipelineEnergy(sub, pipeObj) {
+      if (!pipeObj) return 0;
+      if (sub.evidence_class === 'measured_j') {
+        if (state.mode === 'net' && pipeObj.netUj !== null && pipeObj.netUj !== undefined) return pipeObj.netUj;
+        if (state.mode === 'vin' && pipeObj.vinUj !== null && pipeObj.vinUj !== undefined) return pipeObj.vinUj;
+        return pipeObj.grossUj;
+      }
+      if (state.mode === 'core' && pipeObj.coreUj !== null && pipeObj.coreUj !== undefined) return pipeObj.coreUj;
+      return pipeObj.pkgUj;
+    }
+
+    function renderWidget2() {
+      var sub = DATA.substrates[state.board];
+      document.getElementById('s-zipf').value = String(state.zipf);
+      document.getElementById('v-zipf').textContent = 's = ' + state.zipf.toFixed(2);
+      document.getElementById('sel-dmax').value = String(state.dmax);
+      document.getElementById('v-dmax').textContent = state.dmax === 0 ? 'Disabled' : ('Edit ≤ ' + state.dmax);
+      document.getElementById('sel-tau').value = String(state.tau);
+      document.getElementById('v-tau').textContent = 'τ = ' + state.tau;
+      document.getElementById('s-dt').value = String(state.dt);
+      document.getElementById('v-dt').textContent = state.dt.toLocaleString('en-US') + ' queries';
+
+      document.querySelectorAll('.zipf-chip').forEach(function (b) {
+        b.classList.toggle('active', Math.abs(parseFloat(b.getAttribute('data-zipf')) - state.zipf) < 1e-3);
+      });
+
+      var evChip = document.getElementById('w2-evidence-chip');
+      evChip.className = sub.evidence_class === 'measured_j' ? 'chip chip-meas' : 'chip chip-sim';
+      evChip.textContent = sub.evidence_class === 'measured_j'
+        ? ('Physical DC Shunt · measured_j (' + state.mode.toUpperCase() + ')')
+        : ('Linux RAPL · reported_j (' + state.mode.toUpperCase() + ')');
+
+      var cell = lookupCascadeCell(sub, state.zipf, state.dmax, state.tau);
+      var cellBadge = document.getElementById('w2-cell-badge');
+      if (cell.exact) {
+        cellBadge.className = 'chip chip-meas';
+        cellBadge.textContent = 'Exact Measured 75-Cell Grid Point';
+      } else if (cell.calibratedI9) {
+        cellBadge.className = 'chip chip-sim';
+        cellBadge.textContent = '75-Cell Routing + i9 Stage-Calibrated RAPL';
+      } else {
+        cellBadge.className = 'chip chip-est';
+        cellBadge.textContent = 'Linearly Interpolated Between Adjacent Measured s Cells';
+      }
+
+      // Funnel bar
+      var p1 = (cell.s1 * 100), p2 = (cell.s2 * 100), p3 = (cell.s3 * 100), p4 = (cell.s4 * 100);
+      var f1 = document.getElementById('f-seg-1'), f2 = document.getElementById('f-seg-2'), f3 = document.getElementById('f-seg-3'), f4 = document.getElementById('f-seg-4');
+      f1.style.width = p1.toFixed(1) + '%'; f1.textContent = p1 >= 9 ? ('S1 LUT ' + p1.toFixed(0) + '%') : '';
+      f2.style.width = p2.toFixed(1) + '%'; f2.textContent = p2 >= 9 ? ('S2 Edit ' + p2.toFixed(0) + '%') : '';
+      f3.style.width = p3.toFixed(1) + '%'; f3.textContent = p3 >= 9 ? ('S3 Mosaic ' + p3.toFixed(0) + '%') : '';
+      f4.style.width = p4.toFixed(1) + '%'; f4.textContent = p4 >= 6 ? ('S4 ' + p4.toFixed(1) + '%') : '';
+
+      document.getElementById('w2-funnel-acc').textContent = 'End-to-End Accuracy: ' + fmtNum(cell.acc * 100, 2) + '%';
+
+      var eCanonCasc = pipelineEnergy(sub, sub.pipelines.cascade);
+      var eCanonMos  = pipelineEnergy(sub, sub.pipelines.mosaic);
+      var eCanonDen  = pipelineEnergy(sub, sub.pipelines.dense);
+
+      document.getElementById('w2-grid-ej').textContent = fmtUj(cell.energyUj);
+      document.getElementById('w2-grid-sub').textContent =
+        fmtNum(eCanonDen / Math.max(0.01, cell.energyUj), 2) + '× lower than Always-Dense (' + fmtNum(cell.wallUs, 1) + ' µs/q)';
+
+      document.getElementById('w2-canon-gain').textContent = fmtNum(eCanonDen / Math.max(0.01, eCanonCasc), 2) + '× Gain';
+      document.getElementById('w2-canon-sub').textContent =
+        'Canonical 1k: ' + fmtUj(eCanonCasc) + ' vs ' + fmtUj(eCanonDen) + ' (' + sub.evidence_class + ')';
+
+      var localAbsorb = (cell.s1 + cell.s2 + cell.s3) * 100;
+      document.getElementById('w2-local-pct').textContent = fmtNum(localAbsorb, 1) + '%';
+      document.getElementById('w2-local-sub').textContent =
+        'Zero-NN S1+S2: ' + fmtNum((cell.s1 + cell.s2) * 100, 1) + '% · S3 Mosaic: ' + fmtNum(cell.s3 * 100, 1) + '%';
+
+      // Compilation Horizon break-even ΔT*: cost to crystallize 4 KiB LUT + trigram table (~25x Dense query cost)
+      var compileFixedUj = eCanonDen * 18;
+      var perQuerySavedUj = Math.max(0, eCanonDen - cell.energyUj);
+      var dtStar = perQuerySavedUj > 0 ? Math.ceil(compileFixedUj / perQuerySavedUj) : 999999;
+      var verdictEl = document.getElementById('w2-dt-verdict');
+      if (state.dt >= dtStar) {
+        var netFactor = (state.dt * eCanonDen) / (compileFixedUj + state.dt * cell.energyUj);
+        verdictEl.textContent = 'COMPILE (' + fmtNum(netFactor, 2) + '×)';
+        verdictEl.style.color = 'var(--color-brand-cyan)';
+      } else {
+        verdictEl.textContent = 'HOLD (ΔT < ΔT*)';
+        verdictEl.style.color = 'var(--color-brand-amber)';
+      }
+      document.getElementById('w2-dt-sub').textContent =
+        'Threshold ΔT* ≈ ' + dtStar.toLocaleString('en-US') + ' queries on active rail';
+      document.getElementById('w2-breakeven-sub').textContent =
+        'Over ΔT = ' + state.dt.toLocaleString('en-US') + ' queries: ' +
+        fmtUj(state.dt * cell.energyUj) + ' cascade vs ' + fmtUj(state.dt * eCanonDen) + ' Always-Dense (' + sub.evidence_class + ')';
+
+      // Render Cascade SVG Bars
+      var rows = [
+        { label: '4-Stage Cascade (Canonical 1k)', val: eCanonCasc, wall: sub.pipelines.cascade.wallUs, color: '#00d4aa' },
+        { label: 'Selected Grid Cell (s=' + state.zipf.toFixed(2) + ', d=' + state.dmax + ', τ=' + state.tau + ')', val: cell.energyUj, wall: cell.wallUs, color: '#38bdf8' },
+        { label: 'Always-Stage-3 waiOS Mosaic', val: eCanonMos, wall: sub.pipelines.mosaic.wallUs, color: '#a78bfa' },
+        { label: 'Always-Dense Baseline', val: eCanonDen, wall: sub.pipelines.dense.wallUs, color: '#fb7185' }
+      ];
+      var maxV = Math.max.apply(null, rows.map(function (r) { return r.val || 1; }));
+      var svg = document.getElementById('svg-cascade-bars');
+      var bOut = [];
+      var labelX = 278, barMaxW = 330;
+      rows.forEach(function (r, idx) {
+        var y = 20 + idx * 46;
+        var bw = Math.max(6, (r.val / maxV) * barMaxW);
+        bOut.push('<text x="' + (labelX - 10) + '" y="' + (y + 18) + '" text-anchor="end" fill="#e2e8f0" font-family="JetBrains Mono,monospace" font-size="11">' + r.label + '</text>');
+        bOut.push('<rect x="' + labelX + '" y="' + y + '" width="' + barMaxW + '" height="26" rx="5" fill="rgba(148,163,184,0.10)"/>');
+        bOut.push('<rect x="' + labelX + '" y="' + y + '" width="' + bw.toFixed(1) + '" height="26" rx="5" fill="' + r.color + '"/>');
+        bOut.push('<text x="' + (labelX + bw + 8).toFixed(1) + '" y="' + (y + 17) + '" fill="' + r.color + '" font-family="JetBrains Mono,monospace" font-size="11" font-weight="600">' + fmtUj(r.val) + ' (' + fmtNum(r.wall, 1) + ' µs)</text>');
+      });
+      svg.innerHTML = bOut.join('');
+
+      // Strictly isolated est_j cloud reference
+      var stage4Frac = Math.max(0.001, cell.s4);
+      var remoteCallsAtDt = Math.round(state.dt * stage4Frac);
+      var remoteEstJ = remoteCallsAtDt * 1.5;
+      var frontierOnlyEstJ = state.dt * 1.5;
+      var callAvoidance = 1 / stage4Frac;
+      document.getElementById('w2-est-copy').innerHTML =
+        'Canonical <code>1,000</code>-query stream: <strong><code>26</code> Stage-4 escalations</strong> vs <code>1,000</code> frontier-only calls = <strong><code>38.46×</code> remote call avoidance</strong> (<code>39.00 est_j</code> vs <code>1,500.00 est_j</code> @ <code>1.50 est_j/call</code>). ' +
+        'At your active 75-cell setting (<code>s=' + state.zipf.toFixed(2) + ', d_max=' + state.dmax + ', τ=' + state.tau + '</code>) over <code>ΔT = ' + state.dt.toLocaleString('en-US') + '</code> queries: ' +
+        '<strong><code>' + remoteCallsAtDt.toLocaleString('en-US') + '</code> remote calls</strong> (<code>' + fmtNum(remoteEstJ, 1) + ' est_j</code> vs <code>' + fmtNum(frontierOnlyEstJ, 1) + ' est_j</code> = <strong><code>' + fmtNum(callAvoidance, 2) + '×</code> call reduction</strong>) — kept strictly separate from local silicon <code>' + sub.evidence_class + '</code>.';
+    }
+
+    // ── Pure-JS BLAKE3 + BigInt LCG 3-Lane waiOS 256x128 Verifier ──────────────
+    var B3_IV = new Uint32Array([0x6A09E667,0xBB67AE85,0x3C6EF372,0xA54FF53A,0x510E527F,0x9B05688C,0x1F83D9AB,0x5BE0CD19]);
+    var B3_PERM = [2,6,3,10,7,0,4,13,1,11,12,5,9,14,15,8];
+
+    function rotr32(x, n) { return ((x >>> n) | (x << (32 - n))) >>> 0; }
+    function b3g(s, a, b, c, d, mx, my) {
+      s[a] = (s[a] + s[b] + mx) >>> 0; s[d] = rotr32(s[d] ^ s[a], 16);
+      s[c] = (s[c] + s[d]) >>> 0;      s[b] = rotr32(s[b] ^ s[c], 12);
+      s[a] = (s[a] + s[b] + my) >>> 0; s[d] = rotr32(s[d] ^ s[a], 8);
+      s[c] = (s[c] + s[d]) >>> 0;      s[b] = rotr32(s[b] ^ s[c], 7);
+    }
+    function b3Compress(cv, blockWords, counter, blockLen, flags) {
+      var s = new Uint32Array(16);
+      s.set(cv, 0); s.set(B3_IV.subarray(0, 4), 8);
+      s[12] = counter >>> 0; s[13] = Math.floor(counter / 0x100000000) >>> 0;
+      s[14] = blockLen >>> 0; s[15] = flags >>> 0;
+      var m = Uint32Array.from(blockWords);
+      for (var r = 0; r < 7; r++) {
+        b3g(s,0,4,8,12,m[0],m[1]); b3g(s,1,5,9,13,m[2],m[3]); b3g(s,2,6,10,14,m[4],m[5]); b3g(s,3,7,11,15,m[6],m[7]);
+        b3g(s,0,5,10,15,m[8],m[9]); b3g(s,1,6,11,12,m[10],m[11]); b3g(s,2,7,8,13,m[12],m[13]); b3g(s,3,4,9,14,m[14],m[15]);
+        if (r < 6) {
+          var nxt = new Uint32Array(16);
+          for (var i = 0; i < 16; i++) nxt[i] = m[B3_PERM[i]];
+          m = nxt;
+        }
+      }
+      for (var j = 0; j < 8; j++) { s[j] ^= s[j + 8]; s[j + 8] ^= cv[j]; }
+      return s;
+    }
+    function b3Words64(bytes, offset, len) {
+      var buf = new Uint8Array(64);
+      buf.set(bytes.subarray(offset, offset + Math.min(64, len)));
+      var dv = new DataView(buf.buffer);
+      var out = new Uint32Array(16);
+      for (var i = 0; i < 16; i++) out[i] = dv.getUint32(i * 4, true);
+      return out;
+    }
+    function blake3HashWith(data, keyWords, flags) {
+      var stack = [];
+      var chunk = 0, pos = 0;
+      while (data.length - pos > 1024) {
+        var cv = Uint32Array.from(keyWords);
+        for (var b = 0; b < 16; b++) {
+          var f = flags | (b === 0 ? 1 : 0) | (b === 15 ? 2 : 0);
+          cv = b3Compress(cv, b3Words64(data, pos + b * 64, 64), chunk, 64, f).subarray(0, 8);
+        }
+        chunk++;
+        var total = chunk, node = cv;
+        while ((total & 1) === 0) {
+          var left = stack.pop();
+          var comb = new Uint32Array(16); comb.set(left, 0); comb.set(node, 8);
+          node = b3Compress(keyWords, comb, 0, 64, flags | 4).subarray(0, 8);
+          total >>= 1;
+        }
+        stack.push(node);
+        pos += 1024;
+      }
+      var restLen = data.length - pos;
+      var blocks = Math.max(1, Math.ceil(restLen / 64));
+      var cv2 = Uint32Array.from(keyWords);
+      for (var b2 = 0; b2 < blocks - 1; b2++) {
+        var f2 = flags | (b2 === 0 ? 1 : 0);
+        cv2 = b3Compress(cv2, b3Words64(data, pos + b2 * 64, 64), chunk, 64, f2).subarray(0, 8);
+      }
+      var lastOff = pos + (blocks - 1) * 64;
+      var lastLen = Math.max(0, data.length - lastOff);
+      var outCv = cv2, outBlock = b3Words64(data, lastOff, lastLen), outCounter = chunk, outLen = lastLen;
+      var outFlags = flags | (blocks === 1 ? 1 : 0) | 2;
+      while (stack.length) {
+        var lft = stack.pop();
+        var rgt = b3Compress(outCv, outBlock, outCounter, outLen, outFlags).subarray(0, 8);
+        var comb2 = new Uint32Array(16); comb2.set(lft, 0); comb2.set(rgt, 8);
+        outCv = keyWords; outBlock = comb2; outCounter = 0; outLen = 64; outFlags = flags | 4;
+      }
+      var root = b3Compress(outCv, outBlock, outCounter, outLen, outFlags | 8).subarray(0, 8);
+      var outBytes = new Uint8Array(32);
+      var dv = new DataView(outBytes.buffer);
+      for (var k = 0; k < 8; k++) dv.setUint32(k * 4, root[k], true);
+      return outBytes;
+    }
+    function blake3DeriveKeyHex(ctxStr, dataBytes) {
+      var ctxBytes = new TextEncoder().encode(ctxStr);
+      var keyBytes = blake3HashWith(ctxBytes, B3_IV, 32);
+      var keyWords = new Uint32Array(8);
+      var dv = new DataView(keyBytes.buffer);
+      for (var i = 0; i < 8; i++) keyWords[i] = dv.getUint32(i * 4, true);
+      var out = blake3HashWith(dataBytes, keyWords, 64);
+      var hex = '';
+      for (var j = 0; j < out.length; j++) hex += out[j].toString(16).padStart(2, '0');
+      return hex;
+    }
+
+    function popcnt32(x) {
+      x = x - ((x >>> 1) & 0x55555555);
+      x = (x & 0x33333333) + ((x >>> 2) & 0x33333333);
+      return (((x + (x >>> 4)) & 0x0F0F0F0F) * 0x01010101) >>> 24;
+    }
+
+    function runWaiosBrowserVerifier(injectRow77Tamper) {
+      var t0 = performance.now();
+      var MUL = 6364136223846793005n, ADD = 1442695040888963407n, MASK64 = 0xFFFFFFFFFFFFFFFFn;
+      var seed = 0xdeadbeefcafebaben;
+      var W = new Int8Array(256 * 128);
+      var A = new Int8Array(128);
+      for (var i = 0; i < 256 * 128; i++) {
+        seed = (seed * MUL + ADD) & MASK64;
+        var m = Number((seed >> 32n) % 3n);
+        W[i] = m === 0 ? -1 : (m === 1 ? 0 : 1);
+      }
+      for (var c = 0; c < 128; c++) {
+        seed = (seed * MUL + ADD) & MASK64;
+        A[c] = Number((seed >> 40n) % 251n) - 125;
+      }
+      if (injectRow77Tamper) {
+        W[77 * 128 + 0] = 1; // Canonical fault: w[77,0]: 0 -> 1 (where A[0] = -26)
+      }
+
+      // Lane 1: Direct scalar i32
+      var out1 = new Int32Array(256);
+      for (var r = 0; r < 256; r++) {
+        var acc = 0;
+        var rowOff = r * 128;
+        for (var k = 0; k < 128; k++) acc = (acc + W[rowOff + k] * A[k]) | 0;
+        out1[r] = acc;
+      }
+
+      // Lane 2: Packed 2-bit bit-sliced popcount over four 32-bit words x 7 magnitude planes (0 multiplies)
+      var actNeg = new Uint32Array(4);
+      var actPlane = [];
+      for (var p = 0; p < 7; p++) actPlane.push(new Uint32Array(4));
+      for (var w = 0; w < 4; w++) {
+        for (var b = 0; b < 32; b++) {
+          var av = A[w * 32 + b];
+          var mag = av < 0 ? -av : av;
+          if (av < 0) actNeg[w] |= (1 << b);
+          for (var pl = 0; pl < 7; pl++) {
+            if ((mag >> pl) & 1) actPlane[pl][w] |= (1 << b);
+          }
+        }
+      }
+      var out2 = new Int32Array(256);
+      for (var r2 = 0; r2 < 256; r2++) {
+        var pm = new Uint32Array(4), nm = new Uint32Array(4);
+        var ro2 = r2 * 128;
+        for (var w2 = 0; w2 < 4; w2++) {
+          for (var b2 = 0; b2 < 32; b2++) {
+            var wv = W[ro2 + w2 * 32 + b2];
+            if (wv === 1) pm[w2] |= (1 << b2);
+            else if (wv === -1) nm[w2] |= (1 << b2);
+          }
+        }
+        var acc2 = 0;
+        for (var pl2 = 0; pl2 < 7; pl2++) {
+          var pa = 0, ps = 0;
+          for (var w3 = 0; w3 < 4; w3++) {
+            var apos = ~actNeg[w3];
+            var eadd = (pm[w3] & apos) | (nm[w3] & actNeg[w3]);
+            var esub = (pm[w3] & actNeg[w3]) | (nm[w3] & apos);
+            pa += popcnt32(eadd & actPlane[pl2][w3]);
+            ps += popcnt32(esub & actPlane[pl2][w3]);
+          }
+          acc2 += (pa - ps) << pl2;
+        }
+        out2[r2] = acc2;
+      }
+
+      // Lane 3: T-MAC 4-Bit 2-column Pair-LUT (packed[pair * rows + row])
+      var packed = new Uint8Array(64 * 256);
+      for (var g = 0; g < 64; g++) {
+        for (var r3 = 0; r3 < 256; r3++) {
+          var w0 = W[r3 * 128 + 2 * g];
+          var w1 = W[r3 * 128 + 2 * g + 1];
+          var c0 = w0 === 1 ? 1 : (w0 === -1 ? 2 : 0);
+          var c1 = w1 === 1 ? 1 : (w1 === -1 ? 2 : 0);
+          packed[g * 256 + r3] = c0 | (c1 << 2);
+        }
+      }
+      var out3 = new Int32Array(256);
+      var lut = new Int32Array(16);
+      for (var g2 = 0; g2 < 64; g2++) {
+        var a0 = A[2 * g2], a1 = A[2 * g2 + 1];
+        for (var cd = 0; cd < 16; cd++) {
+          var kc0 = cd & 3, kc1 = (cd >> 2) & 3;
+          lut[cd] = (kc0 === 1 ? a0 : (kc0 === 2 ? -a0 : 0)) + (kc1 === 1 ? a1 : (kc1 === 2 ? -a1 : 0));
+        }
+        var baseOff = g2 * 256;
+        for (var r4 = 0; r4 < 256; r4++) {
+          out3[r4] = (out3[r4] + lut[packed[baseOff + r4]]) | 0;
+        }
+      }
+
+      var h1 = blake3DeriveKeyHex('waios.tmac.v1', new Uint8Array(out1.buffer));
+      var h2 = blake3DeriveKeyHex('waios.tmac.v1', new Uint8Array(out2.buffer));
+      var h3 = blake3DeriveKeyHex('waios.tmac.v1', new Uint8Array(out3.buffer));
+      var elapsedMs = performance.now() - t0;
+
+      document.getElementById('waios-elapsed').textContent =
+        'Executed 3 lanes × 32,768 ternary ops + BLAKE3 in ' + elapsedMs.toFixed(2) + ' ms';
+
+      var allSame = (h1 === h2 && h2 === h3);
+      var matchesRef = (allSame && h1 === DATA.waiosRef);
+
+      ['1', '2', '3'].forEach(function (id, idx) {
+        var h = [h1, h2, h3][idx];
+        var el = document.getElementById('wl-' + id);
+        el.textContent = h.slice(0, 16) + '…';
+        el.style.color = matchesRef ? 'var(--color-brand-cyan)' : '#fb7185';
+      });
+
+      var vbox = document.getElementById('waios-verdict-box');
+      if (matchesRef) {
+        vbox.className = 'f6-banner f6-pass';
+        vbox.innerHTML =
+          '<strong>✓ SEALED · Bit-Exact Cross-Lane Agreement (Receipt Admitted):</strong> All 3 in-browser integer lanes produced <code>' +
+          h1 + '</code> == canonical <code>waiOS</code> reference digest across ARMv9, Cortex-A53, and x86_64.';
+      } else {
+        vbox.className = 'f6-banner f6-warn';
+        vbox.innerHTML =
+          '<strong>✕ HALTED · <code>WaiosDisagreementHaltError</code> (Receipt Refused):</strong> Single-weight mutation <code>w[77,0]: 0 → 1</code> shifted output row 77 by <code>-26</code>, producing <code>' +
+          h1 + '</code> ≠ expected <code>' + DATA.waiosRef + '</code>.';
+      }
+
+      return {
+        tamper_injected: !!injectRow77Tamper,
+        elapsed_ms: Number(elapsedMs.toFixed(2)),
+        lane_digests: { scalar_i32: h1, packed_2bit_popcount: h2, tmac_4bit_pair_lut: h3 },
+        reference_digest: DATA.waiosRef,
+        sealed: matchesRef,
+        status: matchesRef ? 'SEALED_RECEIPT_ADMITTED' : 'WAIOS_DISAGREEMENT_HALT_RECEIPT_REFUSED'
+      };
+    }
+
+    function renderReceiptTable() {
+      var order = ['thor', 'kv260', 'i9_rapl', 'ryzen_rapl'];
+      var tbody = document.getElementById('receipt-ledger-tbody');
+      tbody.innerHTML = order.map(function (id) {
+        var s = DATA.substrates[id];
+        return (
+          '<tr>' +
+          '<td><strong style="color:var(--color-brand-white)">' + s.shortName + '</strong><br><span style="font-family:var(--font-mono);font-size:10.5px;color:var(--color-brand-gray)">' + s.cpu + '</span></td>' +
+          '<td><span class="chip ' + (s.evidence_class === 'measured_j' ? 'chip-meas' : 'chip-sim') + '">' + s.evidence_class + '</span><br><span style="font-family:var(--font-mono);font-size:10.5px">' + s.sensorLabel + '</span></td>' +
+          '<td style="font-family:var(--font-mono);font-size:11px;color:var(--color-brand-cyan)">5/5 C+Python lanes = a541323b…<br><span style="color:var(--color-brand-slate)">0/100 pthread drift · w[77,0] → 4ac7c4fb… HALT</span></td>' +
+          '<td class="mono-hash"><code>' + (s.receipts.lbBlake3 || '').slice(0, 20) + '…</code></td>' +
+          '<td class="mono-hash"><code>' + (s.receipts.wmBlake3 || '').slice(0, 20) + '…</code></td>' +
+          '</tr>'
+        );
+      }).join('');
+
+      document.getElementById('bundle-sig-line').innerHTML =
+        'Multi-Substrate Bundle Receipts — Kit 4 <code>BLAKE3=' + DATA.bundleReceipts.lbBlake3 + '</code> · Kit 5 <code>BLAKE3=' + DATA.bundleReceipts.wmBlake3 +
+        '</code> · Suite <code>Ed25519 pubkey=' + DATA.bundleReceipts.wmPub + '</code> (<code>Signed Provenance · Self-Checked</code>).';
+    }
+
+    function updateAll() {
+      renderSubstrateBar();
+      renderWidget1();
+      renderWidget2();
+      syncUrlSilent();
+    }
+
+    // Wire UI Controls
+    document.querySelectorAll('[data-board]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        state.board = btn.getAttribute('data-board');
+        state.mode = validModeForBoard(state.board, state.mode);
+        updateAll();
+      });
+    });
+
+    document.getElementById('sel-rail-mode').addEventListener('change', function (e) {
+      state.mode = e.target.value;
+      updateAll();
+    });
+
+    document.getElementById('s-bpw-idx').addEventListener('input', function (e) {
+      state.bpwIdx = parseInt(e.target.value, 10);
+      updateAll();
+    });
+
+    document.querySelectorAll('[data-bpw-idx]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        state.bpwIdx = parseInt(btn.getAttribute('data-bpw-idx'), 10);
+        updateAll();
+      });
+    });
+
+    document.getElementById('sel-subbit-kernel').addEventListener('change', function (e) {
+      state.kernel = e.target.value;
+      updateAll();
+    });
+
+    document.getElementById('s-zipf').addEventListener('input', function (e) {
+      state.zipf = parseFloat(e.target.value);
+      updateAll();
+    });
+
+    document.querySelectorAll('.zipf-chip').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        state.zipf = parseFloat(btn.getAttribute('data-zipf'));
+        updateAll();
+      });
+    });
+
+    document.getElementById('sel-dmax').addEventListener('change', function (e) {
+      state.dmax = parseInt(e.target.value, 10);
+      updateAll();
+    });
+
+    document.getElementById('sel-tau').addEventListener('change', function (e) {
+      state.tau = parseInt(e.target.value, 10);
+      updateAll();
+    });
+
+    document.getElementById('s-dt').addEventListener('input', function (e) {
+      state.dt = parseInt(e.target.value, 10);
+      updateAll();
+    });
+
+    document.getElementById('btn-copy-sim-url').addEventListener('click', function () {
+      var btn = document.getElementById('btn-copy-sim-url');
+      var full = window.location.origin + buildShareUrl();
+      if (navigator.clipboard) navigator.clipboard.writeText(full).catch(function () {});
+      var orig = btn.textContent;
+      btn.textContent = '✓ Copied Simulator URL!';
+      setTimeout(function () { btn.textContent = orig; }, 2000);
+    });
+
+    document.getElementById('btn-waios-clean').addEventListener('click', function () {
+      runWaiosBrowserVerifier(false);
+    });
+    document.getElementById('btn-waios-tamper').addEventListener('click', function () {
+      runWaiosBrowserVerifier(true);
+    });
+
+    // Boot initial render in 0 ms
+    loadStateFromUrl();
+    renderReceiptTable();
+    updateAll();
+    runWaiosBrowserVerifier(false);
+
+    // Expose programmatic window.openieLivingLab & register 3 WebMCP read-only tools
+    function getLabSummary() {
+      var sub = DATA.substrates[state.board];
+      var cm = getCurveMap(sub);
+      var step = BPW_STEPS[state.bpwIdx] || BPW_STEPS[3];
+      var activeKey = state.kernel === 'naive' ? step.naiveKey : step.packedKey;
+      var pt = cm.map[activeKey] || cm.map[step.packedKey];
+      var cell = lookupCascadeCell(sub, state.zipf, state.dmax, state.tau);
+      return {
+        provenance_status: 'Signed Provenance · Self-Checked',
+        orthogonality_rule: 'measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered',
+        source_commit: DATA.commit,
+        board: state.board,
+        evidence_class: sub.evidence_class,
+        rail_mode: state.mode,
+        shareable_url: window.location.origin + buildShareUrl(),
+        subbit_widget: {
+          point_key: activeKey,
+          bits_per_weight: step.bpw,
+          kernel: state.kernel,
+          footprint_bytes: pt ? pt.bytes : null,
+          accuracy: pt ? pt.acc : null,
+          energy_uj_per_correct: pointEnergy(sub, pt, state.mode),
+          dense_int8_uj_per_correct: pointEnergy(sub, cm.map.dense_int8_8bpw, state.mode)
+        },
+        cascade_widget: {
+          zipf_s: state.zipf,
+          d_max: state.dmax,
+          tau: state.tau,
+          horizon_dt: state.dt,
+          exact_grid_cell: cell.exact,
+          accuracy: cell.acc,
+          stage_fractions: { stage1_lut: cell.s1, stage2_edit: cell.s2, stage3_mosaic: cell.s3, stage4_escalated: cell.s4 },
+          local_energy_uj_per_correct: cell.energyUj,
+          always_dense_uj_per_correct: pipelineEnergy(sub, sub.pipelines.dense),
+          isolated_stage4_cloud_est_j: {
+            evidence_class: 'est_j',
+            mixed_or_summed: false,
+            remote_calls_over_dt: Math.round(state.dt * cell.s4),
+            est_j_over_dt: Number((Math.round(state.dt * cell.s4) * 1.5).toFixed(2))
+          }
+        }
+      };
+    }
+
+    window.openieLivingLab = {
+      id: 'compiled-agency',
+      getState: getLabSummary,
+      selectSubstrate: function (input) {
+        if (input && input.board && DATA.substrates[input.board]) state.board = input.board;
+        if (input && input.mode) state.mode = validModeForBoard(state.board, input.mode);
+        else state.mode = validModeForBoard(state.board, state.mode);
+        updateAll();
+        return getLabSummary();
+      },
+      simulateSubbitCurve: function (input) {
+        if (input && input.board && DATA.substrates[input.board]) state.board = input.board;
+        if (input && input.mode) state.mode = validModeForBoard(state.board, input.mode);
+        if (input && input.kernel && (input.kernel === 'packed' || input.kernel === 'naive')) state.kernel = input.kernel;
+        if (input && input.point !== undefined) {
+          var q = String(input.point);
+          for (var i = 0; i < BPW_STEPS.length; i++) {
+            if (BPW_STEPS[i].packedKey === q || BPW_STEPS[i].naiveKey === q || String(BPW_STEPS[i].bpw) === q || String(i) === q) {
+              state.bpwIdx = i;
+              break;
+            }
+          }
+        }
+        updateAll();
+        return getLabSummary();
+      },
+      simulateCascade: function (input) {
+        if (input && input.board && DATA.substrates[input.board]) state.board = input.board;
+        if (input && typeof input.zipf === 'number') state.zipf = Math.max(0, Math.min(1.4, Math.round(input.zipf * 20) / 20));
+        if (input && [0, 1, 2].indexOf(Number(input.dmax)) !== -1) state.dmax = Number(input.dmax);
+        if (input && [1500, 3000, 4500, 6500, 9000].indexOf(Number(input.tau)) !== -1) state.tau = Number(input.tau);
+        if (input && typeof input.dt === 'number') state.dt = Math.max(100, Math.min(50000, Math.round(input.dt)));
+        updateAll();
+        return getLabSummary();
+      },
+      verifyWaios: function (tamper) {
+        return runWaiosBrowserVerifier(!!tamper);
+      }
+    };
+
+    if (window.isSecureContext) {
+      var mc = document.modelContext || navigator.modelContext;
+      if (mc && typeof mc.registerTool === 'function' && !window.__openieCompiledAgencyWebmcpRegistered) {
+        window.__openieCompiledAgencyWebmcpRegistered = true;
+        var READ_ONLY = { readOnlyHint: true };
+        var simTools = [
+          {
+            name: 'select_compiled_agency_substrate',
+            title: 'Select Compiled Agency Hardware Substrate & Rail Mode',
+            description: 'Switches the active hardware substrate (kv260 TI INA260 measured_j, thor TI INA3221/INA238 measured_j, i9_rapl reported_j, or ryzen_rapl reported_j) and rail accounting mode (gross, net, vin, core) and returns current metrics. Read-only.',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                board: { type: 'string', enum: ['kv260', 'thor', 'i9_rapl', 'ryzen_rapl'] },
+                mode: { type: 'string', enum: ['gross', 'net', 'vin', 'core'] }
+              },
+              additionalProperties: false
+            },
+            execute: function (input) { return window.openieLivingLab.selectSubstrate(input || {}); },
+            annotations: READ_ONLY
+          },
+          {
+            name: 'simulate_subbit_bitwidth_curve',
+            title: 'Simulate Sub-Bit SVD + Walsh-Hadamard Bit-Width & Decompression Impedance Curve',
+            description: 'Evaluates a point along the 14-point bitwidth_curve (0.0000 bpw LUT through 0.1517 bpw r=22 to 8.00 bpw INT8) under Packed Integer vs Naive FP32 Decompress kernels on the active substrate. Read-only.',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                board: { type: 'string', enum: ['kv260', 'thor', 'i9_rapl', 'ryzen_rapl'] },
+                mode: { type: 'string', enum: ['gross', 'net', 'vin', 'core'] },
+                point: { type: 'string', description: 'Curve key such as littlebit_packed_int_r22, subbit_naive_fp32_unpack_r22, deterministic_null_lut, or dense_int8_8bpw.' },
+                kernel: { type: 'string', enum: ['packed', 'naive'] }
+              },
+              additionalProperties: false
+            },
+            execute: function (input) { return window.openieLivingLab.simulateSubbitCurve(input || {}); },
+            annotations: READ_ONLY
+          },
+          {
+            name: 'simulate_4stage_spellcheck_cascade',
+            title: 'Simulate 4-Stage Lookup-First Cascade Across 75-Cell (Zipf s, d_max, tau) Hardware Grid',
+            description: 'Evaluates the 4-stage cascade routing fractions, local silicon measured_j / reported_j, Compilation Horizon break-even, and strictly isolated Stage-4 cloud est_j across Zipf s, edit radius d_max, and Mosaic margin tau. Read-only.',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                board: { type: 'string', enum: ['kv260', 'thor', 'i9_rapl', 'ryzen_rapl'] },
+                zipf: { type: 'number', minimum: 0, maximum: 1.4 },
+                dmax: { type: 'integer', enum: [0, 1, 2] },
+                tau: { type: 'integer', enum: [1500, 3000, 4500, 6500, 9000] },
+                dt: { type: 'integer', minimum: 100, maximum: 50000 }
+              },
+              additionalProperties: false
+            },
+            execute: function (input) { return window.openieLivingLab.simulateCascade(input || {}); },
+            annotations: READ_ONLY
+          }
+        ];
+        simTools.forEach(function (t) {
+          try { Promise.resolve(mc.registerTool(t)).catch(function () {}); } catch (_e) {}
+        });
+      }
+    }
+  })();
+  </script>
+  <script type="module" src="/live/openie-ecosystem-dock.js"></script>
+</body>
+</html>

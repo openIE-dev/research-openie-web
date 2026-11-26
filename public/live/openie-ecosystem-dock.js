@@ -596,6 +596,7 @@ const LIVING_SLUG_TO_STUDY = {
   'ai-reads-human': 'ai-reads-human',
   'mei': 'mei',
   'spellcheck': 'spellcheck',
+  'compiled-agency': 'lut-adapt',
   'from-ephemeral-inference-to-compiled-agency': 'agency',
 };
 
@@ -809,6 +810,24 @@ function buildLivingObservatorySurface(livingSlug) {
   const base = SURFACE_REGISTRY.living;
   if (!livingSlug || livingSlug === 'index.html') return base;
   const cleanSlug = livingSlug.replace(/\.html$/i, '').toLowerCase();
+  if (cleanSlug === 'compiled-agency') {
+    return {
+      ...base,
+      id: 'living',
+      livingSlug: 'compiled-agency',
+      name: 'Living Observatory · Compiled Agency (Shot #6)',
+      domain: 'research.openie.dev/living/compiled-agency/',
+      tagline: 'Shot #6 Multi-Substrate Shunt & RAPL Observatory (@ 813eb96): KV260 INA260 + Thor INA3221/INA238 measured_j, 14-Point Sub-Bit Impedance Curve, 75-Cell 4-Stage Cascade & Live waiOS 256×128 Verifier',
+      caveat: 'Signed Provenance · Self-Checked (human_in_gate=false): KV260 INA260 (0.09–0.11% drift, Falsifier 6 PASS: 81.86× gross / 71.91× net unpack tax vs 4.13× gross / 5.15× net packed-int gain; 26.58× gross / 24.49× net cascade gain) and Thor INA3221 (19.08× unpack tax vs 7.95× gain; 16.26× cascade gain; A1/A2 net withheld when shared-host drift > 5%) are never mixed with RAPL reported_j or Stage-4 cloud est_j.',
+      primaryStudyId: 'lut-adapt',
+      studyIds: ['lut-adapt', 'deterministic-null', 'agency', 'rce-compile', 'satb-harness', 'gates'],
+      prompts: [
+        'Explain my active Shot #6 board rail, sub-bit bpw point, and 4-stage cascade sliders right now',
+        'Compare KV260 INA260 (81.86× unpack tax, 26.58× cascade) vs Jetson Thor INA3221 and why Falsifier 6 gates shared-host net drift',
+        'Walk me through the live waiOS 256×128 BLAKE3 a541323b reference check and w[77,0] tamper halt',
+      ],
+    };
+  }
   const studyId = LIVING_SLUG_TO_STUDY[cleanSlug] || cleanSlug;
   const orderedStudies = [studyId, ...base.studyIds.filter((id) => id !== studyId)];
   return {
@@ -2913,7 +2932,7 @@ export function mountOpenIEEcosystemDock(options = {}) {
         </div>
         <div class="qlinks">
           <a id="oe-link-studio" class="qlink" href="${RESEARCH_ORIGIN}/live/?study=${encodeURIComponent(sdk.activeStudyId)}" target="_blank" rel="noopener">Full Studio ↗</a>
-          <a id="oe-link-chronicle" class="qlink qlink-amber" href="${BLOG_ORIGIN}" target="_blank" rel="noopener">Chronicle (57) ↗</a>
+          <a id="oe-link-chronicle" class="qlink qlink-amber" href="${BLOG_ORIGIN}" target="_blank" rel="noopener">Chronicle (58) ↗</a>
           <a id="oe-link-verify" class="qlink" href="${BLOG_ORIGIN}/verification/" target="_blank" rel="noopener">Verification ↗</a>
         </div>
       </div>
