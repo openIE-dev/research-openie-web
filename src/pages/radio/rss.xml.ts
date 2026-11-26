@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import radioFeed from '../../data/radio-feed.json' with { type: 'json' };
+import coverageSummary from '../../data/coverage-summary.json' with { type: 'json' };
 
 const BASE = 'https://research.openie.dev';
 
@@ -14,7 +15,7 @@ function escXml(s: string): string {
 
 function toRfc2822(iso: string): string {
   const d = new Date(iso);
-  return Number.isNaN(d.getTime()) ? new Date('2026-11-23T09:30:00Z').toUTCString() : d.toUTCString();
+  return Number.isNaN(d.getTime()) ? new Date('2026-11-26T09:30:00Z').toUTCString() : d.toUTCString();
 }
 
 function fmtItunesDuration(sec: number): string {
@@ -31,14 +32,21 @@ export const GET: APIRoute = async () => {
   const episodes = [...(radioFeed.episodes || [])].sort((a, b) => b.number - a.number);
   const lastBuild = episodes[0]?.published_utc || radioFeed.generated_at_utc;
   const disclosure = radioFeed.ai_disclosure;
+  const radioAssetsMap: Record<string, any> = (coverageSummary as any).radio_assets || {};
 
   const itemsXml = episodes
     .map((ep) => {
+      const ra = radioAssetsMap[ep.id] || {};
       const audioAbs = `${BASE}${ep.audio_url}`;
+      const opusRel = ra.opus_url || `/media/radio/opus/${ep.id}.opus`;
+      const opusAbs = `${BASE}${opusRel}`;
+      const opusBytes = ra.opus_bytes || Math.max(48000, Math.round((ep.duration_sec || 180) * 3000));
       const vttAbs = `${BASE}${ep.captions_url}`;
+      const brailleAbs = `${BASE}/transcripts/${ep.id}/`;
+      const sourceSheetAbs = `${BASE}${ra.source_sheet_url || '/sourcesheets/'}`;
       const pageAbs = `${BASE}/radio/#${ep.id}`;
       const panelStr = Array.isArray((ep as any).panel) && (ep as any).panel.length ? `Roundtable Cast: ${(ep as any).panel.join(', ')}. ` : '';
-      const fullDesc = `${panelStr}${ep.summary} — ${disclosure}`;
+      const fullDesc = `${panelStr}${ep.summary} — Source sheet: ${sourceSheetAbs} · Braille HTML transcript: ${brailleAbs} — ${disclosure}`;
       return `    <item>
       <guid isPermaLink="false">openie-radio-${escXml(ep.id)}</guid>
       <title>${escXml(`Ep. ${ep.number}: ${ep.title}`)}</title>
@@ -53,12 +61,16 @@ export const GET: APIRoute = async () => {
       <itunes:explicit>false</itunes:explicit>
       <itunes:duration>${fmtItunesDuration(ep.duration_sec)}</itunes:duration>
       <enclosure url="${escXml(audioAbs)}" length="${ep.byte_length}" type="audio/x-m4a" />
+      <podcast:alternateEnclosure type="audio/ogg; codecs=opus" length="${opusBytes}" bitrate="24000" title="Low-Bandwidth 24 kbps Opus">
+        <podcast:source uri="${escXml(opusAbs)}" />
+      </podcast:alternateEnclosure>
       <podcast:transcript url="${escXml(vttAbs)}" type="text/vtt" language="en" />
+      <podcast:transcript url="${escXml(brailleAbs)}" type="text/html" language="en" />
     </item>`;
     })
     .join('\n');
 
-  const channelDesc = `${radioFeed.subtitle} ${disclosure}`;
+  const channelDesc = `${radioFeed.subtitle} ${disclosure} Per-language RSS feeds: ${BASE}/radio/<lang>/rss.xml · Coverage matrix: ${BASE}/coverage.json`;
 
   const xml = `<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0"
@@ -69,7 +81,7 @@ export const GET: APIRoute = async () => {
     <title>${escXml(radioFeed.title)}</title>
     <link>${BASE}/radio/</link>
     <language>en-us</language>
-    <copyright>Open Interface Engineering, Inc.</copyright>
+    <copyright>Open Interface Engineering, Inc. (CC-BY-4.0 Audio · CC0-1.0 Metadata)</copyright>
     <lastBuildDate>${escXml(toRfc2822(lastBuild))}</lastBuildDate>
     <atom:link href="${BASE}/radio/rss.xml" rel="self" type="application/rss+xml" />
     <description>${escXml(channelDesc)}</description>

@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — game-engines (it) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:08.853
+<v Narrator>Innanzitutto, con la fisica esatta dei numeri interi, un progetto di gioco viene riprodotto in modo identico su Windows, macOS, Linux e sui principali motori.
+
+2
+00:00:09.193 --> 00:00:17.466
+<v Narrator>In secondo luogo, la matematica decimale standard si sposta tra i sistemi operativi entro trentasette frame, separando le collisioni caotiche.
+
+3
+00:00:17.806 --> 00:00:24.986
+<v Narrator>In terzo luogo, le schede grafiche differiscono leggermente sui pixel, quindi il rendering si trova in modo sicuro dietro un gate di tolleranza visiva unidirezionale.

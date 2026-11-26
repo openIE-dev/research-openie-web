@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — ai-reads-human (nl) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:16.158
+<v Narrator>Ten eerste wisselen computers vaak gegevens uit in tekstformaten die voor het menselijk oog geschreven zijn, waardoor machines extra werk moeten verrichten; ten tweede kost het lezen van ingesprongen configuratietekst meer dan tweeduizend keer zoveel chip-energie als het lezen van compacte machinenummers.
+
+2
+00:00:16.658 --> 00:00:24.468
+<v Narrator>Ten derde verbruikte het hakken van gestructureerde tekst in AI-woordstukken twaalf keer meer energie dan het parseren van de tekst zelf.
+
+3
+00:00:24.968 --> 00:00:41.722
+<v Narrator>Formaten vol met haakjes, komma’s en ingesprongen spaties werden ontworpen zodat mensen bestanden comfortabel konden inspecteren in teksteditors, maar moderne AI-pipelines geven miljoenen van die uitgebreide tekstrecords strikt door van machine naar machine zonder dat een mens ooit kijkt.
+
+4
+00:00:42.222 --> 00:00:59.589
+<v Narrator>We noemden dit extra werk de impedantiebeschikbaarheid en testten 34 parsing- en woordsplitsingswerkbelastingen op twintigduizend records. Door elke doorgang in een geïsoleerd workerproces op een Apple processor uit te voeren, werden kleine parsingkosten netjes gescheiden van lawaaiige achtergrondactiviteiten op laptops.
+
+5
+00:01:00.089 --> 00:01:17.771
+<v Narrator>Het uitpakken van een binair record van 23 bytes kostte tweehonderdtachtig nanojoules, standaard tekst tussen haakjes bijna acht keer meer, gecompileerde ingesprongen tekst tweehonderdnegenenveertig keer meer en pure Python-ingesprongen tekst verbrandde tweeduizendvierenvijftig keer meer chip-energie.
+
+6
+00:01:18.271 --> 00:01:31.355
+<v Narrator>Zelfs het toevoegen van twee spaties met een mooie inspringing heeft de AI-woordsplijtende energie meer dan verdubbeld tot 71 microjoules per Houd interne machinepijpen compact en binair, en formatteer tekst alleen wanneer mensen lezen.

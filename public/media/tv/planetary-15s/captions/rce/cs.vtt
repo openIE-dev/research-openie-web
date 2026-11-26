@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — rce (cs) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:07.168
+<v Narrator>Nejprve napíšete program jednou jako jeden jasný plán a počítač vygeneruje odpovídající kód napříč jazyky.
+
+2
+00:00:07.508 --> 00:00:15.097
+<v Narrator>Za druhé, každý možný vstup musí mít předem deklarovaný výsledek, aby se zabránilo skrytým pádům ještě předtím, než něco spustí.
+
+3
+00:00:15.437 --> 00:00:21.596
+<v Narrator>Za třetí, každá oprava, která projde kontrolou, je uložena a znovu použita, takže nikdy neplatíte dvakrát za jednu opravu.

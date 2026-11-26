@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — lut-adapt (ca) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:07.730
+<v Narrator>Primer, la majoria de les peticions repeteixen patrons resolts, així que executar una xarxa neuronal gegant cada vegada malgasta memòria i energia.
+
+2
+00:00:08.070 --> 00:00:15.923
+<v Narrator>Segon, aquesta cascada comprova les taules de veritat minúscules primer i transmet els talls del model especialitzat des de l'emmagatzematge només quan és necessari.
+
+3
+00:00:16.263 --> 00:00:23.481
+<v Narrator>En tercer lloc, una vegada que un test automatitzat certifica una nova resposta, es compila cap avall en una habilitat reutilitzable de mil·lisegons.

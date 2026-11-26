@@ -1,13 +1,14 @@
 WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — lut6-codon-nucleus (ig) · elevenlabs:eleven_v4_turbo
 
 1
-00:00:00.220 --> 00:00:12.834
-Nke mbụ, mkpụrụ ndụ ndị dị ndụ na-eji mkpụrụ ndụ ihe nketa atọ dị 64 echekwa ụkpụrụ nke ịdị ndụ, tebụl nyocha dijitalụ nwere ntinye isii na-ejikwa kpọmkwem ihe mgba ọkụ 64 ahụ.
+00:00:00.120 --> 00:00:12.522
+<v Narrator>N'oge mbụ, sel ndị dị ndụ na-eji triplets jenetik iri anọ iji chebe iwu nke ịnọgide n'ọdịnihu, ma dijitalụ 6-input lookup table na-eji swiiti iri anọ ahụ.
 
 2
-00:00:13.174 --> 00:00:22.735
-Nke abụọ, ijikọta ọnọdụ mgba ọkụ anọ gbara agbata obi ọnụ na-anabata obere ihe mmetụta ma ọ bụ okwu okwu mgbe ị na-ewepụ mkpọtụ mkpọtụ dị elu.
+00:00:12.602 --> 00:00:23.463
+<v Narrator>Nke abụọ, ịkekọrịta ntọala swiiti ndị ọzọ na-eme ka ọ dị mfe ma ọ bụ kọwaa ihe mgbagwoju anya mgbe a na-ewepụ ụda dị elu nke frekwentị.
 
 3
-00:00:23.075 --> 00:00:35.473
-Nke atọ, isi 16-kilobyte na-agba ọsọ n'ime nanoseconds site na microcontrollers $4 ruo na kaadị M.2 na-enweghị ikuku, na-akpọte ụdị ndị buru ibu nanị n'ihe ọhụrụ.
+00:00:23.543 --> 00:00:37.890
+<v Narrator>Nke atọ, 16-kilobyte core na-arụ ọrụ nghọta nke ọma na nanoseconds site na microcontrollers dollar anọ ruo fanless M.2 circuit kaadị, na-eme ka nnukwu ụdị naanị na eziokwu ọhụrụ.

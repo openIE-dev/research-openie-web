@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — deterministic-null (id) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:18.766
+<v Narrator>Pertama, kebanyakan benchmark AI melewati kelompok kontrol model nol yang menguji apa yang sudah diselesaikan oleh pencarian sederhana. Kedua, pada tugas matematika dan database dengan batasan, tabel pencarian beku cocok dengan AI awan dalam sembilan dari sepuluh tes.
+
+2
+00:00:18.846 --> 00:00:29.597
+<v Narrator>Ketiga, pada tugas pemrograman terbuka AI melompat ke depan, sementara caching jawaban yang diverifikasi mengurangi energi pengulangan tiga poin enam kali.
+
+3
+00:00:29.677 --> 00:00:49.232
+<v Narrator>Jika dua model dengan seratus miliar parameter memiliki skor 99% dalam tes yang terstruktur, apakah salah satunya benar-benar membutuhkan jaringan saraf pada saat membuat keputusan? Tanpa kelompok kontrol model nol pada ujian yang sama, tidak ada yang bisa mengatakan perbedaannya.
+
+4
+00:00:49.312 --> 00:01:09.495
+<v Narrator>Kami membangun tabel pencarian integer delapan langkah diverifikasi bit-by-bit melalui Rust, Go, Python, Julia, dan C plus plus, lalu menetapkan sidik jari digitalnya pada bukti kalender Bitcoin publik sebelum beacon acak publik menghasilkan empat ribu tiga puluh masalah baru yang ditahan.
+
+5
+00:01:09.575 --> 00:01:32.204
+<v Narrator>Di dua ribu delapan ratus empat puluh masalah matematika dan basis data yang dibatasi, model awan mengalahkan tabel beku hanya pada frasa pelanggan yang tidak terindeks, namun melompat empat puluh empat hingga sembilan puluh lima poin persen di depan di empat benchmark rekayasa perangkat lunak yang ditulis secara eksternal.
+
+6
+00:01:32.284 --> 00:01:45.690
+<v Narrator>Ketika perbaikan saraf yang baru diverifikasi ditulis kembali ke toko pencarian, beban kerja yang realistis memotong panggilan model berulang dan energi chip lokal tiga poin lima sembilan kali.

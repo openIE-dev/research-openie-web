@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (ha) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:39.717
+<v Narrator>First, ci gaba da lissafi ya zama mai sauki ga kowa lokacin da farashin neural models aiki kamar wani karshe gudun baya da sauri yanki lookup tebur, search indiya, da kuma daidai solvers. Secondly, compressing nauyin kasa da daya bit tsare ajiya, amma unpacking su baya zuwa floating-point lambobin a runtime asarar fiye da sau arba'in circuit-board makamashi fiye da tafiyar da packaged integer manhaja kai tsaye.
+
+2
+00:00:39.797 --> 00:01:00.323
+<v Narrator>Na uku, daya integer kernel duba ta cryptographic hashes samar da daidai irin amsa a kan processors, graphics cards, WebAssembly, kayan aiki logic, da microcontrollers, tsallake nan take idan wani nauyi kawai canja.
+
+3
+00:01:00.403 --> 00:01:31.087
+<v Narrator>A cikin ayyukan kula da deterministic na ɗari biyar, binciken sifar-sifar ya lashe ƙananan ƙananan ƙwayoyin cuta ta hanyar 61.60% na kashi a kan kayan aikin kayan aiki masu ginin kuma 20.80% na nau'ikan Boolean na 1.41 zuwa 2.09 microjoules net shunt energy, wanda ke tsaftace ɓangaren 12.80 point open coding triage gap.
+
+4
+00:01:31.167 --> 00:02:08.177
+<v Narrator>A kan wani AMD Kria biyar-volt board shunt da 0.09 zuwa 0.11 bisa dari idle drift, unpacking 0.1517 bits-per-weight matrici zuwa 32-bit floats ya shafe 63,335.56 microjoules gross—81.86 sau mafi muni fiye da takwas-bit integers—a yayin da aka yi amfani da integer Walsh-Hadamard, exclusive-NOR, bit-count, da nibble lookup sun fadi zuwa 187.49 microjoules gross da 10.30 microjoules net.
+
+5
+00:02:08.257 --> 00:02:40.858
+<v Narrator>Wani hash-verified integer kernel ya dace bit-for-bit a kan hanyoyi goma da tufafi shida - mai sarrafawa, Radeon 8060S Vulkan graphics, split processor-graphics, WebAssembly vectors, Verilog hardware logic, da 1,444-byte bare-metal microcontroller - hanawa akan single-weight tamper tare da 1,315 Planetary Digital Wells na rage girke-girke.
+
+6
+00:02:40.938 --> 00:03:19.290
+<v Narrator>Daga ƙarshe zuwa ƙarshe, mataki-ɗaya-da-kwatanta-spellcheck cascade ya rage ƙarfin shunt na Kria sau 26.58 da kuma 24.49 sau net, ya rage ƙarfin shunt na Jetson Thor sau 16.26, kuma ya hana sau 38.46 na kiran mataki-huɗu. Dukkanin ribar sun yi alƙawarin asali, an bincika kansu - ba a waje ba tare da nazari ba - tare da shunt, chip-counter, an ƙaddara, kuma unmetered joules an kiyaye su daban-daban.

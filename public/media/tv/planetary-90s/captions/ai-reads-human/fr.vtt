@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — ai-reads-human (fr) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:18.318
+<v Narrator>D'abord, les ordinateurs échangent souvent des données dans des formats texte écrits pour l'œil humain, ce qui oblige les machines à dépenser plus de travail.Deuxièmement, la lecture du texte de configuration indenté a pris plus de deux mille fois plus d'énergie sur la puce que la lecture des numéros compacts de machine.
+
+2
+00:00:18.398 --> 00:00:25.810
+<v Narrator>Troisièmement, couper le texte structuré en morceaux de mots d’IA a brûlé douze fois plus d’énergie que l’analyse du texte lui-même.
+
+3
+00:00:25.890 --> 00:00:45.734
+<v Narrator>Les formats pleins de crochets, de virgules et d’espaces indentés ont été conçus pour que les gens puissent inspecter confortablement les fichiers dans des éditeurs de texte.Pourtant, les pipelines d’outils d’IA modernes passent des millions de ces enregistrements de texte verbeux strictement de machine à machine sans qu’un humain ne regarde jamais.
+
+4
+00:00:45.814 --> 00:01:05.998
+<v Narrator>Nous avons appelé ce travail supplémentaire la taxe d’impédance et testé trente-quatre charges de travail d’analyse et de fractionnement de mots sur vingt mille enregistrements.L’exécution de chaque passage dans un processus isolé sur un processeur Apple a nettement séparé les coûts d’analyse minuscules des activités bruyantes en arrière-plan du portable.
+
+5
+00:01:06.078 --> 00:01:23.311
+<v Narrator>Le décompresseur d'un enregistrement binaire de vingt-trois octets a utilisé deux cent quatre-vingts nanojoules, le texte entre crochets standard près de huit fois plus, le texte indenté compilé deux cent quarante-neuf fois plus et le texte Python pur en indentation deux mille cinquante-quatre fois plus.
+
+6
+00:01:23.391 --> 00:01:32.790
+<v Narrator>Même en ajoutant deux espaces de jolie indentation, l’IA a plus que doublé l’énergie nécessaire pour séparer les mots, à soixante et on microjoules par enregistrement.

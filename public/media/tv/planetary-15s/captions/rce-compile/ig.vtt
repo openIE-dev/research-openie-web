@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — rce-compile (ig) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:10.576
+<v Narrator>N'oge mbụ, ndị na-asụgharị n'ụzọ ziri ezi na-emebi iwu ọ bụla nke dị iche iche, ya mere, ọmụmụ a na-ekwupụta ihe karịrị akụkụ iri atọ.
+
+2
+00:00:10.656 --> 00:00:20.798
+<v Narrator>Nke abụọ, kacha nta compiler optimization na-ekpo ọkụ upfront ike na-adịghị akwụghachi azụ na puku atọ nke usoro ihe omume nyocha.
+
+3
+00:00:20.878 --> 00:00:30.390
+<v Narrator>Nke atọ, fingerprinting koodu site na variable ọnọdụ reuses builds na zero mix-ups, ịkpụ Rust compile ike anọ hundredfold.

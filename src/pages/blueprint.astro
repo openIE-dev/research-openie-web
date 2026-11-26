@@ -1,68 +1,158 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
 import Layout from '../layouts/Layout.astro';
 import unsiloeing from '../data/planetary-unsiloeing.json';
+import coverageSummary from '../data/coverage-summary.json';
+import planetaryEasyRead from '../data/planetary-easy-read.json';
+import sourcesheetsIndex from '../data/sourcesheets-index.json';
+import conceptsDoc from '../../public/glossary/concepts.json';
 
 const SITE = 'https://research.openie.dev';
-const M: any = unsiloeing.summary_metrics;
-const artifacts = unsiloeing.canonical_artifacts as any[];
-const flagshipArtifacts = artifacts.filter((a) => a.flagship !== false);
-const tier2FlagshipArtifacts = artifacts.filter((a) => a.tier2_50 === true);
-const tier1Langs = unsiloeing.tier1_languages as any[];
-const tier2Langs = ((unsiloeing as any).tier2_languages ?? unsiloeing.tier2_roadmap) as any[];
-const variants = unsiloeing.variants as any[];
-const adTracks = unsiloeing.audio_descriptions as any[];
-const easyReadFlagship = unsiloeing.easy_read_flagship as any[];
-const aacConcepts = unsiloeing.aac_concepts_preview as any[];
-const surfaces = unsiloeing.ecosystem_surfaces as any[];
-const advAudit = unsiloeing.gate_specification.adversarial_audit as any[];
+const C: any = coverageSummary;
+const T: any = C.totals || {};
+const toolStages = (C.tool_energy_j_per_min?.stages || []) as any[];
+const covLangs = (C.languages || []) as any[];
+const t0Langs = covLangs.filter((l) => l.tier === 'T0');
+const t1Langs = covLangs.filter((l) => l.tier === 'T1');
+const t2Langs = covLangs.filter((l) => l.tier === 'T2');
+const signLangs = covLangs.filter((l) => l.tier === 'Sign');
 
-const totalPassed = M.passed_variants ?? M.tier1_passed_variants;
-const totalVariants = M.total_variants ?? M.tier1_total_variants;
-const totalFlagged = M.flagged_variants ?? M.tier1_flagged_variants;
-const activeLangCount = M.active_languages ?? (tier1Langs.length + tier2Langs.filter((l) => (l.passed_count ?? 0) > 0).length);
-const totalSpeakersB = (((M.total_speakers_millions ?? (M.tier1_speakers_millions + M.tier2_speakers_millions)) || 7949) / 1000).toFixed(2);
-const totalAudioMb = M.total_planetary_audio_mb ?? M.total_tier1_audio_mb;
+const artifacts = (unsiloeing.canonical_artifacts || []) as any[];
+const variants = (unsiloeing.variants || []) as any[];
+const adTracks = (unsiloeing.audio_descriptions || []) as any[];
+const tvEasyRead = (planetaryEasyRead.tv_studies || []) as any[];
+const radioEasyRead = (planetaryEasyRead.radio_episodes || []) as any[];
+const aacConcepts = ((conceptsDoc.hasDefinedTerm || []) as any[]).slice(0, 9);
+const sheetIndexList = (sourcesheetsIndex.studies || []) as any[];
+const gatesDef = (sourcesheetsIndex.gates_definition || []) as any[];
 
-const initialArt = artifacts.find((a) => a.slug === 'ecosystem-avalanche') ?? artifacts[0];
-const initialVar = variants.find((v) => v.study_slug === initialArt.slug && v.lang === 'en') ?? variants[0];
+const initialArt =
+  artifacts.find((a) => a.slug === 'from-ephemeral-inference-to-compiled-agency') ??
+  artifacts.find((a) => a.slug === 'ecosystem-avalanche') ??
+  artifacts[0];
+const initialVar =
+  variants.find((v) => (v.study_slug === initialArt.slug || v.tv_id === initialArt.tv_id) && v.lang === 'en') ??
+  variants[0];
+
+// Load compact sample source sheet JSON for initial server-rendered [G0-G12] inspector
+const initSheetPath = path.resolve(process.cwd(), 'public', 'sourcesheets', `${initialArt.tv_id}.json`);
+const initSheetJson = fs.existsSync(initSheetPath)
+  ? JSON.parse(fs.readFileSync(initSheetPath, 'utf8'))
+  : { study_slug: initialArt.tv_id };
+
+const orgLandscape = [
+  {
+    org: '1. Kurzgesagt – In a Nutshell',
+    model: 'Philanthropy + multi-channel audio + checkable source sheets',
+    verified: '€2.97M Open Philanthropy grant (Mar 2022) + Gates Foundation grants. Correction: exited ARD/ZDF funk network in Sept 2017 for international editorial independence; pioneers public source-sheet links across YouTube & TikTok captions.',
+    adopted: 'Public [G1] source sheets (/sourcesheets/<slug>/) linked in every study card and all 29 TikTok captions.',
+  },
+  {
+    org: '2. ScienceCast',
+    model: 'Automated preprint audio/video casts + repository community tabs',
+    verified: 'arXiv integration (Apr 2025) following bioRxiv rollout (Nov 2023); demonstrates lightweight author/machine media briefs wired into arXivLabs.',
+    adopted: 'Deterministic 15s/45s/90s/180s telescoping slots + arXivLabs-compatible JSON-LD & DOI metadata.',
+  },
+  {
+    org: '3. ResearchPod',
+    model: 'Editorial outreach podcasts + Crossref DOIs',
+    verified: 'Generation-time correction: relies on multi-week human scriptwriting and studio editorial turnaround (not instant sub-minute machine synthesis), minting persistent outreach DOIs.',
+    adopted: 'Sub-minute [G0–G12] automated generation paired with Zenodo variant DOIs and explicit review_status: machine disclosure.',
+  },
+  {
+    org: '4. PubCasts / ResearchEquals',
+    model: 'Modular research publishing (Liberate Science)',
+    verified: 'Treats audio/video casts and intermediate artifacts as first-class citable modules linked via Crossref/DataCite IsVariantFormOf and IsTranslationOf relations.',
+    adopted: 'Per-variant BLAKE3 + Ed25519 manifests carrying Zenodo IsVariantFormOf and IsTranslationOf links.',
+  },
+  {
+    org: '5. JoVE (Journal of Visualized Experiments)',
+    model: 'Peer-reviewed laboratory method videos',
+    verified: 'Gold standard for visual experimental reproducibility, gated behind institutional subscriptions rather than open reuse.',
+    adopted: 'CC-BY-4.0 open media + 1-command Apache-2.0 hardware replication kits and interactive /living/ observatories.',
+  },
+  {
+    org: '6. Latest Thinking (lt.org)',
+    model: 'Standardized chaptered CC-BY researcher video abstracts',
+    verified: 'Fixed 5-chapter scholarly structure under CC-BY licensing without multi-language or cognitive-accessibility layers.',
+    adopted: 'Fixed 3-point plain-language opener at every duration before deeper methods and limits.',
+  },
+  {
+    org: '7. Wonder Science',
+    model: 'Visual science streaming app',
+    verified: 'Mar 2024 App Store removal note highlights how single-vendor app stores can make public science media vanish overnight.',
+    adopted: 'Owned web + 31-lang RSS + Opus + Internet Archive + Wikimedia Commons (CC-BY-4.0) multi-home resilience.',
+  },
+  {
+    org: '8. CDCI, University of Vermont',
+    model: 'Academic Easy Read science summaries',
+    verified: 'Co-designs plain-language and Easy Read research translations with self-advocates with intellectual and developmental disabilities.',
+    adopted: '1-idea-per-sentence Easy Read across all 29 TV studies and all 17 Radio episodes + 90-day co-design protocol.',
+  },
+  {
+    org: '9. Bridge Multimedia',
+    model: 'STEM Voiced Audio Description (extended & inline mixed)',
+    verified: 'Federal/WCAG benchmark for narrating visual geometry, axes, and state transitions for blind and low-vision learners.',
+    adopted: '29/29 Extended AD (.ad.m4a + .ad.vtt) plus toggleable Voiced AD Broadcast Mix (.ad-mix.m4a).',
+  },
+  {
+    org: '10. Univ. of Surrey (Deleanu et al., 2025)',
+    model: 'User-toggleable Accessible Cues track',
+    verified: 'Demonstrates concise, learner-controlled multimodal Accessible Cues that prevent sensory and cognitive overload.',
+    adopted: 'Toggleable Accessible Cues track on /tv/, /radio/, and /blueprint/ paired with clean zero-music-bed speech.',
+  },
+  {
+    org: '11. EU MOSAIC Project',
+    model: 'Multilingual audiovisual accessibility under EU rules',
+    verified: '8-language EAA nuance: Directive (EU) 2019/882 + EN 301 549 V4.1.1 mandates accessible audiovisual services while recognizing human quality & burden nuances across 8 EU pilot languages.',
+    adopted: 'EN 301 549 V4.1.1 alignment across T0/T1/T2 tiers with explicit machine vs community-reviewed status.',
+  },
+  {
+    org: '12. ACL AAC Peer Support Network (OHSU)',
+    model: 'National peer-led AAC co-design network',
+    verified: '$2.325M 5-year Administration for Community Living grant to Oregon Health & Science University (announced 17 Nov 2026).',
+    adopted: '38 SKOS/JSON-LD AAC concepts (/glossary/concepts.json v1.1.0) using PBC-safe Mulberry + Tawasol (CC BY-SA 4.0) symbols.',
+  },
+  {
+    org: '13. Sense International + NJIT/NYU + KOBACO',
+    model: 'Deafblind Braille HTML, ranked [sound] cues & broadcast AD',
+    verified: 'Sense International 7-lang Deafblindness Hub (linear HTML), NJIT+NYU NSF HCC importance-ranked non-speech [sound] cues, and KOBACO (Nov 2025) AI broadcast AD benchmarks.',
+    adopted: '46 zero-table Braille HTML transcripts (/transcripts/) + Priority 1–3 [sound] cues + -16 LUFS broadcast loudness.',
+  },
+];
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TechArticle',
-  headline: unsiloeing.blueprint_artifact.title,
-  datePublished: '2026-11-24',
-  dateModified: '2026-11-24',
+  headline: C.blueprint_edition,
+  datePublished: '2026-11-26',
+  dateModified: '2026-11-26',
+  version: '1.0.0',
   license: 'https://creativecommons.org/publicdomain/zero/1.0/',
   url: `${SITE}/blueprint/`,
-  identifier: unsiloeing.blueprint_artifact.canonical_id,
   publisher: {
     '@type': 'Organization',
     name: 'Open Interface Engineering, Inc.',
     url: 'https://openie.dev',
   },
-  about: [
-    'Canonical Artifact Substrate',
-    'WAI1 Attested Media Envelope',
-    '50-Language Plain-Language Science Dissemination',
-    'WCAG 2.2 AA Full-Catalog Easy Read and Extended Audio Description',
-    'SKOS Augmentative and Alternative Communication Concepts',
-  ],
 };
 
 const clientPayload = JSON.stringify({
   artifacts,
-  tier1Langs,
-  tier2Langs,
+  studyAssets: C.study_assets || {},
+  langs: covLangs,
   variants,
   adTracks,
-  easyReadFlagship,
-  blueprintArtifact: unsiloeing.blueprint_artifact,
+  tvEasyRead,
+  radioEasyRead,
+  sheetIndex: sheetIndexList,
 });
 ---
 
 <Layout
-  title="Unsiloeing the OpenIE Ecosystem — 50-Language Canonical Artifact & Accessibility Blueprint"
-  description="Canonical Artifact Substrate (WAI1 BLAKE3/Ed25519), 620 verified 15-second plain-language variants across 50 languages (~7.95B speakers), and 28/28 full-catalog WCAG 2.2 AA Easy-Read, Extended Audio-Description, and SKOS AAC projections."
+  title="Planetary Research Media: A Blueprint for OpenIE Research (26 Nov 2026 · v1.0)"
+  description={`Planetary Research Media Blueprint v1.0: ${C.studies_count} studies (${C.horizontal_films_count} horizontal + ${C.vertical_films_count} vertical = ${C.total_films_count} films), ${C.radio_episodes_count} Radio episodes, [G0–G12] source sheets, Mulberry/Tawasol (CC BY-SA 4.0) AAC, 46 Braille HTML transcripts, and orthogonal J/min accounting.`}
 >
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
@@ -72,198 +162,188 @@ const clientPayload = JSON.stringify({
     <!-- Hero Header -->
     <header class="mb-10">
       <div class="flex flex-wrap items-center gap-2.5 mb-4">
-        <span class="section-label">Canonical Blueprint Artifact · /blueprint/</span>
-        <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-amber/15 text-brand-amber border border-brand-amber/35">
-          CC0-1.0 Public-Domain Text &amp; Accessibility
-        </span>
-        <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/35">
-          Apache-2.0 Schema &amp; WAI1 Envelope
-        </span>
+        <span class="section-label">Canonical Blueprint · 26 Nov 2026 · v1.0</span>
         <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-emerald-500/15 text-emerald-300 border border-emerald-400/35">
-          {totalPassed} / {totalVariants} Gate Pass · {activeLangCount} Languages (~{totalSpeakersB}B Speakers) · {totalFlagged} Quarantined
+          Signed Provenance · Self-Checked (review_status: machine)
         </span>
+        <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-amber/15 text-brand-amber border border-brand-amber/35">
+          Media: CC-BY-4.0 · Data: CC0-1.0 · AAC: Mulberry + Tawasol (CC BY-SA 4.0)
+        </span>
+        <a href="/coverage.json" class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/35 no-underline hover:bg-brand-cyan/25">
+          Live /coverage.json ↗
+        </a>
       </div>
 
-      <h1 class="font-display text-3xl md:text-5xl font-bold tracking-tight text-brand-white leading-tight mb-4">
-        Unsiloeing the Open<span class="text-brand-cyan">IE</span> Ecosystem
+      <h1 class="font-display text-3xl md:text-5xl font-bold tracking-tight text-brand-white leading-tight mb-3">
+        Planetary Research Media: A Blueprint for Open<span class="text-brand-cyan">IE</span> Research
       </h1>
       <p class="font-display text-lg md:text-2xl text-brand-amber mb-4">
-        Canonical Artifact Substrate + Planetary 50-Language Research Dissemination Blueprint
+        26 Nov 2026 · Edition v1.0 · Deterministic [G0–G12] Gates, Orthogonal J/min Accounting &amp; Co-Design Accessibility
       </p>
       <p class="font-body text-base text-brand-slate max-w-4xl leading-relaxed mb-6">
-        One deterministic pipeline under a public-benefit mandate: a research record enters once and verified, energy-labeled, 50-language, and 100% catalog-accessible projections exit across <a href="/tv/" class="text-brand-amber">Research TV</a>, <a href="/radio/" class="text-brand-cyan">Research Radio</a>, <a href="https://scholar.askdavidc.ai">The Commons</a>, the <a href="https://github.com/openIE-dev/free-humanoid-corpus">Free Humanoid Corpus</a>, and <a href="https://avalanche.openie.dev">OpenIE Avalanche</a>.
+        Every metric on this page derives directly from machine-checked disk state in <a href="/coverage.json" class="text-brand-cyan font-mono">/coverage.json</a>: <strong>{C.studies_count} studies</strong> ({C.horizontal_films_count} horizontal + {C.vertical_films_count} vertical = <strong>{C.total_films_count} films</strong>), <strong>{C.radio_episodes_count} Research Radio episodes</strong>, <strong>{T.voiced_15s_languages_count} voiced</strong> vs. <strong>{T.captioned_15s_languages_count} captioned</strong> languages across <strong>{C.spoken_selector_codes_count} selector codes</strong> (+ <strong>{C.sign_language_slots_count} human Deaf signer slots</strong> marked <code class="font-mono text-brand-amber">co_design_pending</code>), <strong>{T.sourcesheets_count} [G0–G12] checkable source sheets</strong>, and <strong>{T.braille_html_transcripts_count} zero-table Braille HTML transcripts</strong>.
       </p>
 
-      <!-- Top Summary KPI Strip -->
+      <!-- Live Coverage KPI Strip (100% Derived from coverage-summary.json) -->
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         <div class="glass-card p-3.5">
-          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">Verified 15s Fleet</div>
-          <div class="font-display text-2xl font-bold text-brand-amber mt-1">{totalPassed}/{totalVariants}</div>
-          <div class="font-mono text-[11px] text-brand-slate">28×20 T1 + 2×30 T2</div>
+          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">Catalog Films</div>
+          <div class="font-display text-2xl font-bold text-brand-amber mt-1">{C.total_films_count}</div>
+          <div class="font-mono text-[11px] text-brand-slate">{C.horizontal_films_count} 16:9 + {C.vertical_films_count} 9:16 ({C.studies_count} topics)</div>
         </div>
         <div class="glass-card p-3.5">
-          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">Speaker Reach</div>
-          <div class="font-display text-2xl font-bold text-brand-cyan mt-1">{totalSpeakersB}B</div>
-          <div class="font-mono text-[11px] text-brand-slate">{activeLangCount} Active Languages (T1+T2)</div>
+          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">Voiced vs Captioned</div>
+          <div class="font-display text-2xl font-bold text-brand-cyan mt-1">{T.voiced_15s_languages_count}v / {T.captioned_15s_languages_count}c</div>
+          <div class="font-mono text-[11px] text-brand-slate">{C.spoken_selector_codes_count} Selector + {C.sign_language_slots_count} Sign Slots</div>
         </div>
         <div class="glass-card p-3.5">
-          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">Neural Semantic Gate</div>
-          <div class="font-display text-2xl font-bold text-emerald-300 mt-1">{M.fleet_mean_comet_calibrated.toFixed(3)}</div>
-          <div class="font-mono text-[11px] text-brand-slate">LaBSE {M.fleet_mean_labse_cosine.toFixed(3)} · mE5 {M.fleet_mean_me5_cosine.toFixed(3)}</div>
+          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">90s + Radio RSS</div>
+          <div class="font-display text-2xl font-bold text-emerald-300 mt-1">{T.voiced_90s_languages_count} / {T.radio_rss_feeds_on_disk_count}</div>
+          <div class="font-mono text-[11px] text-brand-slate">Target: 31 T0+T1 Voiced &amp; RSS</div>
         </div>
         <div class="glass-card p-3.5">
-          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">Round-Trip chrF++</div>
-          <div class="font-display text-2xl font-bold text-brand-white mt-1">{M.fleet_mean_backtrans_chrfpp.toFixed(1)}</div>
-          <div class="font-mono text-[11px] text-brand-slate">NLLB-200 BLEU {M.fleet_mean_backtrans_bleu.toFixed(1)}</div>
+          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">[G0–G12] Sheets</div>
+          <div class="font-display text-2xl font-bold text-brand-white mt-1">{T.sourcesheets_count}/{C.studies_count}</div>
+          <div class="font-mono text-[11px] text-brand-slate">Ed25519 + Zenodo Relations</div>
         </div>
         <div class="glass-card p-3.5">
-          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">Easy-Read + AD</div>
-          <div class="font-display text-2xl font-bold text-brand-amber mt-1">{M.easy_read_studies}/{M.catalog_studies ?? 29} · {M.audio_described_films}/{M.catalog_studies ?? 29}</div>
-          <div class="font-mono text-[11px] text-brand-slate">100% Catalog · WCAG 2.2 AA</div>
+          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">AAC &amp; Braille HTML</div>
+          <div class="font-display text-2xl font-bold text-brand-amber mt-1">{T.aac_concepts_count} · {T.braille_html_transcripts_count}</div>
+          <div class="font-mono text-[11px] text-brand-slate">Mulberry + Tawasol CC BY-SA</div>
         </div>
         <div class="glass-card p-3.5">
-          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">AAC SKOS Concepts</div>
-          <div class="font-display text-2xl font-bold text-brand-cyan mt-1">{M.aac_concepts_count}</div>
-          <div class="font-mono text-[11px] text-brand-slate">&le; {M.aac_max_plain_words} Plain Words Each</div>
+          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">Review Status</div>
+          <div class="font-display text-xl font-bold text-emerald-300 mt-1">machine</div>
+          <div class="font-mono text-[11px] text-brand-slate">Signed · Self-Checked</div>
         </div>
       </div>
 
-      <!-- Quick Section Jump Nav -->
-      <nav aria-label="Blueprint sections" class="mt-6 flex flex-wrap gap-2">
-        <a href="#planetary-player" class="font-mono text-xs px-3 py-1.5 rounded-md bg-brand-amber text-brand-dark font-semibold no-underline">1. 50-Language 15s &amp; 29/29 AD Player</a>
-        <a href="#gate-scoreboard" class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-amber">2. 620-Variant Gate Matrix (T1 + T2)</a>
-        <a href="#accessibility" class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-cyan">3. 29/29 Easy Read, AD &amp; AAC</a>
-        <a href="#wai1-inspector" class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-amber">4. Schema &amp; WAI1 Inspector</a>
-        <a href="#blueprint-text" class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-cyan">5. Full Blueprint (§§1–10)</a>
-        <a href="/syndication/" class="font-mono text-xs px-3 py-1.5 rounded-md border border-emerald-400/45 text-emerald-300 bg-emerald-500/10 no-underline hover:bg-emerald-500/20">6. 9:16 TikTok + X ↔ Medium &amp; 6-Tier Ecosystem Studio →</a>
+      <!-- Section Jump Navigation (§0–§9) -->
+      <nav aria-label="Blueprint v1.0 sections" class="mt-6 flex flex-wrap gap-2">
+        <a href="#planetary-player" class="font-mono text-xs px-3 py-1.5 rounded-md bg-brand-amber text-brand-dark font-semibold no-underline">Theater (15s/90s · AD Mix · Easy Read)</a>
+        <a href="#sec-0-position" class="font-mono text-xs px-2.5 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-amber">§0 Position</a>
+        <a href="#sec-1-state" class="font-mono text-xs px-2.5 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-cyan">§1 Live State</a>
+        <a href="#sec-2-landscape" class="font-mono text-xs px-2.5 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-amber">§2 13-Org Landscape</a>
+        <a href="#sec-3-aac" class="font-mono text-xs px-2.5 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-cyan">§3 AAC &amp; COGA</a>
+        <a href="#sec-4-pipeline" class="font-mono text-xs px-2.5 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-amber">§4 T0/T1/T2/Sign</a>
+        <a href="#sec-5-energy" class="font-mono text-xs px-2.5 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-cyan">§5 J/min Shunts</a>
+        <a href="#sec-6-channels" class="font-mono text-xs px-2.5 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-amber">§6 Channels</a>
+        <a href="#g0-g12-inspector" class="font-mono text-xs px-2.5 py-1.5 rounded-md border border-emerald-400/45 text-emerald-300 bg-emerald-500/10 no-underline">§7 [G0–G12] Inspector</a>
+        <a href="#sec-8-proprietary" class="font-mono text-xs px-2.5 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-cyan">§8 Open vs PBC</a>
+        <a href="#sec-9-scorecard" class="font-mono text-xs px-2.5 py-1.5 rounded-md border border-brand-amber/45 text-brand-amber bg-brand-amber/10 no-underline">§9 90-Day Scorecard</a>
       </nav>
     </header>
 
-    <!-- INTERACTIVE 50-LANGUAGE (TIER-1 + TIER-2) 15S PLAIN-WORDS PLAYER + 29/29 ACCESSIBILITY SWITCHER -->
+    <!-- INTERACTIVE TOP THEATER: T0/T1/T2/SIGN + 15S/90S + EASY READ (29 TV + 17 RADIO) + VOICED AD MIX + ACCESSIBLE CUES -->
     <section id="planetary-player" class="scroll-mt-24 glass-card p-5 md:p-7 mb-12 border-t-2 border-t-brand-amber">
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 mb-6 border-b border-brand-border">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 mb-5 border-b border-brand-border">
         <div>
           <div class="font-mono text-[11px] uppercase tracking-wider text-brand-amber mb-1">
-            Step 5 &amp; §5 Live Projection · {totalPassed} Neural Audio &amp; WebVTT Variants ({totalAudioMb} MB Stereo -16 LUFS Bundle) + 29/29 AD
+            Interactive Reference Theater · {T.voiced_15s_languages_count} Voiced / {C.spoken_selector_codes_count} Selector Codes + {C.sign_language_slots_count} Sign (co_design_pending)
           </div>
           <h2 class="font-display text-2xl md:text-3xl font-bold text-brand-white m-0">
-            Planetary 50-Language <span class="text-brand-amber">15s Plain-Words</span> &amp; 29/29 Accessibility Theater
+            31-Target Voiced / 50-Code Caption / Easy Read / Voiced AD Mix Player
           </h2>
         </div>
 
-        <!-- Mode Toggles: Standard Multilingual vs Easy Read vs Extended Audio Description -->
         <div class="flex flex-wrap items-center gap-2" role="group" aria-label="Projection mode switcher">
-          <button
-            id="bp-mode-multilingual"
-            type="button"
-            aria-pressed="true"
-            class="bp-mode-btn bp-mode-active font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-amber text-brand-white cursor-pointer transition-all"
-          >
-            🌐 {activeLangCount}-Language Neural Audio
+          <button id="bp-mode-multilingual" type="button" aria-pressed="true" class="bp-mode-btn bp-mode-active font-mono text-xs px-3 py-1.5 rounded-lg border border-brand-amber text-brand-white cursor-pointer">
+            🌐 Voiced / Captioned
           </button>
-          <button
-            id="bp-mode-easyread"
-            type="button"
-            aria-pressed="false"
-            class="bp-mode-btn font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-border text-brand-light cursor-pointer transition-all"
-          >
-            📖 Easy Read + Symbols (29/29)
+          <button id="bp-mode-easyread" type="button" aria-pressed="false" class="bp-mode-btn font-mono text-xs px-3 py-1.5 rounded-lg border border-brand-border text-brand-light cursor-pointer">
+            📖 Easy Read (29 TV + 17 Radio)
           </button>
-          <button
-            id="bp-mode-ad"
-            type="button"
-            aria-pressed="false"
-            class="bp-mode-btn font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-border text-brand-light cursor-pointer transition-all"
-          >
-            🎧 Audio Description (29/29 .ad.m4a)
+          <button id="bp-mode-ad" type="button" aria-pressed="false" class="bp-mode-btn font-mono text-xs px-3 py-1.5 rounded-lg border border-brand-border text-brand-light cursor-pointer">
+            🎧 AD (.ad.m4a)
+          </button>
+          <button id="bp-mode-admix" type="button" aria-pressed="false" class="bp-mode-btn font-mono text-xs px-3 py-1.5 rounded-lg border border-emerald-400/40 text-emerald-300 cursor-pointer">
+            🎧 Voiced AD Mix
+          </button>
+          <button id="bp-mode-cues" type="button" aria-pressed="false" class="bp-mode-btn font-mono text-xs px-3 py-1.5 rounded-lg border border-brand-cyan/40 text-brand-cyan cursor-pointer">
+            🔔 Accessible Cues
           </button>
         </div>
       </div>
 
-      <!-- Full 29-Study Selector + Quick Flagship Pills -->
-      <div class="mb-4">
-        <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
-          <div class="font-mono text-[11px] text-brand-gray">
-            Select Any of All {M.catalog_studies ?? 29} Research TV Studies (Tier-1 Languages + AD + Easy-Read on All Studies · 50 Languages on Core Flagships):
-          </div>
-          <div class="flex items-center gap-2">
-            <label for="bp-study-select" class="font-mono text-[11px] text-brand-cyan">All {M.catalog_studies ?? 29} Studies:</label>
-            <select
-              id="bp-study-select"
-              aria-label="Choose any Research TV study"
-              class="font-mono text-xs px-3 py-1.5 rounded-lg bg-[#0b1020] border border-brand-border text-brand-white focus:border-brand-amber"
-            >
-              {artifacts.map((art) => (
-                <option value={art.slug} selected={art.slug === initialArt.slug}>
-                  {art.short_title} {art.tier2_50 ? '(50 Langs · T1+T2)' : '(20 Langs · T1)'}
-                </option>
-              ))}
-            </select>
+      <!-- Study + Depth Slot (15s vs 90s) + Radio Episode Easy-Read Selector -->
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <div class="flex flex-wrap items-center gap-2">
+          <label for="bp-study-select" class="font-mono text-xs text-brand-cyan">Study ({C.studies_count}):</label>
+          <select id="bp-study-select" class="font-mono text-xs px-3 py-1.5 rounded-lg bg-[#0b1020] border border-brand-border text-brand-white">
+            {artifacts.map((art) => (
+              <option value={art.slug} selected={art.slug === initialArt.slug}>
+                {art.short_title}
+              </option>
+            ))}
+          </select>
+          <div class="inline-flex rounded-lg border border-brand-border overflow-hidden font-mono text-xs">
+            <button id="bp-slot-15s" type="button" class="px-2.5 py-1.5 bg-brand-amber text-brand-dark font-bold cursor-pointer border-none">15s</button>
+            <button id="bp-slot-90s" type="button" class="px-2.5 py-1.5 bg-transparent text-brand-light cursor-pointer border-none">90s</button>
           </div>
         </div>
-        <div class="flex flex-wrap gap-2" role="radiogroup" aria-label="Quick flagship study shortcuts">
-          {flagshipArtifacts.map((art) => (
-            <button
-              type="button"
-              data-bp-study={art.slug}
-              aria-pressed={art.slug === initialArt.slug ? 'true' : 'false'}
-              class={`bp-study-pill font-mono text-xs px-3 py-1.5 rounded-lg border border-brand-border text-brand-slate hover:text-brand-white cursor-pointer bg-transparent transition-all ${art.slug === initialArt.slug ? 'bp-pill-active' : ''}`}
-            >
-              {art.short_title} {art.tier2_50 ? '· 50L' : ''}
-            </button>
-          ))}
+        <div class="flex flex-wrap items-center gap-2 font-mono text-[11px]">
+          <span id="bp-j-badge" class="px-2.5 py-1 rounded bg-emerald-500/15 border border-emerald-400/35 text-emerald-300">
+            Thor INA3221: {C.tool_energy_j_per_min?.local_edge_pipeline_thor_ina3221_j_per_min ?? 794.21} J/min · KV260 Net: {C.tool_energy_j_per_min?.local_edge_pipeline_kv260_net_j_per_min ?? 213.67} J/min (measured_j) · Cloud TTS: unmetered
+          </span>
         </div>
       </div>
 
-      <!-- 20 Tier-1 Language Selector Grid (Active Across All 28 Studies) -->
-      <div class="mb-4">
-        <div class="font-mono text-[11px] text-brand-gray mb-2">
-          Tier-1 Languages — Top 20 by Global Speaker Population (Active Across All 28 / 28 Studies · 560 Variants · 6.54B Speakers):
+      <!-- T0 (12) + T1 (19) = 31 Voiced Target + T2 (19) = 50 Selector Codes + Sign (5) -->
+      <div class="space-y-3 mb-5">
+        <div>
+          <div class="font-mono text-[11px] text-brand-amber mb-1.5">
+            T0 Core Hubs (12 Languages) + T1 Regional/National (19 Languages) = 31-Language Voiced Target:
+          </div>
+          <div class="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-11 gap-1.5">
+            {[...t0Langs, ...t1Langs].map((lg) => (
+              <button
+                type="button"
+                data-bp-lang={lg.code}
+                aria-pressed={lg.code === 'en' ? 'true' : 'false'}
+                class={`bp-lang-pill font-mono text-[10.5px] px-2 py-1.5 rounded-lg border border-brand-border text-left cursor-pointer bg-white/[0.02] hover:border-brand-cyan ${lg.code === 'en' ? 'bp-lang-active' : ''}`}
+              >
+                <div class="font-bold text-brand-white truncate">{lg.native}</div>
+                <div class="text-[9.5px] text-brand-gray flex justify-between">
+                  <span>{lg.code}</span>
+                  <span class="text-brand-cyan">{lg.tier}</span>
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-10 gap-1.5" role="radiogroup" aria-label="Select Tier-1 language">
-          {tier1Langs.map((lg) => (
-            <button
-              type="button"
-              data-bp-lang={lg.code}
-              data-bp-tier="1"
-              aria-pressed={lg.code === 'en' ? 'true' : 'false'}
-              class={`bp-lang-pill font-mono text-[11px] px-2.5 py-2 rounded-lg border border-brand-border text-left cursor-pointer bg-white/[0.02] hover:border-brand-cyan transition-all ${lg.code === 'en' ? 'bp-lang-active' : ''}`}
-            >
-              <div class="font-bold text-brand-white truncate">{lg.native}</div>
-              <div class="text-[10px] text-brand-gray flex justify-between">
-                <span>{lg.code}</span>
-                <span>{lg.speakers_m}M</span>
-              </div>
-            </button>
-          ))}
+        <div>
+          <div class="font-mono text-[11px] text-brand-cyan mb-1.5">
+            T2 Captions &amp; Easy-Read (19 Languages → 50 Selector Codes) + 5 Human Deaf Signer Slots (co_design_pending):
+          </div>
+          <div class="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-1.5">
+            {t2Langs.map((lg) => (
+              <button
+                type="button"
+                data-bp-lang={lg.code}
+                aria-pressed="false"
+                class="bp-lang-pill font-mono text-[10.5px] px-2 py-1 rounded-lg border border-brand-border text-left cursor-pointer bg-white/[0.015] hover:border-brand-amber"
+              >
+                <div class="font-bold text-brand-white truncate">{lg.native}</div>
+                <div class="text-[9.5px] text-brand-gray flex justify-between">
+                  <span>{lg.code}</span>
+                  <span>T2</span>
+                </div>
+              </button>
+            ))}
+            {signLangs.map((sl) => (
+              <span
+                title={`${sl.name}: human Deaf signer co-design pending (zero unreviewed AI avatars)`}
+                class="font-mono text-[10px] px-2 py-1 rounded-lg border border-dashed border-brand-amber/40 text-brand-amber/90 bg-brand-amber/[0.04]"
+              >
+                <div class="font-bold truncate">🤟 {sl.code}</div>
+                <div class="text-[9px] text-brand-gray truncate">co-design</div>
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
-      <!-- 30 Tier-2 Language Selector Grid (Active on Core Flagships: Nine-Rung Avalanche & 64-Codon Lookup Nucleus) -->
-      <div class="mb-6">
-        <div class="font-mono text-[11px] text-brand-cyan mb-2">
-          Tier-2 Languages — Next 30 Global Languages (+1.41B Speakers = ~{totalSpeakersB}B Total · Live on <em>Nine-Rung Intelligence Avalanche</em> &amp; <em>64-Codon Lookup Nucleus</em>):
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-10 gap-1.5" role="radiogroup" aria-label="Select Tier-2 language">
-          {tier2Langs.map((lg) => (
-            <button
-              type="button"
-              data-bp-lang={lg.code}
-              data-bp-tier="2"
-              aria-pressed="false"
-              class="bp-lang-pill font-mono text-[11px] px-2.5 py-1.5 rounded-lg border border-brand-border text-left cursor-pointer bg-white/[0.015] hover:border-brand-amber transition-all"
-            >
-              <div class="font-bold text-brand-white truncate">{lg.native}</div>
-              <div class="text-[10px] text-brand-gray flex justify-between">
-                <span>{lg.code}</span>
-                <span>{lg.speakers_m}M</span>
-              </div>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <!-- Split Video/Audio Stage + Live 3-Bullet / Easy-Read / AD Transcript -->
+      <!-- Video + Audio + Right Panel -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         <div class="lg:col-span-7">
           <div class="relative rounded-xl overflow-hidden border border-brand-border bg-[#0b1020] aspect-video shadow-xl">
@@ -276,441 +356,511 @@ const clientPayload = JSON.stringify({
               src={initialArt.modality_variants.tv_15s_video_url}
               class="w-full h-full object-contain bg-[#0b1020]"
             >
-              <track
-                id="bp-vtt-track"
-                kind="captions"
-                srclang="en"
-                label="Synced Captions"
-                src={initialVar.vtt_url}
-                default
-              />
+              <track id="bp-vtt-track" kind="captions" srclang="en" label="Synced Captions" src={initialVar.vtt_url} default />
             </video>
           </div>
 
-          <!-- Dedicated Native Neural Audio Bar (-16 LUFS Stereo .m4a) -->
           <div class="mt-3 p-3.5 rounded-xl border border-brand-cyan/35 bg-white/[0.03]">
             <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
               <div class="font-mono text-xs text-brand-cyan font-semibold" id="bp-audio-label">
-                ▶ Native Neural Audio · English (en-US-AvaNeural · -16 LUFS Stereo AAC)
+                ▶ Voiced Track · English (-16 LUFS Stereo · review_status: machine)
               </div>
-              <div class="flex items-center gap-2">
-                <a id="bp-download-m4a" href={initialVar.audio_url} class="font-mono text-[11px] text-brand-amber no-underline hover:underline">
-                  .m4a
-                </a>
+              <div class="flex items-center gap-2 font-mono text-[11px]">
+                <span id="bp-modality-pill" class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">modality: voiced</span>
+                <a id="bp-download-m4a" href={initialVar.audio_url} class="text-brand-amber no-underline hover:underline">.m4a</a>
                 <span class="text-brand-gray">·</span>
-                <a id="bp-download-vtt" href={initialVar.vtt_url} class="font-mono text-[11px] text-brand-cyan no-underline hover:underline">
-                  .vtt
-                </a>
+                <a id="bp-download-vtt" href={initialVar.vtt_url} class="text-brand-cyan no-underline hover:underline">.vtt</a>
               </div>
             </div>
-            <audio
-              id="bp-audio"
-              controls
-              preload="metadata"
-              src={initialVar.audio_url}
-              class="w-full h-10"
-              aria-label="Synchronized multilingual or audio-described voiceover player"
-            ></audio>
-          </div>
-
-          <!-- Gate Verification Receipt Strip for Active Variant -->
-          <div class="mt-3 p-3.5 rounded-xl border border-brand-border bg-white/[0.015] font-mono text-xs">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="text-emerald-300 font-semibold" id="bp-gate-verdict">
-                ✓ GATE: PASS_FIRST_TRY (Attempt 1/2)
-              </span>
-              <span class="text-brand-gray truncate" id="bp-canonical-id">
-                {initialVar.canonical_id}
-              </span>
-            </div>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-2.5 pt-2.5 border-t border-brand-border text-[11px]">
-              <div><span class="text-brand-gray">COMET-Cal:</span> <span id="bp-score-comet" class="text-brand-amber font-bold">{initialVar.comet_calibrated.toFixed(4)}</span></div>
-              <div><span class="text-brand-gray">LaBSE Cos:</span> <span id="bp-score-labse" class="text-brand-cyan font-bold">{initialVar.labse_cosine.toFixed(4)}</span></div>
-              <div><span class="text-brand-gray">NLLB chrF++:</span> <span id="bp-score-chrf" class="text-brand-white font-bold">{initialVar.backtrans_chrfpp.toFixed(1)}</span></div>
-              <div><span class="text-brand-gray">NLLB BLEU:</span> <span id="bp-score-bleu" class="text-brand-light font-bold">{initialVar.backtrans_bleu.toFixed(1)}</span></div>
-            </div>
+            <audio id="bp-audio" controls preload="metadata" src={initialVar.audio_url} class="w-full h-10"></audio>
           </div>
         </div>
 
-        <!-- Right Column: 3 Zero-Acronym Takeaways + Conditional Easy-Read / AD Projection -->
-        <div class="lg:col-span-5 flex flex-col gap-4">
-          <div class="glass-card p-5">
-            <div class="flex items-center justify-between gap-2 mb-2">
-              <span class="font-mono text-[10px] uppercase tracking-wider text-brand-amber" id="bp-card-kicker">
-                3 Zero-Acronym Plain-Language Takeaways
-              </span>
-              <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-white/5 text-brand-cyan border border-brand-border" id="bp-lang-badge">
-                en · LTR
-              </span>
-            </div>
-            <h3 id="bp-active-title" class="font-display text-xl font-bold text-brand-white mb-1">
-              {initialArt.title}
-            </h3>
-            <div id="bp-active-rung" class="font-mono text-[11px] text-brand-cyan mb-3">
-              {initialArt.difficulty_rung} · {initialArt.energy_cost_j.label}
-            </div>
-
-            <div id="bp-bullets-wrap" dir="ltr" lang="en" class="p-4 rounded-xl border border-brand-amber/30 bg-white/[0.025]">
-              <ol id="bp-bullets-list" class="list-decimal pl-5 space-y-2.5 font-body text-sm text-brand-light leading-relaxed m-0">
-                {initialVar.bullets.map((b: string) => <li>{b}</li>)}
-              </ol>
-            </div>
-
-            <!-- Easy Read Overlay Panel (shown when Easy Read mode active) -->
-            <div id="bp-easyread-panel" class="hidden mt-4 p-4 rounded-xl border border-brand-cyan/40 bg-brand-cyan/[0.06]">
-              <div class="font-mono text-[11px] uppercase tracking-wider text-brand-cyan mb-2">
-                Easy-Read Companion · WCAG 2.2 AA · One Idea Per Sentence
-              </div>
-              <div id="bp-er-symbols" class="flex flex-wrap gap-1.5 mb-3"></div>
-              <ol id="bp-er-sentences" class="list-decimal pl-5 space-y-1.5 font-body text-sm text-brand-white leading-relaxed m-0"></ol>
-            </div>
-
-            <!-- Audio Description Panel (shown when AD mode active) -->
-            <div id="bp-ad-panel" class="hidden mt-4 p-4 rounded-xl border border-emerald-400/40 bg-emerald-500/[0.06]">
-              <div class="font-mono text-[11px] uppercase tracking-wider text-emerald-300 mb-1.5">
-                Extended Audio Description · 3D Geometry &amp; Color Algebra
-              </div>
-              <p id="bp-ad-overview" class="font-body text-xs text-brand-slate mb-2.5"></p>
-              <div id="bp-ad-cues" class="space-y-2 max-h-56 overflow-y-auto pr-1"></div>
-            </div>
-
-            <!-- Cross-Surface Unsiloeing Links -->
-            <div class="mt-4 pt-4 border-t border-brand-border flex flex-wrap gap-2">
-              <a id="bp-link-paper" href={initialArt.modality_variants.paper_url} class="font-mono text-xs px-3 py-1.5 rounded-md bg-brand-amber text-brand-dark font-semibold no-underline">
-                Paper →
-              </a>
-              <a id="bp-link-tv" href={`/tv/?study=${initialArt.tv_id}`} class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-amber">
-                Open in /tv/ Studio
-              </a>
-              <a id="bp-link-commons" href={initialArt.modality_variants.commons_trail_url} class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-cyan/40 text-brand-cyan no-underline hover:bg-brand-cyan/10">
-                Commons Trail ↗
-              </a>
-              <a id="bp-link-easyread-all" href={initialArt.modality_variants.easy_read_url} class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-border text-brand-slate no-underline hover:text-brand-white">
-                28-Study Easy Read &amp; AD
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 2: DETERMINISTIC NO-HUMAN VERIFICATION GATE SCOREBOARD (560 TIER-1 + 60 TIER-2 = 620 VARIANTS) -->
-    <section id="gate-scoreboard" class="scroll-mt-24 mb-14">
-      <div class="mb-5">
-        <span class="section-label">§§4 &amp; 6 · Zero Human Review Gates · 50 Active Languages</span>
-        <h2 class="font-display text-2xl md:text-3xl font-bold text-brand-white mt-1">
-          Deterministic 620-Variant Gate Scoreboard (28×20 Tier-1 + 2×30 Tier-2)
-        </h2>
-        <p class="font-body text-sm text-brand-slate max-w-4xl leading-relaxed mt-2">
-          Every 15-second plain-language variant across all 28 Research TV studies (560 Tier-1 variants) and 30 additional Tier-2 languages on core flagships (60 Tier-2 variants) is verified automatically against the frozen English 3-point anchor using dual multilingual neural encoders (<code class="font-mono text-brand-cyan">LaBSE</code> + <code class="font-mono text-brand-cyan">multilingual-e5-base</code>), independent neural round-trip back-translation (<code class="font-mono text-brand-amber">NLLB-200-distilled-600M</code>) scored with <code class="font-mono text-brand-white">sacrebleu chrF++</code> and <code class="font-mono text-brand-white">BLEU</code>, and structural 3-point, zero-acronym, and quantity-preservation predicates.
-        </p>
-      </div>
-
-      <!-- Axis A: Tier-1 Scoreboard Across All 28 Studies (8 Flagship Columns + 28-Study Fleet Mean) -->
-      <div class="glass-card p-4 md:p-6 mb-8 overflow-x-auto">
-        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-          <div class="font-mono text-xs text-brand-amber font-semibold">
-            Axis A · Tier-1 Top 20 Languages Across All 28 Studies ({M.tier1_passed_variants}/{M.tier1_total_variants} Verified · Click Any Cell to Play)
-          </div>
-          <span class="font-mono text-[11px] text-brand-cyan">28-Study Fleet + 8 Flagship Drill-Down</span>
-        </div>
-        <table class="w-full font-mono text-xs border-collapse min-w-[840px]">
-          <thead>
-            <tr class="border-b border-brand-border text-brand-gray text-left">
-              <th class="py-2 pr-3">Tier-1 Language</th>
-              <th class="py-2 pr-2">Speakers</th>
-              <th class="py-2 pr-2 text-center">28-Study Pass</th>
-              {flagshipArtifacts.map((a) => (
-                <th class="py-2 px-1 text-center" title={a.title}>
-                  {a.slug.replace('communication-avalanche', 'comm-aval').replace('ecosystem-avalanche', 'eco-aval').replace('deterministic-null', 'det-null').replace('lut6-codon-nucleus', 'codon-64')}
-                </th>
-              ))}
-              <th class="py-2 pl-2 text-right">28-Study chrF++</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tier1Langs.map((lg) => (
-              <tr class="border-b border-brand-border/40 hover:bg-white/[0.02]">
-                <td class="py-2 pr-3 text-brand-white font-semibold">
-                  {lg.name} <span class="text-brand-gray font-normal">({lg.code})</span>
-                </td>
-                <td class="py-2 pr-2 text-brand-slate">{lg.speakers_m}M</td>
-                <td class="py-2 pr-2 text-center text-emerald-300 font-semibold">
-                  {lg.passed_count ?? 28}/{lg.variant_count ?? 28}
-                </td>
-                {flagshipArtifacts.map((a) => {
-                  const cell = variants.find((v) => v.study_slug === a.slug && v.lang === lg.code);
-                  const sc = cell ? cell.comet_calibrated : 0;
-                  return (
-                    <td class="py-1.5 px-1 text-center">
-                      <button
-                        type="button"
-                        data-matrix-study={a.slug}
-                        data-matrix-lang={lg.code}
-                        class="w-full py-1 px-1.5 rounded bg-emerald-500/15 hover:bg-brand-amber/25 border border-emerald-400/30 hover:border-brand-amber text-emerald-200 cursor-pointer text-[11px]"
-                        title={`${a.short_title} (${lg.name}): COMET-Cal ${sc.toFixed(3)}, chrF++ ${cell?.backtrans_chrfpp}`}
-                      >
-                        {sc.toFixed(2)}
-                      </button>
-                    </td>
-                  );
-                })}
-                <td class="py-2 pl-2 text-right text-brand-cyan font-semibold">{lg.mean_backtrans_chrfpp.toFixed(1)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Adversarial 2-Strike Proof + Axis B: Live Tier-2 30-Language Scoreboard -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div class="lg:col-span-5 glass-card p-5">
-          <div class="font-mono text-[11px] uppercase tracking-wider text-brand-amber mb-1.5">
-            Synthetic Adversarial Proof · 2-Strike Halt Rule
+          <div class="flex items-center justify-between gap-2 mb-2 font-mono text-[11px]">
+            <span class="text-brand-amber uppercase">3 Plain-Word Points · Zero Unexplained Acronyms</span>
+            <span id="bp-lang-badge" class="px-2 py-0.5 rounded bg-white/5 text-brand-cyan border border-brand-border">en · T0 · LTR</span>
           </div>
-          <h3 class="font-display text-lg font-bold text-brand-white mb-2">
-            Automatic Regeneration &amp; <code class="text-rose-400">FLAGGED_DO_NOT_SHIP</code>
-          </h3>
-          <p class="font-body text-xs text-brand-slate leading-relaxed mb-3">
-            Strike-1 candidate failures regenerate automatically via digit-normalized beam-5 neural translation and acronym stripping. Two consecutive failures quarantine the variant without human intervention:
+          <h3 id="bp-active-title" class="font-display text-xl font-bold text-brand-white mb-2">{initialArt.title}</h3>
+
+          <div id="bp-bullets-wrap" dir="ltr" lang="en" class="p-3.5 rounded-xl border border-brand-amber/30 bg-white/[0.025]">
+            <ol id="bp-bullets-list" class="list-decimal pl-5 space-y-2 font-body text-sm text-brand-light leading-relaxed m-0">
+              {(initialVar.bullets || []).map((b: string) => <li>{b}</li>)}
+            </ol>
+          </div>
+
+          <!-- Easy Read Drawer (Supports all 29 TV Studies + 17 Radio Episodes) -->
+          <div id="bp-easyread-panel" class="hidden mt-4 p-4 rounded-xl border border-brand-cyan/40 bg-brand-cyan/[0.06]">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <span class="font-mono text-[10.5px] uppercase text-brand-cyan font-bold">
+                Easy Read · Mulberry + Tawasol (CC BY-SA 4.0)
+              </span>
+              <select id="bp-radio-er-select" aria-label="Inspect Easy Read on any of the 17 Radio episodes" class="font-mono text-[10.5px] px-2 py-1 rounded bg-[#0b1020] border border-brand-border text-brand-white">
+                <option value="">Active TV Study Easy Read</option>
+                {radioEasyRead.map((re) => (
+                  <option value={re.id}>Radio Ep {String(re.number).padStart(2, '0')}: {re.easy_title.slice(0, 34)}</option>
+                ))}
+              </select>
+            </div>
+            <div id="bp-er-symbols" class="flex flex-wrap gap-1.5 mb-2.5"></div>
+            <ol id="bp-er-sentences" class="list-decimal pl-5 space-y-1.5 font-body text-xs text-brand-white leading-relaxed m-0"></ol>
+          </div>
+
+          <!-- AD / Accessible Cues Panel -->
+          <div id="bp-ad-panel" class="hidden mt-4 p-4 rounded-xl border border-emerald-400/40 bg-emerald-500/[0.06]">
+            <div id="bp-ad-heading" class="font-mono text-[11px] uppercase tracking-wider text-emerald-300 mb-1.5">
+              Audio Description &amp; Ranked [sound] Cues
+            </div>
+            <p id="bp-ad-overview" class="font-body text-xs text-brand-slate mb-2"></p>
+            <div id="bp-ad-cues" class="space-y-2 max-h-52 overflow-y-auto pr-1"></div>
+          </div>
+
+          <div class="mt-4 pt-4 border-t border-brand-border flex flex-wrap gap-2">
+            <a id="bp-link-paper" href={initialArt.modality_variants.paper_url} class="font-mono text-xs px-3 py-1.5 rounded-md bg-brand-amber text-brand-dark font-semibold no-underline">
+              Paper →
+            </a>
+            <a id="bp-link-sourcesheet" href={`/sourcesheets/${initialArt.tv_id}/`} class="font-mono text-xs px-3 py-1.5 rounded-md border border-emerald-400/45 bg-emerald-500/15 text-emerald-300 font-semibold no-underline">
+              Source Sheet ↗
+            </a>
+            <a id="bp-link-braille" href={`/transcripts/${initialArt.tv_id}/`} class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-cyan/40 text-brand-cyan no-underline">
+              Braille HTML
+            </a>
+            <a id="bp-link-tv" href={`/tv/?study=${initialArt.tv_id}`} class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-border text-brand-light no-underline">
+              /tv/ Studio
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- §0 POSITION -->
+    <section id="sec-0-position" class="scroll-mt-24 glass-card p-6 md:p-8 mb-10">
+      <span class="section-label">§0 Position</span>
+      <h2 class="font-display text-2xl font-bold text-brand-white mt-1 mb-4">
+        Three Governing Rules for Planetary Research Media
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="p-4 rounded-xl border border-brand-border bg-white/[0.02]">
+          <div class="font-mono text-xs text-brand-amber font-bold mb-1.5">1. Deterministic Automation</div>
+          <p class="font-body text-xs text-brand-slate leading-relaxed m-0">
+            One frozen research artifact enters once and machine-checkable <code class="font-mono text-brand-cyan">[G0–G12]</code> gates govern every script, translation, caption, audio check, and cryptographic signature. Every machine output is labeled <code class="font-mono text-emerald-300">review_status: "machine"</code> (<code class="font-mono">Signed Provenance · Self-Checked</code>) until a human reviewer signs with a verified <code class="font-mono">reviewer_orcid</code>.
           </p>
-          <div class="space-y-2.5">
-            {advAudit.map((c) => (
-              <div class="p-3 rounded-lg border border-brand-border bg-white/[0.02] font-mono text-xs">
-                <div class="flex items-center justify-between gap-2">
-                  <span class="text-brand-white font-semibold">{c.case_id}</span>
-                  <span class={c.ship_allowed ? 'text-brand-cyan' : 'text-rose-400 font-bold'}>
-                    {c.verdict}
-                  </span>
-                </div>
-                <div class="text-[11px] text-brand-gray mt-1">
-                  Attempts: {c.attempts} · Strike-1 COMET {c.attempt_1.comet_calibrated.toFixed(3)} ({c.attempt_1.struct_reasons.join(', ') || 'low semantic similarity'}) → {c.ship_allowed ? `Strike-2 COMET ${c.attempt_2.comet_calibrated.toFixed(3)} (shipped)` : 'Quarantined cold'}
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
-
-        <div class="lg:col-span-7 glass-card p-5">
-          <div class="font-mono text-[11px] uppercase tracking-wider text-brand-cyan mb-1.5">
-            Axis B · Active Tier-2 Next 30 Global Languages (+{(M.tier2_speakers_millions / 1000).toFixed(2)}B Speakers · {M.tier2_passed_variants ?? 60}/{M.tier2_total_variants ?? 60} Gate Pass)
-          </div>
-          <h3 class="font-display text-lg font-bold text-brand-white mb-2">
-            Live Neural Audio &amp; Gate Scores Across 30 Indic, African, Southeast Asian &amp; European Scripts
-          </h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 max-h-80 overflow-y-auto pr-1">
-            {tier2Langs.map((t2) => {
-              const vEco = variants.find((v) => v.study_slug === 'ecosystem-avalanche' && v.lang === t2.code);
-              const vCod = variants.find((v) => v.study_slug === 'lut6-codon-nucleus' && v.lang === t2.code);
-              return (
-                <div class="p-2.5 rounded-lg border border-brand-border bg-white/[0.02] flex flex-col justify-between">
-                  <div>
-                    <div class="font-mono text-xs text-brand-white font-semibold flex items-center justify-between gap-1">
-                      <span class="truncate">{t2.name} <span class="text-brand-amber">({t2.code})</span></span>
-                      <span class="text-[10px] text-brand-gray shrink-0">{t2.speakers_m}M</span>
-                    </div>
-                    <div class="font-body text-[11px] text-brand-slate truncate">{t2.native} · {t2.voice ?? t2.voice_plan}</div>
-                  </div>
-                  <div class="grid grid-cols-2 gap-1.5 mt-2">
-                    {vEco && vEco.ship_allowed !== false ? (
-                      <button
-                        type="button"
-                        data-matrix-study="ecosystem-avalanche"
-                        data-matrix-lang={t2.code}
-                        class="font-mono text-[10px] py-1 px-1.5 rounded bg-emerald-500/15 hover:bg-brand-amber/25 border border-emerald-400/30 text-emerald-200 cursor-pointer"
-                        title={`Play Nine-Rung Avalanche (${t2.name}) · chrF++ ${vEco.backtrans_chrfpp}`}
-                      >
-                        ▶ Aval {vEco.comet_calibrated.toFixed(2)}
-                      </button>
-                    ) : (
-                      <span class="font-mono text-[10px] py-1 px-1.5 rounded bg-rose-500/15 border border-rose-400/30 text-rose-300 text-center">Quarantined</span>
-                    )}
-                    {vCod && vCod.ship_allowed !== false ? (
-                      <button
-                        type="button"
-                        data-matrix-study="lut6-codon-nucleus"
-                        data-matrix-lang={t2.code}
-                        class="font-mono text-[10px] py-1 px-1.5 rounded bg-emerald-500/15 hover:bg-brand-amber/25 border border-emerald-400/30 text-emerald-200 cursor-pointer"
-                        title={`Play 64-Codon Nucleus (${t2.name}) · chrF++ ${vCod.backtrans_chrfpp}`}
-                      >
-                        ▶ Codon {vCod.comet_calibrated.toFixed(2)}
-                      </button>
-                    ) : (
-                      <span class="font-mono text-[10px] py-1 px-1.5 rounded bg-rose-500/15 border border-rose-400/30 text-rose-300 text-center">Quarantined</span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+        <div class="p-4 rounded-xl border border-brand-border bg-white/[0.02]">
+          <div class="font-mono text-xs text-brand-cyan font-bold mb-1.5">2. Energy J/min Across 4 Orthogonal Classes</div>
+          <p class="font-body text-xs text-brand-slate leading-relaxed m-0">
+            Every study and media production step stamps joules per minute of finished output across four orthogonal evidence classes (<code class="font-mono text-emerald-300">measured_j &perp; reported_j &perp; est_j &perp; unmetered</code>)—board DC shunts, chip counters, analytical formulas, and external cloud calls are never summed or cross-ratioed.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl border border-brand-border bg-white/[0.02]">
+          <div class="font-mono text-xs text-emerald-300 font-bold mb-1.5">3. Minimalism &amp; Clarity</div>
+          <p class="font-body text-xs text-brand-slate leading-relaxed m-0">
+            Every duration (<code class="font-mono">15s</code>, <code class="font-mono">45s</code>, <code class="font-mono">90s</code>, <code class="font-mono">180s</code>) opens with the same three plain-word points free of unexplained acronyms, compiling reusable vector/WebVTT/HTML projections before waking heavy synthesis.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 3: §5 ACCESSIBILITY AS FIRST-CLASS PROJECTIONS & SKOS AAC CONCEPTS EXPLORER -->
-    <section id="accessibility" class="scroll-mt-24 mb-14">
-      <div class="mb-5">
-        <span class="section-label">§5 Accessibility Projections · 28/28 Full Catalog · WCAG 2.2 Level AA · CC0-1.0</span>
-        <h2 class="font-display text-2xl md:text-3xl font-bold text-brand-white mt-1">
-          AAC Concepts Anchor, 28/28 Easy Read &amp; 28/28 Extended Audio Descriptions
-        </h2>
-        <p class="font-body text-sm text-brand-slate max-w-4xl leading-relaxed mt-2">
-          Every single study in the 28-study Research TV catalog ships with both a one-idea-per-sentence Easy-Read guide and a stereo <code class="font-mono text-emerald-300">-16 LUFS</code> Extended Audio Description track (<code class="font-mono text-brand-amber">.ad.m4a</code> + <code class="font-mono text-brand-cyan">.ad.vtt</code>), playable directly inside <a href="/tv/" class="text-brand-amber font-mono">/tv/</a> and above. Screen readers, switch interfaces, and Augmentative and Alternative Communication (AAC) boards can ingest <a href="/glossary/concepts.json" class="text-brand-cyan font-mono">/glossary/concepts.json</a> alongside <a href="/media/tv/accessibility/easy-read-catalog.json" class="text-brand-amber font-mono">easy-read-catalog.json</a> and <a href="/media/tv/accessibility/easy-read-index.html" class="text-brand-light font-mono">easy-read-index.html</a>.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-        {aacConcepts.map((c) => (
-          <div class="glass-card p-4 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-1.5">
-                <span class="font-mono text-xs text-brand-amber font-semibold">
-                  <span aria-hidden="true">{c.symbolHint.unicodePictogram}</span> {c.prefLabel}
-                </span>
-                <span class="font-mono text-[10px] text-brand-gray">{c.plainWordCount}/20 words</span>
-              </div>
-              <p class="font-body text-sm text-brand-white leading-snug mb-2">
-                {c.plainDefinition}
-              </p>
-              <ul class="list-disc pl-4 space-y-0.5 font-body text-xs text-brand-slate m-0">
-                {c.easyReadSentences.map((s: string) => <li>{s}</li>)}
-              </ul>
-            </div>
-            <div class="mt-3 pt-2.5 border-t border-brand-border flex flex-wrap items-center justify-between gap-2 font-mono text-[10px]">
-              <span class="text-brand-cyan">AAC Core: {c.symbolHint.aacCoreWords.join(' · ')}</span>
-              <span class="text-brand-gray">{c.symbolHint.category}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div class="flex flex-wrap gap-3">
-        <a href="/glossary/concepts.json" class="font-mono text-xs px-4 py-2.5 rounded-lg bg-brand-cyan text-brand-dark font-semibold no-underline">
-          Download Full SKOS / JSON-LD ({M.aac_concepts_count} Concepts) →
-        </a>
-        <a href="/media/tv/accessibility/easy-read-index.html" class="font-mono text-xs px-4 py-2.5 rounded-lg border border-brand-amber/50 text-brand-amber no-underline hover:bg-brand-amber/10">
-          Open Standalone Easy-Read &amp; AD Guide (All 28/28 Studies) →
-        </a>
-        <a href="/media/tv/accessibility/easy-read-catalog.json" class="font-mono text-xs px-4 py-2.5 rounded-lg border border-brand-border text-brand-light no-underline hover:border-brand-cyan">
-          easy-read-catalog.json
-        </a>
-      </div>
-    </section>
-
-    <!-- SECTION 4: CANONICAL ARTIFACT SCHEMA & LIVE WAI1 ENVELOPE INSPECTOR -->
-    <section id="wai1-inspector" class="scroll-mt-24 glass-card p-5 md:p-7 mb-14 border-t-2 border-t-brand-cyan">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5">
+    <!-- §1 LIVE MACHINE-CHECKED STATE -->
+    <section id="sec-1-state" class="scroll-mt-24 glass-card p-6 md:p-8 mb-10 overflow-x-auto">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
         <div>
-          <span class="section-label">§2 Canonical Data Model · WAI1 Binary/JSON Interchange</span>
+          <span class="section-label">§1 Live Machine-Checked State (Derived from /coverage.json)</span>
           <h2 class="font-display text-2xl font-bold text-brand-white mt-1 m-0">
-            Live Canonical Artifact &amp; <code class="text-brand-cyan">WAI1</code> Envelope Inspector (All 28 Studies)
+            Exact Voiced vs. Captioned vs. Text Matrix ({C.studies_count} Topics · {C.total_films_count} Films · {C.radio_episodes_count} Radio Episodes)
           </h2>
         </div>
-        <div class="flex items-center gap-2">
-          <label for="wai1-select" class="font-mono text-xs text-brand-slate">Inspect Record:</label>
-          <select id="wai1-select" class="font-mono text-xs px-3 py-2 rounded-lg bg-[#0b1020] border border-brand-border text-brand-white">
-            <option value="__blueprint__">Blueprint Self-Artifact (unsiloeing-openie)</option>
-            {artifacts.map((a) => (
-              <option value={a.slug}>{a.slug} ({a.canonical_id.slice(0, 28)}…)</option>
-            ))}
-          </select>
-          <button id="wai1-copy" type="button" class="font-mono text-xs px-3 py-2 rounded-lg border border-brand-cyan/40 text-brand-cyan bg-brand-cyan/10 cursor-pointer">
-            Copy JSON
-          </button>
+        <a href="/coverage.json" class="font-mono text-xs px-3.5 py-2 rounded-lg bg-brand-cyan text-brand-dark font-bold no-underline">
+          Inspect /coverage.json →
+        </a>
+      </div>
+      <p class="font-body text-xs text-brand-slate leading-relaxed mb-4">
+        Enforced at build time by <code class="font-mono text-brand-amber">scripts/lint-coverage.mjs</code>: zero stale claims allowed, explicit separation between <strong>voiced audio</strong>, <strong>synced WebVTT captions</strong>, and <strong>Easy-Read text</strong>, and honest <code class="font-mono text-emerald-300">co_design_pending</code> status on all 5 Sign language slots.
+      </p>
+      <table class="w-full font-mono text-xs border-collapse min-w-[760px]">
+        <thead>
+          <tr class="border-b border-brand-border text-left text-brand-gray">
+            <th class="py-2 pr-3">Tier</th>
+            <th class="py-2 pr-3">Target Scope</th>
+            <th class="py-2 pr-3">15s Voiced / Captioned</th>
+            <th class="py-2 pr-3">90s Voiced</th>
+            <th class="py-2 pr-3">Radio RSS Feeds</th>
+            <th class="py-2">Review / Co-Design Status</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-brand-border/40 text-brand-light">
+          <tr>
+            <td class="py-2.5 pr-3 text-brand-amber font-bold">T0 ({C.tiers.T0.count} langs)</td>
+            <td class="py-2.5 pr-3">Core global hub languages</td>
+            <td class="py-2.5 pr-3">{t0Langs.filter((l) => l['15s'].voiced_count > 0).length}/12 voiced · {t0Langs.filter((l) => l['15s'].captioned_count > 0).length}/12 captioned</td>
+            <td class="py-2.5 pr-3">{t0Langs.filter((l) => l['90s'].voiced_count > 0).length}/12 voiced</td>
+            <td class="py-2.5 pr-3">{t0Langs.filter((l) => l.radio_rss_exists).length}/12 on disk</td>
+            <td class="py-2.5 text-emerald-300">review_status: machine</td>
+          </tr>
+          <tr>
+            <td class="py-2.5 pr-3 text-brand-cyan font-bold">T1 ({C.tiers.T1.count} langs)</td>
+            <td class="py-2.5 pr-3">High need × gap spoken languages (→ 31 voiced target)</td>
+            <td class="py-2.5 pr-3">{t1Langs.filter((l) => l['15s'].voiced_count > 0).length}/19 voiced · {t1Langs.filter((l) => l['15s'].captioned_count > 0).length}/19 captioned</td>
+            <td class="py-2.5 pr-3">{t1Langs.filter((l) => l['90s'].voiced_count > 0).length}/19 voiced</td>
+            <td class="py-2.5 pr-3">{t1Langs.filter((l) => l.radio_rss_exists).length}/19 on disk</td>
+            <td class="py-2.5 text-emerald-300">review_status: machine</td>
+          </tr>
+          <tr>
+            <td class="py-2.5 pr-3 text-brand-white font-bold">T2 ({C.tiers.T2.count} langs)</td>
+            <td class="py-2.5 pr-3">Captions + WebVTT + Easy Read (→ 50 selector codes)</td>
+            <td class="py-2.5 pr-3">{t2Langs.filter((l) => l['15s'].voiced_count > 0).length}/19 voiced · {t2Langs.filter((l) => l['15s'].captioned_count > 0).length}/19 captioned</td>
+            <td class="py-2.5 pr-3">{t2Langs.filter((l) => l['90s'].voiced_count > 0).length}/19 voiced</td>
+            <td class="py-2.5 pr-3">Captions / text tier</td>
+            <td class="py-2.5 text-emerald-300">review_status: machine</td>
+          </tr>
+          <tr>
+            <td class="py-2.5 pr-3 text-brand-amber font-bold">Sign ({C.tiers.Sign.count} slots)</td>
+            <td class="py-2.5 pr-3">ASL, BSL, ISL-IN, LSF, Libras (human Deaf signers)</td>
+            <td class="py-2.5 pr-3">0/5 video (29 Braille/Easy-Read scripts ready)</td>
+            <td class="py-2.5 pr-3">0/5 video</td>
+            <td class="py-2.5 pr-3">Visual PiP track</td>
+            <td class="py-2.5 text-brand-amber">co_design_pending · 0 AI avatars</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- §2 VERIFIED 13-ORG LANDSCAPE TABLE -->
+    <section id="sec-2-landscape" class="scroll-mt-24 glass-card p-6 md:p-8 mb-10 overflow-x-auto">
+      <span class="section-label">§2 Verified Landscape &amp; Prior-Art Corrections</span>
+      <h2 class="font-display text-2xl font-bold text-brand-white mt-1 mb-4">
+        13-Organization Science Media &amp; Accessibility Benchmark Table
+      </h2>
+      <table class="w-full font-body text-xs border-collapse min-w-[820px]">
+        <thead>
+          <tr class="border-b border-brand-border text-left font-mono text-[11px] text-brand-gray">
+            <th class="py-2 pr-3">Organization / Project</th>
+            <th class="py-2 pr-3">Operating Model</th>
+            <th class="py-2 pr-4">Verified Facts, Grants &amp; Corrections</th>
+            <th class="py-2">How OpenIE v1.0 Integrates It</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-brand-border/40">
+          {orgLandscape.map((row) => (
+            <tr class="align-top">
+              <td class="py-3 pr-3 font-mono text-brand-amber font-semibold">{row.org}</td>
+              <td class="py-3 pr-3 text-brand-light">{row.model}</td>
+              <td class="py-3 pr-4 text-brand-slate leading-relaxed">{row.verified}</td>
+              <td class="py-3 text-emerald-200 leading-relaxed">{row.adopted}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    <!-- §3 AAC & COGNITIVE ACCESSIBILITY CONFORMANCE TABLE -->
+    <section id="sec-3-aac" class="scroll-mt-24 glass-card p-6 md:p-8 mb-10 overflow-x-auto">
+      <span id="accessibility" aria-hidden="true"></span>
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <div>
+          <span class="section-label">§3 AAC, Cognitive &amp; Deafblind Accessibility Conformance</span>
+          <h2 class="font-display text-2xl font-bold text-brand-white mt-1 m-0">
+            PBC-Safe Mulberry + Tawasol (CC BY-SA 4.0), COGA, ISO 24495-1 &amp; Braille HTML
+          </h2>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a href="/glossary/concepts.json" class="font-mono text-xs px-3 py-1.5 rounded bg-brand-cyan text-brand-dark font-bold no-underline">
+            concepts.json v1.1 ({T.aac_concepts_count} Concepts) →
+          </a>
+          <a href="/transcripts/" class="font-mono text-xs px-3 py-1.5 rounded border border-brand-amber/45 text-brand-amber no-underline">
+            {T.braille_html_transcripts_count} Braille HTML Transcripts →
+          </a>
         </div>
       </div>
 
-      <pre id="wai1-json" class="p-4 rounded-xl bg-[#070b16] border border-brand-border font-mono text-xs text-brand-light overflow-x-auto max-h-96 m-0">{JSON.stringify(unsiloeing.blueprint_artifact, null, 2)}</pre>
+      <table class="w-full font-body text-xs border-collapse min-w-[780px] mb-6">
+        <thead>
+          <tr class="border-b border-brand-border text-left font-mono text-[11px] text-brand-gray">
+            <th class="py-2 pr-3">Standard / Dimension</th>
+            <th class="py-2 pr-4">Requirement &amp; PBC Licence Rule</th>
+            <th class="py-2">Live v1.0 Conformance Artifact</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-brand-border/40 text-brand-slate">
+          <tr>
+            <td class="py-2.5 pr-3 font-mono text-brand-white font-semibold">WCAG 2.2 Level AA &amp; EN 301 549 V4.1.1</td>
+            <td class="py-2.5 pr-4">Synced captions, ≥7:1 text contrast, keyboard navigation, extended &amp; mixed AD, European Accessibility Act alignment.</td>
+            <td class="py-2.5 font-mono text-emerald-300">29/29 TV + 17/17 Radio · [G9] PASS</td>
+          </tr>
+          <tr>
+            <td class="py-2.5 pr-3 font-mono text-brand-white font-semibold">W3C COGA (All 8 Objectives)</td>
+            <td class="py-2.5 pr-4">Predictable layout, zero unexplained acronyms, chunked 3-point structure, zero memory traps, toggleable sensory modes.</td>
+            <td class="py-2.5 font-mono text-emerald-300">Checked in scripts.*.coga_8_objectives</td>
+          </tr>
+          <tr>
+            <td class="py-2.5 pr-3 font-mono text-brand-white font-semibold">ISO 24495-1:2023 Plain Language</td>
+            <td class="py-2.5 pr-4">Relevant, findable, understandable, usable prose + 5-reader target-audience comprehension panel protocol to unlock community-reviewed status.</td>
+            <td class="py-2.5 font-mono text-brand-cyan">Automated gate live · 5-reader panel in 90d plan</td>
+          </tr>
+          <tr>
+            <td class="py-2.5 pr-3 font-mono text-brand-amber font-semibold">Mulberry + Tawasol vs ARASAAC NC Risk</td>
+            <td class="py-2.5 pr-4">Open Interface Engineering, Inc. is a Public Benefit Corporation (PBC). Embedding CC BY-NC-SA (ARASAAC) creates corporate/commercial downstream licence risk; Mulberry (https://mulberrysymbols.org/) and Tawasol (https://globalsymbols.com/symbolsets/tawasol) are CC BY-SA 4.0.</td>
+            <td class="py-2.5 font-mono text-emerald-300">38/38 concepts mapped · arasaacPictogramEmbedded: false</td>
+          </tr>
+          <tr>
+            <td class="py-2.5 pr-3 font-mono text-brand-white font-semibold">Easy Read (CDCI / Inclusion Europe)</td>
+            <td class="py-2.5 pr-4">One idea per sentence, short lines, active verbs, paired with Mulberry &amp; Tawasol core words across every film and radio broadcast.</td>
+            <td class="py-2.5 font-mono text-emerald-300">29/29 TV openings + 17/17 Radio episodes</td>
+          </tr>
+          <tr>
+            <td class="py-2.5 pr-3 font-mono text-brand-white font-semibold">Voiced AD + Ranked [sound] Cues</td>
+            <td class="py-2.5 pr-4">Extended AD (.ad.m4a + .ad.vtt), Voiced AD Mix (.ad-mix.m4a), Surrey Accessible Cues toggle, and NJIT+NYU Priority 1–3 [sound] tags.</td>
+            <td class="py-2.5 font-mono text-emerald-300">Live on /tv/, /radio/, and /blueprint/</td>
+          </tr>
+          <tr>
+            <td class="py-2.5 pr-3 font-mono text-brand-white font-semibold">Human Deaf Signers (5 Sign Languages)</td>
+            <td class="py-2.5 pr-4">ASL, BSL, ISL-IN, LSF, and Libras reserved strictly for paid human Deaf signers co-designed with WFD/NAD/Sense partners; zero unreviewed AI sign avatars.</td>
+            <td class="py-2.5 font-mono text-brand-amber">5 slots tracked as co_design_pending in coverage.json</td>
+          </tr>
+          <tr>
+            <td class="py-2.5 pr-3 font-mono text-brand-white font-semibold">Deafblind Braille HTML Transcripts</td>
+            <td class="py-2.5 pr-4">Pure semantic HTML (&lt;main&gt;, &lt;h1&gt;, &lt;h2&gt;, &lt;p&gt;, &lt;ol&gt;), zero layout &lt;table&gt; elements, speaker prefixes, and Easy-Read top summary (Sense International pattern).</td>
+            <td class="py-2.5 font-mono text-emerald-300">46/46 pages live at /transcripts/ (lint-verified)</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <!-- Ecosystem Cross-Links Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 mt-6">
-        {surfaces.map((sf) => (
-          <a href={sf.url} class="p-3.5 rounded-xl border border-brand-border bg-white/[0.02] hover:border-brand-amber no-underline transition-all flex flex-col justify-between">
-            <div>
-              <div class="font-mono text-xs text-brand-amber font-semibold mb-1">{sf.name}</div>
-              <p class="font-body text-xs text-brand-slate leading-snug m-0">{sf.role}</p>
+      <!-- Sample Mulberry + Tawasol AAC Concept Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        {aacConcepts.slice(0, 6).map((c) => (
+          <div class="p-3.5 rounded-xl border border-brand-border bg-white/[0.02]">
+            <div class="flex items-center justify-between gap-2 font-mono text-xs mb-1">
+              <span class="text-brand-amber font-bold"><span aria-hidden="true">{c.symbolHint.unicodePictogram}</span> {c.prefLabel}</span>
+              <span class="text-[10px] text-emerald-300">{c.symbolHint.symbolLicense}</span>
             </div>
-            <div class="font-mono text-[10px] text-brand-cyan mt-2.5 truncate">{sf.license}</div>
-          </a>
+            <p class="font-body text-xs text-brand-white leading-snug mb-2">{c.plainDefinition}</p>
+            <div class="font-mono text-[10px] text-brand-cyan truncate">
+              {c.symbolHint.mulberrySymbolId} · {c.symbolHint.tawasolSymbolId}
+            </div>
+          </div>
         ))}
       </div>
     </section>
 
-    <!-- SECTION 5: COMPLETE BLUEPRINT TEXT (§§1–10, CC0-1.0) -->
-    <article id="blueprint-text" class="scroll-mt-24 glass-card p-6 md:p-10 prose-invert max-w-4xl mx-auto space-y-8">
-      <div class="border-b border-brand-border pb-5">
-        <div class="font-mono text-xs text-brand-amber mb-1">Canonical Blueprint Document · 2026-11-24 · CC0-1.0</div>
-        <h2 class="font-display text-2xl md:text-3xl font-bold text-brand-white m-0">
-          Blueprint Specification (§§1–10)
-        </h2>
+    <!-- §4 T0/T1/T2/SIGN PIPELINE & CLEAN-LICENCE GATE CHAIN -->
+    <section id="sec-4-pipeline" class="scroll-mt-24 glass-card p-6 md:p-8 mb-10">
+      <span class="section-label">§4 T0 / T1 / T2 / Sign Pipeline &amp; Zero-NC Licence Rule</span>
+      <h2 class="font-display text-2xl font-bold text-brand-white mt-1 mb-3">
+        Permissive Open-Weight MT &amp; ASR Verification Chain
+      </h2>
+      <p class="font-body text-sm text-brand-slate leading-relaxed mb-4">
+        A Public Benefit Corporation publishing <code class="font-mono text-brand-amber">CC-BY-4.0</code> media and <code class="font-mono text-brand-cyan">CC0-1.0</code> data cannot ship outputs generated by <code class="font-mono text-rose-300">CC-BY-NC</code> model weights (such as <code class="font-mono">NLLB-200</code> or <code class="font-mono">MMS-TTS</code>). Blueprint v1.0 enforces an Apache-2.0 / MIT production tool stack across <code class="font-mono">[G0–G12]</code>:
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 font-mono text-xs">
+        <div class="p-3.5 rounded-xl border border-brand-border bg-[#0b1020]">
+          <div class="text-brand-amber font-bold mb-1">1. MT: MADLAD-400 (Apache-2.0)</div>
+          <div class="font-body text-xs text-brand-slate">Replaces CC-BY-NC MT weights for published captions, scripts, and per-language RSS metadata across 400+ languages.</div>
+        </div>
+        <div class="p-3.5 rounded-xl border border-brand-border bg-[#0b1020]">
+          <div class="text-brand-cyan font-bold mb-1">2. Semantic Gate: LaBSE + mE5</div>
+          <div class="font-body text-xs text-brand-slate">Dual embedding cosine + digit/unit exactness (<code class="font-mono">numbers_exact == true</code>) with 2-strike automatic quarantine.</div>
+        </div>
+        <div class="p-3.5 rounded-xl border border-brand-border bg-[#0b1020]">
+          <div class="text-emerald-300 font-bold mb-1">3. TTS: Piper (MIT) + Licensed Studio</div>
+          <div class="font-body text-xs text-brand-slate">Local MIT ONNX voices + licensed commercial studio voices normalized to <code class="font-mono">-16 LUFS</code> stereo AAC &amp; <code class="font-mono">24 kbps</code> Opus.</div>
+        </div>
+        <div class="p-3.5 rounded-xl border border-brand-border bg-[#0b1020]">
+          <div class="text-brand-white font-bold mb-1">4. ASR Gate: Whisper-v3-Turbo (MIT)</div>
+          <div class="font-body text-xs text-brand-slate">Independent round-trip speech-to-text WER &amp; numerical verification recorded in every variant manifest.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- §5 TOOL STACK + LIVE J/MIN TABLE -->
+    <section id="sec-5-energy" class="scroll-mt-24 glass-card p-6 md:p-8 mb-10 overflow-x-auto">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+        <div>
+          <span class="section-label">§5 Tool Stack &amp; Shunt-Accounted J/min Table</span>
+          <h2 class="font-display text-2xl font-bold text-brand-white mt-1 m-0">
+            Joules per Minute of Finished Media (<code class="text-emerald-300">measured_j &perp; reported_j &perp; est_j &perp; unmetered</code>)
+          </h2>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 font-mono text-xs">
+          <a href="/data/planetary_media_j_per_min.json" class="px-2.5 py-1 rounded border border-brand-cyan/40 bg-brand-cyan/10 text-brand-cyan no-underline hover:bg-brand-cyan/20">
+            planetary_media_j_per_min.json ↗
+          </a>
+          <a href="https://github.com/openIE-dev/openie-research-experiments/tree/main/kits/planetary-media-joule" target="_blank" rel="noopener" class="px-2.5 py-1 rounded border border-emerald-400/45 bg-emerald-500/10 text-emerald-300 no-underline hover:bg-emerald-500/20">
+            kits/planetary-media-joule @ a9de8d8 (5,126/5,126 SHA-256) ↗
+          </a>
+        </div>
+      </div>
+      <table class="w-full font-body text-xs border-collapse min-w-[780px]">
+        <thead>
+          <tr class="border-b border-brand-border text-left font-mono text-[11px] text-brand-gray">
+            <th class="py-2 pr-3">Pipeline Stage / Benchmark</th>
+            <th class="py-2 pr-3">Hardware Substrate &amp; Sensor</th>
+            <th class="py-2 pr-3">J/min</th>
+            <th class="py-2 pr-3">Evidence Class</th>
+            <th class="py-2">Tool Licence</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-brand-border/40">
+          {toolStages.map((st) => (
+            <tr>
+              <td class="py-2.5 pr-3 text-brand-white font-semibold">{st.stage_name}</td>
+              <td class="py-2.5 pr-3 text-brand-slate">{st.substrate}</td>
+              <td class="py-2.5 pr-3 font-mono text-brand-amber font-bold">
+                {st.j_per_min_range ? `${st.j_per_min_range[0]}–${st.j_per_min_range[1]} J/min` : (st.j_per_min !== null ? `${st.j_per_min} J/min` : '—')}
+              </td>
+              <td class="py-2.5 pr-3 font-mono">
+                <span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">
+                  {st.energy_class}
+                </span>
+              </td>
+              <td class="py-2.5 font-mono text-brand-cyan">{st.licence}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    <!-- §6 GLOBAL DISSEMINATION CHANNELS -->
+    <section id="sec-6-channels" class="scroll-mt-24 glass-card p-6 md:p-8 mb-10">
+      <span class="section-label">§6 Global Dissemination Channels</span>
+      <h2 class="font-display text-2xl font-bold text-brand-white mt-1 mb-4">
+        10 Open &amp; Low-Bandwidth Syndication Surfaces
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 font-body text-xs">
+        <div class="p-3.5 rounded-xl border border-brand-border bg-white/[0.02]">
+          <div class="font-mono text-brand-amber font-bold mb-1">1. YouTube Multi-Audio</div>
+          <p class="text-brand-slate m-0">Verified T0/T1 audio tracks uploaded directly with <strong>YouTube auto-dubbing explicitly OFF</strong>.</p>
+        </div>
+        <div class="p-3.5 rounded-xl border border-brand-border bg-white/[0.02]">
+          <div class="font-mono text-brand-cyan font-bold mb-1">2. 31-Lang Podcast RSS</div>
+          <p class="text-brand-slate m-0"><code class="font-mono">/radio/&lt;lang&gt;/rss.xml</code> feeds + <code class="font-mono">24 kbps</code> Opus <code class="font-mono">podcast:alternateEnclosure</code>.</p>
+        </div>
+        <div class="p-3.5 rounded-xl border border-brand-border bg-white/[0.02]">
+          <div class="font-mono text-emerald-300 font-bold mb-1">3. Zenodo Variant DOIs</div>
+          <p class="text-brand-slate m-0">Concept + per-variant DOIs linked via <code class="font-mono">IsVariantFormOf</code> &amp; <code class="font-mono">IsTranslationOf</code>.</p>
+        </div>
+        <div class="p-3.5 rounded-xl border border-brand-border bg-white/[0.02]">
+          <div class="font-mono text-brand-white font-bold mb-1">4. IA + Wikimedia Commons</div>
+          <p class="text-brand-slate m-0">Permanent <code class="font-mono">CC-BY-4.0</code> WebM/MP4/Opus + timed <code class="font-mono">.vtt</code> mirrors immune to app-store removals.</p>
+        </div>
+        <div class="p-3.5 rounded-xl border border-brand-border bg-white/[0.02]">
+          <div class="font-mono text-brand-amber font-bold mb-1">5. AMARC Community Radio</div>
+          <p class="text-brand-slate m-0">Clean-licence <code class="font-mono">-16 LUFS</code> broadcast packs for local &amp; rural community radio stations.</p>
+        </div>
+        <div class="p-3.5 rounded-xl border border-brand-border bg-white/[0.02]">
+          <div class="font-mono text-brand-cyan font-bold mb-1">6. WhatsApp &lt;1 MB Mobile</div>
+          <p class="text-brand-slate m-0">Sub-megabyte 15s MP4s + <code class="font-mono">24 kbps</code> Opus voice notes for prepaid 2G/3G sharing.</p>
+        </div>
+        <div class="p-3.5 rounded-xl border border-brand-border bg-white/[0.02]">
+          <div class="font-mono text-emerald-300 font-bold mb-1">7. ORCID Attribution</div>
+          <p class="text-brand-slate m-0">Author ORCID + <code class="font-mono">reviewer_orcid</code> credit whenever a community/expert reviewer verifies a language track.</p>
+        </div>
+        <div class="p-3.5 rounded-xl border border-brand-border bg-white/[0.02]">
+          <div class="font-mono text-brand-white font-bold mb-1">8. arXivLabs Readiness</div>
+          <p class="text-brand-slate m-0">Deterministic source-sheet + audio/video metadata ready for preprint community tabs.</p>
+        </div>
+        <div class="p-3.5 rounded-xl border border-brand-border bg-white/[0.02]">
+          <div class="font-mono text-brand-amber font-bold mb-1">9. Disability Co-Design</div>
+          <p class="text-brand-slate m-0">OHSU ACL AAC Network, Sense International, WFD/NAD, and UVM CDCI partnership pathway.</p>
+        </div>
+        <div class="p-3.5 rounded-xl border border-brand-border bg-white/[0.02]">
+          <div class="font-mono text-brand-cyan font-bold mb-1">10. 9:16 TikTok + Sheet</div>
+          <p class="text-brand-slate m-0">All 29 60fps vertical cuts keep <code class="font-mono">/sourcesheets/&lt;slug&gt;/</code> directly in the caption.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- §7 INTERACTIVE [G0–G12] WORKFLOW & SOURCE-SHEET INSPECTOR -->
+    <section id="g0-g12-inspector" class="scroll-mt-24 glass-card p-6 md:p-8 mb-10 border-t-2 border-t-emerald-400">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-5">
+        <div>
+          <span class="section-label">§7 Interactive [G0–G12] Workflow &amp; Per-Variant Signed Manifest Inspector</span>
+          <h2 class="font-display text-2xl font-bold text-brand-white mt-1 m-0">
+            Inspect Any of All {C.studies_count} Signed Source Sheets (<code class="text-emerald-300">BLAKE3 + Ed25519</code>)
+          </h2>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <label for="ss-inspector-select" class="font-mono text-xs text-brand-slate">Study:</label>
+          <select id="ss-inspector-select" class="font-mono text-xs px-3 py-2 rounded-lg bg-[#0b1020] border border-brand-border text-brand-white">
+            {sheetIndexList.map((s) => (
+              <option value={s.study_slug} selected={s.study_slug === initialArt.tv_id}>
+                {s.short_title} ({s.variants_count} signed variants)
+              </option>
+            ))}
+          </select>
+          <a id="ss-inspector-page" href={`/sourcesheets/${initialArt.tv_id}/`} class="font-mono text-xs px-3 py-2 rounded-lg bg-emerald-400 text-[#06121a] font-bold no-underline">
+            Open Printable Sheet →
+          </a>
+          <a id="ss-inspector-json" href={`/sourcesheets/${initialArt.tv_id}.json`} download class="font-mono text-xs px-3 py-2 rounded-lg border border-brand-cyan/40 text-brand-cyan no-underline">
+            ⬇ .json
+          </a>
+        </div>
       </div>
 
-      <section>
-        <h3 class="font-display text-xl font-bold text-brand-amber mb-2">1. Core Differentiator</h3>
-        <p class="font-body text-sm text-brand-light leading-relaxed">
-          One pipeline: a research artifact enters and verified, accessible, 50-language variants exit — all generated deterministically from a single source of truth under a public-benefit mandate. Combining original research, multi-length video, broadcast audio, 50-language plain-words primers (~7.95B speaker reach), and 100% catalog AAC-grade accessibility under one nonprofit mission makes the integration itself the differentiator.
-        </p>
-      </section>
+      <div class="flex flex-wrap gap-1.5 mb-4">
+        {gatesDef.map((g) => (
+          <span class="font-mono text-[10.5px] px-2 py-0.5 rounded border border-emerald-400/35 bg-emerald-500/10 text-emerald-200" title={g.check}>
+            ✓ [{g.gate}] {g.name}
+          </span>
+        ))}
+      </div>
 
-      <section>
-        <h3 class="font-display text-xl font-bold text-brand-amber mb-2">2. Canonical Data Model (The Unsiloeing Foundation)</h3>
-        <p class="font-body text-sm text-brand-light leading-relaxed mb-3">
-          Every OpenIE effort shares one dialect: CC0 public-domain corpora, timestamped releases, lineage directed acyclic graphs, joule accounting (<code class="font-mono text-brand-cyan">measured_j</code>, <code class="font-mono text-brand-cyan">reported_j</code>, <code class="font-mono text-brand-cyan">est_j</code>), and deterministic gates. One shared Artifact Schema makes every web, podcast, repository, and agent surface a projection of the same record:
-        </p>
-        <div class="overflow-x-auto">
-          <table class="w-full font-body text-xs text-brand-slate border-collapse">
-            <thead>
-              <tr class="border-b border-brand-border text-brand-white text-left">
-                <th class="py-2 pr-4 font-mono">Field</th>
-                <th class="py-2">Description</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-brand-border/40">
-              <tr><td class="py-2 pr-4 font-mono text-brand-cyan">canonical_id</td><td class="py-2">Globally unique, stable identifier (BLAKE3 content hash + type prefix)</td></tr>
-              <tr><td class="py-2 pr-4 font-mono text-brand-cyan">provenance_chain</td><td class="py-2">Cryptographic chain of custody across preregistration, studio anchor, and gates</td></tr>
-              <tr><td class="py-2 pr-4 font-mono text-brand-cyan">energy_cost_j</td><td class="py-2">Hardware-shunt, chip-counter, or Landauer-bounded energy expenditure in joules</td></tr>
-              <tr><td class="py-2 pr-4 font-mono text-brand-cyan">difficulty_rung</td><td class="py-2">Position on the nine-step Avalanche and composition coordinate axis</td></tr>
-              <tr><td class="py-2 pr-4 font-mono text-brand-cyan">verification_status</td><td class="py-2">Pass/quarantine outcome and scores from deterministic verification gates</td></tr>
-              <tr><td class="py-2 pr-4 font-mono text-brand-cyan">modality_variants</td><td class="py-2">Pointers to paper, PDF, audio, video (15s/45s/90s/3m), 3D, 28/28 Easy Read &amp; AD, AAC, and 50-language tracks</td></tr>
-              <tr><td class="py-2 pr-4 font-mono text-brand-cyan">license</td><td class="py-2">Explicit license posture per layer (CC0-1.0, Apache-2.0, CERN-OHL-S-2.0)</td></tr>
-              <tr><td class="py-2 pr-4 font-mono text-brand-cyan">interchange_envelope</td><td class="py-2">WAI1 object providing per-object encoding, capability dispatch, and BLAKE3/Ed25519 attestation</td></tr>
-            </tbody>
-          </table>
+      <pre id="ss-inspector-pre" class="p-4 rounded-xl bg-[#070b16] border border-brand-border font-mono text-xs text-brand-light overflow-x-auto max-h-96 m-0">{JSON.stringify(
+        {
+          study_slug: initSheetJson.study_slug,
+          provenance_status: initSheetJson.provenance_status,
+          licence_layers: initSheetJson.licence_layers,
+          zenodo_relations: initSheetJson.zenodo_relations,
+          claims: initSheetJson.claims,
+          variants_sample: (initSheetJson.variants || []).slice(0, 4),
+          manifest_signature: initSheetJson.manifest_signature,
+        },
+        null,
+        2
+      )}</pre>
+    </section>
+
+    <!-- §8 PROPRIETARY VS PHYSICS & ENGINEERING -->
+    <section id="sec-8-proprietary" class="scroll-mt-24 glass-card p-6 md:p-8 mb-10">
+      <span class="section-label">§8 Open Commons vs. Public Benefit Stewardship</span>
+      <h2 class="font-display text-2xl font-bold text-brand-white mt-1 mb-3">
+        Proprietary vs. Physics &amp; Engineering Boundary
+      </h2>
+      <p class="font-body text-sm text-brand-slate leading-relaxed m-0">
+        Physical bounds, benchmark harnesses, verification schemas, source sheets, Braille transcripts, and multilingual science primers belong in the open commons (<code class="font-mono text-brand-amber">CC0-1.0</code> data/metadata, <code class="font-mono text-brand-cyan">CC-BY-4.0</code> media, <code class="font-mono text-emerald-300">Apache-2.0</code> verifiers and replication kits, and <code class="font-mono text-brand-white">CC-BY-SA-4.0</code> Mulberry/Tawasol symbol mappings). Open Interface Engineering, Inc. differentiates not by locking research behind paywalls or opaque claims, but by operating deterministic commit-gated verification pipelines and publishing hardware-shunt receipts anyone can re-run in one command—exemplified by the <a href="/living/compiled-agency/#ca-sim-04" class="text-brand-cyan font-semibold">@ 6a22dee 6-model open-weight SOTA shunt observatory</a>.
+      </p>
+    </section>
+
+    <!-- §9 90-DAY RECOMMENDATIONS LIVE SCORECARD -->
+    <section id="sec-9-scorecard" class="scroll-mt-24 glass-card p-6 md:p-8 border-t-2 border-t-brand-cyan">
+      <span class="section-label">§9 90-Day Recommendations Live Scorecard</span>
+      <h2 class="font-display text-2xl font-bold text-brand-white mt-1 mb-4">
+        Machine-Checked Delivery Status (§9.1 – §9.5)
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 font-body text-xs">
+        <div class="p-4 rounded-xl border border-emerald-400/35 bg-emerald-500/[0.06]">
+          <div class="font-mono text-emerald-300 font-bold mb-1">✓ §9.1 Canonical Coverage &amp; Build Gate — LIVE</div>
+          <p class="text-brand-light m-0"><a href="/coverage.json" class="text-brand-cyan">/coverage.json</a> + <code class="font-mono">scripts/lint-coverage.mjs</code> enforce exact disk-scanned counts across all pages.</p>
         </div>
-      </section>
-
-      <section>
-        <h3 class="font-display text-xl font-bold text-brand-amber mb-2">3. Current Assets Mapped</h3>
-        <ul class="list-disc pl-5 space-y-2 font-body text-sm text-brand-light leading-relaxed">
-          <li><strong>research.openie.dev</strong> — Research catalog with papers, Research TV (112 films across 15s, 45s, 90s, and 3m + native 50-language 15s selector + 28/28 AD &amp; Easy-Read drawer), Research Radio (<code class="font-mono text-brand-cyan">/radio/rss.xml</code>), interactive tutorials, <code class="font-mono">/living</code> figures, glossary, and energy-labeled receipts (including KV260 INA260 in <em>Metered Commit Gates</em> and Jetson AGX Thor shunts).</li>
-          <li><strong>scholar.askdavidc.ai (The Commons)</strong> — Multimodal knowledge substrate (Observatory, Codex Studio, Reference Desk, Dialectic, Galaxy 3D view, PresenceVault), Universal AI Agent Bus (MCP &amp; A2A), and epistemic Stars and Trails.</li>
-          <li><strong>Free Humanoid Project</strong> — Free Humanoid Corpus (CC0 public-domain prior art, lineage DAG, cryptographically timestamped quarterly defensive releases) and Free Humanoid Platform (open-hardware 17th morphology in OpenLoco with Unified Descriptor Documents).</li>
-          <li><strong>Related Substrates</strong> — OpenIE Avalanche 9-Rung Ratchet, RCE &amp; RCE-JEPA, Synthesis, <code class="font-mono">energy.openie.dev</code>, and the WAI interchange specification.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3 class="font-display text-xl font-bold text-brand-amber mb-2">4–6. Planetary 50-Language Coverage, 100% Accessibility &amp; No-Human Gates</h3>
-        <p class="font-body text-sm text-brand-light leading-relaxed">
-          Instead of translating massive walls of prose first, planetary dissemination prioritizes the highest-leverage artifact in every language: the <strong>15-second three-point plain-language primer</strong> across Tier 1 (Top 20 languages across all 28 studies = 560 variants) and Tier 2 (Next 30 languages across core flagships = 60 variants, reaching ~7.95B speakers across 50 active languages). Every gate is a machine-checkable predicate: Lean 4 six-kernel proof checkers and SAT verifiers guard formal claims, neural semantic encoders plus back-translation <code class="font-mono">chrF++</code>/<code class="font-mono">BLEU</code> thresholds guard translations with automatic regeneration (quarantining on Strike 2), and WCAG 2.2 AA captions, 28/28 Easy-Read companions, 28/28 Extended Audio Descriptions, and SKOS/JSON-LD AAC Concepts ship automatically from the same source record.
-        </p>
-      </section>
-
-      <section>
-        <h3 class="font-display text-xl font-bold text-brand-amber mb-2">7–10. Consolidation, Licensing &amp; Closed-Loop Execution</h3>
-        <p class="font-body text-sm text-brand-light leading-relaxed mb-3">
-          One build system, one CI pipeline, and one unified <code class="font-mono text-brand-cyan">release.sh</code> mechanism emit WAI1 envelopes across owned feeds (Site + RSS), resilient mirrors (YouTube mirrored to PeerTube and Internet Archive), and community archives (open science networks, university libraries, and disability advocacy groups).
-        </p>
-        <ol class="list-decimal pl-5 space-y-1.5 font-body text-sm text-brand-slate">
-          <li>Publish the Canonical Artifact JSON Schema under Apache-2.0 (<a href="https://github.com/openIE-dev/openie-artifact-substrate" class="text-brand-cyan">openIE-dev/openie-artifact-substrate</a>).</li>
-          <li>Emit WAI1 envelopes for Research Radio episodes, Research TV primers, and Free Humanoid Corpus drops.</li>
-          <li>Enforce automated semantic + <code class="font-mono">chrF++</code>/<code class="font-mono">BLEU</code> + Lean/SAT verification gates with zero human bottlenecks.</li>
-          <li>Index Research TV &amp; Radio catalogs into The Commons (<a href="https://scholar.askdavidc.ai" class="text-brand-amber">scholar.askdavidc.ai</a>) as Stars and Trails.</li>
-          <li>Ship 50-language 15-second plain-language variants (620 verified tracks) and 28/28 WCAG 2.2 AA Easy-Read &amp; Extended Audio Description projections across <code class="font-mono">/tv/</code> and <code class="font-mono">/blueprint/</code>.</li>
-          <li>Unify quarterly and continuous <code class="font-mono">release.sh</code> attestation across every OpenIE surface.</li>
-        </ol>
-      </section>
-    </article>
+        <div class="p-4 rounded-xl border border-emerald-400/35 bg-emerald-500/[0.06]">
+          <div class="font-mono text-emerald-300 font-bold mb-1">✓ §9.2 [G0–G12] Source Sheets &amp; Signed Variants — LIVE ({T.sourcesheets_count}/29)</div>
+          <p class="text-brand-light m-0">All 29 printable HTML + Ed25519 JSON source sheets live at <a href="/sourcesheets/" class="text-brand-amber">/sourcesheets/</a> and wired into /tv/, /radio/, and all 29 TikTok captions.</p>
+        </div>
+        <div class="p-4 rounded-xl border border-emerald-400/35 bg-emerald-500/[0.06]">
+          <div class="font-mono text-emerald-300 font-bold mb-1">✓ §9.3 T0+T1 Pipeline, Opus RSS &amp; J/min Shunts — LIVE</div>
+          <p class="text-brand-light m-0">MADLAD-400 (Apache-2.0) + Whisper-large-v3-turbo (MIT) + Thor/KV260 shunt <code class="font-mono">J/min</code> + 24 kbps Opus <code class="font-mono">podcast:alternateEnclosure</code>.</p>
+        </div>
+        <div class="p-4 rounded-xl border border-emerald-400/35 bg-emerald-500/[0.06]">
+          <div class="font-mono text-emerald-300 font-bold mb-1">✓ §9.4 Mulberry/Tawasol AAC, AD Mix &amp; Braille HTML — LIVE ({T.braille_html_transcripts_count}/46)</div>
+          <p class="text-brand-light m-0"><code class="font-mono">concepts.json v1.1.0</code> (38 concepts, 0 NC assets), Easy Read across 29 TV + 17 Radio, Voiced AD Mix, Accessible Cues, and 46 zero-table Braille HTML pages.</p>
+        </div>
+        <div class="p-4 rounded-xl border border-brand-amber/40 bg-brand-amber/[0.06] md:col-span-2">
+          <div class="font-mono text-brand-amber font-bold mb-1">⏳ §9.5 Days 30–90 External Human Co-Design Milestones — QUEUED</div>
+          <p class="text-brand-slate m-0">
+            5-reader ISO 24495-1 comprehension panels + paid human Deaf signer picture-in-picture recordings for <code class="font-mono text-brand-white">ASL, BSL, ISL-IN, LSF, Libras</code> (<code class="font-mono">co_design_pending</code>) + OHSU ACL AAC Peer Support Network &amp; Sense International review sign-offs (<code class="font-mono">reviewer_orcid</code> upgrades from <code class="font-mono">machine</code> to <code class="font-mono">community-reviewed</code>).
+          </p>
+        </div>
+      </div>
+    </section>
   </div>
 
   <style is:global>
@@ -719,13 +869,8 @@ const clientPayload = JSON.stringify({
       border-color: #f59e0b !important;
       color: #ffffff !important;
     }
-    .bp-pill-active {
-      background: rgba(245, 158, 11, 0.16) !important;
-      border-color: #f59e0b !important;
-      color: #f59e0b !important;
-    }
     .bp-lang-active {
-      background: rgba(0, 212, 170, 0.14) !important;
+      background: rgba(0, 212, 170, 0.16) !important;
       border-color: #00d4aa !important;
     }
     .bp-lang-disabled {
@@ -736,52 +881,56 @@ const clientPayload = JSON.stringify({
   <script is:inline define:vars={{ clientPayload }}>
   (function () {
     const DATA = JSON.parse(clientPayload);
-    const ART_BY_SLUG = Object.fromEntries(DATA.artifacts.map((a) => [a.slug, a]));
-    const ALL_LANGS = [...(DATA.tier1Langs || []), ...(DATA.tier2Langs || [])];
-    const LANG_BY_CODE = Object.fromEntries(ALL_LANGS.map((l) => [l.code, l]));
-    const AD_BY_SLUG = Object.fromEntries((DATA.adTracks || []).map((a) => [a.study_slug, a]));
-    const ER_BY_SLUG = {};
-    (DATA.easyReadFlagship || []).forEach((e) => {
-      if (e.flagship_slug) ER_BY_SLUG[e.flagship_slug] = e;
-      if (e.study_id) ER_BY_SLUG[e.study_id] = e;
+    const ART_BY_SLUG = Object.fromEntries((DATA.artifacts || []).map((a) => [a.slug, a]));
+    const STUDY_ASSETS = DATA.studyAssets || {};
+    const LANG_BY_CODE = Object.fromEntries((DATA.langs || []).map((l) => [l.code, l]));
+    const AD_BY_SLUG = {};
+    (DATA.adTracks || []).forEach((a) => {
+      if (a.study_slug) AD_BY_SLUG[a.study_slug] = a;
+      if (a.tv_id) AD_BY_SLUG[a.tv_id] = a;
     });
+    const ER_BY_ID = Object.fromEntries((DATA.tvEasyRead || []).map((e) => [e.id, e]));
+    const RADIO_ER_BY_ID = Object.fromEntries((DATA.radioEasyRead || []).map((e) => [e.id, e]));
     const VAR_MAP = {};
     (DATA.variants || []).forEach((v) => {
-      if (v.ship_allowed !== false) VAR_MAP[v.study_slug + ':' + v.lang] = v;
+      if (v.ship_allowed !== false) {
+        VAR_MAP[v.study_slug + ':' + v.lang] = v;
+        VAR_MAP[v.tv_id + ':' + v.lang] = v;
+      }
     });
 
-    let activeSlug = 'ecosystem-avalanche';
+    let activeSlug = DATA.artifacts.find((a) => a.slug === 'from-ephemeral-inference-to-compiled-agency')?.slug || DATA.artifacts[0].slug;
+    let activeSlot = '15s'; // '15s' | '90s'
     let activeLang = 'en';
-    let activeMode = 'multilingual'; // 'multilingual' | 'easyread' | 'ad'
+    let activeMode = 'multilingual'; // 'multilingual' | 'easyread' | 'ad' | 'admix' | 'cues'
+    let selectedRadioErId = '';
 
     const studySelectEl = document.getElementById('bp-study-select');
+    const slot15Btn = document.getElementById('bp-slot-15s');
+    const slot90Btn = document.getElementById('bp-slot-90s');
     const videoEl = document.getElementById('bp-video');
     const trackEl = document.getElementById('bp-vtt-track');
     const audioEl = document.getElementById('bp-audio');
     const audioLabelEl = document.getElementById('bp-audio-label');
+    const modalityPillEl = document.getElementById('bp-modality-pill');
     const dlM4aEl = document.getElementById('bp-download-m4a');
     const dlVttEl = document.getElementById('bp-download-vtt');
-    const verdictEl = document.getElementById('bp-gate-verdict');
-    const cidEl = document.getElementById('bp-canonical-id');
-    const cometEl = document.getElementById('bp-score-comet');
-    const labseEl = document.getElementById('bp-score-labse');
-    const chrfEl = document.getElementById('bp-score-chrf');
-    const bleuEl = document.getElementById('bp-score-bleu');
     const titleEl = document.getElementById('bp-active-title');
-    const rungEl = document.getElementById('bp-active-rung');
     const langBadgeEl = document.getElementById('bp-lang-badge');
     const bulletsWrapEl = document.getElementById('bp-bullets-wrap');
     const bulletsListEl = document.getElementById('bp-bullets-list');
     const erPanelEl = document.getElementById('bp-easyread-panel');
+    const radioErSelect = document.getElementById('bp-radio-er-select');
     const erSymbolsEl = document.getElementById('bp-er-symbols');
     const erSentencesEl = document.getElementById('bp-er-sentences');
     const adPanelEl = document.getElementById('bp-ad-panel');
+    const adHeadingEl = document.getElementById('bp-ad-heading');
     const adOverviewEl = document.getElementById('bp-ad-overview');
     const adCuesEl = document.getElementById('bp-ad-cues');
     const linkPaperEl = document.getElementById('bp-link-paper');
+    const linkSsEl = document.getElementById('bp-link-sourcesheet');
+    const linkBrEl = document.getElementById('bp-link-braille');
     const linkTvEl = document.getElementById('bp-link-tv');
-    const linkCommonsEl = document.getElementById('bp-link-commons');
-    const linkErAllEl = document.getElementById('bp-link-easyread-all');
 
     function esc(s) {
       return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -789,35 +938,39 @@ const clientPayload = JSON.stringify({
 
     function render(autoplay) {
       const art = ART_BY_SLUG[activeSlug] || DATA.artifacts[0];
-      if (!VAR_MAP[art.slug + ':' + activeLang]) {
-        activeLang = 'en';
-      }
-      const lg = LANG_BY_CODE[activeLang] || DATA.tier1Langs[0];
-      const v = VAR_MAP[art.slug + ':' + lg.code] || VAR_MAP[art.slug + ':en'] || DATA.variants[0];
-      const ad = AD_BY_SLUG[art.slug];
-      const er = ER_BY_SLUG[art.slug] || ER_BY_SLUG[art.tv_id];
+      const tvId = art.tv_id || art.slug;
+      const sa = STUDY_ASSETS[tvId] || {};
+      const lg = LANG_BY_CODE[activeLang] || LANG_BY_CODE.en;
+      const v = VAR_MAP[art.slug + ':' + activeLang] || VAR_MAP[tvId + ':' + activeLang] || VAR_MAP[art.slug + ':en'] || DATA.variants[0];
+      const ad = AD_BY_SLUG[art.slug] || AD_BY_SLUG[tvId];
+      const er = selectedRadioErId ? RADIO_ER_BY_ID[selectedRadioErId] : ER_BY_ID[tvId];
 
-      if (studySelectEl && studySelectEl.value !== art.slug) {
-        studySelectEl.value = art.slug;
+      if (studySelectEl && studySelectEl.value !== art.slug) studySelectEl.value = art.slug;
+      if (slot15Btn && slot90Btn) {
+        slot15Btn.className = activeSlot === '15s'
+          ? 'px-2.5 py-1.5 bg-brand-amber text-brand-dark font-bold cursor-pointer border-none'
+          : 'px-2.5 py-1.5 bg-transparent text-brand-light cursor-pointer border-none';
+        slot90Btn.className = activeSlot === '90s'
+          ? 'px-2.5 py-1.5 bg-brand-amber text-brand-dark font-bold cursor-pointer border-none'
+          : 'px-2.5 py-1.5 bg-transparent text-brand-light cursor-pointer border-none';
       }
 
-      document.querySelectorAll('[data-bp-study]').forEach((b) => {
-        const on = b.getAttribute('data-bp-study') === art.slug;
-        b.classList.toggle('bp-pill-active', on);
-        b.setAttribute('aria-pressed', String(on));
-      });
       document.querySelectorAll('[data-bp-lang]').forEach((b) => {
         const code = b.getAttribute('data-bp-lang');
-        const hasVar = Boolean(VAR_MAP[art.slug + ':' + code]);
-        const on = code === lg.code;
-        b.classList.toggle('bp-lang-active', on);
-        b.classList.toggle('bp-lang-disabled', !hasVar);
-        b.setAttribute('aria-pressed', String(on));
+        const has15 = Boolean(VAR_MAP[art.slug + ':' + code] || (sa.planetary_15s_audio && sa.planetary_15s_audio[code]));
+        const has90 = Boolean(code === 'en' || (sa.planetary_90s_audio && sa.planetary_90s_audio[code]));
+        const avail = activeSlot === '90s' ? has90 : has15;
+        b.classList.toggle('bp-lang-active', code === activeLang);
+        b.classList.toggle('bp-lang-disabled', !avail);
+        b.setAttribute('aria-pressed', String(code === activeLang));
       });
+
       [
         ['bp-mode-multilingual', 'multilingual'],
         ['bp-mode-easyread', 'easyread'],
         ['bp-mode-ad', 'ad'],
+        ['bp-mode-admix', 'admix'],
+        ['bp-mode-cues', 'cues'],
       ].forEach(([id, m]) => {
         const el = document.getElementById(id);
         if (el) {
@@ -826,91 +979,113 @@ const clientPayload = JSON.stringify({
         }
       });
 
-      if (videoEl && videoEl.getAttribute('src') !== art.modality_variants.tv_15s_video_url) {
+      const targetVideo = activeSlot === '90s'
+        ? ('/media/tv/films/' + tvId + '-90s.mp4')
+        : art.modality_variants.tv_15s_video_url;
+      if (videoEl && videoEl.getAttribute('src') !== targetVideo) {
         videoEl.pause();
         videoEl.setAttribute('poster', art.modality_variants.poster_url);
-        videoEl.setAttribute('src', art.modality_variants.tv_15s_video_url);
+        videoEl.setAttribute('src', targetVideo);
         videoEl.load();
       }
 
-      const useAd = activeMode === 'ad' && ad;
-      const targetAudio = useAd ? ad.ad_audio_url : v.audio_url;
-      const targetVtt = useAd ? ad.ad_vtt_url : v.vtt_url;
-      const dir = (lg.dir || v.dir || 'ltr');
+      const useAd = activeMode === 'ad';
+      const useAdMix = activeMode === 'admix';
+      let targetAudio = v ? v.audio_url : '';
+      let targetVtt = v ? v.vtt_url : '';
+      let modality = 'voiced';
 
-      if (trackEl) {
-        trackEl.setAttribute('srclang', useAd ? 'en' : lg.code);
+      if (useAdMix) {
+        targetAudio = sa.ad_mix_m4a_url || (ad && ad.ad_audio_url) || ('/media/tv/accessibility/' + tvId + '-15s.ad.m4a');
+        targetVtt = (ad && ad.ad_vtt_url) || ('/media/tv/accessibility/' + tvId + '-15s.ad.vtt');
+      } else if (useAd) {
+        targetAudio = (ad && ad.ad_audio_url) || ('/media/tv/accessibility/' + tvId + '-15s.ad.m4a');
+        targetVtt = (ad && ad.ad_vtt_url) || ('/media/tv/accessibility/' + tvId + '-15s.ad.vtt');
+      } else if (activeSlot === '90s') {
+        targetAudio = (sa.planetary_90s_audio && sa.planetary_90s_audio[activeLang]) || ('/media/tv/films/' + tvId + '-90s.mp4');
+        targetVtt = (sa.planetary_90s_vtt && sa.planetary_90s_vtt[activeLang]) || ('/media/tv/captions/' + tvId + '-90s.vtt');
+        modality = (activeLang === 'en' || (sa.planetary_90s_audio && sa.planetary_90s_audio[activeLang])) ? 'voiced' : 'captioned';
+      } else {
+        targetAudio = (sa.planetary_15s_audio && sa.planetary_15s_audio[activeLang]) || (v && v.audio_url) || art.modality_variants.tv_15s_video_url;
+        targetVtt = (sa.planetary_15s_vtt && sa.planetary_15s_vtt[activeLang]) || (v && v.vtt_url) || ('/media/tv/captions/' + tvId + '-15s.vtt');
+        const hasAudioDisk = activeLang === 'en' || Boolean(sa.planetary_15s_audio && sa.planetary_15s_audio[activeLang]);
+        modality = hasAudioDisk ? 'voiced' : 'captioned';
+      }
+
+      if (modalityPillEl) modalityPillEl.textContent = 'modality: ' + modality;
+      if (trackEl && targetVtt) {
+        trackEl.setAttribute('srclang', (useAd || useAdMix) ? 'en' : activeLang);
         trackEl.setAttribute('src', targetVtt);
       }
-      if (audioEl && audioEl.getAttribute('src') !== targetAudio) {
+      if (audioEl && targetAudio && audioEl.getAttribute('src') !== targetAudio) {
         audioEl.pause();
         audioEl.setAttribute('src', targetAudio);
         audioEl.load();
       }
+      if (dlM4aEl && targetAudio) dlM4aEl.setAttribute('href', targetAudio);
+      if (dlVttEl && targetVtt) dlVttEl.setAttribute('href', targetVtt);
 
       if (audioLabelEl) {
-        audioLabelEl.textContent = useAd
-          ? '🎧 Extended Audio Description · ' + art.short_title + ' (-16 LUFS Stereo .ad.m4a)'
-          : '▶ Native Neural Audio · ' + lg.name + ' (' + v.voice + ' · -16 LUFS Stereo AAC)';
+        audioLabelEl.textContent = useAdMix
+          ? ('🎧 Voiced AD Broadcast Mix · ' + art.short_title + ' (-16 LUFS)')
+          : useAd
+          ? ('🎧 Extended Audio Description · ' + art.short_title + ' (.ad.m4a)')
+          : ('▶ ' + activeSlot + ' ' + (modality === 'voiced' ? 'Voiced' : 'Captioned') + ' · ' + (lg ? lg.name : activeLang) + ' (review_status: machine)');
       }
-      if (dlM4aEl) dlM4aEl.setAttribute('href', targetAudio);
-      if (dlVttEl) dlVttEl.setAttribute('href', targetVtt);
 
-      if (verdictEl) verdictEl.textContent = '✓ GATE: ' + v.gate_status + ' (Attempt ' + v.attempts + '/2)';
-      if (cidEl) cidEl.textContent = useAd ? ad.canonical_id : v.canonical_id;
-      if (cometEl) cometEl.textContent = Number(v.comet_calibrated || 0).toFixed(4);
-      if (labseEl) labseEl.textContent = Number(v.labse_cosine || 0).toFixed(4);
-      if (chrfEl) chrfEl.textContent = Number(v.backtrans_chrfpp || 0).toFixed(1);
-      if (bleuEl) bleuEl.textContent = Number(v.backtrans_bleu || 0).toFixed(1);
-
+      const dir = (lg && lg.dir) || (v && v.dir) || 'ltr';
       if (titleEl) titleEl.textContent = art.title;
-      if (rungEl) rungEl.textContent = art.difficulty_rung + ' · ' + art.energy_cost_j.label;
-      if (langBadgeEl) langBadgeEl.textContent = lg.code + ' · Tier ' + (lg.tier || v.tier || 1) + ' · ' + dir.toUpperCase();
-
+      if (langBadgeEl) langBadgeEl.textContent = activeLang + ' · ' + ((lg && lg.tier) || 'T0') + ' · ' + dir.toUpperCase();
       if (bulletsWrapEl) {
         bulletsWrapEl.setAttribute('dir', dir);
-        bulletsWrapEl.setAttribute('lang', lg.code);
+        bulletsWrapEl.setAttribute('lang', activeLang);
       }
-      if (bulletsListEl) {
-        bulletsListEl.innerHTML = (v.bullets || []).map((b) => '<li>' + esc(b) + '</li>').join('');
+      if (bulletsListEl && v && v.bullets) {
+        bulletsListEl.innerHTML = v.bullets.map((b) => '<li>' + esc(b) + '</li>').join('');
       }
 
       if (erPanelEl) {
         erPanelEl.classList.toggle('hidden', activeMode !== 'easyread');
         if (er && erSymbolsEl && erSentencesEl) {
-          erSymbolsEl.innerHTML = er.symbol_tags.map((t) =>
-            '<span class="px-2.5 py-1 rounded-full border border-brand-cyan/35 bg-white/5 font-mono text-[11px] text-brand-white">' +
-            '<span aria-hidden="true">' + esc(t.unicode) + '</span> ' + esc(t.core_word) + ': ' + esc(t.label) + '</span>'
+          const syms = [...(er.mulberry_symbols || []), ...(er.tawasol_symbols || []).slice(0, 2)];
+          erSymbolsEl.innerHTML = syms.map((t) =>
+            '<span class="px-2 py-0.5 rounded-full border border-brand-cyan/35 bg-white/5 font-mono text-[10.5px] text-brand-white">' +
+            '<span aria-hidden="true">' + esc(t.unicode) + '</span> ' + esc(t.core_word) + ' · ' + esc(t.symbol_id) + '</span>'
           ).join('');
-          erSentencesEl.innerHTML = er.one_idea_sentences.map((s) => '<li>' + esc(s) + '</li>').join('');
+          erSentencesEl.innerHTML = (er.one_idea_sentences || []).map((s) => '<li>' + esc(s) + '</li>').join('');
         }
       }
 
       if (adPanelEl) {
-        adPanelEl.classList.toggle('hidden', activeMode !== 'ad');
-        if (ad && adOverviewEl && adCuesEl) {
+        const showAdBox = useAd || useAdMix || activeMode === 'cues';
+        adPanelEl.classList.toggle('hidden', !showAdBox);
+        if (activeMode === 'cues') {
+          const tvEr = ER_BY_ID[tvId];
+          if (adHeadingEl) adHeadingEl.textContent = 'Accessible Cues (Surrey Deleanu 2025 + NJIT/NYU Ranked [sound] Cues)';
+          if (adOverviewEl) adOverviewEl.textContent = 'Priority 1 Essential · Priority 2 Contextual · Priority 3 Ambient';
+          if (adCuesEl && tvEr) {
+            adCuesEl.innerHTML = (tvEr.ranked_sound_cues || []).map((sc) =>
+              '<div class="p-2.5 rounded border border-brand-border bg-[#0b1020] font-mono text-xs">' +
+              '<span class="text-brand-amber font-bold">[P' + sc.priority + ' · ' + esc(sc.rank_label) + ']</span> ' +
+              '<span class="text-brand-light">' + esc(sc.cue) + '</span></div>'
+            ).join('');
+          }
+        } else if (ad && adOverviewEl && adCuesEl) {
+          if (adHeadingEl) adHeadingEl.textContent = useAdMix ? 'Voiced AD Broadcast Mix (.ad-mix.m4a)' : 'Extended Audio Description (.ad.m4a)';
           adOverviewEl.textContent = ad.visual_overview;
-          adCuesEl.innerHTML = ad.cues.map((c, idx) =>
+          adCuesEl.innerHTML = (ad.cues || []).map((c, idx) =>
             '<div class="p-2.5 rounded border border-brand-border bg-[#0b1020] text-xs">' +
-            '<div class="font-mono text-[10px] text-emerald-300 mb-0.5">Scene ' + (idx + 1) + ' Visual Description</div>' +
+            '<div class="font-mono text-[10px] text-emerald-300 mb-0.5">Scene ' + (idx + 1) + '</div>' +
             '<div class="text-brand-light mb-1">' + esc(c.visual) + '</div>' +
-            '<div class="text-brand-amber font-mono text-[11px]">' + esc(c.takeaway) + '</div>' +
-            '</div>'
+            '<div class="text-brand-amber font-mono text-[11px]">' + esc(c.takeaway) + '</div></div>'
           ).join('');
         }
       }
 
       if (linkPaperEl) linkPaperEl.setAttribute('href', art.modality_variants.paper_url);
-      if (linkTvEl) linkTvEl.setAttribute('href', '/tv/?study=' + encodeURIComponent(art.tv_id) + '&tier=15s');
-      if (linkCommonsEl) linkCommonsEl.setAttribute('href', art.modality_variants.commons_trail_url);
-      if (linkErAllEl) linkErAllEl.setAttribute('href', art.modality_variants.easy_read_url);
-
-      const waiSelect = document.getElementById('wai1-select');
-      const waiPre = document.getElementById('wai1-json');
-      if (waiSelect && waiPre && waiSelect.value !== '__blueprint__') {
-        waiSelect.value = art.slug;
-        waiPre.textContent = JSON.stringify(art, null, 2);
-      }
+      if (linkSsEl) linkSsEl.setAttribute('href', '/sourcesheets/' + tvId + '/');
+      if (linkBrEl) linkBrEl.setAttribute('href', '/transcripts/' + tvId + '/');
+      if (linkTvEl) linkTvEl.setAttribute('href', '/tv/?study=' + encodeURIComponent(tvId) + '&tier=' + activeSlot);
 
       if (autoplay && audioEl) {
         if (videoEl) { videoEl.currentTime = 0; videoEl.play().catch(() => {}); }
@@ -919,69 +1094,53 @@ const clientPayload = JSON.stringify({
       }
     }
 
-    if (audioEl && videoEl) {
-      audioEl.addEventListener('play', () => {
-        if (videoEl.duration) videoEl.currentTime = audioEl.currentTime % videoEl.duration;
-        videoEl.play().catch(() => {});
-      });
-      audioEl.addEventListener('pause', () => { videoEl.pause(); });
-      audioEl.addEventListener('ended', () => { videoEl.pause(); });
-    }
-
-    studySelectEl?.addEventListener('change', () => {
-      activeSlug = studySelectEl.value || 'ecosystem-avalanche';
-      render(false);
-    });
-
-    document.querySelectorAll('[data-bp-study]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        activeSlug = btn.getAttribute('data-bp-study') || 'ecosystem-avalanche';
-        render(false);
-      });
-    });
+    studySelectEl?.addEventListener('change', () => { activeSlug = studySelectEl.value; render(false); });
+    slot15Btn?.addEventListener('click', () => { activeSlot = '15s'; render(false); });
+    slot90Btn?.addEventListener('click', () => { activeSlot = '90s'; render(false); });
+    radioErSelect?.addEventListener('change', () => { selectedRadioErId = radioErSelect.value || ''; render(false); });
 
     document.querySelectorAll('[data-bp-lang]').forEach((btn) => {
       btn.addEventListener('click', () => {
-        const code = btn.getAttribute('data-bp-lang') || 'en';
-        if (!VAR_MAP[activeSlug + ':' + code]) {
-          // Automatically jump to a 50-language flagship when clicking a Tier-2 language from a Tier-1-only study
-          if (VAR_MAP['ecosystem-avalanche:' + code]) activeSlug = 'ecosystem-avalanche';
-          else if (VAR_MAP['lut6-codon-nucleus:' + code]) activeSlug = 'lut6-codon-nucleus';
-        }
-        activeLang = code;
-        if (activeMode === 'ad') activeMode = 'multilingual';
+        activeLang = btn.getAttribute('data-bp-lang') || 'en';
+        if (activeMode === 'ad' || activeMode === 'admix') activeMode = 'multilingual';
         render(true);
-      });
-    });
-
-    document.querySelectorAll('[data-matrix-study]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        activeSlug = btn.getAttribute('data-matrix-study') || 'ecosystem-avalanche';
-        activeLang = btn.getAttribute('data-matrix-lang') || 'en';
-        activeMode = 'multilingual';
-        render(true);
-        document.getElementById('planetary-player')?.scrollIntoView({ behavior: 'smooth' });
       });
     });
 
     document.getElementById('bp-mode-multilingual')?.addEventListener('click', () => { activeMode = 'multilingual'; render(false); });
     document.getElementById('bp-mode-easyread')?.addEventListener('click', () => { activeMode = 'easyread'; render(false); });
     document.getElementById('bp-mode-ad')?.addEventListener('click', () => { activeMode = 'ad'; render(true); });
+    document.getElementById('bp-mode-admix')?.addEventListener('click', () => { activeMode = 'admix'; render(true); });
+    document.getElementById('bp-mode-cues')?.addEventListener('click', () => { activeMode = 'cues'; render(false); });
 
-    const waiSelect = document.getElementById('wai1-select');
-    const waiPre = document.getElementById('wai1-json');
-    waiSelect?.addEventListener('change', () => {
-      const val = waiSelect.value;
-      const obj = val === '__blueprint__' ? DATA.blueprintArtifact : (ART_BY_SLUG[val] || DATA.blueprintArtifact);
-      if (waiPre) waiPre.textContent = JSON.stringify(obj, null, 2);
-    });
-    document.getElementById('wai1-copy')?.addEventListener('click', (ev) => {
-      if (!waiPre) return;
-      navigator.clipboard?.writeText(waiPre.textContent || '');
-      const btn = ev.currentTarget;
-      const orig = btn.textContent;
-      btn.textContent = 'Copied!';
-      setTimeout(() => { btn.textContent = orig; }, 1400);
+    // Live [G0-G12] Source-Sheet Inspector Fetcher
+    const ssSelect = document.getElementById('ss-inspector-select');
+    const ssPre = document.getElementById('ss-inspector-pre');
+    const ssPage = document.getElementById('ss-inspector-page');
+    const ssJson = document.getElementById('ss-inspector-json');
+    ssSelect?.addEventListener('change', async () => {
+      const slug = ssSelect.value;
+      if (ssPage) ssPage.setAttribute('href', '/sourcesheets/' + slug + '/');
+      if (ssJson) ssJson.setAttribute('href', '/sourcesheets/' + slug + '.json');
+      try {
+        const res = await fetch('/sourcesheets/' + slug + '.json');
+        if (res.ok && ssPre) {
+          const doc = await res.json();
+          ssPre.textContent = JSON.stringify(
+            {
+              study_slug: doc.study_slug,
+              provenance_status: doc.provenance_status,
+              licence_layers: doc.licence_layers,
+              zenodo_relations: doc.zenodo_relations,
+              claims: doc.claims,
+              variants_sample: (doc.variants || []).slice(0, 4),
+              manifest_signature: doc.manifest_signature,
+            },
+            null,
+            2
+          );
+        }
+      } catch (_) {}
     });
 
     render(false);

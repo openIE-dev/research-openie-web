@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — satb-harness (da) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:05.737
+<v Narrator>For det første kan ændring af indpakningen omkring en AI-model svinge scorer lige så meget som at bytte modellen.
+
+2
+00:00:06.077 --> 00:00:13.308
+<v Narrator>For det andet, denne test harness låser prompter, hukommelse trimning og værktøjer, så hver AI tager nøjagtig samme eksamen.
+
+3
+00:00:13.648 --> 00:00:21.582
+<v Narrator>For det tredje adskiller den på tværs af fem computertyper rigtige kortsensorer fra chiptællere og blokerer støjende effektestimater.

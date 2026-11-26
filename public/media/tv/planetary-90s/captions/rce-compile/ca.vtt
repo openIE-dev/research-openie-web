@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (ca) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:15.332
+<v Narrator>Primer, els compiladors reals trenquen qualsevol llei descriptiva única, així que aquest estudi defineix una mesura de set parts en el seu lloc. Segon, l' optimització màxima del compilador crema energia inicial que mai es compensa en un trenta per cent dels programes de prova.
+
+2
+00:00:15.832 --> 00:00:24.406
+<v Narrator>Tercer, l'empremta digital del codi per posició variable reutilitza les construccions amb zero confusions, reduint l'energia de compilació Rust quatre cent vegades.
+
+3
+00:00:24.906 --> 00:00:42.841
+<v Narrator>Hem provat una afirmació generalitzada, que cada compilador baixa les formes canòniques mentre segueix l' energia i preserva el significat, contra dotze famílies de compiladors reals. A la pràctica, cap fa seguiment dels joules, cap hash codi sense nom, i els fuzzers automatitzats han descobert milers d' errors del compilador C.
+
+4
+00:00:43.341 --> 00:01:00.384
+<v Narrator>La recompilació com a estàndard de set parts ens permet mesurar horitzons exactes de recuperació a través de vint nuclis i quinze nivells de cadena d'eines: el C optimitzat supera al Python després de dos-cents quatre-cents noranta execucions, mentre que les llibreries d'execució Rust compartides redueixen l'energia de construcció vint vegades.
+
+5
+00:01:00.884 --> 00:01:18.984
+<v Narrator>Simplement esborrar els noms de les variables causava cent cinquanta perilloses col· lisions del cau cada vegada que dues variables intercanviaven rols. Reemplaçar els noms amb posicions d' enllaç De Bruijn va aconseguir zero coincidències falses a través de cinc- cents mutants verificats i reduir les reconstruccions calentes de C i Rust fins a quatre- cent quaranta- vuit vegades.
+
+6
+00:01:19.484 --> 00:01:29.440
+<v Narrator>Totes les xifres d'energia provenen de comptadors integrats del processador Linux en lloc d'un wattímetre extern de paret, i cada citació externa porta una insígnia de verificació explícita.

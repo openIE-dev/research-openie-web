@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — rce (hu) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:07.168
+<v Narrator>Először is, ír egy programot egyszer, mint egy tiszta tervrajz, és a számítógép generál megfelelő kódot nyelveken keresztül.
+
+2
+00:00:07.508 --> 00:00:15.097
+<v Narrator>Másodszor, minden lehetséges bemenetnek előre deklarált kimenetelével kell rendelkeznie, hogy elkerüljük a rejtett összeomlásokat mielőtt bármi is futna.
+
+3
+00:00:15.437 --> 00:00:21.596
+<v Narrator>Harmadszor, minden javítás, amely átmegy az ellenőrzőn, mentésre és újrafelhasználásra kerül, így soha nem fizet kétszer egy javításért.

@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — lut-adapt (ro) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:07.730
+<v Narrator>În primul rând, majoritatea cererilor repetă tipare rezolvate, astfel încât rularea unei rețele neuronale uriașe de fiecare dată risipește memorie și energie.
+
+2
+00:00:08.070 --> 00:00:15.923
+<v Narrator>În al doilea rând, această cascadă verifică mai întâi tabele de adevăr mici și transmite segmente de model specializate din stocare numai atunci când este necesar.
+
+3
+00:00:16.263 --> 00:00:23.481
+<v Narrator>În al treilea rând, odată ce un test automat certifică un nou răspuns, acesta este compilat în jos într-o abilitate reutilizabilă de milisecundă.

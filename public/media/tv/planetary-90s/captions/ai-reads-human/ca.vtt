@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — ai-reads-human (ca) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:16.158
+<v Narrator>Primer, els ordinadors sovint intercanvien dades en formats de text escrits per a ulls humans, forçant les màquines a passar treball extra. Segon, llegir el text de configuració sagnat va requerir més de dues mil vegades més energia del xip que llegir números compactes de màquina.
+
+2
+00:00:16.658 --> 00:00:24.468
+<v Narrator>En tercer lloc, tallar text estructurat en peces de paraules d'IA cremava dotze vegades més energia que analitzar el mateix text.
+
+3
+00:00:24.968 --> 00:00:41.722
+<v Narrator>Els formats plens de corbes, comes i espais sagnat es van dissenyar per tal que la gent pogués inspeccionar fitxers còmodament en editors de text. Tanmateix, les eines modernes d' IA passen milions d' aquests registres de text verbós estrictament de màquina a màquina sense que un humà els miri mai.
+
+4
+00:00:42.222 --> 00:00:59.589
+<v Narrator>Vam anomenar aquest treball addicional la taxa d' impedància i vam provar trenta- quatre càrregues de treball d' anàlisi i divisió de paraules en vint mil registres. Executant cada passada dins d' un procés de treball aïllat en un processador Apple es van separar neta i net els minúsculs costos d' anàlisi de l' activitat sorollosa del portàtil en segon pla.
+
+5
+00:01:00.089 --> 00:01:17.771
+<v Narrator>Descomprimir un registre binari de vint- i- tres bytes va consumir dos- cents vuitanta nanojoules. El text estàndard entre corbes va consumir gairebé vuit vegades més, el text sagnat compilat va consumir dues- cent quaranta- nou vegades més, i el text sagnat en Python pur va cremar dues mil cinquanta- quatre vegades més energia del xip.
+
+6
+00:01:18.271 --> 00:01:31.355
+<v Narrator>Fins i tot afegint dos espais de sagnat més que va duplicar l' energia d' AI per a dividir paraules a setanta- un microjoules per registre. Mantingui els tubs interns de la màquina compactes i binaris, i formati el text només quan la gent llegeixi.

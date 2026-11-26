@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (nl) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:15.332
+<v Narrator>Ten eerste, echte compilers breken elke enkele beschrijvende wet. Daarom definieert deze studie een zevendelige maatstaf. Ten tweede, maximale compiler optimalisatie verbrandt vooraf energie die nooit terugverdiend wordt op dertig procent van de testprogramma's.
+
+2
+00:00:15.832 --> 00:00:24.406
+<v Narrator>Ten derde, vingerafdrukcode door variabele positie hergebruikt builds zonder mix-ups, waardoor de Rust compile energie vierhonderd keer wordt verlaagd.
+
+3
+00:00:24.906 --> 00:00:42.841
+<v Narrator>We hebben een algemene bewering getest – dat elke compiler canonieke vormen verlaagt terwijl hij energie bijhoudt en betekenis bewaart – tegen twaalf echte compilerfamilies. In de praktijk volgt geen enkele joules, hashes geen enkele naamloze code. Geautomatiseerde fuzzers hebben duizenden bugs in C-compilers ontdekt.
+
+4
+00:00:43.341 --> 00:01:00.384
+<v Narrator>Door compilatie als een zevendelige standaard te hercompileren, kunnen we de exacte terugverdientijd meten voor twintig kernels en vijftien toolchain-lagen: geoptimaliseerde C verslaat Python na vierentwintighonderdnegentig runs, terwijl gedeelde Rust-runtimebibliotheken de bouwenergie twintig keer verminderen.
+
+5
+00:01:00.884 --> 00:01:18.984
+<v Narrator>Het simpelweg wissen van variabelenamen veroorzaakte honderdvijftig gevaarlijke cache-botsingen wanneer twee variabelen hun rol verwisselden.Het vervangen van namen met De Bruijn binding posities resulteerde in nul valse matches over vijfhonderd geverifieerde mutanten en snijdt warme C en Rust herbouw tot vierhonderd achtenveertig keer.
+
+6
+00:01:19.484 --> 00:01:29.440
+<v Narrator>Alle energiecijfers komen van ingebouwde Linux-processortellers in plaats van een externe wattmeter aan de muur, en elke externe vermelding draagt een expliciete verificatiebadge.

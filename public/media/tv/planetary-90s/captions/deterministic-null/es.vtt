@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — deterministic-null (es) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:18.318
+<v Narrator>En primer lugar, la mayoría de los benchmarks de IA omiten un grupo de control de modelo cero que prueba lo que ya resuelve una búsqueda simple; en segundo lugar, en tareas matemáticas y de base de datos con límites, una tabla de búsqueda congelada coincidió con la inteligencia artificial en nueve de las diez pruebas.
+
+2
+00:00:18.398 --> 00:00:29.778
+<v Narrator>En tercer lugar, en las tareas de codificación abierta la IA dio un salto adelante, mientras que el almacenamiento en caché de respuestas verificadas redujo la energía de repetición tres o seis veces.
+
+3
+00:00:29.858 --> 00:00:45.936
+<v Narrator>Si dos modelos de cien mil millones de parámetros obtienen un 99% en una prueba estructurada, ¿necesitaría uno de ellos realmente una red neuronal en el momento de tomar la decisión?Sin un grupo control de modelo cero en exactamente el mismo examen, nadie puede decir la diferencia.
+
+4
+00:00:46.016 --> 00:01:04.271
+<v Narrator>Construimos una tabla de búsqueda de números enteros de ocho pasos verificada bit a bit en Rust, Go, Python, Julia y C plus plus, luego anclamos sus huellas digitales en las pruebas públicas del calendario Bitcoin antes de que los beacons públicos de aleatoriedad generaran cuatro mil treinta nuevos problemas retenidos.
+
+5
+00:01:04.351 --> 00:01:23.809
+<v Narrator>En dos mil ochocientos cuarenta problemas matemáticos y de base de datos limitados, los modelos en la nube superaron a la tabla congelada solo con frases no indexadas del cliente, pero saltó de cuarenta y cuatro a noventa y cinco puntos porcentuales por delante en cuatro puntos de referencia de ingeniería de software escritos externamente.
+
+6
+00:01:23.889 --> 00:01:37.790
+<v Narrator>Cuando las correcciones neuronales recién verificadas se escriben de nuevo en el almacén de búsqueda, las cargas de trabajo sesgadas realistas reducen las llamadas recurrentes al modelo y la energía del chip local tres puntos cinco nueve veces.

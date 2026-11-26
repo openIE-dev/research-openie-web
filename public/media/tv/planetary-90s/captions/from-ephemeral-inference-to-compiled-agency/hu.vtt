@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (hu) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:20.135
+<v Narrator>Először is, a fejlett számítástechnika mindenki számára megfizethetővé válik, amikor a drága neurális modellek végső megoldásként működnek gyors helyi keresési táblák, keresési indexek és pontos megoldók mögött.Másodszor, az egy bites súlyok tömörítése memóriamegtakarítást eredményez, de azok lebegőpontos számokra történő kibontása futásidőben több mint nyolcvanszor annyi áramkörön elpazarolt energiát jelent, mint a csomagolt egész logika közvetlen futtatása.
+
+2
+00:00:20.295 --> 00:00:32.082
+<v Narrator>Harmadszor, egy egész számú kernel ellenőrzése kriptográfiai hash-ekkel pontosan ugyanazt a választ adja a processzorok, grafikus kártyák, WebAssembly, hardver logika és mikrovezérlők között, azonnal leállva, ha egyetlen súly változik.
+
+3
+00:00:32.242 --> 00:00:50.475
+<v Narrator>A nulla-modelles keresés 1500 determinisztikus vezérlési feladaton keresztül 61,60 százalékponttal győzte le a neurális alapvonalakat strukturált eszközsémák és 20,80 pont Boole kielégíthetősége esetén 1,41 és 2,09 mikrojoule nettó shunt energiával, tisztán elkülönítve a 12,80 pontos nyílt kódolású triage rést.
+
+4
+00:00:50.635 --> 00:01:16.546
+<v Narrator>Egy AMD Kria 5 V-os táblás teljesítményérzékelőn, amelynek üresjárati driftje 0,09–0,11%, a 0.1517 bit/súly mátrixok kicsomagolása 32 bites lebegőpontos értékekre bruttó 63 335,56 mikrojoule energiát emésztett fel – ami 81,86-szor rosszabb eredmény, mint a nyolcbites egészek esetében – miközben az egész Walsh-Hadamard, exkluzív NOR, bitszámlálás és nibble keresés bruttóan 187,49 mikrojoulle, nettóan pedig 10,30 mikrojoulesre csökkent.
+
+5
+00:01:16.706 --> 00:01:37.000
+<v Narrator>Egy hash-ellenőrzött egész számú kernel bitről bitre egyezett tíz sávon és hat fabricon keresztül – processzor, Radeon 8060S Vulkan grafika, osztott processzor-grafika, WebAssembly vektorok, Verilog hardver logika és egy 1444 bájtos csupaszfém mikrovezérlő – megállt egy egysúlyos tampernél 1315 Planetary Digital Well leeresztő recept mellett.
+
+6
+00:01:37.160 --> 00:01:58.456
+<v Narrator>A négylépcsős helyesírás-ellenőrzési kaszkád végig 26,58-szor bruttó és 24,49-szer nettó módon csökkentette a Kria shunt energiát, 16,26-szor csökkentette a Jetson Thor shunt energiát, és 38,46-szor kerülte el a negyedik lépcső hívásait. Minden nyugta aláírt eredetű, önellenőrzött – nem külső szakértői értékelésen esett át. A shunt, chip-számláló, becsült és méretlen joule-ok szigorúan külön vannak tárolva.

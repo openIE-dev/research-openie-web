@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — deterministic-null (hu) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:14.882
+<v Narrator>Másodszor, a matematikai és adatbázis-feladatok esetében egy befagyasztott keresési tábla tízből kilenc tesztben ért el jobb eredményt, mint a felhőalapú mesterséges intelligencia.
+
+2
+00:00:15.382 --> 00:00:23.382
+<v Narrator>Harmadszor, a nyílt kódolási feladatokon az AI ugrásszerűen előrébb jutott, míg a gyorsítótárazott ellenőrzött válaszok három-hatszor csökkentették az ismétlési energiát.
+
+3
+00:00:23.882 --> 00:00:37.954
+<v Narrator>Ha két százmilliárd paraméteres modell mind a kilencvenkilenc százalékot éri el egy strukturált benchmarkon, akkor vajon valamelyiknek tényleg szüksége volt neurális hálózatra döntéshozatalkor?A nulla-modell kontrollcsoport nélkül pontosan ugyanazon a vizsgán senki sem tudja megmondani a különbséget.
+
+4
+00:00:38.454 --> 00:00:54.882
+<v Narrator>Építettünk egy nyolclépcsős egészszám-kereső táblázatot, amelyet bitről bitre ellenőriztünk Rust, Go, Python, Julia és C plusz plusz nyelveken, majd horgonyoztuk a digitális ujjlenyomatát nyilvános Bitcoin naptár bizonyítékokra, mielőtt a nyilvános véletlenszerűségi jelzők négyezerharminc friss kihagyott problémát generáltak.
+
+5
+00:00:55.382 --> 00:01:11.222
+<v Narrator>Kétezernyolcszáznegyven korlátozott matematikai és adatbázis-problémában a felhőmodellek csak az indexeletlen ügyfélmegfogalmazásokon verték meg a fagyasztott táblát, de negyvennégy-kilencvenöt százalékponttal előrébb ugrottak négy külső szerző szoftvermérnöki benchmarkján.
+
+6
+00:01:11.722 --> 00:01:21.953
+<v Narrator>Amikor az újonnan ellenőrzött neurális javítások visszaíródnak a keresési tárolóba, a reálisan elferdített munkaterhelések három-öt-kilencszer csökkentik az ismétlődő modellhívásokat és a helyi chip energiát.

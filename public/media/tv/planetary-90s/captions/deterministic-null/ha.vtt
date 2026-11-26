@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — deterministic-null (ha) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:19.652
+<v Narrator>Na farko, mafi yawan AI benchmarks tsira da wani zero-maida kula da kungiyar da gwaji abin da kawai bincike ne ya riga ya warware. na biyu, a kan bounded mathematics da database ayyuka, a freezed duba tebur daidaita cloud AI akan tara daga goma gwaje-gwajen.
+
+2
+00:00:19.732 --> 00:00:31.283
+<v Narrator>Na uku, a kan buɗe ayyukan lissafi AI ya yi gudun gaba, yayin da ke cacheing tabbatarwa amsoshi ya rage sake yin amfani da makamashi uku point shida sau.
+
+3
+00:00:31.363 --> 00:00:55.228
+<v Narrator>Idan nau'ikan paramita biliyan dari biyu suna da kashi talatin da tara bisa dari a kan wani mataki na tsari, shin ɗayan ya kamata ya kasance yana buƙatar wata hanyar sadarwar kwakwalwa a lokacin yanke shawara? Ba tare da ƙungiyar kulawa ba ta sifar-maida akan gwajin daidai ba, babu wanda zai iya bayyana bambancin.
+
+4
+00:00:55.308 --> 00:01:18.337
+<v Narrator>Mun gina wani tebur na neman adadin da aka tabbatar bit-by-bit a cikin Rust, Go, Python, Julia, da C plus plus, sa'an nan kuma mun sanya hannu kan takardun shaidar dijital akan hujjar Bitcoin ta jama'a kafin beacon din randomness na jama'a ya samar da dubu huɗu da dari uku na sabon matsalolin da aka yi.
+
+5
+00:01:18.417 --> 00:01:43.651
+<v Narrator>A cikin dubu biyu da dari takwas da arba'in da shida na matsaloli masu iyaka da kuma bayanan bayanai, samfuran cloud sun lashe tebur mai zafi akan kawai ba a sanya shi ba a cikin lissafin abokan cinikin, amma ya tashi kashi arba'in da huɗu zuwa ɗari biyar na kashi goma sha biyar a gaba a kan ƙananan ƙididdiga na injiniyan software.
+
+6
+00:01:43.731 --> 00:01:57.790
+<v Narrator>Idan an sake tabbatar da gyaran neural ana rubuta su zuwa cikin ajiyar bincike, realistic skewed workloads cut recurring model calls and local chip energy by three point five nine times.

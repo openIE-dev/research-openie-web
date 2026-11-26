@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (sl) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:20.135
+<v Narrator>Prvič, napredno računalništvo postane dostopno vsem, ko dragi nevronski modeli delujejo kot zadnja možnost za hitre lokalne iskalnike, indekse iskanja in natančne reševalce. Drugič, stiskanje uteži pod en bit prihrani pomnilnik. Vendar pa njihovo razpakiranje nazaj v števila s plavajočo vejico med izvajanjem porabi več kot osemdesetkrat več energije vezja kot neposredno izvajanje pakirane celoštevilske logike.
+
+2
+00:00:20.295 --> 00:00:32.082
+<v Narrator>Tretjič, eno celoštevilsko jedro, ki ga preverijo kriptografski hašiji, proizvede popolnoma enak odgovor na procesorjih, grafičnih karticah, WebAssemblyju, strojni logiki in mikrokontrolerjih, takoj se ustavi, če se spremeni ena sama teža.
+
+3
+00:00:32.242 --> 00:00:50.475
+<v Narrator>V 1500 determinističnih kontrolnih nalogah je iskanje ničelnega modela premagalo nevralne izhodiščne vrednosti za 61,60 odstotnih točk na strukturiranih shemah orodij in 20,80 točk na Boolejevi zadovoljljivosti pri 1,41 do 2,09 mikrojoulov neto energije shunta, čisto izoliralo vrzel odprtega kodiranja triage v višini 12,80 točk.
+
+4
+00:00:50.635 --> 00:01:16.546
+<v Narrator>Na petvoltni plošči AMD Kria z 0,09 do 0,11 % nedejavnosti je razpakiranje 0,1517-bitnih matrik na težo v 32-bitne plavajoče številke porabili 63.335,56 mikrodžulov bruto - 81,86-krat slabše kot osembitna cela števila - medtem ko so pakirana cela Walsh-Hadamard, ekskluzivno NOR, bitno štetje in iskanje nibble padli na 187,49 mikrodžulov bruto in 10,30 mikrodžulov neto.
+
+5
+00:01:16.706 --> 00:01:37.000
+<v Narrator>Eno jedro, ki je bilo preverjeno z hash-om, se je ujemalo bit za bitom na desetih pasovih in šestih tkaninah - procesor, Radeon 8060S Vulkan grafika, razdeljena grafika procesorja, WebAssembly vektorji, Verilog strojna logika in 1444-bajtni mikrokrmilnik brez kovine - ustavil na enojni teži skupaj z 1315 Planetary Digital Well recepti.
+
+6
+00:01:37.160 --> 00:01:58.456
+<v Narrator>Od konca do konca je štiristopenjska kaskada preverjanja črkovanja zmanjšala Kria energijo 26,58-krat bruto in 24,49-krat neto, zmanjšala Jetson Thor energijo 16,26-krat in se izognila 38,46-kratnim pozivom četrte stopnje.Vsa potrdila so podpisana s poreklom, samopreverjena - niso zunanja strokovna ocena - z shuntom, števcem čipov, ocenjenimi in nemerjenimi jouli strogo ločenimi.

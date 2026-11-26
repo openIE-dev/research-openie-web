@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (ig) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:19.335
+<v Narrator>First, eziokwu compilers na-agbachitere ọ bụla otu descriptive iwu, ya mere a nnyocha kọwaa a isii-part yardstick na-ebe. Nke abụọ, kacha nta compiler optimization burns upfront ike nke na-adịghị na-akwụghachi azụ na puku atọ nke usoro ihe omume nyocha.
+
+2
+00:00:19.415 --> 00:00:28.639
+<v Narrator>Nke atọ, fingerprinting koodu site na variable ọnọdụ reuses builds na zero mix-ups, ịkpụ Rust compile ike anọ hundredfold.
+
+3
+00:00:28.719 --> 00:00:53.806
+<v Narrator>Anyị chọpụtara na ọ bụ ihe a na-ekwu - na onye nchịkọta akụkọ niile na-ewepụ ụdị canonical mgbe ọ na-enyocha ike ma na-echekwa echiche - megide ezinụlọ ndị mmepe nke eziokwu abụọ. N'ime usoro, enweghị ihe ọ bụla na-enyocha joules, enweghị aha-enweghị aha koodu, na fuzzers na-emegharị onwe ha emepụtara ọtụtụ puku C compiler bugs.
+
+4
+00:00:53.886 --> 00:01:14.016
+<v Narrator>Na-ewepụ ihe nchịkọta dị ka akụkụ atọ na-eme ka anyị nwee ike ịtụle ihe ziri ezi nke payback horizons n'ime kernels iri abụọ na ise na-agba ọsọ: optimized C beats Python mgbe ọkara puku asatọ na narị anọ, ebe ọ bụ na ejirila Rust runtime library mechie ike ime ụlọ.
+
+5
+00:01:14.096 --> 00:01:39.030
+<v Narrator>N'ịwepụ aha váìrílụ̀ n'ụzọ dị mfe mere ka ọbụla narị narị narị atọ na iri abụọ na otu na-emebi cache mgbe ọbụla vàìrílụ̀ abụọ gbanwere ọrụ. Itinye aha na De Bruijn bíntịn ọnọdụ gbasaa sẽọnụọgụgụ nke na-adịghị mma n'elu puku anọ narị narị na-enyocha mọọbụ na-akpụcha C na Rust rebuilds ruo ugboro iri na asaa na iri isii.
+
+6
+00:01:39.110 --> 00:01:51.690
+<v Narrator>N'ime Linux processor counters niile na-abịa n'ihe ngosi ike niile, kamakwa nke mbanye ebe ọbụla wattmeter, nakwa ihe ngosi mbanye niile na-eburu akara verifikasịọnụ.

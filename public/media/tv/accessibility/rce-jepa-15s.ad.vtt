@@ -1,25 +1,26 @@
 WEBVTT
+NOTE OpenIE Research TV v1.0 Accessibility — rce-jepa (Extended Audio Description + Ranked Non-Speech Cues)
 
 1
 00:00:00.220 --> 00:00:09.382
-<v Audio Description>Visual scene one: Card one glows amber as a small cyan meaning crystal replaces a noisy cloud of word tokens inside the rotating glass polyhedron.
+[key chime: stage-one lookup activates] <v Audio Description>Visual scene one: Card one glows amber as a small cyan meaning crystal replaces a noisy cloud of word tokens inside the rotating glass polyhedron.
 
 2
 00:00:09.722 --> 00:00:16.579
-<v Presenter>First, instead of guessing raw code word by word, small models predict compact summaries of program meaning.
+<v Narrator>First, instead of guessing raw code word by word, small models predict compact summaries of program meaning.
 
 3
 00:00:16.919 --> 00:00:25.210
-<v Audio Description>Visual scene two: Card two highlights in cyan while candidate spokes meet a bright emerald verifier ring that blocks rose invalid branches.
+[low pulse: energy budget baseline] <v Audio Description>Visual scene two: Card two highlights in cyan while candidate spokes meet a bright emerald verifier ring that blocks rose invalid branches.
 
 4
 00:00:25.550 --> 00:00:32.904
-<v Presenter>Second, any AI model may propose a candidate program, but a fast, strict checker decides what passes.
+<v Narrator>Second, any AI model may propose a candidate program, but a fast, strict checker decides what passes.
 
 5
 00:00:33.244 --> 00:00:41.815
-<v Audio Description>Visual scene three: Card three shines emerald, showing forty of forty hard tasks solved and sixteen point seven times fewer large model calls.
+[lock tone: verified receipt committed] <v Audio Description>Visual scene three: Card three shines emerald, showing forty of forty hard tasks solved and sixteen point seven times fewer large model calls.
 
 6
 00:00:42.155 --> 00:00:49.238
-<v Presenter>Third, checking uses seventeen hundred times less energy than generating, and saved fixes slash big model calls.
+<v Narrator>Third, checking uses seventeen hundred times less energy than generating, and saved fixes slash big model calls.

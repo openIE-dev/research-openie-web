@@ -1,13 +1,14 @@
 WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — ai-reads-human (en) + Ranked Non-Speech Cues
 
 1
 00:00:00.220 --> 00:00:07.595
-First, computers often swap data in text formats written for human eyes, forcing machines to spend extra work.
+[key chime: binary schema frame arrives] <v Narrator>First, computers often swap data in text formats written for human eyes, forcing machines to spend extra work.
 
 2
 00:00:07.935 --> 00:00:15.564
-Second, reading indented configuration text took over two thousand times more chip energy than reading compact machine numbers.
+[low pulse: chip counter tracks parse cost] <v Narrator>Second, reading indented configuration text took over two thousand times more chip energy than reading compact machine numbers.
 
 3
 00:00:15.904 --> 00:00:22.629
-Third, chopping structured text into AI word pieces burned twelve times more energy than parsing the text itself.
+[lock tone: compact integer record committed] <v Narrator>Third, chopping structured text into AI word pieces burned twelve times more energy than parsing the text itself.

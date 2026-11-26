@@ -1,0 +1,18 @@
+WEBVTT
+NOTE OpenIE Planetary digest v1.0 — planetary-digest (my) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:11.515
+<v Narrator>OpenIE သုတေသနရေဒီယိုဂြိုဟ် Digest သို့ကြိုဆိုပါသည်, 29 စစ်ဆေးနိုင်သောအပေါ်ပွင့်လင်း-access ကိုလေ့လာမှုများကို summarizing, စွမ်းအင်-စာရင်းအင်း computing.
+
+2
+00:00:11.595 --> 00:00:31.765
+<v Narrator>ကျွန်တော်တို့ရဲ့4အဆင့်ရှာဖွေရေး-ပထမဦးဆုံးရေစီးကြောင်း, အမြန်အမြဲတမ်းအချိန် hash ဇယားများ, trigram search ကိုညွှန်းကိန်းများနှင့်တိကျသော integer solvers ကျော်, နောက်ဆုံးအကူအညီအဖြစ်သာကြီးမားတဲ့ neural မော်ဒယ်များကိုနိုးထ, ဒေသတွင်းမှာနေ့စဉ်မေးခွန်းများကိုကိုင်တွယ်ဖြေရှင်း.
+
+3
+00:00:31.845 --> 00:00:58.465
+<v Narrator>0.11 ရာခိုင်နှုန်းအလိုအလျောက်ပျံသန်းမှုနှင့်အတူ inline ကို5ဗို့ဘုတ်အဖွဲ့စွမ်းအင်စနစ်များအပေါ်, unpacking 32-bit က floats သို့ပြန် 81.86 နှစ်ကြိမ်ပိုမိုဘတ်ဂျက်စွမ်းအင်ကို 8-bit ကို integers ထက်ဖြုန်းတီး 0,1517 bits-per-အလေးချိန်မက်ထရစ်, အပြည့်အဝတန်ဖိုးရှိသောလက္ခဏာ 187.49 microjoules စုစုပေါင်းသို့ကျဆင်းပြီးလုံးဝ cascade စွမ်းအင် 26.58 ကြိမ်ဖြတ်တောက်နေစဉ်။
+
+4
+00:00:58.545 --> 00:01:15.190
+<v Narrator>လေ့လာမှုတိုင်း cryptographic hashes နှင့်အတူသင်္ဘောများ,6-ဖန်ခွက် cross-architecture determinism, 24-kilobit Opus အနည်းငယ် bandwidth ကို feeds, extended audio description, and Creative Commons Zero plain-language summaries.

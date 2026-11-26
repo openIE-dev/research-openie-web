@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — deterministic-null (fr) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:08.889
+<v Narrator>Deuxièmement, sur les tâches mathématiques et de base de données limitées, une table de recherche figée a fait correspondre l’IA dans le cloud à neuf tests sur dix.
+
+2
+00:00:08.969 --> 00:00:18.871
+<v Narrator>Troisièmement, sur les tâches de codage ouvertes, l’IA a fait un bond en avant, tandis que la mise en cache des réponses vérifiées réduisait l’énergie de répétition de trois à six fois.
+
+3
+00:00:18.951 --> 00:00:31.066
+<v Narrator>Si deux modèles à cent milliards de paramètres obtiennent tous les deux un score de quatre-vingt-dix-neuf pour cent sur un test structuré, l’un ou l’autre a-t-il réellement besoin d’un réseau neuronal au moment de la décision?
+
+4
+00:00:31.146 --> 00:00:48.656
+<v Narrator>Nous avons construit une table de recherche d’entiers en huit étapes vérifiée bit par bit à travers Rust, Go, Python, Julia et C plus plus, puis ancré ses empreintes digitales sur des preuves publiques du calendrier Bitcoin avant que les balises aléatoires publiques ne génèrent quatre mille trente nouveaux problèmes retenus.
+
+5
+00:00:48.736 --> 00:01:06.139
+<v Narrator>Sur deux mille huit cent quarante problèmes mathématiques et de base de données, les modèles cloud ont battu la table gelée uniquement sur le phrasé client non indexé, mais ont sauté de quarante-quatre à quatre-vingt-quinze points de pourcentage en avant dans quatre benchmarks d'ingénierie logicielle rédigés par des tiers.
+
+6
+00:01:06.219 --> 00:01:19.790
+<v Narrator>Lorsque les corrections neuronales nouvellement vérifiées sont réécrites dans le magasin de recherche, des charges de travail asymétriques réalistes réduisent les appels de modèle récurrents et l'énergie de la puce locale de trois points cinq neuf fois.

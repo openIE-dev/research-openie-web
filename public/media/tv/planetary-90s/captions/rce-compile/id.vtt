@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (id) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:17.920
+<v Narrator>Pertama, kompiler nyata melanggar hukum deskriptif tunggal apapun, jadi penelitian ini mendefinisikan ukuran tujuh bagian sebagai gantinya. Kedua, optimalisasi kompilier maksimum membakar energi awal yang tidak pernah dibayar kembali pada 30 persen program tes.
+
+2
+00:00:18.000 --> 00:00:27.990
+<v Narrator>Ketiga, kode sidik jari dengan posisi variabel menggunakan ulang membangun dengan nol campuran-up, memotong Rust kompilasi energi empat ratus kali.
+
+3
+00:00:28.070 --> 00:00:39.978
+<v Narrator>Kami menguji klaim yang luas – bahwa setiap kompiler menurunkan bentuk kanonikal sementara melacak energi dan mempertahankan makna – melawan dua belas keluarga kompiler nyata.
+
+4
+00:00:40.058 --> 00:01:03.817
+<v Narrator>Mengganti kompilasi sebagai standar tujuh bagian memungkinkan kita mengukur horizon pembayaran balik yang tepat di dua puluh kernel dan lima belas tingkat toolchain: C yang dioptimalkan mengalahkan Python setelah dua puluh empat ratus sembilan puluh run, sementara pustaka runtime Rust yang dibagikan memotong energi membangun dua puluh kali lipat.
+
+5
+00:01:03.897 --> 00:01:26.081
+<v Narrator>Hanya menghapus nama variabel menyebabkan 150 tabrakan cache berbahaya setiap kali dua variabel bertukar peran. mengganti nama dengan posisi pengikat De Bruijn menembak nol kecocokan palsu di atas lima ratus mutan yang diverifikasi dan memotong C hangat dan Rust membangun kembali hingga empat ratus empat puluh delapan kali.
+
+6
+00:01:26.161 --> 00:01:37.590
+<v Narrator>Semua angka energi berasal dari counter prosesor Linux tertanam daripada wattmeter dinding eksternal, dan setiap kutipan eksternal membawa lencana verifikasi eksplisit.

@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — deterministic-null (hu) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:06.752
+<v Narrator>Először is, a legtöbb AI benchmark kihagy egy nulla modellű kontrollcsoportot, amely teszteli, hogy mit old meg az egyszerű keresés.
+
+2
+00:00:07.092 --> 00:00:14.471
+<v Narrator>Másodszor, a korlátozott matematikai és adatbázis-feladatokban egy befagyasztott keresési táblázat tízből kilenc tesztben egyezett meg a felhőalapú MI-vel.
+
+3
+00:00:14.811 --> 00:00:22.541
+<v Narrator>Harmadszor, a nyílt kódolási feladatokon az AI ugrásszerűen előrébb jutott, míg a gyorsítótárazott ellenőrzött válaszok három-hatszor csökkentették az ismétlési energiát.

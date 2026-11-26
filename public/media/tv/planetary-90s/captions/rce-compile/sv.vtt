@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (sv) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:15.332
+<v Narrator>För det första bryter verkliga kompilatorer mot alla beskrivande lagar, så denna studie definierar en sjudelad måttstock istället.För det andra förbränner maximal kompilatoroptimering energi som aldrig betalar sig på trettio procent av testprogrammen.
+
+2
+00:00:15.832 --> 00:00:24.406
+<v Narrator>För det tredje, fingeravtryckskod med variabel position återanvänder byggnader utan blandningar, vilket skär Rust-kompileringsenergi fyra hundra gånger.
+
+3
+00:00:24.906 --> 00:00:42.841
+<v Narrator>Vi testade ett svepande påstående – att varje kompilator sänker kanoniska former samtidigt som den spårar energi och bevarar mening – mot tolv riktiga kompilatorfamiljer.I praktiken spårar ingen joule, ingen hashar namnlös kod, och automatiserade fuzzers har avslöjat tusentals C-kompilatorfel.
+
+4
+00:00:43.341 --> 00:01:00.384
+<v Narrator>Att återkompilera som en sjudelad standard låter oss mäta exakt payback horisonter över tjugo kärnor och femton verktygskedja nivåer: optimerad C slår Python efter två tusen fyra hundra nittio körningar, medan delade Rust runtime bibliotek skär bygg energi tjugofaldigt.
+
+5
+00:01:00.884 --> 00:01:18.984
+<v Narrator>Att helt enkelt radera variabelnamn orsakade hundrafemtio farliga cachekollisioner när två variabler bytte roller.Ersätta namn med De Bruijn-bindningspositioner slog noll falska matchningar över femhundra verifierade mutanter och skar varma C- och Rust-ombyggnader upp till fyrahundrafyrtioåtta gånger.
+
+6
+00:01:19.484 --> 00:01:29.440
+<v Narrator>Alla energisiffror kommer från inbyggda Linux-processorräknare snarare än en extern väggwattmätare, och varje externt citat har ett uttryckligt verifieringsmärke.

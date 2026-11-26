@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — ai-reads-human (ro) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:16.158
+<v Narrator>În primul rând, computerele adesea schimbă date în formate de text scrise pentru ochii umani, forțând mașinile să petreacă mai mult timp și, în al doilea rând, citirea textului de configurare indentat a necesitat de peste două mii de ori mai multă energie pe cip decât citirea numerelor compacte ale mașinii.
+
+2
+00:00:16.658 --> 00:00:24.468
+<v Narrator>În al treilea rând, tăierea textului structurat în bucăți de cuvinte AI a ars de doisprezece ori mai multă energie decât analizarea textului în sine.
+
+3
+00:00:24.968 --> 00:00:41.722
+<v Narrator>Formatele pline de paranteze curbate, virgule și spații indentate au fost concepute astfel încât oamenii să poată inspecta fișierele confortabil în editorii de text.Totuși, conductele moderne ale instrumentelor AI trec milioane de acele înregistrări textuale verbuvite strict de la mașină la mașină fără ca un om să se uite vreodată.
+
+4
+00:00:42.222 --> 00:00:59.589
+<v Narrator>Am numit această muncă suplimentară „impozitul pe impedanță” și am testat 34 de sarcini de analiză și divizare a cuvintelor în douăzeci de mii de înregistrări.Rularea fiecărei treceri într-un proces izolat de lucru pe un procesor Apple a separat costurile mici de analiză de activitatea zgomotoasă din fundal a laptopului.
+
+5
+00:01:00.089 --> 00:01:17.771
+<v Narrator>Despachetarea unui fișier binar de 23 octeți a consumat două sute optzeci de nanojouli, textul standard între paranteze a consumat aproape de opt ori mai mult, textul indentat compilat a consumat de două sute patruzeci și nouă de ori mai mult, iar textul indentat Python pur a ars de două mii cincizeci și patru de ori mai multă energie.
+
+6
+00:01:18.271 --> 00:01:31.355
+<v Narrator>Chiar și adăugarea a două spații de indentare frumoasă a mai mult decât dublat energia de despărțire a cuvintelor AI la șaptezeci și unu de microjouli pe înregistrare.Păstrați conductele interne ale mașinii compacte și binare și formatați textul numai atunci când oamenii citesc.

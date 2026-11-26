@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — ai-reads-human (de) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:19.345
+<v Narrator>Erstens tauschen Computer oft Daten in Textformaten aus, die für das menschliche Auge geschrieben wurden, was Maschinen zusätzlich aufwenden lässt; zweitens brauchte das Lesen von eingerücktem Konfigurationstext über zweitausendmal mehr Chip-Energie als das Lesen kompakter Maschinenzahlen.
+
+2
+00:00:19.425 --> 00:00:27.599
+<v Narrator>Drittens verbrannte das Zerkleinern strukturierter Texte in KI-Worte zwölfmal mehr Energie als das Parsen des Textes selbst.
+
+3
+00:00:27.679 --> 00:00:48.302
+<v Narrator>Formate voller geschweifter Klammern, Kommas und eingerückter Leerzeichen wurden entwickelt, damit Menschen Dateien bequem in Texteditoren durchsuchen konnten.Moderne KI-Toolpipelines übergeben Millionen dieser ausführlichen Textdatensätze streng von Maschine zu Maschine, ohne dass ein Mensch jemals hinschaut.
+
+4
+00:00:48.382 --> 00:01:10.535
+<v Narrator>Wir nannten diese zusätzliche Arbeit die Impedanz-Steuer und testeten 34 Parsing- und Wortaufschlüsselungs-Workloads über zwanzigtausend Datensätze.Jeder Durchgang wurde in einem isolierten Worker-Prozess auf einem Apple-Prozessor ausgeführt, wodurch winzige Parsing-Kosten von störenden Laptop-Hintergrundaktivitäten getrennt wurden.
+
+5
+00:01:10.615 --> 00:01:28.974
+<v Narrator>Das Entpacken eines 23-Byte-Binärdatensatzes benötigte zweihundertachtzig Nanojoules, Standardtext in Klammern fast achtmal mehr, kompilierter Text mit Einzügen zweihundertneunundvierzigmal mehr und reiner Python-Text mit Einzügen zweitausendvierundfünfzigmal mehr Chipenergie.
+
+6
+00:01:29.054 --> 00:01:40.890
+<v Narrator>Selbst das Hinzufügen von zwei Leerzeichen mit hübscher Einrückung hat die Energie, die für die KI-Wordspaltung benötigt wird, auf 71 Mikrojoule pro Datensatz mehr als verdoppelt.

@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (it) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:15.332
+<v Narrator>In secondo luogo, l'ottimizzazione massima del compilatore consuma energia in anticipo che non si ripaga mai sul trenta per cento dei programmi di test; quindi, è necessario un ottimizzatore che sia in grado di gestire il compilatore.
+
+2
+00:00:15.832 --> 00:00:24.406
+<v Narrator>In terzo luogo, il codice di impronta digitale con posizione variabile riutilizza le build senza mescolanze, riducendo l'energia della compilazione Rust quattro volte.
+
+3
+00:00:24.906 --> 00:00:42.841
+<v Narrator>In pratica, nessuno di essi traccia i joule, nessuno hash il codice senza nome e fuzzer automatizzati hanno scoperto migliaia di bug nel compilatore C. Abbiamo testato una dichiarazione ampia – che ogni compilatore abbassa le forme canoniche mentre tiene traccia dell’energia e preserva il significato – contro dodici famiglie reali di compilatori.
+
+4
+00:00:43.341 --> 00:01:00.384
+<v Narrator>Ricompilare come uno standard in sette parti ci permette di misurare esattamente gli orizzonti di payback su venti kernel e quindici livelli della toolchain: il C ottimizzato batte Python dopo duecentoquattrocentonovanta esecuzioni, mentre le librerie runtime Rust condivise riducono l'energia di compilazione di venti volte.
+
+5
+00:01:00.884 --> 00:01:18.984
+<v Narrator>Sostituendo i nomi con le posizioni di binding De Bruijn, si è ottenuto zero falsi positivi su cinquecento mutanti verificati e si sono ridotte le ricostruzioni calde in C e Rust fino a quattrocentoquarantotto volte.
+
+6
+00:01:19.484 --> 00:01:29.440
+<v Narrator>Tutti i dati energetici provengono dai contatori integrati del processore Linux piuttosto che da un wattmetro esterno a parete, e ogni citazione esterna porta un badge di verifica esplicito.

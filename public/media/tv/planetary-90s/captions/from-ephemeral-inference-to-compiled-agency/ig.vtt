@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (ig) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:38.095
+<v Narrator>First, advanced computing na-eme ka affordable maka onye ọ bụla mgbe ọnụ ahịa neural models na-arụ ọrụ dị ka ihe ikpeazụ n'azụ ngwa ngwa mpaghara lookup tebụl, search indeksị, na ziri ezi solvers. Nke abụọ, compressing weights n'okpuru otu bit na-echekwa ncheta, ma unpacking ha azụ ka floating-point nọmba na runtime wastes karịa oge iri na ise karịa circuit-board ike karịa ịrụzi packed integer logic n'ụzọ ziri ezi.
+
+2
+00:00:38.175 --> 00:01:00.308
+<v Narrator>Nke atọ, otu integer kernel enyocha site cryptographic hashes na-emepụta ihe ziri ezi nke ahụ ọzọ n'elu processors, graphical kaadị, WebAssembly, hardware logic, na microcontrollers, na-akwụsị mgbe niile ma ọ bụrụ na a dị iche iche ibu mgbanwe.
+
+3
+00:01:00.388 --> 00:01:26.437
+<v Narrator>N'ime ọrụ 150 nke njikwa deterministic, ọkara-model lookup gbawara n'etiti ebe dị iche iche site na 61.60 pasent nke ihe ndị a na-emegharị ihe na 20.80 pasent nke Boolean satisfiability na 1.41 ruo 2.09 microjoules net shunt energy, na-ewepụ ihe dị ka 12.80 point open coding triage gap.
+
+4
+00:01:26.517 --> 00:01:58.483
+<v Narrator>Na AMD Kria 5-volt board power sensor na 0.09 ruo 0,11 pasent idle drift, unpacking 0.1517 bits-per-weight matrices ka 32-bit floats burned 63,335.56 microjoules gross—81.86 ugboro njọ karịa eight-bit integers—n'ihi na packed integer Walsh-Hadamard, exclusive-NOR, bit-count, na nibble lookup gbadara ruo 187.49 microjoule gross na 10.30 microjoul net.
+
+5
+00:01:58.563 --> 00:02:28.435
+<v Narrator>Otu hash-verified integer kernel matched bit-for-bit across ten lanes and six fabrics—processor, Radeon 8060S Vulkan graphic, split processor-graphics, WebAssembly vectors, Verilog hardware logic, na a 1,444-byte bare-metal microcontroller—stalling on single-weight tamper alongside 1,315 Planetary Digital Well lowering recipes.
+
+6
+00:02:28.515 --> 00:03:00.390
+<v Narrator>N'ihi na ngwụcha, anọ-nzọụkwụ spellcheck cascades wepụ Kria shunt ike 26.58 ugboro gross na 24.49 oge net, wepụ Jetson Thor shunt ike 16.26 ugboro, na egbochi 38.46 ugboro nke nkwụsị-fọrọ call. All reception bụ Signed Provenance, Self-Checked -adịghị externally peer-reviewed -na shunt, chip-counter, amụma, na unmetered joules echekwara dị iche iche.

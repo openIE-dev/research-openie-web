@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — ai-reads-human (et) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:16.158
+<v Narrator>Esiteks vahetavad arvutid sageli andmeid tekstivormingus, mis on kirjutatud inimsilmadele, sundides masinaid kulutama lisatööjõudu; teiseks võttis taandega konfiguratsiooniteksti lugemine üle kahe tuhande korra rohkem kiibil energiat kui kompaktsete masinanumbrite lugemine.
+
+2
+00:00:16.658 --> 00:00:24.468
+<v Narrator>Kolmandaks, struktureeritud teksti tükeldamine tehisintellekti sõnade tükkideks põletas kaksteist korda rohkem energiat kui teksti enda parsimine.
+
+3
+00:00:24.968 --> 00:00:41.722
+<v Narrator>Sulgude, komade ja taandega tühikutega vormingud olid loodud selleks, et inimesed saaksid tekstiredaktorites mugavalt faile vaadata, kuid tänapäevased tehisintellekti tööriistade torujuhtmed edastavad miljoneid neid sõnasõnalisi tekstikirjeid rangelt masinast masinasse ilma inimese pilguta.
+
+4
+00:00:42.222 --> 00:00:59.589
+<v Narrator>Me nimetame seda lisatööd impedantsimaksuks ja testisime kolmkümmend neli parsimise ja sõna jagamise töökoormust kahekümne tuhande kirjete kohta. Iga läbimine isoleeritud tööprotsessis Apple'i protsessoris eraldas väikesed parsimise kulud sülearvuti tausta mürast. See on väga lihtne.
+
+5
+00:01:00.089 --> 00:01:17.771
+<v Narrator>23-baidilise binaarkirje lahtipakkimine võttis kakssada kaheksakümmend nanojuula, tavaline sulgudes tekst kasutas peaaegu kaheksa korda rohkem energiat, kompileeritud taandega tekst kasutas kahesaja neljakümne üheksa korda rohkem ja puhas Pythoni taandega tekst põletas kaks tuhat viiskümmend neli korda rohkem kiipide energiat.
+
+6
+00:01:18.271 --> 00:01:31.355
+<v Narrator>Isegi kahe tühiku lisamine on tehisintellekti sõnade lõhkumise energiat rohkem kui kahekordistanud, tuues selle seitsmekümne ühe mikrodžaulini kirje kohta. Hoia masina sisemised torud kompaktsed ja binaarsed ning vorminda tekst ainult siis, kui inimesed seda loevad.

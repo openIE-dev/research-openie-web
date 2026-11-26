@@ -1,0 +1,18 @@
+WEBVTT
+NOTE OpenIE Planetary digest v1.0 — planetary-digest (fr) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:08.836
+<v Narrator>Bienvenue dans le Planetary Digest d'OpenIE Research Radio, qui résume 29 études en libre accès sur l'informatique vérifiable et comptabilisée.
+
+2
+00:00:08.916 --> 00:00:25.260
+<v Narrator>Dans notre cascade de recherche en 4 étapes, des tables de hachage rapides à temps constant, des index de recherche trigramme et des solveurs d'entiers exacts gèrent les requêtes de routine localement, ne réveillant les grands modèles neuronaux qu'en dernier recours.
+
+3
+00:00:25.340 --> 00:00:49.619
+<v Narrator>Sur des shunts de carte en ligne 5 volts avec une dérive au ralenti de 0,09 à 0,11 pour cent, le décompressage de matrices de 0,1517 bits par poids vers des nombres flottants de 32 bits a gaspillé 81,86 fois plus d'énergie sur la carte que les entiers de 8 bits, tandis que la logique des entiers comprimés est tombée à 187,49 microjoules bruts et a réduit l'énergie totale de cascade 26,58 fois.
+
+4
+00:00:49.699 --> 00:01:04.690
+<v Narrator>Chaque étude est livrée avec des hachages cryptographiques, un déterminisme inter-architecture à 6 tissus, des flux Opus de 24 kilobits à faible bande passante, une description audio étendue et des résumés en langage clair Creative Commons Zero.

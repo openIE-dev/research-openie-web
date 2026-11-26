@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — ai-reads-human (id) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:19.087
+<v Narrator>Pertama, komputer sering menukar data dalam format teks yang ditulis untuk mata manusia, memaksa mesin menghabiskan kerja tambahan. Kedua, membaca teks konfigurasi dengan indentasi membutuhkan lebih dari dua ribu kali energi chip dibandingkan membaca nomor mesin kompakt.
+
+2
+00:00:19.167 --> 00:00:29.067
+<v Narrator>Ketiga, memotong teks terstruktur menjadi potongan kata AI membakar dua belas kali lebih banyak energi daripada menganalisis teks itu sendiri.
+
+3
+00:00:29.147 --> 00:00:47.974
+<v Narrator>Format yang penuh dengan tanda kurung, koma, dan ruang di dalamnya dirancang agar orang dapat memeriksa berkas dengan nyaman di editor teks. Namun pipa alat AI modern mengirim jutaan rekaman teks yang panjang lebar tersebut dari mesin ke mesin tanpa manusia melihatnya.
+
+4
+00:00:48.054 --> 00:01:09.270
+<v Narrator>Kami menyebut pekerjaan tambahan ini pajak impedansi dan menguji 34 pembacaan dan pemrosesan kata-kata di atas 20 ribu rekaman. menjalankan setiap langkah dalam proses pekerja terisolasi pada prosesor Apple dengan bersih memisahkan biaya pembacaan kecil dari aktivitas laptop latar belakang yang bising.
+
+5
+00:01:09.350 --> 00:01:34.572
+<v Narrator>Mengumpulkan rekaman biner 23-bit menggunakan dua ratus delapan puluh nanojoules. teks standar yang diikat dengan bracket digunakan hampir delapan kali lebih banyak, teks yang dikompili dan diindent digunakan dua ratus empat puluh sembilan kali lebih banyak, dan teks Python murni yang diindent membakar energi chip dua ribu lima puluh empat kali lebih banyak.
+
+6
+00:01:34.652 --> 00:01:43.990
+<v Narrator>Bahkan menambahkan dua ruang yang cukup lebih dari dua kali lipat AI kata-memotong energi ke tujuh puluh satu mikrojoules per rekaman.

@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — ai-reads-human (pt) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:17.830
+<v Narrator>Em primeiro lugar, os computadores trocam dados em formatos de texto escritos para olhos humanos, forçando as máquinas a gastar trabalho extra; em segundo lugar, ler texto de configuração recuado levou mais de duas mil vezes mais energia do chip que ler números compactos de máquina.
+
+2
+00:00:17.910 --> 00:00:25.877
+<v Narrator>Terceiro, cortar texto estruturado em pedaços de palavras de IA queimou doze vezes mais energia do que analisar o próprio texto.
+
+3
+00:00:25.957 --> 00:00:46.685
+<v Narrator>Formatos cheios de colchetes, vírgulas e espaços recuados foram projetados para que as pessoas pudessem inspecionar arquivos confortavelmente em editores de texto.No entanto, os modernos pipelines de ferramentas de IA passam milhões desses registros de texto verbosos estritamente de máquina para máquina sem um ser humano olhando.
+
+4
+00:00:46.765 --> 00:01:09.505
+<v Narrator>Nós nomeamos esse trabalho extra como o imposto de impedância e testamos trinta e quatro cargas de trabalho de análise e divisão de palavras em vinte mil registros.Executar cada passagem dentro de um processo de trabalho isolado em um processador Apple separou limpa e discretamente os custos minúsculos de análise da atividade ruidosa do laptop em segundo plano.
+
+5
+00:01:09.585 --> 00:01:23.775
+<v Narrator>O texto padrão entre colchetes usou quase oito vezes mais, o texto recuado compilado usou duzentas e quarenta e nove vezes mais, e o texto recuado puro em Python queimou duas mil e cinquenta e quatro vezes mais energia do chip.
+
+6
+00:01:23.855 --> 00:01:32.890
+<v Narrator>Até mesmo a adição de dois espaços de recuo mais do que dobrou a energia de divisão de palavras da IA para setenta e um microjoules por registro.

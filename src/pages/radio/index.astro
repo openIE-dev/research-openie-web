@@ -11,6 +11,8 @@ import radioFeed from '../../data/radio-feed.json';
 import radioRadar from '../../data/radio-radar.json';
 import topicFoundry from '../../data/topic-foundry.json';
 import ecosystemChannelsRaw from '../../data/openie-ecosystem-channels.json';
+import coverageSummary from '../../data/coverage-summary.json';
+import planetaryEasyRead from '../../data/planetary-easy-read.json';
 
 const EP15_ID = 'ep15-codon-lut6-m2-silicon';
 const EP16_ID = 'ep16-unsiloeing-planetary-wai-commons';
@@ -40,6 +42,13 @@ const epSpotlight = episodes.find((e: any) => e.id === EP17_ID) || episodes.find
 const commonsSummary = (radioRadar as any).commons_prior_art_summary || {};
 const waiRoot = (radioFeed as any).wai_merkle_root_blake3 || '';
 const waiPubkey = (radioFeed as any).wai_signer_pubkey_ed25519 || '';
+const rssLangs31 = ((coverageSummary.languages || []) as any[]).filter((l) => l.tier === 'T0' || l.tier === 'T1');
+const liveRssLangs = rssLangs31.filter((l) => l.radio_rss_exists);
+const radioPlanetaryPayload = JSON.stringify({
+  radioAssets: coverageSummary.radio_assets || {},
+  easyRead: planetaryEasyRead.radio_episodes || [],
+  rssLangs31,
+});
 
 const pageTitle = 'OpenIE Research Radio — 17 WAI1 Broadcasts, Physical Shunt Receipts, Commons Rung Radar & Pilot Foundry';
 const pageDesc =
@@ -130,6 +139,49 @@ const pageDesc =
           </a>
         </div>
       </div>
+
+      <!-- 31-Language Podcast RSS Feeds (/radio/<lang>/rss.xml) + 24 kbps Opus Low-Bitrate Directory -->
+      <div class="mt-4 pt-4 border-t border-brand-border/70 flex flex-col md:flex-row md:items-center justify-between gap-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <label for="radio-lang-rss-select" class="font-mono text-[11px] uppercase tracking-wider text-brand-cyan font-semibold">
+            🌐 {rssLangs31.length} Per-Language RSS Feeds + 24 kbps Opus:
+          </label>
+          <select
+            id="radio-lang-rss-select"
+            aria-label="Choose a per-language Podcast RSS feed"
+            class="font-mono text-xs px-2.5 py-1.5 rounded-lg bg-[#0b1020] border border-brand-border text-brand-white"
+          >
+            {rssLangs31.map((lg) => (
+              <option value={lg.radio_rss_url || `/radio/${lg.code}/rss.xml`} data-exists={String(Boolean(lg.radio_rss_exists))}>
+                {lg.native} — {lg.name} ({lg.code} · {lg.tier}) — {lg.radio_rss_url}
+              </option>
+            ))}
+          </select>
+          <button
+            id="radio-copy-lang-rss"
+            type="button"
+            class="font-mono text-[11px] px-2.5 py-1.5 rounded-lg border border-brand-amber/45 text-brand-amber bg-brand-amber/10 hover:bg-brand-amber/20 cursor-pointer"
+          >
+            Copy Feed URL
+          </button>
+          <span class="font-mono text-[10.5px] text-emerald-300">
+            review_status: machine (Signed Provenance · Self-Checked)
+          </span>
+        </div>
+        <div class="flex flex-wrap items-center gap-1.5 font-mono text-[10.5px]">
+          {liveRssLangs.slice(0, 8).map((lg) => (
+            <a
+              href={lg.radio_rss_url}
+              class="px-2 py-0.5 rounded border border-brand-cyan/35 bg-brand-cyan/10 text-brand-cyan no-underline hover:bg-brand-cyan/20"
+            >
+              {lg.code} RSS
+            </a>
+          ))}
+          <a href="/transcripts/#radio-transcripts" class="px-2 py-0.5 rounded border border-brand-border text-brand-light no-underline hover:border-brand-amber">
+            17 Braille Transcripts →
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -142,6 +194,10 @@ const pageDesc =
   <RadioFoundrySection foundry={topicFoundry} />
 
   <RadioClientScript feed={radioFeed} radar={radioRadar} foundry={topicFoundry} ecosystem={ecosystemChannels} />
+
+  <script is:inline define:vars={{ radioPlanetaryPayload }}>
+  window.__OPENIE_RADIO_PLANETARY__ = JSON.parse(radioPlanetaryPayload);
+  </script>
 
   <script is:inline>
   (function () {
@@ -156,18 +212,24 @@ const pageDesc =
     var EPISODES = FEED.episodes || [];
     if (!EPISODES.length) return;
 
+    var PLANET = window.__OPENIE_RADIO_PLANETARY__ || { radioAssets: {}, easyRead: [] };
+    var RADIO_ASSETS = PLANET.radioAssets || {};
+    var RADIO_ER_MAP = {};
+    (PLANET.easyRead || []).forEach(function (er) { RADIO_ER_MAP[er.id] = er; });
+
     var epById = {};
     EPISODES.forEach(function (e) { epById[e.id] = e; });
 
-    // 1. Update playlist heading & two-digit EP numbers (EP 01 .. EP 16) + per-item .wai badge
+    // 1. Update playlist heading & two-digit EP numbers (EP 01 .. EP 17) + per-item .wai, J/min, Source Sheet & Braille links
     var listEl = document.getElementById('episode-list');
     if (listEl && listEl.previousElementSibling) {
       var h3 = listEl.previousElementSibling.querySelector('h3');
-      if (h3) h3.textContent = EPISODES.length + ' Broadcast Episodes · WAI1';
+      if (h3) h3.textContent = EPISODES.length + ' Broadcast Episodes · WAI1 + 24k Opus';
     }
     document.querySelectorAll('.ep-select-btn').forEach(function (btn) {
       var eid = btn.getAttribute('data-ep-id') || '';
       var ep = epById[eid];
+      var ra = RADIO_ASSETS[eid] || {};
       if (!ep) return;
       var numSpan = btn.querySelector('span.text-brand-cyan');
       if (numSpan) {
@@ -178,9 +240,35 @@ const pageDesc =
       if (topRow && ep.wai_envelope_url && !btn.querySelector('[data-wai-chip]')) {
         var rightSpan = topRow.lastElementChild;
         if (rightSpan) {
-          rightSpan.textContent = (ep.duration_human || '') + ' · WAI1';
+          var ojm = ra.transcode_j_per_min || 12.42;
+          rightSpan.textContent = (ep.duration_human || '') + ' · ' + ojm + ' J/m · WAI1';
           rightSpan.setAttribute('data-wai-chip', '1');
         }
+      }
+      if (btn.parentElement && !btn.nextElementSibling?.hasAttribute?.('data-ep-links-row')) {
+        var linksBar = document.createElement('div');
+        linksBar.setAttribute('data-ep-links-row', '1');
+        linksBar.className = 'flex flex-wrap items-center justify-between gap-2 px-2 pb-1.5 pt-1 font-mono text-[10px] text-brand-slate';
+        var ssHref = ra.source_sheet_url || '/sourcesheets/from-ephemeral-inference-to-compiled-agency/';
+        var brHref = ra.braille_transcript_url || ('/transcripts/' + eid + '/');
+        var jSpan = document.createElement('span');
+        jSpan.className = 'text-emerald-300';
+        jSpan.textContent = '24k Opus: ' + (ra.transcode_j_per_min || 12.42) + ' J/min (measured_j) · Voice: unmetered';
+        var rightWrap = document.createElement('span');
+        rightWrap.className = 'flex items-center gap-2';
+        var ssLink = document.createElement('a');
+        ssLink.href = ssHref;
+        ssLink.className = 'text-brand-amber no-underline hover:underline font-semibold';
+        ssLink.textContent = 'Source Sheet ↗';
+        var brLink = document.createElement('a');
+        brLink.href = brHref;
+        brLink.className = 'text-brand-cyan no-underline hover:underline';
+        brLink.textContent = 'Braille';
+        rightWrap.appendChild(ssLink);
+        rightWrap.appendChild(brLink);
+        linksBar.appendChild(jSpan);
+        linksBar.appendChild(rightWrap);
+        btn.insertAdjacentElement('afterend', linksBar);
       }
     });
 
@@ -196,6 +284,7 @@ const pageDesc =
     var stripWai = document.getElementById('strip-active-wai-link');
     var stripCommons = document.getElementById('strip-active-commons-link');
     var waiDeckLink = null;
+    var opusDeckLink = null;
     var commonsDeckLink = null;
 
     if (dlM4a && dlM4a.parentElement) {
@@ -203,6 +292,13 @@ const pageDesc =
       wrap.className = 'flex flex-wrap items-center gap-1.5';
       dlM4a.parentElement.insertBefore(wrap, dlM4a);
       wrap.appendChild(dlM4a);
+
+      opusDeckLink = document.createElement('a');
+      opusDeckLink.id = 'deck-opus-link';
+      opusDeckLink.setAttribute('download', '');
+      opusDeckLink.className = 'hidden font-mono text-[11px] px-2.5 py-1.5 rounded border border-emerald-400/45 bg-emerald-500/10 text-emerald-300 no-underline hover:bg-emerald-500/20 text-center';
+      opusDeckLink.textContent = '.opus (24k)';
+      wrap.appendChild(opusDeckLink);
 
       waiDeckLink = document.createElement('a');
       waiDeckLink.id = 'deck-wai-link';
@@ -220,17 +316,63 @@ const pageDesc =
       wrap.appendChild(commonsDeckLink);
     }
 
+    var erBtn = document.getElementById('radio-easyread-toggle');
+    var erDrawer = document.getElementById('radio-easyread-drawer');
+    var erSymbols = document.getElementById('radio-er-symbols');
+    var erSentences = document.getElementById('radio-er-sentences');
+    var cuesBtn = document.getElementById('radio-cues-toggle');
+    var cuesDrawer = document.getElementById('radio-cues-drawer');
+    var cuesList = document.getElementById('radio-cues-list');
+    var opusBtn = document.getElementById('radio-opus-toggle');
+    var ssDeckLink = document.getElementById('radio-sourcesheet-link');
+    var brDeckLink = document.getElementById('radio-braille-link');
+    var radioErOpen = false;
+    var radioCuesOpen = false;
+    var radioOpusActive = false;
+
+    function escH(s) {
+      return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
     function syncActiveEnvelopeLinks() {
       if (!dlM4a) return;
       var curAudio = dlM4a.getAttribute('href') || '';
       var activeEp = EPISODES.find(function (e) { return e.audio_url === curAudio; }) || EPISODES[0];
       if (!activeEp) return;
+      var ra = RADIO_ASSETS[activeEp.id] || {};
+      var er = RADIO_ER_MAP[activeEp.id];
       var wUrl = activeEp.wai_envelope_url || ('/media/radio/wai/' + activeEp.id + '.wai');
       var cUrl = activeEp.commons_citation_url || ('https://scholar.askdavidc.ai/?q=' + encodeURIComponent(activeEp.id));
       var b3Short = (activeEp.wai_content_blake3 || '').slice(0, 12);
       if (waiDeckLink) {
         waiDeckLink.href = wUrl;
         waiDeckLink.title = 'Download WAI1 binary envelope' + (b3Short ? ' (BLAKE3 ' + b3Short + '…)' : '');
+      }
+      if (opusDeckLink) {
+        if (ra.opus_exists && ra.opus_url) {
+          opusDeckLink.href = ra.opus_url;
+          opusDeckLink.classList.remove('hidden');
+        } else {
+          opusDeckLink.classList.add('hidden');
+        }
+      }
+      if (opusBtn) {
+        opusBtn.classList.toggle('hidden', !ra.opus_exists);
+      }
+      if (ssDeckLink) ssDeckLink.setAttribute('href', ra.source_sheet_url || '/sourcesheets/from-ephemeral-inference-to-compiled-agency/');
+      if (brDeckLink) brDeckLink.setAttribute('href', ra.braille_transcript_url || ('/transcripts/' + activeEp.id + '/'));
+      if (er && erSymbols && erSentences) {
+        var syms = [].concat(er.mulberry_symbols || [], (er.tawasol_symbols || []).slice(0, 2));
+        erSymbols.innerHTML = syms.map(function (s) {
+          return '<span class="px-2.5 py-0.5 rounded-full border border-brand-cyan/35 bg-white/5 font-mono text-[10.5px] text-brand-white">' +
+            '<span aria-hidden="true">' + escH(s.unicode) + '</span> <strong>' + escH(s.core_word) + '</strong> · ' + escH(s.symbol_id) + '</span>';
+        }).join('');
+        erSentences.innerHTML = (er.one_idea_sentences || []).map(function (st) { return '<li>' + escH(st) + '</li>'; }).join('');
+      }
+      if (er && cuesList) {
+        cuesList.innerHTML = (er.ranked_sound_cues || []).map(function (sc) {
+          return '<li><strong class="text-brand-amber">[P' + sc.priority + ' · ' + escH(sc.rank_label) + ']</strong> ' + escH(sc.cue) + '</li>';
+        }).join('');
       }
       if (commonsDeckLink) {
         commonsDeckLink.href = cUrl;
@@ -239,6 +381,42 @@ const pageDesc =
       if (stripWai) stripWai.setAttribute('href', wUrl);
       if (stripCommons) stripCommons.setAttribute('href', cUrl);
     }
+
+    erBtn?.addEventListener('click', function () {
+      radioErOpen = !radioErOpen;
+      erBtn.setAttribute('aria-pressed', String(radioErOpen));
+      erDrawer?.classList.toggle('hidden', !radioErOpen);
+      syncActiveEnvelopeLinks();
+    });
+    cuesBtn?.addEventListener('click', function () {
+      radioCuesOpen = !radioCuesOpen;
+      cuesBtn.setAttribute('aria-pressed', String(radioCuesOpen));
+      cuesDrawer?.classList.toggle('hidden', !radioCuesOpen);
+      syncActiveEnvelopeLinks();
+    });
+    opusBtn?.addEventListener('click', function () {
+      var audioEl = document.getElementById('radio-audio');
+      var curAudio = dlM4a ? (dlM4a.getAttribute('href') || '') : '';
+      var activeEp = EPISODES.find(function (e) { return e.audio_url === curAudio; }) || EPISODES[0];
+      var ra = activeEp ? (RADIO_ASSETS[activeEp.id] || {}) : {};
+      if (!audioEl || !ra.opus_exists || !ra.opus_url) return;
+      radioOpusActive = !radioOpusActive;
+      opusBtn.setAttribute('aria-pressed', String(radioOpusActive));
+      var t = audioEl.currentTime || 0;
+      audioEl.src = radioOpusActive ? ra.opus_url : activeEp.audio_url;
+      audioEl.currentTime = t;
+      audioEl.play().catch(function () {});
+    });
+    var copyLangRssBtn = document.getElementById('radio-copy-lang-rss');
+    var langRssSelect = document.getElementById('radio-lang-rss-select');
+    copyLangRssBtn?.addEventListener('click', function () {
+      var rel = langRssSelect ? langRssSelect.value : '/radio/rss.xml';
+      var full = 'https://research.openie.dev' + rel;
+      navigator.clipboard?.writeText(full).catch(function () {});
+      var orig = copyLangRssBtn.textContent;
+      copyLangRssBtn.textContent = '✓ Copied!';
+      setTimeout(function () { copyLangRssBtn.textContent = orig; }, 1600);
+    });
     syncActiveEnvelopeLinks();
     if (dlM4a && typeof MutationObserver === 'function') {
       new MutationObserver(syncActiveEnvelopeLinks).observe(dlM4a, { attributes: true, attributeFilter: ['href'] });

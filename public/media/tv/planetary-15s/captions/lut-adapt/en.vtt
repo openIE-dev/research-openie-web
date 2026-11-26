@@ -1,13 +1,14 @@
 WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — lut-adapt (en) + Ranked Non-Speech Cues
 
 1
 00:00:00.220 --> 00:00:07.730
-First, most requests repeat solved patterns, so running a giant neural network every time wastes memory and energy.
+[key chime: hardware lookup stage activates] <v Narrator>First, most requests repeat solved patterns, so running a giant neural network every time wastes memory and energy.
 
 2
 00:00:08.070 --> 00:00:15.923
-Second, this cascade checks tiny truth tables first and streams specialist model slices from storage only when needed.
+[low pulse: idle shunt baseline] <v Narrator>Second, this cascade checks tiny truth tables first and streams specialist model slices from storage only when needed.
 
 3
 00:00:16.263 --> 00:00:23.481
-Third, once an automated test certifies a new answer, it compiles downward into a reusable millisecond skill.
+[lock tone: deterministic state verified] <v Narrator>Third, once an automated test certifies a new answer, it compiles downward into a reusable millisecond skill.

@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — ai-reads-human (it) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:16.158
+<v Narrator>In primo luogo, i computer spesso scambiano dati in formati di testo scritti per gli occhi umani, costringendo le macchine a spendere lavoro extra; in secondo luogo, leggere il testo di configurazione indentato richiedeva oltre duemila volte più energia del chip rispetto alla lettura dei numeri compatti delle macchine.
+
+2
+00:00:16.658 --> 00:00:24.468
+<v Narrator>In terzo luogo, tagliare il testo strutturato in pezzi di parole IA bruciava dodici volte più energia rispetto all'analisi del testo stesso.
+
+3
+00:00:24.968 --> 00:00:41.722
+<v Narrator>I formati pieni di parentesi, virgole e spazi rientrate sono stati progettati in modo che le persone potessero ispezionare comodamente i file negli editor di testo, ma le moderne pipeline degli strumenti di IA passano milioni di quei record di testo verboso da una macchina all'altra senza mai essere osservati da un essere umano.
+
+4
+00:00:42.222 --> 00:00:59.589
+<v Narrator>Eseguendo ogni passaggio all’interno di un processo worker isolato su un processore Apple, abbiamo separato in modo pulito i piccoli costi di analisi dall’attività rumorosa del laptop in background.
+
+5
+00:01:00.089 --> 00:01:17.771
+<v Narrator>Il testo standard tra parentesi usava quasi otto volte di più, il testo compilato con rientri ne usava duecentoquarantanove volte di più e il puro testo Python con rientri bruciava duemilacinquantaquattro volte di più di energia del chip.
+
+6
+00:01:18.271 --> 00:01:31.355
+<v Narrator>Anche l'aggiunta di due spazi di indentazione ha più che raddoppiato l'energia di divisione delle parole dell'IA a settanta microjoule per record.

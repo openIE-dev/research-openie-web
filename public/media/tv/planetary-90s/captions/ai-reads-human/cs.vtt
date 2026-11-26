@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — ai-reads-human (cs) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:16.158
+<v Narrator>Za prvé, počítače často vyměňují data v textových formátech napsaných pro lidské oko, což nutí stroje k další práci a za druhé, čtení odsazeného konfiguračního textu vyžadovalo více než dva tisíckrát více energie čipu než čtení kompaktních strojových čísel.
+
+2
+00:00:16.658 --> 00:00:24.468
+<v Narrator>Za třetí, rozřezávání strukturovaného textu na části slov pomocí umělé inteligence spotřebovávalo dvanáctkrát více energie než samotná analýza textu.
+
+3
+00:00:24.968 --> 00:00:41.722
+<v Narrator>Formáty plné závorek, čárek a odsazených mezer byly navrženy tak, aby lidé mohli pohodlně prohlížet soubory v textových editorech.Přesto moderní nástroje AI předávají miliony těchto podrobných textových záznamů přísně ze stroje na stroj bez toho, aniž by se člověk podíval.
+
+4
+00:00:42.222 --> 00:00:59.589
+<v Narrator>Tuto práci navíc jsme pojmenovali impedanční daň a otestovali jsme třicet čtyři úloh analyzování a rozdělení slov napříč dvaceti tisíci záznamy.Spuštění každého průchodu uvnitř izolovaného pracovního procesu na procesoru Apple čistě oddělilo nepatrné náklady na analýzu od hlučné činnosti notebooku na pozadí.
+
+5
+00:01:00.089 --> 00:01:17.771
+<v Narrator>Rozbalení 23bajtového binárního záznamu spotřebovalo dvě stě osmdesát nanojoulů, standardní text v závorkách téměř osmkrát víc, kompilovaný odsazený text dvě stě čtyřicet devětkrát víc a čistě Python odsazený text dva tisíce padesát čtyřikrát víc čipové energie.
+
+6
+00:01:18.271 --> 00:01:31.355
+<v Narrator>Dokonce i přidání dvou mezer do pěkného odsazení více než zdvojnásobilo energii potřebnou k rozdělení slova umělou inteligencí na sedmdesát jeden mikrojoulů na záznam.

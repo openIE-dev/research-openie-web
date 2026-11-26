@@ -1,25 +1,26 @@
 WEBVTT
+NOTE OpenIE Research TV v1.0 Accessibility — eco-compute (Extended Audio Description + Ranked Non-Speech Cues)
 
 1
 00:00:00.220 --> 00:00:08.458
-<v Audio Description>Visual scene one: Card one lights up amber while glowing cyan bit switches flip across a dark 3D silicon die above an amber joule counter.
+[key chime: hardware lookup stage activates] <v Audio Description>Visual scene one: Card one lights up amber while glowing cyan bit switches flip across a dark 3D silicon die above an amber joule counter.
 
 2
 00:00:08.798 --> 00:00:15.300
-<v Presenter>First, every calculation is a physical event where flipping silicon switches spends real energy in joules.
+<v Narrator>First, every calculation is a physical event where flipping silicon switches spends real energy in joules.
 
 3
 00:00:15.640 --> 00:00:25.314
-<v Audio Description>Visual scene two: Card two glows cyan as the board separates physical wire-shunt traces from chip counters and drops flat to zero clock pulses between jobs.
+[low pulse: idle shunt baseline] <v Audio Description>Visual scene two: Card two glows cyan as the board separates physical wire-shunt traces from chip counters and drops flat to zero clock pulses between jobs.
 
 4
 00:00:25.654 --> 00:00:32.914
-<v Presenter>Second, honest hardware audits separate wire current sensors from chip counters, while sleeping between real jobs.
+<v Narrator>Second, honest hardware audits separate wire current sensors from chip counters, while sleeping between real jobs.
 
 5
 00:00:33.254 --> 00:00:42.835
-<v Audio Description>Visual scene three: Card three turns emerald as single-cycle Boolean lookup cubes replace tall, hot decimal arithmetic blocks at a twentyfold compile cut.
+[lock tone: deterministic state verified] <v Audio Description>Visual scene three: Card three turns emerald as single-cycle Boolean lookup cubes replace tall, hot decimal arithmetic blocks at a twentyfold compile cut.
 
 6
 00:00:43.175 --> 00:00:50.691
-<v Presenter>Third, single-cycle Boolean lookup circuits replace heavy decimal arithmetic on repeated checks with tiny hardware steps.
+<v Narrator>Third, single-cycle Boolean lookup circuits replace heavy decimal arithmetic on repeated checks with tiny hardware steps.

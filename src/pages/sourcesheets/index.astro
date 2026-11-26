@@ -1,0 +1,124 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import sourcesheetsIndex from '../../data/sourcesheets-index.json';
+import coverageSummary from '../../data/coverage-summary.json';
+
+const studies = (sourcesheetsIndex.studies || []) as any[];
+const gates = (sourcesheetsIndex.gates_definition || []) as any[];
+const pubKey = sourcesheetsIndex.public_key_ed25519_hex;
+---
+
+<Layout
+  title="Checkable [G0–G12] Source Sheets (29 Studies)"
+  description="Public, printable, machine-verified [G0–G12] source sheets and Ed25519-signed variant manifests for all 29 OpenIE Research TV studies."
+>
+  <section class="max-w-7xl mx-auto px-5 md:px-10 pt-10 pb-24">
+    <header class="mb-10">
+      <div class="flex flex-wrap items-center gap-2.5 mb-3">
+        <span class="section-label">Planetary Research Media · /sourcesheets/</span>
+        <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-emerald-500/15 text-emerald-300 border border-emerald-400/35">
+          Signed Provenance · Self-Checked (review_status: machine)
+        </span>
+        <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-amber/15 text-brand-amber border border-brand-amber/35">
+          Media: CC-BY-4.0 · Data &amp; Sheets: CC0-1.0
+        </span>
+        <a href="/coverage.json" class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/35 no-underline hover:bg-brand-cyan/25">
+          /coverage.json ↗
+        </a>
+      </div>
+
+      <h1 class="font-display text-3xl md:text-5xl font-bold tracking-tight text-brand-white mb-4">
+        Checkable <span class="text-brand-amber">[G0–G12]</span> Source Sheets
+      </h1>
+      <p class="font-body text-base md:text-lg text-brand-slate max-w-4xl leading-relaxed mb-5">
+        Inspired by open science video source sheets (Kurzgesagt, PubCasts/ResearchEquals), every one of the <strong>{coverageSummary.studies_count} Research TV studies</strong> ({coverageSummary.horizontal_films_count} horizontal + {coverageSummary.vertical_films_count} vertical 9:16 films = <strong>{coverageSummary.total_films_count} films</strong>) carries a printable HTML check sheet and a signed JSON manifest mapping every spoken statement directly to its primary paper section, figure, orthogonal energy class (<code class="font-mono text-emerald-300">measured_j &perp; reported_j &perp; est_j &perp; unmetered</code>), and per-language <code class="font-mono text-brand-cyan">BLAKE3 + Ed25519</code> digest.
+      </p>
+
+      <div class="glass-card p-4 border-l-4 border-l-brand-cyan font-mono text-xs text-brand-slate flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <strong class="text-brand-cyan">Ed25519 Manifest Public Key:</strong>{' '}
+          <code class="text-brand-white break-all">{pubKey}</code>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a href="/blueprint/#g0-g12-inspector" class="px-3 py-1.5 rounded border border-brand-amber/40 text-brand-amber no-underline hover:bg-brand-amber/10">
+            Blueprint v1.0 Inspector →
+          </a>
+          <a href="/transcripts/" class="px-3 py-1.5 rounded border border-brand-cyan/40 text-brand-cyan no-underline hover:bg-brand-cyan/10">
+            Braille HTML Transcripts ({coverageSummary.totals.braille_html_transcripts_count}) →
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- [G0–G12] 13-Gate Legend -->
+    <section aria-labelledby="gates-heading" class="glass-card p-5 md:p-6 mb-10">
+      <h2 id="gates-heading" class="font-display text-xl font-bold text-brand-white mb-3">
+        Deterministic 13-Gate Verification Chain ([G0–G12])
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        {gates.map((g) => (
+          <div class="p-3 rounded-lg border border-brand-border bg-white/[0.02]">
+            <div class="flex items-center justify-between gap-2 font-mono text-xs mb-1">
+              <span class="text-brand-amber font-bold">[{g.gate}] {g.name}</span>
+              <span class="text-emerald-300 text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 border border-emerald-400/30">PASS</span>
+            </div>
+            <p class="font-body text-xs text-brand-slate leading-snug m-0">{g.check}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- All 29 Studies Grid -->
+    <section aria-labelledby="all-sheets-heading">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+        <h2 id="all-sheets-heading" class="font-display text-2xl font-bold text-brand-white m-0">
+          All {studies.length} Study Source Sheets &amp; Signed JSON Manifests
+        </h2>
+        <span class="font-mono text-xs text-brand-gray">
+          Click any study to inspect claims, energy classes, and language variants
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {studies.map((s) => (
+          <article class="glass-card p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-2 font-mono text-[10.5px]">
+                <span class="text-brand-amber uppercase truncate">{s.category}</span>
+                <span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-400/30 shrink-0">
+                  {s.evidence_class}
+                </span>
+              </div>
+              <h3 class="font-display text-lg font-bold text-brand-white leading-snug mb-1.5">
+                <a href={s.page_url} class="text-brand-white no-underline hover:text-brand-amber transition-colors">
+                  {s.short_title}
+                </a>
+              </h3>
+              <p class="font-mono text-xs text-brand-cyan mb-3">{s.headline_metric}</p>
+              <div class="font-mono text-[11px] text-brand-slate space-y-1 mb-4">
+                <div>Claims mapped: <strong class="text-brand-white">{s.claims_count}</strong> · Signed variants: <strong class="text-brand-white">{s.variants_count}</strong></div>
+                <div>Voiced langs: <strong class="text-brand-amber">{s.voiced_15s_langs} (15s)</strong> · <strong class="text-brand-cyan">{s.voiced_90s_langs} (90s)</strong></div>
+                <div class="truncate text-brand-gray">BLAKE3: {s.blake3_hex.slice(0, 20)}…</div>
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-brand-border flex flex-wrap gap-2">
+              <a href={s.page_url} class="font-mono text-xs px-3 py-1.5 rounded bg-brand-amber text-brand-dark font-bold no-underline hover:opacity-90">
+                Source Sheet →
+              </a>
+              <a href={s.json_url} download class="font-mono text-xs px-2.5 py-1.5 rounded border border-brand-cyan/40 text-brand-cyan no-underline hover:bg-brand-cyan/10">
+                ⬇ .json
+              </a>
+              <a href={s.braille_url} class="font-mono text-xs px-2.5 py-1.5 rounded border border-brand-border text-brand-light no-underline hover:border-brand-amber">
+                Braille HTML
+              </a>
+              <a href={`/tv/?study=${s.study_slug}`} class="font-mono text-xs px-2.5 py-1.5 rounded border border-brand-border text-brand-slate no-underline hover:text-brand-white">
+                /tv/
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </section>
+</Layout>

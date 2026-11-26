@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (sv) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:20.135
+<v Narrator>För det första blir avancerad databehandling överkomlig för alla när dyra neurala modeller fungerar som en sista utväg bakom snabba lokala uppslagstabeller, sökordsindex och exakta lösare.För det andra sparas minne genom att komprimera vikter under en bit, men att packa upp dem tillbaka till flyttalstal vid körning slösar över åttio gånger mer energi på kretskortet än att köra packad heltalslogik direkt.
+
+2
+00:00:20.295 --> 00:00:32.082
+<v Narrator>För det tredje, en heltalskärna kontrollerad av kryptografiska hashvärden producerar exakt samma svar över processorer, grafikkort, WebAssembly, hårdvarulogik och mikrokontrollrar, stoppar omedelbart om en enda vikt ändras.
+
+3
+00:00:32.242 --> 00:00:50.475
+<v Narrator>Över femtonhundra deterministiska kontrolluppgifter, noll-modell lookup slog neurala baslinjer med 61.60 procentenheter på strukturerade verktyg scheman och 20.80 poäng på Boolean tillfredsställbarhet vid 1,41 till 2,09 mikrojoules netto shunt energi, ren isolering av den 12.80 punkt öppna kodning triage gap.
+
+4
+00:00:50.635 --> 00:01:16.546
+<v Narrator>På en AMD Kria fem-volts kort shunt med 0,09 till 0,11 procent tomgångsdrift, packning av 0,1517 bits per vikt matriser till 32-bitars floats brände 63.335,56 mikrojoule brutto—81,86 gånger sämre än åtta-bitars heltal—medan packade heltal Walsh-Hadamard, exklusiv-NOR, bit-count och nibble lookup sjönk till 187,49 mikrojoule brutto och 10,30 mikrojoule netto.
+
+5
+00:01:16.706 --> 00:01:37.000
+<v Narrator>En hash-verifierade heltalskärna matchade bit för bit över tio banor och sex material — processor, Radeon 8060S Vulkan grafik, delad processor-grafik, WebAssembly vektorer, Verilog hårdvara logik, och en 1444-byte bare-metal mikrokontroller — stannar på single-weight tamper tillsammans med 1315 Planetary Digital Well sänkning recept.
+
+6
+00:01:37.160 --> 00:01:58.456
+<v Narrator>Från slutet till slutet, fyra-stegs spellcheck kaskad minskade Kria shunt energi 26.58 gånger brutto och 24.49 gånger netto, skär Jetson Thor shunt energi 16.26 gånger, och undvek 38.46 gånger av steg-fyra samtal.Alla kvitton är Signed Provenance, Self-Checked—inte externt peer-reviewed—med shunt, chip-räknare, uppskattade och omätta joules hålls strikt åtskilda.

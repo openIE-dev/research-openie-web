@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — jouleos (pl) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:06.821
+<v Narrator>Po pierwsze, dzisiejsze komputery składają się z wielu oddzielnych warstw, a agenci SI są przykręcani na wierzchu w niezmienionej postaci.
+
+2
+00:00:07.161 --> 00:00:13.074
+<v Narrator>Po drugie, żadna z tych warstw nie pyta z góry ile energii faktycznie wyda działanie agenta.
+
+3
+00:00:13.414 --> 00:00:20.048
+<v Narrator>Po trzecie, maszyna agenta musi mierzyć energię, egzekwować ścisłe budżety i odmawiać działań, które je łamią.

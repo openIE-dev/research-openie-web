@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — ai-reads-human (fi) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:16.158
+<v Narrator>Ensinnäkin tietokoneet vaihtavat usein dataa ihmissilmille kirjoitetuissa tekstimuodoissa, mikä pakottaa koneet käyttämään ylimääräistä työtä.Toiseksi sisennyksen sisältävän konfiguraatiotekstin lukeminen vaati yli kaksituhatta kertaa enemmän siruenergiaa kuin kompaktien konenumeroiden lukeminen.
+
+2
+00:00:16.658 --> 00:00:24.468
+<v Narrator>Kolmanneksi, strukturoidun tekstin pilkkominen tekoälyn sanapaloiksi kulutti kaksitoista kertaa enemmän energiaa kuin itse tekstin jäsentäminen.
+
+3
+00:00:24.968 --> 00:00:41.722
+<v Narrator>Muodot, jotka ovat täynnä sulkeita, pilkuja ja sisennyksiä, on suunniteltu niin, että ihmiset voivat tutkia tiedostoja mukavasti tekstieditorilla.Nykyaikaiset tekoälytyökalujen putket siirtävät miljoonia näitä monisanaisia tekstitietueita tiukasti koneelta toiselle ilman, että ihminen edes katsoisi niitä.
+
+4
+00:00:42.222 --> 00:00:59.589
+<v Narrator>Testasimme 34 jäsentämis- ja sanajakeluasetusta, joissa oli mukana kaksikymmentätuhatta tietuetta. Jokainen läpimeno suoritettiin eristetyssä työprosessissa Applen prosessorin sisällä. Näin pienet jäsentämiskulut erottuivat selkeästi kannettavan tietokoneen meluisasta taustatoiminnasta.
+
+5
+00:01:00.089 --> 00:01:17.771
+<v Narrator>23-tavuisen binääritietueen purkaminen kulutti kaksisataa kahdeksankymmentä nanojoulia, tavallinen suluissa oleva teksti lähes kahdeksan kertaa enemmän, kääntynyt sisennyksissä oleva teksti kaksisataa neljäkymmentäyhdeksän kertaa enemmän ja puhdas Pythonin sisennyksissä oleva teksti kaksituhatta viisikymmentäneljä kertaa enemmän.
+
+6
+00:01:18.271 --> 00:01:31.355
+<v Narrator>Jopa kahden tyhjän sisennyksen lisääminen yli kaksinkertaisti tekoälyn sanajakelua koskevan energian 71 mikrojouleen tietuetta kohden. Pidä koneen sisäiset putket kompakteina ja binäärisinä. Muotoile teksti vain, kun ihmiset lukevat sitä.

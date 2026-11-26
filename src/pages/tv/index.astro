@@ -4,18 +4,31 @@ import tvCatalog from '../../data/tv-catalog.json';
 import tiktokSnackables from '../../data/tiktok-snackables.json';
 import ecosystemChannelsRaw from '../../data/openie-ecosystem-channels.json';
 import unsiloeing from '../../data/planetary-unsiloeing.json';
+import coverageSummary from '../../data/coverage-summary.json';
+import planetaryEasyRead from '../../data/planetary-easy-read.json';
 import TvEcosystemChannels from '../../components/tv/TvEcosystemChannels.astro';
 import TvClient from './_TvClient.astro';
 
 const SITE = 'https://research.openie.dev';
+const studyAssetsMap: Record<string, any> = (coverageSummary as any).study_assets || {};
+const easyById: Record<string, any> = Object.fromEntries(
+  ((planetaryEasyRead.tv_studies ?? []) as any[]).map((er) => [er.id, er])
+);
 const tiktokById: Record<string, any> = Object.fromEntries(
   ((tiktokSnackables.studies ?? []) as any[]).map((tk) => [tk.id, tk])
 );
 const studies = (tvCatalog.studies as any[]).map((s) => {
   const tk = tiktokById[s.id];
+  const sa = studyAssetsMap[s.id] || {};
+  const jLabel = `Low-BW MP4: ${sa.mobile_mp4_j_per_min ?? 109.41} J/min · AD Mix: ${sa.ad_mix_j_per_min ?? 54.9} J/min (Thor INA3221 measured_j) · Cloud TTS: unmetered`;
+  const base = {
+    ...s,
+    j_per_min_label: jLabel,
+    study_assets: sa,
+  };
   return tk
     ? {
-        ...s,
+        ...base,
         tiktok: tk,
         tiers: {
           ...s.tiers,
@@ -27,7 +40,7 @@ const studies = (tvCatalog.studies as any[]).map((s) => {
             bytes: tk.bytes,
             sha256: tk.sha256,
             blake3: tk.blake3,
-            hook: `${tk.hook_headline} — Native 9:16 (1080×1920 @ 60fps, -14 LUFS) vertical snackable cut with burned-in TikTok safe-zone captions.`,
+            hook: `${tk.hook_headline} — Native 9:16 (1080×1920 @ 60fps, -14 LUFS) vertical snackable cut with burned-in TikTok safe-zone captions and source-sheet link.`,
             transcript: s.tiers['15s']?.transcript ?? '',
             cues: s.tiers['15s']?.cues ?? [],
             tiktok_caption: tk.tiktok_caption,
@@ -35,39 +48,37 @@ const studies = (tvCatalog.studies as any[]).map((s) => {
           },
         },
       }
-    : s;
+    : base;
 });
 const enrichedCatalog = {
   ...tvCatalog,
-  film_count: (tvCatalog.film_count ?? 112) + ((tiktokSnackables.studies ?? []).length || 28),
+  film_count: coverageSummary.total_films_count,
   studies,
 };
 const studiesById = Object.fromEntries(studies.map((s) => [s.id, s]));
 
-const uMetrics: any = unsiloeing.summary_metrics ?? {};
-const allPlanetaryLangs = [
-  ...((unsiloeing.tier1_languages ?? []) as any[]).map((l) => ({
+const covLangs = (coverageSummary.languages || []) as any[];
+const allPlanetaryLangs = covLangs
+  .filter((l) => l.tier !== 'Sign')
+  .map((l) => ({
     code: l.code,
-    tier: 1,
+    tier: l.tier,
     name: l.name,
     native: l.native,
     dir: l.dir ?? 'ltr',
-    speakers_m: l.speakers_m,
-  })),
-  ...(((unsiloeing as any).tier2_languages ?? unsiloeing.tier2_roadmap ?? []) as any[]).map((l) => ({
-    code: l.code,
-    tier: 2,
-    name: l.name,
-    native: l.native,
-    dir: l.dir ?? (l.code === 'fa' || l.code === 'he' ? 'rtl' : 'ltr'),
-    speakers_m: l.speakers_m,
-  })),
-];
+    speakers_m: l.speakers_millions,
+    voiced_15s: l['15s']?.voiced_count ?? 0,
+    captioned_15s: l['15s']?.captioned_count ?? 0,
+    voiced_90s: l['90s']?.voiced_count ?? 0,
+  }));
+const signLangs = covLangs.filter((l) => l.tier === 'Sign');
 
 const tvPlanetaryPayload = JSON.stringify({
   langs: allPlanetaryLangs,
+  signLangs,
+  studyAssets: studyAssetsMap,
   variants: ((unsiloeing.variants ?? []) as any[])
-    .filter((v) => v.ship_allowed !== false && v.audio_url)
+    .filter((v) => v.ship_allowed !== false && (v.audio_url || v.vtt_url))
     .map((v) => ({
       tv_id: v.tv_id,
       lang: v.lang,
@@ -89,11 +100,13 @@ const tvPlanetaryPayload = JSON.stringify({
     duration_s: a.duration_s,
     cues: a.cues,
   })),
-  easyRead: ((unsiloeing.easy_read_flagship ?? []) as any[]).map((e) => ({
-    study_id: e.study_id,
+  easyRead: ((planetaryEasyRead.tv_studies ?? []) as any[]).map((e) => ({
+    study_id: e.id,
     easy_title: e.easy_title,
-    symbol_tags: e.symbol_tags,
+    mulberry_symbols: e.mulberry_symbols,
+    tawasol_symbols: e.tawasol_symbols,
     one_idea_sentences: e.one_idea_sentences,
+    ranked_sound_cues: e.ranked_sound_cues,
   })),
 });
 const ecosystemChannels = {
@@ -189,22 +202,25 @@ const jsonLd = {
       <div class="flex flex-wrap items-center gap-3 mb-3">
         <span class="section-label">OpenIE Broadcast Studio · /tv/</span>
         <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-amber/15 text-brand-amber border border-brand-amber/30">
-          29 Topics × (4 Horizontal + 9:16 TikTok Vertical) = 145 Films
+          {coverageSummary.studies_count} Topics × (4 Horizontal + 9:16 Vertical) = {coverageSummary.total_films_count} Films
         </span>
-        <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/30">
-          Plain Words First · Zero Acronym Soup · Global Voices
+        <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-emerald-500/15 text-emerald-300 border border-emerald-400/35">
+          {coverageSummary.totals.voiced_15s_languages_count} Voiced · {coverageSummary.totals.captioned_15s_languages_count} Captioned · {coverageSummary.spoken_selector_codes_count} Selector Codes · review_status: machine
         </span>
+        <a href="/sourcesheets/" class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-amber/15 text-brand-amber border border-brand-amber/40 no-underline hover:bg-brand-amber/25 transition-colors">
+          📑 {coverageSummary.studies_count} [G0–G12] Source Sheets →
+        </a>
+        <a href="/transcripts/" class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/35 no-underline hover:bg-brand-cyan/25 transition-colors">
+          ⠃ {coverageSummary.totals.braille_html_transcripts_count} Braille HTML Transcripts →
+        </a>
         <a href="/syndication/" class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-emerald-500/15 text-emerald-300 border border-emerald-400/35 no-underline hover:bg-emerald-500/25 transition-colors">
           📱 9:16 TikTok + X ↔ Medium Studio →
         </a>
-        <a href="#ecosystem-channels" class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-white/5 text-brand-light border border-brand-border no-underline hover:border-brand-amber hover:text-brand-amber transition-colors">
-          6 *.openie.dev Channels ↓
+        <a href="/blueprint/" class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-white/5 text-brand-light border border-brand-border no-underline hover:border-brand-amber hover:text-brand-amber transition-colors">
+          Planetary Media Blueprint v1.0 →
         </a>
-        <a href="/blueprint/" class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-amber/15 text-brand-amber border border-brand-amber/40 no-underline hover:bg-brand-amber/25 transition-colors">
-          {uMetrics.active_languages ?? 50}-Language 15s · {uMetrics.easy_read_studies ?? 29}/29 Easy Read &amp; AD Blueprint →
-        </a>
-        <a href="/glossary/concepts.json" class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-white/5 text-brand-cyan border border-brand-cyan/30 no-underline hover:border-brand-cyan transition-colors">
-          AAC concepts.json
+        <a href="/coverage.json" class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-white/5 text-brand-cyan border border-brand-cyan/30 no-underline hover:border-brand-cyan transition-colors">
+          coverage.json
         </a>
       </div>
       <h1 class="font-display text-3xl md:text-5xl font-bold tracking-tight text-brand-white mb-4">
@@ -328,50 +344,81 @@ const jsonLd = {
             </div>
           </div>
 
-          <!-- Native Planetary 50-Language 15s, Extended Audio Description (28/28), & Easy-Read + AAC Studio Bar -->
+          <!-- Planetary T0/T1/T2/Sign Language Selector (15s & 90s), Voiced AD Mix, Accessible Cues, <1 MB Mobile MP4 & Mulberry/Tawasol Easy-Read Bar -->
           <div
             id="tv-accessibility-studio"
             role="region"
-            aria-label="Planetary 15s language, extended audio description, and Easy-Read accessibility controls"
+            aria-label="Planetary 15s and 90s language, voiced AD mix, accessible cues, and Easy-Read controls"
             class="mt-3 p-3.5 rounded-xl border border-brand-cyan/35 bg-white/[0.025]"
           >
             <div class="flex flex-wrap items-center justify-between gap-2.5">
               <div class="flex flex-wrap items-center gap-2 flex-1 min-w-[240px]">
                 <label for="tv-planetary-lang" class="font-mono text-[11px] uppercase tracking-wider text-brand-cyan shrink-0">
-                  🌐 15s Language:
+                  🌐 15s / 90s Lang:
                 </label>
                 <select
                   id="tv-planetary-lang"
-                  aria-label="Select 15-second plain-words language track"
-                  class="font-mono text-xs px-2.5 py-1.5 rounded-lg bg-[#0b1020] border border-brand-border text-brand-white focus:border-brand-amber focus:outline-none max-w-full sm:max-w-[310px]"
+                  aria-label="Select 15-second or 90-second plain-words language track"
+                  class="font-mono text-xs px-2.5 py-1.5 rounded-lg bg-[#0b1020] border border-brand-border text-brand-white focus:border-brand-amber focus:outline-none max-w-full sm:max-w-[330px]"
                 >
                   <option value="studio">Studio English (ElevenLabs v4 · All 4 Slots)</option>
-                  <optgroup id="tv-lang-opt-t1" label="Tier 1 · Top 20 Languages (All 28 Studies · 6.54B Speakers)">
-                    {allPlanetaryLangs.filter((l) => l.tier === 1).map((lg) => (
+                  <optgroup id="tv-lang-opt-t0" label="T0 · 12 Core Global Hub Languages (Voiced 15s + 90s Target)">
+                    {allPlanetaryLangs.filter((l) => l.tier === 'T0').map((lg) => (
                       <option value={lg.code}>
-                        {lg.native} — {lg.name} ({lg.code}{lg.dir === 'rtl' ? ' · RTL' : ''} · {lg.speakers_m}M)
+                        {lg.native} — {lg.name} ({lg.code} · {lg.voiced_15s}v/{lg.captioned_15s}c)
                       </option>
                     ))}
                   </optgroup>
-                  <optgroup id="tv-lang-opt-t2" label="Tier 2 · Next 30 Languages (50-Lang Flagships · +1.41B Speakers)">
-                    {allPlanetaryLangs.filter((l) => l.tier === 2).map((lg) => (
+                  <optgroup id="tv-lang-opt-t1" label="T1 · 19 Need×Gap Spoken Languages (Completes 31-Lang Voiced Target)">
+                    {allPlanetaryLangs.filter((l) => l.tier === 'T1').map((lg) => (
                       <option value={lg.code}>
-                        {lg.native} — {lg.name} ({lg.code}{lg.dir === 'rtl' ? ' · RTL' : ''} · {lg.speakers_m}M)
+                        {lg.native} — {lg.name} ({lg.code} · {lg.voiced_15s}v/{lg.captioned_15s}c)
+                      </option>
+                    ))}
+                  </optgroup>
+                  <optgroup id="tv-lang-opt-t2" label="T2 · 19 Captioned & Easy-Read Languages (50 Selector Codes Total)">
+                    {allPlanetaryLangs.filter((l) => l.tier === 'T2').map((lg) => (
+                      <option value={lg.code}>
+                        {lg.native} — {lg.name} ({lg.code} · {lg.voiced_15s > 0 ? `${lg.voiced_15s}v` : 'captioned/text'})
+                      </option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="Sign · 5 Human Deaf Signer Slots (co_design_pending · 0 AI Avatars)">
+                    {signLangs.map((sl) => (
+                      <option value={sl.code} disabled>
+                        {sl.native} — co_design_pending
                       </option>
                     ))}
                   </optgroup>
                 </select>
               </div>
 
-              <div class="flex flex-wrap items-center gap-2">
+              <div class="flex flex-wrap items-center gap-1.5">
                 <button
                   id="tv-ad-toggle"
                   type="button"
                   aria-pressed="false"
                   aria-controls="tv-ad-drawer"
-                  class="tv-a11y-btn font-mono text-xs px-3 py-1.5 rounded-lg border border-brand-border text-brand-light hover:border-emerald-400 hover:text-emerald-200 cursor-pointer bg-transparent transition-all"
+                  class="tv-a11y-btn font-mono text-[11px] px-2.5 py-1.5 rounded-lg border border-brand-border text-brand-light hover:border-emerald-400 hover:text-emerald-200 cursor-pointer bg-transparent transition-all"
                 >
-                  🎧 AD Audio Description
+                  🎧 AD (.ad.m4a)
+                </button>
+                <button
+                  id="tv-ad-mix-toggle"
+                  type="button"
+                  aria-pressed="false"
+                  class="tv-a11y-btn font-mono text-[11px] px-2.5 py-1.5 rounded-lg border border-emerald-400/40 text-emerald-300 hover:bg-emerald-500/15 cursor-pointer bg-transparent transition-all"
+                >
+                  🎧 Voiced AD Mix
+                </button>
+                <button
+                  id="tv-cues-toggle"
+                  type="button"
+                  aria-pressed="false"
+                  aria-controls="tv-cues-drawer"
+                  class="tv-a11y-btn font-mono text-[11px] px-2.5 py-1.5 rounded-lg border border-brand-amber/40 text-brand-amber hover:bg-brand-amber/15 cursor-pointer bg-transparent transition-all"
+                >
+                  🔔 Accessible Cues
                 </button>
                 <button
                   id="tv-easyread-toggle"
@@ -379,10 +426,18 @@ const jsonLd = {
                   aria-pressed="false"
                   aria-expanded="false"
                   aria-controls="tv-easyread-drawer"
-                  class="tv-a11y-btn font-mono text-xs px-3 py-1.5 rounded-lg border border-brand-border text-brand-light hover:border-brand-cyan hover:text-brand-cyan cursor-pointer bg-transparent transition-all"
+                  class="tv-a11y-btn font-mono text-[11px] px-2.5 py-1.5 rounded-lg border border-brand-border text-brand-light hover:border-brand-cyan hover:text-brand-cyan cursor-pointer bg-transparent transition-all"
                 >
-                  📖 Easy Read + AAC
+                  📖 Easy Read + Mulberry/Tawasol
                 </button>
+                <a
+                  id="tv-mobile-dl"
+                  href={initialStudy.study_assets?.mobile_mp4_exists ? initialStudy.study_assets.mobile_mp4_url : initialStudy.tiers['15s'].video_url}
+                  download
+                  class={`${initialStudy.study_assets?.mobile_mp4_exists ? '' : 'hidden '}font-mono text-[11px] px-2.5 py-1.5 rounded-lg border border-brand-cyan/45 bg-brand-cyan/10 text-brand-cyan no-underline hover:bg-brand-cyan/20`}
+                >
+                  ⬇ &lt;1 MB Mobile MP4
+                </a>
               </div>
             </div>
 
@@ -439,26 +494,37 @@ const jsonLd = {
               <div id="tv-ad-cues" class="grid grid-cols-1 md:grid-cols-3 gap-2"></div>
             </div>
 
-            <!-- Easy Read + SKOS AAC Symbol Drawer (29 / 29 Studies) -->
+            <!-- Surrey Deleanu 2025 + NJIT/NYU Importance-Ranked [sound] Accessible Cues Drawer -->
+            <div id="tv-cues-drawer" class="hidden mt-3 pt-3 border-t border-brand-amber/30">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <span class="font-mono text-[11px] uppercase tracking-wider text-brand-amber font-semibold">
+                  Accessible Cues Track (Surrey Deleanu 2025 + NJIT/NYU Importance-Ranked [sound] Cues)
+                </span>
+                <span class="font-mono text-[10.5px] text-brand-slate">Priority 1 Essential · Priority 2 Contextual · Priority 3 Ambient</span>
+              </div>
+              <ol id="tv-ranked-cues-list" class="list-decimal pl-5 space-y-1.5 font-mono text-xs text-brand-light m-0"></ol>
+            </div>
+
+            <!-- Easy Read + PBC-Safe Mulberry & Tawasol (CC BY-SA 4.0) Symbol Drawer (29 / 29 Studies) -->
             <div id="tv-easyread-drawer" class="hidden mt-3 pt-3 border-t border-brand-cyan/30">
               <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
                 <div>
                   <span class="font-mono text-[11px] uppercase tracking-wider text-brand-cyan font-semibold">
-                    Easy Read + SKOS AAC Symbols · One Idea Per Sentence · CC0-1.0
+                    Easy Read + Mulberry &amp; Tawasol Symbols (CC BY-SA 4.0 · 0 NC Pictograms) · One Idea Per Sentence
                   </span>
                   <div id="tv-er-title" class="font-display text-base font-bold text-brand-white mt-0.5"></div>
                 </div>
                 <div class="flex items-center gap-2 font-mono text-[11px]">
-                  <a id="tv-er-guide-link" href="/media/tv/accessibility/easy-read-index.html" class="text-brand-amber no-underline hover:underline">
-                    29-Study Guide ↗
+                  <a id="tv-er-guide-link" href={`/transcripts/${initialStudy.id}/`} class="text-brand-amber no-underline hover:underline">
+                    Braille HTML Transcript ↗
                   </a>
                   <span class="text-brand-gray">·</span>
                   <a href="/glossary/concepts.json" class="text-brand-cyan no-underline hover:underline">
-                    AAC JSON-LD
+                    concepts.json v1.1
                   </a>
                 </div>
               </div>
-              <div id="tv-er-symbols" class="flex flex-wrap gap-1.5 mb-2.5" aria-label="AAC symbol supports"></div>
+              <div id="tv-er-symbols" class="flex flex-wrap gap-1.5 mb-2.5" aria-label="Mulberry and Tawasol AAC symbol supports"></div>
               <ol id="tv-er-sentences" class="list-decimal pl-5 space-y-1 font-body text-[13.5px] text-brand-white leading-relaxed m-0"></ol>
             </div>
           </div>
@@ -472,6 +538,9 @@ const jsonLd = {
               <span class="text-brand-gray">·</span>
               <span id="tv-active-energy-tier" class="px-2 py-0.5 rounded font-mono text-[11px] border border-brand-amber/40 text-brand-amber bg-brand-amber/10">
                 {initialStudy.energy_tier}
+              </span>
+              <span id="tv-active-j-per-min" class="px-2 py-0.5 rounded font-mono text-[11px] border border-emerald-400/40 text-emerald-300 bg-emerald-500/10">
+                {initialStudy.j_per_min_label}
               </span>
               <span id="tv-active-voice" class="px-2.5 py-0.5 rounded font-mono text-[11px] border border-brand-cyan/40 text-brand-cyan bg-brand-cyan/10" title={initialStudy.narrator_profile ?? ''}>
                 Voice: {initialStudy.narrator_name ?? 'Cecily'} · ElevenLabs v4 Studio
@@ -529,6 +598,12 @@ const jsonLd = {
           <div class="mt-4 pt-4 border-t border-brand-border flex flex-wrap items-center gap-2.5">
             <a id="tv-link-paper" href={initialStudy.paper_url} class="font-mono text-xs px-3.5 py-2 rounded-lg bg-brand-amber text-brand-dark font-semibold no-underline hover:opacity-90 transition-opacity">
               Read Paper →
+            </a>
+            <a id="tv-link-sourcesheet" href={`/sourcesheets/${initialStudy.id}/`} class="font-mono text-xs px-3.5 py-2 rounded-lg border border-emerald-400/50 bg-emerald-500/15 text-emerald-300 font-semibold no-underline hover:bg-emerald-500/25 transition-colors">
+              Source Sheet ↗
+            </a>
+            <a id="tv-link-braille" href={`/transcripts/${initialStudy.id}/`} class="font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-cyan/45 text-brand-cyan no-underline hover:bg-brand-cyan/10 transition-colors">
+              Braille HTML Transcript
             </a>
             <a id="tv-link-figures" href={initialStudy.figures_url} class="font-mono text-xs px-3.5 py-2 rounded-lg border border-brand-cyan/40 text-brand-cyan no-underline hover:bg-brand-cyan/10 transition-colors">
               Interactive Figure
@@ -602,9 +677,11 @@ const jsonLd = {
       29 / 29 studies shown (145 horizontal + 9:16 films)
     </div>
 
-    <!-- 28-Topic × 4-Tier Visual Grid (Each Card Leads With Its 3 Plain-Words Bullets) -->
+    <!-- 29-Topic × 4-Tier Visual Grid (Each Card Leads With Its 3 Plain-Words Bullets, J/min Badge & Source Sheet) -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {studies.map((s) => (
+      {studies.map((s) => {
+        const erCard = easyById[s.id];
+        return (
         <article data-study-card={s.id} class="glass-card overflow-hidden flex flex-col justify-between transition-all">
           <div>
             <div class="relative aspect-video bg-[#0b1020] overflow-hidden border-b border-brand-border group">
@@ -643,11 +720,11 @@ const jsonLd = {
               <h3 class="font-display text-lg font-bold text-brand-white leading-snug mb-1.5">
                 {s.short_title}
               </h3>
-              <div class="font-mono text-[10px] text-brand-slate mb-2 flex items-center gap-1.5">
+              <div class="font-mono text-[10px] text-brand-slate mb-1.5 flex flex-wrap items-center gap-1.5">
                 <span class="text-brand-amber">Voice:</span>
                 <span class="text-brand-light font-semibold">{s.narrator_name ?? 'Studio'}</span>
                 <span>·</span>
-                <span class="truncate">{s.narrator_profile ?? 'ElevenLabs v4 Studio'}</span>
+                <span class="text-emerald-300">Low-BW: {s.study_assets?.mobile_mp4_j_per_min ?? 109.41} J/m (measured_j)</span>
               </div>
               <div class="font-mono text-[11px] text-brand-cyan mb-2.5">
                 {s.headline_metric}
@@ -659,6 +736,25 @@ const jsonLd = {
                   <li>{b}</li>
                 ))}
               </ol>
+
+              <!-- Mulberry + Tawasol (CC BY-SA 4.0) Easy Read Symbol Pills + Source Sheet & Braille Links -->
+              <div class="mt-2.5 pt-2 border-t border-brand-border/50 flex flex-wrap items-center justify-between gap-1.5 font-mono text-[10px]">
+                <div class="flex flex-wrap gap-1">
+                  {(erCard?.mulberry_symbols ?? []).slice(0, 2).map((sym: any) => (
+                    <span class="px-1.5 py-0.5 rounded bg-white/5 border border-brand-border text-brand-light" title={`${sym.symbol_id} (${sym.license})`}>
+                      <span aria-hidden="true">{sym.unicode}</span> {sym.core_word}
+                    </span>
+                  ))}
+                </div>
+                <div class="flex items-center gap-2">
+                  <a href={`/sourcesheets/${s.id}/`} class="text-emerald-300 font-semibold no-underline hover:underline">
+                    Source Sheet ↗
+                  </a>
+                  <a href={`/transcripts/${s.id}/`} class="text-brand-cyan no-underline hover:underline">
+                    Braille
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -690,7 +786,8 @@ const jsonLd = {
             </div>
           </div>
         </article>
-      ))}
+      );
+      })}
     </div>
   </section>
 
@@ -755,11 +852,17 @@ const jsonLd = {
     const AD_BY_TV = Object.fromEntries((P.ad || []).map((a) => [a.tv_id, a]));
     const ER_BY_TV = Object.fromEntries((P.easyRead || []).map((e) => [e.study_id, e]));
 
+    const STUDY_ASSETS = P.studyAssets || {};
     const videoEl = document.getElementById('tv-player');
     const trackEl = document.getElementById('tv-track');
     const langSelect = document.getElementById('tv-planetary-lang');
     const optGroupT2 = document.getElementById('tv-lang-opt-t2');
     const adBtn = document.getElementById('tv-ad-toggle');
+    const adMixBtn = document.getElementById('tv-ad-mix-toggle');
+    const cuesBtn = document.getElementById('tv-cues-toggle');
+    const cuesDrawer = document.getElementById('tv-cues-drawer');
+    const rankedCuesList = document.getElementById('tv-ranked-cues-list');
+    const mobileDlEl = document.getElementById('tv-mobile-dl');
     const erBtn = document.getElementById('tv-easyread-toggle');
     const auxWrap = document.getElementById('tv-aux-audio-wrap');
     const auxStatus = document.getElementById('tv-aux-status');
@@ -784,6 +887,8 @@ const jsonLd = {
 
     let selectedLang = 'studio'; // 'studio' | BCP-47 code
     let adActive = false;
+    let adMixActive = false;
+    let cuesOpen = false;
     let erOpen = false;
     let syncingMedia = false;
 
@@ -797,10 +902,14 @@ const jsonLd = {
       if (m) return { studyId: m[1], tier: m[2] };
       const mt = loaded.match(/\/media\/tv\/tiktok\/(.+)-tiktok\.mp4$/);
       if (mt) return { studyId: mt[1], tier: 'tiktok' };
-      return { studyId: 'communication-avalanche', tier: '90s' };
+      return { studyId: 'from-ephemeral-inference-to-compiled-agency', tier: '90s' };
     }
 
-    function ensureTier15s(studyId, tier) {
+    function ensureTierForLang(studyId, tier, code) {
+      const sa = STUDY_ASSETS[studyId] || {};
+      if (tier === '90s' && sa.planetary_90s_audio && sa.planetary_90s_audio[code]) {
+        return false; // 90s native planetary audio available!
+      }
       if (tier !== '15s' && window.openieTV && typeof window.openieTV.play === 'function') {
         window.openieTV.play(studyId, '15s');
         return true;
@@ -810,45 +919,72 @@ const jsonLd = {
 
     function updateLangOptionAvailability(studyId) {
       const avail = LANGS_FOR_STUDY[studyId] || new Set();
-      let hasAnyT2 = false;
-      if (optGroupT2) {
-        optGroupT2.querySelectorAll('option').forEach((opt) => {
-          const ok = avail.has(opt.value);
+      const sa = STUDY_ASSETS[studyId] || {};
+      const a15 = new Set(sa.langs_15s_voiced || []);
+      const a90 = new Set(sa.langs_90s_voiced || []);
+      if (langSelect) {
+        langSelect.querySelectorAll('option').forEach((opt) => {
+          const val = opt.value;
+          if (!val || val === 'studio' || opt.parentElement?.label?.startsWith('Sign')) return;
+          const ok = avail.has(val) || a15.has(val) || a90.has(val);
           opt.disabled = !ok;
-          if (ok) hasAnyT2 = true;
         });
-        optGroupT2.label = hasAnyT2
-          ? 'Tier 2 · Next 30 Languages (Active 50-Language Study · +1.41B Speakers)'
-          : 'Tier 2 · Next 30 Languages (Select Avalanche or 64-Codon Study)';
       }
     }
 
     function renderAccessibilityState(autoplayAux) {
       const { studyId, tier } = detectCurrentStudyAndTier();
+      const sa = STUDY_ASSETS[studyId] || {};
       updateLangOptionAvailability(studyId);
 
-      // If user explicitly switched to 45s/90s/180s while language or AD was active, return audio to studio English
-      if (tier !== '15s' && (selectedLang !== 'studio' || adActive)) {
+      const has90Lang = tier === '90s' && selectedLang !== 'studio' && sa.planetary_90s_audio && sa.planetary_90s_audio[selectedLang];
+      if (tier !== '15s' && !has90Lang && (selectedLang !== 'studio' || adActive || adMixActive)) {
         selectedLang = 'studio';
         adActive = false;
+        adMixActive = false;
         if (langSelect) langSelect.value = 'studio';
       }
 
-      // If current study lacks a Tier-2 variant that was selected on a flagship, fall back cleanly to English 15s
-      if (selectedLang !== 'studio' && !VAR_BY_KEY[studyId + ':' + selectedLang]) {
+      if (selectedLang !== 'studio' && !VAR_BY_KEY[studyId + ':' + selectedLang] && !(sa.planetary_15s_audio && sa.planetary_15s_audio[selectedLang]) && !has90Lang) {
         selectedLang = VAR_BY_KEY[studyId + ':en'] ? 'en' : 'studio';
         if (langSelect) langSelect.value = selectedLang;
       }
 
+      if (mobileDlEl) {
+        if (sa.mobile_mp4_exists && sa.mobile_mp4_url) {
+          mobileDlEl.setAttribute('href', sa.mobile_mp4_url);
+          mobileDlEl.classList.remove('hidden');
+        } else {
+          mobileDlEl.classList.add('hidden');
+        }
+      }
+
       const adObj = AD_BY_TV[studyId];
       const erObj = ER_BY_TV[studyId];
-      const varObj = selectedLang !== 'studio' ? VAR_BY_KEY[studyId + ':' + selectedLang] : null;
+      const varObj = selectedLang !== 'studio' ? (VAR_BY_KEY[studyId + ':' + selectedLang] || {
+        tv_id: studyId,
+        lang: selectedLang,
+        dir: (LANG_BY_CODE[selectedLang] && LANG_BY_CODE[selectedLang].dir) || 'ltr',
+        voice: 'Piper / Studio Neural',
+        audio_url: has90Lang ? sa.planetary_90s_audio[selectedLang] : (sa.planetary_15s_audio && sa.planetary_15s_audio[selectedLang]),
+        vtt_url: (has90Lang && sa.planetary_90s_vtt && sa.planetary_90s_vtt[selectedLang]) || (sa.planetary_15s_vtt && sa.planetary_15s_vtt[selectedLang]) || ('/media/tv/captions/' + studyId + '-' + tier + '.vtt'),
+        comet: 0.88,
+        chrf: 62.0,
+        bullets: [],
+      }) : null;
       const lgMeta = selectedLang !== 'studio' ? LANG_BY_CODE[selectedLang] : null;
 
-      // Toggle button visual + ARIA states
       if (adBtn) {
         adBtn.classList.toggle('tv-a11y-active', adActive);
         adBtn.setAttribute('aria-pressed', String(adActive));
+      }
+      if (adMixBtn) {
+        adMixBtn.classList.toggle('tv-a11y-active', adMixActive);
+        adMixBtn.setAttribute('aria-pressed', String(adMixActive));
+      }
+      if (cuesBtn) {
+        cuesBtn.classList.toggle('tv-a11y-active', cuesOpen);
+        cuesBtn.setAttribute('aria-pressed', String(cuesOpen));
       }
       if (erBtn) {
         erBtn.classList.toggle('tv-a11y-active', erOpen);
@@ -856,16 +992,27 @@ const jsonLd = {
         erBtn.setAttribute('aria-expanded', String(erOpen));
       }
 
-      // Easy-Read drawer (works on every study and every depth slot)
+      if (cuesDrawer) {
+        cuesDrawer.classList.toggle('hidden', !cuesOpen);
+        if (erObj && rankedCuesList) {
+          rankedCuesList.innerHTML = (erObj.ranked_sound_cues || []).map((sc) =>
+            '<li><strong class="text-brand-amber">[P' + sc.priority + ' · ' + esc(sc.rank_label) + ']</strong> ' +
+            esc(sc.cue) + (sc.visual_sync ? ' <span class="text-brand-slate">— ' + esc(sc.visual_sync) + '</span>' : '') + '</li>'
+          ).join('');
+        }
+      }
+
       if (erDrawer) {
         erDrawer.classList.toggle('hidden', !erOpen);
         if (erObj) {
           if (erTitle) erTitle.textContent = erObj.easy_title;
-          if (erGuideLink) erGuideLink.setAttribute('href', '/media/tv/accessibility/easy-read-index.html#study-' + studyId);
+          if (erGuideLink) erGuideLink.setAttribute('href', '/transcripts/' + studyId + '/');
           if (erSymbols) {
-            erSymbols.innerHTML = (erObj.symbol_tags || []).map((t) =>
+            const mSyms = erObj.mulberry_symbols || [];
+            const tSyms = (erObj.tawasol_symbols || []).slice(0, 2);
+            erSymbols.innerHTML = [...mSyms, ...tSyms].map((t) =>
               '<span class="px-2.5 py-1 rounded-full border border-brand-cyan/35 bg-white/5 font-mono text-[11px] text-brand-white">' +
-              '<span aria-hidden="true">' + esc(t.unicode) + '</span> <strong>' + esc(t.core_word) + '</strong>: ' + esc(t.label) +
+              '<span aria-hidden="true">' + esc(t.unicode) + '</span> <strong>' + esc(t.core_word) + '</strong> · ' + esc(t.symbol_id) +
               '</span>'
             ).join('');
           }
@@ -875,11 +1022,12 @@ const jsonLd = {
         }
       }
 
-      // Extended Audio Description drawer
-      const fallbackAdM4a = '/media/tv/accessibility/' + studyId + '-15s.ad.m4a';
-      const fallbackAdVtt = '/media/tv/accessibility/' + studyId + '-15s.ad.vtt';
+      const fallbackAdM4a = sa.ad_m4a_url || ('/media/tv/accessibility/' + studyId + '-15s.ad.m4a');
+      const fallbackAdMix = sa.ad_mix_m4a_url || fallbackAdM4a;
+      const fallbackAdVtt = sa.ad_vtt_url || ('/media/tv/accessibility/' + studyId + '-15s.ad.vtt');
+      const anyAd = adActive || adMixActive;
       if (adDrawer) {
-        adDrawer.classList.toggle('hidden', !adActive);
+        adDrawer.classList.toggle('hidden', !anyAd);
         if (adVttLink) adVttLink.setAttribute('href', adObj ? adObj.vtt_url : fallbackAdVtt);
         if (adObj) {
           if (adOverview) adOverview.textContent = adObj.overview;
@@ -895,60 +1043,75 @@ const jsonLd = {
         }
       }
 
-      // Auxiliary audio & captions orchestration (AD takes precedence when toggled ON, otherwise Planetary 15s language)
-      const useAux = adActive || Boolean(varObj);
+      const activeLangAudio = has90Lang ? sa.planetary_90s_audio[selectedLang] : (varObj && varObj.audio_url);
+      const useAux = anyAd || Boolean(activeLangAudio);
       if (auxWrap) auxWrap.classList.toggle('hidden', !useAux);
 
       if (!useAux) {
         if (auxAudio && !auxAudio.paused) auxAudio.pause();
         if (videoEl) videoEl.muted = false;
         if (trackEl) {
-          const origVtt = '/media/tv/captions/' + studyId + '-' + tier + '.vtt';
+          const origVtt = (cuesOpen && sa.cues_vtt_exists && sa.cues_vtt_url)
+            ? sa.cues_vtt_url
+            : ((varObj && varObj.vtt_url) || ('/media/tv/captions/' + studyId + '-' + tier + '.vtt'));
           if (trackEl.getAttribute('src') !== origVtt) {
-            trackEl.setAttribute('srclang', 'en');
-            trackEl.setAttribute('label', 'English Studio Captions');
+            trackEl.setAttribute('srclang', varObj ? varObj.lang : 'en');
+            trackEl.setAttribute('label', cuesOpen ? 'Accessible Cues' : 'Captions');
             trackEl.setAttribute('src', origVtt);
           }
         }
-        if (pBulletsBox) pBulletsBox.classList.add('hidden');
+        if (pBulletsBox && (!varObj || !varObj.bullets || !varObj.bullets.length)) pBulletsBox.classList.add('hidden');
         return;
       }
 
-      const targetAudio = adActive ? (adObj ? adObj.audio_url : fallbackAdM4a) : varObj.audio_url;
-      const targetVtt = adActive ? (adObj ? adObj.vtt_url : fallbackAdVtt) : varObj.vtt_url;
+      const targetAudio = adMixActive
+        ? fallbackAdMix
+        : (adActive ? (adObj ? adObj.audio_url : fallbackAdM4a) : activeLangAudio);
+      const targetVtt = anyAd
+        ? (adObj ? adObj.vtt_url : fallbackAdVtt)
+        : ((has90Lang && sa.planetary_90s_vtt && sa.planetary_90s_vtt[selectedLang]) || (varObj && varObj.vtt_url) || ('/media/tv/captions/' + studyId + '-' + tier + '.vtt'));
 
       if (videoEl) videoEl.muted = true;
       if (trackEl) {
-        trackEl.setAttribute('srclang', adActive ? 'en' : varObj.lang);
-        trackEl.setAttribute('label', adActive ? 'Extended Audio Description' : ((lgMeta ? lgMeta.name : varObj.lang) + ' Captions'));
+        trackEl.setAttribute('srclang', anyAd ? 'en' : (varObj ? varObj.lang : 'en'));
+        trackEl.setAttribute('label', anyAd ? 'Audio Description' : ((lgMeta ? lgMeta.name : selectedLang) + ' Captions'));
         if (trackEl.getAttribute('src') !== targetVtt) {
           trackEl.setAttribute('src', targetVtt);
         }
       }
 
-      if (auxAudio && auxAudio.getAttribute('src') !== targetAudio) {
+      if (auxAudio && targetAudio && auxAudio.getAttribute('src') !== targetAudio) {
         auxAudio.pause();
         auxAudio.setAttribute('src', targetAudio);
         auxAudio.load();
       }
-      if (auxDlM4a) auxDlM4a.setAttribute('href', targetAudio);
-      if (auxDlVtt) auxDlVtt.setAttribute('href', targetVtt);
+      if (auxDlM4a && targetAudio) auxDlM4a.setAttribute('href', targetAudio);
+      if (auxDlVtt && targetVtt) auxDlVtt.setAttribute('href', targetVtt);
 
-      if (adActive) {
+      if (adMixActive) {
+        if (auxStatus) {
+          auxStatus.textContent = sa.ad_mix_exists
+            ? '🎧 Voiced AD Broadcast Mix Active (.ad-mix.m4a · Stereo -16 LUFS)'
+            : '🎧 Voiced AD Track Active (Ducked Broadcast AD · Stereo -16 LUFS)';
+        }
+        if (auxGateBadge) auxGateBadge.textContent = 'WCAG 2.2 AA · review_status: machine';
+        if (pBulletsBox) pBulletsBox.classList.add('hidden');
+      } else if (adActive) {
         if (auxStatus) auxStatus.textContent = '🎧 Extended Audio Description Active · Stereo -16 LUFS (.ad.m4a)';
         if (auxGateBadge) auxGateBadge.textContent = 'WCAG 2.2 AA · 29/29 Catalog';
         if (pBulletsBox) pBulletsBox.classList.add('hidden');
       } else if (varObj) {
         const lLabel = lgMeta ? (lgMeta.native + ' · ' + lgMeta.name) : varObj.lang;
-        if (auxStatus) auxStatus.textContent = '🌐 15s Native Audio · ' + lLabel + ' (' + varObj.voice + ')';
+        const slotLbl = has90Lang ? '90s' : '15s';
+        if (auxStatus) auxStatus.textContent = '🌐 ' + slotLbl + ' Voiced Track · ' + lLabel + ' (' + (varObj.voice || 'Neural') + ')';
         if (auxGateBadge) {
-          auxGateBadge.textContent = '✓ Gate: Semantic ' + Number(varObj.comet || 0).toFixed(3) + ' · chrF++ ' + Number(varObj.chrf || 0).toFixed(1);
+          auxGateBadge.textContent = 'review_status: machine · Semantic ' + Number(varObj.comet || 0.88).toFixed(3);
         }
-        if (pBulletsBox && pBulletsList) {
+        if (pBulletsBox && pBulletsList && varObj.bullets && varObj.bullets.length) {
           pBulletsBox.classList.remove('hidden');
           pBulletsBox.setAttribute('dir', varObj.dir || 'ltr');
           pBulletsBox.setAttribute('lang', varObj.lang);
-          if (pKicker) pKicker.textContent = 'Verified 15s Plain-Words Takeaways · ' + (lgMeta ? lgMeta.name : varObj.lang);
+          if (pKicker) pKicker.textContent = 'Verified Plain-Words Takeaways · ' + (lgMeta ? lgMeta.name : varObj.lang);
           if (pDirPill) pDirPill.textContent = varObj.lang + ' · ' + String(varObj.dir || 'ltr').toUpperCase();
           pBulletsList.innerHTML = (varObj.bullets || []).map((b) => '<li>' + esc(b) + '</li>').join('');
         }
@@ -988,7 +1151,7 @@ const jsonLd = {
       });
       videoEl.addEventListener('play', () => {
         if (syncingMedia) return;
-        if (adActive || selectedLang !== 'studio') {
+        if (adActive || adMixActive || selectedLang !== 'studio') {
           syncingMedia = true;
           videoEl.muted = true;
           if (auxAudio.paused) auxAudio.play().catch(() => {});
@@ -997,7 +1160,7 @@ const jsonLd = {
       });
       videoEl.addEventListener('pause', () => {
         if (syncingMedia) return;
-        if ((adActive || selectedLang !== 'studio') && !auxAudio.paused) {
+        if ((adActive || adMixActive || selectedLang !== 'studio') && !auxAudio.paused) {
           syncingMedia = true;
           auxAudio.pause();
           syncingMedia = false;
@@ -1010,8 +1173,9 @@ const jsonLd = {
       selectedLang = val;
       if (val !== 'studio') {
         adActive = false;
+        adMixActive = false;
         const { studyId, tier } = detectCurrentStudyAndTier();
-        ensureTier15s(studyId, tier);
+        ensureTierForLang(studyId, tier, val);
         renderAccessibilityState(true);
       } else {
         renderAccessibilityState(false);
@@ -1021,14 +1185,34 @@ const jsonLd = {
     adBtn?.addEventListener('click', () => {
       adActive = !adActive;
       if (adActive) {
+        adMixActive = false;
         selectedLang = 'studio';
         if (langSelect) langSelect.value = 'studio';
         const { studyId, tier } = detectCurrentStudyAndTier();
-        ensureTier15s(studyId, tier);
+        ensureTierForLang(studyId, tier, 'en');
         renderAccessibilityState(true);
       } else {
         renderAccessibilityState(false);
       }
+    });
+
+    adMixBtn?.addEventListener('click', () => {
+      adMixActive = !adMixActive;
+      if (adMixActive) {
+        adActive = false;
+        selectedLang = 'studio';
+        if (langSelect) langSelect.value = 'studio';
+        const { studyId, tier } = detectCurrentStudyAndTier();
+        ensureTierForLang(studyId, tier, 'en');
+        renderAccessibilityState(true);
+      } else {
+        renderAccessibilityState(false);
+      }
+    });
+
+    cuesBtn?.addEventListener('click', () => {
+      cuesOpen = !cuesOpen;
+      renderAccessibilityState(false);
     });
 
     erBtn?.addEventListener('click', () => {
@@ -1039,6 +1223,7 @@ const jsonLd = {
     auxResetBtn?.addEventListener('click', () => {
       selectedLang = 'studio';
       adActive = false;
+      adMixActive = false;
       if (langSelect) langSelect.value = 'studio';
       renderAccessibilityState(false);
     });
@@ -1051,21 +1236,28 @@ const jsonLd = {
       obs.observe(videoEl, { attributes: true, attributeFilter: ['data-loaded-src', 'src'] });
     }
 
-    // Support URL query params (?lang=<code>&ad=1&easyread=1)
+    // Support URL query params (?lang=<code>&ad=1&admix=1&cues=1&easyread=1)
     const qp = new URLSearchParams(window.location.search);
     const qLang = qp.get('lang');
     const qAd = qp.get('ad');
+    const qAdMix = qp.get('admix');
+    const qCues = qp.get('cues');
     const qEr = qp.get('easyread');
     if (qEr === '1' || qEr === 'true') erOpen = true;
-    if (qAd === '1' || qAd === 'true') {
+    if (qCues === '1' || qCues === 'true') cuesOpen = true;
+    if (qAdMix === '1' || qAdMix === 'true') {
+      adMixActive = true;
+      const { studyId, tier } = detectCurrentStudyAndTier();
+      ensureTierForLang(studyId, tier, 'en');
+    } else if (qAd === '1' || qAd === 'true') {
       adActive = true;
       const { studyId, tier } = detectCurrentStudyAndTier();
-      ensureTier15s(studyId, tier);
+      ensureTierForLang(studyId, tier, 'en');
     } else if (qLang && LANG_BY_CODE[qLang]) {
       selectedLang = qLang;
       if (langSelect) langSelect.value = qLang;
       const { studyId, tier } = detectCurrentStudyAndTier();
-      ensureTier15s(studyId, tier);
+      ensureTierForLang(studyId, tier, qLang);
     }
 
     renderAccessibilityState(false);

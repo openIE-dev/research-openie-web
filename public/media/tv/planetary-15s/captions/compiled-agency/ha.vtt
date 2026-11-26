@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — from-ephemeral-inference-to-compiled-agency (ha) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:15.750
+<v Narrator>A farko, ci gaba da lissafi ya zama mai sauki ga kowa lokacin da farashin kayan aikin kwakwalwa na iya aiki kamar hanyar karshe a bayan taswirar bincike na gida, indiyasan binciken, da kuma masu warwarewa.
+
+2
+00:00:15.830 --> 00:00:33.913
+<v Narrator>Na biyu, compressing nauyin kasa da daya bit ceto na'urar ajiya, amma unpacking su baya zuwa floating-point lambobin a runtime asarar fiye da sau arba'in fiye circuit-board makamashi fiye da tafiyar da packaged integer manhaja kai tsaye.
+
+3
+00:00:33.993 --> 00:00:50.390
+<v Narrator>Na uku, daya integer kernel duba ta cryptographic hashes samar da daidai irin amsa a kan processors, graphics cards, WebAssembly, kayan aiki logic, da microcontrollers, tsallake nan take idan wani nauyi kawai canja.

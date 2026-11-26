@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (tr) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:15.839
+<v Narrator>Birincisi, gerçek derleyicilerin herhangi bir tanımlayıcı yasayı ihlal ettiğinden bu çalışma yedi parçalı bir ölçüt belirler.İkincisi, maksimum derleyici optimizasyonu test programlarının yüzde otuzlarında asla geri ödenmeyen ön enerjiyi yakıyor.
+
+2
+00:00:15.919 --> 00:00:24.766
+<v Narrator>Üçüncü olarak, değişken konumla parmak izi kodunu sıfır karmaşıklıkla yeniden kullanarak Rust derleme enerjisini dört yüz katına çıkarıyor.
+
+3
+00:00:24.846 --> 00:00:44.161
+<v Narrator>Her derleyicinin enerjiyi takip ederken ve anlamı korurken kanonik formları düşürdüğünü iddia eden bir iddiayı on iki gerçek derleyici ailesine karşı test ettik. pratikte hiçbiri joules izlememektedir, isimsiz kodu hash etmemektedir ve otomatik fuzzers binlerce C derleyici hatasını ortaya çıkarmıştır.
+
+4
+00:00:44.241 --> 00:01:03.877
+<v Narrator>Yedi parçalı bir standart olarak yeniden derleme, yirmi çekirdek ve on beş araç zinciri katmanı üzerinde kesin geri ödeme ufklarını ölçmemize izin verir: optimizasyonlu C, yirmi dört yüz doksan yürüyüşten sonra Python'u yenmişken, paylaşılan Rust çalışma kütüphaneleri inşa enerjisini yirmi kat azaltmıştır.
+
+5
+00:01:03.957 --> 00:01:24.557
+<v Narrator>Değişken adlarını basitçe silmek, iki değişken rol değiştirdiği zaman yüz elli tehlikeli ön bellek çarpışmalarına neden oldu. isimlerin yerine De Bruijn bağlayıcı pozisyonları koymak, beş yüz doğrulanmış mutant üzerinde sıfır yanlış eşleşmeye yol açtı ve sıcak C ve Rust yeniden inşalarını dört yüz kırk sekiz kez azalttı.
+
+6
+00:01:24.637 --> 00:01:34.190
+<v Narrator>Tüm enerji rakamları dış duvar wattmetresinden ziyade Linux işlemcisinin içindeki sayılardan gelir ve her dış alıntı açık bir doğrulama simgesi taşır.

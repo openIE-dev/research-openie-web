@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import planetaryEasyRead from '../../data/planetary-easy-read.json';
+
+const tvItems = (planetaryEasyRead.tv_studies || []) as any[];
+const radioItems = (planetaryEasyRead.radio_episodes || []) as any[];
+---
+
+<Layout
+  title="Deafblind Braille-Friendly Plain HTML Transcripts (29 TV + 17 Radio)"
+  description="Linear, zero-table semantic HTML transcripts with Easy Read openings, Mulberry and Tawasol AAC core words, speaker labels, and importance-ranked non-speech sound cues for all 29 Research TV studies and 17 Research Radio episodes."
+>
+  <article class="max-w-4xl mx-auto px-5 md:px-10 pt-10 pb-24">
+    <p class="section-label mb-3">Deafblind &amp; Screen-Reader Linear HTML Standard · /transcripts/</p>
+    <h1 class="font-display text-3xl md:text-5xl font-bold text-brand-white mb-4">
+      Braille-Ready Plain HTML Transcripts
+    </h1>
+    <p class="font-body text-base text-brand-slate leading-relaxed mb-6">
+      Built following the Sense International Deafblindness Hub linear HTML standard and the NJIT + NYU + University of Surrey Accessible Cues specification: pure semantic headings, paragraphs, and ordered lists with <strong>zero layout or data tables</strong>, so 20-cell and 40-cell refreshable Braille displays read straight through without column-wrapping traps.
+    </p>
+
+    <nav aria-label="Transcript sections" class="mb-8 p-4 rounded-xl border border-brand-cyan/40 bg-white/[0.02]">
+      <p class="font-mono text-xs text-brand-cyan font-bold mb-2">Quick Section Jump:</p>
+      <ul class="list-disc pl-5 space-y-1 font-mono text-xs">
+        <li><a href="#tv-transcripts" class="text-brand-amber hover:underline">Part 1: All {tvItems.length} Research TV Study Transcripts (15s, 45s, 90s, 180s)</a></li>
+        <li><a href="#radio-transcripts" class="text-brand-cyan hover:underline">Part 2: All {radioItems.length} Research Radio Episode Transcripts</a></li>
+        <li><a href="/glossary/concepts.json" class="text-emerald-300 hover:underline">Part 3: Mulberry &amp; Tawasol (CC BY-SA 4.0) AAC Concepts JSON-LD</a></li>
+      </ul>
+    </nav>
+
+    <section id="tv-transcripts" aria-labelledby="tv-tr-heading" class="mb-12">
+      <h2 id="tv-tr-heading" class="font-display text-2xl font-bold text-brand-amber mb-4">
+        1. Research TV Transcripts ({tvItems.length} Studies)
+      </h2>
+      <ol class="list-decimal pl-6 space-y-4">
+        {tvItems.map((item) => (
+          <li class="p-4 rounded-xl border border-brand-border bg-white/[0.02]">
+            <h3 class="font-display text-lg font-bold text-brand-white m-0">
+              <a href={`/transcripts/${item.id}/`} class="text-brand-white hover:text-brand-amber">
+                {item.title}
+              </a>
+            </h3>
+            <p class="font-body text-sm text-brand-slate mt-1 mb-2">
+              Easy Read: {item.one_idea_sentences?.[1] || item.easy_title}
+            </p>
+            <p class="font-mono text-xs text-brand-cyan m-0">
+              <a href={`/transcripts/${item.id}/`} class="text-brand-amber hover:underline">Open Braille HTML Transcript</a>
+              {' · '}
+              <a href={`/sourcesheets/${item.id}/`} class="text-brand-cyan hover:underline">Source Sheet</a>
+              {' · '}
+              <a href={`/tv/?study=${item.id}`} class="text-brand-light hover:underline">Watch on /tv/</a>
+            </p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section id="radio-transcripts" aria-labelledby="radio-tr-heading">
+      <h2 id="radio-tr-heading" class="font-display text-2xl font-bold text-brand-cyan mb-4">
+        2. Research Radio Transcripts ({radioItems.length} Episodes)
+      </h2>
+      <ol class="list-decimal pl-6 space-y-4">
+        {radioItems.map((ep) => (
+          <li class="p-4 rounded-xl border border-brand-border bg-white/[0.02]">
+            <h3 class="font-display text-lg font-bold text-brand-white m-0">
+              <a href={`/transcripts/${ep.id}/`} class="text-brand-white hover:text-brand-cyan">
+                Episode {String(ep.number).padStart(2, '0')}: {ep.title}
+              </a>
+            </h3>
+            <p class="font-body text-sm text-brand-slate mt-1 mb-2">
+              Speakers: {(ep.panel || []).join(', ')}. {ep.one_idea_sentences?.[1] || ''}
+            </p>
+            <p class="font-mono text-xs text-brand-cyan m-0">
+              <a href={`/transcripts/${ep.id}/`} class="text-brand-cyan hover:underline">Open Braille HTML Transcript</a>
+              {' · '}
+              <a href={ep.source_sheet_url} class="text-brand-amber hover:underline">Source Sheet</a>
+              {' · '}
+              <a href={`/radio/?ep=${ep.id}`} class="text-brand-light hover:underline">Listen on /radio/</a>
+            </p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  </article>
+</Layout>

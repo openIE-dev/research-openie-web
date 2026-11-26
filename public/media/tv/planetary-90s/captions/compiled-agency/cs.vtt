@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (cs) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:20.135
+<v Narrator>Za prvé, pokročilé výpočetní techniky se stanou dostupnými pro každého, když drahé neuronové modely budou fungovat jako poslední možnost za rychlými lokálními vyhledávacími tabulkami, vyhledávacími indexy a přesnými řešiči.Za druhé, komprese váh pod jeden bit šetří paměť, ale jejich rozbalení zpět na čísla s plovoucí desetinnou čárkou během běhu plýtvá více než osmdesátkrát více energie desky plošných spojů než přímý provoz logické logiky s balenými celými čísly.
+
+2
+00:00:20.295 --> 00:00:32.082
+<v Narrator>Za třetí, jedno celé jádro kontrolované kryptografickými hashemi vytváří přesně stejnou odpověď napříč procesory, grafickými kartami, WebAssembly, hardwarovou logikou a mikrokontroléry, přičemž se okamžitě zastaví, pokud dojde ke změně jedné váhy.
+
+3
+00:00:32.242 --> 00:00:50.475
+<v Narrator>V průběhu patnácti set deterministických řídicích úloh porazilo vyhledávání nulového modelu neuronové výchozí hodnoty o 61,60 procentních bodů na strukturovaných schématech nástrojů a 20,80 bodů na Booleanově uspokojivosti při čisté energii bočníku 1,41 až 2,09 mikrojoule, což čistě izolovalo mezeru v otevřeném kódování třídění 12,80 bodů.
+
+4
+00:00:50.635 --> 00:01:16.546
+<v Narrator>Na pětivoltovém snímači napájení desky AMD Kria se driftem 0,09–0,11 % při nečinnosti spálilo rozbalení matice o velikosti 0.1517 bitů na hmotnost do 32bitové plovoucí hodnoty 63 335,56 mikrojoulů brutto – což je 81,86krát horší než osmibitová celá čísla – zatímco Walsh-Hadamard, exkluzivní NOR, počet bitů a vyhledávání nibble klesly na 187,49 mikrojoulu hrubého a 10,30 mikrojoulu čistého.
+
+5
+00:01:16.706 --> 00:01:37.000
+<v Narrator>Jedno hashově ověřené celé jádro se shodovalo bit po bitě napříč deseti dráhami a šesti strukturami – procesor, Radeon 8060S Vulkan grafika, rozdělená grafika procesoru, WebAssembly vektory, Verilog hardwarová logika a 1444-bajtový bare-metal mikrokontrolér – zastavující na tamperu s jedinou váhou vedle 1315 Planetary Digital Well receptů.
+
+6
+00:01:37.160 --> 00:01:58.456
+<v Narrator>Čtyřstupňová kaskáda kontroly pravopisu snížila energii Kria shuntu 26,58krát hrubou a 24,49krát čistou. Energie Jetson Thor shuntu byla snížena 16,26krát a zabránilo se tak 38,46krát voláním ve čtvrtém stupni. Všechny příjmy jsou podepsané, vlastní kontrola – ne externí recenze – s oddělením shuntů, počítadel čipů, odhadovaných a neměřených joulů.

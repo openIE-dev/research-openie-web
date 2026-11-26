@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — from-ephemeral-inference-to-compiled-agency (es) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:13.651
+<v Narrator>En primer lugar, la computación avanzada se vuelve asequible para todos cuando los costosos modelos neuronales actúan como último recurso detrás de las rápidas tablas de búsqueda local, índices de búsqueda y solucionadores exactos.
+
+2
+00:00:13.731 --> 00:00:29.501
+<v Narrator>En segundo lugar, comprimir pesos por debajo de un bit ahorra memoria, pero descomprimirlos a números de punto flotante en tiempo de ejecución desperdicia más de ochenta veces más energía de la placa de circuito que ejecutar directamente lógica de enteros empaquetados.
+
+3
+00:00:29.581 --> 00:00:44.290
+<v Narrator>En tercer lugar, un núcleo entero comprobado por hashes criptográficos produce exactamente la misma respuesta en procesadores, tarjetas gráficas, WebAssembly, lógica de hardware y microcontroladores, deteniéndose inmediatamente si cambia un solo peso.

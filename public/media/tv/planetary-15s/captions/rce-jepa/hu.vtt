@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — rce-jepa (hu) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:07.077
+<v Narrator>Először is, ahelyett, hogy szóról-szóra kitalálnánk a nyers kódot, a kis modellek kompakt összefoglalókat jósolnak meg a program jelentéséről.
+
+2
+00:00:07.417 --> 00:00:14.771
+<v Narrator>Másodszor, bármelyik MI modell javasolhat jelölt programot, de egy gyors és szigorú ellenőrző dönti el, hogy mi megy át.
+
+3
+00:00:15.111 --> 00:00:22.195
+<v Narrator>Harmadszor, az ellenőrzés tizenhétszázszor kevesebb energiát használ fel, mint a generálás, és a mentett javítások csökkentik a nagy modellhívásokat.

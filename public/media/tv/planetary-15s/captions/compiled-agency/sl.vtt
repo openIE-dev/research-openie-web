@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — from-ephemeral-inference-to-compiled-agency (sl) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:11.273
+<v Narrator>Prvič, napredno računalništvo postane dostopno vsem, ko dragi nevronski modeli delujejo kot zadnja možnost za hitre lokalne iskalnike, indekse iskanja in natančne reševalce.
+
+2
+00:00:11.613 --> 00:00:23.626
+<v Narrator>Drugič, stiskanje uteži pod en bit prihrani pomnilnik, vendar jih razpakiranje nazaj v števila s plavajočo vejico med izvajanjem porabi več kot osemdesetkrat več energije vezja kot neposredno izvajanje pakirane celoštevilske logike.
+
+3
+00:00:23.966 --> 00:00:38.806
+<v Narrator>Tretjič, eno celoštevilsko jedro, ki ga preverijo kriptografski hašiji, proizvede popolnoma enak odgovor na procesorjih, grafičnih karticah, WebAssemblyju, strojni logiki in mikrokontrolerjih, takoj se ustavi, če se spremeni ena sama teža.

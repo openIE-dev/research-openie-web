@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (ha) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:19.054
+<v Narrator>First, gaskiya compilers karya duk daya descriptional doka, don haka wannan bincike bayyana wani bakwai-sashe yardstick a matsayin. Na biyu, mafi girma compiler inganta burns upfront makamashi da ba zai iya biya baya kan dari na gwajin shirye-shiryen.
+
+2
+00:00:19.134 --> 00:00:28.220
+<v Narrator>Na uku, fingerprinting code ta hanyar canja wurin wuri reuses gina da zero mix-ups, yankan Rust compile energy huɗu ɗari.
+
+3
+00:00:28.300 --> 00:00:52.916
+<v Narrator>Mun yi gwajin wani zargi mai yawa- cewa kowace mai tattarawa tana rage nau'ikan canonical yayin da take bin diddigin makamashi da kiyaye ma'ana- a kan iyalai na ƙwararrun masu tattarawa goma sha biyu. A cikin aiki, babu wanda ke bin joules, babu hashes code-free name, kuma fuzzers na atomatik sun gano dubban C compiler bugs.
+
+4
+00:00:52.996 --> 00:01:15.870
+<v Narrator>Restating compilation a matsayin saba'in sashi na gabaɗaya yana ba mu damar auna daidai biya-back horizons a kan ashirin kernels da goma sha biyar toolchain matakai: optimized C ya lashe Python bayan biyu da huɗu ɗari tara da talatin gudu, yayin da raba Rust runtime library cut gina makamashi sau biyu.
+
+5
+00:01:15.950 --> 00:01:16.324
+<v Narrator>@ info
+
+6
+00:01:16.404 --> 00:01:30.490
+<v Narrator>Dukkan ƙididdiga na wutar lantarki sun fito daga masu auna mai sarrafa Linux da aka gina cikin shi, ba wata mita ta waje ba, kuma duk wani ambato na waje yana da wata alama ta tabbatarwa.

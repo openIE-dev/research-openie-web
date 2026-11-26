@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (vi) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:07.541
+<v Narrator>Thứ nhất, các trình biên dịch thực sự phá vỡ bất kỳ định luật mô tả đơn lẻ nào, vì vậy nghiên cứu này xác định một thước đo bảy phần thay thế.
+
+2
+00:00:07.621 --> 00:00:14.620
+<v Narrator>Thứ ba, mã vân tay bằng cách sử dụng lại các vị trí biến đổi với không có sự trộn lẫn, cắt năng lượng biên dịch Rust gấp bốn trăm lần.
+
+3
+00:00:14.700 --> 00:00:24.181
+<v Narrator>Chúng tôi đã thử nghiệm một tuyên bố rộng rãi—mỗi trình biên dịch hạ các dạng chuẩn trong khi theo dõi năng lượng và bảo tồn ý nghĩa—trước mười hai gia đình trình biên dịch thực tế.
+
+4
+00:00:24.261 --> 00:00:39.818
+<v Narrator>Tái biên dịch như một tiêu chuẩn bảy phần cho phép chúng tôi đo chính xác các đường chân trời trả lại trên hai mươi nhân và mười lăm cấp toolchain: tối ưu hóa C đánh bại Python sau hai trăm bốn trăm chín mươi chạy, trong khi chia sẻ thư viện Rust runtime cắt năng lượng xây dựng gấp hai mươi lần.
+
+5
+00:00:39.898 --> 00:00:49.538
+<v Narrator>Thay thế tên với vị trí liên kết De Bruijn đã không có sự tương thích sai trên năm trăm đột biến được xác minh và cắt các bản dựng lại C nóng và Rust lên đến bốn trăm bốn mươi tám lần.
+
+6
+00:00:49.618 --> 00:00:57.990
+<v Narrator>Tất cả các con số năng lượng đến từ bộ xử lý Linux tích hợp hơn là một wattmeter tường bên ngoài, và mỗi trích dẫn bên ngoài mang một huy hiệu xác thực rõ ràng.

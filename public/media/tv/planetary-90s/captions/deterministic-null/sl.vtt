@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — deterministic-null (sl) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:14.882
+<v Narrator>Prvič, večina primerjalnih testov umetne inteligence preskoči kontrolno skupino ničelnega modela, ki preverja, kaj preprosto iskanje že rešuje.Drugič, pri omejenih matematičnih nalogah in nalogah z bazami podatkov se je zamrznjena tabela iskanja ujemala z umetno inteligenco v oblaku na devetih od desetih testov.
+
+2
+00:00:15.382 --> 00:00:23.382
+<v Narrator>Tretjič, pri odprtih kodiranih nalogah je umetna inteligenca naredila velik korak naprej, medtem ko je shranjevanje preverjenih odgovorov zmanjšalo energijo ponovitve za tri točke šestkrat.
+
+3
+00:00:23.882 --> 00:00:37.954
+<v Narrator>Če dva modela s sto milijardami parametrov oba dosežeta 99 odstotkov na strukturiranem testu, ali je kateri od njiju dejansko potreboval nevronske mreže v času odločanja?Brez kontrolne skupine z ničelnim modelom na točno istem izpitu nihče ne more ugotoviti razlike.
+
+4
+00:00:38.454 --> 00:00:54.882
+<v Narrator>Zgradili smo osemstopenjsko celoštevilsko iskalno tabelo, ki je bila preverjena bit za bitom v Rustu, Go-ju, Pythonu, Juliji in C plus plus, nato pa sidrili njene digitalne prstne odtise na javne dokaze Bitcoin koledarja preden so javni naključni svetilniki ustvarili štiri tisoč trideset svežih izločenih problemov.
+
+5
+00:00:55.382 --> 00:01:11.222
+<v Narrator>V dveh tisoč osemsto štiridesetih omejenih matematičnih in podatkovnih bazah so modeli v oblaku premagali zamrznjeno tabelo samo na neindexirani frazi strank, vendar pa so skočili za štiriinštirideset do petindevetdeset odstotnih točk pred štirimi zunanjimi avtorji programske opreme.
+
+6
+00:01:11.722 --> 00:01:21.953
+<v Narrator>Ko se na novo preverjeni nevralni popravki zapišejo nazaj v shrambo za iskanje, realistične izkrivljene delovne obremenitve zmanjšajo ponavljajoče se klice modela in lokalno energijo čipa za tri točke petkrat.

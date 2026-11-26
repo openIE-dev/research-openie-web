@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (da) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:20.135
+<v Narrator>For det første bliver avanceret databehandling tilgængelig for alle, når dyre neurale modeller fungerer som en sidste udvej bag hurtige lokale opslagstabeller, søgning indekser og eksakte solvere.For det andet sparer komprimering af vægte under én bit hukommelse, men at pakke dem tilbage til flydende punkt-tal ved kørsel spilder over firs gange mere printkort energi end at køre pakket heltal logik direkte.
+
+2
+00:00:20.295 --> 00:00:32.082
+<v Narrator>For det tredje producerer en heltalskerne, der kontrolleres af kryptografiske hashes, præcis det samme svar på tværs af processorer, grafikkort, WebAssembly, hardwarelogik og mikrocontrollere, og stopper straks, hvis en enkelt vægt ændres.
+
+3
+00:00:32.242 --> 00:00:50.475
+<v Narrator>På tværs af femten hundrede deterministiske kontrolopgaver slog nul-model opslag neurale baselines med 61,60 procentpoint på strukturerede værktøjsskemaer og 20,80 point på Boolean tilfredshed ved 1,41 til 2,09 mikrojoules netto shunt energi, der rent isolerer den 12,80 punkt åben kodning triage gap.
+
+4
+00:00:50.635 --> 00:01:16.546
+<v Narrator>På en AMD Kria fem-volt board shunt med 0,09 til 0,11 procent tomgang drift, udpakning af 0,1517 bits-per-vægt matricer til 32-bit floats brændte 63.335,56 microjoules brutto—81,86 gange værre end otte-bit heltal—mens pakket heltal Walsh-Hadamard, eksklusiv-NOR, bit-count og nibble lookup faldt til 187,49 microjoules brutto og 10,30 microjoules netto.
+
+5
+00:01:16.706 --> 00:01:37.000
+<v Narrator>En hash-verificeret heltalskerne matchede bit for bit på tværs af ti baner og seks strukturer – processor, Radeon 8060S Vulkan grafikkort, splitprocessorgrafik, WebAssembly vektorer, Verilog hardware logik og en 1.444 byte bare-metal mikrocontroller – stoppede ved single-weight tamper sammen med 1.315 Planetary Digital Well sænkning opskrifter.
+
+6
+00:01:37.160 --> 00:01:58.456
+<v Narrator>End-to-end, den fire-trins stavekontrol kaskade skåret Kria shunt energi 26.58 gange brutto og 24.49 gange netto, skåret Jetson Thor shunt energi 16.26 gange, og undgået 38.46 gange af fase-fire opkald.Alle kvitteringer er Signeret Provenance, Self-Checked—ikke eksternt peer-reviewed—med shunt, chip-tæller, estimeret, og umålte joules holdes strengt adskilt.

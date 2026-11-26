@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — ai-reads-human (sl) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:16.158
+<v Narrator>Prvič, računalniki pogosto izmenjujejo podatke v besedilnih formatih, napisanih za človeške oči, kar sili stroje k dodatnemu delu; drugič, branje zamaknjenega konfiguracijskega besedila je zahtevalo več kot dva tisočkrat več energije čipa kot branje kompaktnih številk strojev.
+
+2
+00:00:16.658 --> 00:00:24.468
+<v Narrator>Tretjič, sekljanje strukturiranega besedila v dele besed umetne inteligence je porabili dvanajstkrat več energije kot razčlenjevanje samega besedila.
+
+3
+00:00:24.968 --> 00:00:41.722
+<v Narrator>Formati, polni oklepajev, vejic in zamaknjenih presledkov so bili oblikovani tako, da bi ljudje lahko udobno pregledovali datoteke v urejevalnikih besedil, vendar pa sodobna orodja za umetno inteligenco pošiljajo milijone teh zapisov iz stroja na stroj brez človekovega pogleda.
+
+4
+00:00:42.222 --> 00:00:59.589
+<v Narrator>To dodatno delo smo poimenovali impedančni davek in preizkusili 34 delovnih obremenitev razčlenjevanja in delitve besed na dvajsetih tisoč zapisov.Vsak korak je potekal znotraj izoliranega delovnega procesa na procesorju Apple, kar je čisto ločilo majhne stroške razčlenjevanja od hrupne dejavnosti prenosnika v ozadju.
+
+5
+00:01:00.089 --> 00:01:17.771
+<v Narrator>Standardno besedilo v oklepajih je porabili skoraj osemkrat več, prevedeno besedilo z zamiki je porabil dvesto devetinštiridesetkrat več in čisto Pythonovo besedilo z zamiki je porabilo dva tisoč štiriinpetdesetkrat več energije čipa.
+
+6
+00:01:18.271 --> 00:01:31.355
+<v Narrator>Celo dodajanje dveh presledkov lepega zamika je več kot podvojilo energijo AI-ja pri deljenju besed na enainsedemdeset mikrodžulov na zapis.Notranje cevi stroja naj bodo kompaktne in binarne, besedilo pa oblikujte samo takrat, ko ga ljudje berejo.

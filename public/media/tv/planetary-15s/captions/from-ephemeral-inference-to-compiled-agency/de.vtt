@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — from-ephemeral-inference-to-compiled-agency (de) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:12.890
+<v Narrator>Erstens wird Advanced Computing für alle erschwinglich, wenn teure neuronale Modelle als letzter Ausweg hinter schnellen lokalen Nachschlagetabellen, Suchindizes und exakten Solvern fungieren.
+
+2
+00:00:12.970 --> 00:00:30.425
+<v Narrator>Zweitens spart das Komprimieren von Gewichten unter ein Bit Speicherplatz, aber wenn man sie zur Laufzeit wieder in Gleitkommazahlen entpackt, verschwendet man über achtzigmal mehr Energie auf der Leiterplatte als beim direkten Ausführen gepackter Ganzzahllogik.
+
+3
+00:00:30.505 --> 00:00:47.090
+<v Narrator>Drittens erzeugt ein Ganzzahl-Kernel, der durch kryptografische Hashes überprüft wird, die exakt gleiche Antwort für Prozessoren, Grafikkarten, WebAssembly, Hardwarelogik und Mikrocontroller und stoppt sofort, wenn sich ein einzelnes Gewicht ändert.

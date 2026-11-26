@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — from-ephemeral-inference-to-compiled-agency (tr) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:11.579
+<v Narrator>İlk olarak, gelişmiş bilgisayarlar pahalı nöral modellerin hızlı yerel arama tabloları, arama indeksleri ve kesin çözücüler arkasında son çare olarak davrandığında herkes için uygun hale gelir.
+
+2
+00:00:11.659 --> 00:00:26.824
+<v Narrator>İkinci olarak, bir bitin altındaki ağırlıkları sıkıştırmak belleği tasarruf eder, ancak onları çalışma sırasında tekrar yüzen nokta sayılarına boşaltma, doğrudan doldurulmuş tam sayıyı çalıştıran mantıktan seksen kat daha fazla devre kart enerjisi harcar.
+
+3
+00:00:26.904 --> 00:00:41.890
+<v Narrator>Üçüncü olarak, kriptografik hash'lar tarafından kontrol edilen bir tam sayı çekirdeği işlemciler, grafik kartları, WebAssembly, donanım mantığı ve mikrokontrolörler üzerinde tam olarak aynı cevabı üretir, tek bir ağırlık değiştiğinde derhal durdurulur.

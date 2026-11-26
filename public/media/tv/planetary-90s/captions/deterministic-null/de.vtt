@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — deterministic-null (de) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:17.903
+<v Narrator>Erstens überspringen die meisten KI-Benchmarks eine Nullmodell-Kontrollgruppe, die testet, was einfache Suche bereits löst; zweitens entsprach bei begrenzten mathematischen und Datenbankaufgaben eine eingefrorene Suchtabelle in neun von zehn Tests der Cloud-KI.
+
+2
+00:00:17.983 --> 00:00:31.111
+<v Narrator>Drittens, bei offenen Programmieraufgaben sprang die KI einen Sprung nach vorne, während das Zwischenspeichern verifizierter Antworten die Wiederholungsenergie um drei bis sechs Mal reduzierte.
+
+3
+00:00:31.191 --> 00:00:52.464
+<v Narrator>Wenn zwei Modelle mit 100 Milliarden Parametern bei einem strukturierten Benchmark-Test beide 99 Prozent erzielen, braucht eines davon dann tatsächlich ein neuronales Netzwerk zum Zeitpunkt der Entscheidung? Ohne eine Nullmodell-Kontrollgruppe für genau dieselbe Prüfung kann niemand den Unterschied feststellen.
+
+4
+00:00:52.544 --> 00:01:14.091
+<v Narrator>Wir haben eine achtstufige Ganzzahl-Lookup-Tabelle erstellt, die bitweise über Rust, Go, Python, Julia und C plus plus verifiziert wurde. Dann verankerten wir ihre digitalen Fingerabdrücke in öffentlichen Bitcoin-Kalenderbeweisen, bevor öffentliche Zufallsbeacons viertausenddreißig neue Ausfallprobleme generierten.
+
+5
+00:01:14.171 --> 00:01:33.254
+<v Narrator>Über zweitausendachthundertvierzig begrenzte mathematische und Datenbankprobleme hinweg schlugen Cloud-Modelle die eingefrorene Tabelle nur bei nicht indizierten Kundenphrasen, sprang aber in vier extern verfassten Software Engineering Benchmarks um 44 bis 95 Prozentpunkte voran.
+
+6
+00:01:33.334 --> 00:01:48.790
+<v Narrator>Wenn neu verifizierte neuronale Korrekturen in den Lookup-Speicher zurückgeschrieben werden, reduzieren realistische verzerrte Workloads wiederkehrende Modellaufrufe und lokale Chip-Energie um das Drei- bis Fünf- bis Neunfache.

@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (en)
+
+1
+00:00:00.320 --> 00:00:15.332
+[key chime: seven-part compiler check starts] <v Narrator>First, real compilers break any single descriptive law, so this study defines a seven-part yardstick instead. Second, maximum compiler optimization burns upfront energy that never pays back on thirty percent of test programs.
+
+2
+00:00:15.832 --> 00:00:24.406
+[low pulse: build energy horizon tracked] <v Narrator>Third, fingerprinting code by variable position reuses builds with zero mix-ups, cutting Rust compile energy four hundredfold.
+
+3
+00:00:24.906 --> 00:00:42.841
+[lock tone: position-indexed cache hit] <v Narrator>We tested a sweeping claim—that every compiler lowers canonical forms while tracking energy and preserving meaning—against twelve real compiler families. In practice, none tracks joules, none hashes name-free code, and automated fuzzers have uncovered thousands of C compiler bugs.
+
+4
+00:00:43.341 --> 00:01:00.384
+<v Narrator>Restating compilation as a seven-part standard lets us measure exact payback horizons across twenty kernels and fifteen toolchain tiers: optimized C beats Python after twenty-four hundred ninety runs, while shared Rust runtime libraries cut build energy twentyfold.
+
+5
+00:01:00.884 --> 00:01:18.984
+<v Narrator>Simply erasing variable names caused one hundred fifty dangerous cache collisions whenever two variables swapped roles. Replacing names with De Bruijn binding positions hit zero false matches across five hundred verified mutants and cut warm C and Rust rebuilds up to four hundred forty-eight times.
+
+6
+00:01:19.484 --> 00:01:29.440
+<v Narrator>All energy figures come from built-in Linux processor counters rather than an external wall wattmeter, and every external citation carries an explicit verification badge.

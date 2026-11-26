@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — rce (pl) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:07.168
+<v Narrator>Po pierwsze, program jest pisany raz jako jeden jasny plan, a komputer generuje pasujący kod w różnych językach.
+
+2
+00:00:07.508 --> 00:00:15.097
+<v Narrator>Po drugie, każde możliwe wejście musi mieć z góry zadeklarowany wynik, zapobiegając ukrytym awariom przed uruchomieniem czegokolwiek.
+
+3
+00:00:15.437 --> 00:00:21.596
+<v Narrator>Po trzecie, każda naprawa, która przechodzi kontrolę jest zapisywana i ponownie wykorzystywana, więc nigdy nie płacisz dwa razy za jedną poprawkę.

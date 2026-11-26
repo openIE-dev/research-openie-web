@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (de) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:36.664
+<v Narrator>Erstens wird fortgeschrittenes Computing für jeden erschwinglich, wenn teure neuronale Modelle als letzter Ausweg hinter schnellen lokalen Lookup-Tabellen, Suchindizes und exakten Solvern fungieren.Zweitens spart die Komprimierung von Gewichten unter ein Bit Speicherplatz. Doch das Entpacken dieser Gewichte zur Laufzeit zurück in Gleitkommazahlen verschwendet über achtzigmal mehr Energie auf der Leiterplatte als das direkte Ausführen gepackter Ganzzahllogik.
+
+2
+00:00:36.744 --> 00:00:56.403
+<v Narrator>Drittens erzeugt ein Ganzzahl-Kernel, der durch kryptografische Hashes überprüft wird, die exakt gleiche Antwort für Prozessoren, Grafikkarten, WebAssembly, Hardwarelogik und Mikrocontroller und stoppt sofort, wenn sich ein einzelnes Gewicht ändert.
+
+3
+00:00:56.483 --> 00:01:19.234
+<v Narrator>Über 1500 deterministische Steuerungsaufgaben hinweg schlug die Nullmodell-Suche neuronale Basislinien um 61,60 Prozentpunkte bei strukturierten Werkzeugschemata und 20,80 Punkte bei der Booleschen Befriedigungsfähigkeit mit einer Nettoleistungssensorenergie von 1,41 bis 2,09 Mikrojoule.
+
+4
+00:01:19.314 --> 00:01:50.864
+<v Narrator>Auf einem AMD Kria 5-Volt-Board-Shunt mit einer Idle-Drift von 0,09 bis 0,11 Prozent verbrannte das Entpacken von 0,1517 Bit pro Gewicht-Matrizen in 32-Bit-Gleichangaben 63.335,56 Mikrojoule brutto – 81,86 Mal schlechter als Acht-Bit-Ganzzahlen – während gepackte Ganzzahlen Walsh-Hadamard, exklusives NOR, Bitzählung und Nibble-Lookup auf 187,49 Mikrojoule brutto und 10,30 Mikrojoule netto fielen.
+
+5
+00:01:50.944 --> 00:02:18.768
+<v Narrator>Ein hash-verifizierter Integer-Kernel passte Bit für Bit über zehn Lanes und sechs Fabrics – Prozessor, Radeon 8060S Vulkan Grafik, Split-Prozessor-Grafik, WebAssembly Vektoren, Verilog Hardware Logik und ein 1.444-Byte Bare-Metal Mikrocontroller – an, wobei er auf Single-Weight Tamper zusammen mit 1.315 Planetary Digital Well Absenkrezepten stoppte.
+
+6
+00:02:18.848 --> 00:02:53.490
+<v Narrator>Die vierstufige Kaskade zur Rechtschreibprüfung reduzierte die Shuntenergie von Kria um das 26,58-fache brutto und das 24,49-fache netto. Sie reduzierte die Shuntenergie von Jetson Thor um das 16,26-fache und verhinderte 38,46-mal Anrufe der Stufe Vier. Alle Empfänge sind mit Signatur und Selbstüberprüfung ausgestattet – nicht extern geprüft – wobei Shunt-, Chipzähler-, geschätzte und ungemessene Joule streng getrennt gehalten werden.

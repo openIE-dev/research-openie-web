@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — from-ephemeral-inference-to-compiled-agency (ig) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:09.536
+<v Narrator>N'oge gara aga, a na-ejikarị ihe ndị dị ka ntinye aka n'ime usoro ihe omume iji mee ka ọ bụrụ ihe eji eme ihe maka ịrụ ọrụ nke ọma.
+
+2
+00:00:09.616 --> 00:00:25.702
+<v Narrator>Nke abụọ, compressing weights n'okpuru otu bit na-echekwa nghọta, ma unpacking ha azụ ka floating-point nọmba na runtime wastes karịa oge iri na ụma karịa circuit-board ike karịa ịrụ ọrụ packed integer logic n'ụzọ ziri ezi.
+
+3
+00:00:25.782 --> 00:00:43.390
+<v Narrator>Nke atọ, otu integer kernel enyocha site cryptographic hashes na-emepụta ihe ziri ezi nke ahụ ọzọ n'elu processors, graphical kaadị, WebAssembly, hardware logic, na microcontrollers, na-akwụsị mgbe niile ma ọ bụrụ na a dị iche iche ibu mgbanwe.

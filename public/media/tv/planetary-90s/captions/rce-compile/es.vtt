@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (es) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:16.751
+<v Narrator>En primer lugar, los compiladores reales rompen cualquier ley descriptiva, por lo que este estudio define una medida de siete partes en su lugar; y en segundo lugar, la optimización máxima del compilador quema energía inicial que nunca se paga en el treinta por ciento de los programas de prueba.
+
+2
+00:00:16.831 --> 00:00:26.517
+<v Narrator>En tercer lugar, el código de huellas dactilares por posición variable reutiliza compilaciones sin mezclas, reduciendo la energía de compilación de Rust cuatrocientas veces.
+
+3
+00:00:26.597 --> 00:00:41.760
+<v Narrator>En la práctica, ninguno de ellos realiza un seguimiento de los joules, ningún hash del código sin nombre y los fuzzers automatizados han descubierto miles de errores en el compilador C. Por lo tanto, no es posible hacer una evaluación completa de todos los compiladores.
+
+4
+00:00:41.840 --> 00:01:02.761
+<v Narrator>La recompilación como un estándar de siete partes nos permite medir horizontes exactos de retorno a través de veinte núcleos y quince niveles de cadena de herramientas: C optimizado supera a Python después de dos mil cuatrocientas noventa ejecuciones, mientras que las bibliotecas de tiempo de ejecución Rust compartidas reducen la energía de compilación por veinte veces.
+
+5
+00:01:02.841 --> 00:01:25.681
+<v Narrator>El simple borrado de los nombres de las variables causaba ciento cincuenta colisiones peligrosas en el caché cada vez que dos variables intercambiaban roles, mientras que la sustitución de los nombres con posiciones de enlace De Bruijn no produjo ninguna coincidencia falsa entre quinientos mutantes verificados y redujo las reconstrucciones calientes de C y Rust hasta cuatrocientas cuarenta y ocho veces.
+
+6
+00:01:25.761 --> 00:01:36.690
+<v Narrator>Todas las cifras de energía provienen de los contadores integrados del procesador Linux en lugar de un medidor de vatios externo, y cada cita externa lleva una insignia de verificación explícita.

@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — deterministic-null (ca) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:14.882
+<v Narrator>Primer, la majoria de les proves d' IA salten un grup de control de model zero que prova el que una cerca simple ja resol. Segon, en tasques matemàtiques i de base de dades limitades, una taula de cerca congelada coincideix amb l' IA del núvol en nou de deu proves.
+
+2
+00:00:15.382 --> 00:00:23.382
+<v Narrator>En tercer lloc, en tasques de codificació oberta IA va saltar endavant, mentre que emmagatzemant les respostes verificades redueix l'energia de repetició tres punts sis vegades.
+
+3
+00:00:23.882 --> 00:00:37.954
+<v Narrator>Si dos models de cent mil milions de paràmetres tenen un 99% en una prova estructurada, ¿algun d'ells necessitava una xarxa neuronal en el moment de prendre la decisió? Sense un grup de control amb model zero en exactament el mateix examen, ningú no pot dir la diferència.
+
+4
+00:00:38.454 --> 00:00:54.882
+<v Narrator>Vam construir una taula de cerca d'enters en vuit passos verificada bit a bit en Rust, Go, Python, Julia i C plus plus, després vam ancorar les seves empremtes digitals en proves públiques del calendari Bitcoin abans que els beacons públics d'aleatorietat generessin quatre mil trenta nous problemes pendents.
+
+5
+00:00:55.382 --> 00:01:11.222
+<v Narrator>A través de dos mil vuit-cents quaranta problemes matemàtics i de bases de dades limitats, els models de núvol van superar la taula congelada només en frases no indexades del client, però van saltar de quaranta-quatre a noranta-cinc punts percentuals per davant en quatre paràmetres d'enginyeria de programari d'autor extern.
+
+6
+00:01:11.722 --> 00:01:21.953
+<v Narrator>Quan les correccions neuronals recentment verificades s'escriuen de nou en el magatzem de cerca, les càrregues de treball realistes esbiaixades tallen les crides recurrents del model i l'energia local del xip per tres punts cinc nou vegades.

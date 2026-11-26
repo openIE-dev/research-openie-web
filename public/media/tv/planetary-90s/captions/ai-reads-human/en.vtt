@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — ai-reads-human (en)
+
+1
+00:00:00.320 --> 00:00:16.158
+[key chime: binary schema frame arrives] <v Narrator>First, computers often swap data in text formats written for human eyes, forcing machines to spend extra work. Second, reading indented configuration text took over two thousand times more chip energy than reading compact machine numbers.
+
+2
+00:00:16.658 --> 00:00:24.468
+[low pulse: chip counter tracks parse cost] <v Narrator>Third, chopping structured text into AI word pieces burned twelve times more energy than parsing the text itself.
+
+3
+00:00:24.968 --> 00:00:41.722
+[lock tone: compact integer record committed] <v Narrator>Formats full of curly braces, commas, and indented spaces were designed so people could inspect files comfortably in text editors. Yet modern AI tool pipelines pass millions of those verbose text records strictly from machine to machine without a human ever looking.
+
+4
+00:00:42.222 --> 00:00:59.589
+<v Narrator>We named this extra work the impedance tax and tested thirty-four parsing and word-splitting workloads across twenty thousand records. Running each pass inside an isolated worker process on an Apple processor cleanly separated tiny parsing costs from noisy background laptop activity.
+
+5
+00:01:00.089 --> 00:01:17.771
+<v Narrator>Unpacking a twenty-three-byte binary record used two hundred eighty nanojoules. Standard bracketed text used nearly eight times more, compiled indented text used two hundred forty-nine times more, and pure Python indented text burned two thousand fifty-four times more chip energy.
+
+6
+00:01:18.271 --> 00:01:31.355
+<v Narrator>Even adding two spaces of pretty indentation more than doubled AI word-splitting energy to seventy-one microjoules per record. Keep internal machine pipes compact and binary, and format text only when people read.

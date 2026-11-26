@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — ai-reads-human (tr) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:19.246
+<v Narrator>Birincisi, bilgisayarlar genellikle insan gözü için yazılmış metin formatlarında veri değişimi yaparak makineleri ekstra çalışmaya zorluyorlar.İkincisi, ince yazılan yapılandırma metnini okumak kompakt makine numaralarını okumaktan iki bin kat daha fazla çip enerjisi gerektiriyor.
+
+2
+00:00:19.326 --> 00:00:29.019
+<v Narrator>Üçüncü olarak, yapılmış metinleri yapay zeka kelime parçalarına bölmek metnin kendisini analiz etmekten on iki kat daha fazla enerji yakıyordu.
+
+3
+00:00:29.099 --> 00:00:47.815
+<v Narrator>Parmaklıklar, virgül ve boşluklarla dolu formatlar insanların metin düzenleme programlarında dosyaları rahatça inceleyebilmeleri için tasarlanmıştı.Ama modern yapay zeka araç boru hatları bu uzun metni insan gözü önünde makineden makineye milyonlarca kayıt yoluyla aktarıyor.
+
+4
+00:00:47.895 --> 00:01:08.182
+<v Narrator>Bu ek iş için "impedans vergisi" adını verdik ve yirmi bin kayıt üzerinde otuz dört analiz ve kelime bölme çalışma yükünü test ettik. her geçişi bir Apple işlemcisinde izole edilmiş bir çalışan sürecinde yürütmek, küçük analiz maliyetlerini arka plan gürültülü laptop aktivitesinden temizce ayırdı.
+
+5
+00:01:08.262 --> 00:01:25.132
+<v Narrator>23 baytlık ikili kayıtları açmak için 280 nanojoule harcandı. Standart parmaklıklı metin yaklaşık sekiz kat daha fazla, derlenmiş inceleme metni ise 249 kat daha fazla enerji tüketti. Saf Python inceleme metni ise 254 kat daha fazla enerji tüketti.
+
+6
+00:01:25.212 --> 00:01:39.690
+<v Narrator>İki boşluk ekleyerek bile, sözcüklerin parçalanması enerjisini kayıt başına 71 mikrojoule'a iki katından fazla artırdık. İç makine borularını kompakt ve ikili tutarak, sadece insanlar okuduğunda metni formatlayın.

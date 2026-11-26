@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (fi) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:15.332
+<v Narrator>Ensinnäkin todelliset kääntäjät rikkovat mitä tahansa yksittäistä kuvailevaa lakia, joten tässä tutkimuksessa määritellään sen sijaan seitsemänosainen mittapuu.Toiseksi maksimaalinen kääntäjän optimointi polttaa etukäteen energiaa, joka ei koskaan maksa itseään takaisin kolmellakymmenellä prosentilla testiohjelmista.
+
+2
+00:00:15.832 --> 00:00:24.406
+<v Narrator>Kolmanneksi, sormenjälkikoodin muuttuva sijainti käyttää uudelleen rakenteita ilman sekaannusta, mikä leikkaa Rust-käännösenergiaa neljä sataa kertaa.
+
+3
+00:00:24.906 --> 00:00:42.841
+<v Narrator>Testasimme laajamittaista väitettä, jonka mukaan jokainen kääntäjä laskee kanonisia muotoja samalla kun se seuraa energiaa ja säilyttää merkityksen. Testasimme tätä väitettä 12:ta todellista kääntäjäperhettä vastaan. Käytännössä yksikään ei seuraa jouleja, yksikään ei hajauta nimetöntä koodia, ja automatisoidut fuzzerit ovat löytäneet tuhansia C-kääntäjän vikoja.
+
+4
+00:00:43.341 --> 00:01:00.384
+<v Narrator>Kääntämisen uudelleenjärjestely seitsemänosaisena standardina antaa meidän mitata tarkkoja takaisinmaksuhorisontteja yli kahdenkymmenen ytimen ja viidentoista työkaluketjutason: optimoitu C voittaa Pythonin kahdenneljänsadan yhdeksänkymmenen suorituksen jälkeen, kun taas jaetut Rust-ajokirjastot leikkaavat rakennusenergiaa kaksikymmentä kertaa.
+
+5
+00:01:00.884 --> 00:01:18.984
+<v Narrator>Muuttujan nimen poistaminen aiheutti sataviisikymmentä vaarallista välimuistin törmäystä aina kun kaksi muuttujaa vaihtoi roolia. Nimien korvaaminen De Bruijnin sitoutumisasetuksilla ei tuottanut yhtään väärää osumaa viidensadan varmistetun mutantin keskuudessa. Se katkaisi lämpimät C- ja Rust-uudelleenrakennukset jopa neljäsataa neljäkymmentäkahdeksan kertaa.
+
+6
+00:01:19.484 --> 00:01:29.440
+<v Narrator>Kaikki energialuvut tulevat sisäisistä Linux-prosessorilaskureista ulkoisen seinän wattimittarin sijaan, ja jokaisella ulkoisella lainauksella on selkeä varmennusmerkki.

@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (my) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:28.838
+<v Narrator>ပထမဦးဆုံး, စျေးကြီး neural ပုံစံများအမြန်ဒေသခံရှာဖွေရေးစားပွဲနောက်ကွယ်မှနောက်ဆုံးအကူအညီအဖြစ်လုပ်ဆောင်သောအခါလူတိုင်းအတွက်တတ်နိုင်သောဖြစ်လာသည်။ ဒုတိယ, တစ် bit အောက်တွင်အလေးချိန်ကိုဖိနှိပ်ခြင်းမှတ်ဉာဏ်ကိုကယ်တင်, ဒါပေမဲ့ runtime မှာ floating-point အရေအတွက်တွေကိုပြန် unpacking သူတို့ကတိုက်ရိုက်ထုပ်ပိုးပြီးပြည့်စုံတဲ့လက္ခဏာ logic ကိုထက်ရှစ်ဆယ်ကြိမ်ကျော် circuit board စွမ်းအင်စွန့်ပစ်။
+
+2
+00:00:28.918 --> 00:00:46.026
+<v Narrator>တတိယ, cryptographic hashes ကစစ်ဆေးတစ်ဦး integer kernel ကို processors များအကြားတိကျတဲ့တူညီတဲ့အဖြေကိုထုတ်လုပ်, ဂရပ်ဖစ်ကဒ်များ, WebAssembly, hardware logic နဲ့ microcontrollers, တစ်ဦးတည်းသောအလေးချိန်ပြောင်းလဲလျှင်ချက်ချင်းရပ်တန့်.
+
+3
+00:00:46.106 --> 00:01:12.337
+<v Narrator>ဆယ့်ငါးရာ deterministic ထိန်းချုပ်မှုလုပ်ငန်းစဉ်များအကြား, zero-model ကိုရှာဖွေခြင်းအားဖြင့်ဖွဲ့စည်း tool ကို schemes နှင့် 1.41 မှ 2.09 microjoules net power sensor ကိုစွမ်းအင်အတွက် Boolean satisfiability အပေါ် 61.60 ရာခိုင်နှုန်းဂိုးနှင့် 20.80 ဂိုးဖြင့် neural baselines အနိုင်ရ, စင်ကြယ်စွာ 12.81 ချက်ပွင့်လင်း coding triage ကွာဟချက်ကိုသီးခြားစီ။
+
+4
+00:01:12.417 --> 00:01:42.491
+<v Narrator>0.11 ရာခိုင်နှုန်းအလိုအလျောက် drift နှင့်အတူ AMD Kria ငါး-ဗို့ဘုတ်အဖွဲ့ shunt အပေါ်, unpacking 0.1517 bits ကို-တစ်ဦးအလေးချိန်မက်ထရစ်မှ 32-bit floats မီးရှို့ 63,335.56 microjoules စုစုပေါင်း-81.86 ကြိမ်ရှစ်-bit ကို integers ထက်ဆိုးသော-တချိန်တည်းမှာထုပ်ပိုးပြီးပြည့်စုံ Walsh-Hadamard, အထူး-NOR, bit-စာရင်းနှင့် nibble lookup 187.49 microjoules စုစုပေါင်းနှင့် 10.30 microjoules net သို့ကျဆင်းသွားသည်။
+
+5
+00:01:42.571 --> 00:02:07.671
+<v Narrator>တစ် hash-စစ်ဆေးပြီးပြည့်စုံသော core ကိုဆယ်လမ်းကြောင်းနှင့်ခြောက် fabrics-processor ကို, Radeon 8060S Vulkan ဂရပ်ဖစ်, split processor-ဂရပ်ဖစ်, WebAssembly ဗီကွန်များ, Verilog hardware logic နှင့် 1,444-byte ကို bare-metal microcontroller-တစ်ဦးတည်းအလေးချိန် tamper ပေါ်တွင်ရပ်တန့် 1,315 Planetary Digital Well လျှော့ချချက်ပြုတ်နည်းများ.
+
+6
+00:02:07.751 --> 00:02:25.990
+<v Narrator>အဆုံးမှအဆုံး, လေး-အဆင့် spellcheck cascade က Kria ပါဝါ sensor ကိုစွမ်းအင်ကိုဖြတ်တောက် 26.58 ကြိမ်စုစုပေါင်းနှင့် 24.49 ကြိမ် Net, Jetson Thor ပါဝါ Sensor ကိုစွမ်းအားကို 16.26 ကြိမ်ဖြတ်ပြီးအဆင့်-လေးဖုန်းခေါ်ဆိုမှု၏ 38.46 အကြိမ်ရှောင်ရှားခဲ့သည်။

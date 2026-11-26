@@ -1,0 +1,18 @@
+WEBVTT
+NOTE OpenIE Planetary digest v1.0 — planetary-digest (es) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:10.538
+<v Narrator>Bienvenido al Digest Planetario de OpenIE Research Radio, que resume 29 estudios de acceso abierto sobre computación verificable y con contabilidad energética.
+
+2
+00:00:10.618 --> 00:00:30.015
+<v Narrator>A través de nuestra cascada de búsqueda en primer lugar de 4 etapas, las rápidas tablas hash de tiempo constante, los índices de búsqueda de trigrama y los solucionadores de enteros exactos manejan consultas rutinarias localmente, despertando grandes modelos neuronales solo como último recurso.
+
+3
+00:00:30.095 --> 00:00:54.906
+<v Narrator>En derivaciones de placas en línea de 5 voltios con una derivación de inactividad del 0,09 al 0,11 por ciento, el desempaquetado de matrices de 0,1517 bits por peso a flotantes de 32 bits desperdició 81,86 veces más energía que los enteros de 8 bits, mientras que la lógica de enteros empacados cayó a 187,49 microjuelos brutos y redujo la energía total de cascada 26,58 veces.
+
+4
+00:00:54.986 --> 00:01:10.290
+<v Narrator>Cada estudio incluye hashes criptográficos, determinismo de arquitectura cruzada de 6 tejidos, fuentes Opus de bajo ancho de banda de 24 kilobits, descripción de audio extendida y resúmenes en lenguaje sencillo Creative Commons Zero.

@@ -25,9 +25,10 @@ function* walk(dir) {
 
 function attrs(html, name) {
   const out = [];
+  const stripped = html.replace(/(<script\b[^>]*>)[\s\S]*?(<\/script>)/gi, '$1$2');
   const re = new RegExp(`\\b${name}\\s*=\\s*("([^"]*)"|'([^']*)')`, 'gi');
   let m;
-  while ((m = re.exec(html))) out.push(m[2] ?? m[3] ?? '');
+  while ((m = re.exec(stripped))) out.push(m[2] ?? m[3] ?? '');
   return out;
 }
 

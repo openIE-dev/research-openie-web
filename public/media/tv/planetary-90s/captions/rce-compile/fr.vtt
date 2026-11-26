@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (fr) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:15.908
+<v Narrator>Premièrement, les compilateurs réels enfreignent n'importe quelle loi descriptive. Cette étude définit donc un critère à sept parties. Deuxièmement, l'optimisation maximale du compilateur brûle de l'énergie initiale qui ne se rembourse jamais sur trente pour cent des programmes de test.
+
+2
+00:00:15.988 --> 00:00:24.810
+<v Narrator>Troisièmement, l'empreinte de code par position variable réutilise les compilations sans aucun mélange, réduisant l'énergie de compilation Rust quatre fois cent.
+
+3
+00:00:24.890 --> 00:00:45.101
+<v Narrator>Nous avons testé une affirmation générale – que chaque compilateur abaisse les formes canoniques tout en suivant l’énergie et en préservant le sens – contre douze familles de compilateurs réels.En pratique, aucun ne suit les joules, aucun n’effectue un hachage du code sans nom, et des fuzzers automatisés ont découvert des milliers de bogues dans les compilateurs C.
+
+4
+00:00:45.181 --> 00:01:03.845
+<v Narrator>La recompilation en tant que norme en sept parties nous permet de mesurer les horizons exacts du retour sur investissement sur vingt noyaux et quinze niveaux d'outils: le C optimisé bat Python après deux cent quatre-vingt-dix exécutions, tandis que les bibliothèques d'exécution Rust partagées réduisent l'énergie de compilation par vingt.
+
+5
+00:01:03.925 --> 00:01:16.064
+<v Narrator>Remplacer les noms par des positions de liaison De Bruijn a permis d'obtenir zéro fausse correspondance sur cinq cents mutants vérifiés et de couper les reconstructions en C et Rust jusqu'à quatre cent quarante-huit fois.
+
+6
+00:01:16.144 --> 00:01:26.790
+<v Narrator>Tous les chiffres énergétiques proviennent de compteurs intégrés du processeur Linux plutôt que d'un wattmètre mural externe, et chaque citation externe porte un badge de vérification explicite.

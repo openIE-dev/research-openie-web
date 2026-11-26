@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (fi) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:20.135
+<v Narrator>Ensinnäkin, edistyksellinen laskenta tulee kohtuulliseen hintaan kaikille, kun kalliit hermomallit toimivat viimeisenä keinona nopeiden paikallisten hakutaulukoiden, hakuindeksien ja tarkkojen ratkaisijoiden takana. Toiseksi, alle yhden bitin painotus säästää muistia, mutta niiden purkaminen takaisin liukulukuiksi ajonaikaisesti tuhlaa yli kahdeksankymmentä kertaa enemmän piirilevyenergiaa kuin pakattu kokonaislukulogiikka suoraan.
+
+2
+00:00:20.295 --> 00:00:32.082
+<v Narrator>Kolmanneksi, yksi kokonaislukuydin, joka on tarkistettu salauskoodin hajautuksilla tuottaa täsmälleen saman vastauksen eri prosessoreilla, näytönohjaimilla, WebAssemblyllä, laitteistologiikalla ja mikro-ohjaimilla pysähtyen välittömästi jos yksittäinen paino muuttuu.
+
+3
+00:00:32.242 --> 00:00:50.475
+<v Narrator>Nolla-mallin haku päihitti hermoston perustason 61,60 prosenttiyksiköllä strukturoiduissa työkalukaavoissa ja 20,80 pisteellä Boolen tyydytettävyydessä 1,41 - 2,09 mikrojouleilla netto shunt-energiaa, eristäen puhtaasti 12,80 pisteen avoimen koodauksen triage-aukon.
+
+4
+00:00:50.635 --> 00:01:16.546
+<v Narrator>AMD Kria -viiden voltin korttishuntilla, jossa oli 0,09–0,11 prosentin tyhjäkäyntiajo, 0,1517 bittiä painoa kohti sisältävien matriisien purkaminen 32-bittiseksi kelluvaksi poltti bruttona 63 335,56 mikrojoulia – 81,86 kertaa huonompi kuin kahdeksanbittinen kokonaisluku – kun taas pakattu kokonaisluku Walsh-Hadamard, yksinomainen NOR, bittien määrä ja nibble-haku laskivat bruttona 187,49 mikrojouliin ja nettoina 10,30 mikrojouliin.
+
+5
+00:01:16.706 --> 00:01:37.000
+<v Narrator>Yksi hajautettu kokonaislukuydin vastasi bitti bitiltään kymmenellä kaistalla ja kuudella materiaalilla – prosessori, Radeon 8060S Vulkan -näytönohjain, jaetut suoritin-näytönohjaimet, WebAssembly-vektorit, Verilog-laitteistologiikka ja 1444 tavun bare-metal mikrokontrolleri – pysähtyen yhden painon manipulointiin 1315 Planetary Digital Well laskevan reseptin kanssa.
+
+6
+00:01:37.160 --> 00:01:58.456
+<v Narrator>Päätepisteestä päätepisteen kautta neljän vaiheen oikeinkirjoituksen tarkistuskaskadi vähensi Krian shunttienergiaa 26,58 kertaa bruttomääräisesti ja 24,49 kertaa nettomääräisesti. Se vähensi Jetson Thorin shunttienergiaa 16,26 kertaa ja välttyi 38,46 kertaa neljännen vaiheen kutsuilta. Kaikki kuitti on allekirjoitettu alkuperä, itsetarkastettu – ei ulkopuolisen vertaisarvioijan tarkastama – jolloin shuntti-, sirulaskuri-, arvioidut ja mittaamattomat joulet pidetään tiukasti erillään toisistaan.

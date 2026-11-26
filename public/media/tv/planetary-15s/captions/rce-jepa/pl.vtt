@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — rce-jepa (pl) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:07.077
+<v Narrator>Po pierwsze, zamiast zgadywać surowy kod słowo po słowie, małe modele przewidują kompaktowe podsumowania znaczenia programu.
+
+2
+00:00:07.417 --> 00:00:14.771
+<v Narrator>Po drugie, każdy model SI może zaproponować program kandydacki, ale szybki i rygorystyczny kontroler decyduje o tym, co przejdzie.
+
+3
+00:00:15.111 --> 00:00:22.195
+<v Narrator>Po trzecie, sprawdzanie zużywa tysiąc siedemset razy mniej energii niż generowanie, a zapisane poprawki zmniejszają ilość dużych wywołań modelu.

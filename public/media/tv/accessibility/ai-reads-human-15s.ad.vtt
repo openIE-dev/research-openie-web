@@ -1,25 +1,26 @@
 WEBVTT
+NOTE OpenIE Research TV v1.0 Accessibility — ai-reads-human (Extended Audio Description + Ranked Non-Speech Cues)
 
 1
 00:00:00.220 --> 00:00:08.599
-<v Audio Description>Visual scene one: Card one glows amber beside a wide, glowing rose-and-amber funnel choked with human-formatted text brackets and spaces.
+[key chime: binary schema frame arrives] <v Audio Description>Visual scene one: Card one glows amber beside a wide, glowing rose-and-amber funnel choked with human-formatted text brackets and spaces.
 
 2
 00:00:08.939 --> 00:00:16.314
-<v Presenter>First, computers often swap data in text formats written for human eyes, forcing machines to spend extra work.
+<v Narrator>First, computers often swap data in text formats written for human eyes, forcing machines to spend extra work.
 
 3
 00:00:16.654 --> 00:00:26.169
-<v Audio Description>Visual scene two: Card two turns cyan, contrasting a tall amber two-thousand-fifty-four-times text-parsing bar against a tiny emerald binary-number bar.
+[low pulse: chip counter tracks parse cost] <v Audio Description>Visual scene two: Card two turns cyan, contrasting a tall amber two-thousand-fifty-four-times text-parsing bar against a tiny emerald binary-number bar.
 
 4
 00:00:26.509 --> 00:00:34.138
-<v Presenter>Second, reading indented configuration text took over two thousand times more chip energy than reading compact machine numbers.
+<v Narrator>Second, reading indented configuration text took over two thousand times more chip energy than reading compact machine numbers.
 
 5
 00:00:34.478 --> 00:00:43.131
-<v Audio Description>Visual scene three: Card three locks in emerald as twelve rose word-slicing rings highlight tokenizer waste before any neural model even starts.
+[lock tone: compact integer record committed] <v Audio Description>Visual scene three: Card three locks in emerald as twelve rose word-slicing rings highlight tokenizer waste before any neural model even starts.
 
 6
 00:00:43.471 --> 00:00:50.195
-<v Presenter>Third, chopping structured text into AI word pieces burned twelve times more energy than parsing the text itself.
+<v Narrator>Third, chopping structured text into AI word pieces burned twelve times more energy than parsing the text itself.

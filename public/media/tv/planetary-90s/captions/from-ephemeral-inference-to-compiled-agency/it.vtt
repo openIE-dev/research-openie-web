@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (it) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:20.135
+<v Narrator>In secondo luogo, la compressione dei pesi sotto un bit consente di risparmiare memoria, ma il loro decomprimere in numeri a virgola mobile durante l'esecuzione comporta uno spreco di energia oltre ottanta volte maggiore rispetto all'esecuzione diretta della logica degli interi.
+
+2
+00:00:20.295 --> 00:00:32.082
+<v Narrator>In terzo luogo, un kernel intero controllato da hash crittografici produce la stessa risposta esatta su processori, schede grafiche, WebAssembly, logica hardware e microcontrollori, fermandosi immediatamente se cambia un singolo peso.
+
+3
+00:00:32.242 --> 00:00:50.475
+<v Narrator>In 1500 attività di controllo deterministico, il modello zero ha battuto le linee di base neurali di 61.60 punti percentuali sugli schemi strutturati e di 20.80 punti sulla soddisfacibilità booleana a 1.41-2.09 microjoule di energia netta di shunt, isolando in modo pulito i 12.80 punti del gap di triage della codifica aperta.
+
+4
+00:00:50.635 --> 00:01:16.546
+<v Narrator>Su una scheda AMD Kria a cinque volt con uno shunt da 0,09 a 0,11%, il decomprimere matrici di 0,1517 bit per peso in numeri interi a 32 bit ha consumato 63.335,56 microjoule lordi—81,86 volte peggio degli interi a otto bit—mentre Walsh-Hadamard, NOR esclusivo, conteggio dei bit e ricerca nibble sono scesi a 187,49 microjoule lordi e 10,30 microjoule netti.
+
+5
+00:01:16.706 --> 00:01:37.000
+<v Narrator>Un kernel intero verificato con hash ha fatto corrispondere bit per bit dieci corsie e sei fabrics—processore, grafica Radeon 8060S Vulkan, grafica processore-processore split, vettori WebAssembly, logica hardware Verilog e un microcontrollore bare-metal da 1.444 byte—arrestandosi su tamper a peso singolo insieme a 1.315 ricette di abbassamento Planetary Digital Well.
+
+6
+00:01:37.160 --> 00:01:58.456
+<v Narrator>Da un capo all'altro, la cascata di controllo ortografico a quattro fasi ha ridotto l'energia dello shunt Kria 26,58 volte lorda e 24,49 volte netta, ha ridotto l'energia dello shunt Jetson Thor 16,26 volte ed evitato 38,46 volte le chiamate della fase quattro.

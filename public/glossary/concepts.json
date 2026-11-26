@@ -10,14 +10,39 @@
     "DefinedTermSet",
     "skos:ConceptScheme"
   ],
-  "name": "OpenIE Research & Unsiloeing AAC Concepts Anchor",
-  "description": "Machine-readable W3C SKOS and Schema.org DefinedTermSet anchor for screen readers, switches, and Augmentative and Alternative Communication (AAC) devices. Every concept carries a <=20-word zero-jargon plainDefinition, one-idea Easy-Read sentences, and AAC core-vocabulary symbol hints.",
-  "version": "1.0.0",
-  "dateModified": "2026-11-24",
+  "name": "OpenIE Research & Planetary Blueprint v1.0 AAC Concepts Anchor (Mulberry + Tawasol CC BY-SA 4.0)",
+  "description": "Machine-readable W3C SKOS and Schema.org DefinedTermSet anchor for screen readers, switches, Braille displays, and Augmentative and Alternative Communication (AAC) boards. Uses PBC-safe Mulberry (CC BY-SA 4.0) and Tawasol (CC BY-SA 4.0) primary symbol mappings with zero embedded CC BY-NC-SA pictograms.",
+  "version": "1.1.0",
+  "dateModified": "2026-11-26",
   "license": "https://creativecommons.org/publicdomain/zero/1.0/",
   "spdxLicense": "CC0-1.0",
   "wcagConformance": "WCAG 2.2 Level AA",
-  "conceptCount": 36,
+  "cogaObjectivesCovered": 8,
+  "isoPlainLanguageStandard": "ISO 24495-1:2023",
+  "symbolLicensingPolicy": {
+    "primaryDefaultSymbolSets": [
+      {
+        "id": "mulberry",
+        "name": "Mulberry Symbols",
+        "url": "https://mulberrysymbols.org/",
+        "spdxLicense": "CC-BY-SA-4.0",
+        "pbcCommercialCompatible": true
+      },
+      {
+        "id": "tawasol",
+        "name": "Tawasol Arabic & Multicultural AAC Symbol Set",
+        "url": "https://globalsymbols.com/symbolsets/tawasol",
+        "spdxLicense": "CC-BY-SA-4.0",
+        "pbcCommercialCompatible": true
+      }
+    ],
+    "nonCommercialExclusionPolicy": {
+      "excludedEmbeddedSet": "ARASAAC (CC BY-NC-SA 4.0)",
+      "arasaacPictogramEmbedded": false,
+      "rationale": "Open Interface Engineering, Inc. is structured as a Public Benefit Corporation (PBC). Because Creative Commons NonCommercial (NC) terms create legal ambiguity and downstream re-use barriers for PBCs, commercial mirrors, and Wikimedia Commons, zero ARASAAC graphics are embedded; Mulberry and Tawasol (both CC BY-SA 4.0) serve as the primary default symbol sets, while arasaacKeywordHintOnly is retained strictly as an unembedded text string for personal AAC software."
+    }
+  },
+  "conceptCount": 38,
   "maxPlainDefinitionWords": 16,
   "hasDefinedTerm": [
     {
@@ -52,7 +77,14 @@
           "check",
           "safe"
         ],
-        "arasaacKeyword": "security gate"
+        "mulberrySymbolId": "mulberry:security_gate",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:safety_shield",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "security gate",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -97,7 +129,14 @@
           "keep",
           "record"
         ],
-        "arasaacKeyword": "receipt"
+        "mulberrySymbolId": "mulberry:receipt",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:written_receipt",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "receipt",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -146,7 +185,14 @@
           "test",
           "right"
         ],
-        "arasaacKeyword": "correct"
+        "mulberrySymbolId": "mulberry:tick_box",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:correct_check",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "correct",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -191,7 +237,14 @@
           "power",
           "finish"
         ],
-        "arasaacKeyword": "energy"
+        "mulberrySymbolId": "mulberry:electricity",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:electric_energy",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "energy",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -240,7 +293,14 @@
           "worth",
           "choose"
         ],
-        "arasaacKeyword": "weigh"
+        "mulberrySymbolId": "mulberry:scales",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:balance_choice",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "weigh",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -285,7 +345,14 @@
           "work",
           "read"
         ],
-        "arasaacKeyword": "document"
+        "mulberrySymbolId": "mulberry:document_text",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:paper_document",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "document",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -326,7 +393,14 @@
           "piece",
           "count"
         ],
-        "arasaacKeyword": "word"
+        "mulberrySymbolId": "mulberry:jigsaw_piece",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:word_piece",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "word",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -371,7 +445,14 @@
           "small",
           "limit"
         ],
-        "arasaacKeyword": "temperature"
+        "mulberrySymbolId": "mulberry:thermometer",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:heat_limit",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "temperature",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -416,7 +497,14 @@
           "easy",
           "save"
         ],
-        "arasaacKeyword": "steps"
+        "mulberrySymbolId": "mulberry:stairs_down",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:step_ladder",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "steps",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -465,7 +553,14 @@
           "small",
           "stop"
         ],
-        "arasaacKeyword": "choose"
+        "mulberrySymbolId": "mulberry:filter_sort",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:choose_path",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "choose",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -510,7 +605,14 @@
           "best",
           "step"
         ],
-        "arasaacKeyword": "direction"
+        "mulberrySymbolId": "mulberry:compass",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:compass_guide",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "direction",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -551,7 +653,14 @@
           "enough",
           "stop"
         ],
-        "arasaacKeyword": "finish"
+        "mulberrySymbolId": "mulberry:finish_flag",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:finish_line",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "finish",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -596,7 +705,14 @@
           "true",
           "kind"
         ],
-        "arasaacKeyword": "label"
+        "mulberrySymbolId": "mulberry:label_tag",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:honest_tag",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "label",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -641,7 +757,14 @@
           "test",
           "run"
         ],
-        "arasaacKeyword": "computer"
+        "mulberrySymbolId": "mulberry:laptop_code",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:computer_program",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "computer",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -686,7 +809,14 @@
           "math",
           "guess"
         ],
-        "arasaacKeyword": "calculator"
+        "mulberrySymbolId": "mulberry:calculator",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:math_calculator",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "calculator",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -731,7 +861,14 @@
           "count",
           "power"
         ],
-        "arasaacKeyword": "microchip"
+        "mulberrySymbolId": "mulberry:microchip",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:processor_chip",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "microchip",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -780,7 +917,14 @@
           "wire",
           "power"
         ],
-        "arasaacKeyword": "plug"
+        "mulberrySymbolId": "mulberry:electric_plug",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:power_plug",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "plug",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -833,7 +977,14 @@
           "path",
           "tiny"
         ],
-        "arasaacKeyword": "movement"
+        "mulberrySymbolId": "mulberry:wave_line",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:motion_path",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "movement",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -874,7 +1025,14 @@
           "proof",
           "kinds"
         ],
-        "arasaacKeyword": "categories"
+        "mulberrySymbolId": "mulberry:books_stack",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:three_layers",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "categories",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -919,7 +1077,14 @@
           "true",
           "badge"
         ],
-        "arasaacKeyword": "badge"
+        "mulberrySymbolId": "mulberry:verified_badge",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:sensor_badge",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "badge",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -968,7 +1133,14 @@
           "rule",
           "fit"
         ],
-        "arasaacKeyword": "blueprint"
+        "mulberrySymbolId": "mulberry:set_square",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:geometry_plan",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "blueprint",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -1013,7 +1185,14 @@
           "plan",
           "build"
         ],
-        "arasaacKeyword": "engine"
+        "mulberrySymbolId": "mulberry:gear_cog",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:code_engine",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "engine",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -1062,7 +1241,14 @@
           "fix",
           "rule"
         ],
-        "arasaacKeyword": "stop"
+        "mulberrySymbolId": "mulberry:stop_sign",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:stop_hand",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "stop",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -1103,7 +1289,14 @@
           "safe",
           "same"
         ],
-        "arasaacKeyword": "safe"
+        "mulberrySymbolId": "mulberry:padlock_closed",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:safe_lock",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "safe",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -1144,7 +1337,14 @@
           "battery",
           "smart"
         ],
-        "arasaacKeyword": "battery"
+        "mulberrySymbolId": "mulberry:battery_full",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:battery_budget",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "battery",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -1189,7 +1389,14 @@
           "check",
           "code"
         ],
-        "arasaacKeyword": "guard"
+        "mulberrySymbolId": "mulberry:shield",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:guard_shield",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "guard",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -1230,7 +1437,14 @@
           "act",
           "budget"
         ],
-        "arasaacKeyword": "goal"
+        "mulberrySymbolId": "mulberry:target_goal",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:goal_target",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "goal",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -1275,7 +1489,14 @@
           "check",
           "share"
         ],
-        "arasaacKeyword": "join"
+        "mulberrySymbolId": "mulberry:arrows_merge",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:join_paths",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "join",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -1316,7 +1537,14 @@
           "compare",
           "fair"
         ],
-        "arasaacKeyword": "table"
+        "mulberrySymbolId": "mulberry:clipboard_list",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:lookup_table",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "table",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -1361,7 +1589,14 @@
           "count",
           "chance"
         ],
-        "arasaacKeyword": "new"
+        "mulberrySymbolId": "mulberry:star_sparkle",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:new_star",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "new",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -1406,7 +1641,14 @@
           "true",
           "share"
         ],
-        "arasaacKeyword": "gem"
+        "mulberrySymbolId": "mulberry:diamond_cube",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:master_record",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "gem",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -1455,7 +1697,14 @@
           "sign",
           "trust"
         ],
-        "arasaacKeyword": "envelope"
+        "mulberrySymbolId": "mulberry:envelope_sealed",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:signed_envelope",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "envelope",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -1500,7 +1749,14 @@
           "read",
           "clear"
         ],
-        "arasaacKeyword": "easy read"
+        "mulberrySymbolId": "mulberry:open_book",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:easy_book",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "easy read",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -1549,7 +1805,14 @@
           "see",
           "voice"
         ],
-        "arasaacKeyword": "audio description"
+        "mulberrySymbolId": "mulberry:headphones",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:audio_listen",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "audio description",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -1594,7 +1857,14 @@
           "small",
           "fast"
         ],
-        "arasaacKeyword": "dna"
+        "mulberrySymbolId": "mulberry:grid_cells",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:code_grid",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "dna",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -1639,7 +1909,14 @@
           "signal",
           "gate"
         ],
-        "arasaacKeyword": "communication"
+        "mulberrySymbolId": "mulberry:radio_mast",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:signal_tower",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "communication",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
       },
       "relatedStudies": [
         {
@@ -1649,6 +1926,118 @@
         {
           "url": "/tv/#communication-avalanche:15s",
           "label": "The Communication Tool Avalanche (Research TV)"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-compiled-agency",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:compiled-agency",
+      "canonical_id": "art:concept:compiled-agency:7fac98637036058c",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "Compiled Agency",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "Compiled Agency"
+      },
+      "plainDefinition": "Turning repeated verified answers into fast lookup tables and integer rules so models sleep.",
+      "plainWordCount": 14,
+      "sourceDefinition": "An architecture where recurring verified decisions compile downward into O(1) lookup tables, bounded edit/solver rules, and bit-exact integer kernels, waking large models only on novel arrivals.",
+      "easyReadSentences": [
+        "Most everyday computer requests repeat patterns seen before.",
+        "Compiled Agency saves checked answers inside tiny fast lookup tables.",
+        "Giant power-hungry models wake up only for brand-new questions."
+      ],
+      "symbolHint": {
+        "category": "Routing & Cascades",
+        "icon": "zap-cpu",
+        "unicodePictogram": "⚡",
+        "aacCoreWords": [
+          "save",
+          "fast",
+          "lookup"
+        ],
+        "mulberrySymbolId": "mulberry:lightning_chip",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:compiled_circuit",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "microchip",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
+      },
+      "relatedStudies": [
+        {
+          "url": "/living/compiled-agency/",
+          "label": "Compiled Agency Multi-Substrate Observatory"
+        },
+        {
+          "url": "/papers/lut-adapt/",
+          "label": "Downward LUT6 Compilation"
+        },
+        {
+          "url": "/papers/deterministic-null/",
+          "label": "Deterministic Null"
+        }
+      ]
+    },
+    {
+      "@id": "https://research.openie.dev/glossary/#concept-source-sheet",
+      "@type": [
+        "DefinedTerm",
+        "skos:Concept"
+      ],
+      "id": "concept:source-sheet",
+      "canonical_id": "art:concept:source-sheet:0486d3880abb1ab5",
+      "inDefinedTermSet": "https://research.openie.dev/glossary/concepts.json",
+      "skos:inScheme": "https://research.openie.dev/glossary/concepts.json",
+      "prefLabel": "Source Sheet",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "Source Sheet"
+      },
+      "plainDefinition": "A public checkable list linking every video or audio statement to its exact paper proof.",
+      "plainWordCount": 15,
+      "sourceDefinition": "A machine-readable and printable [G0-G12] verification sheet mapping every spoken or captioned claim in a media variant to its primary paper section, figure, energy class, and Ed25519 signature.",
+      "easyReadSentences": [
+        "Short science videos should never ask viewers for blind trust.",
+        "Each study has a public source sheet anyone can open and check.",
+        "Every spoken fact links straight to the matching paper section and data."
+      ],
+      "symbolHint": {
+        "category": "Records & Audit",
+        "icon": "clipboard-check",
+        "unicodePictogram": "📑",
+        "aacCoreWords": [
+          "check",
+          "source",
+          "true"
+        ],
+        "mulberrySymbolId": "mulberry:checklist_sheet",
+        "mulberrySymbolUrl": "https://mulberrysymbols.org/",
+        "tawasolSymbolId": "tawasol:verified_list",
+        "tawasolSymbolUrl": "https://globalsymbols.com/symbolsets/tawasol",
+        "symbolLicense": "CC-BY-SA-4.0",
+        "arasaacKeywordHintOnly": "checklist",
+        "arasaacPictogramEmbedded": false,
+        "arasaacLicenseNote": "ARASAAC uses CC BY-NC-SA 4.0; Open Interface Engineering, Inc. (a Public Benefit Corporation) never embeds NC-restricted pictograms and defaults strictly to Mulberry + Tawasol (CC BY-SA 4.0)."
+      },
+      "relatedStudies": [
+        {
+          "url": "/sourcesheets/",
+          "label": "OpenIE Checkable Source Sheets (29/29)"
+        },
+        {
+          "url": "/blueprint/",
+          "label": "Planetary Research Media Blueprint v1.0"
+        },
+        {
+          "url": "/tv/",
+          "label": "OpenIE Research TV"
         }
       ]
     }

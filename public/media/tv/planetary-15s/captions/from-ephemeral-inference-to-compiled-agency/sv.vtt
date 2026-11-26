@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — from-ephemeral-inference-to-compiled-agency (sv) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:11.273
+<v Narrator>För det första blir avancerad databehandling överkomlig för alla när dyra neurala modeller fungerar som en sista utväg bakom snabba lokala uppslagstabeller, sökordsindex och exakta lösare.
+
+2
+00:00:11.613 --> 00:00:23.626
+<v Narrator>För det andra sparar komprimering av vikter under en bit minne, men att packa upp dem tillbaka till flyttalstal vid körning slösar över åttio gånger mer kretskortsenergi än att köra packad heltalslogik direkt.
+
+3
+00:00:23.966 --> 00:00:38.806
+<v Narrator>För det tredje, en heltalskärna kontrollerad av kryptografiska hashvärden producerar exakt samma svar över processorer, grafikkort, WebAssembly, hårdvarulogik och mikrokontrollrar, stoppar omedelbart om en enda vikt ändras.

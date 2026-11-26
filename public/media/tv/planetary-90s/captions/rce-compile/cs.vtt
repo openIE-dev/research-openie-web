@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (cs) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:15.332
+<v Narrator>Za prvé, skutečné kompilátory porušují jakýkoliv popisný zákon. Proto tato studie definuje sedmidílné měřítko. Za druhé, maximální optimalizace překladače spotřebovává energii, která se nikdy nevrací na třicet procent testovacích programů.
+
+2
+00:00:15.832 --> 00:00:24.406
+<v Narrator>Za třetí, otisky prstů kódu pomocí proměnné pozice znovu použijí sestavy s nulovými záměnami, což snižuje energii kompilace Rustu čtyřikrát.
+
+3
+00:00:24.906 --> 00:00:42.841
+<v Narrator>Testovali jsme široké tvrzení, že každý kompilátor snižuje kanonické formy a zároveň sleduje energii a zachovává význam. Testovali jsme proti dvanácti reálným rodinám kompilátorů. V praxi žádný nesleduje jouly, žádný hashuje bezejmenný kód a automatizované fuzery odhalily tisíce chyb v C kompilátorech.
+
+4
+00:00:43.341 --> 00:01:00.384
+<v Narrator>Překompilování jako sedmidílný standard nám umožňuje měřit přesné horizonty návratnosti napříč dvaceti jádry a patnácti vrstvami nástrojového řetězce: optimalizovaný C porazí Python po dvaceti čtyřech stovkách devadesáti běhů, zatímco sdílené runtime knihovny Rustu snižují energii sestavování dvacetkrát.
+
+5
+00:01:00.884 --> 00:01:18.984
+<v Narrator>Pouhé vymazání názvů proměnných způsobilo sto padesát nebezpečných kolizí mezi dvěma proměnnými, kdykoli si tyto proměnné vyměnily roli. Nahrazením názvů De Bruijnovými vazebnými pozicemi se podařilo dosáhnout nulové chybné shody napříč pěti sty ověřenými mutanty a snížit počet přebudování v C a Rustu až čtyři sta čtyřicet osmkrát.
+
+6
+00:01:19.484 --> 00:01:29.440
+<v Narrator>Všechny údaje o spotřebě energie pocházejí z vestavěných počítadlech procesorů Linuxu, a ne z externího nástěnného wattmetru, a každá externí citace nese explicitní ověřovací odznak.

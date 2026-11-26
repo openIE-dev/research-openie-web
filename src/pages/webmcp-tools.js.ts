@@ -480,8 +480,8 @@ export const GET: APIRoute = async () => {
   var busTools = [
     {
       name: 'openie_get_blueprint_artifacts',
-      title: 'Get Canonical Blueprint WAI1 Artifacts & 50-Language Dissemination Matrix',
-      description: 'Returns the OpenIE Canonical Artifact Substrate (openie-artifact-v1), WAI1 binary envelope digests (Research TV & all 16 Research Radio .wai envelopes), Tier-1 20-language + Tier-2 30-language neural verification metrics, WCAG 2.2 AA accessibility links, and Universal AI Agent Bus endpoints. Read-only.',
+      title: 'Get Canonical Blueprint v1.0 Coverage, [G0-G12] Source Sheets & WAI1 Envelopes',
+      description: 'Returns the OpenIE Planetary Research Media Blueprint v1.0 (/coverage.json), [G0-G12] checkable source sheets (/sourcesheets/<slug>.json), all 17 Research Radio .wai envelopes + 24 kbps Opus streams, T0/T1/T2/Sign voiced vs captioned vs text coverage, and WCAG 2.2 AA accessibility links. Read-only.',
       inputSchema: {
         type: 'object',
         properties: {
@@ -497,12 +497,12 @@ export const GET: APIRoute = async () => {
     },
     {
       name: 'openie_lookup_aac_concept',
-      title: 'Look up W3C SKOS & Schema.org AAC Plain-Language Concepts',
-      description: 'Searches all 36 CC0-1.0 W3C SKOS DefinedTerm concepts (/glossary/concepts.json) designed for screen readers, switch users, and Augmentative and Alternative Communication (AAC) devices, returning <=16-word plain definitions, Easy-Read sentences, and ARASAAC symbol hints. Read-only.',
+      title: 'Look up W3C SKOS & Schema.org AAC Plain-Language Concepts (Mulberry + Tawasol CC BY-SA 4.0)',
+      description: 'Searches all 38 CC0-1.0 W3C SKOS DefinedTerm concepts (/glossary/concepts.json v1.1.0) designed for screen readers, Braille displays, switch users, and AAC devices, returning <=16-word plain definitions, Easy-Read sentences, and PBC-safe Mulberry + Tawasol (CC BY-SA 4.0) symbol IDs. Read-only.',
       inputSchema: {
         type: 'object',
         properties: {
-          query: { type: 'string', maxLength: 120, description: 'Concept label, core switch word, or topic to search (omit or empty string to return all 36 SKOS AAC concepts).' }
+          query: { type: 'string', maxLength: 120, description: 'Concept label, core switch word, or topic to search (omit or empty string to return all 38 SKOS AAC concepts).' }
         },
         additionalProperties: false
       },
@@ -568,8 +568,8 @@ export const GET: APIRoute = async () => {
     },
     {
       name: 'openie_get_replication_kits',
-      title: 'Get Standalone Apache-2.0 External Replication Kits (6 Kits @ cb5b641) & Ed25519 Key',
-      description: 'Returns all 6 standalone Apache-2.0 external replication kits (replicate/ suites deterministic-null, ai-reads-human, satb-harness plus kits/deterministic-null-suite, kits/littlebit-joule, and 6-fabric kits/waios-mosaic-cascade @ cb5b641 / 813eb96 with Thor INA3221 & KV260 INA260 measured_j), https://research.openie.dev/living/compiled-agency/, the OpenIE Ed25519 publisher public key (1fa743eb5abeae11d37f11d17c19b2744e3213fa0ba7ae69f624d8a3e5214110), and https://blog.openie.dev/verification/. Read-only.',
+      title: 'Get Standalone Apache-2.0 External Replication Kits (6 Kits @ 6a22dee) & Ed25519 Key',
+      description: 'Returns all 6 standalone Apache-2.0 external replication kits (replicate/ suites deterministic-null, ai-reads-human, satb-harness plus kits/deterministic-null-suite @ 6a22dee Oct-Nov 2026 6-model SOTA shunt panel, kits/littlebit-joule, and 6-fabric kits/waios-mosaic-cascade @ cb5b641 / 813eb96 with Thor INA3221 & KV260 INA260 measured_j), https://research.openie.dev/living/compiled-agency/, the OpenIE Ed25519 publisher public key (1fa743eb5abeae11d37f11d17c19b2744e3213fa0ba7ae69f624d8a3e5214110), and https://blog.openie.dev/verification/. Read-only.',
       inputSchema: {
         type: 'object',
         properties: {

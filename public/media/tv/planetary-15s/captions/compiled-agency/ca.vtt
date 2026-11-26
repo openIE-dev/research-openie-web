@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — from-ephemeral-inference-to-compiled-agency (ca) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:11.273
+<v Narrator>En primer lloc, la computació avançada es torna assequible per a tothom quan els models neurals cars actuen com un últim recurs darrere de ràpides taules de cerca locals, índexs de cerca i solucionadors exactes.
+
+2
+00:00:11.613 --> 00:00:23.626
+<v Narrator>Segon, comprimir pesos per sota d'un bit estalvia memòria, però desempaquetar-los de nou a nombres de coma flotant en temps d'execució malgasta més de vuitanta vegades més energia del circuit que executar la lògica d'enters empaquetats directament.
+
+3
+00:00:23.966 --> 00:00:38.806
+<v Narrator>En tercer lloc, un nucli sencer comprovat per hashes criptogràfics produeix exactament la mateixa resposta a través de processadors, targetes gràfiques, WebAssembly, lògica de maquinari i microcontroladors, aturant-se immediatament si canvia un sol pes.

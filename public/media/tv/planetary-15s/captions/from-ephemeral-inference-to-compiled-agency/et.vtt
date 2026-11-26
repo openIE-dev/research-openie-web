@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — from-ephemeral-inference-to-compiled-agency (et) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:11.273
+<v Narrator>Esiteks, arenenud arvutustehnika muutub taskukohaseks kõigile, kui kallid neuronilised mudelid toimivad viimase abinõuna kiirete kohalike otsingutabelite, otsinguindeksite ja täpsete lahendajate taga.
+
+2
+00:00:11.613 --> 00:00:23.626
+<v Narrator>Teiseks, kaalude tihendamine alla ühe biti säästab mälu, kuid nende lahtipakkimine ujukomaarvudeks käitusaegselt raiskab üle kaheksakümne korra rohkem trükkplaadi energiat kui täisarvude loogika otsene käitamine.
+
+3
+00:00:23.966 --> 00:00:38.806
+<v Narrator>Kolmandaks, üks täisarvuline tuum, mida kontrollitakse krüptograafiliste räsidega, annab täpselt sama vastuse protsessorite, graafikakaartide, WebAssembly, riistvara loogika ja mikrokontrollerite vahel, peatudes kohe, kui üks kaalu muutus.

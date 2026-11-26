@@ -1,25 +1,26 @@
 WEBVTT
+NOTE OpenIE Research TV v1.0 Accessibility — rce (Extended Audio Description + Ranked Non-Speech Cues)
 
 1
 00:00:00.220 --> 00:00:08.827
-<v Audio Description>Visual scene one: Card one glows amber beside a spinning cyan crystal core wrapped in clear glass, linked by spokes to six outer gate pads.
+[key chime: stage-one lookup activates] <v Audio Description>Visual scene one: Card one glows amber beside a spinning cyan crystal core wrapped in clear glass, linked by spokes to six outer gate pads.
 
 2
 00:00:09.167 --> 00:00:16.115
-<v Presenter>First, you write a program once as one clear blueprint, and the computer generates matching code across languages.
+<v Narrator>First, you write a program once as one clear blueprint, and the computer generates matching code across languages.
 
 3
 00:00:16.455 --> 00:00:26.657
-<v Audio Description>Visual scene two: Card two shines cyan. Five outer spokes glow emerald for valid inputs, while the sixth spoke glows rose to stop an invalid input safely.
+[low pulse: energy budget baseline] <v Audio Description>Visual scene two: Card two shines cyan. Five outer spokes glow emerald for valid inputs, while the sixth spoke glows rose to stop an invalid input safely.
 
 4
 00:00:26.997 --> 00:00:34.587
-<v Presenter>Second, every possible input must have a declared outcome up front, preventing hidden crashes before anything runs.
+<v Narrator>Second, every possible input must have a declared outcome up front, preventing hidden crashes before anything runs.
 
 5
 00:00:34.927 --> 00:00:43.765
-<v Audio Description>Visual scene three: Card three lights up emerald beneath the emerald orbit ring, showing two thousand two hundred twenty-one passing checks with zero failures.
+[lock tone: verified receipt committed] <v Audio Description>Visual scene three: Card three lights up emerald beneath the emerald orbit ring, showing two thousand two hundred twenty-one passing checks with zero failures.
 
 6
 00:00:44.105 --> 00:00:50.263
-<v Presenter>Third, every repair that passes the checker is saved and reused, so you never pay twice for one fix.
+<v Narrator>Third, every repair that passes the checker is saved and reused, so you never pay twice for one fix.

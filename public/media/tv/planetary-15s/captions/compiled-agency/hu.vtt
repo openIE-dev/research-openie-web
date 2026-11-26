@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — from-ephemeral-inference-to-compiled-agency (hu) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:11.273
+<v Narrator>Először is, a fejlett számítástechnika mindenki számára megfizethetővé válik, amikor a drága neurális modellek végső megoldásként működnek gyors helyi keresési táblák, keresési indexek és pontos megoldók mögött.
+
+2
+00:00:11.613 --> 00:00:23.626
+<v Narrator>Másodszor, a súlyok egy bit alá történő tömörítése memóriát takarít meg, de a lebegőpontos számokra való kicsomagolásuk több mint nyolcvanszor annyi áramkört használ el, mint az egész logika közvetlen futtatása.
+
+3
+00:00:23.966 --> 00:00:38.806
+<v Narrator>Harmadszor, egy egész számú kernel ellenőrzése kriptográfiai hash-ekkel pontosan ugyanazt a választ adja a processzorok, grafikus kártyák, WebAssembly, hardver logika és mikrovezérlők között, azonnal leállva, ha egyetlen súly változik.

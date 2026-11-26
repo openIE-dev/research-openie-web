@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (zu) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:42.704
+<v Narrator>Okuqala, i-computing esezingeni eliphakeme ivela ibe inzuzo enkulu kunoma ubani lapho amamodeli abiza kakhulu we-neural esebenza njengendawo yokugcina ngemuva kwethebula lokusesha okude, izibalo zokusesha, kanye nezixazululo ezifanele. Okulandelayo, ukucindezela ubunzima ngaphansi komugqa owodwa kunciphisa ubuchopho, kodwa ukuwasusa emuva kumanani ohlangothini oluhambayo ngesikhathi sokuqhuba kulahlekelwa amandla angama-80 ngaphezulu kwebhodi le-circuit kunesikhathi esisebenzayo se-integer logic efakwe ngokuqondile.
+
+2
+00:00:42.784 --> 00:01:02.111
+<v Narrator>Yesibili, i-integer kernel eyodwa ehlolwe nge-cryptographic hashes ikhiqiza impendulo efanayo phakathi kwamaprosesa, amakhadi wezithombe, WebAssembly, umbono wehardware, nama-microcontrollers, ukuyeka ngokushesha uma ubunzima obuhlukile.
+
+3
+00:01:02.191 --> 00:01:30.936
+<v Narrator>Ngomsebenzi wokuphatha olinganiselwa kumaphesenti ayishumi nambili, ukuhlola imodeli ye-zero kunqobe amaphuzu angama-61.60 ngephesenti ezinto ezisekelwayo zethuluzi kanye namaphuzu angu-20.80 ngokulingana kwe-Boolean ku-1.41 kuya ku-2.09 microjoules net shunt energy, ngokucophelela ukuhlukanisa ingxenye engu-12.80 yokuvala ikhodi yokukhetha isikhala.
+
+4
+00:01:31.016 --> 00:02:05.902
+<v Narrator>Ku-AMD Kria ibhodi le-volt elinhlanu elingenalutho nge-0.09 kuya ku-0.11% yokunyakaza, ukukhishwa kwe-0.1517 amabithi-ngesisindo se-matrices kuya kuma-32-bit floats kwabulala ama-63,335.56 microjoules gross—81.86 izikhathi ezibi kunamanani aphelele we-eight-bit—lapho kufakwa khona inani eligcwele Walsh-Hadamard, okukhethekile-NOR, bit-count, ne-nibble lookup yancipha ibe yi-187.49 microjoules gross ne-10.30 microjoules net.
+
+5
+00:02:05.982 --> 00:02:38.248
+<v Narrator>I-kernel eyodwa ye-hash-verified integer ifana ne-bit-for-bit phakathi kwamabhayisikili angama-10 namafayela ayisithupha - iphrosesa, iRadeon 8060S Vulkan graphic, i-processor-graphic ehlukanisiwe, ama-WebAssembly vector, i-Verilog hardware logic, kanye ne-1,444-byte bare-metal microcontroller - ukuyeka ku-single-weight tamper ngaphesheya kwe-1,315 Planetary Digital Well ukunciphisa izithako.
+
+6
+00:02:38.328 --> 00:03:16.490
+<v Narrator>Kuphela, isigaba esisodwa sokuhlola ukubhala isikhala sikhuphule amandla we-Kria shunt 26.58 izikhathi eziphelele ne-24.49 izikhathi ze-net, sikhuphule amandla eJetson Thor shunt 16.26 izikhathi, futhi savimbela amahora angama-38.46 ohlelo lwesikhashana sesibili. Zonke izipho zibhalwe ngaphansi kwe-Provenance, Self-Checked—kungaba ngaphandle kokuhlolwa kwe-peer—nge-shunt, chip-counter, okulinganiselwayo, kanye no-unmetered joules agcinwe ngokuqinile ngokuhlukile.

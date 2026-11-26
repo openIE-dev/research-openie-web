@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (ro) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:15.332
+<v Narrator>În primul rând, compilatoarele reale încalcă orice lege descriptivă, astfel că acest studiu definește un standard din șapte părți.În al doilea rând, optimizarea maximă a compilatorului arde energie inițială care nu se amortizează niciodată pe treizeci la sută din programele de testare.
+
+2
+00:00:15.832 --> 00:00:24.406
+<v Narrator>În al treilea rând, codul de amprentă prin poziție variabilă reutilizează construcții cu zero amestecuri, reducând energia compilației Rust de patru ori.
+
+3
+00:00:24.906 --> 00:00:42.841
+<v Narrator>Am testat o afirmație generală – că fiecare compilator reduce formele canonice în timp ce urmărește energia și păstrează semnificația – împotriva a douăsprezece familii reale de compilatoare.În practică, niciunul nu urmărește joule-i, niciunul nu hashează cod fără nume, iar fuzzerele automate au descoperit mii de bug-uri ale compilatorului C.
+
+4
+00:00:43.341 --> 00:01:00.384
+<v Narrator>Recompilarea ca standard în șapte părți ne permite să măsurăm orizonturile exacte de rambursare pe douăzeci de nuclee și cincisprezece niveluri de instrumente: C optimizat bate Python după douăzeci și patru sute nouăzeci de rulare, în timp ce bibliotecile partajate Rust runtime reduc energia de construcție de douăzeci de ori.
+
+5
+00:01:00.884 --> 00:01:18.984
+<v Narrator>Înlocuirea numelor cu pozițiile de legare De Bruijn a dus la zero potriviri false în cinci sute de mutanți verificați și a redus reconstrucțiile calde C și Rust de până la patru sute patruzeci și opt de ori.
+
+6
+00:01:19.484 --> 00:01:29.440
+<v Narrator>Toate cifrele de energie provin din contoarele încorporate ale procesorului Linux, mai degrabă decât un wattmetru extern de perete, iar fiecare referință externă poartă o insignă explicită de verificare.

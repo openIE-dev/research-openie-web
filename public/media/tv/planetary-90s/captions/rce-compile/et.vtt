@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (et) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:15.332
+<v Narrator>Esiteks rikuvad reaalsed kompilaatorid kõiki kirjeldavaid seadusi, nii et käesolev uuring määratleb selle asemel seitsmeosalise mõõdupuu.Teisest küljest põletab maksimaalne kompilaatori optimeerimine energiat, mis ei tasu end kunagi tagasi 30% testiprogrammide puhul.
+
+2
+00:00:15.832 --> 00:00:24.406
+<v Narrator>Kolmandaks, sõrmejälgede kood muutuva positsiooniga taaskasutab ehitusi ilma segadusteta, vähendades Rusti kompileerimisenergiat neli korda sajakordselt.
+
+3
+00:00:24.906 --> 00:00:42.841
+<v Narrator>Me testisime ulatuslikku väidet, et iga kompilaator vähendab kanoonilises vormis andmeid energia jälgimise ja tähenduse säilitamise abil, kaheteistkümne reaalse kompilaatori perekonna vastu. Praktikas ei jälgi ükski neist džoule, ükski ei hävita nimetut koodi. Automatiseeritud fuzzers on avastatud tuhandeid C-kompilaatori vigu.
+
+4
+00:00:43.341 --> 00:01:00.384
+<v Narrator>Kompileerimise muutmine seitsmeosaliseks standardiks võimaldab meil mõõta täpseid tasuvuse horisonte kahekümne tuuma ja viisteist tööriistaketta taset: optimeeritud C võidab Pythoni pärast kaheksat nelisada üheksakümmend käitamist, samal ajal kui jagatud Rusti käitusaja teegid vähendavad ehitamise energiat kakskümmend korda.
+
+5
+00:01:00.884 --> 00:01:18.984
+<v Narrator>Muutujanimede kustutamine põhjustas saja viiekümne ohtliku vahemälu kokkupõrke, kui kaks muutujat vahetasid rolli. Nimede asendamine De Bruijni sidumispositsioonidega tõi kaasa nulli valevastusi viiesaja kontrollitud mutandi seas. See vähendas sooja C ja Rusti taastamist kuni nelisada nelikümmend kaheksa korda.
+
+6
+00:01:19.484 --> 00:01:29.440
+<v Narrator>Kõik energiaarvud pärinevad sisseehitatud Linuxi protsessori loenduritest, mitte välisest seina vattumõõtjast ja iga väline viide kannab selget kontrollimärgist.

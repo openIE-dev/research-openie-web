@@ -1,25 +1,26 @@
 WEBVTT
+NOTE OpenIE Research TV v1.0 Accessibility — gates (Extended Audio Description + Ranked Non-Speech Cues)
 
 1
 00:00:00.220 --> 00:00:11.615
-<v Audio Description>Visual scene one: Card one highlights in amber. To the right, a 3D dark metallic circuit board spins with twenty-five cyan and emerald lookup blocks inside an emerald gate ring.
+[key chime: commit gate passes] <v Audio Description>Visual scene one: Card one highlights in amber. To the right, a 3D dark metallic circuit board spins with twenty-five cyan and emerald lookup blocks inside an emerald gate ring.
 
 2
 00:00:11.955 --> 00:00:17.495
-<v Presenter>First, a computer should not take an irreversible action until an independent check confirms it is safe.
+<v Narrator>First, a computer should not take an irreversible action until an independent check confirms it is safe.
 
 3
 00:00:17.835 --> 00:00:27.754
-<v Audio Description>Visual scene two: Card two glows cyan as eight amber power-sensor pads circle the spinning silicon board, showing low-power checks running before any large model wakes.
+[low pulse: idle shunt baseline] <v Audio Description>Visual scene two: Card two glows cyan as eight amber power-sensor pads circle the spinning silicon board, showing low-power checks running before any large model wakes.
 
 4
 00:00:28.094 --> 00:00:34.481
-<v Presenter>Second, it should try the cheapest method first and wake a large AI model only when simpler tools miss.
+<v Narrator>Second, it should try the cheapest method first and wake a large AI model only when simpler tools miss.
 
 5
 00:00:34.821 --> 00:00:43.454
-<v Audio Description>Visual scene three: All three cards lock in emerald, displaying the board sensor reading of eleven thousand four hundred twenty-eight picojoules per check.
+[lock tone: energy receipt sealed] <v Audio Description>Visual scene three: All three cards lock in emerald, displaying the board sensor reading of eleven thousand four hundred twenty-eight picojoules per check.
 
 6
 00:00:43.794 --> 00:00:49.715
-<v Presenter>Third, every decision is written to a receipt with the energy it used, so anyone can audit it later.
+<v Narrator>Third, every decision is written to a receipt with the energy it used, so anyone can audit it later.

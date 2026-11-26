@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — lut-adapt (it) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:07.730
+<v Narrator>Innanzitutto, la maggior parte delle richieste ripete modelli già risolti, quindi eseguire una rete neurale gigante ogni volta spreca memoria ed energia.
+
+2
+00:00:08.070 --> 00:00:15.923
+<v Narrator>In secondo luogo, questa cascata controlla prima le piccole tabelle di verità e trasmette in streaming slice di modelli specialistici dallo storage solo quando necessario.
+
+3
+00:00:16.263 --> 00:00:23.481
+<v Narrator>In terzo luogo, una volta che un test automatizzato certifica una nuova risposta, compila verso il basso in una competenza riutilizzabile di millisecondi.

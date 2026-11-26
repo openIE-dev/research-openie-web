@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — from-ephemeral-inference-to-compiled-agency (cs) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:11.273
+<v Narrator>Za prvé, pokročilé výpočetní technologie se stanou dostupnými pro každého, když drahé neuronové modely budou působit jako poslední možnost za rychlými lokálními vyhledávacími tabulkami, vyhledávacími indexy a přesnými řešiči.
+
+2
+00:00:11.613 --> 00:00:23.626
+<v Narrator>Za druhé, komprese váh pod jeden bit šetří paměť, ale jejich rozbalení zpět na čísla s plovoucí desetinnou čárkou za běhu plýtvá více než osmdesátkrát více energie desky plošných spojů než přímý chod zabalené celé logiky.
+
+3
+00:00:23.966 --> 00:00:38.806
+<v Narrator>Za třetí, jedno celé jádro kontrolované kryptografickými hashemi vytváří přesně stejnou odpověď napříč procesory, grafickými kartami, WebAssembly, hardwarovou logikou a mikrokontroléry, přičemž se okamžitě zastaví, pokud dojde ke změně jedné váhy.

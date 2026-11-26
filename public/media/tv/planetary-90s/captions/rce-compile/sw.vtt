@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (sw) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:17.427
+<v Narrator>Kwanza, compilers halisi kuvunja sheria yoyote moja maelezo, hivyo utafiti huu inaelezea yardstick sehemu saba badala yake. Pili, optimization compiler juu huteketeza nishati upfront kwamba kamwe kulipa nyuma katika asilimia thelathini ya mipango ya mtihani.
+
+2
+00:00:17.507 --> 00:00:26.389
+<v Narrator>Tatu, fingerprinting kanuni na nafasi ya kubadilika reuses inajenga na sifuri mix-ups, kukata Rust kukusanya nishati nne hundredfold.
+
+3
+00:00:26.469 --> 00:00:46.539
+<v Narrator>Sisi kupima madai ya kufuta-ya kwamba kila compiler hupunguza fomu canonical wakati kufuatilia nishati na kudumisha maana-kukabiliana kumi na mbili familia halisi compiler. Katika mazoezi, hakuna tracks joules, hakuna hashes jina-free code, na fuzzers otomatiki wamegundua maelfu ya C bugs compiler.
+
+4
+00:00:46.619 --> 00:01:06.284
+<v Narrator>Kupumzika kukusanya kama sehemu saba kiwango inaruhusu sisi kupima payback halisi maono katika kernels ishirini na kumi na tano toolchain ngazi: optimized C beats Python baada ya ishirini na nne mia tisa tisini mbio, wakati kushiriki Rust runtime maktaba kukatwa kujenga nishati mara ishirini.
+
+5
+00:01:06.364 --> 00:01:26.771
+<v Narrator>Tu kufuta majina ya kutofautiana kusababisha mia hamsini hatari cache migongano wakati wote vigezo mbili swapped majukumu. Kubadilisha majina na De Bruijn nafasi za kufunga hit sifuri mechi uongo katika mutants mia tano kuthibitishwa na kukatwa joto C na Rust rebuilds hadi mia nne arobaini na nane mara.
+
+6
+00:01:26.851 --> 00:01:37.890
+<v Narrator>Kila kipande cha ubongo kina shughuli zake za kawaida, lakini kila seli ya mwili ina kazi yake maalumu na hakuna kiungo kinachoweza kudhibitisha kazi zote za ubongo.

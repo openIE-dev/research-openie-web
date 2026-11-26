@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — satb-harness (hu) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:05.737
+<v Narrator>Először is, a wrapper megváltoztatása egy MI modell körül ugyanúgy befolyásolhatja a pontszámokat, mint a modell cseréje.
+
+2
+00:00:06.077 --> 00:00:13.308
+<v Narrator>Másodszor, ez a tesztköteg zárolja a promptokat, a memóriavágást és az eszközöket, így minden MI pontosan ugyanazt a vizsgát teszi.
+
+3
+00:00:13.648 --> 00:00:21.582
+<v Narrator>Harmadszor, öt számítógéptípusban elválasztja a valódi kártyaérzékelőket a chipszámlálóktól és blokkolja a zajos teljesítménybecsléseket.

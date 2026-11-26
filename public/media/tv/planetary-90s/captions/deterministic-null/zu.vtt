@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — deterministic-null (zu) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:24.080
+<v Narrator>Okuqala, ingxenye enkulu ye-AI benchmarks ishiya iqembu lokuphatha lemodeli yesibalo esingenalutho elingahlola ukuthi yini okutholakele okulula okwamanje kuxazulula. Okulandelayo, ngemisebenzi ye-mathematics nedatha yomlando, ithebula lokuhlola elibandayo lifana ne-cloud AI ezinyangeni eziyisithupha zezivivinyo ezingamashumi.
+
+2
+00:00:24.160 --> 00:00:37.828
+<v Narrator>Ngowesibili, kumisebenzi evulekile yokudweba i-AI yahamba phambili, ngenkathi ukubeka ama-cache aqinisekisiwe impendulo ukucisha amandla okuphindiwe amaphuzu amathathu izikhathi ezingu-6.
+
+3
+00:00:37.908 --> 00:01:01.501
+<v Narrator>Uma amamodeli amabili ayizinkulungwane eziyizigidigidi-parameter zombili zithola isilinganiso esingu-99% ku-benchmark eyenziwe kahle, ngabe enye yazo ngempela idinga inethiwekhi yengqondo ngesikhathi sokuthathelwa isigqibo? Ngaphandle kweqembu lokulawulwa kwe-zero-model kwi-exam efanayo, akukho muntu ongachaza ushintsho.
+
+4
+00:01:01.581 --> 00:01:27.526
+<v Narrator>Sikhiphe ithebula lokubheka inani eliphelele elinezigaba ezisithupha, elingenalutho, eliqinisekisiwe nge-bit-by-bit ku-Rust, Go, Python, Julia, neC plus plus, bese sifaka izibopho zayo zedijithali kumaqiniso asemthethweni weBitcoin calendar ngaphambi kokuba amabheki omphakathi akhiqize amazigidi ezine ezingu-30 zezinkinga ezintsha ezigcinwe ngaphandle.
+
+5
+00:01:27.606 --> 00:01:52.743
+<v Narrator>Ngaphesheya amawaka amabili amashumi amane namahlanu ezigidi eziboshwe izinkinga ze-mathematics nedatha basendaweni, amamodeli we-cloud washaya ithebula elibandayo kuphela nge-unindexed umhlinzeki okhuluma, kodwa wakhuphuka kumaphesenti angama-44 kuya ku-95 ngaphambilini ngaphesheya kwezingxenyekazi ezine zobuchwepheshe obubhalwe ngaphandle.
+
+6
+00:01:52.823 --> 00:02:11.490
+<v Narrator>Uma izinkinga ze-neural eziqinisekisiwe zibhalwe emuva kwisitolo sokubuka, ubunzima bomsebenzi obuseduze nobukhona bucishe buphinde bubuyele kumodeli yokubiza kanye ne-chip yendawo enekhono ngamaphesenti amathathu amahlanu izikhathi eziyisishiyagalombili.

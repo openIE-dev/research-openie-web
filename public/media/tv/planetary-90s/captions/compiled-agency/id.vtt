@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (id) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:36.118
+<v Narrator>Pertama, komputasi canggih menjadi terjangkau bagi semua orang ketika model saraf yang mahal bertindak sebagai solusi terakhir di balik tabel pencarian lokal cepat, indeks pencarian, dan penyelesaian akurat. Kedua, kompresi berat di bawah satu bit menghemat memori, namun mengekstrak mereka kembali ke angka titik apung pada saat berjalan membuang lebih dari delapan puluh kali energi papan sirkuit daripada menjalankan logika integer secara langsung.
+
+2
+00:00:36.198 --> 00:00:54.996
+<v Narrator>Ketiga, satu inti integer yang diperiksa oleh hash kriptografi menghasilkan jawaban yang sama persis di seluruh prosesor, kartu grafis, WebAssembly, logika perangkat keras, dan mikrokontroler, berhenti segera jika berat tunggal berubah.
+
+3
+00:00:55.076 --> 00:01:19.715
+<v Narrator>Di sepanjang lima belas ratus tugas kontrol deterministik, model nol-lookup mengalahkan garis dasar saraf oleh 61.60 poin persen pada skema alat terstruktur dan 20.80 poin pada kepuasan Boolean pada 1.41 hingga 2.09 mikrojoules net shunt energi, bersih mengisolasi 12.80 titik terbuka pengkodean triage celah.
+
+4
+00:01:19.795 --> 00:01:50.033
+<v Narrator>Pada sebuah AMD Kria lima-volt board shunt dengan 0,09 hingga 0,11 persen drift idle, mengekstrak matriks 0.1517 bit per berat ke float 32-bit membakar 63.335,56 mikrojoule bruto—81,86 kali lebih buruk daripada integer delapan-bit—sedangkan packed integer Walsh-Hadamard, eksklusif-NOR, bit-count, dan nibble lookup turun menjadi 187,49 mikrojoule bruto dan 10,30 mikrojoule net.
+
+5
+00:01:50.113 --> 00:02:17.311
+<v Narrator>Satu kernel integer yang diverifikasi hash cocok bit-for-bit di sepuluh jalur dan enam fabrics—prosessor, Radeon 8060S Vulkan grafis, grafik prosesor terpisah, vektor WebAssembly, logika hardware Verilog, dan mikrokontroler bare-metal 1.444 byte—memutus pada tamper berat tunggal bersama dengan 1.315 Planetary Digital Well menurunkan resep.
+
+6
+00:02:17.391 --> 00:02:34.990
+<v Narrator>Dari awal sampai akhir, empat tahap spellcheck cascade memotong Kria shunt energi 26.58 kali bruto dan 24.49 kali netto, memotong Jetson Thor shunt energi 16.26 kali, dan menghindari 38.46 kali dari tahap-empat panggilan.

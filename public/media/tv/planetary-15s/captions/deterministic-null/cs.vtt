@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — deterministic-null (cs) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:06.752
+<v Narrator>Za prvé, většina benchmarků umělé inteligence vynechá kontrolní skupinu s nulovým modelem, která testuje to, co už jednoduché vyhledávání řeší.
+
+2
+00:00:07.092 --> 00:00:14.471
+<v Narrator>Za druhé, u matematických a databázových úloh s omezeným počtem řešení se zamrzlá vyhledávací tabulka shodovala s cloudovou AI v devíti z deseti testů.
+
+3
+00:00:14.811 --> 00:00:22.541
+<v Narrator>Za třetí, u otevřených kódovacích úloh AI skočila dopředu, zatímco ukládání ověřených odpovědí do mezipaměti snížilo energii opakování třikrát až šestkrát.

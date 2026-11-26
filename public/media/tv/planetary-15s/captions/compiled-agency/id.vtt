@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — from-ephemeral-inference-to-compiled-agency (id) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:14.746
+<v Narrator>Pertama, komputasi canggih menjadi terjangkau bagi semua orang ketika model saraf yang mahal bertindak sebagai solusi terakhir di balik tabel pencarian lokal cepat, indeks pencarian, dan penyelesaian yang akurat.
+
+2
+00:00:14.826 --> 00:00:32.920
+<v Narrator>Kedua, kompresi berat di bawah satu bit menghemat memori, namun mengembalikan mereka kembali ke angka titik-aliran pada runtime membuang lebih dari delapan puluh kali lebih banyak energi papan sirkuit daripada menjalankan logika integer terpakai secara langsung.
+
+3
+00:00:33.000 --> 00:00:49.290
+<v Narrator>Ketiga, satu inti integer yang diperiksa oleh hash kriptografi menghasilkan jawaban yang sama persis di seluruh prosesor, kartu grafis, WebAssembly, logika perangkat keras, dan mikrokontroler, berhenti segera jika berat tunggal berubah.

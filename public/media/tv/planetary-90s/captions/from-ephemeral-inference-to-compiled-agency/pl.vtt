@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (pl) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:20.135
+<v Narrator>Po pierwsze, zaawansowane obliczenia stają się dostępne dla każdego, gdy drogie modele neuronowe działają jako ostateczność w szybkich lokalnych tabelach wyszukiwania, indeksach wyszukiwania i dokładnych solwerach. Po drugie, kompresja wag poniżej jednego bitu oszczędza pamięć. Jednak rozpakowywanie ich z powrotem do liczb zmiennoprzecinkowych podczas wykonywania marnuje ponad osiemdziesiąt razy więcej energii na płycie niż bezpośrednie uruchamianie logiczną logiki całkowitej.
+
+2
+00:00:20.295 --> 00:00:32.082
+<v Narrator>Po trzecie, jedno jądro liczb całkowitych sprawdzane przez kryptograficzne skróty wytwarza dokładnie taką samą odpowiedź na procesorach, kartach graficznych, WebAssembly, logice sprzętowej i mikrokontrolerach, zatrzymując się natychmiast, jeśli zmieni się pojedyncza waga.
+
+3
+00:00:32.242 --> 00:00:50.475
+<v Narrator>W 1500 zadaniach deterministycznych, wyszukiwanie modelu zerowego pokonało linie odniesienia neuronowe o 61.60 punktów procentowych na ustrukturyzowanych schematach narzędzi i 20.80 punktów na zadowalającej satysfakcji Boole’a przy energii bocznika netto w przedziale od 1.41 do 2.09 mikrodżuli, czysto izolując 12.80-punktową lukę otwartego kodowania.
+
+4
+00:00:50.635 --> 00:01:16.546
+<v Narrator>Na płycie AMD Kria z pięciowoltowym bocznikiem i dryfowaniem bezczynności od 0,09 do 0,11 procent, rozpakowanie macierzy o wartościach 0,1517 bitów na wagę do 32-bitowych zmiennoprzecinkowych spaliło 63 335,56 mikrodżuli brutto – 81,86 razy gorzej niż w przypadku ośmiobitowych liczb całkowitych – podczas gdy wyszukiwanie Walsha-Hadamard, ekskluzywne NOR, bit-count oraz nibble spadło do 187,49 mikrodżuli brutto i 10,30 mikrodżuli netto.
+
+5
+00:01:16.706 --> 00:01:37.000
+<v Narrator>Jeden jądro całkowite zweryfikowane hash-em dopasowało się bit po bicie w dziesięciu liniach i sześciu strukturach — procesorze, grafice Radeon 8060S Vulkan, grafiki z podzielonym procesorem, wektorach WebAssembly, logice sprzętowej Verilog i 1444-bajtowym mikrokontrolerze bare-metal — zatrzymując się na manipulacji o pojedynczej wadze wraz z 1315 recepturami obniżania Planetary Digital Well.
+
+6
+00:01:37.160 --> 00:01:58.456
+<v Narrator>Czterostopniowa kaskada sprawdzania pisowni zmniejszyła energię bocznika Krii 26,58 razy brutto i 24,49 razy netto, energii bocznika Jetsona Thora 16,26 razy i uniknęła 38,46 razy połączeń czwartego etapu. Wszystkie odbiory są podpisane pochodzeniem, samokontrolowane — nie podlegają zewnętrznej recenzji — z bocznikiem, licznikiem chipów, szacunkowymi i niezmierzonymi dżulami utrzymywanymi ściśle oddzielnie.

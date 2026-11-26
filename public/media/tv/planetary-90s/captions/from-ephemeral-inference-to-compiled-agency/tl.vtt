@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (tl) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:37.735
+<v Narrator>Una, advanced computing ay nagiging abot-kayang para sa lahat kapag mahal neural modelo kumilos bilang isang huling pagpipilian sa likod ng mabilis na lokal na mga talahanayan lookup, paghahanap index, at eksaktong solvers. Pangalawa, compressing timbang sa ibaba ng isang bit nakatipid ng memorya, ngunit unpacking ang mga ito bumalik sa floating-point numero sa runtime wastes higit sa walong pung beses na mas circuit-board enerhiya kaysa sa tumakbo pakete integer lohika direkta.
+
+2
+00:00:37.815 --> 00:00:49.832
+<v Narrator>Ang mga ito ay kinabibilangan ng mga kompyuter, mga mikroprosesor, mga processor na pang-ibabaw na antas, mga microcontroller, at mga sistemang pankontrol.
+
+3
+00:00:49.912 --> 00:01:16.523
+<v Narrator>Sa kabuuan ng 1500 mga gawaing kontrol na deterministiko, ang paghahanap ng zero-modelo ay natalo sa neural baseline ng 61.60 porsiyentong puntos sa mga nakaayos na tool schema at 20.80 puntos sa Boolean satisfiability sa 1.41 hanggang 2.09 microjoules net shunt energy, na malinis na iniilarawan ang 12.80 puntong bukas na coding triage gap.
+
+4
+00:01:16.603 --> 00:01:49.145
+<v Narrator>Sa isang AMD Kria limang-volt board shunt na may 0.09 hanggang 0.11 porsiyento ng idle drift, ang pag-unpack ng mga 0.1517 bits-per-weight matrices sa 32-bit floats ay nagsunog ng 63,335.56 microjoules gross—81.86 beses na mas masahol kaysa sa walong-bit na integers—habang ang packed integer Walsh-Hadamard, eksklusibong-NOR, bit-count, at nibble lookup ay bumaba sa 187.49 microjoules gross at 10.30 microjoules net.
+
+5
+00:01:49.225 --> 00:02:17.709
+<v Narrator>Ang isang hash-verified na integer kernel ay magkatugma bit-sa-bit sa sampung mga linya at anim na fabrics—processor, Radeon 8060S Vulkan graphics, split processor-graphics, WebAssembly vectors, Verilog hardware logic, at isang 1,444-byte bare-metal microcontroller—na huminto sa single-weight tamper kasama ang 1,315 Planetary Digital Well pagbabawas ng mga recipe.
+
+6
+00:02:17.789 --> 00:02:47.990
+<v Narrator>End sa dulo, ang apat na-stage spellcheck kalsada cut Kria shunt enerhiya 26.58 beses gross at 24.49 beses net, cut Jetson Thor shunt enerhiya 16.26 beses, at iniwasan 38.46 beses ng yugto-apat na tawag. Lahat ng mga resibo ay nakasulat na pinagmulan, Self-Checked-hindi panlabas na peer-reviewed-na may shunt, chip-counter, tinatayang, at unmetered joules inilalagay mahigpit na hiwalay.

@@ -1,0 +1,405 @@
+{
+  "schema": "openie.planetary_media_j_per_min_summary.v1",
+  "blueprint_version": "Planetary Research Media Blueprint v1.0 (26 Nov 2026)",
+  "provenance_tier": "Signed Provenance · Self-Checked",
+  "orthogonality_rule": "measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered",
+  "iso24495_script_sha256": "e743ebcaec1a3330d76e9cbaa2e90f649945f5f0eb706cf95d3e983593578f64",
+  "thor_ina238_vin_measured_j": {
+    "substrate": "NVIDIA Jetson AGX Thor (14-core ARMv9 CPU-only, -ngl 0)",
+    "sensor_and_rail": "TI INA238 whole-carrier VIN (~203 Hz)",
+    "energy_class": "measured_j",
+    "stages": {
+      "tts_piper_or_kokoro_cpu": {
+        "j_per_min_gross": 405.202,
+        "j_per_min_net": 86.991,
+        "falsifier_6_drift_pct": 1.89,
+        "falsifier_6_drift_flag": false,
+        "media_output_duration_s": 37.4,
+        "realtime_speed_x": 5.322,
+        "output_bytes": 599627,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "measured_j"
+      },
+      "asr_whisper_base_cpu": {
+        "j_per_min_gross": 797.73,
+        "j_per_min_net": null,
+        "falsifier_6_drift_pct": 31.98,
+        "falsifier_6_drift_flag": true,
+        "media_output_duration_s": 37.4,
+        "realtime_speed_x": 3.036,
+        "output_bytes": null,
+        "g6_gate_pass": true,
+        "g6_normalized_wer": 0.0638,
+        "energy_class": "measured_j"
+      },
+      "asr_whisper_large_v3_turbo_cpu": {
+        "j_per_min_gross": 10002.978,
+        "j_per_min_net": null,
+        "falsifier_6_drift_pct": 14.67,
+        "falsifier_6_drift_flag": true,
+        "media_output_duration_s": 37.4,
+        "realtime_speed_x": 0.262,
+        "output_bytes": null,
+        "g6_gate_pass": true,
+        "g6_normalized_wer": 0,
+        "energy_class": "measured_j"
+      },
+      "render_1080p60_mp4": {
+        "j_per_min_gross": 1063.53,
+        "j_per_min_net": null,
+        "falsifier_6_drift_pct": 23.43,
+        "falsifier_6_drift_flag": true,
+        "media_output_duration_s": 15,
+        "realtime_speed_x": 2.137,
+        "output_bytes": 447288,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "measured_j"
+      },
+      "render_lowbw_mobile_15s_mp4": {
+        "j_per_min_gross": 198.736,
+        "j_per_min_net": 40.658,
+        "falsifier_6_drift_pct": 2.79,
+        "falsifier_6_drift_flag": false,
+        "media_output_duration_s": 15,
+        "realtime_speed_x": 13.79,
+        "output_bytes": 111086,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "measured_j"
+      },
+      "render_opus_24k_voicenote": {
+        "j_per_min_gross": 26.198,
+        "j_per_min_net": null,
+        "falsifier_6_drift_pct": 9.15,
+        "falsifier_6_drift_flag": true,
+        "media_output_duration_s": 37.3065,
+        "realtime_speed_x": 70.293,
+        "output_bytes": 116581,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "measured_j"
+      },
+      "render_voiced_ad_mix": {
+        "j_per_min_gross": 136.056,
+        "j_per_min_net": null,
+        "falsifier_6_drift_pct": 5.4,
+        "falsifier_6_drift_flag": true,
+        "media_output_duration_s": 37.3,
+        "realtime_speed_x": 12.598,
+        "output_bytes": 601920,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "measured_j"
+      }
+    }
+  },
+  "thor_ina3221_cpu_measured_j": {
+    "substrate": "NVIDIA Jetson AGX Thor (14-core ARMv9 CPU-only, -ngl 0)",
+    "sensor_and_rail": "TI INA3221 VDD_CPU_SOC_MSS (~203 Hz)",
+    "energy_class": "measured_j",
+    "stages": {
+      "tts_piper_or_kokoro_cpu": {
+        "j_per_min_gross": 217.299,
+        "j_per_min_net": null,
+        "falsifier_6_drift_pct": 16.02,
+        "falsifier_6_drift_flag": true,
+        "media_output_duration_s": 37.4,
+        "realtime_speed_x": 5.322,
+        "output_bytes": 599627,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "measured_j"
+      },
+      "asr_whisper_base_cpu": {
+        "j_per_min_gross": 467.499,
+        "j_per_min_net": null,
+        "falsifier_6_drift_pct": 15.35,
+        "falsifier_6_drift_flag": true,
+        "media_output_duration_s": 37.4,
+        "realtime_speed_x": 3.036,
+        "output_bytes": null,
+        "g6_gate_pass": true,
+        "g6_normalized_wer": 0.0638,
+        "energy_class": "measured_j"
+      },
+      "asr_whisper_large_v3_turbo_cpu": {
+        "j_per_min_gross": 6126.512,
+        "j_per_min_net": null,
+        "falsifier_6_drift_pct": 13.23,
+        "falsifier_6_drift_flag": true,
+        "media_output_duration_s": 37.4,
+        "realtime_speed_x": 0.262,
+        "output_bytes": null,
+        "g6_gate_pass": true,
+        "g6_normalized_wer": 0,
+        "energy_class": "measured_j"
+      },
+      "render_1080p60_mp4": {
+        "j_per_min_gross": 537.12,
+        "j_per_min_net": null,
+        "falsifier_6_drift_pct": 48.8,
+        "falsifier_6_drift_flag": true,
+        "media_output_duration_s": 15,
+        "realtime_speed_x": 2.137,
+        "output_bytes": 447288,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "measured_j"
+      },
+      "render_lowbw_mobile_15s_mp4": {
+        "j_per_min_gross": 109.409,
+        "j_per_min_net": null,
+        "falsifier_6_drift_pct": 6.4,
+        "falsifier_6_drift_flag": true,
+        "media_output_duration_s": 15,
+        "realtime_speed_x": 13.79,
+        "output_bytes": 111086,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "measured_j"
+      },
+      "render_opus_24k_voicenote": {
+        "j_per_min_gross": 12.415,
+        "j_per_min_net": null,
+        "falsifier_6_drift_pct": 21.94,
+        "falsifier_6_drift_flag": true,
+        "media_output_duration_s": 37.3065,
+        "realtime_speed_x": 70.293,
+        "output_bytes": 116581,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "measured_j"
+      },
+      "render_voiced_ad_mix": {
+        "j_per_min_gross": 54.9,
+        "j_per_min_net": 0,
+        "falsifier_6_drift_pct": 3.84,
+        "falsifier_6_drift_flag": false,
+        "media_output_duration_s": 37.3,
+        "realtime_speed_x": 12.598,
+        "output_bytes": 601920,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "measured_j"
+      }
+    }
+  },
+  "kv260_ina260_som_measured_j": {
+    "substrate": "AMD Kria KV260 (4-core Cortex-A53 PS CPU)",
+    "sensor_and_rail": "TI INA260 SOM_5V_DC (~233 Hz)",
+    "energy_class": "measured_j",
+    "stages": {
+      "tts_piper_or_kokoro_cpu": {
+        "j_per_min_gross": 263.707,
+        "j_per_min_net": 56.038,
+        "falsifier_6_drift_pct": 0.01,
+        "falsifier_6_drift_flag": false,
+        "media_output_duration_s": 37.4,
+        "realtime_speed_x": 0.945,
+        "output_bytes": 600467,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "measured_j"
+      },
+      "asr_whisper_tiny_cpu": {
+        "j_per_min_gross": 203.49,
+        "j_per_min_net": 44.702,
+        "falsifier_6_drift_pct": 0.08,
+        "falsifier_6_drift_flag": false,
+        "media_output_duration_s": 37.4,
+        "realtime_speed_x": 1.24,
+        "output_bytes": null,
+        "g6_gate_pass": false,
+        "g6_normalized_wer": 0.0851,
+        "energy_class": "measured_j"
+      },
+      "asr_whisper_base_cpu": {
+        "j_per_min_gross": 455.67,
+        "j_per_min_net": 99.096,
+        "falsifier_6_drift_pct": 0.27,
+        "falsifier_6_drift_flag": false,
+        "media_output_duration_s": 37.4,
+        "realtime_speed_x": 0.552,
+        "output_bytes": null,
+        "g6_gate_pass": true,
+        "g6_normalized_wer": 0.0426,
+        "energy_class": "measured_j"
+      },
+      "render_1080p60_mp4": {
+        "j_per_min_gross": 994.898,
+        "j_per_min_net": 165.136,
+        "falsifier_6_drift_pct": 0.1,
+        "falsifier_6_drift_flag": false,
+        "media_output_duration_s": 15,
+        "realtime_speed_x": 0.237,
+        "output_bytes": 542013,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "measured_j"
+      },
+      "render_lowbw_mobile_15s_mp4": {
+        "j_per_min_gross": 216.201,
+        "j_per_min_net": 58.539,
+        "falsifier_6_drift_pct": 0.02,
+        "falsifier_6_drift_flag": false,
+        "media_output_duration_s": 15,
+        "realtime_speed_x": 1.25,
+        "output_bytes": 110645,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "measured_j"
+      },
+      "render_opus_24k_voicenote": {
+        "j_per_min_gross": 22.758,
+        "j_per_min_net": 1.644,
+        "falsifier_6_drift_pct": 0.02,
+        "falsifier_6_drift_flag": false,
+        "media_output_duration_s": 37.4065,
+        "realtime_speed_x": 9.323,
+        "output_bytes": 116917,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "measured_j"
+      },
+      "render_voiced_ad_mix": {
+        "j_per_min_gross": 91.128,
+        "j_per_min_net": 8.401,
+        "falsifier_6_drift_pct": 0.23,
+        "falsifier_6_drift_flag": false,
+        "media_output_duration_s": 37.4,
+        "realtime_speed_x": 2.381,
+        "output_bytes": 603074,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "measured_j"
+      }
+    }
+  },
+  "zen5_rapl_pkg_reported_j": {
+    "substrate": "AMD Ryzen AI Max+ 395 (16-thread Zen 5 CPU)",
+    "sensor_and_rail": "Linux powercap intel-rapl:0 package-0 + core",
+    "energy_class": "reported_j",
+    "stages": {
+      "tts_piper_or_kokoro_cpu": {
+        "j_per_min_gross": 495.112,
+        "j_per_min_net": null,
+        "j_per_min_core_gross": 32.786,
+        "falsifier_6_drift_pct": 7.32,
+        "falsifier_6_drift_flag": true,
+        "media_output_duration_s": 37.5,
+        "realtime_speed_x": 14.666,
+        "output_bytes": 602162,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "reported_j"
+      },
+      "asr_whisper_base_cpu": {
+        "j_per_min_gross": 235.322,
+        "j_per_min_net": null,
+        "j_per_min_core_gross": 13.756,
+        "falsifier_6_drift_pct": 8.71,
+        "falsifier_6_drift_flag": true,
+        "media_output_duration_s": 37.5,
+        "realtime_speed_x": 34.749,
+        "output_bytes": null,
+        "g6_gate_pass": true,
+        "g6_normalized_wer": 0.0532,
+        "energy_class": "reported_j"
+      },
+      "asr_whisper_large_v3_turbo_cpu": {
+        "j_per_min_gross": 1546.27,
+        "j_per_min_net": null,
+        "j_per_min_core_gross": 95.799,
+        "falsifier_6_drift_pct": 7.18,
+        "falsifier_6_drift_flag": true,
+        "media_output_duration_s": 37.5,
+        "realtime_speed_x": 5.451,
+        "output_bytes": null,
+        "g6_gate_pass": true,
+        "g6_normalized_wer": 0.0213,
+        "energy_class": "reported_j"
+      },
+      "render_1080p60_mp4": {
+        "j_per_min_gross": 3503.165,
+        "j_per_min_net": null,
+        "j_per_min_core_gross": 197.07,
+        "falsifier_6_drift_pct": 13.74,
+        "falsifier_6_drift_flag": true,
+        "media_output_duration_s": 15,
+        "realtime_speed_x": 2.203,
+        "output_bytes": 528383,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "reported_j"
+      },
+      "render_lowbw_mobile_15s_mp4": {
+        "j_per_min_gross": 318.082,
+        "j_per_min_net": null,
+        "j_per_min_core_gross": 18.211,
+        "falsifier_6_drift_pct": 7.69,
+        "falsifier_6_drift_flag": true,
+        "media_output_duration_s": 15,
+        "realtime_speed_x": 24.147,
+        "output_bytes": 107370,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "reported_j"
+      },
+      "render_opus_24k_voicenote": {
+        "j_per_min_gross": 66.829,
+        "j_per_min_net": null,
+        "j_per_min_core_gross": 3.512,
+        "falsifier_6_drift_pct": 11.48,
+        "falsifier_6_drift_flag": true,
+        "media_output_duration_s": 37.5065,
+        "realtime_speed_x": 113.217,
+        "output_bytes": 117241,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "reported_j"
+      },
+      "render_voiced_ad_mix": {
+        "j_per_min_gross": 279.363,
+        "j_per_min_net": 5.779,
+        "j_per_min_core_gross": 16.327,
+        "falsifier_6_drift_pct": 3.69,
+        "falsifier_6_drift_flag": false,
+        "media_output_duration_s": 37.5,
+        "realtime_speed_x": 30.153,
+        "output_bytes": 605099,
+        "g6_gate_pass": null,
+        "g6_normalized_wer": null,
+        "energy_class": "reported_j"
+      }
+    }
+  },
+  "cloud_tts": {
+    "stage": "elevenlabs_v4_cloud",
+    "provider": "ElevenLabs v4 Cloud TTS API",
+    "j_per_min": null,
+    "j_per_min_gross": null,
+    "j_per_min_net": null,
+    "energy_class": "unmetered",
+    "note": "Provider does not expose hardware joule counters; labeled unmetered per [G10] and never invented."
+  },
+  "third_party_gpu_reported_j_references": {
+    "note": "Third-party GPU reported_j figures cited in Planetary Research Media Blueprint v1.0 (E2E Networks, Mar 2026); strictly separated from OpenIE physical DC shunt measured_j.",
+    "whisper_large_v3_turbo_nvidia_l4_gpu": {
+      "j_per_min_range": [
+        95,
+        120
+      ],
+      "energy_class": "reported_j",
+      "substrate": "NVIDIA L4 GPU (third-party published benchmark)",
+      "source": "E2E Networks (Mar 2026), cited in Blueprint v1.0 §9.5"
+    },
+    "nvidia_parakeet_l4_gpu": {
+      "j_per_min": 13,
+      "energy_class": "reported_j",
+      "substrate": "NVIDIA L4 GPU (third-party published benchmark)",
+      "source": "E2E Networks (Mar 2026), cited in Blueprint v1.0 §9.5"
+    }
+  }
+}

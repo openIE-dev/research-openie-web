@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (pl) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:15.332
+<v Narrator>Po pierwsze, prawdziwe kompilatory łamią każde pojedyncze prawo opisowe. Dlatego w tym badaniu zdefiniowaliśmy siedmioczęściowy miernik. Po drugie, maksymalna optymalizacja kompilatora pochłania energię, która nigdy nie zwraca się na trzydziestu procentach programów testowych.
+
+2
+00:00:15.832 --> 00:00:24.406
+<v Narrator>Po trzecie, kod odcisków palców przez zmienne pozycje ponownie wykorzystuje kompilacje z zerowymi pomyłkami, obniżając energię kompilacji Rust czterokrotnie.
+
+3
+00:00:24.906 --> 00:00:42.841
+<v Narrator>Przetestowaliśmy twierdzenie, że każdy kompilator obniża formy kanoniczne przy jednoczesnym śledzeniu energii i zachowaniu znaczenia. Testowaliśmy to twierdzenie na dwunastu prawdziwych rodzinach kompilatorów. W praktyce żaden z nich nie śledzi dżuli, żaden nie haszuje kodu bez nazwy, a automatyczne fuzzery odkryły tysiące błędów w kompilatorze C.
+
+4
+00:00:43.341 --> 00:01:00.384
+<v Narrator>Przekompilowanie jako siedmioczęściowy standard pozwala nam zmierzyć dokładne horyzonty zwrotu na dwudziestu jądrach i piętnastu warstwach łańcucha narzędzi: zoptymalizowany C pokonuje Pythona po dwóch tysiącach czterechset dziewięćdziesięciu uruchomieniach, podczas gdy współdzielone biblioteki wykonawcze Rust obniżają energię budowania dwudziestokrotnie.
+
+5
+00:01:00.884 --> 00:01:18.984
+<v Narrator>Zastąpienie nazw pozycjami wiążącymi De Bruijn wykazało zero fałszywych dopasowań wśród pięciuset zweryfikowanych mutantów i zmniejszyło liczbę odbudowywanych plików C i Rust nawet o czterysta czterdzieści osiem razy.
+
+6
+00:01:19.484 --> 00:01:29.440
+<v Narrator>Wszystkie dane dotyczące energii pochodzą z wbudowanych liczników procesorów Linux, a nie z zewnętrznego ściennego watomierza, a każde zewnętrzne cytowanie zawiera wyraźną odznakę weryfikacyjną.

@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — deterministic-null (ig) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:16.298
+<v Narrator>N'oge mbụ, ọtụtụ AI benchmarks na-ahapụ otu nchịkwa nke zero-model na-enyocha ihe ọchụchọ dị mfe na-emechi. Nke abụọ, na ọrụ mathematics na database bounded, a freezed lookup table matched cloud AI on nine of ten tests.
+
+2
+00:00:16.378 --> 00:00:26.394
+<v Narrator>N'ihi ya, ọ bụrụ na a chọpụtara na ihe ndị dị n'ime usoro ihe omume ahụ bụ nke ọma, mgbe ahụ, a ga-ewepụ ha site na usoro ihe omume ahụ.
+
+3
+00:00:26.474 --> 00:00:46.142
+<v Narrator>Ọ bụrụ na abụọ puku-billion-parameter models niile score ninety-nine percent na a structured benchmark, ọ bụ otu n'ime ha kwesịrị nke ọma a neural netwọk na oge ịtụle? Na enweghị zero-model control group na ihe ọmụmụ dị iche iche, onye ọ bụla nwere ike ikwu ọdịiche.
+
+4
+00:00:46.222 --> 00:01:06.483
+<v Narrator>Anyị rụpụtara tebụl nlekota nke oge ise nke na-enyocha bit-na-bit site na Rust, Go, Python, Julia, na C plus plus, wee tinye aka ya na digitial fingerprints na ndị mmadụ Bitcoin kalenda proofs tupu ndị mmadụ randomness beacons mepụtara ihe karịrị puku atọ narị nsogbu ọhụrụ.
+
+5
+00:01:06.563 --> 00:01:21.182
+<v Narrator>N'ime afọ iri abụọ na ise, ọ bụ naanị otu n'ime ndị ọrụ 100 nke ụlọ ọrụ ahụ ka ha nwere ike ịrụ ọrụ na-enweghị nsogbu, ma ọ bụ ihe karịrị otu n'ime mmadụ iri anọ na atọ na-arụ ọrụ na-enweghị nsogbu.
+
+6
+00:01:21.262 --> 00:01:34.990
+<v Narrator>Mgbe ọhụrụ-enyocha neural fixes bụ na-edeghachiri azụ n'ime lookup ụlọ ahịa, ezi uche skewed ọrụ ibu wepụ na-agagharị na model calls na mpaghara chip ike site atọ point ise asatọ ugboro.

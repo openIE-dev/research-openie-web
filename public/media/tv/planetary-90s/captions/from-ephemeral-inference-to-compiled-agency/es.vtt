@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (es) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:33.085
+<v Narrator>En primer lugar, la computación avanzada se vuelve asequible para todos cuando los costosos modelos neuronales actúan como último recurso detrás de las rápidas tablas de búsqueda local, índices de búsqueda y solucionadores exactos.Segundo, comprimir pesos por debajo de un bit ahorra memoria, pero descomprimirlos de nuevo a números de punto flotante en tiempo de ejecución desperdicia más de ochenta veces más energía de placa de circuito que ejecutar directamente lógica entera empaquetada.
+
+2
+00:00:33.165 --> 00:00:49.943
+<v Narrator>En tercer lugar, un núcleo entero comprobado por hashes criptográficos produce exactamente la misma respuesta en procesadores, tarjetas gráficas, WebAssembly, lógica de hardware y microcontroladores, deteniéndose inmediatamente si cambia un solo peso.
+
+3
+00:00:50.023 --> 00:01:15.532
+<v Narrator>En mil quinientas tareas de control determinístico, la búsqueda del modelo cero superó las líneas de base neuronales en 61.60 puntos porcentuales en esquemas de herramienta estructurados y 20.80 puntos en satisfacibilidad booleana a una energía neta de derivación de 1.41 a 2.09 microjuelos, aislando limpiamente el espacio de clasificación de codificación abierta de 12.80 puntos.
+
+4
+00:01:15.612 --> 00:01:44.278
+<v Narrator>En una placa de derivación AMD Kria de cinco voltios con un 0,09 a 0,11 por ciento de deriva en reposo, descomprimir matrices de 0,1517 bits por peso a números flotantes de 32 bits quemó 63.335,56 microjulios brutos —81,86 veces peor que los enteros de ocho bits— mientras que el Walsh-Hadamard entero empaquetado, exclusivo-NOR, conteo de bits y búsqueda de nibble cayeron a 187,49 microjulios brutos y 10,30 microjulios netos.
+
+5
+00:01:44.358 --> 00:02:09.465
+<v Narrator>Un núcleo entero verificado por hash coincidió bit a bit en diez carriles y seis estructuras: procesador, gráficos Radeon 8060S Vulkan, gráficos de procesador divididos, vectores WebAssembly, lógica de hardware Verilog y un microcontrolador bare-metal de 1.444 bytes, que se detuvo en el manipulador de peso único junto con 1.315 recetas de bajada del Planetary Digital Well.
+
+6
+00:02:09.545 --> 00:02:39.890
+<v Narrator>De principio a fin, la cascada de cuatro etapas de revisión de ortografía redujo la energía de derivación de Kria 26.58 veces bruta y 24.49 veces neta, redujo la energía de derivación de Jetson Thor 16.26 veces, y evitó 38.46 veces las llamadas de etapa Todos los recibos son firmados por su origen, autocomprobados —no revisados externamente por pares— con derivación, contador de chips, estimados y joules no medidos mantenido estrictamente separados.

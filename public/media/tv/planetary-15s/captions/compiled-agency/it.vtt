@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — from-ephemeral-inference-to-compiled-agency (it) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:11.273
+<v Narrator>Innanzitutto, l'elaborazione avanzata diventa accessibile a tutti quando i costosi modelli neurali fungono da ultima risorsa dietro le tabelle di ricerca locali veloci, gli indici di ricerca e i risolutori esatti.
+
+2
+00:00:11.613 --> 00:00:23.626
+<v Narrator>In secondo luogo, comprimere i pesi sotto un bit consente di risparmiare memoria, ma decomprimerli in numeri a virgola mobile durante l'esecuzione spreca oltre ottanta volte più energia della scheda rispetto all'esecuzione diretta di logica intera.
+
+3
+00:00:23.966 --> 00:00:38.806
+<v Narrator>In terzo luogo, un kernel intero controllato da hash crittografici produce la stessa risposta esatta su processori, schede grafiche, WebAssembly, logica hardware e microcontrollori, fermandosi immediatamente se cambia un singolo peso.

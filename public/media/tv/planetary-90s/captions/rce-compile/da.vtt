@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (da) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:15.332
+<v Narrator>For det første bryder rigtige oversættere enhver beskrivende lov, så denne undersøgelse definerer i stedet en syv-delt målestok.For det andet brænder maksimal compileroptimering forudgående energi, der aldrig betaler sig på tredive procent af testprogrammerne.
+
+2
+00:00:15.832 --> 00:00:24.406
+<v Narrator>For det tredje genbruger fingeraftrykskoden ved variabel position opbygninger med nul forvekslinger, hvilket skærer Rust-kompileringsenergi fire hundrede gange.
+
+3
+00:00:24.906 --> 00:00:42.841
+<v Narrator>Vi testede en omfattende påstand om, at hver compiler sænker kanoniske former og samtidig sporer energi og bevarer mening mod tolv rigtige compilerfamilier.I praksis sporer ingen joule, ingen hasher navnløs kode, og automatiserede fuzzers har afdækket tusindvis af C-compilerfejl.
+
+4
+00:00:43.341 --> 00:01:00.384
+<v Narrator>Restating kompilering som en syv-delt standard giver os mulighed for at måle nøjagtige payback horisonter på tværs af tyve kerner og femten toolchain lag: optimeret C slår Python efter tolv fire hundrede halvfems kørsler, mens delte Rust runtime biblioteker skære bygge energi tyve gange.
+
+5
+00:01:00.884 --> 00:01:18.984
+<v Narrator>Ved blot at slette variabler forårsagede det 150 farlige cache-kollisioner, når to variabler byttede roller.Erstatning af navne med De Bruijns bindende positioner ramte nul falske kampe på tværs af fem hundrede verificerede mutanter og skåret varme C- og Rust-genopbygninger op til fire hundrede og otteogfyrre gange.
+
+6
+00:01:19.484 --> 00:01:29.440
+<v Narrator>Alle energital kommer fra indbyggede Linux-processortællere snarere end en ekstern væg wattmeter, og hver ekstern henvisning bærer et eksplicit verificeringsmærke.

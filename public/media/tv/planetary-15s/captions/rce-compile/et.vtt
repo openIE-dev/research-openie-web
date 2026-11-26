@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — rce-compile (et) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:07.236
+<v Narrator>Esiteks, reaalsed kompilaatorid rikuvad igasugust kirjeldavat seadust, nii et see uuring määratleb seitsmeosalise mõõdupuu.
+
+2
+00:00:07.576 --> 00:00:15.189
+<v Narrator>Teiseks, maksimaalne kompilaatori optimeerimine põletab energiat, mis ei tasu end kunagi tagasi 30% testimisprogrammide puhul.
+
+3
+00:00:15.529 --> 00:00:23.674
+<v Narrator>Kolmandaks, sõrmejälgede kood muutuva positsiooniga taaskasutab ehitusi ilma segadusteta, vähendades Rusti kompileerimisenergiat neli korda sajakordselt.

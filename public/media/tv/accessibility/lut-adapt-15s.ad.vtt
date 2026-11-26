@@ -1,25 +1,26 @@
 WEBVTT
+NOTE OpenIE Research TV v1.0 Accessibility — lut-adapt (Extended Audio Description + Ranked Non-Speech Cues)
 
 1
 00:00:00.220 --> 00:00:09.370
-<v Audio Description>Visual scene one: Card one glows amber while a 3D five-by-five grid of cyan and emerald hardware lookup cubes turns smoothly above an amber power bar.
+[key chime: hardware lookup stage activates] <v Audio Description>Visual scene one: Card one glows amber while a 3D five-by-five grid of cyan and emerald hardware lookup cubes turns smoothly above an amber power bar.
 
 2
 00:00:09.710 --> 00:00:17.220
-<v Presenter>First, most requests repeat solved patterns, so running a giant neural network every time wastes memory and energy.
+<v Narrator>First, most requests repeat solved patterns, so running a giant neural network every time wastes memory and energy.
 
 3
 00:00:17.560 --> 00:00:27.030
-<v Audio Description>Visual scene two: Card two turns bright cyan as the emerald gate ring frames the tiny lookup grid, keeping active memory at nine hundred seventy megabytes.
+[low pulse: idle shunt baseline] <v Audio Description>Visual scene two: Card two turns bright cyan as the emerald gate ring frames the tiny lookup grid, keeping active memory at nine hundred seventy megabytes.
 
 4
 00:00:27.370 --> 00:00:35.223
-<v Presenter>Second, this cascade checks tiny truth tables first and streams specialist model slices from storage only when needed.
+<v Narrator>Second, this cascade checks tiny truth tables first and streams specialist model slices from storage only when needed.
 
 5
 00:00:35.563 --> 00:00:43.467
-<v Audio Description>Visual scene three: Card three locks in emerald, marking ninety-one point seven percent verified answers and zero broken commits.
+[lock tone: deterministic state verified] <v Audio Description>Visual scene three: Card three locks in emerald, marking ninety-one point seven percent verified answers and zero broken commits.
 
 6
 00:00:43.807 --> 00:00:51.025
-<v Presenter>Third, once an automated test certifies a new answer, it compiles downward into a reusable millisecond skill.
+<v Narrator>Third, once an automated test certifies a new answer, it compiles downward into a reusable millisecond skill.

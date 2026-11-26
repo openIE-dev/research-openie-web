@@ -66,11 +66,14 @@ const ecosystemJson = JSON.stringify(ecosystem);
   const copyBtn = document.getElementById('tv-copy-transcript');
 
   const linkPaper = document.getElementById('tv-link-paper');
+  const linkSourceSheet = document.getElementById('tv-link-sourcesheet');
+  const linkBraille = document.getElementById('tv-link-braille');
   const linkFigures = document.getElementById('tv-link-figures');
   const linkTutorial = document.getElementById('tv-link-tutorial');
   const linkPdf = document.getElementById('tv-link-pdf');
   const linkSyndication = document.getElementById('tv-link-syndication');
   const linkAbout = document.getElementById('tv-link-about');
+  const jPerMinEl = document.getElementById('tv-active-j-per-min');
   const playerFrameEl = document.getElementById('tv-player-frame');
   const tiktokBarEl = document.getElementById('tv-tiktok-bar');
   const tiktokDlEl = document.getElementById('tv-tiktok-dl');
@@ -192,11 +195,16 @@ const ecosystemJson = JSON.stringify(ecosystem);
     }
 
     if (linkPaper) linkPaper.href = study.paper_url;
+    if (linkSourceSheet) linkSourceSheet.href = '/sourcesheets/' + study.id + '/';
+    if (linkBraille) linkBraille.href = '/transcripts/' + study.id + '/';
     if (linkFigures) linkFigures.href = study.figures_url;
     if (linkTutorial) linkTutorial.href = '/tutorials/?lab=' + study.tutorial_lab_id;
     if (linkPdf) linkPdf.href = study.pdf_url;
     if (linkSyndication) linkSyndication.href = '/syndication/?study=' + study.id;
     if (linkAbout) linkAbout.href = study.about_url;
+    if (jPerMinEl && study.j_per_min_label) {
+      jPerMinEl.textContent = study.j_per_min_label;
+    }
 
     const isVertical = activeTier === 'tiktok';
     if (playerFrameEl) {

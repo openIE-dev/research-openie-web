@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — from-ephemeral-inference-to-compiled-agency (ro) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:11.273
+<v Narrator>În primul rând, calculul avansat devine accesibil pentru toată lumea atunci când modelele neuronale scumpe acționează ca o ultimă soluție în spatele tabelelor rapide locale de căutare, a indexurilor de căutare și a rezolvatorilor exacți.
+
+2
+00:00:11.613 --> 00:00:23.626
+<v Narrator>În al doilea rând, comprimarea greutăților sub un bit economisește memorie, dar despachetarea lor înapoi la numerele cu virgulă mobilă în timpul rulării risipește de peste optzeci de ori mai multă energie pe placa de circuit decât rularea directă a logicii întregi.
+
+3
+00:00:23.966 --> 00:00:38.806
+<v Narrator>În al treilea rând, un nucleu întreg verificat prin hash-uri criptografice produce exact același răspuns pe procesoare, plăci grafice, WebAssembly, logică hardware și microcontrolere, oprindu-se imediat dacă se schimbă o singură greutate.

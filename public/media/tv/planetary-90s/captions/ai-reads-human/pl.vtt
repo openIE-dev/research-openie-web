@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — ai-reads-human (pl) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:16.158
+<v Narrator>Po pierwsze, komputery często wymieniają dane w formatach tekstowych napisanych dla ludzkich oczu, zmuszając maszyny do dodatkowej pracy.Po drugie, odczyt wcięcia tekstu konfiguracyjnego wymaga ponad dwa tysiące razy więcej energii układu niż odczyt kompaktowych numerów maszyn.
+
+2
+00:00:16.658 --> 00:00:24.468
+<v Narrator>Po trzecie, dzielenie tekstu na fragmenty spalało dwanaście razy więcej energii niż samo analizowanie tekstu.
+
+3
+00:00:24.968 --> 00:00:41.722
+<v Narrator>Formaty pełne nawiasów, przecinków i spacji zostały zaprojektowane tak, aby ludzie mogli wygodnie sprawdzać pliki w edytorach tekstowych. Jednak nowoczesne potoki narzędzi AI przekazują miliony tych słownych rekordów tekstowych bezpośrednio z maszyny na maszynę bez patrzenia człowieka.
+
+4
+00:00:42.222 --> 00:00:59.589
+<v Narrator>Nazwaliśmy tę dodatkową pracę podatkiem impedancyjnym i przetestowaliśmy trzydzieści cztery obciążenia związane z analizą i podziałem słów w odniesieniu do dwudziestu tysięcy rekordów. Uruchamianie każdego przejścia wewnątrz odizolowanego procesu roboczego na procesorze Apple czysto oddzieliło niewielkie koszty analizy od hałaśliwej aktywności laptopa w tle.
+
+5
+00:01:00.089 --> 00:01:17.771
+<v Narrator>Rozpakowanie dwudziestotrzybajtowego rekordu binarnego zużyło dwieście osiemdziesiąt nanodżuli, standardowy tekst w nawiasach prawie osiem razy więcej, skompilowany tekst z wcięciami zużył dwieście czterdzieści dziewięć razy więcej, a czysty tekst Pythona spalił dwa tysiące pięćdziesiąt cztery razy więcej energii.
+
+6
+00:01:18.271 --> 00:01:31.355
+<v Narrator>Nawet dodanie dwóch spacji w celu uzyskania ładnego wcięcia więcej niż podwoiło energię dzielenia słów przez sztuczną inteligencję, do siedemdziesięciu jednego mikrodżula na rekord.

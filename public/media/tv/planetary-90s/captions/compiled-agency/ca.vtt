@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (ca) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:20.135
+<v Narrator>Primer, la computació avançada es torna assequible per a tothom quan els models neuronals cars actuen com un últim recurs darrere de ràpides taules locals de cerca, índexs de cerca i solucionadors exactes. Segon, comprimir pesos per sota d' un bit estalvia memòria, però descomprimir- los de nou a nombres en coma flotant en temps d' execució malgasta més de vuitanta vegades més energia del circuit que executar lògica entera empaquetada directament.
+
+2
+00:00:20.295 --> 00:00:32.082
+<v Narrator>En tercer lloc, un nucli sencer comprovat per hashes criptogràfics produeix exactament la mateixa resposta a través de processadors, targetes gràfiques, WebAssembly, lògica de maquinari i microcontroladors, aturant-se immediatament si canvia un sol pes.
+
+3
+00:00:32.242 --> 00:00:50.475
+<v Narrator>A través de quinze-centes tasques de control determinista, la cerca del model zero va superar les línies de base neuronals en 61,60 punts percentuals en esquemes d'eines estructurades i 20,80 punts en satisfacció booleana a 1,41 a 2,09 microjoules d'energia neta de derivació, aïllant netament el forat de triatge de codificació oberta de 12,80 punts.
+
+4
+00:00:50.635 --> 00:01:16.546
+<v Narrator>En una placa de cinc volts AMD Kria amb 0,09 a 0,11 per cent d'inactivitat, desempaquetant matrius de 0,1517 bits per pes a flotants de 32 bits va cremar 63.335,56 microjoules bruts -81,86 vegades pitjor que els enters de vuit bits- mentre que el nombre sencer Walsh-Hadamard, exclusiu-NOR, bit-count i nibble lookup van caure a 187,49 microjoules bruts i 10,30 microjoules nets.
+
+5
+00:01:16.706 --> 00:01:37.000
+<v Narrator>Un nucli enter verificat per hash coincidia bit a bit en deu carrils i sis teixits: processador, gràfics Radeon 8060S Vulkan, processador-gràfics dividits, vectors WebAssembly, lògica de maquinari Verilog i un microcontrolador bare-metal de 1.444 bytes - aturant-se en manipulació d'un sol pes al costat de 1.315 Planetary Digital Well baixant receptes.
+
+6
+00:01:37.160 --> 00:01:58.456
+<v Narrator>De cap a peus, la cascada de quatre etapes de comprovació ortogràfica va reduir l' energia bruta del sensor de potència Kria 26. 58 vegades i la neta 24. 49 vegades, va tallar l'energia brut del sensor Jetson Thor 16.26 vegades, i va evitar 38.46 vegades les trucades d' etapa- quatre. Tots els reconeixements són Signed Provenance, Self- Checked - no revisats externament per pares - amb el sensor de potencia, comptador de xips, estimats i joules sense mesurar mantinguts estrictament separats.

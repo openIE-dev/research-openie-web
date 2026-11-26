@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (tr) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:35.622
+<v Narrator>Birincisi, gelişmiş bilgisayarlar pahalı nöral modellerin hızlı yerel arama tabloları, arama indeksleri ve kesin çözücüler arkasında son çare olarak davrandığında herkes için uygun hale gelir.İkincisi, bir bitin altındaki ağırlıkları sıkıştırmak bellek tasarrufu sağlar, ancak onları çalışma sırasında tekrar yüzen nokta sayılarına boşaltma paketlenen tam sayı mantığından doğrudan çalıştırmaktan seksen kat daha fazla devre kart enerjisini harcar.
+
+2
+00:00:35.702 --> 00:00:55.637
+<v Narrator>Üçüncü olarak, kriptografik hash'lar tarafından kontrol edilen bir tam sayı çekirdeği işlemciler, grafik kartları, WebAssembly, donanım mantığı ve mikrokontrolörler üzerinde tam olarak aynı cevabı üretir, tek bir ağırlık değiştiğinde derhal durdurulur.
+
+3
+00:00:55.717 --> 00:01:18.750
+<v Narrator>Onbeş yüz deterministik kontrol görevi boyunca, sıfır-model arama yapısal alet şemalarında nöral temel çizgileri yüzde 61.60 puan ve 1.41 ile 2.09 mikrojoule net shunt enerjisinde Boolean tatminkarlığında 20.80 puanla yendi, temiz bir şekilde 12.80 nokta açık kodlama triaj açığı izole etti.
+
+4
+00:01:18.830 --> 00:01:47.899
+<v Narrator>0,09 ila yüzde 0,11'lik bir boşluk sürüklemesi olan AMD Kria beş voltlu bir tahta shunt üzerinde, 32-bit floatlara 0.1517 bit ağırlık başına matrisleri paketleme 63,335.56 mikrojoule brut yaktı - sekiz-bit tam sayılardan 81.86 kez daha kötüyken - dolu tam sayı Walsh-Hadamard, özel-NOR, bit sayımı ve nibble arama 187.49 mikrojoule brut ve 10.30 mikrojoule net düştü.
+
+5
+00:01:47.979 --> 00:02:15.459
+<v Narrator>Bir hash-verilen tam sayı çekirdeği on bant ve altı doku üzerinde bit-bit eşleşti - işlemci, Radeon 8060S Vulkan grafikleri, bölünmüş işlemci-grafikler, WebAssembly vektörleri, Verilog donanım mantığı ve 1.444 baytlık çıplak metal mikrokontrolör - tek ağırlıkta tamper ile birlikte 1.315 Planetary Digital Well düşürme tarifleriyle birlikte durdu.
+
+6
+00:02:15.539 --> 00:02:44.290
+<v Narrator>Sonuna kadar, dört aşamalı spellcheck kaskadı Kria shunt enerjisini 26.58 kez brüt ve 24.49 kez net olarak kesti, Jetson Thor shunt enerjisini 16.26 kez kesti ve dördüncü aşama çağrılarından 38.46 kez kaçındı. Tüm alımlar imzalı kaynaklıdır, kendi kontrolündedir - dışarıdan eş değerli değil- shunt, çip-kayıt, tahmini ve ölçülmeyen joule'lar sıkıca ayrı tutulur.

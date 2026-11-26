@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (zu) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:22.192
+<v Narrator>Okuqala, i-real compilers iphula noma yisiphi isivumelwano esichazayo esisodwa, ngakho le cwaningo lichaza i-yardstick yengxenye yesithupha endaweni. Okulandelayo, ubukhulu be-compiler optimization ilahleka amandla angaphambili angaze abuyiselwe emuva ngephesenti elingama-30 lamaphrojekthi wokuhlolwa.
+
+2
+00:00:22.272 --> 00:00:33.488
+<v Narrator>Yesibili, ikhodi fingering ngokushintshana indawo reuses kwakha nge zero mix-ups, ukucutshungulwa ukusika Rust ukuhlanganisa amandla amane inani elikhulu.
+
+3
+00:00:33.568 --> 00:00:58.941
+<v Narrator>Sithole ukuthi i-compiler ngayinye ikhuphula amafomu ajwayelekile ngenkathi ilandela amandla futhi igcina amagama—eqenjini le-compiler elisemthethweni elinabantu abalishumi nambili. Kuzomsebenzi, akukho okulandela amajoule, akukho okuhlanganisiwe kwekhodi elingaba nombhalo, futhi amafuzzers azenzakalelayo athola amawaka wezinkinga ze-C compiler.
+
+4
+00:00:59.021 --> 00:01:26.520
+<v Narrator>Ukuqoqwa okusha njengesilinganiso sengxenye yesithupha sivumela ukuthi silinganise ukubuyiselwa kwemali okuqondile phakathi kwe-kernels engu-20 nezinga lezinto ezisetshenziswayo eziyisishiyagalombili: i-optimised C ishaya iPython ngemuva kwezingu-24 ngaphezu kwamakhulu angu-90, ngenkathi i-Rust runtime libraries ehlukaniswe ikhuphula amandla okwakha ngamaphesenti angama-20.
+
+5
+00:01:26.600 --> 00:01:52.780
+<v Narrator>Ukucisha kuphela amagama ashintshayo kwabangela ama-cache angozini ayikhulu elilodwa nesihlanu ukungqubuzana lapho ama-variables amabili eshintsha umsebenzi. Ukufaka amagama ngeDe Bruijn oxhumana namasikhundla uthola i-zero engalungile efana namakhulu amane aqinisekisiwe ama-mutants futhi ubeke phansi i-C kanye ne-Rust rebuild kuze kube yiminyaka engu-408.
+
+6
+00:01:52.860 --> 00:02:06.790
+<v Narrator>Zonke izibalo ze-energy zivela kuma-counters we-Linux processor afakwe ngaphakathi ngaphezu kwe-wattmeter yesakhiwo sangaphandle, futhi wonke umbhalo wangaphandle ufaka isitifiketi esicacile.

@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (sl) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:15.332
+<v Narrator>Prvič, pravi prevajalniki kršijo vsak opisni zakon. Zato je v tej študiji uporabljeno sedemdelno merilo. Drugič, maksimalna optimizacija prevajalca porabi veliko energije, ki se nikoli ne povrne na tridesetih odstotkih testnih programov.
+
+2
+00:00:15.832 --> 00:00:24.406
+<v Narrator>Tretjič, odtisni koda s spremenljivim položajem ponovno uporabi gradnje z ničelno mešanico, kar zmanjša energijo prevajanja Rusta za štiri stokrat.
+
+3
+00:00:24.906 --> 00:00:42.841
+<v Narrator>V praksi noben prevajalnik ne sledi joulom, noben ne razčlenjuje brezimenskih kod in avtomatizirani fuzerji so odkrili na tisoče hroščev v prevajalnikih C. To je bilo mogoče dokazati z uporabo 12 družin pravih prevajalnikov.
+
+4
+00:00:43.341 --> 00:01:00.384
+<v Narrator>Preoblikovanje prevajanja v sedemdelni standard nam omogoča merjenje natančnih časov povrnitve investicije na dvajsetih jedrih in petnajstih nivojih orodne verige: optimizirani C premaga Python po štiriindvajsetih sto devetdesetih zagonih, medtem ko skupne knjižnice Rusta zmanjšajo energijo gradnje dvajsetkrat.
+
+5
+00:01:00.884 --> 00:01:18.984
+<v Narrator>Nadomestitev imen z De Bruijnovimi veznimi položaji je povzročila nič lažnih ujemanj na petsto preverjenih mutantih in zmanjšala toplo obnovo C-ja in Rusta do štiri sto oseminštiridesetkrat.
+
+6
+00:01:19.484 --> 00:01:29.440
+<v Narrator>Vse vrednosti energije prihajajo iz vgrajenih števcev procesorja Linux in ne z zunanjega stenskega vatommetra, vsako zunanje sklicevanje pa ima izrecno oznako preverjanja.

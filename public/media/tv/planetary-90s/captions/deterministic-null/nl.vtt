@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — deterministic-null (nl) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:14.882
+<v Narrator>Ten eerste slaan de meeste AI-benchmarks een zero-model controlegroep over die test wat simpele lookup al oplost, en ten tweede kwam bij begrensde reken- en databasetaken een bevroren lookuptabel in negen van de tien tests overeen met cloud AI.
+
+2
+00:00:15.382 --> 00:00:23.382
+<v Narrator>Ten derde, bij open codeertaken sprong AI vooruit, terwijl het in cache zetten van geverifieerde antwoorden de herhalingstijd met drie tot zes keer verminderde.
+
+3
+00:00:23.882 --> 00:00:37.954
+<v Narrator>Als twee modellen met honderd miljard parameters allebei negenennegentig procent scoren op een gestructureerde benchmark, heeft dan welk van beide modellen dan ook echt een neuraal netwerk nodig gehad om de beslissing te nemen? Zonder een controlegroep met nul-model voor precies hetzelfde examen kan niemand het verschil zien.
+
+4
+00:00:38.454 --> 00:00:54.882
+<v Narrator>We bouwden een acht-staps integer lookup tabel die bit voor bit werd geverifieerd in Rust, Go, Python, Julia en C plus plus. Daarna verankerde we de digitale vingerafdrukken op openbare Bitcoin kalender bewijzen voordat openbare willekeur bakens vierduizend dertig nieuwe uitgestelde problemen genereerden.
+
+5
+00:00:55.382 --> 00:01:11.222
+<v Narrator>In tweeduizend achthonderdveertig begrensde wiskunde- en databaseproblemen versloegen cloudmodellen de bevroren tafel alleen op niet-geïndexeerde klantfrasen, maar sprongen ze vierenveertig tot vijfennegentig procentpunten vooruit in vier extern geschreven software engineering benchmarks.
+
+6
+00:01:11.722 --> 00:01:21.953
+<v Narrator>Wanneer nieuw geverifieerde neurale oplossingen worden teruggeschreven naar de lookup store, verminderen realistische scheve workloads terugkerende modelaanroepen en lokale chip-energie met drie tot vijf keer negen.

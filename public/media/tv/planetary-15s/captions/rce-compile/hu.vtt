@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — rce-compile (hu) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:07.236
+<v Narrator>Először is, a valódi fordítóprogramok megsértenek minden egyes leíró törvényt, így ez a tanulmány inkább egy hétrészes mércét határoz meg.
+
+2
+00:00:07.576 --> 00:00:15.189
+<v Narrator>Másodszor, a maximális fordítóoptimalizálás előre energiát éget el, ami soha nem térül meg a tesztprogramok harminc százalékán.
+
+3
+00:00:15.529 --> 00:00:23.674
+<v Narrator>Harmadszor, a kód ujjlenyomat-készítése változó pozíciójú újrafelhasználású buildekkel, nulla összekeveréssel, négyszázszor csökkentve a Rust fordítási energiát.

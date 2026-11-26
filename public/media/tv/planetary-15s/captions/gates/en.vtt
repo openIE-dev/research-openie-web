@@ -1,13 +1,14 @@
 WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — gates (en) + Ranked Non-Speech Cues
 
 1
 00:00:00.220 --> 00:00:05.760
-First, a computer should not take an irreversible action until an independent check confirms it is safe.
+[key chime: commit gate passes] <v Narrator>First, a computer should not take an irreversible action until an independent check confirms it is safe.
 
 2
 00:00:06.100 --> 00:00:12.486
-Second, it should try the cheapest method first and wake a large AI model only when simpler tools miss.
+[low pulse: idle shunt baseline] <v Narrator>Second, it should try the cheapest method first and wake a large AI model only when simpler tools miss.
 
 3
 00:00:12.826 --> 00:00:18.747
-Third, every decision is written to a receipt with the energy it used, so anyone can audit it later.
+[lock tone: energy receipt sealed] <v Narrator>Third, every decision is written to a receipt with the energy it used, so anyone can audit it later.

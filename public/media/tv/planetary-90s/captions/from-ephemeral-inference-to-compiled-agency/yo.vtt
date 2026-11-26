@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (yo) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:42.433
+<v Narrator>Àwọn ohun tí a fi hàn nínú àwọn ìṣàmúlò-ètò yìí jẹ́ pé, ìmọ̀rọ̀n kọ́mputa tí o ga jú lọ díẹ̀ nípa gbogbo eniyan lórí bi módèlè̀ àtilẹbá tí a nṣé bí ilé́ rerè tòjú nínú àwọn táàbù lilọ́ọ̀kan, àwọn inídísítà wiwa, atí awọn soluséètì tòjú. Ẹ̀yà kẹtà, ìgbésẹ́ àwọn ẹ̀rọ tí a fi pàdé nínú bíti kan ṣé gba àwọn ẹ̀kọ́, sugboń tí a bá fi wọn pamọ́ padà sí àwọn nọmba pupo-afẹ́fẹ
+
+2
+00:00:42.513 --> 00:00:58.798
+<v Narrator>Ninu awọn ohun elo ti o ni ibatan si imọ-ẹrọ, a lo awọn ọna kika data bii awọn aworan, awọn fidio, awọn ọrọ, ati awọn faili lati ṣe agbekalẹ awọn iṣẹ ṣiṣe ti o rọrun.
+
+3
+00:00:58.878 --> 00:01:33.205
+<v Narrator>Ninu awọn iṣẹ iṣakoso ti o ni ibatan si ọgọrun-un mẹrinla, wiwa awoṣe-ẹjọ ṣe aṣeyọri awọn ipilẹṣẹ neural nipasẹ awọn ipin ogorun 61.60 lori awọn ọna ẹrọ irinṣẹ ti a ṣe apẹrẹ ati awọn ipin 20.80 lori igbẹkẹle Boolean ni agbara shunt ti o wa titi ti 1.41 si 2.09 microjoules, ni kikun fi idiwọ iyatọ triage ti kodi ti o han gbangba ti awọn aaye 12.80.
+
+4
+00:01:33.285 --> 00:02:08.500
+<v Narrator>Ni AMD Kria mẹrin-volt board shunt pẹlu 0.09 si 0.11 ogorun idle drift, unpacking 0.1517 bits-per-weight matricses to 32-bit floats sunmọ 63,335.56 microjoules gross—81.86 igba ti o dara ju awọn integers marun-bit—nigbati packed integer Walsh-Hadamard, exclusive-NOR, bit-count, ati nibble lookup padanu si 187.49 microjoules gross ati 10.30 microjoules net.
+
+5
+00:02:08.580 --> 00:02:41.329
+<v Narrator>A hash-verified integer kernel dapọ bit-for-bit lori mẹrinla laini ati mẹta fabrics—processor, Radeon 8060S Vulkan graphic, split processor-graphic, WebAssembly vectors, Verilog hardware logic, ati a 1,444-byte bare-metal microcontroller—ti o ti tu silẹ lori tamper kan-iwuwo ni apapo pẹlu 1,315 Planetary Digital Well mu awọn ilana.
+
+6
+00:02:41.409 --> 00:03:18.990
+<v Narrator>Ipari si ipari, awọn mẹrin-ipele spellcheck cascade ku Kria shunt agbara 26.58 igba gross ati 24.49 igba net, ku Jetson Thor shunt agbara 16.26 igba, ati ti yọkuro 38.46 igba ti igbesẹ-mẹta ipe. Gbogbo awọn gbajumọ ni Signed Provenance, Self-Checked—ko si externally peer-reviewed—nikan pẹlu shunt, chip-counter, estimated, ati unmetered joules ti a fipamọ lagbara lati ṣe ni apapọ.

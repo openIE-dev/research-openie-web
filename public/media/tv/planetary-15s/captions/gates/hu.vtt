@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — gates (hu) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:05.760
+<v Narrator>Először is, a számítógépnek nem szabad visszafordíthatatlan műveletet végrehajtania mindaddig, amíg egy független ellenőrzés meg nem erősíti biztonságosságát.
+
+2
+00:00:06.100 --> 00:00:12.486
+<v Narrator>Másodszor, először a legolcsóbb módszert kell kipróbálnia és csak akkor ébreszteni egy nagy AI modellt, ha az egyszerűbb eszközök hiányoznak.
+
+3
+00:00:12.826 --> 00:00:18.747
+<v Narrator>Harmadszor, minden döntéshez egy nyugta tartozik a felhasznált energiával együtt, így bárki később auditálhatja azt.

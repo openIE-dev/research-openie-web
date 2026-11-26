@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (hu) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:15.332
+<v Narrator>Másodszor, a maximális fordítóoptimalizálás előzetes energiát emészt fel, ami soha nem térül meg a tesztprogramok harminc százalékán, így az optimális fordítási idők elérése érdekében a fordítónak egy hétrészes mércét kell meghatároznia.
+
+2
+00:00:15.832 --> 00:00:24.406
+<v Narrator>Harmadszor, a kód ujjlenyomat-készítése változó pozíciójú újrafelhasználású buildekkel, nulla összekeveréssel, négyszázszor csökkentve a Rust fordítási energiát.
+
+3
+00:00:24.906 --> 00:00:42.841
+<v Narrator>A gyakorlatban egyik sem követi nyomon a joule-okat, egyik sem hash-ol névtelen kódot, és az automatizált fuzzerek több ezer C fordítóhibát fedeztek fel.A fordítóprogramok közötti különbségeket a következőképpen lehet megkülönböztetni:
+
+4
+00:00:43.341 --> 00:01:00.384
+<v Narrator>A fordítás újrafordítása hétrészes szabványként lehetővé teszi számunkra, hogy pontosan mérjük a megtérülési horizontokat húsz kernel és tizenöt eszközlánc réteg között: az optimalizált C kétszázkilencven futtatás után verte a Pythont, miközben a megosztott Rust futásidejű könyvtárak hússzor csökkentették a építési energiát.
+
+5
+00:01:00.884 --> 00:01:18.984
+<v Narrator>A változónevek egyszerű törlése százötven veszélyes cache ütközést okozott, amikor két változó szerepét felcserélték.A nevek De Bruijn kötési pozíciókkal való cseréje nulla hamis egyezést eredményezett ötszáz ellenőrzött mutánson és négyszáznegyvennyolcszor csökkentette a meleg C és Rust újraépítéseket.
+
+6
+00:01:19.484 --> 00:01:29.440
+<v Narrator>Minden energiaszám beépített Linux processzor számlálókból származik, nem pedig külső fali wattmérőből, és minden külső idézet tartalmaz egy explicit ellenőrző jelvényt.

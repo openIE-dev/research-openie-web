@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — deterministic-null (pl) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:06.752
+<v Narrator>Po pierwsze, większość testów porównawczych AI pomija grupę kontrolną zero-modelu, która sprawdza to, co proste wyszukiwanie już rozwiązuje.
+
+2
+00:00:07.092 --> 00:00:14.471
+<v Narrator>Po drugie, w przypadku zadań matematycznych i baz danych z ograniczeniami zamrożona tabela wyszukiwania dopasowała się do AI w chmurze w dziewięciu na dziesięć testów.
+
+3
+00:00:14.811 --> 00:00:22.541
+<v Narrator>Po trzecie, w zadaniach otwartych AI skoczyła do przodu, podczas gdy buforowanie zweryfikowanych odpowiedzi zmniejszyło energię powtarzania trzy punkty sześciokrotnie.

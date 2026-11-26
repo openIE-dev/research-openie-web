@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import homeJsonLd from '../data/home-jsonld.json';
+import coverageSummary from '../data/coverage-summary.json';
 import { getExportedStudies } from '../lib/markdownExport';
 
 const exported = await getExportedStudies();
@@ -73,13 +74,22 @@ const products = projects.filter((p) => p.group === 'product');
     </p>
     <div class="mt-8 flex flex-wrap gap-3">
       <a href="/tv/" class="inline-flex items-center font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
-        ▶ Research TV (116 HD + 29 9:16 films)
+        ▶ Research TV ({coverageSummary.horizontal_films_count} HD + {coverageSummary.vertical_films_count} 9:16 = {coverageSummary.total_films_count} films)
       </a>
       <a href="/living/compiled-agency/" class="inline-flex items-center font-mono text-xs text-emerald-300 border border-emerald-400/50 bg-emerald-500/10 px-4 py-2.5 rounded-md no-underline hover:bg-emerald-500/20 transition-colors">
-        ⚡ Compiled Agency Simulator · Shot #6 Shunts
+        ⚡ Compiled Agency · @ 6a22dee 6-Model SOTA Shunts
       </a>
       <a href="/radio/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/50 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
-        ◉ Research Radio
+        ◉ Research Radio ({coverageSummary.radio_episodes_count} episodes)
+      </a>
+      <a href="/blueprint/" class="inline-flex items-center font-mono text-xs text-brand-amber border border-brand-amber/45 bg-brand-amber/10 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/20 transition-colors">
+        🌐 Planetary Media Blueprint v1.0 ({coverageSummary.totals.voiced_15s_languages_count} voiced · {coverageSummary.spoken_selector_codes_count} selector langs)
+      </a>
+      <a href="/sourcesheets/" class="inline-flex items-center font-mono text-xs text-emerald-300 border border-emerald-400/40 px-4 py-2.5 rounded-md no-underline hover:bg-emerald-500/10 transition-colors">
+        📑 Source Sheets ({coverageSummary.studies_count})
+      </a>
+      <a href="/transcripts/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
+        ⠃ Braille HTML Transcripts ({coverageSummary.totals.braille_html_transcripts_count})
       </a>
       <a href="/tutorials/" class="inline-flex items-center font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors">
         Interactive Tutorials (13 labs)

@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (pt) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:36.042
+<v Narrator>Em primeiro lugar, a computação avançada se torna acessível para todos quando modelos neurais caros atuam como último recurso por trás de tabelas de pesquisa locais rápidas, índices de busca e solucionadores exatos.Segundo, comprimir pesos abaixo de um bit economiza memória, mas descompactá-los novamente em números de ponto flutuante em tempo de execução desperdiça mais de oitenta vezes mais energia da placa de circuito do que executar diretamente a lógica de inteiros empacotados.
+
+2
+00:00:36.122 --> 00:00:53.264
+<v Narrator>Terceiro, um kernel inteiro verificado por hashes criptográficos produz a mesma resposta em todos os processadores, placas gráficas, WebAssembly, lógica de hardware e microcontroladores, parando imediatamente se um único peso mudar.
+
+3
+00:00:53.344 --> 00:01:19.987
+<v Narrator>Em mil e quinhentas tarefas de controle determinístico, a pesquisa do modelo zero bateu as linhas de base neurais em 61,60 pontos percentuais em esquemas de ferramenta estruturados e 20,80 pontos na satisfatibilidade booleana com energia de derivação líquida de 1,41 a 2,09 microjoules, isolando limpa a lacuna de triagem de codificação aberta de 12,80 pontos.
+
+4
+00:01:20.067 --> 00:01:48.863
+<v Narrator>Em uma placa AMD Kria de cinco volts com 0,09 a 0,11% de desvio ocioso, descompactando matrizes de 0,1517 bits por peso para floats de 32 bits queimou 63.335,56 microjoules brutos — 81,86 vezes pior do que inteiros de oito bits — enquanto Walsh-Hadamard inteiro embalado, exclusivo-NOR, contagem de bits e busca de nibble caíram para 187,49 microjoules brutos e 10,30 microjoules líquidos.
+
+5
+00:01:48.943 --> 00:02:16.328
+<v Narrator>Um kernel inteiro verificado por hash correspondeu bit a bit em dez pistas e seis telas — processador, gráficos Radeon 8060S Vulkan, gráficos de processador divididos, vetores WebAssembly, lógica de hardware Verilog e um microcontrolador bare-metal de 1.444 bytes — parando em uma manipulação de peso único ao lado de 1.315 receitas de redução do Planetary Digital Well.
+
+6
+00:02:16.408 --> 00:02:48.990
+<v Narrator>De ponta a ponta, a cascata de verificação ortográfica em quatro estágios cortou a energia do shunt Kria 26,58 vezes bruto e 24,49 vezes líquido, cortou a energia do shunt Jetson Thor 16,26 vezes e evitou 38,46 vezes as chamadas do estágio Todos os recibos são assinados com proveniência, auto-verificados — não revisados externamente por pares — com shunt, contador de chips, estimados e joules não medidos mantidos estritamente separados.

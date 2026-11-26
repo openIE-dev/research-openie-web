@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — deterministic-null (pl) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:14.882
+<v Narrator>Po drugie, w przypadku zadań matematycznych i związanych z bazami danych, zamrożona tabela wyszukiwania była porównywalna ze sztuczną inteligencją w chmurze w dziewięciu na dziesięć testów.
+
+2
+00:00:15.382 --> 00:00:23.382
+<v Narrator>Po trzecie, w zadaniach otwartych AI skoczyła do przodu, podczas gdy buforowanie zweryfikowanych odpowiedzi zmniejszyło energię powtarzania trzy punkty sześciokrotnie.
+
+3
+00:00:23.882 --> 00:00:37.954
+<v Narrator>Jeśli dwa modele obejmujące sto miliardów parametrów uzyskują wyniki rzędu dziewięćdziesięciu dziewięciu procent w strukturalnym teście porównawczym, czy którykolwiek z nich faktycznie potrzebował sieci neuronowej w momencie podejmowania decyzji? Bez grupy kontrolnej bez modelu zerowego na tym samym egzaminie nikt nie może stwierdzić różnicy.
+
+4
+00:00:38.454 --> 00:00:54.882
+<v Narrator>Zbudowaliśmy ośmiostopniową tabelę wyszukiwania liczb całkowitych zweryfikowaną bit po bicie w językach Rust, Go, Python, Julia i C plus plus, a następnie zakotwiczyliśmy jej cyfrowe odciski palców na publicznych dowodach kalendarza Bitcoina przed tym, jak publiczne sygnalizatory losowości wygenerowały cztery tysiące trzydzieści nowych problemów.
+
+5
+00:00:55.382 --> 00:01:11.222
+<v Narrator>W dwóch tysiącach osiemset czterdziestu problemach matematycznych i baz danych, modele chmury pokonały zamrożony stół tylko w niezindeksowanych frazach klienta, ale przeskoczyły od czterdziestu czterech do dziewięćdziesięciu pięciu punktów procentowych w czterech zewnętrznych benchmarkach inżynierii oprogramowania.
+
+6
+00:01:11.722 --> 00:01:21.953
+<v Narrator>Gdy nowo zweryfikowane poprawki neuronowe są zapisywane z powrotem do magazynu wyszukiwania, realistyczne przekrzywione obciążenia robocze ograniczają powtarzające się wywołania modelu i energię lokalnego układu o trzy punkty pięć dziewięć.

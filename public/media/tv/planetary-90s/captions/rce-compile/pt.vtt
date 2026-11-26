@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (pt) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:16.888
+<v Narrator>Em primeiro lugar, compiladores reais quebram qualquer lei descritiva única. Portanto, este estudo define um padrão de sete partes. Em segundo lugar, a otimização máxima do compilador queima energia inicial que nunca se paga em trinta por cento dos programas de teste.
+
+2
+00:00:16.968 --> 00:00:26.821
+<v Narrator>Terceiro, o código de impressão digital por posição variável reutiliza compilações com zero confusões, reduzindo a energia da compilação Rust em quatro vezes.
+
+3
+00:00:26.901 --> 00:00:45.869
+<v Narrator>Testamos uma afirmação ampla — que todo compilador reduz formas canônicas enquanto rastreia energia e preserva significado — contra doze famílias de compiladores reais.Na prática, nenhuma rastreia joules, nenhum hash código sem nome, e fuzzers automatizados descobriram milhares de bugs no compilador C.
+
+4
+00:00:45.949 --> 00:01:07.244
+<v Narrator>A recompilação como um padrão de sete partes nos permite medir horizontes exatos de retorno em vinte núcleos e quinze camadas de cadeia de ferramentas: o C otimizado supera o Python após duzentas e quatrocentas e noventa execuções, enquanto as bibliotecas de tempo de execução Rust compartilhadas cortam a energia de compilação vinte vezes.
+
+5
+00:01:07.324 --> 00:01:20.383
+<v Narrator>A substituição de nomes com posições de ligação De Bruijn atingiu zero falsos resultados em quinhentos mutantes verificados e cortou as reconstruções quentes do C e Rust até quatrocentas quarenta e oito vezes.
+
+6
+00:01:20.463 --> 00:01:32.390
+<v Narrator>Todos os números de energia vêm dos contadores internos do processador Linux, em vez de um wattômetro externo de parede, e cada citação externa carrega um distintivo de verificação explícito.

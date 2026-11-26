@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — deterministic-null (ro) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:14.882
+<v Narrator>În primul rând, majoritatea benchmark-urilor de IA omit un grup de control cu model zero care testează ce rezolvă deja căutarea simplă.În al doilea rând, în cazul sarcinilor matematice și de baze de date limitate, o tabelă de căutare congelată s-a potrivit cu AI cloud la nouă din zece teste.
+
+2
+00:00:15.382 --> 00:00:23.382
+<v Narrator>În al treilea rând, la sarcinile de programare deschisă, IA a sărit înainte, în timp ce cache-ul răspunsurilor verificate reduce energia de repetare cu trei puncte și șase ori.
+
+3
+00:00:23.882 --> 00:00:37.954
+<v Narrator>Dacă două modele cu o sută de miliarde de parametri au ambele un scor de nouăzeci și nouă la sută într-un test structurat, are nevoie oricare dintre ele de o rețea neuronală în momentul luării deciziei?Fără un grup de control cu model zero pentru același examen, nimeni nu poate spune diferența.
+
+4
+00:00:38.454 --> 00:00:54.882
+<v Narrator>Am construit o tabelă de căutare a numerelor întregi în opt pași verificată bit-cu-bit în Rust, Go, Python, Julia și C plus plus, apoi am ancorat amprentele sale digitale pe dovezile publice ale calendarului Bitcoin înainte ca semnalizatoarele publice de aleatorie să genereze patru mii treizeci de probleme noi.
+
+5
+00:00:55.382 --> 00:01:11.222
+<v Narrator>În două mii opt sute patruzeci de probleme matematice și de baze de date limitate, modelele cloud au învins tabelul înghețat numai pe fraza neindexată a clienților, dar au sărit cu patruzeci și patru până la nouăzeci și cinci de puncte procentuale înainte în patru benchmark-uri de inginerie software externe.
+
+6
+00:01:11.722 --> 00:01:21.953
+<v Narrator>Când corecțiile neuronale nou verificate sunt scrise înapoi în magazinul de căutare, sarcinile de lucru realiste distorsionate reduc apelurile recurente ale modelului și energia cipului local cu trei puncte cinci nouă ori.

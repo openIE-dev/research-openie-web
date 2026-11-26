@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (ro) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:20.135
+<v Narrator>În primul rând, calculul avansat devine accesibil pentru toată lumea atunci când modelele neuronale scumpe acționează ca o ultimă soluție în spatele tabelelor locale rapide de căutare, indiciilor de căutare și rezolvatorilor exacte.În al doilea rând, comprimarea greutăților sub un bit economisește memorie, dar despachetarea lor înapoi la numere cu virgulă mobilă la execuție risipește de peste optzeci de ori mai multă energie pe placa de circuite decât rularea directă a logicii întregi împachetate.
+
+2
+00:00:20.295 --> 00:00:32.082
+<v Narrator>În al treilea rând, un nucleu întreg verificat prin hash-uri criptografice produce exact același răspuns pe procesoare, plăci grafice, WebAssembly, logică hardware și microcontrolere, oprindu-se imediat dacă se schimbă o singură greutate.
+
+3
+00:00:32.242 --> 00:00:50.475
+<v Narrator>În 1500 de sarcini deterministe de control, căutarea modelului zero a depășit liniile neuronale de bază cu 61.60 puncte procentuale pe schemele de instrumente structurate și cu 20.80 puncte pe satisfacția booleană la 1.41 până la 2.09 microjouli energie netă de șunt, izolând în mod curat diferența de triaj de codare deschisă de 12.80 puncte.
+
+4
+00:00:50.635 --> 00:01:16.546
+<v Narrator>Pe un șunt de 5 volți AMD Kria cu o derivare în gol între 0,09 și 0,11%, despachetarea matricelor pe 0,1517 biți per greutate la numere întregi pe 32 de biți a consumat 63.335,56 microjouli brute—de 81,86 ori mai rău decât numerele întregi pe opt biți—în timp ce Walsh-Hadamard pentru numere întregi, exclusiv-NOR, numărarea biturilor și căutarea nibble au scăzut la 187,49 microjouli brute și 10,30 microjouli nete.
+
+5
+00:01:16.706 --> 00:01:37.000
+<v Narrator>Un nucleu de numere întregi verificat prin hash s-a potrivit bit cu bit pe zece benzi și șase fabrici—procesor, grafică Radeon 8060S Vulkan, grafică procesor-split, vectori WebAssembly, logică hardware Verilog și un microcontroler bare-metal de 1.444 octeți—oprindu-se la o singură greutate alături de 1.315 rețete Planetary Digital Well.
+
+6
+00:01:37.160 --> 00:01:58.456
+<v Narrator>De la un capăt la altul, cascada de patru etape a redus energia șuntului Kria de 26.58 ori brut și de 24.49 ori net, a redus energia șuntului Jetson Thor de 16.26 ori și a evitat de 38.46 ori apelurile din etapa a patra.Toate încasările sunt semnate Proveniență, Auto-verificate—nu externe revizuite de colegi—cu șunt, contor de cipuri, estimare și jouli necontorizați păstrați strict separat.

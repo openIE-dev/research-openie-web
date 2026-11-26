@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — ai-reads-human (hu) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:16.158
+<v Narrator>A számítógépek gyakran emberi szem számára írt szöveges formátumú adatokat cserélnek, ami extra munkát igényel a gépektől, és a behúzott konfigurációs szöveg olvasása több mint kétezerszer annyi energiát vesz igénybe, mint a kompakt gépszámok olvasása.
+
+2
+00:00:16.658 --> 00:00:24.468
+<v Narrator>Harmadszor, a strukturált szöveg mesterségesen létrehozott szódarabokra való darabolása tizenkétszer annyi energiát emésztett fel, mint maga a szöveg elemzése.
+
+3
+00:00:24.968 --> 00:00:41.722
+<v Narrator>A zárójelekkel, vesszőkkel és behúzott szóközökkel teli formátumokat úgy tervezték, hogy az emberek kényelmesen megvizsgálhassák a fájlokat szövegszerkesztőben, de a modern AI eszközök folyamatai milliónyi ilyen részletes szöveges rekordot továbbítanak szigorúan gépek között anélkül, hogy egy ember bármikor is megnézhetné.
+
+4
+00:00:42.222 --> 00:00:59.589
+<v Narrator>Ezt a plusz munkát impedanciaadónak neveztük el, és 34 elemzési és szófelosztási feladatot teszteltünk húszezer rekordon. Minden egyes lépés futtatása egy elszigetelt munkafolyamaton belül Apple processzoron tisztán elkülönítette az apró elemzési költségeket a háttérben zajló laptoptevékenységtől.
+
+5
+00:01:00.089 --> 00:01:17.771
+<v Narrator>Egy 23 bájtos bináris rekord kicsomagolása kétszáznyolcvan nanojoule-t emésztett fel, a zárójelbe tett szövegek közel nyolcszor annyi energiát használtak fel, a lefordított behúzott szövegek kétszáznegyvenkilencszer annyi energiát, a tiszta Pythonban írt behúzott szövegek pedig kétezerötvennégyszer annyi chipenergiát.
+
+6
+00:01:18.271 --> 00:01:31.355
+<v Narrator>Még két szóköz hozzáadásával is több mint megduplázta a mesterséges intelligencia által használt szóhasító energiát, rekordonként hetvenegy mikrojoulra. Tartsa kompakt és bináris állapotban a belső gépi csöveket, és csak akkor formázza a szöveget, amikor az emberek olvassák.

@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — ai-reads-human (es) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:18.444
+<v Narrator>En primer lugar, las computadoras a menudo intercambian datos en formatos de texto escritos para los ojos humanos, lo que obliga a las máquinas a dedicar un trabajo adicional; y en segundo lugar, leer el texto de configuración indentado requirió más de dos mil veces más energía del chip que la lectura de números compactos.
+
+2
+00:00:18.524 --> 00:00:25.942
+<v Narrator>En tercer lugar, cortar el texto estructurado en piezas de palabras de IA quemó doce veces más energía que analizar el propio texto.
+
+3
+00:00:26.022 --> 00:00:44.629
+<v Narrator>Los formatos llenos de corchetes, comas y espacios sangrados fueron diseñados para que las personas pudieran inspeccionar archivos cómodamente en editores de texto, pero los canales modernos de herramientas de IA pasan millones de esos registros de texto verbosos estrictamente de máquina a máquina sin que un ser humano lo mire.
+
+4
+00:00:44.709 --> 00:01:05.248
+<v Narrator>Nombramos este trabajo adicional como el impuesto de impedancia y probamos treinta y cuatro cargas de trabajo de análisis y división de palabras en veinte mil registros.Ejecutando cada paso dentro de un proceso aislado en un procesador Apple, se separaron claramente los pequeños costos de análisis de la actividad ruidosa del ordenador portátil en segundo plano.
+
+5
+00:01:05.328 --> 00:01:19.165
+<v Narrator>El texto entre corchetes estándar consumía casi ocho veces más, el texto con sangría compilado consumía doscientas cuarenta y nueve veces más, y el texto con sangría puro de Python quemaba dos mil cincuenta y cuatro veces más energía en el chip.
+
+6
+00:01:19.245 --> 00:01:33.990
+<v Narrator>Incluso agregar dos espacios de sangría bonita más que duplicó la energía de división de palabras de IA a setenta y un microjulios por registro.Mantenga los tubos internos de la máquina compactos y binarios, y formatee el texto solo cuando las personas lo lean.

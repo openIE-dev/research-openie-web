@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — ai-reads-human (sv) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:16.158
+<v Narrator>För det första byter datorer ofta data i textformat som skrivits för mänskliga ögon, vilket tvingar maskinerna att lägga extra arbete på att läsa indragna konfigurationstexter som kräver över två tusen gånger mer chipenergi än att läsa kompakta maskinnummer.
+
+2
+00:00:16.658 --> 00:00:24.468
+<v Narrator>För det tredje, att hugga strukturerad text i AI ord bitar förbrukade tolv gånger mer energi än att tolka själva texten.
+
+3
+00:00:24.968 --> 00:00:41.722
+<v Narrator>Format fulla av parenteser, kommatecken och indragna mellanslag utformades för att människor skulle kunna inspektera filer bekvämt i textredigerare, men moderna AI-verktygsledningar skickar miljontals av dessa långa textposter strikt från maskin till maskin utan att en människa någonsin tittar.
+
+4
+00:00:42.222 --> 00:00:59.589
+<v Narrator>Vi kallade detta extra arbete impedansskatt och testade 34 arbetsbelastningar för tolkning och orddelning över tjugotusen poster.Genom att köra varje pass i en isolerad arbetsprocess på en Apple-processor separerades små tolkningskostnader från bullriga bakgrundsaktiviteter på datorn.
+
+5
+00:01:00.089 --> 00:01:17.771
+<v Narrator>Att packa upp en binär post på 23 byte krävde tvåhundraåttio nanojoules, att skriva standardtext inom parentes nästan åtta gånger så mycket, att kompilera indragen text tvåhundrafyrtionio gånger mer och ren Python-indragen text förbrukade tvåtusenfemtiofyra gånger mer chipenergi.
+
+6
+00:01:18.271 --> 00:01:31.355
+<v Narrator>Till och med att lägga till två blanksteg i ett snyggt indrag mer än fördubblade AI-orddelningsenergin till sjuttioen mikrojoule per post.Håll interna maskinrör kompakta och binära, och formatera text endast när människor läser den.

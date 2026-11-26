@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (yo) · elevenlabs:eleven_v4_turbo
+
+1
+00:00:00.120 --> 00:00:01.635
+<v Narrator>Àwọn àkọlé àwòrán
+
+2
+00:00:01.715 --> 00:00:11.067
+<v Narrator>Ninu awọn ohun elo ti o ni agbara giga, bii awọn ẹrọ itanna, awọn igbimọ ti a ṣe sinu awọn ẹya ara ẹrọ le jẹ ki o rọrun lati ṣakoso wọn.
+
+3
+00:00:11.147 --> 00:00:39.224
+<v Narrator>A tí ṣàyẹwo àwọn ìṣàfihàn-tí gbogbo ààyè-iṣẹ́ báà fi àwọn fọọmu kanọ́nikali pamọ́ nígbà tí a ǹgbọ́wọ́ agbara atí ìtumọ̀-láìsì ẹ̀yàn mẹ́tàdinlogun tí a tí ṣe àwọn ẹ̀yàn iṣẹ́. Nínú ìṣẹ̀dá, kò si ohun tí o báà sọkalẹ̀ sí joules, kò si ohun tí o báà kọ́dì àìrọ̀-ìnà-mọ́ràn, àti fuzzers tí a ṣé latọ́nàjí tí wọ́n tí wọn pàdé lọ́wọ́lọ́wọ́ pẹ̀lú àwọn àbu
+
+4
+00:00:39.304 --> 00:01:02.595
+<v Narrator>Imuduro ti o ni igbẹkẹle bi ipilẹṣẹ mẹrin-ogun-ọkan ṣe gba wa laaye lati ṣe iṣiro awọn oju-iwe ti o tọka si awọn ohun elo mejidinlogun ati awọn ipele iṣẹ-ṣiṣe mẹtalelogun: C ti o dara julọ ba Python pọju lẹhin awọn irin ajo ẹgbẹrun mẹfa ati ọgọrun-un, lakoko ti awọn iwe afọwọkọ runtime Rust ti a pin ni a ge agbara iṣelọpọ mejidinlogun.
+
+5
+00:01:02.675 --> 00:01:31.862
+<v Narrator>Àwọn àwọn orúkọ variable tí a pàrá nípa ìṣàfarawé àwọn àgbèkalẹ̀ kọ̀ǹpútà àìdájú kan náà lọ́wọ́lọ́wọ́ nígbà tí awọn variable meji bá yipadá àwọn iṣẹ́. Ìyípadà àwọn orúkọ láti inú àwọn ààyè-iṣẹ́ De Bruijn tí wọ́n ń fi àwọn àyọkà aláìṣè kòò dá àwọn àwọn ìsàlẹ̀ àwọn mutant tó jẹ́ ẹ̀kanláàrin-ọ̀kanláàrin-ọ̀kanláàrin-ẹ̀yàn-ẹ̀yàn-ẹ̀yàn-ẹ̀yàn-ẹ̀yàn-ẹ̀yàn-ẹ̀ya
+
+6
+00:01:31.942 --> 00:01:43.790
+<v Narrator>Gbogbo awọn nọmba agbara wa lati inu awọn kaadi iṣẹ-ṣiṣe Linux ti a ṣe sinu ju wattmeter ilẹkun ita lọ, ati pe gbogbo awọn iranti ita ni o ni badges idanimọ to han gbangba.

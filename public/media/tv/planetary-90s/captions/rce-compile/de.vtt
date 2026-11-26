@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — rce-compile (de) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:17.863
+<v Narrator>Erstens brechen echte Compiler jedes einzelne deskriptive Gesetz, weshalb diese Studie stattdessen einen siebenteiligen Maßstab definiert.Zweitens verbrennt maximale Compiler-Optimierung Vorlaufenergie, die sich bei 30 Prozent der Testprogramme niemals auszahlt.
+
+2
+00:00:17.943 --> 00:00:29.019
+<v Narrator>Drittens, Fingerabdruck-Code durch variable Position wiederverwendet Builds ohne Verwechslungen und reduziert die Rust-Kompilierungsenergie um das Vierhundertfache.
+
+3
+00:00:29.099 --> 00:00:51.740
+<v Narrator>Wir haben eine weitreichende Behauptung – dass jeder Compiler kanonische Formen reduziert, während er Energie verfolgt und Bedeutung bewahrt – gegen zwölf echte Compilerfamilien getestet. In der Praxis verfolgt keine von ihnen Joule, keine hascht namenlosen Code. Automatisierte Fuzzer haben Tausende von C-Compilerfehlern aufgedeckt.
+
+4
+00:00:51.820 --> 00:01:15.685
+<v Narrator>Die Neukompilierungstechnologie als siebenteiliger Standard ermöglicht es uns, die exakten Amortisationszeiten über zwanzig Kernel und fünfzehn Toolchain-Ebenen hinweg zu messen: Optimiertes C schlägt Python nach zweihundertvierundneunzig Ausführungen, während gemeinsam genutzte Rust-Laufzeitbibliotheken den Bauaufwand um das Zwanzigfache reduzieren.
+
+5
+00:01:15.765 --> 00:01:38.745
+<v Narrator>Das einfache Löschen von Variablennamen verursachte 150 gefährliche Cache-Kollisionen, wenn zwei Variablen ihre Rollen tauschten.Das Ersetzen von Namen durch De Bruijn-Bindungspositionen ergab keine falschen Übereinstimmungen bei fünfhundert verifizierten Mutanten und schlug warme C- und Rust-Rebuild bis zu vierhundertachtundvierzig Mal.
+
+6
+00:01:38.825 --> 00:01:50.990
+<v Narrator>Alle Energiewerte stammen von integrierten Linux-Prozessorzählern und nicht von einem externen Wand-Wattmeter, und jedes externe Zitat trägt ein explizites Verifizierungsabzeichen.

@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — deterministic-null (cs) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.320 --> 00:00:14.882
+<v Narrator>Za prvé, většina benchmarků AI vynechá kontrolní skupinu s nulovým modelem, která testuje, co už jednoduché vyhledávání řeší.Za druhé, u matematických a databázových úloh s omezenými možnostmi se zmrazená vyhledávací tabulka shodovala s cloudovou AI v devíti z deseti testů.
+
+2
+00:00:15.382 --> 00:00:23.382
+<v Narrator>Za třetí, u otevřených kódovacích úloh AI skočila dopředu, zatímco ukládání ověřených odpovědí do mezipaměti snížilo energii opakování třikrát až šestkrát.
+
+3
+00:00:23.882 --> 00:00:37.954
+<v Narrator>Pokud dva modely se stovkami miliard parametrů získají ve strukturovaném srovnávacím testu oba devadesát devět procent, potřeboval by jeden z nich v době rozhodování neuronovou síť? Bez kontrolní skupiny s nulovým modelem na přesně stejné zkoušce nikdo nedokáže rozlišit.
+
+4
+00:00:38.454 --> 00:00:54.882
+<v Narrator>Vytvořili jsme osmistupňovou celočíselnou vyhledávací tabulku ověřenou bit po bitu v jazycích Rust, Go, Python, Julia a C plus plus, pak jsme zakotvili její digitální otisky prstů na veřejné důkazy Bitcoin kalendáře předtím, než veřejné náhodné majáky vygenerovaly čtyři tisíce třicet čerstvých problémů.
+
+5
+00:00:55.382 --> 00:01:11.222
+<v Narrator>Ve dvou tisících osmi sto čtyřiceti ohraničených matematických a databázových problémech porazily cloudové modely zmrazenou tabulku pouze na neindexovaném zákaznickém frázování, ale přesto se posunuly o čtyřicet čtyři až devadesát pět procentních bodů napříč čtyřmi externě vytvořenými benchmarky softwarového inženýrství.
+
+6
+00:01:11.722 --> 00:01:21.953
+<v Narrator>Když jsou nově ověřené neuronové opravy zapsány zpět do vyhledávacího úložiště, realisticky vychýlené pracovní zatížení snižuje opakující se volání modelů a místní energii čipu třikrát až devětkrát.

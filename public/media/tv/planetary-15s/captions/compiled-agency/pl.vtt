@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — from-ephemeral-inference-to-compiled-agency (pl) · MADLAD-400 (Apache-2.0)
+
+1
+00:00:00.220 --> 00:00:11.273
+<v Narrator>Po pierwsze, zaawansowane obliczenia stają się dostępne dla każdego, gdy drogie modele neuronowe działają jako ostateczność za szybkimi lokalnymi tabelami wyszukiwania, indeksami wyszukiwania i rozwiązywaczami dokładnymi.
+
+2
+00:00:11.613 --> 00:00:23.626
+<v Narrator>Po drugie, kompresja wag poniżej jednego bitu oszczędza pamięć, ale rozpakowywanie ich z powrotem do liczb zmiennoprzecinkowych w czasie wykonywania marnuje ponad osiemdziesiąt razy więcej energii na płytce niż bezpośrednie uruchamianie logiczne.
+
+3
+00:00:23.966 --> 00:00:38.806
+<v Narrator>Po trzecie, jedno jądro liczb całkowitych sprawdzane przez kryptograficzne skróty wytwarza dokładnie taką samą odpowiedź na procesorach, kartach graficznych, WebAssembly, logice sprzętowej i mikrokontrolerach, zatrzymując się natychmiast, jeśli zmieni się pojedyncza waga.

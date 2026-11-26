@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Planetary 15s v1.0 — from-ephemeral-inference-to-compiled-agency (my) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:10.715
+<v Narrator>ပထမဦးဆုံး, မြင့်မားသော computing စျေးကြီး neural မော်ဒယ်များအမြန်ဒေသခံ lookup ဇယားနောက်ကွယ်မှနောက်ဆုံးထွက်ပေါက်အဖြစ်လုပ်ဆောင်တဲ့အခါလူတိုင်းအတွက်တတ်နိုင်ဖြစ်လာသည်။
+
+2
+00:00:10.795 --> 00:00:23.366
+<v Narrator>ဒုတိယ, တစ် bit အောက်တွင်အလေးချိန်ကိုဖိနှိပ်ခြင်းမှတ်ဉာဏ်ကိုကယ်တင်, ဟု runtime အမှိုက်ကပ်လျက်ထက်ရှစ်ဆယ်ကြိမ်ပို circuit-board စွမ်းအင် run စဉ်အတွင်း floating-point ကိုနံပါတ်များပြန် unpacking ။
+
+3
+00:00:23.446 --> 00:00:38.390
+<v Narrator>တတိယ, cryptographic hashes ကစစ်ဆေးတစ်ဦး integer kernel ကို processors များအကြားတိကျတဲ့တူညီတဲ့အဖြေကိုထုတ်လုပ်, ဂရပ်ဖစ်ကဒ်များ, WebAssembly, hardware logic နဲ့ microcontrollers, တစ်ဦးတည်းသောအလေးချိန်ပြောင်းလဲလျှင်ချက်ချင်းရပ်တန့်.

@@ -1,0 +1,26 @@
+WEBVTT
+NOTE OpenIE Planetary 90s v1.0 — from-ephemeral-inference-to-compiled-agency (sw) · microsoft-edge-neural
+
+1
+00:00:00.120 --> 00:00:34.631
+<v Narrator>Kwanza, advanced computing inakuwa nafuu kwa kila mtu wakati ghali neuronal mifano kutenda kama njia ya mwisho nyuma ya haraka mitaa lookup meza, search viwango, na solvers halisi. Pili, compressing uzito chini ya bit moja anaokoa kumbukumbu, bado unpacking yao nyuma kwa namba floating-point katika runtime taka zaidi ya mara themanini zaidi mzunguko bodi nishati kuliko kukimbia packed integer mantiki moja kwa moja.
+
+2
+00:00:34.711 --> 00:00:49.279
+<v Narrator>Kwa mfano, utafiti wa kisayansi unaonyesha kuwa shughuli za mwili kama vile kuvuta sigara, kutumia pombe, na matumizi ya dawa za kulevya huathiri viwango vya homoni katika damu.
+
+3
+00:00:49.359 --> 00:01:16.753
+<v Narrator>Katika kazi za kudhibiti za kijumla mia tano kumi na tano, utafutaji wa mfano wa sifuri ulishinda mipaka ya neva kwa asilimia 61.60 katika vigezo vya zana zilizopangwa na pointi 20.80 kwenye usawa wa Boolean katika 1.41 hadi 2.09 microjoules nishati ya shunt safi, iliyotengana vizuri na pengo la triage la nambari ya wazi ya 12.80.
+
+4
+00:01:16.833 --> 00:01:47.124
+<v Narrator>Katika AMD Kria bodi ya volti tano shunt na 0.09 hadi asilimia 0.11 ya kusonga, unpacking 0.1517 bits-kwa-uzito matrices kwa 32-bit floats alichoma 63,335.56 microjoules jumla—81.86 mara mbaya kuliko integers nane-bit — wakati packed integer Walsh-Hadamard, kipekee-NOR, bit-hesabu, na nibble kuangalia kuanguka kwa 187.49 microjoules jumla na 10.30 microjoules safi.
+
+5
+00:01:47.204 --> 00:02:14.267
+<v Narrator>Msingi mmoja wa hash-kuthibitishwa ulilingana bit-kwa-bit katika njia kumi na nguo sita—mchakato, Radeon 8060S Vulkan graphic, kugawa processor-graphic, WebAssembly vector, Verilog hardware logic, na 1,444-byte bare-metal microcontroller—kuacha juu ya uzito mmoja tamper pamoja na 1,315 Planetary Digital Well kupunguza mapishi.
+
+6
+00:02:14.347 --> 00:02:44.390
+<v Narrator>Mwisho hadi mwisho, nne-awamu spellcheck cascade kukatwa Kria shunt nishati 26.58 mara jumla na 24.49 mara netto, kukata Jetson Thor shunt nishati 16.26 mara, na kuzuia 38.46 mara ya hatua ya nne wito. risiti zote ni Saini Provenience, Self-Checked—si nje ya wenzake-kuchunguza—na shunt, chip-counter, makadirio, na unmetered joules kuhifadhiwa kikamilifu tofauti.
