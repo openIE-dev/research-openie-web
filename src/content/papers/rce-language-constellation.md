@@ -20,7 +20,7 @@ Interactive artifact: `rce-language-constellation.html`. Graph JSON: `constellat
 
 RCE cannot honestly claim "one IR for all languages" without *knowing* each language. The
 constellation is that knowledge: **855 curated entries (578 programming languages)** as graph
-nodes, of which **48 are measured** against a real grammar and carry a grammar-derived
+nodes, of which **49 are measured** against a real grammar and carry a grammar-derived
 information profile and the **Law of Coding** frame `I = H_task − H_corpus → 0`, priced in joules.
 Every other language is present as a node with `measured=false` and **no invented numbers** —
 the graph knows *of* it without pretending to *know* it. Edges encode family (lineage), paradigm,
@@ -30,7 +30,7 @@ and documented influence; the interactive page renders them as a constellation.
 
 - `named_nodes` N — the grammar's named node types (its syntactic surface size).
 - `constructs` C — distinct universal constructs those nodes realize (semantic breadth).
-- `coverage` — mapped/total named nodes (1.0000 for all 48).
+- `coverage` — mapped/total named nodes (1.0000 for all 49).
 - `h_struct_bits` H — Shannon entropy of the construct histogram: how evenly the grammar's
   surface spreads across the universal taxonomy. **Structural, not corpus** — honestly labelled.
 - `redundancy` = 1 − H/log2(C) — the surface variety that is syntactic sugar, not free information.
@@ -50,7 +50,7 @@ Elixir (1.05), R (1.05) map nearly one surface form per universal construct — 
 much work the universal IR does, and it is what makes the emission LUT a *checked* bridge rather
 than a slogan.
 
-## Measured per-language information profile (48)
+## Measured per-language information profile (49)
 
 | language | named N | constructs C | coverage | H (bits) | redundancy | surface/C |
 |---|---|---|---|---|---|---|
@@ -75,6 +75,7 @@ than a slogan.
 | Crystal | 152 | 43 | 1.0000 | 4.665 | 0.140 | 3.53 |
 | Java | 151 | 72 | 1.0000 | 5.704 | 0.076 | 2.10 |
 | Ruby | 149 | 44 | 1.0000 | 4.513 | 0.173 | 3.39 |
+| Perl | 146 | 54 | 1.0000 | 4.396 | 0.236 | 2.70 |
 | Lean | 141 | 34 | 1.0000 | 4.468 | 0.122 | 4.15 |
 | Mojo | 141 | 76 | 1.0000 | 5.873 | 0.060 | 1.86 |
 | F* | 134 | 50 | 1.0000 | 4.798 | 0.150 | 2.68 |
@@ -87,7 +88,7 @@ than a slogan.
 | JavaScript | 119 | 69 | 1.0000 | 5.753 | 0.058 | 1.72 |
 | Go | 112 | 64 | 1.0000 | 5.496 | 0.084 | 1.75 |
 | Zig | 99 | 57 | 1.0000 | 5.294 | 0.092 | 1.74 |
-| Gleam | 97 | 48 | 1.0000 | 5.096 | 0.088 | 2.02 |
+| Gleam | 97 | 49 | 1.0000 | 5.096 | 0.088 | 2.02 |
 | Elm | 92 | 25 | 1.0000 | 4.066 | 0.124 | 3.68 |
 | Julia | 89 | 54 | 1.0000 | 5.165 | 0.103 | 1.65 |
 | Agda | 72 | 30 | 1.0000 | 4.371 | 0.109 | 2.40 |
@@ -134,8 +135,8 @@ nix-community/nix, kayhide/idris, tree-sitter/agda, Julian/lean, FStarLang/fstar
 
 - **Measure the rest of the universe.** 530 programming languages are present but unmeasured
   (no public tree-sitter grammar ingested). Each is a registered node, not a fabricated profile.
-- **Perl, Coq, Dhall, Unison** have grammars whose `node-types.json` is build-generated (not
-  committed); generating them (tree-sitter CLI) is the next step. **Nadeshiko (JP), Ezhil (Tamil),
+- **Perl** node-types generated with tree-sitter CLI 0.27.2 and measured at 1.0000.
+  **Coq, Dhall, Unison** still need the same generation step. **Nadeshiko (JP), Ezhil (Tamil),
   Alusus (Arabic)** have no public grammar — authoring seed grammars is registered open work.
 - Corpus-level entropy (true H_corpus over real code) remains a measurement beyond the structural
   proxy reported here; the structural figures are labelled as such, never conflated.

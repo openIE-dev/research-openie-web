@@ -165,17 +165,19 @@ instead of paid GPU). Scale built on owned hardware: federated averaging over 4 
 scalar loop (0.9970); mosaic-style hybrid partitioning with admission control.
 
 Measured per-language named-node coverage (tree-sitter upstream, 26 Nov 2026): **100% for
-48 surveyed languages** — the 28 prior plus the functional + non-Western frontier: ada 228/228,
+49 surveyed languages** — the 28 prior plus the functional + non-Western frontier: ada 228/228,
 sml 134/134, purescript 128/128, mojo 141/141, cangjie 202/202, wenyan 64/64, elm 92/92,
 racket 32/32, commonlisp 50/50, elisp 20/20, gleam 97/97, moonbit 257/257, rescript 160/160,
-reason 226/226, nix 42/42, fsharp 201/201, idris 181/181, agda 72/72, lean 141/141, fstar 134/134.
+reason 226/226, nix 42/42, fsharp 201/201, idris 181/181, agda 72/72, lean 141/141, fstar 134/134,
+perl 146/146 (node-types generated with tree-sitter CLI).
 The 113-construct emission matrix is 100% across 47 languages. Reports:
 rce-language-coverage-100.md and rce-language-constellation.md. The **language constellation**
 (`constellation` module + interactive artifact) is a knowledge graph over the exhaustive curation
-(GitHub Linguist, 855 entries / 578 programming): every language a node, the 48 measured ones
+(GitHub Linguist, 855 entries / 578 programming): every language a node, the 49 measured ones
 carrying a grammar-derived information profile (structural entropy, redundancy, surface-forms-
-per-construct) and the Law-of-Coding frame; the rest honestly unmeasured. Perl/Coq/Dhall/Unison
-node-types are build-generated; Nadeshiko/Ezhil/Alusus need authored grammars (registered open).
+per-construct) and the Law-of-Coding frame; the rest honestly unmeasured. Perl node-types
+generated + measured; Coq/Dhall/Unison generation and Nadeshiko/Ezhil/Alusus authored grammars
+remain registered open.
 Mesh contact built (twin::Mesh).
 
 Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
