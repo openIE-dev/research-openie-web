@@ -164,10 +164,12 @@ instead of paid GPU). Scale built on owned hardware: federated averaging over 4 
 20k receipts matches centralized (0.9975); a native Accelerate/AMX BLAS trainer matches the
 scalar loop (0.9970); mosaic-style hybrid partitioning with admission control.
 
-Measured per-language named-node coverage (tree-sitter master, 26 Nov 2026, after the
-exotic-grammar pass): rust 67/169 = 39.6%, python 39/129 = 30.2%, go 31/112 = 27.7%,
-javascript 42/119 = 35.3%, java 45/151 = 29.8%. The 49-construct matrix is 100% across 47
-languages; driving per-language named-node coverage to 100% is the active autonomous goal.
+Measured per-language named-node coverage (tree-sitter master/main, 26 Nov 2026): **100% for
+16 surveyed languages** (rust 169/169, python 129/129, go 112/112, javascript 119/119,
+java 151/151, c 132/132, cpp 230/230, c-sharp 233/233, ruby 149/149, swift 72/72, kotlin 120/120,
+scala 173/173, haskell 187/187, julia 89/89, lua 51/51, zig 99/99). The 111-construct emission
+matrix is 100% across 47 languages. Report: rce-language-coverage-100.md. Languages without a
+public tree-sitter grammar remain emission targets with LUT rows but unmeasured node coverage.
 
 Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
