@@ -165,28 +165,33 @@ instead of paid GPU). Scale built on owned hardware: federated averaging over 4 
 scalar loop (0.9970); mosaic-style hybrid partitioning with admission control.
 
 Measured per-language named-node coverage (tree-sitter upstream, 26 Nov 2026): **100% for
-49 surveyed languages** — the 28 prior plus the functional + non-Western frontier: ada 228/228,
+55 surveyed languages** — the 28 prior plus the functional + non-Western frontier: ada 228/228,
 sml 134/134, purescript 128/128, mojo 141/141, cangjie 202/202, wenyan 64/64, elm 92/92,
 racket 32/32, commonlisp 50/50, elisp 20/20, gleam 97/97, moonbit 257/257, rescript 160/160,
 reason 226/226, nix 42/42, fsharp 201/201, idris 181/181, agda 72/72, lean 141/141, fstar 134/134,
-perl 146/146 (node-types generated with tree-sitter CLI).
-The 113-construct emission matrix is 100% across 47 languages. Reports:
+perl 146/146, coq 172/172, dhall 166/166, unison 93/93 (node-types generated with tree-sitter CLI),
+nadeshiko 24/24, ezhil 24/24, alusus 25/25 (authored seed grammars).
+The 113-construct emission matrix is 100% across 64 languages, and emission ⊇ ingestion. Reports:
 rce-language-coverage-100.md and rce-language-constellation.md. The **language constellation**
 (`constellation` module + interactive artifact) is a knowledge graph over the exhaustive curation
-(GitHub Linguist, 855 entries / 578 programming): every language a node, the 49 measured ones
-carrying a grammar-derived information profile (structural entropy, redundancy, surface-forms-
-per-construct) and the Law-of-Coding frame; the rest honestly unmeasured. Perl node-types
-generated + measured; Coq/Dhall/Unison generation and Nadeshiko/Ezhil/Alusus authored grammars
-remain registered open.
+(GitHub Linguist, 855 entries + seeds / 583 programming): every language a node, the 55 measured
+ones carrying a grammar-derived information profile (structural entropy, redundancy, surface-
+forms-per-construct) and the Law-of-Coding frame; the rest honestly unmeasured. Perl/Coq/Dhall/
+Unison generated + measured; Nadeshiko/Ezhil/Alusus authored seeds measured. `langpredict` names
+the per-fabric capability gap (quantum/thermodynamic/spatial/neuromorphic/probabilistic/analog)
+and emits predicted native languages (Superpose/Landauer/Tessera/Spike/Alea/Ohm); synthesizing
+them to eliminate the OS/hardware/language impedance tax is the advanced step after ingestion
++ RCE-JEPA.
 Mesh contact built (twin::Mesh).
 
 Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 392 (workspace) / 389 (monorepo), 0 failed. Mesh (non-polygon) manifolds, RTOS port,
-notified-body attestation, measuring the remaining ~530 curated languages, and
-FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
+Suites 396 (workspace) / 393 (monorepo), 0 failed. Mesh (non-polygon) manifolds, RTOS port,
+notified-body attestation, measuring the remaining ~528 curated languages, native-language
+synthesis (langpredict specs), and FormJEPA/FormEBM / tracing-JIT at production scale remain
+open edges.
 Capstone summary: rce-research-completion.md.
 
 ## New unknowns (registered in rce-gap-register.md)

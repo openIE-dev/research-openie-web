@@ -19,8 +19,8 @@ Interactive artifact: `rce-language-constellation.html`. Graph JSON: `constellat
 ## BLUF
 
 RCE cannot honestly claim "one IR for all languages" without *knowing* each language. The
-constellation is that knowledge: **855 curated entries (578 programming languages)** as graph
-nodes, of which **49 are measured** against a real grammar and carry a grammar-derived
+constellation is that knowledge: **855 curated entries + authored seeds (583 programming nodes)**
+as graph nodes, of which **55 are measured** against a real grammar and carry a grammar-derived
 information profile and the **Law of Coding** frame `I = H_task − H_corpus → 0`, priced in joules.
 Every other language is present as a node with `measured=false` and **no invented numbers** —
 the graph knows *of* it without pretending to *know* it. Edges encode family (lineage), paradigm,
@@ -30,7 +30,7 @@ and documented influence; the interactive page renders them as a constellation.
 
 - `named_nodes` N — the grammar's named node types (its syntactic surface size).
 - `constructs` C — distinct universal constructs those nodes realize (semantic breadth).
-- `coverage` — mapped/total named nodes (1.0000 for all 49).
+- `coverage` — mapped/total named nodes (1.0000 for all 55).
 - `h_struct_bits` H — Shannon entropy of the construct histogram: how evenly the grammar's
   surface spreads across the universal taxonomy. **Structural, not corpus** — honestly labelled.
 - `redundancy` = 1 − H/log2(C) — the surface variety that is syntactic sugar, not free information.
@@ -50,7 +50,7 @@ Elixir (1.05), R (1.05) map nearly one surface form per universal construct — 
 much work the universal IR does, and it is what makes the emission LUT a *checked* bridge rather
 than a slogan.
 
-## Measured per-language information profile (49)
+## Measured per-language information profile (55)
 
 | language | named N | constructs C | coverage | H (bits) | redundancy | surface/C |
 |---|---|---|---|---|---|---|
@@ -67,8 +67,10 @@ than a slogan.
 | F# | 201 | 39 | 1.0000 | 4.437 | 0.160 | 5.15 |
 | Haskell | 187 | 34 | 1.0000 | 4.446 | 0.126 | 5.50 |
 | Idris | 181 | 30 | 1.0000 | 3.917 | 0.202 | 6.03 |
+| Coq | 172 | 38 | 1.0000 | 4.408 | 0.160 | 4.53 |
 | Scala | 173 | 44 | 1.0000 | 4.775 | 0.125 | 3.93 |
 | Rust | 169 | 66 | 1.0000 | 5.400 | 0.107 | 2.56 |
+| Dhall | 166 | 27 | 1.0000 | 3.741 | 0.213 | 6.15 |
 | Erlang | 164 | 33 | 1.0000 | 4.197 | 0.168 | 4.97 |
 | ReScript | 160 | 59 | 1.0000 | 5.077 | 0.137 | 2.71 |
 | PHP | 157 | 62 | 1.0000 | 5.269 | 0.115 | 2.53 |
@@ -89,6 +91,7 @@ than a slogan.
 | Go | 112 | 64 | 1.0000 | 5.496 | 0.084 | 1.75 |
 | Zig | 99 | 57 | 1.0000 | 5.294 | 0.092 | 1.74 |
 | Gleam | 97 | 49 | 1.0000 | 5.096 | 0.088 | 2.02 |
+| Unison | 93 | 31 | 1.0000 | 4.394 | 0.113 | 3.00 |
 | Elm | 92 | 25 | 1.0000 | 4.066 | 0.124 | 3.68 |
 | Julia | 89 | 54 | 1.0000 | 5.165 | 0.103 | 1.65 |
 | Agda | 72 | 30 | 1.0000 | 4.371 | 0.109 | 2.40 |
@@ -102,11 +105,14 @@ than a slogan.
 | Clojure | 35 | 16 | 1.0000 | 3.421 | 0.145 | 2.19 |
 | Racket | 32 | 19 | 1.0000 | 3.828 | 0.099 | 1.68 |
 | Scheme | 27 | 13 | 1.0000 | 3.323 | 0.102 | 2.08 |
+| Alusus (seed) | 25 | 23 | 1.0000 | 4.484 | 0.009 | 1.09 |
+| Nadeshiko (seed) | 24 | 23 | 1.0000 | 4.502 | 0.005 | 1.04 |
+| Ezhil (seed) | 24 | 23 | 1.0000 | 4.502 | 0.005 | 1.04 |
 | Emacs Lisp | 20 | 12 | 1.0000 | 3.139 | 0.124 | 1.67 |
 
 ## Graph structure
 
-- **Nodes:** 578 languages + family hubs (C/systems, JVM, ML/functional/proof, Lisp, BEAM,
+- **Nodes:** 583 languages + family hubs (C/systems, JVM, ML/functional/proof, Lisp, BEAM,
   JavaScript, Python, Ruby, Scientific/array, Logic, Shell, SQL, Config, Esoteric, Smalltalk,
   Pascal, Apple/Swift, PHP, Lua, Modern systems, East-Asian-new, …) + paradigm hubs.
 - **Edges:** `family` (language→lineage hub), `paradigm` (language→paradigm hub), `influence`
@@ -129,17 +135,39 @@ Grammars: upstream tree-sitter repos (see rce-language-coverage-100.md for the 2
 new are ionide/fsharp, MatthewFluet/sml, postsolar/purescript, oaustegard/mojo, jstzwj/cangjie,
 duskmoon314/wenyan, elm-tooling/elm, 6cdh/racket, theHamsta/commonlisp, Wilfred/elisp,
 gleam-lang/gleam, moonbitlang/moonbit, rescript-lang/rescript, reasonml-editor/reason,
-nix-community/nix, kayhide/idris, tree-sitter/agda, Julian/lean, FStarLang/fstar, briot/ada).
+nix-community/nix, kayhide/idris, tree-sitter/agda, Julian/lean, FStarLang/fstar, briot/ada;
+perl tree-sitter-perl, coq aruzdh/tree-sitter-rocq, dhall jmitchell, unison kylegoetz — all
+node-types generated with tree-sitter CLI 0.27.2). Nadeshiko/Ezhil/Alusus are authored seeds.
+
+## Language prediction — the capability-gap frontier (`langpredict`)
+
+The inverse question: what capability is still missing for the AI / hybrid-fabric era, and what
+language would realize it natively? For each fabric class the module names the native constructs
+absent from the 113-taxonomy and emits a predicted language whose primitives ARE the fabric's
+primitives — eliminating the impedance tax between OS, hardware and language:
+
+| fabric | missing native constructs | predicted language |
+|---|---|---|
+| quantum | qubit, superpose, entangle, measure, phase, gate, teleport, no_clone | Superpose |
+| thermodynamic / reversible | reverse, dissipate, landauer, entropy_budget, heat, reversible_gate, energy_type | Landauer |
+| spatial / dataflow | place, route, pipeline, spatial_loop, reconfig, bitstream | Tessera |
+| neuromorphic | spike, synapse, plasticity, event_time, membrane | Spike |
+| probabilistic | sample, distribution, bernoulli, infer, pbit | Alea |
+| analog / in-memory | conductance, mac, crossbar, drift, analog_read | Ohm |
+
+This is **analysis** (gap + spec), tested (`tests/langpredict.rs`); the native constructs are kept
+out of `CONSTRUCTS` so the measured matrix stays truthful. **Synthesizing** these hardware-native
+languages is the registered advanced step, sequenced AFTER full language ingestion + RCE-JEPA headway.
 
 ## Open (named, honest)
 
-- **Measure the rest of the universe.** 530 programming languages are present but unmeasured
+- **Measure the rest of the universe.** ~528 programming languages are present but unmeasured
   (no public tree-sitter grammar ingested). Each is a registered node, not a fabricated profile.
-- **Perl** node-types generated with tree-sitter CLI 0.27.2 and measured at 1.0000.
-  **Coq, Dhall, Unison** still need the same generation step. **Nadeshiko (JP), Ezhil (Tamil),
-  Alusus (Arabic)** have no public grammar — authoring seed grammars is registered open work.
+- Perl/Coq/Dhall/Unison generated + measured; Nadeshiko/Ezhil/Alusus authored seeds measured.
 - Corpus-level entropy (true H_corpus over real code) remains a measurement beyond the structural
   proxy reported here; the structural figures are labelled as such, never conflated.
+- **Advanced (sequenced last):** synthesize quantum/thermodynamic/architecture-native languages
+  from the `langpredict` specs; extend the taxonomy with the native constructs; RCE-JEPA at scale.
 
 The Law frame is the same for every language — `I = H_task − H_corpus → 0` — but the *distance*
 each language's surface must be collapsed is now a measured, per-language number. That is the

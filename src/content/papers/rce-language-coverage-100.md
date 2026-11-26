@@ -13,17 +13,18 @@ board_metered: false
 
 *26 Nov 2026. Measured on real tree-sitter `node-types.json` (master/main, upstream repos).
 Every NAMED node type of each surveyed language maps to a real universal construct; no
-catch-all inflation. Emission matrix: 113 constructs × 47 languages = 100%. Extended same day
-to the functional + non-Western frontier (49 languages); per-language information-theoretic
-profile + knowledge graph in rce-language-constellation.md.*
+catch-all inflation. Emission matrix: 113 constructs × 64 languages = 100%. Extended same day
+to the functional + non-Western frontier (55 languages); per-language information-theoretic
+profile + knowledge graph in rce-language-constellation.md. Emission ⊇ ingestion: every
+ingested language has an emission LUT row (`emission_covers_every_ingested_language` test).*
 
 ## BLUF
 
-RCE's universal grammar taxonomy now covers **100% of named node types** for 49 surveyed
-languages, and the emission LUT matrix is 100% across all 47 emission targets. Coverage is
+RCE's universal grammar taxonomy now covers **100% of named node types** for 55 surveyed
+languages, and the emission LUT matrix is 100% across all 64 emission targets. Coverage is
 measured, not asserted: `ingest::grammar_coverage` counts named node types with a construct
 mapping; `examples/grammar_coverage` prints per-language fractions; `--unmapped` lists the
-honest remainder (now empty for all 49).
+honest remainder (now empty for all 55).
 
 ## Measured per-language named-node coverage
 
@@ -78,6 +79,12 @@ honest remainder (now empty for all 49).
 | lean | 141/141 | 1.0000 |
 | fstar | 134/134 | 1.0000 |
 | perl | 146/146 | 1.0000 |
+| coq | 172/172 | 1.0000 |
+| dhall | 166/166 | 1.0000 |
+| unison | 93/93 | 1.0000 |
+| nadeshiko | 24/24 | 1.0000 |
+| ezhil | 24/24 | 1.0000 |
+| alusus | 25/25 | 1.0000 |
 
 ## Method (honest, no inflation)
 
@@ -94,7 +101,14 @@ honest remainder (now empty for all 49).
   a type expression, …). Explicit mappings handle language-specific names; category rules
   handle the long tail. Nothing is mapped to an unrelated construct to inflate the count.
 - Every construct has a per-family LUT template (C / ML / Lisp), so the emission matrix is
-  100% across all 47 emission languages (`coverage_matrix_is_complete` test).
+  100% across all 64 emission languages (`coverage_matrix_is_complete` test), and emission
+  covers every ingested language (`emission_covers_every_ingested_language` test).
+- **Language prediction** (`langpredict`): for each compute-fabric class (quantum, thermodynamic/
+  reversible, spatial/dataflow, neuromorphic, probabilistic, analog) the native constructs missing
+  from the 113-taxonomy are named and a predicted language spec emitted (Superpose, Landauer,
+  Tessera, Spike, Alea, Ohm). This is analysis; synthesizing these hardware-native languages to
+  eliminate the OS/hardware/language impedance tax is the registered advanced step, sequenced
+  after full ingestion + RCE-JEPA headway.
 
 ## Reproduce
 
@@ -120,11 +134,11 @@ additions: `briot/tree-sitter-ada`, `MatthewFluet/tree-sitter-sml`, `postsolar/t
 
 ## Open (named)
 
-**Ada** (briot) and **Perl** (tree-sitter-perl, node-types generated with tree-sitter CLI 0.27.2)
-are now measured at 1.0000. **Coq, Dhall, Unison** have public grammars whose `node-types.json`
-is build-generated — generating them with the tree-sitter CLI is the next step.
-**Nadeshiko (JP), Ezhil (Tamil), Alusus (Arabic)** have no public grammar; authoring seed grammars
-is registered open work. The remaining ~530 curated
+**Ada** (briot), **Perl** (tree-sitter-perl), **Coq/Rocq** (aruzdh/tree-sitter-rocq), **Dhall**
+(jmitchell), **Unison** (kylegoetz) — node-types generated with tree-sitter CLI 0.27.2 — are all
+measured at 1.0000. **Nadeshiko (JP), Ezhil (Tamil), Alusus (Arabic)** have no public grammar;
+honest **authored seed grammars** (native-keyword node types) are now measured at 1.0000 and
+labelled as seeds, not upstream. The remaining ~528 curated
 programming languages are present as unmeasured nodes in the constellation (no invented numbers).
 Mesh (triangle-soup) contact is built (`twin::Mesh`); concave polygons via ear-clipping.
 Production-scale FormJEPA remains last.
