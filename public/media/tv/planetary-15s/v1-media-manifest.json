@@ -57,12 +57,12 @@
     "voiced_languages_count": 31,
     "t2_caption_languages_count": 19,
     "tv_15s_voiced_total": 899,
-    "tv_15s_voiced_passed": 761,
-    "tv_15s_voiced_quarantined": 138,
+    "tv_15s_voiced_passed": 816,
+    "tv_15s_voiced_quarantined": 83,
     "tv_15s_captions_total": 1450,
     "tv_90s_voiced_total": 124,
-    "tv_90s_voiced_passed": 103,
-    "tv_90s_voiced_quarantined": 21,
+    "tv_90s_voiced_passed": 115,
+    "tv_90s_voiced_quarantined": 9,
     "tv_90s_captions_total": 200,
     "ad_mix_count": 29,
     "ranked_sound_cue_studies": 29,
@@ -73,10 +73,11 @@
     "radio_multilang_digest_count": 31,
     "podcast_rss_feeds_count": 31,
     "asr_verified_tracks_total": 1054,
-    "fleet_mean_15s_wer": 0.2816,
+    "fleet_mean_15s_wer": 0.2198,
     "fleet_mean_15s_lufs": -16.35,
-    "fleet_mean_90s_wer": 0.3742,
-    "fleet_mean_90s_lufs": -16.25
+    "fleet_mean_90s_wer": 0.3158,
+    "fleet_mean_90s_lufs": -16.25,
+    "accessible_cues_vtt_count": 29
   },
   "tiers": {
     "T0": [
@@ -282,18 +283,18 @@
       "dir": "ltr",
       "captions_15s_count": 29,
       "voiced_15s_count": 29,
-      "voiced_15s_passed": 11,
-      "voiced_15s_quarantined": 18,
+      "voiced_15s_passed": 23,
+      "voiced_15s_quarantined": 6,
       "captions_90s_count": 4,
       "voiced_90s_count": 4,
-      "voiced_90s_passed": 0,
+      "voiced_90s_passed": 4,
       "rss_url": "/radio/bn/rss.xml",
       "digest_m4a_url": "/media/radio/opus/bn-digest.m4a",
       "digest_opus_url": "/media/radio/opus/bn-digest.opus",
       "tts_engine": "microsoft-edge-neural",
       "voice_id": "bn-BD-NabanitaNeural",
       "energy_class": "unmetered",
-      "mean_wer": 0.685,
+      "mean_wer": 0.5469,
       "mean_lufs": -16.51,
       "mean_labse_cosine": 0.87
     },
@@ -458,8 +459,8 @@
       "dir": "ltr",
       "captions_15s_count": 29,
       "voiced_15s_count": 29,
-      "voiced_15s_passed": 27,
-      "voiced_15s_quarantined": 2,
+      "voiced_15s_passed": 28,
+      "voiced_15s_quarantined": 1,
       "captions_90s_count": 4,
       "voiced_90s_count": 4,
       "voiced_90s_passed": 4,
@@ -469,7 +470,7 @@
       "tts_engine": "microsoft-edge-neural",
       "voice_id": "mr-IN-AarohiNeural",
       "energy_class": "unmetered",
-      "mean_wer": 0.2884,
+      "mean_wer": 0.1919,
       "mean_lufs": -16.27,
       "mean_labse_cosine": 0.8502
     },
@@ -480,18 +481,18 @@
       "dir": "ltr",
       "captions_15s_count": 29,
       "voiced_15s_count": 29,
-      "voiced_15s_passed": 15,
-      "voiced_15s_quarantined": 14,
+      "voiced_15s_passed": 28,
+      "voiced_15s_quarantined": 1,
       "captions_90s_count": 4,
       "voiced_90s_count": 4,
-      "voiced_90s_passed": 0,
+      "voiced_90s_passed": 4,
       "rss_url": "/radio/te/rss.xml",
       "digest_m4a_url": "/media/radio/opus/te-digest.m4a",
       "digest_opus_url": "/media/radio/opus/te-digest.opus",
       "tts_engine": "microsoft-edge-neural",
       "voice_id": "te-IN-ShrutiNeural",
       "energy_class": "unmetered",
-      "mean_wer": 0.5485,
+      "mean_wer": 0.4652,
       "mean_lufs": -16.12,
       "mean_labse_cosine": 0.8632
     },
@@ -524,18 +525,18 @@
       "dir": "ltr",
       "captions_15s_count": 29,
       "voiced_15s_count": 29,
-      "voiced_15s_passed": 10,
-      "voiced_15s_quarantined": 19,
+      "voiced_15s_passed": 27,
+      "voiced_15s_quarantined": 2,
       "captions_90s_count": 4,
       "voiced_90s_count": 4,
-      "voiced_90s_passed": 3,
+      "voiced_90s_passed": 4,
       "rss_url": "/radio/ta/rss.xml",
       "digest_m4a_url": "/media/radio/opus/ta-digest.m4a",
       "digest_opus_url": "/media/radio/opus/ta-digest.opus",
       "tts_engine": "microsoft-edge-neural",
       "voice_id": "ta-IN-PallaviNeural",
       "energy_class": "unmetered",
-      "mean_wer": 0.7353,
+      "mean_wer": 0.4111,
       "mean_lufs": -16.09,
       "mean_labse_cosine": 0.8568
     },
@@ -590,8 +591,8 @@
       "dir": "ltr",
       "captions_15s_count": 29,
       "voiced_15s_count": 29,
-      "voiced_15s_passed": 27,
-      "voiced_15s_quarantined": 2,
+      "voiced_15s_passed": 29,
+      "voiced_15s_quarantined": 0,
       "captions_90s_count": 4,
       "voiced_90s_count": 4,
       "voiced_90s_passed": 4,
@@ -601,7 +602,7 @@
       "tts_engine": "elevenlabs:eleven_v4_turbo",
       "voice_id": "mzbNqbWwLuZObi7qEA67 (Amara)",
       "energy_class": "unmetered",
-      "mean_wer": 0.7376,
+      "mean_wer": 0.1716,
       "mean_lufs": -16.78,
       "mean_labse_cosine": 0.885
     },
@@ -612,18 +613,18 @@
       "dir": "ltr",
       "captions_15s_count": 29,
       "voiced_15s_count": 29,
-      "voiced_15s_passed": 14,
-      "voiced_15s_quarantined": 15,
+      "voiced_15s_passed": 28,
+      "voiced_15s_quarantined": 1,
       "captions_90s_count": 4,
       "voiced_90s_count": 4,
-      "voiced_90s_passed": 0,
+      "voiced_90s_passed": 4,
       "rss_url": "/radio/yo/rss.xml",
       "digest_m4a_url": "/media/radio/opus/yo-digest.m4a",
       "digest_opus_url": "/media/radio/opus/yo-digest.opus",
       "tts_engine": "elevenlabs:eleven_v4_turbo",
       "voice_id": "mzbNqbWwLuZObi7qEA67 (Amara)",
       "energy_class": "unmetered",
-      "mean_wer": 0.8416,
+      "mean_wer": 0.3321,
       "mean_lufs": -16.69,
       "mean_labse_cosine": 0.6973
     },
@@ -645,7 +646,7 @@
       "tts_engine": "microsoft-edge-neural",
       "voice_id": "am-ET-MekdesNeural",
       "energy_class": "unmetered",
-      "mean_wer": 0.999,
+      "mean_wer": 0.9127,
       "mean_lufs": -17.14,
       "mean_labse_cosine": 0.8418
     },
@@ -678,18 +679,18 @@
       "dir": "ltr",
       "captions_15s_count": 29,
       "voiced_15s_count": 29,
-      "voiced_15s_passed": 29,
-      "voiced_15s_quarantined": 0,
+      "voiced_15s_passed": 25,
+      "voiced_15s_quarantined": 4,
       "captions_90s_count": 4,
       "voiced_90s_count": 4,
-      "voiced_90s_passed": 4,
+      "voiced_90s_passed": 3,
       "rss_url": "/radio/pa/rss.xml",
       "digest_m4a_url": "/media/radio/opus/pa-digest.m4a",
       "digest_opus_url": "/media/radio/opus/pa-digest.opus",
       "tts_engine": "elevenlabs:eleven_v4_turbo",
       "voice_id": "QCzL5yD6UcwZgNMhRj6G (Priya)",
       "energy_class": "unmetered",
-      "mean_wer": 0.6677,
+      "mean_wer": 0.5611,
       "mean_lufs": -16.81,
       "mean_labse_cosine": 0.8717
     },
@@ -755,7 +756,7 @@
       "tts_engine": "microsoft-edge-neural",
       "voice_id": "my-MM-NilarNeural",
       "energy_class": "unmetered",
-      "mean_wer": 0.9647,
+      "mean_wer": 0.9591,
       "mean_lufs": -16.04,
       "mean_labse_cosine": 0.8703
     },
@@ -1266,7 +1267,8 @@
       "lowbw_lufs": -17.3,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "2055e5d94892888a6d1f9a5983bb8fa0c0b8a081c1e9310abf775b048f3dd354",
-      "lowbw_blake3": "6d64597d096a58bb28ea82a7c33a3e15a9d11c815587e2e4edcc31f068284302"
+      "lowbw_blake3": "6d64597d096a58bb28ea82a7c33a3e15a9d11c815587e2e4edcc31f068284302",
+      "cues_vtt_url": "/media/tv/accessibility/agency-15s.cues.vtt"
     },
     {
       "study_slug": "ai-coding-market",
@@ -1289,7 +1291,8 @@
       "lowbw_lufs": -16.4,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "30186efec9a1763873ecede652dafc4f5897f247210e57f6c70bad3fd22d7224",
-      "lowbw_blake3": "c1a4d029e2c43decd97bf222f7b4d6d4acfd1e3797222517d95500202b03c35b"
+      "lowbw_blake3": "c1a4d029e2c43decd97bf222f7b4d6d4acfd1e3797222517d95500202b03c35b",
+      "cues_vtt_url": "/media/tv/accessibility/ai-coding-market-15s.cues.vtt"
     },
     {
       "study_slug": "ai-reads-human",
@@ -1312,7 +1315,8 @@
       "lowbw_lufs": -15.9,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "a18fe6bfc70467f5cf0754b472545e2dc525c7f7af3da99d2295bd8afeffcac3",
-      "lowbw_blake3": "3c674c8ea854c07e4cf3fd084bd03b6cb8fc7b2527791ff15e441b2a14f21b30"
+      "lowbw_blake3": "3c674c8ea854c07e4cf3fd084bd03b6cb8fc7b2527791ff15e441b2a14f21b30",
+      "cues_vtt_url": "/media/tv/accessibility/ai-reads-human-15s.cues.vtt"
     },
     {
       "study_slug": "communication-avalanche",
@@ -1335,7 +1339,8 @@
       "lowbw_lufs": -16.5,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "2ab4c70ba59dc224dedf6455e207b50e35efc9417625d36cd0564c02bae23188",
-      "lowbw_blake3": "2f705cc2fd9b4ec4df4027cf7535dd12742982ad20ee6ced37c5b3aba312e37a"
+      "lowbw_blake3": "2f705cc2fd9b4ec4df4027cf7535dd12742982ad20ee6ced37c5b3aba312e37a",
+      "cues_vtt_url": "/media/tv/accessibility/communication-avalanche-15s.cues.vtt"
     },
     {
       "study_slug": "deterministic-null",
@@ -1358,7 +1363,8 @@
       "lowbw_lufs": -16.3,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "25562d8d6d55922b8aac4199f4db92c5ddaa40b52cf66858e6e4039bf5c946a1",
-      "lowbw_blake3": "fd06d4b535068376f98d5a933d3ca77cc04b841fb9a8dea57937feb225a96156"
+      "lowbw_blake3": "fd06d4b535068376f98d5a933d3ca77cc04b841fb9a8dea57937feb225a96156",
+      "cues_vtt_url": "/media/tv/accessibility/deterministic-null-15s.cues.vtt"
     },
     {
       "study_slug": "eco-avalanche",
@@ -1383,7 +1389,8 @@
       "lowbw_lufs": -16.3,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "41b633bc212e5103acdee4ea7da8e7d0ce69ef4f666f788efa09a51dbf23131c",
-      "lowbw_blake3": "c19f4d6585c046a82cbd50e61f5b1edf3c91ac137142b8fc8528fcef7405b5e2"
+      "lowbw_blake3": "c19f4d6585c046a82cbd50e61f5b1edf3c91ac137142b8fc8528fcef7405b5e2",
+      "cues_vtt_url": "/media/tv/accessibility/eco-avalanche-15s.cues.vtt"
     },
     {
       "study_slug": "eco-compute",
@@ -1406,7 +1413,8 @@
       "lowbw_lufs": -16.2,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "daf3ae99c2c773921af1278c5810faaeb12c49ce98ee6f0a9e1bfd341af3a3ac",
-      "lowbw_blake3": "b2869324377de12dd0a6545a5cea399eb5631ccf91790f44c6aabfdd08ab970c"
+      "lowbw_blake3": "b2869324377de12dd0a6545a5cea399eb5631ccf91790f44c6aabfdd08ab970c",
+      "cues_vtt_url": "/media/tv/accessibility/eco-compute-15s.cues.vtt"
     },
     {
       "study_slug": "eco-database",
@@ -1429,7 +1437,8 @@
       "lowbw_lufs": -16.5,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "18aa64c6391fe525a3ddee7359dffc3cb3648effa9839adcc12e9e625040e81d",
-      "lowbw_blake3": "4b1357596b736599ed68bfb8f4cb54f0bfbf9e4e5a38d2a3c4de85a478dbc29c"
+      "lowbw_blake3": "4b1357596b736599ed68bfb8f4cb54f0bfbf9e4e5a38d2a3c4de85a478dbc29c",
+      "cues_vtt_url": "/media/tv/accessibility/eco-database-15s.cues.vtt"
     },
     {
       "study_slug": "eco-knowledge",
@@ -1452,7 +1461,8 @@
       "lowbw_lufs": -16.7,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "9d6828dc3e83cfbaf312f127ff493fd0983eddec286244578789e9ed406ae608",
-      "lowbw_blake3": "5036d621d34182e78de3713e8076cd636942270b7d46c9215b5c70a98513d4ab"
+      "lowbw_blake3": "5036d621d34182e78de3713e8076cd636942270b7d46c9215b5c70a98513d4ab",
+      "cues_vtt_url": "/media/tv/accessibility/eco-knowledge-15s.cues.vtt"
     },
     {
       "study_slug": "eco-stack",
@@ -1475,7 +1485,8 @@
       "lowbw_lufs": -16.2,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "ce9eaee6b021e07d94af65e090fa99f13043cb605cc7db44b3908ba4ca11d939",
-      "lowbw_blake3": "f8a64ff8ccda03a518a2cb7f60d3fd77a0df8f77ab63e3c4af08f936d397867e"
+      "lowbw_blake3": "f8a64ff8ccda03a518a2cb7f60d3fd77a0df8f77ab63e3c4af08f936d397867e",
+      "cues_vtt_url": "/media/tv/accessibility/eco-stack-15s.cues.vtt"
     },
     {
       "study_slug": "eco-synthesis",
@@ -1498,7 +1509,8 @@
       "lowbw_lufs": -17.1,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "2452d73b3a0d99f781807ef338493dd42c8c16e324900a3c17cc50d02f1628e7",
-      "lowbw_blake3": "20777c7e84007f056c9375065bc955d03993a75473aa0abeb9bd08c54d703bb6"
+      "lowbw_blake3": "20777c7e84007f056c9375065bc955d03993a75473aa0abeb9bd08c54d703bb6",
+      "cues_vtt_url": "/media/tv/accessibility/eco-synthesis-15s.cues.vtt"
     },
     {
       "study_slug": "from-ephemeral-inference-to-compiled-agency",
@@ -1523,7 +1535,8 @@
       "lowbw_lufs": -16.5,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "34ec9c45e6ffb5b3b20d2412bc55174c8919c14cc420a7aa067d9429b2d37f20",
-      "lowbw_blake3": "086ed5b946181d9a11aad6593856f68aee19deda006e2787c0633ec8af791cf3"
+      "lowbw_blake3": "086ed5b946181d9a11aad6593856f68aee19deda006e2787c0633ec8af791cf3",
+      "cues_vtt_url": "/media/tv/accessibility/from-ephemeral-inference-to-compiled-agency-15s.cues.vtt"
     },
     {
       "study_slug": "game-engines",
@@ -1546,7 +1559,8 @@
       "lowbw_lufs": -16.3,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "b1898152677deca747d1ae27458b28fedcb259d9c685de9b0727d8459ab6b6f2",
-      "lowbw_blake3": "f3cc2e0331b42177be910a7f66d3eee0e2b6229830024f41c604b750438f7d41"
+      "lowbw_blake3": "f3cc2e0331b42177be910a7f66d3eee0e2b6229830024f41c604b750438f7d41",
+      "cues_vtt_url": "/media/tv/accessibility/game-engines-15s.cues.vtt"
     },
     {
       "study_slug": "gates",
@@ -1569,7 +1583,8 @@
       "lowbw_lufs": -16.1,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "14fe8eedec60e3b66a9b19c94bc0813f1b0785abb3c36c67140d1dce645937b3",
-      "lowbw_blake3": "5351e534e87066ad7eec927d207d58ed3afe7b55ed91e88ef43211bc5d677c6a"
+      "lowbw_blake3": "5351e534e87066ad7eec927d207d58ed3afe7b55ed91e88ef43211bc5d677c6a",
+      "cues_vtt_url": "/media/tv/accessibility/gates-15s.cues.vtt"
     },
     {
       "study_slug": "interface-economics",
@@ -1592,7 +1607,8 @@
       "lowbw_lufs": -16.1,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "003afa822e6c0848d6030f83f52043e95abbc46294e87a150c18bcfa8c82389f",
-      "lowbw_blake3": "f5335b6c6d515df70253fef2b42795b839aede36389f94276f2d054cf14c3135"
+      "lowbw_blake3": "f5335b6c6d515df70253fef2b42795b839aede36389f94276f2d054cf14c3135",
+      "cues_vtt_url": "/media/tv/accessibility/interface-economics-15s.cues.vtt"
     },
     {
       "study_slug": "jouleos",
@@ -1615,7 +1631,8 @@
       "lowbw_lufs": -16.7,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "c41ca63d190e68c0f48d7c40fe919f6e4db188faf6492e534c5aba6a27903ac2",
-      "lowbw_blake3": "a2bd9076bfd1378795f728f75d4ce7fa1c4383c4ca1480e1e1597312a4ea2b62"
+      "lowbw_blake3": "a2bd9076bfd1378795f728f75d4ce7fa1c4383c4ca1480e1e1597312a4ea2b62",
+      "cues_vtt_url": "/media/tv/accessibility/jouleos-15s.cues.vtt"
     },
     {
       "study_slug": "latency",
@@ -1638,7 +1655,8 @@
       "lowbw_lufs": -16.8,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "ca0d9d3e49a96cd7900a235423a7ff6808a8f57fd50afd321d6e08b6b4c87848",
-      "lowbw_blake3": "870de1374ac99290594ed07371498242375fbed5780457c9fe808a277d2d3e79"
+      "lowbw_blake3": "870de1374ac99290594ed07371498242375fbed5780457c9fe808a277d2d3e79",
+      "cues_vtt_url": "/media/tv/accessibility/latency-15s.cues.vtt"
     },
     {
       "study_slug": "lut-adapt",
@@ -1661,7 +1679,8 @@
       "lowbw_lufs": -16.4,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "6089f783864ab2923ef9698fc136a61686d733fbcb770ab3b4255c3cda996117",
-      "lowbw_blake3": "8a8d4395ffee1af7b2071bf9d60511e7ce4134548f76b248e297e656d004a561"
+      "lowbw_blake3": "8a8d4395ffee1af7b2071bf9d60511e7ce4134548f76b248e297e656d004a561",
+      "cues_vtt_url": "/media/tv/accessibility/lut-adapt-15s.cues.vtt"
     },
     {
       "study_slug": "lut6-codon-nucleus",
@@ -1684,7 +1703,8 @@
       "lowbw_lufs": -16.2,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "6277e5c7ca49d70aa4a6203b4c3108322015e81b6b165e01c721b12848b7848b",
-      "lowbw_blake3": "6ea2de21787fbaa21227ff8026545ba9007080677136c0113457def83dba4852"
+      "lowbw_blake3": "6ea2de21787fbaa21227ff8026545ba9007080677136c0113457def83dba4852",
+      "cues_vtt_url": "/media/tv/accessibility/lut6-codon-nucleus-15s.cues.vtt"
     },
     {
       "study_slug": "mei",
@@ -1707,7 +1727,8 @@
       "lowbw_lufs": -16.3,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "28a06a21b94c5c93943bc0e0a36b827b8da6ed934eac0164182edd070b28e166",
-      "lowbw_blake3": "5a927e7dded47ec648283005117027fe50eb9fbe89229eb2ed760471888c8ddc"
+      "lowbw_blake3": "5a927e7dded47ec648283005117027fe50eb9fbe89229eb2ed760471888c8ddc",
+      "cues_vtt_url": "/media/tv/accessibility/mei-15s.cues.vtt"
     },
     {
       "study_slug": "rce",
@@ -1730,7 +1751,8 @@
       "lowbw_lufs": -16.3,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "eb3019c7141c54e88a9aa5ef7510d188848ea74d2b06a84c7fce5e9759807d25",
-      "lowbw_blake3": "4e67fc2456e1a1727b7c45fd2b319c475364c627bac6245d1b96e3a5536cca34"
+      "lowbw_blake3": "4e67fc2456e1a1727b7c45fd2b319c475364c627bac6245d1b96e3a5536cca34",
+      "cues_vtt_url": "/media/tv/accessibility/rce-15s.cues.vtt"
     },
     {
       "study_slug": "rce-compile",
@@ -1753,7 +1775,8 @@
       "lowbw_lufs": -16.4,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "b4cb1740ba3c0a7de025d9d724f97af29c78954139e400215ecc28af7a391305",
-      "lowbw_blake3": "a4b10ac374bc5015b4f6664d5e842748c71c82325f15de2ecb6838b00766a089"
+      "lowbw_blake3": "a4b10ac374bc5015b4f6664d5e842748c71c82325f15de2ecb6838b00766a089",
+      "cues_vtt_url": "/media/tv/accessibility/rce-compile-15s.cues.vtt"
     },
     {
       "study_slug": "rce-jepa",
@@ -1776,7 +1799,8 @@
       "lowbw_lufs": -16.5,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "a791708e6010f4106d2498832b179dc1eeb59fbbdebdb1558e08c08628b50a51",
-      "lowbw_blake3": "0050e4c95bf999cbc7956804b3a452e340ab738859f1a31d998ba25bcd385188"
+      "lowbw_blake3": "0050e4c95bf999cbc7956804b3a452e340ab738859f1a31d998ba25bcd385188",
+      "cues_vtt_url": "/media/tv/accessibility/rce-jepa-15s.cues.vtt"
     },
     {
       "study_slug": "rce-vc",
@@ -1799,7 +1823,8 @@
       "lowbw_lufs": -16.4,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "8b2f7a0343436d4b2f6e00b4abb093d87728d3a3b32f5e3e8fe8685ede77edb9",
-      "lowbw_blake3": "6f3b69269808257b4ab816476a76c0d460f858330c903b016ee0fd598dd8b872"
+      "lowbw_blake3": "6f3b69269808257b4ab816476a76c0d460f858330c903b016ee0fd598dd8b872",
+      "cues_vtt_url": "/media/tv/accessibility/rce-vc-15s.cues.vtt"
     },
     {
       "study_slug": "satb-harness",
@@ -1822,7 +1847,8 @@
       "lowbw_lufs": -16.2,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "b264b6b44fc4a98b036c7a79d4a5d8494384a5e4db0ed3b3aee6eb5bdb48ef38",
-      "lowbw_blake3": "d3db3c7808d70e65df49edb682332e7d54281f022a61d89ba6e0fc1d88ae000c"
+      "lowbw_blake3": "d3db3c7808d70e65df49edb682332e7d54281f022a61d89ba6e0fc1d88ae000c",
+      "cues_vtt_url": "/media/tv/accessibility/satb-harness-15s.cues.vtt"
     },
     {
       "study_slug": "satiation",
@@ -1845,7 +1871,8 @@
       "lowbw_lufs": -16.0,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "416e76c0dc68d1aa28ec465ab8762b4eaef3f4e3216113c15984de331c9fe464",
-      "lowbw_blake3": "ef43b1ed2cbd824248a12a20529ab5bf159900e03b419ebf5fadbe35cf4bdde4"
+      "lowbw_blake3": "ef43b1ed2cbd824248a12a20529ab5bf159900e03b419ebf5fadbe35cf4bdde4",
+      "cues_vtt_url": "/media/tv/accessibility/satiation-15s.cues.vtt"
     },
     {
       "study_slug": "spellcheck",
@@ -1868,7 +1895,8 @@
       "lowbw_lufs": -16.6,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "1d68da64b4c729605c26b5580cb3c0b5ffa8feb2f59f8ab7dbc3ddf1e943ac08",
-      "lowbw_blake3": "3ca7e142d430f792e1f1f2aa0c0329dd2e26a4492d1273fe88f58ded45a50248"
+      "lowbw_blake3": "3ca7e142d430f792e1f1f2aa0c0329dd2e26a4492d1273fe88f58ded45a50248",
+      "cues_vtt_url": "/media/tv/accessibility/spellcheck-15s.cues.vtt"
     },
     {
       "study_slug": "three-body",
@@ -1891,7 +1919,8 @@
       "lowbw_lufs": -15.6,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "65f2ce2bd4ad69e09fec3d897cd7bddb91099480b4be5c46cd8c4dd39f9a4c27",
-      "lowbw_blake3": "5ef3b511e8109318d556982b758d924fa74bcf47271868cde92e4ed87b8c1481"
+      "lowbw_blake3": "5ef3b511e8109318d556982b758d924fa74bcf47271868cde92e4ed87b8c1481",
+      "cues_vtt_url": "/media/tv/accessibility/three-body-15s.cues.vtt"
     },
     {
       "study_slug": "time-as-an-index",
@@ -1914,7 +1943,8 @@
       "lowbw_lufs": -16.4,
       "lowbw_resolution": "854x480",
       "lowbw_sha256": "04c57097e6cb73ce3ee662f5ad669336a22298f1d0b931e5c7a41a741cd8b14e",
-      "lowbw_blake3": "b0b8200e8cad092f188a0587cf36f82217a2b109180d87a8e751aa0a4763d0c4"
+      "lowbw_blake3": "b0b8200e8cad092f188a0587cf36f82217a2b109180d87a8e751aa0a4763d0c4",
+      "cues_vtt_url": "/media/tv/accessibility/time-as-an-index-15s.cues.vtt"
     }
   ],
   "radio_english_opus": [
@@ -2992,10 +3022,10 @@
       "me5_cosine": 0.8583,
       "backtrans_chrfpp": 57.15,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7548,
+      "wer": 0.7306,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T0_voiced"
     },
     {
       "study_slug": "from-ephemeral-inference-to-compiled-agency",
@@ -3208,7 +3238,7 @@
       "me5_cosine": 0.8321,
       "backtrans_chrfpp": 43.43,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2319,
+      "wer": 0.1301,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -3235,10 +3265,10 @@
       "me5_cosine": 0.8534,
       "backtrans_chrfpp": 70.28,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7399,
+      "wer": 0.6575,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "from-ephemeral-inference-to-compiled-agency",
@@ -3289,7 +3319,7 @@
       "me5_cosine": 0.8308,
       "backtrans_chrfpp": 62.26,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.594,
+      "wer": 0.2252,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -3370,7 +3400,7 @@
       "me5_cosine": 0.8504,
       "backtrans_chrfpp": 64.28,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6545,
+      "wer": 0.1474,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -3397,10 +3427,10 @@
       "me5_cosine": 0.8071,
       "backtrans_chrfpp": 29.04,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8934,
+      "wer": 0.3282,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "from-ephemeral-inference-to-compiled-agency",
@@ -3424,7 +3454,7 @@
       "me5_cosine": 0.8298,
       "backtrans_chrfpp": 53.28,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9878,
+      "wer": 0.9072,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -3478,7 +3508,7 @@
       "me5_cosine": 0.8363,
       "backtrans_chrfpp": 68.02,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7757,
+      "wer": 0.5634,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -3559,7 +3589,7 @@
       "me5_cosine": 0.8637,
       "backtrans_chrfpp": 67.61,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8848,
+      "wer": 0.9944,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -4190,10 +4220,10 @@
       "me5_cosine": 0.8883,
       "backtrans_chrfpp": 51.64,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7899,
+      "wer": 0.737,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T0_voiced"
     },
     {
       "study_slug": "agency",
@@ -4406,7 +4436,7 @@
       "me5_cosine": 0.8951,
       "backtrans_chrfpp": 51.38,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.25,
+      "wer": 0.1311,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -4433,7 +4463,7 @@
       "me5_cosine": 0.8804,
       "backtrans_chrfpp": 49.8,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.3233,
+      "wer": 0.2259,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -4487,10 +4517,10 @@
       "me5_cosine": 0.8713,
       "backtrans_chrfpp": 50.56,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.98,
+      "wer": 0.1901,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "agency",
@@ -4568,7 +4598,7 @@
       "me5_cosine": 0.8662,
       "backtrans_chrfpp": 50.74,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6818,
+      "wer": 0.1922,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -4595,10 +4625,10 @@
       "me5_cosine": 0.7864,
       "backtrans_chrfpp": 34.3,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8592,
+      "wer": 0.2129,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "agency",
@@ -4622,7 +4652,7 @@
       "me5_cosine": 0.8467,
       "backtrans_chrfpp": 47.52,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.8919,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -4676,10 +4706,10 @@
       "me5_cosine": 0.8468,
       "backtrans_chrfpp": 45.65,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8175,
+      "wer": 0.7942,
       "numbers_exact": true,
-      "gate_status": "passed",
-      "ship_tier": "T1_voiced"
+      "gate_status": "quarantined_caption_only",
+      "ship_tier": "T2_caption_only"
     },
     {
       "study_slug": "agency",
@@ -4757,7 +4787,7 @@
       "me5_cosine": 0.8674,
       "backtrans_chrfpp": 53.88,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.1754,
+      "wer": 0.8845,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -5388,7 +5418,7 @@
       "me5_cosine": 0.8939,
       "backtrans_chrfpp": 48.24,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6183,
+      "wer": 0.5035,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T0_voiced"
@@ -5604,7 +5634,7 @@
       "me5_cosine": 0.9005,
       "backtrans_chrfpp": 62.19,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.1653,
+      "wer": 0.0993,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -5631,7 +5661,7 @@
       "me5_cosine": 0.8845,
       "backtrans_chrfpp": 60.23,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.448,
+      "wer": 0.4164,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -5685,10 +5715,10 @@
       "me5_cosine": 0.8936,
       "backtrans_chrfpp": 58.16,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8591,
+      "wer": 0.2861,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "gates",
@@ -5766,7 +5796,7 @@
       "me5_cosine": 0.8471,
       "backtrans_chrfpp": 55.01,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.75,
+      "wer": 0.155,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -5793,7 +5823,7 @@
       "me5_cosine": 0.8253,
       "backtrans_chrfpp": 45.67,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8289,
+      "wer": 0.3099,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -5820,7 +5850,7 @@
       "me5_cosine": 0.8572,
       "backtrans_chrfpp": 48.64,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.8969,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -5874,7 +5904,7 @@
       "me5_cosine": 0.8691,
       "backtrans_chrfpp": 71.32,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7626,
+      "wer": 0.7184,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -5955,7 +5985,7 @@
       "me5_cosine": 0.8869,
       "backtrans_chrfpp": 65.75,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.8644,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -6586,10 +6616,10 @@
       "me5_cosine": 0.8424,
       "backtrans_chrfpp": 57.49,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7823,
+      "wer": 0.7348,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T0_voiced"
     },
     {
       "study_slug": "deterministic-null",
@@ -6802,7 +6832,7 @@
       "me5_cosine": 0.8523,
       "backtrans_chrfpp": 53.35,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2237,
+      "wer": 0.159,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -6829,10 +6859,10 @@
       "me5_cosine": 0.8485,
       "backtrans_chrfpp": 52.81,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7338,
+      "wer": 0.7126,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "deterministic-null",
@@ -6883,7 +6913,7 @@
       "me5_cosine": 0.8497,
       "backtrans_chrfpp": 49.71,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6292,
+      "wer": 0.2806,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -6964,7 +6994,7 @@
       "me5_cosine": 0.8718,
       "backtrans_chrfpp": 60.14,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6316,
+      "wer": 0.1302,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -6991,7 +7021,7 @@
       "me5_cosine": 0.8183,
       "backtrans_chrfpp": 33.07,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6786,
+      "wer": 0.2727,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -7018,7 +7048,7 @@
       "me5_cosine": 0.8573,
       "backtrans_chrfpp": 37.58,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9818,
+      "wer": 0.9395,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -7072,7 +7102,7 @@
       "me5_cosine": 0.8294,
       "backtrans_chrfpp": 60.63,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7379,
+      "wer": 0.4642,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -7784,7 +7814,7 @@
       "me5_cosine": 0.8753,
       "backtrans_chrfpp": 69.65,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.3629,
+      "wer": 0.2,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T0_voiced"
@@ -8000,7 +8030,7 @@
       "me5_cosine": 0.8793,
       "backtrans_chrfpp": 59.16,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2895,
+      "wer": 0.2083,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -8027,7 +8057,7 @@
       "me5_cosine": 0.8911,
       "backtrans_chrfpp": 65.29,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.3478,
+      "wer": 0.2357,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -8081,7 +8111,7 @@
       "me5_cosine": 0.8815,
       "backtrans_chrfpp": 60.14,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.3889,
+      "wer": 0.2289,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -8162,7 +8192,7 @@
       "me5_cosine": 0.8867,
       "backtrans_chrfpp": 60.85,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6562,
+      "wer": 0.1706,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -8189,7 +8219,7 @@
       "me5_cosine": 0.8161,
       "backtrans_chrfpp": 37.07,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8077,
+      "wer": 0.3272,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -8216,7 +8246,7 @@
       "me5_cosine": 0.8787,
       "backtrans_chrfpp": 55.68,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.9243,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -8270,10 +8300,10 @@
       "me5_cosine": 0.8515,
       "backtrans_chrfpp": 63.48,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7636,
+      "wer": 0.7838,
       "numbers_exact": true,
-      "gate_status": "passed",
-      "ship_tier": "T1_voiced"
+      "gate_status": "quarantined_caption_only",
+      "ship_tier": "T2_caption_only"
     },
     {
       "study_slug": "satb-harness",
@@ -8351,7 +8381,7 @@
       "me5_cosine": 0.8775,
       "backtrans_chrfpp": 59.62,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9372,
+      "wer": 0.9972,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -8982,7 +9012,7 @@
       "me5_cosine": 0.8763,
       "backtrans_chrfpp": 71.13,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5586,
+      "wer": 0.5212,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T0_voiced"
@@ -9198,7 +9228,7 @@
       "me5_cosine": 0.8789,
       "backtrans_chrfpp": 74.09,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2878,
+      "wer": 0.19,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -9225,7 +9255,7 @@
       "me5_cosine": 0.883,
       "backtrans_chrfpp": 76.64,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5221,
+      "wer": 0.5226,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -9279,7 +9309,7 @@
       "me5_cosine": 0.8719,
       "backtrans_chrfpp": 58.09,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5455,
+      "wer": 0.4693,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -9360,7 +9390,7 @@
       "me5_cosine": 0.8456,
       "backtrans_chrfpp": 48.54,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8182,
+      "wer": 0.1404,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -9387,10 +9417,10 @@
       "me5_cosine": 0.8025,
       "backtrans_chrfpp": 25.4,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.88,
+      "wer": 0.3134,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "time-as-an-index",
@@ -9414,7 +9444,7 @@
       "me5_cosine": 0.8508,
       "backtrans_chrfpp": 44.99,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.9256,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -9468,7 +9498,7 @@
       "me5_cosine": 0.8485,
       "backtrans_chrfpp": 56.0,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6985,
+      "wer": 0.5612,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -10180,7 +10210,7 @@
       "me5_cosine": 0.8655,
       "backtrans_chrfpp": 51.33,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.784,
+      "wer": 0.771,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -10396,7 +10426,7 @@
       "me5_cosine": 0.8628,
       "backtrans_chrfpp": 51.18,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.1484,
+      "wer": 0.1543,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -10423,10 +10453,10 @@
       "me5_cosine": 0.8514,
       "backtrans_chrfpp": 48.13,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7425,
+      "wer": 0.6703,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "communication-avalanche",
@@ -10477,10 +10507,10 @@
       "me5_cosine": 0.8615,
       "backtrans_chrfpp": 46.33,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9124,
+      "wer": 0.5688,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "communication-avalanche",
@@ -10558,7 +10588,7 @@
       "me5_cosine": 0.8562,
       "backtrans_chrfpp": 57.67,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7436,
+      "wer": 0.1416,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -10585,10 +10615,10 @@
       "me5_cosine": 0.8012,
       "backtrans_chrfpp": 25.74,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9067,
+      "wer": 0.3782,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "communication-avalanche",
@@ -10612,7 +10642,7 @@
       "me5_cosine": 0.8469,
       "backtrans_chrfpp": 45.0,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.9136,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -10666,7 +10696,7 @@
       "me5_cosine": 0.8476,
       "backtrans_chrfpp": 58.38,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.3817,
+      "wer": 0.4238,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -10747,7 +10777,7 @@
       "me5_cosine": 0.8483,
       "backtrans_chrfpp": 61.82,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9163,
+      "wer": 0.8301,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -11378,10 +11408,10 @@
       "me5_cosine": 0.8687,
       "backtrans_chrfpp": 50.51,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7692,
+      "wer": 0.7138,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T0_voiced"
     },
     {
       "study_slug": "lut-adapt",
@@ -11594,7 +11624,7 @@
       "me5_cosine": 0.8649,
       "backtrans_chrfpp": 59.59,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2695,
+      "wer": 0.1214,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -11621,10 +11651,10 @@
       "me5_cosine": 0.8722,
       "backtrans_chrfpp": 58.59,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.74,
+      "wer": 0.7385,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "lut-adapt",
@@ -11675,7 +11705,7 @@
       "me5_cosine": 0.8618,
       "backtrans_chrfpp": 55.5,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5707,
+      "wer": 0.6259,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -11756,7 +11786,7 @@
       "me5_cosine": 0.8362,
       "backtrans_chrfpp": 52.58,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8056,
+      "wer": 0.1518,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -11783,10 +11813,10 @@
       "me5_cosine": 0.8201,
       "backtrans_chrfpp": 42.62,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.92,
+      "wer": 0.3311,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "lut-adapt",
@@ -11810,7 +11840,7 @@
       "me5_cosine": 0.8557,
       "backtrans_chrfpp": 47.17,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.9155,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -11864,7 +11894,7 @@
       "me5_cosine": 0.8385,
       "backtrans_chrfpp": 57.63,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8189,
+      "wer": 0.7216,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -11945,7 +11975,7 @@
       "me5_cosine": 0.8651,
       "backtrans_chrfpp": 64.92,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8647,
+      "wer": 1.0,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -12576,7 +12606,7 @@
       "me5_cosine": 0.8986,
       "backtrans_chrfpp": 55.29,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.3095,
+      "wer": 0.229,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T0_voiced"
@@ -12792,7 +12822,7 @@
       "me5_cosine": 0.9046,
       "backtrans_chrfpp": 56.72,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2636,
+      "wer": 0.1399,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -12819,10 +12849,10 @@
       "me5_cosine": 0.915,
       "backtrans_chrfpp": 59.05,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6975,
+      "wer": 0.6963,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "satiation",
@@ -12873,10 +12903,10 @@
       "me5_cosine": 0.9065,
       "backtrans_chrfpp": 65.36,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8864,
+      "wer": 0.5563,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "satiation",
@@ -12954,7 +12984,7 @@
       "me5_cosine": 0.8632,
       "backtrans_chrfpp": 49.95,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7727,
+      "wer": 0.2933,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -12981,10 +13011,10 @@
       "me5_cosine": 0.8274,
       "backtrans_chrfpp": 33.84,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8906,
+      "wer": 0.3728,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "satiation",
@@ -13008,7 +13038,7 @@
       "me5_cosine": 0.8774,
       "backtrans_chrfpp": 54.45,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.9062,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -13062,7 +13092,7 @@
       "me5_cosine": 0.8713,
       "backtrans_chrfpp": 56.3,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7234,
+      "wer": 0.6884,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -13143,7 +13173,7 @@
       "me5_cosine": 0.8963,
       "backtrans_chrfpp": 53.7,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9351,
+      "wer": 0.8778,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -13774,10 +13804,10 @@
       "me5_cosine": 0.8918,
       "backtrans_chrfpp": 58.66,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8296,
+      "wer": 0.7475,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T0_voiced"
     },
     {
       "study_slug": "rce",
@@ -13990,7 +14020,7 @@
       "me5_cosine": 0.8938,
       "backtrans_chrfpp": 56.47,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2518,
+      "wer": 0.1894,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -14017,7 +14047,7 @@
       "me5_cosine": 0.8865,
       "backtrans_chrfpp": 58.4,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.1805,
+      "wer": 0.1176,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -14071,10 +14101,10 @@
       "me5_cosine": 0.8847,
       "backtrans_chrfpp": 58.0,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7095,
+      "wer": 0.3002,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "rce",
@@ -14152,7 +14182,7 @@
       "me5_cosine": 0.8707,
       "backtrans_chrfpp": 71.75,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7531,
+      "wer": 0.142,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -14179,10 +14209,10 @@
       "me5_cosine": 0.7971,
       "backtrans_chrfpp": 29.86,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9762,
+      "wer": 0.4387,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "rce",
@@ -14206,7 +14236,7 @@
       "me5_cosine": 0.869,
       "backtrans_chrfpp": 45.67,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.8878,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -14260,10 +14290,10 @@
       "me5_cosine": 0.8665,
       "backtrans_chrfpp": 68.63,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7379,
+      "wer": 0.7868,
       "numbers_exact": true,
-      "gate_status": "passed",
-      "ship_tier": "T1_voiced"
+      "gate_status": "quarantined_caption_only",
+      "ship_tier": "T2_caption_only"
     },
     {
       "study_slug": "rce",
@@ -14972,10 +15002,10 @@
       "me5_cosine": 0.881,
       "backtrans_chrfpp": 62.95,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7714,
+      "wer": 0.7288,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T0_voiced"
     },
     {
       "study_slug": "rce-jepa",
@@ -15188,7 +15218,7 @@
       "me5_cosine": 0.8871,
       "backtrans_chrfpp": 63.97,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2326,
+      "wer": 0.1611,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -15215,7 +15245,7 @@
       "me5_cosine": 0.8756,
       "backtrans_chrfpp": 56.53,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6364,
+      "wer": 0.6737,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -15269,7 +15299,7 @@
       "me5_cosine": 0.8791,
       "backtrans_chrfpp": 60.48,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5978,
+      "wer": 0.2267,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -15350,7 +15380,7 @@
       "me5_cosine": 0.8537,
       "backtrans_chrfpp": 61.99,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7391,
+      "wer": 0.1474,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -15377,7 +15407,7 @@
       "me5_cosine": 0.8329,
       "backtrans_chrfpp": 40.88,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7838,
+      "wer": 0.3224,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -15404,7 +15434,7 @@
       "me5_cosine": 0.8598,
       "backtrans_chrfpp": 41.73,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.9124,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -15458,7 +15488,7 @@
       "me5_cosine": 0.8408,
       "backtrans_chrfpp": 65.13,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6591,
+      "wer": 0.7186,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -15539,7 +15569,7 @@
       "me5_cosine": 0.8442,
       "backtrans_chrfpp": 63.0,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9184,
+      "wer": 1.0,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -16170,10 +16200,10 @@
       "me5_cosine": 0.8547,
       "backtrans_chrfpp": 56.54,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8395,
+      "wer": 0.5892,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T0_voiced"
     },
     {
       "study_slug": "rce-compile",
@@ -16386,7 +16416,7 @@
       "me5_cosine": 0.8607,
       "backtrans_chrfpp": 59.11,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2606,
+      "wer": 0.284,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -16413,10 +16443,10 @@
       "me5_cosine": 0.8448,
       "backtrans_chrfpp": 63.83,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7484,
+      "wer": 0.1591,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "rce-compile",
@@ -16467,10 +16497,10 @@
       "me5_cosine": 0.8425,
       "backtrans_chrfpp": 54.4,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8047,
+      "wer": 0.2066,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "rce-compile",
@@ -16548,7 +16578,7 @@
       "me5_cosine": 0.8645,
       "backtrans_chrfpp": 60.88,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7353,
+      "wer": 0.2236,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -16575,7 +16605,7 @@
       "me5_cosine": 0.8292,
       "backtrans_chrfpp": 31.7,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7792,
+      "wer": 0.3066,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -16602,7 +16632,7 @@
       "me5_cosine": 0.8324,
       "backtrans_chrfpp": 40.33,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.9343,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -16656,7 +16686,7 @@
       "me5_cosine": 0.8323,
       "backtrans_chrfpp": 65.48,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7347,
+      "wer": 0.6967,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -16737,7 +16767,7 @@
       "me5_cosine": 0.8809,
       "backtrans_chrfpp": 67.27,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9605,
+      "wer": 1.0,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -17368,7 +17398,7 @@
       "me5_cosine": 0.8897,
       "backtrans_chrfpp": 62.8,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5481,
+      "wer": 0.4586,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T0_voiced"
@@ -17584,7 +17614,7 @@
       "me5_cosine": 0.8878,
       "backtrans_chrfpp": 62.44,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6846,
+      "wer": 0.7544,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -17611,10 +17641,10 @@
       "me5_cosine": 0.8852,
       "backtrans_chrfpp": 53.21,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7241,
+      "wer": 0.4219,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "rce-vc",
@@ -17665,7 +17695,7 @@
       "me5_cosine": 0.8831,
       "backtrans_chrfpp": 61.59,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7683,
+      "wer": 0.9436,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -17746,7 +17776,7 @@
       "me5_cosine": 0.8561,
       "backtrans_chrfpp": 55.06,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7195,
+      "wer": 0.1481,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -17773,7 +17803,7 @@
       "me5_cosine": 0.7882,
       "backtrans_chrfpp": 35.56,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8353,
+      "wer": 0.4503,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -17800,7 +17830,7 @@
       "me5_cosine": 0.8459,
       "backtrans_chrfpp": 52.79,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.8985,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -17854,7 +17884,7 @@
       "me5_cosine": 0.8669,
       "backtrans_chrfpp": 73.02,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5556,
+      "wer": 0.3633,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -17935,7 +17965,7 @@
       "me5_cosine": 0.879,
       "backtrans_chrfpp": 56.91,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9005,
+      "wer": 1.0,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -18566,7 +18596,7 @@
       "me5_cosine": 0.882,
       "backtrans_chrfpp": 62.95,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7974,
+      "wer": 0.7822,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -18782,7 +18812,7 @@
       "me5_cosine": 0.8954,
       "backtrans_chrfpp": 66.64,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.336,
+      "wer": 0.1986,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -18809,10 +18839,10 @@
       "me5_cosine": 0.8747,
       "backtrans_chrfpp": 65.93,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.78,
+      "wer": 0.7232,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "game-engines",
@@ -18863,7 +18893,7 @@
       "me5_cosine": 0.8824,
       "backtrans_chrfpp": 62.67,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.3313,
+      "wer": 0.3246,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -18944,7 +18974,7 @@
       "me5_cosine": 0.8818,
       "backtrans_chrfpp": 66.83,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6667,
+      "wer": 0.1386,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -18971,10 +19001,10 @@
       "me5_cosine": 0.7825,
       "backtrans_chrfpp": 27.37,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.12,
+      "wer": 0.317,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "game-engines",
@@ -18998,7 +19028,7 @@
       "me5_cosine": 0.8069,
       "backtrans_chrfpp": 50.21,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.9442,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -19052,7 +19082,7 @@
       "me5_cosine": 0.8563,
       "backtrans_chrfpp": 63.54,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7923,
+      "wer": 0.4638,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -19133,7 +19163,7 @@
       "me5_cosine": 0.8931,
       "backtrans_chrfpp": 65.52,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9655,
+      "wer": 0.9973,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -19764,7 +19794,7 @@
       "me5_cosine": 0.9005,
       "backtrans_chrfpp": 54.84,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.3679,
+      "wer": 0.3053,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T0_voiced"
@@ -19980,7 +20010,7 @@
       "me5_cosine": 0.9046,
       "backtrans_chrfpp": 53.51,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2222,
+      "wer": 0.1457,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -20007,7 +20037,7 @@
       "me5_cosine": 0.9105,
       "backtrans_chrfpp": 51.94,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2056,
+      "wer": 0.1506,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -20061,10 +20091,10 @@
       "me5_cosine": 0.8969,
       "backtrans_chrfpp": 53.98,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9308,
+      "wer": 0.2926,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "three-body",
@@ -20142,10 +20172,10 @@
       "me5_cosine": 0.8511,
       "backtrans_chrfpp": 40.34,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8906,
+      "wer": 0.1977,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "three-body",
@@ -20169,10 +20199,10 @@
       "me5_cosine": 0.8278,
       "backtrans_chrfpp": 33.53,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9062,
+      "wer": 0.3697,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "three-body",
@@ -20196,7 +20226,7 @@
       "me5_cosine": 0.8647,
       "backtrans_chrfpp": 34.36,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.8667,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -20250,7 +20280,7 @@
       "me5_cosine": 0.8751,
       "backtrans_chrfpp": 52.48,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6063,
+      "wer": 0.5776,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -20331,7 +20361,7 @@
       "me5_cosine": 0.875,
       "backtrans_chrfpp": 49.25,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.1161,
+      "wer": 0.9971,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -20962,7 +20992,7 @@
       "me5_cosine": 0.8821,
       "backtrans_chrfpp": 69.06,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8194,
+      "wer": 0.7525,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -21178,7 +21208,7 @@
       "me5_cosine": 0.8831,
       "backtrans_chrfpp": 66.41,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.3497,
+      "wer": 0.1937,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -21205,7 +21235,7 @@
       "me5_cosine": 0.8852,
       "backtrans_chrfpp": 74.75,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5099,
+      "wer": 0.2557,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -21259,7 +21289,7 @@
       "me5_cosine": 0.8684,
       "backtrans_chrfpp": 64.52,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5988,
+      "wer": 0.2741,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -21340,7 +21370,7 @@
       "me5_cosine": 0.8549,
       "backtrans_chrfpp": 52.69,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7467,
+      "wer": 0.1716,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -21367,7 +21397,7 @@
       "me5_cosine": 0.8155,
       "backtrans_chrfpp": 35.64,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7632,
+      "wer": 0.4153,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -21394,7 +21424,7 @@
       "me5_cosine": 0.8667,
       "backtrans_chrfpp": 58.17,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.935,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -21448,7 +21478,7 @@
       "me5_cosine": 0.8663,
       "backtrans_chrfpp": 63.9,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8,
+      "wer": 0.4572,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -22160,7 +22190,7 @@
       "me5_cosine": 0.9047,
       "backtrans_chrfpp": 64.49,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6225,
+      "wer": 0.5497,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T0_voiced"
@@ -22376,7 +22406,7 @@
       "me5_cosine": 0.9081,
       "backtrans_chrfpp": 65.09,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.3023,
+      "wer": 0.2096,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -22403,10 +22433,10 @@
       "me5_cosine": 0.9018,
       "backtrans_chrfpp": 67.96,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6835,
+      "wer": 0.367,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "spellcheck",
@@ -22457,10 +22487,10 @@
       "me5_cosine": 0.8929,
       "backtrans_chrfpp": 73.34,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6946,
+      "wer": 0.2968,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "spellcheck",
@@ -22538,10 +22568,10 @@
       "me5_cosine": 0.8341,
       "backtrans_chrfpp": 48.5,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8611,
+      "wer": 0.2561,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "spellcheck",
@@ -22565,10 +22595,10 @@
       "me5_cosine": 0.8066,
       "backtrans_chrfpp": 38.23,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9494,
+      "wer": 0.3398,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "spellcheck",
@@ -22592,7 +22622,7 @@
       "me5_cosine": 0.8755,
       "backtrans_chrfpp": 53.88,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.8876,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -22646,10 +22676,10 @@
       "me5_cosine": 0.8669,
       "backtrans_chrfpp": 43.1,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.4583,
+      "wer": 0.8613,
       "numbers_exact": true,
-      "gate_status": "passed",
-      "ship_tier": "T1_voiced"
+      "gate_status": "quarantined_caption_only",
+      "ship_tier": "T2_caption_only"
     },
     {
       "study_slug": "spellcheck",
@@ -22727,7 +22757,7 @@
       "me5_cosine": 0.8817,
       "backtrans_chrfpp": 53.67,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.877,
+      "wer": 0.8832,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -23358,7 +23388,7 @@
       "me5_cosine": 0.8946,
       "backtrans_chrfpp": 60.93,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5959,
+      "wer": 0.5161,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T0_voiced"
@@ -23574,7 +23604,7 @@
       "me5_cosine": 0.8994,
       "backtrans_chrfpp": 52.2,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2537,
+      "wer": 0.1824,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -23601,7 +23631,7 @@
       "me5_cosine": 0.9089,
       "backtrans_chrfpp": 56.35,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2331,
+      "wer": 0.2345,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -23655,10 +23685,10 @@
       "me5_cosine": 0.8875,
       "backtrans_chrfpp": 67.65,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7738,
+      "wer": 0.3122,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "ai-coding-market",
@@ -23736,7 +23766,7 @@
       "me5_cosine": 0.8708,
       "backtrans_chrfpp": 58.12,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7937,
+      "wer": 0.2,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -23763,7 +23793,7 @@
       "me5_cosine": 0.8378,
       "backtrans_chrfpp": 41.55,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.76,
+      "wer": 0.316,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -23790,7 +23820,7 @@
       "me5_cosine": 0.8638,
       "backtrans_chrfpp": 36.11,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.9448,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -23844,7 +23874,7 @@
       "me5_cosine": 0.8572,
       "backtrans_chrfpp": 55.55,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7519,
+      "wer": 0.404,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -23925,7 +23955,7 @@
       "me5_cosine": 0.8659,
       "backtrans_chrfpp": 41.1,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9824,
+      "wer": 1.0,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -24556,7 +24586,7 @@
       "me5_cosine": 0.8866,
       "backtrans_chrfpp": 52.51,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.3226,
+      "wer": 0.2655,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T0_voiced"
@@ -24772,7 +24802,7 @@
       "me5_cosine": 0.8875,
       "backtrans_chrfpp": 53.76,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2734,
+      "wer": 0.1644,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -24799,7 +24829,7 @@
       "me5_cosine": 0.8888,
       "backtrans_chrfpp": 49.36,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.4887,
+      "wer": 0.2201,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -24853,10 +24883,10 @@
       "me5_cosine": 0.8852,
       "backtrans_chrfpp": 55.06,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7673,
+      "wer": 0.5423,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "interface-economics",
@@ -24934,7 +24964,7 @@
       "me5_cosine": 0.8539,
       "backtrans_chrfpp": 47.92,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8235,
+      "wer": 0.25,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -24961,7 +24991,7 @@
       "me5_cosine": 0.7936,
       "backtrans_chrfpp": 25.54,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7606,
+      "wer": 0.2595,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -24988,7 +25018,7 @@
       "me5_cosine": 0.8555,
       "backtrans_chrfpp": 29.71,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.924,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -25042,7 +25072,7 @@
       "me5_cosine": 0.8599,
       "backtrans_chrfpp": 53.44,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5122,
+      "wer": 0.5587,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -25123,7 +25153,7 @@
       "me5_cosine": 0.8661,
       "backtrans_chrfpp": 55.7,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9946,
+      "wer": 1.0,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -25754,7 +25784,7 @@
       "me5_cosine": 0.8912,
       "backtrans_chrfpp": 54.83,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6047,
+      "wer": 0.5204,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T0_voiced"
@@ -25970,7 +26000,7 @@
       "me5_cosine": 0.9067,
       "backtrans_chrfpp": 63.55,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2083,
+      "wer": 0.1423,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -25997,7 +26027,7 @@
       "me5_cosine": 0.8975,
       "backtrans_chrfpp": 65.01,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.4621,
+      "wer": 0.4412,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -26051,7 +26081,7 @@
       "me5_cosine": 0.887,
       "backtrans_chrfpp": 58.56,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5312,
+      "wer": 0.1694,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -26132,7 +26162,7 @@
       "me5_cosine": 0.8594,
       "backtrans_chrfpp": 42.16,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7922,
+      "wer": 0.1713,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -26159,7 +26189,7 @@
       "me5_cosine": 0.8034,
       "backtrans_chrfpp": 28.1,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8095,
+      "wer": 0.354,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -26186,7 +26216,7 @@
       "me5_cosine": 0.8614,
       "backtrans_chrfpp": 42.53,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.9235,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -26240,7 +26270,7 @@
       "me5_cosine": 0.8654,
       "backtrans_chrfpp": 53.64,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2672,
+      "wer": 0.2591,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -26321,7 +26351,7 @@
       "me5_cosine": 0.8597,
       "backtrans_chrfpp": 47.37,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9942,
+      "wer": 1.0,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -26952,10 +26982,10 @@
       "me5_cosine": 0.8969,
       "backtrans_chrfpp": 75.04,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8065,
+      "wer": 0.2774,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T0_voiced"
     },
     {
       "study_slug": "jouleos",
@@ -27168,7 +27198,7 @@
       "me5_cosine": 0.8998,
       "backtrans_chrfpp": 59.34,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2816,
+      "wer": 0.1667,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -27195,10 +27225,10 @@
       "me5_cosine": 0.9036,
       "backtrans_chrfpp": 61.53,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6549,
+      "wer": 0.1524,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "jouleos",
@@ -27249,10 +27279,10 @@
       "me5_cosine": 0.8909,
       "backtrans_chrfpp": 67.77,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.68,
+      "wer": 0.6507,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "jouleos",
@@ -27330,7 +27360,7 @@
       "me5_cosine": 0.8408,
       "backtrans_chrfpp": 50.21,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8267,
+      "wer": 0.1769,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -27357,10 +27387,10 @@
       "me5_cosine": 0.8103,
       "backtrans_chrfpp": 33.94,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9211,
+      "wer": 0.3702,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "jouleos",
@@ -27384,7 +27414,7 @@
       "me5_cosine": 0.8787,
       "backtrans_chrfpp": 47.0,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.8798,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -27438,7 +27468,7 @@
       "me5_cosine": 0.8749,
       "backtrans_chrfpp": 66.92,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7966,
+      "wer": 0.6632,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -27519,7 +27549,7 @@
       "me5_cosine": 0.8903,
       "backtrans_chrfpp": 53.89,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8889,
+      "wer": 0.8817,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -28150,10 +28180,10 @@
       "me5_cosine": 0.8912,
       "backtrans_chrfpp": 65.52,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8212,
+      "wer": 0.3404,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T0_voiced"
     },
     {
       "study_slug": "latency",
@@ -28366,7 +28396,7 @@
       "me5_cosine": 0.8813,
       "backtrans_chrfpp": 65.13,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.248,
+      "wer": 0.1528,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -28393,10 +28423,10 @@
       "me5_cosine": 0.8702,
       "backtrans_chrfpp": 71.69,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2786,
+      "wer": 0.8889,
       "numbers_exact": true,
-      "gate_status": "passed",
-      "ship_tier": "T1_voiced"
+      "gate_status": "quarantined_caption_only",
+      "ship_tier": "T2_caption_only"
     },
     {
       "study_slug": "latency",
@@ -28447,10 +28477,10 @@
       "me5_cosine": 0.8772,
       "backtrans_chrfpp": 60.79,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6821,
+      "wer": 0.3038,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "latency",
@@ -28528,7 +28558,7 @@
       "me5_cosine": 0.8288,
       "backtrans_chrfpp": 42.31,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7397,
+      "wer": 0.1509,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -28555,7 +28585,7 @@
       "me5_cosine": 0.8475,
       "backtrans_chrfpp": 40.71,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7237,
+      "wer": 0.2648,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -28582,7 +28612,7 @@
       "me5_cosine": 0.8463,
       "backtrans_chrfpp": 43.84,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.8824,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -28636,7 +28666,7 @@
       "me5_cosine": 0.8461,
       "backtrans_chrfpp": 47.73,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7305,
+      "wer": 0.7125,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -28717,7 +28747,7 @@
       "me5_cosine": 0.901,
       "backtrans_chrfpp": 70.4,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9855,
+      "wer": 1.0,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -29348,7 +29378,7 @@
       "me5_cosine": 0.8619,
       "backtrans_chrfpp": 56.25,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7947,
+      "wer": 0.7654,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -29564,10 +29594,10 @@
       "me5_cosine": 0.8556,
       "backtrans_chrfpp": 49.79,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7222,
+      "wer": 0.1754,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "eco-avalanche",
@@ -29591,7 +29621,7 @@
       "me5_cosine": 0.8415,
       "backtrans_chrfpp": 47.79,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5139,
+      "wer": 0.4857,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -29645,7 +29675,7 @@
       "me5_cosine": 0.8487,
       "backtrans_chrfpp": 52.18,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.65,
+      "wer": 0.3187,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -29726,7 +29756,7 @@
       "me5_cosine": 0.8406,
       "backtrans_chrfpp": 32.18,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5897,
+      "wer": 0.1098,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -29753,7 +29783,7 @@
       "me5_cosine": 0.8213,
       "backtrans_chrfpp": 35.46,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8406,
+      "wer": 0.2694,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -29780,7 +29810,7 @@
       "me5_cosine": 0.8377,
       "backtrans_chrfpp": 45.99,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.9112,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -29834,7 +29864,7 @@
       "me5_cosine": 0.8219,
       "backtrans_chrfpp": 55.29,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.622,
+      "wer": 0.3471,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -29915,7 +29945,7 @@
       "me5_cosine": 0.8628,
       "backtrans_chrfpp": 46.68,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.841,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -30546,10 +30576,10 @@
       "me5_cosine": 0.8758,
       "backtrans_chrfpp": 67.31,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8167,
+      "wer": 0.2932,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T0_voiced"
     },
     {
       "study_slug": "eco-stack",
@@ -30762,7 +30792,7 @@
       "me5_cosine": 0.8909,
       "backtrans_chrfpp": 50.46,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2373,
+      "wer": 0.1762,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -30789,7 +30819,7 @@
       "me5_cosine": 0.8879,
       "backtrans_chrfpp": 69.11,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.3388,
+      "wer": 0.2194,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -30843,10 +30873,10 @@
       "me5_cosine": 0.8695,
       "backtrans_chrfpp": 58.59,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9811,
+      "wer": 0.6944,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "eco-stack",
@@ -30924,7 +30954,7 @@
       "me5_cosine": 0.7894,
       "backtrans_chrfpp": 41.03,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7941,
+      "wer": 0.2736,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -30951,10 +30981,10 @@
       "me5_cosine": 0.804,
       "backtrans_chrfpp": 38.6,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.875,
+      "wer": 0.3577,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "eco-stack",
@@ -30978,7 +31008,7 @@
       "me5_cosine": 0.8447,
       "backtrans_chrfpp": 42.93,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.9081,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -31032,7 +31062,7 @@
       "me5_cosine": 0.8542,
       "backtrans_chrfpp": 64.62,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5455,
+      "wer": 0.5474,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -31113,7 +31143,7 @@
       "me5_cosine": 0.8438,
       "backtrans_chrfpp": 66.7,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9904,
+      "wer": 1.0,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -31744,7 +31774,7 @@
       "me5_cosine": 0.8666,
       "backtrans_chrfpp": 58.27,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5563,
+      "wer": 0.5033,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T0_voiced"
@@ -31960,7 +31990,7 @@
       "me5_cosine": 0.8649,
       "backtrans_chrfpp": 57.4,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.3071,
+      "wer": 0.1624,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -31987,7 +32017,7 @@
       "me5_cosine": 0.8652,
       "backtrans_chrfpp": 69.16,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2993,
+      "wer": 0.2754,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -32041,10 +32071,10 @@
       "me5_cosine": 0.8372,
       "backtrans_chrfpp": 61.86,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9711,
+      "wer": 0.5013,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "eco-compute",
@@ -32122,7 +32152,7 @@
       "me5_cosine": 0.8709,
       "backtrans_chrfpp": 66.42,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7419,
+      "wer": 0.1544,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -32149,7 +32179,7 @@
       "me5_cosine": 0.8137,
       "backtrans_chrfpp": 40.24,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8,
+      "wer": 0.3322,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -32176,7 +32206,7 @@
       "me5_cosine": 0.8355,
       "backtrans_chrfpp": 45.66,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.9364,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -32230,7 +32260,7 @@
       "me5_cosine": 0.8136,
       "backtrans_chrfpp": 73.1,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7807,
+      "wer": 0.3717,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -32311,7 +32341,7 @@
       "me5_cosine": 0.8646,
       "backtrans_chrfpp": 66.18,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9058,
+      "wer": 0.89,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -32942,7 +32972,7 @@
       "me5_cosine": 0.8571,
       "backtrans_chrfpp": 51.74,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8077,
+      "wer": 0.7822,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -33158,7 +33188,7 @@
       "me5_cosine": 0.8727,
       "backtrans_chrfpp": 56.04,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2766,
+      "wer": 0.1707,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -33185,10 +33215,10 @@
       "me5_cosine": 0.8559,
       "backtrans_chrfpp": 50.35,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7226,
+      "wer": 0.7154,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "eco-synthesis",
@@ -33239,10 +33269,10 @@
       "me5_cosine": 0.8619,
       "backtrans_chrfpp": 46.29,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9944,
+      "wer": 0.371,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "eco-synthesis",
@@ -33320,7 +33350,7 @@
       "me5_cosine": 0.8755,
       "backtrans_chrfpp": 52.27,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6486,
+      "wer": 0.1207,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -33347,10 +33377,10 @@
       "me5_cosine": 0.7619,
       "backtrans_chrfpp": 19.77,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8592,
+      "wer": 0.3786,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "eco-synthesis",
@@ -33374,7 +33404,7 @@
       "me5_cosine": 0.8477,
       "backtrans_chrfpp": 47.31,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.942,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -33428,7 +33458,7 @@
       "me5_cosine": 0.8264,
       "backtrans_chrfpp": 50.61,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6917,
+      "wer": 0.3564,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -33509,7 +33539,7 @@
       "me5_cosine": 0.8586,
       "backtrans_chrfpp": 65.59,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9559,
+      "wer": 0.9975,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -34140,10 +34170,10 @@
       "me5_cosine": 0.8758,
       "backtrans_chrfpp": 64.72,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7612,
+      "wer": 0.3414,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T0_voiced"
     },
     {
       "study_slug": "eco-knowledge",
@@ -34356,7 +34386,7 @@
       "me5_cosine": 0.8748,
       "backtrans_chrfpp": 59.23,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2302,
+      "wer": 0.1367,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -34383,10 +34413,10 @@
       "me5_cosine": 0.8764,
       "backtrans_chrfpp": 60.2,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7133,
+      "wer": 0.7402,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "eco-knowledge",
@@ -34437,10 +34467,10 @@
       "me5_cosine": 0.8563,
       "backtrans_chrfpp": 52.24,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7701,
+      "wer": 0.4646,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "eco-knowledge",
@@ -34518,7 +34548,7 @@
       "me5_cosine": 0.8698,
       "backtrans_chrfpp": 42.46,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5625,
+      "wer": 0.1162,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -34545,7 +34575,7 @@
       "me5_cosine": 0.7573,
       "backtrans_chrfpp": 22.03,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8108,
+      "wer": 0.3708,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -34572,7 +34602,7 @@
       "me5_cosine": 0.8563,
       "backtrans_chrfpp": 40.0,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.9368,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -34626,7 +34656,7 @@
       "me5_cosine": 0.8653,
       "backtrans_chrfpp": 55.4,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.3306,
+      "wer": 0.2426,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -34707,7 +34737,7 @@
       "me5_cosine": 0.8658,
       "backtrans_chrfpp": 51.08,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.8821,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -35338,7 +35368,7 @@
       "me5_cosine": 0.8682,
       "backtrans_chrfpp": 64.98,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8214,
+      "wer": 0.7569,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -35554,7 +35584,7 @@
       "me5_cosine": 0.8645,
       "backtrans_chrfpp": 54.94,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2901,
+      "wer": 0.2465,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -35581,10 +35611,10 @@
       "me5_cosine": 0.8675,
       "backtrans_chrfpp": 58.36,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7605,
+      "wer": 0.7147,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "eco-database",
@@ -35635,10 +35665,10 @@
       "me5_cosine": 0.8636,
       "backtrans_chrfpp": 52.69,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9947,
+      "wer": 0.4071,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "eco-database",
@@ -35716,7 +35746,7 @@
       "me5_cosine": 0.869,
       "backtrans_chrfpp": 67.15,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7297,
+      "wer": 0.1224,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -35743,10 +35773,10 @@
       "me5_cosine": 0.7656,
       "backtrans_chrfpp": 18.07,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8831,
+      "wer": 0.364,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "eco-database",
@@ -35770,7 +35800,7 @@
       "me5_cosine": 0.8614,
       "backtrans_chrfpp": 50.61,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.8873,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -35824,7 +35854,7 @@
       "me5_cosine": 0.8396,
       "backtrans_chrfpp": 65.42,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7803,
+      "wer": 0.5,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -35905,7 +35935,7 @@
       "me5_cosine": 0.8582,
       "backtrans_chrfpp": 63.05,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8879,
+      "wer": 0.9974,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -36536,10 +36566,10 @@
       "me5_cosine": 0.8612,
       "backtrans_chrfpp": 50.83,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8294,
+      "wer": 0.4435,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T0_voiced"
     },
     {
       "study_slug": "lut6-codon-nucleus",
@@ -36752,7 +36782,7 @@
       "me5_cosine": 0.8534,
       "backtrans_chrfpp": 54.41,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2652,
+      "wer": 0.2176,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -36779,10 +36809,10 @@
       "me5_cosine": 0.8604,
       "backtrans_chrfpp": 52.77,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.6768,
+      "wer": 0.6569,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced"
     },
     {
       "study_slug": "lut6-codon-nucleus",
@@ -36833,7 +36863,7 @@
       "me5_cosine": 0.8438,
       "backtrans_chrfpp": 45.97,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7256,
+      "wer": 0.8903,
       "numbers_exact": false,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -36914,7 +36944,7 @@
       "me5_cosine": 0.8509,
       "backtrans_chrfpp": 57.63,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7204,
+      "wer": 0.1824,
       "numbers_exact": false,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -36941,7 +36971,7 @@
       "me5_cosine": 0.8406,
       "backtrans_chrfpp": 54.16,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5851,
+      "wer": 0.1872,
       "numbers_exact": false,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -36968,7 +36998,7 @@
       "me5_cosine": 0.8182,
       "backtrans_chrfpp": 42.42,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0,
+      "wer": 0.9046,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -37022,7 +37052,7 @@
       "me5_cosine": 0.82,
       "backtrans_chrfpp": 55.24,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7303,
+      "wer": 0.6659,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced"
@@ -37103,7 +37133,7 @@
       "me5_cosine": 0.8636,
       "backtrans_chrfpp": 58.11,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9404,
+      "wer": 0.9982,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -37736,10 +37766,10 @@
       "me5_cosine": 0.8408,
       "backtrans_chrfpp": 34.42,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8023,
+      "wer": 0.5117,
       "numbers_exact": false,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T0_voiced_90s"
     },
     {
       "study_slug": "from-ephemeral-inference-to-compiled-agency",
@@ -37952,7 +37982,7 @@
       "me5_cosine": 0.8158,
       "backtrans_chrfpp": 17.11,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.4391,
+      "wer": 0.3217,
       "numbers_exact": false,
       "gate_status": "passed",
       "ship_tier": "T1_voiced_90s"
@@ -37979,10 +38009,10 @@
       "me5_cosine": 0.8056,
       "backtrans_chrfpp": 32.3,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7916,
+      "wer": 0.6179,
       "numbers_exact": false,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced_90s"
     },
     {
       "study_slug": "from-ephemeral-inference-to-compiled-agency",
@@ -38033,7 +38063,7 @@
       "me5_cosine": 0.8297,
       "backtrans_chrfpp": 32.92,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5145,
+      "wer": 0.6663,
       "numbers_exact": false,
       "gate_status": "passed",
       "ship_tier": "T1_voiced_90s"
@@ -38114,7 +38144,7 @@
       "me5_cosine": 0.8769,
       "backtrans_chrfpp": 37.36,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7514,
+      "wer": 0.4646,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced_90s"
@@ -38141,10 +38171,10 @@
       "me5_cosine": 0.8391,
       "backtrans_chrfpp": 26.63,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9378,
+      "wer": 0.5621,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced_90s"
     },
     {
       "study_slug": "from-ephemeral-inference-to-compiled-agency",
@@ -38168,7 +38198,7 @@
       "me5_cosine": 0.8226,
       "backtrans_chrfpp": 28.95,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9963,
+      "wer": 0.9113,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -38222,10 +38252,10 @@
       "me5_cosine": 0.8231,
       "backtrans_chrfpp": 36.22,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7845,
+      "wer": 0.7867,
       "numbers_exact": true,
-      "gate_status": "passed",
-      "ship_tier": "T1_voiced_90s"
+      "gate_status": "quarantined_caption_only",
+      "ship_tier": "T2_caption_only"
     },
     {
       "study_slug": "from-ephemeral-inference-to-compiled-agency",
@@ -38303,7 +38333,7 @@
       "me5_cosine": 0.8562,
       "backtrans_chrfpp": 28.67,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9664,
+      "wer": 0.9611,
       "numbers_exact": false,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -38934,10 +38964,10 @@
       "me5_cosine": 0.841,
       "backtrans_chrfpp": 50.13,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7276,
+      "wer": 0.6338,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T0_voiced_90s"
     },
     {
       "study_slug": "deterministic-null",
@@ -39150,7 +39180,7 @@
       "me5_cosine": 0.8361,
       "backtrans_chrfpp": 39.65,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.3779,
+      "wer": 0.2083,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced_90s"
@@ -39177,10 +39207,10 @@
       "me5_cosine": 0.8305,
       "backtrans_chrfpp": 49.12,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7024,
+      "wer": 0.3706,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced_90s"
     },
     {
       "study_slug": "deterministic-null",
@@ -39231,7 +39261,7 @@
       "me5_cosine": 0.8452,
       "backtrans_chrfpp": 46.38,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5654,
+      "wer": 0.299,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced_90s"
@@ -39312,7 +39342,7 @@
       "me5_cosine": 0.8386,
       "backtrans_chrfpp": 48.97,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7014,
+      "wer": 0.1913,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced_90s"
@@ -39339,10 +39369,10 @@
       "me5_cosine": 0.8098,
       "backtrans_chrfpp": 42.18,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8858,
+      "wer": 0.446,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced_90s"
     },
     {
       "study_slug": "deterministic-null",
@@ -39366,7 +39396,7 @@
       "me5_cosine": 0.8397,
       "backtrans_chrfpp": 43.72,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9945,
+      "wer": 0.9092,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -39420,7 +39450,7 @@
       "me5_cosine": 0.8197,
       "backtrans_chrfpp": 53.13,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7591,
+      "wer": 0.7233,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced_90s"
@@ -39501,7 +39531,7 @@
       "me5_cosine": 0.8559,
       "backtrans_chrfpp": 55.85,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 1.0948,
+      "wer": 0.9507,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -40132,10 +40162,10 @@
       "me5_cosine": 0.8305,
       "backtrans_chrfpp": 46.95,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7591,
+      "wer": 0.7056,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T0_voiced_90s"
     },
     {
       "study_slug": "rce-compile",
@@ -40348,7 +40378,7 @@
       "me5_cosine": 0.8126,
       "backtrans_chrfpp": 34.53,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5144,
+      "wer": 0.5447,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced_90s"
@@ -40375,10 +40405,10 @@
       "me5_cosine": 0.8044,
       "backtrans_chrfpp": 49.22,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7538,
+      "wer": 0.5082,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced_90s"
     },
     {
       "study_slug": "rce-compile",
@@ -40429,7 +40459,7 @@
       "me5_cosine": 0.8366,
       "backtrans_chrfpp": 43.68,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.5037,
+      "wer": 0.4339,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced_90s"
@@ -40510,7 +40540,7 @@
       "me5_cosine": 0.8724,
       "backtrans_chrfpp": 55.32,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7524,
+      "wer": 0.1748,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced_90s"
@@ -40537,10 +40567,10 @@
       "me5_cosine": 0.8185,
       "backtrans_chrfpp": 32.5,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9218,
+      "wer": 0.4103,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced_90s"
     },
     {
       "study_slug": "rce-compile",
@@ -40564,7 +40594,7 @@
       "me5_cosine": 0.8349,
       "backtrans_chrfpp": 40.91,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9888,
+      "wer": 0.9066,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -40618,7 +40648,7 @@
       "me5_cosine": 0.8178,
       "backtrans_chrfpp": 49.86,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7562,
+      "wer": 0.6886,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced_90s"
@@ -40699,7 +40729,7 @@
       "me5_cosine": 0.869,
       "backtrans_chrfpp": 50.05,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.884,
+      "wer": 0.9482,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -41330,10 +41360,10 @@
       "me5_cosine": 0.8482,
       "backtrans_chrfpp": 53.23,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.8255,
+      "wer": 0.4558,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T0_voiced_90s"
     },
     {
       "study_slug": "ai-reads-human",
@@ -41546,7 +41576,7 @@
       "me5_cosine": 0.8312,
       "backtrans_chrfpp": 46.3,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.2727,
+      "wer": 0.1982,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced_90s"
@@ -41573,10 +41603,10 @@
       "me5_cosine": 0.8348,
       "backtrans_chrfpp": 58.99,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7631,
+      "wer": 0.4477,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced_90s"
     },
     {
       "study_slug": "ai-reads-human",
@@ -41627,10 +41657,10 @@
       "me5_cosine": 0.8585,
       "backtrans_chrfpp": 51.39,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7764,
+      "wer": 0.3114,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced_90s"
     },
     {
       "study_slug": "ai-reads-human",
@@ -41708,7 +41738,7 @@
       "me5_cosine": 0.8437,
       "backtrans_chrfpp": 38.63,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7554,
+      "wer": 0.1864,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced_90s"
@@ -41735,10 +41765,10 @@
       "me5_cosine": 0.783,
       "backtrans_chrfpp": 25.95,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9579,
+      "wer": 0.5089,
       "numbers_exact": true,
-      "gate_status": "quarantined_caption_only",
-      "ship_tier": "T2_caption_only"
+      "gate_status": "passed",
+      "ship_tier": "T1_voiced_90s"
     },
     {
       "study_slug": "ai-reads-human",
@@ -41762,7 +41792,7 @@
       "me5_cosine": 0.8541,
       "backtrans_chrfpp": 42.96,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9946,
+      "wer": 0.9194,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"
@@ -41816,7 +41846,7 @@
       "me5_cosine": 0.8298,
       "backtrans_chrfpp": 54.22,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.7829,
+      "wer": 0.6052,
       "numbers_exact": true,
       "gate_status": "passed",
       "ship_tier": "T1_voiced_90s"
@@ -41897,7 +41927,7 @@
       "me5_cosine": 0.8589,
       "backtrans_chrfpp": 53.16,
       "asr_model": "whisper-large-v3-turbo",
-      "wer": 0.9735,
+      "wer": 1.0,
       "numbers_exact": true,
       "gate_status": "quarantined_caption_only",
       "ship_tier": "T2_caption_only"

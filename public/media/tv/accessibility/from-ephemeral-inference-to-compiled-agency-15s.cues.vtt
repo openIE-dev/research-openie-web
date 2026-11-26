@@ -1,0 +1,14 @@
+WEBVTT
+NOTE OpenIE Research TV v1.0 Surrey/NJIT Ranked Non-Speech & Speaker Cues — from-ephemeral-inference-to-compiled-agency (15s)
+
+1
+00:00:00.220 --> 00:00:11.273
+[key chime: lookup cascade intercepts query] <v Narrator>First, advanced computing becomes affordable for everyone when expensive neural models act as a last resort behind fast local lookup tables, search indexes, and exact solvers.
+
+2
+00:00:11.613 --> 00:00:23.626
+[low pulse: 5V board shunt baseline holds steady] <v Narrator>Second, compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly.
+
+3
+00:00:23.966 --> 00:00:38.806
+[lock tone: cryptographic kernel hash verified] <v Narrator>Third, one integer kernel checked by cryptographic hashes produces the exact same answer across processors, graphics cards, WebAssembly, hardware logic, and microcontrollers, halting immediately if a single weight changes.
