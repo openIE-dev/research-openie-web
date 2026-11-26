@@ -145,6 +145,8 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | Emission checked by real toolchains | examples/emit_proof.rs: one Form to C/Rust/Python, clang/rustc/python3 all print 14 | (live) |
 | No-pay conformity/port artifacts | trust::module_a_file + slsa_statement; rtos::zephyr_project + sel4_manifest; fabric::local_capabilities | 5 |
 | Compute-light cross-fabric learning | hd.rs HD/VSA one-shot (0.992) + ELM closed-form (0.892); CUDA source as data; native AMX parity | 5 |
+| Multi-body impulse contact | twin::WorldN/simulate_n (pairwise impulse, restitution, mass-weighted) | 4 |
+| Real threads, deterministic commit | program::threaded_run (OS threads, join + sort by id) | 2 |
 
 The former "external decision" fronts are now OPEN-TRACKS in rce-gap-register.md: no-pay
 routes found by search (module-A self-assessment by freezing competence at admission; seL4 /
@@ -154,17 +156,16 @@ instead of paid GPU). Scale built on owned hardware: federated averaging over 4 
 20k receipts matches centralized (0.9975); a native Accelerate/AMX BLAS trainer matches the
 scalar loop (0.9970); mosaic-style hybrid partitioning with admission control.
 
-Measured per-language named-node coverage (tree-sitter master, 25 Nov 2026, after the
-gate-wiring + attributes/macros pass): rust 49/169 = 29.0%, python 29/129 = 22.5%,
-go 21/112 = 18.8%, javascript 31/119 = 26.1%, java 29/151 = 19.2%. The 40-construct matrix is
-100% across 47 languages; the per-language remainder (language-specific declarations, exotic
-nodes) is open, measured, not claimed complete.
+Measured per-language named-node coverage (tree-sitter master, 26 Nov 2026, after the
+declaration-remainder pass): rust 50/169 = 29.6%, python 30/129 = 23.3%, go 26/112 = 23.2%,
+javascript 32/119 = 26.9%, java 35/151 = 23.2%. The 40-construct matrix is 100% across 47
+languages; the per-language remainder (exotic nodes) is open, measured, not claimed complete.
 
 Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 359 (workspace) / 356 (monorepo), 0 failed. Multi-body physics, real IO/threads, RTOS port,
+Suites 365 (workspace) / 362 (monorepo), 0 failed. Arbitrary contact manifolds, true async IO, RTOS port,
 notified-body attestation, full per-language grammars (measured remainder above) and
 FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
 
