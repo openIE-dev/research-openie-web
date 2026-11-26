@@ -32,7 +32,7 @@ Interactive artifact: `rce-language-constellation.html`. Graph JSON: `constellat
 The constellation is an open ontology and measurement layer over the public language curation:
 **12,117 catalogued languages** (a merge of PLDB, GitHub Linguist, Pygments, Wikipedia, esolangs,
 Hyperpolyglot, Rosetta Code and Wikidata, per Acher's PL-ultimate-llm) as graph nodes, of which
-**72 are measured** against a real tree-sitter grammar and carry a grammar-derived information
+**75 are measured** against a real tree-sitter grammar and carry a grammar-derived information
 profile. Every other language is present as a node with `measured=false` and **no invented
 numbers**. Edges encode family, paradigm and documented influence; the interactive page renders
 them as a constellation and adds search, cross-language translation/subsumption, information,
@@ -43,7 +43,7 @@ lineage, editor-standards, immersion-gap and source-provenance views. The inform
 
 - `named_nodes` N — the grammar's named node types (its syntactic surface size).
 - `constructs` C — distinct universal constructs those nodes realize (semantic breadth).
-- `coverage` — mapped/total named nodes (1.0000 for all 72).
+- `coverage` — mapped/total named nodes (1.0000 for all 75).
 - `h_struct_bits` H — Shannon entropy of the construct histogram: how evenly the grammar's
   surface spreads across the universal taxonomy. **Structural, not corpus** — honestly labelled.
 - `redundancy` = 1 − H/log2(C) — the surface variety that is syntactic sugar, not free information.
@@ -62,7 +62,7 @@ surface forms per construct — higher redundancy (0.13–0.26). This is a measu
 quantity: how much surface variety a universal representation must collapse for that language.
 It is reported as data; no claim of superiority over any existing system is made from it.
 
-## Measured per-language information profile (72)
+## Measured per-language information profile (75)
 
 | language | named N | constructs C | coverage | H (bits) | redundancy | surface/C |
 |---|---|---|---|---|---|---|
@@ -121,9 +121,11 @@ It is reported as data; no claim of superiority over any existing system is made
 | Unison | 93 | 31 | 1.0000 | 4.394 | 0.113 | 3.00 |
 | Elm | 92 | 25 | 1.0000 | 4.066 | 0.124 | 3.68 |
 | Julia | 89 | 54 | 1.0000 | 5.165 | 0.103 | 1.65 |
+| GraphQL | 74 | 21 | 1.0000 | 3.822 | 0.130 | 3.52 |
 | Agda | 72 | 30 | 1.0000 | 4.372 | 0.109 | 2.40 |
 | Swift | 72 | 32 | 1.0000 | 4.396 | 0.121 | 2.25 |
 | Wenyan | 64 | 17 | 1.0000 | 3.011 | 0.263 | 3.76 |
+| Markdown | 66 | 18 | 1.0000 | 3.472 | 0.167 | 3.67 |
 | Lua | 51 | 47 | 1.0000 | 5.388 | 0.030 | 1.09 |
 | Common Lisp | 50 | 23 | 1.0000 | 4.029 | 0.109 | 2.17 |
 | Elixir | 45 | 43 | 1.0000 | 5.211 | 0.040 | 1.05 |
@@ -134,6 +136,7 @@ It is reported as data; no claim of superiority over any existing system is made
 | Grain | 35 | 37 | 1.0000 | 5.113 | 0.019 | 0.95 |
 | Racket | 32 | 19 | 1.0000 | 3.828 | 0.099 | 1.68 |
 | Scheme | 27 | 13 | 1.0000 | 3.323 | 0.102 | 2.08 |
+| Prolog | 26 | 17 | 1.0000 | 3.950 | 0.034 | 1.53 |
 | Alusus (seed) | 25 | 23 | 1.0000 | 4.484 | 0.009 | 1.09 |
 | Nadeshiko (seed) | 24 | 23 | 1.0000 | 4.502 | 0.005 | 1.04 |
 | Ezhil (seed) | 24 | 23 | 1.0000 | 4.502 | 0.005 | 1.04 |

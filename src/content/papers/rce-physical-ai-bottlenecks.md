@@ -165,18 +165,18 @@ instead of paid GPU). Scale built on owned hardware: federated averaging over 4 
 scalar loop (0.9970); mosaic-style hybrid partitioning with admission control.
 
 Measured per-language named-node coverage (tree-sitter upstream, 26 Nov 2026): **100% for
-72 surveyed languages** — the 28 prior plus the functional + non-Western frontier: ada 228/228,
+75 surveyed languages** — the 28 prior plus the functional + non-Western frontier: ada 228/228,
 sml 134/134, purescript 128/128, mojo 141/141, cangjie 202/202, wenyan 64/64, elm 92/92,
 racket 32/32, commonlisp 50/50, elisp 20/20, gleam 97/97, moonbit 257/257, rescript 172/172,
 reason 226/226, nix 42/42, fsharp 201/201, idris 181/181, agda 72/72, lean 141/141, fstar 134/134,
 perl 146/146, coq 172/172, dhall 166/166, unison 93/93 (node-types generated with tree-sitter CLI),
 nadeshiko 24/24, ezhil 24/24, alusus 25/25 (authored seed grammars), koka 130/130, grain 35/35,
 roc 149/149, v 144/144, odin 107/107, bash 62/62, typescript 183/183, html 19/19, css 64/64,
-json 13/13, yaml 36/36, toml 19/19, dockerfile 48/48, cmake 58/58, make 44/44, powershell 153/153, tlaplus 273/273.
-The 113-construct emission matrix is 100% across 80 languages, and emission ⊇ ingestion. Reports:
+json 13/13, yaml 36/36, toml 19/19, dockerfile 48/48, cmake 58/58, make 44/44, powershell 153/153, tlaplus 273/273, markdown 66/66, graphql 74/74, prolog 26/26.
+The 113-construct emission matrix is 100% across 83 languages, and emission ⊇ ingestion. Reports:
 rce-language-coverage-100.md and rce-language-constellation.md. The **language constellation**
 (`constellation` module + interactive artifact) is a knowledge graph over the exhaustive curation
-(GitHub Linguist, 872 entries + seeds / 587 programming): every language a node, the 72 measured
+(Acher merged catalog, 12,118 entries / 587 programming): every language a node, the 75 measured
 ones carrying a grammar-derived information profile (structural entropy, redundancy, surface-
 forms-per-construct) and the Law-of-Coding frame; the rest honestly unmeasured. Perl/Coq/Dhall/
 Unison generated + measured; Nadeshiko/Ezhil/Alusus authored seeds measured. `langpredict` names
