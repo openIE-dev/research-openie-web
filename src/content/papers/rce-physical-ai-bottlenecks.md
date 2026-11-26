@@ -147,6 +147,8 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | Compute-light cross-fabric learning | hd.rs HD/VSA one-shot (0.992) + ELM closed-form (0.892); CUDA source as data; native AMX parity | 5 |
 | Multi-body impulse contact | twin::WorldN/simulate_n (pairwise impulse, restitution, mass-weighted) | 4 |
 | Real threads, deterministic commit | program::threaded_run (OS threads, join + sort by id) | 2 |
+| Type-feedback optimizing JIT | jit::OptJit (signature specialization + deopt) | 3 |
+| Real OS-event-loop IO | program::tokio_io_run (tokio/mio kqueue/epoll, deterministic commit) | 2 |
 
 The former "external decision" fronts are now OPEN-TRACKS in rce-gap-register.md: no-pay
 routes found by search (module-A self-assessment by freezing competence at admission; seL4 /
@@ -165,7 +167,7 @@ Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 365 (workspace) / 362 (monorepo), 0 failed. Arbitrary contact manifolds, true async IO, RTOS port,
+Suites 370 (workspace) / 367 (monorepo), 0 failed. Arbitrary contact manifolds, RTOS port,
 notified-body attestation, full per-language grammars (measured remainder above) and
 FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
 
