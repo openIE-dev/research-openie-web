@@ -26,7 +26,7 @@ profile. Every other language is present as a node with `measured=false` and **n
 numbers**. Edges encode family, paradigm and documented influence; the interactive page renders
 them as a constellation and adds search, cross-language translation/subsumption, information,
 lineage, editor-standards and source-provenance views. The information-theoretic frame used is
-`I = H_task − H_corpus → 0`, stated as a hypothesis priced in joules, not a settled law.
+`I = H_task − H_corpus → 0`, stated as a hypothesis priced in joules, not an established law.
 
 ## What each measured node carries (all computed, none asserted)
 
