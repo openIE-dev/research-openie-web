@@ -19,8 +19,8 @@ Interactive artifact: `rce-language-constellation.html`. Graph JSON: `constellat
 ## BLUF
 
 RCE cannot honestly claim "one IR for all languages" without *knowing* each language. The
-constellation is that knowledge: **855 curated entries + authored seeds (583 programming nodes)**
-as graph nodes, of which **55 are measured** against a real grammar and carry a grammar-derived
+constellation is that knowledge: **860 curated entries + authored seeds (584 programming nodes)**
+as graph nodes, of which **60 are measured** against a real grammar and carry a grammar-derived
 information profile and the **Law of Coding** frame `I = H_task − H_corpus → 0`, priced in joules.
 Every other language is present as a node with `measured=false` and **no invented numbers** —
 the graph knows *of* it without pretending to *know* it. Edges encode family (lineage), paradigm,
@@ -30,7 +30,7 @@ and documented influence; the interactive page renders them as a constellation.
 
 - `named_nodes` N — the grammar's named node types (its syntactic surface size).
 - `constructs` C — distinct universal constructs those nodes realize (semantic breadth).
-- `coverage` — mapped/total named nodes (1.0000 for all 55).
+- `coverage` — mapped/total named nodes (1.0000 for all 60).
 - `h_struct_bits` H — Shannon entropy of the construct histogram: how evenly the grammar's
   surface spreads across the universal taxonomy. **Structural, not corpus** — honestly labelled.
 - `redundancy` = 1 − H/log2(C) — the surface variety that is syntactic sugar, not free information.
@@ -50,7 +50,7 @@ Elixir (1.05), R (1.05) map nearly one surface form per universal construct — 
 much work the universal IR does, and it is what makes the emission LUT a *checked* bridge rather
 than a slogan.
 
-## Measured per-language information profile (55)
+## Measured per-language information profile (60)
 
 | language | named N | constructs C | coverage | H (bits) | redundancy | surface/C |
 |---|---|---|---|---|---|---|
@@ -77,18 +77,22 @@ than a slogan.
 | Crystal | 152 | 43 | 1.0000 | 4.665 | 0.140 | 3.53 |
 | Java | 151 | 72 | 1.0000 | 5.704 | 0.076 | 2.10 |
 | Ruby | 149 | 44 | 1.0000 | 4.513 | 0.173 | 3.39 |
+| Roc | 149 | 34 | 1.0000 | 4.367 | 0.142 | 4.38 |
 | Perl | 146 | 54 | 1.0000 | 4.396 | 0.236 | 2.70 |
+| V | 144 | 65 | 1.0000 | 5.362 | 0.110 | 2.22 |
 | Lean | 141 | 34 | 1.0000 | 4.468 | 0.122 | 4.15 |
 | Mojo | 141 | 76 | 1.0000 | 5.873 | 0.060 | 1.86 |
 | F* | 134 | 50 | 1.0000 | 4.798 | 0.150 | 2.68 |
 | Standard ML | 134 | 12 | 1.0000 | 2.827 | 0.211 | 11.17 |
 | C | 132 | 57 | 1.0000 | 5.153 | 0.117 | 2.32 |
+| Koka | 130 | 28 | 1.0000 | 4.063 | 0.155 | 4.64 |
 | Python | 129 | 73 | 1.0000 | 5.838 | 0.057 | 1.77 |
 | PureScript | 128 | 25 | 1.0000 | 4.150 | 0.106 | 5.12 |
 | Nim | 127 | 40 | 1.0000 | 4.561 | 0.143 | 3.17 |
 | Kotlin | 120 | 54 | 1.0000 | 5.038 | 0.125 | 2.22 |
 | JavaScript | 119 | 69 | 1.0000 | 5.753 | 0.058 | 1.72 |
 | Go | 112 | 64 | 1.0000 | 5.496 | 0.084 | 1.75 |
+| Odin | 107 | 63 | 1.0000 | 5.319 | 0.110 | 1.70 |
 | Zig | 99 | 57 | 1.0000 | 5.294 | 0.092 | 1.74 |
 | Gleam | 97 | 49 | 1.0000 | 5.096 | 0.088 | 2.02 |
 | Unison | 93 | 31 | 1.0000 | 4.394 | 0.113 | 3.00 |
@@ -103,6 +107,7 @@ than a slogan.
 | Nix | 42 | 28 | 1.0000 | 3.899 | 0.189 | 1.50 |
 | R | 40 | 38 | 1.0000 | 5.011 | 0.045 | 1.05 |
 | Clojure | 35 | 16 | 1.0000 | 3.421 | 0.145 | 2.19 |
+| Grain | 35 | 37 | 1.0000 | 5.113 | 0.019 | 0.95 |
 | Racket | 32 | 19 | 1.0000 | 3.828 | 0.099 | 1.68 |
 | Scheme | 27 | 13 | 1.0000 | 3.323 | 0.102 | 2.08 |
 | Alusus (seed) | 25 | 23 | 1.0000 | 4.484 | 0.009 | 1.09 |
@@ -112,7 +117,7 @@ than a slogan.
 
 ## Graph structure
 
-- **Nodes:** 583 languages + family hubs (C/systems, JVM, ML/functional/proof, Lisp, BEAM,
+- **Nodes:** 584 languages + family hubs (C/systems, JVM, ML/functional/proof, Lisp, BEAM,
   JavaScript, Python, Ruby, Scientific/array, Logic, Shell, SQL, Config, Esoteric, Smalltalk,
   Pascal, Apple/Swift, PHP, Lua, Modern systems, East-Asian-new, …) + paradigm hubs.
 - **Edges:** `family` (language→lineage hub), `paradigm` (language→paradigm hub), `influence`
@@ -130,14 +135,17 @@ cargo test --test constellation                                 # bounds + hones
 python3 /tmp/build_constellation_html.py                        # interactive artifact
 ```
 
-Universe: `data/universe.json` (parsed from github-linguist/linguist `languages.yml`, 855 entries).
+Universe: `data/universe.json` (parsed from github-linguist/linguist `languages.yml`, 860 entries).
 Grammars: upstream tree-sitter repos (see rce-language-coverage-100.md for the 28 prior; the 20
 new are ionide/fsharp, MatthewFluet/sml, postsolar/purescript, oaustegard/mojo, jstzwj/cangjie,
 duskmoon314/wenyan, elm-tooling/elm, 6cdh/racket, theHamsta/commonlisp, Wilfred/elisp,
 gleam-lang/gleam, moonbitlang/moonbit, rescript-lang/rescript, reasonml-editor/reason,
 nix-community/nix, kayhide/idris, tree-sitter/agda, Julian/lean, FStarLang/fstar, briot/ada;
 perl tree-sitter-perl, coq aruzdh/tree-sitter-rocq, dhall jmitchell, unison kylegoetz — all
-node-types generated with tree-sitter CLI 0.27.2). Nadeshiko/Ezhil/Alusus are authored seeds.
+node-types generated with tree-sitter CLI 0.27.2; koka koka-community, grain marceline-cramer,
+roc faldor20, v undivisible, odin tree-sitter-grammars). Nadeshiko/Ezhil/Alusus are authored
+seeds. **Mercury is excluded**: its public tree-sitter grammar is a 1-node stub (`source_file`
+only), so claiming coverage on it would be inflation, not measurement.
 
 ## Language prediction — the capability-gap frontier (`langpredict`)
 
