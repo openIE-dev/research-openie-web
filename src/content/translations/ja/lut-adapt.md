@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits カスケードにおける下方 LUT6 コンパイル：Beneš ルーティング・ブールファブリック、コンフォーマル起動ゲート、およびフロンティア疎 MoE NVMe ストリーミング"
-deck: "6カーネル検証済みの Lean 4.36.0 定理 114 件および Inria Charon+Aeneas による機械的 #![no_std] Rust→Lean 抽出（さらに Linux bubblewrap サンドボックス内の Open Interface Engineering リポジトリ 4 件にわたる 1,478 定理を含み、CVE-2026-72844 対策強化済み）を備えた Mixture of Limits カスケードは、まずゼロ浮動小数点演算（FLOP）のページング式 6 入力ルックアップテーブル（LUT6）回路、15.84 キロバイト（16 エクスポート）の WebAssembly（WASM）ブラウザモジュール、反対称 40 エントリ・ゼロ乗算 T-MAC 三値テールを備えた 4/32 キロバイトの Rust lut6-core Nucleus（公式 25 ゲーム ARC-AGI-3 の R-BFWS で過半数 >50%［13/25 = 52.00% ゲーム、16/183 レベル、2.3543 / 3.0441 RHAE］、100% EnigmaEval/ZeroBench 合成、1,000 ステップ Vending-BALROG 生存および Window 21 で Thor シャント 3.204x・Window 20 で 4.092x 削減）、プレフィックス汚染 0.00% の 56 ビット 4 トークン開幕応答を備えた 5,984 バイト（64 キロバイト・スマートウォッチ SRAM の 9.13%）の Wearable-MoL、および（72, 64）SECDED 宇宙線ビット反転保護を試行する（単一バイナリ Rust mol-agent-rs で 0.154 ミリ秒、ビットスライス判定あたり 162.71 ナノジュール、ビット誤り率 1% で生存率 100.0%）。さらにサブ10億パラメータのウェアラブル小型言語モデル（Sensente/uLM-28M、LiquidAI/LFM2.5-230M）および 4 つの GPU シリコンベンダー（最大 328.06x 高速化、LastExam プロトコル RMS 較正誤差を 70.62% から 13.14% へ 5.37x 削減し確信度 >= 80% での誤答 CHR@80 を 0.00% へ低減）にわたり最大 120B パラメータの 4 ビット NVMe ループ型・ハイブリッド・疎 MoE 2026 年後半モデルへ段階的にエスカレーションし、上流 Verified リポジトリ 4 件でコミットをゲート制御したうえで、認証済みの起動結果を RAMB36E2、ライセンス不要の openXC7 320.62、106.55 および 109.15 メガヘルツ配置配線後 Artix-7 XC7A200T M.2 2280 .bit ビットストリーム、Lupanov 共有余因子およびゆらぎコドン結晶ページへ下方コンパイルする。Jetson AGX Thor 上の物理 Texas Instruments DC シャント measured_j 実測値（ビットスライスで 87.25x、uLM-28M 層スライス比でウェアラブル 56 ビット認識論ゲート 222.57x、Window 20 で 4.092x、反対称 40 エントリ T-MAC で 1.65x［Zen 5 では 1.12x］、Sub1Bit-LUT6 で 3.90x、Expert-AirMoL で 34.21x、命題 1 で 10.94x；board_metered は真）を含み、Alif Cortex-M55 サイクル数（ウェアラブルゲート 2,905.18x）、reported_j カウンタ、openXC7 静的タイミング、およびコミット 0c8bfba における RTL 推定値 est_j から厳密に分離して報告する。"
+deck: "6カーネル検証済みの Lean 4.36.0 定理 122 件および Inria Charon+Aeneas による機械的 #![no_std] Rust→Lean 抽出（さらに Linux bubblewrap サンドボックス内の Open Interface Engineering リポジトリ 4 件にわたる 1,486 定理を含み、CVE-2026-72844 対策強化済み）を備えた Mixture of Limits カスケードは、まずゼロ浮動小数点演算（FLOP）のページング式 6 入力ルックアップテーブル（LUT6）回路、15.98 キロバイト（17 エクスポート）の WebAssembly（WASM）ブラウザモジュール、反対称 40 エントリ・ゼロ乗算 T-MAC 三値テールを備えた 4/48 キロバイト（12 バンク）の Rust lut6-core Nucleus（公式 25 ゲーム ARC-AGI-3 の C-BFWS + RIW(2) で 60.00% 絶対多数［15/25 ゲーム、18/183 レベル、一致 16 ゲーム中 11/16 = 68.75%、2.5030 / 3.2177 RHAE］、100% Terminal-Bench・Cybench-Defensive［144/144 Yosys マイタ］、100% FrontierMath-Constructive・SciCode 合成、および Window 22 で Thor シャント 3.314x・Window 21 で 3.204x・Window 20 で 4.092x 削減）、プレフィックス汚染 0.00% の 56 ビット 4 トークン開幕応答を備えた 5,984 バイト（64 キロバイト・スマートウォッチ SRAM の 9.13%）の Wearable-MoL、および（72, 64）SECDED 宇宙線ビット反転保護を試行する（単一バイナリ Rust mol-agent-rs で 0.154 ミリ秒、ビットスライス判定あたり 162.71 ナノジュール、ビット誤り率 1% で生存率 100.0%）。さらにサブ10億パラメータのウェアラブル小型言語モデル（Sensente/uLM-28M、LiquidAI/LFM2.5-230M）および 4 つの GPU シリコンベンダー（最大 328.06x 高速化、LastExam プロトコル RMS 較正誤差を 70.62% から 13.14% へ 5.37x 削減し確信度 >= 80% での誤答 CHR@80 を 0.00% へ低減）にわたり最大 120B パラメータの 4 ビット NVMe ループ型・ハイブリッド・疎 MoE 2026 年後半モデルへ段階的にエスカレーションし、上流 Verified リポジトリ 4 件でコミットをゲート制御したうえで、認証済みの起動結果を RAMB36E2、ライセンス不要の openXC7 320.62、106.55、109.15 および 100.55 メガヘルツ配置配線後 Artix-7 XC7A200T M.2 2280 .bit ビットストリーム、Lupanov 共有余因子およびゆらぎコドン結晶ページへ下方コンパイルする。Jetson AGX Thor 上の物理 Texas Instruments DC シャント measured_j 実測値（ビットスライスで 87.25x、uLM-28M 層スライス比でウェアラブル 56 ビット認識論ゲート 222.57x、Window 22 で 3.314x、Window 20 で 4.092x、反対称 40 エントリ T-MAC で 1.65x［Zen 5 では 1.12x］、Sub1Bit-LUT6 で 3.90x、Expert-AirMoL で 34.21x、命題 1 で 10.94x；board_metered は真）を含み、Alif Cortex-M55 サイクル数（ウェアラブルゲート 2,905.18x）、reported_j カウンタ、openXC7 静的タイミング、およびコミット d0de9b6 における RTL 推定値 est_j から厳密に分離して報告する。"
 lang: "ja"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*改訂 0c8bfba、2026年11月25日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) の [`0c8bfba7be3afd9cf312b73a1b85027bf8da3019`](https://github.com/openIE-dev/lut-adapt-ai/tree/0c8bfba7be3afd9cf312b73a1b85027bf8da3019)。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX版PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
+*改訂 d0de9b6、2026年11月26日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) の [`d0de9b655557fcf3992af7d4f80b7ce580a7ab92`](https://github.com/openIE-dev/lut-adapt-ai/tree/d0de9b655557fcf3992af7d4f80b7ce580a7ab92)。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX版PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: Mixture of Limits、カスケード規則（Metered Commit Gates Part II [same house]より）</li>
-<li>LA: 本研究で用いる主張 (claim) および反証子 (falsifier) の接頭辞 (LA-1 から LA-63、LA-F1 から LA-F63)</li>
+<li>LA: 本研究で用いる主張 (claim) および反証子 (falsifier) の接頭辞 (LA-1 から LA-67、LA-F1 から LA-F67)</li>
 <li>LUT、LUT6、INIT: ルックアップテーブル、6入力Xilinx UltraScale+ブール原始子、およびその64ビット真理値表初期化マスク</li>
 <li>BRAM、RAMB36E2、URAM: ブロックRAM、36-KbitデュアルポートUltraScale+ブロックRAM原始子（xck26では144個）、およびUltraRAM</li>
 <li>CLB、FF、DSP、DSP48、KV260: 構成可能ロジックブロック、フリップフロップ、デジタル信号処理スライス、およびAMD Kria KV260ボード（xck26）</li>
@@ -818,6 +818,18 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
   <figcaption>図 15. ランドマーク `SIW(2)` および実機 `27B` `JouleBit-LUT6` 測定（`主張 LA-19 [98 定理 / 1,463 bwrap フリート]、LA-53..LA-55`）：(A) 公式 `16` ゲーム `ARC-AGI-3` の `SIW(2)` と 2 バンク `8 KB` ボールト（`7` ゲーム `9/113` 突破、`+m0r0/+s5i5`、平均 `RHAE = 2.2520`、衝突 `0`）；(B) `M3 Ultra 256 GB` 上の実機 `Ternary-Bonsai-2-27B` ストリーミング（コールド `1.049` / ウォーム `1.325 tok/sweep`、`0.0534 J/tok` `JpCT`、一致率 `100%`）；(C) `Window 19`（`Thor` `measured_j` `2.991×` 低減、`3.129×` 高速）；(D) `111.45 MHz` `openXC7` `.bit`（`0` `DSP48E1`）、`14.77 KB`（`14` エクスポート）`lut6_core.wasm`、および `98` 件の 6 カーネル証明。</figcaption>
 </figure>
 
+### 4.50 主張 LA-64、LA-65、LA-66 および LA-67：公式 `ARC-AGI-3` における `C-BFWS + RIW(2)` と `12` バンク `48 KB`（ウォッチ `SRAM` の `75.00%`）ボールトによる `60.00%` 絶対多数（`15/25` ゲーム、`18/183` レベル）、`Terminal-Bench & Cybench-Defensive`（`144/144` `Yosys` マイタ）、`FrontierMath & SciCode` と `Window 22` `Thor` シャント（`3.314×`）、および `122` 件の 6 カーネル証明
+
+- **因果モダリティ枝刈り `C-BFWS(R,M)`、`RIW(2)` ロールアウト、および `12` バンク `48 KB` `System-0` ボールト（`LA-64`、`.py` 参照 `0`、生フレーム保存 `0`）**：`ACTION7`（`UNDO`）対応ゲームでの因果プローブは全 `14/14` 重心が盤面無変化のときのみ `ACTION6` を枝刈りし、多エポック `RIW(2)` が `sk48`（`36` 手）と `ar25`（`15` 手）を突破して全 `25` ゲームを `12` バンク（`49,152 B = 64 KB` ウォッチ `SRAM` の `75.00%`、残り `4 KB` Nucleus + `12 KB` スタック）へ封印し、**`15/25 = 60.00%` ゲーム突破（`18/183` レベル、平均 `RHAE = 2.5030` = `FIFO-BFS` 比 `834.3×`、最大 `10.7143`）**および**一致 `16` ゲーム中 `11/16 = 68.75%`（`14/113` レベル、`3.2177` `RHAE`、第2波ブレーカ作動 `0`）**を達成します。
+- **`24` 課題 `Terminal-Bench & Cybench-Defensive` スイート（`LA-65`、攻撃的エクスプロイト `0`）**：`SQLite` `WAL`/`FK` 復旧、`C99` リンク、原子的 `NDJSON`、`Z3` `QF_BV` 境界保護、`RFC` 1035 `DNS` 圧縮ループ、定数時間 `HMAC` にわたり **`24/24`（`100.00%`、破損/脆弱コミット `0.00%`）**と **`144/144` `Yosys` `abc -lut 6` マイタ**を検証します。
+- **`FrontierMath-Constructive & SciCode` と `Window 22` `Thor` シャント（`LA-66`）**：$D = 61$・$D = 109$（$x_1 = 158{,}070{,}671{,}986{,}249$）の基本 Pell 単数やシンプレクティック／ユニタリ保存（ドリフト `<= 1.63 × 10^-4`）を含む **`24/24`（`100.00%`）**を検証し、`Jetson AGX Thor` `Window 22` 物理 `measured_j` を **`3.314×` 低減（`8,656.79` 対 `28,689.54 nJ/op`、`3.322×` 高速、`board_metered = true`）**します。
+- **`100.55 MHz` ゼロ `DSP48E1` `openXC7` `.bit`、`15.98 KB`（`17` エクスポート）`WASM`、および `122` 件の 6 カーネル証明（`LA-67`）**：`clai_cbfws12_cybench_xc7a200t_top` は **`100.55 MHz`** ポスト `PAR` を達成し（`657` `SLICE_LUTX`、`0` `DSP48E1`、`64/64` 一致、`9,730,775 B` `.bit`）、`lut6_core.bdef58b1396d.wasm` は **`16,367 B <= 16,384 B`（`17` エクスポート）**に収まり、`CausalBfwsTerminalSciCode.lean` が `LA-19` を **`122` 件の 6 カーネル `Lean 4.36.0` 定理（`59,008` 宣言、`bwrap` フリート合計 `1,486` 件）**へ拡大します（図 18）。
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/cbfws12-arc3-terminal-and-scicode.svg" alt="公式 ARC-AGI-3 における C-BFWS と 48 KB 12バンクボールトによる 60.0% 絶対多数（15/25）、Terminal-Bench & Cybench-Defensive、FrontierMath & SciCode Window 22 Thor シャント、および 122 件の 6 カーネル証明。" />
+  <figcaption>図 18. 公式 `ARC-AGI-3` の `C-BFWS` `60.00%`（`15/25` ゲーム）絶対多数、`Terminal-Bench &amp; Cybench-Defensive`、`FrontierMath &amp; SciCode`、および `122` 定理の測定（`主張 LA-19 [122 定理 / 1,486 bwrap フリート]、LA-64..LA-67`）。</figcaption>
+</figure>
+
 ---
 
 <div id="5-related-work-and-convergence-observations" class="anchor-alias" aria-hidden="true"></div>
@@ -856,7 +868,7 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 | **`LA-F5`** | `主張 LA-5` (バイト投機) | `scripts/run_code_corpus_benchmark.py` が `48` の未見プロンプト上で貪欲 `Mamba3CodeLM` に対して `< 100.0%` の正確なバイトパリティを生成する。 |
 | **`LA-F6`** | `主張 LA-6` (`AirMoL` 14.3M) | `scripts/run_air_mol_benchmark.py` が `F_NOCACHE` 下で `100%` パリティに失敗するか、`AirLLM` 4-Bit `T=1` よりも多くの NVMe バイトを読み込む。 |
 | **`LA-F7`** | `主張 LA-7` (2026 HF `AirMoL`) | `scripts/run_hf_lfm3_air_mol.py`、`scripts/run_hf_air_mol_pretrained.py`、または `scripts/run_hf_qwen35_air_mol.py` が貪欲目標から $\ge 1$ BPE トークン逸脱する。 |
-| **`LA-F8`** | `主張 LA-8` (回帰スイート) | `pytest -v` が `tests/` 内の `71` 個のテストのいずれかに失敗する。 |
+| **`LA-F8`** | `主張 LA-8` (回帰スイート) | `pytest -v` が `tests/` 内の `94` 個のテストのいずれかに失敗する。 |
 | **`LA-F9`** | `主張 LA-9` (`8.5B/35B` MoE) | `scripts/run_hf_moe_8b_35b_air_mol.py` が `100%` トークンパリティから逸脱するか、`AirLLM` または `Expert-AirLLM` よりも多くの NVMe バイトを読み込む。 |
 | **`LA-F10`** | `主張 LA-10` (`Sub1Bit-LUT6`) | `scripts/run_sub1bit_lut_benchmark.py` が密 `ITQ` バイナリ行列乗算に対して `1e-3` を超える最大誤差を示すか、`100%` 検証済みパリティに失敗する。 |
 | **`LA-F11`** | `主張 LA-11` (`48` タスク Bakeoff) | `scripts/run_frontier_ai_bakeoff.py` が `> 0%` の破損コミットを許容するか、Wave-2 仕様変異下で Wave-1 スキルの陳腐化を許容する。 |
@@ -904,6 +916,10 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 | **`LA-F53`** | `Claim LA-53` (`16` ゲーム `ARC-AGI-3` ランドマーク `SIW(2)` と `8 KB` ボールト) | ゲーム `.py` を参照、生フレームを保存、突破数・ゲーム数・平均 `RHAE` で `IW(2)` を厳密に上回らない、第2波で衝突 `> 0`、または `8,192 B` を超える。 |
 | **`LA-F54`** | `Claim LA-54` (実機 `Bonsai-2-27B` `JouleBit-LUT6` ストリーミングと `Window 19`) | `QAT` `> 0`、`100.00%` 一致から逸脱、コールド第1波で `<= 1.000 tok/sweep`、`JpCT` で劣後、または `Window 19` が `Thor` `measured_j` 利得を失う。 |
 | **`LA-F55`** | `Claim LA-55` (`111.45 MHz` `openXC7`、`14` エクスポート `WASM`、`98` 証明) | `DSP48E1` `> 0`、`64/64` `RTL` 一致や `100 MHz` `PAR` に失敗、6カーネル証明が `< 98` / `< 1,463` 件、または `lut6_core.wasm` が `16,384 B` を超える。 |
+| **`LA-F64`** | `Claim LA-64` (`ARC-AGI-3` `60.0%` 絶対多数 `C-BFWS` と `48 KB` ボールト) | ゲーム `.py` 参照、突破 `< 15/25` または `< 11/16` ゲーム、第2波ブレーカ作動 `> 0`、または `49,152 B`（ウォッチ `SRAM` の `75.00%`）超過。 |
+| **`LA-F65`** | `Claim LA-65` (`Terminal-Bench & Cybench-Defensive` と `144/144` `Yosys` マイタ) | 破損/脆弱コミット `> 0%`、攻撃的エクスプロイト実行、または `144/144` `Yosys` `abc -lut 6` マイタ不合格。 |
+| **`LA-F66`** | `Claim LA-66` (`FrontierMath & SciCode` と `Window 22` `Thor` シャント) | 数学/物理課題に失敗、シンプレクティック/ユニタリ保存逸脱、または `Thor` `Window 22` `measured_j` 利得 `< 2.5×`。 |
+| **`LA-F67`** | `Claim LA-67` (`100.55 MHz` `openXC7`、`17` エクスポート `WASM`、`122` 証明) | `DSP48E1` `> 0`、`64/64` 一致や `100 MHz` `PAR` 失敗、6カーネル証明 `< 122` / `< 1,486` 件、または `WASM` `16,384 B` 超過。 |
 
 ---
 
@@ -995,11 +1011,15 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 
 ## 付録A. 再現性
 
-[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit 0c8bfba`）および [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` および `lut6-core-nucleus/`）のチェックアウトから以下を実行する：
+[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit d0de9b6`）および [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` および `lut6-core-nucleus/`）のチェックアウトから以下を実行する：
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
 (cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase42_arc3_cbfws_25env_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase42_terminal_cybench_and_scicode.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase42_window22_five_silicon.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_cbfws12_cybench_par.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase41_arc3_rbfws_25env_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase41_enigma_zerobench_and_horizon1000.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase41_window21_five_silicon.py

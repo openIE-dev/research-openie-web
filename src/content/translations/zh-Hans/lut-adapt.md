@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits 级联中的向下 LUT6 编译：Beneš 路由布尔架构、共形唤醒门槛与前沿稀疏 MoE NVMe 按层流式传输"
-deck: "一种附带 114 条经六内核验证的 Lean 4.36.0 定理及 Inria Charon+Aeneas 无标准库 Rust 至 Lean 机械化提取（另加 Linux bubblewrap 沙箱内四个 Open Interface Engineering 仓库共 1,478 条定理，针对 CVE-2026-72844 加固）的 Mixture of Limits 级联：首先尝试零浮点运算（FLOP）的分页式 6 输入查找表（LUT6）电路、15.84 千字节（16 项导出）的 WebAssembly（WASM）浏览器模块、带反对称 40 项零乘法 T-MAC 三值尾部的无标准库 4 / 32 千字节 Rust lut6-core Nucleus（全量 25 款 ARC-AGI-3 游戏 R-BFWS 过半数 >50%［13/25 = 52.00% 款，16/183 关卡，2.3543 / 3.0441 RHAE］、100% EnigmaEval/ZeroBench 综合、1,000 步 Vending-BALROG 100% 存活及 Window 21 实现 3.204x 与 Window 20 实现 4.092x Thor 分流降低）、占 64 千字节智能手表 SRAM 仅 9.13%（5,984 字节）且零前缀污染的 56 比特 4 词元 Wearable-MoL 智能眼镜开场门控，以及（72, 64）SECDED 宇宙射线位翻转防护（在单二进制 Rust mol-agent-rs 中耗时 0.154 毫秒，每次位切片决策耗能 162.71 纳焦，在 1% 误码率下保持 100.0% 存活率），经亚十亿级可穿戴微型语言模型（Sensente/uLM-28M 与 LiquidAI/LFM2.5-230M）并跨四大 GPU 硅片厂商（最高加速 328.06x，将 LastExam 协议均方根校准误差从 70.62% 削减 5.37x 至 13.14%，且 >= 80% 置信度下的自信幻觉率降至 0.00%）逐级升级至最高 120B 参数的 4 位 NVMe 循环、混合与稀疏 MoE 2026 年末模型，通过跨 4 个上游 Verified 仓库的确定性验证器对提交进行门控，并将经认证的唤醒向下编译为 RAMB36E2、免许可 openXC7 320.62、106.55 与 109.15 兆赫布局布线后 Artix-7 XC7A200T M.2 2280 .bit 比特流，以及 Lupanov 共享余因子与摆动密码子晶体页。包含 Jetson AGX Thor 上的物理 Texas Instruments 直流分流器实测能量 measured_j（位切片 lut6-core 降低 87.25x、可穿戴 56 比特认知门控相对 uLM-28M 层切片降低 222.57x、Window 20 降低 4.092x、反对称 40 项 T-MAC 降低 1.65x［Zen 5 上反超达 1.12x］、Sub1Bit-LUT6 降低 3.90x、Expert-AirMoL 降低 34.21x、命题 1 编译降低 10.94x；board_metered 为真），并与实时连接的 Alif Cortex-M55 周期计数（可穿戴门控快 2,905.18x）、五主机片上 reported_j、openXC7 静态时序以及提交 0c8bfba 处的 RTL 仿真估计值 est_j 严格区分。"
+deck: "一种附带 122 条经六内核验证的 Lean 4.36.0 定理及 Inria Charon+Aeneas 无标准库 Rust 至 Lean 机械化提取（另加 Linux bubblewrap 沙箱内四个 Open Interface Engineering 仓库共 1,486 条定理，针对 CVE-2026-72844 加固）的 Mixture of Limits 级联：首先尝试零浮点运算（FLOP）的分页式 6 输入查找表（LUT6）电路、15.98 千字节（17 项导出）的 WebAssembly（WASM）浏览器模块、带反对称 40 项零乘法 T-MAC 三值尾部的无标准库 4 / 48 千字节（12 体）Rust lut6-core Nucleus（全量 25 款 ARC-AGI-3 游戏经 C-BFWS + RIW(2) 达 60.00% 绝对多数［15/25 款，18/183 关卡，匹配 16 款达 11/16 = 68.75%，2.5030 / 3.2177 RHAE］、100% Terminal-Bench 与 Cybench-Defensive［144/144 Yosys Miter］、100% FrontierMath-Constructive 与 SciCode 综合，以及 Window 22 实现 3.314x、Window 21 实现 3.204x 与 Window 20 实现 4.092x Thor 分流降低）、占 64 千字节智能手表 SRAM 仅 9.13%（5,984 字节）且零前缀污染的 56 比特 4 词元 Wearable-MoL 智能眼镜开场门控，以及（72, 64）SECDED 宇宙射线位翻转防护（在单二进制 Rust mol-agent-rs 中耗时 0.154 毫秒，每次位切片决策耗能 162.71 纳焦，在 1% 误码率下保持 100.0% 存活率），经亚十亿级可穿戴微型语言模型（Sensente/uLM-28M 与 LiquidAI/LFM2.5-230M）并跨四大 GPU 硅片厂商（最高加速 328.06x，将 LastExam 协议均方根校准误差从 70.62% 削减 5.37x 至 13.14%，且 >= 80% 置信度下的自信幻觉率降至 0.00%）逐级升级至最高 120B 参数的 4 位 NVMe 循环、混合与稀疏 MoE 2026 年末模型，通过跨 4 个上游 Verified 仓库的确定性验证器对提交进行门控，并将经认证的唤醒向下编译为 RAMB36E2、免许可 openXC7 320.62、106.55、109.15 与 100.55 兆赫布局布线后 Artix-7 XC7A200T M.2 2280 .bit 比特流，以及 Lupanov 共享余因子与摆动密码子晶体页。包含 Jetson AGX Thor 上的物理 Texas Instruments 直流分流器实测能量 measured_j（位切片 lut6-core 降低 87.25x、可穿戴 56 比特认知门控相对 uLM-28M 层切片降低 222.57x、Window 22 降低 3.314x、Window 20 降低 4.092x、反对称 40 项 T-MAC 降低 1.65x［Zen 5 上反超达 1.12x］、Sub1Bit-LUT6 降低 3.90x、Expert-AirMoL 降低 34.21x、命题 1 编译降低 10.94x；board_metered 为真），并与实时连接的 Alif Cortex-M55 周期计数（可穿戴门控快 2,905.18x）、五主机片上 reported_j、openXC7 静态时序以及提交 d0de9b6 处的 RTL 仿真估计值 est_j 严格区分。"
 lang: "zh-Hans"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*修订 0c8bfba，2026年11月25日。参考实现和工件：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 于 [`0c8bfba7be3afd9cf312b73a1b85027bf8da3019`](https://github.com/openIE-dev/lut-adapt-ai/tree/0c8bfba7be3afd9cf312b73a1b85027bf8da3019)。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源文件](/pdfs/latex/lut-adapt.tex)）。*
+*修订 d0de9b6，2026年11月26日。参考实现和工件：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 于 [`d0de9b655557fcf3992af7d4f80b7ce580a7ab92`](https://github.com/openIE-dev/lut-adapt-ai/tree/d0de9b655557fcf3992af7d4f80b7ce580a7ab92)。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源文件](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: Mixture of Limits，即 Metered Commit Gates 第二部分中的级联规则 [同系列]</li>
-<li>LA: 本研究使用的主张与证伪前缀（LA-1 至 LA-63，LA-F1 至 LA-F63）</li>
+<li>LA: 本研究使用的主张与证伪前缀（LA-1 至 LA-67，LA-F1 至 LA-F67）</li>
 <li>LUT, LUT6, INIT: 查找表（look-up table）、6 输入 Xilinx UltraScale+ 布尔原语，以及其 64 位真值表初始化掩码</li>
 <li>BRAM, RAMB36E2, URAM: 块随机存储器（Block RAM）、36 Kbit 双端口 UltraScale+ 块 RAM 原语（xck26 上为 144 个），以及 UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260: 可配置逻辑块（configurable logic block）、触发器（flip-flop）、数字信号处理片（digital signal processing slice）、DSP48 原语，以及 AMD Kria KV260 开发板（xck26）</li>
@@ -822,6 +822,18 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
   <figcaption>图 15. 里程碑 `SIW(2)` 与真实 `27B` `JouleBit-LUT6` 实测结果（`主张 LA-19 [98 条定理 / 1,463 跨仓套件]、LA-53..LA-55`）：(A) `16` 款官方 `ARC-AGI-3` 里程碑序列化 `SIW(2)` 与双体 `8 KB` 晶库（跨 `7` 款游戏通关 `9/113` 关，解锁 `m0r0` 与 `s5i5`，平均 `RHAE = 2.2520`，`0` 冲突触发）；(B) `M3 Ultra 256 GB` 上真实 `Ternary-Bonsai-2-27B` 冷热流式传输（冷波 `1.049` / 热波 `1.325 tok/sweep`，`0.0534 J/tok` `JpCT`，`100%` 一致）；(C) `Window 19` 跨硅片实测（`Thor` `measured_j` 低 `2.991×`，快 `3.129×`）；以及 (D) `111.45 MHz` `openXC7` `.bit`（`0` `DSP48E1`）、`14.77 KB`（`14` 导出）`lut6_core.wasm` 与 `98` 条六内核证明。</figcaption>
 </figure>
 
+### 4.50 论断 LA-64、LA-65、LA-66 与 LA-67：官方 `ARC-AGI-3` 经 `C-BFWS + RIW(2)` 与 `12` 体 `48 KB`（智能手表 `SRAM` 的 `75.00%`）晶库达成 `60.00%` 绝对多数（`15/25` 款游戏，`18/183` 关）、`Terminal-Bench & Cybench-Defensive`（`144/144` `Yosys` Miter）、`FrontierMath & SciCode` 与 `Window 22` `Thor` 分流器（`3.314×`）及 `122` 条六内核形式化证明
+
+- **因果模态剪枝 `C-BFWS(R,M)`、`RIW(2)` 展开与 `12` 体 `48 KB` `System-0` 晶库（`LA-64`，`0` `.py` 源码读取，`0` 原始帧落盘）**：在支持 `ACTION7`（`UNDO`）的游戏上执行因果探针，仅当全部 `14/14` 个质心均零棋盘改变时才剪除 `ACTION6`；多轮 `RIW(2)` 解锁 `sk48`（`36` 步）与 `ar25`（`15` 步），并将全部 `25` 款游戏封入 `12` 体晶库（`49,152 B = 64 KB` 手表 `SRAM` 的 `75.00%`，保留 `4 KB` Nucleus + `12 KB` 栈），实现 **`15/25 = 60.00%` 款游戏通关（`18/183` 关，均值 `RHAE = 2.5030` = `FIFO-BFS` 的 `834.3×`，峰值 `10.7143`）** 及 **匹配 `16` 款中 `11/16 = 68.75%`（`14/113` 关，`3.2177` `RHAE`，第二波断路器触发 `0` 次）**。
+- **`24` 题 `Terminal-Bench & Cybench-Defensive` 套件（`LA-65`，`0` 攻击性载荷）**：在 `SQLite` `WAL`/`FK` 恢复、`C99` 链接、原子 `NDJSON`、`Z3` `QF_BV` 整数溢出防护、`RFC` 1035 `DNS` 压缩环与恒定时间 `HMAC` 上验证 **`24/24`（`100.00%`，`0.00%` 损坏/漏洞提交）** 及 **`144/144` `Yosys` `abc -lut 6` Miter**。
+- **`FrontierMath-Constructive & SciCode` 与 `Window 22` `Thor` 分流器（`LA-66`）**：验证 **`24/24`（`100.00%`）**（含 $D = 61$ 与 $D = 109$［$x_1 = 158{,}070{,}671{,}986{,}249$］基本 Pell 单位及辛/幺正守恒漂移 `<= 1.63 × 10^-4`），并在 `Jetson AGX Thor` `Window 22` 上将物理 `measured_j` 降低 **`3.314×`（`8,656.79` 对比 `28,689.54 nJ/op`，快 `3.322×`，`board_metered = true`）**。
+- **`100.55 MHz` 零 `DSP48E1` `openXC7` 比特流、`15.98 KB`（`17` 导出）`WASM` 与 `122` 条六内核证明（`LA-67`）**：`clai_cbfws12_cybench_xc7a200t_top` 实现 **`100.55 MHz`** 布局布线后闭合（`657` `SLICE_LUTX`，`0` `DSP48E1`，`64/64` 一致，`9,730,775 B` `.bit`），`lut6_core.bdef58b1396d.wasm` 仅 **`16,367 B <= 16,384 B`（`17` 导出）**，`CausalBfwsTerminalSciCode.lean` 将 `LA-19` 扩展至 **`122` 条六内核 `Lean 4.36.0` 定理（`59,008` 项声明，`bwrap` 跨仓共 `1,486` 条）**（图 18）。
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/cbfws12-arc3-terminal-and-scicode.svg" alt="官方 ARC-AGI-3 经 C-BFWS 与 48 KB 12体晶库达成 60.0% 绝对多数（15/25）、Terminal-Bench 与 Cybench-Defensive、FrontierMath 与 SciCode Window 22 Thor 分流器及 122 条六内核证明。" />
+  <figcaption>图 18. 官方 `ARC-AGI-3` `C-BFWS` `60.00%`（`15/25` 款游戏）绝对多数、`Terminal-Bench &amp; Cybench-Defensive`、`FrontierMath &amp; SciCode` 与 `122` 条定理实测结果（`主张 LA-19 [122 条定理 / 1,486 跨仓套件]、LA-64..LA-67`）。</figcaption>
+</figure>
+
 ---
 
 <div id="5-related-work-and-convergence-observations" class="anchor-alias" aria-hidden="true"></div>
@@ -860,7 +872,7 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`LA-F5`** | `Claim LA-5` (字节推测) | `scripts/run_code_corpus_benchmark.py` 在 `48` 个未见提示上，相对贪婪解码 `Mamba3CodeLM` 的精确字节一致性为 `< 100.0%`。 |
 | **`LA-F6`** | `Claim LA-6` (`AirMoL` 14.3M) | `scripts/run_air_mol_benchmark.py` 在 `F_NOCACHE` 下未达到 `100%` 一致性，或读取的 NVMe 字节数多于 `AirLLM` 4-Bit `T=1`。 |
 | **`LA-F7`** | `Claim LA-7` (2026 年 HF `AirMoL`) | `scripts/run_hf_lfm3_air_mol.py`、`scripts/run_hf_air_mol_pretrained.py` 或 `scripts/run_hf_qwen35_air_mol.py` 与贪婪目标相比偏离 $\ge 1$ 个 BPE token。 |
-| **`LA-F8`** | `Claim LA-8` (回归套件) | `pytest -v` 在 `tests/` 的 `71` 个测试中任一失败。 |
+| **`LA-F8`** | `Claim LA-8` (回归套件) | `pytest -v` 在 `tests/` 的 `94` 个测试中任一失败。 |
 | **`LA-F9`** | `Claim LA-9` (`8.5B/35B` MoE) | `scripts/run_hf_moe_8b_35b_air_mol.py` 的 token 一致性偏离 `100%`，或读取的 NVMe 字节数多于 `AirLLM` 或 `Expert-AirLLM`。 |
 | **`LA-F10`** | `Claim LA-10` (`Sub1Bit-LUT6`) | `scripts/run_sub1bit_lut_benchmark.py` 相对稠密 `ITQ` 二值矩阵乘法的最大误差超过 `1e-3`，或未通过 `100%` 已验证一致性。 |
 | **`LA-F11`** | `Claim LA-11` (`48` 任务对比评测) | `scripts/run_frontier_ai_bakeoff.py` 接受了 `> 0%` 的损坏提交，或在 Wave-2 规格变异下接受了过时的 Wave-1 技能。 |
@@ -908,6 +920,10 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`LA-F53`** | `Claim LA-53` (`16` 款 `ARC-AGI-3` 里程碑 `SIW(2)` 与双体 `8 KB` 晶库) | 读取游戏 `.py` 源码、落盘原始帧、未能在通关数/游戏数/平均 `RHAE` 上严格超越 `IW(2)`、第二波出现 `> 0` 次冲突触发，或超出 `8,192 B`。 |
 | **`LA-F54`** | `Claim LA-54` (真实 `Bonsai-2-27B` `JouleBit-LUT6` 流式推理与 `Window 19`) | 使用 `> 0` 词元 `QAT`、偏离 `100.00%` 一致率、冷启动第一波停滞于 `<= 1.000 tok/sweep`、`JpCT` 劣于基线，或 `Window 19` 未降低 `Thor` `measured_j`。 |
 | **`LA-F55`** | `Claim LA-55` (`111.45 MHz` `openXC7`、`14` 导出 `WASM` 与 `98` 条证明) | 使用 `> 0` 个 `DSP48E1`、未通过 `64/64` `RTL` 一致或 `100 MHz` `PAR`、六内核证明少于 `98` / `1,463` 条，或 `lut6_core.wasm` 超出 `16,384 B`。 |
+| **`LA-F64`** | `Claim LA-64` (`ARC-AGI-3` `60.0%` 绝对多数 `C-BFWS` 与 `48 KB` 晶库) | 读取游戏 `.py` 源码、通关少于 `15/25` 或 `11/16` 款、第二波断路器触发 `> 0` 次，或超出 `49,152 B`（手表 `SRAM` 的 `75.00%`）。 |
+| **`LA-F65`** | `Claim LA-65` (`Terminal-Bench & Cybench-Defensive` 与 `144/144` `Yosys` Miter) | 放行 `> 0%` 损坏/漏洞提交、执行攻击性载荷，或未通过 `144/144` `Yosys` `abc -lut 6` Miter。 |
+| **`LA-F66`** | `Claim LA-66` (`FrontierMath & SciCode` 与 `Window 22` `Thor` 分流器) | 任一数学/物理题失败、违反辛/幺正守恒，或 `Thor` `Window 22` `measured_j` 增益 `< 2.5×`。 |
+| **`LA-F67`** | `Claim LA-67` (`100.55 MHz` `openXC7`、`17` 导出 `WASM` 与 `122` 条证明) | 使用 `> 0` 个 `DSP48E1`、未通过 `64/64` 一致或 `100 MHz` `PAR`、六内核证明少于 `122` / `1,486` 条，或 `WASM` 超出 `16,384 B`。 |
 
 ---
 
@@ -999,11 +1015,15 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 ## 附录 A. 可复现性
 
-在 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（提交 `0c8bfba`）与 [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` 与 `lut6-core-nucleus/`）的代码检出目录中执行：
+在 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（提交 `d0de9b6`）与 [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` 与 `lut6-core-nucleus/`）的代码检出目录中执行：
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
 (cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase42_arc3_cbfws_25env_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase42_terminal_cybench_and_scicode.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase42_window22_five_silicon.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_cbfws12_cybench_par.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase41_arc3_rbfws_25env_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase41_enigma_zerobench_and_horizon1000.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase41_window21_five_silicon.py

@@ -1,6 +1,6 @@
 ---
 title: "التصريف الهابط إلى LUT6 في تسلسل Mixture of Limits: أنسجة منطقية بوليانية موجَّهة بشبكة Beneš، وبوابات إيقاظ مطابقة، وبث طبقات NVMe لنموذج Frontier Sparse-MoE"
-deck: "تسلسل Mixture of Limits مزوَّد بـ 114 مبرهنة في Lean 4.36.0 متحقَّقٍ منها عبر ستّ نوى مع استخراج آلي لشيفرة Rust الخالية من المكتبة القياسية إلى Lean عبر Inria Charon+Aeneas (إلى جانب 1,478 مبرهنة عبر أربعة مستودعات تابعة لـ Open Interface Engineering داخل صناديق عزل bubblewrap في Linux، ومقسّاة ضد CVE-2026-72844)، يجرّب أولاً دوائر جداول البحث ذات 6 مداخل (LUT6) المقسّمة إلى صفحات دون أي عمليات فاصلة عائمة (FLOP)، ووحدة WebAssembly (WASM) للمتصفح بحجم 15.84 كيلوبايت (16 تصديراً)، ونواة Nucleus بلغة Rust الخالية من المكتبة القياسية lut6-core بحجم 4 كيلوبايت / 32 كيلوبايت (8 بنوك بأغلبية >50% [13/25 = 52.00% لعبة و16/183 مستوى] على ARC-AGI-3 عبر R-BFWS محققة 2.3543 / 3.0441 RHAE، وEnigmaEval/ZeroBench بنسبة 100%، وأفق Vending-BALROG لـ 1,000 خطوة بنسبة بقاء 100% وخفض 3.204x على مفرع Thor في Window 21، و4.092x في Window 20) مع ذيل ثلاثي مضاد للتناظر من 40 مدخلاً بلا ضرب T-MAC، وطبقة Wearable-MoL بحجم 5,984 بايت (9.13% من ذاكرة SRAM لساعة ذكية بحجم 64 كيلوبايت) بافتتاحية 56 بت من 4 رموز وصفر تسميم للبادئة، وحماية (72, 64) SECDED ضد انقلابات البت الإشعاعية (0.154 مللي ثانية في mol-agent-rs، و162.71 نانوجول لكل قرار مشرَّح بالبتات، وبقاء بنسبة 100.0% عند معدل خطأ بت 1%)، ويصعّد عبر نماذج الميكرو القابلة للارتداء دون المليار معامل (Sensente/uLM-28M وLiquidAI/LFM2.5-230M) ونماذج أواخر 2026 الحلقية والهجينة والمتناثرة Mixture-of-Experts (MoE) بدقة 4 بت عبر NVMe حتى 120B معامل عبر أربعة مصنّعي GPU (حتى 328.06x تسريعاً، خافضاً خطأ معايرة RMS لبروتوكول LastExam بمقدار 5.37x من 70.62% إلى 13.14% مع 0.00% هلوسات واثقة >= 80%)، ويحرس الالتزامات على 4 مستودعات Verified، ويصرّف حالات الإيقاظ المصدَّقة هابطاً إلى ذاكرات RAMB36E2 وتيارات بت .bit مفتوحة عبر openXC7 بتردد 320.62 و106.55 و109.15 ميغاهرتز لشريحة Artix-7 XC7A200T M.2 2280 وصفحات Lupanov وwobble. يتضمن قراءات مفرِّعات التيار المستمر الفيزيائية measured_j على Jetson AGX Thor (87.25x في lut6-core المشرَّح بالبتات، و222.57x في البوابة المعرفية القابلة للارتداء مقابل uLM-28M، و4.092x في Window 20، و1.65x في ذيل T-MAC المضاد للتناظر [و1.12x على Zen 5]، و3.90x في Sub1Bit-LUT6، و34.21x في Expert-AirMoL، و10.94x في القضية 1؛ وقيمة board_metered هي true) مفصولة بصرامة عن دورات Alif Cortex-M55 (2,905.18x على البوابة القابلة للارتداء)، وعدّادات reported_j، وتوقيت openXC7 بعد PAR، وتقديرات est_j عند الالتزام 0c8bfba."
+deck: "تسلسل Mixture of Limits مزوَّد بـ 122 مبرهنة في Lean 4.36.0 متحقَّقٍ منها عبر ستّ نوى مع استخراج آلي لشيفرة Rust الخالية من المكتبة القياسية إلى Lean عبر Inria Charon+Aeneas (إلى جانب 1,486 مبرهنة عبر أربعة مستودعات تابعة لـ Open Interface Engineering داخل صناديق عزل bubblewrap في Linux، ومقسّاة ضد CVE-2026-72844)، يجرّب أولاً دوائر جداول البحث ذات 6 مداخل (LUT6) المقسّمة إلى صفحات دون أي عمليات فاصلة عائمة (FLOP)، ووحدة WebAssembly (WASM) للمتصفح بحجم 15.98 كيلوبايت (17 تصديراً)، ونواة Nucleus بلغة Rust الخالية من المكتبة القياسية lut6-core بحجم 4 كيلوبايت / 48 كيلوبايت (12 مصرفاً بأغلبية معزَّزة 60.00% [15/25 لعبة و18/183 مستوى] على ARC-AGI-3 عبر C-BFWS + RIW(2) محققة 2.5030 / 3.2177 RHAE، وTerminal-Bench/Cybench-Defensive وFrontierMath/SciCode بنسبة 100% وخفض 3.314x على مفرع Thor في Window 22، و3.204x في Window 21، و4.092x في Window 20) مع ذيل ثلاثي مضاد للتناظر من 40 مدخلاً بلا ضرب T-MAC، وطبقة Wearable-MoL بحجم 5,984 بايت (9.13% من ذاكرة SRAM لساعة ذكية بحجم 64 كيلوبايت) بافتتاحية 56 بت من 4 رموز وصفر تسميم للبادئة، وحماية (72, 64) SECDED ضد انقلابات البت الإشعاعية (0.154 مللي ثانية في mol-agent-rs، و162.71 نانوجول لكل قرار مشرَّح بالبتات، وبقاء بنسبة 100.0% عند معدل خطأ بت 1%)، ويصعّد عبر نماذج الميكرو القابلة للارتداء دون المليار معامل (Sensente/uLM-28M وLiquidAI/LFM2.5-230M) ونماذج أواخر 2026 الحلقية والهجينة والمتناثرة Mixture-of-Experts (MoE) بدقة 4 بت عبر NVMe حتى 120B معامل عبر أربعة مصنّعي GPU (حتى 328.06x تسريعاً، خافضاً خطأ معايرة RMS لبروتوكول LastExam بمقدار 5.37x من 70.62% إلى 13.14% مع 0.00% هلوسات واثقة >= 80%)، ويحرس الالتزامات على 4 مستودعات Verified، ويصرّف حالات الإيقاظ المصدَّقة هابطاً إلى ذاكرات RAMB36E2 وتيارات بت .bit مفتوحة عبر openXC7 بتردد 320.62 و106.55 و109.15 و100.55 ميغاهرتز لشريحة Artix-7 XC7A200T M.2 2280 وصفحات Lupanov وwobble. يتضمن قراءات مفرِّعات التيار المستمر الفيزيائية measured_j على Jetson AGX Thor (87.25x في lut6-core المشرَّح بالبتات، و222.57x في البوابة المعرفية القابلة للارتداء مقابل uLM-28M، و3.314x في Window 22، و4.092x في Window 20، و1.65x في ذيل T-MAC المضاد للتناظر [و1.12x على Zen 5]، و3.90x في Sub1Bit-LUT6، و34.21x في Expert-AirMoL، و10.94x في القضية 1؛ وقيمة board_metered هي true) مفصولة بصرامة عن دورات Alif Cortex-M55 (2,905.18x على البوابة القابلة للارتداء)، وعدّادات reported_j، وتوقيت openXC7 بعد PAR، وتقديرات est_j عند الالتزام d0de9b6."
 lang: "ar"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*المراجعة 0c8bfba، 25 نوفمبر 2026. التنفيذ المرجعي والمصنوعات: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) عند [`0c8bfba7be3afd9cf312b73a1b85027bf8da3019`](https://github.com/openIE-dev/lut-adapt-ai/tree/0c8bfba7be3afd9cf312b73a1b85027bf8da3019). ملخص البيانات: [/data/#lut-adapt](/data/#lut-adapt). ملف LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([المصدر](/pdfs/latex/lut-adapt.tex)).*
+*المراجعة d0de9b6، 26 نوفمبر 2026. التنفيذ المرجعي والمصنوعات: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) عند [`d0de9b655557fcf3992af7d4f80b7ce580a7ab92`](https://github.com/openIE-dev/lut-adapt-ai/tree/d0de9b655557fcf3992af7d4f80b7ce580a7ab92). ملخص البيانات: [/data/#lut-adapt](/data/#lut-adapt). ملف LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([المصدر](/pdfs/latex/lut-adapt.tex)).*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: مزيج الحدود، قاعدة التسلسل من بوابات الالتزام المقاسة الجزء الثاني [same house]</li>
-<li>LA: بادئة الادعاء والمكذب (LA-1 إلى LA-63، LA-F1 إلى LA-F63) المستخدمة في هذه الدراسة</li>
+<li>LA: بادئة الادعاء والمكذب (LA-1 إلى LA-67، LA-F1 إلى LA-F67) المستخدمة في هذه الدراسة</li>
 <li>LUT, LUT6, INIT: جدول بحث، بدائية بوليانية من Xilinx UltraScale+ ذات 6 مداخل، وقناع تهيئة جدول الحقيقة 64-بت</li>
 <li>BRAM, RAMB36E2, URAM: ذاكرة كتلية، البدائية 36-كيبت ذات منفذين من UltraScale+ (144 على xck26)، و UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260: كتلة منطقية قابلة للتهيئة، فليب-فلوب، شريحة معالجة إشارة رقمية، ولوحة AMD Kria KV260 (xck26)</li>
@@ -812,6 +812,18 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
   <figcaption>الشكل 15. قياسات `SIW(2)` المعلمي وبث `JouleBit-LUT6` لنموذج `27B` (`الادعاءات LA-19 [98 مبرهنة / 1,463 أسطول bwrap]، LA-53..LA-55`): (A) `ARC-AGI-3` الرسمي لـ `16` لعبة مع `SIW(2)` وخزنة `8 KB` ثنائية المصرف (`9/113` مستويات عبر `7` ألعاب، فتح `m0r0` و`s5i5`، متوسط `RHAE = 2.2520` و`0` تعثرات تصادم)؛ (B) البث البارد والدافئ لنموذج `Ternary-Bonsai-2-27B` على `M3 Ultra 256 GB` (`1.049` بارد / `1.325` دافئ `tok/sweep`، `0.0534 J/tok` `JpCT` عند تطابق `100%`)؛ (C) قياسات `Window 19` عبر المنصات (`2.991×` خفض `measured_j` على `Thor` وأسرع `3.129×`)؛ و(D) تدفق بت `openXC7` بتردد `111.45 MHz` (`0` `DSP48E1`) ووحدة `lut6_core.wasm` بحجم `14.77 KB` (`14` تصديراً) و`98` مبرهنة عبر 6 نوى.</figcaption>
 </figure>
 
+### 4.50 الادعاءات LA-64 وLA-65 وLA-66 وLA-67: أغلبية معزَّزة `60.00%` (`15/25` لعبة و`18/183` مستوى) على `ARC-AGI-3` عبر `C-BFWS + RIW(2)` وخزنة `48 KB` (`12` مصرفاً = `75.00%` من ذاكرة `SRAM` للساعة)، وحزمة `Terminal-Bench & Cybench-Defensive` (`144/144` مايتر `Yosys`)، و`FrontierMath & SciCode` مع مفرِّع `Thor` في `Window 22` (`3.314×`)، و`122` مبرهنة عبر ستّ نوى
+
+- **التقليم السببي للوسائط `C-BFWS(R,M)` وبحث `RIW(2)` وخزنة `48 KB` (`LA-64`، صفر اطلاع على `.py`، صفر إطارات خام)**: يختبر المسبار السببي نقرات `ACTION6` عند الجذر على الألعاب المزوَّدة بـ`ACTION7` (`UNDO`) فلا يقلّمها إلا حين تُنتج `14/14` نقرة صفر تغيّر في الرقعة، ثم يشغّل `RIW(2)` متعدد الحقب (فاتحاً `sk48` في `36` خطوة و`ar25` في `15` خطوة) ويختم المسارات في `12` مصرفاً (`49,152 B = 75.00%` من `64 KB` في `SRAM` الساعة، تاركاً `4 KB` للنواة و`12 KB` للمكدس) ليحقق **`15/25 = 60.00%` من الألعاب (`18/183` مستوى، متوسط `RHAE = 2.5030` = `834.3×` فوق `FIFO-BFS`، وذروة `10.7143`)** و**`11/16 = 68.75%` (`14/113` مستوى، `3.2177` `RHAE`)** مع `0` تعثرات قاطع.
+- **حزمة `Terminal-Bench & Cybench-Defensive` عبر `24` مهمة (`LA-65`، `0` استغلال هجومي)**: تحقق **`24/24` (`100.00%`، `0.00%` التزامات معطوبة أو مصابة)** عبر استعادة `SQLite` `WAL`/`FK` وبناء `C99` وإصلاح `NDJSON` الذري وحواجز فيض المخصِّص (`Z3` `QF_BV`) وحلقات مؤشرات `DNS` وتجميع `HMAC` ثابت الزمن مع مطابقة **`144/144` مايتر `Yosys` `abc -lut 6`**.
+- **حزمة `FrontierMath-Constructive & SciCode` ومفرِّع `Thor` في `Window 22` (`LA-66`)**: تحقق **`24/24` (`100.00%`)** شاملةً حلول بيل التامة لـ $D = 61$ و$D = 109$ ($x_1 = 158{,}070{,}671{,}986{,}249$) وحفظ الطاقة السيمبلكتية/الوحدوية بانجراف `<= 1.63 × 10^-4`، بينما تخفض `Window 22` قراءة `measured_j` الفيزيائية على `NVIDIA Jetson AGX Thor` بمقدار **`3.314×` (`8,656.79` مقابل `28,689.54 nJ/op`، وأسرع `3.322×`، `board_metered = true`)**.
+- **بوابات `openXC7` بتردد `100.55 MHz`، ووحدة `WASM` بحجم `15.98 KB` (`17` تصديراً)، و`122` مبرهنة (`LA-67`)**: تغلق `clai_cbfws12_cybench_xc7a200t_top` توقيت ما بعد التوجيه عند **`100.55 MHz`** (`657` `SLICE_LUTX`، `0` `DSP48E1`، تطابق `64/64`، ملف `.bit` بحجم `9,730,775 B`)، وتضيف `lut6_core.bdef58b1396d.wasm` التصدير الـ`17` داخل **`16,367 B <= 16,384 B`**، وترفع `CausalBfwsTerminalSciCode.lean` الحصيلة إلى **`122` مبرهنة عبر ستّ نوى (`59,008` تصريحات، و`1,486` مبرهنة عبر أسطول `bwrap`)** (الشكل 18).
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/cbfws12-arc3-terminal-and-scicode.svg" alt="أغلبية معززة 60.0% على ARC-AGI-3 عبر C-BFWS وخزنة 48 KB، وحزمة Terminal-Bench & Cybench-Defensive، وFrontierMath & SciCode مع مفرع Thor في Window 22، و122 مبرهنة عبر 6 نوى." />
+  <figcaption>الشكل 18. قياسات الأغلبية المعزَّزة (`60.00%`، `15/25` لعبة) لـ`ARC-AGI-3` عبر `C-BFWS` و`Terminal-Bench &amp; Cybench-Defensive` و`FrontierMath &amp; SciCode` و`122` مبرهنة (`الادعاءات LA-19 [122 مبرهنة / 1,486 أسطول bwrap]، LA-64..LA-67`).</figcaption>
+</figure>
+
 ---
 
 <div id="5-related-work-and-convergence-observations" class="anchor-alias" aria-hidden="true"></div>
@@ -898,6 +910,10 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`LA-F53`** | `Claim LA-53` (`ARC-AGI-3` لـ `16` لعبة مع `SIW(2)` وخزنة `8 KB`) | يقرأ السكربت أي ملف `.py` للعبة، أو يحفظ أطراً خاماً، أو يفشل في التفوق الصارم على `IW(2)` في المستويات والألعاب ومتوسط `RHAE`، أو يسجّل `> 0` تعثرات تصادم في الموجة 2، أو يتجاوز `8,192 B`. |
 | **`LA-F54`** | `Claim LA-54` (بث `Bonsai-2-27B` عبر `JouleBit-LUT6` ومفرِّع `Window 19`) | يستخدم `> 0` رموز `QAT`، أو ينحرف عن تطابق `100.00%`، أو يفشل في تجاوز `1.000 tok/sweep` في الموجة 1 الباردة، أو يخسر في `JpCT`، أو تفشل `Window 19` في خفض `measured_j` على `Thor`. |
 | **`LA-F55`** | `Claim LA-55` (`openXC7` بتردد `111.45 MHz` و`WASM` بـ`14` تصديراً و`98` مبرهنة) | تستخدم `clai_siw2_joulebit_xc7a200t_top` شرائح `DSP48E1`، أو تفشل في تطابق `64/64` أو تردد `100 MHz`، أو تقل المبرهنات عن `98` / `1,463` عبر 6 نوى، أو تتجاوز `lut6_core.wasm` حجم `16,384 B`. |
+| **`LA-F64`** | `Claim LA-64` (`ARC-AGI-3` أغلبية `60.0%` عبر `C-BFWS` وخزنة `48 KB`) | يقرأ السكربت أي ملف `.py` للعبة، أو يحل أقل من `15/25` لعبة أو `11/16`، أو يسجّل تعثرات قاطع في الموجة 2، أو يتجاوز `49,152 B` (`75.00%` من `SRAM` الساعة). |
+| **`LA-F65`** | `Claim LA-65` (`Terminal-Bench & Cybench-Defensive` ومايتر `144/144`) | ينفذ استغلالاً هجومياً، أو يقبل `> 0%` التزامات معطوبة/مصابة، أو يفشل في أيٍّ من `144/144` مايتر `Yosys` `abc -lut 6`. |
+| **`LA-F66`** | `Claim LA-66` (`FrontierMath & SciCode` ومفرِّع `Thor` `Window 22`) | يقبل التزاماً غير محافظ (`> 2e-4` انجراف)، أو تفشل `Window 22` في خفض `measured_j` على `Thor` أو تختم `board_metered = true` خارج `Thor`. |
+| **`LA-F67`** | `Claim LA-67` (`openXC7` بتردد `100.55 MHz` و`WASM` بـ`17` تصديراً و`122` مبرهنة) | تستخدم `DSP48E1`، أو تفشل في تردد `100 MHz` أو تطابق `64/64`، أو تقل المبرهنات عن `122` / `1,486` عبر 6 نوى، أو تتجاوز `lut6_core.wasm` حجم `16,384 B`. |
 
 ---
 
@@ -989,11 +1005,15 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 ## الملحق أ. إعادة الإنتاج
 
-من نسختين مستخرجتين من [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 0c8bfba`) و[openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` و`lut6-core-nucleus/`):
+من نسختين مستخرجتين من [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit d0de9b6`) و[openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` و`lut6-core-nucleus/`):
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
 (cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase42_arc3_cbfws_25env_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase42_terminal_cybench_and_scicode.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase42_window22_five_silicon.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_cbfws12_cybench_par.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase41_arc3_rbfws_25env_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase41_enigma_zerobench_and_horizon1000.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase41_window21_five_silicon.py

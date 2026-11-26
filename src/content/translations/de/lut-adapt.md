@@ -1,6 +1,6 @@
 ---
 title: "Abwärtskompilierung auf LUT6 in einer Kaskade nach Mixture of Limits: Beneš-geroutete Boolesche Verbindungsnetze, konforme Aufwecktore und grenzwertiges Sparse-MoE-NVMe-Streaming"
-deck: "Eine Mixture-of-Limits-Kaskade mit 114 über sechs Kernels verifizierten Lean-4.36.0-Theoremen und mechanischer #![no_std]-Rust-nach-Lean-Extraktion via Inria Charon+Aeneas (zuzüglich 1,478 Theoremen über vier Open-Interface-Engineering-Repositories in Linux-bubblewrap-Sandboxes, gehärtet gegen CVE-2026-72844), die zunächst seitenweise 6-Eingangs-Lookup-Table-Schaltungen (LUT6) ohne Gleitkommaoperationen (FLOP), ein 15.84 Kilobyte großes WebAssembly-(WASM)-Modul (16 Exporte), einen 4-/32-Kilobyte-Rust-lut6-core-Nucleus (8-Bank-Vault mit >50%-Mehrheit [13/25 = 52.00% Spiele, 16/183 Level, 2.3543 / 3.0441 RHAE] über alle 25 ARC-AGI-3-Spiele via R-BFWS, 100% EnigmaEval/ZeroBench-Synthese, 1,000-Schritt-Vending-BALROG-Überleben mit 3.204x Thor-Shunt-Reduktion in Window 21 sowie 4.092x in Window 20) mit antisymmetrischem 40-Eintrags-Null-Multiplikations-T-MAC-Tail, eine 5,984 Byte große Wearable-MoL-Stufe (9.13% von 64 Kilobyte Smartwatch-SRAM) mit 56-Bit-4-Token-Opener ohne Präfix-Vergiftung und (72, 64)-SECDED-Strahlungsschutz erprobt (0.154 Millisekunden in mol-agent-rs, 162.71 Nanojoule pro Bit-Sliced-Entscheidung und 100.0% Überlebensrate bei 1% Bitfehlerrate), über Sub-Milliarden-Wearable-Mikro-LLMs (Sensente/uLM-28M und LiquidAI/LFM2.5-230M) sowie geschleifte, hybride und dünnbesetzte 4-Bit-NVMe-Mixture-of-Experts-(MoE)-Modelle von Ende 2026 bis 120B Parameter über vier GPU-Hersteller eskaliert (bis zu 328.06x Beschleunigung, 5.37x niedrigerer LastExam-RMS-Kalibrierungsfehler von 70.62% auf 13.14% bei 0.00% selbstsicheren Halluzinationen >= 80%), Commits über deterministische Verifizierer auf 4 Upstream-Verified-Repositories schaltet und zertifizierte Wakes abwärts in RAMB36E2-Blöcke, lizenzfreie 320.62-, 106.55- und 109.15-Megahertz-openXC7-Post-PAR-.bit-Bitströme für Artix-7 XC7A200T M.2 2280 sowie Lupanov- und Wobble-Codon-Kristallseiten kompiliert. Umfasst physikalische DC-Shunt-Messwerte measured_j auf Tegra aarch64 Jetson Thor (87.25x Bit-Sliced-lut6-core, 222.57x Wearable-56-Bit-Epistemik-Gate ggü. uLM-28M, 4.092x Window 20, 1.65x antisymmetrischer T-MAC-Tail [und 1.12x auf Zen 5], 3.90x Sub1Bit-LUT6, 34.21x Expert-AirMoL und 10.94x Proposition-1-Kompilierung; board_metered ist wahr), strikt getrennt von Alif-Cortex-M55-Zyklen (2,905.18x auf dem Wearable-Gate), reported_j-Zählern, openXC7-Post-PAR-Timing und RTL-Schätzungen est_j bei Commit 0c8bfba."
+deck: "Eine Mixture-of-Limits-Kaskade mit 122 über sechs Kernels verifizierten Lean-4.36.0-Theoremen und mechanischer #![no_std]-Rust-nach-Lean-Extraktion via Inria Charon+Aeneas (zuzüglich 1,486 Theoremen über vier Open-Interface-Engineering-Repositories in Linux-bubblewrap-Sandboxes, gehärtet gegen CVE-2026-72844), die zunächst seitenweise 6-Eingangs-Lookup-Table-Schaltungen (LUT6) ohne Gleitkommaoperationen (FLOP), ein 15.98 Kilobyte großes WebAssembly-(WASM)-Modul (17 Exporte), einen 4-/48-Kilobyte-Rust-lut6-core-Nucleus (12-Bank-Vault mit 60.00%-Supermehrheit [15/25 Spiele, 18/183 Level, 2.5030 / 3.2177 RHAE] über alle 25 ARC-AGI-3-Spiele via C-BFWS + RIW(2), 100% Terminal-Bench/Cybench-Defensive- & FrontierMath/SciCode-Verifikation mit 3.314x Thor-Shunt-Reduktion in Window 22, 3.204x in Window 21 sowie 4.092x in Window 20) mit antisymmetrischem 40-Eintrags-Null-Multiplikations-T-MAC-Tail, eine 5,984 Byte große Wearable-MoL-Stufe (9.13% von 64 Kilobyte Smartwatch-SRAM) mit 56-Bit-4-Token-Opener ohne Präfix-Vergiftung und (72, 64)-SECDED-Strahlungsschutz erprobt (0.154 Millisekunden in mol-agent-rs, 162.71 Nanojoule pro Bit-Sliced-Entscheidung und 100.0% Überlebensrate bei 1% Bitfehlerrate), über Sub-Milliarden-Wearable-Mikro-LLMs (Sensente/uLM-28M und LiquidAI/LFM2.5-230M) sowie geschleifte, hybride und dünnbesetzte 4-Bit-NVMe-Mixture-of-Experts-(MoE)-Modelle von Ende 2026 bis 120B Parameter über vier GPU-Hersteller eskaliert (bis zu 328.06x Beschleunigung, 5.37x niedrigerer LastExam-RMS-Kalibrierungsfehler von 70.62% auf 13.14% bei 0.00% selbstsicheren Halluzinationen >= 80%), Commits über deterministische Verifizierer auf 4 Upstream-Verified-Repositories schaltet und zertifizierte Wakes abwärts in RAMB36E2-Blöcke, lizenzfreie 320.62-, 106.55-, 109.15- und 100.55-Megahertz-openXC7-Post-PAR-.bit-Bitströme für Artix-7 XC7A200T M.2 2280 sowie Lupanov- und Wobble-Codon-Kristallseiten kompiliert. Umfasst physikalische DC-Shunt-Messwerte measured_j auf Tegra aarch64 Jetson Thor (87.25x Bit-Sliced-lut6-core, 222.57x Wearable-56-Bit-Epistemik-Gate ggü. uLM-28M, 3.314x Window 22, 4.092x Window 20, 1.65x antisymmetrischer T-MAC-Tail [und 1.12x auf Zen 5], 3.90x Sub1Bit-LUT6, 34.21x Expert-AirMoL und 10.94x Proposition-1-Kompilierung; board_metered ist wahr), strikt getrennt von Alif-Cortex-M55-Zyklen (2,905.18x auf dem Wearable-Gate), reported_j-Zählern, openXC7-Post-PAR-Timing und RTL-Schätzungen est_j bei Commit d0de9b6."
 lang: "de"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*Revision 0c8bfba, 25. November 2026. Referenzimplementierung und Artefakte: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) bei [`0c8bfba7be3afd9cf312b73a1b85027bf8da3019`](https://github.com/openIE-dev/lut-adapt-ai/tree/0c8bfba7be3afd9cf312b73a1b85027bf8da3019). Datenzusammenfassung: [/data/#lut-adapt](/data/#lut-adapt). LaTeX-PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([Quelltext](/pdfs/latex/lut-adapt.tex)).*
+*Revision d0de9b6, 26. November 2026. Referenzimplementierung und Artefakte: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) bei [`d0de9b655557fcf3992af7d4f80b7ce580a7ab92`](https://github.com/openIE-dev/lut-adapt-ai/tree/d0de9b655557fcf3992af7d4f80b7ce580a7ab92). Datenzusammenfassung: [/data/#lut-adapt](/data/#lut-adapt). LaTeX-PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([Quelltext](/pdfs/latex/lut-adapt.tex)).*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ Diese Studie untersucht, wie ein Rechensystem wiederkehrende Arbeit neuronaler M
 
 <ul id="terms">
 <li>MoL: Mixture of Limits, die Kaskadenregel aus Metered Commit Gates Teil II [gleiches Haus]</li>
-<li>LA: Anspruch- und Falsifikator-Präfix (LA-1 bis LA-63, LA-F1 bis LA-F63), das in dieser Studie verwendet wird</li>
+<li>LA: Anspruch- und Falsifikator-Präfix (LA-1 bis LA-67, LA-F1 bis LA-F67), das in dieser Studie verwendet wird</li>
 <li>LUT, LUT6, INIT: Look-up-Tabelle, 6-Eingangs-Xilinx-UltraScale+-Boolesches Primitiv und dessen 64-Bit-Wahrheitstafelmaske zur Initialisierung</li>
 <li>BRAM, RAMB36E2, URAM: Block-RAM, das 36-Kbit-Dual-Port-UltraScale+-Block-RAM-Primitiv (144 auf xck26) und UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260: konfigurierbarer Logikblock, Flip-Flop, Digital-Signal-Processing-Slice und AMD-Kria-KV260-Board (xck26)</li>
@@ -815,6 +815,18 @@ Lupanovs asymptotische Kofaktorteilung (1958; `k=8`, `m=16`) reduziert den `LUT6
   <figcaption>Abbildung 15. Messungen zu Landmark-`SIW(2)` und realem `27B`-`JouleBit-LUT6` (`Behauptungen LA-19 [98 Theoreme / 1,463 bwrap-Flotte], LA-53..LA-55`): (A) offizielles `16`-Spiele-`ARC-AGI-3` mit `SIW(2)` und `8-KB`-Zweibank-Tresor (`9/113` Level über `7` Spiele, `+m0r0/+s5i5`, mittlerer `RHAE = 2.2520`, `0` Kollisionsabbrüche); (B) reales `Ternary-Bonsai-2-27B`-Streaming auf `M3 Ultra 256 GB` (`1.049` kalt / `1.325` warm `tok/sweep`, `0.0534 J/tok` `JpCT` bei `100%` Parität); (C) `Window 19` (`2.991×` niedrigeres `Thor`-`measured_j`, `3.129×` schneller); und (D) `111.45 MHz` `openXC7`-`.bit` (`0` `DSP48E1`), `14.77 KB` (`14`-Export) `lut6_core.wasm` und `98` Sechs-Kernel-Beweise.</figcaption>
 </figure>
 
+### 4.50 Behauptungen LA-64, LA-65, LA-66 und LA-67: `60.00%`-Supermehrheit (`15/25` Spiele, `18/183` Level) auf `ARC-AGI-3` via `C-BFWS + RIW(2)` und `48-KB`-Zwölfbank-Tresor (`75.00%` Watch-`SRAM`), `Terminal-Bench & Cybench-Defensive` (`144/144` `Yosys`-Miter), `FrontierMath & SciCode` mit `Window 22` `Thor`-Shunt (`3.314×`) und `122` Sechs-Kernel-Beweise
+
+- **Kausal modalitätsbereinigtes `C-BFWS(R,M)`, Rollout-`RIW(2)` und `48-KB`-Zwölfbank-Tresor (`LA-64`, `0` `.py`-Quelltextzugriffe, `0` Rohframes)**: Kausale Wurzelklick-Prüfung auf `ACTION7`-Umgebungen (`UNDO`) kappt `ACTION6` nur dann, wenn `14/14` Objektzentroide null Spielfeldmutation erzeugen; mehrstufiges Rollout-`RIW(2)` löst `sk48` in `36` und `ar25` in `15` Schritten und versiegelt alle `25` Spiele in `12` Bänken (`49,152 B = 75.00%` von `64 KB` Watch-`SRAM`, verbleibend `4 KB` Nucleus + `12 KB` Stack) mit **`15/25 = 60.00%` Spielen (`18/183` Level, mittlerer `RHAE = 2.5030` = `834.3×` `FIFO-BFS`, Spitze `10.7143`)** und **`11/16 = 68.75%` (`14/113` Level, `3.2177` `RHAE`, `0` Abbrüche)**.
+- **`24`-Aufgaben-`Terminal-Bench & Cybench-Defensive` (`LA-65`, `0` offensive Exploits)**: Verifiziert **`24/24` (`100.00%`, `0.00%` fehlerhafte/verwundbare Commits)** über `SQLite`-`WAL`/`FK`-Rollback, `C99`-Build-Rettung, atomares `NDJSON`, `Z3`-`QF_BV`-Überlaufwächter, `RFC`-1035-`DNS`-Schleifenschutz und zeitkonstantes `HMAC` bei **`144/144` `Yosys`-`abc -lut 6`-`$lut`-Miter**.
+- **`24`-Aufgaben-`FrontierMath-Constructive & SciCode` sowie `Window 22` `Thor`-Shunt (`LA-66`)**: Verifiziert **`24/24` (`100.00%`)** inkl. exakter Pell-Einheiten für $D = 61$ und $D = 109$ ($x_1 = 158{,}070{,}671{,}986{,}249$) und symplektischer/unitärer Erhaltung (`<= 1.63 × 10^-4` Drift) und senkt das physische `Jetson AGX Thor` `DC`-Shunt-`measured_j` in `Window 22` um **`3.314×` (`8,656.79` ggü. `28,689.54 nJ/op`, `3.322×` schneller, `board_metered = true`)**.
+- **`100.55 MHz` `DSP48E1`-freie `openXC7`-Gateware, `15.98 KB` `17`-Export-`WASM` und `122` Sechs-Kernel-Beweise (`LA-67`)**: `clai_cbfws12_cybench_xc7a200t_top` schließt bei **`100.55 MHz`** (`657` `SLICE_LUTX`, `0` `DSP48E1`, `64/64` `RTL`-Parität, `9,730,775 B` `.bit`), `lut6_core.bdef58b1396d.wasm` umfasst **`16,367 B <= 16,384 B` (`17` Exporte)**, und `CausalBfwsTerminalSciCode.lean` hebt `LA-19` auf **`122` Sechs-Kernel-`Lean-4.36.0`-Theoreme (`59,008` Deklarationen, `1,486` in der `bwrap`-Flotte)** (Abbildung 18).
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/cbfws12-arc3-terminal-and-scicode.svg" alt="60.0%-Supermehrheit (15/25) ARC-AGI-3 C-BFWS + 48-KB-Tresor, Terminal-Bench & Cybench-Defensive, FrontierMath & SciCode Window 22 Thor-Shunt und 122 Sechs-Kernel-Beweise." />
+  <figcaption>Abbildung 18. Messungen zur `60.00%`-Supermehrheit (`15/25` Spiele) auf `ARC-AGI-3` via `C-BFWS`, `Terminal-Bench &amp; Cybench-Defensive`, `FrontierMath &amp; SciCode` und `122` Theoremen (`Behauptungen LA-19 [122 Theoreme / 1,486 bwrap-Flotte], LA-64..LA-67`).</figcaption>
+</figure>
+
 ---
 
 <div id="5-related-work-and-convergence-observations" class="anchor-alias" aria-hidden="true"></div>
@@ -901,6 +913,10 @@ Lupanovs asymptotische Kofaktorteilung (1958; `k=8`, `m=16`) reduziert den `LUT6
 | **`LA-F53`** | `Claim LA-53` (`16`-Spiele-`ARC-AGI-3` Landmark-`SIW(2)` + `8-KB`-Tresor) | Liest Spiel-`.py`-Dateien, speichert Rohframes, übertrifft `IW(2)` nicht strikt bei gelösten Leveln/Spielen/`RHAE`, verzeichnet `> 0` Wave-2-Kollisionsabbrüche oder überschreitet `8,192 B`. |
 | **`LA-F54`** | `Claim LA-54` (Reales `Bonsai-2-27B` `JouleBit-LUT6`-Streaming & `Window 19`) | Nutzt `> 0` `QAT`-Tokens, weicht von `100.00%` Parität ab, stagniert bei `<= 1.000 tok/sweep` in kalter Wave 1, verliert beim `JpCT` oder verfehlt den `Thor`-`measured_j`-Gewinn in `Window 19`. |
 | **`LA-F55`** | `Claim LA-55` (`111.45 MHz` `openXC7`, `14`-Export-`WASM` & `98` Beweise) | Nutzt `> 0` `DSP48E1`, verfehlt `64/64` `RTL`-Parität oder `100 MHz` `PAR`, fällt unter `98` / `1,463` Sechs-Kernel-Beweise oder überschreitet `16,384 B` in `lut6_core.wasm`. |
+| **`LA-F64`** | `Claim LA-64` (`60.0%`-Supermehrheit `ARC-AGI-3` `C-BFWS` + `48-KB`-Tresor) | Liest Spiel-`.py`-Dateien, löst `< 15/25` bzw. `< 11/16` Spiele, verzeichnet `> 0` Wave-2-Abbrüche oder überschreitet `49,152 B` (`75.00%` Watch-`SRAM`). |
+| **`LA-F65`** | `Claim LA-65` (`Terminal-Bench & Cybench-Defensive` + `144/144` `Yosys`-Miter) | Führt offensive Exploits aus, lässt `> 0%` fehlerhafte/verwundbare Commits zu oder verfehlt eine der `144/144` `Yosys`-`abc -lut 6`-Miter-Prüfungen. |
+| **`LA-F66`** | `Claim LA-66` (`FrontierMath & SciCode` + `Window 22` `Thor`-Shunt) | Überschreitet `2 × 10^-4` Erhaltungsdrift oder verfehlt in `Window 22` den `Thor`-`measured_j`-Gewinn bzw. setzt `board_metered = true` außerhalb von `Thor`. |
+| **`LA-F67`** | `Claim LA-67` (`100.55 MHz` `openXC7`, `17`-Export-`WASM` & `122` Beweise) | Nutzt `> 0` `DSP48E1`, verfehlt `64/64` `RTL`-Parität oder `100 MHz` `PAR`, fällt unter `122` / `1,486` Sechs-Kernel-Beweise oder überschreitet `16,384 B` in `lut6_core.wasm`. |
 
 ---
 
@@ -992,11 +1008,15 @@ Lupanovs asymptotische Kofaktorteilung (1958; `k=8`, `m=16`) reduziert den `LUT6
 
 ## Anhang A. Reproduzierbarkeit
 
-Aus Checkouts von [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 0c8bfba`) und [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` und `lut6-core-nucleus/`):
+Aus Checkouts von [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit d0de9b6`) und [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` und `lut6-core-nucleus/`):
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
 (cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase42_arc3_cbfws_25env_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase42_terminal_cybench_and_scicode.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase42_window22_five_silicon.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_cbfws12_cybench_par.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase41_arc3_rbfws_25env_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase41_enigma_zerobench_and_horizon1000.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase41_window21_five_silicon.py
