@@ -1,6 +1,6 @@
 ---
 title: "التصريف الهابط إلى LUT6 في تسلسل Mixture of Limits: أنسجة منطقية بوليانية موجَّهة بشبكة Beneš، وبوابات إيقاظ مطابقة، وبث طبقات NVMe لنموذج Frontier Sparse-MoE"
-deck: "تسلسل Mixture of Limits مزوَّد بـ 82 مبرهنة في Lean 4.36.0 متحقَّقٍ منها عبر ستّ نوى مع استخراج آلي لشيفرة Rust الخالية من المكتبة القياسية إلى Lean عبر Inria Charon+Aeneas (إلى جانب 1,446 مبرهنة عبر أربعة مستودعات تابعة لـ Open Interface Engineering داخل صناديق عزل bubblewrap في Linux، ومقسّاة ضد CVE-2026-72844)، يجرّب أولاً دوائر جداول البحث ذات 6 مداخل (LUT6) المقسّمة إلى صفحات دون أي عمليات فاصلة عائمة (FLOP)، ووحدة WebAssembly (WASM) للمتصفح بحجم 13.88 كيلوبايت، ونواة Nucleus بلغة Rust الخالية من المكتبة القياسية lut6-core بحجم 4 كيلوبايت مع ذيل ثلاثي مضاد للتناظر من 40 مدخلاً بلا ضرب T-MAC، وطبقة Wearable-MoL بحجم 5,984 بايت (9.13% من ذاكرة SRAM لساعة ذكية بحجم 64 كيلوبايت) بافتتاحية 56 بت من 4 رموز وصفر تسميم للبادئة، وحماية (72, 64) SECDED ضد انقلابات البت الإشعاعية (0.154 مللي ثانية في mol-agent-rs، و162.71 نانوجول لكل قرار مشرَّح بالبتات، وبقاء بنسبة 100.0% عند معدل خطأ بت 1%)، ويصعّد عبر نماذج الميكرو القابلة للارتداء دون المليار معامل (Sensente/uLM-28M وLiquidAI/LFM2.5-230M) ونماذج أواخر 2026 الحلقية والهجينة والمتناثرة Mixture-of-Experts (MoE) بدقة 4 بت عبر NVMe حتى 120B معامل عبر أربعة مصنّعي GPU (حتى 328.06x تسريعاً، خافضاً خطأ معايرة RMS لبروتوكول LastExam بمقدار 5.37x من 70.62% إلى 13.14% مع 0.00% هلوسات واثقة >= 80%)، ويحرس الالتزامات على 4 مستودعات Verified، ويصرّف حالات الإيقاظ المصدَّقة هابطاً إلى ذاكرات RAMB36E2 وتيارات بت .bit مفتوحة عبر openXC7 بتردد 320.62 ميغاهرتز لشريحة Artix-7 XC7A200T M.2 2280 وصفحات Lupanov وwobble. يتضمن قراءات مفرِّعات التيار المستمر الفيزيائية measured_j على Jetson AGX Thor (87.25x في lut6-core المشرَّح بالبتات، و222.57x في البوابة المعرفية القابلة للارتداء مقابل uLM-28M، و1.65x في ذيل T-MAC المضاد للتناظر [و1.12x على Zen 5]، و3.82x في Sub1Bit-LUT6، و34.21x في Expert-AirMoL، و10.94x في القضية 1؛ وقيمة board_metered هي true) مفصولة بصرامة عن دورات Alif Cortex-M55 (2,825.18x على البوابة القابلة للارتداء)، وعدّادات reported_j، وتوقيت openXC7 بعد PAR، وتقديرات est_j عند الالتزام c38ed82."
+deck: "تسلسل Mixture of Limits مزوَّد بـ 90 مبرهنة في Lean 4.36.0 متحقَّقٍ منها عبر ستّ نوى مع استخراج آلي لشيفرة Rust الخالية من المكتبة القياسية إلى Lean عبر Inria Charon+Aeneas (إلى جانب 1,454 مبرهنة عبر أربعة مستودعات تابعة لـ Open Interface Engineering داخل صناديق عزل bubblewrap في Linux، ومقسّاة ضد CVE-2026-72844)، يجرّب أولاً دوائر جداول البحث ذات 6 مداخل (LUT6) المقسّمة إلى صفحات دون أي عمليات فاصلة عائمة (FLOP)، ووحدة WebAssembly (WASM) للمتصفح بحجم 15.80 كيلوبايت، ونواة Nucleus بلغة Rust الخالية من المكتبة القياسية lut6-core بحجم 4 كيلوبايت مع ذيل ثلاثي مضاد للتناظر من 40 مدخلاً بلا ضرب T-MAC، وطبقة Wearable-MoL بحجم 5,984 بايت (9.13% من ذاكرة SRAM لساعة ذكية بحجم 64 كيلوبايت) بافتتاحية 56 بت من 4 رموز وصفر تسميم للبادئة، وحماية (72, 64) SECDED ضد انقلابات البت الإشعاعية (0.154 مللي ثانية في mol-agent-rs، و162.71 نانوجول لكل قرار مشرَّح بالبتات، وبقاء بنسبة 100.0% عند معدل خطأ بت 1%)، ويصعّد عبر نماذج الميكرو القابلة للارتداء دون المليار معامل (Sensente/uLM-28M وLiquidAI/LFM2.5-230M) ونماذج أواخر 2026 الحلقية والهجينة والمتناثرة Mixture-of-Experts (MoE) بدقة 4 بت عبر NVMe حتى 120B معامل عبر أربعة مصنّعي GPU (حتى 328.06x تسريعاً، خافضاً خطأ معايرة RMS لبروتوكول LastExam بمقدار 5.37x من 70.62% إلى 13.14% مع 0.00% هلوسات واثقة >= 80%)، ويحرس الالتزامات على 4 مستودعات Verified، ويصرّف حالات الإيقاظ المصدَّقة هابطاً إلى ذاكرات RAMB36E2 وتيارات بت .bit مفتوحة عبر openXC7 بتردد 320.62 ميغاهرتز لشريحة Artix-7 XC7A200T M.2 2280 وصفحات Lupanov وwobble. يتضمن قراءات مفرِّعات التيار المستمر الفيزيائية measured_j على Jetson AGX Thor (87.25x في lut6-core المشرَّح بالبتات، و222.57x في البوابة المعرفية القابلة للارتداء مقابل uLM-28M، و1.65x في ذيل T-MAC المضاد للتناظر [و1.12x على Zen 5]، و3.90x في Sub1Bit-LUT6، و34.21x في Expert-AirMoL، و10.94x في القضية 1؛ وقيمة board_metered هي true) مفصولة بصرامة عن دورات Alif Cortex-M55 (2,905.18x على البوابة القابلة للارتداء)، وعدّادات reported_j، وتوقيت openXC7 بعد PAR، وتقديرات est_j عند الالتزام c38ed90."
 lang: "ar"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*المراجعة c38ed82، 25 نوفمبر 2026. التنفيذ المرجعي والمصنوعات: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) عند [`c38ed82655fff49e7904c90ab916330e4b5ecfc9`](https://github.com/openIE-dev/lut-adapt-ai/tree/c38ed82655fff49e7904c90ab916330e4b5ecfc9). ملخص البيانات: [/data/#lut-adapt](/data/#lut-adapt). ملف LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([المصدر](/pdfs/latex/lut-adapt.tex)).*
+*المراجعة c38ed90، 25 نوفمبر 2026. التنفيذ المرجعي والمصنوعات: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) عند [`c38ed90655fff49e7904c90ab916330e4b5ecfc9`](https://github.com/openIE-dev/lut-adapt-ai/tree/c38ed90655fff49e7904c90ab916330e4b5ecfc9). ملخص البيانات: [/data/#lut-adapt](/data/#lut-adapt). ملف LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([المصدر](/pdfs/latex/lut-adapt.tex)).*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: مزيج الحدود، قاعدة التسلسل من بوابات الالتزام المقاسة الجزء الثاني [same house]</li>
-<li>LA: بادئة الادعاء والمكذب (LA-1 إلى LA-48، LA-F1 إلى LA-F48) المستخدمة في هذه الدراسة</li>
+<li>LA: بادئة الادعاء والمكذب (LA-1 إلى LA-52، LA-F1 إلى LA-F52) المستخدمة في هذه الدراسة</li>
 <li>LUT, LUT6, INIT: جدول بحث، بدائية بوليانية من Xilinx UltraScale+ ذات 6 مداخل، وقناع تهيئة جدول الحقيقة 64-بت</li>
 <li>BRAM, RAMB36E2, URAM: ذاكرة كتلية، البدائية 36-كيبت ذات منفذين من UltraScale+ (144 على xck26)، و UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260: كتلة منطقية قابلة للتهيئة، فليب-فلوب، شريحة معالجة إشارة رقمية، ولوحة AMD Kria KV260 (xck26)</li>
@@ -782,6 +782,24 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
   <figcaption>الشكل 13. الإغلاق المتحقَّق منه عبر `OpenIE-Apex-Harness` لجدران الذكاء الاصطناعي الأربعة في أواخر 2026 (`الادعاءات LA-19 [82 مبرهنة / 1,446 أسطول bwrap]، LA-45..LA-48`): (A) معيار `ARC-AGI-3` الرسمي لـ `16` لعبة (`113` مستوى) مع `IW(1)` وتقليم `ACTION6` (`6/113` مستويات، ورفع `RHAE` بمقدار `17.23×` بارداً و`265.96×` في الموجة 2 إلى `1.2500`)؛ (B) `VerilogEval-Hard12` (`12/12`، `3,915` `LUT6`) و`KernelBench` المستوى 2 على Metal (`12/12`، تسريع `1.230×`، `0.00%` معطوب)؛ (C) براهين `PutnamBench` / `FormalConjectures` في `Lean 4.36.0` (`24/24`، `13.93 µs` في الموجة 2)؛ و(D) بقاء `100.0%` عبر `256` خطوة (`4,096` انتقالاً، أسرع بـ `1,332.6×` من `Z3`) ومفرِّع `Thor` `Window 16` (`201.22 nJ/op` `measured_j`، أقل بـ `13.18×`).</figcaption>
 </figure>
 
+<div id="451-claim-la-49-relational-width-2-iw2--beneš-lut6-spatial-induction-and-causal-hud-auto-masking-on-16-game-official-arc-agi-3-8113-levels-1071-peak-rhae" class="anchor-alias" aria-hidden="true"></div>
+<div id="452-claim-la-50-7-fabric-waios-256128-bit-exact-ternary-conformance-blake3--ed25519-receipts-and-heteromosaic-mol-cross-substrate-scheduler-8044--all-gpu" class="anchor-alias" aria-hidden="true"></div>
+<div id="453-claim-la-51-0105604498-bpw-joulebit-lut6-vs-samsung-littlebit-2-optimizing-joules-per-correct-token-jpct-3092-thor-shunt-and-341-jpct-gain" class="anchor-alias" aria-hidden="true"></div>
+<div id="454-claim-la-52-256-task-sha-256-pinned-deterministic-null-and-scholar-codifier-rung-projection-suite-90-six-kernel-proofs-1580-kb-wasm" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.48 الادعاءات LA-49 وLA-50 وLA-51 وLA-52: الاستقراء العلائقي بالعرض 2 `IW(2) + Beneš-LUT6` على `ARC-AGI-3` (`8/113` مستويات، ذروة `10.71` في `RHAE`)، ومطابقة `waiOS` الصارمة عبر `7` ركائز (`80.44×` في `HeteroMosaic-MoL`)، و`JouleBit-LUT6` بدقة `0.1056-0.4498 bpw` (`30.92×` مفرِّع `Thor`)، وحزمة الفرضية الصفرية الحتمية لـ `256` مهمة
+
+توسّع الملفات `src/clai/frontier/arc3_iw2_object_benes.py` و`src/clai/frontier/waios_joulebit_and_null.py` و`sys/lut6-core/src/waios_mosaic.rs` و`proofs/LutAdapt/DeterministicNullWaios.lean` (`8` مبرهنات جديدة ترفع `LutAdapt` إلى **`90` مبرهنة عبر 6 نوى** [`58,905` تصريحاً في `con-leche`/`con-ron`] وأسطول `bwrap` إلى **`1,454` مبرهنة**) أربعة مسارات نحو الوكالة المصرَّفة (الشكل 14؛ متاح مباشرة على [/living/lut-adapt/#la-waios-01](/living/lut-adapt/#la-waios-01)):
+- **الاستقراء العلائقي بالعرض `2` `IW(2) + Beneš-LUT6` والحجب السببي التلقائي لصفوف المؤقّت على `16` لعبة رسمية في `ARC-AGI-3` (`LA-49`، صفر اطلاع على `.py`، صفر إطارات خام محفوظة)**: يحفظ لوحات النقر التفاعلية في `y = 58..61` مع حجب صفوف المؤقّت آلياً وحفظ قناع `hud_rows` في الخانتين `510..511` من بلورة `.lut6`، فيرفع الحل إلى **`7 / 113` مستويات في الموجة 1 (`0.2642` متوسط `RHAE` = `56.21×` فوق `FIFO-BFS`) و`8 / 113` مستويات في الموجة 2 (`1.5045` متوسط `RHAE` = `320.11×`، وذروة `10.7143`، فاتحاً مستويين في `vc33` والمستوى 3 في `tu93`)**.
+- **مطابقة `waiOS` الثلاثية التامة على مستوى البت (`256×128`) عبر `7` ركائز وإيصالات `BLAKE3` + `Ed25519` وجدولة `HeteroMosaic-MoL` (`LA-50`)**: تتطابق جميع الركائز الـ`7` (`OpenMV-AE3` Cortex-`M55` `563,381.2` دورة `DWT`، و`NVIDIA Jetson AGX Thor` `Window 17b` `16,142.77 nJ` `measured_j` [`board_metered = true`]، و`Zen 5` `RAPL`، و`M3 Ultra` `CPU`، و`Apple Metal` `GPU`، ووحدة `lut6_core.wasm` بحجم `15.80 KB` [`16,179 B`، `13` تصديراً]، وتدفّق بت `openXC7` `XC7A200T` بتردد `142.55 MHz` [`427` خلية `LUT`، صفر `DSP48E1`]) على البصمة **`BLAKE3("waios.tmac.v1") = a541323b...`** (`[-852, 74, 153, 513]`) وتتوقف حتمياً عند عطل الصف 77 (`4ac7c4fb...`)، ما يتيح لـ **`HeteroMosaic-MoL` خفض الطاقة بمقدار `80.44×` مقابل `GPU` الشامل (`4.9963` مقابل `401.90 mJ`) و`5.65×` مقابل `CPU` الشامل (`28.25 mJ`)**.
+- **التخمين دون البت `JouleBit-LUT6` (`0.1056-0.4498 bpw`) مقابل `Samsung LittleBit-2` وتحسين الجول لكل رمز صحيح `JpCT` (`LA-51`)**: يدمج تشتيت `FWHT-1024` (صفر `QAT`) مع شرائح `LUT6` سداسية الأعمدة (صفر عمليات `MAC` ثنائية وقت التشغيل)، فيخفض طاقة البلاطة عند `0.1056 bpw` بمقدار **`30.92×` في `measured_j` على مفرِّع `Thor` (`2,000.25` مقابل `61,839.70 nJ/op`، `Window 18`، `board_metered = true`)** ويسرّع `OpenMV-AE3` Cortex-`M55` بمقدار **`93.52×`**، مع خفض **`JpCT` بمقدار `3.104×-3.414×` (`2.9500` إلى `0.8641 J/رمز` مع `100.00%` تطابق جشع)**.
+- **حزمة الفرضية الصفرية الحتمية و`Scholar-Codifier` المقيَّدة ببصمة `SHA-256` عبر `256` مهمة (`LA-52`)**: تحقق القواعد الحتمية البحتة **`100.00%` على المجالات المهيكلة `D1-D4` بكلفة `0.2-1.8 µJ/مهمة`** (مقابل `77.34%` لـ `uLM-28M` و`92.97%` لـ `Bonsai-2-27B`)، وعلى المجالات النصية غير المهيكلة `D5-D8` يصرّف `Scholar-Codifier` القواعد المتحقَّق منها إلى `4-16` بوابة `LUT6` ليبلغ **`100.00%` في الموجة 2 بكلفة `0.0004 mJ/مهمة` (خفض طاقة `7.38 × 10^6×` مقابل الاستدلال المتكرر لنموذج `27B`)**.
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/waios-mosaic-joulebit-and-null.svg" alt="قياسات الوكالة المصرَّفة: الاستقراء العلائقي IW(2) على ARC-AGI-3، ومطابقة waiOS عبر 7 ركائز، وJouleBit-LUT6، وحزمة الفرضية الصفرية الحتمية." />
+  <figcaption>الشكل 14. قياسات الوكالة المصرَّفة (`الادعاءات LA-19 [90 مبرهنة / 1,454 أسطول bwrap]، LA-49..LA-52`): (A) `ARC-AGI-3` الرسمي لـ `16` لعبة (`113` مستوى) مع `IW(2) + Beneš-LUT6` (`7/113` في الموجة 1 و`8/113` في الموجة 2، وذروة `10.7143` في `RHAE`)؛ (B) مطابقة `waiOS` عبر `7` ركائز (`BLAKE3 = a541323b...` وتدفّق بت `openXC7` بتردد `142.55 MHz`) وجدولة `HeteroMosaic-MoL` (`80.44×` أقل من `GPU` الشامل)؛ (C) `JouleBit-LUT6` بدقة `0.1056-0.4498 bpw` (`30.92×` طاقة `measured_j` أقل على `Thor` و`3.41×` خفض `JpCT`)؛ و(D) حزمة الفرضية الصفرية الحتمية لـ `256` مهمة (`100.0%` دقة وخفض طاقة `7.38 × 10^6×` في الموجة 2).</figcaption>
+</figure>
+
 ---
 
 <div id="5-related-work-and-convergence-observations" class="anchor-alias" aria-hidden="true"></div>
@@ -861,6 +879,10 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`LA-F46`** | `Claim LA-46` (`VerilogEval-Hard12` `RTL` و`KernelBench` المستوى 2 على Metal) | يقبل `OpenIE-Apex-Harness` نسبة `> 0%` من `RTL` المعطوب تحت `iverilog/vvp` + Yosys `abc -lut 6`، أو مظلّلات Metal متراجعة (`> 1e-2` `FP16`)، أو يفشل في التفوق على كمون `MLX` eager. |
 | **`LA-F47`** | `Claim LA-47` (`PutnamBench` / `FormalConjectures` لـ `24` مبرهنة `Lean 4.36.0`) | يقبل `OpenIE-Apex-Harness` نسبة `> 0%` من البراهين غير السليمة (`sorry` أو `admit` أو `native_decide`)، أو يتحقق من `< 100%` من الـ `24` مبرهنة، أو يحقق تسريع `.lut6` أقل من `100×` في الموجة 2. |
 | **`LA-F48`** | `Claim LA-48` (أفق `256` خطوة، `82` مبرهنة، `WASM` بحجم `13.88 KB`، و`Window 16`) | يسجّل `OpenIE-Apex-Harness` انتهاكاً واحداً أو أكثر عبر `4,096` انتقالاً، أو يفشل في `< 82` / `< 1,446` مبرهنة عبر 6 نوى، أو يتجاوز `lut6_core.wasm` حجم `16 KB`، أو يحقق مفرِّع `Thor` `Window 16` كسباً أقل من `10×`. |
+| **`LA-F49`** | `Claim LA-49` (`ARC-AGI-3` لـ `16` لعبة مع `IW(2) + Beneš-LUT6`) | يقرأ `scripts/run_phase38_arc3_iw2_benchmark.py` أي ملف مصدر `.py` للعبة، أو يحفظ إطارات خاماً، أو يفشل في التفوق الصارم على `IW(1)` في عدد المستويات المحلولة ومتوسط `RHAE` في الموجتين 1 و2. |
+| **`LA-F50`** | `Claim LA-50` (مطابقة `waiOS` عبر `7` ركائز وجدولة `HeteroMosaic-MoL`) | تنحرف أي ركيزة من الـ`7` عن البصمة `BLAKE3 = a541323b...`، أو تفشل في التوقف عند عطل الصف 77 `4ac7c4fb...`، أو تقبل توقيع `Ed25519` معبوثاً به، أو تسجّل `board_metered = true` خارج `Thor`، أو يحقق `HeteroMosaic-MoL` وفراً أقل من `50×` مقابل `GPU` الشامل. |
+| **`LA-F51`** | `Claim LA-51` (`JouleBit-LUT6` بدقة `0.1056-0.4498 bpw` مقابل `LittleBit-2`) | يستخدم `JouleBit-LUT6` أكثر من `0` رموز `QAT` أو `> 0` عمليات `MAC` ثنائية وقت التشغيل، أو ينحرف عن تطابق `100.00%`، أو يحقق كسباً أقل من `20×` على مفرِّع `Thor` `Window 18` أو أقل من `50×` على Cortex-`M55`. |
+| **`LA-F52`** | `Claim LA-52` (الفرضية الصفرية لـ `256` مهمة و`90` مبرهنة ووحدة `WASM` بـ`13` تصديراً) | تسجّل القاعدة الحتمية `< 100%` على `D1-D4`، أو يسجّل `Scholar-Codifier + MoL` `< 100%` على `D5-D8`، أو تفشل `DeterministicNullWaios.lean` في `< 90` / `< 1,454` مبرهنة عبر 6 نوى، أو تتجاوز `lut6_core.wasm` حجم `16,384 B`. |
 
 ---
 
@@ -942,6 +964,8 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 <li>Ouyang, A., Guo, S., Arora, S., Zhang, A. L., Hu, W., Ré, C., and Mirhoseini, A. (2025). KernelBench: Can LLMs Write Efficient GPU Kernels? (<code>ScalingIntelligence/KernelBench</code>). <em>ICML 2025</em>, <em>arXiv:2502.10517</em>.</li>
 <li>Tsoukalas, G., Lee, J., Jennings, J., Xin, J., Ding, M., Jennings, M., Thakur, A., and Chaudhuri, S. (2024). PutnamBench: Evaluating Neural Theorem-Provers on the Putnam Mathematical Competition. <em>NeurIPS 2024</em>, <em>arXiv:2407.11214</em>.</li>
 <li>de Moura, L., and Bjørner, N. (2008). Z3: An Efficient SMT Solver. <em>TACAS 2008</em>, <em>LNCS</em> 4963:337-340, <a href="https://doi.org/10.1007/978-3-540-78800-3_24">doi:10.1007/978-3-540-78800-3_24</a>.</li>
+<li>Josefsson, S., and Liusvaara, I. (2017). Edwards-Curve Digital Signature Algorithm (<code>EdDSA</code> / <code>Ed25519</code>). <em>IETF RFC 8032</em>, <a href="https://doi.org/10.17487/RFC8032">doi:10.17487/RFC8032</a>.</li>
+<li>O'Connor, J., Aumasson, J.-P., Neves, S., and Wilcox-O'Hearn, Z. (2020). BLAKE3: One Function, Fast Everywhere (<code>BLAKE3</code> Cryptographic Hash Specification). <a href="https://github.com/BLAKE3-team/BLAKE3-specs">github.com/BLAKE3-team/BLAKE3-specs</a>.</li>
 </ol>
 
 ---
@@ -950,11 +974,14 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 ## الملحق أ. إعادة الإنتاج
 
-من نسختين مستخرجتين من [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit c38ed82`) و[openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` و`lut6-core-nucleus/`):
+من نسختين مستخرجتين من [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 1ab5c6e`) و[openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` و`lut6-core-nucleus/`):
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
 (cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase38_arc3_iw2_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase38_waios_joulebit_null.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_apex_waios_par.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase37_apex_harness_walls.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase37_arc3_iw1_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_wearable_and_lastexam_benchmark.py

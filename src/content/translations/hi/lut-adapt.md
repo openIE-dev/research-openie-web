@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits कैस्केड में अधोमुखी LUT6 संकलन: Beneš-रूट किए गए बूलियन फ़ैब्रिक, कन्फ़ॉर्मल वेक द्वार और फ्रंटियर स्पार्स-MoE NVMe स्ट्रीमिंग"
-deck: "82 छह-कर्नेल-सत्यापित Lean 4.36.0 प्रमेयों और Inria Charon+Aeneas यांत्रिक मानक-पुस्तकालय-रहित Rust-से-Lean निष्कर्षण (साथ ही Linux bubblewrap सैंडबॉक्स में चार Open Interface Engineering रिपॉज़िटरी में 1,446 प्रमेयों, CVE-2026-72844-सुदृढ़ीकृत) वाला एक Mixture of Limits कैस्केड, जो पहले शून्य-फ्लोटिंग-पॉइंट-ऑपरेशन (FLOP) वाले पेज्ड 6-इनपुट लुक-अप टेबल (LUT6) सर्किटों, 13.88-किलोबाइट WebAssembly (WASM) ब्राउज़र मॉड्यूल, प्रतिसममित 40-प्रविष्टि शून्य-गुणन T-MAC टर्नरी टेल वाले 4-किलोबाइट Rust lut6-core Nucleus, शून्य प्रीफ़िक्स पॉइज़निंग वाले 5,984-बाइट Wearable-MoL चरण (स्मार्टवॉच के 64-किलोबाइट SRAM का 9.13%), और (72, 64) SECDED ब्रह्मांडीय-किरण बिट-फ़्लिप सुरक्षा को आज़माता है (एकल-बाइनरी Rust mol-agent-rs में 0.154 मिलीसेकंड, प्रति बिट-स्लाइस्ड निर्णय 162.71 नैनोजूल, 1% बिट-त्रुटि दर पर 100.0% उत्तरजीविता), सब-बिलियन वियरेबल माइक्रो-LLM (Sensente/uLM-28M और LiquidAI/LFM2.5-230M) तथा चार GPU सिलिकॉन विक्रेताओं (328.06x तक गति-वृद्धि, LastExam RMS अंशांकन त्रुटि को 70.62% से 5.37x घटाकर 13.14% और >= 80% पर 0.00% अति-आत्मविश्वासी मतिभ्रम) पर 120B पैरामीटर तक के 4-बिट NVMe लूप्ड, हाइब्रिड और स्पार्स MoE अंतिम-2026 मॉडलों में आरोहण करता है, 4 अपस्ट्रीम Verified रिपॉज़िटरी में कमिटों को द्वारबद्ध करता है, और प्रमाणित वेक्स को RAMB36E2, लाइसेंस-मुक्त openXC7 320.62-मेगाहर्ट्ज़ पोस्ट-PAR Artix-7 XC7A200T M.2 2280 .bit बिटस्ट्रीम तथा Lupanov और वॉबल-कोडॉन क्रिस्टल पृष्ठों में अधोमुखी संकलित करता है। इसमें Jetson AGX Thor पर भौतिक Texas Instruments DC शंट measured_j माप (87.25x बिट-स्लाइस्ड lut6-core, uLM-28M की तुलना में 222.57x वियरेबल 56-बिट एपिस्टेमिक गेट, 1.65x प्रतिसममित-40 T-MAC [तथा Zen 5 पर 1.12x], 3.82x Sub1Bit-LUT6, 34.21x Expert-AirMoL, और 10.94x प्रस्थापना 1 संकलन; board_metered सत्य है) शामिल हैं, जिन्हें लाइव Alif Cortex-M55 चक्रों (2,825.18x वियरेबल गेट), reported_j काउंटरों, openXC7 पोस्ट-PAR टाइमिंग और कमिट c38ed82 पर RTL est_j अनुमानों से कड़ाई से पृथक रखा गया है।"
+deck: "90 छह-कर्नेल-सत्यापित Lean 4.36.0 प्रमेयों और Inria Charon+Aeneas यांत्रिक मानक-पुस्तकालय-रहित Rust-से-Lean निष्कर्षण (साथ ही Linux bubblewrap सैंडबॉक्स में चार Open Interface Engineering रिपॉज़िटरी में 1,454 प्रमेयों, CVE-2026-72844-सुदृढ़ीकृत) वाला एक Mixture of Limits कैस्केड, जो पहले शून्य-फ्लोटिंग-पॉइंट-ऑपरेशन (FLOP) वाले पेज्ड 6-इनपुट लुक-अप टेबल (LUT6) सर्किटों, 15.80-किलोबाइट WebAssembly (WASM) ब्राउज़र मॉड्यूल, प्रतिसममित 40-प्रविष्टि शून्य-गुणन T-MAC टर्नरी टेल वाले 4-किलोबाइट Rust lut6-core Nucleus, शून्य प्रीफ़िक्स पॉइज़निंग वाले 5,984-बाइट Wearable-MoL चरण (स्मार्टवॉच के 64-किलोबाइट SRAM का 9.13%), और (72, 64) SECDED ब्रह्मांडीय-किरण बिट-फ़्लिप सुरक्षा को आज़माता है (एकल-बाइनरी Rust mol-agent-rs में 0.154 मिलीसेकंड, प्रति बिट-स्लाइस्ड निर्णय 162.71 नैनोजूल, 1% बिट-त्रुटि दर पर 100.0% उत्तरजीविता), सब-बिलियन वियरेबल माइक्रो-LLM (Sensente/uLM-28M और LiquidAI/LFM2.5-230M) तथा चार GPU सिलिकॉन विक्रेताओं (328.06x तक गति-वृद्धि, LastExam RMS अंशांकन त्रुटि को 70.62% से 5.37x घटाकर 13.14% और >= 80% पर 0.00% अति-आत्मविश्वासी मतिभ्रम) पर 120B पैरामीटर तक के 4-बिट NVMe लूप्ड, हाइब्रिड और स्पार्स MoE अंतिम-2026 मॉडलों में आरोहण करता है, 4 अपस्ट्रीम Verified रिपॉज़िटरी में कमिटों को द्वारबद्ध करता है, और प्रमाणित वेक्स को RAMB36E2, लाइसेंस-मुक्त openXC7 320.62-मेगाहर्ट्ज़ पोस्ट-PAR Artix-7 XC7A200T M.2 2280 .bit बिटस्ट्रीम तथा Lupanov और वॉबल-कोडॉन क्रिस्टल पृष्ठों में अधोमुखी संकलित करता है। इसमें Jetson AGX Thor पर भौतिक Texas Instruments DC शंट measured_j माप (87.25x बिट-स्लाइस्ड lut6-core, uLM-28M की तुलना में 222.57x वियरेबल 56-बिट एपिस्टेमिक गेट, 1.65x प्रतिसममित-40 T-MAC [तथा Zen 5 पर 1.12x], 3.90x Sub1Bit-LUT6, 34.21x Expert-AirMoL, और 10.94x प्रस्थापना 1 संकलन; board_metered सत्य है) शामिल हैं, जिन्हें लाइव Alif Cortex-M55 चक्रों (2,905.18x वियरेबल गेट), reported_j काउंटरों, openXC7 पोस्ट-PAR टाइमिंग और कमिट c38ed90 पर RTL est_j अनुमानों से कड़ाई से पृथक रखा गया है।"
 lang: "hi"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*संशोधन c38ed82, 25 नवंबर 2026. संदर्भ कार्यान्वयन और कलाकृतियाँ: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) पर [`c38ed82655fff49e7904c90ab916330e4b5ecfc9`](https://github.com/openIE-dev/lut-adapt-ai/tree/c38ed82655fff49e7904c90ab916330e4b5ecfc9). डेटा सारांश: [/data/#lut-adapt](/data/#lut-adapt). LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([source](/pdfs/latex/lut-adapt.tex)).*
+*संशोधन c38ed90, 25 नवंबर 2026. संदर्भ कार्यान्वयन और कलाकृतियाँ: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) पर [`c38ed90655fff49e7904c90ab916330e4b5ecfc9`](https://github.com/openIE-dev/lut-adapt-ai/tree/c38ed90655fff49e7904c90ab916330e4b5ecfc9). डेटा सारांश: [/data/#lut-adapt](/data/#lut-adapt). LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([source](/pdfs/latex/lut-adapt.tex)).*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: Mixture of Limits, Metered Commit Gates Part II से cascade नियम [same house]</li>
-<li>LA: इस अध्ययन में उपयोग किए गए दावा और फ़ाल्सिफ़ायर उपसर्ग (LA-1 से LA-48, LA-F1 से LA-F48)</li>
+<li>LA: इस अध्ययन में उपयोग किए गए दावा और फ़ाल्सिफ़ायर उपसर्ग (LA-1 से LA-52, LA-F1 से LA-F52)</li>
 <li>LUT, LUT6, INIT: लुक-अप टेबल, 6-इनपुट Xilinx UltraScale+ बूलियन प्रिमिटिव, और इसका 64-बिट ट्रुथ-टेबल इनिशियलाइज़ेशन मास्क</li>
 <li>BRAM, RAMB36E2, URAM: ब्लॉक RAM, 36-Kbit डुअल-पोर्ट UltraScale+ ब्लॉक RAM प्रिमिटिव (xck26 पर 144), और UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260: कॉन्फ़िगर करने योग्य लॉजिक ब्लॉक, फ्लिप-फ्लॉप, डिजिटल सिग्नल प्रोसेसिंग स्लाइस, और AMD Kria KV260 बोर्ड (xck26)</li>
@@ -787,6 +787,24 @@ Lupanov का साझा-सहगुणक अपघटन (1958; `k=8`, `m=
   <figcaption>चित्र 13. चार फ्रंटियर AI दीवारों पर `OpenIE-Apex-Harness` का सत्यापित समापन (`दावे LA-19 [82 प्रमेय / 1,446 bwrap बेड़ा], LA-45..LA-48`): (A) `16`-खेल (`113`-स्तर) आधिकारिक `ARC-AGI-3` `IW(1)` + `ACTION6` छँटाई (`6/113` हल, तरंग-1 `17.23×` व तरंग-2 `265.96×` `RHAE` वृद्धि से `1.2500`); (B) `VerilogEval-Hard12` (`12/12`, `3,915` `LUT6`) व `KernelBench` स्तर-2 Metal (`12/12`, `1.230×`, `0.00%` टूटा); (C) `PutnamBench` / `FormalConjectures` `Lean 4.36.0` प्रमाण (`24/24`, तरंग-2 `13.93 µs`); तथा (D) `256`-चरण (`4,096` संक्रमण) `100.0%` उत्तरजीविता (`1,332.6×` > `Z3`) एवं `Thor` `Window 16` शंट (`201.22 nJ/op` `measured_j`, `13.18×` कम)।</figcaption>
 </figure>
 
+<div id="451-claim-la-49-relational-width-2-iw2--beneš-lut6-spatial-induction-and-causal-hud-auto-masking-on-16-game-official-arc-agi-3-8113-levels-1071-peak-rhae" class="anchor-alias" aria-hidden="true"></div>
+<div id="452-claim-la-50-7-fabric-waios-256128-bit-exact-ternary-conformance-blake3--ed25519-receipts-and-heteromosaic-mol-cross-substrate-scheduler-8044--all-gpu" class="anchor-alias" aria-hidden="true"></div>
+<div id="453-claim-la-51-0105604498-bpw-joulebit-lut6-vs-samsung-littlebit-2-optimizing-joules-per-correct-token-jpct-3092-thor-shunt-and-341-jpct-gain" class="anchor-alias" aria-hidden="true"></div>
+<div id="454-claim-la-52-256-task-sha-256-pinned-deterministic-null-and-scholar-codifier-rung-projection-suite-90-six-kernel-proofs-1580-kb-wasm" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.48 दावे LA-49, LA-50, LA-51 और LA-52: `ARC-AGI-3` पर संबंधपरक चौड़ाई-`2` `IW(2) + Beneš-LUT6` प्रेरण (`8/113` स्तर, शिखर `10.71` `RHAE`), `7`-सब्सट्रेट `waiOS` अनुरूपता (`80.44×` `HeteroMosaic-MoL`), `0.1056-0.4498 bpw` `JouleBit-LUT6` (`30.92×` `Thor` शंट), और `256`-कार्य नियतात्मक शून्य सुइट
+
+`src/clai/frontier/arc3_iw2_object_benes.py`, `src/clai/frontier/waios_joulebit_and_null.py`, `sys/lut6-core/src/waios_mosaic.rs` और `proofs/LutAdapt/DeterministicNullWaios.lean` (`8` नए प्रमेयों के साथ `LutAdapt` **`90` 6-कर्नेल प्रमेयों** [`58,905` `con-leche`/`con-ron` घोषणाओं] और Linux `bwrap` बेड़ा **`1,454` प्रमेयों** पर पहुँचा) संकलित अभिकर्तृत्व के चार मोर्चे स्थापित करते हैं (चित्र 14; लाइव [/living/lut-adapt/#la-waios-01](/living/lut-adapt/#la-waios-01)):
+- **`16`-खेल आधिकारिक `ARC-AGI-3` पर संबंधपरक चौड़ाई-`2` `IW(2) + Beneš-LUT6` स्थानिक प्रेरण एवं कारणात्मक `HUD` ऑटो-मास्किंग (`LA-49`, `0` `.py` स्रोत पठन, `0` कच्चे फ़्रेम सहेजे गए)**: टिक करते `HUD` पंक्तियों को स्वतः मास्क कर `.lut6` स्लॉट `510..511` में सील करते हुए `y = 58..61` इंटरएक्टिव पैलेट सुरक्षित रखने से हल दर तरंग-1 में **`7 / 113` स्तर (`0.2642` औसत `RHAE` = `56.21×` > `FIFO-BFS`) तथा तरंग-2 में `8 / 113` स्तर (`1.5045` औसत `RHAE` = `320.11×`, शिखर `10.7143`, `vc33` के `2/7` व `tu93` स्तर 3 सहित)** तक पहुँचती है।
+- **`7`-सब्सट्रेट `waiOS` `256×128` बिट-सटीक टर्नरी अनुरूपता, `BLAKE3` + `Ed25519` रसीदें व `HeteroMosaic-MoL` शेड्यूलर (`LA-50`)**: सभी `7` सब्सट्रेट (`OpenMV-AE3` Cortex-`M55` `563,381.2` `DWT` चक्र, `Jetson AGX Thor` `Window 17b` `16,142.77 nJ` `measured_j` [`board_metered = true`], `Zen 5` `RAPL`, `M3 Ultra` `CPU`, `Apple Metal` `GPU`, `15.80 KB` [`16,179 B`, `13` निर्यात] `lut6_core.wasm`, व `142.55 MHz` post-`PAR` `openXC7` `XC7A200T` `.bit` [`427` `LUT`, `0` `DSP48E1`]) हूबहू **`BLAKE3("waios.tmac.v1") = a541323b...`** (`[-852, 74, 153, 513]`) देते हैं और पंक्ति-77 दोष (`4ac7c4fb...`) पर रुकते हैं, जिससे **`HeteroMosaic-MoL` पूर्ण-`GPU` (`401.90 mJ`) से `80.44×` कम (`4.9963 mJ`) व पूर्ण-`CPU` (`28.25 mJ`) से `5.65×` कम ऊर्जा** लेता है।
+- **`Samsung LittleBit-2` के विरुद्ध `0.1056-0.4498 bpw` `JouleBit-LUT6` द्वारा प्रति सही टोकन जूल (`JpCT`) का अनुकूलन (`LA-51`)**: `FWHT-1024` प्रकीर्णन (`0` `QAT`) और `6`-स्तंभ `LUT6` स्लैब (`0` रनटाइम बाइनरी `MAC`) `0.1056 bpw` टाइल ऊर्जा को **`Thor` `Window 18` `measured_j` में `30.92×` (`2,000.25` बनाम `61,839.70 nJ/op`, `board_metered = true`)** घटाते हैं, Cortex-`M55` `DWT` को **`93.52×`** तेज़ करते हैं और `100.00%` ग्रीडी समता पर **`JpCT` को `3.104×-3.414×` (`2.9500` से `0.8641 J/tok`)** कम करते हैं।
+- **`256`-कार्य `SHA`-256-बद्ध नियतात्मक शून्य और `Scholar-Codifier` सुइट (`LA-52`)**: संरचित डोमेन `D1-D4` पर नियतात्मक शून्य **`0.2-1.8 µJ/कार्य` पर `100.00%` सटीकता** पाता है (`uLM-28M` के `77.34%` व `Bonsai-2-27B` के `92.97%` से ऊपर); असंरचित `NL` डोमेन `D5-D8` पर `Scholar-Codifier` नियमों को `4-16` `LUT6` में संकलित कर तरंग-2 में **`0.0004 mJ/कार्य` पर `100.00%` सटीकता (`27B` आवर्ती अनुमान से `7.38 × 10^6×` कम ऊर्जा)** देता है।
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/waios-mosaic-joulebit-and-null.svg" alt="संकलित अभिकर्तृत्व: संबंधपरक IW(2) ARC-AGI-3, 7-सब्सट्रेट waiOS + HeteroMosaic-MoL, 0.10 bpw JouleBit-LUT6, और 256-कार्य नियतात्मक शून्य सुइट।" />
+  <figcaption>चित्र 14. संकलित अभिकर्तृत्व माप (`दावे LA-19 [90 प्रमेय / 1,454 bwrap बेड़ा], LA-49..LA-52`): (A) `16`-खेल आधिकारिक `ARC-AGI-3` संबंधपरक `IW(2) + Beneš-LUT6` (तरंग-1 में `7/113` व तरंग-2 में `8/113` हल, शिखर `10.7143` `RHAE`); (B) `7`-सब्सट्रेट `waiOS` अनुरूपता (`BLAKE3 = a541323b...`, `142.55 MHz` `openXC7` `.bit`) व `HeteroMosaic-MoL` (`80.44×` < पूर्ण-`GPU`); (C) `0.1056-0.4498 bpw` `JouleBit-LUT6` (`Thor` शंट पर `30.92×` कम `measured_j`, `3.41×` कम `JpCT`); तथा (D) `256`-कार्य नियतात्मक शून्य व `Scholar-Codifier` सुइट (`100.0%` सटीकता, तरंग-2 में `7.38 × 10^6×` ऊर्जा कटौती)।</figcaption>
+</figure>
+
 ---
 
 <div id="5-related-work-and-convergence-observations" class="anchor-alias" aria-hidden="true"></div>
@@ -866,6 +884,10 @@ Lupanov का साझा-सहगुणक अपघटन (1958; `k=8`, `m=
 | **`LA-F46`** | `Claim LA-46` (`VerilogEval-Hard12` `RTL` व `KernelBench` स्तर-2 Metal) | `OpenIE-Apex-Harness` `iverilog/vvp` + Yosys `abc -lut 6` पर `> 0%` टूटा `RTL` या `> 0%` प्रतिगामी Metal शेडर (`> 1e-2` `FP16`) स्वीकार करे या `MLX` eager से धीमा रहे। |
 | **`LA-F47`** | `Claim LA-47` (`PutnamBench` / `FormalConjectures` `24` `Lean 4.36.0` प्रमेय) | `OpenIE-Apex-Harness` `> 0%` असंगत प्रमाण (`sorry`, `admit`, `native_decide`) स्वीकार करे, `< 100%` प्रमेय सत्यापित करे, या तरंग-2 `.lut6` गति-वृद्धि `< 100×` रहे। |
 | **`LA-F48`** | `Claim LA-48` (`256`-चरण क्षितिज, `82` प्रमेय, `13.88 KB` `WASM` व `Window 16`) | `4,096` संक्रमणों में `>= 1` उल्लंघन हो, 6-कर्नेल प्रमेय `< 82` / `< 1,446` रहें, `WASM` `16 KB` पार करे, या `Thor` `Window 16` शंट लाभ `< 10×` रहे। |
+| **`LA-F49`** | `Claim LA-49` (`16`-खेल `ARC-AGI-3` संबंधपरक `IW(2) + Beneš-LUT6`) | `scripts/run_phase38_arc3_iw2_benchmark.py` किसी खेल की `.py` फ़ाइल पढ़े, कच्चे फ़्रेम सहेजे, या तरंग-1 व तरंग-2 में हल स्तरों और औसत `RHAE` दोनों में `IW(1)` से सख्ती से आगे न निकले। |
+| **`LA-F50`** | `Claim LA-50` (`7`-सब्सट्रेट `waiOS` अनुरूपता व `HeteroMosaic-MoL`) | `7` में से कोई सब्सट्रेट `BLAKE3 = a541323b...` से विचलित हो, पंक्ति-77 दोष `4ac7c4fb...` पर न रुके, छेड़छाड़ किया `Ed25519` हस्ताक्षर स्वीकार करे, `Thor` से बाहर `board_metered = true` अंकित करे, या `HeteroMosaic-MoL` पूर्ण-`GPU` से `< 50×` बचत दे। |
+| **`LA-F51`** | `Claim LA-51` (`0.1056-0.4498 bpw` `JouleBit-LUT6` बनाम `LittleBit-2` `JpCT`) | `JouleBit-LUT6` `> 0` `QAT` टोकन या `> 0` रनटाइम बाइनरी `MAC` ले, `100.00%` ग्रीडी समता खोए, या `Thor` `Window 18` शंट पर `< 20×` / Cortex-`M55` `DWT` पर `< 50×` लाभ दे। |
+| **`LA-F52`** | `Claim LA-52` (`256`-कार्य नियतात्मक शून्य, `90` प्रमेय व `13`-निर्यात `WASM`) | नियतात्मक शून्य `D1-D4` पर `< 100%` रहे, `Scholar-Codifier + MoL` `D5-D8` पर `< 100%` रहे, 6-कर्नेल प्रमेय `< 90` / `< 1,454` रहें, या `lut6_core.wasm` `16,384 B` पार करे। |
 
 ---
 
@@ -947,6 +969,8 @@ Lupanov का साझा-सहगुणक अपघटन (1958; `k=8`, `m=
 <li>Ouyang, A., Guo, S., Arora, S., Zhang, A. L., Hu, W., Ré, C., and Mirhoseini, A. (2025). KernelBench: Can LLMs Write Efficient GPU Kernels? (<code>ScalingIntelligence/KernelBench</code>). <em>ICML 2025</em>, <em>arXiv:2502.10517</em>.</li>
 <li>Tsoukalas, G., Lee, J., Jennings, J., Xin, J., Ding, M., Jennings, M., Thakur, A., and Chaudhuri, S. (2024). PutnamBench: Evaluating Neural Theorem-Provers on the Putnam Mathematical Competition. <em>NeurIPS 2024</em>, <em>arXiv:2407.11214</em>.</li>
 <li>de Moura, L., and Bjørner, N. (2008). Z3: An Efficient SMT Solver. <em>TACAS 2008</em>, <em>LNCS</em> 4963:337-340, <a href="https://doi.org/10.1007/978-3-540-78800-3_24">doi:10.1007/978-3-540-78800-3_24</a>.</li>
+<li>Josefsson, S., and Liusvaara, I. (2017). Edwards-Curve Digital Signature Algorithm (<code>EdDSA</code> / <code>Ed25519</code>). <em>IETF RFC 8032</em>, <a href="https://doi.org/10.17487/RFC8032">doi:10.17487/RFC8032</a>.</li>
+<li>O'Connor, J., Aumasson, J.-P., Neves, S., and Wilcox-O'Hearn, Z. (2020). BLAKE3: One Function, Fast Everywhere (<code>BLAKE3</code> Cryptographic Hash Specification). <a href="https://github.com/BLAKE3-team/BLAKE3-specs">github.com/BLAKE3-team/BLAKE3-specs</a>.</li>
 </ol>
 
 ---
@@ -955,11 +979,14 @@ Lupanov का साझा-सहगुणक अपघटन (1958; `k=8`, `m=
 
 ## परिशिष्ट ए. पुनरुत्पादनशीलता
 
-[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit c38ed82`) और [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` और `lut6-core-nucleus/`) के चेकआउट से:
+[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 1ab5c6e`) और [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` और `lut6-core-nucleus/`) के चेकआउट से:
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
 (cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase38_arc3_iw2_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase38_waios_joulebit_null.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_apex_waios_par.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase37_apex_harness_walls.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase37_arc3_iw1_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_wearable_and_lastexam_benchmark.py

@@ -47,9 +47,9 @@
 
       <div class="measurement-box">
         <strong>Measurement grammar on this page.</strong> Every widget below stamps its numbers with an explicit honesty chip and never sums across tiers:
-        <span class="chip chip-meas">Physical DC Shunt (measured_j · Claims LA-24, LA-28, LA-32, LA-33, LA-38, LA-39, LA-42, LA-44 &amp; LA-48)</span> for <code>NVIDIA Jetson AGX Thor</code> <code>TI INA3221</code> <code>VDD_CPU_SOC_MSS</code> + <code>INA238</code> <code>VIN</code> joules (<code>board_metered = true</code> solely on Thor, reaching <code>162.71 nJ/op</code> = <code>87.25×</code> <code>CpJ</code> bit-sliced, <code>201.22 nJ/op</code> = <code>13.18×</code> <code>CpJ</code> <code>Apex System-0</code> <code>DES-10</code> + <code>openie-cad</code> + <code>MathGround CBF</code> gate [<code>Window 16</code>], <code>2,803.25 nJ/op</code> = <code>222.57×</code> <code>CpJ</code> wearable 56-bit 4-token epistemic gate vs. <code>uLM-28M</code> slice, <code>15,317.65 nJ/tok</code> = <code>8.35×</code> <code>CpJ</code> <code>Bonsai-AirMoL</code> 4-tok sweep [<code>Window 14</code>], <code>713.82 nJ/op</code> = <code>5.33×</code> <code>CpJ</code> 2-layer <code>Beneš-ARC-LUT6</code> + <code>ARC-AGI-3</code> reflex [<code>Window 15</code>], and <code>8,594.93 nJ/op</code> = <code>1.65×</code> <code>CpJ</code> antisymmetric-40 zero-MUL <code>T-MAC</code> on <code>lut6-core</code>);
-        <span class="chip chip-meas">Reported, Bare-Metal Cycles, &amp; Live WASM (reported_j / DWT / .wasm)</span> for <code>RAPL</code> (including <code>1.12×</code> <code>CpJ</code> <code>Zen 5</code> <code>Antisym-40</code> flip, <code>5.88×</code> <code>Window 14</code>, &amp; <code>3.90×</code> <code>Window 16</code>), <code>amdgpu PPT</code>, <code>NVML</code>, Apple M5 Max/M3 Ultra <code>IOReport</code> + <code>proc_pid_rusage</code> counters (including <code>1.619×</code> lower streamed GiB/tok on real <code>Ternary-Bonsai-2-27B</code> &amp; <code>1.230×</code> <code>KernelBench</code> Level-2 Metal fusion), live attached <code>Alif Ensemble E3</code> (<code>OpenMV-AE3</code> Cortex-M55 @ <code>400 MHz</code>) <code>DWT</code> cycles (<code>2,745.18×</code> wearable gate), and the live <code>13.88 KB</code> (<code>14,208 B</code>, <code>12</code> exports) <code>lut6_core.wasm</code> VM (<code>board_metered = false</code>);
-        <span class="chip chip-sim">Post-PAR openXC7 &amp; Simulated RTL</span> for license-free <code>openXC7</code> <code>nextpnr-xilinx</code> <code>320.62 MHz</code> post-route timing &amp; <code>77.85 Mbit</code> <code>.bit</code> bitstream on <code>XC7A200T-2FBG484-2</code> plus Yosys <code>0.71+</code> <code>xcup</code> + <code>abc -lut 6</code> (<code>64/64</code> miter &amp; <code>3,915</code> <code>VerilogEval-Hard12</code> <code>LUT6</code>s) + Verilator <code>5.054</code> netlists (<code>measured_j = None</code>); and
+        <span class="chip chip-meas">Physical DC Shunt (measured_j · Claims LA-24, LA-28, LA-32, LA-33, LA-38, LA-39, LA-42, LA-44, LA-48, LA-50 &amp; LA-51)</span> for <code>NVIDIA Jetson AGX Thor</code> <code>TI INA3221</code> <code>VDD_CPU_SOC_MSS</code> + <code>INA238</code> <code>VIN</code> joules (<code>board_metered = true</code> solely on Thor, reaching <code>162.71 nJ/op</code> = <code>87.25×</code> <code>CpJ</code> bit-sliced, <code>2,000.25 nJ/op</code> = <code>30.92×</code> <code>0.1056 bpw</code> <code>JouleBit-LUT6</code> vs. <code>LittleBit-2</code> [<code>Window 18</code>], <code>16,142.77 nJ/op</code> <code>256×128</code> <code>waiOS</code> ternary sweep [<code>Window 17b</code>], <code>201.22 nJ/op</code> = <code>13.18×</code> <code>CpJ</code> <code>Apex System-0</code> <code>DES-10</code> + <code>openie-cad</code> + <code>MathGround CBF</code> gate [<code>Window 16</code>], <code>2,803.25 nJ/op</code> = <code>222.57×</code> <code>CpJ</code> wearable 56-bit 4-token epistemic gate vs. <code>uLM-28M</code> slice, <code>15,317.65 nJ/tok</code> = <code>8.35×</code> <code>CpJ</code> <code>Bonsai-AirMoL</code> 4-tok sweep [<code>Window 14</code>], <code>713.82 nJ/op</code> = <code>5.33×</code> <code>CpJ</code> 2-layer <code>Beneš-ARC-LUT6</code> + <code>ARC-AGI-3</code> reflex [<code>Window 15</code>], and <code>8,594.93 nJ/op</code> = <code>1.65×</code> <code>CpJ</code> antisymmetric-40 zero-MUL <code>T-MAC</code> on <code>lut6-core</code>);
+        <span class="chip chip-meas">Reported, Bare-Metal Cycles, &amp; Live WASM (reported_j / DWT / .wasm)</span> for <code>RAPL</code> (including <code>25.62×</code> <code>JouleBit-LUT6</code>, <code>1.12×</code> <code>CpJ</code> <code>Zen 5</code> <code>Antisym-40</code> flip, <code>5.88×</code> <code>Window 14</code>, &amp; <code>3.90×</code> <code>Window 16</code>), <code>amdgpu PPT</code>, <code>NVML</code>, Apple M5 Max/M3 Ultra <code>IOReport</code> + <code>proc_pid_rusage</code> counters (including <code>1.619×</code> lower streamed GiB/tok on real <code>Ternary-Bonsai-2-27B</code> &amp; <code>1.230×</code> <code>KernelBench</code> Level-2 Metal fusion), live attached <code>Alif Ensemble E3</code> (<code>OpenMV-AE3</code> Cortex-M55 @ <code>400 MHz</code>) <code>DWT</code> cycles (<code>2,745.18×</code> wearable gate &amp; <code>93.52×</code> <code>JouleBit-LUT6</code>), and the live <code>15.80 KB</code> (<code>16,179 B</code>, <code>13</code> exports) <code>lut6_core.wasm</code> VM (<code>board_metered = false</code>);
+        <span class="chip chip-sim">Post-PAR openXC7 &amp; Simulated RTL</span> for license-free <code>openXC7</code> <code>nextpnr-xilinx</code> <code>320.62 MHz</code> &amp; <code>142.55 MHz</code> post-route timing &amp; <code>77.85 Mbit</code> <code>.bit</code> bitstreams on <code>XC7A200T-2FBG484-2</code> plus Yosys <code>0.71+</code> <code>xcup</code> + <code>abc -lut 6</code> (<code>64/64</code> miter &amp; <code>3,915</code> <code>VerilogEval-Hard12</code> <code>LUT6</code>s) + Verilator <code>5.054</code> netlists (<code>measured_j = None</code>); and
         <span class="chip chip-est">Modelled (est_j / est_queries)</span> for analytical cascade and wearable battery equations.
       </div>
 
@@ -264,19 +264,19 @@
       <!-- Widget 5: Six-Kernel Paranoid Proof Audit Explorer -->
       <section id="la-tab-01" class="glass-card" style="margin-top: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-tab-01</code> · Six-Kernel Paranoid Formal Proof &amp; <code>Aeneas</code> Explorer (<code>Claims LA-19, LA-33, LA-38 &amp; LA-41</code>)</h2>
-          <span class="chip chip-meas">6 / 6 Independent Kernels Accept (66 Thms · 0 sorry)</span>
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-tab-01</code> · Six-Kernel Paranoid Formal Proof &amp; <code>Aeneas</code> Explorer (<code>Claims LA-19, LA-33, LA-38, LA-41 &amp; LA-44..52</code>)</h2>
+          <span class="chip chip-meas">6 / 6 Independent Kernels Accept (90 Thms · 0 sorry)</span>
         </div>
         <p style="font-size: 0.9rem; margin-top: 0.6rem;">
-          Inspect the six independent checkers executed by <code>scripts/verify_lean_proofs.py</code> (<code>lake check --paranoid</code>) across all <code>66</code> theorems in <code>proofs/LutAdapt/</code> (9 modules including <code>NucleusCodon.lean</code>, <code>TernaryTmac.lean</code>, <code>GlobalFrontiers.lean</code>, <code>WearableLastExam.lean</code>, and <code>TernaryHadamardArc.lean</code>, plus Inria <code>Charon</code>+<code>Aeneas</code> mechanical <code>#![no_std]</code> Rust-to-Lean extraction <code>Lut6Verify_Aeneas.lean</code>), hardening against single-prover bugs (<code>CVE-2026-72844</code>, <code>CVE-2026-72711</code>) and <code>native_decide</code> (<code>Lean.ofReduceBool</code>).
+          Inspect the six independent checkers executed by <code>scripts/verify_lean_proofs.py</code> (<code>lake check --paranoid</code>) across all <code>90</code> theorems in <code>proofs/LutAdapt/</code> (12 modules including <code>NucleusCodon.lean</code>, <code>TernaryTmac.lean</code>, <code>GlobalFrontiers.lean</code>, <code>WearableLastExam.lean</code>, <code>TernaryHadamardArc.lean</code>, <code>BonsaiStreamArc3.lean</code>, <code>ApexHarnessWalls.lean</code>, and <code>DeterministicNullWaios.lean</code>, plus Inria <code>Charon</code>+<code>Aeneas</code> mechanical <code>#![no_std]</code> Rust-to-Lean extraction <code>Lut6Verify_Aeneas.lean</code>), hardening against single-prover bugs (<code>CVE-2026-72844</code>, <code>CVE-2026-72711</code>) and <code>native_decide</code> (<code>Lean.ofReduceBool</code>).
         </p>
         <div class="ctrl-grid">
           <div class="ctrl-box">
             <label><span>Select Independent Proof Checker</span></label>
             <select id="sk-select">
-              <option value="conleche" selected>1 · con-leche --verified (Set-theory-proved consistent kernel · 58,819 decls)</option>
-              <option value="conron">2 · con-ron --verified (Aeneas-verified Rust refinement of con-leche · 58,819 decls)</option>
-              <option value="lean4lean">3 · lean4lean (Mario Carneiro's Lean-in-Lean CIC typechecker · 58,821 decls)</option>
+              <option value="conleche" selected>1 · con-leche --verified (Set-theory-proved consistent kernel · 58,905 decls)</option>
+              <option value="conron">2 · con-ron --verified (Aeneas-verified Rust refinement of con-leche · 58,905 decls)</option>
+              <option value="lean4lean">3 · lean4lean (Mario Carneiro's Lean-in-Lean CIC typechecker · 58,907 decls)</option>
               <option value="nanoda">4 · nanoda (Standalone zero-Lean-runtime Rust export verifier · sorryAx blocked)</option>
               <option value="paranoid">5 · leanchecker --paranoid (Fresh-environment C++ replay · zero tactic trust)</option>
               <option value="default">6 · Lean v4.36.0 + Inria Aeneas LLBC→Lean (Post-CVE Nov 2026 kernel · #print axioms enforced)</option>
@@ -287,11 +287,11 @@
           <div class="metric-tile">
             <div class="k">Kernel Verdict</div>
             <div class="v" id="sk-verdict" style="color: var(--color-brand-cyan);">ACCEPTS</div>
-            <div class="s" id="sk-decls">58,819 declarations (--verified)</div>
+            <div class="s" id="sk-decls">58,905 declarations (--verified)</div>
           </div>
           <div class="metric-tile">
             <div class="k">Fleet Sandboxed Audit</div>
-            <div class="v">1,430 Thms</div>
+            <div class="v">1,454 Thms</div>
             <div class="s">4 OpenIE repos · Linux bwrap 6/6</div>
           </div>
           <div class="metric-tile">
@@ -362,11 +362,11 @@
         </div>
       </section>
 
-      <!-- Widget 7: Live 8.80 KB #![no_std] WebAssembly Silicon & SEU Lab (la-wasm-01) -->
+      <!-- Widget 7: Live 15.80 KB #![no_std] WebAssembly Silicon & SEU Lab (la-wasm-01) -->
       <section id="la-wasm-01" class="glass-card" style="margin-top: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-wasm-01</code> · Live <code>8.80 KB</code> <code>#![no_std]</code> <code>lut6_core.wasm</code> Silicon &amp; Cosmic-Ray <code>SEU</code> Lab (<code>Claims LA-33..LA-35</code>)</h2>
-          <span class="chip chip-meas" id="wasm-status-chip">Live WASM Engine (9,009 B · 0 Crates · 9 Exports)</span>
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-wasm-01</code> · Live <code>15.80 KB</code> <code>#![no_std]</code> <code>lut6_core.wasm</code> Silicon &amp; Cosmic-Ray <code>SEU</code> Lab (<code>Claims LA-33..LA-35 &amp; LA-52</code>)</h2>
+          <span class="chip chip-meas" id="wasm-status-chip">Live WASM Engine (16,179 B · 0 Crates · 13 Exports)</span>
         </div>
         <p style="font-size: 0.9rem; margin-top: 0.6rem;">
           Executes the actual compiled <code>wasm32-unknown-unknown</code> Rust binary (<code>/living/lut-adapt/lut6_core.wasm</code>, embedding both verified <code>4,096 B</code> <code>.lut6</code> crystals <code>0xd1cc025a</code> &amp; <code>0x3b12a681</code>, ISCA 2025 <code>Antisym-40 T-MAC</code>, Walsh–Hadamard <code>FWHT</code>, <code>(72,64)</code> <code>RAMB36</code> Hamming <code>SECDED</code>, and <code>Wearable-MoL</code> epistemic &amp; canary gates) directly inside your browser's WebAssembly VM.
@@ -623,7 +623,59 @@
           <div class="metric-tile">
             <div class="k">Live WASM Apex Gate</div>
             <div class="v" id="apx-wasm-v" style="color: var(--color-brand-cyan);">Mode 1 · Certified Act=5</div>
-            <div class="s" id="apx-wasm-s">12th export live in 14,208 B lut6_core.wasm</div>
+            <div class="s" id="apx-wasm-s">12th export live in 16,179 B lut6_core.wasm</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Widget 12: Compiled Agency — IW(2) ARC-AGI-3, 7-Fabric waiOS + HeteroMosaic, JouleBit-LUT6, & Deterministic Null (la-waios-01) -->
+      <section id="la-waios-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-waios-01</code> · Compiled Agency: Relational <code>IW(2)</code>, <code>7</code>-Fabric <code>waiOS</code> + <code>HeteroMosaic</code>, <code>0.10 bpw JouleBit-LUT6</code>, &amp; <code>Deterministic Null</code> (<code>Claims LA-49..LA-52</code>)</h2>
+          <span class="chip chip-meas">Thor Shunt Window 17b/18 (16.14 µJ / 30.92×) + 90 6-Kernel Thms (1,454 Fleet) + Live 16,179 B WASM</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Explore relational width-<code>2</code> <code>IW(2) + Beneš-LUT6</code> on <code>16</code>-game official <code>ARC-AGI-3</code> (<code>8/113</code> Wave-2 levels, <code>10.7143</code> peak <code>RHAE</code>), <code>7</code>-fabric <code>waiOS</code> <code>256×128</code> bit-exact conformance (<code>BLAKE3 = a541323b...</code>, <code>80.44× HeteroMosaic-MoL</code>), <code>0.1056–0.4498 bpw JouleBit-LUT6</code> (<code>30.92×</code> <code>Thor</code> shunt, <code>3.41× JpCT</code>), <code>256</code>-task <code>Deterministic Null</code>, and live <code>wasm_verify_waios_antisym40_digest32</code> inside <code>lut6_core.wasm</code> (<code>15.80 KB</code>, <code>13</code> exports).
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label><span>Select Compiled-Agency Claim (Claims LA-49..LA-52)</span></label>
+            <select id="wai-shot">
+              <option value="waios" selected>Claim LA-50 · 7-Fabric waiOS 256×128 Conformance &amp; HeteroMosaic-MoL (80.44× &lt; All-GPU)</option>
+              <option value="joulebit">Claim LA-51 · 0.1056–0.4498 bpw JouleBit-LUT6 vs. LittleBit-2 (30.92× Thor Shunt · 3.41× JpCT)</option>
+              <option value="arc3iw2">Claim LA-49 · 16-Game Official ARC-AGI-3 Relational IW(2) + Beneš-LUT6 (8/113 · 10.71 Peak RHAE)</option>
+              <option value="dnull">Claim LA-52 · 256-Task Deterministic Null &amp; Scholar-Codifier (100% Acc · 7.38×10⁶× W2 Cut)</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label><span>Live <code>lut6_core.wasm</code> <code>wasm_verify_waios_antisym40_digest32</code> Probe</span></label>
+            <select id="wai-wasm-probe">
+              <option value="0" selected>Clean Canonical SplitMix64 Seed → BLAKE3("waios.tmac.v1") = a541323b... (Verified!)</option>
+              <option value="78">Inject 1-Trit Weight Fault at Row 77 → BLAKE3 = 4ac7c4fb... (Deterministic Halt!)</option>
+              <option value="1">Inject 1-Trit Weight Fault at Row 0 → BLAKE3 Diverges (Tamper Caught!)</option>
+            </select>
+          </div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-tile">
+            <div class="k">Conformance / Solve Rate</div>
+            <div class="v" id="wai-m1" style="color: var(--color-brand-cyan);">7 / 7 Fabrics Identical</div>
+            <div class="s" id="wai-s1">Cortex-M55, Thor, Zen 5, M3U, Metal, WASM32, openXC7 XC7A200T</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Energy / JpCT / RHAE Gain</div>
+            <div class="v" id="wai-m2" style="color: var(--color-brand-cyan);">80.44× &lt; Monolithic GPU</div>
+            <div class="s" id="wai-s2">4.9963 mJ HeteroMosaic vs 401.90 mJ GPU &amp; 28.25 mJ CPU (5.65×)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Thor DC Shunt &amp; Gateware</div>
+            <div class="v" id="wai-m3" style="color: var(--color-brand-cyan);">16.14 µJ Thor (Window 17b)</div>
+            <div class="s" id="wai-s3">2.906 µs · 142.55 MHz openXC7 .bit (427 LUTs, 0 DSP48E1)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Live WASM BLAKE3 Receipt</div>
+            <div class="v" id="wai-wasm-v" style="color: var(--color-brand-cyan);">0xa541323b · SEALED</div>
+            <div class="s" id="wai-wasm-s">13th export live in 16,179 B lut6_core.wasm</div>
           </div>
         </div>
       </section>
@@ -631,6 +683,10 @@
       <!-- Static Vector Diagrams Gallery -->
       <section id="la-figs" style="margin-top: 2.5rem;">
         <h2 style="font-size: 1.3rem;">Paper Vector Diagrams (Click to Zoom)</h2>
+        <figure class="fig">
+          <img src="/figures/lut-adapt/waios-mosaic-joulebit-and-null.svg" alt="From Ephemeral Inference to Compiled Agency: Relational IW(2) ARC-AGI-3, 7-Fabric waiOS + HeteroMosaic-MoL, 0.10 bpw JouleBit-LUT6, and 256-Task Deterministic Null Suite">
+          <figcaption><strong>Figure 14.</strong> Compiled-agency measurements (<code>Claims LA-19 [90 thms / 1,454 bwrap fleet], LA-49..LA-52</code>): (A) <code>16</code>-game (<code>113</code>-level) official black-box <code>ARC-AGI-3</code> relational width-<code>2</code> <code>IW(2) + Beneš-LUT6</code> (<code>7/113</code> Wave-1 &amp; <code>8/113</code> Wave-2 levels solved, <code>1.5045</code> mean &amp; <code>10.7143</code> peak <code>RHAE</code>, unlocking <code>vc33</code> <code>2/7</code> &amp; <code>tu93</code> <code>3/9</code>); (B) <code>7</code>-fabric <code>waiOS</code> <code>256×128</code> bit-exact conformance (<code>BLAKE3 = a541323b...</code>, <code>Ed25519</code> receipts, row-77 fault halt <code>4ac7c4fb...</code>, <code>142.55 MHz</code> <code>openXC7</code> <code>XC7A200T</code> <code>.bit</code>) &amp; <code>HeteroMosaic-MoL</code> (<code>80.44×</code> &lt; All-GPU, <code>5.65×</code> &lt; All-CPU); (C) <code>0.1056–0.4498 bpw</code> <code>JouleBit-LUT6</code> vs. <code>Samsung LittleBit-2</code> (<code>30.92×</code> lower <code>Thor</code> <code>Window 18</code> <code>measured_j</code>, <code>93.52×</code> live Cortex-<code>M55</code> <code>DWT</code> speedup, <code>3.104×–3.414×</code> lower <code>JpCT</code> at <code>100.0%</code> parity); and (D) <code>256</code>-task SHA-256-pinned <code>Deterministic Null</code> &amp; <code>Scholar-Codifier</code> suite (<code>100.0%</code> structured null, <code>39.1% → 100.0%</code> unstructured NL codification, <code>7.38×10⁶×</code> Wave-2 energy cut).</figcaption>
+        </figure>
         <figure class="fig">
           <img src="/figures/lut-adapt/apex-harness-frontier-walls.svg" alt="OpenIE-Apex-Harness Verified Closure Across the Four Late-2026 Frontier AI Walls">
           <figcaption><strong>Figure 13.</strong> <code>OpenIE-Apex-Harness</code> verified closure across the four late-2026 Frontier AI Walls (<code>Claims LA-19 [82 thms / 1,446 bwrap fleet], LA-45..LA-48</code>): (A) <code>16</code>-game (<code>113</code>-level) official black-box <code>ARC-AGI-3</code> with <code>Iterated Width IW(1)</code> + causal <code>ACTION6</code> click pruning (<code>6/113</code> levels, unblocking <code>lp85</code>, <code>17.23×</code> cold &amp; <code>265.96×</code> Wave-2 <code>RHAE</code> lift); (B) <code>NVlabs/verilog-eval</code> Hard-12 spec-to-RTL (<code>12/12</code> verified, <code>3,915</code> <code>LUT6</code>s, <code>0.00%</code> broken) and <code>ScalingIntelligence/KernelBench</code> Level-2 Apple Metal GPU fusion (<code>12/12</code> verified, <code>1.230×</code> speedup, <code>0.00%</code> broken/regressive); (C) <code>24</code>-theorem <code>PutnamBench / FormalConjectures</code> pure <code>Lean 4.36.0</code> proof synthesis (<code>24/24</code> verified, <code>0.00%</code> unsound, <code>13.93 µs</code> Wave-2 <code>.lut6</code> tactic lookup); and (D) <code>H = 256</code>-step (<code>4,096</code>-transition) coupled operational + <code>openie-cad</code> PCB/thermal + <code>MathGround</code> <code>Torricelli CBF</code> horizon survival (<code>100.0%</code> survival, <code>99.22%</code> <code>System-0</code> <code>LUT6</code> share, <code>1,332.6×</code> faster than uncompiled <code>Z3</code>) plus <code>Jetson AGX Thor</code> DC shunt <code>Window 16</code> (<code>201.22 nJ/op</code> <code>measured_j</code>, <code>13.18×</code> &lt; <code>INT8</code> MLP).</figcaption>
@@ -680,8 +736,8 @@
           <figcaption><strong>Figure 5.</strong> The nine-rung capability ratchet and Proposition 1's Compilation Threshold (<code>ΔT &gt; ΔT*</code>), separating <code>reported_j</code> and <code>est_j</code> across twelve orders of magnitude (<code>board_metered = false</code>).</figcaption>
         </figure>
         <figure class="fig">
-          <img src="/figures/lut-adapt/six-kernel-trust-and-stack.svg" alt="Six-Kernel Formal Proof Assurance (82 Theorems + Aeneas) and Three-Layer Compiled Stack">
-          <figcaption><strong>Figure 6.</strong> Six-kernel paranoid proof audit across all <code>82</code> theorems (<code>1,446</code> fleet, <code>Claims LA-19, LA-33, LA-38, LA-41 &amp; LA-44..48</code>: <code>con-leche</code>, <code>con-ron</code>, <code>lean4lean</code>, <code>nanoda</code>, <code>leanchecker</code>, <code>Lean 4.36.0</code> + Inria <code>Charon</code>+<code>Aeneas</code> Rust-to-Lean) and the three-layer compiled stack.</figcaption>
+          <img src="/figures/lut-adapt/six-kernel-trust-and-stack.svg" alt="Six-Kernel Formal Proof Assurance (90 Theorems + Aeneas) and Three-Layer Compiled Stack">
+          <figcaption><strong>Figure 6.</strong> Six-kernel paranoid proof audit across all <code>90</code> theorems (<code>1,454</code> fleet, <code>Claims LA-19, LA-33, LA-38, LA-41 &amp; LA-44..52</code>: <code>con-leche</code>, <code>con-ron</code>, <code>lean4lean</code>, <code>nanoda</code>, <code>leanchecker</code>, <code>Lean 4.36.0</code> + Inria <code>Charon</code>+<code>Aeneas</code> Rust-to-Lean) and the three-layer compiled stack.</figcaption>
         </figure>
       </section>
     </div>
@@ -901,12 +957,12 @@
     // Widget 5: Six-Kernel Paranoid Proof Audit Explorer
     (function(){
       var sk = {
-        conleche: { decls: '58,864 declarations (--verified)', vec: 'CVE-2026-72844', basis: 'Proved consistent in ZFC set theory (Breitner)' },
-        conron:   { decls: '58,864 declarations (--verified)', vec: 'CVE-2026-72711 & GMP', basis: 'Aeneas-verified Rust refinement of con-leche' },
-        lean4lean:{ decls: '58,866 declarations checked', vec: 'C++ .proj divergence', basis: 'Independent Lean-in-Lean CIC typechecker' },
-        nanoda:   { decls: '58,866 decls (sorryAx blocked)', vec: '.olean tampering', basis: 'Zero-Lean-runtime standalone Rust verifier' },
-        paranoid: { decls: '58,866 fresh-env decls', vec: 'skipKernelTC / meta', basis: 'Fresh-environment C++ replay (0 tactic trust)' },
-        default:  { decls: '82 LutAdapt thms + 6 Aeneas fns', vec: 'Lean.ofReduceBool', basis: 'Post-CVE Lean 4.36.0 + Inria Aeneas LLBC→Lean' }
+        conleche: { decls: '58,905 declarations (--verified)', vec: 'CVE-2026-72844', basis: 'Proved consistent in ZFC set theory (Breitner)' },
+        conron:   { decls: '58,905 declarations (--verified)', vec: 'CVE-2026-72711 & GMP', basis: 'Aeneas-verified Rust refinement of con-leche' },
+        lean4lean:{ decls: '58,907 declarations checked', vec: 'C++ .proj divergence', basis: 'Independent Lean-in-Lean CIC typechecker' },
+        nanoda:   { decls: '58,907 decls (sorryAx blocked)', vec: '.olean tampering', basis: 'Zero-Lean-runtime standalone Rust verifier' },
+        paranoid: { decls: '58,907 fresh-env decls', vec: 'skipKernelTC / meta', basis: 'Fresh-environment C++ replay (0 tactic trust)' },
+        default:  { decls: '90 LutAdapt thms + 6 Aeneas fns', vec: 'Lean.ofReduceBool', basis: 'Post-CVE Lean 4.36.0 + Inria Aeneas LLBC→Lean' }
       };
       var sel = document.getElementById('sk-select');
       function updSk() {
@@ -977,12 +1033,13 @@
         .then(function(res){
           exportsObj = res.instance.exports;
           window.__lut6WasmExports = exportsObj;
-          chip.textContent = 'Live WASM VM Active (14,208 B · 12 Exports · Signed Provenance · Self-Checked)';
+          chip.textContent = 'Live WASM VM Active (16,179 B · 13 Exports · Signed Provenance · Self-Checked)';
           updateUI();
           if (window.__updateHleWasm) window.__updateHleWasm();
           if (window.__updateBonsaiWasm) window.__updateBonsaiWasm();
           if (window.__updateArc3Wasm) window.__updateArc3Wasm();
           if (window.__updateApexWasm) window.__updateApexWasm();
+          if (window.__updateWaiosWasm) window.__updateWaiosWasm();
         })
         .catch(function(){
           chip.textContent = 'Offline Mode (Self-checked V8 receipt)';
@@ -991,6 +1048,7 @@
           if (window.__updateBonsaiWasm) window.__updateBonsaiWasm();
           if (window.__updateArc3Wasm) window.__updateArc3Wasm();
           if (window.__updateApexWasm) window.__updateApexWasm();
+          if (window.__updateWaiosWasm) window.__updateWaiosWasm();
         });
     })();
 
@@ -1175,6 +1233,51 @@
         wSel.addEventListener('change', updApex);
         pSel.addEventListener('change', updApex);
         updApex();
+      }
+    })();
+
+    // Widget 12: Compiled Agency (IW(2) ARC-AGI-3, 7-Fabric waiOS + HeteroMosaic, JouleBit-LUT6, & Deterministic Null)
+    (function(){
+      var waiData = {
+        waios:    { m1: '7 / 7 Fabrics Identical', s1: 'Cortex-M55, Thor, Zen 5, M3U, Metal, WASM32, openXC7 XC7A200T', m2: '80.44× < Monolithic GPU', s2: '4.9963 mJ HeteroMosaic vs 401.90 mJ GPU & 28.25 mJ CPU (5.65×)', m3: '16.14 µJ Thor (Window 17b)', s3: '2.906 µs · 142.55 MHz openXC7 .bit (427 LUTs, 0 DSP48E1)' },
+        joulebit: { m1: '0.1056–0.4498 bpw (0 QAT)', s1: 'FWHT-1024 + 6-col LUT6 slabs · 100.00% target-verified parity', m2: '3.104×–3.414× Lower JpCT', s2: '0.8641–0.9504 J/tok vs 2.9500 J unassisted & 1.6646 J LittleBit-2', m3: '2,000.25 nJ Thor (30.92×!)', s3: 'vs 61,839.70 nJ LittleBit-2 (Window 18) · 93.52× Cortex-M55 DWT' },
+        arc3iw2:  { m1: '7/113 W1 → 8/113 W2 Solved', s1: 'Unlocks click-only vc33 (2/7) & tu93 (3/9) · r11l breaker re-solved', m2: '1.5045 Mean RHAE (320×)', s2: 'Peak 10.7143 RHAE (vc33) · Cold IW(2) = 0.2642 (3.26× > IW(1))', m3: '176 / 512 Slots (4,096 B)', s3: 'Per-level causal HUD masks in slots 510..511 · 0 .py peeking' },
+        dnull:    { m1: '100.0% Structured & NL', s1: '256 SHA-256-pinned tasks (manifest 5f0f1c2d...) across D1–D8', m2: '7.38 × 10⁶× W2 Energy Cut', s2: '0.0004 mJ/task .lut6 vs 2,950 mJ recurring Bonsai-2-27B', m3: '90 6-Kernel Thms · 1,454 Fleet', s3: 'DeterministicNullWaios.lean (58,905 con-leche/con-ron decls)' }
+      };
+      var sSel = document.getElementById('wai-shot'), pSel = document.getElementById('wai-wasm-probe');
+      if (sSel && pSel) {
+        function updWaios() {
+          var d = waiData[sSel.value];
+          document.getElementById('wai-m1').textContent = d.m1;
+          document.getElementById('wai-s1').textContent = d.s1;
+          document.getElementById('wai-m2').textContent = d.m2;
+          document.getElementById('wai-s2').textContent = d.s2;
+          document.getElementById('wai-m3').textContent = d.m3;
+          document.getElementById('wai-s3').textContent = d.s3;
+          var fRow = Number(pSel.value) >>> 0;
+          var ex = window.__lut6WasmExports;
+          var vEl = document.getElementById('wai-wasm-v'), sEl = document.getElementById('wai-wasm-s');
+          if (ex && ex.wasm_verify_waios_antisym40_digest32) {
+            var r = ex.wasm_verify_waios_antisym40_digest32(fRow) >>> 0;
+            var hex = '0x' + r.toString(16).padStart(8, '0');
+            if (r === 0xa541323b) {
+              vEl.textContent = hex + ' · SEALED';
+              vEl.style.color = 'var(--color-brand-cyan)';
+              sEl.textContent = 'BLAKE3("waios.tmac.v1") match (16,179 B · 13 Exports)';
+            } else {
+              vEl.textContent = hex + ' · HALT!';
+              vEl.style.color = 'var(--color-brand-amber)';
+              sEl.textContent = 'Row-' + (fRow - 1) + ' fault caught live in WASM32';
+            }
+          } else {
+            vEl.textContent = fRow === 0 ? '0xa541323b · SEALED' : (fRow === 78 ? '0x4ac7c4fb · HALT!' : 'FAULT HALT!');
+            sEl.textContent = 'Self-checked V8 receipt (16,179 B WASM)';
+          }
+        }
+        window.__updateWaiosWasm = updWaios;
+        sSel.addEventListener('change', updWaios);
+        pSel.addEventListener('change', updWaios);
+        updWaios();
       }
     })();
 

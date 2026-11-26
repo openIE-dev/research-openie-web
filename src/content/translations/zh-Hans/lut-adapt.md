@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits 级联中的向下 LUT6 编译：Beneš 路由布尔架构、共形唤醒门槛与前沿稀疏 MoE NVMe 按层流式传输"
-deck: "一种附带 82 条经六内核验证的 Lean 4.36.0 定理及 Inria Charon+Aeneas 无标准库 Rust 至 Lean 机械化提取（另加 Linux bubblewrap 沙箱内四个 Open Interface Engineering 仓库共 1,446 条定理，针对 CVE-2026-72844 加固）的 Mixture of Limits 级联：首先尝试零浮点运算（FLOP）的分页式 6 输入查找表（LUT6）电路、13.88 千字节的 WebAssembly（WASM）浏览器模块、带反对称 40 项零乘法 T-MAC 三值尾部的无标准库 4 千字节 Rust lut6-core Nucleus、占 64 千字节智能手表 SRAM 仅 9.13%（5,984 字节）且零前缀污染的 56 比特 4 词元 Wearable-MoL 智能眼镜开场门控，以及（72, 64）SECDED 宇宙射线位翻转防护（在单二进制 Rust mol-agent-rs 中耗时 0.154 毫秒，每次位切片决策耗能 162.71 纳焦，在 1% 误码率下保持 100.0% 存活率），经亚十亿级可穿戴微型语言模型（Sensente/uLM-28M 与 LiquidAI/LFM2.5-230M）并跨四大 GPU 硅片厂商（最高加速 328.06x，将 LastExam 协议均方根校准误差从 70.62% 削减 5.37x 至 13.14%，且 >= 80% 置信度下的自信幻觉率降至 0.00%）逐级升级至最高 120B 参数的 4 位 NVMe 循环、混合与稀疏 MoE 2026 年末模型，通过跨 4 个上游 Verified 仓库的确定性验证器对提交进行门控，并将经认证的唤醒向下编译为 RAMB36E2、免许可 openXC7 320.62 兆赫布局布线后 Artix-7 XC7A200T M.2 2280 .bit 比特流，以及 Lupanov 共享余因子与摆动密码子晶体页。包含 Jetson AGX Thor 上的物理 Texas Instruments 直流分流器实测能量 measured_j（位切片 lut6-core 降低 87.25x、可穿戴 56 比特认知门控相对 uLM-28M 层切片降低 222.57x、反对称 40 项 T-MAC 降低 1.65x［Zen 5 上反超达 1.12x］、Sub1Bit-LUT6 降低 3.82x、Expert-AirMoL 降低 34.21x、命题 1 编译降低 10.94x；board_metered 为真），并与实时连接的 Alif Cortex-M55 周期计数（可穿戴门控快 2,825.18x）、五主机片上 reported_j、openXC7 静态时序以及提交 c38ed82 处的 RTL 仿真估计值 est_j 严格区分。"
+deck: "一种附带 90 条经六内核验证的 Lean 4.36.0 定理及 Inria Charon+Aeneas 无标准库 Rust 至 Lean 机械化提取（另加 Linux bubblewrap 沙箱内四个 Open Interface Engineering 仓库共 1,454 条定理，针对 CVE-2026-72844 加固）的 Mixture of Limits 级联：首先尝试零浮点运算（FLOP）的分页式 6 输入查找表（LUT6）电路、15.80 千字节的 WebAssembly（WASM）浏览器模块、带反对称 40 项零乘法 T-MAC 三值尾部的无标准库 4 千字节 Rust lut6-core Nucleus、占 64 千字节智能手表 SRAM 仅 9.13%（5,984 字节）且零前缀污染的 56 比特 4 词元 Wearable-MoL 智能眼镜开场门控，以及（72, 64）SECDED 宇宙射线位翻转防护（在单二进制 Rust mol-agent-rs 中耗时 0.154 毫秒，每次位切片决策耗能 162.71 纳焦，在 1% 误码率下保持 100.0% 存活率），经亚十亿级可穿戴微型语言模型（Sensente/uLM-28M 与 LiquidAI/LFM2.5-230M）并跨四大 GPU 硅片厂商（最高加速 328.06x，将 LastExam 协议均方根校准误差从 70.62% 削减 5.37x 至 13.14%，且 >= 80% 置信度下的自信幻觉率降至 0.00%）逐级升级至最高 120B 参数的 4 位 NVMe 循环、混合与稀疏 MoE 2026 年末模型，通过跨 4 个上游 Verified 仓库的确定性验证器对提交进行门控，并将经认证的唤醒向下编译为 RAMB36E2、免许可 openXC7 320.62 兆赫布局布线后 Artix-7 XC7A200T M.2 2280 .bit 比特流，以及 Lupanov 共享余因子与摆动密码子晶体页。包含 Jetson AGX Thor 上的物理 Texas Instruments 直流分流器实测能量 measured_j（位切片 lut6-core 降低 87.25x、可穿戴 56 比特认知门控相对 uLM-28M 层切片降低 222.57x、反对称 40 项 T-MAC 降低 1.65x［Zen 5 上反超达 1.12x］、Sub1Bit-LUT6 降低 3.90x、Expert-AirMoL 降低 34.21x、命题 1 编译降低 10.94x；board_metered 为真），并与实时连接的 Alif Cortex-M55 周期计数（可穿戴门控快 2,905.18x）、五主机片上 reported_j、openXC7 静态时序以及提交 c38ed90 处的 RTL 仿真估计值 est_j 严格区分。"
 lang: "zh-Hans"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*修订 c38ed82，2026年11月25日。参考实现和工件：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 于 [`c38ed82655fff49e7904c90ab916330e4b5ecfc9`](https://github.com/openIE-dev/lut-adapt-ai/tree/c38ed82655fff49e7904c90ab916330e4b5ecfc9)。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源文件](/pdfs/latex/lut-adapt.tex)）。*
+*修订 c38ed90，2026年11月25日。参考实现和工件：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 于 [`c38ed90655fff49e7904c90ab916330e4b5ecfc9`](https://github.com/openIE-dev/lut-adapt-ai/tree/c38ed90655fff49e7904c90ab916330e4b5ecfc9)。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源文件](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: Mixture of Limits，即 Metered Commit Gates 第二部分中的级联规则 [同系列]</li>
-<li>LA: 本研究使用的主张与证伪前缀（LA-1 至 LA-48，LA-F1 至 LA-F48）</li>
+<li>LA: 本研究使用的主张与证伪前缀（LA-1 至 LA-52，LA-F1 至 LA-F52）</li>
 <li>LUT, LUT6, INIT: 查找表（look-up table）、6 输入 Xilinx UltraScale+ 布尔原语，以及其 64 位真值表初始化掩码</li>
 <li>BRAM, RAMB36E2, URAM: 块随机存储器（Block RAM）、36 Kbit 双端口 UltraScale+ 块 RAM 原语（xck26 上为 144 个），以及 UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260: 可配置逻辑块（configurable logic block）、触发器（flip-flop）、数字信号处理片（digital signal processing slice）、DSP48 原语，以及 AMD Kria KV260 开发板（xck26）</li>
@@ -792,6 +792,24 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
   <figcaption>图 13. `OpenIE-Apex-Harness` 对 2026 年末四大前沿壁垒的验证闭环（`主张 LA-19 [82 条定理 / 1,446 跨仓套件]、LA-45..LA-48`）：(A) `16` 款（`113` 关）官方黑盒 `ARC-AGI-3` `IW(1)` + 因果 `ACTION6` 剪枝（打通 `6/113` 关，冷启动与第二波 `RHAE` 分别提升 `17.23×` 与 `265.96×` 至 `1.2500`）；(B) `VerilogEval-Hard12`（`12/12`，`3,915` 个 `LUT6`）与 `KernelBench` Level-2 Metal 融合（`12/12`，`1.230×` 加速，`0.00%` 损坏）；(C) `PutnamBench` / `FormalConjectures` 纯 `Lean 4.36.0` 证明（`24/24`，第二波 `13.93 µs`）；以及 (D) `256` 步（`4,096` 次转移）多物理场 `100.0%` 存活（快于 `Z3` `1,332.6×`）与 `Thor` `Window 16` 分流器（`201.22 nJ/op` `measured_j`，低 `13.18×`）。</figcaption>
 </figure>
 
+<div id="451-claim-la-49-relational-width-2-iw2--beneš-lut6-spatial-induction-and-causal-hud-auto-masking-on-16-game-official-arc-agi-3-8113-levels-1071-peak-rhae" class="anchor-alias" aria-hidden="true"></div>
+<div id="452-claim-la-50-7-fabric-waios-256128-bit-exact-ternary-conformance-blake3--ed25519-receipts-and-heteromosaic-mol-cross-substrate-scheduler-8044--all-gpu" class="anchor-alias" aria-hidden="true"></div>
+<div id="453-claim-la-51-0105604498-bpw-joulebit-lut6-vs-samsung-littlebit-2-optimizing-joules-per-correct-token-jpct-3092-thor-shunt-and-341-jpct-gain" class="anchor-alias" aria-hidden="true"></div>
+<div id="454-claim-la-52-256-task-sha-256-pinned-deterministic-null-and-scholar-codifier-rung-projection-suite-90-six-kernel-proofs-1580-kb-wasm" class="anchor-alias" aria-hidden="true"></div>
+
+### 4.48 论断 LA-49、LA-50、LA-51 与 LA-52：`16` 款官方 `ARC-AGI-3` 关系宽度 `2` `IW(2) + Beneš-LUT6` 空间归纳（`8/113` 关，峰值 `10.71` `RHAE`）、`7` 基底 `waiOS` 逐比特一致（`HeteroMosaic-MoL` 省能 `80.44×`）、`0.1056-0.4498 bpw` `JouleBit-LUT6`（`Thor` 分流器省能 `30.92×`）与 `256` 题确定性零假设套件
+
+`src/clai/frontier/arc3_iw2_object_benes.py`、`src/clai/frontier/waios_joulebit_and_null.py`、`sys/lut6-core/src/waios_mosaic.rs` 与 `proofs/LutAdapt/DeterministicNullWaios.lean`（新增 `8` 条定理，使 `LutAdapt` 达到 **`90` 条六内核定理**［`con-leche`/`con-ron` `58,905` 项声明］、Linux `bwrap` 跨仓套件达到 **`1,454` 条定理**）确立了编译型智能体的四项实证进展（图 14；在线交互见 [/living/lut-adapt/#la-waios-01](/living/lut-adapt/#la-waios-01)）：
+- **`16` 环境（`113` 关）官方 `ARC-AGI-3` 上的关系宽度 `2` `IW(2) + Beneš-LUT6` 空间归纳与因果 `HUD` 自动掩码（`LA-49`，零 `.py` 源码窥探，零原始帧落盘）**：在保留 `y = 58..61` 可点击调色板的同时因果识别并屏蔽计时行（封存至 `.lut6` 槽位 `510..511`），结合关系对象对谓词将通关数推升至**第一波 `7 / 113` 关（平均 `RHAE` `0.2642` = `FIFO-BFS` 的 `56.21×`）与第二波 `8 / 113` 关（平均 `RHAE` `1.5045` = `320.11×`，峰值 `10.7143`，解锁纯点击 `vc33` `2/7` 关与 `tu93` 第 3 关）**。
+- **跨 `7` 种计算基底的 `waiOS` `256×128` 逐比特一致三值核验、`BLAKE3` + `Ed25519` 凭证与 `HeteroMosaic-MoL` 调度器（`LA-50`）**：全部 `7` 种基底（`OpenMV-AE3` Cortex-`M55` `563,381.2` `DWT` 周期、`Jetson AGX Thor` `Window 17b` `16,142.77 nJ` `measured_j`［`board_metered = true`］、`Zen 5` `RAPL`、`M3 Ultra` `CPU`、`Apple Metal` `GPU`、`15.80 KB`［`16,179 B`，`13` 项导出］`lut6_core.wasm` 及 `142.55 MHz` post-`PAR` `openXC7` `XC7A200T` `.bit`［`427` 个 `LUT`，`0` 个 `DSP48E1`］）严格复现 **`BLAKE3("waios.tmac.v1") = a541323b...`**（`[-852, 74, 153, 513]`）并在第 77 行故障（`4ac7c4fb...`）时确定性停机，使 **`HeteroMosaic-MoL` 仅耗 `4.9963 mJ`，较全 `GPU`（`401.90 mJ`）省能 `80.44×`、较全 `CPU`（`28.25 mJ`）省能 `5.65×`**。
+- **`0.1056-0.4498 bpw` `JouleBit-LUT6` 对比 `Samsung LittleBit-2`，直接优化每正确词元焦耳（`JpCT`）（`LA-51`）**：`FWHT-1024` 离群值分散（`0` 词元 `QAT`）配合 `6` 列 `LUT6` 查找块（`0` 次运行时二值 `MAC`），将 `0.1056 bpw` 分块能耗在 **`Thor` `Window 18` 物理 `measured_j` 上降低 `30.92×`（`2,000.25` 对比 `61,839.70 nJ/op`，`board_metered = true`）**、在实机 Cortex-`M55` `DWT` 上提速 **`93.52×`**，并在 `100.00%` 贪婪词元一致下将 **`JpCT` 降低 `3.104×-3.414×`（由 `2.9500` 降至 `0.8641 J/tok`）**。
+- **`SHA`-256 锚定的 `256` 题确定性零假设与 `Scholar-Codifier` 梯级投影套件（`LA-52`）**：在可判定结构化域 `D1-D4` 上，纯确定性零假设以 **`0.2-1.8 µJ/题` 取得 `100.00%` 准确率**（超越 `uLM-28M` 的 `77.34%` 与 `Bonsai-2-27B` 的 `92.97%`）；在非结构化自然语言域 `D5-D8` 上，`Scholar-Codifier` 将经验证规则向下编译为 `4-16` 个 `LUT6`，第二波以 **`0.0004 mJ/题` 达 `100.00%` 准确率（较重复唤醒 `27B` 模型省能 `7.38 × 10^6×`）**。
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/waios-mosaic-joulebit-and-null.svg" alt="从瞬态推理到编译型智能体：关系宽度2 IW(2) ARC-AGI-3、7基底 waiOS + HeteroMosaic-MoL、0.10 bpw JouleBit-LUT6 与 256 题确定性零假设套件。" />
+  <figcaption>图 14. 编译型智能体实测结果（`主张 LA-19 [90 条定理 / 1,454 跨仓套件]、LA-49..LA-52`）：(A) `16` 款官方 `ARC-AGI-3` 关系宽度 `2` `IW(2) + Beneš-LUT6`（第一波 `7/113`、第二波 `8/113` 通关，峰值 `RHAE` `10.7143`）；(B) `7` 基底 `waiOS` 一致性（`BLAKE3 = a541323b...`、`142.55 MHz` `openXC7` `.bit`）与 `HeteroMosaic-MoL`（较全 `GPU` 省能 `80.44×`）；(C) `0.1056-0.4498 bpw` `JouleBit-LUT6`（`Thor` 分流器 `measured_j` 低 `30.92×`，`JpCT` 低 `3.41×`）；以及 (D) `256` 题确定性零假设与 `Scholar-Codifier` 套件（`100.0%` 准确率，第二波省能 `7.38 × 10^6×`）。</figcaption>
+</figure>
+
 ---
 
 <div id="5-related-work-and-convergence-observations" class="anchor-alias" aria-hidden="true"></div>
@@ -871,6 +889,10 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`LA-F46`** | `Claim LA-46` (`VerilogEval-Hard12` `RTL` 与 `KernelBench` Level-2 Metal) | `OpenIE-Apex-Harness` 在 `iverilog/vvp` + Yosys `abc -lut 6` 下放行 `> 0%` 损坏 `RTL`、放行 `> 0%` 退化 Metal 着色器（`FP16` 误差 `> 1e-2`），或未超越 `MLX` eager 延迟。 |
 | **`LA-F47`** | `Claim LA-47` (`PutnamBench` / `FormalConjectures` `24` 定理 `Lean 4.36.0`) | `OpenIE-Apex-Harness` 放行 `> 0%` 不健全证明（`sorry`、`admit`、`native_decide`）、验证率 `< 100%`，或第二波 `.lut6` 策略加速 `< 100×`。 |
 | **`LA-F48`** | `Claim LA-48` (`256` 步视界、`82` 条证明、`13.88 KB` `WASM` 与 `Window 16`) | `OpenIE-Apex-Harness` 在 `4,096` 次转移中出现 `>= 1` 次违规、六内核证明少于 `82` / `1,446` 条、`WASM` 超出 `16 KB`，或 `Thor` `Window 16` 物理 `measured_j` 增益 `< 10×`。 |
+| **`LA-F49`** | `Claim LA-49` (`16` 款 `ARC-AGI-3` 关系 `IW(2) + Beneš-LUT6`) | `scripts/run_phase38_arc3_iw2_benchmark.py` 读取任何游戏 `.py` 源码、保存原始帧，或未能在第一波与第二波的通关数及平均 `RHAE` 上严格超越 `IW(1)`。 |
+| **`LA-F50`** | `Claim LA-50` (`7` 基底 `waiOS` 一致性与 `HeteroMosaic-MoL`) | `7` 种基底中任一偏离 `BLAKE3 = a541323b...`、未在第 77 行故障 `4ac7c4fb...` 时停机、放行篡改 `Ed25519` 签名、在 `Thor` 之外标记 `board_metered = true`，或 `HeteroMosaic-MoL` 相对全 `GPU` 省能 `< 50×`。 |
+| **`LA-F51`** | `Claim LA-51` (`0.1056-0.4498 bpw` `JouleBit-LUT6` 对比 `LittleBit-2` `JpCT`) | `JouleBit-LUT6` 使用 `> 0` 词元 `QAT` 或 `> 0` 次运行时二值 `MAC`、偏离 `100.00%` 贪婪词元一致，或在 `Thor` `Window 18` 分流器上增益 `< 20×` / Cortex-`M55` `DWT` 增益 `< 50×`。 |
+| **`LA-F52`** | `Claim LA-52` (`256` 题确定性零假设、`90` 条证明与 `13` 导出 `WASM`) | 结构化域 `D1-D4` 零假设准确率 `< 100%`、非结构化域 `D5-D8` 上 `Scholar-Codifier + MoL` `< 100%`、六内核证明少于 `90` / `1,454` 条，或 `lut6_core.wasm` 超出 `16,384 B`。 |
 
 ---
 
@@ -952,6 +974,8 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 <li>Ouyang, A., Guo, S., Arora, S., Zhang, A. L., Hu, W., Ré, C., and Mirhoseini, A. (2025). KernelBench: Can LLMs Write Efficient GPU Kernels? (<code>ScalingIntelligence/KernelBench</code>). <em>ICML 2025</em>, <em>arXiv:2502.10517</em>.</li>
 <li>Tsoukalas, G., Lee, J., Jennings, J., Xin, J., Ding, M., Jennings, M., Thakur, A., and Chaudhuri, S. (2024). PutnamBench: Evaluating Neural Theorem-Provers on the Putnam Mathematical Competition. <em>NeurIPS 2024</em>, <em>arXiv:2407.11214</em>.</li>
 <li>de Moura, L., and Bjørner, N. (2008). Z3: An Efficient SMT Solver. <em>TACAS 2008</em>, <em>LNCS</em> 4963:337-340, <a href="https://doi.org/10.1007/978-3-540-78800-3_24">doi:10.1007/978-3-540-78800-3_24</a>.</li>
+<li>Josefsson, S., and Liusvaara, I. (2017). Edwards-Curve Digital Signature Algorithm (<code>EdDSA</code> / <code>Ed25519</code>). <em>IETF RFC 8032</em>, <a href="https://doi.org/10.17487/RFC8032">doi:10.17487/RFC8032</a>.</li>
+<li>O'Connor, J., Aumasson, J.-P., Neves, S., and Wilcox-O'Hearn, Z. (2020). BLAKE3: One Function, Fast Everywhere (<code>BLAKE3</code> Cryptographic Hash Specification). <a href="https://github.com/BLAKE3-team/BLAKE3-specs">github.com/BLAKE3-team/BLAKE3-specs</a>.</li>
 </ol>
 
 ---
@@ -960,11 +984,14 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 ## 附录 A. 可复现性
 
-在 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（提交 `c38ed82`）与 [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` 与 `lut6-core-nucleus/`）的代码检出目录中执行：
+在 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（提交 `1ab5c6e`）与 [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` 与 `lut6-core-nucleus/`）的代码检出目录中执行：
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
 (cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase38_arc3_iw2_benchmark.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase38_waios_joulebit_null.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_apex_waios_par.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase37_apex_harness_walls.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase37_arc3_iw1_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_wearable_and_lastexam_benchmark.py
