@@ -13,15 +13,17 @@ board_metered: false
 
 *26 Nov 2026. Measured on real tree-sitter `node-types.json` (master/main, upstream repos).
 Every NAMED node type of each surveyed language maps to a real universal construct; no
-catch-all inflation. Emission matrix: 113 constructs × 47 languages = 100%.*
+catch-all inflation. Emission matrix: 113 constructs × 47 languages = 100%. Extended same day
+to the functional + non-Western frontier (48 languages); per-language information-theoretic
+profile + knowledge graph in rce-language-constellation.md.*
 
 ## BLUF
 
-RCE's universal grammar taxonomy now covers **100% of named node types** for 28 surveyed
+RCE's universal grammar taxonomy now covers **100% of named node types** for 48 surveyed
 languages, and the emission LUT matrix is 100% across all 47 emission targets. Coverage is
 measured, not asserted: `ingest::grammar_coverage` counts named node types with a construct
 mapping; `examples/grammar_coverage` prints per-language fractions; `--unmapped` lists the
-honest remainder (now empty for all 28).
+honest remainder (now empty for all 48).
 
 ## Measured per-language named-node coverage
 
@@ -55,6 +57,26 @@ honest remainder (now empty for all 28).
 | d | 284/284 | 1.0000 |
 | fortran | 240/240 | 1.0000 |
 | php | 157/157 | 1.0000 |
+| ada | 228/228 | 1.0000 |
+| sml | 134/134 | 1.0000 |
+| purescript | 128/128 | 1.0000 |
+| mojo | 141/141 | 1.0000 |
+| cangjie | 202/202 | 1.0000 |
+| wenyan | 64/64 | 1.0000 |
+| elm | 92/92 | 1.0000 |
+| racket | 32/32 | 1.0000 |
+| commonlisp | 50/50 | 1.0000 |
+| elisp | 20/20 | 1.0000 |
+| gleam | 97/97 | 1.0000 |
+| moonbit | 257/257 | 1.0000 |
+| rescript | 160/160 | 1.0000 |
+| reason | 226/226 | 1.0000 |
+| nix | 42/42 | 1.0000 |
+| fsharp | 201/201 | 1.0000 |
+| idris | 181/181 | 1.0000 |
+| agda | 72/72 | 1.0000 |
+| lean | 141/141 | 1.0000 |
+| fstar | 134/134 | 1.0000 |
 
 ## Method (honest, no inflation)
 
@@ -86,11 +108,21 @@ node-types fetched from upstream repos: `tree-sitter/tree-sitter-<lang>`,
 `elixir-lang/tree-sitter-elixir`, `WhatsApp/tree-sitter-erlang`, `sogaiu/tree-sitter-clojure`,
 `6cdh/tree-sitter-scheme`, `alaviss/tree-sitter-nim`, `crystal-lang-tools/tree-sitter-crystal`,
 `gdamore/tree-sitter-d`, `stadelmanma/tree-sitter-fortran`, `gbprod/tree-sitter-php`,
-and `tree-sitter-ocaml`'s `grammars/ocaml/src/node-types.json`.
+and `tree-sitter-ocaml`'s `grammars/ocaml/src/node-types.json`. The 20 functional + non-Western
+additions: `briot/tree-sitter-ada`, `MatthewFluet/tree-sitter-sml`, `postsolar/tree-sitter-purescript`,
+`oaustegard/tree-sitter-mojo`, `jstzwj/tree-sitter-cangjie`, `duskmoon314/tree-sitter-wenyan`,
+`elm-tooling/tree-sitter-elm`, `6cdh/tree-sitter-racket`, `theHamsta/tree-sitter-commonlisp`,
+`Wilfred/tree-sitter-elisp`, `gleam-lang/tree-sitter-gleam`, `moonbitlang/tree-sitter-moonbit`,
+`rescript-lang/tree-sitter-rescript`, `reasonml-editor/tree-sitter-reason`, `nix-community/tree-sitter-nix`,
+`ionide/tree-sitter-fsharp` (`fsharp/src/`), `kayhide/tree-sitter-idris`, `tree-sitter/tree-sitter-agda`,
+`Julian/tree-sitter-lean`, `FStarLang/tree-sitter-fstar`.
 
 ## Open (named)
 
-Only **ada** and **perl** have no public tree-sitter grammar found; they remain emission
-targets with LUT rows but unmeasured node-type coverage (authoring a grammar is the next step).
-Mesh (triangle-soup) contact is now built (`twin::Mesh`, boundary-only contact, iterative
-separation); concave polygons via ear-clipping. Production-scale FormJEPA remains last.
+**Ada** now has a public grammar (briot) and is measured at 1.0000. **Perl, Coq, Dhall, Unison**
+have public grammars whose `node-types.json` is build-generated (not committed) — generating them
+with the tree-sitter CLI is the next step. **Nadeshiko (JP), Ezhil (Tamil), Alusus (Arabic)** have
+no public grammar; authoring seed grammars is registered open work. The remaining ~530 curated
+programming languages are present as unmeasured nodes in the constellation (no invented numbers).
+Mesh (triangle-soup) contact is built (`twin::Mesh`); concave polygons via ear-clipping.
+Production-scale FormJEPA remains last.
