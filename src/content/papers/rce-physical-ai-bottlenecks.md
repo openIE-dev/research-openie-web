@@ -151,6 +151,8 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | Real OS-event-loop IO | program::tokio_io_run (tokio/mio kqueue/epoll, deterministic commit) | 2 |
 | Rotation + oriented contact manifolds | twin Ball.theta/omega + Obb/collide_obb (local-frame normal) | 2 |
 | Measured reuse-decay + tracing reuse | scale::reuse_curve (hit-rate up, cost/act down); TracingJit compile-once over 500 calls | 2 |
+| Convex-polygon contact (SAT) | twin::Poly/circle_poly/sat_overlap/resolve_poly | 3 |
+| World-model rollout + round-wise FedAvg | HierPredictor::rollout; scale::federated_hier (0.0170 == centralized) | 2 |
 
 The former "external decision" fronts are now OPEN-TRACKS in rce-gap-register.md: no-pay
 routes found by search (module-A self-assessment by freezing competence at admission; seL4 /
@@ -169,9 +171,10 @@ Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 374 (workspace) / 371 (monorepo), 0 failed. Mesh/arbitrary-polygon manifolds, RTOS port,
+Suites 379 (workspace) / 376 (monorepo), 0 failed. Concave/mesh manifolds, RTOS port,
 notified-body attestation, full per-language grammars (measured remainder above) and
 FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
+Capstone summary: rce-research-completion.md.
 
 ## New unknowns (registered in rce-gap-register.md)
 
