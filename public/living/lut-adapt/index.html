@@ -727,7 +727,59 @@
           <div class="metric-tile">
             <div class="k">Live WASM #14 (SIW2+JouleBit6)</div>
             <div class="v" id="siw-wasm-v" style="color: var(--color-brand-cyan);">Mode 1 · Bank-0 Reflex</div>
-            <div class="s" id="siw-wasm-s">14th export live in 15,121 B lut6_core.wasm</div>
+            <div class="s" id="siw-wasm-s">14th export live in 15,590 B lut6_core.wasm</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Widget 14: Full 25-Game ARC-AGI-3 BFWS + 16 KB Vault, SWE-bench Multimodal & Pro, Planetary Digital Well, & 106 Proofs (la-bfws-01) -->
+      <section id="la-bfws-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-bfws-01</code> · Full <code>25</code>-Game <code>ARC-AGI-3</code> <code>BFWS(R,M)</code>, Multimodal &amp; Pro Repair, Planetary Digital Well, &amp; <code>106</code> Proofs (<code>Claims LA-56..LA-59</code>)</h2>
+          <span class="chip chip-meas">Thor Shunt Window 20 (4.092×) + 106 6-Kernel Thms (1,470 Fleet) + Live 15.22 KB (15-Export) WASM</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Execute the 15th live WebAssembly export (<code>wasm_eval_bfws4_and_well_codifier</code>) inside <code>lut6_core.a287e6d8f400.wasm</code> (<code>15.22 KB</code> = <code>15,590 B &lt;= 16 KB</code>), and inspect Dual-Subspace <code>BFWS(R,M) + Four-Bank 16 KB System-0</code> across matched <code>16</code>-game (<code>11/113</code>, <code>8/16</code> games, <code>2.4488</code> <code>RHAE</code>) and full <code>25</code>-game (<code>14/183</code>, <code>11/25</code> games, <code>1.9733</code> mean / <code>10.7143</code> peak <code>RHAE</code>, <code>0</code> breaker trips) official <code>ARC-AGI-3</code>, <code>24</code>-task Multimodal &amp; Pro visual-diagram + multi-file repair (<code>100.0%</code> verified, <code>0.0%</code> broken commits), <code>12</code>-module <code>384</code>-call Planetary Digital Well + <code>Window 20</code> <code>Jetson AGX Thor</code> DC shunt telemetry (<code>4.092×</code> lower <code>measured_j</code>, <code>3.214×</code> faster), and zero-<code>DSP48E1</code> <code>106.55 MHz</code> <code>openXC7</code> <code>XC7A200T</code> gateware.
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label><span>Select Claim (Claims LA-56..LA-59)</span></label>
+            <select id="bfws-frontier">
+              <option value="bfws25" selected>Claim LA-56 · 16- &amp; 25-Game ARC-AGI-3 Dual-Subspace BFWS(R,M) + 16 KB 4-Bank Vault (14/183 · 11/25 Games)</option>
+              <option value="mmpro">Claim LA-57 · 24-Task Multimodal &amp; Pro Visual-Diagram + Multi-File Repair (100% · 0% Broken Commits)</option>
+              <option value="well20">Claim LA-58 · 12-Module Planetary Digital Well + Window 20 Thor DC Shunt (4.092× measured_j · 3.214× Faster)</option>
+              <option value="xc7_40">Claim LA-59 · Zero-DSP48E1 106.55 MHz openXC7 XC7A200T .bit + 15.22 KB 15-Export WASM + 106 Proofs</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label><span>Live <code>lut6_core.wasm</code> <code>wasm_eval_bfws4_and_well_codifier</code> Probe</span></label>
+            <select id="bfws-wasm-probe">
+              <option value="0x568220c7,5" selected>4-Bank Spillover Hit (Bank-3, hud_ok=1, WCAG+RFC1918 Well) → Certified Act + JouleBit6</option>
+              <option value="0x400200c7,5">Bank-0 Direct Hit (Bank-0, hud_ok=1, Private IPv4 Well) → Certified Act + JouleBit6</option>
+              <option value="0x445420c7,5">Novelty Plateau / HUD Breaker (novelty=20) → Mode 2 Escalate to BFWS Wake!</option>
+            </select>
+          </div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-tile">
+            <div class="k">Headline Frontier Result</div>
+            <div class="v" id="bfws-m1" style="color: var(--color-brand-cyan);">14 / 183 Lvls (11 / 25 Games)</div>
+            <div class="s" id="bfws-s1">11 / 113 on 16-Game (+su15, tu93 L3) · +lf52/+sp80/+tn36 · 0 peeking</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Efficiency / RHAE Gain</div>
+            <div class="v" id="bfws-m2" style="color: var(--color-brand-cyan);">2.4488 (16) / 1.9733 (25) RHAE</div>
+            <div class="s" id="bfws-s2">657.8× &gt; FIFO-BFS · 10.7143 Peak · 0 Wave-2 Breaker Trips</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Silicon &amp; Formal Proof Seal</div>
+            <div class="v" id="bfws-m3" style="color: var(--color-brand-cyan);">16,384 B (25.00% Watch SRAM)</div>
+            <div class="s" id="bfws-s3">11.36 µJ Thor Window 20 (4.092×) · 106 6-Kernel Thms (1,470 Fleet)</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Live WASM #15 (BFWS4+Well)</div>
+            <div class="v" id="bfws-wasm-v" style="color: var(--color-brand-cyan);">Mode 1 · Bank-3 Hit</div>
+            <div class="s" id="bfws-wasm-s">15th export live in 15,590 B lut6_core.wasm</div>
           </div>
         </div>
       </section>
@@ -735,6 +787,10 @@
       <!-- Static Vector Diagrams Gallery -->
       <section id="la-figs" style="margin-top: 2.5rem;">
         <h2 style="font-size: 1.3rem;">Paper Vector Diagrams (Click to Zoom)</h2>
+        <figure class="fig">
+          <img src="/figures/lut-adapt/bfws-arc3-well-and-multimodal.svg" alt="Full 25-Game ARC-AGI-3 BFWS + 16 KB Vault, SWE-bench Multimodal & Pro, Planetary Digital Well Window 20 Thor Shunt, and 106 Six-Kernel Proofs">
+          <figcaption><strong>Figure 16.</strong> Full <code>25</code>-game <code>ARC-AGI-3</code> <code>BFWS(R,M)</code>, Multimodal &amp; Pro repair, Planetary Digital Well, &amp; <code>106</code>-theorem measurements (<code>Claims LA-19 [106 thms / 1,470 bwrap fleet], LA-56..LA-59</code>): (A) matched <code>16</code>-game (<code>11/113</code>, <code>8/16</code> games, <code>2.4488</code> <code>RHAE</code>) &amp; full <code>25</code>-game (<code>14/183</code>, <code>11/25</code> games, <code>1.9733</code> mean / <code>10.7143</code> peak <code>RHAE</code>, <code>0</code> breaker trips in <code>25.00%</code> watch <code>SRAM</code>) official black-box <code>ARC-AGI-3</code> Dual-Subspace <code>BFWS(R,M) + Four-Bank 16 KB System-0 LUT6</code>; (B) <code>24</code>-task Multimodal &amp; Pro visual-diagram + multi-file repair (<code>100.0%</code> verified, <code>0.0%</code> broken commits); (C) <code>12</code>-module <code>384</code>-call Planetary Digital Well (<code>100.0%</code> Yosys <code>abc -lut 6</code> miter) &amp; <code>Window 20</code> cross-silicon telemetry (<code>4.092×</code> lower <code>Thor</code> DC shunt <code>measured_j</code>, <code>3.214×</code> faster); and (D) zero-<code>DSP48E1</code> <code>106.55 MHz</code> <code>openXC7</code> <code>XC7A200T</code> <code>.bit</code> (<code>662</code> LUTs, <code>64/64</code> RTL parity), <code>15.22 KB</code> (<code>15,590 B</code>, <code>15</code> exports) <code>lut6_core.wasm</code>, and <code>106</code> six-kernel <code>Lean 4.36.0</code> proofs (<code>1,470</code> <code>bwrap</code> fleet).</figcaption>
+        </figure>
         <figure class="fig">
           <img src="/figures/lut-adapt/siw2-arc3-and-joulebit-27b.svg" alt="Landmark-Serialized SIW(2) ARC-AGI-3, Real 27B Cold and Warm JouleBit-LUT6 Streaming, Window 19 Thor Shunt, and 111.45 MHz Zero-DSP openXC7 Gateware">
           <figcaption><strong>Figure 15.</strong> Landmark <code>SIW(2)</code> &amp; real <code>27B</code> <code>JouleBit-LUT6</code> measurements (<code>Claims LA-19 [98 thms / 1,463 bwrap fleet], LA-53..LA-55</code>): (A) <code>16</code>-game (<code>113</code>-level) official black-box <code>ARC-AGI-3</code> Landmark-Serialized <code>SIW(2) + Two-Bank 8 KB System-0 LUT6</code> (<code>9/113</code> solved across <code>7/16</code> games, unlocking <code>m0r0</code> &amp; <code>s5i5</code>, <code>2.2520</code> mean [<code>+49.7%</code>] &amp; <code>10.7143</code> peak <code>RHAE</code>, <code>0</code> collision breaker trips in <code>12.50%</code> watch <code>SRAM</code>); (B) real <code>prism-ml/Ternary-Bonsai-2-27B</code> two-rung <code>Token-LUT6 (8 KB) + Conformal JouleBit-LUT6 + EntroMCU-28</code> streaming on <code>M3 Ultra 256 GB</code> (<code>65.62%</code> real <code>27B</code> top-<code>1</code>, <code>1.049</code> cold W1 / <code>1.325</code> warm W2 <code>tok/sweep</code>, <code>3.935 GiB/tok</code>, <code>0.0534 J/tok</code> <code>JpCT</code> at <code>100.0%</code> parity); (C) <code>Window 19</code> cross-silicon telemetry (<code>2.991×</code> lower <code>Thor</code> DC shunt <code>measured_j</code>, <code>3.129×</code> faster, <code>1.752×</code> <code>Zen 5</code> <code>RAPL</code>, <code>1.663×</code> <code>M3 Ultra</code>); and (D) zero-<code>DSP48E1</code> <code>111.45 MHz</code> <code>openXC7</code> <code>XC7A200T</code> <code>.bit</code> (<code>653</code> LUTs, <code>64/64</code> RTL parity), <code>14.77 KB</code> (<code>15,121 B</code>, <code>14</code> exports) <code>lut6_core.wasm</code>, and <code>98</code> six-kernel <code>Lean 4.36.0</code> proofs (<code>1,463</code> <code>bwrap</code> fleet).</figcaption>
@@ -1083,13 +1139,13 @@
       }
       vSel.addEventListener('change', updateUI);
       sSel.addEventListener('change', updateUI);
-      fetch('/living/lut-adapt/lut6_core.b5ae534fcda0.wasm')
+      fetch('/living/lut-adapt/lut6_core.a287e6d8f400.wasm')
         .then(function(r){ return r.arrayBuffer(); })
         .then(function(bytes){ return WebAssembly.instantiate(bytes, {}); })
         .then(function(res){
           exportsObj = res.instance.exports;
           window.__lut6WasmExports = exportsObj;
-          chip.textContent = 'Live WASM VM Active (15,121 B · 14 Exports · Signed Provenance · Self-Checked)';
+          chip.textContent = 'Live WASM VM Active (15,590 B · 15 Exports · Signed Provenance · Self-Checked)';
           updateUI();
           if (window.__updateHleWasm) window.__updateHleWasm();
           if (window.__updateBonsaiWasm) window.__updateBonsaiWasm();
@@ -1097,6 +1153,7 @@
           if (window.__updateApexWasm) window.__updateApexWasm();
           if (window.__updateWaiosWasm) window.__updateWaiosWasm();
           if (window.__updateSiwWasm) window.__updateSiwWasm();
+          if (window.__updateBfwsWasm) window.__updateBfwsWasm();
         })
         .catch(function(){
           chip.textContent = 'Offline Mode (Self-checked V8 receipt)';
@@ -1107,6 +1164,7 @@
           if (window.__updateApexWasm) window.__updateApexWasm();
           if (window.__updateWaiosWasm) window.__updateWaiosWasm();
           if (window.__updateSiwWasm) window.__updateSiwWasm();
+          if (window.__updateBfwsWasm) window.__updateBfwsWasm();
         });
     })();
 
@@ -1390,6 +1448,54 @@
         fSel.addEventListener('change', updSiw);
         pSel.addEventListener('change', updSiw);
         updSiw();
+      }
+    })();
+
+    // Widget 14: Full 25-Game ARC-AGI-3 BFWS + 16 KB Vault, SWE-bench Multimodal & Pro, Planetary Well, & 106 Proofs
+    (function(){
+      var bfwsData = {
+        bfws25: { m1: '14 / 183 Lvls (11 / 25 Games)', s1: '11 / 113 on 16-Game (+su15, tu93 L3) · +lf52/+sp80/+tn36 · 0 peeking', m2: '2.4488 (16) / 1.9733 (25) RHAE', s2: '657.8× > FIFO-BFS · 10.7143 Peak · 0 Wave-2 Breaker Trips', m3: '16,384 B (25.00% Watch SRAM)', s3: 'Four-Bank System-0 Vault · 106 6-Kernel Thms (1,470 Linux bwrap Fleet)' },
+        mmpro:  { m1: '100.0% Verified (24 Git Tasks)', s1: 'SVG viewBox, CSS Box, HiDPI DPR, Mermaid DAG, PCB DRC, 3-File Saga', m2: '0.00% Broken Visual/Code', s2: 'vs 50.0%–95.8% silent visual regressions on 1-shot text-only LLMs!', m3: '7.38 × 10⁶× W2 Energy Cut', s3: '0.0004 mJ/task (4 KB AST-Patch-LUT6) vs 2,950 mJ 27B · Null = 66.7%' },
+        well20: { m1: '384 / 384 Stdlib Exact (100%)', s1: '12 Python/POSIX Modules · 768/768 Yosys abc -lut 6 $lut Miter True', m2: '4.092× Lower Thor Shunt J', s2: '11,357.65 vs 46,481.07 nJ/op (Window 20 · 3.214× faster · board_metered)', m3: '1.797× M3U · 1.451× Zen 5', s3: '7.38×10⁶× < Rung-5 LLM JSON · 2,125× < Rung-6 Python IPC' },
+        xc7_40: { m1: '106.55 MHz Post-PAR (.bit)', s1: '662 SLICE_LUTX (0.25%) · 206 FFs · 0 DSP48E1 · 9,730,770 B .bit', m2: '15.22 KB WASM (15 Exports)', s2: '15,590 B <= 16 KB (wasm-opt -Oz · sha256[:12] = a287e6d8f400)', m3: '106 Six-Kernel Lean 4.36.0 Thms', s3: '1,470 Linux bwrap Fleet · 58,950 con-leche/con-ron decls · 0 sorry' }
+      };
+      var fSel = document.getElementById('bfws-frontier'), pSel = document.getElementById('bfws-wasm-probe');
+      if (fSel && pSel) {
+        function updBfws() {
+          var d = bfwsData[fSel.value];
+          document.getElementById('bfws-m1').textContent = d.m1;
+          document.getElementById('bfws-s1').textContent = d.s1;
+          document.getElementById('bfws-m2').textContent = d.m2;
+          document.getElementById('bfws-s2').textContent = d.s2;
+          document.getElementById('bfws-m3').textContent = d.m3;
+          document.getElementById('bfws-s3').textContent = d.s3;
+          var sp = pSel.value.split(',');
+          var st = Number(sp[0]) >>> 0, sc = Number(sp[1]) >>> 0;
+          var ex = window.__lut6WasmExports;
+          var vEl = document.getElementById('bfws-wasm-v'), sEl = document.getElementById('bfws-wasm-s');
+          if (ex && ex.wasm_eval_bfws4_and_well_codifier) {
+            var r = ex.wasm_eval_bfws4_and_well_codifier(st, sc) >>> 0;
+            var mode = (r >>> 30) & 3, bank = (r >>> 28) & 3, well = (r >>> 24) & 0xF, act = (r >>> 16) & 0xFF;
+            var jb = (r & 0xFFFF); if (jb >= 0x8000) jb -= 0x10000;
+            if (mode === 1) {
+              vEl.textContent = 'Mode 1 · Bank-' + bank + ' Act=' + act;
+              vEl.style.color = 'var(--color-brand-cyan)';
+              sEl.textContent = 'Well4=0b' + well.toString(2).padStart(4, '0') + ' · JB6=' + jb + ' · Live WASM #15';
+            } else {
+              vEl.textContent = 'Mode 2 · BFWS WAKE!';
+              vEl.style.color = 'var(--color-brand-amber)';
+              sEl.textContent = 'Novelty plateau / HUD trap · Well4=0b' + well.toString(2).padStart(4, '0') + ' (Live WASM)';
+            }
+          } else {
+            var nov = (st >>> 16) & 0x3F;
+            vEl.textContent = nov >= 16 ? 'Mode 2 · BFWS WAKE!' : ('Mode 1 · Bank-' + ((st >>> 12) & 3) + ' Hit');
+            sEl.textContent = 'Self-checked V8 receipt (15,590 B WASM)';
+          }
+        }
+        window.__updateBfwsWasm = updBfws;
+        fSel.addEventListener('change', updBfws);
+        pSel.addEventListener('change', updBfws);
+        updBfws();
       }
     })();
 

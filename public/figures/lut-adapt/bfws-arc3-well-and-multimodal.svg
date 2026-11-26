@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="900" viewBox="0 0 1240 900" role="img" aria-labelledby="p40-t p40-d">
+  <title id="p40-t">Dual-Subspace BFWS on Full 25-Game ARC-AGI-3, SWE-bench Multimodal+Pro, Planetary Digital Well, and 106 Six-Kernel Proofs</title>
+  <desc id="p40-d">Four-panel summary of Claims LA-56 through LA-59 and 106 six-kernel Lean 4.36.0 theorems (1470 Linux bwrap fleet): (A) Official 16-game and full 25-game (183-level) black-box ARC-AGI-3 Dual-Subspace BFWS + Four-Bank 16 KB System-0 LUT6 vault; (B) 24-task real Git-worktree SWE-bench Multimodal and Pro visual-diagram + multi-file repair with 0.00% broken commits; (C) Planetary Digital Well 12-stdlib-module Rung-5 to Rung-7 projection (384/384 exact parity, Yosys abc -lut 6 miter) and Cross-Silicon Window 20 Thor DC shunt telemetry (4.09x); and (D) Zero-DSP48E1 106.55 MHz XC7A200T openXC7 gateware, 15.22 KB 15-export lut6_core.wasm, and 106 six-kernel theorems.</desc>
+  <defs>
+    <linearGradient id="bg40" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#040814"/><stop offset="52%" stop-color="#091628"/><stop offset="100%" stop-color="#041b1e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1240" height="900" fill="url(#bg40)"/>
+  <text x="28" y="34" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16.4" font-weight="800">25-Game ARC-AGI-3 BFWS (16 KB Vault), SWE-bench Multimodal+Pro, Digital Well &amp; 106 Proofs</text>
+  <text x="28" y="54" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.7">Claims LA-19 (106 Thms / 1,470 bwrap Fleet) &amp; LA-56..LA-59  |  25-Env ARC-AGI-3 BFWS = 14/183 Lvls (11/25 Games)  |  Thor Window 20 = 11358 nJ (4.09x)  |  15.22 KB 15-Export WASM</text>
+  <rect x="24" y="68" width="584" height="398" rx="12" fill="#0d1729" stroke="#22d3ee" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="42" y="92" fill="#22d3ee" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="800">A. Claim LA-56 · 16-Env &amp; Full 25-Env (183-Lvl) ARC-AGI-3 BFWS + 16 KB Vault</text>
+  <text x="42" y="109" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0">Theorems 99–101 · Dual-Subspace Key Prelude + UNDO Demotion + 4-Bank 16 KB (25.0% Watch SRAM)</text>
+  <rect x="42" y="118" width="548" height="20" rx="4" fill="#1e293b"/>
+  <text x="48" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">Black-Box Agent (0 .py Peeking)</text>
+  <text x="288" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">16-Env Lvls</text>
+  <text x="364" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">16 RHAE</text>
+  <text x="432" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">25-Env Lvls</text>
+  <text x="514" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">25 RHAE</text>
+  <rect x="42" y="144" width="548" height="35" rx="5" fill="#131c2e" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="165" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.6" font-weight="500">Random Action Baseline (Uniform Avai</text>
+  <text x="290" y="165" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">2/113 (2g)</text>
+  <text x="366" y="165" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">0.0002</text>
+  <text x="434" y="165" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">3/183 (3g)</text>
+  <text x="516" y="165" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">0.0007</text>
+  <rect x="42" y="185" width="548" height="35" rx="5" fill="#131c2e" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="206" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.6" font-weight="500">FIFO Frontier-BFS Wave 1 (58x64 HUD,</text>
+  <text x="290" y="206" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">5/113 (4g)</text>
+  <text x="366" y="206" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">0.0047</text>
+  <text x="434" y="206" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">5/183 (4g)</text>
+  <text x="516" y="206" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">0.0030</text>
+  <rect x="42" y="226" width="548" height="35" rx="5" fill="#131c2e" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="247" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.6" font-weight="500">Phase 39 SIW(2) + Landmark Benes-LUT</text>
+  <text x="290" y="247" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">9/113 (7g)</text>
+  <text x="366" y="247" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">0.2622</text>
+  <text x="434" y="247" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">12/183 (10g)</text>
+  <text x="516" y="247" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">0.3440</text>
+  <rect x="42" y="267" width="548" height="35" rx="5" fill="#131c2e" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="288" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.6" font-weight="500">Phase 39 SIW(2) -&gt; Two-Bank 8 KB Sys</text>
+  <text x="290" y="288" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">9/113 (7g)</text>
+  <text x="366" y="288" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">2.2520</text>
+  <text x="434" y="288" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">12/183 (10g)</text>
+  <text x="516" y="288" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">1.8473</text>
+  <rect x="42" y="308" width="548" height="35" rx="5" fill="#0b243b" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="329" fill="#7dd3fc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.6" font-weight="700">Apex BFWS(R,M) + Dual-Subspace Benes</text>
+  <text x="290" y="329" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">10/113 (8g)</text>
+  <text x="366" y="329" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">0.2697</text>
+  <text x="434" y="329" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">13/183 (11g)</text>
+  <text x="516" y="329" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">0.3529</text>
+  <rect x="42" y="349" width="548" height="35" rx="5" fill="#062c24" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="370" fill="#6ee7b7" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.6" font-weight="700">Apex BFWS(R,M) -&gt; Four-Bank 16 KB Sy</text>
+  <text x="290" y="370" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">11/113 (8g)</text>
+  <text x="366" y="370" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">2.4488</text>
+  <text x="434" y="370" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">14/183 (11g)</text>
+  <text x="516" y="370" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">1.9733</text>
+  <rect x="42" y="394" width="548" height="58" rx="6" fill="#072922" stroke="#10b981" stroke-width="0.9"/>
+  <text x="52" y="413" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">11/25 Solved Games (Peak RHAE = 10.7143, 0 Breaker Trips, 16,384 B Vault):</text>
+  <text x="52" y="430" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9">tu93:3 · ls20:1 · lp85:1 · vc33:2 · su15:1 · m0r0:1 · r11l:1</text>
+  <text x="52" y="445" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9">s5i5:1 · lf52:1 · sp80:1 · tn36:1</text>
+  <rect x="632" y="68" width="584" height="398" rx="12" fill="#0d1729" stroke="#10b981" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="650" y="92" fill="#34d399" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="800">B. Claim LA-57 · SWE-bench Multimodal &amp; Pro (24 Real Git-Worktree Tasks)</text>
+  <text x="650" y="109" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0">Theorem 102 · SVG viewBox + Flex-Grid + HiDPI DPR + Mermaid DAG + PCB DRC + Saga</text>
+  <rect x="650" y="118" width="548" height="20" rx="4" fill="#1e293b"/>
+  <text x="656" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">Repository Repair Architecture</text>
+  <text x="916" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">Pytest</text>
+  <text x="978" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">MM Verif</text>
+  <text x="1050" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">Broken</text>
+  <text x="1118" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">mJ/Task</text>
+  <rect x="650" y="144" width="548" height="35" rx="5" fill="#231420" stroke="#334155" stroke-width="0.8"/>
+  <text x="656" y="165" fill="#fda4af" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.5" font-weight="500">Ternary-Bonsai-2-9B (1-Shot Text-Only</text>
+  <text x="916" y="165" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4">100%</text>
+  <text x="982" y="165" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">4.2%</text>
+  <text x="1052" y="165" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">95.8%</text>
+  <text x="1116" y="165" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.3">410.0000</text>
+  <rect x="650" y="185" width="548" height="35" rx="5" fill="#231420" stroke="#334155" stroke-width="0.8"/>
+  <text x="656" y="206" fill="#fda4af" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.5" font-weight="500">Inkling-2-Mini (1-Shot Text-Only, Unv</text>
+  <text x="916" y="206" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4">100%</text>
+  <text x="982" y="206" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">16.7%</text>
+  <text x="1052" y="206" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">83.3%</text>
+  <text x="1116" y="206" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.3">680.0000</text>
+  <rect x="650" y="226" width="548" height="35" rx="5" fill="#231420" stroke="#334155" stroke-width="0.8"/>
+  <text x="656" y="247" fill="#fda4af" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.5" font-weight="500">Ternary-Bonsai-2-27B (1-Shot Text-Onl</text>
+  <text x="916" y="247" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4">100%</text>
+  <text x="982" y="247" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">50.0%</text>
+  <text x="1052" y="247" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">50.0%</text>
+  <text x="1116" y="247" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.3">2950.0000</text>
+  <rect x="650" y="267" width="548" height="35" rx="5" fill="#0b243b" stroke="#334155" stroke-width="0.8"/>
+  <text x="656" y="288" fill="#7dd3fc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700">Visual-Symbolic Null (SVG/Layout/DRC </text>
+  <text x="916" y="288" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4">100%</text>
+  <text x="982" y="288" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">66.7%</text>
+  <text x="1052" y="288" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">0.0%</text>
+  <text x="1116" y="288" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.3">0.0018</text>
+  <rect x="650" y="308" width="548" height="35" rx="5" fill="#062c24" stroke="#334155" stroke-width="0.8"/>
+  <text x="656" y="329" fill="#6ee7b7" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700">Apex MM-Pro Wave 1 (Null -&gt; MoL + C_v</text>
+  <text x="916" y="329" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4">100%</text>
+  <text x="982" y="329" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">100.0%</text>
+  <text x="1052" y="329" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">0.0%</text>
+  <text x="1116" y="329" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.3">983.3351</text>
+  <rect x="650" y="349" width="548" height="35" rx="5" fill="#062c24" stroke="#334155" stroke-width="0.8"/>
+  <text x="656" y="370" fill="#6ee7b7" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700">Apex MM-Pro Wave 2 (4 KB AST-Patch-LU</text>
+  <text x="916" y="370" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4">100%</text>
+  <text x="982" y="370" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">100.0%</text>
+  <text x="1052" y="370" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">0.0%</text>
+  <text x="1116" y="370" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.3">0.0004</text>
+  <rect x="650" y="394" width="548" height="58" rx="6" fill="#072922" stroke="#10b981" stroke-width="0.9"/>
+  <text x="660" y="414" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">Conjunctive Gate C_visual &amp;&amp; C_pytest Blocks 100% of Silent Visual Clipping/Overlap:</text>
+  <text x="660" y="432" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0">• Visual-Symbolic Null solves 66.7% (16/24) at 0.0018 mJ/task (0 LLM FLOPs, >1.6M x &lt; 27B)</text>
+  <text x="660" y="446" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0">• Wave-2 4 KB AST-Patch-LUT6 hits 100.0% (12/12) at 0.0004 mJ/task (7.38M x &lt; unverified 27B)</text>
+  <rect x="24" y="484" width="584" height="392" rx="12" fill="#0d1729" stroke="#f59e0b" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="42" y="509" fill="#fbbf24" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="800">C. Claim LA-58 · Planetary Digital Well (12 Stdlib) &amp; Window 20 DC Shunt</text>
+  <text x="42" y="526" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0">Theorems 103–104 · 384/384 (100%) Stdlib Parity · Yosys abc -lut 6 Miter (12 LUTs)</text>
+  <rect x="42" y="536" width="548" height="21" rx="4" fill="#1e293b"/>
+  <text x="48" y="550" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">Hardware Host &amp; Telemetry Rail</text>
+  <text x="292" y="550" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">W20 (Ours)</text>
+  <text x="378" y="550" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">W20b (R5)</text>
+  <text x="468" y="550" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">Speedup</text>
+  <text x="530" y="550" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">J Cut</text>
+  <rect x="42" y="565" width="548" height="62" rx="6" fill="#072922" stroke="#10b981" stroke-width="1.0"/>
+  <text x="50" y="586" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="700">NVIDIA Jetson AGX Thor Tegra aarch64</text>
+  <text x="50" y="608" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9">Physical TI INA3221 VDD_CPU_SOC_MSS Shunt (measured_j, board_metered=true)</text>
+  <text x="292" y="587" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="700">1359 ns</text>
+  <text x="292" y="608" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1">11358 nJ</text>
+  <text x="378" y="587" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">4368 ns</text>
+  <text x="378" y="608" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1">46481 nJ</text>
+  <text x="470" y="597" fill="#38bdf8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="800">3.21x</text>
+  <text x="530" y="597" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="800">4.09x</text>
+  <rect x="42" y="637" width="548" height="62" rx="6" fill="#121f36" stroke="#334155" stroke-width="1.0"/>
+  <text x="50" y="658" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="700">AMD Ryzen AI Max 395 Zen5 Linux x86 64</text>
+  <text x="50" y="680" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9">Linux powercap amd_rapl Package Counter (reported_j, board_metered=false)</text>
+  <text x="292" y="659" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="700">1344 ns</text>
+  <text x="292" y="680" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1">178330 nJ</text>
+  <text x="378" y="659" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">2063 ns</text>
+  <text x="378" y="680" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1">258763 nJ</text>
+  <text x="470" y="669" fill="#38bdf8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="800">1.53x</text>
+  <text x="530" y="669" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="800">1.45x</text>
+  <rect x="42" y="709" width="548" height="62" rx="6" fill="#121f36" stroke="#334155" stroke-width="1.0"/>
+  <text x="50" y="730" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="700">Apple M3 Ultra 256GB macOS arm64</text>
+  <text x="50" y="752" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9">Darwin RUSAGE_INFO_V6 ri_energy_nj Counter (reported_j, board_metered=false)</text>
+  <text x="292" y="731" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8" font-weight="700">1265 ns</text>
+  <text x="292" y="752" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1">4403 nJ</text>
+  <text x="378" y="731" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.8">1353 ns</text>
+  <text x="378" y="752" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1">7911 nJ</text>
+  <text x="470" y="741" fill="#38bdf8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="800">1.07x</text>
+  <text x="530" y="741" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="800">1.80x</text>
+  <rect x="42" y="788" width="548" height="72" rx="6" fill="#0b1f33" stroke="#38bdf8" stroke-width="0.9"/>
+  <text x="52" y="809" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.3" font-weight="700">12 Python/POSIX Stdlib Modules Projected Rung 5 (LLM JSON) -&gt; Rung 7 (64-bit LUT6):</text>
+  <text x="52" y="828" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0">• ipaddress · http.HTTPStatus · WCAG 2.2 · stat · urllib · semver · datetime · errno · bisect</text>
+  <text x="52" y="846" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0">• 7.38M x energy cut vs Rung-5 LLM JSON tool-call &amp; 2,125x vs Rung-6 Python subprocess IPC</text>
+  <rect x="632" y="484" width="584" height="392" rx="12" fill="#0d1729" stroke="#a78bfa" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="650" y="509" fill="#c4b5fd" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="800">D. Claim LA-59 · Zero-DSP XC7A200T, 15.22 KB WASM &amp; 106 6-Kernel Proofs</text>
+  <text x="650" y="526" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0">Theorems 105–106 · Crossing 100+ LutAdapt Theorems (1,470 Linux bwrap Fleet)</text>
+  <rect x="650" y="540" width="548" height="71" rx="7" fill="#121d31" stroke="#38bdf8" stroke-opacity="0.55" stroke-width="1.0"/>
+  <text x="662" y="561" fill="#38bdf8" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.6" font-weight="800">1. Artix-7 XC7A200T-2FBG484-2 4-Bank BFWS + Well Gateware (openXC7)</text>
+  <text x="662" y="581" fill="#f1f5f9" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="600">0 DSP48E1 slices | 662 / 269,200 LUT6s (0.25%) | 206 FFs</text>
+  <text x="662" y="598" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0">Post-PAR Fmax = 106.55 MHz (9.40 ns) | 64/64 Well &amp; JouleBit6 RTL Parity</text>
+  <rect x="650" y="620" width="548" height="71" rx="7" fill="#121d31" stroke="#34d399" stroke-opacity="0.55" stroke-width="1.0"/>
+  <text x="662" y="641" fill="#34d399" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.6" font-weight="800">2. Browser-Native #![no_std] lut6_core.wasm (15,590 B = 15.22 KB &lt;= 16 KB)</text>
+  <text x="662" y="661" fill="#f1f5f9" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="600">15 C-ABI Exports (incl. wasm_eval_bfws4_and_well_codifier) · 0 External Crates · V8 Verified</text>
+  <text x="662" y="678" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0">Theorem 105 32-Bit Bijection: 4-Bank BFWS Cascade + 8-Gate Well-Codifier + JouleBit6 Slab</text>
+  <rect x="650" y="700" width="548" height="71" rx="7" fill="#121d31" stroke="#c4b5fd" stroke-opacity="0.55" stroke-width="1.0"/>
+  <text x="662" y="721" fill="#c4b5fd" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.6" font-weight="800">3. Historic 100+ Theorem Milestone (106 LutAdapt / 1,470 bwrap Fleet)</text>
+  <text x="662" y="741" fill="#f1f5f9" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="600">con-leche --verified (58,950 decls) · con-ron --verified · lean4lean · nanoda</text>
+  <text x="662" y="758" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0">18/106 Zero-Axiom · 73/106 Choice-Free · 0 sorry · 0 Custom Axioms · 8 New in BfwsWellMultimodal</text>
+  <rect x="650" y="780" width="548" height="71" rx="7" fill="#121d31" stroke="#fbbf24" stroke-opacity="0.55" stroke-width="1.0"/>
+  <text x="662" y="801" fill="#fbbf24" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.6" font-weight="800">4. Four-Bank 16 KB System-0 Smartwatch &amp; FPGA Vault</text>
+  <text x="662" y="821" fill="#f1f5f9" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="600">4 x 4,096 B = 16,384 B (25.00% of 64 KB Watch SRAM, 2,048 LUT6 Slots, 4 RAMB36E1 Blocks)</text>
+  <text x="662" y="838" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0">0 Wave-2 Hash-Collision Breaker Trips Across All 25 Official ARC-AGI-3 Games (183 Levels)</text>
+</svg>
