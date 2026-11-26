@@ -7,7 +7,7 @@
   "glossary_url": "https://blog.openie.dev/glossary/",
   "license": "CC0-1.0",
   "post_count": 5,
-  "max_weighted_chars": 274,
+  "max_weighted_chars": 278,
   "card_video_uri": "/media/tv/tiktok/jouleos-tiktok.mp4",
   "fallback_video_uri": "/media/tv/films/jouleos-15s.mp4",
   "medium_crosslink_uri": "https://blog.openie.dev/posts/jouleos/",
@@ -39,9 +39,9 @@
     {
       "position": 2,
       "role": "methods_and_sample_bounds",
-      "text": "1/2 Verified Rust spine vs prior OS lineage:\n- jcp-satb-cad-spine (310 unit tests) checks all 280 x 280 provenance-tag pairs so est_j/RAPL never silently promote to shunt measured_j\n- Builds on Odyssey (1999), ECOSystem (2002), Cinder (2011), Linux EAS, schedutil & RAPL [S]",
-      "weighted_chars": 274,
-      "raw_chars": 274,
+      "text": "1/2 Self-checked Rust spine vs prior OS lineage:\n- jcp-satb-cad-spine (310 unit tests) checks all 280 x 280 provenance-tag pairs so est_j/RAPL never silently promote to shunt measured_j\n- Builds on Odyssey (1999), ECOSystem (2002), Cinder (2011), Linux EAS, schedutil & RAPL [S]",
+      "weighted_chars": 278,
+      "raw_chars": 278,
       "urls": [],
       "in_reply_to_position": 1
     },

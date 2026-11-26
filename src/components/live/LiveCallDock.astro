@@ -403,6 +403,9 @@
       const d = (ev && ev.detail) || {};
       setDockOpen(true);
       await hmi.loadCorpus();
+      if (d.voice) {
+        hmi.setVoice(d.voice);
+      }
       if (d.studyId && hmi.studiesById.has(d.studyId)) {
         hmi.setStudy(d.studyId);
       }
@@ -412,15 +415,16 @@
       if (d.mode && ['call', 'vision', 'copilot', 'debate'].includes(d.mode)) {
         hmi.setMode(d.mode);
       }
-      if (d.prompt) {
-        hmi.ask(String(d.prompt));
-      } else if (d.autoStartCall !== false) {
-        hmi.startCall({
+      if (d.autoStartCall !== false) {
+        await hmi.startCall({
           studyId: d.studyId || hmi.activeStudyId,
           mode: d.mode || hmi.mode,
-          voice: d.voice,
+          voice: d.voice || hmi.voice,
           contextSummary: d.contextSummary,
         });
+      }
+      if (d.prompt) {
+        hmi.ask(String(d.prompt));
       }
     });
 

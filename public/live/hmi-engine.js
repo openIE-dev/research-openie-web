@@ -448,11 +448,12 @@ export class OpenIELiveHMI {
     if (p === '/radio' && window.__openieActiveMediaContext?.studyId) {
       return window.__openieActiveMediaContext.studyId;
     }
-    const mPaper = p.match(/\/(?:papers|products|about|living)\/([a-z0-9-]+)$/i);
+    const mPaper = p.match(/\/(?:papers|products|about|living|posts)\/([a-z0-9-]+)$/i);
     if (mPaper) {
       const slug = mPaper[1].toLowerCase();
       if (slug === 'ni' || slug === 'mol') return 'gates';
       if (slug === 'fpga-sim') return 'eco-compute';
+      if (slug === 'from-ephemeral-inference-to-compiled-agency') return 'agency';
       return slug;
     }
     return 'communication-avalanche';

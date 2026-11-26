@@ -518,6 +518,62 @@ export const SURFACE_REGISTRY = {
       'Debate the underlying study claims and scope limits like a skeptic',
     ],
   },
+  waios: {
+    id: 'waios',
+    name: 'WAIOS Verifiable Runtime',
+    domain: 'waios.transaction.science',
+    tagline: 'Cross-Fabric Verifiable Integer Runtime · 256×128 Ternary MatVec (BLAKE3 a541323b13653ed36515ff24ef08deb7dfa771e570a434712708fb72552f46f0), Ed25519 Receipts & Halt-on-Disagreement',
+    caveat: 'Signed Provenance · Self-Checked across deterministic integer fabrics; halt-on-disagreement enforces bit-exact BLAKE3 parity (a541323b13653ed36515ff24ef08deb7dfa771e570a434712708fb72552f46f0) without mixing measured_j and reported_j.',
+    primaryStudyId: 'deterministic-null',
+    studyIds: ['deterministic-null', 'gates', 'jouleos', 'rce-vc', 'communication-avalanche'],
+    prompts: [
+      'Walk me through WAIOS cross-fabric integer parity and halt-on-disagreement',
+      'Explain the 256×128 ternary MatVec BLAKE3 digest and Ed25519 receipt chain',
+      'Debate verifiable integer execution vs floating-point drift across fabrics',
+    ],
+  },
+  napkin: {
+    id: 'napkin',
+    name: 'OpenIE Napkin Sketcher',
+    domain: 'napkin.openie.dev',
+    tagline: 'Browser Rust/WASM Multi-Mode Mech / Optics / Board / Microfluidics Sketcher',
+    caveat: 'In-browser Rust/WASM mechanical, optical, PCB, and microfluidic solver outputs are analytical design models (est_j / unmetered) pending physical bench fabrication.',
+    primaryStudyId: 'mei',
+    studyIds: ['mei', 'gates', 'eco-compute', 'lut-adapt', 'rce'],
+    prompts: [
+      'Walk me through the multi-mode mech, optics, board, and microfluidics sketcher tools',
+      'Inspect my current Napkin canvas or screen and critique the layout',
+      'How do analytical est_j sketch bounds transition to bench measured_j?',
+    ],
+  },
+  'joule-cloud': {
+    id: 'joule-cloud',
+    name: 'Joule Cloud & GreenJoules',
+    domain: `cloud.${JPB_DOMAIN}`,
+    tagline: 'Joule-Metered Cloud & Carbon-Aware Scheduling (greenjoules.cloud)',
+    caveat: 'Separates physical rack/board DC shunt readings (measured_j) from host RAPL/NVML counters (reported_j) and grid carbon-intensity forecasts (est_j).',
+    primaryStudyId: 'satb-harness',
+    studyIds: ['satb-harness', 'jouleos', 'satiation', 'latency', 'deterministic-null'],
+    prompts: [
+      'Tour the Joule-metered cloud and carbon-aware scheduling architecture on this page',
+      'Why do CPU-proportional cloud splitters err by 32.6%–89.9% under co-tenancy?',
+      'Debate carbon-aware scheduling bounds vs latency SLAs like a skeptic',
+    ],
+  },
+  'from-ephemeral-inference-to-compiled-agency': {
+    id: 'from-ephemeral-inference-to-compiled-agency',
+    name: 'Capstone Position · Compiled Agency',
+    domain: 'blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/',
+    tagline: 'From Ephemeral Inference to Compiled Agency — Synthesis Across 57 Chronicle Entries & 28 Era II Studies',
+    caveat: 'Signed Provenance · Self-Checked capstone synthesis; preserves measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered, fired falsifiers, and cold unseen LLM leads alongside warm crystallized payback.',
+    primaryStudyId: 'agency',
+    studyIds: ['agency', 'deterministic-null', 'rce-compile', 'gates', 'communication-avalanche', 'rce-jepa'],
+    prompts: [
+      'Walk me through From Ephemeral Inference to Compiled Agency section by section',
+      'Where does compiled agency win on recurring structure vs where cold LLM inference remains mandatory?',
+      'Debate the capstone position and its fired falsifiers like an outside reviewer',
+    ],
+  },
 };
 
 export const SURFACE_PROFILES = SURFACE_REGISTRY;
@@ -540,6 +596,7 @@ const LIVING_SLUG_TO_STUDY = {
   'ai-reads-human': 'ai-reads-human',
   'mei': 'mei',
   'spellcheck': 'spellcheck',
+  'from-ephemeral-inference-to-compiled-agency': 'agency',
 };
 
 const HOST_ALIAS_MAP = {
@@ -551,6 +608,7 @@ const HOST_ALIAS_MAP = {
   'compute-sim': 'compute-sim',
   cad: 'cad',
   ecad: 'ecad',
+  napkin: 'napkin',
   synthesis: 'synthesis',
   coding: 'coding',
   physical: 'physical',
@@ -568,6 +626,7 @@ const HOST_ALIAS_MAP = {
   agent: 'agent',
   proof: 'proof',
   verify: 'proof',
+  waios: 'waios',
   water: 'water',
   leo: 'leo',
   reef: 'reef',
@@ -577,6 +636,12 @@ const HOST_ALIAS_MAP = {
   'joule-lang': 'joule-lang',
   play: 'joule-lang',
   jouledb: 'jouledb',
+  'joule-cloud': 'joule-cloud',
+  greenjoules: 'joule-cloud',
+  cloud: 'joule-cloud',
+  capstone: 'from-ephemeral-inference-to-compiled-agency',
+  'compiled-agency': 'from-ephemeral-inference-to-compiled-agency',
+  'from-ephemeral-inference-to-compiled-agency': 'from-ephemeral-inference-to-compiled-agency',
   [JPB_KEY]: JPB_KEY,
   living: 'living',
   blog: 'avalanche',
@@ -764,7 +829,10 @@ function buildLivingObservatorySurface(livingSlug) {
 
 export function detectOpenIESurface(explicitSurface) {
   if (explicitSurface) {
-    const clean = String(explicitSurface).trim().toLowerCase().replace(/\.(?:openie\.dev|ai|org|com|dev)$/, '');
+    const clean = String(explicitSurface)
+      .trim()
+      .toLowerCase()
+      .replace(/\.(?:openie\.dev|transaction\.science|cloud|ai|org|com|dev)$/, '');
     if (SURFACE_REGISTRY[clean]) return SURFACE_REGISTRY[clean];
     if (HOST_ALIAS_MAP[clean] && SURFACE_REGISTRY[HOST_ALIAS_MAP[clean]]) {
       return SURFACE_REGISTRY[HOST_ALIAS_MAP[clean]];
@@ -783,10 +851,19 @@ export function detectOpenIESurface(explicitSurface) {
   }
   if (typeof window !== 'undefined') {
     const pathname = window.location.pathname || '/';
+    if (pathname.toLowerCase().includes('from-ephemeral-inference-to-compiled-agency')) {
+      return SURFACE_REGISTRY['from-ephemeral-inference-to-compiled-agency'];
+    }
     const livingMatch = pathname.match(/^\/living(?:\/([^/?#]+))?/i);
     if (livingMatch) return buildLivingObservatorySurface(livingMatch[1] || '');
 
     const host = (window.location.hostname || '').toLowerCase();
+    if (host === 'waios.transaction.science' || host.endsWith('.transaction.science')) {
+      return SURFACE_REGISTRY.waios;
+    }
+    if (host === `cloud.${JPB_DOMAIN}` || host === 'greenjoules.cloud' || host.endsWith('.greenjoules.cloud')) {
+      return SURFACE_REGISTRY['joule-cloud'];
+    }
     if (host === 'thermoedge.ai' || host.endsWith('.thermoedge.ai')) return SURFACE_REGISTRY.tei;
     if (host === 'joule-lang.dev' || host === 'joule-lang.org' || host === 'play.joule-lang.dev') {
       return SURFACE_REGISTRY['joule-lang'];
@@ -2748,18 +2825,19 @@ function wireTriggerAndOpenEvents(openFn, sdk) {
     if (!sdk) return;
     if (typeof sdk.loadCorpora === 'function') await sdk.loadCorpora();
     else if (typeof sdk.loadCorpus === 'function') await sdk.loadCorpus();
+    if (d.voice && typeof sdk.setVoice === 'function') sdk.setVoice(d.voice);
     if (d.studyId && sdk.studiesById?.has(d.studyId)) sdk.setStudy(d.studyId);
     if (d.contextSummary) sdk.contextSummary = String(d.contextSummary);
     if (d.mode && ['call', 'vision', 'copilot', 'debate'].includes(d.mode)) sdk.setMode?.(d.mode);
-    if (d.prompt) sdk.ask?.(String(d.prompt));
-    else if (d.autoStartCall !== false) {
-      sdk.startCall?.({
+    if (d.autoStartCall !== false) {
+      await sdk.startCall?.({
         studyId: d.studyId || sdk.activeStudyId,
         mode: d.mode || sdk.mode,
-        voice: d.voice,
+        voice: d.voice || sdk.voice,
         contextSummary: d.contextSummary,
       });
     }
+    if (d.prompt) sdk.ask?.(String(d.prompt));
   });
 }
 

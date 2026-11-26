@@ -102,8 +102,196 @@ export const GET: APIRoute = async () => {
   var COMMONS_MCP = COMMONS_BASE + '/mcp';
   var COMMONS_ASK = COMMONS_BASE + '/api/ask';
   var COMMONS_PRIOR_ART = COMMONS_BASE + '/api/prior-art';
+  var BLOG_CORPUS_URL = 'https://blog.openie.dev/live/blog-corpus.json';
+  var VERIFICATION_URL = 'https://blog.openie.dev/verification/';
+  var ED25519_PUBKEY = '1fa743eb5abeae11d37f11d17c19b2744e3213fa0ba7ae69f624d8a3e5214110';
   var BLUEPRINT_PACK = ${JSON.stringify(blueprintPack)};
   var AAC_CONCEPTS = ${JSON.stringify(aacConcepts)};
+
+  var REPLICATION_KITS = [
+    {
+      id: 'deterministic-null',
+      title: 'Deterministic Null (Shape D Zero-Model Control Arm)',
+      license: 'Apache-2.0',
+      repo_url: 'https://github.com/openIE-dev/deterministic-null',
+      runner_url: 'https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate',
+      paper_url: 'https://research.openie.dev/papers/deterministic-null/',
+      chronicle_url: 'https://blog.openie.dev/posts/deterministic-null/',
+      hardware_requirements: 'Commodity Linux or macOS (zero special hardware)',
+      scope: 'Reproduces bit-identical BLAKE3 digests across Rust, C++20, Go, Julia, and Python Shape D N0/N1 implementations, checks OpenTimestamps and drand rounds 6663734/6664089 receipts, and evaluates 4,030 Track-A/Track-B instances plus 6 SWE-bench Verified repositories.'
+    },
+    {
+      id: 'ai-reads-human',
+      title: 'Text-vs-Binary Agent Wire Parsing (ai-reads-human)',
+      license: 'Apache-2.0',
+      repo_url: 'https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate',
+      runner_url: 'https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate',
+      paper_url: 'https://research.openie.dev/papers/ai-reads-human/',
+      chronicle_url: 'https://blog.openie.dev/posts/ai-reads-human/',
+      hardware_requirements: 'Commodity x86_64 or ARM64 Linux/macOS',
+      scope: 'Reproduces 20,000-record UTF-8 JSON/Markdown vs typed binary WAI1, Protobuf, FlatBuffers, CapnProto, and simdjson parse + 5-tokenizer benchmarks, including the 109/170 shared-host IOReport drift rejection logs.'
+    },
+    {
+      id: 'satb-harness',
+      title: 'Satiation Benchmark (SATB) & Non-Mixing Provenance Harness',
+      license: 'Apache-2.0',
+      repo_url: 'https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate',
+      runner_url: 'https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate',
+      paper_url: 'https://research.openie.dev/papers/satb-harness/',
+      chronicle_url: 'https://blog.openie.dev/posts/satb-harness/',
+      hardware_requirements: 'Commodity x86_64 or ARM64 (Rust toolchain)',
+      scope: 'Re-runs the 12/12 C1-C12 deterministic replay checks, 280x280 provenance-lattice non-mixing suite, Clopper-Pearson confidence bounds, and Kepler CPU-proportional attribution error checks (32.59%-89.88%).'
+    }
+  ];
+
+  function startStudioVoiceCall(input) {
+    var allowedVoices = ['Aoede', 'Charon', 'Puck', 'Kore', 'Fenrir'];
+    var rawVoice = input && input.voice ? String(input.voice).trim() : 'Aoede';
+    var voice = allowedVoices.indexOf(rawVoice) !== -1 ? rawVoice : 'Aoede';
+    var studyId = input && input.study_id ? String(input.study_id).trim() : '';
+    if (studyId === 'from-ephemeral-inference-to-compiled-agency') studyId = 'agency';
+    var prompt = input && input.prompt ? String(input.prompt).trim().slice(0, 500) : '';
+    var detail = {
+      studyId: studyId || undefined,
+      voice: voice,
+      prompt: prompt || undefined,
+      autoStartCall: true
+    };
+    window.dispatchEvent(new CustomEvent('openie:live-open', { detail: detail }));
+    return {
+      status: 'dispatched',
+      event: 'openie:live-open',
+      engine: 'studio_s2s_24khz',
+      voice: voice,
+      study_id: studyId || null,
+      prompt: prompt || null,
+      auto_start_call: true,
+      provenance_status: 'Signed Provenance · Self-Checked',
+      studio_url: 'https://research.openie.dev/live/'
+    };
+  }
+
+  function searchChronicle57(input) {
+    var q = String((input && input.query) || '').toLowerCase().trim().slice(0, 240);
+    var eraFilter = String((input && input.era) || 'all').toLowerCase().trim();
+    var energyFilter = String((input && input.energy_class) || 'all').toLowerCase().trim();
+    var limit = Math.max(1, Math.min(64, Number((input && input.limit) || 12)));
+    var terms = q ? q.split(/[^a-z0-9_+.-]+/).filter(function (t) { return t.length > 1; }) : [];
+
+    var loadPromise = window.__openieChronicle57Cache
+      ? Promise.resolve(window.__openieChronicle57Cache)
+      : fetch(BLOG_CORPUS_URL, { headers: { Accept: 'application/json' } })
+          .then(function (res) {
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            return res.json();
+          })
+          .then(function (doc) {
+            window.__openieChronicle57Cache = doc;
+            return doc;
+          });
+
+    return loadPromise
+      .then(function (doc) {
+        var entries = (doc && doc.entries) || [];
+        var scored = [];
+        entries.forEach(function (e) {
+          var slug = String(e.id || '').trim();
+          var eraRaw = String(e.era || '');
+          var eraNorm = eraRaw.indexOf('era-0') !== -1 || String(e.eraLabel || '').indexOf('Era 0') !== -1
+            ? 'era0'
+            : eraRaw.indexOf('era-1') !== -1 || String(e.eraLabel || '').indexOf('Era I ') !== -1
+            ? 'era1'
+            : 'era2';
+          if (eraFilter !== 'all' && eraFilter !== eraNorm && eraRaw.toLowerCase().indexOf(eraFilter) === -1) return;
+          if (energyFilter !== 'all' && String(e.energyClass || '').toLowerCase() !== energyFilter) return;
+
+          var score = terms.length === 0 ? 1 : 0;
+          if (terms.length > 0) {
+            var hay = [
+              slug,
+              e.title || '',
+              e.shortTitle || '',
+              e.description || '',
+              e.headlineMetric || '',
+              e.primaryClaim || '',
+              e.errataSummary || '',
+              e.limitationsSummary || '',
+              (e.tags || []).join(' ')
+            ].join(' ').toLowerCase();
+            if (slug.toLowerCase() === q) score += 20;
+            if (hay.indexOf(q) !== -1) score += 8;
+            terms.forEach(function (t) {
+              if (slug.toLowerCase().indexOf(t) !== -1 || String(e.title || '').toLowerCase().indexOf(t) !== -1) score += 4;
+              else if (hay.indexOf(t) !== -1) score += 1;
+            });
+          }
+          if (score > 0) {
+            var canonicalUrl = e.canonicalUrl || ('https://blog.openie.dev/posts/' + slug + '/');
+            var caveats = [];
+            if (e.errataSummary) caveats.push(String(e.errataSummary));
+            if (e.limitationsSummary && caveats.indexOf(String(e.limitationsSummary)) === -1) {
+              caveats.push(String(e.limitationsSummary));
+            }
+            scored.push({
+              score: score,
+              item: {
+                id: slug,
+                title: e.title,
+                short_title: e.shortTitle || e.title,
+                era: eraNorm,
+                era_label: e.eraLabel || e.era,
+                date: e.date || null,
+                refreshed_date: e.refreshedDate || '2026-11-25',
+                canonical_url: canonicalUrl,
+                medium_import_url: 'https://blog.openie.dev/medium/' + slug + '/',
+                energy_class: e.energyClass || 'unmetered',
+                claim_tags: e.claimTags || [],
+                headline_metric: e.headlineMetric || null,
+                nov25_errata_and_caveats: caveats.join(' | ') || 'Signed Provenance · Self-Checked; not externally peer-reviewed.',
+                addendum_url: e.addendumAnchor ? (canonicalUrl.replace(/#.*$/, '') + e.addendumAnchor) : null
+              }
+            });
+          }
+        });
+        scored.sort(function (a, b) { return b.score - a.score; });
+        return {
+          query: q,
+          source_url: BLOG_CORPUS_URL,
+          syndication_hub_url: 'https://blog.openie.dev/syndication/',
+          verification_url: VERIFICATION_URL,
+          provenance_status: 'Signed Provenance · Self-Checked',
+          orthogonality_rule: 'measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered',
+          total_chronicle_entries: entries.length,
+          matched_count: scored.length,
+          results: scored.slice(0, limit).map(function (s) { return s.item; })
+        };
+      })
+      .catch(function (err) {
+        return {
+          query: q,
+          source_url: BLOG_CORPUS_URL,
+          error: 'Could not fetch ' + BLOG_CORPUS_URL + ': ' + String((err && err.message) || err)
+        };
+      });
+  }
+
+  function getReplicationKits(input) {
+    var kitFilter = input && input.kit_id ? String(input.kit_id).trim().toLowerCase() : 'all';
+    var kits = kitFilter && kitFilter !== 'all'
+      ? REPLICATION_KITS.filter(function (k) { return k.id === kitFilter; })
+      : REPLICATION_KITS;
+    return {
+      provenance_status: 'Signed Provenance · Self-Checked',
+      ed25519_public_key: ED25519_PUBKEY,
+      verification_url: VERIFICATION_URL,
+      independent_replication_url: VERIFICATION_URL + '#independent-replication',
+      orthogonality_rule: 'measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered',
+      one_command_runner: 'git clone https://github.com/openIE-dev/openie-research-experiments.git && cd openie-research-experiments && ./replicate/run_replication.sh',
+      replicate_tree_url: 'https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate',
+      kit_count: kits.length,
+      kits: kits
+    };
+  }
 
   function getBlueprintArtifacts(input) {
     var slug = input && input.slug ? String(input.slug).trim().toLowerCase() : '';
@@ -228,11 +416,19 @@ export const GET: APIRoute = async () => {
     window.openieResearchCatalog.endpoints.commons_mcp = COMMONS_MCP;
     window.openieResearchCatalog.endpoints.commons_ask = COMMONS_ASK;
     window.openieResearchCatalog.endpoints.commons_prior_art = COMMONS_PRIOR_ART;
+    window.openieResearchCatalog.endpoints.chronicle_57_corpus = BLOG_CORPUS_URL;
+    window.openieResearchCatalog.endpoints.chronicle_syndication_hub = 'https://blog.openie.dev/syndication/';
+    window.openieResearchCatalog.endpoints.verification = VERIFICATION_URL;
+    window.openieResearchCatalog.ed25519_public_key = ED25519_PUBKEY;
     window.openieResearchCatalog.blueprint = BLUEPRINT_PACK;
     window.openieResearchCatalog.aac_concepts = AAC_CONCEPTS;
+    window.openieResearchCatalog.replication_kits = REPLICATION_KITS;
     window.openieResearchCatalog.getBlueprintArtifacts = getBlueprintArtifacts;
     window.openieResearchCatalog.lookupAacConcept = lookupAacConcept;
     window.openieResearchCatalog.queryCommonsPriorArt = queryCommonsPriorArt;
+    window.openieResearchCatalog.startStudioVoiceCall = startStudioVoiceCall;
+    window.openieResearchCatalog.searchChronicle57 = searchChronicle57;
+    window.openieResearchCatalog.getReplicationKits = getReplicationKits;
   }
 
   if (!window.isSecureContext) return;
@@ -292,6 +488,58 @@ export const GET: APIRoute = async () => {
       },
       execute: function (input) {
         return queryCommonsPriorArt(input || {});
+      },
+      annotations: READ_ONLY
+    },
+    {
+      name: 'openie_start_studio_voice_call',
+      title: 'Start OpenIE 24 kHz Studio Native S2S Voice & Vision Call',
+      description: 'Opens the full-duplex 24 kHz Studio Native Speech-to-Speech voice and vision co-pilot on the current page or observatory via the openie:live-open event, optionally targeting a study_id, one of the 5 studio voices (Aoede, Charon, Puck, Kore, Fenrir), and a starter prompt.',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          study_id: { type: 'string', maxLength: 80, description: 'Optional OpenIE study slug (e.g. "deterministic-null", "rce-compile", "ai-reads-human").' },
+          voice: { type: 'string', enum: ['Aoede', 'Charon', 'Puck', 'Kore', 'Fenrir'], description: 'Optional 24 kHz studio voice persona (default "Aoede").' },
+          prompt: { type: 'string', maxLength: 500, description: 'Optional spoken or grounded question to ask immediately once connected.' }
+        },
+        additionalProperties: false
+      },
+      execute: function (input) {
+        return startStudioVoiceCall(input || {});
+      }
+    },
+    {
+      name: 'openie_search_chronicle_57',
+      title: 'Search All 57 Era 0 / Era I / Era II OpenIE Chronicle Entries',
+      description: 'Fetches and searches https://blog.openie.dev/live/blog-corpus.json across all 57 Chronicle entries (20 Era 0 whitepapers + 9 Era I founding essays + 28 Era II studies), returning title, era, canonical URL (https://blog.openie.dev/posts/<slug>/), clean Medium importer URL, energy evidence class, and November 25, 2026 errata/caveats. Read-only.',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          query: { type: 'string', maxLength: 240, description: 'Keyword, slug, metric, or topic to search across all 57 entries (omit or empty string to list entries).' },
+          era: { type: 'string', enum: ['all', 'era0', 'era1', 'era2'], description: 'Optional era filter: era0 (20 whitepapers), era1 (9 founding essays), era2 (28 Nov 2026 studies), or all.' },
+          energy_class: { type: 'string', enum: ['all', 'measured_j', 'reported_j', 'est_j', 'unmetered'], description: 'Optional orthogonal energy class filter.' },
+          limit: { type: 'integer', minimum: 1, maximum: 57, description: 'Maximum entries to return (default 12).' }
+        },
+        additionalProperties: false
+      },
+      execute: function (input) {
+        return searchChronicle57(input || {});
+      },
+      annotations: READ_ONLY
+    },
+    {
+      name: 'openie_get_replication_kits',
+      title: 'Get Standalone Apache-2.0 External Replication Kits & Ed25519 Key',
+      description: 'Returns the 3 standalone Apache-2.0 external replication kits (deterministic-null, ai-reads-human, satb-harness), the OpenIE Ed25519 publisher public key (1fa743eb5abeae11d37f11d17c19b2744e3213fa0ba7ae69f624d8a3e5214110), 1-command runner, and https://blog.openie.dev/verification/. Read-only.',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          kit_id: { type: 'string', enum: ['all', 'ai-reads-human', 'deterministic-null', 'satb-harness'], description: 'Optional kit filter (default "all").' }
+        },
+        additionalProperties: false
+      },
+      execute: function (input) {
+        return getReplicationKits(input || {});
       },
       annotations: READ_ONLY
     }

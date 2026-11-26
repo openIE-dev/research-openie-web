@@ -117,6 +117,17 @@ const toc = [
           >
             📞 Discuss Paper (Voice + Video)
           </button>
+          {paperId && (
+            <a
+              href={`https://blog.openie.dev/posts/${paperId}/`}
+              data-openie-medium-paper-pill={paperId}
+              target="_blank"
+              rel="noopener"
+              class="hidden items-center gap-1.5 font-mono text-xs text-emerald-200 border border-emerald-400/55 bg-emerald-500/15 px-4 py-2.5 rounded-md no-underline hover:bg-emerald-500/25 transition-colors"
+            >
+              🟢 Read / Discuss on Medium ↗
+            </a>
+          )}
           <a
             href="/"
             class="inline-flex items-center font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors"
@@ -183,6 +194,31 @@ const toc = [
       )}
     </div>
   </article>
+
+  {paperId && (
+    <script is:inline>
+      (function () {
+        var pills = document.querySelectorAll('[data-openie-medium-paper-pill]');
+        if (!pills.length) return;
+        fetch('https://blog.openie.dev/syndication/medium-live-status.json', { cache: 'no-store' })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (d) {
+            var map = d && typeof d.medium_live_urls === 'object' && d.medium_live_urls ? d.medium_live_urls : null;
+            if (!map) return;
+            pills.forEach(function (el) {
+              var id = el.getAttribute('data-openie-medium-paper-pill') || '';
+              var url = id ? map[id] : '';
+              if (typeof url === 'string' && /^https?:\/\//.test(url)) {
+                el.setAttribute('href', url);
+                el.classList.remove('hidden');
+                el.classList.add('inline-flex');
+              }
+            });
+          })
+          .catch(function () {});
+      })();
+    </script>
+  )}
 </Layout>
 
 <style is:global>

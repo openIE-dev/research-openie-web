@@ -1155,10 +1155,28 @@ const quickPrompts = [
         }
       });
 
-      // Support ?mode=debate|copilot|vision&autostart=1 deep links
+      // Support ?mode=debate|copilot|vision&autostart=1 deep links and WebMCP openie:live-open
       const urlParams = new URLSearchParams(window.location.search);
       const qMode = urlParams.get('mode');
       if (qMode) hmi.setMode(qMode);
+
+      window.addEventListener('openie:live-open', async (ev) => {
+        const d = (ev && ev.detail) || {};
+        await hmi.loadCorpus();
+        if (d.voice) hmi.setVoice(d.voice);
+        if (d.studyId && hmi.studiesById.has(d.studyId)) hmi.setStudy(d.studyId);
+        if (d.contextSummary) hmi.contextSummary = String(d.contextSummary);
+        if (d.mode && ['call', 'vision', 'copilot', 'debate'].includes(d.mode)) hmi.setMode(d.mode);
+        if (d.autoStartCall !== false) {
+          await hmi.startCall({
+            studyId: d.studyId || hmi.activeStudyId,
+            mode: d.mode || hmi.mode,
+            voice: d.voice || hmi.voice,
+            contextSummary: d.contextSummary,
+          });
+        }
+        if (d.prompt) hmi.ask(String(d.prompt));
+      });
     }
   </script>
 </Layout>

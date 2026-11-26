@@ -6,6 +6,7 @@ import syndicationCatalog from '../../data/syndication-catalog.json';
 import tiktokSnackables from '../../data/tiktok-snackables.json';
 
 const SITE = 'https://research.openie.dev';
+const CHRONICLE_SYNDICATION_URL = 'https://blog.openie.dev/syndication/';
 const VERIFICATION_URL = 'https://blog.openie.dev/verification/';
 const GLOSSARY_URL = 'https://blog.openie.dev/glossary/';
 const REPLICATE_URL = 'https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate';
@@ -76,7 +77,13 @@ const clientPayload = JSON.stringify({
           Signed Provenance · Self-Checked
         </span>
         <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-amber/15 text-brand-amber border border-brand-amber/35">
-          28 Medium Canonical Imports ↔ 140 X Posts (&le;280 Weighted Chars)
+          57-Entry Chronicle ↔ 28 Era II Medium Imports (`blog.openie.dev/medium/&lt;id&gt;/`)
+        </span>
+        <span
+          id="syn-medium-live-counter"
+          class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-emerald-500/15 text-emerald-200 border border-emerald-400/40"
+        >
+          Live on Medium: 0 / 28 Era II · 0 / 57 Chronicle (15m RSS Sync)
         </span>
         <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/35">
           28 × 9:16 TikTok MP4s (1080×1920 @ 60fps · -14 LUFS) · CC0-1.0
@@ -126,9 +133,9 @@ const clientPayload = JSON.stringify({
           <div class="font-mono text-[11px] text-brand-slate">28 × 5 Posts · Max {M.x_max_weighted_chars_observed ?? 275}/280</div>
         </div>
         <div class="glass-card p-3.5">
-          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">Medium + Blog</div>
-          <div class="font-display text-2xl font-bold text-brand-cyan mt-1">28 + 28</div>
-          <div class="font-mono text-[11px] text-brand-slate">blog.openie.dev Canonical</div>
+          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">Medium + Chronicle</div>
+          <div id="syn-kpi-medium-live" class="font-display text-2xl font-bold text-brand-cyan mt-1">57 Ready</div>
+          <div id="syn-kpi-medium-sub" class="font-mono text-[11px] text-brand-slate">20 Era 0 + 9 Era I + 28 Era II</div>
         </div>
         <div class="glass-card p-3.5">
           <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">Ecosystems Wired</div>
@@ -144,11 +151,17 @@ const clientPayload = JSON.stringify({
 
       <!-- Jump Navigation -->
       <nav aria-label="Syndication studio sections" class="mt-6 flex flex-wrap gap-2">
+        <a href="#chronicle-57-hub" class="font-mono text-xs px-3 py-1.5 rounded-md bg-brand-cyan text-[#06121a] font-bold no-underline">
+          ★ Full 57-Entry Chronicle Hub ↗
+        </a>
         <a href="#flagship-launch-kit" class="font-mono text-xs px-3 py-1.5 rounded-md bg-emerald-400 text-[#06121a] font-bold no-underline">
-          ★ Flagship 3 Launch Kit (Post-Review Audited)
+          Flagship 3 Launch Kit
         </a>
         <a href="#interactive-studio" class="font-mono text-xs px-3 py-1.5 rounded-md bg-brand-amber text-brand-dark font-semibold no-underline">
           1. Interactive 28-Study Workbench
+        </a>
+        <a href="#all-28-medium-grid" class="font-mono text-xs px-3 py-1.5 rounded-md border border-emerald-400/40 text-emerald-300 no-underline hover:bg-emerald-500/10">
+          All 28 Medium Imports &amp; Live Status
         </a>
         <a href="#x-medium-automation" class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-amber">
           2. How X ↔ Medium Automation Works
@@ -164,6 +177,75 @@ const clientPayload = JSON.stringify({
         </a>
       </nav>
     </header>
+
+    <!-- FULL 57-ENTRY CHRONICLE SYNDICATION HUB BANNER -->
+    <section id="chronicle-57-hub" class="scroll-mt-24 glass-card p-5 md:p-7 mb-10 border-t-2 border-t-brand-cyan">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+        <div class="max-w-3xl">
+          <div class="flex flex-wrap items-center gap-2 mb-2">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-brand-cyan font-bold">
+              Medium-First 3-Era Chronicle Architecture
+            </span>
+            <span class="px-2 py-0.5 rounded font-mono text-[10px] bg-emerald-500/15 text-emerald-300 border border-emerald-400/35">
+              Signed Provenance · Self-Checked
+            </span>
+            <span
+              id="syn-chronicle-live-pill"
+              class="px-2 py-0.5 rounded font-mono text-[10px] bg-brand-amber/15 text-brand-amber border border-brand-amber/35"
+            >
+              Polled via medium-live-status.json
+            </span>
+          </div>
+          <h2 class="font-display text-2xl md:text-3xl font-bold text-brand-white m-0">
+            Full <span class="text-brand-cyan">57-Entry</span> OpenIE Chronicle Syndication Hub
+          </h2>
+          <p class="font-body text-sm text-brand-slate leading-relaxed mt-2 mb-3">
+            While this workbench indexes the <strong>28 Era II research &amp; systems studies</strong> on <code class="font-mono text-brand-cyan">research.openie.dev</code>, the complete three-era Medium-First import queue—covering <strong>20 Era 0 historical whitepapers</strong> (Dec 2025 – Jul 2026), <strong>9 Era I founding essays</strong> (Feb 2026), and <strong>28 Era II studies</strong> (Nov 2026), each with clean <code class="font-mono text-emerald-300">https://blog.openie.dev/medium/&lt;id&gt;/</code> importer HTML embedding <code class="font-mono text-brand-amber">&lt;link rel="canonical" href="https://blog.openie.dev/posts/&lt;id&gt;/"&gt;</code>—lives at <a href={CHRONICLE_SYNDICATION_URL} target="_blank" rel="noopener" class="text-brand-cyan font-semibold">blog.openie.dev/syndication/</a>.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 font-mono text-xs">
+            <div class="p-2.5 rounded-lg bg-[#0b1020] border border-brand-border">
+              <div class="text-brand-amber font-bold">20 · Era 0 Whitepapers</div>
+              <div class="text-[10.5px] text-brand-slate mt-0.5">Verbatim Dec 2025–Jul 2026 + Nov 25 errata</div>
+            </div>
+            <div class="p-2.5 rounded-lg bg-[#0b1020] border border-brand-border">
+              <div class="text-brand-cyan font-bold">9 · Era I Founding Essays</div>
+              <div class="text-[10.5px] text-brand-slate mt-0.5">Verbatim Feb 2026 + Nov 25 scope addenda</div>
+            </div>
+            <div class="p-2.5 rounded-lg bg-[#0b1020] border border-brand-border">
+              <div class="text-emerald-300 font-bold">28 · Era II Studies</div>
+              <div class="text-[10.5px] text-brand-slate mt-0.5">Nov 2026 studies · 9:16 MP4 + 5-post X</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2.5 shrink-0 lg:w-[290px]">
+          <a
+            href={CHRONICLE_SYNDICATION_URL}
+            target="_blank"
+            rel="noopener"
+            class="text-center font-mono text-xs px-4 py-3 rounded-xl bg-brand-cyan text-[#06121a] font-bold no-underline hover:opacity-90 shadow-lg"
+          >
+            Open Full 57-Entry Chronicle Hub ↗
+          </a>
+          <a
+            href="https://blog.openie.dev/syndication/medium-live-status.json"
+            target="_blank"
+            rel="noopener"
+            class="text-center font-mono text-[11px] px-3 py-2 rounded-lg border border-emerald-400/40 text-emerald-300 no-underline hover:bg-emerald-500/10"
+          >
+            Live Ledger: medium-live-status.json ↗
+          </a>
+          <a
+            href="https://blog.openie.dev/live/blog-corpus.json"
+            target="_blank"
+            rel="noopener"
+            class="text-center font-mono text-[11px] px-3 py-2 rounded-lg border border-brand-amber/40 text-brand-amber no-underline hover:bg-brand-amber/10"
+          >
+            57-Entry JSON: blog-corpus.json ↗
+          </a>
+        </div>
+      </div>
+    </section>
 
     <!-- SPOTLIGHT BANNER: FLAGSHIP 3 LAUNCH KIT (POST-REVIEW AUDITED) -->
     <section id="flagship-launch-kit" class="scroll-mt-24 glass-card p-5 md:p-7 mb-12 border-t-2 border-t-brand-amber">
@@ -199,9 +281,26 @@ const clientPayload = JSON.stringify({
                 <span class="font-mono text-[11px] font-bold text-brand-amber">
                   Flagship #{f.rank} · `{f.id}`
                 </span>
-                <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/30">
-                  {f.evidence_badge}
-                </span>
+                <div class="flex flex-wrap items-center gap-1.5">
+                  <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/30">
+                    {f.evidence_badge}
+                  </span>
+                  <span
+                    data-medium-ready-pill={f.id}
+                    class="font-mono text-[10px] px-2 py-0.5 rounded bg-white/5 text-brand-slate border border-brand-border"
+                  >
+                    Ready for Medium
+                  </span>
+                  <a
+                    data-medium-live-pill={f.id}
+                    href={`https://blog.openie.dev/posts/${f.id}/`}
+                    target="_blank"
+                    rel="noopener"
+                    class="hidden font-mono text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-200 border border-emerald-400/55 no-underline font-semibold"
+                  >
+                    🟢 Live on Medium ↗
+                  </a>
+                </div>
               </div>
 
               <h3 class="font-display text-lg font-bold text-brand-white leading-snug mb-2">
@@ -214,15 +313,15 @@ const clientPayload = JSON.stringify({
 
               <div class="p-2.5 rounded-lg bg-[#070b16] border border-brand-border/80 font-mono text-[10.5px] space-y-1.5 mb-3">
                 <div>
-                  <span class="text-brand-gray">Clean Medium Import HTML:</span>{' '}
-                  <a href={`${SITE}/syndication/medium/${f.id}/`} target="_blank" rel="noopener noreferrer" class="text-emerald-300 break-all no-underline hover:underline">
-                    {`${SITE}/syndication/medium/${f.id}/`}
+                  <span class="text-brand-gray">Clean Medium Importer URL:</span>{' '}
+                  <a href={`https://blog.openie.dev/medium/${f.id}/`} target="_blank" rel="noopener" class="text-emerald-300 break-all no-underline hover:underline">
+                    {`https://blog.openie.dev/medium/${f.id}/`}
                   </a>
                 </div>
                 <div>
                   <span class="text-brand-gray">Embedded `rel="canonical"`:</span>{' '}
-                  <a href={f.medium_import_url} target="_blank" rel="noopener noreferrer" class="text-brand-cyan break-all no-underline hover:underline">
-                    {f.medium_import_url}
+                  <a href={`https://blog.openie.dev/posts/${f.id}/`} target="_blank" rel="noopener" class="text-brand-cyan break-all no-underline hover:underline">
+                    {`https://blog.openie.dev/posts/${f.id}/`}
                   </a>
                 </div>
                 <div>
@@ -231,10 +330,11 @@ const clientPayload = JSON.stringify({
                 </div>
                 <div class="flex flex-wrap gap-x-3 gap-y-1 pt-1 border-t border-brand-border/50">
                   <a href={`/papers/${f.id}/`} class="text-brand-amber no-underline hover:underline">Primary Paper →</a>
-                  <a href={f.public_repo_url} target="_blank" rel="noopener noreferrer" class="text-emerald-300 no-underline hover:underline">GitHub Repo ↗</a>
-                  <a href={f.replication_kit_url} target="_blank" rel="noopener noreferrer" class="text-brand-cyan no-underline hover:underline">1-Cmd Replicate ↗</a>
+                  <a href={`/syndication/medium/${f.id}/`} class="text-brand-light no-underline hover:underline">Local Mirror →</a>
+                  <a href={f.public_repo_url} target="_blank" rel="noopener" class="text-emerald-300 no-underline hover:underline">GitHub Repo ↗</a>
+                  <a href={f.replication_kit_url} target="_blank" rel="noopener" class="text-brand-cyan no-underline hover:underline">1-Cmd Replicate ↗</a>
                   {f.companion_url && (
-                    <a href={f.companion_url} target="_blank" rel="noopener noreferrer" class="text-brand-light no-underline hover:underline">
+                    <a href={f.companion_url} target="_blank" rel="noopener" class="text-brand-light no-underline hover:underline">
                       {f.companion_label ?? 'Companion'} ↗
                     </a>
                   )}
@@ -243,27 +343,38 @@ const clientPayload = JSON.stringify({
             </div>
 
             <div class="space-y-2 pt-2 border-t border-brand-border/60">
-              <button
-                type="button"
-                data-flagship-import={`${SITE}/syndication/medium/${f.id}/`}
-                class="flagship-import-btn w-full font-mono text-xs px-3 py-2 rounded-lg bg-emerald-400 text-[#06121a] font-bold cursor-pointer border-none hover:opacity-90"
-              >
-                ⚡ 1. Copy Clean Import URL + Open medium.com/p/import ↗
-              </button>
+              <div class="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-1.5">
+                <a
+                  href="https://medium.com/p/import"
+                  target="_blank"
+                  rel="noopener"
+                  data-flagship-import={`https://blog.openie.dev/medium/${f.id}/`}
+                  class="flagship-import-btn text-center font-mono text-xs px-3 py-2 rounded-lg bg-emerald-400 text-[#06121a] font-bold cursor-pointer no-underline hover:opacity-90"
+                >
+                  ⚡ 1-Click Medium Import ↗
+                </a>
+                <button
+                  type="button"
+                  data-flagship-copy-text={`https://blog.openie.dev/medium/${f.id}/`}
+                  class="flagship-copy-meta-btn font-mono text-[11px] px-2.5 py-2 rounded-lg border border-emerald-400/50 text-emerald-300 bg-transparent cursor-pointer hover:bg-emerald-500/15"
+                >
+                  Copy Import URL
+                </button>
+              </div>
               <div class="grid grid-cols-2 gap-1.5">
                 <button
                   type="button"
                   data-flagship-copy-text={f.narrow_claim}
                   class="flagship-copy-meta-btn font-mono text-[11px] px-2 py-1.5 rounded-lg border border-brand-cyan/40 text-brand-cyan bg-transparent cursor-pointer hover:bg-brand-cyan/15"
                 >
-                  2. Copy Subtitle
+                  Copy Subtitle
                 </button>
                 <button
                   type="button"
                   data-flagship-copy-text={(f.medium_tags ?? []).join(', ')}
                   class="flagship-copy-meta-btn font-mono text-[11px] px-2 py-1.5 rounded-lg border border-emerald-400/40 text-emerald-300 bg-transparent cursor-pointer hover:bg-emerald-500/15"
                 >
-                  3. Copy 5 Tags
+                  Copy 5 Tags
                 </button>
               </div>
               <div class="grid grid-cols-3 gap-1.5">
@@ -467,35 +578,65 @@ const clientPayload = JSON.stringify({
 
           <div class="p-3 rounded-xl border border-brand-border bg-[#0b1020] mb-3">
             <div class="flex flex-wrap items-center justify-between gap-1.5 mb-2 pb-2 border-b border-brand-border/60 font-mono text-[10.5px]">
-              <a href="https://medium.com/open-interface-engineering" target="_blank" rel="noopener noreferrer" class="text-emerald-300 no-underline hover:underline font-semibold">
+              <a href="https://medium.com/open-interface-engineering" target="_blank" rel="noopener" class="text-emerald-300 no-underline hover:underline font-semibold">
                 Pub: medium.com/open-interface-engineering ↗
               </a>
-              <a href="https://medium.com/@openie" target="_blank" rel="noopener noreferrer" class="text-brand-amber no-underline hover:underline">
-                @openie ↗
-              </a>
+              <div class="flex items-center gap-1.5">
+                <span id="syn-active-medium-ready" class="px-2 py-0.5 rounded bg-white/5 text-brand-slate border border-brand-border text-[10px]">
+                  Ready for Medium
+                </span>
+                <a
+                  id="syn-active-medium-live"
+                  href={`https://blog.openie.dev/posts/${initialStudy.id}/`}
+                  target="_blank"
+                  rel="noopener"
+                  class="hidden px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-200 border border-emerald-400/55 no-underline font-semibold text-[10px]"
+                >
+                  🟢 Live on Medium ↗
+                </a>
+                <a href="https://medium.com/@openie" target="_blank" rel="noopener" class="text-brand-amber no-underline hover:underline">
+                  @openie ↗
+                </a>
+              </div>
             </div>
 
             <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray mb-1">
-              Medium 1-Click Canonical Import URL (`rel="canonical"`)
+              Clean Medium Importer URL (Paste at `medium.com/p/import`)
             </div>
             <a
               id="syn-med-import-url"
-              href={initialStudy.medium.medium_import_url}
+              href={`https://blog.openie.dev/medium/${initialStudy.id}/`}
               target="_blank"
-              rel="noopener noreferrer"
-              class="font-mono text-xs text-brand-amber break-all no-underline hover:underline font-semibold"
+              rel="noopener"
+              class="font-mono text-xs text-emerald-300 break-all no-underline hover:underline font-semibold"
             >
-              {initialStudy.medium.medium_import_url}
+              {`https://blog.openie.dev/medium/${initialStudy.id}/`}
             </a>
+
+            <div class="mt-1.5 font-mono text-[10px] text-brand-slate">
+              <span class="text-brand-gray">Embedded `rel="canonical"`:</span>{' '}
+              <a
+                id="syn-med-canonical-url"
+                href={`https://blog.openie.dev/posts/${initialStudy.id}/`}
+                target="_blank"
+                rel="noopener"
+                class="text-brand-amber break-all no-underline hover:underline"
+              >
+                {`https://blog.openie.dev/posts/${initialStudy.id}/`}
+              </a>
+            </div>
 
             <div class="mt-2 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[10.5px]">
               <a id="syn-med-paper" href={initialStudy.paper_url} class="text-brand-cyan no-underline hover:underline">
                 Primary Paper →
               </a>
-              <a id="syn-med-replicate" href={initialStudy.replication_kit_url} target="_blank" rel="noopener noreferrer" class="text-emerald-300 no-underline hover:underline">
+              <a id="syn-med-replicate" href={initialStudy.replication_kit_url} target="_blank" rel="noopener" class="text-emerald-300 no-underline hover:underline">
                 1-Cmd Replicate ↗
               </a>
-              <a href={VERIFICATION_URL} target="_blank" rel="noopener noreferrer" class="text-brand-slate no-underline hover:underline">
+              <a href={CHRONICLE_SYNDICATION_URL} target="_blank" rel="noopener" class="text-brand-amber no-underline hover:underline">
+                57-Entry Hub ↗
+              </a>
+              <a href={VERIFICATION_URL} target="_blank" rel="noopener" class="text-brand-slate no-underline hover:underline">
                 Verification ↗
               </a>
             </div>
@@ -505,13 +646,24 @@ const clientPayload = JSON.stringify({
               <span id="syn-med-tags" class="text-emerald-300">{(initialStudy.medium.tags ?? []).join(', ')}</span>
             </div>
 
-            <button
-              id="syn-launch-medium-import"
-              type="button"
-              class="mt-2.5 w-full font-mono text-xs px-3 py-2 rounded-lg bg-emerald-400 text-[#06121a] font-bold cursor-pointer border-none hover:opacity-90"
-            >
-              ⚡ Copy Blog Canonical URL + Open medium.com/p/import ↗
-            </button>
+            <div class="mt-2.5 grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-1.5">
+              <a
+                id="syn-launch-medium-import"
+                href="https://medium.com/p/import"
+                target="_blank"
+                rel="noopener"
+                class="text-center font-mono text-xs px-3 py-2 rounded-lg bg-emerald-400 text-[#06121a] font-bold cursor-pointer no-underline hover:opacity-90"
+              >
+                ⚡ 1-Click Medium Import ↗
+              </a>
+              <button
+                id="syn-copy-import-url"
+                type="button"
+                class="font-mono text-xs px-3 py-2 rounded-lg border border-emerald-400/50 text-emerald-300 hover:bg-emerald-500/15 cursor-pointer bg-transparent"
+              >
+                Copy Import URL
+              </button>
+            </div>
           </div>
 
           <pre
@@ -519,36 +671,106 @@ const clientPayload = JSON.stringify({
             class="p-3 rounded-xl border border-brand-border bg-[#0b1020] whitespace-pre-wrap font-mono text-[11px] text-brand-light leading-relaxed max-h-[320px] overflow-y-auto m-0"
           >{initialStudy.medium_markdown}</pre>
 
-          <div class="mt-3.5 grid grid-cols-2 gap-2">
+          <div class="mt-3.5 grid grid-cols-3 gap-2">
             <button
               id="syn-copy-med-md"
               type="button"
-              class="font-mono text-xs px-3 py-2 rounded-lg bg-brand-cyan text-[#06121a] font-bold cursor-pointer border-none hover:opacity-90"
+              class="font-mono text-xs px-2.5 py-2 rounded-lg bg-brand-cyan text-[#06121a] font-bold cursor-pointer border-none hover:opacity-90"
             >
               Copy Medium .md
-            </button>
-            <button
-              id="syn-copy-import-url"
-              type="button"
-              class="font-mono text-xs px-3 py-2 rounded-lg border border-brand-cyan/45 text-brand-cyan hover:bg-brand-cyan/15 cursor-pointer bg-transparent"
-            >
-              Copy Blog Import URL
             </button>
             <a
               id="syn-open-med-html"
               href={initialStudy.medium.canonical_import_uri}
-              class="text-center font-mono text-xs px-3 py-2 rounded-lg border border-brand-border text-brand-light no-underline hover:border-brand-cyan"
+              class="text-center font-mono text-xs px-2.5 py-2 rounded-lg border border-brand-border text-brand-light no-underline hover:border-brand-cyan"
             >
-              Local Import Mirror →
+              Local Mirror →
             </a>
             <a
               id="syn-open-yaml"
               href={initialStudy.medium.blog_manifest_uri}
-              class="text-center font-mono text-xs px-3 py-2 rounded-lg border border-brand-border text-brand-light no-underline hover:border-brand-amber"
+              class="text-center font-mono text-xs px-2.5 py-2 rounded-lg border border-brand-border text-brand-light no-underline hover:border-brand-amber"
             >
-              blog.openie.dev .yaml
+              Manifest .yaml
             </a>
           </div>
+        </div>
+      </div>
+
+      <!-- ALL 28 ERA II STUDIES: 1-CLICK MEDIUM IMPORT & LIVE HYDRATION DIRECTORY -->
+      <div id="all-28-medium-grid" class="scroll-mt-24 mt-8 pt-6 border-t border-brand-border">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <div>
+            <div class="font-mono text-[10.5px] uppercase tracking-wider text-brand-cyan">
+              28 Era II Studies · Zero-Rebuild Live Medium Status (`medium-live-status.json`)
+            </div>
+            <h3 class="font-display text-lg md:text-xl font-bold text-brand-white m-0">
+              1-Click Medium Import Queue (`https://blog.openie.dev/medium/&lt;id&gt;/`)
+            </h3>
+          </div>
+          <a
+            href={CHRONICLE_SYNDICATION_URL}
+            target="_blank"
+            rel="noopener"
+            class="font-mono text-xs text-brand-amber no-underline hover:underline"
+          >
+            View Era 0 (20) + Era I (9) + Era II (28) on blog.openie.dev/syndication/ ↗
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
+          {enrichedStudies.map((st) => (
+            <div
+              data-study-row={st.id}
+              class="p-3 rounded-xl border border-brand-border bg-[#0b1020] flex flex-col justify-between gap-2"
+            >
+              <div>
+                <div class="flex items-center justify-between gap-1.5 mb-1">
+                  <span class="font-mono text-[10px] text-brand-cyan truncate">{st.id}</span>
+                  <span
+                    data-medium-ready-pill={st.id}
+                    class="font-mono text-[9.5px] px-1.5 py-0.5 rounded bg-white/5 text-brand-gray border border-brand-border shrink-0"
+                  >
+                    {st.energy_cost_j.evidence_class} · Ready
+                  </span>
+                  <a
+                    data-medium-live-pill={st.id}
+                    href={`https://blog.openie.dev/posts/${st.id}/`}
+                    target="_blank"
+                    rel="noopener"
+                    class="hidden font-mono text-[9.5px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-200 border border-emerald-400/55 no-underline font-semibold shrink-0"
+                  >
+                    🟢 Live on Medium ↗
+                  </a>
+                </div>
+                <button
+                  type="button"
+                  data-flagship-load={st.id}
+                  class="flagship-load-btn text-left font-body text-xs font-semibold text-brand-white hover:text-brand-amber bg-transparent border-none p-0 cursor-pointer leading-snug"
+                >
+                  {st.short_title}
+                </button>
+              </div>
+              <div class="flex items-center gap-1.5 pt-1.5 border-t border-brand-border/50">
+                <a
+                  href="https://medium.com/p/import"
+                  target="_blank"
+                  rel="noopener"
+                  data-flagship-import={`https://blog.openie.dev/medium/${st.id}/`}
+                  class="flagship-import-btn flex-1 text-center font-mono text-[10px] px-2 py-1 rounded bg-emerald-400/90 text-[#06121a] font-bold no-underline hover:opacity-90"
+                >
+                  ⚡ Import ↗
+                </a>
+                <button
+                  type="button"
+                  data-flagship-copy-text={`https://blog.openie.dev/medium/${st.id}/`}
+                  class="flagship-copy-meta-btn font-mono text-[10px] px-2 py-1 rounded border border-brand-cyan/40 text-brand-cyan bg-transparent cursor-pointer hover:bg-brand-cyan/15"
+                >
+                  Copy Import URL
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -568,7 +790,7 @@ const clientPayload = JSON.stringify({
             Flow 1 · Post-Review Blog Dossier → Medium Canonical Import
           </div>
           <p class="font-body text-sm text-brand-slate leading-relaxed mb-3">
-            Paste `https://blog.openie.dev/posts/&lt;slug&gt;/` into `https://medium.com/p/import` and publish under `medium.com/open-interface-engineering` with the 5 curated tags. Medium automatically records `&lt;link rel="canonical"&gt;` back to `blog.openie.dev/posts/&lt;slug&gt;/` while preserving links to the primary research paper (`research.openie.dev/papers/&lt;slug&gt;/`) and 1-command GitHub replication kit.
+            Paste `https://blog.openie.dev/medium/&lt;slug&gt;/` into `https://medium.com/p/import` and publish under `medium.com/open-interface-engineering` with the 5 curated tags. Medium reads the embedded `&lt;link rel="canonical" href="https://blog.openie.dev/posts/&lt;slug&gt;/"&gt;` pointer automatically while preserving links to the primary research paper (`research.openie.dev/papers/&lt;slug&gt;/`) and 1-command GitHub replication kit.
           </p>
           <div class="font-mono text-[11px] text-brand-cyan">
             Mirror &amp; RSS feed also live at `/feeds/medium.xml` + `/syndication/medium/&lt;slug&gt;/`.
@@ -686,6 +908,9 @@ const clientPayload = JSON.stringify({
 
     const medStatsEl = document.getElementById('syn-med-stats');
     const medImportUrlEl = document.getElementById('syn-med-import-url');
+    const medCanonicalUrlEl = document.getElementById('syn-med-canonical-url');
+    const activeMedReadyEl = document.getElementById('syn-active-medium-ready');
+    const activeMedLiveEl = document.getElementById('syn-active-medium-live');
     const medPaperEl = document.getElementById('syn-med-paper');
     const medReplicateEl = document.getElementById('syn-med-replicate');
     const medTagsEl = document.getElementById('syn-med-tags');
@@ -697,6 +922,17 @@ const clientPayload = JSON.stringify({
     const openYamlEl = document.getElementById('syn-open-yaml');
 
     let activeId = selectEl ? selectEl.value : 'deterministic-null';
+    let mediumLiveUrls = {};
+
+    function syncActiveMediumBadge(studyId) {
+      const liveUrl = mediumLiveUrls && typeof mediumLiveUrls[studyId] === 'string' ? mediumLiveUrls[studyId] : '';
+      const isLive = /^https?:\/\//.test(liveUrl);
+      if (activeMedReadyEl) activeMedReadyEl.classList.toggle('hidden', isLive);
+      if (activeMedLiveEl) {
+        if (isLive) activeMedLiveEl.setAttribute('href', liveUrl);
+        activeMedLiveEl.classList.toggle('hidden', !isLive);
+      }
+    }
 
     function esc(s) {
       return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -773,11 +1009,17 @@ const clientPayload = JSON.stringify({
         medStatsEl.textContent =
           st.medium.word_count + ' words · ' + st.medium.reading_time_min + ' min read';
       }
-      const importUrl = st.medium.medium_import_url || ('https://blog.openie.dev/posts/' + st.id + '/');
+      const cleanImporterUrl = 'https://blog.openie.dev/medium/' + st.id + '/';
+      const canonicalPostUrl = st.medium.canonical_source_url || st.medium.medium_import_url || ('https://blog.openie.dev/posts/' + st.id + '/');
       if (medImportUrlEl) {
-        medImportUrlEl.href = importUrl;
-        medImportUrlEl.textContent = importUrl;
+        medImportUrlEl.href = cleanImporterUrl;
+        medImportUrlEl.textContent = cleanImporterUrl;
       }
+      if (medCanonicalUrlEl) {
+        medCanonicalUrlEl.href = canonicalPostUrl;
+        medCanonicalUrlEl.textContent = canonicalPostUrl;
+      }
+      syncActiveMediumBadge(st.id);
       if (medPaperEl) medPaperEl.href = st.paper_url;
       if (medReplicateEl) medReplicateEl.href = st.replication_kit_url;
       if (medTagsEl) medTagsEl.textContent = (st.medium.tags || []).join(', ');
@@ -829,11 +1071,11 @@ const clientPayload = JSON.stringify({
     copyImportBtn?.addEventListener('click', () => {
       const st = BY_ID[activeId];
       if (!st) return;
-      const url = st.medium.medium_import_url || ('https://blog.openie.dev/posts/' + st.id + '/');
+      const url = 'https://blog.openie.dev/medium/' + st.id + '/';
       navigator.clipboard?.writeText(url).then(() => {
-        copyImportBtn.textContent = 'Copied Blog URL!';
+        copyImportBtn.textContent = '✓ Copied Import URL!';
         setTimeout(() => {
-          copyImportBtn.textContent = 'Copy Blog Import URL';
+          copyImportBtn.textContent = 'Copy Import URL';
         }, 1600);
       });
     });
@@ -841,13 +1083,12 @@ const clientPayload = JSON.stringify({
     launchImportBtn?.addEventListener('click', () => {
       const st = BY_ID[activeId];
       if (!st) return;
-      const url = 'https://research.openie.dev' + (st.medium.canonical_import_uri || ('/syndication/medium/' + st.id + '/'));
+      const url = 'https://blog.openie.dev/medium/' + st.id + '/';
       navigator.clipboard?.writeText(url).catch(() => {});
-      launchImportBtn.textContent = '✓ Copied Clean Import URL — Paste in Medium!';
-      window.open('https://medium.com/p/import', '_blank', 'noopener,noreferrer');
+      launchImportBtn.textContent = '✓ Copied — Paste in Medium!';
       setTimeout(() => {
-        launchImportBtn.textContent = '⚡ Copy Clean Import URL + Open medium.com/p/import ↗';
-      }, 3200);
+        launchImportBtn.textContent = '⚡ 1-Click Medium Import ↗';
+      }, 3000);
     });
 
     document.querySelectorAll('.flagship-import-btn').forEach((btn) => {
@@ -855,8 +1096,10 @@ const clientPayload = JSON.stringify({
         const url = btn.getAttribute('data-flagship-import') || '';
         navigator.clipboard?.writeText(url).catch(() => {});
         const orig = btn.textContent;
-        btn.textContent = '✓ Clean Import URL Copied — Paste in Medium!';
-        window.open('https://medium.com/p/import', '_blank', 'noopener,noreferrer');
+        btn.textContent = '✓ Copied — Paste!';
+        if (btn.tagName !== 'A') {
+          window.open('https://medium.com/p/import', '_blank', 'noopener,noreferrer');
+        }
         setTimeout(() => {
           btn.textContent = orig;
         }, 2800);
@@ -904,6 +1147,67 @@ const clientPayload = JSON.stringify({
     if (qStudy && BY_ID[qStudy]) {
       renderStudy(qStudy, false);
     }
+
+    // Zero-Rebuild "🟢 Live on Medium ↗" Auto-Hydration from blog.openie.dev
+    (async function hydrateMediumLiveStatus() {
+      const topBadgeEl = document.getElementById('syn-medium-live-counter');
+      const kpiValEl = document.getElementById('syn-kpi-medium-live');
+      const kpiSubEl = document.getElementById('syn-kpi-medium-sub');
+      const chronPillEl = document.getElementById('syn-chronicle-live-pill');
+      try {
+        const res = await fetch('https://blog.openie.dev/syndication/medium-live-status.json', { cache: 'no-store' });
+        if (!res.ok) return;
+        const payload = await res.json();
+        const urls =
+          payload && typeof payload.medium_live_urls === 'object' && payload.medium_live_urls !== null
+            ? payload.medium_live_urls
+            : {};
+        mediumLiveUrls = urls;
+
+        let era2Live = 0;
+        let allUrlsCount = 0;
+        for (const [slug, url] of Object.entries(urls)) {
+          if (typeof url !== 'string' || !/^https?:\/\//.test(url)) continue;
+          allUrlsCount += 1;
+          if (BY_ID[slug]) era2Live += 1;
+          const safeSlug = typeof CSS !== 'undefined' && CSS.escape ? CSS.escape(slug) : slug;
+          document.querySelectorAll('[data-medium-ready-pill="' + safeSlug + '"]').forEach((el) => {
+            el.classList.add('hidden');
+          });
+          document.querySelectorAll('[data-medium-live-pill="' + safeSlug + '"]').forEach((el) => {
+            el.setAttribute('href', url);
+            el.classList.remove('hidden');
+          });
+        }
+        const totalChronicleLive = Math.max(
+          allUrlsCount,
+          typeof payload.live_medium_count === 'number' ? payload.live_medium_count : 0
+        );
+        if (topBadgeEl) {
+          topBadgeEl.textContent =
+            totalChronicleLive > 0
+              ? '🟢 Live on Medium: ' + era2Live + ' / 28 Era II · ' + totalChronicleLive + ' / 57 Chronicle'
+              : 'Live on Medium: 0 / 28 Era II · 0 / 57 Chronicle (15m RSS Sync)';
+        }
+        if (kpiValEl) {
+          kpiValEl.textContent =
+            totalChronicleLive > 0 ? '🟢 ' + era2Live + ' / 28' : '57 Ready';
+        }
+        if (kpiSubEl) {
+          kpiSubEl.textContent =
+            totalChronicleLive > 0
+              ? totalChronicleLive + ' / 57 Chronicle Live'
+              : '20 Era 0 + 9 Era I + 28 Era II';
+        }
+        if (chronPillEl) {
+          chronPillEl.textContent =
+            totalChronicleLive > 0
+              ? '🟢 ' + totalChronicleLive + ' / 57 Live on Medium'
+              : '0 / 57 Live · 15m RSS Sync Armed';
+        }
+        syncActiveMediumBadge(activeId);
+      } catch (_) {}
+    })();
   })();
   </script>
 </Layout>

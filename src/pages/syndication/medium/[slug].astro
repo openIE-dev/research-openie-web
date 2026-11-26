@@ -15,6 +15,8 @@ const { study } = Astro.props as { study: any };
 const SITE = 'https://research.openie.dev';
 const canonicalBlogUrl =
   study.medium?.canonical_source_url ?? `https://blog.openie.dev/posts/${study.id}/`;
+const cleanMediumImportUrl = `https://blog.openie.dev/medium/${study.id}/`;
+const chronicleSyndicationUrl = 'https://blog.openie.dev/syndication/';
 const primaryPaperUrl = study.medium?.primary_paper_url ?? `${SITE}${study.paper_url}`;
 const replicationKitUrl =
   study.medium?.replication_kit_url ??
@@ -205,6 +207,28 @@ const jsonLd = {
         color: #6ee7b7;
         font-size: 11px;
       }
+      .top-btn {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 6px;
+        border: 1px solid rgba(52, 211, 153, 0.5);
+        background: rgba(16, 185, 129, 0.18);
+        color: #6ee7b7;
+        cursor: pointer;
+      }
+      .top-btn:hover {
+        background: rgba(16, 185, 129, 0.28);
+      }
+      .live-pill {
+        display: none;
+        padding: 3px 10px;
+        border-radius: 999px;
+        background: rgba(16, 185, 129, 0.22);
+        border: 1px solid rgba(52, 211, 153, 0.65);
+        color: #a7f3d0 !important;
+        font-weight: 600;
+      }
       main {
         max-width: 740px;
         margin: 0 auto;
@@ -277,13 +301,18 @@ const jsonLd = {
     </style>
   </head>
   <body>
-    <header class="top-bar">
+    <header class="top-bar" data-study-id={study.id} data-clean-import={cleanMediumImportUrl}>
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
         <span class="prov-pill">Signed Provenance · Self-Checked</span>
         <code>rel="canonical" → {canonicalBlogUrl}</code>
+        <a id="med-live-pill" class="live-pill" href={canonicalBlogUrl} target="_blank" rel="noopener">🟢 Live on Medium ↗</a>
+        <button id="btn-med-import" type="button" class="top-btn">⚡ 1-Click Medium Import ↗</button>
+        <button id="btn-copy-import" type="button" class="top-btn">Copy Import URL</button>
       </div>
       <div style="display:flex;gap:14px;flex-wrap:wrap;">
         <a href={`/syndication/?study=${study.id}`}>← Syndication Studio</a>
+        <a href={chronicleSyndicationUrl} target="_blank" rel="noopener">57-Entry Hub ↗</a>
+        <a href={cleanMediumImportUrl} target="_blank" rel="noopener">Chronicle Importer ↗</a>
         <a href={canonicalBlogUrl}>Canonical Blog Post ↗</a>
         <a href={study.paper_url}>Primary Paper →</a>
         <a href={replicationKitUrl}>1-Cmd Replicate ↗</a>
@@ -301,5 +330,43 @@ const jsonLd = {
         <Fragment set:html={renderedBody} />
       </article>
     </main>
+    <script is:inline>
+      (function () {
+        var hdr = document.querySelector('.top-bar');
+        if (!hdr) return;
+        var id = hdr.getAttribute('data-study-id') || '';
+        var importUrl = hdr.getAttribute('data-clean-import') || '';
+        var impBtn = document.getElementById('btn-med-import');
+        var cpBtn = document.getElementById('btn-copy-import');
+        var liveEl = document.getElementById('med-live-pill');
+        if (impBtn) {
+          impBtn.addEventListener('click', function () {
+            if (navigator.clipboard) navigator.clipboard.writeText(importUrl).catch(function () {});
+            impBtn.textContent = '✓ Copied — Paste in medium.com/p/import!';
+            window.open('https://medium.com/p/import', '_blank', 'noopener,noreferrer');
+            setTimeout(function () { impBtn.textContent = '⚡ 1-Click Medium Import ↗'; }, 2800);
+          });
+        }
+        if (cpBtn) {
+          cpBtn.addEventListener('click', function () {
+            if (navigator.clipboard) navigator.clipboard.writeText(importUrl).catch(function () {});
+            cpBtn.textContent = '✓ Copied Import URL!';
+            setTimeout(function () { cpBtn.textContent = 'Copy Import URL'; }, 1800);
+          });
+        }
+        if (id && liveEl) {
+          fetch('https://blog.openie.dev/syndication/medium-live-status.json', { cache: 'no-store' })
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (d) {
+              var u = d && d.medium_live_urls && d.medium_live_urls[id];
+              if (typeof u === 'string' && /^https?:\/\//.test(u)) {
+                liveEl.setAttribute('href', u);
+                liveEl.style.display = 'inline-block';
+              }
+            })
+            .catch(function () {});
+        }
+      })();
+    </script>
   </body>
 </html>
