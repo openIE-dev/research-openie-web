@@ -164,12 +164,12 @@ instead of paid GPU). Scale built on owned hardware: federated averaging over 4 
 20k receipts matches centralized (0.9975); a native Accelerate/AMX BLAS trainer matches the
 scalar loop (0.9970); mosaic-style hybrid partitioning with admission control.
 
-Measured per-language named-node coverage (tree-sitter master/main, 26 Nov 2026): **100% for
-16 surveyed languages** (rust 169/169, python 129/129, go 112/112, javascript 119/119,
-java 151/151, c 132/132, cpp 230/230, c-sharp 233/233, ruby 149/149, swift 72/72, kotlin 120/120,
-scala 173/173, haskell 187/187, julia 89/89, lua 51/51, zig 99/99). The 111-construct emission
-matrix is 100% across 47 languages. Report: rce-language-coverage-100.md. Languages without a
-public tree-sitter grammar remain emission targets with LUT rows but unmeasured node coverage.
+Measured per-language named-node coverage (tree-sitter upstream, 26 Nov 2026): **100% for
+28 surveyed languages** (the 16 prior plus ocaml 276/276, r 40/40, dart 223/223, elixir 45/45,
+erlang 164/164, clojure 35/35, scheme 27/27, nim 127/127, crystal 152/152, d 284/284,
+fortran 240/240, php 157/157). The 113-construct emission matrix is 100% across 47 languages.
+Report: rce-language-coverage-100.md. Only ada and perl lack a public tree-sitter grammar
+(emission LUT rows exist, node coverage unmeasured). Mesh contact built (twin::Mesh).
 
 Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
