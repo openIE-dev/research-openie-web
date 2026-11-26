@@ -32,7 +32,7 @@ Interactive artifact: `rce-language-constellation.html`. Graph JSON: `constellat
 The constellation is an open ontology and measurement layer over the public language curation:
 **12,117 catalogued languages** (a merge of PLDB, GitHub Linguist, Pygments, Wikipedia, esolangs,
 Hyperpolyglot, Rosetta Code and Wikidata, per Acher's PL-ultimate-llm) as graph nodes, of which
-**71 are measured** against a real tree-sitter grammar and carry a grammar-derived information
+**72 are measured** against a real tree-sitter grammar and carry a grammar-derived information
 profile. Every other language is present as a node with `measured=false` and **no invented
 numbers**. Edges encode family, paradigm and documented influence; the interactive page renders
 them as a constellation and adds search, cross-language translation/subsumption, information,
@@ -43,7 +43,7 @@ lineage, editor-standards, immersion-gap and source-provenance views. The inform
 
 - `named_nodes` N — the grammar's named node types (its syntactic surface size).
 - `constructs` C — distinct universal constructs those nodes realize (semantic breadth).
-- `coverage` — mapped/total named nodes (1.0000 for all 71).
+- `coverage` — mapped/total named nodes (1.0000 for all 72).
 - `h_struct_bits` H — Shannon entropy of the construct histogram: how evenly the grammar's
   surface spreads across the universal taxonomy. **Structural, not corpus** — honestly labelled.
 - `redundancy` = 1 − H/log2(C) — the surface variety that is syntactic sugar, not free information.
@@ -62,12 +62,13 @@ surface forms per construct — higher redundancy (0.13–0.26). This is a measu
 quantity: how much surface variety a universal representation must collapse for that language.
 It is reported as data; no claim of superiority over any existing system is made from it.
 
-## Measured per-language information profile (71)
+## Measured per-language information profile (72)
 
 | language | named N | constructs C | coverage | H (bits) | redundancy | surface/C |
 |---|---|---|---|---|---|---|
-| D | 284 | 71 | 1.0000 | 5.030 | 0.182 | 4.00 |
+| D | 284 | 72 | 1.0000 | 5.030 | 0.182 | 4.00 |
 | OCaml | 276 | 44 | 1.0000 | 4.282 | 0.216 | 6.27 |
+| TLA+ | 273 | 44 | 1.0000 | 4.038 | 0.260 | 6.20 |
 | MoonBit | 257 | 62 | 1.0000 | 4.820 | 0.190 | 4.15 |
 | Fortran | 240 | 47 | 1.0000 | 4.322 | 0.222 | 5.11 |
 | C# | 233 | 72 | 1.0000 | 5.191 | 0.159 | 3.24 |
@@ -84,7 +85,7 @@ It is reported as data; no claim of superiority over any existing system is made
 | Rust | 169 | 66 | 1.0000 | 5.400 | 0.107 | 2.56 |
 | Dhall | 166 | 27 | 1.0000 | 3.741 | 0.213 | 6.15 |
 | Erlang | 164 | 33 | 1.0000 | 4.197 | 0.168 | 4.97 |
-| ReScript | 160 | 59 | 1.0000 | 5.077 | 0.137 | 2.71 |
+| ReScript | 160 | 59 | 1.0000 | 5.077 | 0.137 | 2.72 |
 | PHP | 157 | 62 | 1.0000 | 5.269 | 0.115 | 2.53 |
 | PowerShell | 153 | 48 | 1.0000 | 4.623 | 0.172 | 3.19 |
 | Crystal | 152 | 43 | 1.0000 | 4.665 | 0.140 | 3.53 |
@@ -112,7 +113,7 @@ It is reported as data; no claim of superiority over any existing system is made
 | CMake | 58 | 15 | 1.0000 | 3.326 | 0.149 | 3.87 |
 | Dockerfile | 48 | 16 | 1.0000 | 3.341 | 0.165 | 3.00 |
 | YAML | 36 | 20 | 1.0000 | 3.892 | 0.100 | 1.80 |
-| HTML | 19 | 10 | 1.0000 | 3.071 | 0.076 | 1.90 |
+| HTML | 19 | 10 | 1.0000 | 3.072 | 0.076 | 1.90 |
 | TOML | 19 | 12 | 1.0000 | 3.406 | 0.050 | 1.58 |
 | JSON | 13 | 10 | 1.0000 | 3.239 | 0.025 | 1.30 |
 | Zig | 99 | 57 | 1.0000 | 5.294 | 0.092 | 1.74 |
@@ -120,7 +121,7 @@ It is reported as data; no claim of superiority over any existing system is made
 | Unison | 93 | 31 | 1.0000 | 4.394 | 0.113 | 3.00 |
 | Elm | 92 | 25 | 1.0000 | 4.066 | 0.124 | 3.68 |
 | Julia | 89 | 54 | 1.0000 | 5.165 | 0.103 | 1.65 |
-| Agda | 72 | 30 | 1.0000 | 4.371 | 0.109 | 2.40 |
+| Agda | 72 | 30 | 1.0000 | 4.372 | 0.109 | 2.40 |
 | Swift | 72 | 32 | 1.0000 | 4.396 | 0.121 | 2.25 |
 | Wenyan | 64 | 17 | 1.0000 | 3.011 | 0.263 | 3.76 |
 | Lua | 51 | 47 | 1.0000 | 5.388 | 0.030 | 1.09 |
@@ -140,7 +141,7 @@ It is reported as data; no claim of superiority over any existing system is made
 
 ## Graph structure
 
-- **Nodes:** 586 languages + family hubs (C/systems, JVM, ML/functional/proof, Lisp, BEAM,
+- **Nodes:** 587 languages + family hubs (C/systems, JVM, ML/functional/proof, Lisp, BEAM,
   JavaScript, Python, Ruby, Scientific/array, Logic, Shell, SQL, Config, Esoteric, Smalltalk,
   Pascal, Apple/Swift, PHP, Lua, Modern systems, East-Asian-new, …) + paradigm hubs.
 - **Edges:** `family` (language→lineage hub), `paradigm` (language→paradigm hub), `influence`

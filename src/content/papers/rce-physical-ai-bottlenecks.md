@@ -165,18 +165,18 @@ instead of paid GPU). Scale built on owned hardware: federated averaging over 4 
 scalar loop (0.9970); mosaic-style hybrid partitioning with admission control.
 
 Measured per-language named-node coverage (tree-sitter upstream, 26 Nov 2026): **100% for
-71 surveyed languages** — the 28 prior plus the functional + non-Western frontier: ada 228/228,
+72 surveyed languages** — the 28 prior plus the functional + non-Western frontier: ada 228/228,
 sml 134/134, purescript 128/128, mojo 141/141, cangjie 202/202, wenyan 64/64, elm 92/92,
-racket 32/32, commonlisp 50/50, elisp 20/20, gleam 97/97, moonbit 257/257, rescript 171/171,
+racket 32/32, commonlisp 50/50, elisp 20/20, gleam 97/97, moonbit 257/257, rescript 172/172,
 reason 226/226, nix 42/42, fsharp 201/201, idris 181/181, agda 72/72, lean 141/141, fstar 134/134,
 perl 146/146, coq 172/172, dhall 166/166, unison 93/93 (node-types generated with tree-sitter CLI),
 nadeshiko 24/24, ezhil 24/24, alusus 25/25 (authored seed grammars), koka 130/130, grain 35/35,
 roc 149/149, v 144/144, odin 107/107, bash 62/62, typescript 183/183, html 19/19, css 64/64,
-json 13/13, yaml 36/36, toml 19/19, dockerfile 48/48, cmake 58/58, make 44/44, powershell 153/153.
-The 113-construct emission matrix is 100% across 79 languages, and emission ⊇ ingestion. Reports:
+json 13/13, yaml 36/36, toml 19/19, dockerfile 48/48, cmake 58/58, make 44/44, powershell 153/153, tlaplus 273/273.
+The 113-construct emission matrix is 100% across 80 languages, and emission ⊇ ingestion. Reports:
 rce-language-coverage-100.md and rce-language-constellation.md. The **language constellation**
 (`constellation` module + interactive artifact) is a knowledge graph over the exhaustive curation
-(GitHub Linguist, 871 entries + seeds / 586 programming): every language a node, the 71 measured
+(GitHub Linguist, 872 entries + seeds / 587 programming): every language a node, the 72 measured
 ones carrying a grammar-derived information profile (structural entropy, redundancy, surface-
 forms-per-construct) and the Law-of-Coding frame; the rest honestly unmeasured. Perl/Coq/Dhall/
 Unison generated + measured; Nadeshiko/Ezhil/Alusus authored seeds measured. `langpredict` names
@@ -205,7 +205,7 @@ interop; trajectory provenance at scale; embodied safety standards mapping (ISO 
 ## Sources
 - https://www.enchargeai.com/blog/intelligence-untethered-the-hardware-bottleneck-blocking-physical-ai
 - https://www.eetimes.com/humanoid-robots-exit-labs-mapping-the-technical-path-to-embodied-ai-at-aw-2026/
-- https://www.facebook.com/TencentCloud/posts/embodied-ai-is-no-longer-a-research-topic-its-an-infrastructure-decisionthe-glob/1586222533399493/
+- https://www.facebook.com/TencentCloud/posts/embodied-ai-is-no-longer-a-research-topic-its-an-infrastructure-decisionthe-glob/1587222533399493/
 - https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Advances-Isaac-Platform-for-General-Purpose-Robotics-With-New-Reference-Humanoid-Frameworks-Simulation-Pipelines-and-Data/default.aspx
 - https://www.youtube.com/watch?v=IvzFNfOEbc0
 - https://www.humanoidsdaily.com/news/lg-to-unveil-next-gen-humanoid-built-on-nvidia-isaac-gr00t-in-early-2027
@@ -224,13 +224,13 @@ interop; trajectory provenance at scale; embodied safety standards mapping (ISO 
 - https://www.marketsandmarkets.com/Market-Reports/geography/physical-ai-market/India
 - https://www.startupwire.in/post/physical-ai-startups-push-for-india-industry-standards
 - https://www.reddit.com/r/TechnologyNewsIndia/comments/1y4zwuu/india_wants_to_build_humanoid_robots_a_bengaluru/
-- https://arxiv.org/html/2713.19199v1
+- https://arxiv.org/html/2723.19199v1
 - https://www.pi.website/download/real_time_chunking.pdf
 - https://github.com/guanweifan/awesome-efficient-vla
 - https://www.roboticsproceedings.org/rss21/p052.pdf
 - https://openreview.net/attachment?id=NTCUG0BWka&name=pdf
 - https://www.maximilianigl.com/blog/action-chunking
-- https://finance.biggo.com/news/529cef7b6b5c7150
+- https://finance.biggo.com/news/529cef7b6b5c7250
 - https://www.forbes.com/sites/jonmarkman/2026/05/19/the-nvidia-arm-chip-stack-winning-the-humanoid-robot-boom/
 - https://www.figure.ai/news/helix
 - https://www.luigifreda.com/2026/02/02/figure-ai-announces-helix-02-a-general-purpose-humanoid-system/
