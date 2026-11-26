@@ -143,6 +143,8 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | Preemptive + IO-async runtime | program::IoRuntime (priority per tick, AwaitEvent completions in tick order) | 4 |
 | 2D rigid-body contact | twin::Body2/simulate_body (box, restitution, friction-induced spin) | 3 |
 | Emission checked by real toolchains | examples/emit_proof.rs: one Form to C/Rust/Python, clang/rustc/python3 all print 14 | (live) |
+| No-pay conformity/port artifacts | trust::module_a_file + slsa_statement; rtos::zephyr_project + sel4_manifest; fabric::local_capabilities | 5 |
+| Compute-light cross-fabric learning | hd.rs HD/VSA one-shot (0.992) + ELM closed-form (0.892); CUDA source as data; native AMX parity | 5 |
 
 The former "external decision" fronts are now OPEN-TRACKS in rce-gap-register.md: no-pay
 routes found by search (module-A self-assessment by freezing competence at admission; seL4 /
@@ -162,7 +164,7 @@ Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 349 (workspace) / 346 (monorepo), 0 failed. Multi-body physics, real IO/threads, RTOS port,
+Suites 359 (workspace) / 356 (monorepo), 0 failed. Multi-body physics, real IO/threads, RTOS port,
 notified-body attestation, full per-language grammars (measured remainder above) and
 FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
 
