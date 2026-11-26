@@ -153,6 +153,8 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | Measured reuse-decay + tracing reuse | scale::reuse_curve (hit-rate up, cost/act down); TracingJit compile-once over 500 calls | 2 |
 | Convex-polygon contact (SAT) | twin::Poly/circle_poly/sat_overlap/resolve_poly | 3 |
 | World-model rollout + round-wise FedAvg | HierPredictor::rollout; scale::federated_hier (0.0170 == centralized) | 2 |
+| Concave contact + HIL certification | twin::triangulate/circle_concave; hil::certify (bounds/force/pressure/deadline + trace digest) | 5 |
+| Exotic grammar constructs (49) | block/loop/break/continue/try/cast/closure/pattern/ref + node mappings | (matrix) |
 
 The former "external decision" fronts are now OPEN-TRACKS in rce-gap-register.md: no-pay
 routes found by search (module-A self-assessment by freezing competence at admission; seL4 /
@@ -163,15 +165,15 @@ instead of paid GPU). Scale built on owned hardware: federated averaging over 4 
 scalar loop (0.9970); mosaic-style hybrid partitioning with admission control.
 
 Measured per-language named-node coverage (tree-sitter master, 26 Nov 2026, after the
-declaration-remainder pass): rust 50/169 = 29.6%, python 30/129 = 23.3%, go 26/112 = 23.2%,
-javascript 32/119 = 26.9%, java 35/151 = 23.2%. The 40-construct matrix is 100% across 47
-languages; the per-language remainder (exotic nodes) is open, measured, not claimed complete.
+exotic-grammar pass): rust 67/169 = 39.6%, python 39/129 = 30.2%, go 31/112 = 27.7%,
+javascript 42/119 = 35.3%, java 45/151 = 29.8%. The 49-construct matrix is 100% across 47
+languages; driving per-language named-node coverage to 100% is the active autonomous goal.
 
 Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 379 (workspace) / 376 (monorepo), 0 failed. Concave/mesh manifolds, RTOS port,
+Suites 384 (workspace) / 381 (monorepo), 0 failed. Mesh (non-polygon) manifolds, RTOS port,
 notified-body attestation, full per-language grammars (measured remainder above) and
 FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
 Capstone summary: rce-research-completion.md.
