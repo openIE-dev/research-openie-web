@@ -14,6 +14,7 @@ import ecosystemChannelsRaw from '../../data/openie-ecosystem-channels.json';
 
 const EP15_ID = 'ep15-codon-lut6-m2-silicon';
 const EP16_ID = 'ep16-unsiloeing-planetary-wai-commons';
+const EP17_ID = 'ep17-compiled-agency';
 
 const ecosystemChannels = {
   ...ecosystemChannelsRaw,
@@ -26,19 +27,23 @@ const ecosystemChannels = {
     if ((ch.id === 'avalanche' || ch.id === 'stack' || ch.id === 'database') && !eps.includes(EP16_ID)) {
       eps = [EP16_ID, ...eps];
     }
+    // Wire Capstone Ep 17 into avalanche, stack, compute, and synthesis desks
+    if ((ch.id === 'avalanche' || ch.id === 'stack' || ch.id === 'compute' || ch.id === 'synthesis') && !eps.includes(EP17_ID)) {
+      eps = [EP17_ID, ...eps];
+    }
     return { ...ch, radio_episodes: eps };
   }),
 };
 
 const episodes = (radioFeed as any).episodes || [];
-const ep16 = episodes.find((e: any) => e.id === EP16_ID) || episodes[episodes.length - 1] || episodes[0];
+const epSpotlight = episodes.find((e: any) => e.id === EP17_ID) || episodes.find((e: any) => e.id === EP16_ID) || episodes[0];
 const commonsSummary = (radioRadar as any).commons_prior_art_summary || {};
 const waiRoot = (radioFeed as any).wai_merkle_root_blake3 || '';
 const waiPubkey = (radioFeed as any).wai_signer_pubkey_ed25519 || '';
 
-const pageTitle = 'OpenIE Research Radio — 16 WAI1 Broadcasts, Commons-Grounded Rung Radar & Pilot Foundry';
+const pageTitle = 'OpenIE Research Radio — 17 WAI1 Broadcasts, Physical Shunt Receipts, Commons Rung Radar & Pilot Foundry';
 const pageDesc =
-  'Multi-voice OpenIE Research Radio (16 episodes across *.openie.dev desks + Podcast RSS + byte-conforming WAI1 BLAKE3/Ed25519 envelopes), Commons-grounded 6-hour Global Rung Radar (scholar.askdavidc.ai §6 prior-art pre-check), and sub-60-second deterministic RAPL pilot foundry.';
+  'Multi-voice OpenIE Research Radio (17 episodes across *.openie.dev desks + Podcast RSS + byte-conforming WAI1 BLAKE3/Ed25519 envelopes), Commons-grounded 6-hour Global Rung Radar (scholar.askdavidc.ai §6 prior-art pre-check), and sub-60-second deterministic RAPL pilot foundry.';
 ---
 
 <Layout title={pageTitle} description={pageDesc}>
@@ -65,17 +70,17 @@ const pageDesc =
         <div class="space-y-1.5 max-w-3xl">
           <div class="flex flex-wrap items-center gap-2 font-mono text-[10.5px]">
             <span class="px-2 py-0.5 rounded bg-brand-amber/20 border border-brand-amber/45 text-brand-amber font-semibold">
-              NEW · EP 16 FLAGSHIP
+              NEW · EP 17 CAPSTONE
             </span>
             <span class="px-2 py-0.5 rounded bg-brand-cyan/15 border border-brand-cyan/40 text-brand-cyan">
-              16/16 WAI1 Binary Envelopes · BLAKE3 + Ed25519
+              17/17 WAI1 Binary Envelopes · BLAKE3 + Ed25519
             </span>
             <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-brand-border text-brand-light">
               §6 Commons Pre-Check: {commonsSummary.radar_works_with_prior_art ?? (radioRadar.items || []).length}/{(radioRadar.items || []).length} Corroborated
             </span>
           </div>
           <div class="font-display text-sm sm:text-base font-bold text-brand-white">
-            {ep16?.title || 'Ep 16 · Unsiloeing Science: One Canonical WAI1 Artifact Across 50 Languages, Accessibility, & The Commons'}
+            {epSpotlight?.title || 'Ep 17 · From Ephemeral Inference to Compiled Agency: The 6 Shots on Goal & Physical Shunt Receipts'}
           </div>
           <p class="font-body text-xs text-brand-slate leading-relaxed m-0">
             Every Research Radio broadcast ships a byte-conforming <code class="font-mono text-brand-cyan">WAI1</code> container (<code class="font-mono text-brand-amber">/media/radio/wai/*.wai</code>) carrying the 8-field <code class="font-mono text-brand-light">openie-artifact-v1</code> record, Zstandard transcript &amp; cards, audio digests, and <code class="font-mono text-brand-cyan">moq-jwp</code> Merkle signatures{waiRoot ? ` (root ${waiRoot.slice(0, 12)}…)` : ''}, while the 6-hour synthesis loop queries <a href="https://scholar.askdavidc.ai" target="_blank" rel="noopener noreferrer" class="text-brand-amber hover:underline">scholar.askdavidc.ai</a> before proposing novel continuations.
@@ -86,14 +91,14 @@ const pageDesc =
           <button
             type="button"
             id="spotlight-tune-ep16-btn"
-            data-ep16-id={EP16_ID}
+            data-ep16-id={EP17_ID}
             class="font-mono text-xs font-semibold px-3.5 py-2 rounded-lg bg-brand-amber text-brand-dark hover:opacity-90 cursor-pointer transition-all"
           >
-            ▶ Tune Ep 16 Now
+            ▶ Tune Ep 17 Now
           </button>
           <a
             id="strip-active-wai-link"
-            href={ep16?.wai_envelope_url || `/media/radio/wai/${EP16_ID}.wai`}
+            href={epSpotlight?.wai_envelope_url || `/media/radio/wai/${EP17_ID}.wai`}
             download
             class="font-mono text-xs px-3 py-2 rounded-lg border border-brand-cyan/45 bg-brand-cyan/10 text-brand-cyan no-underline hover:bg-brand-cyan/20 transition-all"
           >
@@ -109,14 +114,14 @@ const pageDesc =
             JWP Receipts ↗
           </a>
           <a
-            href="/blueprint/"
-            class="font-mono text-xs px-3 py-2 rounded-lg border border-brand-border bg-white/[0.03] text-brand-slate no-underline hover:text-brand-white transition-all"
+            href="/living/compiled-agency/"
+            class="font-mono text-xs px-3 py-2 rounded-lg border border-emerald-400/40 bg-emerald-500/10 text-emerald-300 no-underline hover:bg-emerald-500/20 transition-all"
           >
-            /blueprint/ →
+            /living/compiled-agency/ →
           </a>
           <a
             id="strip-active-commons-link"
-            href={ep16?.commons_citation_url || 'https://scholar.askdavidc.ai'}
+            href={epSpotlight?.commons_citation_url || 'https://scholar.askdavidc.ai'}
             target="_blank"
             rel="noopener noreferrer"
             class="font-mono text-xs px-3 py-2 rounded-lg border border-brand-amber/35 bg-brand-amber/10 text-brand-amber no-underline hover:bg-brand-amber/20 transition-all"

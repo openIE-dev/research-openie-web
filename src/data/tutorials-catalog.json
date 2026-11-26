@@ -2,9 +2,9 @@
   "version": "1.0.0",
   "storage_key": "oe-tutorials-v1",
   "tracks": [
-    { "id": "all", "label": "All 12 Labs", "count": 12 },
+    { "id": "all", "label": "All 13 Labs", "count": 13 },
     { "id": "avalanche", "label": "Communication Avalanche (1–5)", "count": 5 },
-    { "id": "core", "label": "Core OpenIE & Silicon Stack (6–12)", "count": 7 }
+    { "id": "core", "label": "Core OpenIE & Silicon Stack (6–13)", "count": 8 }
   ],
   "labs": [
     {
@@ -305,6 +305,31 @@
       "verified_receipt": {
         "suite": "openie-research-experiments/aller-a7-xc7a200t @ 09511ee3 (est_mW / est_C)", "headline": "95.8 -> 55.2 est_C · 0.86 est_W M.2 · 365 x 4 KB BRAM crystals (0 DSPs)",
         "metrics": [["Unified xc7 synthesis (09511ee3)", "62,211 LUTs (46.22%) · 83/365 RAMB36E1 · 0 DSP48E1"], ["KV260 Verilator equivalence", "10,500 / 10,500 vectors · 12,023 / 12,023 cycles (0 diffs)"], ["45 °C Pure-BRAM + x1 + Heatsink", "55.2 est_C · 0.86 est_W M.2 (261 mA) · 0.97 est_W 5V"], ["Evidence tier & crystal vault", "board_metered = false (est_mW/est_C) · 365 pages (2.53x KV260)"]]
+      }
+    },
+    {
+      "id": "lab-13-compiled-agency", "number": 13, "track": "core", "track_label": "Track B · Core OpenIE & Silicon Stack",
+      "title": "From Ephemeral Inference to Compiled Agency: Sub-Bit Impedance Tax, waiOS Tamper Halt & the 4-Stage Cascade",
+      "subtitle": "Audit the 81.86× KV260 INA260 FP32 unpack penalty, inject a Row-77 single-weight tamper to trigger waiOS BLAKE3 halt, and engage Packed Integer + the 4-Stage Cascade for a 26.58× gross (24.49× net) shunt cut.",
+      "study_id": "compiled-agency", "paper_url": "https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/", "tv_url": "/syndication/?study=from-ephemeral-inference-to-compiled-agency", "figures_url": "/living/compiled-agency/", "estimated_minutes": 8,
+      "key_concept": "Compressing a 512×512 matrix 52.72× to 0.1517 bits/weight (4,972 B) and unpacking to FP32 at runtime burns 63,335.56 µJ gross (3,813.32 µJ net)—an 81.86× gross (71.91× net) impedance penalty over dense INT8 (773.74 µJ) on Kria KV260 TI INA260 (measured_j); staying in Packed Integer (FWHT + XNOR + popcount + 4-bit LUT: 187.49 µJ, 4.13× below INT8), guarding Stage 3 with 4-ISA waiOS BLAKE3 lockstep (a541323b…46f0, Row-77 tamper -> 4ac7c4fb…69dc HALT), and routing via the 4-Stage Lookup-First Cascade cuts KV260 INA260 measured_j by 26.58× gross (24.49× net) and Jetson Thor INA3221 by 16.26× while avoiding 38.46× Stage-4 escalations.",
+      "predict": {
+        "question": "When a 512×512 weight matrix is compressed 52.72× to 0.1517 bits/weight (4,972 B) and unpacked to FP32 at runtime on AMD Kria KV260 (TI INA260 SOM 5V DC shunt measured_j), how does energy per correct decision compare to dense INT8 (773.74 µJ)?",
+        "choices": [
+          { "label": "14.68 µJ gross (~52.72× lower than dense INT8, scaling linearly with byte footprint)", "ok": false, "why": "Byte footprint alone ignores execution impedance: unpacking 0.1517 bpw codes back into FP32 on every query burns 18.18 ms of bit-unpacking and float MACs on Cortex-A53." },
+          { "label": "~773.74 µJ gross (~1.00× parity with dense INT8 because 4,972 B fits in L1 cache)", "ok": false, "why": "L1 residency saves DRAM traffic, not per-query FP32 decompression work—only staying in Packed Integer (187.49 µJ gross, 10.30 µJ net, 4.13× below INT8) eliminates the unpack loop." },
+          { "label": "63,335.56 µJ gross (3,813.32 µJ net) — an 81.86× gross (71.91× net) decompression impedance penalty!", "ok": true, "why": "Exact match (openIE-dev/openie-research-experiments @ 813eb96, N=8, 0.11% idle drift)! Runtime FP32 unpacking turns a 52.72× storage win into an 81.86× gross (71.91× net) INA260 energy penalty unless compute stays in Packed Integer (187.49 µJ gross, 10.30 µJ net)." }
+        ]
+      },
+      "steps": [
+        { "step": 1, "kind": "predict", "title": "Predict Sub-Bit FP32 Unpack Tax", "prompt": "Commit to a quantitative prediction on Kria KV260 TI INA260 SOM 5V DC shunt measured_j (@ 813eb96) before running the stage." },
+        { "step": 2, "kind": "break", "title": "Trigger FP32 Unpack Tax & Row-77 Tamper", "prompt": "Switch Kernel to 'Naive FP32 Unpack' + Routing to 'Always-Dense Teacher' (watching KV260 INA260 measured_j spike to 63,335.56 µJ / 18,221.99 µJ) AND/OR toggle 'Row-77 Tamper (w[77,0]: 0→1)' (or click the waiOS block on canvas) to watch waiOS BLAKE3 flip from a541323b…46f0 to 4ac7c4fb…69dc and trigger HALT · Receipt Refused!", "goal": "Trigger Naive FP32 + Always-Dense energy spike or Row-77 waiOS BLAKE3 HALT" },
+        { "step": 3, "kind": "repair", "title": "Engage Packed Int & 4-Stage Cascade", "prompt": "Switch Kernel to 'Packed Integer (FWHT + XNOR + popcount + 4-bit LUT)', clear 'Row-77 Tamper' (a541323b…46f0 restored), and activate '4-Stage Spellcheck Lookup-First Cascade' (Zipf s = 0.85..1.15, d_max = 2, τ = 4500), cutting KV260 INA260 measured_j by 26.58× gross (24.49× net) (16.26× on Jetson Thor INA3221) and avoiding 38.46× Stage-4 escalations!", "goal": "Seal BLAKE3 a541323b…46f0 with Packed Integer + 4-Stage Cascade (s=0.85..1.15, d_max=2, τ=4500)" },
+        { "step": 4, "kind": "verify", "title": "Inspect Signed Provenance Receipt", "prompt": "Review the Signed Provenance · Self-Checked receipt (@ 813eb96: KV260 INA260 0.09–0.11% drift Falsifier 6 PASS, Jetson Thor INA3221, 0/400 4-ISA waiOS invariance <= 0.00746) and open /living/compiled-agency/." }
+      ],
+      "verified_receipt": {
+        "suite": "Signed Provenance · Self-Checked · openie-research-experiments @ 813eb96", "headline": "81.86× FP32 unpack tax -> 4.13× Packed Int · 26.58× KV260 / 16.26× Thor cascade · /living/compiled-agency/",
+        "metrics": [["KV260 INA260 Sub-Bit (0.1517 bpw)", "63,335.56 µJ FP32 unpack (81.86× gross / 71.91× net tax) -> 187.49 µJ Packed Int"], ["KV260 INA260 4-Stage Cascade", "18,221.99 -> 685.43 µJ (26.58× gross / 24.49× net · 0.09–0.11% drift Falsifier 6 PASS)"], ["Jetson Thor INA3221 & waiOS 4-ISA", "16.26× cascade cut · 0/400 waiOS disagrees (95% UB <= 0.00746 · a541323b…46f0)"], ["Stage-4 Avoidance & Observatory", "38.46× fewer Stage-4 calls (26/1,000, est_j isolated) · /living/compiled-agency/"]]
       }
     }
   ]

@@ -8,7 +8,7 @@
     <link>https://research.openie.dev/radio/</link>
     <language>en-us</language>
     <copyright>Open Interface Engineering, Inc.</copyright>
-    <lastBuildDate>Tue, 24 Nov 2026 19:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 08:30:00 GMT</lastBuildDate>
     <atom:link href="https://research.openie.dev/radio/rss.xml" rel="self" type="application/rss+xml" />
     <description>Global multi-voice research broadcasts auditing energy-per-completion, formal state machines, biological signaling ratchets, and live open-access science. AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
     <itunes:author>Open Interface Engineering</itunes:author>
@@ -21,6 +21,23 @@
     </itunes:owner>
     <itunes:category text="Science" />
     <itunes:category text="Technology" />
+    <item>
+      <guid isPermaLink="false">openie-radio-ep17-compiled-agency</guid>
+      <title>Ep. 17: Ep 17 · From Ephemeral Inference to Compiled Agency: The 6 Shots on Goal &amp; Physical Shunt Receipts</title>
+      <link>https://research.openie.dev/radio/#ep17-compiled-agency</link>
+      <pubDate>Thu, 26 Nov 2026 08:00:00 GMT</pubDate>
+      <description>Roundtable Cast: Cecily, Marcus, Devon. Cecily, Marcus, and Devon examine OpenIE&#x27;s 6-shot experimental handoff (openIE-dev/openie-research-experiments @ 813eb96): why intelligence is a hindsight label on reliable low-energy agency (the Spellcheck Goal); why unpacking 52.72x compressed 0.1517 bpw weights (4,972 B) back to FP32 burns 81.86x MORE gross (71.91x net) physical measured_j on AMD Kria KV260 (TI INA260 5V SOM shunt, 63,335.56 µJ vs. 773.74 µJ INT8) and 19.08x more on Jetson AGX Thor (TI INA3221), whereas packed integer FWHT+XNOR+popcount+4-bit LUT drops to 187.49 µJ gross (10.30 µJ net, 4.13x–5.15x below INT8) on KV260, 104.44 µJ (7.95x below INT8) on Thor, and 1.49 µJ (0.11 µJ net, 96.33%) in a 4 KiB Null LUT; how waiOS (a541323b...) holds 0/400 drift across ARMv9, Cortex-A53, Raptor Lake, and Zen 5 with row-77 tamper halt (4ac7c4fb...) and cuts end-to-end 4-Stage Cascade KV260 measured_j by 26.58x gross (24.49x net), Thor by 16.26x, and Stage-4 calls by 38.46x; and why every table carries Signed Provenance · Self-Checked, measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered, and Falsifier 6 idle-drift bounds. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</description>
+      <itunes:subtitle>Cecily, Marcus, and Devon audit the Spellcheck Goal, the 81.86x KV260 sub-bit FP32 decompression trap vs. 187.49 µJ packed integer WHT+XNOR, waiOS cross-ISA determinism, and the 25 Nov 2026 outside-review guardrails</itunes:subtitle>
+      <itunes:summary>Roundtable Cast: Cecily, Marcus, Devon. Cecily, Marcus, and Devon examine OpenIE&#x27;s 6-shot experimental handoff (openIE-dev/openie-research-experiments @ 813eb96): why intelligence is a hindsight label on reliable low-energy agency (the Spellcheck Goal); why unpacking 52.72x compressed 0.1517 bpw weights (4,972 B) back to FP32 burns 81.86x MORE gross (71.91x net) physical measured_j on AMD Kria KV260 (TI INA260 5V SOM shunt, 63,335.56 µJ vs. 773.74 µJ INT8) and 19.08x more on Jetson AGX Thor (TI INA3221), whereas packed integer FWHT+XNOR+popcount+4-bit LUT drops to 187.49 µJ gross (10.30 µJ net, 4.13x–5.15x below INT8) on KV260, 104.44 µJ (7.95x below INT8) on Thor, and 1.49 µJ (0.11 µJ net, 96.33%) in a 4 KiB Null LUT; how waiOS (a541323b...) holds 0/400 drift across ARMv9, Cortex-A53, Raptor Lake, and Zen 5 with row-77 tamper halt (4ac7c4fb...) and cuts end-to-end 4-Stage Cascade KV260 measured_j by 26.58x gross (24.49x net), Thor by 16.26x, and Stage-4 calls by 38.46x; and why every table carries Signed Provenance · Self-Checked, measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered, and Falsifier 6 idle-drift bounds. — AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.</itunes:summary>
+      <itunes:author>Open Interface Engineering</itunes:author>
+      <itunes:episode>17</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:duration>04:12</itunes:duration>
+      <enclosure url="https://research.openie.dev/media/radio/ep17-compiled-agency.m4a" length="4314045" type="audio/x-m4a" />
+      <podcast:transcript url="https://research.openie.dev/media/radio/captions/ep17-compiled-agency.vtt" type="text/vtt" language="en" />
+      <podcast:alternateEnclosure type="application/vnd.wai" length="5061" title="WAI1 Attested Transcript &amp; Metadata Envelope"><podcast:source uri="https://research.openie.dev/media/radio/wai/ep17-compiled-agency.wai" /></podcast:alternateEnclosure>
+    </item>
     <item>
       <guid isPermaLink="false">openie-radio-ep16-unsiloeing-planetary-wai-commons</guid>
       <title>Ep. 16: Ep 16 · Unsiloeing Science: One Canonical WAI1 Artifact Across 50 Languages, Accessibility, &amp; The Commons</title>

@@ -1,0 +1,84 @@
+{
+  "schema": "openie.x_thread_bundle.v2",
+  "study_id": "from-ephemeral-inference-to-compiled-agency",
+  "canonical_id": "blake3:shot6:09d009b20ef5c8a79118a7da52729d65c21d4f2201f631b5c74eb1ec93619fe7",
+  "provenance_status": "Signed Provenance \u00b7 Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "license": "CC0-1.0",
+  "post_count": 5,
+  "max_weighted_chars": 259,
+  "card_video_uri": "/media/tv/tiktok/from-ephemeral-inference-to-compiled-agency-tiktok.mp4",
+  "fallback_video_uri": "/media/tv/films/lut-adapt-15s.mp4",
+  "medium_crosslink_uri": "https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/",
+  "canonical_paper_url": "https://research.openie.dev/living/compiled-agency/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/commit/813eb9698ff179fd34d6877c5247bb2b9125ca86",
+  "public_repo_url": "https://github.com/openIE-dev/openie-research-experiments",
+  "zero_urls_in_post_1": true,
+  "posts": [
+    {
+      "position": 1,
+      "role": "hook_video_card",
+      "text": "From Ephemeral Inference to Compiled Agency [E \u00b7 measured_j]\n\nUnpacking a 52.72x-compressed 0.1517 bpw matrix to FP32 cost 81.86x MORE energy than INT8 on Kria KV260 (TI INA260 shunt: 63,335.56 vs 773.74 uJ). Packed integers beat INT8 4.13x (187.49 uJ).",
+      "weighted_chars": 253,
+      "raw_chars": 253,
+      "urls": [],
+      "in_reply_to_position": null,
+      "media": {
+        "video_uri": "/media/tv/tiktok/from-ephemeral-inference-to-compiled-agency-tiktok.mp4",
+        "fallback_video_uri": "/media/tv/films/lut-adapt-15s.mp4",
+        "poster_uri": "/media/tv/tiktok/from-ephemeral-inference-to-compiled-agency-tiktok.jpg",
+        "vtt_uri": "/media/tv/tiktok/from-ephemeral-inference-to-compiled-agency-tiktok.vtt",
+        "aspect_ratio": "9:16",
+        "resolution": "1080x1920",
+        "fps": 60,
+        "media_category": "tweet_video"
+      }
+    },
+    {
+      "position": 2,
+      "role": "methods_and_sample_bounds",
+      "text": "1/2 Physical DC shunts (measured_j) & 4-ISA lockstep (@ 813eb96):\n- 4-stage cascade cut KV260 INA260 26.58x gross / 24.49x net (685.43 vs 18,221.99 uJ; 0.09-0.11% drift PASS) & Jetson Thor INA3221 16.26x\n- waiOS 256x128: 0/400 disagrees; row-77 tamper -> HALT",
+      "weighted_chars": 259,
+      "raw_chars": 259,
+      "urls": [],
+      "in_reply_to_position": 1
+    },
+    {
+      "position": 3,
+      "role": "telemetry_and_scope_limits",
+      "text": "2/2 Strict non-mixing (measured_j \u22a5 reported_j \u22a5 est_j) & scope:\n- Linux RAPL (reported_j, orthogonal to shunts): 54.78x i9 & 46.49x Ryzen unpack tax; 20.78x Ryzen cascade cut\n- Stage-4 calls: 26/1,000 (38.46x, est_j isolated)\n- Thor Falsifier 6: net withheld",
+      "weighted_chars": 259,
+      "raw_chars": 259,
+      "urls": [],
+      "in_reply_to_position": 2
+    },
+    {
+      "position": 4,
+      "role": "signed_provenance_self_checked",
+      "text": "Signed Provenance \u00b7 Self-Checked (human_in_gate=false; not peer-reviewed):\n- Evidence: [E]/[M]/[S] \u00b7 Shot #6 @ 813eb96 (BLAKE3 + Ed25519)\n- Verification: https://blog.openie.dev/verification/\n- Glossary: https://blog.openie.dev/glossary/",
+      "weighted_chars": 213,
+      "raw_chars": 237,
+      "urls": [
+        "https://blog.openie.dev/verification/",
+        "https://blog.openie.dev/glossary/"
+      ],
+      "in_reply_to_position": 3
+    },
+    {
+      "position": 5,
+      "role": "canonical_blog_paper_and_replicate",
+      "text": "Read & replicate Compiled Agency (CC0-1.0 / Apache-2.0):\n- Position Paper: https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/\n- Observatory: https://research.openie.dev/living/compiled-agency/\n- Receipts (@ 813eb96): https://github.com/openIE-dev/openie-research-experiments/commit/813eb9698ff179fd34d6877c5247bb2b9125ca86",
+      "weighted_chars": 185,
+      "raw_chars": 346,
+      "urls": [
+        "https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/",
+        "https://research.openie.dev/living/compiled-agency/",
+        "https://github.com/openIE-dev/openie-research-experiments/commit/813eb9698ff179fd34d6877c5247bb2b9125ca86"
+      ],
+      "in_reply_to_position": 4
+    }
+  ],
+  "content_blake3": "ee50c540df44d2d53e99c27db05081289f8aa80ce13e0b02745c1b15fc2f555c"
+}

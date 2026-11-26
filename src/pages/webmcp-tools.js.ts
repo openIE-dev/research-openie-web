@@ -146,8 +146,8 @@ export const GET: APIRoute = async () => {
       id: 'littlebit-joule',
       title: 'Sub-Bit SVD + Walsh-Hadamard Decompression Impedance Benchmark (Shot #2 & Shot #6)',
       license: 'Apache-2.0',
-      repo_url: 'https://github.com/openIE-dev/openie-research-experiments/tree/813eb9698ff179fd34d6877c5247bb2b9125ca86/kits/littlebit-joule',
-      runner_url: 'https://github.com/openIE-dev/openie-research-experiments/blob/813eb9698ff179fd34d6877c5247bb2b9125ca86/kits/littlebit-joule/run_kit.sh',
+      repo_url: 'https://github.com/openIE-dev/openie-research-experiments/tree/cb5b6410ebd460f677ba7f57119b96554ab876c3/kits/littlebit-joule',
+      runner_url: 'https://github.com/openIE-dev/openie-research-experiments/blob/cb5b6410ebd460f677ba7f57119b96554ab876c3/kits/littlebit-joule/run_kit.sh',
       observatory_url: 'https://research.openie.dev/living/compiled-agency/#ca-sim-01',
       paper_url: 'https://research.openie.dev/papers/lut-adapt/',
       chronicle_url: 'https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/',
@@ -156,15 +156,27 @@ export const GET: APIRoute = async () => {
     },
     {
       id: 'waios-mosaic-cascade',
-      title: 'Cross-ISA waiOS 256x128 Invariance & 75-Cell 4-Stage Cascade Kit (Shots #3, #5 & #6)',
+      title: '6-Fabric / 10-Lane waiOS 256x128 Invariance & 75-Cell 4-Stage Cascade Kit (Shots #3, #5 & #6)',
       license: 'Apache-2.0',
-      repo_url: 'https://github.com/openIE-dev/openie-research-experiments/tree/813eb9698ff179fd34d6877c5247bb2b9125ca86/kits/waios-mosaic-cascade',
-      runner_url: 'https://github.com/openIE-dev/openie-research-experiments/blob/813eb9698ff179fd34d6877c5247bb2b9125ca86/kits/waios-mosaic-cascade/run_kit.sh',
+      repo_url: 'https://github.com/openIE-dev/openie-research-experiments/tree/cb5b6410ebd460f677ba7f57119b96554ab876c3/kits/waios-mosaic-cascade',
+      runner_url: 'https://github.com/openIE-dev/openie-research-experiments/blob/cb5b6410ebd460f677ba7f57119b96554ab876c3/kits/waios-mosaic-cascade/run_kit.sh',
       observatory_url: 'https://research.openie.dev/living/compiled-agency/#ca-sim-02',
       paper_url: 'https://research.openie.dev/papers/lut-adapt/',
       chronicle_url: 'https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/',
-      hardware_requirements: 'Standard Linux/macOS pthreads C + Python (optional TI INA260/INA3221 shunts or Linux RAPL)',
-      scope: 'Verifies 5-lane cross-ISA waiOS 256x128 BLAKE3 == a541323b... (0/400 pthread schedule disagreements, w[77,0] tamper -> 4ac7c4fb... halt) and runs the 1,000-query 4-stage cascade + 75-cell (Zipf s x d_max x tau) sweep (26.58x KV260 INA260 & 16.26x Thor INA3221 measured_j, 18.33x i9-13900H & 20.78x Ryzen RAPL reported_j, isolated from 38.46x Stage-4 est_j).'
+      hardware_requirements: 'Standard Linux/macOS pthreads C + Python (optional Vulkan GPU, Wasm, Icarus Verilog, qemu-riscv32, or TI INA260/INA3221/RAPL)',
+      scope: 'Verifies 10-lane / 6-fabric waiOS 256x128 BLAKE3 == a541323b... across x86_64/ARMv9/Cortex-A53 CPU, Radeon 8060S gpu_vulkan_compute SPIR-V, hetero_cpu_gpu_split (0/20 cut disagreements), 1,041 B wasm32_simd128, 16x parallel Icarus Verilog RTL (0 multipliers, 2,048 cycles), and 1,444 B #![no_std] rv32imac_baremetal_mcu_elf in qemu-riscv32 (0 FPU ops), plus w[77,0] tamper -> 4ac7c4fb... halt and the 75-cell 4-stage cascade (26.58x KV260 INA260 & 16.26x Thor INA3221 measured_j).'
+    },
+    {
+      id: 'deterministic-null-suite',
+      title: '5-Arm Classical Automation Control Suite & External Adapter Harness (Shot #1)',
+      license: 'Apache-2.0',
+      repo_url: 'https://github.com/openIE-dev/openie-research-experiments/tree/cb5b6410ebd460f677ba7f57119b96554ab876c3/kits/deterministic-null-suite',
+      runner_url: 'https://github.com/openIE-dev/openie-research-experiments/blob/cb5b6410ebd460f677ba7f57119b96554ab876c3/kits/deterministic-null-suite/run_kit.sh',
+      observatory_url: 'https://research.openie.dev/living/compiled-agency/#ca-sim-03',
+      paper_url: 'https://research.openie.dev/papers/deterministic-null/',
+      chronicle_url: 'https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/',
+      hardware_requirements: 'Standard Linux/macOS Python + C (optional --candidate-cmd or --openai-compatible-url)',
+      scope: 'Runs all 5 classical control arms (arm1_lookup_table, arm2_if_else_guards [0.20 uJ KV260 / 0.037 uJ Thor], arm3_bounded_for_loop, arm4_decision_tree [0.37 uJ KV260 / 0.175 uJ Thor], arm5_compiled_solver_rules + shape_d_classical_best [85.80% @ 28.28 uJ KV260 F6 PASS / 13.34 uJ Thor F6 PASS]) vs candidate_dense_mlp_int16 (62.60%, +12.80 pp on open_compositional_patch_triage).'
     }
   ];
 
@@ -310,8 +322,9 @@ export const GET: APIRoute = async () => {
       verification_url: VERIFICATION_URL,
       independent_replication_url: VERIFICATION_URL + '#independent-replication',
       orthogonality_rule: 'measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered',
-      one_command_runner: 'git clone https://github.com/openIE-dev/openie-research-experiments.git && cd openie-research-experiments && ./replicate/run_replication.sh && ./kits/littlebit-joule/run_kit.sh && ./kits/waios-mosaic-cascade/run_kit.sh',
+      one_command_runner: 'git clone https://github.com/openIE-dev/openie-research-experiments.git && cd openie-research-experiments && ./replicate/run_replication.sh && ./kits/deterministic-null-suite/run_kit.sh && ./kits/littlebit-joule/run_kit.sh && ./kits/waios-mosaic-cascade/run_kit.sh',
       replicate_tree_url: 'https://github.com/openIE-dev/openie-research-experiments/tree/main/replicate',
+      latest_experiments_commit: 'cb5b6410ebd460f677ba7f57119b96554ab876c3',
       shot6_commit: '813eb9698ff179fd34d6877c5247bb2b9125ca86',
       compiled_agency_observatory_url: 'https://research.openie.dev/living/compiled-agency/',
       kit_count: kits.length,
@@ -555,12 +568,12 @@ export const GET: APIRoute = async () => {
     },
     {
       name: 'openie_get_replication_kits',
-      title: 'Get Standalone Apache-2.0 External Replication Kits (5 Kits @ 813eb96) & Ed25519 Key',
-      description: 'Returns all 5 standalone Apache-2.0 external replication kits (replicate/ suites deterministic-null, ai-reads-human, satb-harness plus Shot #6 multi-substrate kits/littlebit-joule and kits/waios-mosaic-cascade @ 813eb96 with Thor INA3221 & KV260 INA260 measured_j), https://research.openie.dev/living/compiled-agency/, the OpenIE Ed25519 publisher public key (1fa743eb5abeae11d37f11d17c19b2744e3213fa0ba7ae69f624d8a3e5214110), and https://blog.openie.dev/verification/. Read-only.',
+      title: 'Get Standalone Apache-2.0 External Replication Kits (6 Kits @ cb5b641) & Ed25519 Key',
+      description: 'Returns all 6 standalone Apache-2.0 external replication kits (replicate/ suites deterministic-null, ai-reads-human, satb-harness plus kits/deterministic-null-suite, kits/littlebit-joule, and 6-fabric kits/waios-mosaic-cascade @ cb5b641 / 813eb96 with Thor INA3221 & KV260 INA260 measured_j), https://research.openie.dev/living/compiled-agency/, the OpenIE Ed25519 publisher public key (1fa743eb5abeae11d37f11d17c19b2744e3213fa0ba7ae69f624d8a3e5214110), and https://blog.openie.dev/verification/. Read-only.',
       inputSchema: {
         type: 'object',
         properties: {
-          kit_id: { type: 'string', enum: ['all', 'ai-reads-human', 'deterministic-null', 'satb-harness', 'littlebit-joule', 'waios-mosaic-cascade'], description: 'Optional kit filter (default "all").' }
+          kit_id: { type: 'string', enum: ['all', 'ai-reads-human', 'deterministic-null', 'satb-harness', 'deterministic-null-suite', 'littlebit-joule', 'waios-mosaic-cascade'], description: 'Optional kit filter (default "all").' }
         },
         additionalProperties: false
       },

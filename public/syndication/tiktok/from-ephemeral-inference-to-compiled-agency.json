@@ -1,0 +1,46 @@
+{
+  "schema": "openie.tiktok_post_bundle.v2",
+  "study_id": "from-ephemeral-inference-to-compiled-agency",
+  "canonical_id": "blake3:shot6:09d009b20ef5c8a79118a7da52729d65c21d4f2201f631b5c74eb1ec93619fe7",
+  "provenance_status": "Signed Provenance \u00b7 Self-Checked",
+  "verification_url": "https://blog.openie.dev/verification/",
+  "glossary_url": "https://blog.openie.dev/glossary/",
+  "canonical_blog_url": "https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/",
+  "canonical_paper_url": "https://research.openie.dev/living/compiled-agency/",
+  "replication_kit_url": "https://github.com/openIE-dev/openie-research-experiments/commit/813eb9698ff179fd34d6877c5247bb2b9125ca86",
+  "license": "CC0-1.0",
+  "short_vertical_9x16": {
+    "video_uri": "/media/tv/tiktok/from-ephemeral-inference-to-compiled-agency-tiktok.mp4",
+    "poster_uri": "/media/tv/tiktok/from-ephemeral-inference-to-compiled-agency-tiktok.jpg",
+    "vtt_uri": "/media/tv/tiktok/from-ephemeral-inference-to-compiled-agency-tiktok.vtt",
+    "resolution": "1080x1920",
+    "fps": 60,
+    "duration_s": 28.4,
+    "safe_zone_verified": true,
+    "sha256": "7aeaafd3dfdb4e4528550157b03eb1e46c07ccd62c0b9a4be984ab79a6c0521f"
+  },
+  "caption_utf16_chars": 1207,
+  "caption": "From Ephemeral Inference to Compiled Agency \u2014 81.86x FP32 Unpack Tax vs. 26.58x KV260 & 16.26x Thor Shunt Cascade (measured_j @ 813eb96)\n\nCompressing a 512x512 matrix 52.72x (0.1517 bpw) then unpacking to FP32 cost 81.86x MORE energy than INT8 on Kria KV260 TI INA260 (63,335.56 vs 773.74 uJ measured_j). Staying in Packed Integer cut INT8 4.13x (187.49 uJ), 4-ISA waiOS halted on Row-77 tamper (0/400 drift), and the 4-stage lookup cascade cut KV260 INA260 measured_j 26.58x gross / 24.49x net and Jetson Thor INA3221 measured_j 16.26x.\n\n\u2022 Provenance: Signed Provenance \u00b7 Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n\u2022 Telemetry: measured_j (AMD Kria KV260 TI INA260 SOM_5V_DC 0.09-0.11% drift PASS & NVIDIA Jetson AGX Thor TI INA3221 VDD_CPU_SOC_MSS; strictly orthogonal to Linux RAPL reported_j & cloud est_j)\n\u2022 Position Paper: https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/\n\u2022 Observatory: https://research.openie.dev/living/compiled-agency/\n\u2022 Replicate (@ 813eb96): https://github.com/openIE-dev/openie-research-experiments/commit/813eb9698ff179fd34d6877c5247bb2b9125ca86\n#EnergyEfficiency #SystemsEngineering #AiAgents #ComputerArchitecture #OpenIE",
+  "api_v2_endpoint": "https://open.tiktokapis.com/v2/post/publish/video/init/",
+  "api_v2_status_endpoint": "https://open.tiktokapis.com/v2/post/publish/status/fetch/",
+  "api_v2_init_payload": {
+    "post_info": {
+      "title": "From Ephemeral Inference to Compiled Agency \u2014 81.86x FP32 Unpack Tax vs. 26.58x KV260 & 16.26x Thor Shunt Cascade (measured_j @ 813eb96)\n\nCompressing a 512x512 matrix 52.72x (0.1517 bpw) then unpacking to FP32 cost 81.86x MORE energy than INT8 on Kria KV260 TI INA260 (63,335.56 vs 773.74 uJ measured_j). Staying in Packed Integer cut INT8 4.13x (187.49 uJ), 4-ISA waiOS halted on Row-77 tamper (0/400 drift), and the 4-stage lookup cascade cut KV260 INA260 measured_j 26.58x gross / 24.49x net and Jetson Thor INA3221 measured_j 16.26x.\n\n\u2022 Provenance: Signed Provenance \u00b7 Self-Checked (not externally peer-reviewed; studio voice is_aigc=true)\n\u2022 Telemetry: measured_j (AMD Kria KV260 TI INA260 SOM_5V_DC 0.09-0.11% drift PASS & NVIDIA Jetson AGX Thor TI INA3221 VDD_CPU_SOC_MSS; strictly orthogonal to Linux RAPL reported_j & cloud est_j)\n\u2022 Position Paper: https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/\n\u2022 Observatory: https://research.openie.dev/living/compiled-agency/\n\u2022 Replicate (@ 813eb96): https://github.com/openIE-dev/openie-research-experiments/commit/813eb9698ff179fd34d6877c5247bb2b9125ca86\n#EnergyEfficiency #SystemsEngineering #AiAgents #ComputerArchitecture #OpenIE",
+      "privacy_level": "PUBLIC_TO_EVERYONE",
+      "disable_duet": false,
+      "disable_comment": false,
+      "disable_stitch": false,
+      "video_cover_timestamp_ms": 1000,
+      "brand_content_toggle": false,
+      "brand_organic_toggle": false,
+      "is_aigc": true
+    },
+    "source_info": {
+      "source": "PULL_FROM_URL",
+      "video_url": "https://research.openie.dev/media/tv/tiktok/from-ephemeral-inference-to-compiled-agency-tiktok.mp4"
+    }
+  },
+  "privacy_level": "PUBLIC_TO_EVERYONE",
+  "is_aigc": true,
+  "content_blake3": "abbe11a85c90539a315525670e115911dc72c995d4aaff4327b47969c839487c"
+}

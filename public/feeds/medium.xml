@@ -12,6 +12,25 @@
     <lastBuildDate>Wed, 25 Nov 2026 13:30:00 GMT</lastBuildDate>
     <copyright>CC0-1.0 Public Domain Dedication (summaries &amp; essays)</copyright>
     <item>
+      <title>From Ephemeral Inference to Compiled Agency: A Position Paper on Verifiable, Energy-Accounted Computing</title>
+      <link>https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/</link>
+      <guid isPermaLink="true">https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/</guid>
+      <pubDate>Thu, 26 Nov 2026 08:00:00 GMT</pubDate>
+      <dc:creator>Open Interface Engineering</dc:creator>
+      <atom:link rel="canonical" href="https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/" />
+      <description>Why 52.72x sub-bit compression backfires by 81.86x under runtime FP32 unpacking on Kria KV260 TI INA260—and how packed integer compute, 4-ISA waiOS lockstep, and a 4-stage cascade cut shunt energy 26.58x (KV260) and 16.26x (Thor).</description>
+      <category>energy-efficiency</category>
+      <category>systems-engineering</category>
+      <category>ai-agents</category>
+      <category>computer-architecture</category>
+      <category>reproducibility</category>
+      <content:encoded><![CDATA[<p><em>Why 52.72x sub-bit compression backfires by 81.86x under runtime FP32 unpacking on Kria KV260 TI INA260—and how packed integer compute, 4-ISA waiOS lockstep, and a 4-stage cascade cut shunt energy 26.58x (KV260) and 16.26x (Thor).</em></p>
+<blockquote><p><strong>Signed Provenance · Self-Checked</strong> (<code>human_in_gate = false</code>; not externally peer-reviewed; see <a href="https://blog.openie.dev/verification/">Verification &amp; AI-Use Disclosure</a> and <a href="https://blog.openie.dev/glossary/">Epistemic Glossary</a>).</p></blockquote>
+<blockquote><p><strong>Canonical Post-Review Position Paper (<code>rel=&quot;canonical&quot;</code>)</strong>: <a href="https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/">https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/</a></p></blockquote>
+<blockquote><p><strong>Interactive Multi-Substrate Observatory</strong>: <a href="https://research.openie.dev/living/compiled-agency/">https://research.openie.dev/living/compiled-agency/</a> · <strong>1-Command Replication (<code>@ 813eb96</code>)</strong>: <a href="https://github.com/openIE-dev/openie-research-experiments/commit/813eb9698ff179fd34d6877c5247bb2b9125ca86">https://github.com/openIE-dev/openie-research-experiments/commit/813eb9698ff179fd34d6877c5247bb2b9125ca86</a></p></blockquote>
+<p>Across physical DC current shunts at commit 813eb96, unpacking 52.72x-compressed (0.1517 bpw) weights to FP32 imposed an 81.86x gross (71.91x net) energy penalty over dense INT8 on AMD Kria KV260 TI INA260 (63,335.56 vs 773.74 uJ, N=8, 0.11% idle drift PASS) and 19.08x on NVIDIA Jetson AGX Thor TI INA3221, whereas Packed Integer (187.49 uJ KV260 / 104.44 uJ Thor), 4-ISA waiOS ternary lockstep (0/400 disagreements, Row-77 tamper HALT), and the 4-stage spellcheck lookup-first cascade reduced KV260 measured_j by 26.58x gross (24.49x net) and Thor measured_j by 16.26x while avoiding 38.46x Stage-4 escalations.</p>]]></content:encoded>
+    </item>
+    <item>
       <title>Goal-Holding Agents Under Budget Guards: Pre- and Post-Fix Overspend Audit and Replication Limits</title>
       <link>https://blog.openie.dev/posts/agency/</link>
       <guid isPermaLink="true">https://blog.openie.dev/posts/agency/</guid>

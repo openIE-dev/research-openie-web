@@ -1,0 +1,60 @@
+# OpenIE Post-Review Audited Blog Syndication Manifest (CC0-1.0)
+slug: "from-ephemeral-inference-to-compiled-agency"
+
+metadata:
+  title: "From Ephemeral Inference to Compiled Agency: A Position Paper on Verifiable, Energy-Accounted Computing"
+  description: "Multi-substrate hardware DC shunt (Kria KV260 TI INA260 & Jetson AGX Thor TI INA3221/INA238, measured_j) and Linux RAPL (reported_j) synthesis (@ 813eb96): 81.86x FP32 unpack impedance penalty vs. 4.13x Packed Integer win, 4-ISA waiOS BLAKE3 lockstep, and 26.58x KV260 / 16.26x Thor 4-stage cascade reductions."
+  date: "2026-11-26"
+  author: "Open Interface Engineering"
+  category: "research"
+  tags: ["energy-efficiency", "systems-engineering", "ai-agents", "computer-architecture", "reproducibility"]
+  featured: true
+  draft: false
+  toc: true
+  provenanceStatus: "Signed Provenance · Self-Checked"
+  verificationUrl: "https://blog.openie.dev/verification/"
+  glossaryUrl: "https://blog.openie.dev/glossary/"
+  canonicalBlogUrl: "https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/"
+  canonicalUrl: "https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/"
+  primaryPaperUrl: "https://research.openie.dev/living/compiled-agency/"
+  replicationKitUrl: "https://github.com/openIE-dev/openie-research-experiments/commit/813eb9698ff179fd34d6877c5247bb2b9125ca86"
+  publicRepoUrl: "https://github.com/openIE-dev/openie-research-experiments"
+  energyClass: "measured_j"
+  license: "CC0-1.0"
+
+hero:
+  image: "from-ephemeral-inference-to-compiled-agency-tiktok.jpg"
+  alt: "From Ephemeral Inference to Compiled Agency — 81.86x KV260 INA260 FP32 unpack tax vs 4.13x Packed Integer win & 26.58x 4-stage cascade reduction (measured_j @ 813eb96)"
+
+sections:
+  - heading: null
+    content: |
+      *Signed Provenance · Self-Checked (`human_in_gate = false`; [Verification](https://blog.openie.dev/verification/) · [Glossary](https://blog.openie.dev/glossary/)) · Canonical Post-Review Position Paper: [https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/](https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/) · Interactive Observatory: [https://research.openie.dev/living/compiled-agency/](https://research.openie.dev/living/compiled-agency/)*
+
+      Across physical DC current shunts on AMD Kria KV260 (`TI INA260` `SOM_5V_DC`, `measured_j`) and NVIDIA Jetson AGX Thor (`TI INA3221` `VDD_CPU_SOC_MSS` + `TI INA238` `VIN_CARRIER`, `measured_j`), compressing a `512x512` matrix `52.72x` to `0.1517 bpw` and unpacking to `FP32` at runtime imposed an `81.86x` gross (`71.91x` net) energy penalty on KV260 (`19.08x` on Thor), whereas packed integer execution (`FWHT + XNOR + popcount + 4-bit LUT`), 4-ISA `waiOS` integer lockstep (`0/400` schedule disagreements), and a 4-stage lookup-first cascade cut KV260 `measured_j` `26.58x` gross (`24.49x` net) and Thor `measured_j` `16.26x` (`@ 813eb96`).
+
+  - heading: "Key Claims & Evidence Tags"
+    content: |
+      1. **[E · Sub-Bit Decompression Impedance Tax vs. Packed Integer (`measured_j`)]** Unpacking `0.1517 bpw` weights to `FP32` on KV260 `INA260` cost `63,335.56 uJ` gross (`3,813.32 uJ` net) vs. `773.74 uJ` gross (`53.03 uJ` net) for dense `INT8` (`81.86x` gross / `71.91x` net penalty); staying in Packed Integer used `187.49 uJ` gross (`10.30 uJ` net, `4.13x` below `INT8`), and `104.44 uJ` gross on Jetson Thor `INA3221` (`7.95x` below `INT8`).
+      2. **[E · 4-ISA `waiOS` Verifiable Integer Lockstep]** Canonical `256x128` ternary execution matched `BLAKE3` `a541323b13653ed36515ff24ef08deb7dfa771e570a434712708fb72552f46f0` across 5 lanes x 4 substrates (`0/400` randomized 4-worker disagreements, 95% UB `<= 0.00746`), halting immediately (`4ac7c4fb...69dc`, `receipt_sealed = false`) under Row-77 single-weight tamper (`w[77,0]: 0 -> 1`).
+      3. **[E · 4-Stage Lookup-First Cascade (`measured_j ⊥ reported_j ⊥ est_j`)]** Routing `1,000` bounded spellcheck queries (`550` LUT, `250` sparse `d_max=2`, `174` `waiOS` Mosaic `tau=4500`, `26` Stage-4) cut KV260 `INA260` `measured_j` `26.58x` gross (`24.49x` net, `0.09%` idle drift PASS) and Thor `INA3221` `measured_j` `16.26x` while avoiding `38.46x` Stage-4 escalations (`est_j` strictly isolated).
+
+references:
+  - id: 1
+    authors: "Open Interface Engineering"
+    title: "From Ephemeral Inference to Compiled Agency — Multi-Substrate Receipts (@ 813eb96)"
+    publication: "OpenIE Research"
+    year: 2026
+    url: "https://research.openie.dev/living/compiled-agency/"
+
+closing:
+  content: |
+    Explore the interactive multi-substrate simulator at [https://research.openie.dev/living/compiled-agency/](https://research.openie.dev/living/compiled-agency/) and replicate every shunt/RAPL receipt from [commit 813eb96](https://github.com/openIE-dev/openie-research-experiments/commit/813eb9698ff179fd34d6877c5247bb2b9125ca86).
+  cta:
+    primary:
+      text: "Read Canonical Position Paper"
+      url: "https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/"
+    secondary:
+      text: "Open Compiled Agency Observatory"
+      url: "https://research.openie.dev/living/compiled-agency/"
+  footer_text: "Signed Provenance · Self-Checked (not externally peer-reviewed). Summary text dedicated to the public domain under CC0-1.0."

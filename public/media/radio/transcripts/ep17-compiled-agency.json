@@ -1,0 +1,462 @@
+{
+  "id": "ep17-compiled-agency",
+  "number": 17,
+  "title": "Ep 17 · From Ephemeral Inference to Compiled Agency: The 6 Shots on Goal & Physical Shunt Receipts",
+  "subtitle": "Cecily, Marcus, and Devon audit the Spellcheck Goal, the 81.86x KV260 sub-bit FP32 decompression trap vs. 187.49 µJ packed integer WHT+XNOR, waiOS cross-ISA determinism, and the 25 Nov 2026 outside-review guardrails",
+  "summary": "Cecily, Marcus, and Devon examine OpenIE's 6-shot experimental handoff (openIE-dev/openie-research-experiments @ 813eb96): why intelligence is a hindsight label on reliable low-energy agency (the Spellcheck Goal); why unpacking 52.72x compressed 0.1517 bpw weights (4,972 B) back to FP32 burns 81.86x MORE gross (71.91x net) physical measured_j on AMD Kria KV260 (TI INA260 5V SOM shunt, 63,335.56 µJ vs. 773.74 µJ INT8) and 19.08x more on Jetson AGX Thor (TI INA3221), whereas packed integer FWHT+XNOR+popcount+4-bit LUT drops to 187.49 µJ gross (10.30 µJ net, 4.13x–5.15x below INT8) on KV260, 104.44 µJ (7.95x below INT8) on Thor, and 1.49 µJ (0.11 µJ net, 96.33%) in a 4 KiB Null LUT; how waiOS (a541323b...) holds 0/400 drift across ARMv9, Cortex-A53, Raptor Lake, and Zen 5 with row-77 tamper halt (4ac7c4fb...) and cuts end-to-end 4-Stage Cascade KV260 measured_j by 26.58x gross (24.49x net), Thor by 16.26x, and Stage-4 calls by 38.46x; and why every table carries Signed Provenance · Self-Checked, measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered, and Falsifier 6 idle-drift bounds.",
+  "topic_tags": [
+    "compiled-agency",
+    "spellcheck-goal",
+    "decompression-impedance-tax",
+    "waios-determinism",
+    "physical-shunt-receipts"
+  ],
+  "panel": [
+    "Cecily",
+    "Marcus",
+    "Devon"
+  ],
+  "panel_profiles": [
+    {
+      "name": "Cecily",
+      "group": "host",
+      "title": "Lead Science Host · African American English",
+      "voice_id": "NQMJRVvPew6HsaebYnZj",
+      "fallback_voice": "en-US-EmmaMultilingualNeural",
+      "color": "#14B8A6",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    {
+      "name": "Marcus",
+      "group": "skeptic",
+      "title": "Empirical Foil · African American English",
+      "voice_id": "VlUmeC1Uzj3NnwiVR9K9",
+      "fallback_voice": "en-US-ChristopherNeural",
+      "color": "#F59E0B",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    {
+      "name": "Devon",
+      "group": "specialist",
+      "title": "Systems & Compiler Architect · African American English",
+      "voice_id": "CMUEYyUNA4TrldQy4HLM",
+      "fallback_voice": "en-US-GuyNeural",
+      "color": "#6366F1",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    }
+  ],
+  "tts_engines": [
+    "eleven_v4"
+  ],
+  "published_utc": "2026-11-26T08:00:00Z",
+  "duration_sec": 252.2,
+  "duration_human": "4:12",
+  "byte_length": 4314045,
+  "audio_url": "/media/radio/ep17-compiled-agency.m4a",
+  "captions_url": "/media/radio/captions/ep17-compiled-agency.vtt",
+  "transcript_url": "/media/radio/transcripts/ep17-compiled-agency.json",
+  "turn_count": 10,
+  "card_count": 8,
+  "ai_disclosure": "AI Persona Disclosure: All nineteen OpenIE Research Radio hosts, skeptics, and bench specialists (Elena, Cecily, Misha, Amara, Priya, Mei, Mateo, Marcus, Nia, Liam, Sean, Devon, Malik, Rohan, Kwame, Tariq, Claire, Arthur, and Kenji) are AI-synthesized OpenIE research personas voiced via ElevenLabs eleven_v4 studio neural voices (with multicultural neural fallback) and grounded strictly in verified Open Interface Engineering artifacts, deterministic pilot receipts, and live open-access literature feeds.",
+  "provenance_badge": "Signed Provenance · Self-Checked",
+  "experiment_commit": "openIE-dev/openie-research-experiments@813eb96",
+  "blog_url": "https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/",
+  "living_url": "https://research.openie.dev/living/compiled-agency/",
+  "desk": "compute",
+  "desk_domain": "compute.openie.dev",
+  "desks": [
+    "avalanche",
+    "compute",
+    "synthesis",
+    "stack"
+  ],
+  "studies": [
+    "lut-adapt",
+    "deterministic-null",
+    "gates",
+    "satb-harness",
+    "spellcheck",
+    "jouleos"
+  ],
+  "hosts": [
+    "Cecily",
+    "Marcus",
+    "Devon"
+  ],
+  "duration_s": 252.2,
+  "citations": [
+    {
+      "id": "ep17-compiled-agency-card-00-0",
+      "at_sec": 2.59,
+      "end_sec": 21.087,
+      "turn_index": 0,
+      "speaker": "Cecily",
+      "kind": "ecosystem",
+      "badge": "FLAGSHIP #0",
+      "title": "From Ephemeral Inference to Compiled Agency",
+      "detail": "Full 6-shot synthesis essay at blog.openie.dev and interactive hardware explorer at /living/compiled-agency/ (commit 813eb96).",
+      "href": "https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/"
+    },
+    {
+      "id": "ep17-compiled-agency-card-02-0",
+      "at_sec": 44.263,
+      "end_sec": 61.943,
+      "turn_index": 2,
+      "speaker": "Devon",
+      "kind": "study",
+      "badge": "4-STAGE CASCADE",
+      "title": "The Spellcheck Goal: Lookup -> Retrieve -> Integer -> Frontier",
+      "detail": "Deflects routine Zipfian work in local tables and integer kernels before paying remote frontier inference.",
+      "href": "/papers/spellcheck/"
+    },
+    {
+      "id": "ep17-compiled-agency-card-06-0",
+      "at_sec": 127.159,
+      "end_sec": 165.462,
+      "turn_index": 6,
+      "speaker": "Devon",
+      "kind": "receipt",
+      "badge": "187.49 µJ / 1.49 µJ",
+      "title": "Packed Integer FWHT+XNOR+LUT & 4 KiB Null LUT",
+      "detail": "KV260 INA260: 187.49 µJ gross (10.30 µJ net, 4.13x–5.15x below INT8) & 4 KiB LUT 1.49 µJ (96.33% hit); Thor INA3221: 104.44 µJ (7.95x below INT8).",
+      "href": "/living/compiled-agency/"
+    },
+    {
+      "id": "ep17-compiled-agency-card-08-0",
+      "at_sec": 186.434,
+      "end_sec": 232.194,
+      "turn_index": 8,
+      "speaker": "Devon",
+      "kind": "receipt",
+      "badge": "26.58x · 0/400 DRIFT",
+      "title": "waiOS (a541323b…) & End-to-End 4-Stage Cascade",
+      "detail": "0/400 cross-ISA drift (Clopper–Pearson <= 0.00746), row-77 tamper halt (4ac7c4fb…), 26.58x KV260 & 16.26x Thor measured_j cut, 38.46x fewer Stage-4 calls.",
+      "href": "https://github.com/openIE-dev/openie-research-experiments/commit/813eb96"
+    },
+    {
+      "id": "ep17-compiled-agency-card-09-0",
+      "at_sec": 233.224,
+      "end_sec": 250.384,
+      "turn_index": 9,
+      "speaker": "Cecily",
+      "kind": "ecosystem",
+      "badge": "LIVE EXPLORER",
+      "title": "Interactive Compiled Agency Explorer & Apache-2.0 Kits",
+      "detail": "Explore KV260 INA260 & Thor INA3221 shunt curves interactively at research.openie.dev/living/compiled-agency/.",
+      "href": "/living/compiled-agency/"
+    }
+  ],
+  "falsifiers": [
+    {
+      "id": "ep17-compiled-agency-card-01-0",
+      "at_sec": 22.057,
+      "end_sec": 43.233,
+      "turn_index": 1,
+      "speaker": "Marcus",
+      "kind": "falsifier",
+      "badge": "SELF-CHECKED",
+      "title": "Orthogonal Evidence Classes & Provenance Guardrail",
+      "detail": "Signed Provenance · Self-Checked (not externally peer-reviewed yet); measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered are never summed.",
+      "href": "/living/compiled-agency/"
+    },
+    {
+      "id": "ep17-compiled-agency-card-04-0",
+      "at_sec": 70.204,
+      "end_sec": 119.7,
+      "turn_index": 4,
+      "speaker": "Devon",
+      "kind": "falsifier",
+      "badge": "81.86x WORSE",
+      "title": "Decompression Impedance Tax (0.1517 bpw -> FP32 Unpack)",
+      "detail": "KV260 TI INA260 measured_j: 63,335.56 µJ gross (81.86x worse gross, 71.91x worse net vs 773.74 µJ INT8); Jetson Thor INA3221: 19.08x worse.",
+      "href": "/living/compiled-agency/"
+    },
+    {
+      "id": "ep17-compiled-agency-card-07-0",
+      "at_sec": 166.432,
+      "end_sec": 185.404,
+      "turn_index": 7,
+      "speaker": "Marcus",
+      "kind": "falsifier",
+      "badge": "FALSIFIER 6",
+      "title": "KV260 (0.09–0.11% Drift) vs. Thor (>5% Shared-Host Drift)",
+      "detail": "Permits A1/A2 net subtraction on dedicated KV260 (<= 5% idle drift) while withholding single-window A1/A2 net subtraction on shared-host Jetson Thor.",
+      "href": "/papers/satb-harness/"
+    }
+  ],
+  "canonical_id": "art:radio:ep17-compiled-agency:a3116ae5ad9bb36e",
+  "wai_envelope_url": "/media/radio/wai/ep17-compiled-agency.wai",
+  "wai_content_blake3": "f8f008e1540e76198d3325bd614c7128e063e9a32de387ba8c8d69df2f0bb41c",
+  "wai_sha256": "36d821eeb3f862ab7d9deb7828ec367f683b4dca033689828c349b0dcbe647f7",
+  "wai_byte_length": 5061,
+  "audio_sha256": "5660af6f8fa64af3590a1db369d70d1d4abbfe83e61de9892f313de6979c1ac2",
+  "audio_blake3": "a3116ae5ad9bb36e3077b88304979623a8472ee8cee8e491cab2785d4cf41018",
+  "commons_citation_url": "https://scholar.askdavidc.ai/?q=compiled-agency",
+  "wai_receipt": {
+    "kind": "group",
+    "track_alias": 1,
+    "group_id": 17,
+    "root_hash": "d8bf20f8c3e406fd9096ebdbf1e4ef55ca225d952d65bad0d7e9afc4b8c52ea1",
+    "leaf_count": 1,
+    "joules_total": 0,
+    "group_start": "2026-11-26T08:00:00Z",
+    "group_end": "2026-11-26T08:00:00Z",
+    "signer_pubkey": "3289bd26e96cfaeaa3a376a729a0afe21a1b34fe92c997523a72e0b557ee3405",
+    "signer_id": "https://research.openie.dev#radio-wai1-publisher",
+    "parent_receipt_hash": null,
+    "sig": "f17aaed038a851a08b9606ca4aef713bb5d79467e07399bb947ec21fbbd5cf05519834bc6cc3069f49a390c5b60ef3d969683fb49a4c042d4e8398caed851c04",
+    "object_content_hash": "f8f008e1540e76198d3325bd614c7128e063e9a32de387ba8c8d69df2f0bb41c",
+    "merkle_proof": {
+      "siblings": [],
+      "direction_bits": 0,
+      "leaf_index": 0
+    }
+  },
+  "personas": {
+    "Cecily": {
+      "name": "Cecily",
+      "group": "host",
+      "title": "Lead Science Host · African American English",
+      "voice_id": "NQMJRVvPew6HsaebYnZj",
+      "fallback_voice": "en-US-EmmaMultilingualNeural",
+      "color": "#14B8A6",
+      "pan": [
+        0.98,
+        0.98
+      ]
+    },
+    "Marcus": {
+      "name": "Marcus",
+      "group": "skeptic",
+      "title": "Empirical Foil · African American English",
+      "voice_id": "VlUmeC1Uzj3NnwiVR9K9",
+      "fallback_voice": "en-US-ChristopherNeural",
+      "color": "#F59E0B",
+      "pan": [
+        1.04,
+        0.9
+      ]
+    },
+    "Devon": {
+      "name": "Devon",
+      "group": "specialist",
+      "title": "Systems & Compiler Architect · African American English",
+      "voice_id": "CMUEYyUNA4TrldQy4HLM",
+      "fallback_voice": "en-US-GuyNeural",
+      "color": "#6366F1",
+      "pan": [
+        0.9,
+        1.04
+      ]
+    }
+  },
+  "turns": [
+    {
+      "turn_index": 0,
+      "speaker": "Cecily",
+      "role": "Lead Science Host · African American English",
+      "group": "host",
+      "color": "#14B8A6",
+      "start_sec": 1.79,
+      "end_sec": 21.087,
+      "text": "Welcome to Episode Seventeen of OpenIE Research Radio! I'm Cecily, with skeptic Marcus and hardware lead Devon — three AI-synthesized personas voiced via ElevenLabs eleven_v4 and grounded in commit 813eb96: From Ephemeral Inference to Compiled Agency."
+    },
+    {
+      "turn_index": 1,
+      "speaker": "Marcus",
+      "role": "Empirical Foil · African American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 21.257,
+      "end_sec": 43.233,
+      "text": "First, our November twenty-fifth outside-review guardrails! Every table in 813eb96 carries Signed Provenance, Self-Checked — one-command Apache-2.0 kits are public, while external peer replication is still ahead. And measured_j, reported_j, est_j, and unmetered stay strictly orthogonal — never summed!"
+    },
+    {
+      "turn_index": 2,
+      "speaker": "Devon",
+      "role": "Systems & Compiler Architect · African American English",
+      "group": "specialist",
+      "color": "#6366F1",
+      "start_sec": 43.463,
+      "end_sec": 61.943,
+      "text": "Right! Intelligence is a hindsight label on reliable, low-energy agency. Nobody wakes a frontier model for English spellcheck! That's the Spellcheck Goal and our four-stage cascade: Lookup, Retrieve, local Integer or Solver, and Frontier last resort."
+    },
+    {
+      "turn_index": 3,
+      "speaker": "Cecily",
+      "role": "Lead Science Host · African American English",
+      "group": "host",
+      "color": "#14B8A6",
+      "start_sec": 62.173,
+      "end_sec": 69.174,
+      "text": "Walk us into Shots Two and Six, Devon — where physical DC shunts exposed the Decompression Impedance Tax!"
+    },
+    {
+      "turn_index": 4,
+      "speaker": "Devon",
+      "role": "Systems & Compiler Architect · African American English",
+      "group": "specialist",
+      "color": "#6366F1",
+      "start_sec": 69.404,
+      "end_sec": 119.7,
+      "text": "We compressed a 512 by 512 matrix 52.72 times to 0.1517 bits per weight — 4,972 bytes. Yet unpacking to FP32 at runtime on AMD Kria KV260's TI INA260 5V SOM shunt burned 63,335.56 µJ gross — 81.86 times MORE gross measured_j, and 71.91 times more net-above-idle, than 773.74 µJ INT8! On Jetson AGX Thor's TI INA3221 VDD_CPU_SOC_MSS shunt, FP32 unpacking burned 19.08 times more than INT8."
+    },
+    {
+      "turn_index": 5,
+      "speaker": "Marcus",
+      "role": "Empirical Foil · African American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 119.87,
+      "end_sec": 126.129,
+      "text": "Tiny bytes, 81.86 times worse energy! How did matching the operator fix it?"
+    },
+    {
+      "turn_index": 6,
+      "speaker": "Devon",
+      "role": "Systems & Compiler Architect · African American English",
+      "group": "specialist",
+      "color": "#6366F1",
+      "start_sec": 126.359,
+      "end_sec": 165.462,
+      "text": "Skip FP32! Packed integer FWHT plus XNOR, popcount, and a 4-bit LUT cut KV260 measured_j to 187.49 µJ gross and 10.30 µJ net — 4.13 to 5.15 times below INT8 — and cut Thor to 104.44 µJ, 7.95 times below INT8! Ahead of both, a 4 KiB Deterministic Null LUT resolves 96.33 percent at 1.49 µJ gross, 0.11 µJ net."
+    },
+    {
+      "turn_index": 7,
+      "speaker": "Marcus",
+      "role": "Empirical Foil · African American English",
+      "group": "skeptic",
+      "color": "#F59E0B",
+      "start_sec": 165.632,
+      "end_sec": 185.404,
+      "text": "And notice Falsifier Six in action: dedicated KV260 held 0.09 to 0.11 percent idle drift — inside our 5 percent gate, licensing A1 and A2 net subtraction — whereas shared-host Jetson Thor exceeded 5 percent drift, so single-window net subtraction was strictly withheld!"
+    },
+    {
+      "turn_index": 8,
+      "speaker": "Devon",
+      "role": "Systems & Compiler Architect · African American English",
+      "group": "specialist",
+      "color": "#6366F1",
+      "start_sec": 185.634,
+      "end_sec": 232.194,
+      "text": "Exactly! Then Shots Three, Five, and Six lock the whole cascade inside waiOS state digest a541323b: bit-exact across ARMv9, Cortex-A53, Raptor Lake, and Zen 5 with 0 of 400 schedule disagreements — Clopper–Pearson bound 0.00746 — plus row-77 tamper halt 4ac7c4fb! End to end, the cascade cuts KV260 measured_j 26.58 times gross and 24.49 times net, cuts Thor INA3221 16.26 times, and avoids 38.46 times of Stage-Four calls."
+    },
+    {
+      "turn_index": 9,
+      "speaker": "Cecily",
+      "role": "Lead Science Host · African American English",
+      "group": "host",
+      "color": "#14B8A6",
+      "start_sec": 232.424,
+      "end_sec": 250.384,
+      "text": "Dial those live hardware curves and grab the one-command Apache-2.0 kits at research.openie.dev/living/compiled-agency and blog.openie.dev — and inspect Episode Seventeen's signed WAI1 envelope right alongside this broadcast!"
+    }
+  ],
+  "cards": [
+    {
+      "id": "ep17-compiled-agency-card-00-0",
+      "at_sec": 2.59,
+      "end_sec": 21.087,
+      "turn_index": 0,
+      "speaker": "Cecily",
+      "kind": "ecosystem",
+      "badge": "FLAGSHIP #0",
+      "title": "From Ephemeral Inference to Compiled Agency",
+      "detail": "Full 6-shot synthesis essay at blog.openie.dev and interactive hardware explorer at /living/compiled-agency/ (commit 813eb96).",
+      "href": "https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/"
+    },
+    {
+      "id": "ep17-compiled-agency-card-01-0",
+      "at_sec": 22.057,
+      "end_sec": 43.233,
+      "turn_index": 1,
+      "speaker": "Marcus",
+      "kind": "falsifier",
+      "badge": "SELF-CHECKED",
+      "title": "Orthogonal Evidence Classes & Provenance Guardrail",
+      "detail": "Signed Provenance · Self-Checked (not externally peer-reviewed yet); measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered are never summed.",
+      "href": "/living/compiled-agency/"
+    },
+    {
+      "id": "ep17-compiled-agency-card-02-0",
+      "at_sec": 44.263,
+      "end_sec": 61.943,
+      "turn_index": 2,
+      "speaker": "Devon",
+      "kind": "study",
+      "badge": "4-STAGE CASCADE",
+      "title": "The Spellcheck Goal: Lookup -> Retrieve -> Integer -> Frontier",
+      "detail": "Deflects routine Zipfian work in local tables and integer kernels before paying remote frontier inference.",
+      "href": "/papers/spellcheck/"
+    },
+    {
+      "id": "ep17-compiled-agency-card-04-0",
+      "at_sec": 70.204,
+      "end_sec": 119.7,
+      "turn_index": 4,
+      "speaker": "Devon",
+      "kind": "falsifier",
+      "badge": "81.86x WORSE",
+      "title": "Decompression Impedance Tax (0.1517 bpw -> FP32 Unpack)",
+      "detail": "KV260 TI INA260 measured_j: 63,335.56 µJ gross (81.86x worse gross, 71.91x worse net vs 773.74 µJ INT8); Jetson Thor INA3221: 19.08x worse.",
+      "href": "/living/compiled-agency/"
+    },
+    {
+      "id": "ep17-compiled-agency-card-06-0",
+      "at_sec": 127.159,
+      "end_sec": 165.462,
+      "turn_index": 6,
+      "speaker": "Devon",
+      "kind": "receipt",
+      "badge": "187.49 µJ / 1.49 µJ",
+      "title": "Packed Integer FWHT+XNOR+LUT & 4 KiB Null LUT",
+      "detail": "KV260 INA260: 187.49 µJ gross (10.30 µJ net, 4.13x–5.15x below INT8) & 4 KiB LUT 1.49 µJ (96.33% hit); Thor INA3221: 104.44 µJ (7.95x below INT8).",
+      "href": "/living/compiled-agency/"
+    },
+    {
+      "id": "ep17-compiled-agency-card-07-0",
+      "at_sec": 166.432,
+      "end_sec": 185.404,
+      "turn_index": 7,
+      "speaker": "Marcus",
+      "kind": "falsifier",
+      "badge": "FALSIFIER 6",
+      "title": "KV260 (0.09–0.11% Drift) vs. Thor (>5% Shared-Host Drift)",
+      "detail": "Permits A1/A2 net subtraction on dedicated KV260 (<= 5% idle drift) while withholding single-window A1/A2 net subtraction on shared-host Jetson Thor.",
+      "href": "/papers/satb-harness/"
+    },
+    {
+      "id": "ep17-compiled-agency-card-08-0",
+      "at_sec": 186.434,
+      "end_sec": 232.194,
+      "turn_index": 8,
+      "speaker": "Devon",
+      "kind": "receipt",
+      "badge": "26.58x · 0/400 DRIFT",
+      "title": "waiOS (a541323b…) & End-to-End 4-Stage Cascade",
+      "detail": "0/400 cross-ISA drift (Clopper–Pearson <= 0.00746), row-77 tamper halt (4ac7c4fb…), 26.58x KV260 & 16.26x Thor measured_j cut, 38.46x fewer Stage-4 calls.",
+      "href": "https://github.com/openIE-dev/openie-research-experiments/commit/813eb96"
+    },
+    {
+      "id": "ep17-compiled-agency-card-09-0",
+      "at_sec": 233.224,
+      "end_sec": 250.384,
+      "turn_index": 9,
+      "speaker": "Cecily",
+      "kind": "ecosystem",
+      "badge": "LIVE EXPLORER",
+      "title": "Interactive Compiled Agency Explorer & Apache-2.0 Kits",
+      "detail": "Explore KV260 INA260 & Thor INA3221 shunt curves interactively at research.openie.dev/living/compiled-agency/.",
+      "href": "/living/compiled-agency/"
+    }
+  ]
+}

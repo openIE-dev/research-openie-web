@@ -1,0 +1,27 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:00.190 --> 00:00:04.214 line:72%
+Why should AI become like spellcheck?
+Stop renting cloud models for routine
+work.
+
+2
+00:00:04.328 --> 00:00:15.507 line:72%
+FP32 unpack burns 63,336 uJ (81.9x
+WORSE vs INT8). Packed Int drops to
+187.5 uJ; 4 KiB LUT hits 1.49 uJ!
+
+3
+00:00:15.621 --> 00:00:23.513 line:72%
+waiOS holds 0/400 cross-ISA drift:
+26.58x lower KV260 measured_j, 16.26x
+Thor, 38.46x fewer Stage-4 calls.
+
+4
+00:00:23.617 --> 00:00:28.234 line:72%
+Dial live hardware curves & run
+1-command Apache-2.0 kits:
+research.openie.dev/living/compiled-agency/

@@ -1,0 +1,20 @@
+{
+  "kind": "group",
+  "track_alias": 1,
+  "group_id": 17,
+  "root_hash": "d8bf20f8c3e406fd9096ebdbf1e4ef55ca225d952d65bad0d7e9afc4b8c52ea1",
+  "leaf_count": 1,
+  "joules_total": 0,
+  "group_start": "2026-11-26T08:00:00Z",
+  "group_end": "2026-11-26T08:00:00Z",
+  "signer_pubkey": "3289bd26e96cfaeaa3a376a729a0afe21a1b34fe92c997523a72e0b557ee3405",
+  "signer_id": "https://research.openie.dev#radio-wai1-publisher",
+  "parent_receipt_hash": null,
+  "sig": "f17aaed038a851a08b9606ca4aef713bb5d79467e07399bb947ec21fbbd5cf05519834bc6cc3069f49a390c5b60ef3d969683fb49a4c042d4e8398caed851c04",
+  "object_content_hash": "f8f008e1540e76198d3325bd614c7128e063e9a32de387ba8c8d69df2f0bb41c",
+  "merkle_proof": {
+    "siblings": [],
+    "direction_bits": 0,
+    "leaf_index": 0
+  }
+}

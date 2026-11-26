@@ -1,0 +1,43 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:01.790 --> 00:00:21.087
+<v Cecily>Welcome to Episode Seventeen of OpenIE Research Radio! I'm Cecily, with skeptic Marcus and hardware lead Devon — three AI-synthesized personas voiced via ElevenLabs eleven_v4 and grounded in commit 813eb96: From Ephemeral Inference to Compiled Agency.
+
+2
+00:00:21.257 --> 00:00:43.233
+<v Marcus>First, our November twenty-fifth outside-review guardrails! Every table in 813eb96 carries Signed Provenance, Self-Checked — one-command Apache-2.0 kits are public, while external peer replication is still ahead. And measured_j, reported_j, est_j, and unmetered stay strictly orthogonal — never summed!
+
+3
+00:00:43.463 --> 00:01:01.943
+<v Devon>Right! Intelligence is a hindsight label on reliable, low-energy agency. Nobody wakes a frontier model for English spellcheck! That's the Spellcheck Goal and our four-stage cascade: Lookup, Retrieve, local Integer or Solver, and Frontier last resort.
+
+4
+00:01:02.173 --> 00:01:09.174
+<v Cecily>Walk us into Shots Two and Six, Devon — where physical DC shunts exposed the Decompression Impedance Tax!
+
+5
+00:01:09.404 --> 00:01:59.700
+<v Devon>We compressed a 512 by 512 matrix 52.72 times to 0.1517 bits per weight — 4,972 bytes. Yet unpacking to FP32 at runtime on AMD Kria KV260's TI INA260 5V SOM shunt burned 63,335.56 µJ gross — 81.86 times MORE gross measured_j, and 71.91 times more net-above-idle, than 773.74 µJ INT8! On Jetson AGX Thor's TI INA3221 VDD_CPU_SOC_MSS shunt, FP32 unpacking burned 19.08 times more than INT8.
+
+6
+00:01:59.870 --> 00:02:06.129
+<v Marcus>Tiny bytes, 81.86 times worse energy! How did matching the operator fix it?
+
+7
+00:02:06.359 --> 00:02:45.462
+<v Devon>Skip FP32! Packed integer FWHT plus XNOR, popcount, and a 4-bit LUT cut KV260 measured_j to 187.49 µJ gross and 10.30 µJ net — 4.13 to 5.15 times below INT8 — and cut Thor to 104.44 µJ, 7.95 times below INT8! Ahead of both, a 4 KiB Deterministic Null LUT resolves 96.33 percent at 1.49 µJ gross, 0.11 µJ net.
+
+8
+00:02:45.632 --> 00:03:05.404
+<v Marcus>And notice Falsifier Six in action: dedicated KV260 held 0.09 to 0.11 percent idle drift — inside our 5 percent gate, licensing A1 and A2 net subtraction — whereas shared-host Jetson Thor exceeded 5 percent drift, so single-window net subtraction was strictly withheld!
+
+9
+00:03:05.634 --> 00:03:52.194
+<v Devon>Exactly! Then Shots Three, Five, and Six lock the whole cascade inside waiOS state digest a541323b: bit-exact across ARMv9, Cortex-A53, Raptor Lake, and Zen 5 with 0 of 400 schedule disagreements — Clopper–Pearson bound 0.00746 — plus row-77 tamper halt 4ac7c4fb! End to end, the cascade cuts KV260 measured_j 26.58 times gross and 24.49 times net, cuts Thor INA3221 16.26 times, and avoids 38.46 times of Stage-Four calls.
+
+10
+00:03:52.424 --> 00:04:10.384
+<v Cecily>Dial those live hardware curves and grab the one-command Apache-2.0 kits at research.openie.dev/living/compiled-agency and blog.openie.dev — and inspect Episode Seventeen's signed WAI1 envelope right alongside this broadcast!

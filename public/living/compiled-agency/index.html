@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#F59E0B">
   <meta name="color-scheme" content="dark light">
   <meta name="author" content="Open Interface Engineering">
-  <meta name="description" content="Interactive Compiled Agency observatory (Shots #2, #3, #5 &amp; #6 @ 813eb96): explore AMD Kria KV260 TI INA260 and NVIDIA Jetson AGX Thor TI INA3221/INA238 physical DC shunt measured_j alongside Linux RAPL reported_j across the 14-point sub-bit decompression impedance curve, the 75-cell (Zipf s x d_max x tau) 4-stage lookup-first cascade, and live in-browser waiOS 256x128 BLAKE3 tamper-halt verification.">
+  <meta name="description" content="Interactive Compiled Agency observatory (all 6 Shots on Goal @ cb5b641 / 813eb96): explore AMD Kria KV260 TI INA260 and NVIDIA Jetson AGX Thor TI INA3221/INA238 physical DC shunt measured_j alongside Linux RAPL reported_j across the 14-point sub-bit decompression impedance curve, the 75-cell (Zipf s x d_max x tau) 4-stage lookup-first cascade, the 5-arm classical control suite, and 6-fabric / 10-lane waiOS 256x128 BLAKE3 tamper-halt verification.">
   <link rel="canonical" href="https://research.openie.dev/living/compiled-agency/">
   <link rel="describedby" type="text/markdown" href="/llms.txt">
   <link rel="alternate" type="application/json" title="Shot #6 Multi-Substrate Receipts JSON" href="data/shot6_multi_substrate.json">
@@ -160,11 +160,12 @@
 
   <main>
     <div class="ca-wrap">
-      <p class="cite-label" style="color: var(--color-brand-amber);">OpenIE Research · /living/compiled-agency/ · Shot #6 Multi-Substrate Hardware Observatory</p>
-      <h1 class="hero-title" style="max-width: none;">Compiled Agency: Sub-Bit Impedance Tax, 4-Stage Lookup Cascade &amp; Shot #6 Physical Shunt Rails</h1>
+      <p class="cite-label" style="color: var(--color-brand-amber);">OpenIE Research · /living/compiled-agency/ · All 6 Shots on Goal Hardware &amp; 6-Fabric Observatory</p>
+      <h1 class="hero-title" style="max-width: none;">Compiled Agency: Sub-Bit Impedance Tax, 6-Fabric <code>waiOS</code> Ring, 4-Stage Cascade &amp; Physical Shunt Rails</h1>
       <p class="author-line">
-        Open Interface Engineering · Source pin:
-        <a href="https://github.com/openIE-dev/openie-research-experiments/tree/813eb9698ff179fd34d6877c5247bb2b9125ca86" target="_blank" rel="noopener" style="color: var(--color-brand-cyan);"><code>openIE-dev/openie-research-experiments @ 813eb96</code></a>
+        Open Interface Engineering · Source pins:
+        <a href="https://github.com/openIE-dev/openie-research-experiments/tree/cb5b6410ebd460f677ba7f57119b96554ab876c3" target="_blank" rel="noopener" style="color: var(--color-brand-cyan);"><code>openIE-dev/openie-research-experiments @ cb5b641</code></a>
+        (Shot #6 shunt receipts <a href="https://github.com/openIE-dev/openie-research-experiments/commit/813eb9698ff179fd34d6877c5247bb2b9125ca86" target="_blank" rel="noopener" style="color: var(--color-brand-cyan);"><code>@ 813eb96</code></a>)
         · Capstone companion:
         <a href="https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/" target="_blank" rel="noopener" style="color: var(--color-brand-amber);">From Ephemeral Inference to Compiled Agency ↗</a>
       </p>
@@ -456,7 +457,62 @@
           </div>
         </div>
 
-        <h3 style="font-size:1.05rem;margin:1.5rem 0 0.4rem;">4-Substrate Cross-ISA Conformance &amp; Signed Receipt Ledger (<code>@ 813eb96</code>)</h3>
+        <h3 style="font-size:1.05rem;margin:1.5rem 0 0.4rem;">6-Fabric / 10-Lane <code>waiOS</code> Conformance Ring &amp; Shot #1 Classical Control Suite (<code>@ cb5b641</code>)</h3>
+        <div style="overflow-x:auto;margin-bottom:1.15rem;">
+          <table class="receipt-table">
+            <thead>
+              <tr>
+                <th>Execution Fabric (Shot #3 · 10 Lanes)</th>
+                <th>Target / Toolchain</th>
+                <th>Key Invariant &amp; Disagreement Check</th>
+                <th>Canonical <code>256×128</code> BLAKE3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. Multi-ISA Native CPU (5 lanes)</strong></td>
+                <td><code>x86_64</code> (Zen 5 / Raptor Lake), <code>ARMv9</code> (Thor), <code>Cortex-A53</code> (KV260)</td>
+                <td><code>py_i32</code>, <code>c_i32</code>, <code>2bit_bitsliced</code>, <code>tmac_pair_lut</code>, <code>4w_pthreads</code> · <strong>0 / 400</strong> drift</td>
+                <td><code>a541323b…46f0</code></td>
+              </tr>
+              <tr>
+                <td><strong>2. <code>gpu_vulkan_compute</code></strong></td>
+                <td><code>AMD Radeon 8060S</code> · Vulkan 1.4 SPIR-V compute shader</td>
+                <td>Zero float ops · Row-77 tamper flips to <code>4ac7c4fb…69dc</code> HALT</td>
+                <td><code>a541323b…46f0</code></td>
+              </tr>
+              <tr>
+                <td><strong>3. <code>hetero_cpu_gpu_split</code></strong></td>
+                <td>Co-scheduled <code>Radeon 8060S</code> GPU <code>[0..cut)</code> + <code>Zen 5</code> CPU <code>pthreads</code> <code>[cut..256)</code></td>
+                <td><strong>0 / 20</strong> split-cut disagreements across partition sweeps</td>
+                <td><code>a541323b…46f0</code></td>
+              </tr>
+              <tr>
+                <td><strong>4. <code>wasm32_simd128</code></strong></td>
+                <td>Clang <code>wasm32-simd128</code> standalone module (<code>1,041 B</code> <code>.wasm</code>)</td>
+                <td>Bit-identical browser/WASI SIMD128 ternary inner product</td>
+                <td><code>a541323b…46f0</code></td>
+              </tr>
+              <tr>
+                <td><strong>5. <code>verilog_rtl_sim</code></strong></td>
+                <td><code>16×</code> parallel clocked <code>waios_ternary_pe</code> in <code>Icarus Verilog</code></td>
+                <td><strong>0</strong> multipliers · exact completion in <code>2,048</code> cycles</td>
+                <td><code>a541323b…46f0</code></td>
+              </tr>
+              <tr>
+                <td><strong>6. <code>rv32imac_baremetal_mcu_elf</code></strong></td>
+                <td><code>#![no_std]</code> <code>riscv32imac-unknown-none-elf</code> (<code>1,444 B</code> static ELF in <code>qemu-riscv32</code>)</td>
+                <td><strong>0</strong> FPU instructions · integer-only bare-metal lockstep</td>
+                <td><code>a541323b…46f0</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="f6-banner f6-pass" style="margin-bottom:1.15rem;font-size:0.82rem;">
+          <strong>Shot #1 · Kit 6 (<code>kits/deterministic-null-suite/ @ cb5b641</code>):</strong> 5-arm classical control suite (<code>arm1_lookup_table</code>, <code>arm2_if_else_guards</code> [<code>0.20 µJ</code> gross / <code>0.013 µJ</code> net KV260 <code>INA260</code>; <code>0.037 µJ</code> gross / <code>0.0042 µJ</code> net Thor <code>INA3221</code>], <code>arm3_bounded_for_loop</code>, <code>arm4_decision_tree</code> [<code>0.37 µJ</code> KV260 / <code>0.175 µJ</code> Thor], <code>arm5_compiled_solver_rules</code>) achieves <code>85.80%</code> overall (<code>shape_d_classical_best</code> @ <code>28.28 µJ</code> gross / <code>1.41 µJ</code> net KV260 <code>0.03%</code> drift <code>F6 PASS</code>; <code>13.34 µJ</code> gross / <code>2.09 µJ</code> net Thor <code>1.68%</code> drift <code>F6 PASS</code>) vs. <code>62.60%</code> for <code>candidate_dense_mlp_int16</code> (which leads <code>+12.80 pp</code> on <code>open_compositional_patch_triage</code> while trailing <code>-61.60 pp</code> on API dispatch and <code>-20.80 pp</code> on <code>3-SAT</code>), with plug-in <code>--candidate-cmd</code> &amp; <code>--openai-compatible-url</code> adapters.
+        </div>
+
+        <h3 style="font-size:1.05rem;margin:1.5rem 0 0.4rem;">4-Substrate Physical Shunt &amp; RAPL Signed Receipt Ledger (<code>@ 813eb96</code> / <code>@ cb5b641</code>)</h3>
         <div style="overflow-x:auto;">
           <table class="receipt-table">
             <thead>
@@ -474,9 +530,9 @@
 
         <div style="margin-top:1.15rem;">
           <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-brand-amber);margin-bottom:0.35rem;">
-            1-Command Standalone External Replication (<code>Apache-2.0</code> · Commodity Linux/macOS + Optional INA260/INA3221/RAPL):
+            1-Command Standalone External Replication (<code>Apache-2.0</code> · All 6 Kits <code>@ cb5b641</code> · <code>4,390/4,390 CHECKSUMS.sha256</code>):
           </div>
-          <pre style="margin:0;padding:0.8rem 1rem;border-radius:8px;border:1px solid var(--color-brand-border);background:rgba(10,10,15,0.7);font-family:var(--font-mono);font-size:11.5px;color:var(--color-brand-cyan);overflow-x:auto;"><code>git clone https://github.com/openIE-dev/openie-research-experiments &amp;&amp; cd openie-research-experiments &amp;&amp; ./kits/littlebit-joule/run_kit.sh &amp;&amp; ./kits/waios-mosaic-cascade/run_kit.sh</code></pre>
+          <pre style="margin:0;padding:0.8rem 1rem;border-radius:8px;border:1px solid var(--color-brand-border);background:rgba(10,10,15,0.7);font-family:var(--font-mono);font-size:11.5px;color:var(--color-brand-cyan);overflow-x:auto;"><code>git clone https://github.com/openIE-dev/openie-research-experiments &amp;&amp; cd openie-research-experiments &amp;&amp; ./kits/deterministic-null-suite/run_kit.sh &amp;&amp; ./kits/littlebit-joule/run_kit.sh &amp;&amp; ./kits/waios-mosaic-cascade/run_kit.sh</code></pre>
           <div id="bundle-sig-line" style="margin-top:0.45rem;font-family:var(--font-mono);font-size:10.5px;color:var(--color-brand-gray);word-break:break-all;"></div>
         </div>
       </section>
@@ -485,7 +541,7 @@
 
   <footer class="site-footer">
     <div class="footer-copy">
-      © Open Interface Engineering, Inc. · Compiled Agency Multi-Substrate Observatory (<code>@ 813eb96</code>) · <code>Signed Provenance · Self-Checked</code> (<code>measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered</code>) ·
+      © Open Interface Engineering, Inc. · Compiled Agency Multi-Substrate Observatory (<code>@ cb5b641</code> / <code>@ 813eb96</code>) · <code>Signed Provenance · Self-Checked</code> (<code>measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered</code>) ·
       <a href="/living/" style="color:var(--color-brand-cyan);">Living Figures Hub</a> ·
       <a href="/data/#lut-adapt" style="color:var(--color-brand-cyan);">Data &amp; Receipts</a> ·
       <a href="data/shot6_multi_substrate.json" style="color:var(--color-brand-amber);">shot6_multi_substrate.json</a>

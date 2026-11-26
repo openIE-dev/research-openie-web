@@ -41,7 +41,9 @@ const enrichedStudies = studies.map((st) => {
 });
 
 const initialStudy =
-  enrichedStudies.find((s) => s.id === 'deterministic-null') ?? enrichedStudies[0];
+  enrichedStudies.find((s) => s.id === 'from-ephemeral-inference-to-compiled-agency') ??
+  enrichedStudies.find((s) => s.id === 'deterministic-null') ??
+  enrichedStudies[0];
 const ecoMatrix = S.ecosystems ?? { tiers: [] };
 const ecoTiers = (ecoMatrix.tiers ?? []) as any[];
 
@@ -119,18 +121,18 @@ const clientPayload = JSON.stringify({
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         <div class="glass-card p-3.5">
           <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">Flagship Launch</div>
-          <div class="font-display text-2xl font-bold text-emerald-300 mt-1">Top 3</div>
+          <div class="font-display text-2xl font-bold text-emerald-300 mt-1">Top 4 (#0–#3)</div>
           <div class="font-mono text-[11px] text-brand-slate">Post-Review Audited</div>
         </div>
         <div class="glass-card p-3.5">
           <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">9:16 TikTok Fleet</div>
-          <div class="font-display text-2xl font-bold text-emerald-300 mt-1">28 / 28</div>
+          <div class="font-display text-2xl font-bold text-emerald-300 mt-1">29 / 29</div>
           <div class="font-mono text-[11px] text-brand-slate">1080×1920 @ 60fps · {tiktokSnackables.total_mb} MB</div>
         </div>
         <div class="glass-card p-3.5">
           <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">X Thread Fleet</div>
-          <div class="font-display text-2xl font-bold text-brand-amber mt-1">{M.x_posts_total ?? 140}</div>
-          <div class="font-mono text-[11px] text-brand-slate">28 × 5 Posts · Max {M.x_max_weighted_chars_observed ?? 275}/280</div>
+          <div class="font-display text-2xl font-bold text-brand-amber mt-1">{M.x_posts_total ?? 145}</div>
+          <div class="font-mono text-[11px] text-brand-slate">29 × 5 Posts · Max {M.x_max_weighted_chars_observed ?? 280}/280</div>
         </div>
         <div class="glass-card p-3.5">
           <div class="font-mono text-[10px] uppercase tracking-wider text-brand-gray">Medium + Chronicle</div>
@@ -155,13 +157,13 @@ const clientPayload = JSON.stringify({
           ★ Full 57-Entry Chronicle Hub ↗
         </a>
         <a href="#flagship-launch-kit" class="font-mono text-xs px-3 py-1.5 rounded-md bg-emerald-400 text-[#06121a] font-bold no-underline">
-          Flagship 3 Launch Kit
+          Flagship Launch Kit (#0–#3)
         </a>
         <a href="#interactive-studio" class="font-mono text-xs px-3 py-1.5 rounded-md bg-brand-amber text-brand-dark font-semibold no-underline">
-          1. Interactive 28-Study Workbench
+          1. Interactive 29-Study Workbench
         </a>
         <a href="#all-28-medium-grid" class="font-mono text-xs px-3 py-1.5 rounded-md border border-emerald-400/40 text-emerald-300 no-underline hover:bg-emerald-500/10">
-          All 28 Medium Imports &amp; Live Status
+          All 29 Medium Imports &amp; Live Status
         </a>
         <a href="#x-medium-automation" class="font-mono text-xs px-3 py-1.5 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-amber">
           2. How X ↔ Medium Automation Works
@@ -260,10 +262,10 @@ const clientPayload = JSON.stringify({
             </span>
           </div>
           <h2 class="font-display text-2xl md:text-3xl font-bold text-brand-white m-0">
-            Flagship 3 Launch Kit <span class="text-emerald-300">(Post-Review Audited)</span>
+            Flagship Launch Kit <span class="text-emerald-300">(Capstone #0 + Top 3 · Post-Review Audited)</span>
           </h2>
           <p class="font-body text-sm text-brand-slate max-w-3xl mt-1.5 mb-0">
-            Our three narrowest, externally checkable empirical benchmarks—ready for 1-click Medium canonical import (<code class="font-mono text-brand-cyan">medium.com/p/import</code> &rarr; <code class="font-mono text-emerald-300">open-interface-engineering</code>), native <code class="font-mono text-brand-amber">9:16 60fps</code> TikTok posting, and automatic RSS-triggered 5-post X threads.
+            Our multi-substrate Capstone Position Paper (`#0`) plus three narrowest, externally checkable empirical benchmarks—ready for 1-click Medium canonical import (<code class="font-mono text-brand-cyan">medium.com/p/import</code> &rarr; <code class="font-mono text-emerald-300">open-interface-engineering</code>), native <code class="font-mono text-brand-amber">9:16 60fps</code> TikTok posting, and automatic RSS-triggered 5-post X threads.
           </p>
         </div>
         <div class="font-mono text-[11px] text-brand-slate bg-[#0b1020] p-3 rounded-xl border border-brand-border">
@@ -273,7 +275,7 @@ const clientPayload = JSON.stringify({
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {flagships.map((f: any) => (
           <div class="p-4 rounded-2xl border border-brand-border bg-[#0b1020] flex flex-col justify-between">
             <div>
@@ -329,7 +331,7 @@ const clientPayload = JSON.stringify({
                   <span class="text-emerald-300">{(f.medium_tags ?? []).join(', ')}</span>
                 </div>
                 <div class="flex flex-wrap gap-x-3 gap-y-1 pt-1 border-t border-brand-border/50">
-                  <a href={`/papers/${f.id}/`} class="text-brand-amber no-underline hover:underline">Primary Paper →</a>
+                  <a href={f.paper_path ?? `/papers/${f.id}/`} class="text-brand-amber no-underline hover:underline">{f.paper_label ?? 'Primary Paper →'}</a>
                   <a href={`/syndication/medium/${f.id}/`} class="text-brand-light no-underline hover:underline">Local Mirror →</a>
                   <a href={f.public_repo_url} target="_blank" rel="noopener" class="text-emerald-300 no-underline hover:underline">GitHub Repo ↗</a>
                   <a href={f.replication_kit_url} target="_blank" rel="noopener" class="text-brand-cyan no-underline hover:underline">1-Cmd Replicate ↗</a>
@@ -419,10 +421,10 @@ const clientPayload = JSON.stringify({
         </div>
 
         <div class="flex flex-wrap items-center gap-2.5">
-          <label for="syn-study-select" class="font-mono text-xs text-brand-cyan">Select Study (28):</label>
+          <label for="syn-study-select" class="font-mono text-xs text-brand-cyan">Select Study (29):</label>
           <select
             id="syn-study-select"
-            aria-label="Choose one of the 28 OpenIE studies"
+            aria-label="Choose one of the 29 OpenIE studies and position papers"
             class="font-mono text-xs px-3 py-2 rounded-lg bg-[#0b1020] border border-brand-border text-brand-white focus:border-brand-amber max-w-full sm:max-w-[340px]"
           >
             {enrichedStudies.map((st) => (
