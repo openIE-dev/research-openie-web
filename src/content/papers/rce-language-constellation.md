@@ -32,7 +32,7 @@ Interactive artifact: `rce-language-constellation.html`. Graph JSON: `constellat
 The constellation is an open ontology and measurement layer over the public language curation:
 **12,117 catalogued languages** (a merge of PLDB, GitHub Linguist, Pygments, Wikipedia, esolangs,
 Hyperpolyglot, Rosetta Code and Wikidata, per Acher's PL-ultimate-llm) as graph nodes, of which
-**69 are measured** against a real tree-sitter grammar and carry a grammar-derived information
+**71 are measured** against a real tree-sitter grammar and carry a grammar-derived information
 profile. Every other language is present as a node with `measured=false` and **no invented
 numbers**. Edges encode family, paradigm and documented influence; the interactive page renders
 them as a constellation and adds search, cross-language translation/subsumption, information,
@@ -43,7 +43,7 @@ lineage, editor-standards, immersion-gap and source-provenance views. The inform
 
 - `named_nodes` N — the grammar's named node types (its syntactic surface size).
 - `constructs` C — distinct universal constructs those nodes realize (semantic breadth).
-- `coverage` — mapped/total named nodes (1.0000 for all 69).
+- `coverage` — mapped/total named nodes (1.0000 for all 71).
 - `h_struct_bits` H — Shannon entropy of the construct histogram: how evenly the grammar's
   surface spreads across the universal taxonomy. **Structural, not corpus** — honestly labelled.
 - `redundancy` = 1 − H/log2(C) — the surface variety that is syntactic sugar, not free information.
@@ -62,7 +62,7 @@ surface forms per construct — higher redundancy (0.13–0.26). This is a measu
 quantity: how much surface variety a universal representation must collapse for that language.
 It is reported as data; no claim of superiority over any existing system is made from it.
 
-## Measured per-language information profile (69)
+## Measured per-language information profile (71)
 
 | language | named N | constructs C | coverage | H (bits) | redundancy | surface/C |
 |---|---|---|---|---|---|---|
@@ -86,6 +86,7 @@ It is reported as data; no claim of superiority over any existing system is made
 | Erlang | 164 | 33 | 1.0000 | 4.197 | 0.168 | 4.97 |
 | ReScript | 160 | 59 | 1.0000 | 5.077 | 0.137 | 2.71 |
 | PHP | 157 | 62 | 1.0000 | 5.269 | 0.115 | 2.53 |
+| PowerShell | 153 | 48 | 1.0000 | 4.623 | 0.172 | 3.19 |
 | Crystal | 152 | 43 | 1.0000 | 4.665 | 0.140 | 3.53 |
 | Java | 151 | 72 | 1.0000 | 5.704 | 0.076 | 2.10 |
 | Ruby | 149 | 44 | 1.0000 | 4.513 | 0.173 | 3.39 |
@@ -125,6 +126,7 @@ It is reported as data; no claim of superiority over any existing system is made
 | Lua | 51 | 47 | 1.0000 | 5.388 | 0.030 | 1.09 |
 | Common Lisp | 50 | 23 | 1.0000 | 4.029 | 0.109 | 2.17 |
 | Elixir | 45 | 43 | 1.0000 | 5.211 | 0.040 | 1.05 |
+| Make | 44 | 16 | 1.0000 | 3.597 | 0.101 | 2.75 |
 | Nix | 42 | 28 | 1.0000 | 3.899 | 0.189 | 1.50 |
 | R | 40 | 38 | 1.0000 | 5.011 | 0.045 | 1.05 |
 | Clojure | 35 | 16 | 1.0000 | 3.421 | 0.145 | 2.19 |
@@ -138,7 +140,7 @@ It is reported as data; no claim of superiority over any existing system is made
 
 ## Graph structure
 
-- **Nodes:** 585 languages + family hubs (C/systems, JVM, ML/functional/proof, Lisp, BEAM,
+- **Nodes:** 586 languages + family hubs (C/systems, JVM, ML/functional/proof, Lisp, BEAM,
   JavaScript, Python, Ruby, Scientific/array, Logic, Shell, SQL, Config, Esoteric, Smalltalk,
   Pascal, Apple/Swift, PHP, Lua, Modern systems, East-Asian-new, …) + paradigm hubs.
 - **Edges:** `family` (language→lineage hub), `paradigm` (language→paradigm hub), `influence`
