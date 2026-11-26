@@ -18,13 +18,15 @@ Interactive artifact: `rce-language-constellation.html`. Graph JSON: `constellat
 
 ## BLUF
 
-RCE cannot honestly claim "one IR for all languages" without *knowing* each language. The
-constellation is that knowledge: **860 curated entries + authored seeds (584 programming nodes)**
-as graph nodes, of which **60 are measured** against a real grammar and carry a grammar-derived
-information profile and the **Law of Coding** frame `I = H_task − H_corpus → 0`, priced in joules.
-Every other language is present as a node with `measured=false` and **no invented numbers** —
-the graph knows *of* it without pretending to *know* it. Edges encode family (lineage), paradigm,
-and documented influence; the interactive page renders them as a constellation.
+The constellation is an open ontology and measurement layer over the public language curation:
+**12,117 catalogued languages** (a merge of PLDB, GitHub Linguist, Pygments, Wikipedia, esolangs,
+Hyperpolyglot, Rosetta Code and Wikidata, per Acher's PL-ultimate-llm) as graph nodes, of which
+**60 are measured** against a real tree-sitter grammar and carry a grammar-derived information
+profile. Every other language is present as a node with `measured=false` and **no invented
+numbers**. Edges encode family, paradigm and documented influence; the interactive page renders
+them as a constellation and adds search, cross-language translation/subsumption, information,
+lineage, editor-standards and source-provenance views. The information-theoretic frame used is
+`I = H_task − H_corpus → 0`, stated as a hypothesis priced in joules, not a settled law.
 
 ## What each measured node carries (all computed, none asserted)
 
@@ -34,21 +36,20 @@ and documented influence; the interactive page renders them as a constellation.
 - `h_struct_bits` H — Shannon entropy of the construct histogram: how evenly the grammar's
   surface spreads across the universal taxonomy. **Structural, not corpus** — honestly labelled.
 - `redundancy` = 1 − H/log2(C) — the surface variety that is syntactic sugar, not free information.
-- `surface_per_construct` = N/C — the mean surface forms per universal construct: **exactly the
-  distance the one-IR LUT must bridge for this language.**
+- `surface_per_construct` = N/C — the mean surface forms per universal construct: the distance a
+  universal IR must collapse for this language.
 - `law` — the frame: H_corpus structural proxy, the redundancy the IR collapses at admission,
   the G0 lookup floor (1 µJ) vs cold proposer (5,000,000 µJ), the 5,000,000× reuse ratio, whether
   an emission LUT row exists, and a plain-language statement of the law for that language.
 
-## The measured insight (why this is credibility, not decoration)
+## Measured observation: the surface-to-construct distance is non-uniform
 
 The bridging distance is *not* uniform. Python (1.77), JavaScript (1.72), Go (1.75), Lua (1.09),
 Elixir (1.05), R (1.05) map nearly one surface form per universal construct — low redundancy
-(0.03–0.08): their syntax is already close to the IR. Standard ML (11.17), OCaml (6.27), Idris
-(6.03), Ada (5.85), Haskell (5.50) carry many surface forms per construct — higher redundancy
-(0.13–0.26): the IR must collapse more sugar. This is a measured, per-language statement of how
-much work the universal IR does, and it is what makes the emission LUT a *checked* bridge rather
-than a slogan.
+(0.03–0.08). Standard ML (11.17), OCaml (6.27), Idris (6.03), Ada (5.85), Haskell (5.50) carry many
+surface forms per construct — higher redundancy (0.13–0.26). This is a measured, per-language
+quantity: how much surface variety a universal representation must collapse for that language.
+It is reported as data; no claim of superiority over any existing system is made from it.
 
 ## Measured per-language information profile (60)
 
@@ -169,7 +170,7 @@ languages is the registered advanced step, sequenced AFTER full language ingesti
 
 ## Open (named, honest)
 
-- **Measure the rest of the universe.** ~528 programming languages are present but unmeasured
+- **Measure the rest of the universe.** ~12,057 catalogued languages are present but unmeasured
   (no public tree-sitter grammar ingested). Each is a registered node, not a fabricated profile.
 - Perl/Coq/Dhall/Unison generated + measured; Nadeshiko/Ezhil/Alusus authored seeds measured.
 - Corpus-level entropy (true H_corpus over real code) remains a measurement beyond the structural
@@ -177,6 +178,27 @@ languages is the registered advanced step, sequenced AFTER full language ingesti
 - **Advanced (sequenced last):** synthesize quantum/thermodynamic/architecture-native languages
   from the `langpredict` specs; extend the taxonomy with the native constructs; RCE-JEPA at scale.
 
-The Law frame is the same for every language — `I = H_task − H_corpus → 0` — but the *distance*
-each language's surface must be collapsed is now a measured, per-language number. That is the
-credibility the one-IR claim needed.
+The frame `I = H_task − H_corpus → 0` is applied uniformly; the *distance* each language's surface
+must be collapsed is reported as a measured, per-language number.
+
+## Related work (external, credited)
+
+This artifact sits among existing efforts and does not claim to replace them:
+- **Curation:** GitHub Linguist; PLDB; Acher PL-ultimate-llm (merged 12k+ catalog with Software
+  Heritage evidence); Rosetta Code; Hyperpolyglot; programming-idioms.org.
+- **Grammars:** tree-sitter; ANTLR grammars-v4.
+- **Code ontologies / indexing:** srcML; Kythe (Google); Glean (Meta); GitHub Semantic;
+  SCIP/LSIF (Sourcegraph).
+- **Universal IRs / runtimes:** LLVM IR; MLIR; WebAssembly; JVM bytecode / .NET CIL;
+  GraalVM/Truffle; historical UNCOL/ANDF/TenDRA.
+- **Cross-language compilers:** Haxe; py2many; c2rust; CrossTL (2025); RIKEN/Tsukuba Omni
+  Compiler (XcodeML, Japan).
+- **Editor onboarding standards:** VSCode (TextMate + LSP + DAP + package.json); Zed
+  (extension.toml + tree-sitter + queries + LSP/DAP adapters); JetBrains (PSI/Grammar-Kit or
+  native LSP API); Neovim/Emacs/Helix/Sublime/Eclipse and the Chinese/Japanese/Korean/Russian/
+  online ecosystems — mapped in the constellation's "Editor standards" view
+  (https://research.openie.dev/constellation/). LSP/DAP amortize semantics across ecosystems;
+  grammar and packaging remain per-ecosystem.
+
+The replay-gated, joule-priced admission layer is the component not covered by the surveyed
+peers; it is presented as a hypothesis under test.
