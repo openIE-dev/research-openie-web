@@ -13,18 +13,19 @@ board_metered: false
 
 *26 Nov 2026. Measured on real tree-sitter `node-types.json` (master/main, upstream repos).
 Every NAMED node type of each surveyed language maps to a real universal construct; no
-catch-all inflation. Emission matrix: 113 constructs × 69 languages = 100%. Extended same day
-to the functional + non-Western frontier (60 languages); per-language information-theoretic
-profile + knowledge graph in rce-language-constellation.md. Emission ⊇ ingestion: every
-ingested language has an emission LUT row (`emission_covers_every_ingested_language` test).*
+catch-all inflation. Emission matrix: 113 constructs × 77 languages = 100%. Extended same day
+to the functional + non-Western frontier and the daily-use shell/web/data/build languages
+(69 languages); per-language information-theoretic profile + knowledge graph in
+rce-language-constellation.md. Emission ⊇ ingestion: every ingested language has an emission
+LUT row (`emission_covers_every_ingested_language` test).*
 
 ## BLUF
 
-RCE's universal grammar taxonomy now covers **100% of named node types** for 60 surveyed
-languages, and the emission LUT matrix is 100% across all 69 emission targets. Coverage is
+RCE's universal grammar taxonomy now covers **100% of named node types** for 69 surveyed
+languages, and the emission LUT matrix is 100% across all 77 emission targets. Coverage is
 measured, not asserted: `ingest::grammar_coverage` counts named node types with a construct
 mapping; `examples/grammar_coverage` prints per-language fractions; `--unmapped` lists the
-honest remainder (now empty for all 60).
+honest remainder (now empty for all 69).
 
 ## Measured per-language named-node coverage
 
@@ -90,6 +91,15 @@ honest remainder (now empty for all 60).
 | roc | 149/149 | 1.0000 |
 | v | 144/144 | 1.0000 |
 | odin | 107/107 | 1.0000 |
+| bash | 62/62 | 1.0000 |
+| typescript | 183/183 | 1.0000 |
+| html | 19/19 | 1.0000 |
+| css | 64/64 | 1.0000 |
+| json | 13/13 | 1.0000 |
+| yaml | 36/36 | 1.0000 |
+| toml | 19/19 | 1.0000 |
+| dockerfile | 48/48 | 1.0000 |
+| cmake | 58/58 | 1.0000 |
 
 ## Method (honest, no inflation)
 
@@ -106,7 +116,7 @@ honest remainder (now empty for all 60).
   a type expression, …). Explicit mappings handle language-specific names; category rules
   handle the long tail. Nothing is mapped to an unrelated construct to inflate the count.
 - Every construct has a per-family LUT template (C / ML / Lisp), so the emission matrix is
-  100% across all 69 emission languages (`coverage_matrix_is_complete` test), and emission
+  100% across all 77 emission languages (`coverage_matrix_is_complete` test), and emission
   covers every ingested language (`emission_covers_every_ingested_language` test).
 - **Language prediction** (`langpredict`): for each compute-fabric class (quantum, thermodynamic/
   reversible, spatial/dataflow, neuromorphic, probabilistic, analog) the native constructs missing

@@ -9,6 +9,17 @@ pdf: ""
 board_metered: false
 ---
 
+---
+title: "The Language Constellation — a knowledge graph + information theory for every curated language"
+deck: "26 Nov 2026. Built in `competence-catalog::constellation`, measured on real tree-sitter"
+id: rce-language-constellation
+status: "Research note · open topic"
+author: "David Charlot, Open Interface Engineering"
+figures: ""
+pdf: ""
+board_metered: false
+---
+
 # The Language Constellation — a knowledge graph + information theory for every curated language
 
 *26 Nov 2026. Built in `competence-catalog::constellation`, measured on real tree-sitter
@@ -21,18 +32,18 @@ Interactive artifact: `rce-language-constellation.html`. Graph JSON: `constellat
 The constellation is an open ontology and measurement layer over the public language curation:
 **12,117 catalogued languages** (a merge of PLDB, GitHub Linguist, Pygments, Wikipedia, esolangs,
 Hyperpolyglot, Rosetta Code and Wikidata, per Acher's PL-ultimate-llm) as graph nodes, of which
-**60 are measured** against a real tree-sitter grammar and carry a grammar-derived information
+**69 are measured** against a real tree-sitter grammar and carry a grammar-derived information
 profile. Every other language is present as a node with `measured=false` and **no invented
 numbers**. Edges encode family, paradigm and documented influence; the interactive page renders
 them as a constellation and adds search, cross-language translation/subsumption, information,
-lineage, editor-standards and source-provenance views. The information-theoretic frame used is
+lineage, editor-standards, immersion-gap and source-provenance views. The information-theoretic frame used is
 `I = H_task − H_corpus → 0`, stated as a hypothesis priced in joules, not an established law.
 
 ## What each measured node carries (all computed, none asserted)
 
 - `named_nodes` N — the grammar's named node types (its syntactic surface size).
 - `constructs` C — distinct universal constructs those nodes realize (semantic breadth).
-- `coverage` — mapped/total named nodes (1.0000 for all 60).
+- `coverage` — mapped/total named nodes (1.0000 for all 69).
 - `h_struct_bits` H — Shannon entropy of the construct histogram: how evenly the grammar's
   surface spreads across the universal taxonomy. **Structural, not corpus** — honestly labelled.
 - `redundancy` = 1 − H/log2(C) — the surface variety that is syntactic sugar, not free information.
@@ -51,7 +62,7 @@ surface forms per construct — higher redundancy (0.13–0.26). This is a measu
 quantity: how much surface variety a universal representation must collapse for that language.
 It is reported as data; no claim of superiority over any existing system is made from it.
 
-## Measured per-language information profile (60)
+## Measured per-language information profile (69)
 
 | language | named N | constructs C | coverage | H (bits) | redundancy | surface/C |
 |---|---|---|---|---|---|---|
@@ -94,6 +105,15 @@ It is reported as data; no claim of superiority over any existing system is made
 | JavaScript | 119 | 69 | 1.0000 | 5.753 | 0.058 | 1.72 |
 | Go | 112 | 64 | 1.0000 | 5.496 | 0.084 | 1.75 |
 | Odin | 107 | 63 | 1.0000 | 5.319 | 0.110 | 1.70 |
+| TypeScript | 183 | 75 | 1.0000 | 5.504 | 0.116 | 2.44 |
+| CSS | 64 | 38 | 1.0000 | 4.775 | 0.090 | 1.68 |
+| Bash | 62 | 39 | 1.0000 | 4.784 | 0.095 | 1.59 |
+| CMake | 58 | 15 | 1.0000 | 3.326 | 0.149 | 3.87 |
+| Dockerfile | 48 | 16 | 1.0000 | 3.341 | 0.165 | 3.00 |
+| YAML | 36 | 20 | 1.0000 | 3.892 | 0.100 | 1.80 |
+| HTML | 19 | 10 | 1.0000 | 3.071 | 0.076 | 1.90 |
+| TOML | 19 | 12 | 1.0000 | 3.406 | 0.050 | 1.58 |
+| JSON | 13 | 10 | 1.0000 | 3.239 | 0.025 | 1.30 |
 | Zig | 99 | 57 | 1.0000 | 5.294 | 0.092 | 1.74 |
 | Gleam | 97 | 49 | 1.0000 | 5.096 | 0.088 | 2.02 |
 | Unison | 93 | 31 | 1.0000 | 4.394 | 0.113 | 3.00 |
@@ -118,7 +138,7 @@ It is reported as data; no claim of superiority over any existing system is made
 
 ## Graph structure
 
-- **Nodes:** 584 languages + family hubs (C/systems, JVM, ML/functional/proof, Lisp, BEAM,
+- **Nodes:** 585 languages + family hubs (C/systems, JVM, ML/functional/proof, Lisp, BEAM,
   JavaScript, Python, Ruby, Scientific/array, Logic, Shell, SQL, Config, Esoteric, Smalltalk,
   Pascal, Apple/Swift, PHP, Lua, Modern systems, East-Asian-new, …) + paradigm hubs.
 - **Edges:** `family` (language→lineage hub), `paradigm` (language→paradigm hub), `influence`
