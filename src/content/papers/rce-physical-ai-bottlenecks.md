@@ -140,6 +140,9 @@ worst-case latency budgets, admitted only by replay, priced in joules.
 | Typed monomorphization | types.rs (I64/I128/Bool + vars), monomorphize per-instantiation checks, exec_typed range checks | 6 |
 | Rate-monotonic priority dispatch | rtos::priority_dispatch (deterministic, refuse if unschedulable) | 3 |
 | Two-boundary contact physics | twin::Plant3/simulate3 (floor+ceiling, restitution, friction) | 3 |
+| Preemptive + IO-async runtime | program::IoRuntime (priority per tick, AwaitEvent completions in tick order) | 4 |
+| 2D rigid-body contact | twin::Body2/simulate_body (box, restitution, friction-induced spin) | 3 |
+| Emission checked by real toolchains | examples/emit_proof.rs: one Form to C/Rust/Python, clang/rustc/python3 all print 14 | (live) |
 
 Non-buildable fronts are registered as OPEN-EXTERNAL in rce-gap-register.md with the exact
 external decision each needs (notified body, SOC2 auditor, RTOS port choice, fleet financing,
@@ -155,7 +158,7 @@ Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 335 (workspace) / 332 (monorepo), 0 failed. Full rigid-body physics, RTOS port,
+Suites 342 (workspace) / 339 (monorepo), 0 failed. Multi-body physics, real IO/threads, RTOS port,
 notified-body attestation, full per-language grammars (measured remainder above) and
 FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
 
