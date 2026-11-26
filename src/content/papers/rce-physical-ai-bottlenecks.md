@@ -165,18 +165,25 @@ instead of paid GPU). Scale built on owned hardware: federated averaging over 4 
 scalar loop (0.9970); mosaic-style hybrid partitioning with admission control.
 
 Measured per-language named-node coverage (tree-sitter upstream, 26 Nov 2026): **100% for
-28 surveyed languages** (the 16 prior plus ocaml 276/276, r 40/40, dart 223/223, elixir 45/45,
-erlang 164/164, clojure 35/35, scheme 27/27, nim 127/127, crystal 152/152, d 284/284,
-fortran 240/240, php 157/157). The 113-construct emission matrix is 100% across 47 languages.
-Report: rce-language-coverage-100.md. Only ada and perl lack a public tree-sitter grammar
-(emission LUT rows exist, node coverage unmeasured). Mesh contact built (twin::Mesh).
+48 surveyed languages** — the 28 prior plus the functional + non-Western frontier: ada 228/228,
+sml 134/134, purescript 128/128, mojo 141/141, cangjie 202/202, wenyan 64/64, elm 92/92,
+racket 32/32, commonlisp 50/50, elisp 20/20, gleam 97/97, moonbit 257/257, rescript 160/160,
+reason 226/226, nix 42/42, fsharp 201/201, idris 181/181, agda 72/72, lean 141/141, fstar 134/134.
+The 113-construct emission matrix is 100% across 47 languages. Reports:
+rce-language-coverage-100.md and rce-language-constellation.md. The **language constellation**
+(`constellation` module + interactive artifact) is a knowledge graph over the exhaustive curation
+(GitHub Linguist, 855 entries / 578 programming): every language a node, the 48 measured ones
+carrying a grammar-derived information profile (structural entropy, redundancy, surface-forms-
+per-construct) and the Law-of-Coding frame; the rest honestly unmeasured. Perl/Coq/Dhall/Unison
+node-types are build-generated; Nadeshiko/Ezhil/Alusus need authored grammars (registered open).
+Mesh contact built (twin::Mesh).
 
 Cross-node latency fleet live: 2 nodes / 400 acts, 64.125 µs/act act-weighted
 (node-a 64.2, node-b 64.05; node-a energy delta below IOReport resolution in that
 window — a reading, never a fabricated 0).
 
-Suites 384 (workspace) / 381 (monorepo), 0 failed. Mesh (non-polygon) manifolds, RTOS port,
-notified-body attestation, full per-language grammars (measured remainder above) and
+Suites 392 (workspace) / 389 (monorepo), 0 failed. Mesh (non-polygon) manifolds, RTOS port,
+notified-body attestation, measuring the remaining ~530 curated languages, and
 FormJEPA/FormEBM / tracing-JIT at production scale remain open edges.
 Capstone summary: rce-research-completion.md.
 
