@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import AboutPlainLead from '../../components/AboutPlainLead.astro';
 ---
 
 <Layout
@@ -11,6 +12,7 @@ import Layout from '../../layouts/Layout.astro';
     <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">
       Writing a Game Once and Running It Everywhere: Where Exact Replay Ends and Tolerance Begins
     </h1>
+    <AboutPlainLead id="game-engines" />
     <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
       This study asks whether a game can be written once as a checked state machine and then projected across languages, operating systems, CPU instruction set architectures, and GPU rendering stacks. Both the surveyed specifications and all nine executed falsifier suites (Section 6, <code>GE-H1</code> through <code>GE-H9</code>) establish the boundary: <strong>yes</strong> for game rules, interface contracts, and long-horizon simulation under pinned integer arithmetic (<code>GE-H1</code>, <code>GE-H4</code>, <code>GE-H5</code>, <code>GE-H6</code>, <code>GE-H8</code>, and <code>GE-H9</code>); <strong>no</strong> when standard library transcendentals or fused multiply-add lowering cross OS/compiler/ISA boundaries in chaotic collisions, where divergence time scales linearly with <code>ln(Δ / δ₀)</code> (<code>GE-H2</code> and <code>GE-H7</code>); and <strong>no</strong> for bit-exact pixels across graphics APIs and vendors, yet <strong>yes</strong> under a checked perceptual tolerance gate (<code>GE-H3</code> across <code>8</code> hardware <code>GPU × API</code> endpoints spanning Windows <code>DirectX 12</code>, Apple <code>Metal</code>, and Linux/Windows <code>Vulkan</code>; <code>measured_j = None</code>, <code>board_metered = false</code>).
     </p>

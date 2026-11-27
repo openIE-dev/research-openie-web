@@ -1,0 +1,436 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import gravityWell from '../data/gravity-well.json';
+import planetaryEasyRead from '../data/planetary-easy-read.json';
+import sourcesheetsIndex from '../data/sourcesheets-index.json';
+import tvCatalog from '../data/tv-catalog.json';
+
+interface Props {
+  paperId: string;
+  lang?: string;
+  figuresHref: string;
+  pdfHref: string;
+  mdHref?: string | null;
+  citeUrl: string;
+  pdfUrl: string;
+  mdUrl?: string | null;
+  author: string;
+  title: string;
+  genre?: string;
+}
+
+const {
+  paperId,
+  lang = 'en',
+  figuresHref,
+  pdfHref,
+  mdHref = null,
+  citeUrl,
+  pdfUrl,
+  mdUrl = null,
+  author,
+  title,
+  genre,
+} = Astro.props;
+
+const gw = (gravityWell.studies as Record<string, any>)[paperId] ?? null;
+const easyEntry = ((planetaryEasyRead.tv_studies || []) as any[]).find((s) => s.id === paperId) ?? null;
+const sheetEntry = ((sourcesheetsIndex.studies || []) as any[]).find((s) => s.study_slug === paperId) ?? null;
+
+const ROOT = process.cwd();
+const film15sExists = ((tvCatalog.studies || []) as any[]).some((s) => s.id === paperId);
+const posterExists = fs.existsSync(path.join(ROOT, 'public/media/tv/posters', `${paperId}-poster.jpg`));
+const vttEnExists = fs.existsSync(path.join(ROOT, 'public/media/tv/planetary-15s/captions', paperId, 'en.vtt'));
+const sheetPageExists = Boolean(sheetEntry);
+const brailleExists = Boolean(sheetEntry?.braille_url);
+
+const CANDIDATE_AUDIO_LANGS = [
+  { code: 'en', label: 'English' },
+  { code: 'es', label: 'Español' },
+  { code: 'zh-Hans', label: '中文' },
+  { code: 'hi', label: 'हिन्दी' },
+  { code: 'ar', label: 'العربية' },
+  { code: 'fr', label: 'Français' },
+  { code: 'pt', label: 'Português' },
+  { code: 'de', label: 'Deutsch' },
+  { code: 'ja', label: '日本語' },
+  { code: 'sw', label: 'Kiswahili' },
+];
+
+const availableAudioLangs = CANDIDATE_AUDIO_LANGS.filter((l) =>
+  fs.existsSync(path.join(ROOT, 'public/media/tv/planetary-15s/audio', paperId, `${l.code}.m4a`))
+);
+
+const initialAudioLang =
+  availableAudioLangs.find((l) => l.code === lang)?.code ??
+  availableAudioLangs[0]?.code ??
+  'en';
+
+const mulberryList = (easyEntry?.mulberry_symbols || []).slice(0, 4);
+const easySentences = (easyEntry?.three_points_one_idea || []).slice(0, 3);
+---
+
+{gw && (
+  <div class="gw-paper-ladder mt-8 space-y-4" data-gw-paper-id={paperId}>
+    <!-- RUNG 1: IN PLAIN WORDS (ALWAYS OPEN) -->
+    <section
+      id="plain-guide"
+      aria-label="Depth 1: In Plain Words"
+      class="glass-card p-5 md:p-7 border border-brand-amber/40 bg-gradient-to-br from-brand-amber/[0.06] via-transparent to-brand-cyan/[0.04]"
+    >
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="font-mono text-[10px] tracking-[0.14em] uppercase px-2.5 py-0.5 rounded bg-brand-amber text-brand-dark font-bold">
+            Depth 1 · Plain Story ({gw.readingMinutesPlain} min)
+          </span>
+          <span class="font-mono text-[10.5px] text-brand-gray">
+            Full manuscript (~{gw.readingMinutesFull} min) is at Depth 4 below
+          </span>
+        </div>
+        <a
+          href={`/tv/?study=${paperId}`}
+          class="font-mono text-[11px] text-brand-amber no-underline hover:underline"
+        >
+          All 4 film lengths &amp; 50 captioned languages in TV →
+        </a>
+      </div>
+
+      <h2 class="text-xl md:text-2xl font-bold text-brand-white tracking-tight m-0">
+        {gw.plainTitle}
+      </h2>
+      <p class="mt-2 font-body text-sm md:text-base text-brand-light leading-relaxed">
+        {gw.oneLineHook}
+      </p>
+
+      <!-- Everyday Analogy Callout -->
+      <div class="mt-4 p-3.5 rounded-xl border border-brand-cyan/35 bg-brand-cyan/[0.06]">
+        <div class="font-mono text-[10px] tracking-[0.12em] uppercase text-brand-cyan font-semibold mb-1">
+          💡 Everyday Analogy — Think of It Like This
+        </div>
+        <p class="font-body text-sm text-brand-light leading-relaxed m-0">
+          {gw.everydayAnalogy}
+        </p>
+      </div>
+
+      <!-- 3-Beat And · But · Therefore Narrative Arc -->
+      <div class="mt-4 grid md:grid-cols-3 gap-3">
+        <div class="p-3.5 rounded-xl border border-brand-border bg-brand-dark/45">
+          <div class="font-mono text-[10px] tracking-[0.14em] uppercase text-emerald-300 font-semibold mb-1">
+            1 · Setup (And)
+          </div>
+          <p class="font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+            {gw.abt.and}
+          </p>
+        </div>
+        <div class="p-3.5 rounded-xl border border-brand-border bg-brand-dark/45">
+          <div class="font-mono text-[10px] tracking-[0.14em] uppercase text-brand-amber font-semibold mb-1">
+            2 · Problem (But)
+          </div>
+          <p class="font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+            {gw.abt.but}
+          </p>
+        </div>
+        <div class="p-3.5 rounded-xl border border-brand-border bg-brand-dark/45">
+          <div class="font-mono text-[10px] tracking-[0.14em] uppercase text-brand-cyan font-semibold mb-1">
+            3 · Result (Therefore)
+          </div>
+          <p class="font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+            {gw.abt.therefore}
+          </p>
+        </div>
+      </div>
+
+      <!-- Key Result in Plain Words -->
+      <div class="mt-4 p-3.5 rounded-xl border border-emerald-400/35 bg-emerald-500/[0.06] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <div class="font-mono text-[10px] tracking-[0.12em] uppercase text-emerald-300 font-semibold mb-0.5">
+            Headline Number in Plain Words
+          </div>
+          <p class="font-body text-xs sm:text-sm text-brand-white leading-relaxed m-0">
+            {gw.keyNumberPlain}
+          </p>
+        </div>
+      </div>
+
+      <!-- Inline 15-Second Plain-Words Film & Multi-Language Audio Player -->
+      {film15sExists && (
+        <div class="mt-5 pt-4 border-t border-brand-border">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+            <span class="font-mono text-[11px] text-brand-amber font-semibold">
+              ▶ Watch or Listen in 15 Seconds (Plain-Words Summary)
+            </span>
+            {availableAudioLangs.length > 0 && (
+              <div class="flex flex-wrap items-center gap-1" role="group" aria-label="15-second spoken language audio">
+                <span class="font-mono text-[10px] text-brand-gray mr-1">Spoken audio:</span>
+                {availableAudioLangs.map((al) => (
+                  <button
+                    type="button"
+                    data-gw-audio-src={`/media/tv/planetary-15s/audio/${paperId}/${al.code}.m4a`}
+                    data-gw-audio-lang={al.code}
+                    class={`gw-lang-audio-btn font-mono text-[10px] px-2 py-0.5 rounded border cursor-pointer transition-colors ${
+                      al.code === initialAudioLang
+                        ? 'border-brand-amber text-brand-amber bg-brand-amber/15'
+                        : 'border-brand-border text-brand-slate bg-transparent hover:text-brand-white'
+                    }`}
+                  >
+                    {al.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div class="grid md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] gap-4 items-start">
+            <div class="rounded-xl overflow-hidden border border-brand-border bg-black">
+              <video
+                controls
+                playsinline
+                preload="metadata"
+                poster={posterExists ? `/media/tv/posters/${paperId}-poster.jpg` : undefined}
+                src={`/media/tv/films/${paperId}-15s.mp4`}
+                class="w-full aspect-video block bg-black"
+              >
+                {vttEnExists && (
+                  <track
+                    kind="captions"
+                    src={`/media/tv/planetary-15s/captions/${paperId}/en.vtt`}
+                    srclang="en"
+                    label="English"
+                    default
+                  />
+                )}
+              </video>
+              {availableAudioLangs.length > 0 && (
+                <div class="px-3 py-2 bg-[#090d16] border-t border-brand-border flex items-center gap-2">
+                  <span id="gw-audio-lang-badge" class="font-mono text-[10px] text-brand-cyan shrink-0">
+                    🔊 {availableAudioLangs.find((l) => l.code === initialAudioLang)?.label ?? 'English'} (15s)
+                  </span>
+                  <audio
+                    id="gw-paper-15s-audio"
+                    controls
+                    preload="none"
+                    src={`/media/tv/planetary-15s/audio/${paperId}/${initialAudioLang}.m4a`}
+                    class="h-7 w-full"
+                  ></audio>
+                </div>
+              )}
+            </div>
+
+            <!-- Easy-Read 1-Idea-Per-Sentence + Mulberry/Tawasol CC BY-SA 4.0 Symbols -->
+            <div class="p-3.5 rounded-xl border border-brand-border bg-brand-dark/40 space-y-2.5">
+              <div class="flex items-center justify-between gap-2">
+                <span class="font-mono text-[10px] tracking-[0.12em] uppercase text-brand-cyan font-semibold">
+                  Easy-Read · One Idea Per Sentence
+                </span>
+                <span class="font-mono text-[9.5px] text-brand-gray">
+                  Mulberry + Tawasol (CC BY-SA 4.0)
+                </span>
+              </div>
+              {mulberryList.length > 0 && (
+                <div class="flex flex-wrap gap-1.5">
+                  {mulberryList.map((sym: any) => (
+                    <span
+                      class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-brand-border bg-white/[0.03] font-mono text-[10.5px] text-brand-light"
+                      title={`${sym.label} (${sym.symbol_id} · ${sym.license})`}
+                    >
+                      <span aria-hidden="true">{sym.unicode}</span>
+                      <span>{sym.core_word}: {sym.label}</span>
+                    </span>
+                  ))}
+                </div>
+              )}
+              {easySentences.length > 0 && (
+                <ul class="space-y-1.5 list-disc pl-4 font-body text-xs text-brand-slate leading-relaxed m-0">
+                  {easySentences.map((sent: string) => (
+                    <li>{sent}</li>
+                  ))}
+                </ul>
+              )}
+              {brailleExists && (
+                <div class="pt-1 flex flex-wrap gap-3 font-mono text-[10.5px]">
+                  <a href={`/transcripts/${paperId}/`} class="text-brand-cyan no-underline hover:underline">
+                    ⠃ Zero-Table Braille &amp; Screen-Reader Transcript →
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+
+    <!-- RUNG 2: VISUAL & HANDS-ON INTUITION -->
+    <details
+      id="gw-rung-visual"
+      data-gw-rung="visual"
+      class="gw-rung-details glass-card border border-brand-cyan/35 overflow-hidden"
+    >
+      <summary class="px-5 py-3.5 cursor-pointer flex flex-wrap items-center justify-between gap-2 select-none">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="font-mono text-[10px] tracking-[0.14em] uppercase px-2 py-0.5 rounded bg-brand-cyan/20 text-brand-cyan font-semibold">
+            Depth 2 · Visual &amp; Hands-On
+          </span>
+          <span class="font-display text-sm md:text-base font-bold text-brand-white">
+            Interactive Simulator, How to Prove Us Wrong &amp; Late-2026 Literature
+          </span>
+        </div>
+        <span class="font-mono text-xs text-brand-cyan">Step Deeper ▾</span>
+      </summary>
+
+      <div class="px-5 pb-5 pt-2 border-t border-brand-border space-y-4">
+        <div class="grid md:grid-cols-2 gap-3.5">
+          <div class="p-4 rounded-xl border border-brand-amber/35 bg-brand-amber/[0.05] flex flex-col justify-between gap-3">
+            <div>
+              <div class="font-mono text-[10px] uppercase tracking-[0.12em] text-brand-amber font-semibold mb-1">
+                🔬 Touch the Working Model
+              </div>
+              <p class="font-body text-xs sm:text-sm text-brand-light leading-relaxed m-0">
+                Adjust parameters live in your browser (zero cloud wait) or step through a guided 4-step Predict → Break → Repair → Verify lab.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <a
+                href={figuresHref}
+                class="inline-flex items-center font-mono text-xs text-brand-dark bg-brand-amber px-3.5 py-2 rounded-md no-underline hover:bg-brand-gold font-semibold"
+              >
+                Open Interactive Figures →
+              </a>
+              <a
+                href={gw.tutorialUrl || '/tutorials/'}
+                class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/45 px-3 py-2 rounded-md no-underline hover:bg-brand-cyan/10"
+              >
+                Guided Tutorial Lab →
+              </a>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl border border-rose-400/35 bg-rose-500/[0.05]">
+            <div class="font-mono text-[10px] uppercase tracking-[0.12em] text-rose-300 font-semibold mb-1">
+              🧪 How Someone Could Prove Us Wrong (Plain Falsifier)
+            </div>
+            <p class="font-body text-xs sm:text-sm text-brand-light leading-relaxed m-0">
+              {gw.plainFalsifier}
+            </p>
+          </div>
+        </div>
+
+        {gw.nov2026Link && (
+          <div class="p-4 rounded-xl border border-brand-indigo/35 bg-brand-indigo/[0.06]">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <span class="font-mono text-[10px] uppercase tracking-[0.12em] text-brand-indigo font-semibold">
+                📡 Fresh Late-2026 External Research Connection (arXiv:{gw.nov2026Link.arxivId})
+              </span>
+              <a
+                href={gw.nov2026Link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-mono text-[11px] text-brand-cyan no-underline hover:underline"
+              >
+                Read on arXiv ↗
+              </a>
+            </div>
+            <div class="font-display text-sm font-semibold text-brand-white">
+              {gw.nov2026Link.title}
+            </div>
+            <p class="mt-1 font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+              {gw.nov2026Link.whyItMatters}
+            </p>
+          </div>
+        )}
+      </div>
+    </details>
+
+    <!-- RUNG 3: BUILDER, EVIDENCE & REPLICATION -->
+    <details
+      id="gw-rung-builder"
+      data-gw-rung="builder"
+      class="gw-rung-details glass-card border border-emerald-400/35 overflow-hidden"
+    >
+      <summary class="px-5 py-3.5 cursor-pointer flex flex-wrap items-center justify-between gap-2 select-none">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="font-mono text-[10px] tracking-[0.14em] uppercase px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-semibold">
+            Depth 3 · Builder &amp; Evidence
+          </span>
+          <span class="font-display text-sm md:text-base font-bold text-brand-white">
+            Signed [G0–G12] Source Sheet, Hardware Telemetry, Code &amp; Citation
+          </span>
+        </div>
+        <span class="font-mono text-xs text-emerald-300">Inspect Receipts ▾</span>
+      </summary>
+
+      <div class="px-5 pb-5 pt-2 border-t border-brand-border space-y-4">
+        <div class="flex flex-wrap items-center gap-2 font-mono text-[11px]">
+          <span class="px-2.5 py-1 rounded border border-emerald-400/40 bg-emerald-500/10 text-emerald-300">
+            {gw.evidenceBadge}
+          </span>
+          <span class="px-2.5 py-1 rounded border border-brand-border text-brand-slate">
+            Signed Provenance · Self-Checked
+          </span>
+          <span class="px-2.5 py-1 rounded border border-brand-border text-brand-gray">
+            measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered
+          </span>
+        </div>
+
+        <div class="flex flex-wrap gap-2.5 font-mono text-xs">
+          {sheetPageExists && (
+            <a
+              href={`/sourcesheets/${paperId}/`}
+              class="px-3 py-2 rounded-md border border-emerald-400/45 bg-emerald-500/10 text-emerald-300 no-underline hover:bg-emerald-500/20"
+            >
+              📑 [G0–G12] Source Sheet
+            </a>
+          )}
+          {sheetPageExists && (
+            <a
+              href={`/sourcesheets/${paperId}.json`}
+              class="px-3 py-2 rounded-md border border-brand-border text-brand-slate no-underline hover:text-brand-white"
+            >
+              Signed JSON Receipt
+            </a>
+          )}
+          <a
+            href={`/data/#${paperId}`}
+            class="px-3 py-2 rounded-md border border-brand-cyan/45 bg-brand-cyan/10 text-brand-cyan no-underline hover:bg-brand-cyan/20"
+          >
+            📦 Data, Checksums &amp; Code Repos
+          </a>
+          {brailleExists && (
+            <a
+              href={`/transcripts/${paperId}/`}
+              class="px-3 py-2 rounded-md border border-brand-border text-brand-light no-underline hover:border-brand-cyan"
+            >
+              ⠃ Braille HTML Transcript
+            </a>
+          )}
+          <a
+            href={pdfHref}
+            download
+            class="px-3 py-2 rounded-md border border-brand-amber/45 text-brand-amber no-underline hover:bg-brand-amber/10"
+          >
+            ⬇ Download PDF
+          </a>
+          {mdHref && (
+            <a
+              href={mdHref}
+              class="px-3 py-2 rounded-md border border-brand-border text-brand-slate no-underline hover:text-brand-white"
+            >
+              Markdown (.md)
+            </a>
+          )}
+        </div>
+
+        <div class="p-3.5 rounded-xl border border-brand-border bg-brand-dark/45" id="cite-this">
+          <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-1.5">Cite this</p>
+          {genre && <p class="font-body text-xs text-brand-slate mb-1.5">Genre: {genre}</p>}
+          <p class="font-body text-xs text-brand-slate leading-relaxed m-0">
+            {author}. <em class="text-brand-light">{title}</em>. Open Interface Engineering.
+            Web: <a href={citeUrl} class="text-brand-cyan no-underline hover:underline">{citeUrl}</a>.
+            PDF: <a href={pdfUrl} class="text-brand-cyan no-underline hover:underline">{pdfUrl}</a>.
+            {mdUrl && <> Markdown: <a href={mdHref!} class="text-brand-cyan no-underline hover:underline">{mdUrl}</a>.</>}
+          </p>
+        </div>
+      </div>
+    </details>
+  </div>
+)}

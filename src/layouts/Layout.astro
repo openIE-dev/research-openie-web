@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import 'katex/dist/katex.min.css';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import GravityWellDepthBar from '../components/GravityWellDepthBar.astro';
 import LiveCallDock from '../components/live/LiveCallDock.astro';
 import { LANGS, NAV_EN } from '../i18n';
 import { studies } from '../data/studyList';
@@ -66,6 +67,17 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
         if (theme === 'auto') theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', theme);
         document.documentElement.style.colorScheme = theme;
+
+        var allowedDepth = ['plain','visual','builder','formal'];
+        var qDepth = '';
+        try { qDepth = (new URLSearchParams(window.location.search).get('depth') || '').toLowerCase(); } catch (_e) {}
+        var savedDepth = '';
+        try { savedDepth = localStorage.getItem('oe-reading-depth') || ''; } catch (_e) {}
+        var depth = allowedDepth.indexOf(qDepth) !== -1 ? qDepth : (allowedDepth.indexOf(savedDepth) !== -1 ? savedDepth : 'plain');
+        if (allowedDepth.indexOf(qDepth) !== -1) {
+          try { localStorage.setItem('oe-reading-depth', depth); } catch (_e) {}
+        }
+        document.documentElement.setAttribute('data-reading-depth', depth);
       })();
     </script>
   </head>
@@ -107,6 +119,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
     </nav>
 
     <main class="flex-1 pt-16 relative z-10">
+      <GravityWellDepthBar />
       <slot />
     </main>
 
@@ -178,7 +191,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
           <div>
             <div class="font-mono text-[10px] text-brand-gray tracking-[2px] uppercase mb-3">Contract</div>
             <div class="space-y-2">
-              <span class="block font-body text-[12px] text-brand-slate">board_metered=false, except the KV260 rungs in Metered Commit Gates and the Jetson Thor shunt runs in Satiation Benchmark Harness and Communication Tool Avalanche</span>
+              <span class="block font-body text-[12px] text-brand-slate">Signed Provenance · Self-Checked · measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered. Physical DC shunt measured_j is filed in Metered Commit Gates (AMD Kria KV260 INA260), Satiation Benchmark Harness, The Communication Tool Avalanche, Downward LUT6 Compilation, From Ephemeral Inference to Compiled Agency (@ 6a22dee across KV260 INA260 + Jetson AGX Thor INA3221/INA238), and Planetary Research Media (@ a9de8d8 J/min shunt kit); all other studies set board_metered=false.</span>
               <span class="block font-body text-[12px] text-brand-slate">research.openie.dev</span>
             </div>
           </div>

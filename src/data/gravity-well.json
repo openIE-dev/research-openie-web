@@ -1,0 +1,766 @@
+{
+  "schema": "openie.gravity_well.v1",
+  "version": "1.0.0",
+  "generated_at": "2026-11-26T22:15:00Z",
+  "orthogonality_rule": "measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered",
+  "provenance_status": "Signed Provenance · Self-Checked",
+  "clusters": [
+    {
+      "id": "all",
+      "label": "All Questions",
+      "short": "All",
+      "description": "Every study, white paper, and ecosystem briefing in plain words first."
+    },
+    {
+      "id": "stop-repeating",
+      "label": "Stop Repeating Work",
+      "short": "Stop Repeating Work",
+      "description": "Why re-ask a giant neural model for routine answers you can check once and look up in microseconds?"
+    },
+    {
+      "id": "check-first",
+      "label": "Check Before Acting",
+      "short": "Check Before Acting",
+      "description": "How safety latches, clean blueprints, and checked handoffs prevent software mistakes before they ship."
+    },
+    {
+      "id": "real-joules",
+      "label": "Measure Real Energy",
+      "short": "Measure Real Energy",
+      "description": "How we wire physical current sensors and chip counters to measure what computing actually costs in joules."
+    },
+    {
+      "id": "big-picture",
+      "label": "Where Tech Goes Next",
+      "short": "Where Tech Goes Next",
+      "description": "What history, physics, and market math say about why everyday intelligence becomes cheap and universal."
+    }
+  ],
+  "studies": {
+    "from-ephemeral-inference-to-compiled-agency": {
+      "id": "from-ephemeral-inference-to-compiled-agency",
+      "cluster": "stop-repeating",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 18,
+      "evidenceClass": "measured_j",
+      "evidenceBadge": "🔌 Hardware Current-Shunt Sensor (measured_j) · Signed Provenance",
+      "tutorialUrl": "/tutorials/?lab=lab-13-compiled-agency",
+      "plainTitle": "Look Up Routine Answers First, Wake Big Models Last",
+      "oneLineHook": "Most everyday software requests repeat—checking a tiny local table before waking a giant model cuts real circuit-board energy by over twenty-five times.",
+      "everydayAnalogy": "Think of a busy coffee-shop barista who knows the price of a regular drip coffee by heart on a laminated menu card instead of phoning headquarters with a calculator on every single order.",
+      "abt": {
+        "and": "Modern language models can solve brand-new, open-ended problems, and teams now wire them into everyday software tools.",
+        "but": "Calling a billion-parameter model over and over for routine questions—or unpacking ultra-compressed weights back into decimals on every run—burns up to eighty times more circuit-board energy than needed.",
+        "therefore": "Putting a tiny four-kilobyte checked lookup table, simple rules, and packed whole-number math in front of October–November 2026 models cuts physical hardware energy by twenty-one to twenty-nine times while keeping exact parity."
+      },
+      "keyNumberPlain": "29.86× less physical board energy on Jetson AGX Thor (13.27 J vs. 396.27 J across 300 realistic repeating queries) and 21.61× less on AMD Kria KV260 (`measured_j`, commit `6a22dee`).",
+      "plainFalsifier": "Run a realistic stream of repeating tasks where waking a dense neural model on every single request uses fewer physical shunt joules per right answer than checking a four-kilobyte lookup table and rule cascade first.",
+      "nov2026Link": {
+        "arxivId": "2611.26657v1",
+        "title": "BitPrefill: W1.58A4 Tensor-Core Acceleration for Compute-Bound LLM Prefill",
+        "url": "https://arxiv.org/abs/2611.26657v1",
+        "whyItMatters": "Independently confirms our sub-bit decompression finding: low-bit ternary models only save real time and energy when computation stays inside native integer hardware instead of falling back to floating-point math."
+      }
+    },
+    "agency": {
+      "id": "agency",
+      "cluster": "real-joules",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 32,
+      "evidenceClass": "reported_j",
+      "evidenceBadge": "📐 Formal Bounds + On-Chip Counter Runs (reported_j)",
+      "tutorialUrl": "/tutorials/",
+      "plainTitle": "Finish the Job Right First, Then Rank by Energy",
+      "oneLineHook": "Speed and test scores mean little on their own unless you count whether the system actually finished the job—and how much electricity it burned to get there.",
+      "everydayAnalogy": "Think of two delivery vans carrying medicine across town: you only compare fuel mileage between drivers who actually delivered the package intact before the clinic closed.",
+      "abt": {
+        "and": "Everyone wants autonomous software helpers that pursue goals reliably, quickly, and cheaply.",
+        "but": "Pushing a system to act too fast burns runaway power on retries, while judging it on raw speed rewards sloppy guesses that never truly finish the job.",
+        "therefore": "We define a clear two-step rule backed by physics bounds: first require the job to finish accurately inside its budget, then rank passing systems strictly by the joules they spent."
+      },
+      "keyNumberPlain": "Establishes the exact optimal pace that minimizes total energy per completed goal, tested across preregistered dual-machine budget runs (`reported_j`; hardware rail `measured_j` unset).",
+      "plainFalsifier": "Demonstrate a physical goal-seeking system that beats the stated thermodynamic pace floor or reliably ranks better when correctness checks are removed from its energy score.",
+      "nov2026Link": {
+        "arxivId": "2611.34327v1",
+        "title": "MeterRouter: Budget-Aware Dynamic Routing for Multi-Agent Systems",
+        "url": "https://arxiv.org/abs/2611.34327v1",
+        "whyItMatters": "Shows that conditioning agent teams on an explicit per-query budget cuts spending by 82% without losing accuracy—echoing budget-bounded agency."
+      }
+    },
+    "gates": {
+      "id": "gates",
+      "cluster": "check-first",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 28,
+      "evidenceClass": "measured_j",
+      "evidenceBadge": "🔌 KV260 INA260 Hardware Shunt (measured_j) · Pt V2 FPGA SRAM",
+      "tutorialUrl": "/tutorials/",
+      "plainTitle": "A Safety Latch That Checks Software Before It Acts",
+      "oneLineHook": "Before an automated system deletes a file, moves money, or flips a switch, a tiny independent check should verify the move is safe and write a receipt.",
+      "everydayAnalogy": "Think of the safety interlock on a microwave door or a parachute harness check: the person packing fast is never the sole voice saying the latch is locked.",
+      "abt": {
+        "and": "Software agents can now propose database edits, code changes, and hardware commands in milliseconds.",
+        "but": "Letting a statistical model authorize its own permanent actions means one confident mistake can cause damage that cannot be undone.",
+        "therefore": "We put a tiny hardware-and-software safety gate in front of every permanent action, try the cheapest safe tool first, and record a receipt with the energy spent."
+      },
+      "keyNumberPlain": "11,428 picojoules per hardware safety-gate check on an AMD Kria KV260 circuit board (`measured_j`, onboard INA260 whole-module sensor)—billions of times less energy than a single cloud model call.",
+      "plainFalsifier": "Show a permanent-action workload where letting a model authorize itself achieves fewer bad commits per joule than placing an independent microjoule check in front of it.",
+      "nov2026Link": {
+        "arxivId": "2611.20417v1",
+        "title": "When the Cheapest Feasible Router Fails: Auditing Deployment Commitments in Cost-Aware LLM Routing",
+        "url": "https://arxiv.org/abs/2611.20417v1",
+        "whyItMatters": "Finds that unaudited cost routers break their service promise on 32.22% of new deployments, whereas adding an explicit commitment gate cuts failures to 0.73%."
+      }
+    },
+    "deterministic-null": {
+      "id": "deterministic-null",
+      "cluster": "stop-repeating",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 26,
+      "evidenceClass": "reported_j",
+      "evidenceBadge": "📊 On-Chip Energy Counter (reported_j) + KV260/Thor Kit 6 Shunts",
+      "tutorialUrl": "/tutorials/?lab=lab-07-deterministic-null",
+      "plainTitle": "Testing Whether Big Models Beat a Simple Lookup Table",
+      "oneLineHook": "In medicine, every new pill must beat a sugar pill; in computing, every expensive neural model should first prove it beats a zero-parameter lookup table.",
+      "everydayAnalogy": "Think of taste-testing a pricey chef's gadget against a plain kitchen knife before remodeling your whole restaurant around it.",
+      "abt": {
+        "and": "Giant language models score impressively across coding, math, and tool-use leaderboards.",
+        "but": "Without a plain, non-neural control baseline locked before testing begins, nobody can tell where neural reasoning truly adds value versus where simple lookup and rules already tie.",
+        "therefore": "We locked a zero-model 64-bit lookup baseline on public randomness beacons before testing 4,030 tasks—showing exact ties on 9 of 10 bounded structured cells, big neural wins on open-ended coding, and a 3.59× energy cut when verified answers are saved."
+      },
+      "keyNumberPlain": "Ties single-turn neural runs on 9 of 10 bounded structured task cells, while saving verified neural answers into the lookup store cuts repeat chip energy by 3.59× (`reported_j`; Kit 6 classical control `measured_j` at 13.3–28.3 µJ).",
+      "plainFalsifier": "Show a bounded single-turn structured cell from Track A where a neural model beats the pre-registered lookup-and-rule baseline after accounting for checkable feedback.",
+      "nov2026Link": {
+        "arxivId": "2611.34825v1",
+        "title": "Routeability Before Routing: Routeability Audit Protocol (RAP) and RouteabilityBench",
+        "url": "https://arxiv.org/abs/2611.34825v1",
+        "whyItMatters": "Audits 66 language models across four benchmarks and shows complex routers frequently fail to beat a simple single-model baseline once tied prompts are properly accounted for."
+      }
+    },
+    "satb-harness": {
+      "id": "satb-harness",
+      "cluster": "real-joules",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 24,
+      "evidenceClass": "measured_j",
+      "evidenceBadge": "🔌 Hardware Current-Shunt Sensor (measured_j) + 5-OS Counter Audit",
+      "tutorialUrl": "/tutorials/",
+      "plainTitle": "An Honest Yardstick for Software Speed and Power",
+      "oneLineHook": "Measuring computer energy carelessly is like weighing yourself while jumping on the scale—the measurement tool itself can distort the number by up to ninety percent.",
+      "everydayAnalogy": "Think of a calibrated electric meter on the wall of a workshop that separates the power used by your table saw from the background hum of the refrigerator.",
+      "abt": {
+        "and": "Engineers across Mac, Linux, Windows, and edge boards want to compare how much energy different software agents use.",
+        "but": "Polling energy sensors too fast burns extra power on its own, and splitting whole-computer wattage by processor share misstates real task energy by thirty-two to ninety percent.",
+        "therefore": "We built an open five-platform benchmark harness with twelve strict self-checks and drift alarms that refuses to print a net energy claim whenever background computer noise moves by more than five percent."
+      },
+      "keyNumberPlain": "12 of 12 conformance checks pass with zero replay drift across 5 computer architectures (macOS, Linux x86/Zen 5, Windows 11, and Jetson AGX Thor `measured_j` hardware shunts).",
+      "plainFalsifier": "Exhibit a shared-host CPU-percentage energy splitter that stays within 5% of physical rail current shunts across mixed processor-and-graphics workloads.",
+      "nov2026Link": {
+        "arxivId": "2611.32975v1",
+        "title": "Estimating GPU Roofline Arithmetic Intensity with Off-the-Shelf LLMs and Compiler Artifacts",
+        "url": "https://arxiv.org/abs/2611.32975v1",
+        "whyItMatters": "Shows static guesses miss real cache-dependent memory traffic in over 60% of GPU runs—underscoring why physical hardware rails and calibrated runtime harnesses remain essential."
+      }
+    },
+    "time-as-an-index": {
+      "id": "time-as-an-index",
+      "cluster": "big-picture",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 30,
+      "evidenceClass": "unmetered",
+      "evidenceBadge": "📐 31 Six-Kernel Lean 4 Proofs + Spectral Physics Audit",
+      "tutorialUrl": "/tutorials/?lab=lab-10-time-index",
+      "plainTitle": "Why You Cannot Look Up Tomorrow Without Paying Today",
+      "oneLineHook": "Every seemingly instant computer lookup was paid for by real step-by-step work done ahead of time—and a tiny fresh random tag stops pre-built cheat sheets cold.",
+      "everydayAnalogy": "Think of baking bread ahead of the morning rush versus wishing a finished loaf out of tomorrow: you can prep early for orders you expect, unless each customer brings a brand-new recipe.",
+      "abt": {
+        "and": "Looking up an answer in a table feels instantaneous compared to searching through millions of possibilities step by step.",
+        "but": "People often wonder whether clever math, quantum tricks, or giant precomputed tables can shortcut sequential work without paying the full energy bill somewhere.",
+        "therefore": "Across thirty-one machine-checked proofs and sixty-five thousand cryptographic hash tests, we show that known physics never reads tomorrow early: every table pays upfront work, and adding a fresh random salt makes pre-built tables useless."
+      },
+      "keyNumberPlain": "31 machine-checked proofs (accepted by 6 independent proof checkers with zero skipped steps) and 0 shortcuts across 65,536 SHA-256 spectral tests (`unmetered` math/spectral study).",
+      "plainFalsifier": "Exhibit a physical or algebraic method in standard causal physics that inverts freshly salted 128-bit cryptographic digests faster than sequential trial without prior work on that salt.",
+      "nov2026Link": {
+        "arxivId": "2611.18220v1",
+        "title": "From Pen-and-Paper to Machine-Checked Proofs: Lean for System Identification",
+        "url": "https://arxiv.org/abs/2611.18220v1",
+        "whyItMatters": "Demonstrates how translating a classic textbook proof into Lean 4 immediately uncovers a subtle hidden assumption—the same rigor behind our 31 six-kernel theorems."
+      }
+    },
+    "communication-avalanche": {
+      "id": "communication-avalanche",
+      "cluster": "check-first",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 38,
+      "evidenceClass": "measured_j",
+      "evidenceBadge": "🔌 Jetson Thor Hardware Shunts (measured_j) + 45 Lean 4 Proofs",
+      "tutorialUrl": "/tutorials/?lab=lab-02-attested-orchestrator",
+      "plainTitle": "How Teams of Agents Coordinate Without Talking Over Each Other",
+      "oneLineHook": "Putting four chatty models in a room without a referee makes answers worse and burns four times the tokens—checked, bite-sized handoffs fix ninety-eight percent of tasks cleanly.",
+      "everydayAnalogy": "Think of a surgical team passing labeled instruments only when needed, rather than four people shouting long paragraphs across an operating room.",
+      "abt": {
+        "and": "From bacteria and starling flocks to software teams, groups accomplish far more together than any solo specialist can alone.",
+        "but": "When software agents pass unchecked natural-language essays back and forth, tiny errors snowball, fake messages slip through, and idle computers waste power polling empty queues.",
+        "therefore": "By waking workers only when real events arrive and checking every handoff with fast cryptographic receipts, ten specialized tools solve 98 of 100 composite tasks—where every solo tool stalls below half—at up to twenty-six times better work per joule."
+      },
+      "keyNumberPlain": "98 of 100 composite tasks solved (vs. ≤ 49 solo) at 9.26×–26.87× higher verified work per physical shunt joule on Jetson AGX Thor (`measured_j`), with 200 of 200 poisoned messages blocked.",
+      "plainFalsifier": "Show an unchecked multi-agent chat loop that beats signed, event-driven checked handoffs on composite accuracy per physical joule under fault injection.",
+      "nov2026Link": {
+        "arxivId": "2611.34278v1",
+        "title": "Latent-in-the-Middle: On the Security of Cross-Model Latent Communication in Multi-Agent Systems",
+        "url": "https://arxiv.org/abs/2611.34278v1",
+        "whyItMatters": "Proves that passing unchecked internal caches between models raises prompt-injection success from 0.4% to 44.2% (and 92.5% white-box)—confirming why every inter-agent handoff requires strict verification."
+      }
+    },
+    "lut-adapt": {
+      "id": "lut-adapt",
+      "cluster": "stop-repeating",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 45,
+      "evidenceClass": "measured_j",
+      "evidenceBadge": "🔌 Thor & KV260 Hardware Shunts (measured_j) + 122 Lean 4 Proofs",
+      "tutorialUrl": "/tutorials/?lab=lab-09-lut6-benes",
+      "plainTitle": "Teaching Software to Save Tested Answers in Tiny Circuits",
+      "oneLineHook": "Just like learning to ride a bike moves a skill from slow conscious thought into instant muscle memory, software can compile verified answers into tiny four-kilobyte lookup tables.",
+      "everydayAnalogy": "Think of looking up `7 × 8 = 56` on a pocket multiplication card in a split second instead of counting fifty-six pebbles from scratch every afternoon.",
+      "abt": {
+        "and": "Frontier reasoning models can crack tough coding, math, and interactive puzzle benchmarks, yet running tens of billions of weights on every step drains batteries and servers.",
+        "but": "If you cache model answers carelessly without a strict safety check, one early hallucination poisons future runs—and naive sub-bit compression wastes energy unpacking floats.",
+        "therefore": "We gate every model answer behind an exact verifier and compile passing patterns downward into tiny 6-input truth tables that fit in smartwatch memory, cutting physical Jetson Thor shunt energy by up to 87× on reflexes and solving 60% of official ARC-AGI-3 games with zero broken commits."
+      },
+      "keyNumberPlain": "Up to 87.25× lower physical shunt energy on 64-bit lookup reflexes (162.7 nJ/op on Jetson Thor `measured_j`), 970 MB active RAM for 35B streaming (`reported_j`), and 0.00% broken commits across 136 repository/security/math tasks.",
+      "plainFalsifier": "Trigger a silent corrupted commit through the verifier gate, or show uncompiled dense inference beating compiled lookup energy past the single-episode payback horizon.",
+      "nov2026Link": {
+        "arxivId": "2611.11507v1",
+        "title": "ConvLUT: Rethinking Convolutional Architectures for Ultra-Low-Latency LUT-Based Inference",
+        "url": "https://arxiv.org/abs/2611.11507v1",
+        "whyItMatters": "Extends multiplier-free FPGA lookup-table trees to structured vision and audio below 50 nanoseconds (8,844× lower latency)—parallel to our Beneš-routed LUT6 downward compilation."
+      }
+    },
+    "satiation": {
+      "id": "satiation",
+      "cluster": "big-picture",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 22,
+      "evidenceClass": "unmetered",
+      "evidenceBadge": "📖 Economic Theory + Historical Price Synthesis",
+      "tutorialUrl": "/tutorials/",
+      "plainTitle": "Why Individual Jobs Finish Even When Total Computing Grows",
+      "oneLineHook": "Spending ten times more compute on an already-correct tax return adds zero extra value—yet making tasks cheap unlocks brand-new projects across the economy.",
+      "everydayAnalogy": "Think of washing a dinner plate: once the plate is clean, scrubbing it for another hour does nothing—even if a cheaper dishwasher encourages you to host bigger dinner parties.",
+      "abt": {
+        "and": "Cheaper computing historically causes society to use more total computing overall—a classic pattern economists call the rebound effect.",
+        "but": "Industry forecasts often confuse growth in the number of new jobs with needing an ever-bigger model on a single finished job.",
+        "therefore": "We separate single-task completion (which hits a hard ceiling where extra compute adds nothing) from economy-wide demand, showing why individual tasks migrate downward to cheaper tools even as total usage grows."
+      },
+      "keyNumberPlain": "Separates single-job completion ceilings from economy-wide Jevons rebound across dated historical computing price series (`unmetered` economic synthesis).",
+      "plainFalsifier": "Identify a well-defined bounded task with a binary pass/fail check where adding extra compute after verification continues to raise single-instance utility.",
+      "nov2026Link": {
+        "arxivId": "2611.28099v1",
+        "title": "VidRouteBench: A Benchmark for Budgeted Video-Generation Routing",
+        "url": "https://arxiv.org/abs/2611.28099v1",
+        "whyItMatters": "Spans 121× in measured generation cost and confirms a cheap configuration is frequently sufficient once per-prompt quality saturates."
+      }
+    },
+    "rce": {
+      "id": "rce",
+      "cluster": "check-first",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 40,
+      "evidenceClass": "reported_j",
+      "evidenceBadge": "📊 On-Chip Counter (reported_j) + 5,393 Six-Kernel Lean 4 Proofs",
+      "tutorialUrl": "/tutorials/?lab=lab-06-rce-world-coding",
+      "plainTitle": "Writing One Complete Blueprint Instead of Re-Debugging Code",
+      "oneLineHook": "Most software crashes happen because nobody wrote down what should happen on an unexpected input—requiring every outcome up front stops whole families of bugs before code ever runs.",
+      "everydayAnalogy": "Think of an architect's master blueprint that checks every pipe and beam fits before construction starts, then prints exact instructions for plumbers, electricians, and carpenters.",
+      "abt": {
+        "and": "Teams rewrite the same business logic in Rust, Python, JavaScript, and C++, spending endless hours chasing subtle edge-case bugs across versions.",
+        "but": "Mainstream languages allow half-specified programs that compile fine yet crash or corrupt data the moment an unexpected input arrives.",
+        "therefore": "The Reality Code Engine requires one complete, machine-checked state blueprint—refusing incomplete code in 49 millijoules and generating matching native code across languages with 5,393 six-kernel Lean 4 theorem constants."
+      },
+      "keyNumberPlain": "2,221 passing conformance checks with 0 failures, 5,393 Lean 4.36.0 theorem constants verified by 6 independent proof kernels, and 49.04 millijoules per blueprint check on Apple M5 Max (`reported_j`).",
+      "plainFalsifier": "Produce one admitted blueprint whose generated outputs disagree across supported target languages, or one malformed input that silently corrupts state.",
+      "nov2026Link": {
+        "arxivId": "2611.34132v1",
+        "title": "Agent-as-a-Verifier: From Scores to Evidence for General Verification",
+        "url": "https://arxiv.org/abs/2611.34132v1",
+        "whyItMatters": "Shows why explicit, obligation-by-obligation verification certificates catch subtle failures and reward-hacking that fuzzy score-based judges miss."
+      }
+    },
+    "rce-jepa": {
+      "id": "rce-jepa",
+      "cluster": "stop-repeating",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 35,
+      "evidenceClass": "reported_j",
+      "evidenceBadge": "📊 On-Chip Energy Counter (reported_j) · Signed Provenance",
+      "tutorialUrl": "/tutorials/?lab=lab-06-rce-world-coding",
+      "plainTitle": "Small World Models Propose Code, Exact Checkers Decide",
+      "oneLineHook": "Checking whether a code repair follows the rules takes 1,718 times less chip energy than asking a giant model—so lightweight predictors and exact checkers can handle most work first.",
+      "everydayAnalogy": "Think of a crossword puzzle: guessing a word can take minutes of brainstorming, whereas checking whether the letters fit the crossing squares takes a glance.",
+      "abt": {
+        "and": "Generative coding models are creative proposers, yet calling a giant model on every single bug fix is slow and energy-hungry.",
+        "but": "Mechanical rule ladders alone fix routine typos and renames (73.5%), leaving harder multi-line logic repairs open.",
+        "therefore": "Combining a compact 6-to-8-million-parameter latent predictor, a 49-millijoule deterministic checker, and a zero-call replay cache closes 40 of 40 hard residual repairs while cutting big-model calls by 16.67× on repeating streams."
+      },
+      "keyNumberPlain": "Checking a blueprint uses 1,718× less chip energy than a local 35B model proposal (49.04 mJ vs. 84.25 J `reported_j`), and the 3-Gear cascade cuts frontier episodes by 16.67× with 0 contradictions.",
+      "plainFalsifier": "Show an admitted repair from the proposer cascade that passes the checker and mutation gate yet contradicts a stated invariant of the program.",
+      "nov2026Link": {
+        "arxivId": "2611.34830v1",
+        "title": "Not all world models can doubt: epistemic uncertainty in JEPA and RSSM world models",
+        "url": "https://arxiv.org/abs/2611.34830v1",
+        "whyItMatters": "Proves decoder-free JEPA embeddings preserve sharp uncertainty signals on unfamiliar states where pixel-reconstructing models smooth surprises away."
+      }
+    },
+    "rce-compile": {
+      "id": "rce-compile",
+      "cluster": "stop-repeating",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 28,
+      "evidenceClass": "reported_j",
+      "evidenceBadge": "📊 Linux RAPL On-Chip Counter (reported_j) · 300/300 Verified Cells",
+      "tutorialUrl": "/tutorials/",
+      "plainTitle": "When Heavy Compiler Optimization Actually Pays Back Its Energy",
+      "oneLineHook": "Spending fifty joules optimizing a program that only runs ten times wastes electricity—and smart name-free caching avoids recompiling code when someone merely renames a variable.",
+      "everydayAnalogy": "Think of spending three hours sharpening an axe to chop a single twig versus chopping a winter's worth of firewood—and recognizing the exact same recipe even if the chef renamed the bowls.",
+      "abt": {
+        "and": "Compilers translate human-written programs into fast machine instructions, and aggressive optimization flags make finished binaries run faster.",
+        "but": "Heavy optimization burns substantial energy upfront—on 30% of our tested C and Rust kernels, `-O3` never paid back its extra compile energy over `-O2`—and ordinary caches rebuild from scratch whenever variable names change.",
+        "therefore": "Pre-compiling shared runtime libraries cuts Rust compile energy 20× (slashing payback from 31,080 runs down to 1,079), while position-based name-free hashing cuts warm rebuild energy up to 448.5× with zero mix-ups across 500 code mutants."
+      },
+      "keyNumberPlain": "448.5× lower warm-cache Rust rebuild chip energy with 0/500 false cache collisions, and 28.8× earlier payback (`N*` = 1,079 runs) using a pre-compiled shared library (`reported_j`).",
+      "plainFalsifier": "Produce one pair of programs with different runtime behavior that collide under our position-based name-free hash across the tested language subset.",
+      "nov2026Link": {
+        "arxivId": "2611.31938v1",
+        "title": "CAPE: Coordinating Calibration and Search for Tool-Use Policies",
+        "url": "https://arxiv.org/abs/2611.31938v1",
+        "whyItMatters": "Treats calibration and search under one shared compilation budget—reaching optimal policies 22% faster than eager upfront compilation."
+      }
+    },
+    "rce-vc": {
+      "id": "rce-vc",
+      "cluster": "check-first",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 20,
+      "evidenceClass": "reported_j",
+      "evidenceBadge": "📊 Apple M5 Max On-Chip Counter (reported_j) · 49 Offline Tests",
+      "tutorialUrl": "/tutorials/",
+      "plainTitle": "Version Control That Merges by Meaning Instead of Line Numbers",
+      "oneLineHook": "Two teammates editing different functions in the same file shouldn't fight fake text-merge conflicts—and renaming a helper shouldn't look like deleting and rewriting the project.",
+      "everydayAnalogy": "Think of updating individual index cards in a recipe box by what each recipe does, rather than arguing over page numbers in a printed binder.",
+      "abt": {
+        "and": "Millions of developers and coding agents collaborate through Git, which tracks changes line by line in text files.",
+        "but": "Line-based merges break when two people touch nearby text or rename variables, and broken merges can slip in without an automatic check.",
+        "therefore": "We built a Git-compatible version store keyed by name-free program meaning: non-overlapping edits need zero coordination, every submission is checked in 70 microseconds, and rejected edits get a clear written reason."
+      },
+      "keyNumberPlain": "Admits or refuses a change against a 100,000-item repository in 69.7–73.6 microseconds using 317–365 microjoules of chip energy on Apple M5 Max (`reported_j`), while keeping standard Git usable.",
+      "plainFalsifier": "Exhibit two non-overlapping definition edits that trigger a false conflict, or a renamed identical definition that duplicates storage in the canonical state.",
+      "nov2026Link": {
+        "arxivId": "2611.19140v1",
+        "title": "When the Mythical Man-Month Meets Agentic Web Systems: Structured Coordination",
+        "url": "https://arxiv.org/abs/2611.19140v1",
+        "whyItMatters": "Documents how adding more coding agents creates nonlinear synchronization and merge overhead unless coordination is structurally isolated."
+      }
+    },
+    "game-engines": {
+      "id": "game-engines",
+      "cluster": "check-first",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 29,
+      "evidenceClass": "unmetered",
+      "evidenceBadge": "📊 3-OS Bit-Exact Replay + Linux RAPL Counter Suites (reported_j)",
+      "tutorialUrl": "/tutorials/?lab=lab-08-game-lockstep",
+      "plainTitle": "Writing a Game Once So Replays Never Drift Across Computers",
+      "oneLineHook": "Standard decimal math drifts apart between Mac, Linux, and Windows in less than one second—switching simulation rules to exact fixed-point numbers keeps one-hour replays identical everywhere.",
+      "everydayAnalogy": "Think of two pianos playing a duet from sheet music: whole-number beats keep every measure locked together for an hour, whereas slightly different metronomes drift into chaos within bars.",
+      "abt": {
+        "and": "Multiplayer games, physics sims, and robot trainers need the same button presses to produce the exact same world on Mac, Linux, Windows, and web browsers.",
+        "but": "Built-in decimal math (`sin`, `cos`, fused multiply-add) rounds tiny fractions differently across operating systems—splitting trajectories apart by tick 10 to 37—while graphics pixels naturally vary slightly across GPU brands.",
+        "therefore": "Splitting exact fixed-point game logic from bounded-tolerance graphics lets one checked blueprint run for 216,000 ticks (one full hour) from a 45-kilobyte input log with zero mismatches across all three operating systems while cutting behavior code by up to 76%."
+      },
+      "keyNumberPlain": "0 mismatches across 25,500 cross-OS checkpoints and 1-hour (216,000-tick) replays across macOS, Linux, and Windows 11, vs. standard floating-point drift starting at tick 10–37 (`reported_j` on GE-H1/H5; `measured_j` unset).",
+      "plainFalsifier": "Produce a single SHA-256 state mismatch on an admitted fixed-point simulation across macOS, Linux, Windows 11, or WebAssembly from identical inputs.",
+      "nov2026Link": {
+        "arxivId": "2611.32811v1",
+        "title": "Interactive Neural Computers",
+        "url": "https://arxiv.org/abs/2611.32811v1",
+        "whyItMatters": "Highlights why interactive screen world models struggle when exact arithmetic and off-screen state aren't backed by explicit deterministic memory."
+      }
+    },
+    "three-body": {
+      "id": "three-body",
+      "cluster": "check-first",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 20,
+      "evidenceClass": "unmetered",
+      "evidenceBadge": "📖 Systems Engineering & Verified Case Synthesis",
+      "tutorialUrl": "/tutorials/",
+      "plainTitle": "Why Software Breaks at Handoffs Between People, Code, and Users",
+      "oneLineHook": "Most famous engineering disasters didn't happen because a math formula was wrong—they happened because one team assumed pounds while the next team assumed metric.",
+      "everydayAnalogy": "Think of a relay race: runners rarely trip in the middle of their own lane—races are lost in the baton pass when two hands miss each other by an inch.",
+      "abt": {
+        "and": "Every piece of software sits between three moving worlds: the person stating what they want, the code executing on hardware, and the real-world user environment.",
+        "but": "Unwritten guesses at the boundaries between those three worlds—units, timeouts, missing states—quietly turn small misunderstandings into system-wide failures.",
+        "therefore": "Drawing on established verified systems (like CompCert, seL4, and AWS TLA+), writing down and machine-checking every boundary assumption stops handoff bugs from cascading."
+      },
+      "keyNumberPlain": "Synthesizes independent evidence from verified compilers, microkernels, cloud protocols, and physical-unit types showing zero-defect handoff boundaries (`unmetered` case synthesis).",
+      "plainFalsifier": "Exhibit a cross-module integration failure where every shared boundary invariant was explicitly stated and machine-checked on both sides yet still silently mismatched.",
+      "nov2026Link": {
+        "arxivId": "2611.33712v1",
+        "title": "PowerFix: Physics-Guided Iterative Repair for LLM-Assisted Power Converter Design",
+        "url": "https://arxiv.org/abs/2611.33712v1",
+        "whyItMatters": "Lifts verified power-converter repair from 30.1% to 88.4% by translating LLM suggestions through a deterministic compiler and explicit physics checks before commit."
+      }
+    },
+    "ai-reads-human": {
+      "id": "ai-reads-human",
+      "cluster": "real-joules",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 22,
+      "evidenceClass": "reported_j",
+      "evidenceBadge": "📊 Apple M5 Max Dual-Channel Counter (reported_j)",
+      "tutorialUrl": "/tutorials/",
+      "plainTitle": "Why Verbose Text Wastes Machine Energy Compared to Compact Data",
+      "oneLineHook": "When two computers talk to each other in wordy human formats like YAML or JSON instead of compact binary records, they burn up to two thousand times more chip energy just reading the text.",
+      "everydayAnalogy": "Think of two accountants mailing handwritten three-page letters for every transaction instead of exchanging a clean, fixed-column spreadsheet row.",
+      "abt": {
+        "and": "JSON, YAML, and Markdown are wonderful for humans to inspect in a text editor, so software agents now use them for millions of machine-to-machine messages too.",
+        "but": "Every curly brace, quotation mark, indentation space, and tokenizer split forces the receiving chip to spend extra time and electricity parsing formatting instead of doing useful work.",
+        "therefore": "Measuring 34 parsing and tokenization workloads across 20,000 records shows fixed binary layouts cost just 280 nanojoules per record—7.9× less chip energy than standard JSON and up to 2,054× less than pure-Python YAML."
+      },
+      "keyNumberPlain": "Up to 2,053.8× extra per-process chip energy reading human-formatted YAML (575,799 nJ/record) and 98.7× splitting JSON into LLM tokens (27,679 nJ/record) vs. binary structs (280.4 nJ/record `reported_j`).",
+      "plainFalsifier": "Demonstrate a general-purpose verbose text parser + tokenizer that matches fixed-layout binary decoding in nanojoules per record on identical structured payloads.",
+      "nov2026Link": {
+        "arxivId": "2611.12019v1",
+        "title": "Feeling Easier, Working Harder: Cognitive Load in AI-Assisted Code Comprehension",
+        "url": "https://arxiv.org/abs/2611.12019v1",
+        "whyItMatters": "Shows verbose AI text explanations also tax humans—raising developer reaction-time cognitive load by 11.2% even when readers think it feels easier."
+      }
+    },
+    "spellcheck": {
+      "id": "spellcheck",
+      "cluster": "big-picture",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 18,
+      "evidenceClass": "unmetered",
+      "evidenceBadge": "📖 Cited Historical Price & Bundling Audit",
+      "tutorialUrl": "/tutorials/",
+      "plainTitle": "How Spell Check Went from a $200 Box to Free for Everyone",
+      "oneLineHook": "In the 1980s, checking your spelling cost hundreds of dollars for a dedicated program—today seven billion people get it free because fast lookup tables cost almost zero electricity to run.",
+      "everydayAnalogy": "Think of pocket calculators or smartphone flashlights: technologies that once sold as expensive standalone gadgets inevitably become free, invisible features once they cost pennies to run.",
+      "abt": {
+        "and": "Early computer spell checkers sold as premium standalone products and dedicated desk hardware for hundreds of dollars.",
+        "but": "Once engineers packed dictionaries into tiny, near-zero-energy lookup structures, charging per word checked made no economic sense compared to bundling spell check inside every keyboard and browser.",
+        "therefore": "Dated price history shows that any routine computer skill whose per-use energy cost drops near zero stops being a metered luxury for the few and becomes a universal built-in tool for billions."
+      },
+      "keyNumberPlain": "Traces dated retail prices from $200+ standalone 1980s spell-check packages down to $0 built-in OS/browser features reaching 7B+ connected users (`unmetered` historical audit).",
+      "plainFalsifier": "Point to a mass-market digital feature with near-zero marginal compute cost and trivial integration friction that sustained standalone per-query pricing across decades without regulatory lock-in.",
+      "nov2026Link": {
+        "arxivId": "2611.29349v1",
+        "title": "Graph Neural Networks for Accurate Quasiparticle Energy Levels ('Small AI' Workflow)",
+        "url": "https://arxiv.org/abs/2611.29349v1",
+        "whyItMatters": "Shows even quantum materials physics is shifting from giant centralized compute runs to compact, locally reusable 'small AI' surrogates."
+      }
+    },
+    "ai-coding-market": {
+      "id": "ai-coding-market",
+      "cluster": "big-picture",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 24,
+      "evidenceClass": "unmetered",
+      "evidenceBadge": "📖 Public Financial Filings & Forecast Audit",
+      "tutorialUrl": "/tutorials/",
+      "plainTitle": "The Hidden Flaw Inside Trillion-Dollar AI Coding Forecasts",
+      "oneLineHook": "Wall Street's trillion-dollar AI coding projections quietly assume companies will rent a giant cloud model from scratch for every line of boilerplate code forever—ignoring verified reuse.",
+      "everydayAnalogy": "Think of forecasting lumber demand by assuming carpenters will burn down their scaffolding after every floor instead of reusing tested blueprints and prefabricated beams.",
+      "abt": {
+        "and": "Analysts publish eye-popping trillion-dollar revenue forecasts for AI coding assistants based on early per-seat and per-token spending.",
+        "but": "When we audit each forecast side by side against public earnings, productivity trials, and 9×–900× token price drops, every huge projection relies on never saving and reusing verified solutions.",
+        "therefore": "As verified code reuse and local lookup caches spread, the cost of routine coding falls toward the cost of electricity—shifting value from renting tokens to owning reliable verification."
+      },
+      "keyNumberPlain": "Audits major analyst forecasts alongside 9×–900× inference price compression and a $2.25/query ($9,450/yr) uncached token arithmetic benchmark (`unmetered` economic essay).",
+      "plainFalsifier": "Show multi-year enterprise financial filings where routine boilerplate token spend per developer keeps rising despite verified local caching and open-weight models.",
+      "nov2026Link": {
+        "arxivId": "2611.34825v1",
+        "title": "Routeability Before Routing: RouteabilityBench for Audited LLM Model Selection",
+        "url": "https://arxiv.org/abs/2611.34825v1",
+        "whyItMatters": "Confirms across 66 models that commodity models increasingly tie expensive frontier models on routine benchmark strata."
+      }
+    },
+    "interface-economics": {
+      "id": "interface-economics",
+      "cluster": "big-picture",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 21,
+      "evidenceClass": "unmetered",
+      "evidenceBadge": "📖 Audited Engineering Loss & Standards Economics",
+      "tutorialUrl": "/tutorials/",
+      "plainTitle": "Why Unchecked Software Handoffs Cost Millions—and Why Nobody Pays First",
+      "oneLineHook": "NASA lost a $327.6 million Mars spacecraft over pound-seconds versus newton-seconds—a tiny automated unit check costs pennies, yet teams skip it because the builder pays today while future teams reap the savings.",
+      "everydayAnalogy": "Think of labeling every circuit breaker in a house panel: taking ten minutes with a label maker today saves hours of dangerous guesswork for everyone who lives there later.",
+      "abt": {
+        "and": "Some of the costliest failures in aerospace, finance, and cloud computing trace back to simple mismatched assumptions between two working components.",
+        "but": "Writing clean interface contracts creates a classic public-good dilemma: the team that writes the contract pays the effort upfront, while downstream teams capture most of the benefit.",
+        "therefore": "By keeping exact accounted losses (like Mars Climate Orbiter and Ariane 5) strictly separate from survey estimates, we show why making automated interface checks effortless is the key economic lever."
+      },
+      "keyNumberPlain": "$327.6 million accounted Mars Climate Orbiter loss from one unchecked unit handoff, cataloged separately from model and survey estimates (`unmetered` economic audit).",
+      "plainFalsifier": "Show an ecosystem where manual, high-friction interface documentation achieved near-100% adoption without automated compiler or protocol enforcement.",
+      "nov2026Link": {
+        "arxivId": "2611.31938v1",
+        "title": "CAPE: Coordinating Calibration and Search for Tool-Use Policies",
+        "url": "https://arxiv.org/abs/2611.31938v1",
+        "whyItMatters": "Targets real-world CSV/JSON delimiter and date-format mismatches at tool boundaries, lifting completion by 15–35 percentage points via automated interface calibration."
+      }
+    },
+    "mei": {
+      "id": "mei",
+      "cluster": "real-joules",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 25,
+      "evidenceClass": "est_j",
+      "evidenceBadge": "⚡ Electro-Thermal Model (est_j) + Open KiCad/STEP Hardware Package",
+      "tutorialUrl": "/tutorials/",
+      "plainTitle": "Designing Computers That Live Strictly Inside an Energy Budget",
+      "oneLineHook": "From a coin-cell cold-chain sensor in a -20 °C freezer to a solar-aware data center, smart hardware should check its battery reserve before every wakeup and never drop a critical alert.",
+      "everydayAnalogy": "Think of a hiker rationing water across a desert crossing: you budget every sip before climbing a ridge so you never run dry miles from camp.",
+      "abt": {
+        "and": "Tiny wireless tags and edge sensors must run for years on a single coin-cell battery, even when freezing temperatures cause battery voltage to sag.",
+        "but": "Software written without energy awareness fires expensive radio bursts at the worst moment, browning out the chip and losing critical safety alerts.",
+        "therefore": "We publish an open two-layer circuit board (KiCad/Gerbers), 3D enclosure, and signed energy-budget protocol that holds non-urgent work during -20 °C voltage sag—saving 100% of critical alerts across 10,000 simulated wakeups."
+      },
+      "keyNumberPlain": "0-DRC open 32 × 24 mm PCB reference + 8-year coin-cell schedule preserving 100% of critical cold-chain alerts at -20 °C (`est_j` electro-thermal model; physical tag bench `measured_j` unset).",
+      "plainFalsifier": "Fabricate the open MEI-JCP-Tag-v1 Gerber files and measure a -20 °C pulse brownout on a conditioned CR2032 cell under the scheduled hold/settle gate.",
+      "nov2026Link": {
+        "arxivId": "2611.19984v1",
+        "title": "VoiceGuard: Audio-Native Pipeline for Wheelchair-Mounted Assistive Manipulation",
+        "url": "https://arxiv.org/abs/2611.19984v1",
+        "whyItMatters": "Pairs low-power local wake/stop detectors and rule-based packet validation with a compact edge robot arm, halting unsafe motion in 210 ms."
+      }
+    },
+    "jouleos": {
+      "id": "jouleos",
+      "cluster": "real-joules",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 26,
+      "evidenceClass": "unmetered",
+      "evidenceBadge": "🦀 Rust Reference Spine (310 Tests) & OS Architecture Guide",
+      "tutorialUrl": "/tutorials/",
+      "plainTitle": "What an Operating System Built for Energy-Budgeted Agents Needs",
+      "oneLineHook": "Today's operating systems track memory and CPU time down to the byte, yet let runaway AI agents burn unlimited electricity without an energy budget or a refusal receipt.",
+      "everydayAnalogy": "Think of a prepaid transit card for software agents: every trip deducts a known fare up front, and if a rogue script tries to charter a private jet, the turnstile calmly refuses.",
+      "abt": {
+        "and": "Autonomous agents now run shell commands, spin up browsers, and call external services on laptops and cloud servers.",
+        "but": "Legacy operating systems were designed decades ago without first-class energy grants, provenance receipts, or pre-action budget gates.",
+        "therefore": "We review modern OS, WebAssembly, and sandbox designs and ship a 310-test Rust reference spine that links signed energy receipts, drift-checked telemetry, and strict budget refusal rules."
+      },
+      "keyNumberPlain": "310 passing Rust workspace tests and 78,400 checked provenance pairs in the open `jcp-satb-cad-spine` reference library (`unmetered` design guide and software spine).",
+      "plainFalsifier": "Find one pair among the 78,400 provenance lattice states where combining two evidence records upgrades an unverified or drifted reading into a stricter class.",
+      "nov2026Link": {
+        "arxivId": "2611.32958v1",
+        "title": "Attestation is All You Need: Toward a Zero-Trust Architecture for HPC AI Agents",
+        "url": "https://arxiv.org/abs/2611.32958v1",
+        "whyItMatters": "Uses OS-level eBPF syscall attestation to contain hijacked AI agents in under one second with zero false positives—matching JouleOS's kernel-boundary vision."
+      }
+    },
+    "latency": {
+      "id": "latency",
+      "cluster": "big-picture",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 27,
+      "evidenceClass": "unmetered",
+      "evidenceBadge": "📖 Dated Release Survey + Public Capital-Flow Audit",
+      "tutorialUrl": "/tutorials/",
+      "plainTitle": "Why Cheaper Computing Breakthroughs Take Months or Years to Ship",
+      "oneLineHook": "Electricity is less than twelve percent of what a cloud AI task actually bills you—most of the price is hardware depreciation, quarterly release calendars, and the friction of switching tools.",
+      "everydayAnalogy": "Think of why airline fares don't drop the same week jet fuel dips: gate leases, fleet financing, and frequent-flier lock-in dominate the ticket price until a low-cost carrier forces a change.",
+      "abt": {
+        "and": "Researchers publish dramatically cheaper, smaller, and faster algorithms almost every week.",
+        "but": "Everyday software products often lag behind those published breakthroughs by months or years, keeping per-task bills stubbornly high.",
+        "therefore": "Auditing dated model releases and public cloud/chip filings shows electricity is under 12% of task price—meaning open automation tools that erase switching friction are what actually force cheaper methods into production."
+      },
+      "keyNumberPlain": "Electricity accounts for under 12% of typical billed cloud task cost; hardware amortization, calendar batching, and switching costs explain the deployment gap (`unmetered` market/cadence study).",
+      "plainFalsifier": "Show a major commercial model API where spot wholesale electricity price changes explain the majority of customer per-token price variance.",
+      "nov2026Link": {
+        "arxivId": "2611.25754v1",
+        "title": "ADAPT: Pool-Size-Aware Thresholds for Lightweight Service Routing",
+        "url": "https://arxiv.org/abs/2611.25754v1",
+        "whyItMatters": "Demonstrates how plug-and-play service routing without classifier retraining lowers the engineering switching cost of adopting cheaper specialist models."
+      }
+    },
+    "eco-avalanche": {
+      "id": "eco-avalanche",
+      "cluster": "check-first",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 15,
+      "evidenceClass": "measured_j",
+      "evidenceBadge": "🔌 Jetson Thor Hardware Shunts (measured_j) · Ecosystem Briefing",
+      "tutorialUrl": "/tutorials/?lab=lab-03-ai-ratchet-winters",
+      "plainTitle": "The Nine-Step Climb from Forgetful Chatbots to Reliable Tools",
+      "oneLineHook": "Software stalls whenever it forgets yesterday's verified answers—crossing the compilation threshold turns fragile, expensive guesses into durable building blocks.",
+      "everydayAnalogy": "Think of civilization moving from oral rumors (repeated from memory every time) to printed engineering handbooks that everyone can trust and build upon.",
+      "abt": {
+        "and": "Today's AI tools excel at searching, drafting, reasoning, chatting, and calling APIs—the first five rungs of capability.",
+        "but": "Because those five rungs start cold on every session, costs stay high and multi-step errors pile up.",
+        "therefore": "Crossing the compilation threshold—checking answers once and locking them into fast lookup tables and silicon—unlocks reliable competence, teamwork, and affordable everyday economics across Rungs 6 through 9."
+      },
+      "keyNumberPlain": "98 of 100 verified multi-camp tasks solved at 9×–27× better physical Jetson Thor shunt energy efficiency (`measured_j`).",
+      "plainFalsifier": "Demonstrate a stateless cold-start multi-agent loop that scales past 10 hops without error decay or higher joules than compiled, checked handoffs.",
+      "nov2026Link": {
+        "arxivId": "2611.34327v1",
+        "title": "MeterRouter: Budget-Aware Dynamic Routing for Multi-Agent Systems",
+        "url": "https://arxiv.org/abs/2611.34327v1",
+        "whyItMatters": "Shows explicit budget-aware graph synthesis cuts multi-agent overhead by 82% at Rung 4–5."
+      }
+    },
+    "eco-stack": {
+      "id": "eco-stack",
+      "cluster": "real-joules",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 14,
+      "evidenceClass": "unmetered",
+      "evidenceBadge": "📐 Architecture Map · Physics + Information + Systems",
+      "tutorialUrl": "/tutorials/",
+      "plainTitle": "One Map Connecting Physics, Information, and Everyday Software",
+      "oneLineHook": "Physics counts joules, information theory counts bits, and software engineering counts passing tests—putting all three on one map reveals where computing wastes massive energy.",
+      "everydayAnalogy": "Think of a nutrition label for software that lists calories (joules), ingredients (bits), and safety inspection passed—all on one clear card.",
+      "abt": {
+        "and": "Hardware physicists, information theorists, and app developers usually work in separate departments with separate vocabularies.",
+        "but": "When software ignores hardware physics, simple apps end up burning supercomputer wattage on tasks that need microjoules.",
+        "therefore": "Our Periodic Stack aligns nine layers of computing under one shared joule-and-correctness ledger so engineers can spot and eliminate waste across boundaries."
+      },
+      "keyNumberPlain": "Unifies 3 foundational sciences and 9 computing stack layers under 1 strict orthogonal energy ledger (`unmetered` architectural synthesis).",
+      "plainFalsifier": "Show a cross-layer software stack optimization where ignoring representation impedance and verification gates lowers energy per verified completion.",
+      "nov2026Link": {
+        "arxivId": "2611.12019v1",
+        "title": "Feeling Easier, Working Harder: Cognitive Load in AI-Assisted Code Comprehension",
+        "url": "https://arxiv.org/abs/2611.12019v1",
+        "whyItMatters": "Reminds us that human cognitive load is the top layer of the stack—interfaces must minimize mental effort alongside silicon joules."
+      }
+    },
+    "eco-compute": {
+      "id": "eco-compute",
+      "cluster": "real-joules",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 15,
+      "evidenceClass": "measured_j",
+      "evidenceBadge": "🔌 Hardware Current-Shunt Sensor (measured_j) · Compute Desk",
+      "tutorialUrl": "/tutorials/?lab=lab-12-aller-m2-thermal",
+      "plainTitle": "Why Every Flip of a Bit Pays an Electricity Bill",
+      "oneLineHook": "Moving data across memory wires and waking idle processors burns far more power than the math itself—quiet event wakeups and local lookup memory slash that bill.",
+      "everydayAnalogy": "Think of leaving a delivery truck idling in the driveway all day just in case a package arrives, versus turning the engine on only when the doorbell rings.",
+      "abt": {
+        "and": "Every calculation physically charges and discharges microscopic wires inside silicon chips.",
+        "but": "Busy-waiting loops, bloated compiler rebuilds, and constant off-chip memory fetches burn watts even when almost no new information is produced.",
+        "therefore": "Combining zero-poll event wakeups, pre-compiled runtime libraries, and on-chip lookup memory cuts compile energy by 20× and edge verification down to 927 microjoules on physical shunts."
+      },
+      "keyNumberPlain": "927.3 microjoules per verified edge on Jetson Thor physical shunts (`measured_j`) and 20.07× lower Rust compile energy via shared runtime prelude (`reported_j`).",
+      "plainFalsifier": "Show a 1%-duty polling loop that uses fewer physical rail joules than kernel event-driven wakeup on identical hardware.",
+      "nov2026Link": {
+        "arxivId": "2611.26657v1",
+        "title": "BitPrefill: W1.58A4 Tensor-Core Acceleration for Compute-Bound LLM Prefill",
+        "url": "https://arxiv.org/abs/2611.26657v1",
+        "whyItMatters": "Cuts compute-bound prefill latency 1.42× on edge Jetson silicon by keeping ternary weights in native low-bit integer datapaths."
+      }
+    },
+    "eco-synthesis": {
+      "id": "eco-synthesis",
+      "cluster": "stop-repeating",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 15,
+      "evidenceClass": "reported_j",
+      "evidenceBadge": "📊 On-Chip Energy Counter (reported_j) · Synthesis Desk",
+      "tutorialUrl": "/tutorials/?lab=lab-09-lut6-benes",
+      "plainTitle": "Route Simple Jobs First, Save Giant Models for Last",
+      "oneLineHook": "You don't hire an architect to flip a light switch—routing routine code and logic through fast local tiers first keeps giant models asleep over three-quarters of the time.",
+      "everydayAnalogy": "Think of hospital triage: a nurse with a thermometer handles a scraped knee in two minutes so the surgical suite stays free for emergencies.",
+      "abt": {
+        "and": "Large sparse neural models can solve hard open-world programming tasks, yet loading tens of gigabytes of weights into RAM shuts out everyday laptops.",
+        "but": "Most incoming requests in a real workflow are familiar patterns or small variations that do not need a giant model at all.",
+        "therefore": "Streaming 4-bit experts from SSD in just 970 MB of RAM—behind fast lookup and conformal wake gates—reaches 90.6% on BigCodeBench with 0.00% broken commits."
+      },
+      "keyNumberPlain": "90.62% verified pass on BigCodeBench v0.1.3 with 0.00% broken commits while streaming a 35B sparse model in 970 MB active RAM (`reported_j`).",
+      "plainFalsifier": "Show unconditional 35B execution achieving lower joules per verified fix than gated cascade routing on the same 48-task coding suite.",
+      "nov2026Link": {
+        "arxivId": "2611.25754v1",
+        "title": "ADAPT: Adaptive Decision and Abstention with Pool-Size-Aware Thresholds",
+        "url": "https://arxiv.org/abs/2611.25754v1",
+        "whyItMatters": "Shows calibrated lightweight abstention routers beat generative LLM routers on accuracy-vs-cost trade-offs."
+      }
+    },
+    "eco-knowledge": {
+      "id": "eco-knowledge",
+      "cluster": "check-first",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 14,
+      "evidenceClass": "unmetered",
+      "evidenceBadge": "📐 6-Kernel Sandboxed Lean 4 Verification · Knowledge Desk",
+      "tutorialUrl": "/tutorials/",
+      "plainTitle": "Checking Mathematical Proofs with Six Independent Judges",
+      "oneLineHook": "Even proof-checking software can have rare bugs—running every theorem through six independently written proof checkers inside locked sandboxes removes single-tool blind spots.",
+      "everydayAnalogy": "Think of having six independent structural engineers—each using their own ruler and software—verify a bridge blueprint before opening it to traffic.",
+      "abt": {
+        "and": "Machine-checked proofs turn fragile mathematical arguments into checkable code.",
+        "but": "In 2026, security researchers disclosed subtle bugs in proof-assistant file loaders and shortcuts that could let a flawed proof slip past a single checker.",
+        "therefore": "We audit over five thousand theorem constants across four repositories inside isolated Linux sandboxes using six independent Lean 4 checkers with zero skipped steps."
+      },
+      "keyNumberPlain": "5,496+ theorem constants unanimously accepted by 6 independent sandboxed Lean 4 proof kernels with 0 skipped proofs (`unmetered` formal verification).",
+      "plainFalsifier": "Find any source theorem across our audited Lean 4 repositories that relies on `sorry`, `opaque`, `native_decide`, or fails any of the 6 independent kernels.",
+      "nov2026Link": {
+        "arxivId": "2611.18220v1",
+        "title": "From Pen-and-Paper to Machine-Checked Proofs: Lean for System Identification",
+        "url": "https://arxiv.org/abs/2611.18220v1",
+        "whyItMatters": "Shows Lean 4 kernel checking catching an unstated edge case in a classic 1999 control-systems lemma."
+      }
+    },
+    "eco-database": {
+      "id": "eco-database",
+      "cluster": "check-first",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 14,
+      "evidenceClass": "reported_j",
+      "evidenceBadge": "📊 On-Chip Energy Counter (reported_j) · State & Memory Desk",
+      "tutorialUrl": "/tutorials/?lab=lab-07-deterministic-null",
+      "plainTitle": "Sub-Microsecond Memory and Tamper-Evident Logs for Agents",
+      "oneLineHook": "When software saves verified answers in a memory-mapped integer table and binds every log to the exact program that wrote it, recall takes a third of a microsecond with zero drift.",
+      "everydayAnalogy": "Think of a bank vault ledger where every entry is stamped in indelible ink with the exact teller seal and opens to the right page in the blink of an eye.",
+      "abt": {
+        "and": "Agents need fast memory to recall past solutions and trustworthy logs to replay what happened.",
+        "but": "Heavy vector databases and loose text logs burn milliseconds and millijoules while allowing silent version mismatches.",
+        "therefore": "Memory-mapped 64-bit integer case tables (`DNULLMM1`) paired with program-bound logs recall verified answers in 0.325 microseconds and 1.77 microjoules across five languages with zero drift."
+      },
+      "keyNumberPlain": "0.325-microsecond lookup and 1.77-microjoule chip energy (`reported_j`) with bit-exact parity across Rust, C++20, Go, Julia, and Python.",
+      "plainFalsifier": "Produce a cross-language byte or checksum mismatch across the 1,000,000-probe `DNULLMM1` conformance suite.",
+      "nov2026Link": {
+        "arxivId": "2611.34132v1",
+        "title": "Agent-as-a-Verifier: From Scores to Evidence for General Verification",
+        "url": "https://arxiv.org/abs/2611.34132v1",
+        "whyItMatters": "Underscores why auditable, replayable evidence logs outperform opaque scalar scores for reliable agent memory."
+      }
+    },
+    "lut6-codon-nucleus": {
+      "id": "lut6-codon-nucleus",
+      "cluster": "stop-repeating",
+      "readingMinutesPlain": 1,
+      "readingMinutesFull": 18,
+      "evidenceClass": "measured_j",
+      "evidenceBadge": "🔌 Jetson Thor Hardware Shunts (measured_j) + Thermal M.2 Model (est_C)",
+      "tutorialUrl": "/tutorials/?lab=lab-11-lut6-codon-wobble",
+      "plainTitle": "Nature's 64-Slot Genetic Table Rebuilt in Cool, Tiny Silicon",
+      "oneLineHook": "Living cells translate three-letter genetic codes using a 64-slot table with built-in noise tolerance—the exact same 64-bit lookup block runs in 38 nanoseconds on a microcontroller and stays cool inside a fanless laptop slot.",
+      "everydayAnalogy": "Think of how biology's genetic code forgives tiny third-letter typos so cells don't crash—baked into a silent, fanless memory stick that never overheats.",
+      "abt": {
+        "and": "Modern FPGAs and 64-bit processors both share a natural atom of logic: a 6-input, 64-entry truth table (`LUT6`) that fits in one 64-bit whole number.",
+        "but": "Exact single-point memorization shatters if sensor input jitters by one bit, and leaving unused memory chips powered on an M.2 card cooks a fanless laptop slot past 95 °C.",
+        "therefore": "Grouping 4-state 'wobble' boxes cancels high-frequency noise completely (proved in 20 Lean 4 theorems), runs in 125–176 nanojoules on Jetson Thor shunts, and holds 365 lookup pages at a cool 55.2 °C when external RAM is held in reset."
+      },
+      "keyNumberPlain": "125–176 nanojoules per operation on Jetson Thor shunts (`measured_j`), 38.1 nanoseconds on a live Cortex-M55 chip, and 55.2 °C fanless M.2 thermal envelope (`est_C`, DDR3 off).",
+      "plainFalsifier": "Find any degree-5 or degree-6 Walsh-Hadamard noise leakage in a 2-bit aligned wobble truth table, or breach 85 °C under the pure-BRAM passive-heatsink M.2 envelope.",
+      "nov2026Link": {
+        "arxivId": "2611.11507v1",
+        "title": "ConvLUT: Ultra-Low-Latency LUT-Based Inference",
+        "url": "https://arxiv.org/abs/2611.11507v1",
+        "whyItMatters": "Independently demonstrates sub-50 ns FPGA lookup-table inference with hardware-aware pruning."
+      }
+    }
+  }
+}

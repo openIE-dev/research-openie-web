@@ -1,0 +1,153 @@
+---
+// Global 4-Altitude Reading Depth Bar ("Simplest First, Complex Last Resort").
+// Syncs html[data-reading-depth="plain|visual|builder|formal"], persists in localStorage('oe-reading-depth'),
+// and honors ?depth=plain|visual|builder|formal URL overrides.
+---
+
+<nav
+  id="gw-depth-bar"
+  aria-label="Reading depth selector"
+  class="gw-depth-nav sticky top-[60px] md:top-[68px] z-80 border-b border-brand-border px-4 md:px-10 py-2 backdrop-blur-xl print:hidden"
+>
+  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-2">
+    <div class="flex items-center gap-2 min-w-0">
+      <span class="font-mono text-[10px] tracking-[0.14em] uppercase text-brand-amber font-semibold shrink-0">
+        Reading Depth
+      </span>
+      <span id="gw-depth-desc" class="font-body text-xs text-brand-slate truncate">
+        Everyday words, 15s video &amp; core idea first — complex math stays tucked away until you ask.
+      </span>
+    </div>
+
+    <div
+      class="inline-flex flex-wrap items-center gap-1 p-0.5 rounded-lg border border-brand-border bg-brand-dark/70"
+      role="group"
+      aria-label="Choose how much technical detail to show"
+    >
+      <button
+        type="button"
+        data-gw-set-depth="plain"
+        aria-pressed="true"
+        title="Default: Everyday words, real-world analogy, 15-second video & core result"
+        class="gw-depth-btn font-mono text-[11px] px-2.5 py-1 rounded-md cursor-pointer transition-all"
+      >
+        1 · Plain Story
+      </button>
+      <button
+        type="button"
+        data-gw-set-depth="visual"
+        aria-pressed="false"
+        title="Add interactive browser simulators, visual diagrams & how to test us"
+        class="gw-depth-btn font-mono text-[11px] px-2.5 py-1 rounded-md cursor-pointer transition-all"
+      >
+        2 · Visual &amp; Hands-On
+      </button>
+      <button
+        type="button"
+        data-gw-set-depth="builder"
+        aria-pressed="false"
+        title="Add [G0–G12] source sheets, hardware sensor receipts, Braille transcripts & code repos"
+        class="gw-depth-btn font-mono text-[11px] px-2.5 py-1 rounded-md cursor-pointer transition-all"
+      >
+        3 · Builder &amp; Evidence
+      </button>
+      <button
+        type="button"
+        data-gw-set-depth="formal"
+        aria-pressed="false"
+        title="Last Resort: Expand the complete formal manuscript, equations & machine proofs"
+        class="gw-depth-btn font-mono text-[11px] px-2.5 py-1 rounded-md cursor-pointer transition-all"
+      >
+        4 · Full Formal Paper
+      </button>
+    </div>
+  </div>
+</nav>
+
+<script is:inline>
+  (function () {
+    var DESCRIPTIONS = {
+      plain: 'Everyday words, 15s video & core idea first — complex math stays tucked away until you ask.',
+      visual: 'Plain story + interactive browser simulators, falsifiers & late-2026 research links.',
+      builder: 'Plain + Visual + signed [G0–G12] source sheets, hardware sensor receipts & code repos.',
+      formal: 'Last Resort active: complete technical manuscript, equations & proofs expanded everywhere.'
+    };
+    var ALLOWED = ['plain', 'visual', 'builder', 'formal'];
+
+    function currentDepth() {
+      var attr = document.documentElement.getAttribute('data-reading-depth') || 'plain';
+      return ALLOWED.indexOf(attr) !== -1 ? attr : 'plain';
+    }
+
+    function syncDepthUi(depth) {
+      var descEl = document.getElementById('gw-depth-desc');
+      if (descEl && DESCRIPTIONS[depth]) descEl.textContent = DESCRIPTIONS[depth];
+      document.querySelectorAll('[data-gw-set-depth]').forEach(function (btn) {
+        var active = btn.getAttribute('data-gw-set-depth') === depth;
+        btn.setAttribute('aria-pressed', String(active));
+        btn.classList.toggle('gw-depth-btn-active', active);
+      });
+    }
+
+    function setReadingDepth(nextDepth, opts) {
+      if (ALLOWED.indexOf(nextDepth) === -1) nextDepth = 'plain';
+      document.documentElement.setAttribute('data-reading-depth', nextDepth);
+      if (!opts || opts.persist !== false) {
+        try { localStorage.setItem('oe-reading-depth', nextDepth); } catch (_e) {}
+      }
+      if (opts && opts.syncUrl && window.history && window.history.replaceState) {
+        var u = new URL(window.location.href);
+        if (nextDepth === 'plain' && !u.searchParams.has('depth')) {
+          // keep clean URL for default
+        } else {
+          u.searchParams.set('depth', nextDepth);
+          window.history.replaceState(null, '', u.pathname + u.search + u.hash);
+        }
+      }
+      syncDepthUi(nextDepth);
+      window.dispatchEvent(new CustomEvent('openie:reading-depth', { detail: { depth: nextDepth } }));
+    }
+
+    window.__openieSetReadingDepth = setReadingDepth;
+
+    document.querySelectorAll('[data-gw-set-depth]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var d = btn.getAttribute('data-gw-set-depth') || 'plain';
+        var hasParam = new URLSearchParams(window.location.search).has('depth');
+        setReadingDepth(d, { persist: true, syncUrl: hasParam });
+      });
+    });
+
+    syncDepthUi(currentDepth());
+  })();
+</script>
+
+<style is:global>
+  .gw-depth-nav {
+    background: rgba(10, 12, 20, 0.86);
+  }
+  html[data-theme="light"] .gw-depth-nav {
+    background: rgba(248, 250, 252, 0.92);
+  }
+  .gw-depth-btn {
+    color: var(--color-brand-slate);
+    background: transparent;
+    border: 1px solid transparent;
+  }
+  .gw-depth-btn:hover {
+    color: var(--color-brand-white);
+    background: rgba(255, 255, 255, 0.04);
+  }
+  html[data-theme="light"] .gw-depth-btn:hover {
+    background: rgba(15, 23, 42, 0.05);
+  }
+  .gw-depth-btn.gw-depth-btn-active {
+    color: var(--color-brand-dark);
+    background: var(--color-brand-amber);
+    border-color: var(--color-brand-amber);
+    font-weight: 700;
+  }
+  html[data-theme="light"] .gw-depth-btn.gw-depth-btn-active {
+    color: #ffffff;
+  }
+</style>

@@ -448,15 +448,15 @@ export class OpenIELiveHMI {
     if (p === '/radio' && window.__openieActiveMediaContext?.studyId) {
       return window.__openieActiveMediaContext.studyId;
     }
-    const mPaper = p.match(/\/(?:papers|products|about|living|posts)\/([a-z0-9-]+)$/i);
+    const mPaper = p.match(/\/(?:papers|products|about|living|posts|medium)\/([a-z0-9-]+)$/i);
     if (mPaper) {
       const slug = mPaper[1].toLowerCase();
       if (slug === 'ni' || slug === 'mol') return 'gates';
       if (slug === 'fpga-sim') return 'eco-compute';
-      if (slug === 'from-ephemeral-inference-to-compiled-agency') return 'agency';
+      if (slug === 'compiled-agency') return 'from-ephemeral-inference-to-compiled-agency';
       return slug;
     }
-    return 'communication-avalanche';
+    return 'from-ephemeral-inference-to-compiled-agency';
   }
 
   buildCompactSiteDescriptor() {
@@ -468,7 +468,7 @@ export class OpenIELiveHMI {
     const rCtx = typeof window !== 'undefined' ? window.__openieActiveMediaContext || this.mediaContext : this.mediaContext;
     const studyLine = study
       ? `${study.short_title} [${study.evidence_class}]: ${(study.headline_metric || '').slice(0, 95)}`
-      : '28 OpenIE post-review studies';
+      : '29 OpenIE Self-Checked studies';
     const caveatLine = study
       ? (study.limitations_and_scope || '').split('.')[0].slice(0, 110)
       : 'Finite-sample replication bounds apply';
@@ -479,8 +479,8 @@ export class OpenIELiveHMI {
         ? ` ${this.contextSummary.slice(0, 65)}.`
         : '';
     const raw =
-      `${hostPath} | You are OpenIE Live (warm, natural studio voice co-pilot). Active study: ${studyLine}. Caveat: ${caveatLine}.${mediaBit} ` +
-      `Mandatory 25 Nov 2026 Outside-Review rules: say 'Signed Provenance · Self-Checked' (never 'Verified') for OpenIE gates; never mix measured_j, reported_j, est_j, unmetered; never say ${'Landauer'} Bit-Equivalents; cite finite-sample Clopper-Pearson bounds.`;
+      `${hostPath} | You are OpenIE Live (warm, simplest-first voice co-pilot). Lead in plain everyday words (2-3 crisp sentences, zero acronym soup) and offer technical metrics/proofs only if asked. Active: ${studyLine}. Caveat: ${caveatLine}.${mediaBit} ` +
+      `Rules: say 'Signed Provenance · Self-Checked' (never 'Verified'); never mix measured_j, reported_j, est_j, unmetered; never say ${'Landauer'} Bit-Equivalents.`;
     return raw.slice(0, 595);
   }
 
@@ -1897,9 +1897,11 @@ export class OpenIELiveHMI {
     } catch {}
 
     if (!spokenReply && activeStudy) {
+      const plainLead =
+        (activeStudy.plain_bullets && activeStudy.plain_bullets[0]) || activeStudy.headline_claim || activeStudy.short_title;
       spokenReply =
-        `${activeStudy.short_title} (${activeStudy.evidence_class}, Signed Provenance · Self-Checked): ${activeStudy.headline_claim} ` +
-        `Scope note: ${activeStudy.limitations_and_scope.split('.')[0]}.`;
+        `In plain words on ${activeStudy.short_title}: ${plainLead} ` +
+        `Want the technical metrics or formal proof?`;
     }
 
     const persona = STUDIO_VOICES[this.voice] || STUDIO_VOICES.Aoede;
@@ -1978,12 +1980,12 @@ export class OpenIELiveHMI {
     if (isRadio) {
       const epNum = String(rCtx.episodeNumber || 1).padStart(2, '0');
       greetInstruction =
-        `Greet the live caller warmly in 2 natural spoken sentences as the OpenIE Research Radio Studio host for Episode ${epNum} ("${rCtx.episodeTitle || ''}"). ` +
-        `Mention they called in right as ${rCtx.activeSpeaker || 'the panel'} said "${(rCtx.transcriptSnippet || '').slice(0, 110)}", grounded in ${study?.short_title || 'OpenIE Research'} (${study?.evidence_class || 'unmetered'}, Signed Provenance · Self-Checked), and invite their question.`;
+        `Greet the live caller warmly in 2 plain, everyday spoken sentences (zero acronym soup) as the OpenIE Research Radio Studio host for Episode ${epNum} ("${rCtx.episodeTitle || ''}"). ` +
+        `Mention they called in right as ${rCtx.activeSpeaker || 'the panel'} discussed ${study?.short_title || 'this topic'}, summarize the core everyday idea in one crisp phrase, and ask what they would like to explore.`;
     } else {
-      const secBit = dom.visibleSection ? ` currently viewing section "${dom.visibleSection.text}"` : '';
+      const plainHook = (study?.plain_bullets && study.plain_bullets[0]) ? ` Plain idea: ${study.plain_bullets[0]}` : '';
       greetInstruction =
-        `Greet the listener warmly in 2 natural, conversational spoken sentences. Mention we are connected on ${study?.short_title || 'OpenIE Research'} (${study?.evidence_class || 'unmetered'}, Signed Provenance · Self-Checked)${secBit}${this.contextSummary ? ` (${this.contextSummary})` : ''}, and invite them to speak freely or interrupt anytime.`;
+        `Greet the listener warmly in 2 crisp, everyday spoken sentences with zero acronym soup. Share the core everyday idea of ${study?.short_title || 'OpenIE Research'} in plain human words (${plainHook}), and end with: "Ask anything in plain words, or say the word if you want the technical metrics or formal proof."`;
     }
 
     await this.sendGroundedPrompt(greetInstruction, { userDisplayText: null, study });
@@ -2136,11 +2138,16 @@ export class OpenIELiveHMI {
     if (matchedDomSec) this.scrollToSection(matchedDomSec.slug);
     this.openVisualStage({ studyId: matchedStudy.id, clip: stageClip });
 
+    const wantsDeepTech = /\b(formal|theorem|proof|lean|equation|formula|math|shunt|ina260|ina3221|ina238|rapl|measured_j|reported_j|est_j|clopper|raw metric|technical)\b/i.test(cleanQ);
+    const styleDirective = wantsDeepTech
+      ? `The user asked for technical/formal detail: answer accurately in 2 to 4 crisp spoken sentences with exact measurement labels (${matchedStudy.evidence_class}, Signed Provenance · Self-Checked): ${cleanQ}`
+      : `Answer FIRST in 2 to 3 plain, concrete everyday spoken sentences with zero acronym soup so a smart non-specialist gets the core idea immediately, then end with a brief optional offer ("Want the technical metrics or formal proof?"): ${cleanQ}`;
+
     const groundingContext =
       `[Grounded Context — Study: ${matchedStudy.short_title} (${matchedStudy.evidence_class}, Signed Provenance · Self-Checked). ` +
-      `Claim: ${matchedStudy.headline_claim} Methods: ${matchedStudy.methods_and_meter} Scope/Limits: ${matchedStudy.limitations_and_scope}` +
+      `Plain Points: ${(matchedStudy.plain_bullets || []).join(' ')} Claim: ${matchedStudy.headline_claim} Methods: ${matchedStudy.methods_and_meter} Scope/Limits: ${matchedStudy.limitations_and_scope}` +
       (matchedDomSec ? ` Active Page Section "${matchedDomSec.text}": ${matchedDomSec.snippet.slice(0, 200)}` : '') +
-      `] Answer the user's question naturally in 2 to 4 spoken sentences without reading brackets aloud: ${cleanQ}`;
+      `] Without reading brackets aloud — ${styleDirective}`;
 
     await this.sendGroundedPrompt(groundingContext, {
       userDisplayText: opts.fromVoice ? null : cleanQ,
@@ -2164,11 +2171,10 @@ export class OpenIELiveHMI {
     this.openVisualStage({ studyId: study.id, clip: '15s' });
 
     const tourPrompt =
-      `Deliver an engaging, natural 3-beat spoken Co-Pilot walkthrough of ${study.short_title} (${study.evidence_class}, Signed Provenance · Self-Checked): ` +
-      `Beat 1 (Plain-language takeaway): ${(study.plain_bullets || []).join(' ')} ` +
-      `Beat 2 (Hardware/telemetry & baseline): ${study.methods_and_meter} ${study.baseline_comparison} ` +
-      `Beat 3 (Candid post-review limitations & falsifiers): ${study.limitations_and_scope} ` +
-      `Invite the listener to interrupt or ask about any figure.`;
+      `Deliver a warm, jargon-free 3-sentence plain-language walkthrough of ${study.short_title}: ` +
+      `Sentence 1 (Everyday setup & problem): ${(study.plain_bullets || [])[0] || study.headline_claim} ` +
+      `Sentence 2 (What we built & what we measured in plain words): ${(study.plain_bullets || []).slice(1).join(' ')} ` +
+      `Sentence 3 (How someone could test or challenge it, plus optional offer: "Want the technical metrics or formal proof?"): ${(study.limitations_and_scope || '').split('.')[0]}.`;
 
     await this.sendGroundedPrompt(tourPrompt, {
       userDisplayText: `🧭 Co-Pilot Tour: ${study.short_title}`,

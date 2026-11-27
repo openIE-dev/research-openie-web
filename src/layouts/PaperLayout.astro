@@ -1,6 +1,8 @@
 ---
 import Layout from './Layout.astro';
 import StudyJsonLd from '../components/StudyJsonLd.astro';
+import PaperGravityWell from '../components/PaperGravityWell.astro';
+import gravityWell from '../data/gravity-well.json';
 import 'katex/dist/katex.min.css';
 import { getCollection } from 'astro:content';
 import { LANGS } from '../i18n';
@@ -46,6 +48,17 @@ const pdfUrl = paperId ? `https://research.openie.dev/pdfs/${paperId}.pdf` : pdf
 const mdHref = paperId && lang === 'en' ? `${basePath.replace(/\/$/, '')}/${paperId}.md` : null;
 const mdUrl = mdHref ? `https://research.openie.dev${mdHref}` : null;
 
+const gw = paperId ? ((gravityWell.studies as Record<string, any>)[paperId] ?? null) : null;
+const evidencePillText = gw?.evidenceBadge ?? '📖 Open Research Manuscript · Self-Checked';
+const evidencePillClass =
+  gw?.evidenceClass === 'measured_j'
+    ? 'border-emerald-400/45 bg-emerald-500/12 text-emerald-300'
+    : gw?.evidenceClass === 'reported_j'
+    ? 'border-brand-cyan/45 bg-brand-cyan/12 text-brand-cyan'
+    : gw?.evidenceClass === 'est_j'
+    ? 'border-brand-amber/45 bg-brand-amber/12 text-brand-amber'
+    : 'border-brand-border bg-white/[0.03] text-brand-light';
+
 // Prefer every H2 as a top-level sibling in the outline (never drop §§9+ under a 40-cap).
 // Fill remaining TOC slots with H3s so later major sections stay visible next to §8.
 const h2s = headings.filter((h) => h.depth === 2);
@@ -60,102 +73,166 @@ const toc = [
 <Layout title={title} description={description ?? deck} lang={lang} dir={dir} alternates={alternates}>
   {paperId && <StudyJsonLd slot="head" id={paperId} />}
   {mdHref && <link slot="head" rel="alternate" type="text/markdown" title={`${title} (Markdown)`} href={mdHref} />}
-  <article class="px-6 md:px-10 pt-16 md:pt-20 pb-24">
+  <article class="px-6 md:px-10 pt-10 md:pt-14 pb-24">
     <div class="max-w-6xl mx-auto grid lg:grid-cols-[minmax(0,1fr)_220px] gap-10 lg:gap-14">
       <div class="min-w-0 paper-col">
-        <div class="flex flex-wrap items-center gap-3 mb-5">
+        <div class="flex flex-wrap items-center gap-2.5 mb-4">
           <span class="font-mono text-[10px] tracking-[2px] uppercase text-brand-dark bg-brand-amber px-2.5 py-1 rounded">
             {status}
           </span>
-          <span class="font-mono text-[10px] text-brand-gray">{paperId === 'gates' ? 'KV260 board metered (WCA gate and seed fabrics, board level) · Pt V2: FPGA programmed; energy unmetered' : 'No FPGA board result in this paper'}</span>
+          <span class={`font-mono text-[10.5px] px-2.5 py-1 rounded border ${evidencePillClass}`}>
+            {evidencePillText}
+          </span>
         </div>
+
+        {gw && lang === 'en' && (
+          <p class="font-display text-base md:text-lg text-brand-amber font-semibold mb-2">
+            {gw.plainTitle}
+          </p>
+        )}
 
         <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-brand-white max-w-[22ch] md:max-w-none">
           {title}
         </h1>
-        <p class="mt-5 font-body text-base md:text-lg text-brand-slate leading-relaxed max-w-[70ch]">
+
+        <p class="mt-4 font-body text-base md:text-lg text-brand-slate leading-relaxed max-w-[70ch]">
           {deck}
         </p>
-        <p class="mt-3 font-mono text-[11px] text-brand-gray">{author}</p>
-        {avail.length > 0 && (
-          <nav class="mt-4 flex flex-wrap gap-2 items-center" aria-label="Languages">
-            <span class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray">{L ? L.languages : 'Languages'}</span>
-            <a href={enPath} hreflang="en" lang="en" class={`font-body text-xs no-underline ${lang === 'en' ? 'text-brand-amber' : 'text-brand-cyan hover:underline'}`}>English</a>
-            {avail.map((l) => <a href={`/${l}/papers/${paperId}/`} hreflang={l} lang={l} class={`font-body text-xs no-underline ${lang === l ? 'text-brand-amber' : 'text-brand-cyan hover:underline'}`}>{(LANGS as any)[l].name}</a>)}
-          </nav>
-        )}
-        {L && (
-          <p class="mt-4 glass-card p-3 font-body text-xs text-brand-slate max-w-[70ch]">{L.banner} <a href={enPath} hreflang="en" lang="en" class="text-brand-cyan">{L.original}</a>.</p>
-        )}
 
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a
-            href={pdfHref}
-            class="inline-flex items-center font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors"
-            download
-          >
-            Download PDF
-          </a>
-          {mdHref && (
+        <header class="paper-pre-manuscript" aria-label="Plain-language study guide and metadata">
+          <p class="mt-3 font-mono text-[11px] text-brand-gray">{author}</p>
+
+          {avail.length > 0 && (
+            <nav class="mt-4 flex flex-wrap gap-2 items-center" aria-label="Languages">
+              <span class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray">{L ? L.languages : 'Languages'}</span>
+              <a href={enPath} hreflang="en" lang="en" class={`font-body text-xs no-underline ${lang === 'en' ? 'text-brand-amber' : 'text-brand-cyan hover:underline'}`}>English</a>
+              {avail.map((l) => <a href={`/${l}/papers/${paperId}/`} hreflang={l} lang={l} class={`font-body text-xs no-underline ${lang === l ? 'text-brand-amber' : 'text-brand-cyan hover:underline'}`}>{(LANGS as any)[l].name}</a>)}
+            </nav>
+          )}
+          {L && (
+            <p class="mt-4 glass-card p-3 font-body text-xs text-brand-slate max-w-[70ch]">{L.banner} <a href={enPath} hreflang="en" lang="en" class="text-brand-cyan">{L.original}</a>.</p>
+          )}
+
+          <div class="mt-6 flex flex-wrap gap-2.5">
             <a
-              href={mdHref}
-              class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors"
+              href={figuresHref}
+              class="inline-flex items-center font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold font-semibold transition-colors"
             >
-              Markdown (.md)
+              🔬 Interactive Figures
             </a>
-          )}
-          <a
-            href={figuresHref}
-            class="inline-flex items-center font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors"
-          >
-            Interactive figures
-          </a>
-          <button
-            type="button"
-            data-openie-discuss-paper={paperId ?? ''}
-            class="inline-flex items-center gap-1.5 font-mono text-xs text-emerald-300 border border-emerald-400/45 bg-emerald-500/10 px-4 py-2.5 rounded-md hover:bg-emerald-500/20 cursor-pointer transition-colors"
-          >
-            📞 Discuss Paper (Voice + Video)
-          </button>
-          {paperId && (
+            <button
+              type="button"
+              data-openie-discuss-paper={paperId ?? ''}
+              class="inline-flex items-center gap-1.5 font-mono text-xs text-emerald-300 border border-emerald-400/45 bg-emerald-500/10 px-4 py-2.5 rounded-md hover:bg-emerald-500/20 cursor-pointer transition-colors"
+            >
+              📞 Discuss in Plain Words (Voice + Video)
+            </button>
             <a
-              href={`https://blog.openie.dev/posts/${paperId}/`}
-              data-openie-medium-paper-pill={paperId}
-              target="_blank"
-              rel="noopener"
-              class="hidden items-center gap-1.5 font-mono text-xs text-emerald-200 border border-emerald-400/55 bg-emerald-500/15 px-4 py-2.5 rounded-md no-underline hover:bg-emerald-500/25 transition-colors"
+              href={pdfHref}
+              class="inline-flex items-center font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors"
+              download
             >
-              🟢 Read / Discuss on Medium ↗
+              Download PDF
             </a>
-          )}
-          <a
-            href="/"
-            class="inline-flex items-center font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors"
-          >
-            ← Catalog
-          </a>
-        </div>
+            {mdHref && (
+              <a
+                href={mdHref}
+                class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors"
+              >
+                Markdown (.md)
+              </a>
+            )}
+            {paperId && (
+              <a
+                href={`https://blog.openie.dev/posts/${paperId}/`}
+                data-openie-medium-paper-pill={paperId}
+                target="_blank"
+                rel="noopener"
+                class="hidden items-center gap-1.5 font-mono text-xs text-emerald-200 border border-emerald-400/55 bg-emerald-500/15 px-4 py-2.5 rounded-md no-underline hover:bg-emerald-500/25 transition-colors"
+              >
+                🟢 Read / Discuss on Medium ↗
+              </a>
+            )}
+            <a
+              href="/"
+              class="inline-flex items-center font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors"
+            >
+              ← Catalog
+            </a>
+          </div>
 
-        <p class="mt-6 font-body text-xs text-brand-gray leading-relaxed max-w-[70ch]">
-          Research studies, not journal finals. Notation is defined in the paper. Analytical energy estimates are not board power. Interactive figures live under <a href={figuresHref} class="text-brand-cyan no-underline hover:underline">/living/</a>.
-          Shared terms: <a href="/glossary/" class="text-brand-cyan no-underline hover:underline">glossary</a>.
-        </p>
-
-        <div class="mt-6 glass-card p-4 max-w-[70ch]" id="cite-this">
-          <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-2">Cite this</p>
-          {genre && (
-            <p class="font-body text-xs text-brand-slate mb-2">Genre: {genre}</p>
+          {paperId && gw ? (
+            <PaperGravityWell
+              paperId={paperId}
+              lang={lang}
+              figuresHref={figuresHref}
+              pdfHref={pdfHref}
+              mdHref={mdHref}
+              citeUrl={citeUrl}
+              pdfUrl={pdfUrl}
+              mdUrl={mdUrl}
+              author={author}
+              title={title}
+              genre={genre}
+            />
+          ) : (
+            <div class="mt-6 glass-card p-4 max-w-[70ch]" id="cite-this">
+              <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-2">Cite this</p>
+              {genre && (
+                <p class="font-body text-xs text-brand-slate mb-2">Genre: {genre}</p>
+              )}
+              <p class="font-body text-xs text-brand-slate leading-relaxed">
+                {author}. <em class="text-brand-light">{title}</em>. Open Interface Engineering.
+                Web: <a href={citeUrl} class="text-brand-cyan no-underline hover:underline">{citeUrl}</a>.
+                PDF: <a href={pdfUrl} class="text-brand-cyan no-underline hover:underline">{pdfUrl}</a>.
+                {mdUrl && <> Markdown: <a href={mdHref!} class="text-brand-cyan no-underline hover:underline">{mdUrl}</a>.</>}
+              </p>
+            </div>
           )}
-          <p class="font-body text-xs text-brand-slate leading-relaxed">
-            {author}. <em class="text-brand-light">{title}</em>. Open Interface Engineering.
-            Web: <a href={citeUrl} class="text-brand-cyan no-underline hover:underline">{citeUrl}</a>.
-            PDF: <a href={pdfUrl} class="text-brand-cyan no-underline hover:underline">{pdfUrl}</a>.
-            {mdUrl && <> Markdown: <a href={mdHref!} class="text-brand-cyan no-underline hover:underline">{mdUrl}</a>.</>}
+
+          <p class="mt-6 font-body text-xs text-brand-gray leading-relaxed max-w-[70ch]">
+            Research studies, not journal finals. Notation is defined in the paper. Energy classes stay strictly separate (<code class="text-brand-cyan">measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered</code>). Interactive figures live under <a href={figuresHref} class="text-brand-cyan no-underline hover:underline">/living/</a>.
+            Shared terms: <a href="/glossary/" class="text-brand-cyan no-underline hover:underline">glossary</a>.
           </p>
-        </div>
 
-        <div class="paper-prose mt-12 max-w-[70ch]">
-          <slot />
+          <!-- RUNG 4 PROGRESSIVE DISCLOSURE HEADER BAR -->
+          <div
+            id="full-manuscript"
+            class="mt-10 glass-card p-4 md:p-5 border border-brand-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 print:hidden"
+          >
+            <div>
+              <div class="font-mono text-[10px] tracking-[0.14em] uppercase text-brand-gray font-semibold">
+                Depth 4 · Full Technical Manuscript, Equations &amp; Machine Proofs (Last Resort)
+              </div>
+              <p class="font-body text-xs text-brand-slate mt-1 m-0">
+                You already have the core plain-words story above. Open the full technical paper whenever you want every equation, table, and section.
+              </p>
+            </div>
+            <button
+              type="button"
+              id="gw-toggle-manuscript-btn"
+              aria-expanded="false"
+              aria-controls="gw-prose-shell"
+              class="font-mono text-xs font-semibold px-4 py-2.5 rounded-md border border-brand-amber bg-brand-amber/15 text-brand-amber hover:bg-brand-amber hover:text-brand-dark cursor-pointer transition-colors shrink-0"
+            >
+              Expand Full Technical Paper ▾
+            </button>
+          </div>
+        </header>
+
+        <div id="gw-prose-shell" class="gw-prose-shell mt-8">
+          <div class="paper-prose max-w-[70ch]">
+            <slot />
+          </div>
+          <div id="gw-prose-fade" class="gw-prose-fade print:hidden">
+            <button
+              type="button"
+              id="gw-expand-fade-btn"
+              class="font-mono text-xs font-bold px-5 py-2.5 rounded-full bg-brand-amber text-brand-dark shadow-xl hover:bg-brand-gold cursor-pointer transition-colors"
+            >
+              Read Full Technical Paper (All Sections, Math &amp; Proofs) ▾
+            </button>
+          </div>
         </div>
 
         <div class="mt-16 pt-8 border-t border-brand-border flex flex-wrap gap-3">
@@ -175,8 +252,8 @@ const toc = [
 
       {toc.length > 0 && (
         <aside class="hidden lg:block">
-          <nav class="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-2" aria-label="Table of contents">
-            <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">Contents</p>
+          <nav class="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2" aria-label="Table of contents">
+            <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-3">Contents (Unfolds Paper)</p>
             <ul class="space-y-1.5 list-none p-0 m-0">
               {toc.map((h) => (
                 <li class={h.depth === 3 ? 'pl-3' : ''}>
@@ -194,6 +271,337 @@ const toc = [
       )}
     </div>
   </article>
+
+  <!-- Floating Accessible Tooltip Card for Inline ScholarPhi-Style Term Explanations -->
+  <div
+    id="gw-term-tooltip"
+    role="tooltip"
+    hidden
+    class="gw-term-tooltip fixed z-130 max-w-xs p-3 rounded-xl border border-brand-cyan/45 shadow-2xl pointer-events-none"
+  >
+    <div id="gw-tip-title" class="font-mono text-[11px] font-bold text-brand-amber mb-1"></div>
+    <div id="gw-tip-body" class="font-body text-xs text-brand-light leading-snug"></div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var proseShell = document.getElementById('gw-prose-shell');
+      var toggleBtn = document.getElementById('gw-toggle-manuscript-btn');
+      var fadeBtn = document.getElementById('gw-expand-fade-btn');
+      var rungVisual = document.getElementById('gw-rung-visual');
+      var rungBuilder = document.getElementById('gw-rung-builder');
+      var manualOverride = null; // null | boolean
+
+      function isManuscriptOpen() {
+        if (!proseShell) return true;
+        var depth = document.documentElement.getAttribute('data-reading-depth') || 'plain';
+        return depth === 'formal' || proseShell.classList.contains('gw-force-open');
+      }
+
+      function syncManuscriptButton() {
+        var open = isManuscriptOpen();
+        if (toggleBtn) {
+          toggleBtn.setAttribute('aria-expanded', String(open));
+          toggleBtn.textContent = open
+            ? 'Collapse Back to Plain Guide ▴'
+            : 'Expand Full Technical Paper (All Sections, Math & Proofs) ▾';
+        }
+      }
+
+      function applyDepthToPaper(depth) {
+        if (rungVisual) {
+          rungVisual.open = depth === 'visual' || depth === 'builder' || depth === 'formal';
+        }
+        if (rungBuilder) {
+          rungBuilder.open = depth === 'builder' || depth === 'formal';
+        }
+        if (proseShell) {
+          if (depth === 'formal') {
+            proseShell.classList.add('gw-force-open');
+            manualOverride = null;
+          } else if (manualOverride !== true) {
+            proseShell.classList.remove('gw-force-open');
+          }
+        }
+        syncManuscriptButton();
+      }
+
+      function unfoldManuscriptAndScroll(hashStr) {
+        if (!proseShell) return;
+        manualOverride = true;
+        proseShell.classList.add('gw-force-open');
+        syncManuscriptButton();
+        if (hashStr && hashStr.length > 1) {
+          var id = decodeURIComponent(hashStr.replace(/^#/, ''));
+          var target = document.getElementById(id);
+          if (target) {
+            var parentDetails = target.closest('details');
+            if (parentDetails) parentDetails.open = true;
+            if (target.id === 'terms') {
+              var td = target.closest('.gw-terms-drawer');
+              if (td) td.open = true;
+            }
+            setTimeout(function () {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 30);
+          }
+        }
+      }
+
+      if (toggleBtn && proseShell) {
+        toggleBtn.addEventListener('click', function () {
+          var currentlyOpen = isManuscriptOpen();
+          if (currentlyOpen) {
+            manualOverride = false;
+            proseShell.classList.remove('gw-force-open');
+            if ((document.documentElement.getAttribute('data-reading-depth') || 'plain') === 'formal' && window.__openieSetReadingDepth) {
+              window.__openieSetReadingDepth('plain', { persist: true });
+            }
+            var plainEl = document.getElementById('plain-guide');
+            if (plainEl) plainEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+            manualOverride = true;
+            proseShell.classList.add('gw-force-open');
+          }
+          syncManuscriptButton();
+        });
+      }
+
+      if (fadeBtn) {
+        fadeBtn.addEventListener('click', function () {
+          unfoldManuscriptAndScroll('');
+        });
+      }
+
+      window.addEventListener('openie:reading-depth', function (ev) {
+        manualOverride = null;
+        applyDepthToPaper((ev && ev.detail && ev.detail.depth) || 'plain');
+      });
+
+      // Initialize depth state
+      applyDepthToPaper(document.documentElement.getAttribute('data-reading-depth') || 'plain');
+
+      // Deep-link #hash & Table of Contents auto-unfold
+      var preHeaderIds = { 'plain-guide': 1, 'gw-rung-visual': 1, 'gw-rung-builder': 1, 'cite-this': 1, 'full-manuscript': 1 };
+      if (window.location.hash && window.location.hash.length > 1) {
+        var initId = decodeURIComponent(window.location.hash.slice(1));
+        if (!preHeaderIds[initId]) {
+          unfoldManuscriptAndScroll(window.location.hash);
+        } else if (initId === 'cite-this' && rungBuilder) {
+          rungBuilder.open = true;
+        }
+      }
+
+      window.addEventListener('hashchange', function () {
+        if (!window.location.hash || window.location.hash.length <= 1) return;
+        var hid = decodeURIComponent(window.location.hash.slice(1));
+        if (hid === 'cite-this' && rungBuilder) {
+          rungBuilder.open = true;
+          return;
+        }
+        if (!preHeaderIds[hid]) unfoldManuscriptAndScroll(window.location.hash);
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          var href = a.getAttribute('href') || '';
+          if (href.length <= 1) return;
+          var hid = decodeURIComponent(href.slice(1));
+          if (hid === 'cite-this' && rungBuilder) {
+            rungBuilder.open = true;
+            return;
+          }
+          if (!preHeaderIds[hid]) {
+            unfoldManuscriptAndScroll(href);
+          }
+        });
+      });
+
+      // Multi-language 15-second audio switcher inside PaperGravityWell
+      var audioEl = document.getElementById('gw-paper-15s-audio');
+      var audioBadge = document.getElementById('gw-audio-lang-badge');
+      document.querySelectorAll('.gw-lang-audio-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var src = btn.getAttribute('data-gw-audio-src');
+          var label = (btn.textContent || '').trim();
+          if (!audioEl || !src) return;
+          document.querySelectorAll('.gw-lang-audio-btn').forEach(function (b) {
+            var on = b === btn;
+            b.className = on
+              ? 'gw-lang-audio-btn font-mono text-[10px] px-2 py-0.5 rounded border cursor-pointer transition-colors border-brand-amber text-brand-amber bg-brand-amber/15'
+              : 'gw-lang-audio-btn font-mono text-[10px] px-2 py-0.5 rounded border cursor-pointer transition-colors border-brand-border text-brand-slate bg-transparent hover:text-brand-white';
+          });
+          if (audioBadge) audioBadge.textContent = '🔊 ' + label + ' (15s)';
+          audioEl.src = src;
+          audioEl.play().catch(function () {});
+        });
+      });
+
+      // Progressive Collapsible Acronym Wall (<ul id="terms">) inside .paper-prose
+      var termsList = document.querySelector('.paper-prose #terms');
+      if (termsList && !termsList.closest('.gw-terms-drawer')) {
+        var itemsCount = termsList.querySelectorAll('li').length;
+        if (itemsCount >= 4 && termsList.parentNode) {
+          var drawer = document.createElement('details');
+          drawer.className = 'gw-terms-drawer glass-card p-4 my-6 border border-brand-border';
+          if (window.location.hash === '#terms') drawer.open = true;
+          var sum = document.createElement('summary');
+          sum.className = 'cursor-pointer font-mono text-xs text-brand-amber flex items-center justify-between gap-2 select-none';
+          sum.innerHTML =
+            '<span>📖 Acronyms &amp; Measurement Symbols Reference (' +
+            itemsCount +
+            ' definitions — click to expand)</span><span class="text-brand-gray">▾</span>';
+          termsList.parentNode.insertBefore(drawer, termsList);
+          drawer.appendChild(sum);
+          drawer.appendChild(termsList);
+        }
+      }
+
+      // ScholarPhi-Style Inline Glossary Hover/Focus Tooltips inside .paper-prose
+      var CORE_TERMS = [
+        { key: 'measured_j', label: 'measured_j (Hardware Shunt)', def: 'Energy measured by a physical current-sense chip clipped across a named circuit-board power rail. Never mixed with software counters.' },
+        { key: 'reported_j', label: 'reported_j (Chip Counter)', def: 'Energy read from a processor or operating-system software counter (like Apple IOReport or Linux RAPL), without an external wire sensor.' },
+        { key: 'est_j', label: 'est_j (Model Estimate)', def: 'An analytical or datasheet energy calculation—useful for design schedules, never treated as a physical power-meter reading.' },
+        { key: 'Deterministic Null', label: 'Deterministic Null (Shape D)', def: 'Our zero-AI control baseline: a fast 64-bit lookup table and simple rules locked before testing so neural models must earn their keep.' },
+        { key: 'Compiled Agency', label: 'Compiled Agency', def: 'Checking an answer once with a strict gate and saving it into fast lookup tables or integer circuits so big models stay asleep on repeats.' },
+        { key: 'LUT6', label: 'LUT6 (6-Input Lookup Table)', def: 'A tiny 64-slot hardware or 64-bit integer truth table that answers any 6-bit yes/no logic question in a single step with zero multiplications.' },
+        { key: 'RCE', label: 'RCE (Reality Code Engine)', def: 'Writing a program once as a complete, machine-checked state blueprint that refuses unhandled inputs and generates native code across languages.' },
+        { key: 'JEPA', label: 'JEPA (Joint-Embedding Predictor)', def: 'A compact world model that predicts outcomes in abstract representation space instead of generating every word or pixel from scratch.' },
+        { key: 'SATB', label: 'SATB (Satiation Benchmark)', def: 'Our 5-platform harness that checks replay determinism and flags energy readings whenever background computer drift exceeds 5%.' },
+        { key: 'Mixture of Limits', label: 'Mixture of Limits Cascade', def: 'Trying the cheapest safe tool first (lookup table -> exact solver -> small model) and waking a giant model only as a last resort.' },
+        { key: 'waiOS', label: 'waiOS Invariant Kernel', def: 'A whole-number execution kernel checked by BLAKE3 hashes that produces bit-identical results across CPUs, GPUs, WebAssembly, and FPGAs.' }
+      ];
+
+      function wireInlineTooltips(termDefs) {
+        var prose = document.querySelector('.paper-prose');
+        var tip = document.getElementById('gw-term-tooltip');
+        var tipTitle = document.getElementById('gw-tip-title');
+        var tipBody = document.getElementById('gw-tip-body');
+        if (!prose || !tip || !tipTitle || !tipBody) return;
+
+        var counts = {};
+        // First annotate inline <code> tags matching exact term keys (up to 3 per term, super clean & non-destructive!)
+        var byExact = {};
+        termDefs.forEach(function (t) {
+          byExact[t.key.toLowerCase()] = t;
+        });
+
+        prose.querySelectorAll('code, p, li').forEach(function (el) {
+          if (el.closest('pre, h1, h2, h3, h4, a, .katex, #terms, .gw-terms-drawer')) return;
+          if (el.tagName === 'CODE') {
+            var raw = (el.textContent || '').trim().toLowerCase();
+            var match = byExact[raw];
+            if (match && (counts[match.key] || 0) < 3) {
+              counts[match.key] = (counts[match.key] || 0) + 1;
+              el.classList.add('gw-term-tip');
+              el.setAttribute('tabindex', '0');
+              el.setAttribute('data-gw-label', match.label);
+              el.setAttribute('data-gw-def', match.def);
+            }
+          }
+        });
+
+        // Also walk plain text nodes in paragraphs for terms not inside <code> (up to 2 total per term)
+        var walker = document.createTreeWalker(prose, NodeFilter.SHOW_TEXT, null);
+        var textNodes = [];
+        var n;
+        while ((n = walker.nextNode())) {
+          var p = n.parentElement;
+          if (!p || p.closest('pre, code, a, h1, h2, h3, h4, button, summary, .katex, #terms, .gw-terms-drawer, script, style')) continue;
+          if ((n.nodeValue || '').trim().length > 12) textNodes.push(n);
+        }
+
+        termDefs.forEach(function (t) {
+          if ((counts[t.key] || 0) >= 2) return;
+          var escaped = t.key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          var re = new RegExp('\\b(' + escaped + ')\\b');
+          for (var i = 0; i < textNodes.length; i++) {
+            if ((counts[t.key] || 0) >= 2) break;
+            var tn = textNodes[i];
+            if (!tn.parentNode) continue;
+            var val = tn.nodeValue || '';
+            var m = re.exec(val);
+            if (!m) continue;
+            var before = val.slice(0, m.index);
+            var hit = m[1];
+            var after = val.slice(m.index + hit.length);
+            var span = document.createElement('span');
+            span.className = 'gw-term-tip';
+            span.setAttribute('tabindex', '0');
+            span.setAttribute('data-gw-label', t.label);
+            span.setAttribute('data-gw-def', t.def);
+            span.textContent = hit;
+            var frag = document.createDocumentFragment();
+            if (before) frag.appendChild(document.createTextNode(before));
+            frag.appendChild(span);
+            var afterNode = document.createTextNode(after);
+            frag.appendChild(afterNode);
+            tn.parentNode.replaceChild(frag, tn);
+            textNodes[i] = afterNode;
+            counts[t.key] = (counts[t.key] || 0) + 1;
+          }
+        });
+
+        function showTip(el) {
+          var lbl = el.getAttribute('data-gw-label') || '';
+          var df = el.getAttribute('data-gw-def') || '';
+          if (!df) return;
+          tipTitle.textContent = lbl;
+          tipBody.textContent = df;
+          tip.hidden = false;
+          var r = el.getBoundingClientRect();
+          var left = Math.max(12, Math.min(window.innerWidth - 332, r.left));
+          var top = r.bottom + 8;
+          if (top + 110 > window.innerHeight) top = Math.max(12, r.top - 96);
+          tip.style.left = left + 'px';
+          tip.style.top = top + 'px';
+        }
+        function hideTip() {
+          tip.hidden = true;
+        }
+
+        prose.addEventListener('mouseover', function (e) {
+          var t = e.target && e.target.closest ? e.target.closest('.gw-term-tip') : null;
+          if (t) showTip(t);
+        });
+        prose.addEventListener('mouseout', function (e) {
+          var t = e.target && e.target.closest ? e.target.closest('.gw-term-tip') : null;
+          if (t) hideTip();
+        });
+        prose.addEventListener('focusin', function (e) {
+          var t = e.target && e.target.closest ? e.target.closest('.gw-term-tip') : null;
+          if (t) showTip(t);
+        });
+        prose.addEventListener('focusout', function () {
+          hideTip();
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') hideTip();
+        });
+      }
+
+      fetch('/glossary/concepts.json')
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (doc) {
+          var merged = CORE_TERMS.slice();
+          var existing = {};
+          merged.forEach(function (m) { existing[m.key.toLowerCase()] = true; });
+          if (doc && Array.isArray(doc.hasDefinedTerm)) {
+            doc.hasDefinedTerm.forEach(function (c) {
+              var lbl = c.prefLabel || '';
+              if (lbl.length >= 4 && !existing[lbl.toLowerCase()] && c.plainDefinition) {
+                existing[lbl.toLowerCase()] = true;
+                merged.push({ key: lbl, label: lbl, def: c.plainDefinition });
+              }
+            });
+          }
+          wireInlineTooltips(merged);
+        })
+        .catch(function () {
+          wireInlineTooltips(CORE_TERMS);
+        });
+    })();
+  </script>
 
   {paperId && (
     <script is:inline>
@@ -222,6 +630,58 @@ const toc = [
 </Layout>
 
 <style is:global>
+  /* Gravity-Well Rung 4 Progressive Disclosure (keeps 100% static HTML in DOM for search, anchors & lint-order) */
+  .gw-prose-shell {
+    position: relative;
+  }
+  .gw-prose-fade {
+    display: none;
+  }
+  html:not([data-reading-depth="formal"]) .gw-prose-shell:not(.gw-force-open) {
+    max-height: 22rem;
+    overflow: hidden;
+  }
+  html:not([data-reading-depth="formal"]) .gw-prose-shell:not(.gw-force-open) .gw-prose-fade {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 1.25rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 10rem;
+    background: linear-gradient(to bottom, rgba(10, 10, 15, 0), rgba(10, 10, 15, 0.94) 72%, var(--color-brand-dark));
+  }
+  html[data-theme="light"]:not([data-reading-depth="formal"]) .gw-prose-shell:not(.gw-force-open) .gw-prose-fade {
+    background: linear-gradient(to bottom, rgba(250, 251, 252, 0), rgba(250, 251, 252, 0.94) 72%, var(--color-brand-dark));
+  }
+  @media print {
+    .gw-prose-shell {
+      max-height: none !important;
+      overflow: visible !important;
+    }
+  }
+
+  /* Inline Glossary Term Tooltip Highlights */
+  .gw-term-tip {
+    border-bottom: 1px dotted rgba(0, 212, 170, 0.65);
+    cursor: help;
+    transition: background-color 0.15s, border-color 0.15s;
+  }
+  .gw-term-tip:hover,
+  .gw-term-tip:focus-visible {
+    background-color: rgba(0, 212, 170, 0.12);
+    border-bottom-color: var(--color-brand-amber);
+  }
+  .gw-term-tooltip {
+    background: rgba(11, 16, 29, 0.97);
+    backdrop-filter: blur(12px);
+  }
+  html[data-theme="light"] .gw-term-tooltip {
+    background: rgba(255, 255, 255, 0.98);
+  }
+
   .paper-prose {
     font-family: var(--font-body);
     color: var(--color-brand-slate);

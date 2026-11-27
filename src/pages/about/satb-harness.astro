@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import AboutPlainLead from '../../components/AboutPlainLead.astro';
 ---
 
 <Layout
@@ -11,6 +12,7 @@ import Layout from '../../layouts/Layout.astro';
     <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">
       Satiation Benchmark: Reference Harness, Adapters, and Telemetry Attribution
     </h1>
+    <AboutPlainLead id="satb-harness" />
     <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
       This study specifies and empirically audits how diverse models and external coding agents take an identical fixed benchmark without conflating model capability with wrapper policy or conflating shared-host counters with physical rail joules. It pairs a deterministic Rust reference harness (`Lane B`) and a single loopback proxy bridge (`Shapes D, M, H, I`) with a twelve-check conformance suite (`C1`–`C12`) and a five-level rootless telemetry engine (`L0`–`L4` crossed with attribution labels `A1`–`N`), verified live across five silicon and operating-system archetypes (`Apple M5 Max`, `NVIDIA Jetson AGX Thor`, `Framework AMD Ryzen AI Max+ 395`, `Intel Core i9-13900H`, and bare-metal `Windows 11` `Intel Core i7-1165G7` + `NVIDIA GeForce RTX 2060`).
     </p>

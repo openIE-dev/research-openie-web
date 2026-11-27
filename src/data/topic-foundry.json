@@ -1,16 +1,71 @@
 {
   "schema": "openie.radio.topic_foundry.v1",
-  "executed_at_utc": "2026-11-23T12:51:09Z",
+  "executed_at_utc": "2026-11-26T22:02:14Z",
   "cadence_hours": 6,
-  "pilot_budget_limit_sec": 60.0,
+  "pilot_budget_limit_sec": 60,
   "total_pilot_wall_sec": 0.977,
   "execution_substrate": "Linux x86_64 deterministic Python 3.12.13 harness (RAPL reported_j=True, board_metered=false, measured_j=null)",
   "counts_by_status": {
-    "PROMOTED_CANDIDATE": 4,
+    "PROMOTED_CANDIDATE": 5,
     "HOLD_NEEDS_HARDWARE": 1,
     "KILLED_BY_NULL": 1
   },
   "topics": [
+    {
+      "topic_id": "TF-2026-07",
+      "title": "Pool-Aware Conformal Commitment Gate Ahead of Multi-Model Routers (RAP + MARC + ADAPT)",
+      "status": "PROMOTED_CANDIDATE",
+      "openie_anchors": [
+        "deterministic-null",
+        "gates",
+        "lut-adapt"
+      ],
+      "inspired_by_urls": [
+        {
+          "title": "Routeability Before Routing: Routeability Audit Protocol (RAP) and RouteabilityBench for Audited LLM Model Selection",
+          "url": "https://arxiv.org/abs/2611.34825v1",
+          "source": "arXiv",
+          "external_id": "arXiv:2611.34825v1"
+        },
+        {
+          "title": "When the Cheapest Feasible Router Fails: Auditing Deployment Commitments in Cost-Aware LLM Routing",
+          "url": "https://arxiv.org/abs/2611.20417v1",
+          "source": "arXiv",
+          "external_id": "arXiv:2611.20417v1"
+        },
+        {
+          "title": "ADAPT: Adaptive Decision and Abstention with Pool-Size-Aware Thresholds for Service Routing",
+          "url": "https://arxiv.org/abs/2611.25754v1",
+          "source": "arXiv",
+          "external_id": "arXiv:2611.25754v1"
+        },
+        {
+          "title": "MeterRouter: Budget-Aware Dynamic Routing for Multi-Agent Systems",
+          "url": "https://arxiv.org/abs/2611.34327v1",
+          "source": "arXiv",
+          "external_id": "arXiv:2611.34327v1"
+        }
+      ],
+      "hypothesis": "Combining a Shape D tied-best routeability pre-audit with K-aware conformal commitment margins cuts held-out router contract violations from >30% to <1.0% while intercepting >80% of Zipfian repeats in <= 4 KiB.",
+      "shape_d_null_baseline": "Uncommitted cheapest-audit-feasible router across 1,200 disjoint construction/audit/test prompts without Shape D lookup.",
+      "kill_criterion": "Kill if held-out conditional contract failure exceeds 1.0% OR package reported_j gain versus single-best model is < 3.0x.",
+      "target_joule_bound": "<= 0.10x single-best teacher package reported_j across 1,200 Zipf(0.85) arrivals (board_metered=false).",
+      "pilot_receipt": {
+        "status": "PROMOTED_CANDIDATE",
+        "trials": 1200,
+        "null_contract_violation_pct": 31.8,
+        "candidate_contract_violation_pct": 0.58,
+        "lut_intercept_pct": 82.5,
+        "baseline_ms": 38.4,
+        "candidate_ms": 4.12,
+        "baseline_reported_j": 2.841,
+        "candidate_reported_j": 0.249,
+        "gain_factor": 11.41,
+        "verdict_detail": "K-aware conformal commitment + Shape D pre-filter cut held-out router contract violations from 31.8% to 0.58% while lowering Linux RAPL package reported_j by 11.41x.",
+        "receipt_sha256": "e18827829ff9683c7dc8e7d3",
+        "telemetry_source": "Linux powercap intel-rapl:0 (package-0 reported_j, board_metered=false)"
+      }
+    },
     {
       "topic_id": "TF-2026-01",
       "title": "Conformal Prefix-LUT6 Early-Exit Gate for Hybrid State-Space Routing",
@@ -21,6 +76,18 @@
         "agency"
       ],
       "inspired_by_urls": [
+        {
+          "title": "ConvLUT: Rethinking Convolutional Architectures for Ultra-Low-Latency LUT-Based Inference",
+          "url": "https://arxiv.org/abs/2611.11507v1",
+          "source": "arXiv",
+          "external_id": "arXiv:2611.11507v1"
+        },
+        {
+          "title": "BitPrefill: W1.58A4 Tensor-Core Acceleration for Compute-Bound LLM Prefill",
+          "url": "https://arxiv.org/abs/2611.26657v1",
+          "source": "arXiv",
+          "external_id": "arXiv:2611.26657v1"
+        },
         {
           "title": "PolyLUT-Add: FPGA-based LUT Inference with Wide Inputs",
           "url": "https://arxiv.org/pdf/2406.04910",
@@ -49,7 +116,7 @@
         "trials": 6000,
         "lut6_hit_rate_pct": 88.22,
         "false_commits": 0,
-        "parity_delta": 0.0,
+        "parity_delta": 0,
         "baseline_ms": 43.79,
         "candidate_ms": 29.63,
         "baseline_reported_j": 3.3426,
@@ -70,6 +137,18 @@
         "gates"
       ],
       "inspired_by_urls": [
+        {
+          "title": "Latent-in-the-Middle: On the Security of Cross-Model Latent Communication in Multi-Agent Systems",
+          "url": "https://arxiv.org/abs/2611.34278v1",
+          "source": "arXiv",
+          "external_id": "arXiv:2611.34278v1"
+        },
+        {
+          "title": "Attestation is All You Need: Toward a Zero-Trust Architecture for HPC AI Agents",
+          "url": "https://arxiv.org/abs/2611.32958v1",
+          "source": "arXiv",
+          "external_id": "arXiv:2611.32958v1"
+        },
         {
           "title": "\"AgentShield: Multi-Agent LLM Byzantine Fault Tolerance Evaluation Dataset\"",
           "url": "https://doi.org/10.21227/qyq3-3g19",
@@ -98,13 +177,13 @@
         "trials": 2500,
         "null_false_commits": 136,
         "candidate_false_commits": 0,
-        "goodput_pct": 100.0,
+        "goodput_pct": 100,
         "quarantined_byzantine": "4/4",
         "baseline_ms": 10.33,
         "candidate_ms": 18.74,
         "baseline_reported_j": 0.2037,
         "candidate_reported_j": 0.3452,
-        "gain_factor": 136.0,
+        "gain_factor": 136,
         "verdict_detail": "SepJ-inspired quorum quarantine isolated 4/4 Byzantine nodes within 14 rounds: 0/2500 false commits (100.0% goodput) vs 136 poisoned commits in unverified 3-of-5 voting.",
         "receipt_sha256": "045473b4e6343ad01176d69c",
         "telemetry_source": "Linux powercap intel-rapl:0 (package-0 reported_j, board_metered=false)"
@@ -152,7 +231,7 @@
         "baseline_ms": 493.11,
         "candidate_ms": 0.24,
         "baseline_reported_j": 10.6769,
-        "candidate_reported_j": 0.0,
+        "candidate_reported_j": 0,
         "gain_factor": 74,
         "verdict_detail": "Precomputed Hellman table inverted 74/400 unsalted targets; fresh epoch salting collapsed precomputation hits to 0/400 at 0.589 us/transition.",
         "receipt_sha256": "7fe36e3d32ce7150288e2678",
@@ -169,6 +248,18 @@
         "rce-jepa"
       ],
       "inspired_by_urls": [
+        {
+          "title": "From Pen-and-Paper to Machine-Checked Proofs: Lean for System Identification",
+          "url": "https://arxiv.org/abs/2611.18220v1",
+          "source": "arXiv",
+          "external_id": "arXiv:2611.18220v1"
+        },
+        {
+          "title": "Agent-as-a-Verifier: From Scores to Evidence for General Verification",
+          "url": "https://arxiv.org/abs/2611.34132v1",
+          "source": "arXiv",
+          "external_id": "arXiv:2611.34132v1"
+        },
         {
           "title": "Lean Copilot: Large Language Models as Copilots for Theorem Proving in Lean",
           "url": "https://arxiv.org/pdf/2404.12534",
@@ -195,13 +286,13 @@
       "pilot_receipt": {
         "status": "PROMOTED_CANDIDATE",
         "trials": 2000,
-        "alpha_hit_rate_pct": 100.0,
+        "alpha_hit_rate_pct": 100,
         "false_commits": 0,
         "baseline_ms": 2.78,
         "candidate_ms": 2.5,
         "baseline_reported_j": 0.0627,
         "candidate_reported_j": 0.0453,
-        "gain_factor": 100.0,
+        "gain_factor": 100,
         "verdict_detail": "Operator-aware De Bruijn canonicalization achieved 2000/2000 (100.0%) alpha+commutative memoization hits with 0/2000 non-commutative false collisions (vs 0% raw SHA-256 hits).",
         "receipt_sha256": "d2635dc21513fef826c948bb",
         "telemetry_source": "Linux powercap intel-rapl:0 (package-0 reported_j, board_metered=false)"
@@ -246,8 +337,8 @@
         "analytical_pulse_reduction_x": 3.18,
         "rapl_8ms_window_cv_pct": 79.07,
         "board_metered": false,
-        "baseline_ms": 320.0,
-        "candidate_ms": 328.0,
+        "baseline_ms": 320,
+        "candidate_ms": 328,
         "baseline_reported_j": 2.4174,
         "candidate_reported_j": 0.06044,
         "gain_factor": 3.18,
@@ -292,11 +383,11 @@
       "pilot_receipt": {
         "status": "KILLED_BY_NULL",
         "trials": 30720,
-        "shape_d_recall_pct": 100.0,
+        "shape_d_recall_pct": 100,
         "mlp_recall_pct": 99.4,
         "baseline_ms": 0.36,
         "candidate_ms": 20.21,
-        "baseline_reported_j": 0.0,
+        "baseline_reported_j": 0,
         "candidate_reported_j": 1.0624,
         "gain_factor": 0.0177,
         "verdict_detail": "KILLED BY SHAPE-D NULL: Zero-parameter integer grid shift achieved 100.0% exact collision recall in 0.36 ms, beating the 3-layer MLP router (99.4% recall, 20.21 ms) by 56.45x speed and lower reported_j.",

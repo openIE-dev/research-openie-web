@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import AboutPlainLead from '../../components/AboutPlainLead.astro';
 ---
 
 <Layout
@@ -11,6 +12,7 @@ import Layout from '../../layouts/Layout.astro';
     <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">
       RCE-VC: Law of Version Control
     </h1>
+    <AboutPlainLead id="rce-vc" />
     <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
       RCE-VC is a version-control reference in the public repository <code>openIE-dev/rce-vc</code>, commit <code>aba99fce</code> (13 November 2026). It admits a change into one canonical, name-free repository state when a named checker accepts the post-state, and otherwise refuses it with a recorded reason. Changes whose dependency closures do not meet are admitted without coordination. A stated cost ranks admissible results, and accepted results, including resolved conflicts, are reused. The workspace ships <code>rcevc-core</code> (persistent Merkle HAMT plus <code>assure</code> boundary), <code>rcevc-keys</code> (tree-sitter top-level item splitting for Rust and Python), and <code>rcevc-proj-git</code> (ordinary Git history in and out). It shares framing with the Reality Code Engine (a Form, a total step, a hash-chained log, name-free keys, and a gear ladder with the model last); it is not built on the Reality Code Engine language.
     </p>

@@ -1,7 +1,7 @@
 {
   "schema": "openie.planetary_unsiloeing.v2",
   "version": "2.0.0",
-  "date": "2026-11-24",
+  "date": "2026-11-26",
   "blueprint_artifact": {
     "canonical_id": "art:blueprint:unsiloeing-openie:8e2b51ffae61f019",
     "title": "Unsiloeing the OpenIE Ecosystem — Canonical Artifact Substrate + Planetary 50-Language Research Dissemination Blueprint",
@@ -36,7 +36,7 @@
     "catalog_studies": 29,
     "flagship_films": 8,
     "tier2_flagship_films": 2,
-    "active_languages": 47,
+    "active_languages": 50,
     "tier1_languages": 20,
     "tier2_roadmap_languages": 30,
     "tier2_active_languages": 27,
@@ -67,7 +67,7 @@
     "total_ad_audio_mb": 11.24,
     "easy_read_studies": 29,
     "audio_described_films": 29,
-    "aac_concepts_count": 36,
+    "aac_concepts_count": 38,
     "aac_max_plain_words": 16
   },
   "ecosystem_surfaces": [
@@ -77,7 +77,7 @@
       "url": "https://research.openie.dev",
       "feed_or_api": "https://research.openie.dev/radio/rss.xml",
       "license": "CC0-1.0 (summaries & accessibility) · CC BY 4.0 (papers/data) · Apache-2.0 (code)",
-      "role": "Primary research catalog: 28 Research TV studies (112 films + 50-language 15s primers + 28/28 AD & Easy Read), Research Radio episodes, interactive /living figures, and energy-labeled receipts."
+      "role": "Primary research catalog: 29 Research TV studies (145 films: 116 horizontal HD + 29 vertical 9:16 + 29 voiced / 50 captioned 15s primers + 29/29 AD & Easy Read), 17 Research Radio WAI1 episodes, interactive /living figures, and energy-labeled receipts."
     },
     {
       "id": "the-commons",
@@ -91,7 +91,7 @@
       "id": "artifact-substrate",
       "name": "OpenIE Canonical Artifact Substrate & WAI1",
       "url": "https://github.com/openIE-dev/openie-artifact-substrate",
-      "feed_or_api": "https://research.openie.dev/media/tv/planetary-15s/manifest.json",
+      "feed_or_api": "https://research.openie.dev/media/tv/planetary-15s/v1-media-manifest.json",
       "license": "Apache-2.0 (schema, WAI1 envelope & gates)",
       "role": "Shared JSON Schema, BLAKE3 + Ed25519 WAI1 binary/JSON interchange adapter, deterministic verification gates, and unified release.sh emitter."
     },
@@ -114,17 +114,17 @@
   ],
   "gate_specification": {
     "models": [
-      "facebook/nllb-200-distilled-1.3B (BF16 neural forward translation + Strike-1 beam-5 retry)",
-      "sentence-transformers/LaBSE (109-language translation ranking cosine)",
-      "intfloat/multilingual-e5-base (symmetric multilingual semantic alignment)",
-      "facebook/nllb-200-distilled-600M (independent target->eng_Latn neural back-translation)",
-      "sacrebleu 2.6.0 chrF++ (word_order=2) & BLEU against frozen 15s source anchor"
+      "google/madlad400-3b-mt (Apache-2.0 clean-licence open-weight neural forward translation + Strike-1 retry [G4])",
+      "sentence-transformers/LaBSE (109-language semantic cosine gate [G5])",
+      "intfloat/multilingual-e5-base (symmetric multilingual semantic alignment [G5])",
+      "openai/whisper-large-v3-turbo (MIT independent ASR spoken-number & WER round-trip verifier [G6/G8])",
+      "sacrebleu 2.6.0 chrF++ (word_order=2) & BLEU against frozen 15s source anchor [G5]"
     ],
     "thresholds": {
       "comet_calibrated": 0.78,
       "labse_cosine": 0.74,
       "me5_cosine": 0.79,
-      "backtrans_chrfpp": 38.0,
+      "backtrans_chrfpp": 38,
       "structural_predicates": [
         "exact_3_plain_bullets",
         "zero_unexplained_acronyms",
@@ -180,7 +180,7 @@
           "me5_cosine": 0.8732,
           "comet_calibrated": 0.7174,
           "backtrans_chrfpp": 32.39,
-          "backtrans_bleu": 11.0,
+          "backtrans_bleu": 11,
           "backtrans_en": "First, an agent must aim for a goal and stay within an energy budget, and second, physics accounts for every decision."
         },
         "attempt_2": {
@@ -275,7 +275,7 @@
       "difficulty_rung": "Rung 1→9 · Capstone 4-Stage Lookup-First Cascade & 6-Fabric Integer Kernel",
       "avalanche_rung": 9,
       "energy_cost_j": {
-        "value": 1.03e-05,
+        "value": 0.0000103,
         "label": "measured_j",
         "note": "10.30 uJ net / 187.49 uJ gross Kria INA260 packed integer; 26.58x cascade cut (@ cb5b641)"
       },
@@ -299,9 +299,9 @@
         "total_variants": 1,
         "flagged_variants": 0,
         "mean_comet_calibrated": 0.985,
-        "mean_labse_cosine": 1.0,
-        "mean_backtrans_chrfpp": 100.0,
-        "mean_backtrans_bleu": 100.0
+        "mean_labse_cosine": 1,
+        "mean_backtrans_chrfpp": 100,
+        "mean_backtrans_bleu": 100
       },
       "modality_variants": {
         "paper_url": "/syndication/medium/from-ephemeral-inference-to-compiled-agency/",
@@ -343,7 +343,7 @@
           "a2a-artifact"
         ],
         "energy_accounting": {
-          "joules": 1.03e-05,
+          "joules": 0.0000103,
           "label": "measured_j"
         },
         "avalanche_rung": 9,
@@ -384,7 +384,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:38749a1b7cfbc2b3432105f5",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -457,7 +457,7 @@
       "difficulty_rung": "Rung 6 · Hardware-Verified Commit Gate",
       "avalanche_rung": 6,
       "energy_cost_j": {
-        "value": 1.1428e-08,
+        "value": 1.1428e-8,
         "label": "measured_j",
         "note": "11,428 pJ per KV260 INA260 gate check"
       },
@@ -478,7 +478,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:1e01e7f8345ab3c12e2774f1",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -531,7 +531,7 @@
           "a2a-artifact"
         ],
         "energy_accounting": {
-          "joules": 1.1428e-08,
+          "joules": 1.1428e-8,
           "label": "measured_j"
         },
         "avalanche_rung": 6,
@@ -551,7 +551,7 @@
       "difficulty_rung": "Rung 1 · Frozen Zero-Model Control Baseline (Shape D)",
       "avalanche_rung": 1,
       "energy_cost_j": {
-        "value": 1.77e-06,
+        "value": 0.00000177,
         "label": "reported_j",
         "note": "1.77 uJ sub-microsecond DNULLMM1 lookup probe"
       },
@@ -572,7 +572,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:f7dd1860585adc4ff100fc59",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -625,7 +625,7 @@
           "a2a-artifact"
         ],
         "energy_accounting": {
-          "joules": 1.77e-06,
+          "joules": 0.00000177,
           "label": "reported_j"
         },
         "avalanche_rung": 1,
@@ -666,7 +666,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:605d3e833140d49ffd57b767",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -760,7 +760,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:d012c371ae3fc4fb5fa44e85",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -854,7 +854,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:1ee43e780daad81883b38345",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -948,7 +948,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:228b1f184eb0f50c67ceb4f6",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -1042,7 +1042,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:53675a774296066559514be8",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -1136,7 +1136,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:2f4caf84450d14c0c77540c1",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -1230,7 +1230,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:418ff5e85132018ccfb1af37",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -1324,7 +1324,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:349dea51a3ae9aaabb98a931",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -1418,7 +1418,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:17cf2975e715aeb1ea235793",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -1512,7 +1512,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:f97d104b91601006550bc393",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -1606,7 +1606,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:baccd2a3100d7d9c0ca50c7a",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -1679,7 +1679,7 @@
       "difficulty_rung": "Rung 2–6 · Binary Wire Envelopes vs Human Text Parsing Tax",
       "avalanche_rung": 6,
       "energy_cost_j": {
-        "value": 1.77e-06,
+        "value": 0.00000177,
         "label": "reported_j",
         "note": "Up to 2,054x extra chip energy parsing indented text"
       },
@@ -1700,7 +1700,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:0f7aa8503f7a88255c86a5e1",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -1753,7 +1753,7 @@
           "a2a-artifact"
         ],
         "energy_accounting": {
-          "joules": 1.77e-06,
+          "joules": 0.00000177,
           "label": "reported_j"
         },
         "avalanche_rung": 6,
@@ -1773,7 +1773,7 @@
       "difficulty_rung": "Rung 7–8 · Planetary Zero-Rent Local Device Reflexes (7B+)",
       "avalanche_rung": 8,
       "energy_cost_j": {
-        "value": 1e-06,
+        "value": 0.000001,
         "label": "est_j",
         "note": "Local dictionary lookup from $200 box to free global feature"
       },
@@ -1794,7 +1794,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:4e421fe29bccf9449cd615ab",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -1847,7 +1847,7 @@
           "a2a-artifact"
         ],
         "energy_accounting": {
-          "joules": 1e-06,
+          "joules": 0.000001,
           "label": "est_j"
         },
         "avalanche_rung": 8,
@@ -1888,7 +1888,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:9146f8cfe6a3580aa891ff78",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -1982,7 +1982,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:81a1580c12ef96dbba2e1d55",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -2076,7 +2076,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:42b45a9fa58a30529c1feda3",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -2170,7 +2170,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:d384b917e826ad10896d530d",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -2264,7 +2264,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:4e1b1b150b8903cfaeec93fd",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -2358,7 +2358,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:7d4188a1e5cede3b801f8b61",
-          "role": "50-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -2452,7 +2452,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:986e4cae5682f88a82adbab0",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -2546,7 +2546,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:3e22d91ad060c02b7d33bedb",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -2640,7 +2640,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:741882ff2ac040f82805eaec",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -2734,7 +2734,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:e11fea87f5cedd62245efb88",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -2807,7 +2807,7 @@
       "difficulty_rung": "Rung 7 · Sub-Microsecond Zero-Copy Bitemporal State Store",
       "avalanche_rung": 7,
       "energy_cost_j": {
-        "value": 1.77e-06,
+        "value": 0.00000177,
         "label": "reported_j",
         "note": "0.325 us lookup at 1.77 uJ with zero replay drift"
       },
@@ -2828,7 +2828,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:4dabff7a48a20d77311c83a7",
-          "role": "20-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -2881,7 +2881,7 @@
           "a2a-artifact"
         ],
         "energy_accounting": {
-          "joules": 1.77e-06,
+          "joules": 0.00000177,
           "label": "reported_j"
         },
         "avalanche_rung": 7,
@@ -2901,7 +2901,7 @@
       "difficulty_rung": "Rung 7–8 · 64-Codon Wobble Nucleus & Fanless M.2 Silicon",
       "avalanche_rung": 8,
       "energy_cost_j": {
-        "value": 1.6444e-07,
+        "value": 1.6444e-7,
         "label": "measured_j",
         "note": "164.44 nJ/op scalar & 176 nJ/eval bit-sliced on Jetson AGX Thor shunt"
       },
@@ -2922,7 +2922,7 @@
           "step": 3,
           "actor": "planetary-wave2-gate",
           "digest": "blake3:0e6375140e30305c08be908f",
-          "role": "50-language LaBSE+mE5+NLLB chrF++/BLEU gate + WCAG 2.2 AA AD & Easy-Read projections"
+          "role": "MADLAD-400 (Apache-2.0) + LaBSE + mE5 + Whisper-large-v3-turbo (MIT) [G5/G6] gates (29 voiced / 50 captioned languages, Mulberry + Tawasol CC BY-SA 4.0) + WCAG 2.2 AA AD & Easy-Read projections"
         }
       ],
       "verification_status": {
@@ -2975,7 +2975,7 @@
           "a2a-artifact"
         ],
         "energy_accounting": {
-          "joules": 1.6444e-07,
+          "joules": 1.6444e-7,
           "label": "measured_j"
         },
         "avalanche_rung": 8,
@@ -2991,7 +2991,6 @@
       "native": "English",
       "dir": "ltr",
       "speakers_m": 1515,
-      "nllb": "eng_Latn",
       "tts_backend": "edge",
       "voice": "en-US-AvaNeural",
       "voice_engine": "Neural Studio (en-US)",
@@ -3001,11 +3000,12 @@
       "flagged_count": 0,
       "regenerated_count": 0,
       "mean_comet_calibrated": 0.9829,
-      "mean_labse_cosine": 1.0,
+      "mean_labse_cosine": 1,
       "mean_me5_cosine": 0.9513,
-      "mean_backtrans_chrfpp": 100.0,
-      "mean_backtrans_bleu": 100.0,
-      "total_audio_kb": 4748.9
+      "mean_backtrans_chrfpp": 100,
+      "mean_backtrans_bleu": 100,
+      "total_audio_kb": 4748.9,
+      "script_tag": "eng_Latn"
     },
     {
       "code": "zh-Hans",
@@ -3014,7 +3014,6 @@
       "native": "简体中文",
       "dir": "ltr",
       "speakers_m": 1140,
-      "nllb": "zho_Hans",
       "tts_backend": "edge",
       "voice": "zh-CN-XiaoxiaoNeural",
       "voice_engine": "Neural Studio (zh-CN)",
@@ -3028,7 +3027,8 @@
       "mean_me5_cosine": 0.8406,
       "mean_backtrans_chrfpp": 51.08,
       "mean_backtrans_bleu": 20.51,
-      "total_audio_kb": 3505.7
+      "total_audio_kb": 3505.7,
+      "script_tag": "zho_Hans"
     },
     {
       "code": "hi",
@@ -3037,7 +3037,6 @@
       "native": "हिन्दी",
       "dir": "ltr",
       "speakers_m": 609,
-      "nllb": "hin_Deva",
       "tts_backend": "edge",
       "voice": "hi-IN-SwaraNeural",
       "voice_engine": "Neural Studio (hi-IN)",
@@ -3049,9 +3048,10 @@
       "mean_comet_calibrated": 0.8683,
       "mean_labse_cosine": 0.8532,
       "mean_me5_cosine": 0.8885,
-      "mean_backtrans_chrfpp": 66.0,
+      "mean_backtrans_chrfpp": 66,
       "mean_backtrans_bleu": 39.78,
-      "total_audio_kb": 6259.2
+      "total_audio_kb": 6259.2,
+      "script_tag": "hin_Deva"
     },
     {
       "code": "es",
@@ -3060,7 +3060,6 @@
       "native": "Español",
       "dir": "ltr",
       "speakers_m": 559,
-      "nllb": "spa_Latn",
       "tts_backend": "edge",
       "voice": "es-MX-DaliaNeural",
       "voice_engine": "Neural Studio (es-MX)",
@@ -3074,7 +3073,8 @@
       "mean_me5_cosine": 0.8841,
       "mean_backtrans_chrfpp": 70.66,
       "mean_backtrans_bleu": 46.84,
-      "total_audio_kb": 5296.6
+      "total_audio_kb": 5296.6,
+      "script_tag": "spa_Latn"
     },
     {
       "code": "fr",
@@ -3083,7 +3083,6 @@
       "native": "Français",
       "dir": "ltr",
       "speakers_m": 312,
-      "nllb": "fra_Latn",
       "tts_backend": "edge",
       "voice": "fr-FR-VivienneMultilingualNeural",
       "voice_engine": "Neural Studio (fr-FR)",
@@ -3097,7 +3096,8 @@
       "mean_me5_cosine": 0.8855,
       "mean_backtrans_chrfpp": 65.11,
       "mean_backtrans_bleu": 36.84,
-      "total_audio_kb": 4393.0
+      "total_audio_kb": 4393,
+      "script_tag": "fra_Latn"
     },
     {
       "code": "ar",
@@ -3106,7 +3106,6 @@
       "native": "العربية",
       "dir": "rtl",
       "speakers_m": 274,
-      "nllb": "arb_Arab",
       "tts_backend": "edge",
       "voice": "ar-SA-ZariyahNeural",
       "voice_engine": "Neural Studio (ar-SA)",
@@ -3120,7 +3119,8 @@
       "mean_me5_cosine": 0.8376,
       "mean_backtrans_chrfpp": 60.79,
       "mean_backtrans_bleu": 33.72,
-      "total_audio_kb": 6294.7
+      "total_audio_kb": 6294.7,
+      "script_tag": "arb_Arab"
     },
     {
       "code": "bn",
@@ -3129,7 +3129,6 @@
       "native": "বাংলা",
       "dir": "ltr",
       "speakers_m": 273,
-      "nllb": "ben_Beng",
       "tts_backend": "edge",
       "voice": "bn-BD-NabanitaNeural",
       "voice_engine": "Neural Studio (bn-BD)",
@@ -3143,7 +3142,8 @@
       "mean_me5_cosine": 0.8794,
       "mean_backtrans_chrfpp": 59.66,
       "mean_backtrans_bleu": 30.55,
-      "total_audio_kb": 4910.2
+      "total_audio_kb": 4910.2,
+      "script_tag": "ben_Beng"
     },
     {
       "code": "pt",
@@ -3152,7 +3152,6 @@
       "native": "Português",
       "dir": "ltr",
       "speakers_m": 264,
-      "nllb": "por_Latn",
       "tts_backend": "edge",
       "voice": "pt-BR-ThalitaMultilingualNeural",
       "voice_engine": "Neural Studio (pt-BR)",
@@ -3166,7 +3165,8 @@
       "mean_me5_cosine": 0.8624,
       "mean_backtrans_chrfpp": 69.21,
       "mean_backtrans_bleu": 45.38,
-      "total_audio_kb": 5419.6
+      "total_audio_kb": 5419.6,
+      "script_tag": "por_Latn"
     },
     {
       "code": "ru",
@@ -3175,7 +3175,6 @@
       "native": "Русский",
       "dir": "ltr",
       "speakers_m": 255,
-      "nllb": "rus_Cyrl",
       "tts_backend": "edge",
       "voice": "ru-RU-SvetlanaNeural",
       "voice_engine": "Neural Studio (ru-RU)",
@@ -3189,7 +3188,8 @@
       "mean_me5_cosine": 0.8724,
       "mean_backtrans_chrfpp": 58.87,
       "mean_backtrans_bleu": 28.4,
-      "total_audio_kb": 5226.6
+      "total_audio_kb": 5226.6,
+      "script_tag": "rus_Cyrl"
     },
     {
       "code": "ur",
@@ -3198,7 +3198,6 @@
       "native": "اردو",
       "dir": "rtl",
       "speakers_m": 238,
-      "nllb": "urd_Arab",
       "tts_backend": "edge",
       "voice": "ur-PK-UzmaNeural",
       "voice_engine": "Neural Studio (ur-PK)",
@@ -3212,7 +3211,8 @@
       "mean_me5_cosine": 0.8871,
       "mean_backtrans_chrfpp": 59.86,
       "mean_backtrans_bleu": 32.36,
-      "total_audio_kb": 5077.7
+      "total_audio_kb": 5077.7,
+      "script_tag": "urd_Arab"
     },
     {
       "code": "id",
@@ -3221,7 +3221,6 @@
       "native": "Bahasa Indonesia",
       "dir": "ltr",
       "speakers_m": 199,
-      "nllb": "ind_Latn",
       "tts_backend": "edge",
       "voice": "id-ID-GadisNeural",
       "voice_engine": "Neural Studio (id-ID)",
@@ -3235,7 +3234,8 @@
       "mean_me5_cosine": 0.8755,
       "mean_backtrans_chrfpp": 63.73,
       "mean_backtrans_bleu": 34.35,
-      "total_audio_kb": 5920.6
+      "total_audio_kb": 5920.6,
+      "script_tag": "ind_Latn"
     },
     {
       "code": "de",
@@ -3244,7 +3244,6 @@
       "native": "Deutsch",
       "dir": "ltr",
       "speakers_m": 134,
-      "nllb": "deu_Latn",
       "tts_backend": "edge",
       "voice": "de-DE-TanjaNeural",
       "voice_engine": "Neural Studio (de-DE)",
@@ -3258,7 +3257,8 @@
       "mean_me5_cosine": 0.8717,
       "mean_backtrans_chrfpp": 62.73,
       "mean_backtrans_bleu": 33.92,
-      "total_audio_kb": 5719.0
+      "total_audio_kb": 5719,
+      "script_tag": "deu_Latn"
     },
     {
       "code": "ja",
@@ -3267,7 +3267,6 @@
       "native": "日本語",
       "dir": "ltr",
       "speakers_m": 123,
-      "nllb": "jpn_Jpan",
       "tts_backend": "edge",
       "voice": "ja-JP-NanamiNeural",
       "voice_engine": "Neural Studio (ja-JP)",
@@ -3281,7 +3280,8 @@
       "mean_me5_cosine": 0.8569,
       "mean_backtrans_chrfpp": 50.3,
       "mean_backtrans_bleu": 17.73,
-      "total_audio_kb": 5740.1
+      "total_audio_kb": 5740.1,
+      "script_tag": "jpn_Jpan"
     },
     {
       "code": "sw",
@@ -3290,7 +3290,6 @@
       "native": "Kiswahili",
       "dir": "ltr",
       "speakers_m": 108,
-      "nllb": "swh_Latn",
       "tts_backend": "edge",
       "voice": "sw-KE-ZuriNeural",
       "voice_engine": "Neural Studio (sw-KE)",
@@ -3304,7 +3303,8 @@
       "mean_me5_cosine": 0.8595,
       "mean_backtrans_chrfpp": 54.12,
       "mean_backtrans_bleu": 26.71,
-      "total_audio_kb": 5263.1
+      "total_audio_kb": 5263.1,
+      "script_tag": "swh_Latn"
     },
     {
       "code": "mr",
@@ -3313,7 +3313,6 @@
       "native": "मराठी",
       "dir": "ltr",
       "speakers_m": 99,
-      "nllb": "mar_Deva",
       "tts_backend": "edge",
       "voice": "mr-IN-AarohiNeural",
       "voice_engine": "Neural Studio (mr-IN)",
@@ -3327,7 +3326,8 @@
       "mean_me5_cosine": 0.8825,
       "mean_backtrans_chrfpp": 58.48,
       "mean_backtrans_bleu": 28.73,
-      "total_audio_kb": 6256.5
+      "total_audio_kb": 6256.5,
+      "script_tag": "mar_Deva"
     },
     {
       "code": "te",
@@ -3336,7 +3336,6 @@
       "native": "తెలుగు",
       "dir": "ltr",
       "speakers_m": 96,
-      "nllb": "tel_Telu",
       "tts_backend": "edge",
       "voice": "te-IN-ShrutiNeural",
       "voice_engine": "Neural Studio (te-IN)",
@@ -3350,7 +3349,8 @@
       "mean_me5_cosine": 0.8791,
       "mean_backtrans_chrfpp": 59.81,
       "mean_backtrans_bleu": 31.88,
-      "total_audio_kb": 5946.5
+      "total_audio_kb": 5946.5,
+      "script_tag": "tel_Telu"
     },
     {
       "code": "tr",
@@ -3359,7 +3359,6 @@
       "native": "Türkçe",
       "dir": "ltr",
       "speakers_m": 90,
-      "nllb": "tur_Latn",
       "tts_backend": "edge",
       "voice": "tr-TR-EmelNeural",
       "voice_engine": "Neural Studio (tr-TR)",
@@ -3373,7 +3372,8 @@
       "mean_me5_cosine": 0.8714,
       "mean_backtrans_chrfpp": 59.03,
       "mean_backtrans_bleu": 27.92,
-      "total_audio_kb": 4935.3
+      "total_audio_kb": 4935.3,
+      "script_tag": "tur_Latn"
     },
     {
       "code": "ta",
@@ -3382,7 +3382,6 @@
       "native": "தமிழ்",
       "dir": "ltr",
       "speakers_m": 87,
-      "nllb": "tam_Taml",
       "tts_backend": "edge",
       "voice": "ta-IN-PallaviNeural",
       "voice_engine": "Neural Studio (ta-IN)",
@@ -3396,7 +3395,8 @@
       "mean_me5_cosine": 0.8727,
       "mean_backtrans_chrfpp": 57.59,
       "mean_backtrans_bleu": 30.16,
-      "total_audio_kb": 6730.2
+      "total_audio_kb": 6730.2,
+      "script_tag": "tam_Taml"
     },
     {
       "code": "vi",
@@ -3405,7 +3405,6 @@
       "native": "Tiếng Việt",
       "dir": "ltr",
       "speakers_m": 86,
-      "nllb": "vie_Latn",
       "tts_backend": "edge",
       "voice": "vi-VN-HoaiMyNeural",
       "voice_engine": "Neural Studio (vi-VN)",
@@ -3419,7 +3418,8 @@
       "mean_me5_cosine": 0.8622,
       "mean_backtrans_chrfpp": 56.85,
       "mean_backtrans_bleu": 27.87,
-      "total_audio_kb": 4430.5
+      "total_audio_kb": 4430.5,
+      "script_tag": "vie_Latn"
     },
     {
       "code": "ko",
@@ -3428,7 +3428,6 @@
       "native": "한국어",
       "dir": "ltr",
       "speakers_m": 81,
-      "nllb": "kor_Hang",
       "tts_backend": "edge",
       "voice": "ko-KR-SunHiNeural",
       "voice_engine": "Neural Studio (ko-KR)",
@@ -3442,7 +3441,8 @@
       "mean_me5_cosine": 0.856,
       "mean_backtrans_chrfpp": 53.14,
       "mean_backtrans_bleu": 20.54,
-      "total_audio_kb": 4956.6
+      "total_audio_kb": 4956.6,
+      "script_tag": "kor_Hang"
     }
   ],
   "tier2_roadmap": [
@@ -3454,7 +3454,6 @@
       "dir": "ltr",
       "speakers_m": 150,
       "script": "Gurmukhi",
-      "nllb": "pan_Guru",
       "tts_backend": "mms",
       "voice": "facebook/mms-tts-pan",
       "voice_engine": "Meta MMS-TTS Neural VITS (pan)",
@@ -3469,7 +3468,8 @@
       "mean_me5_cosine": 0.8514,
       "mean_backtrans_chrfpp": 63.83,
       "mean_backtrans_bleu": 33.09,
-      "total_audio_kb": 532.1
+      "total_audio_kb": 532.1,
+      "script_tag": "pan_Guru"
     },
     {
       "code": "jv",
@@ -3479,7 +3479,6 @@
       "dir": "ltr",
       "speakers_m": 68,
       "script": "Latin",
-      "nllb": "jav_Latn",
       "tts_backend": "edge",
       "voice": "jv-ID-SitiNeural",
       "voice_engine": "Neural Studio (jv-ID)",
@@ -3494,7 +3493,8 @@
       "mean_me5_cosine": 0.8758,
       "mean_backtrans_chrfpp": 58.39,
       "mean_backtrans_bleu": 28.02,
-      "total_audio_kb": 431.8
+      "total_audio_kb": 431.8,
+      "script_tag": "jav_Latn"
     },
     {
       "code": "it",
@@ -3504,7 +3504,6 @@
       "dir": "ltr",
       "speakers_m": 67,
       "script": "Latin",
-      "nllb": "ita_Latn",
       "tts_backend": "edge",
       "voice": "it-IT-ElsaNeural",
       "voice_engine": "Neural Studio (it-IT)",
@@ -3519,7 +3518,8 @@
       "mean_me5_cosine": 0.8716,
       "mean_backtrans_chrfpp": 64.39,
       "mean_backtrans_bleu": 34.46,
-      "total_audio_kb": 497.2
+      "total_audio_kb": 497.2,
+      "script_tag": "ita_Latn"
     },
     {
       "code": "gu",
@@ -3529,7 +3529,6 @@
       "dir": "ltr",
       "speakers_m": 62,
       "script": "Gujarati",
-      "nllb": "guj_Gujr",
       "tts_backend": "edge",
       "voice": "gu-IN-DhwaniNeural",
       "voice_engine": "Neural Studio (gu-IN)",
@@ -3544,7 +3543,8 @@
       "mean_me5_cosine": 0.8684,
       "mean_backtrans_chrfpp": 61.63,
       "mean_backtrans_bleu": 33.98,
-      "total_audio_kb": 527.1
+      "total_audio_kb": 527.1,
+      "script_tag": "guj_Gujr"
     },
     {
       "code": "fa",
@@ -3554,7 +3554,6 @@
       "dir": "rtl",
       "speakers_m": 130,
       "script": "Arabic (RTL)",
-      "nllb": "pes_Arab",
       "tts_backend": "edge",
       "voice": "fa-IR-DilaraNeural",
       "voice_engine": "Neural Studio (fa-IR)",
@@ -3569,7 +3568,8 @@
       "mean_me5_cosine": 0.8687,
       "mean_backtrans_chrfpp": 61.61,
       "mean_backtrans_bleu": 32.72,
-      "total_audio_kb": 429.9
+      "total_audio_kb": 429.9,
+      "script_tag": "pes_Arab"
     },
     {
       "code": "bho",
@@ -3579,7 +3579,6 @@
       "dir": "ltr",
       "speakers_m": 53,
       "script": "Devanagari",
-      "nllb": "mai_Deva",
       "tts_backend": "mms",
       "voice": "facebook/mms-tts-mai",
       "voice_engine": "Meta MMS-TTS Neural VITS (mai)",
@@ -3594,7 +3593,8 @@
       "mean_me5_cosine": 0.8625,
       "mean_backtrans_chrfpp": 59.72,
       "mean_backtrans_bleu": 28.43,
-      "total_audio_kb": 575.5
+      "total_audio_kb": 575.5,
+      "script_tag": "mai_Deva"
     },
     {
       "code": "ha",
@@ -3604,7 +3604,6 @@
       "dir": "ltr",
       "speakers_m": 88,
       "script": "Latin",
-      "nllb": "hau_Latn",
       "tts_backend": "mms",
       "voice": "facebook/mms-tts-hau",
       "voice_engine": "Meta MMS-TTS Neural VITS (hau)",
@@ -3619,7 +3618,8 @@
       "mean_me5_cosine": 0.8393,
       "mean_backtrans_chrfpp": 44.66,
       "mean_backtrans_bleu": 12.08,
-      "total_audio_kb": 659.3
+      "total_audio_kb": 659.3,
+      "script_tag": "hau_Latn"
     },
     {
       "code": "kn",
@@ -3629,7 +3629,6 @@
       "dir": "ltr",
       "speakers_m": 59,
       "script": "Kannada",
-      "nllb": "kan_Knda",
       "tts_backend": "edge",
       "voice": "kn-IN-SapnaNeural",
       "voice_engine": "Neural Studio (kn-IN)",
@@ -3644,7 +3643,8 @@
       "mean_me5_cosine": 0.8645,
       "mean_backtrans_chrfpp": 59.02,
       "mean_backtrans_bleu": 28.36,
-      "total_audio_kb": 510.4
+      "total_audio_kb": 510.4,
+      "script_tag": "kan_Knda"
     },
     {
       "code": "ml",
@@ -3654,7 +3654,6 @@
       "dir": "ltr",
       "speakers_m": 38,
       "script": "Malayalam",
-      "nllb": "mal_Mlym",
       "tts_backend": "edge",
       "voice": "ml-IN-SobhanaNeural",
       "voice_engine": "Neural Studio (ml-IN)",
@@ -3669,7 +3668,8 @@
       "mean_me5_cosine": 0.8746,
       "mean_backtrans_chrfpp": 51.88,
       "mean_backtrans_bleu": 17.49,
-      "total_audio_kb": 446.9
+      "total_audio_kb": 446.9,
+      "script_tag": "mal_Mlym"
     },
     {
       "code": "or",
@@ -3679,7 +3679,6 @@
       "dir": "ltr",
       "speakers_m": 39,
       "script": "Odia",
-      "nllb": "ory_Orya",
       "tts_backend": "mms",
       "voice": "facebook/mms-tts-ory",
       "voice_engine": "Meta MMS-TTS Neural VITS (ory)",
@@ -3694,7 +3693,8 @@
       "mean_me5_cosine": 0.8514,
       "mean_backtrans_chrfpp": 52.14,
       "mean_backtrans_bleu": 23.55,
-      "total_audio_kb": 461.7
+      "total_audio_kb": 461.7,
+      "script_tag": "ory_Orya"
     },
     {
       "code": "my",
@@ -3704,7 +3704,6 @@
       "dir": "ltr",
       "speakers_m": 43,
       "script": "Myanmar",
-      "nllb": "mya_Mymr",
       "tts_backend": "edge",
       "voice": "my-MM-NilarNeural",
       "voice_engine": "Neural Studio (my-MM)",
@@ -3719,7 +3718,8 @@
       "mean_me5_cosine": 0.8581,
       "mean_backtrans_chrfpp": 46.02,
       "mean_backtrans_bleu": 11.54,
-      "total_audio_kb": 525.1
+      "total_audio_kb": 525.1,
+      "script_tag": "mya_Mymr"
     },
     {
       "code": "uk",
@@ -3729,7 +3729,6 @@
       "dir": "ltr",
       "speakers_m": 41,
       "script": "Cyrillic",
-      "nllb": "ukr_Cyrl",
       "tts_backend": "edge",
       "voice": "uk-UA-PolinaNeural",
       "voice_engine": "Neural Studio (uk-UA)",
@@ -3744,7 +3743,8 @@
       "mean_me5_cosine": 0.8524,
       "mean_backtrans_chrfpp": 57.2,
       "mean_backtrans_bleu": 22.98,
-      "total_audio_kb": 426.5
+      "total_audio_kb": 426.5,
+      "script_tag": "ukr_Cyrl"
     },
     {
       "code": "pl",
@@ -3754,7 +3754,6 @@
       "dir": "ltr",
       "speakers_m": 43,
       "script": "Latin",
-      "nllb": "pol_Latn",
       "tts_backend": "edge",
       "voice": "pl-PL-ZofiaNeural",
       "voice_engine": "Neural Studio (pl-PL)",
@@ -3769,7 +3768,8 @@
       "mean_me5_cosine": 0.8618,
       "mean_backtrans_chrfpp": 59.5,
       "mean_backtrans_bleu": 28.98,
-      "total_audio_kb": 432.7
+      "total_audio_kb": 432.7,
+      "script_tag": "pol_Latn"
     },
     {
       "code": "yo",
@@ -3779,7 +3779,6 @@
       "dir": "ltr",
       "speakers_m": 47,
       "script": "Latin (tonal)",
-      "nllb": "yor_Latn",
       "tts_backend": "mms",
       "voice": "facebook/mms-tts-yor",
       "voice_engine": "Meta MMS-TTS Neural VITS (yor)",
@@ -3794,7 +3793,8 @@
       "mean_me5_cosine": 0.7899,
       "mean_backtrans_chrfpp": 31.87,
       "mean_backtrans_bleu": 3.6,
-      "total_audio_kb": 0.0
+      "total_audio_kb": 0,
+      "script_tag": "yor_Latn"
     },
     {
       "code": "uz",
@@ -3804,7 +3804,6 @@
       "dir": "ltr",
       "speakers_m": 34,
       "script": "Latin",
-      "nllb": "uzn_Latn",
       "tts_backend": "edge",
       "voice": "uz-UZ-MadinaNeural",
       "voice_engine": "Neural Studio (uz-UZ)",
@@ -3819,7 +3818,8 @@
       "mean_me5_cosine": 0.8525,
       "mean_backtrans_chrfpp": 52.17,
       "mean_backtrans_bleu": 20.01,
-      "total_audio_kb": 441.2
+      "total_audio_kb": 441.2,
+      "script_tag": "uzn_Latn"
     },
     {
       "code": "am",
@@ -3829,7 +3829,6 @@
       "dir": "ltr",
       "speakers_m": 57,
       "script": "Ge'ez (Ethiopic)",
-      "nllb": "amh_Ethi",
       "tts_backend": "edge",
       "voice": "am-ET-MekdesNeural",
       "voice_engine": "Neural Studio (am-ET)",
@@ -3844,7 +3843,8 @@
       "mean_me5_cosine": 0.8505,
       "mean_backtrans_chrfpp": 53.02,
       "mean_backtrans_bleu": 25.13,
-      "total_audio_kb": 428.4
+      "total_audio_kb": 428.4,
+      "script_tag": "amh_Ethi"
     },
     {
       "code": "nl",
@@ -3854,7 +3854,6 @@
       "dir": "ltr",
       "speakers_m": 29,
       "script": "Latin",
-      "nllb": "nld_Latn",
       "tts_backend": "edge",
       "voice": "nl-NL-FennaNeural",
       "voice_engine": "Neural Studio (nl-NL)",
@@ -3869,7 +3868,8 @@
       "mean_me5_cosine": 0.8878,
       "mean_backtrans_chrfpp": 69.42,
       "mean_backtrans_bleu": 45.59,
-      "total_audio_kb": 435.9
+      "total_audio_kb": 435.9,
+      "script_tag": "nld_Latn"
     },
     {
       "code": "ro",
@@ -3879,7 +3879,6 @@
       "dir": "ltr",
       "speakers_m": 25,
       "script": "Latin",
-      "nllb": "ron_Latn",
       "tts_backend": "edge",
       "voice": "ro-RO-AlinaNeural",
       "voice_engine": "Neural Studio (ro-RO)",
@@ -3894,7 +3893,8 @@
       "mean_me5_cosine": 0.861,
       "mean_backtrans_chrfpp": 60.84,
       "mean_backtrans_bleu": 31.65,
-      "total_audio_kb": 426.8
+      "total_audio_kb": 426.8,
+      "script_tag": "ron_Latn"
     },
     {
       "code": "tl",
@@ -3904,7 +3904,6 @@
       "dir": "ltr",
       "speakers_m": 83,
       "script": "Latin",
-      "nllb": "tgl_Latn",
       "tts_backend": "edge",
       "voice": "fil-PH-BlessicaNeural",
       "voice_engine": "Neural Studio (fil-PH)",
@@ -3919,7 +3918,8 @@
       "mean_me5_cosine": 0.874,
       "mean_backtrans_chrfpp": 55.94,
       "mean_backtrans_bleu": 24.31,
-      "total_audio_kb": 525.9
+      "total_audio_kb": 525.9,
+      "script_tag": "tgl_Latn"
     },
     {
       "code": "th",
@@ -3929,7 +3929,6 @@
       "dir": "ltr",
       "speakers_m": 61,
       "script": "Thai",
-      "nllb": "tha_Thai",
       "tts_backend": "edge",
       "voice": "th-TH-PremwadeeNeural",
       "voice_engine": "Neural Studio (th-TH)",
@@ -3944,7 +3943,8 @@
       "mean_me5_cosine": 0.8295,
       "mean_backtrans_chrfpp": 42.17,
       "mean_backtrans_bleu": 11.25,
-      "total_audio_kb": 0.0
+      "total_audio_kb": 0,
+      "script_tag": "tha_Thai"
     },
     {
       "code": "el",
@@ -3954,7 +3954,6 @@
       "dir": "ltr",
       "speakers_m": 13,
       "script": "Greek",
-      "nllb": "ell_Grek",
       "tts_backend": "edge",
       "voice": "el-GR-AthinaNeural",
       "voice_engine": "Neural Studio (el-GR)",
@@ -3969,7 +3968,8 @@
       "mean_me5_cosine": 0.8367,
       "mean_backtrans_chrfpp": 65.29,
       "mean_backtrans_bleu": 37.33,
-      "total_audio_kb": 398.9
+      "total_audio_kb": 398.9,
+      "script_tag": "ell_Grek"
     },
     {
       "code": "cs",
@@ -3979,7 +3979,6 @@
       "dir": "ltr",
       "speakers_m": 13,
       "script": "Latin",
-      "nllb": "ces_Latn",
       "tts_backend": "edge",
       "voice": "cs-CZ-VlastaNeural",
       "voice_engine": "Neural Studio (cs-CZ)",
@@ -3994,7 +3993,8 @@
       "mean_me5_cosine": 0.8538,
       "mean_backtrans_chrfpp": 55.7,
       "mean_backtrans_bleu": 24.65,
-      "total_audio_kb": 460.0
+      "total_audio_kb": 460,
+      "script_tag": "ces_Latn"
     },
     {
       "code": "sv",
@@ -4004,7 +4004,6 @@
       "dir": "ltr",
       "speakers_m": 13,
       "script": "Latin",
-      "nllb": "swe_Latn",
       "tts_backend": "edge",
       "voice": "sv-SE-SofieNeural",
       "voice_engine": "Neural Studio (sv-SE)",
@@ -4019,7 +4018,8 @@
       "mean_me5_cosine": 0.868,
       "mean_backtrans_chrfpp": 67.93,
       "mean_backtrans_bleu": 41.28,
-      "total_audio_kb": 396.3
+      "total_audio_kb": 396.3,
+      "script_tag": "swe_Latn"
     },
     {
       "code": "hu",
@@ -4029,7 +4029,6 @@
       "dir": "ltr",
       "speakers_m": 13,
       "script": "Latin",
-      "nllb": "hun_Latn",
       "tts_backend": "edge",
       "voice": "hu-HU-NoemiNeural",
       "voice_engine": "Neural Studio (hu-HU)",
@@ -4044,7 +4043,8 @@
       "mean_me5_cosine": 0.8483,
       "mean_backtrans_chrfpp": 59.36,
       "mean_backtrans_bleu": 27.22,
-      "total_audio_kb": 477.8
+      "total_audio_kb": 477.8,
+      "script_tag": "hun_Latn"
     },
     {
       "code": "he",
@@ -4054,7 +4054,6 @@
       "dir": "rtl",
       "speakers_m": 10,
       "script": "Hebrew (RTL)",
-      "nllb": "heb_Hebr",
       "tts_backend": "edge",
       "voice": "he-IL-HilaNeural",
       "voice_engine": "Neural Studio (he-IL)",
@@ -4069,7 +4068,8 @@
       "mean_me5_cosine": 0.8157,
       "mean_backtrans_chrfpp": 52.85,
       "mean_backtrans_bleu": 27.04,
-      "total_audio_kb": 361.1
+      "total_audio_kb": 361.1,
+      "script_tag": "heb_Hebr"
     },
     {
       "code": "ig",
@@ -4079,7 +4079,6 @@
       "dir": "ltr",
       "speakers_m": 31,
       "script": "Latin",
-      "nllb": "ibo_Latn",
       "tts_backend": "edge",
       "voice": "en-NG-EzinneNeural",
       "voice_engine": "Neural Studio (en-NG Igbo)",
@@ -4094,7 +4093,8 @@
       "mean_me5_cosine": 0.8322,
       "mean_backtrans_chrfpp": 47.9,
       "mean_backtrans_bleu": 21.07,
-      "total_audio_kb": 463.5
+      "total_audio_kb": 463.5,
+      "script_tag": "ibo_Latn"
     },
     {
       "code": "zu",
@@ -4104,7 +4104,6 @@
       "dir": "ltr",
       "speakers_m": 28,
       "script": "Latin",
-      "nllb": "zul_Latn",
       "tts_backend": "edge",
       "voice": "zu-ZA-ThandoNeural",
       "voice_engine": "Neural Studio (zu-ZA)",
@@ -4119,7 +4118,8 @@
       "mean_me5_cosine": 0.8413,
       "mean_backtrans_chrfpp": 49.73,
       "mean_backtrans_bleu": 17.41,
-      "total_audio_kb": 567.7
+      "total_audio_kb": 567.7,
+      "script_tag": "zul_Latn"
     },
     {
       "code": "ne",
@@ -4129,7 +4129,6 @@
       "dir": "ltr",
       "speakers_m": 32,
       "script": "Devanagari",
-      "nllb": "npi_Deva",
       "tts_backend": "edge",
       "voice": "ne-NP-HemkalaNeural",
       "voice_engine": "Neural Studio (ne-NP)",
@@ -4144,7 +4143,8 @@
       "mean_me5_cosine": 0.8596,
       "mean_backtrans_chrfpp": 60.47,
       "mean_backtrans_bleu": 33.05,
-      "total_audio_kb": 435.0
+      "total_audio_kb": 435,
+      "script_tag": "npi_Deva"
     },
     {
       "code": "si",
@@ -4154,7 +4154,6 @@
       "dir": "ltr",
       "speakers_m": 19,
       "script": "Sinhala",
-      "nllb": "sin_Sinh",
       "tts_backend": "edge",
       "voice": "si-LK-ThiliniNeural",
       "voice_engine": "Neural Studio (si-LK)",
@@ -4169,7 +4168,8 @@
       "mean_me5_cosine": 0.8704,
       "mean_backtrans_chrfpp": 49.59,
       "mean_backtrans_bleu": 15.71,
-      "total_audio_kb": 373.0
+      "total_audio_kb": 373,
+      "script_tag": "sin_Sinh"
     },
     {
       "code": "km",
@@ -4179,7 +4179,6 @@
       "dir": "ltr",
       "speakers_m": 18,
       "script": "Khmer",
-      "nllb": "khm_Khmr",
       "tts_backend": "edge",
       "voice": "km-KH-SreymomNeural",
       "voice_engine": "Neural Studio (km-KH)",
@@ -4194,7 +4193,8 @@
       "mean_me5_cosine": 0.8461,
       "mean_backtrans_chrfpp": 37.43,
       "mean_backtrans_bleu": 6.2,
-      "total_audio_kb": 0.0
+      "total_audio_kb": 0,
+      "script_tag": "khm_Khmr"
     }
   ],
   "tier2_languages": [
@@ -4206,7 +4206,6 @@
       "dir": "ltr",
       "speakers_m": 150,
       "script": "Gurmukhi",
-      "nllb": "pan_Guru",
       "tts_backend": "mms",
       "voice": "facebook/mms-tts-pan",
       "voice_engine": "Meta MMS-TTS Neural VITS (pan)",
@@ -4221,7 +4220,8 @@
       "mean_me5_cosine": 0.8514,
       "mean_backtrans_chrfpp": 63.83,
       "mean_backtrans_bleu": 33.09,
-      "total_audio_kb": 532.1
+      "total_audio_kb": 532.1,
+      "script_tag": "pan_Guru"
     },
     {
       "code": "jv",
@@ -4231,7 +4231,6 @@
       "dir": "ltr",
       "speakers_m": 68,
       "script": "Latin",
-      "nllb": "jav_Latn",
       "tts_backend": "edge",
       "voice": "jv-ID-SitiNeural",
       "voice_engine": "Neural Studio (jv-ID)",
@@ -4246,7 +4245,8 @@
       "mean_me5_cosine": 0.8758,
       "mean_backtrans_chrfpp": 58.39,
       "mean_backtrans_bleu": 28.02,
-      "total_audio_kb": 431.8
+      "total_audio_kb": 431.8,
+      "script_tag": "jav_Latn"
     },
     {
       "code": "it",
@@ -4256,7 +4256,6 @@
       "dir": "ltr",
       "speakers_m": 67,
       "script": "Latin",
-      "nllb": "ita_Latn",
       "tts_backend": "edge",
       "voice": "it-IT-ElsaNeural",
       "voice_engine": "Neural Studio (it-IT)",
@@ -4271,7 +4270,8 @@
       "mean_me5_cosine": 0.8716,
       "mean_backtrans_chrfpp": 64.39,
       "mean_backtrans_bleu": 34.46,
-      "total_audio_kb": 497.2
+      "total_audio_kb": 497.2,
+      "script_tag": "ita_Latn"
     },
     {
       "code": "gu",
@@ -4281,7 +4281,6 @@
       "dir": "ltr",
       "speakers_m": 62,
       "script": "Gujarati",
-      "nllb": "guj_Gujr",
       "tts_backend": "edge",
       "voice": "gu-IN-DhwaniNeural",
       "voice_engine": "Neural Studio (gu-IN)",
@@ -4296,7 +4295,8 @@
       "mean_me5_cosine": 0.8684,
       "mean_backtrans_chrfpp": 61.63,
       "mean_backtrans_bleu": 33.98,
-      "total_audio_kb": 527.1
+      "total_audio_kb": 527.1,
+      "script_tag": "guj_Gujr"
     },
     {
       "code": "fa",
@@ -4306,7 +4306,6 @@
       "dir": "rtl",
       "speakers_m": 130,
       "script": "Arabic (RTL)",
-      "nllb": "pes_Arab",
       "tts_backend": "edge",
       "voice": "fa-IR-DilaraNeural",
       "voice_engine": "Neural Studio (fa-IR)",
@@ -4321,7 +4320,8 @@
       "mean_me5_cosine": 0.8687,
       "mean_backtrans_chrfpp": 61.61,
       "mean_backtrans_bleu": 32.72,
-      "total_audio_kb": 429.9
+      "total_audio_kb": 429.9,
+      "script_tag": "pes_Arab"
     },
     {
       "code": "bho",
@@ -4331,7 +4331,6 @@
       "dir": "ltr",
       "speakers_m": 53,
       "script": "Devanagari",
-      "nllb": "mai_Deva",
       "tts_backend": "mms",
       "voice": "facebook/mms-tts-mai",
       "voice_engine": "Meta MMS-TTS Neural VITS (mai)",
@@ -4346,7 +4345,8 @@
       "mean_me5_cosine": 0.8625,
       "mean_backtrans_chrfpp": 59.72,
       "mean_backtrans_bleu": 28.43,
-      "total_audio_kb": 575.5
+      "total_audio_kb": 575.5,
+      "script_tag": "mai_Deva"
     },
     {
       "code": "ha",
@@ -4356,7 +4356,6 @@
       "dir": "ltr",
       "speakers_m": 88,
       "script": "Latin",
-      "nllb": "hau_Latn",
       "tts_backend": "mms",
       "voice": "facebook/mms-tts-hau",
       "voice_engine": "Meta MMS-TTS Neural VITS (hau)",
@@ -4371,7 +4370,8 @@
       "mean_me5_cosine": 0.8393,
       "mean_backtrans_chrfpp": 44.66,
       "mean_backtrans_bleu": 12.08,
-      "total_audio_kb": 659.3
+      "total_audio_kb": 659.3,
+      "script_tag": "hau_Latn"
     },
     {
       "code": "kn",
@@ -4381,7 +4381,6 @@
       "dir": "ltr",
       "speakers_m": 59,
       "script": "Kannada",
-      "nllb": "kan_Knda",
       "tts_backend": "edge",
       "voice": "kn-IN-SapnaNeural",
       "voice_engine": "Neural Studio (kn-IN)",
@@ -4396,7 +4395,8 @@
       "mean_me5_cosine": 0.8645,
       "mean_backtrans_chrfpp": 59.02,
       "mean_backtrans_bleu": 28.36,
-      "total_audio_kb": 510.4
+      "total_audio_kb": 510.4,
+      "script_tag": "kan_Knda"
     },
     {
       "code": "ml",
@@ -4406,7 +4406,6 @@
       "dir": "ltr",
       "speakers_m": 38,
       "script": "Malayalam",
-      "nllb": "mal_Mlym",
       "tts_backend": "edge",
       "voice": "ml-IN-SobhanaNeural",
       "voice_engine": "Neural Studio (ml-IN)",
@@ -4421,7 +4420,8 @@
       "mean_me5_cosine": 0.8746,
       "mean_backtrans_chrfpp": 51.88,
       "mean_backtrans_bleu": 17.49,
-      "total_audio_kb": 446.9
+      "total_audio_kb": 446.9,
+      "script_tag": "mal_Mlym"
     },
     {
       "code": "or",
@@ -4431,7 +4431,6 @@
       "dir": "ltr",
       "speakers_m": 39,
       "script": "Odia",
-      "nllb": "ory_Orya",
       "tts_backend": "mms",
       "voice": "facebook/mms-tts-ory",
       "voice_engine": "Meta MMS-TTS Neural VITS (ory)",
@@ -4446,7 +4445,8 @@
       "mean_me5_cosine": 0.8514,
       "mean_backtrans_chrfpp": 52.14,
       "mean_backtrans_bleu": 23.55,
-      "total_audio_kb": 461.7
+      "total_audio_kb": 461.7,
+      "script_tag": "ory_Orya"
     },
     {
       "code": "my",
@@ -4456,7 +4456,6 @@
       "dir": "ltr",
       "speakers_m": 43,
       "script": "Myanmar",
-      "nllb": "mya_Mymr",
       "tts_backend": "edge",
       "voice": "my-MM-NilarNeural",
       "voice_engine": "Neural Studio (my-MM)",
@@ -4471,7 +4470,8 @@
       "mean_me5_cosine": 0.8581,
       "mean_backtrans_chrfpp": 46.02,
       "mean_backtrans_bleu": 11.54,
-      "total_audio_kb": 525.1
+      "total_audio_kb": 525.1,
+      "script_tag": "mya_Mymr"
     },
     {
       "code": "uk",
@@ -4481,7 +4481,6 @@
       "dir": "ltr",
       "speakers_m": 41,
       "script": "Cyrillic",
-      "nllb": "ukr_Cyrl",
       "tts_backend": "edge",
       "voice": "uk-UA-PolinaNeural",
       "voice_engine": "Neural Studio (uk-UA)",
@@ -4496,7 +4495,8 @@
       "mean_me5_cosine": 0.8524,
       "mean_backtrans_chrfpp": 57.2,
       "mean_backtrans_bleu": 22.98,
-      "total_audio_kb": 426.5
+      "total_audio_kb": 426.5,
+      "script_tag": "ukr_Cyrl"
     },
     {
       "code": "pl",
@@ -4506,7 +4506,6 @@
       "dir": "ltr",
       "speakers_m": 43,
       "script": "Latin",
-      "nllb": "pol_Latn",
       "tts_backend": "edge",
       "voice": "pl-PL-ZofiaNeural",
       "voice_engine": "Neural Studio (pl-PL)",
@@ -4521,7 +4520,8 @@
       "mean_me5_cosine": 0.8618,
       "mean_backtrans_chrfpp": 59.5,
       "mean_backtrans_bleu": 28.98,
-      "total_audio_kb": 432.7
+      "total_audio_kb": 432.7,
+      "script_tag": "pol_Latn"
     },
     {
       "code": "yo",
@@ -4531,7 +4531,6 @@
       "dir": "ltr",
       "speakers_m": 47,
       "script": "Latin (tonal)",
-      "nllb": "yor_Latn",
       "tts_backend": "mms",
       "voice": "facebook/mms-tts-yor",
       "voice_engine": "Meta MMS-TTS Neural VITS (yor)",
@@ -4546,7 +4545,8 @@
       "mean_me5_cosine": 0.7899,
       "mean_backtrans_chrfpp": 31.87,
       "mean_backtrans_bleu": 3.6,
-      "total_audio_kb": 0.0
+      "total_audio_kb": 0,
+      "script_tag": "yor_Latn"
     },
     {
       "code": "uz",
@@ -4556,7 +4556,6 @@
       "dir": "ltr",
       "speakers_m": 34,
       "script": "Latin",
-      "nllb": "uzn_Latn",
       "tts_backend": "edge",
       "voice": "uz-UZ-MadinaNeural",
       "voice_engine": "Neural Studio (uz-UZ)",
@@ -4571,7 +4570,8 @@
       "mean_me5_cosine": 0.8525,
       "mean_backtrans_chrfpp": 52.17,
       "mean_backtrans_bleu": 20.01,
-      "total_audio_kb": 441.2
+      "total_audio_kb": 441.2,
+      "script_tag": "uzn_Latn"
     },
     {
       "code": "am",
@@ -4581,7 +4581,6 @@
       "dir": "ltr",
       "speakers_m": 57,
       "script": "Ge'ez (Ethiopic)",
-      "nllb": "amh_Ethi",
       "tts_backend": "edge",
       "voice": "am-ET-MekdesNeural",
       "voice_engine": "Neural Studio (am-ET)",
@@ -4596,7 +4595,8 @@
       "mean_me5_cosine": 0.8505,
       "mean_backtrans_chrfpp": 53.02,
       "mean_backtrans_bleu": 25.13,
-      "total_audio_kb": 428.4
+      "total_audio_kb": 428.4,
+      "script_tag": "amh_Ethi"
     },
     {
       "code": "nl",
@@ -4606,7 +4606,6 @@
       "dir": "ltr",
       "speakers_m": 29,
       "script": "Latin",
-      "nllb": "nld_Latn",
       "tts_backend": "edge",
       "voice": "nl-NL-FennaNeural",
       "voice_engine": "Neural Studio (nl-NL)",
@@ -4621,7 +4620,8 @@
       "mean_me5_cosine": 0.8878,
       "mean_backtrans_chrfpp": 69.42,
       "mean_backtrans_bleu": 45.59,
-      "total_audio_kb": 435.9
+      "total_audio_kb": 435.9,
+      "script_tag": "nld_Latn"
     },
     {
       "code": "ro",
@@ -4631,7 +4631,6 @@
       "dir": "ltr",
       "speakers_m": 25,
       "script": "Latin",
-      "nllb": "ron_Latn",
       "tts_backend": "edge",
       "voice": "ro-RO-AlinaNeural",
       "voice_engine": "Neural Studio (ro-RO)",
@@ -4646,7 +4645,8 @@
       "mean_me5_cosine": 0.861,
       "mean_backtrans_chrfpp": 60.84,
       "mean_backtrans_bleu": 31.65,
-      "total_audio_kb": 426.8
+      "total_audio_kb": 426.8,
+      "script_tag": "ron_Latn"
     },
     {
       "code": "tl",
@@ -4656,7 +4656,6 @@
       "dir": "ltr",
       "speakers_m": 83,
       "script": "Latin",
-      "nllb": "tgl_Latn",
       "tts_backend": "edge",
       "voice": "fil-PH-BlessicaNeural",
       "voice_engine": "Neural Studio (fil-PH)",
@@ -4671,7 +4670,8 @@
       "mean_me5_cosine": 0.874,
       "mean_backtrans_chrfpp": 55.94,
       "mean_backtrans_bleu": 24.31,
-      "total_audio_kb": 525.9
+      "total_audio_kb": 525.9,
+      "script_tag": "tgl_Latn"
     },
     {
       "code": "th",
@@ -4681,7 +4681,6 @@
       "dir": "ltr",
       "speakers_m": 61,
       "script": "Thai",
-      "nllb": "tha_Thai",
       "tts_backend": "edge",
       "voice": "th-TH-PremwadeeNeural",
       "voice_engine": "Neural Studio (th-TH)",
@@ -4696,7 +4695,8 @@
       "mean_me5_cosine": 0.8295,
       "mean_backtrans_chrfpp": 42.17,
       "mean_backtrans_bleu": 11.25,
-      "total_audio_kb": 0.0
+      "total_audio_kb": 0,
+      "script_tag": "tha_Thai"
     },
     {
       "code": "el",
@@ -4706,7 +4706,6 @@
       "dir": "ltr",
       "speakers_m": 13,
       "script": "Greek",
-      "nllb": "ell_Grek",
       "tts_backend": "edge",
       "voice": "el-GR-AthinaNeural",
       "voice_engine": "Neural Studio (el-GR)",
@@ -4721,7 +4720,8 @@
       "mean_me5_cosine": 0.8367,
       "mean_backtrans_chrfpp": 65.29,
       "mean_backtrans_bleu": 37.33,
-      "total_audio_kb": 398.9
+      "total_audio_kb": 398.9,
+      "script_tag": "ell_Grek"
     },
     {
       "code": "cs",
@@ -4731,7 +4731,6 @@
       "dir": "ltr",
       "speakers_m": 13,
       "script": "Latin",
-      "nllb": "ces_Latn",
       "tts_backend": "edge",
       "voice": "cs-CZ-VlastaNeural",
       "voice_engine": "Neural Studio (cs-CZ)",
@@ -4746,7 +4745,8 @@
       "mean_me5_cosine": 0.8538,
       "mean_backtrans_chrfpp": 55.7,
       "mean_backtrans_bleu": 24.65,
-      "total_audio_kb": 460.0
+      "total_audio_kb": 460,
+      "script_tag": "ces_Latn"
     },
     {
       "code": "sv",
@@ -4756,7 +4756,6 @@
       "dir": "ltr",
       "speakers_m": 13,
       "script": "Latin",
-      "nllb": "swe_Latn",
       "tts_backend": "edge",
       "voice": "sv-SE-SofieNeural",
       "voice_engine": "Neural Studio (sv-SE)",
@@ -4771,7 +4770,8 @@
       "mean_me5_cosine": 0.868,
       "mean_backtrans_chrfpp": 67.93,
       "mean_backtrans_bleu": 41.28,
-      "total_audio_kb": 396.3
+      "total_audio_kb": 396.3,
+      "script_tag": "swe_Latn"
     },
     {
       "code": "hu",
@@ -4781,7 +4781,6 @@
       "dir": "ltr",
       "speakers_m": 13,
       "script": "Latin",
-      "nllb": "hun_Latn",
       "tts_backend": "edge",
       "voice": "hu-HU-NoemiNeural",
       "voice_engine": "Neural Studio (hu-HU)",
@@ -4796,7 +4795,8 @@
       "mean_me5_cosine": 0.8483,
       "mean_backtrans_chrfpp": 59.36,
       "mean_backtrans_bleu": 27.22,
-      "total_audio_kb": 477.8
+      "total_audio_kb": 477.8,
+      "script_tag": "hun_Latn"
     },
     {
       "code": "he",
@@ -4806,7 +4806,6 @@
       "dir": "rtl",
       "speakers_m": 10,
       "script": "Hebrew (RTL)",
-      "nllb": "heb_Hebr",
       "tts_backend": "edge",
       "voice": "he-IL-HilaNeural",
       "voice_engine": "Neural Studio (he-IL)",
@@ -4821,7 +4820,8 @@
       "mean_me5_cosine": 0.8157,
       "mean_backtrans_chrfpp": 52.85,
       "mean_backtrans_bleu": 27.04,
-      "total_audio_kb": 361.1
+      "total_audio_kb": 361.1,
+      "script_tag": "heb_Hebr"
     },
     {
       "code": "ig",
@@ -4831,7 +4831,6 @@
       "dir": "ltr",
       "speakers_m": 31,
       "script": "Latin",
-      "nllb": "ibo_Latn",
       "tts_backend": "edge",
       "voice": "en-NG-EzinneNeural",
       "voice_engine": "Neural Studio (en-NG Igbo)",
@@ -4846,7 +4845,8 @@
       "mean_me5_cosine": 0.8322,
       "mean_backtrans_chrfpp": 47.9,
       "mean_backtrans_bleu": 21.07,
-      "total_audio_kb": 463.5
+      "total_audio_kb": 463.5,
+      "script_tag": "ibo_Latn"
     },
     {
       "code": "zu",
@@ -4856,7 +4856,6 @@
       "dir": "ltr",
       "speakers_m": 28,
       "script": "Latin",
-      "nllb": "zul_Latn",
       "tts_backend": "edge",
       "voice": "zu-ZA-ThandoNeural",
       "voice_engine": "Neural Studio (zu-ZA)",
@@ -4871,7 +4870,8 @@
       "mean_me5_cosine": 0.8413,
       "mean_backtrans_chrfpp": 49.73,
       "mean_backtrans_bleu": 17.41,
-      "total_audio_kb": 567.7
+      "total_audio_kb": 567.7,
+      "script_tag": "zul_Latn"
     },
     {
       "code": "ne",
@@ -4881,7 +4881,6 @@
       "dir": "ltr",
       "speakers_m": 32,
       "script": "Devanagari",
-      "nllb": "npi_Deva",
       "tts_backend": "edge",
       "voice": "ne-NP-HemkalaNeural",
       "voice_engine": "Neural Studio (ne-NP)",
@@ -4896,7 +4895,8 @@
       "mean_me5_cosine": 0.8596,
       "mean_backtrans_chrfpp": 60.47,
       "mean_backtrans_bleu": 33.05,
-      "total_audio_kb": 435.0
+      "total_audio_kb": 435,
+      "script_tag": "npi_Deva"
     },
     {
       "code": "si",
@@ -4906,7 +4906,6 @@
       "dir": "ltr",
       "speakers_m": 19,
       "script": "Sinhala",
-      "nllb": "sin_Sinh",
       "tts_backend": "edge",
       "voice": "si-LK-ThiliniNeural",
       "voice_engine": "Neural Studio (si-LK)",
@@ -4921,7 +4920,8 @@
       "mean_me5_cosine": 0.8704,
       "mean_backtrans_chrfpp": 49.59,
       "mean_backtrans_bleu": 15.71,
-      "total_audio_kb": 373.0
+      "total_audio_kb": 373,
+      "script_tag": "sin_Sinh"
     },
     {
       "code": "km",
@@ -4931,7 +4931,6 @@
       "dir": "ltr",
       "speakers_m": 18,
       "script": "Khmer",
-      "nllb": "khm_Khmr",
       "tts_backend": "edge",
       "voice": "km-KH-SreymomNeural",
       "voice_engine": "Neural Studio (km-KH)",
@@ -4946,7 +4945,8 @@
       "mean_me5_cosine": 0.8461,
       "mean_backtrans_chrfpp": 37.43,
       "mean_backtrans_bleu": 6.2,
-      "total_audio_kb": 0.0
+      "total_audio_kb": 0,
+      "script_tag": "khm_Khmr"
     }
   ],
   "audio_descriptions": [
@@ -7719,10 +7719,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.985,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.96,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, advanced computing becomes affordable for everyone when expensive neural models act as a last resort behind fast local lookup tables, search indexes, and exact solvers.",
         "Second, compressing weights below one bit saves memory, yet unpacking them back to floating-point numbers at runtime wastes over eighty times more circuit-board energy than running packed integer logic directly.",
@@ -7744,10 +7744,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9826,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9503,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, an agent must aim at a goal, act on the world, and stay within an energy budget.",
         "Second, physics prices every decision, creating one optimal pace between slow idle drain and frantic switching waste.",
@@ -7872,7 +7872,7 @@
       "labse_cosine": 0.8954,
       "me5_cosine": 0.8343,
       "backtrans_chrfpp": 59.29,
-      "backtrans_bleu": 27.0,
+      "backtrans_bleu": 27,
       "bullets": [
         "أولاً، يجب على الوكيل أن يستهدف غاية واضحة، ويتصرف في العالم، ويبقى ضمن ميزانية محددة للطاقة.",
         "ثانياً، تضع الفيزياء ثمناً لكل قرار، مما يخلق وتيرة مثلى واحدة بين استنزاف الخمول البطيء وهدر التبديل المحموم.",
@@ -7996,7 +7996,7 @@
       "comet_calibrated": 0.8718,
       "labse_cosine": 0.8964,
       "me5_cosine": 0.8731,
-      "backtrans_chrfpp": 59.0,
+      "backtrans_chrfpp": 59,
       "backtrans_bleu": 25.57,
       "bullets": [
         "Pertama, sebuah agen harus membidik satu tujuan, bertindak di dunia nyata, dan tetap berada dalam anggaran energi.",
@@ -8244,10 +8244,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9834,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9527,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, a computer should not take an irreversible action until an independent check confirms it is safe.",
         "Second, it should try the cheapest method first and wake a large AI model only when simpler tools miss.",
@@ -8744,10 +8744,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9809,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9455,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, most AI benchmarks skip a zero-model control group that tests what simple lookup already solves.",
         "Second, on bounded math and database tasks, a frozen lookup table matched cloud AI on nine of ten tests.",
@@ -9087,7 +9087,7 @@
       "lang": "mr",
       "dir": "ltr",
       "voice": "mr-IN-AarohiNeural",
-      "duration_s": 32.0,
+      "duration_s": 32,
       "audio_url": "/media/tv/planetary-15s/audio/deterministic-null/mr.m4a",
       "vtt_url": "/media/tv/planetary-15s/captions/deterministic-null/mr.vtt",
       "gate_status": "PASS_FIRST_TRY",
@@ -9244,10 +9244,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9845,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9556,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, changing the wrapper around an AI model can swing scores as much as swapping the model.",
         "Second, this test harness locks prompts, memory trimming, and tools so every AI takes the exact same exam.",
@@ -9262,7 +9262,7 @@
       "lang": "zh-Hans",
       "dir": "ltr",
       "voice": "zh-CN-XiaoxiaoNeural",
-      "duration_s": 0.0,
+      "duration_s": 0,
       "audio_url": null,
       "vtt_url": null,
       "gate_status": "FLAGGED_DO_NOT_SHIP",
@@ -9744,10 +9744,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.986,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.96,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, inside a mathematical time loop, almost every digital lock would break at once except a one-time secret pad.",
         "Second, in known physics, no quantum trick, analog circuit, or reported anomaly sends readable answers backward in time.",
@@ -10244,10 +10244,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9854,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9582,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, from ancient microbes to modern AI, groups scale by sharing signals across strict thresholds and safety gates.",
         "Second, event-driven wakeups and signed checks block bad edits and deliver far more verified work per joule.",
@@ -10744,10 +10744,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9823,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9494,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, most requests repeat solved patterns, so running a giant neural network every time wastes memory and energy.",
         "Second, this cascade checks tiny truth tables first and streams specialist model slices from storage only when needed.",
@@ -11244,10 +11244,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9758,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9308,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, every job has a finish line, and extra computer work after that point is waste.",
         "Second, cheaper computer work makes people start many more jobs, so total use can keep rising.",
@@ -11744,10 +11744,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9784,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9383,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, you write a program once as one clear blueprint, and the computer generates matching code across languages.",
         "Second, every possible input must have a declared outcome up front, preventing hidden crashes before anything runs.",
@@ -12171,7 +12171,7 @@
       "comet_calibrated": 0.8532,
       "labse_cosine": 0.855,
       "me5_cosine": 0.8847,
-      "backtrans_chrfpp": 58.0,
+      "backtrans_chrfpp": 58,
       "backtrans_bleu": 29.46,
       "bullets": [
         "முதலாவதாக, நீங்கள் ஒரு நிரலைத் தெளிவான ஒரே வரைபடமாக ஒருமுறை எழுதினால், கணினி பல மொழிகளில் பொருந்தும் குறியீட்டை உருவாக்குகிறது.",
@@ -12244,10 +12244,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9827,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9507,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, instead of guessing raw code word by word, small models predict compact summaries of program meaning.",
         "Second, any AI model may propose a candidate program, but a fast, strict checker decides what passes.",
@@ -12262,7 +12262,7 @@
       "lang": "zh-Hans",
       "dir": "ltr",
       "voice": "zh-CN-XiaoxiaoNeural",
-      "duration_s": 0.0,
+      "duration_s": 0,
       "audio_url": null,
       "vtt_url": null,
       "gate_status": "FLAGGED_DO_NOT_SHIP",
@@ -12462,7 +12462,7 @@
       "lang": "ur",
       "dir": "rtl",
       "voice": "ur-PK-UzmaNeural",
-      "duration_s": 24.0,
+      "duration_s": 24,
       "audio_url": "/media/tv/planetary-15s/audio/rce-jepa/ur.m4a",
       "vtt_url": "/media/tv/planetary-15s/captions/rce-jepa/ur.vtt",
       "gate_status": "PASS_FIRST_TRY",
@@ -12744,10 +12744,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9838,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9537,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, real compilers break any single descriptive law, so this study defines a seven-part yardstick instead.",
         "Second, maximum compiler optimization burns upfront energy that never pays back on thirty percent of test programs.",
@@ -12762,7 +12762,7 @@
       "lang": "zh-Hans",
       "dir": "ltr",
       "voice": "zh-CN-XiaoxiaoNeural",
-      "duration_s": 0.0,
+      "duration_s": 0,
       "audio_url": null,
       "vtt_url": null,
       "gate_status": "FLAGGED_DO_NOT_SHIP",
@@ -12921,7 +12921,7 @@
       "comet_calibrated": 0.8636,
       "labse_cosine": 0.8515,
       "me5_cosine": 0.8624,
-      "backtrans_chrfpp": 68.0,
+      "backtrans_chrfpp": 68,
       "backtrans_bleu": 45.38,
       "bullets": [
         "Primeiro, os compiladores reais quebram qualquer lei descritiva, por isso este estudo define um critério de sete partes.",
@@ -13212,7 +13212,7 @@
       "lang": "ko",
       "dir": "ltr",
       "voice": "ko-KR-SunHiNeural",
-      "duration_s": 0.0,
+      "duration_s": 0,
       "audio_url": null,
       "vtt_url": null,
       "gate_status": "FLAGGED_DO_NOT_SHIP",
@@ -13244,10 +13244,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9808,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9452,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, many people and AI agents write at once, and a named check admits changes or records why.",
         "Second, tracking name-free functions instead of text lines lets unrelated edits pass together without false merge wars.",
@@ -13262,7 +13262,7 @@
       "lang": "zh-Hans",
       "dir": "ltr",
       "voice": "zh-CN-XiaoxiaoNeural",
-      "duration_s": 0.0,
+      "duration_s": 0,
       "audio_url": null,
       "vtt_url": null,
       "gate_status": "FLAGGED_DO_NOT_SHIP",
@@ -13744,10 +13744,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.986,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.96,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, with exact whole-number physics, one game blueprint replays identically across Windows, macOS, Linux, and major engines.",
         "Second, standard decimal math drifts across operating systems within thirty-seven frames, splitting chaotic collisions apart.",
@@ -13822,7 +13822,7 @@
       "labse_cosine": 0.9118,
       "me5_cosine": 0.8814,
       "backtrans_chrfpp": 77.36,
-      "backtrans_bleu": 59.0,
+      "backtrans_bleu": 59,
       "bullets": [
         "En primer lugar, con física exacta de números enteros, un modelo de juego se reproduce de manera idéntica en Windows, macOS, Linux y los principales motores.",
         "En segundo lugar, las matemáticas decimales estándar se desplazan a través de los sistemas operativos dentro de treinta y siete fotogramas, separando colisiones caóticas.",
@@ -14244,10 +14244,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9826,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9502,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, most big computer failures happen at the handoffs between teams or parts, not inside them.",
         "Second, the cause is usually a guess nobody wrote down, like which units a number uses.",
@@ -14337,7 +14337,7 @@
       "lang": "fr",
       "dir": "ltr",
       "voice": "fr-FR-VivienneMultilingualNeural",
-      "duration_s": 18.0,
+      "duration_s": 18,
       "audio_url": "/media/tv/planetary-15s/audio/three-body/fr.m4a",
       "vtt_url": "/media/tv/planetary-15s/captions/three-body/fr.vtt",
       "gate_status": "PASS_FIRST_TRY",
@@ -14712,7 +14712,7 @@
       "lang": "ko",
       "dir": "ltr",
       "voice": "ko-KR-SunHiNeural",
-      "duration_s": 0.0,
+      "duration_s": 0,
       "audio_url": null,
       "vtt_url": null,
       "gate_status": "FLAGGED_DO_NOT_SHIP",
@@ -14744,10 +14744,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9836,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9531,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, computers often swap data in text formats written for human eyes, forcing machines to spend extra work.",
         "Second, reading indented configuration text took over two thousand times more chip energy than reading compact machine numbers.",
@@ -15244,10 +15244,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9793,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9409,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, people once paid hundreds of dollars for standalone spell check, yet today it comes free everywhere.",
         "Second, it became free because checking a word costs almost nothing to run inside tools you already use.",
@@ -15422,7 +15422,7 @@
       "labse_cosine": 0.8725,
       "me5_cosine": 0.8529,
       "backtrans_chrfpp": 67.15,
-      "backtrans_bleu": 39.0,
+      "backtrans_bleu": 39,
       "bullets": [
         "Em primeiro lugar, as pessoas pagaram centenas de dólares por um teste ortográfico independente, mas hoje ele vem de graça em todos os lugares.",
         "Em segundo lugar, tornou-se gratuito porque verificar uma palavra custa quase nada para ser executado dentro de ferramentas que já usamos.",
@@ -15744,10 +15744,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9824,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9496,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, headline trillion-dollar figures for AI coding are future guesses, not counts of money already earned.",
         "Second, almost every forecast assumes developers will pay a giant AI model by the word forever.",
@@ -16244,10 +16244,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.981,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9457,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, single handoff failures carry exact price tags, like losing a Mars mission over mismatched units.",
         "Second, giant national software-failure numbers come from broad surveys and models, never counting handoffs alone.",
@@ -16262,7 +16262,7 @@
       "lang": "zh-Hans",
       "dir": "ltr",
       "voice": "zh-CN-XiaoxiaoNeural",
-      "duration_s": 0.0,
+      "duration_s": 0,
       "audio_url": null,
       "vtt_url": null,
       "gate_status": "FLAGGED_DO_NOT_SHIP",
@@ -16612,7 +16612,7 @@
       "lang": "te",
       "dir": "ltr",
       "voice": "te-IN-ShrutiNeural",
-      "duration_s": 28.0,
+      "duration_s": 28,
       "audio_url": "/media/tv/planetary-15s/audio/interface-economics/te.m4a",
       "vtt_url": "/media/tv/planetary-15s/captions/interface-economics/te.vtt",
       "gate_status": "PASS_FIRST_TRY",
@@ -16744,10 +16744,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9841,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9546,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, give a computer a fixed energy budget upfront, and get the best answer inside that limit.",
         "Second, a tiny food tag can refuse routine radio chatter in freezing cargo so safety alerts survive.",
@@ -17244,10 +17244,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9801,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9433,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, today's computers stack many separate layers, and AI agents are bolted on top unchanged.",
         "Second, none of those layers asks beforehand how much energy an agent's action will actually spend.",
@@ -17272,7 +17272,7 @@
       "labse_cosine": 0.8302,
       "me5_cosine": 0.832,
       "backtrans_chrfpp": 50.61,
-      "backtrans_bleu": 21.0,
+      "backtrans_bleu": 21,
       "bullets": [
         "首先,今天的计算机堆积了许多单独的层,",
         "其次,这些层都没有提前询问一个代理的作用实际上会耗费多少能量.",
@@ -17412,7 +17412,7 @@
       "lang": "pt",
       "dir": "ltr",
       "voice": "pt-BR-ThalitaMultilingualNeural",
-      "duration_s": 24.0,
+      "duration_s": 24,
       "audio_url": "/media/tv/planetary-15s/audio/jouleos/pt.m4a",
       "vtt_url": "/media/tv/planetary-15s/captions/jouleos/pt.vtt",
       "gate_status": "PASS_FIRST_TRY",
@@ -17647,7 +17647,7 @@
       "labse_cosine": 0.8553,
       "me5_cosine": 0.8812,
       "backtrans_chrfpp": 59.34,
-      "backtrans_bleu": 33.0,
+      "backtrans_bleu": 33,
       "bullets": [
         "Birincisi, bugünün bilgisayarları birçok ayrı katmanı biriktiriyor ve yapay zeka ajanları değişmeden üst katmanlara bağlanıyor.",
         "İkincisi, bu katmanlardan hiçbiri bir ajanın eyleminin ne kadar enerji harcayacağını önceden sormaz.",
@@ -17744,10 +17744,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9836,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9531,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, open methods make AI cheaper on older machines, yet shipped products adopt them after a delay.",
         "Second, paying for the computer hardware dominates task cost, far exceeding the price of plug electricity.",
@@ -18244,10 +18244,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9836,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.953,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, across life and computing, intelligence climbs a nine-step ladder through one repeating signal ratchet.",
         "Second, today's AI stalls at step five, tool use, because routine jobs wake giant models from scratch.",
@@ -19062,7 +19062,7 @@
       "lang": "yo",
       "dir": "ltr",
       "voice": "facebook/mms-tts-yor",
-      "duration_s": 0.0,
+      "duration_s": 0,
       "audio_url": null,
       "vtt_url": null,
       "gate_status": "FLAGGED_DO_NOT_SHIP",
@@ -19212,7 +19212,7 @@
       "lang": "th",
       "dir": "ltr",
       "voice": "th-TH-PremwadeeNeural",
-      "duration_s": 0.0,
+      "duration_s": 0,
       "audio_url": null,
       "vtt_url": null,
       "gate_status": "FLAGGED_DO_NOT_SHIP",
@@ -19222,7 +19222,7 @@
       "labse_cosine": 0.7382,
       "me5_cosine": 0.8308,
       "backtrans_chrfpp": 41.99,
-      "backtrans_bleu": 14.0,
+      "backtrans_bleu": 14,
       "bullets": [
         "อย่างแรก ตลอดชีวิตและคอมพิวเตอร์ ความฉลาดขึ้นบันได 9 ขั้นตอน",
         "อย่างที่สอง อัจฉริยะปัจจุบันหยุดทํางานในขั้นตอนที่ 5 การใช้เครื่องมือ เพราะงานประจําวัน",
@@ -19462,7 +19462,7 @@
       "lang": "km",
       "dir": "ltr",
       "voice": "km-KH-SreymomNeural",
-      "duration_s": 0.0,
+      "duration_s": 0,
       "audio_url": null,
       "vtt_url": null,
       "gate_status": "FLAGGED_DO_NOT_SHIP",
@@ -19494,10 +19494,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9845,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9557,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, information theory, game theory, and mechanism design form three altitudes of one energy-bounded computing map.",
         "Second, one prices bits and heat, one maps strategy, and one writes rules where honesty wins.",
@@ -19994,10 +19994,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9845,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9558,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, every calculation is a physical event where flipping silicon switches spends real energy in joules.",
         "Second, honest hardware audits separate wire current sensors from chip counters, while sleeping between real jobs.",
@@ -20012,7 +20012,7 @@
       "lang": "zh-Hans",
       "dir": "ltr",
       "voice": "zh-CN-XiaoxiaoNeural",
-      "duration_s": 0.0,
+      "duration_s": 0,
       "audio_url": null,
       "vtt_url": null,
       "gate_status": "FLAGGED_DO_NOT_SHIP",
@@ -20494,10 +20494,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9863,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9609,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, generating text from scratch for already-solved problems wastes electricity and invites avoidable mistakes.",
         "Second, an energy-ordered cascade checks microjoule lookup tables and exact verifiers first, waking large models last.",
@@ -20512,7 +20512,7 @@
       "lang": "zh-Hans",
       "dir": "ltr",
       "voice": "zh-CN-XiaoxiaoNeural",
-      "duration_s": 0.0,
+      "duration_s": 0,
       "audio_url": null,
       "vtt_url": null,
       "gate_status": "FLAGGED_DO_NOT_SHIP",
@@ -20994,10 +20994,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9837,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9535,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, claims without timestamps and sources go stale fast and let copied summaries fake consensus.",
         "Second, every claim records valid time, write time, frame, scale, scope, certainty, and source lineage.",
@@ -21494,10 +21494,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9843,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.955,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, most software burns needless time and power unpacking text and recalculating answers it already solved.",
         "Second, fingerprint-chained logs and dual-time indexes let any machine replay exact past states without guesswork.",
@@ -21994,10 +21994,10 @@
       "ship_allowed": true,
       "attempts": 1,
       "comet_calibrated": 0.9861,
-      "labse_cosine": 1.0,
+      "labse_cosine": 1,
       "me5_cosine": 0.9604,
-      "backtrans_chrfpp": 100.0,
-      "backtrans_bleu": 100.0,
+      "backtrans_chrfpp": 100,
+      "backtrans_bleu": 100,
       "bullets": [
         "First, living cells use sixty-four genetic triplets to store survival rules, and digital six-input lookup tables use the exact same sixty-four switches.",
         "Second, grouping four neighboring switch settings together absorbs small sensor or wording glitches while eliminating brittle high-frequency noise.",
@@ -22812,7 +22812,7 @@
       "lang": "yo",
       "dir": "ltr",
       "voice": "facebook/mms-tts-yor",
-      "duration_s": 0.0,
+      "duration_s": 0,
       "audio_url": null,
       "vtt_url": null,
       "gate_status": "FLAGGED_DO_NOT_SHIP",
@@ -22921,7 +22921,7 @@
       "comet_calibrated": 0.8285,
       "labse_cosine": 0.8176,
       "me5_cosine": 0.8622,
-      "backtrans_chrfpp": 59.0,
+      "backtrans_chrfpp": 59,
       "backtrans_bleu": 31.82,
       "bullets": [
         "În primul rând, celulele vii folosesc 64 de tripleți genetici pentru a stoca regulile de supraviețuire, iar tabelele digitale cu 6 intrări folosesc aceleași 64 de comutatoare.",
@@ -22962,7 +22962,7 @@
       "lang": "th",
       "dir": "ltr",
       "voice": "th-TH-PremwadeeNeural",
-      "duration_s": 0.0,
+      "duration_s": 0,
       "audio_url": null,
       "vtt_url": null,
       "gate_status": "FLAGGED_DO_NOT_SHIP",
@@ -23212,7 +23212,7 @@
       "lang": "km",
       "dir": "ltr",
       "voice": "km-KH-SreymomNeural",
-      "duration_s": 0.0,
+      "duration_s": 0,
       "audio_url": null,
       "vtt_url": null,
       "gate_status": "FLAGGED_DO_NOT_SHIP",

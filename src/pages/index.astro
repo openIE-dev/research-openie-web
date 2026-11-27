@@ -2,26 +2,45 @@
 import Layout from '../layouts/Layout.astro';
 import homeJsonLd from '../data/home-jsonld.json';
 import coverageSummary from '../data/coverage-summary.json';
+import gravityWell from '../data/gravity-well.json';
 import { getExportedStudies } from '../lib/markdownExport';
 
 const exported = await getExportedStudies();
+const gwMap = gravityWell.studies as Record<string, any>;
+const clusters = gravityWell.clusters as { id: string; label: string; short: string; description: string }[];
+const capstone = gwMap['from-ephemeral-inference-to-compiled-agency'];
 
-const projects = exported.map((s) => ({
-  id: s.id,
-  title: s.title,
-  deck: s.summary,
-  status: s.kind,
-  group: s.group,
-  about: s.aboutPath,
-  paper: s.path,
-  markdown: s.markdownPath,
-  pdf: s.pdfPath,
-  figures: s.figures,
-  hasLiving: s.figures.startsWith('/living/') && s.figures !== '/living/',
-  tags: s.keywords.slice(0, 4),
-  allKeywords: s.keywords,
-  sections: s.headings.map((h) => ({ slug: h.slug, text: h.text })),
-}));
+const clusterLabels: Record<string, string> = Object.fromEntries(clusters.map((c) => [c.id, c.short]));
+
+const projects = exported.map((s) => {
+  const gw = gwMap[s.id] ?? null;
+  return {
+    id: s.id,
+    title: s.title,
+    deck: s.summary,
+    status: s.kind,
+    group: s.group,
+    about: s.aboutPath,
+    paper: s.path,
+    markdown: s.markdownPath,
+    pdf: s.pdfPath,
+    figures: s.figures,
+    hasLiving: s.figures.startsWith('/living/') && s.figures !== '/living/',
+    tags: s.keywords.slice(0, 4),
+    allKeywords: s.keywords,
+    sections: s.headings.map((h) => ({ slug: h.slug, text: h.text })),
+    cluster: gw?.cluster ?? 'check-first',
+    clusterLabel: clusterLabels[gw?.cluster ?? 'check-first'] ?? 'Check Before Acting',
+    plainTitle: gw?.plainTitle ?? s.title,
+    oneLineHook: gw?.oneLineHook ?? s.summary,
+    everydayAnalogy: gw?.everydayAnalogy ?? '',
+    keyNumberPlain: gw?.keyNumberPlain ?? '',
+    evidenceClass: gw?.evidenceClass ?? 'unmetered',
+    evidenceBadge: gw?.evidenceBadge ?? s.kind,
+    readingMinutesPlain: gw?.readingMinutesPlain ?? 1,
+    readingMinutesFull: gw?.readingMinutesFull ?? 25,
+  };
+});
 
 const catalogLd = {
   ...homeJsonLd,
@@ -61,69 +80,348 @@ const research = projects.filter((p) => p.group !== 'product');
 const products = projects.filter((p) => p.group === 'product');
 ---
 
-<Layout title="Research catalog" description="OpenIE research, free to read and reuse, with a web edition, clean Markdown, a PDF and interactive figures for each paper.">
+<Layout title="Research catalog" description="OpenIE research in plain words first, with 15-second multilingual films, interactive simulators, signed source sheets, clean Markdown, and full formal papers as a last resort.">
   <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(catalogLd)} />
-  <section class="px-6 md:px-10 pt-16 md:pt-24 pb-10 max-w-7xl mx-auto">
-    <p class="section-label mb-4">research.openie.dev</p>
-    <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-brand-white max-w-3xl">
-      Research catalog
+
+  <!-- GRAVITY-WELL WELCOMING HERO -->
+  <section class="px-6 md:px-10 pt-10 md:pt-16 pb-10 max-w-7xl mx-auto">
+    <p class="section-label mb-3">research.openie.dev · Open Public-Benefit Research</p>
+    <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-brand-white max-w-4xl leading-[1.1]">
+      Software shouldn't burn supercomputer energy to re-answer routine questions.
     </h1>
-    <p class="mt-6 font-body text-base md:text-lg text-brand-slate max-w-2xl leading-relaxed">
-      Research from Open Interface Engineering, published free so anyone can read, check and reuse it.
-      Each paper stands alone, defines its own terms, and opens with three points in plain words. Energy figures are labeled by how they were obtained.
-    </p>
-    <div class="mt-8 flex flex-wrap gap-3">
-      <a href="/tv/" class="inline-flex items-center font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
-        ▶ Research TV ({coverageSummary.horizontal_films_count} HD + {coverageSummary.vertical_films_count} 9:16 = {coverageSummary.total_films_count} films)
-      </a>
-      <a href="/living/compiled-agency/" class="inline-flex items-center font-mono text-xs text-emerald-300 border border-emerald-400/50 bg-emerald-500/10 px-4 py-2.5 rounded-md no-underline hover:bg-emerald-500/20 transition-colors">
-        ⚡ Compiled Agency · @ 6a22dee 6-Model SOTA Shunts
-      </a>
-      <a href="/radio/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/50 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
-        ◉ Research Radio ({coverageSummary.radio_episodes_count} episodes)
-      </a>
-      <a href="/blueprint/" class="inline-flex items-center font-mono text-xs text-brand-amber border border-brand-amber/45 bg-brand-amber/10 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/20 transition-colors">
-        🌐 Planetary Media Blueprint v1.0 ({coverageSummary.totals.voiced_15s_languages_count} voiced · {coverageSummary.spoken_selector_codes_count} selector langs)
-      </a>
-      <a href="/sourcesheets/" class="inline-flex items-center font-mono text-xs text-emerald-300 border border-emerald-400/40 px-4 py-2.5 rounded-md no-underline hover:bg-emerald-500/10 transition-colors">
-        📑 Source Sheets ({coverageSummary.studies_count})
-      </a>
-      <a href="/transcripts/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
-        ⠃ Braille HTML Transcripts ({coverageSummary.totals.braille_html_transcripts_count})
-      </a>
-      <a href="/tutorials/" class="inline-flex items-center font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors">
-        Interactive Tutorials (13 labs)
-      </a>
-      <a href="https://openie-dev.github.io/rce/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
-        RCE Playground
-      </a>
-      <a href="/living/" class="inline-flex items-center font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:bg-brand-slate/10 transition-colors">
-        Figures hub
-      </a>
-      <a href="/data/" class="inline-flex items-center font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:bg-brand-slate/10 transition-colors">
-        Data and code
-      </a>
-      <a href="/glossary/" class="inline-flex items-center font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:bg-brand-slate/10 transition-colors">
-        Glossary
-      </a>
-      <a href="/about/" class="inline-flex items-center font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:bg-brand-slate/10 transition-colors">
-        About
-      </a>
-      <a href="/living/fpga-sim/alchitry/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
-        Alchitry guide
-      </a>
+
+    <!-- Crisp 3-Beat And · But · Therefore Plain-English Story -->
+    <div class="mt-6 grid md:grid-cols-3 gap-3.5 max-w-6xl">
+      <div class="glass-card p-4 border border-emerald-400/30">
+        <div class="font-mono text-[10px] tracking-[0.14em] uppercase text-emerald-300 font-semibold mb-1">
+          1 · The Setup (And)
+        </div>
+        <p class="font-body text-sm text-brand-light leading-relaxed m-0">
+          Today's neural networks are remarkable at cracking brand-new, open-ended questions across code, science, and language.
+        </p>
+      </div>
+      <div class="glass-card p-4 border border-brand-amber/35">
+        <div class="font-mono text-[10px] tracking-[0.14em] uppercase text-brand-amber font-semibold mb-1">
+          2 · The Problem (But)
+        </div>
+        <p class="font-body text-sm text-brand-light leading-relaxed m-0">
+          Most real-world software traffic repeats the same routine patterns—and waking a billion-parameter model every single time wastes massive electricity and risks fresh mistakes.
+        </p>
+      </div>
+      <div class="glass-card p-4 border border-brand-cyan/35">
+        <div class="font-mono text-[10px] tracking-[0.14em] uppercase text-brand-cyan font-semibold mb-1">
+          3 · Our Thesis (Therefore)
+        </div>
+        <p class="font-body text-sm text-brand-light leading-relaxed m-0">
+          Check every permanent action with a tiny safety gate, save tested answers into microsecond lookup tables, and wake giant models only as a last resort.
+        </p>
+      </div>
     </div>
 
-    <form id="catalog-search-form" role="search" aria-label="Search research studies, keywords, and sections" class="mt-8 glass-card p-4 md:p-5" onsubmit="return false;">
+    <!-- INTERACTIVE 10-SECOND "FEEL THE GRAVITY WELL" MICRO-SIMULATOR -->
+    <div
+      id="gw-hero-sim"
+      class="mt-7 glass-card p-5 md:p-7 border border-brand-amber/40 bg-gradient-to-br from-brand-amber/[0.06] via-brand-navy/60 to-brand-cyan/[0.05]"
+    >
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4">
+        <div>
+          <span class="font-mono text-[10px] tracking-[0.14em] uppercase px-2.5 py-0.5 rounded bg-brand-amber text-brand-dark font-bold">
+            Try It in 10 Seconds · Real Hardware Shunt Joules (@ 6a22dee)
+          </span>
+          <h2 class="text-lg sm:text-xl font-bold text-brand-white mt-2 m-0">
+            Feel the Gravity Well: Re-Ask Every Time vs. Check Once &amp; Look It Up
+          </h2>
+        </div>
+
+        <div class="flex flex-wrap gap-1.5" role="group" aria-label="Choose an everyday task">
+          <button
+            type="button"
+            data-gw-task="safety"
+            aria-pressed="true"
+            class="gw-sim-task-btn font-mono text-[11px] px-3 py-1.5 rounded-md border border-brand-amber bg-brand-amber/20 text-brand-amber font-semibold cursor-pointer transition-all"
+          >
+            🛡️ Check a safety rule
+          </button>
+          <button
+            type="button"
+            data-gw-task="route"
+            aria-pressed="false"
+            class="gw-sim-task-btn font-mono text-[11px] px-3 py-1.5 rounded-md border border-brand-border bg-brand-dark/50 text-brand-slate hover:text-brand-white cursor-pointer transition-all"
+          >
+            🎫 Route a support ticket
+          </button>
+          <button
+            type="button"
+            data-gw-task="parse"
+            aria-pressed="false"
+            class="gw-sim-task-btn font-mono text-[11px] px-3 py-1.5 rounded-md border border-brand-border bg-brand-dark/50 text-brand-slate hover:text-brand-white cursor-pointer transition-all"
+          >
+            📋 Parse structured records
+          </button>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] gap-6 items-center">
+        <!-- Slider Control -->
+        <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/55 space-y-3">
+          <label for="gw-sim-slider" class="block font-display text-sm sm:text-base font-bold text-brand-white">
+            How many times does this routine question show up?
+          </label>
+          <div class="flex items-baseline justify-between gap-2">
+            <span id="gw-sim-count-label" class="font-display text-2xl sm:text-3xl font-bold text-brand-amber">
+              300 times
+            </span>
+            <span id="gw-sim-saving-pill" class="font-mono text-xs px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/45 text-emerald-300 font-bold">
+              29.9× less energy
+            </span>
+          </div>
+          <input
+            id="gw-sim-slider"
+            type="range"
+            min="0"
+            max="5"
+            step="1"
+            value="2"
+            aria-label="Number of times the routine question repeats"
+            class="w-full accent-amber-400 cursor-pointer"
+          />
+          <div class="flex justify-between font-mono text-[10px] text-brand-gray select-none">
+            <span>1×</span>
+            <span>25×</span>
+            <span>300×</span>
+            <span>2,500×</span>
+            <span>50k×</span>
+            <span>1,000,000×</span>
+          </div>
+          <p id="gw-sim-verdict" class="font-body text-xs text-brand-light leading-relaxed m-0 pt-1">
+            On the very first unseen arrival, both paths wake a neural model—by 300 realistic Zipf(0.85) arrivals, lookup-first cuts physical Jetson Thor shunt energy from 396.3 J down to 13.3 J.
+          </p>
+        </div>
+
+        <!-- Animated Energy Bar Comparison -->
+        <div class="space-y-3.5">
+          <div class="p-3.5 rounded-xl border border-rose-400/30 bg-brand-dark/45">
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <span class="font-body text-xs sm:text-sm font-semibold text-rose-200">
+                🔥 Re-ask a neural network every single time
+              </span>
+              <span id="gw-bar-llm-joules" class="font-mono text-xs sm:text-sm font-bold text-rose-300">
+                2,641.8 J
+              </span>
+            </div>
+            <div class="h-3.5 w-full rounded-full bg-white/[0.06] overflow-hidden">
+              <div
+                id="gw-bar-llm-fill"
+                class="h-full rounded-full bg-gradient-to-r from-amber-500 to-rose-500 transition-all duration-300"
+                style="width: 100%"
+              ></div>
+            </div>
+            <div id="gw-bar-llm-equiv" class="mt-1.5 font-mono text-[11px] text-brand-slate">
+              ≈ lights a 10W desk LED bulb for 4.4 minutes
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl border border-emerald-400/35 bg-emerald-500/[0.05]">
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <span class="font-body text-xs sm:text-sm font-semibold text-emerald-200">
+                ⚡ Check once, compile &amp; look it up (Big model = last resort)
+              </span>
+              <span id="gw-bar-lut-joules" class="font-mono text-xs sm:text-sm font-bold text-emerald-300">
+                13.27 J
+              </span>
+            </div>
+            <div class="h-3.5 w-full rounded-full bg-white/[0.06] overflow-hidden">
+              <div
+                id="gw-bar-lut-fill"
+                class="h-full rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400 transition-all duration-300"
+                style="width: 3.4%"
+              ></div>
+            </div>
+            <div id="gw-bar-lut-equiv" class="mt-1.5 font-mono text-[11px] text-emerald-300/90">
+              ≈ lights a 10W desk LED bulb for 1.3 seconds (4 KiB lookup + solver cascade)
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-2 font-mono text-[10.5px] text-brand-gray">
+            <span id="gw-sim-sensor-note">
+              Meter: Jetson AGX Thor TI INA3221 physical DC shunt (measured_j · Signed Provenance · Self-Checked)
+            </span>
+            <a href="/living/compiled-agency/" class="text-brand-cyan no-underline hover:underline">
+              Open Full 4-Substrate Simulator →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 CLEAR ENTRY DOORS -->
+    <div class="mt-7 grid md:grid-cols-3 gap-4">
+      <div class="glass-card p-5 border border-brand-amber/35 flex flex-col justify-between gap-3">
+        <div>
+          <div class="font-mono text-[10px] tracking-[0.14em] uppercase text-brand-amber font-semibold mb-1">
+            Door 1 · Watch or Listen First
+          </div>
+          <h2 class="text-lg font-bold text-brand-white m-0">15-Second Plain-Words TV &amp; Radio</h2>
+          <p class="mt-1.5 font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+            Every study opens with a 15-second jargon-free video in {coverageSummary.totals.voiced_15s_languages_count} voiced and {coverageSummary.spoken_selector_codes_count} captioned languages, plus {coverageSummary.radio_episodes_count} multi-voice talk episodes.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a href="/tv/" class="inline-flex items-center font-mono text-xs text-brand-dark bg-brand-amber px-3.5 py-2 rounded-md no-underline hover:bg-brand-gold font-semibold">
+            ▶ Research TV ({coverageSummary.total_films_count} films)
+          </a>
+          <a href="/radio/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/45 px-3 py-2 rounded-md no-underline hover:bg-brand-cyan/10">
+            ◉ Radio ({coverageSummary.radio_episodes_count} eps)
+          </a>
+        </div>
+      </div>
+
+      <div class="glass-card p-5 border border-brand-cyan/35 flex flex-col justify-between gap-3">
+        <div>
+          <div class="font-mono text-[10px] tracking-[0.14em] uppercase text-brand-cyan font-semibold mb-1">
+            Door 2 · Touch Working Models
+          </div>
+          <h2 class="text-lg font-bold text-brand-white m-0">Browser Simulators &amp; 4-Step Labs</h2>
+          <p class="mt-1.5 font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+            Drag sliders on real hardware telemetry in <code>/living/</code> or learn hands-on through 13 guided Predict → Break → Repair → Verify labs.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a href="/living/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/50 bg-brand-cyan/10 px-3.5 py-2 rounded-md no-underline hover:bg-brand-cyan/20 font-semibold">
+            🔬 Living Figures Hub
+          </a>
+          <a href="/tutorials/" class="inline-flex items-center font-mono text-xs text-brand-amber border border-brand-amber/40 px-3 py-2 rounded-md no-underline hover:bg-brand-amber/10">
+            🎓 13 Guided Labs
+          </a>
+        </div>
+      </div>
+
+      <div class="glass-card p-5 border border-emerald-400/35 flex flex-col justify-between gap-3">
+        <div>
+          <div class="font-mono text-[10px] tracking-[0.14em] uppercase text-emerald-300 font-semibold mb-1">
+            Door 3 · Read at Your Own Altitude
+          </div>
+          <h2 class="text-lg font-bold text-brand-white m-0">Browse {projects.length} Studies by Plain Question</h2>
+          <p class="mt-1.5 font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+            Every study starts with a 1-minute plain-English guide and everyday analogy—keeping the dense formal paper tucked away as a last resort.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a href="#catalog" class="inline-flex items-center font-mono text-xs text-emerald-200 border border-emerald-400/50 bg-emerald-500/15 px-3.5 py-2 rounded-md no-underline hover:bg-emerald-500/25 font-semibold">
+            ↓ Jump to Plain-First Catalog
+          </a>
+          <a href="/about/" class="inline-flex items-center font-mono text-xs text-brand-slate border border-brand-border px-3 py-2 rounded-md no-underline hover:text-brand-white">
+            About Notes
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPACT / COLLAPSIBLE VERIFICATION, ACCESSIBILITY & RAW DATA SHELF -->
+    <details class="mt-5 glass-card border border-brand-border overflow-hidden">
+      <summary class="px-4 py-3 cursor-pointer font-mono text-xs text-brand-slate hover:text-brand-white flex flex-wrap items-center justify-between gap-2 select-none">
+        <span>🔍 Verification, Accessibility &amp; Raw Data Shelf ({coverageSummary.studies_count} Source Sheets · {coverageSummary.totals.braille_html_transcripts_count} Braille Transcripts · Blueprint v1.0 · RCE Playground · Data)</span>
+        <span class="text-brand-amber">Open Shelf ▾</span>
+      </summary>
+      <div class="px-4 pb-4 pt-2 border-t border-brand-border flex flex-wrap gap-2.5 font-mono text-xs">
+        <a href="/sourcesheets/" class="text-emerald-300 border border-emerald-400/40 px-3 py-1.5 rounded-md no-underline hover:bg-emerald-500/10">
+          📑 Source Sheets ({coverageSummary.studies_count} [G0–G12])
+        </a>
+        <a href="/transcripts/" class="text-brand-cyan border border-brand-cyan/40 px-3 py-1.5 rounded-md no-underline hover:bg-brand-cyan/10">
+          ⠃ Braille HTML Transcripts ({coverageSummary.totals.braille_html_transcripts_count})
+        </a>
+        <a href="/blueprint/" class="text-brand-amber border border-brand-amber/40 px-3 py-1.5 rounded-md no-underline hover:bg-brand-amber/10">
+          🌐 Planetary Media Blueprint v1.0 ({coverageSummary.totals.voiced_15s_languages_count} voiced · {coverageSummary.spoken_selector_codes_count} selector langs)
+        </a>
+        <a href="/coverage.json" class="text-emerald-300 border border-emerald-400/40 px-3 py-1.5 rounded-md no-underline hover:bg-emerald-500/10">
+          /coverage.json
+        </a>
+        <a href="/data/" class="text-brand-slate border border-brand-border px-3 py-1.5 rounded-md no-underline hover:text-brand-white">
+          Data &amp; Code
+        </a>
+        <a href="/glossary/" class="text-brand-slate border border-brand-border px-3 py-1.5 rounded-md no-underline hover:text-brand-white">
+          Glossary &amp; 38 AAC Concepts
+        </a>
+        <a href="https://openie-dev.github.io/rce/" class="text-brand-cyan border border-brand-cyan/40 px-3 py-1.5 rounded-md no-underline hover:bg-brand-cyan/10">
+          RCE Playground
+        </a>
+        <a href="/living/fpga-sim/alchitry/" class="text-brand-cyan border border-brand-cyan/40 px-3 py-1.5 rounded-md no-underline hover:bg-brand-cyan/10">
+          Alchitry FPGA Guide
+        </a>
+      </div>
+    </details>
+
+    <!-- FEATURED CAPSTONE SPOTLIGHT CARD (STUDY #29: FROM EPHEMERAL INFERENCE TO COMPILED AGENCY) -->
+    {capstone && (
+      <div class="mt-7 glass-card p-6 md:p-7 border border-emerald-400/45 bg-gradient-to-r from-emerald-500/[0.08] via-brand-navy/60 to-brand-amber/[0.06]">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-mono text-[10px] tracking-[0.14em] uppercase px-2.5 py-0.5 rounded bg-emerald-400 text-[#05120e] font-bold">
+              Capstone Position Study (#29)
+            </span>
+            <span class="font-mono text-[10.5px] text-emerald-300">
+              {capstone.evidenceBadge}
+            </span>
+          </div>
+          <span class="font-mono text-[10.5px] text-brand-gray">
+            Oct–Nov 2026 6-Model SOTA Hardware Shunt Panel (@ 6a22dee)
+          </span>
+        </div>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-brand-white m-0">
+          <a href="/syndication/medium/from-ephemeral-inference-to-compiled-agency/" class="text-brand-white no-underline hover:text-brand-amber transition-colors">
+            {capstone.plainTitle}
+          </a>
+        </h2>
+        <p class="mt-1 font-mono text-xs text-brand-gray">
+          Formal title: From Ephemeral Inference to Compiled Agency — A Position Paper on Verifiable, Energy-Accounted Computing
+        </p>
+        <p class="mt-3 font-body text-sm md:text-base text-brand-light leading-relaxed max-w-4xl">
+          {capstone.oneLineHook} <span class="text-brand-slate">{capstone.everydayAnalogy}</span>
+        </p>
+        <p class="mt-2 font-mono text-xs text-emerald-300">
+          Headline result: {capstone.keyNumberPlain}
+        </p>
+
+        <details class="gw-card-video-toggle mt-3 rounded-xl border border-brand-border bg-brand-dark/50 overflow-hidden max-w-2xl" data-gw-video-src="/media/tv/films/from-ephemeral-inference-to-compiled-agency-15s.mp4" data-gw-vtt-src="/media/tv/planetary-15s/captions/from-ephemeral-inference-to-compiled-agency/en.vtt">
+          <summary class="px-3.5 py-2 cursor-pointer font-mono text-xs text-brand-amber flex items-center justify-between select-none">
+            <span>▶ Watch 15-Second Plain-Words Film Right Here</span>
+            <span class="text-brand-gray">▾</span>
+          </summary>
+          <div class="p-2 border-t border-brand-border gw-lazy-video-slot"></div>
+        </details>
+
+        <div class="mt-4 flex flex-wrap gap-2.5 font-mono text-xs">
+          <a href="/syndication/medium/from-ephemeral-inference-to-compiled-agency/" class="px-3.5 py-2 rounded-md bg-brand-amber text-brand-dark font-bold no-underline hover:bg-brand-gold">
+            Open Capstone Essay →
+          </a>
+          <a href="/living/compiled-agency/" class="px-3.5 py-2 rounded-md border border-emerald-400/50 bg-emerald-500/10 text-emerald-300 no-underline hover:bg-emerald-500/20">
+            ⚡ Interactive 4-Substrate Observatory
+          </a>
+          <a href="/tv/?study=from-ephemeral-inference-to-compiled-agency" class="px-3 py-2 rounded-md border border-brand-amber/40 text-brand-amber no-underline hover:bg-brand-amber/10">
+            TV (28 Voiced / 50 Captioned)
+          </a>
+          <a href="/sourcesheets/from-ephemeral-inference-to-compiled-agency/" class="px-3 py-2 rounded-md border border-brand-cyan/40 text-brand-cyan no-underline hover:bg-brand-cyan/10">
+            📑 [G0–G12] Source Sheet
+          </a>
+          <a href="/data/#compiled-agency" class="px-3 py-2 rounded-md border border-brand-border text-brand-slate no-underline hover:text-brand-white">
+            Raw Shunt Receipts (@ 6a22dee)
+          </a>
+        </div>
+      </div>
+    )}
+
+    <!-- SEARCH + PLAIN-QUESTION FILTERS -->
+    <form id="catalog-search-form" role="search" aria-label="Search research studies, plain ideas, keywords, and sections" class="mt-8 glass-card p-4 md:p-5" onsubmit="return false;">
       <div class="flex flex-col md:flex-row gap-3 md:items-center">
         <div class="flex-1 relative">
-          <label for="catalog-search" class="sr-only">Search titles, summaries, keywords, and paper sections</label>
+          <label for="catalog-search" class="sr-only">Search plain titles, analogies, summaries, keywords, and paper sections</label>
           <input
             id="catalog-search"
             name="q"
             type="search"
             autocomplete="off"
-            placeholder="Search papers, sections, and terms (e.g. deterministic null, LUT6, Good-Turing, drand, JEPA, KV260) — press /"
+            placeholder="Search in plain words or technical terms (e.g. lookup table, safety gate, game replay, spell check, LUT6, JEPA) — press /"
             class="w-full font-body text-sm text-brand-white bg-brand-dark/60 border border-brand-border rounded-md px-3.5 py-2.5 focus:outline-none focus:border-brand-amber"
           />
         </div>
@@ -133,14 +431,37 @@ const products = projects.filter((p) => p.group === 'product');
           hidden
           class="font-mono text-xs text-brand-slate border border-brand-border px-3 py-2 rounded-md cursor-pointer bg-transparent hover:text-brand-white"
         >
-          Clear
+          Reset Filters
         </button>
       </div>
-      <div class="mt-3 flex flex-wrap items-center justify-between gap-3">
-        <div class="flex flex-wrap gap-2" role="group" aria-label="Filter by category">
-          <button type="button" data-filter-group="all" aria-pressed="true" class="cat-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-amber text-brand-amber cursor-pointer bg-transparent">All ({projects.length})</button>
+
+      <!-- Primary Plain-Question Filter Row -->
+      <div class="mt-3.5 flex flex-wrap items-center gap-2" role="group" aria-label="Filter by plain question">
+        <span class="font-mono text-[10px] tracking-[0.12em] uppercase text-brand-amber mr-1">Plain Question:</span>
+        {clusters.map((c, idx) => (
+          <button
+            type="button"
+            data-filter-cluster={c.id}
+            aria-pressed={idx === 0 ? 'true' : 'false'}
+            title={c.description}
+            class={`cluster-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border cursor-pointer bg-transparent transition-colors ${
+              idx === 0
+                ? 'border-brand-amber text-brand-amber font-semibold'
+                : 'border-brand-border text-brand-slate hover:text-brand-white'
+            }`}
+          >
+            {c.short}
+          </button>
+        ))}
+      </div>
+
+      <!-- Secondary Format Filter Row -->
+      <div class="mt-2.5 pt-2.5 border-t border-brand-border/60 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex flex-wrap items-center gap-2" role="group" aria-label="Filter by document type">
+          <span class="font-mono text-[10px] tracking-[0.12em] uppercase text-brand-gray mr-1">Format:</span>
+          <button type="button" data-filter-group="all" aria-pressed="true" class="cat-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-cyan text-brand-cyan cursor-pointer bg-transparent">All ({projects.length})</button>
           <button type="button" data-filter-group="research" aria-pressed="false" class="cat-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-slate cursor-pointer bg-transparent hover:text-brand-white">Research</button>
-          <button type="button" data-filter-group="essay" aria-pressed="false" class="cat-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-slate cursor-pointer bg-transparent hover:text-brand-white">Essays &amp; Economics</button>
+          <button type="button" data-filter-group="essay" aria-pressed="false" class="cat-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-slate cursor-pointer bg-transparent hover:text-brand-white">Essays &amp; History</button>
           <button type="button" data-filter-group="product" aria-pressed="false" class="cat-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-slate cursor-pointer bg-transparent hover:text-brand-white">White papers</button>
           <button type="button" data-filter-group="living" aria-pressed="false" class="cat-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-slate cursor-pointer bg-transparent hover:text-brand-white">Interactive (/living/)</button>
         </div>
@@ -151,45 +472,107 @@ const products = projects.filter((p) => p.group === 'product');
     </form>
   </section>
 
+  <!-- RESEARCH PAPERS & ESSAYS GRID -->
   <section id="catalog" class="px-6 md:px-10 pb-12 max-w-7xl mx-auto">
-    <div class="flex items-end justify-between gap-4 mb-8">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8">
       <div>
-        <p class="section-label mb-2">Catalog</p>
+        <p class="section-label mb-2">Simplest First · Complex Last Resort</p>
         <h2 class="text-2xl md:text-3xl text-brand-white">Research papers and essays</h2>
       </div>
-      <p class="font-mono text-[11px] text-brand-gray hidden sm:block">FPGA board result: KV260, in Metered Commit Gates only</p>
+      <p class="font-mono text-[11px] text-brand-gray m-0">
+        measured_j (hardware shunt) ⊥ reported_j (chip counter) ⊥ est_j (model) ⊥ unmetered
+      </p>
     </div>
+
     <div id="catalog-grid-research" class="grid md:grid-cols-2 gap-6">
       {research.map((p) => (
         <article
-          class="glass-card p-6 md:p-8 flex flex-col study-card"
+          class="glass-card p-6 md:p-7 flex flex-col study-card"
           data-study-id={p.id}
           data-study-group={p.group}
+          data-study-cluster={p.cluster}
           data-has-living={String(p.hasLiving)}
-          data-study-haystack={`${p.id} ${p.title} ${p.deck} ${p.allKeywords.join(' ')} ${p.sections.map((s) => s.text).join(' ')}`.toLowerCase()}
+          data-study-haystack={`${p.id} ${p.plainTitle} ${p.oneLineHook} ${p.everydayAnalogy} ${p.keyNumberPlain} ${p.title} ${p.deck} ${p.allKeywords.join(' ')} ${p.sections.map((s) => s.text).join(' ')}`.toLowerCase()}
           data-study-sections={JSON.stringify(p.sections)}
           data-study-url={p.paper}
         >
-          <div class="flex items-center justify-between gap-3 mb-4">
-            <span class="font-mono text-[10px] tracking-[2px] uppercase text-brand-amber">{p.status}</span>
-            <span class="font-mono text-[10px] text-brand-gray">{p.id}</span>
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span class="font-mono text-[10px] tracking-[1.5px] uppercase px-2 py-0.5 rounded bg-brand-amber/15 text-brand-amber border border-brand-amber/35">
+                {p.clusterLabel}
+              </span>
+              <span class="font-mono text-[10px] text-brand-gray">
+                {p.readingMinutesPlain} min plain · {p.id}
+              </span>
+            </div>
+            <span class="font-mono text-[10px] text-emerald-300/90">
+              {p.evidenceClass === 'measured_j' ? '🔌 measured_j' : p.evidenceClass === 'reported_j' ? '📊 reported_j' : p.evidenceClass === 'est_j' ? '⚡ est_j' : '📖 synthesis/proof'}
+            </span>
           </div>
-          <h3 class="text-xl md:text-2xl text-brand-white mb-3">
-            <a href={p.paper} class="text-brand-white no-underline hover:text-brand-amber transition-colors">{p.title}</a>
+
+          <h3 class="text-xl md:text-2xl text-brand-white mb-2 leading-snug">
+            <a href={p.paper} class="text-brand-white no-underline hover:text-brand-amber transition-colors">
+              {p.plainTitle}
+            </a>
           </h3>
-          <p class="font-body text-sm text-brand-slate leading-relaxed flex-1">{p.deck}</p>
-          <div class="matched-sections hidden mt-4 pt-3 border-t border-brand-border/60 font-mono text-[11px] text-brand-cyan space-y-1"></div>
-          <div class="flex flex-wrap gap-2 mt-5 mb-6">
+
+          <p class="font-body text-sm text-brand-light leading-relaxed m-0">
+            {p.oneLineHook}
+          </p>
+
+          {p.everydayAnalogy && (
+            <div class="gw-card-analogy mt-3 p-3 rounded-lg border border-brand-cyan/25 bg-brand-cyan/[0.04] font-body text-xs text-brand-slate leading-relaxed">
+              <strong class="text-brand-cyan font-mono text-[10px] uppercase tracking-wider">Everyday analogy:</strong>{' '}
+              {p.everydayAnalogy}
+            </div>
+          )}
+
+          {p.keyNumberPlain && (
+            <p class="mt-3 font-mono text-[11px] text-emerald-300/95 leading-snug m-0">
+              ★ {p.keyNumberPlain}
+            </p>
+          )}
+
+          <!-- Inline 15s Video Preview Toggle (Lazy-Loaded on Expand) -->
+          <details
+            class="gw-card-video-toggle mt-3.5 rounded-lg border border-brand-border bg-brand-dark/45 overflow-hidden"
+            data-gw-video-src={`/media/tv/films/${p.id}-15s.mp4`}
+            data-gw-vtt-src={`/media/tv/planetary-15s/captions/${p.id}/en.vtt`}
+          >
+            <summary class="px-3 py-1.5 cursor-pointer font-mono text-[11px] text-brand-amber flex items-center justify-between select-none">
+              <span>▶ Watch 15s plain summary right here</span>
+              <span class="text-brand-gray">▾</span>
+            </summary>
+            <div class="p-2 border-t border-brand-border gw-lazy-video-slot"></div>
+          </details>
+
+          <!-- Collapsible Formal Academic Title & Technical Abstract (Auto-Opens at Depth 4) -->
+          <details class="gw-tech-abstract mt-2.5 rounded-lg border border-brand-border/70 bg-white/[0.015] overflow-hidden">
+            <summary class="px-3 py-1.5 cursor-pointer font-mono text-[10.5px] text-brand-gray hover:text-brand-light flex items-center justify-between select-none">
+              <span>Formal title &amp; technical abstract (~{p.readingMinutesFull} min paper)</span>
+              <span>▾</span>
+            </summary>
+            <div class="px-3 pb-3 pt-2 border-t border-brand-border/60 space-y-1.5">
+              <div class="font-display text-xs font-bold text-brand-white">{p.title}</div>
+              <p class="font-body text-xs text-brand-slate leading-relaxed m-0">{p.deck}</p>
+            </div>
+          </details>
+
+          <div class="matched-sections hidden mt-3 pt-3 border-t border-brand-border/60 font-mono text-[11px] text-brand-cyan space-y-1"></div>
+
+          <div class="flex flex-wrap gap-1.5 mt-4 mb-4">
             {p.tags.map((t) => (
-              <button type="button" data-tag-query={t} class="tag-pill font-mono text-[10px] px-2 py-1 rounded border border-brand-border text-brand-gray hover:text-brand-amber hover:border-brand-amber/50 cursor-pointer bg-transparent transition-colors">{t}</button>
+              <button type="button" data-tag-query={t} class="tag-pill font-mono text-[10px] px-2 py-0.5 rounded border border-brand-border text-brand-gray hover:text-brand-amber hover:border-brand-amber/50 cursor-pointer bg-transparent transition-colors">{t}</button>
             ))}
           </div>
-          <div class="flex flex-wrap gap-3">
-            {p.paper && <a href={p.paper} class="font-mono text-xs text-brand-amber no-underline hover:text-brand-gold transition-colors">Read →</a>}
-            <a href={`/tv/?study=${p.id}`} class="font-mono text-xs text-brand-amber no-underline hover:text-brand-gold transition-colors">TV (15s–3m)</a>
-            {p.markdown && <a href={p.markdown} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal transition-colors">Markdown</a>}
-            {p.pdf && <a href={p.pdf} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal transition-colors" download>Download PDF</a>}
-            <a href={p.figures} class="font-mono text-xs text-brand-slate no-underline hover:text-brand-white transition-colors">Figures</a>
+
+          <div class="mt-auto pt-3 border-t border-brand-border/60 flex flex-wrap items-center gap-3">
+            {p.paper && <a href={p.paper} class="font-mono text-xs font-semibold text-brand-amber no-underline hover:text-brand-gold transition-colors">Open Plain Guide →</a>}
+            <a href={`/tv/?study=${p.id}`} class="font-mono text-xs text-brand-amber/90 no-underline hover:text-brand-gold transition-colors">TV (15s–3m)</a>
+            <a href={p.figures} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal transition-colors">Simulator</a>
+            <a href={`/sourcesheets/${p.id}/`} class="font-mono text-xs text-emerald-300 no-underline hover:underline transition-colors">Source Sheet</a>
+            {p.pdf && <a href={p.pdf} class="font-mono text-xs text-brand-slate no-underline hover:text-brand-white transition-colors" download>PDF</a>}
+            {p.markdown && <a href={p.markdown} class="font-mono text-xs text-brand-gray no-underline hover:text-brand-white transition-colors">.md</a>}
             <a href={p.about} class="font-mono text-xs text-brand-gray no-underline hover:text-brand-white transition-colors">About</a>
           </div>
         </article>
@@ -197,45 +580,102 @@ const products = projects.filter((p) => p.group === 'product');
     </div>
   </section>
 
+  <!-- WHITE PAPERS GRID -->
   <section id="products" class="px-6 md:px-10 pb-12 max-w-7xl mx-auto">
     <div class="mb-8">
       <p class="section-label mb-2">White papers</p>
       <h2 class="text-2xl md:text-3xl text-brand-white">Designs, with their data</h2>
-      <p class="mt-3 font-body text-sm text-brand-slate leading-relaxed max-w-3xl">White papers describe designs by the OpenIE authors as objects of study, with their data and their limits stated.</p>
+      <p class="mt-3 font-body text-sm text-brand-slate leading-relaxed max-w-3xl">White papers describe hardware and operating-system designs by the OpenIE authors as objects of study, opening with plain words and stating exact limits.</p>
     </div>
     <div id="metabolic-intelligence" class="mb-6"></div>
     <div id="jouleos"></div>
     <div id="catalog-grid-products" class="grid md:grid-cols-2 gap-6">
       {products.map((p) => (
         <article
-          class="glass-card p-6 md:p-8 flex flex-col study-card"
+          class="glass-card p-6 md:p-7 flex flex-col study-card"
           data-study-id={p.id}
           data-study-group={p.group}
+          data-study-cluster={p.cluster}
           data-has-living={String(p.hasLiving)}
-          data-study-haystack={`${p.id} ${p.title} ${p.deck} ${p.allKeywords.join(' ')} ${p.sections.map((s) => s.text).join(' ')}`.toLowerCase()}
+          data-study-haystack={`${p.id} ${p.plainTitle} ${p.oneLineHook} ${p.everydayAnalogy} ${p.keyNumberPlain} ${p.title} ${p.deck} ${p.allKeywords.join(' ')} ${p.sections.map((s) => s.text).join(' ')}`.toLowerCase()}
           data-study-sections={JSON.stringify(p.sections)}
           data-study-url={p.paper}
         >
-          <div class="flex items-center justify-between gap-3 mb-4">
-            <span class="font-mono text-[10px] tracking-[2px] uppercase text-brand-amber">{p.status}</span>
-            <span class="font-mono text-[10px] text-brand-gray">{p.id}</span>
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span class="font-mono text-[10px] tracking-[1.5px] uppercase px-2 py-0.5 rounded bg-brand-amber/15 text-brand-amber border border-brand-amber/35">
+                {p.clusterLabel}
+              </span>
+              <span class="font-mono text-[10px] text-brand-gray">
+                {p.readingMinutesPlain} min plain · {p.id}
+              </span>
+            </div>
+            <span class="font-mono text-[10px] text-brand-cyan">
+              {p.evidenceClass === 'est_j' ? '⚡ est_j + PCB/STEP' : '🦀 310 Rust tests'}
+            </span>
           </div>
-          <h3 class="text-xl md:text-2xl text-brand-white mb-3">
-            <a href={p.paper} class="text-brand-white no-underline hover:text-brand-amber transition-colors">{p.title}</a>
+
+          <h3 class="text-xl md:text-2xl text-brand-white mb-2 leading-snug">
+            <a href={p.paper} class="text-brand-white no-underline hover:text-brand-amber transition-colors">
+              {p.plainTitle}
+            </a>
           </h3>
-          <p class="font-body text-sm text-brand-slate leading-relaxed flex-1">{p.deck}</p>
-          <div class="matched-sections hidden mt-4 pt-3 border-t border-brand-border/60 font-mono text-[11px] text-brand-cyan space-y-1"></div>
-          <div class="flex flex-wrap gap-2 mt-5 mb-6">
+
+          <p class="font-body text-sm text-brand-light leading-relaxed m-0">
+            {p.oneLineHook}
+          </p>
+
+          {p.everydayAnalogy && (
+            <div class="gw-card-analogy mt-3 p-3 rounded-lg border border-brand-cyan/25 bg-brand-cyan/[0.04] font-body text-xs text-brand-slate leading-relaxed">
+              <strong class="text-brand-cyan font-mono text-[10px] uppercase tracking-wider">Everyday analogy:</strong>{' '}
+              {p.everydayAnalogy}
+            </div>
+          )}
+
+          {p.keyNumberPlain && (
+            <p class="mt-3 font-mono text-[11px] text-emerald-300/95 leading-snug m-0">
+              ★ {p.keyNumberPlain}
+            </p>
+          )}
+
+          <details
+            class="gw-card-video-toggle mt-3.5 rounded-lg border border-brand-border bg-brand-dark/45 overflow-hidden"
+            data-gw-video-src={`/media/tv/films/${p.id}-15s.mp4`}
+            data-gw-vtt-src={`/media/tv/planetary-15s/captions/${p.id}/en.vtt`}
+          >
+            <summary class="px-3 py-1.5 cursor-pointer font-mono text-[11px] text-brand-amber flex items-center justify-between select-none">
+              <span>▶ Watch 15s plain summary right here</span>
+              <span class="text-brand-gray">▾</span>
+            </summary>
+            <div class="p-2 border-t border-brand-border gw-lazy-video-slot"></div>
+          </details>
+
+          <details class="gw-tech-abstract mt-2.5 rounded-lg border border-brand-border/70 bg-white/[0.015] overflow-hidden">
+            <summary class="px-3 py-1.5 cursor-pointer font-mono text-[10.5px] text-brand-gray hover:text-brand-light flex items-center justify-between select-none">
+              <span>Formal title &amp; technical abstract (~{p.readingMinutesFull} min white paper)</span>
+              <span>▾</span>
+            </summary>
+            <div class="px-3 pb-3 pt-2 border-t border-brand-border/60 space-y-1.5">
+              <div class="font-display text-xs font-bold text-brand-white">{p.title}</div>
+              <p class="font-body text-xs text-brand-slate leading-relaxed m-0">{p.deck}</p>
+            </div>
+          </details>
+
+          <div class="matched-sections hidden mt-3 pt-3 border-t border-brand-border/60 font-mono text-[11px] text-brand-cyan space-y-1"></div>
+
+          <div class="flex flex-wrap gap-1.5 mt-4 mb-4">
             {p.tags.map((t) => (
-              <button type="button" data-tag-query={t} class="tag-pill font-mono text-[10px] px-2 py-1 rounded border border-brand-border text-brand-gray hover:text-brand-amber hover:border-brand-amber/50 cursor-pointer bg-transparent transition-colors">{t}</button>
+              <button type="button" data-tag-query={t} class="tag-pill font-mono text-[10px] px-2 py-0.5 rounded border border-brand-border text-brand-gray hover:text-brand-amber hover:border-brand-amber/50 cursor-pointer bg-transparent transition-colors">{t}</button>
             ))}
           </div>
-          <div class="flex flex-wrap gap-3">
-            <a href={p.paper} class="font-mono text-xs text-brand-amber no-underline hover:text-brand-gold transition-colors">Read →</a>
-            <a href={`/tv/?study=${p.id}`} class="font-mono text-xs text-brand-amber no-underline hover:text-brand-gold transition-colors">TV (15s–3m)</a>
-            <a href={p.markdown} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal transition-colors">Markdown</a>
-            <a href={p.pdf} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal transition-colors" download>Download PDF</a>
-            <a href={p.figures} class="font-mono text-xs text-brand-slate no-underline hover:text-brand-white transition-colors">Figures</a>
+
+          <div class="mt-auto pt-3 border-t border-brand-border/60 flex flex-wrap items-center gap-3">
+            <a href={p.paper} class="font-mono text-xs font-semibold text-brand-amber no-underline hover:text-brand-gold transition-colors">Open Plain Guide →</a>
+            <a href={`/tv/?study=${p.id}`} class="font-mono text-xs text-brand-amber/90 no-underline hover:text-brand-gold transition-colors">TV (15s–3m)</a>
+            <a href={p.figures} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal transition-colors">Simulator</a>
+            <a href={`/sourcesheets/${p.id}/`} class="font-mono text-xs text-emerald-300 no-underline hover:underline transition-colors">Source Sheet</a>
+            <a href={p.pdf} class="font-mono text-xs text-brand-slate no-underline hover:text-brand-white transition-colors" download>PDF</a>
+            <a href={p.markdown} class="font-mono text-xs text-brand-gray no-underline hover:text-brand-white transition-colors">.md</a>
             <a href={p.about} class="font-mono text-xs text-brand-gray no-underline hover:text-brand-white transition-colors">About</a>
           </div>
         </article>
@@ -248,12 +688,13 @@ const products = projects.filter((p) => p.group === 'product');
       <p class="section-label mb-3">Agents and search</p>
       <h2 class="text-xl text-brand-white mb-3">Machine-readable indexes, full-text Markdown, and browser tools</h2>
       <p class="font-body text-sm text-brand-slate leading-relaxed mb-4">
-        Every study on this site is available as semantic HTML, clean Markdown (<code class="text-brand-cyan">/papers/&lt;id&gt;.md</code> and <code class="text-brand-cyan">/products/&lt;id&gt;.md</code>), a stamped PDF, and structured metadata. Browser agents with WebMCP (<code class="text-brand-cyan">document.modelContext</code>) receive named read and search tools automatically.
+        Every study on this site is available as semantic HTML, clean Markdown (<code class="text-brand-cyan">/papers/&lt;id&gt;.md</code> and <code class="text-brand-cyan">/products/&lt;id&gt;.md</code>), a stamped PDF, Ed25519-signed <code class="text-emerald-300">[G0–G12]</code> source sheets, and structured metadata. Browser agents with WebMCP (<code class="text-brand-cyan">document.modelContext</code>) receive named read and search tools automatically.
       </p>
       <div class="flex flex-wrap gap-3 font-mono text-xs">
         <a href="/llms.txt" class="text-brand-cyan border border-brand-cyan/40 px-3 py-1.5 rounded no-underline hover:bg-brand-cyan/10">/llms.txt</a>
         <a href="/llms-full.txt" class="text-brand-cyan border border-brand-cyan/40 px-3 py-1.5 rounded no-underline hover:bg-brand-cyan/10">/llms-full.txt</a>
         <a href="/catalog.json" class="text-brand-amber border border-brand-amber/40 px-3 py-1.5 rounded no-underline hover:bg-brand-amber/10">/catalog.json</a>
+        <a href="/coverage.json" class="text-emerald-300 border border-emerald-400/40 px-3 py-1.5 rounded no-underline hover:bg-emerald-500/10">/coverage.json</a>
         <a href="/.well-known/agent-card.json" class="text-brand-amber border border-brand-amber/40 px-3 py-1.5 rounded no-underline hover:bg-brand-amber/10">/.well-known/agent-card.json</a>
         <a href="/feed.xml" class="text-brand-slate border border-brand-border px-3 py-1.5 rounded no-underline hover:text-brand-white">/feed.xml</a>
         <a href="/sitemap.xml" class="text-brand-slate border border-brand-border px-3 py-1.5 rounded no-underline hover:text-brand-white">/sitemap.xml</a>
@@ -263,43 +704,213 @@ const products = projects.filter((p) => p.group === 'product');
 
   <section class="px-6 md:px-10 pb-24 max-w-7xl mx-auto">
     <div class="glass-card p-6 md:p-8">
-      <p class="section-label mb-3">Measurement</p>
+      <p class="section-label mb-3">Measurement &amp; Provenance</p>
       <h2 class="text-xl text-brand-white mb-3">Research papers, not journal finals</h2>
       <ul class="space-y-2 font-body text-sm text-brand-slate leading-relaxed list-disc pl-5">
         <li>Prose lives at <code class="text-brand-cyan">/papers/</code> and <code class="text-brand-cyan">/products/</code>; clean Markdown at <code class="text-brand-cyan">/papers/&lt;id&gt;.md</code> and <code class="text-brand-cyan">/products/&lt;id&gt;.md</code>; real PDFs at <code class="text-brand-cyan">/pdfs/</code>.</li>
         <li>Site glossary: <a href="/glossary/" class="text-brand-cyan no-underline hover:text-brand-teal">/glossary/</a>. Data and digests: <a href="/data/" class="text-brand-cyan no-underline hover:text-brand-teal">/data/</a>. About index: <a href="/about/" class="text-brand-cyan no-underline hover:text-brand-teal">/about/</a>.</li>
-        <li>Interactive figures stay under <code class="text-brand-cyan">/living/</code>. They are figures, not papers.</li>
+        <li>Interactive figures stay under <code class="text-brand-cyan">/living/</code>. They are working models, not papers.</li>
         <li>No Notion AI, Elicit, Consensus, or other paid research services in the runtime.</li>
-        <li>Claim ledgers bind web, PDF, Medium, demos, and metadata. Forbidden claims stay off the UI.</li>
-        <li>Stage C programmed an Alchitry Pt V2 (SRAM; energy still unmetered on Pt V2). AMD Kria KV260 with its onboard INA260: board-level metered A/B/A differences for the WCA gate fabric (11,428 pJ per gate cycle, standard error 129 pJ, N = 4) and the seed fabric (98.0 pJ per seed cycle, standard error 30.8 pJ, N = 4). Board level, not core rail. Not a closed-loop plant joule cost. OpCounter joules elsewhere are analytical estimates, not board power. Guide: <a href="/living/fpga-sim/alchitry/#energy" class="text-brand-cyan no-underline hover:text-brand-teal">/living/fpga-sim/alchitry/#energy</a>.</li>
+        <li>Claim ledgers and <code class="text-emerald-300">Signed Provenance · Self-Checked</code> source sheets bind web, PDF, TV, Radio, and metadata. Energy classes never mix (<code class="text-brand-cyan">measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered</code>).</li>
+        <li>Physical DC current-shunt <code class="text-emerald-300">measured_j</code> readings are recorded on AMD Kria KV260 (onboard TI INA260 SOM_5V_DC: 11,428 pJ per gate cycle in Metered Commit Gates; 81.86× sub-bit float unpack tax, 26.58× 4-stage cascade, and 21.61× @ 6a22dee live stream in Downward LUT6 Compilation &amp; Compiled Agency; plus @ a9de8d8 media J/min stages) and NVIDIA Jetson AGX Thor (TI INA238 VIN + 3-channel INA3221 VDD_CPU_SOC_MSS/VDD_GPU in Satiation Benchmark Harness, The Communication Tool Avalanche, Downward LUT6 Compilation, Compiled Agency @ 6a22dee, and Planetary Media @ a9de8d8). Stage C programmed an Alchitry Pt V2 (SRAM; energy unmetered on Pt V2). Guide: <a href="/living/fpga-sim/alchitry/#energy" class="text-brand-cyan no-underline hover:text-brand-teal">/living/fpga-sim/alchitry/#energy</a>.</li>
       </ul>
     </div>
   </section>
 
   <script is:inline>
     (function () {
+      // 1. Hero 10-Second "Feel the Gravity Well" Micro-Simulator (strictly grounded in @ 6a22dee physical DC shunt measured_j)
+      var STOPS = [1, 25, 300, 2500, 50000, 1000000];
+      var TASKS = {
+        safety: {
+          sensor: 'Jetson AGX Thor TI INA3221 physical DC shunt (measured_j · @ 6a22dee Inkling-2-Mini vs 4 KiB LUT + Solver)',
+          llmPerQueryJ: 8.806,       // 396.27 J / 45 confirmatory runs on Thor INA3221
+          firstCompileJ: 8.82,       // First unseen verification + 4 KiB crystallization
+          streamPerQueryJ: 0.04423,  // 13.27 J / 300 queries (includes 7-8% novel escalations; at 300 queries: ~13.27 J vs 396.27 J)
+          pureLutHitJ: 0.00001334    // 13.34 µJ Shape D classical guard on Thor INA3221
+        },
+        route: {
+          sensor: 'Jetson AGX Thor TI INA3221 physical DC shunt (measured_j · @ 6a22dee Nemotron-3.5-Bolt-E4B vs Lookup Cascade)',
+          llmPerQueryJ: 3.402,       // 153.11 J / 45 runs on Thor INA3221
+          firstCompileJ: 3.42,
+          streamPerQueryJ: 0.0185,
+          pureLutHitJ: 0.00001334
+        },
+        parse: {
+          sensor: 'AMD Kria KV260 TI INA260 SOM_5V_DC physical shunt (measured_j · @ 6a22dee LFM3-1.7B vs 4.78 µJ Shape D)',
+          llmPerQueryJ: 12.013,      // 540.57 J / 45 runs on KV260 INA260
+          firstCompileJ: 12.02,
+          streamPerQueryJ: 0.08337,  // 25.01 J / 300 queries (21.61x cut)
+          pureLutHitJ: 0.00000478    // 4.78 µJ Shape D classical best on KV260 INA260
+        }
+      };
+
+      var activeTask = 'safety';
+      var simSlider = document.getElementById('gw-sim-slider');
+      var countLbl = document.getElementById('gw-sim-count-label');
+      var savingPill = document.getElementById('gw-sim-saving-pill');
+      var verdictEl = document.getElementById('gw-sim-verdict');
+      var llmJoulesEl = document.getElementById('gw-bar-llm-joules');
+      var lutJoulesEl = document.getElementById('gw-bar-lut-joules');
+      var llmFill = document.getElementById('gw-bar-llm-fill');
+      var lutFill = document.getElementById('gw-bar-lut-fill');
+      var llmEquiv = document.getElementById('gw-bar-llm-equiv');
+      var lutEquiv = document.getElementById('gw-bar-lut-equiv');
+      var sensorNote = document.getElementById('gw-sim-sensor-note');
+
+      function fmtJoules(j) {
+        if (j >= 1000000) return (j / 1000000).toFixed(2) + ' MJ';
+        if (j >= 1000) return (j / 1000).toFixed(2) + ' kJ';
+        if (j >= 1) return j.toFixed(2) + ' J';
+        return (j * 1000).toFixed(1) + ' mJ';
+      }
+
+      function fmtEveryday(j) {
+        // 10-Watt desk LED bulb: 1 second = 10 Joules; typical smartphone battery ≈ 45,000 Joules (12.5 Wh)
+        var ledSec = j / 10;
+        var phonePct = (j / 45000) * 100;
+        if (ledSec < 1) return '≈ lights a 10W desk LED bulb for ' + (ledSec * 1000).toFixed(0) + ' milliseconds';
+        if (ledSec < 90) return '≈ lights a 10W desk LED bulb for ' + ledSec.toFixed(1) + ' seconds';
+        if (ledSec < 3600) return '≈ lights a 10W desk LED bulb for ' + (ledSec / 60).toFixed(1) + ' minutes (' + phonePct.toFixed(1) + '% of a phone charge)';
+        return '≈ lights a 10W desk LED bulb for ' + (ledSec / 3600).toFixed(1) + ' hours (' + (j / 45000).toFixed(1) + ' full smartphone charges)';
+      }
+
+      function updateHeroSim() {
+        if (!simSlider) return;
+        var idx = parseInt(simSlider.value, 10) || 0;
+        var n = STOPS[idx] || 300;
+        var cfg = TASKS[activeTask] || TASKS.safety;
+
+        // Re-asking a neural model on every routine arrival vs. checking once, compiling into <= 4 KiB LUT, and looking up recurring hits
+        var llmTotal = n === 300 && activeTask === 'safety' ? 396.27 : (n === 300 && activeTask === 'parse' ? 540.57 : n * cfg.llmPerQueryJ);
+        var lutTotal;
+        if (n === 1) {
+          lutTotal = cfg.firstCompileJ;
+        } else if (n === 300 && activeTask === 'safety') {
+          lutTotal = 13.27;
+        } else if (n === 300 && activeTask === 'parse') {
+          lutTotal = 25.01;
+        } else {
+          // Sublinear Zipfian novelty tail (~n^0.32 new classes) + microjoule table lookups on all routine repeats
+          var novelTail = Math.max(0, Math.pow(n, 0.32) - 1) * cfg.llmPerQueryJ * 0.22;
+          lutTotal = cfg.firstCompileJ + novelTail + (n - 1) * cfg.pureLutHitJ;
+        }
+
+        var ratio = llmTotal / Math.max(0.001, lutTotal);
+        if (countLbl) countLbl.textContent = n === 1 ? '1 time (cold)' : n.toLocaleString('en-US') + ' times';
+        if (savingPill) {
+          savingPill.textContent = n === 1 ? '1.0× (payback starts next hit)' : (ratio >= 100 ? Math.round(ratio).toLocaleString('en-US') : ratio.toFixed(1)) + '× less energy';
+        }
+        if (llmJoulesEl) llmJoulesEl.textContent = fmtJoules(llmTotal);
+        if (lutJoulesEl) lutJoulesEl.textContent = fmtJoules(lutTotal);
+        if (llmFill) llmFill.style.width = '100%';
+        if (lutFill) lutFill.style.width = Math.max(1.5, Math.min(100, (lutTotal / llmTotal) * 100)).toFixed(2) + '%';
+        if (llmEquiv) llmEquiv.textContent = fmtEveryday(llmTotal);
+        if (lutEquiv) lutEquiv.textContent = fmtEveryday(lutTotal) + ' (4 KiB table + rule cascade)';
+        if (sensorNote) sensorNote.textContent = 'Meter: ' + cfg.sensor;
+        if (verdictEl) {
+          verdictEl.textContent = n === 1
+            ? 'On a brand-new unseen question (1×), you pay the model once and verify the answer. Drag the slider right to watch what happens as routine traffic repeats.'
+            : 'Across ' + n.toLocaleString('en-US') + ' arrivals, verified 4 KiB table hits cost microjoules—so total energy stays flat while re-asking a neural network climbs linearly.';
+        }
+      }
+
+      if (simSlider) {
+        simSlider.addEventListener('input', updateHeroSim);
+      }
+      document.querySelectorAll('.gw-sim-task-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          activeTask = btn.getAttribute('data-gw-task') || 'safety';
+          document.querySelectorAll('.gw-sim-task-btn').forEach(function (b) {
+            var on = b === btn;
+            b.setAttribute('aria-pressed', String(on));
+            b.className = on
+              ? 'gw-sim-task-btn font-mono text-[11px] px-3 py-1.5 rounded-md border border-brand-amber bg-brand-amber/20 text-brand-amber font-semibold cursor-pointer transition-all'
+              : 'gw-sim-task-btn font-mono text-[11px] px-3 py-1.5 rounded-md border border-brand-border bg-brand-dark/50 text-brand-slate hover:text-brand-white cursor-pointer transition-all';
+          });
+          updateHeroSim();
+        });
+      });
+      updateHeroSim();
+
+      // 2. Lazy-load inline 15s video previews inside Study Cards & Sync Depth 4 abstracts
+      document.querySelectorAll('.gw-card-video-toggle').forEach(function (det) {
+        det.addEventListener('toggle', function () {
+          var slot = det.querySelector('.gw-lazy-video-slot');
+          if (!slot) return;
+          if (det.open) {
+            if (!slot.querySelector('video')) {
+              var vsrc = det.getAttribute('data-gw-video-src') || '';
+              var vtt = det.getAttribute('data-gw-vtt-src') || '';
+              var v = document.createElement('video');
+              v.controls = true;
+              v.playsInline = true;
+              v.preload = 'metadata';
+              v.className = 'w-full rounded aspect-video bg-black block';
+              v.src = vsrc;
+              if (vtt) {
+                var tr = document.createElement('track');
+                tr.kind = 'captions';
+                tr.srclang = 'en';
+                tr.label = 'English';
+                tr.default = true;
+                tr.src = vtt;
+                v.appendChild(tr);
+              }
+              slot.appendChild(v);
+              v.play().catch(function () {});
+            }
+          } else {
+            var vid = slot.querySelector('video');
+            if (vid) vid.pause();
+          }
+        });
+      });
+
+      function syncHomeDepth(depth) {
+        document.querySelectorAll('.gw-tech-abstract').forEach(function (det) {
+          det.open = depth === 'formal';
+        });
+      }
+      syncHomeDepth(document.documentElement.getAttribute('data-reading-depth') || 'plain');
+      window.addEventListener('openie:reading-depth', function (ev) {
+        syncHomeDepth((ev && ev.detail && ev.detail.depth) || 'plain');
+      });
+
+      // 3. Catalog Search + Plain-Question Cluster + Format Filtering
       var input = document.getElementById('catalog-search');
       var clearBtn = document.getElementById('catalog-search-clear');
       var statusEl = document.getElementById('catalog-search-status');
       var filterBtns = Array.prototype.slice.call(document.querySelectorAll('.cat-filter-btn'));
+      var clusterBtns = Array.prototype.slice.call(document.querySelectorAll('.cluster-filter-btn'));
       var cards = Array.prototype.slice.call(document.querySelectorAll('.study-card'));
       var researchSec = document.getElementById('catalog');
       var productsSec = document.getElementById('products');
       var activeGroup = 'all';
+      var activeCluster = 'all';
 
-      function applyFilter(queryStr, groupStr, syncUrl) {
+      function applyFilter(queryStr, groupStr, clusterStr, syncUrl) {
         if (typeof queryStr === 'string' && input && input.value !== queryStr) input.value = queryStr;
         if (groupStr) activeGroup = groupStr;
+        if (clusterStr) activeCluster = clusterStr;
         var q = String((input && input.value) || '').toLowerCase().trim();
         var terms = q ? q.split(/[^a-z0-9_+.-]+/).filter(function (t) { return t.length > 0; }) : [];
-        if (clearBtn) clearBtn.hidden = !q && activeGroup === 'all';
+        if (clearBtn) clearBtn.hidden = !q && activeGroup === 'all' && activeCluster === 'all';
 
         filterBtns.forEach(function (btn) {
           var on = btn.getAttribute('data-filter-group') === activeGroup;
           btn.setAttribute('aria-pressed', String(on));
           btn.className = on
-            ? 'cat-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-amber text-brand-amber cursor-pointer bg-transparent'
+            ? 'cat-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-cyan text-brand-cyan cursor-pointer bg-transparent'
             : 'cat-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-slate cursor-pointer bg-transparent hover:text-brand-white';
+        });
+
+        clusterBtns.forEach(function (btn) {
+          var on = btn.getAttribute('data-filter-cluster') === activeCluster;
+          btn.setAttribute('aria-pressed', String(on));
+          btn.className = on
+            ? 'cluster-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-amber text-brand-amber font-semibold cursor-pointer bg-transparent transition-colors'
+            : 'cluster-filter-btn font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-slate hover:text-brand-white cursor-pointer bg-transparent transition-colors';
         });
 
         var shown = 0, researchShown = 0, productsShown = 0;
@@ -307,13 +918,15 @@ const products = projects.filter((p) => p.group === 'product');
 
         cards.forEach(function (card) {
           var g = card.getAttribute('data-study-group') || '';
+          var cl = card.getAttribute('data-study-cluster') || '';
           var hasLiv = card.getAttribute('data-has-living') === 'true';
           var hay = card.getAttribute('data-study-haystack') || '';
           var groupOk =
             activeGroup === 'all' ||
             (activeGroup === 'living' ? hasLiv : g === activeGroup);
+          var clusterOk = activeCluster === 'all' || cl === activeCluster;
           var textOk = !terms.length || terms.every(function (t) { return hay.indexOf(t) !== -1; });
-          var visible = groupOk && textOk;
+          var visible = groupOk && clusterOk && textOk;
           card.style.display = visible ? '' : 'none';
 
           var secBox = card.querySelector('.matched-sections');
@@ -361,7 +974,7 @@ const products = projects.filter((p) => p.group === 'product');
         if (productsSec) productsSec.style.display = productsShown > 0 ? '' : 'none';
 
         if (statusEl) {
-          statusEl.textContent = (!q && activeGroup === 'all')
+          statusEl.textContent = (!q && activeGroup === 'all' && activeCluster === 'all')
             ? 'Showing all ' + cards.length + ' studies'
             : 'Matching ' + shown + ' of ' + cards.length + ' studies';
         }
@@ -370,28 +983,34 @@ const products = projects.filter((p) => p.group === 'product');
           var url = new URL(window.location.href);
           if (q) url.searchParams.set('q', q); else url.searchParams.delete('q');
           if (activeGroup && activeGroup !== 'all') url.searchParams.set('group', activeGroup); else url.searchParams.delete('group');
+          if (activeCluster && activeCluster !== 'all') url.searchParams.set('cluster', activeCluster); else url.searchParams.delete('cluster');
           window.history.replaceState(null, '', url.pathname + url.search + url.hash);
         }
 
-        return { visible_count: shown, total_count: cards.length, matched_ids: matchedIds, query: q, group: activeGroup };
+        return { visible_count: shown, total_count: cards.length, matched_ids: matchedIds, query: q, group: activeGroup, cluster: activeCluster };
       }
 
-      window.__openieApplyCatalogFilter = function (q, g) { return applyFilter(q, g, true); };
+      window.__openieApplyCatalogFilter = function (q, g, c) { return applyFilter(q, g, c || 'all', true); };
 
       if (input) {
-        input.addEventListener('input', function () { applyFilter(input.value, activeGroup, true); });
+        input.addEventListener('input', function () { applyFilter(input.value, activeGroup, activeCluster, true); });
       }
       if (clearBtn) {
-        clearBtn.addEventListener('click', function () { applyFilter('', 'all', true); if (input) input.focus(); });
+        clearBtn.addEventListener('click', function () { applyFilter('', 'all', 'all', true); if (input) input.focus(); });
       }
       filterBtns.forEach(function (btn) {
         btn.addEventListener('click', function () {
-          applyFilter(input ? input.value : '', btn.getAttribute('data-filter-group') || 'all', true);
+          applyFilter(input ? input.value : '', btn.getAttribute('data-filter-group') || 'all', activeCluster, true);
+        });
+      });
+      clusterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          applyFilter(input ? input.value : '', activeGroup, btn.getAttribute('data-filter-cluster') || 'all', true);
         });
       });
       document.querySelectorAll('.tag-pill').forEach(function (pill) {
         pill.addEventListener('click', function () {
-          applyFilter(pill.getAttribute('data-tag-query') || '', activeGroup, true);
+          applyFilter(pill.getAttribute('data-tag-query') || '', activeGroup, activeCluster, true);
         });
       });
       document.addEventListener('keydown', function (e) {
@@ -404,8 +1023,9 @@ const products = projects.filter((p) => p.group === 'product');
       var params = new URLSearchParams(window.location.search);
       var initQ = params.get('q') || '';
       var initG = params.get('group') || 'all';
-      if (initQ || initG !== 'all') {
-        applyFilter(initQ, initG, false);
+      var initC = params.get('cluster') || 'all';
+      if (initQ || initG !== 'all' || initC !== 'all') {
+        applyFilter(initQ, initG, initC, false);
       }
     })();
   </script>

@@ -1,36 +1,63 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { studies } from '../../data/studyList';
+import gravityWell from '../../data/gravity-well.json';
+
+const gwMap = gravityWell.studies as Record<string, any>;
 
 const aboutPages = [
-  ...studies.map((s) => ({ id: s.id, kind: s.kind, title: s.title, href: s.aboutPath, paper: s.path, deck: s.summary })),
+  ...studies.map((s) => {
+    const gw = gwMap[s.id] ?? null;
+    return {
+      id: s.id,
+      kind: s.kind,
+      title: s.title,
+      plainTitle: gw?.plainTitle ?? s.title,
+      oneLineHook: gw?.oneLineHook ?? s.summary,
+      evidenceBadge: gw?.evidenceBadge ?? s.kind,
+      href: s.aboutPath,
+      paper: s.path,
+      deck: s.summary,
+    };
+  }),
 ];
-
 ---
 
 <Layout
   title="About the papers"
-  description="Index of OpenIE research about pages: what each paper claims and what it does not."
+  description="Index of OpenIE research about pages: plain-language overview first, followed by what each paper claims and what it does not."
 >
-  <section class="px-6 md:px-10 pt-16 md:pt-24 pb-20 max-w-3xl mx-auto">
-    <p class="section-label mb-4">research.openie.dev</p>
+  <section class="px-6 md:px-10 pt-10 md:pt-16 pb-20 max-w-3xl mx-auto">
+    <p class="section-label mb-4">research.openie.dev · Plain Scope &amp; Claims</p>
     <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">
       About the papers
     </h1>
     <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
-      A short note for each paper on what it claims and what it does not. These pages list what already exists on this site.
-      They do not invent studies. Shared terms live on the <a href="/glossary/" class="text-brand-cyan">glossary</a>.
+      A plain-language scope card for each study—stating the everyday idea first, followed by what the study claims and what it does not. Shared terms live on the <a href="/glossary/" class="text-brand-cyan">glossary</a>.
     </p>
 
     <ul class="mt-10 space-y-4 list-none p-0 m-0">
       {aboutPages.map((p) => (
         <li class="glass-card p-5 md:p-6">
-          <p class="font-mono text-[10px] tracking-[2px] uppercase text-brand-gray mb-2">{p.kind}</p>
-          <h2 class="text-xl text-brand-white mb-2">{p.title}</h2>
-          <p class="font-body text-sm text-brand-slate leading-relaxed mb-4">{p.deck}</p>
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <span class="font-mono text-[10px] tracking-[2px] uppercase text-brand-amber">{p.kind}</span>
+            <span class="font-mono text-[10.5px] text-emerald-300/90">{p.evidenceBadge}</span>
+          </div>
+          <h2 class="text-xl text-brand-white mb-1">{p.plainTitle}</h2>
+          <p class="font-mono text-[11px] text-brand-gray mb-2.5">{p.title}</p>
+          <p class="font-body text-sm text-brand-light leading-relaxed mb-3">{p.oneLineHook}</p>
+          <details class="mb-4 rounded-lg border border-brand-border/70 bg-white/[0.015] overflow-hidden">
+            <summary class="px-3 py-1.5 cursor-pointer font-mono text-[10.5px] text-brand-gray hover:text-brand-light select-none">
+              Technical summary (expand) ▾
+            </summary>
+            <p class="px-3 pb-3 pt-2 border-t border-brand-border/60 font-body text-xs text-brand-slate leading-relaxed m-0">
+              {p.deck}
+            </p>
+          </details>
           <div class="flex flex-wrap gap-3">
-            <a href={p.href} class="font-mono text-xs text-brand-amber no-underline hover:text-brand-gold">About note</a>
-            {p.paper && <a href={p.paper} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal">Read paper</a>}
+            <a href={p.href} class="font-mono text-xs text-brand-amber no-underline hover:text-brand-gold">About note →</a>
+            {p.paper && <a href={p.paper} class="font-mono text-xs text-brand-cyan no-underline hover:text-brand-teal">Open plain guide &amp; paper</a>}
+            <a href={`/sourcesheets/${p.id}/`} class="font-mono text-xs text-emerald-300 no-underline hover:underline">Source sheet</a>
           </div>
         </li>
       ))}

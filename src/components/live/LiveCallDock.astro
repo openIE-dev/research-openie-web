@@ -104,7 +104,7 @@
 
           <div class="flex items-center gap-1.5">
             <select id="dock-study-select" aria-label="Select study" class="flex-1 font-mono text-[11px] px-2.5 py-1.5 rounded-lg bg-[#070b14] border border-brand-border text-brand-white min-w-0">
-              <option value="${esc(hmi.activeStudyId)}">Loading 28 post-review studies...</option>
+              <option value="${esc(hmi.activeStudyId)}">Loading 29 Self-Checked studies...</option>
             </select>
             <select id="dock-voice-select" aria-label="Select studio voice persona" class="font-mono text-[11px] px-2 py-1.5 rounded-lg bg-[#070b14] border border-brand-border text-brand-amber shrink-0">
               <option value="Aoede">Aoede (Warm Host)</option>
@@ -165,15 +165,16 @@
           <!-- Rolling Transcript -->
           <div id="dock-transcript" class="space-y-2 max-h-48 overflow-y-auto pr-1">
             <div class="p-2.5 rounded-lg border border-brand-border bg-white/[0.02] font-body text-[11.5px] text-brand-slate leading-snug">
-              Ask about this page, click <strong>🧭 Tour</strong> for a guided walkthrough, or run a 2-voice <strong>🎙 Debate</strong>.
+              Starts in <strong>plain everyday words</strong> (zero acronym soup). Ask anything, click <strong>🧭 Tour</strong>, or ask for technical metrics &amp; formal proofs anytime.
             </div>
           </div>
 
           <!-- Quick Prompts -->
           <div class="flex flex-wrap gap-1">
+            <button type="button" data-dock-prompt="Explain this study in 2 plain everyday sentences with a real-world analogy" class="font-mono text-[10px] px-2 py-0.5 rounded-full border border-emerald-400/45 text-emerald-300 hover:border-brand-amber bg-emerald-500/10 cursor-pointer">💡 Plain Idea</button>
             <button type="button" data-dock-prompt="Walk me through this study with video" class="font-mono text-[10px] px-2 py-0.5 rounded-full border border-brand-border text-brand-light hover:border-brand-amber bg-white/[0.02] cursor-pointer">🎬 Walkthrough</button>
             <button type="button" data-dock-prompt="Debate this study like a skeptical reviewer" class="font-mono text-[10px] px-2 py-0.5 rounded-full border border-brand-border text-brand-light hover:border-brand-amber bg-white/[0.02] cursor-pointer">🎙 Skeptic Debate</button>
-            <button type="button" data-dock-prompt="What are the post-review limitations and fired falsifiers?" class="font-mono text-[10px] px-2 py-0.5 rounded-full border border-brand-border text-brand-light hover:border-brand-amber bg-white/[0.02] cursor-pointer">🧪 Falsifiers</button>
+            <button type="button" data-dock-prompt="How could someone prove this wrong, and what are the limitations?" class="font-mono text-[10px] px-2 py-0.5 rounded-full border border-brand-border text-brand-light hover:border-brand-amber bg-white/[0.02] cursor-pointer">🧪 Falsifiers</button>
           </div>
         </div>
 

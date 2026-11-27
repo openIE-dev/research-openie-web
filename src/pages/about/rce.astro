@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import AboutPlainLead from '../../components/AboutPlainLead.astro';
 ---
 
 <Layout
@@ -11,6 +12,7 @@ import Layout from '../../layouts/Layout.astro';
     <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">
       The Reality Code Engine: One Lossless Form for Native, Verified, Low-Energy Programming
     </h1>
+    <AboutPlainLead id="rce" />
     <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
       This paper describes the Reality Code Engine (RCE), a system in which a program is written once as a state machine, called a Form, and code in other languages is generated from it. It presents the written specification of the language, the reference checker that implements it and emits Rust, Python, JavaScript and Scala, the Lean proofs of its theorems, registered measurements of the dimension of its programs, and the design of the engine that finds, checks and reuses solutions. It states how the claims could be shown false and the protocols of the measurements still to be made.
     </p>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import AboutPlainLead from '../../components/AboutPlainLead.astro';
 ---
 
 <Layout
@@ -11,6 +12,7 @@ import Layout from '../../layouts/Layout.astro';
     <h1 class="text-3xl md:text-5xl font-bold text-brand-white tracking-tight">
       RCE Compile: A Law of Compilation, Tested as a Normal Form Against Real Compilers
     </h1>
+    <AboutPlainLead id="rce-compile" />
     <p class="mt-6 font-body text-base text-brand-slate leading-relaxed">
       RCE Compile is a research project in the repository of the Reality Code Engine (RCE). It asks whether one statement of what compilation is, a Law of Compilation, holds for any compiler, independent of RCE. Checked against twelve families of production compilers, the candidate fails as a description: no compiler hashes a name-free representation, lowering in shipping compilers is neither total nor proved to preserve meaning, and no compiler accounts for energy. It holds as a normative framework: a normal form with two bounds and a measured distance from them, against which every compiler can be placed.
     </p>

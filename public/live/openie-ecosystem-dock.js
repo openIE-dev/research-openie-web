@@ -1105,9 +1105,9 @@ export class OpenIEEcosystemSDK {
         ? ` Controls: ${this.summarizeLiveControls(2).slice(0, 75)}.`
         : '';
     const raw =
-      `${hostPath} | You are OpenIE Live (warm, natural studio voice co-pilot on ${this.surface.name}). ` +
-      `Active study/surface: ${titleMetric}. Caveat: ${caveat}.${ctrlBit} ` +
-      `Mandatory 25 Nov 2026 Outside-Review rules: say 'Signed Provenance · Self-Checked' (never 'Verified') for OpenIE gates; never mix measured_j, reported_j, est_j, unmetered; never say ${'Landauer'} Bit-Equivalents; cite finite-sample Clopper-Pearson bounds.`;
+      `${hostPath} | You are OpenIE Live (warm, simplest-first voice co-pilot on ${this.surface.name}). ` +
+      `Lead in plain everyday words (2-3 crisp sentences, zero acronym soup) and offer technical metrics/proofs only if asked. Active: ${titleMetric}. Caveat: ${caveat}.${ctrlBit} ` +
+      `Rules: say 'Signed Provenance · Self-Checked' (never 'Verified'); never mix measured_j, reported_j, est_j, unmetered; never say ${'Landauer'} Bit-Equivalents.`;
     return raw.slice(0, 595);
   }
 
@@ -2353,9 +2353,11 @@ export class OpenIEEcosystemSDK {
     } catch {}
 
     if (!spokenReply && activeStudy) {
+      const plainLead =
+        (activeStudy.plain_bullets && activeStudy.plain_bullets[0]) || activeStudy.headline_claim || activeStudy.short_title;
       spokenReply =
-        `${activeStudy.short_title} (${activeStudy.evidence_class}, Signed Provenance · Self-Checked): ${activeStudy.headline_claim} ` +
-        `Scope note: ${activeStudy.limitations_and_scope.split('.')[0]}.`;
+        `In plain words on ${activeStudy.short_title}: ${plainLead} ` +
+        `Want the technical metrics or formal proof?`;
     }
 
     const persona = STUDIO_VOICES[this.voice] || STUDIO_VOICES.Aoede;
@@ -2423,11 +2425,12 @@ export class OpenIEEcosystemSDK {
         : dom.visibleSection
         ? ` Currently viewing "${dom.visibleSection.heading}" on ${this.surface.domain}.`
         : '';
+    const plainHook = (study?.plain_bullets && study.plain_bullets[0]) ? ` Plain idea: ${study.plain_bullets[0]}` : '';
     const greetPrompt =
-      `Greet the listener warmly in 2 natural spoken sentences as the ${this.surface.name} studio voice co-pilot.` +
+      `Greet the listener warmly in 2 crisp, everyday spoken sentences (zero acronym soup) as the ${this.surface.name} voice guide.` +
       obsHint +
-      (study ? ` Active study: ${study.short_title} (${study.evidence_class}, Signed Provenance · Self-Checked).` : '') +
-      ` Invite them to ask anything, tour this page, or interrupt anytime.`;
+      (study ? ` Share the plain-words core idea of ${study.short_title} (${plainHook}).` : '') +
+      ` End by offering: "Ask anything in plain words, drag any slider, or ask for the technical metrics and formal proofs anytime."`;
 
     await this.sendGroundedPrompt(greetPrompt, { userDisplayText: null, study });
   }
@@ -2510,15 +2513,20 @@ export class OpenIEEcosystemSDK {
     else if (/\b(method|meter|sensor|shunt|hardware|falsifier|limitation|scope)\b/.test(qLower)) clip = '45s';
     if (matchedStudy) this.openVisualStage({ studyId: matchedStudy.id, clip });
 
+    const wantsDeepTech = /\b(formal|theorem|proof|lean|equation|formula|math|shunt|ina260|ina3221|ina238|rapl|measured_j|reported_j|est_j|clopper|raw metric|technical)\b/i.test(cleanQ);
+    const styleDirective = wantsDeepTech
+      ? `The user asked for technical/formal detail: answer accurately in 2 to 4 crisp spoken sentences with exact measurement labels: ${cleanQ}`
+      : `Answer FIRST in 2 to 3 plain, concrete everyday spoken sentences with zero acronym soup, then end with a brief optional offer ("Want the technical metrics or formal proof?"): ${cleanQ}`;
+
     const ctrlSnap = this.summarizeLiveControls(4);
     const prompt =
       `[Grounded Context — Portal: ${this.surface.name} (${this.surface.domain}). ` +
       (matchedStudy
-        ? `Study: ${matchedStudy.short_title} (${matchedStudy.evidence_class}, Signed Provenance · Self-Checked). Claim: ${matchedStudy.headline_claim} Limits: ${matchedStudy.limitations_and_scope}`
+        ? `Study: ${matchedStudy.short_title} (${matchedStudy.evidence_class}, Signed Provenance · Self-Checked). Plain Points: ${(matchedStudy.plain_bullets || []).join(' ')} Claim: ${matchedStudy.headline_claim} Limits: ${matchedStudy.limitations_and_scope}`
         : `Caveat: ${this.surface.caveat || ''}`) +
       (domSec ? ` Active Page Element "${domSec.heading}": ${(domSec.snippet || '').slice(0, 180)}.` : '') +
       (ctrlSnap ? ` Live Observatory Controls: ${ctrlSnap}.` : '') +
-      `] Answer naturally in 2 to 4 spoken sentences without reading brackets aloud: ${cleanQ}`;
+      `] Without reading brackets aloud — ${styleDirective}`;
 
     await this.sendGroundedPrompt(prompt, {
       userDisplayText: opts.fromVoice ? null : cleanQ,

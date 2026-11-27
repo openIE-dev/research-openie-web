@@ -1,11 +1,11 @@
 {
   "schema": "openie.live_hmi_corpus.v1",
-  "generated_date": "2026-11-25",
-  "study_count": 28,
+  "generated_date": "2026-11-26",
+  "study_count": 29,
   "provenance_status": "Signed Provenance · Self-Checked",
   "evidence_orthogonality": "measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered — never summed or directly ratioed across classes",
   "evidence_class_counts": {
-    "measured_j": 7,
+    "measured_j": 8,
     "reported_j": 10,
     "est_j": 1,
     "unmetered": 10
@@ -41,6 +41,56 @@
     }
   ],
   "studies": [
+    {
+      "id": "from-ephemeral-inference-to-compiled-agency",
+      "title": "From Ephemeral Inference to Compiled Agency: A Position Paper on Verifiable, Energy-Accounted Computing",
+      "short_title": "From Ephemeral Inference to Compiled Agency",
+      "category": "Hardware, Silicon & OS",
+      "path": "/syndication/medium/from-ephemeral-inference-to-compiled-agency/",
+      "portalUrl": "https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/",
+      "livingPath": "/living/compiled-agency/",
+      "figuresUrl": "/living/compiled-agency/",
+      "aboutPath": "/about/lut-adapt/",
+      "pdfPath": "/pdfs/lut-adapt.pdf",
+      "tv15s": "/media/tv/films/from-ephemeral-inference-to-compiled-agency-15s.mp4",
+      "tv15sVtt": "/media/tv/planetary-15s/captions/from-ephemeral-inference-to-compiled-agency/en.vtt",
+      "tv45s": "/media/tv/films/from-ephemeral-inference-to-compiled-agency-45s.mp4",
+      "tv45sVtt": "/media/tv/planetary-15s/captions/from-ephemeral-inference-to-compiled-agency/en.vtt",
+      "tv90s": "/media/tv/films/from-ephemeral-inference-to-compiled-agency-90s.mp4",
+      "tv90sVtt": "/media/tv/planetary-15s/captions/from-ephemeral-inference-to-compiled-agency/en.vtt",
+      "tv180s": "/media/tv/films/from-ephemeral-inference-to-compiled-agency-180s.mp4",
+      "tiktokMp4": "/media/tv/tiktok/from-ephemeral-inference-to-compiled-agency-tiktok.mp4",
+      "tiktokPoster": "/media/tv/tiktok/from-ephemeral-inference-to-compiled-agency-tiktok.jpg",
+      "poster": "/media/tv/posters/from-ephemeral-inference-to-compiled-agency-poster.jpg",
+      "evidence_class": "measured_j",
+      "provenance_badge": "Signed Provenance · Self-Checked",
+      "claim_tags": [
+        "[E]",
+        "[M]"
+      ],
+      "key_terms": [
+        "Compiled Agency",
+        "Deterministic Null",
+        "measured_j",
+        "waiOS",
+        "Sub-Bit Impedance Tax",
+        "Zipf Cascade"
+      ],
+      "headline_metric": "29.86× Thor & 21.61× KV260 Shunt Stream Cut (@ 6a22dee) · 81.86× Float Unpack Tax",
+      "headline_claim": "Putting a 4 KiB verified lookup table and exact classical rules in front of Oct–Nov 2026 1.7B–27B neural models cuts physical board-shunt energy by 29.86× on Jetson AGX Thor and 21.61× on AMD Kria KV260 across 300 Zipf(0.85) queries.",
+      "plain_bullets": [
+        "Routine software questions should hit a tiny checked lookup table and simple rules first, waking a large neural model only as a last resort.",
+        "Shrinking neural weights below one bit saves storage, yet unpacking them back to decimals at runtime burns up to 81.86 times more circuit-board energy unless compute stays in packed whole numbers.",
+        "Across six October–November 2026 models up to 27 billion parameters, lookup-first routing cuts physical hardware shunt energy by 21 to 29 times on repeating streams."
+      ],
+      "methods_and_meter": "Physical Texas Instruments INA260 SOM_5V_DC on AMD Kria KV260 (0.56% idle drift, Falsifier 6 PASS) and TI INA3221 VDD_CPU_SOC_MSS + INA238 VIN on NVIDIA Jetson AGX Thor (measured_j), strictly separated from Ryzen AI Max+ 395 Linux RAPL (reported_j) at commit 6a22dee.",
+      "baseline_comparison": "Compared against unconditional single-turn execution of LiquidAI/LFM3-1.7B, LiquidAI/d1-2B, Qwen3.5-4B, Nemotron-3.5-Bolt-E4B, Inkling-2-Mini, and Ternary-Bonsai-2.5-27B.",
+      "limitations_and_scope": "Stage-1 4 KiB LUT hits accelerate recurring verified inputs (C(x, z) == 1), not cold unseen novel tasks. KV260 3.81 GiB RAM limits on-board LLM runs to Tier-A 1.7B–2B models.",
+      "skeptic_question": "Does a 4 KiB lookup table actually generalize to unseen code, or is the 29.86× energy cut driven by Zipfian repetition?",
+      "skeptic_followup": "And why did Ternary-Bonsai-2.5-27B burn 3.82× more joules than Inkling-2-Mini on CPU?",
+      "architect_answer": "We state explicitly under Signed Provenance · Self-Checked that Stage-1 4 KiB lookup accelerates recurring verified classes under Zipf(0.85), while unseen structured constraints route to Stage-2 solvers and open novel tasks escalate to Stage-3 models.",
+      "architect_rebuttal": "In mainline llama.cpp Q2_0 CPU execution, 2-bit blocks unpack to FP32 dot products on every token—reproducing the exact decompression impedance tax measured in Kit 4 unless native ternary integer kernels are used."
+    },
     {
       "id": "agency",
       "title": "Goal-Holding Agents Under Budget Guards: Pre- and Post-Fix Overspend Audit and Replication Limits",

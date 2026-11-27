@@ -1,0 +1,59 @@
+---
+import gravityWell from '../data/gravity-well.json';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+const gw = (gravityWell.studies as Record<string, any>)[id] ?? null;
+---
+
+{gw && (
+  <div class="mt-7 glass-card p-5 md:p-6 border border-brand-amber/40 bg-gradient-to-br from-brand-amber/[0.06] via-transparent to-brand-cyan/[0.04]">
+    <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+      <span class="font-mono text-[10px] tracking-[0.14em] uppercase px-2.5 py-0.5 rounded bg-brand-amber text-brand-dark font-bold">
+        Plain-Words Quick Guide (30 sec)
+      </span>
+      <span class="font-mono text-[10.5px] text-emerald-300">
+        {gw.evidenceBadge}
+      </span>
+    </div>
+
+    <h2 class="text-lg md:text-xl font-bold text-brand-white m-0">
+      {gw.plainTitle}
+    </h2>
+    <p class="mt-1.5 font-body text-sm text-brand-light leading-relaxed">
+      {gw.oneLineHook}
+    </p>
+
+    <div class="mt-3 p-3 rounded-lg border border-brand-cyan/30 bg-brand-cyan/[0.05] font-body text-xs sm:text-sm text-brand-light leading-relaxed">
+      <strong class="text-brand-cyan font-mono text-[10.5px] uppercase tracking-wider">Think of it like:</strong>{' '}
+      {gw.everydayAnalogy}
+    </div>
+
+    <div class="mt-3 grid sm:grid-cols-3 gap-2.5 font-body text-xs text-brand-slate leading-relaxed">
+      <div class="p-3 rounded-lg border border-brand-border bg-brand-dark/45">
+        <div class="font-mono text-[10px] uppercase tracking-wider text-emerald-300 font-semibold mb-1">And (Setup)</div>
+        {gw.abt.and}
+      </div>
+      <div class="p-3 rounded-lg border border-brand-border bg-brand-dark/45">
+        <div class="font-mono text-[10px] uppercase tracking-wider text-brand-amber font-semibold mb-1">But (Problem)</div>
+        {gw.abt.but}
+      </div>
+      <div class="p-3 rounded-lg border border-brand-border bg-brand-dark/45">
+        <div class="font-mono text-[10px] uppercase tracking-wider text-brand-cyan font-semibold mb-1">Therefore (Result)</div>
+        {gw.abt.therefore}
+      </div>
+    </div>
+
+    <div class="mt-3 pt-3 border-t border-brand-border flex flex-wrap items-center justify-between gap-2 font-mono text-[11px]">
+      <span class="text-brand-light">
+        <strong class="text-emerald-300">Key Result:</strong> {gw.keyNumberPlain}
+      </span>
+      <a href={`/tv/?study=${id}`} class="text-brand-amber no-underline hover:underline">
+        ▶ Watch 15s Plain Film →
+      </a>
+    </div>
+  </div>
+)}

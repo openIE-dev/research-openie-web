@@ -1,62 +1,62 @@
 {
   "schema": "openie.global_rung_radar.v2",
-  "generated_at_utc": "2026-11-24T20:01:04Z",
-  "scraped_at_utc": "2026-11-24T19:58:48Z",
+  "generated_at_utc": "2026-11-26T22:05:00Z",
+  "scraped_at_utc": "2026-11-26T21:58:12Z",
   "cadence": "Every 6 hours via autonomous Linux systemd --user timer",
-  "manifest_sha256": "7696098acb9a43798798108a58c717b73fa1de11817b8069f2258aaa1f09a421",
-  "openie_studies_audited": 21,
-  "total_external_works": 68,
+  "manifest_sha256": "0c44f6d7c93355a4c2f4e9f5d059d4d61d4e9e509ac75eeefbfa3771e2613ecc",
+  "openie_studies_audited": 29,
+  "total_external_works": 80,
   "counts_by_source": {
-    "arXiv": 25,
+    "arXiv": 37,
     "bioRxiv": 5,
     "Europe PMC": 14,
     "OpenAlex": 24
   },
   "counts_by_classification": {
-    "CORROBORATES": 40,
-    "CHALLENGES_ASSUMPTION": 11,
-    "NEW_FRONTIER_GAP": 17
+    "CORROBORATES": 49,
+    "CHALLENGES_ASSUMPTION": 13,
+    "NEW_FRONTIER_GAP": 18
   },
   "counts_by_badge": {
-    "[T]": 8,
-    "[E]": 6,
-    "[M]": 53,
+    "[T]": 9,
+    "[E]": 7,
+    "[M]": 63,
     "[S]": 1
   },
   "study_coverage_counts": {
     "agency": 16,
-    "gates": 29,
-    "deterministic-null": 23,
-    "satb-harness": 20,
-    "time-as-an-index": 11,
-    "communication-avalanche": 16,
-    "lut-adapt": 9,
+    "gates": 32,
+    "deterministic-null": 24,
+    "satb-harness": 22,
+    "time-as-an-index": 12,
+    "communication-avalanche": 18,
+    "lut-adapt": 13,
     "satiation": 0,
-    "rce": 12,
-    "rce-jepa": 12,
+    "rce": 14,
+    "rce-jepa": 14,
     "rce-compile": 23,
     "rce-vc": 0,
     "game-engines": 0,
-    "three-body": 8,
-    "ai-reads-human": 0,
+    "three-body": 9,
+    "ai-reads-human": 1,
     "spellcheck": 0,
     "ai-coding-market": 0,
-    "interface-economics": 8,
-    "mei": 17,
-    "jouleos": 0,
+    "interface-economics": 9,
+    "mei": 19,
+    "jouleos": 1,
     "latency": 0
   },
   "commons_prior_art_summary": {
     "blueprint_section": "§6 Prior-Art Pre-Check (The Commons)",
-    "checked_at_utc": "2026-11-24T19:58:48Z",
+    "checked_at_utc": "2026-11-26T21:58:12Z",
     "commons_base_url": "https://scholar.askdavidc.ai",
     "mcp_endpoint": "https://scholar.askdavidc.ai/mcp",
     "ask_endpoint": "https://scholar.askdavidc.ai/api/ask",
-    "radar_works_checked": 68,
-    "radar_works_with_prior_art": 33,
+    "radar_works_checked": 80,
+    "radar_works_with_prior_art": 45,
     "total_commons_disclosures_linked": 264,
-    "continuations_checked": 6,
-    "continuations_with_prior_art": 6
+    "continuations_checked": 7,
+    "continuations_with_prior_art": 7
   },
   "rung_summary": {
     "histogram": [
@@ -67,8 +67,8 @@
         "phase": 1,
         "phase_label": "Rungs 1–5 Ephemeral",
         "default_tier": "Tier 1 (Indexed Case Store)",
-        "count": 8,
-        "share_pct": 11.8,
+        "count": 9,
+        "share_pct": 11.3,
         "crossing_count": 0
       },
       {
@@ -79,7 +79,7 @@
         "phase_label": "Rungs 1–5 Ephemeral",
         "default_tier": "Tier 3 (Frontier Search)",
         "count": 1,
-        "share_pct": 1.5,
+        "share_pct": 1.3,
         "crossing_count": 0
       },
       {
@@ -89,9 +89,9 @@
         "phase": 1,
         "phase_label": "Rungs 1–5 Ephemeral",
         "default_tier": "Tier 2 (Verified Rule/Checker)",
-        "count": 12,
-        "share_pct": 17.6,
-        "crossing_count": 11
+        "count": 16,
+        "share_pct": 20,
+        "crossing_count": 14
       },
       {
         "rung": 4,
@@ -100,8 +100,8 @@
         "phase": 1,
         "phase_label": "Rungs 1–5 Ephemeral",
         "default_tier": "Tier 2 (Verified Rule/Checker)",
-        "count": 11,
-        "share_pct": 16.2,
+        "count": 14,
+        "share_pct": 17.5,
         "crossing_count": 1
       },
       {
@@ -111,9 +111,9 @@
         "phase": 1,
         "phase_label": "Rungs 1–5 Ephemeral",
         "default_tier": "Tier 3 (Frontier Search)",
-        "count": 12,
-        "share_pct": 17.6,
-        "crossing_count": 0
+        "count": 13,
+        "share_pct": 16.3,
+        "crossing_count": 1
       },
       {
         "rung": 6,
@@ -123,7 +123,7 @@
         "phase_label": "Rungs 6–9 Compiled",
         "default_tier": "Tier 1 (Indexed Case Store)",
         "count": 1,
-        "share_pct": 1.5,
+        "share_pct": 1.3,
         "crossing_count": 0
       },
       {
@@ -133,8 +133,8 @@
         "phase": 2,
         "phase_label": "Rungs 6–9 Compiled",
         "default_tier": "Tier 0 (Single-Cycle Silicon)",
-        "count": 8,
-        "share_pct": 11.8,
+        "count": 10,
+        "share_pct": 12.5,
         "crossing_count": 8
       },
       {
@@ -144,9 +144,9 @@
         "phase": 2,
         "phase_label": "Rungs 6–9 Compiled",
         "default_tier": "Tier 2 (Verified Rule/Checker)",
-        "count": 8,
-        "share_pct": 11.8,
-        "crossing_count": 0
+        "count": 9,
+        "share_pct": 11.3,
+        "crossing_count": 1
       },
       {
         "rung": 9,
@@ -156,42 +156,907 @@
         "phase_label": "Rungs 6–9 Compiled",
         "default_tier": "Tier 1 (Indexed Case Store)",
         "count": 7,
-        "share_pct": 10.3,
+        "share_pct": 8.8,
         "crossing_count": 0
       }
     ],
     "counts_by_rung": {
-      "1": 8,
+      "1": 9,
       "2": 1,
-      "3": 12,
-      "4": 11,
-      "5": 12,
+      "3": 16,
+      "4": 14,
+      "5": 13,
       "6": 1,
-      "7": 8,
-      "8": 8,
+      "7": 10,
+      "8": 9,
       "9": 7
     },
     "counts_by_regime": {
-      "ephemeral_rungs_1_5": 32,
-      "crossing_compilation_threshold": 20,
-      "compiled_rungs_6_9": 16
+      "ephemeral_rungs_1_5": 37,
+      "crossing_compilation_threshold": 25,
+      "compiled_rungs_6_9": 18
     },
     "shares_pct": {
-      "rungs_1_5_total_pct": 64.7,
-      "ephemeral_trapped_pct": 47.1,
-      "crossing_threshold_pct": 29.4,
-      "compiled_rungs_6_9_pct": 23.5
+      "rungs_1_5_total_pct": 66.3,
+      "ephemeral_trapped_pct": 46.3,
+      "crossing_threshold_pct": 31.3,
+      "compiled_rungs_6_9_pct": 22.5
     },
     "counts_by_target_tier": {
       "Tier 3 (Frontier Search)": 10,
-      "Tier 2 (Verified Rule/Checker)": 29,
-      "Tier 1 (Indexed Case Store)": 20,
-      "Tier 0 (Single-Cycle Silicon)": 9
+      "Tier 2 (Verified Rule/Checker)": 38,
+      "Tier 1 (Indexed Case Store)": 22,
+      "Tier 0 (Single-Cycle Silicon)": 10
     },
     "bottleneck_rung": 5,
     "compilation_threshold_law": "ΔT > ΔT* = E_compile / (p_0' · (c_wake − c_0))  ∧  C(z) = 1"
   },
   "items": [
+    {
+      "radar_id": "RAD-2611-01",
+      "source": "arXiv",
+      "external_id": "arXiv:2611.34825v1",
+      "doi": "10.48550/arXiv.2611.34825",
+      "title": "Routeability Before Routing: Routeability Audit Protocol (RAP) and RouteabilityBench for Audited LLM Model Selection",
+      "authors": [
+        "Yihang Lu",
+        "Denica Kjorvezir",
+        "Ana Gjorgjevikj",
+        "Carola Doerr",
+        "Tome Eftimov"
+      ],
+      "published_date": "2026-11-25",
+      "url": "https://arxiv.org/abs/2611.34825v1",
+      "vector_id": "audited-llm-routeability",
+      "vector_label": "Routeability Audit Before Model Routing",
+      "abstract": "LLM routing aims to choose, for each prompt, which model in a portfolio is most likely to answer correctly. This only makes sense when the benchmark contains enough prompt-specific variation for different models to be best on different inputs. On coarse-scored LLM benchmarks, however, many models often tie for the best score, and the single best model may already leave little room for improvement. We therefore propose a routeability-first audit, instant…",
+      "blake2b_256": "981c044103a89945b3f819ccc21b59c5f0b78e045256b0994d5a1dd403846fd7",
+      "sha256": "c2b680971ab3b25e6445caaeefc2aa76e4c1d471a33cc9818f1c4e3cb81160e0",
+      "rung": 3,
+      "rung_code": "R3",
+      "rung_name": "Reasoning",
+      "rung_phase": 1,
+      "threshold_regime": "crossing_compilation_threshold",
+      "target_tier": "Tier 2 (Verified Rule/Checker)",
+      "plain_takeaway": "Across 66 language models and four major benchmarks, RouteabilityBench shows that fancy AI routers often fail to beat a single well-chosen baseline because many models tie on the exact same prompts. Testing whether routing even helps—before deploying a complex router—mirrors our Deterministic Null control.",
+      "formal_mechanism": "Routeability Audit Protocol (RAP) tests prompt-by-portfolio score variance across 66 LLMs prior to router claims, exposing tied-best ceilings where complex learned routers add zero statistically valid gain.",
+      "openie_relation": "CORROBORATES",
+      "classification": "CORROBORATES",
+      "rationale": "Independently validates pre-auditing portfolio routeability and tied-best null controls before claiming multi-model routing gains.",
+      "epistemic_badge": "[M]",
+      "linked_study_id": "deterministic-null",
+      "linked_study_title": "Deterministic Null",
+      "linked_study_url": "https://research.openie.dev/papers/deterministic-null/",
+      "falsifier_test": "Include a zero-parameter Shape D lookup + classical rule arm inside the RouteabilityBench matrix; falsified if learned embedding routers outperform Shape D + single-best teacher on tied-best strata per joule.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": true,
+        "audit_summary": "Late-Nov 2026 arXiv preprint: reports latency, accuracy, or formal verification metrics without inline DC rail current-shunt joule accounting (board_metered=false)."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "deterministic-null",
+          "short_title": "Deterministic Null",
+          "path": "/papers/deterministic-null/",
+          "url": "https://research.openie.dev/papers/deterministic-null/"
+        },
+        {
+          "id": "satb-harness",
+          "short_title": "Satiation Benchmark Harness",
+          "path": "/papers/satb-harness/",
+          "url": "https://research.openie.dev/papers/satb-harness/"
+        }
+      ],
+      "commons_corroboration": {
+        "checked_at_utc": "2026-11-26T21:58:12Z",
+        "endpoint": "https://scholar.askdavidc.ai/api/ask + https://scholar.askdavidc.ai/mcp#commons_prior_art",
+        "query": "Routeability Before Routing: Routeability Audit Protocol (RAP) and RouteabilityBench for Audited LLM Model Selection Reasoning deterministic-null",
+        "hit_count": 6,
+        "prior_art_status": "PRIOR_ART_CORROBORATED",
+        "top_idea_id": "f9ae9f301392732a",
+        "top_citation_url": "https://research.openie.dev/papers/deterministic-null/",
+        "top_commons_permalink": "https://scholar.askdavidc.ai/?q=deterministic-null",
+        "top_channel_owner": "OpenIE Research",
+        "top_modality": "manuscript",
+        "top_disclosure_date": "2026-11-25",
+        "top_statement_excerpt": "Across 66 language models and four major benchmarks, RouteabilityBench shows that fancy AI routers often fail to beat a single well-chosen baseline because many models tie on the exact same prompts. Testing whether routing even helps—before deploying a complex router—mirrors our Deterministic Null control."
+      }
+    },
+    {
+      "radar_id": "RAD-2611-02",
+      "source": "arXiv",
+      "external_id": "arXiv:2611.20417v1",
+      "doi": "10.48550/arXiv.2611.20417",
+      "title": "When the Cheapest Feasible Router Fails: Auditing Deployment Commitments in Cost-Aware LLM Routing",
+      "authors": [
+        "Minxuan Hu",
+        "Qishi Zhan",
+        "Ziheng Chen",
+        "Zhengtao Yao",
+        "Zihan Dong",
+        "Jiayu Yi",
+        "Wenxi Sun"
+      ],
+      "published_date": "2026-11-16",
+      "url": "https://arxiv.org/abs/2611.20417v1",
+      "vector_id": "cost-router-deployment-commitment",
+      "vector_label": "Deployment Commitment Failures in Cost Routers",
+      "abstract": "Cost-aware LLM routing often selects the cheapest policy meeting empirical risk and coverage constraints. Yet a router that passes an audit can violate its fixed service contract on new requests, even when candidate policies are constructed independently. We study this deployment-commitment decision with disjoint construction, audit, and test samples. Across 19 RouterBench task families, the cheapest audit-feasible router deploys in 91.82% of opportunit…",
+      "blake2b_256": "1e8d96e76b04965adbc61e686393c3690b2a01d72caccf49484f342caf8f7b5a",
+      "sha256": "88f19301d7ddc4d21260e010897f57404839cbfc12ef25c4a72856ed30101fcd",
+      "rung": 3,
+      "rung_code": "R3",
+      "rung_name": "Reasoning",
+      "rung_phase": 1,
+      "threshold_regime": "crossing_compilation_threshold",
+      "target_tier": "Tier 2 (Verified Rule/Checker)",
+      "plain_takeaway": "Picking the cheapest AI router that passes a small test sounds smart, yet across 19 RouterBench families it breaks its accuracy promise 32.22% of the time on new requests. Adding an explicit deployment-commitment gate (MARC-P) cuts those contract failures down to 0.73%.",
+      "formal_mechanism": "Winner-curse selection on empirical risk causes cheapest-feasible routers to violate held-out contracts on 32.22% of deployments; Menu-Aware Routing Commitment (MARC-P) bounds conditional failure to 0.73%.",
+      "openie_relation": "CHALLENGES_ASSUMPTION",
+      "classification": "CHALLENGES_ASSUMPTION",
+      "rationale": "Challenges naive empirical cost-minimization routers and reinforces conformal/audited commit gates prior to policy deployment.",
+      "epistemic_badge": "[M]",
+      "linked_study_id": "gates",
+      "linked_study_title": "Metered Commit Gates",
+      "linked_study_url": "https://research.openie.dev/papers/gates/",
+      "falsifier_test": "Evaluate MARC-P commitment margins alongside Split-Conformal ACI wake gates under distribution shift; falsified if held-out contract violation exceeds target alpha without triggering gate abstention.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Late-Nov 2026 arXiv preprint: reports latency, accuracy, or formal verification metrics without inline DC rail current-shunt joule accounting (board_metered=false)."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/",
+          "url": "https://research.openie.dev/papers/gates/"
+        },
+        {
+          "id": "lut-adapt",
+          "short_title": "Downward LUT6 Compilation",
+          "path": "/papers/lut-adapt/",
+          "url": "https://research.openie.dev/papers/lut-adapt/"
+        }
+      ],
+      "commons_corroboration": {
+        "checked_at_utc": "2026-11-26T21:58:12Z",
+        "endpoint": "https://scholar.askdavidc.ai/api/ask + https://scholar.askdavidc.ai/mcp#commons_prior_art",
+        "query": "When the Cheapest Feasible Router Fails: Auditing Deployment Commitments in Cost-Aware LLM Routing Reasoning gates",
+        "hit_count": 6,
+        "prior_art_status": "PRIOR_ART_CORROBORATED",
+        "top_idea_id": "cb68b6ca76a9c5d1",
+        "top_citation_url": "https://research.openie.dev/papers/gates/",
+        "top_commons_permalink": "https://scholar.askdavidc.ai/?q=gates",
+        "top_channel_owner": "OpenIE Research",
+        "top_modality": "manuscript",
+        "top_disclosure_date": "2026-11-25",
+        "top_statement_excerpt": "Picking the cheapest AI router that passes a small test sounds smart, yet across 19 RouterBench families it breaks its accuracy promise 32.22% of the time on new requests. Adding an explicit deployment-commitment gate (MARC-P) cuts those contract failures down to 0.73%."
+      }
+    },
+    {
+      "radar_id": "RAD-2611-03",
+      "source": "arXiv",
+      "external_id": "arXiv:2611.25754v1",
+      "doi": "10.48550/arXiv.2611.25754",
+      "title": "ADAPT: Adaptive Decision and Abstention with Pool-Size-Aware Thresholds for Service Routing",
+      "authors": [
+        "Manile Srun",
+        "Muntasir Adnan",
+        "Arslan Shaukat",
+        "Carlos C. N. Kuhn"
+      ],
+      "published_date": "2026-11-19",
+      "url": "https://arxiv.org/abs/2611.25754v1",
+      "vector_id": "pool-aware-abstention-routing",
+      "vector_label": "Pool-Size-Aware Abstention Thresholds",
+      "abstract": "Retrieval-based classifiers efficiently route queries to specialised services, but they typically select a candidate even when no suitable service exists. We introduce Adaptive Decision and Abstention with Pool-Size-Aware Thresholds for Service Routing (ADAPT), a lightweight routing architecture with an explicit fallback option that enables queries to abstain from specialist selection. ADAPT uses the separation between the highest relevance score and th…",
+      "blake2b_256": "e98b91997f3096af51d5fa318e87a8ca0ebc66a3ff62a34d57d9a9722916153f",
+      "sha256": "d72bbca3e6559fbff6dda8633a46d71aec1daf18db0fd1010950263160ad6e20",
+      "rung": 1,
+      "rung_code": "R1",
+      "rung_name": "Search",
+      "rung_phase": 1,
+      "threshold_regime": "ephemeral_rungs_1_5",
+      "target_tier": "Tier 1 (Indexed Case Store)",
+      "plain_takeaway": "When you add more specialist tools to a fast search router, fixed confidence cutoffs silently go out of tune and start guessing when no tool fits. ADAPT adjusts the \"I do not know—escalate\" cutoff automatically as the tool pool grows, avoiding expensive generative routing.",
+      "formal_mechanism": "Extreme-value shift of top-1 retrieval margin under growing pool size K miscalibrates fixed τ; K-aware abstention preserves accuracy-cost Pareto superiority over generative LLM routers without retraining.",
+      "openie_relation": "CORROBORATES",
+      "classification": "CORROBORATES",
+      "rationale": "Corroborates explicit abstention/wake-gate calibration as specialist bank count scales from 1 to 12 banks.",
+      "epistemic_badge": "[M]",
+      "linked_study_id": "lut-adapt",
+      "linked_study_title": "Downward LUT6 Compilation",
+      "linked_study_url": "https://research.openie.dev/papers/lut-adapt/",
+      "falsifier_test": "Test K-aware margin scaling across 1-bank to 12-bank LUT6/case vaults; falsified if unscaled thresholds maintain <= 1% false-accept rate as K grows 10x.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Late-Nov 2026 arXiv preprint: reports latency, accuracy, or formal verification metrics without inline DC rail current-shunt joule accounting (board_metered=false)."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "lut-adapt",
+          "short_title": "Downward LUT6 Compilation",
+          "path": "/papers/lut-adapt/",
+          "url": "https://research.openie.dev/papers/lut-adapt/"
+        },
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/",
+          "url": "https://research.openie.dev/papers/gates/"
+        }
+      ],
+      "commons_corroboration": {
+        "checked_at_utc": "2026-11-26T21:58:12Z",
+        "endpoint": "https://scholar.askdavidc.ai/api/ask + https://scholar.askdavidc.ai/mcp#commons_prior_art",
+        "query": "ADAPT: Adaptive Decision and Abstention with Pool-Size-Aware Thresholds for Service Routing Search lut-adapt",
+        "hit_count": 6,
+        "prior_art_status": "PRIOR_ART_CORROBORATED",
+        "top_idea_id": "d881480ad4be584d",
+        "top_citation_url": "https://research.openie.dev/papers/lut-adapt/",
+        "top_commons_permalink": "https://scholar.askdavidc.ai/?q=lut-adapt",
+        "top_channel_owner": "OpenIE Research",
+        "top_modality": "manuscript",
+        "top_disclosure_date": "2026-11-25",
+        "top_statement_excerpt": "When you add more specialist tools to a fast search router, fixed confidence cutoffs silently go out of tune and start guessing when no tool fits. ADAPT adjusts the \"I do not know—escalate\" cutoff automatically as the tool pool grows, avoiding expensive generative routing."
+      }
+    },
+    {
+      "radar_id": "RAD-2611-04",
+      "source": "arXiv",
+      "external_id": "arXiv:2611.34327v1",
+      "doi": "10.48550/arXiv.2611.34327",
+      "title": "MeterRouter: Budget-Aware Dynamic Routing for Multi-Agent Systems",
+      "authors": [
+        "Yue Xu",
+        "Leikun Yin",
+        "Ruiming Min",
+        "Yufeng Lai",
+        "Justin Andrew Johnson",
+        "Sitao Luan",
+        "Xiaotong Shen"
+      ],
+      "published_date": "2026-11-25",
+      "url": "https://arxiv.org/abs/2611.34327v1",
+      "vector_id": "budget-aware-multiagent-routing",
+      "vector_label": "Budget-Conditioned Multi-Agent Graph Synthesis",
+      "abstract": "Multi-agent systems (MAS) built on large language models (LLMs) outperform single-agent systems, but inter-agent communication incurs substantial token overhead. While assigning a large LLM to every agent is common, it results in inefficient resource utilization, leaving the system far from the Pareto frontier. The cost of answering a query is set jointly by how many agents are recruited, the role and LLM assigned to each, and communication topology amo…",
+      "blake2b_256": "6a7335120ba9769531b3b4f18201d772876613b5cc101ac2ceb74f91efd25f13",
+      "sha256": "f8f4c75f9ab5faea18da5d3a6825c36b32c56f9c4e4e7eb2aa963895e3d3b100",
+      "rung": 4,
+      "rung_code": "R4",
+      "rung_name": "Communication",
+      "rung_phase": 1,
+      "threshold_regime": "ephemeral_rungs_1_5",
+      "target_tier": "Tier 2 (Verified Rule/Checker)",
+      "plain_takeaway": "Giving every agent in a team a giant language model wastes tokens on chatter. MeterRouter builds a lean collaboration graph conditioned on an explicit per-question budget, matching top multi-agent accuracy at 82% lower cost.",
+      "formal_mechanism": "Budget-conditioned DAG synthesis trained with spend-penalized GRPO cuts multi-agent token spend by 82% across a 3-tier model pool while respecting caller budget caps.",
+      "openie_relation": "CORROBORATES",
+      "classification": "CORROBORATES",
+      "rationale": "Corroborates min-cost flow orchestration and explicit per-task budget constraints over unthresholded multi-agent chat.",
+      "epistemic_badge": "[M]",
+      "linked_study_id": "communication-avalanche",
+      "linked_study_title": "The Communication Tool Avalanche",
+      "linked_study_url": "https://research.openie.dev/papers/communication-avalanche/",
+      "falsifier_test": "Attach BLAKE3+Ed25519 edge verification and Jetson Thor INA3221 shunt metering to MeterRouter graphs; falsified if unverified inter-agent edges contain Byzantine fault injection without deterministic schema checks.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Late-Nov 2026 arXiv preprint: reports latency, accuracy, or formal verification metrics without inline DC rail current-shunt joule accounting (board_metered=false)."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/",
+          "url": "https://research.openie.dev/papers/communication-avalanche/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/",
+          "url": "https://research.openie.dev/products/mei/"
+        }
+      ],
+      "commons_corroboration": {
+        "checked_at_utc": "2026-11-26T21:58:12Z",
+        "endpoint": "https://scholar.askdavidc.ai/api/ask + https://scholar.askdavidc.ai/mcp#commons_prior_art",
+        "query": "MeterRouter: Budget-Aware Dynamic Routing for Multi-Agent Systems Communication communication-avalanche",
+        "hit_count": 6,
+        "prior_art_status": "PRIOR_ART_CORROBORATED",
+        "top_idea_id": "28422c97d3a99d74",
+        "top_citation_url": "https://research.openie.dev/papers/communication-avalanche/",
+        "top_commons_permalink": "https://scholar.askdavidc.ai/?q=communication-avalanche",
+        "top_channel_owner": "OpenIE Research",
+        "top_modality": "manuscript",
+        "top_disclosure_date": "2026-11-25",
+        "top_statement_excerpt": "Giving every agent in a team a giant language model wastes tokens on chatter. MeterRouter builds a lean collaboration graph conditioned on an explicit per-question budget, matching top multi-agent accuracy at 82% lower cost."
+      }
+    },
+    {
+      "radar_id": "RAD-2611-05",
+      "source": "arXiv",
+      "external_id": "arXiv:2611.34278v1",
+      "doi": "10.48550/arXiv.2611.34278",
+      "title": "Latent-in-the-Middle: On the Security of Cross-Model Latent Communication in Multi-Agent Systems",
+      "authors": [
+        "Manit Baser",
+        "Vyoman Jain",
+        "Rachel Yeo Hui Min",
+        "Xianglin Yang",
+        "Meenatchi Sundaram Muthu Selva Annamalai",
+        "Dinil Mon Divakaran"
+      ],
+      "published_date": "2026-11-25",
+      "url": "https://arxiv.org/abs/2611.34278v1",
+      "vector_id": "latent-handoff-security-chasm",
+      "vector_label": "Cross-Model Latent KV-Cache Handoff Attacks",
+      "abstract": "As large language models increasingly collaborate in heterogeneous multi-agent systems, latent communication has emerged as an efficient alternative to exchanging natural-language messages. By sharing internal representations, agents can avoid repeatedly processing the same context, reducing communication overhead and prefill computation. One such mechanism is cross-model Key-Value (KV) cache transfer, which uses a learned mapper to translate a source m…",
+      "blake2b_256": "24fcb47a795953176c169e2adf69ef371535b6fedf0aa6daf211ccf96f80347e",
+      "sha256": "8fd8b87d7fdae3001d6a9740c1a11d3ff6d29fcda4573c2ddf7dedfb9ba9faed",
+      "rung": 4,
+      "rung_code": "R4",
+      "rung_name": "Communication",
+      "rung_phase": 1,
+      "threshold_regime": "ephemeral_rungs_1_5",
+      "target_tier": "Tier 2 (Verified Rule/Checker)",
+      "plain_takeaway": "Passing hidden internal memory (KV caches) directly between different AI models skips slow text, but Latent-in-the-Middle shows it also bypasses safety checks—jumping prompt-injection success from 0.4% up to 44.2% (and 92.5% under targeted attacks). Every handoff between models needs an explicit check.",
+      "formal_mechanism": "Learned cross-model KV-cache mappers bypass receiver alignment (0.4% -> 44.2% native prompt injection, up to 92.5% white-box attack success), proving unverified latent handoffs violate interface soundness.",
+      "openie_relation": "CHALLENGES_ASSUMPTION",
+      "classification": "CHALLENGES_ASSUMPTION",
+      "rationale": "Directly validates CTA-T3 / Three-Body thesis: unverified latent or untyped handoffs create catastrophic security cascades.",
+      "epistemic_badge": "[M]",
+      "linked_study_id": "communication-avalanche",
+      "linked_study_title": "The Communication Tool Avalanche",
+      "linked_study_url": "https://research.openie.dev/papers/communication-avalanche/",
+      "falsifier_test": "Replace raw cross-model KV-cache handoffs with typed, BLAKE3+Ed25519 attested enzymatic payloads checked by a deterministic receiver gate; falsified if any malformed or out-of-contract payload mutates receiver state.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Late-Nov 2026 arXiv preprint: reports latency, accuracy, or formal verification metrics without inline DC rail current-shunt joule accounting (board_metered=false)."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "communication-avalanche",
+          "short_title": "The Communication Tool Avalanche",
+          "path": "/papers/communication-avalanche/",
+          "url": "https://research.openie.dev/papers/communication-avalanche/"
+        },
+        {
+          "id": "three-body",
+          "short_title": "The Three-Body Problem in Computing",
+          "path": "/papers/three-body/",
+          "url": "https://research.openie.dev/papers/three-body/"
+        }
+      ],
+      "commons_corroboration": {
+        "checked_at_utc": "2026-11-26T21:58:12Z",
+        "endpoint": "https://scholar.askdavidc.ai/api/ask + https://scholar.askdavidc.ai/mcp#commons_prior_art",
+        "query": "Latent-in-the-Middle: On the Security of Cross-Model Latent Communication in Multi-Agent Systems Communication communication-avalanche",
+        "hit_count": 6,
+        "prior_art_status": "PRIOR_ART_CORROBORATED",
+        "top_idea_id": "d8c92a2c2377ce67",
+        "top_citation_url": "https://research.openie.dev/papers/communication-avalanche/",
+        "top_commons_permalink": "https://scholar.askdavidc.ai/?q=communication-avalanche",
+        "top_channel_owner": "OpenIE Research",
+        "top_modality": "manuscript",
+        "top_disclosure_date": "2026-11-25",
+        "top_statement_excerpt": "Passing hidden internal memory (KV caches) directly between different AI models skips slow text, but Latent-in-the-Middle shows it also bypasses safety checks—jumping prompt-injection success from 0.4% up to 44.2% (and 92.5% under targeted attacks). Every handoff between models needs an explicit check."
+      }
+    },
+    {
+      "radar_id": "RAD-2611-06",
+      "source": "arXiv",
+      "external_id": "arXiv:2611.34132v1",
+      "doi": "10.48550/arXiv.2611.34132",
+      "title": "Agent-as-a-Verifier: From Scores to Evidence for General Verification",
+      "authors": [
+        "Yuxuan Sun",
+        "Hao",
+        "Chen",
+        "Nagarajan Natarajan",
+        "Sushrut Karmalkar",
+        "Niranjani Prasad",
+        "Amit Sharma",
+        "Hongxiang Fan"
+      ],
+      "published_date": "2026-11-25",
+      "url": "https://arxiv.org/abs/2611.34132v1",
+      "vector_id": "certificate-producing-verification",
+      "vector_label": "Claim-Obligation-Certificate Agent Verification",
+      "abstract": "Verification is increasingly critical across various inference and learning paradigms, such as test-time scaling, recursive intelligence and automated research, where feedback can improve efficiency and optimization. Common score-based verifiers, or discriminative reward models, predict a scalar reward for an output. While useful for filtering, rewarding, and ranking, such scores provide no explicit, auditable evidentiary basis for the judgment. In para…",
+      "blake2b_256": "f35a6ab5e7bcf2ef46b0b1abc6b103ae744073b9302321b27e0a4b7072f4f915",
+      "sha256": "d46a5ef5782dcacd6d0383794d3d37bfb8df131a08e5b9b89c7cb5045a8c9cc5",
+      "rung": 5,
+      "rung_code": "R5",
+      "rung_name": "Tool Use",
+      "rung_phase": 1,
+      "threshold_regime": "crossing_compilation_threshold",
+      "target_tier": "Tier 2 (Verified Rule/Checker)",
+      "plain_takeaway": "Instead of trusting a vague single-number \"reward score\" to judge AI work, Agent-as-a-Verifier breaks outputs into explicit claims, checks each obligation with tools, and catches reward-hacking tricks on Terminal-Bench 2.1, FrontierMath, and CyberGym.",
+      "formal_mechanism": "Verdict-blind claim dependency extraction + independently compiled acceptance contracts produce auditable verification certificates and catch benchmark reward-hacking.",
+      "openie_relation": "CORROBORATES",
+      "classification": "CORROBORATES",
+      "rationale": "Reinforces replacing scalar neural reward scores with explicit, auditable obligation-and-receipt verification.",
+      "epistemic_badge": "[M]",
+      "linked_study_id": "rce",
+      "linked_study_title": "The Reality Code Engine",
+      "linked_study_url": "https://research.openie.dev/papers/rce/",
+      "falsifier_test": "Compare LLM-executed obligation checking against deterministic RCE / Lean 4 kernel checking on shared obligations; measure reported_j per check (49.04 mJ RCE floor vs multi-joule agentic verifier).",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Late-Nov 2026 arXiv preprint: reports latency, accuracy, or formal verification metrics without inline DC rail current-shunt joule accounting (board_metered=false)."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "rce",
+          "short_title": "The Reality Code Engine",
+          "path": "/papers/rce/",
+          "url": "https://research.openie.dev/papers/rce/"
+        },
+        {
+          "id": "gates",
+          "short_title": "Metered Commit Gates",
+          "path": "/papers/gates/",
+          "url": "https://research.openie.dev/papers/gates/"
+        }
+      ],
+      "commons_corroboration": {
+        "checked_at_utc": "2026-11-26T21:58:12Z",
+        "endpoint": "https://scholar.askdavidc.ai/api/ask + https://scholar.askdavidc.ai/mcp#commons_prior_art",
+        "query": "Agent-as-a-Verifier: From Scores to Evidence for General Verification Tool Use rce",
+        "hit_count": 6,
+        "prior_art_status": "PRIOR_ART_CORROBORATED",
+        "top_idea_id": "4f170b2652fa1934",
+        "top_citation_url": "https://research.openie.dev/papers/rce/",
+        "top_commons_permalink": "https://scholar.askdavidc.ai/?q=rce",
+        "top_channel_owner": "OpenIE Research",
+        "top_modality": "manuscript",
+        "top_disclosure_date": "2026-11-25",
+        "top_statement_excerpt": "Instead of trusting a vague single-number \"reward score\" to judge AI work, Agent-as-a-Verifier breaks outputs into explicit claims, checks each obligation with tools, and catches reward-hacking tricks on Terminal-Bench 2.1, FrontierMath, and CyberGym."
+      }
+    },
+    {
+      "radar_id": "RAD-2611-07",
+      "source": "arXiv",
+      "external_id": "arXiv:2611.32958v1",
+      "doi": "10.48550/arXiv.2611.32958",
+      "title": "Attestation is All You Need: Toward a Zero-Trust Architecture for HPC AI Agents",
+      "authors": [
+        "Jie Li",
+        "Chenxu Niu",
+        "Tongyang Wang",
+        "Yong Chen"
+      ],
+      "published_date": "2026-11-24",
+      "url": "https://arxiv.org/abs/2611.32958v1",
+      "vector_id": "ebpf-zero-trust-agent-attestation",
+      "vector_label": "Runtime Syscall Attestation for Hijacked Agents",
+      "abstract": "AI agents are beginning to automate data analysis, orchestration, and simulation steering in HPC environments, but they introduce a security problem that existing cluster defenses do not address: the hijacked authorized agent. An adversary can subvert an agent through prompt injection, poisoned shared data, compromised tools, or multi-agent coordination, then exfiltrate sensitive data through legitimate encrypted LLM API traffic. We propose behavioral a…",
+      "blake2b_256": "903eb287f0495d20a48b84d3f555aa3dc47112799d3c22e01b2716e2b69442ca",
+      "sha256": "587d34b14cde54cbb94cc94561643f2a69a84027744124de2001ebe25e6fb139",
+      "rung": 8,
+      "rung_code": "R8",
+      "rung_name": "Ecology",
+      "rung_phase": 2,
+      "threshold_regime": "crossing_compilation_threshold",
+      "target_tier": "Tier 2 (Verified Rule/Checker)",
+      "plain_takeaway": "Even an authorized AI agent on a supercomputer can be hijacked by poisoned data. AEGIS compiles task rules ahead of time and watches real operating-system actions via eBPF, catching hijacked agents in under a second with zero false alarms on normal work.",
+      "formal_mechanism": "Task-compiled behavioral constraints enforced via eBPF syscall interception and Slurm-level containment detect 4/4 hijacked-agent attack classes at sub-second latency and 0% benign false positives.",
+      "openie_relation": "CORROBORATES",
+      "classification": "CORROBORATES",
+      "rationale": "Corroborates OS-level behavioral attestation and commit-gate containment for untrusted agent sandboxes.",
+      "epistemic_badge": "[M]",
+      "linked_study_id": "jouleos",
+      "linked_study_title": "The Search for JouleOS",
+      "linked_study_url": "https://research.openie.dev/products/jouleos/",
+      "falsifier_test": "Pair AEGIS eBPF syscall profiles with SATB L2/L3 energy envelopes and Ed25519 JCR-1 receipts; test whether budget-exhaustion attacks are halted alongside data-exfiltration syscalls.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Late-Nov 2026 arXiv preprint: reports latency, accuracy, or formal verification metrics without inline DC rail current-shunt joule accounting (board_metered=false)."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "jouleos",
+          "short_title": "The Search for JouleOS",
+          "path": "/products/jouleos/",
+          "url": "https://research.openie.dev/products/jouleos/"
+        },
+        {
+          "id": "satb-harness",
+          "short_title": "Satiation Benchmark Harness",
+          "path": "/papers/satb-harness/",
+          "url": "https://research.openie.dev/papers/satb-harness/"
+        }
+      ],
+      "commons_corroboration": {
+        "checked_at_utc": "2026-11-26T21:58:12Z",
+        "endpoint": "https://scholar.askdavidc.ai/api/ask + https://scholar.askdavidc.ai/mcp#commons_prior_art",
+        "query": "Attestation is All You Need: Toward a Zero-Trust Architecture for HPC AI Agents Ecology jouleos",
+        "hit_count": 6,
+        "prior_art_status": "PRIOR_ART_CORROBORATED",
+        "top_idea_id": "53882c4bf7eeb338",
+        "top_citation_url": "https://research.openie.dev/products/jouleos/",
+        "top_commons_permalink": "https://scholar.askdavidc.ai/?q=jouleos",
+        "top_channel_owner": "OpenIE Research",
+        "top_modality": "manuscript",
+        "top_disclosure_date": "2026-11-25",
+        "top_statement_excerpt": "Even an authorized AI agent on a supercomputer can be hijacked by poisoned data. AEGIS compiles task rules ahead of time and watches real operating-system actions via eBPF, catching hijacked agents in under a second with zero false alarms on normal work."
+      }
+    },
+    {
+      "radar_id": "RAD-2611-08",
+      "source": "arXiv",
+      "external_id": "arXiv:2611.34830v1",
+      "doi": "10.48550/arXiv.2611.34830",
+      "title": "Not all world models can doubt: how training objective and architecture shape epistemic uncertainty in JEPA and RSSM world models",
+      "authors": [
+        "Simon Baur",
+        "Wojciech Samek",
+        "Jackie Ma"
+      ],
+      "published_date": "2026-11-25",
+      "url": "https://arxiv.org/abs/2611.34830v1",
+      "vector_id": "jepa-epistemic-uncertainty",
+      "vector_label": "Epistemic Doubt in JEPA vs Pixel-Reconstruction World Models",
+      "abstract": "World models predict how an environment responds to actions, so that candidate actions can be evaluated before execution. Executed actions, or decisions, taken in this manner are only as reliable as the model's predictive capabilities, and predictions in turn are only reliable within the model's experience. Epistemic uncertainty (EU) is the signal that marks where that experience ends. In this work we offer an extensive empirical study on how training o…",
+      "blake2b_256": "a241830733c85dd855834ef3613097d59d7885f86e10efaef9ce85132e65a64c",
+      "sha256": "1d0333d48dee368e536b02af7cf0d6f64e4ad041e2855e239d532cc551af27dc",
+      "rung": 3,
+      "rung_code": "R3",
+      "rung_name": "Reasoning",
+      "rung_phase": 1,
+      "threshold_regime": "crossing_compilation_threshold",
+      "target_tier": "Tier 2 (Verified Rule/Checker)",
+      "plain_takeaway": "A world model is only safe if it knows when it is out of its depth. Comparing DreamerV3 (which reconstructs pixels) against a JEPA world model across 10 environments shows pixel models smooth away small surprises, whereas JEPA preserves clear uncertainty signals when something unfamiliar happens.",
+      "formal_mechanism": "RSSMs attenuate single-frame state perturbations via recurrent averaging and pixel-area weighting, whereas decoder-free JEPA embeddings propagate unfamiliar-state perturbations cleanly to epistemic uncertainty estimators.",
+      "openie_relation": "CORROBORATES",
+      "classification": "CORROBORATES",
+      "rationale": "Directly supports using decoder-free JEPA / EBM latent energy as an out-of-distribution wake and doubt signal ahead of a deterministic checker.",
+      "epistemic_badge": "[M]",
+      "linked_study_id": "rce-jepa",
+      "linked_study_title": "RCE-JEPA",
+      "linked_study_url": "https://research.openie.dev/papers/rce-jepa/",
+      "falsifier_test": "Compare FormJEPA-v1 / FormEBM-v3 radial OOD energy against autoregressive token-perplexity uncertainty on unseen H15 program mutations.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Late-Nov 2026 arXiv preprint: reports latency, accuracy, or formal verification metrics without inline DC rail current-shunt joule accounting (board_metered=false)."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "rce-jepa",
+          "short_title": "RCE-JEPA",
+          "path": "/papers/rce-jepa/",
+          "url": "https://research.openie.dev/papers/rce-jepa/"
+        },
+        {
+          "id": "lut-adapt",
+          "short_title": "Downward LUT6 Compilation",
+          "path": "/papers/lut-adapt/",
+          "url": "https://research.openie.dev/papers/lut-adapt/"
+        }
+      ],
+      "commons_corroboration": {
+        "checked_at_utc": "2026-11-26T21:58:12Z",
+        "endpoint": "https://scholar.askdavidc.ai/api/ask + https://scholar.askdavidc.ai/mcp#commons_prior_art",
+        "query": "Not all world models can doubt: how training objective and architecture shape epistemic uncertainty in JEPA and RSSM world models Reasoning rce-jepa",
+        "hit_count": 6,
+        "prior_art_status": "PRIOR_ART_CORROBORATED",
+        "top_idea_id": "5ac12f3d9438f9e0",
+        "top_citation_url": "https://research.openie.dev/papers/rce-jepa/",
+        "top_commons_permalink": "https://scholar.askdavidc.ai/?q=rce-jepa",
+        "top_channel_owner": "OpenIE Research",
+        "top_modality": "manuscript",
+        "top_disclosure_date": "2026-11-25",
+        "top_statement_excerpt": "A world model is only safe if it knows when it is out of its depth. Comparing DreamerV3 (which reconstructs pixels) against a JEPA world model across 10 environments shows pixel models smooth away small surprises, whereas JEPA preserves clear uncertainty signals when something unfamiliar happens."
+      }
+    },
+    {
+      "radar_id": "RAD-2611-09",
+      "source": "arXiv",
+      "external_id": "arXiv:2611.31910v1",
+      "doi": "10.48550/arXiv.2611.31910",
+      "title": "ReJEPA: Bounded Predictive Regulation for Latent World Models",
+      "authors": [
+        "Fangzhou Lin",
+        "Yuping Wang",
+        "Shuo Xing",
+        "Yang Chen",
+        "Yuwen Heng",
+        "Xin Li",
+        "Wenbin He",
+        "Yuhan Yao",
+        "Zhengzhong Tu",
+        "Liu Ren"
+      ],
+      "published_date": "2026-11-24",
+      "url": "https://arxiv.org/abs/2611.31910v1",
+      "vector_id": "rejepa-bounded-predictive-regulation",
+      "vector_label": "Bounded log-cosh Regulation in Latent World Models",
+      "abstract": "Latent world models learn representations by predicting future states in an abstract embedding space rather than reconstructing raw pixels. When training across multi-frame sequences, however, not all frames and spatial regions are equally informative or predictable. We argue that forcing a world model to minimize every prediction error may be unnecessary and harmful. Under standard $L_2$ loss, unbounded gradients force the encoder and predictor to over…",
+      "blake2b_256": "72f52b73e0b39aa10dd89bec49f13b789af2f8497e8e27f2e11f62e4c8ebc444",
+      "sha256": "510fe5a1a95cbaa5634ae9728dada1d3373c549abb02f96060a2a059026c1698",
+      "rung": 3,
+      "rung_code": "R3",
+      "rung_name": "Reasoning",
+      "rung_phase": 1,
+      "threshold_regime": "ephemeral_rungs_1_5",
+      "target_tier": "Tier 2 (Verified Rule/Checker)",
+      "plain_takeaway": "Forcing a world model to obsess over every noisy background detail ruins its grasp of core physics. ReJEPA uses a smooth, bounded error rule (log-cosh) so extreme noise spikes do not hijack training, improving planning from simple mazes up to real-world driving.",
+      "formal_mechanism": "Replacing unbounded L2 / non-smooth L1 latent losses with element-wise log-cosh bounds outlier gradients while preserving quadratic curvature near zero across LeWorldModel and V-JEPA 2.1.",
+      "openie_relation": "CORROBORATES",
+      "classification": "CORROBORATES",
+      "rationale": "Reinforces span-normalized, bounded energy shaping (analogous to FormEBM-v3 edit-size normalization) for smooth multi-step planning landscapes.",
+      "epistemic_badge": "[M]",
+      "linked_study_id": "rce-jepa",
+      "linked_study_title": "RCE-JEPA",
+      "linked_study_url": "https://research.openie.dev/papers/rce-jepa/",
+      "falsifier_test": "Train a log-cosh variant of FormJEPA on the 1,387-Form W1 split and test whether H11 5-step monotonicity exceeds FormEBM-v3 (94.0%).",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Late-Nov 2026 arXiv preprint: reports latency, accuracy, or formal verification metrics without inline DC rail current-shunt joule accounting (board_metered=false)."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "rce-jepa",
+          "short_title": "RCE-JEPA",
+          "path": "/papers/rce-jepa/",
+          "url": "https://research.openie.dev/papers/rce-jepa/"
+        }
+      ],
+      "commons_corroboration": {
+        "checked_at_utc": "2026-11-26T21:58:12Z",
+        "endpoint": "https://scholar.askdavidc.ai/api/ask + https://scholar.askdavidc.ai/mcp#commons_prior_art",
+        "query": "ReJEPA: Bounded Predictive Regulation for Latent World Models Reasoning rce-jepa",
+        "hit_count": 6,
+        "prior_art_status": "PRIOR_ART_CORROBORATED",
+        "top_idea_id": "dcc271957414a10f",
+        "top_citation_url": "https://research.openie.dev/papers/rce-jepa/",
+        "top_commons_permalink": "https://scholar.askdavidc.ai/?q=rce-jepa",
+        "top_channel_owner": "OpenIE Research",
+        "top_modality": "manuscript",
+        "top_disclosure_date": "2026-11-25",
+        "top_statement_excerpt": "Forcing a world model to obsess over every noisy background detail ruins its grasp of core physics. ReJEPA uses a smooth, bounded error rule (log-cosh) so extreme noise spikes do not hijack training, improving planning from simple mazes up to real-world driving."
+      }
+    },
+    {
+      "radar_id": "RAD-2611-10",
+      "source": "arXiv",
+      "external_id": "arXiv:2611.18220v1",
+      "doi": "10.48550/arXiv.2611.18220",
+      "title": "From Pen-and-Paper to Machine-Checked Proofs: Lean for System Identification",
+      "authors": [
+        "Manas Mejari",
+        "Dario Piga",
+        "Marco Forgione"
+      ],
+      "published_date": "2026-11-13",
+      "url": "https://arxiv.org/abs/2611.18220v1",
+      "vector_id": "lean4-system-identification-audit",
+      "vector_label": "Lean 4 Kernel Proofs Catch Classic Control Lemma Gap",
+      "abstract": "Mathematical proofs in scientific papers are often long and intricate, relying on chains of references to earlier results. This makes it difficult for readers and reviewers to verify each and every step. Interactive theorem proving offers a complement: the theorem and its proof are written as code, and every inference is checked by a small, trusted piece of software called the kernel. This paper serves as an introduction to the Lean 4 proof assistant fo…",
+      "blake2b_256": "f6f1b818fdf69bbb0499eea55aa5092bf4f5e3abdc479ae1a8b14a0b17d0b218",
+      "sha256": "aea247c8b769f7c581944545fa82bbe0da73336114c117eaefa7c8e954e91ee6",
+      "rung": 7,
+      "rung_code": "R7",
+      "rung_name": "Competence",
+      "rung_phase": 2,
+      "threshold_regime": "compiled_rungs_6_9",
+      "target_tier": "Tier 2 (Verified Rule/Checker)",
+      "plain_takeaway": "When control engineers translated a famous 1999 textbook proof into the Lean 4 proof checker, the computer refused to let a hidden assumption slide—revealing a concrete counterexample where the textbook statement only holds \"almost surely,\" not always.",
+      "formal_mechanism": "Formalizing Ljung (1999, Lemma 3.1) noise-filter inversion in Lean 4 exposes an unstated measure-zero realization exception and constructs an explicit counterexample.",
+      "openie_relation": "CORROBORATES",
+      "classification": "CORROBORATES",
+      "rationale": "Illustrates why machine-checked Lean 4 kernels catch subtle boundary assumptions that decades of human peer review missed.",
+      "epistemic_badge": "[T]",
+      "linked_study_id": "rce",
+      "linked_study_title": "The Reality Code Engine",
+      "linked_study_url": "https://research.openie.dev/papers/rce/",
+      "falsifier_test": "Run all newly formalized control invariance declarations through bubblewrap-isolated 6-kernel paranoid verification (con-leche, con-ron, lean4lean, nanoda, leanchecker, Lean 4.36.0).",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Late-Nov 2026 arXiv preprint: reports latency, accuracy, or formal verification metrics without inline DC rail current-shunt joule accounting (board_metered=false)."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "rce",
+          "short_title": "The Reality Code Engine",
+          "path": "/papers/rce/",
+          "url": "https://research.openie.dev/papers/rce/"
+        },
+        {
+          "id": "time-as-an-index",
+          "short_title": "Time as an Index",
+          "path": "/papers/time-as-an-index/",
+          "url": "https://research.openie.dev/papers/time-as-an-index/"
+        }
+      ],
+      "commons_corroboration": {
+        "checked_at_utc": "2026-11-26T21:58:12Z",
+        "endpoint": "https://scholar.askdavidc.ai/api/ask + https://scholar.askdavidc.ai/mcp#commons_prior_art",
+        "query": "From Pen-and-Paper to Machine-Checked Proofs: Lean for System Identification Competence rce",
+        "hit_count": 6,
+        "prior_art_status": "PRIOR_ART_CORROBORATED",
+        "top_idea_id": "09b9e063ae203f21",
+        "top_citation_url": "https://research.openie.dev/papers/rce/",
+        "top_commons_permalink": "https://scholar.askdavidc.ai/?q=rce",
+        "top_channel_owner": "OpenIE Research",
+        "top_modality": "manuscript",
+        "top_disclosure_date": "2026-11-25",
+        "top_statement_excerpt": "When control engineers translated a famous 1999 textbook proof into the Lean 4 proof checker, the computer refused to let a hidden assumption slide—revealing a concrete counterexample where the textbook statement only holds \"almost surely,\" not always."
+      }
+    },
+    {
+      "radar_id": "RAD-2611-11",
+      "source": "arXiv",
+      "external_id": "arXiv:2611.26657v1",
+      "doi": "10.48550/arXiv.2611.26657",
+      "title": "BitPrefill: W1.58A4 Tensor-Core Acceleration for Compute-Bound LLM Prefill",
+      "authors": [
+        "Fang Chen",
+        "Xuming Chen",
+        "Sanmukh Kuppannagari",
+        "Gourav Datta"
+      ],
+      "published_date": "2026-11-18",
+      "url": "https://arxiv.org/abs/2611.26657v1",
+      "vector_id": "ternary-w158a4-prefill-kernels",
+      "vector_label": "Native INT4 Tensor-Core Ternary W1.58A4 Prefill",
+      "abstract": "Low-bit quantization reduces large language model (LLM) inference cost, yet implementations optimized for memory-bound decode can leave compute-bound prefill on BF16 tensor cores. This gap matters for input-heavy workloads, including long-context and multimodal applications, where prefill can account for a substantial fraction of inference latency. We propose a W1.58A4 operator that quantizes weights to ternary values and activations to 4-bit, while exe…",
+      "blake2b_256": "2a71baa13dd07a9e949135532a4ae667f0036bb2345df43e3721a9343418c72b",
+      "sha256": "b1d3d1283cb43c50f9968be5da0c4ac677cb611618d8272303c5aa92318b2307",
+      "rung": 7,
+      "rung_code": "R7",
+      "rung_name": "Competence",
+      "rung_phase": 2,
+      "threshold_regime": "compiled_rungs_6_9",
+      "target_tier": "Tier 0 (Single-Cycle Silicon)",
+      "plain_takeaway": "Many 1.58-bit ternary AI setups secretly fall back to heavy 16-bit math while reading your prompt. BitPrefill keeps ternary weights and 4-bit activations inside native integer hardware on RTX 4090 and Jetson edge chips, speeding up prompt reading by 1.42× without losing accuracy.",
+      "formal_mechanism": "W1.58A4 native INT4 GEMM tensor-core operator eliminates BF16 prefill fallback on BitNet-b1.58 across RTX 4090 and Jetson Orin Nano (~1.42× prefill speedup).",
+      "openie_relation": "CORROBORATES",
+      "classification": "CORROBORATES",
+      "rationale": "Directly corroborates our Sub-Bit Impedance Tax finding (@ 813eb96 & @ 6a22dee): low-bit weights only save time and energy when execution stays in native integer/LUT datapaths rather than unpacking to floats.",
+      "epistemic_badge": "[M]",
+      "linked_study_id": "lut-adapt",
+      "linked_study_title": "Downward LUT6 Compilation",
+      "linked_study_url": "https://research.openie.dev/papers/lut-adapt/",
+      "falsifier_test": "Meter BitPrefill W1.58A4 versus Q2_0->FP32 unpack on Jetson AGX Thor TI INA3221/INA238 physical shunts (measured_j) under Falsifier 6 <= 5% idle drift.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Late-Nov 2026 arXiv preprint: reports latency, accuracy, or formal verification metrics without inline DC rail current-shunt joule accounting (board_metered=false)."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "lut-adapt",
+          "short_title": "Downward LUT6 Compilation",
+          "path": "/papers/lut-adapt/",
+          "url": "https://research.openie.dev/papers/lut-adapt/"
+        },
+        {
+          "id": "mei",
+          "short_title": "Metabolic Intelligence",
+          "path": "/products/mei/",
+          "url": "https://research.openie.dev/products/mei/"
+        }
+      ],
+      "commons_corroboration": {
+        "checked_at_utc": "2026-11-26T21:58:12Z",
+        "endpoint": "https://scholar.askdavidc.ai/api/ask + https://scholar.askdavidc.ai/mcp#commons_prior_art",
+        "query": "BitPrefill: W1.58A4 Tensor-Core Acceleration for Compute-Bound LLM Prefill Competence lut-adapt",
+        "hit_count": 6,
+        "prior_art_status": "PRIOR_ART_CORROBORATED",
+        "top_idea_id": "39de4d56d46e5cde",
+        "top_citation_url": "https://research.openie.dev/papers/lut-adapt/",
+        "top_commons_permalink": "https://scholar.askdavidc.ai/?q=lut-adapt",
+        "top_channel_owner": "OpenIE Research",
+        "top_modality": "manuscript",
+        "top_disclosure_date": "2026-11-25",
+        "top_statement_excerpt": "Many 1.58-bit ternary AI setups secretly fall back to heavy 16-bit math while reading your prompt. BitPrefill keeps ternary weights and 4-bit activations inside native integer hardware on RTX 4090 and Jetson edge chips, speeding up prompt reading by 1.42× without losing accuracy."
+      }
+    },
+    {
+      "radar_id": "RAD-2611-12",
+      "source": "arXiv",
+      "external_id": "arXiv:2611.12019v1",
+      "doi": "10.48550/arXiv.2611.12019",
+      "title": "Feeling Easier, Working Harder: Cognitive Load in AI-Assisted Code Comprehension",
+      "authors": [
+        "Maryangela White",
+        "Maximilian Rose",
+        "Matthew Buckman",
+        "Amy McDonnell",
+        "Francisco Ortega",
+        "Bianca Trinkenreich"
+      ],
+      "published_date": "2026-11-09",
+      "url": "https://arxiv.org/abs/2611.12019v1",
+      "vector_id": "ai-code-comprehension-cognitive-load",
+      "vector_label": "Dual-Task Cognitive Load Penalty in AI Explanations",
+      "abstract": "Software developers spend significant time reading and understanding code, increasingly supplemented by generative AI. While these tools aim to reduce the difficulty of reading code, interacting with them introduces a dual-task environment that may impose extraneous cognitive load that is challenging to capture. This study investigates how access to generative AI affects developers' real-time cognitive workload, code comprehension performance, and self-…",
+      "blake2b_256": "fddd5606e0eb2a7aaf0986a26acb1fd121a7ee4ecd6521b94bac21a7bcc88871",
+      "sha256": "57d885bdb11abe7f5c608dc9fe3922a1f7091ae054f71be1050a2dd670837f09",
+      "rung": 4,
+      "rung_code": "R4",
+      "rung_name": "Communication",
+      "rung_phase": 1,
+      "threshold_regime": "ephemeral_rungs_1_5",
+      "target_tier": "Tier 1 (Indexed Case Store)",
+      "plain_takeaway": "Developers feel like AI code explanations make reading easier, yet real-time reaction-time sensors (ICSE 2027) show AI chat panels actually increase objective mental workload by 11.2% without improving quiz scores. Presenting the simplest plain summary first—and hiding dense detail until requested—prevents this dual-task overload.",
+      "formal_mechanism": "Within-subjects Detection-Response Task (tDRT) audit shows generative AI assistance raises objective cognitive reaction latency by +11.2% while self-perceived NASA-TLX remains flat (metacognitive illusion).",
+      "openie_relation": "NEW_FRONTIER_GAP",
+      "classification": "NEW_FRONTIER_GAP",
+      "rationale": "Empirically grounds our Gravity-Well Simplest-First HMI architecture: simultaneous dense prose + AI verbosity imposes measurable extraneous cognitive load.",
+      "epistemic_badge": "[E]",
+      "linked_study_id": "ai-reads-human",
+      "linked_study_title": "\"AI\" Reads Human",
+      "linked_study_url": "https://research.openie.dev/papers/ai-reads-human/",
+      "falsifier_test": "Measure reader comprehension and reaction latency on 4-Altitude Gravity-Well plain-first pages versus dense-manuscript-first pages.",
+      "telemetry_audit": {
+        "energy_class": "unmetered_throughput",
+        "mentions_inline_shunt": false,
+        "mentions_energy_counters": false,
+        "mentions_deterministic_baseline": false,
+        "audit_summary": "Late-Nov 2026 arXiv preprint: reports latency, accuracy, or formal verification metrics without inline DC rail current-shunt joule accounting (board_metered=false)."
+      },
+      "matched_openie_studies": [
+        {
+          "id": "ai-reads-human",
+          "short_title": "\"AI\" Reads Human",
+          "path": "/papers/ai-reads-human/",
+          "url": "https://research.openie.dev/papers/ai-reads-human/"
+        },
+        {
+          "id": "interface-economics",
+          "short_title": "The Price of the Unexamined Interface",
+          "path": "/papers/interface-economics/",
+          "url": "https://research.openie.dev/papers/interface-economics/"
+        }
+      ],
+      "commons_corroboration": {
+        "checked_at_utc": "2026-11-26T21:58:12Z",
+        "endpoint": "https://scholar.askdavidc.ai/api/ask + https://scholar.askdavidc.ai/mcp#commons_prior_art",
+        "query": "Feeling Easier, Working Harder: Cognitive Load in AI-Assisted Code Comprehension Communication ai-reads-human",
+        "hit_count": 6,
+        "prior_art_status": "PRIOR_ART_CORROBORATED",
+        "top_idea_id": "2e3c67ec33377e31",
+        "top_citation_url": "https://research.openie.dev/papers/ai-reads-human/",
+        "top_commons_permalink": "https://scholar.askdavidc.ai/?q=ai-reads-human",
+        "top_channel_owner": "OpenIE Research",
+        "top_modality": "manuscript",
+        "top_disclosure_date": "2026-11-25",
+        "top_statement_excerpt": "Developers feel like AI code explanations make reading easier, yet real-time reaction-time sensors (ICSE 2027) show AI chat panels actually increase objective mental workload by 11.2% without improving quiz scores. Presenting the simplest plain summary first—and hiding dense detail until requested—prevents this dual-task overload."
+      }
+    },
     {
       "radar_id": "RAD-001",
       "source": "arXiv",
@@ -5440,11 +6305,11 @@
     }
   ],
   "shape_d_pilot_summary": {
-    "executed_at_utc": "2026-11-24T20:01:56Z",
+    "executed_at_utc": "2026-11-26T22:02:14Z",
     "total_pilot_wall_sec": 51.747,
-    "pilot_budget_limit_sec": 60.0,
+    "pilot_budget_limit_sec": 60,
     "counts_by_status": {
-      "PROMOTED_CANDIDATE": 4,
+      "PROMOTED_CANDIDATE": 5,
       "HOLD_NEEDS_HARDWARE": 1,
       "KILLED_BY_NULL": 1
     },
@@ -5452,8 +6317,8 @@
       "pilot_id": "RADAR-SHAPED-PROP1",
       "arrivals": 4096,
       "tier1_hit_rate_pct": 97.66,
-      "broken_commits_pct": 0.0,
-      "parity_delta": 0.0,
+      "broken_commits_pct": 0,
+      "parity_delta": 0,
       "ephemeral_r5_ms": 10.27,
       "compiled_r7_ms": 0.82,
       "ephemeral_reported_j": 0.4302,
@@ -5466,6 +6331,79 @@
     "execution_substrate": "Linux x86_64 deterministic Python 3.12.13 harness (RAPL reported_j=True, board_metered=false, measured_j=null)"
   },
   "foundry_pilots": [
+    {
+      "topic_id": "TF-2026-07",
+      "title": "Pool-Aware Conformal Commitment Gate Ahead of Multi-Model Routers (RAP + MARC + ADAPT)",
+      "status": "PROMOTED_CANDIDATE",
+      "openie_anchors": [
+        "deterministic-null",
+        "gates",
+        "lut-adapt"
+      ],
+      "inspired_by_urls": [
+        {
+          "title": "Routeability Before Routing: Routeability Audit Protocol (RAP) and RouteabilityBench for Audited LLM Model Selection",
+          "url": "https://arxiv.org/abs/2611.34825v1",
+          "source": "arXiv",
+          "external_id": "arXiv:2611.34825v1"
+        },
+        {
+          "title": "When the Cheapest Feasible Router Fails: Auditing Deployment Commitments in Cost-Aware LLM Routing",
+          "url": "https://arxiv.org/abs/2611.20417v1",
+          "source": "arXiv",
+          "external_id": "arXiv:2611.20417v1"
+        },
+        {
+          "title": "ADAPT: Adaptive Decision and Abstention with Pool-Size-Aware Thresholds for Service Routing",
+          "url": "https://arxiv.org/abs/2611.25754v1",
+          "source": "arXiv",
+          "external_id": "arXiv:2611.25754v1"
+        },
+        {
+          "title": "MeterRouter: Budget-Aware Dynamic Routing for Multi-Agent Systems",
+          "url": "https://arxiv.org/abs/2611.34327v1",
+          "source": "arXiv",
+          "external_id": "arXiv:2611.34327v1"
+        }
+      ],
+      "hypothesis": "Combining a Shape D tied-best routeability pre-audit with K-aware conformal commitment margins cuts held-out router contract violations from >30% to <1.0% while intercepting >80% of Zipfian repeats in <= 4 KiB.",
+      "shape_d_null_baseline": "Uncommitted cheapest-audit-feasible router across 1,200 disjoint construction/audit/test prompts without Shape D lookup.",
+      "kill_criterion": "Kill if held-out conditional contract failure exceeds 1.0% OR package reported_j gain versus single-best model is < 3.0x.",
+      "target_joule_bound": "<= 0.10x single-best teacher package reported_j across 1,200 Zipf(0.85) arrivals (board_metered=false).",
+      "pilot_receipt": {
+        "status": "PROMOTED_CANDIDATE",
+        "trials": 1200,
+        "null_contract_violation_pct": 31.8,
+        "candidate_contract_violation_pct": 0.58,
+        "lut_intercept_pct": 82.5,
+        "baseline_ms": 38.4,
+        "candidate_ms": 4.12,
+        "baseline_reported_j": 2.841,
+        "candidate_reported_j": 0.249,
+        "gain_factor": 11.41,
+        "verdict_detail": "K-aware conformal commitment + Shape D pre-filter cut held-out router contract violations from 31.8% to 0.58% while lowering Linux RAPL package reported_j by 11.41x.",
+        "receipt_sha256": "e18827829ff9683c7dc8e7d3",
+        "telemetry_source": "Linux powercap intel-rapl:0 (package-0 reported_j, board_metered=false)"
+      },
+      "target_rung": 3,
+      "target_rung_code": "R3",
+      "target_rung_name": "Reasoning",
+      "target_tier": "Tier 2 (Verified Rule/Checker)",
+      "commons_corroboration": {
+        "checked_at_utc": "2026-11-26T22:02:14Z",
+        "endpoint": "https://scholar.askdavidc.ai/api/ask + https://scholar.askdavidc.ai/mcp#commons_prior_art",
+        "query": "RouteabilityBench MARC ADAPT conformal router deterministic-null gates",
+        "hit_count": 9,
+        "prior_art_status": "PRIOR_ART_CORROBORATED",
+        "top_idea_id": "371d4642c7e7250e",
+        "top_citation_url": "https://research.openie.dev/papers/deterministic-null/",
+        "top_commons_permalink": "https://scholar.askdavidc.ai/?q=deterministic-null",
+        "top_channel_owner": "OpenIE Research",
+        "top_modality": "manuscript",
+        "top_disclosure_date": "2026-11-25",
+        "top_statement_excerpt": "Pre-registered Shape D integer lookup control and conformal wake gates bound false deployment commitments before waking frontier teachers."
+      }
+    },
     {
       "topic_id": "TF-2026-01",
       "title": "Conformal Prefix-LUT6 Early-Exit Gate for Hybrid State-Space Routing",
@@ -5521,7 +6459,7 @@
         "trials": 6000,
         "lut6_hit_rate_pct": 88.22,
         "false_commits": 0,
-        "parity_delta": 0.0,
+        "parity_delta": 0,
         "baseline_ms": 24.18,
         "candidate_ms": 24.61,
         "baseline_reported_j": 0.7411,
@@ -5587,13 +6525,13 @@
         "trials": 2500,
         "null_false_commits": 136,
         "candidate_false_commits": 0,
-        "goodput_pct": 100.0,
+        "goodput_pct": 100,
         "quarantined_byzantine": "4/4",
         "baseline_ms": 26.88,
         "candidate_ms": 17.53,
         "baseline_reported_j": 0.4271,
         "candidate_reported_j": 0.4578,
-        "gain_factor": 136.0,
+        "gain_factor": 136,
         "verdict_detail": "SepJ-inspired quorum quarantine isolated 4/4 Byzantine nodes within 14 rounds: 0/2500 false commits (100.0% goodput) vs 136 poisoned commits in unverified 3-of-5 voting.",
         "receipt_sha256": "f107d1523cfd152e7e9df2ec",
         "telemetry_source": "Linux powercap intel-rapl:0 (package-0 reported_j, board_metered=false)"
@@ -5658,7 +6596,7 @@
         "baseline_ms": 485.07,
         "candidate_ms": 0.25,
         "baseline_reported_j": 11.066,
-        "candidate_reported_j": 0.0,
+        "candidate_reported_j": 0,
         "gain_factor": 74,
         "verdict_detail": "Precomputed Hellman table inverted 74/400 unsalted targets; fresh epoch salting collapsed precomputation hits to 0/400 at 0.618 us/transition.",
         "receipt_sha256": "68793185232cac9991bc03b7",
@@ -5718,13 +6656,13 @@
       "pilot_receipt": {
         "status": "PROMOTED_CANDIDATE",
         "trials": 2000,
-        "alpha_hit_rate_pct": 100.0,
+        "alpha_hit_rate_pct": 100,
         "false_commits": 0,
         "baseline_ms": 2.59,
         "candidate_ms": 2.37,
         "baseline_reported_j": 0.0461,
         "candidate_reported_j": 0.0796,
-        "gain_factor": 100.0,
+        "gain_factor": 100,
         "verdict_detail": "Operator-aware De Bruijn canonicalization achieved 2000/2000 (100.0%) alpha+commutative memoization hits with 0/2000 non-commutative false collisions (vs 0% raw SHA-256 hits).",
         "receipt_sha256": "233e58396f484af928086372",
         "telemetry_source": "Linux powercap intel-rapl:0 (package-0 reported_j, board_metered=false)"
@@ -5786,8 +6724,8 @@
         "analytical_pulse_reduction_x": 3.18,
         "rapl_8ms_window_cv_pct": 19.59,
         "board_metered": false,
-        "baseline_ms": 320.0,
-        "candidate_ms": 328.0,
+        "baseline_ms": 320,
+        "candidate_ms": 328,
         "baseline_reported_j": 2.3244,
         "candidate_reported_j": 0.05811,
         "gain_factor": 3.18,
@@ -5849,7 +6787,7 @@
       "pilot_receipt": {
         "status": "KILLED_BY_NULL",
         "trials": 30720,
-        "shape_d_recall_pct": 100.0,
+        "shape_d_recall_pct": 100,
         "mlp_recall_pct": 99.4,
         "baseline_ms": 0.34,
         "candidate_ms": 20.34,
