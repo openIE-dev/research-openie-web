@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits カスケードにおける下方 LUT6 コンパイル：Beneš ルーティング・ブールファブリック、コンフォーマル起動ゲート、およびフロンティア疎 MoE NVMe ストリーミング"
-deck: "6カーネル検証済みの Lean 4.36.0 定理 122 件および Inria Charon+Aeneas による機械的 #![no_std] Rust→Lean 抽出（さらに Linux bubblewrap サンドボックス内の Open Interface Engineering リポジトリ 4 件にわたる 1,486 定理を含み、CVE-2026-72844 対策強化済み）を備えた Mixture of Limits カスケードは、まずゼロ浮動小数点演算（FLOP）のページング式 6 入力ルックアップテーブル（LUT6）回路、15.98 キロバイト（17 エクスポート）の WebAssembly（WASM）ブラウザモジュール、反対称 40 エントリ・ゼロ乗算 T-MAC 三値テールを備えた 4/48 キロバイト（12 バンク）の Rust lut6-core Nucleus（公式 25 ゲーム ARC-AGI-3 の C-BFWS + RIW(2) で 60.00% 絶対多数［15/25 ゲーム、18/183 レベル、一致 16 ゲーム中 11/16 = 68.75%、2.5030 / 3.2177 RHAE］、100% Terminal-Bench・Cybench-Defensive［144/144 Yosys マイタ］、100% FrontierMath-Constructive・SciCode 合成、および Window 22 で Thor シャント 3.314x・Window 21 で 3.204x・Window 20 で 4.092x 削減）、プレフィックス汚染 0.00% の 56 ビット 4 トークン開幕応答を備えた 5,984 バイト（64 キロバイト・スマートウォッチ SRAM の 9.13%）の Wearable-MoL、および（72, 64）SECDED 宇宙線ビット反転保護を試行する（単一バイナリ Rust mol-agent-rs で 0.154 ミリ秒、ビットスライス判定あたり 162.71 ナノジュール、ビット誤り率 1% で生存率 100.0%）。さらにサブ10億パラメータのウェアラブル小型言語モデル（Sensente/uLM-28M、LiquidAI/LFM2.5-230M）および 4 つの GPU シリコンベンダー（最大 328.06x 高速化、LastExam プロトコル RMS 較正誤差を 70.62% から 13.14% へ 5.37x 削減し確信度 >= 80% での誤答 CHR@80 を 0.00% へ低減）にわたり最大 120B パラメータの 4 ビット NVMe ループ型・ハイブリッド・疎 MoE 2026 年後半モデルへ段階的にエスカレーションし、上流 Verified リポジトリ 4 件でコミットをゲート制御したうえで、認証済みの起動結果を RAMB36E2、ライセンス不要の openXC7 320.62、106.55、109.15 および 100.55 メガヘルツ配置配線後 Artix-7 XC7A200T M.2 2280 .bit ビットストリーム、Lupanov 共有余因子およびゆらぎコドン結晶ページへ下方コンパイルする。Jetson AGX Thor 上の物理 Texas Instruments DC シャント measured_j 実測値（ビットスライスで 87.25x、uLM-28M 層スライス比でウェアラブル 56 ビット認識論ゲート 222.57x、Window 22 で 3.314x、Window 20 で 4.092x、反対称 40 エントリ T-MAC で 1.65x［Zen 5 では 1.12x］、Sub1Bit-LUT6 で 3.90x、Expert-AirMoL で 34.21x、命題 1 で 10.94x；board_metered は真）を含み、Alif Cortex-M55 サイクル数（ウェアラブルゲート 2,905.18x）、reported_j カウンタ、openXC7 静的タイミング、およびコミット d0de9b6 における RTL 推定値 est_j から厳密に分離して報告する。"
+deck: "6カーネル検証済みの Lean 4.36.0 定理 130 件および Inria Charon+Aeneas による機械的 #![no_std] Rust→Lean 抽出（さらに Linux bubblewrap サンドボックス内の Open Interface Engineering リポジトリ 4 件にわたる 1,494 定理を含み、CVE-2026-72844 対策強化済み）を備えた Mixture of Limits カスケードは、まずゼロ浮動小数点演算（FLOP）のページング式 6 入力ルックアップテーブル（LUT6）回路、15.95 キロバイト（18 エクスポート）の WebAssembly（WASM）ブラウザモジュール、反対称 40 エントリ・ゼロ乗算 T-MAC 三値テールを備えた 4/48 キロバイト（12 バンク）の Rust lut6-core Nucleus（公式 25 ゲーム ARC-AGI-3 の C-BFWS + RIW(2) で 60.00% 絶対多数［15/25 ゲーム、18/183 レベル、一致 16 ゲーム中 11/16 = 68.75%、2.5030 / 3.2177 RHAE］、3 階層 Tiered-Expert-AirMoL［180B で 439.72 tok/s、552B で 171.51 tok/s］、ゼロ FLOP Engram-LUT6、Magnitude 0.3.5 実機比較での正答トークンあたりジュール 53.55x 削減および Window 23 での Thor シャント 3.157x 削減、100% Terminal-Bench・Cybench-Defensive［144/144 Yosys マイタ］、100% FrontierMath-Constructive・SciCode 合成、ならびに Window 22 で 3.314x・Window 21 で 3.204x・Window 20 で 4.092x 削減）、プレフィックス汚染 0.00% の 56 ビット 4 トークン開幕応答を備えた 5,984 バイト（64 キロバイト・スマートウォッチ SRAM の 9.13%）の Wearable-MoL、および（72, 64）SECDED 宇宙線ビット反転保護を試行する（単一バイナリ Rust mol-agent-rs で 0.154 ミリ秒、ビットスライス判定あたり 162.71 ナノジュール、ビット誤り率 1% で生存率 100.0%）。さらにサブ10億パラメータのウェアラブル小型言語モデル（Sensente/uLM-28M、LiquidAI/LFM2.5-230M）および 4 つの GPU シリコンベンダー（最大 328.06x 高速化、LastExam プロトコル RMS 較正誤差を 70.62% から 13.14% へ 5.37x 削減し確信度 >= 80% での誤答 CHR@80 を 0.00% へ低減）にわたり最大 120B パラメータの 4 ビット NVMe ループ型・ハイブリッド・疎 MoE 2026 年後半モデルへ段階的にエスカレーションし、上流 Verified リポジトリ 4 件でコミットをゲート制御したうえで、認証済みの起動結果を RAMB36E2、ライセンス不要の openXC7 320.62、106.55、109.15、100.55 および 100.74 メガヘルツ配置配線後 Artix-7 XC7A200T M.2 2280 .bit ビットストリーム、Lupanov 共有余因子およびゆらぎコドン結晶ページへ下方コンパイルする。Jetson AGX Thor 上の物理 Texas Instruments DC シャント measured_j 実測値（ビットスライスで 87.25x、uLM-28M 層スライス比でウェアラブル 56 ビット認識論ゲート 222.57x、Window 23 で 3.157x、Window 22 で 3.314x、Window 20 で 4.092x、反対称 40 エントリ T-MAC で 1.65x［Zen 5 では 1.12x］、Sub1Bit-LUT6 で 3.90x、Expert-AirMoL で 34.21x、命題 1 で 10.94x；board_metered は真）を含み、Alif Cortex-M55 サイクル数（ウェアラブルゲート 2,905.18x）、reported_j カウンタ、openXC7 静的タイミング、およびコミット 80471b9 における RTL 推定値 est_j から厳密に分離して報告する。"
 lang: "ja"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*改訂 d0de9b6、2026年11月26日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) の [`d0de9b655557fcf3992af7d4f80b7ce580a7ab92`](https://github.com/openIE-dev/lut-adapt-ai/tree/d0de9b655557fcf3992af7d4f80b7ce580a7ab92)。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX版PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
+*改訂 80471b9、2026年11月27日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) の [`80471b90b905a020f244ead31e7d587bc8d862ae`](https://github.com/openIE-dev/lut-adapt-ai/tree/80471b90b905a020f244ead31e7d587bc8d862ae)。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX版PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: Mixture of Limits、カスケード規則（Metered Commit Gates Part II [same house]より）</li>
-<li>LA: 本研究で用いる主張 (claim) および反証子 (falsifier) の接頭辞 (LA-1 から LA-67、LA-F1 から LA-F67)</li>
+<li>LA: 本研究で用いる主張 (claim) および反証子 (falsifier) の接頭辞 (LA-1 から LA-71、LA-F1 から LA-F71)</li>
 <li>LUT、LUT6、INIT: ルックアップテーブル、6入力Xilinx UltraScale+ブール原始子、およびその64ビット真理値表初期化マスク</li>
 <li>BRAM、RAMB36E2、URAM: ブロックRAM、36-KbitデュアルポートUltraScale+ブロックRAM原始子（xck26では144個）、およびUltraRAM</li>
 <li>CLB、FF、DSP、DSP48、KV260: 構成可能ロジックブロック、フリップフロップ、デジタル信号処理スライス、およびAMD Kria KV260ボード（xck26）</li>
@@ -50,6 +50,7 @@ complete: true
 <li>ABI, AC, ADC, AE3, A2B, CRC32, CYCCNT, DTCM, DWT, E3, E4, E4B, ELF, ELFs, FCCM, FSM, GPT, INT8, ISVLSI, LSB, M0, M55, MCU, MRAM, PALUTE, PIO, Q4, ROM, RP2040, SHA256, SPI, ST, XL: アプリケーションバイナリインタフェース、非定数交流フーリエエネルギー、アナログ-デジタル変換器、Alif Ensemble E3 OpenMV-AE3 マイクロコントローラボード、活性 20 億パラメータ疎アーキテクチャ接尾辞、32 ビット IEEE 巡回冗長検査、Arm Data Watchpoint and Trace サイクルカウンタレジスタ、データ密結合メモリ、Data Watchpoint and Trace ユニット、Alif Ensemble E3/E4 マイクロコントローラシリーズ、実効 40 億エッジパラメータ接尾辞、Executable and Linkable Format ファームウェア像、Field-Programmable Custom Computing Machines シンポジウム、有限状態機械、Generative Pre-trained Transformer（正規化 nGPT）、8 ビット整数量子化、International Symposium on VLSI、最下位ビット、Arm Cortex-M0+ および Cortex-M55 マイクロコントローラコア、マイクロコントローラユニット、磁気抵抗不揮発性 RAM、Processing-In-Memory Acceleration via Lookup Table、プログラマブル入出力ペリフェラル、4 ビット量子化ブロック形式（Q4_K_XL）、読み出し専用メモリ、Raspberry Pi デュアル Cortex-M0+ マイクロコントローラ、256 ビット Secure Hash Algorithm、Serial Peripheral Interface バス、Straight-Through 推定器、および特大サイズ量子化ブロック接尾辞</li>
 <li>BAR0, BGA, BLE, CEM, CMOS, CSR, DDR3, DS181, DSP48E1, ECC, FBG484, FPC, GPIO, GTP, HAT, HPL, I2C, JEDEC, LFM, M4F, MIG, ODT, PCIe, PHY, QCM6490, QFAA, RAMB36E1, RISC, RV32IMAC, SSTL15, SYSMON, UG475, XADC, XC7A200T, XCK26, XCZU9EG, ZCU102: PCIe ベースアドレスレジスタ 0、ボールグリッドアレイ、Bluetooth Low Energy、Card Electromechanical PCIe スロット仕様、相補型金属酸化膜半導体、制御・状態レジスタ、DDR3 同期 DRAM、AMD Artix-7 FPGA DC/AC スイッチング特性データシート DS181、Xilinx 7-Series デジタル信号処理スライス、誤り訂正符号、484 ボール 23x23 mm リッドレス・フリップチップ BGA パッケージ、フレキシブルプリント基板リボン、汎用入出力、Artix-7 マルチギガビットシリアルトランシーバ、Hardware Attached on Top 40 ピン拡張ヘッダ、TSMC 28 nm High-Performance Low-Power プロセス、Inter-Integrated Circuit バス、JEDEC 熱試験基板規格、毎分リニアフィート風速単位、Arm Cortex-M4F マイクロコントローラコア、Xilinx 7-Series Memory Interface Generator、オンダイ終端、Peripheral Component Interconnect Express、物理メモリインタフェース層、Particle Tachyon 上の Qualcomm Dragonwing SoC、Nordic 48 ピン QFN nRF52832 パッケージ接尾辞、Xilinx 7-Series 36 Kbit デュアルポート Block RAM 原始子（XC7A200T に 365 個）、縮小命令セットコンピュータ、32 ビット RISC-V 整数/乗算/アトミック/圧縮命令セット、Stub Series Terminated Logic 1.5 V I/O 規格、Xilinx System Monitor 温度・電圧監視ブロック、AMD 7-Series FPGA パッケージ・ピン配置仕様書 UG475、Xilinx 7-Series デュアル 12 ビット ADC、AMD Artix-7 200T FPGA（Numato Aller A7 M.2 2280）、AMD Kria K26 SOM FPGA、AMD Zynq UltraScale+ MPSoC FPGA、および AMD ZCU102 評価ボード</li>
 <li>SIW: ランドマーク誘導型直列化反復幅探索 (Serialized Iterated Width)</li>
+<li>NVRTC, PLE, RADV, VRAM: NVIDIA 実行時コンパイルライブラリ、層ごとの条件付き埋め込みメモリ、Mesa Radeon Vulkan ドライバ、およびビデオランダムアクセスメモリ</li>
 </ul>
 
 本研究では、以下のすべての表にわたって5つの根拠クラスを相互に分離して扱う。
@@ -1003,6 +1004,7 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 <li>de Moura, L., and Bjørner, N. (2008). Z3: An Efficient SMT Solver. <em>TACAS 2008</em>, <em>LNCS</em> 4963:337-340, <a href="https://doi.org/10.1007/978-3-540-78800-3_24">doi:10.1007/978-3-540-78800-3_24</a>.</li>
 <li>Josefsson, S., and Liusvaara, I. (2017). Edwards-Curve Digital Signature Algorithm (<code>EdDSA</code> / <code>Ed25519</code>). <em>IETF RFC 8032</em>, <a href="https://doi.org/10.17487/RFC8032">doi:10.17487/RFC8032</a>.</li>
 <li>O'Connor, J., Aumasson, J.-P., Neves, S., and Wilcox-O'Hearn, Z. (2020). BLAKE3: One Function, Fast Everywhere (<code>BLAKE3</code> Cryptographic Hash Specification). <a href="https://github.com/BLAKE3-team/BLAKE3-specs">github.com/BLAKE3-team/BLAKE3-specs</a>.</li>
+<li>Magnitude (2026). Magnitude (<code>Seismic</code>): Open-Source Native Rust Local LLM Inference Engine (<code>magnitudedev/magnitude</code>, v0.3.5, MIT License). <a href="https://magnitude.dev/">magnitude.dev</a>.</li>
 </ol>
 
 ---
@@ -1011,11 +1013,14 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 
 ## 付録A. 再現性
 
-[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit d0de9b6`）および [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` および `lut6-core-nucleus/`）のチェックアウトから以下を実行する：
+[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit 80471b9`）および [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` および `lut6-core-nucleus/`）のチェックアウトから以下を実行する：
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
 (cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase43_magnitude_head_to_head.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase43_window23_five_silicon.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_tiered_engram_par.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase42_arc3_cbfws_25env_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase42_terminal_cybench_and_scicode.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase42_window22_five_silicon.py

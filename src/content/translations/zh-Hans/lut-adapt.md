@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits 级联中的向下 LUT6 编译：Beneš 路由布尔架构、共形唤醒门槛与前沿稀疏 MoE NVMe 按层流式传输"
-deck: "一种附带 122 条经六内核验证的 Lean 4.36.0 定理及 Inria Charon+Aeneas 无标准库 Rust 至 Lean 机械化提取（另加 Linux bubblewrap 沙箱内四个 Open Interface Engineering 仓库共 1,486 条定理，针对 CVE-2026-72844 加固）的 Mixture of Limits 级联：首先尝试零浮点运算（FLOP）的分页式 6 输入查找表（LUT6）电路、15.98 千字节（17 项导出）的 WebAssembly（WASM）浏览器模块、带反对称 40 项零乘法 T-MAC 三值尾部的无标准库 4 / 48 千字节（12 体）Rust lut6-core Nucleus（全量 25 款 ARC-AGI-3 游戏经 C-BFWS + RIW(2) 达 60.00% 绝对多数［15/25 款，18/183 关卡，匹配 16 款达 11/16 = 68.75%，2.5030 / 3.2177 RHAE］、100% Terminal-Bench 与 Cybench-Defensive［144/144 Yosys Miter］、100% FrontierMath-Constructive 与 SciCode 综合，以及 Window 22 实现 3.314x、Window 21 实现 3.204x 与 Window 20 实现 4.092x Thor 分流降低）、占 64 千字节智能手表 SRAM 仅 9.13%（5,984 字节）且零前缀污染的 56 比特 4 词元 Wearable-MoL 智能眼镜开场门控，以及（72, 64）SECDED 宇宙射线位翻转防护（在单二进制 Rust mol-agent-rs 中耗时 0.154 毫秒，每次位切片决策耗能 162.71 纳焦，在 1% 误码率下保持 100.0% 存活率），经亚十亿级可穿戴微型语言模型（Sensente/uLM-28M 与 LiquidAI/LFM2.5-230M）并跨四大 GPU 硅片厂商（最高加速 328.06x，将 LastExam 协议均方根校准误差从 70.62% 削减 5.37x 至 13.14%，且 >= 80% 置信度下的自信幻觉率降至 0.00%）逐级升级至最高 120B 参数的 4 位 NVMe 循环、混合与稀疏 MoE 2026 年末模型，通过跨 4 个上游 Verified 仓库的确定性验证器对提交进行门控，并将经认证的唤醒向下编译为 RAMB36E2、免许可 openXC7 320.62、106.55、109.15 与 100.55 兆赫布局布线后 Artix-7 XC7A200T M.2 2280 .bit 比特流，以及 Lupanov 共享余因子与摆动密码子晶体页。包含 Jetson AGX Thor 上的物理 Texas Instruments 直流分流器实测能量 measured_j（位切片 lut6-core 降低 87.25x、可穿戴 56 比特认知门控相对 uLM-28M 层切片降低 222.57x、Window 22 降低 3.314x、Window 20 降低 4.092x、反对称 40 项 T-MAC 降低 1.65x［Zen 5 上反超达 1.12x］、Sub1Bit-LUT6 降低 3.90x、Expert-AirMoL 降低 34.21x、命题 1 编译降低 10.94x；board_metered 为真），并与实时连接的 Alif Cortex-M55 周期计数（可穿戴门控快 2,905.18x）、五主机片上 reported_j、openXC7 静态时序以及提交 d0de9b6 处的 RTL 仿真估计值 est_j 严格区分。"
+deck: "一种附带 130 条经六内核验证的 Lean 4.36.0 定理及 Inria Charon+Aeneas 无标准库 Rust 至 Lean 机械化提取（另加 Linux bubblewrap 沙箱内四个 Open Interface Engineering 仓库共 1,494 条定理，针对 CVE-2026-72844 加固）的 Mixture of Limits 级联：首先尝试零浮点运算（FLOP）的分页式 6 输入查找表（LUT6）电路、15.95 千字节（18 项导出）的 WebAssembly（WASM）浏览器模块、带反对称 40 项零乘法 T-MAC 三值尾部的无标准库 4 / 48 千字节（12 体）Rust lut6-core Nucleus（全量 25 款 ARC-AGI-3 游戏经 C-BFWS + RIW(2) 达 60.00% 绝对多数［15/25 款，18/183 关卡，匹配 16 款达 11/16 = 68.75%，2.5030 / 3.2177 RHAE］、三层 Tiered-Expert-AirMoL 在 180B 达 439.72 tok/s 与 552B 达 171.51 tok/s、零 FLOP Engram-LUT6、Magnitude 0.3.5 实机对决将每正确词元焦耳削减 53.55x 且在 Window 23 实现 3.157x Thor 分流降低、100% Terminal-Bench 与 Cybench-Defensive［144/144 Yosys Miter］、100% FrontierMath-Constructive 与 SciCode 综合，以及 Window 22 实现 3.314x、Window 21 实现 3.204x 与 Window 20 实现 4.092x Thor 分流降低）、占 64 千字节智能手表 SRAM 仅 9.13%（5,984 字节）且零前缀污染的 56 比特 4 词元 Wearable-MoL 智能眼镜开场门控，以及（72, 64）SECDED 宇宙射线位翻转防护（在单二进制 Rust mol-agent-rs 中耗时 0.154 毫秒，每次位切片决策耗能 162.71 纳焦，在 1% 误码率下保持 100.0% 存活率），经亚十亿级可穿戴微型语言模型（Sensente/uLM-28M 与 LiquidAI/LFM2.5-230M）并跨四大 GPU 硅片厂商（最高加速 328.06x，将 LastExam 协议均方根校准误差从 70.62% 削减 5.37x 至 13.14%，且 >= 80% 置信度下的自信幻觉率降至 0.00%）逐级升级至最高 120B 参数的 4 位 NVMe 循环、混合与稀疏 MoE 2026 年末模型，通过跨 4 个上游 Verified 仓库的确定性验证器对提交进行门控，并将经认证的唤醒向下编译为 RAMB36E2、免许可 openXC7 320.62、106.55、109.15、100.55 与 100.74 兆赫布局布线后 Artix-7 XC7A200T M.2 2280 .bit 比特流，以及 Lupanov 共享余因子与摆动密码子晶体页。包含 Jetson AGX Thor 上的物理 Texas Instruments 直流分流器实测能量 measured_j（位切片 lut6-core 降低 87.25x、可穿戴 56 比特认知门控相对 uLM-28M 层切片降低 222.57x、Window 23 降低 3.157x、Window 22 降低 3.314x、Window 20 降低 4.092x、反对称 40 项 T-MAC 降低 1.65x［Zen 5 上反超达 1.12x］、Sub1Bit-LUT6 降低 3.90x、Expert-AirMoL 降低 34.21x、命题 1 编译降低 10.94x；board_metered 为真），并与实时连接的 Alif Cortex-M55 周期计数（可穿戴门控快 2,905.18x）、五主机片上 reported_j、openXC7 静态时序以及提交 80471b9 处的 RTL 仿真估计值 est_j 严格区分。"
 lang: "zh-Hans"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*修订 d0de9b6，2026年11月26日。参考实现和工件：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 于 [`d0de9b655557fcf3992af7d4f80b7ce580a7ab92`](https://github.com/openIE-dev/lut-adapt-ai/tree/d0de9b655557fcf3992af7d4f80b7ce580a7ab92)。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源文件](/pdfs/latex/lut-adapt.tex)）。*
+*修订 80471b9，2026年11月27日。参考实现和工件：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 于 [`80471b90b905a020f244ead31e7d587bc8d862ae`](https://github.com/openIE-dev/lut-adapt-ai/tree/80471b90b905a020f244ead31e7d587bc8d862ae)。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源文件](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: Mixture of Limits，即 Metered Commit Gates 第二部分中的级联规则 [同系列]</li>
-<li>LA: 本研究使用的主张与证伪前缀（LA-1 至 LA-67，LA-F1 至 LA-F67）</li>
+<li>LA: 本研究使用的主张与证伪前缀（LA-1 至 LA-71，LA-F1 至 LA-F71）</li>
 <li>LUT, LUT6, INIT: 查找表（look-up table）、6 输入 Xilinx UltraScale+ 布尔原语，以及其 64 位真值表初始化掩码</li>
 <li>BRAM, RAMB36E2, URAM: 块随机存储器（Block RAM）、36 Kbit 双端口 UltraScale+ 块 RAM 原语（xck26 上为 144 个），以及 UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260: 可配置逻辑块（configurable logic block）、触发器（flip-flop）、数字信号处理片（digital signal processing slice）、DSP48 原语，以及 AMD Kria KV260 开发板（xck26）</li>
@@ -50,6 +50,7 @@ complete: true
 <li>ABI, AC, ADC, AE3, A2B, CRC32, CYCCNT, DTCM, DWT, E3, E4, E4B, ELF, ELFs, FCCM, FSM, GPT, INT8, ISVLSI, LSB, M0, M55, MCU, MRAM, PALUTE, PIO, Q4, ROM, RP2040, SHA256, SPI, ST, XL: 应用二进制接口、交流非常数傅里叶能量、模数转换器、Alif Ensemble E3 OpenMV-AE3 微控制器开发板、20 亿活跃专家稀疏架构后缀、32 位 IEEE 循环冗余校验、Arm 数据观察点与追踪周期计数寄存器、数据紧耦合存储器、Data Watchpoint and Trace 单元、Alif Ensemble E3/E4 微控制器系列、40 亿等效边缘参数后缀、Executable and Linkable Format 固件映像、Field-Programmable Custom Computing Machines 研讨会、有限状态机、生成式预训练 Transformer（归一化 nGPT）、8 位整数量化、International Symposium on VLSI、最低有效位、Arm Cortex-M0+ 与 Cortex-M55 微控制器核心、微控制器单元、磁阻非易失性 RAM、Processing-In-Memory Acceleration via Lookup Table、可编程输入/输出外设、4 位量化块格式（Q4_K_XL）、只读存储器、Raspberry Pi 双核 Cortex-M0+ 微控制器、256 位安全哈希算法、串行外设接口总线、直通估计器（Straight-Through），以及超大尺寸量化块后缀</li>
 <li>BAR0, BGA, BLE, CEM, CMOS, CSR, DDR3, DS181, DSP48E1, ECC, FBG484, FPC, GPIO, GTP, HAT, HPL, I2C, JEDEC, LFM, M4F, MIG, ODT, PCIe, PHY, QCM6490, QFAA, RAMB36E1, RISC, RV32IMAC, SSTL15, SYSMON, UG475, XADC, XC7A200T, XCK26, XCZU9EG, ZCU102: PCIe 基址寄存器 0、球栅阵列封装、低功耗蓝牙、PCIe 卡机电规范、互补金属氧化物半导体、控制与状态寄存器、第三代双倍数据率同步 DRAM、AMD Artix-7 FPGA 直流与交流开关特性数据手册 DS181、Xilinx 7-Series 数字信号处理片、纠错码、484 球 23x23 mm 无盖倒装芯片 BGA 封装、柔性印制电路排线、通用输入/输出、Artix-7 多吉比特串行收发器、Hardware Attached on Top 40 针扩展排针、TSMC 28 nm 高性能低功耗工艺、集成电路间总线、JEDEC 热测试板标准、每分钟线性英尺风速单位、Arm Cortex-M4F 微控制器核心、Xilinx 7-Series 存储器接口生成器、片上端接、高速外设组件互连（PCIe）、物理存储器接口层、Particle Tachyon 上的 Qualcomm Dragonwing 系统级芯片、Nordic 48 引脚 QFN nRF52832 封装后缀、Xilinx 7-Series 36 Kbit 双端口块 RAM 原语（XC7A200T 上含 365 个）、精简指令集计算机、32 位 RISC-V 整数/乘除/原子/压缩指令集架构、1.5 V 串联端接逻辑 I/O 标准、Xilinx 系统监控温度/电压模块、AMD 7-Series FPGA 封装与引脚规范 UG475、Xilinx 7-Series 双 12 位模数转换器、AMD Artix-7 200T FPGA（Numato Aller A7 M.2 2280）、AMD Kria K26 SOM FPGA、AMD Zynq UltraScale+ MPSoC FPGA，以及 AMD ZCU102 评估板</li>
 <li>SIW: 里程碑引导序列化迭代宽度新颖性搜索（Serialized Iterated Width）</li>
+<li>NVRTC, PLE, RADV, VRAM: NVIDIA 运行时编译库、逐层条件嵌入记忆、Mesa Radeon Vulkan 驱动程序，以及视频随机存取存储器</li>
 </ul>
 
 五个证据类别在下文所有表格中始终严格区分：
@@ -1007,6 +1008,7 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 <li>de Moura, L., and Bjørner, N. (2008). Z3: An Efficient SMT Solver. <em>TACAS 2008</em>, <em>LNCS</em> 4963:337-340, <a href="https://doi.org/10.1007/978-3-540-78800-3_24">doi:10.1007/978-3-540-78800-3_24</a>.</li>
 <li>Josefsson, S., and Liusvaara, I. (2017). Edwards-Curve Digital Signature Algorithm (<code>EdDSA</code> / <code>Ed25519</code>). <em>IETF RFC 8032</em>, <a href="https://doi.org/10.17487/RFC8032">doi:10.17487/RFC8032</a>.</li>
 <li>O'Connor, J., Aumasson, J.-P., Neves, S., and Wilcox-O'Hearn, Z. (2020). BLAKE3: One Function, Fast Everywhere (<code>BLAKE3</code> Cryptographic Hash Specification). <a href="https://github.com/BLAKE3-team/BLAKE3-specs">github.com/BLAKE3-team/BLAKE3-specs</a>.</li>
+<li>Magnitude (2026). Magnitude (<code>Seismic</code>): Open-Source Native Rust Local LLM Inference Engine (<code>magnitudedev/magnitude</code>, v0.3.5, MIT License). <a href="https://magnitude.dev/">magnitude.dev</a>.</li>
 </ol>
 
 ---
@@ -1015,11 +1017,14 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 ## 附录 A. 可复现性
 
-在 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（提交 `d0de9b6`）与 [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` 与 `lut6-core-nucleus/`）的代码检出目录中执行：
+在 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（提交 `80471b9`）与 [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` 与 `lut6-core-nucleus/`）的代码检出目录中执行：
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
 (cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase43_magnitude_head_to_head.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase43_window23_five_silicon.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_tiered_engram_par.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase42_arc3_cbfws_25env_benchmark.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase42_terminal_cybench_and_scicode.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase42_window22_five_silicon.py
