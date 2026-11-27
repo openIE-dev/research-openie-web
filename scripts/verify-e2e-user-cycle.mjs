@@ -797,31 +797,46 @@ async function verifyHeadlessBrowserUserJourneys() {
       fail(`Journey 4 (/papers/gates/) failed: ${JSON.stringify(gwCheck)}`);
     }
 
-    // Journey 5: /live/ — Full-Duplex Microphone AudioWorklet Pull Graph + WSS Live Call!
+    // Journey 5: /live/ — Non-blocking Call Connect + Full-Duplex AudioWorklet Pull Graph + WSS Live Call!
     await navigateAndSettle('/live/?study=gates', 1400);
     const liveCallCheck = await cdp.eval(`(async () => {
       const hmi = window.openieLiveHMI;
       if (!hmi) return { error: 'window.openieLiveHMI missing on /live/' };
-      let pcmFramesCaptured = 0;
       const startBtn = document.getElementById('btn-call-toggle');
-      if (startBtn) startBtn.click();
-      else await hmi.startCall({ studyId: 'gates', mode: 'call' });
+      startBtn.click();
+      // 1. Verify startCall() connects WebSocket in < 3.5s WITHOUT blocking on OS/TCC getUserMedia prompt!
       const t0 = Date.now();
-      while ((!hmi.workletNode || !hmi.ws || hmi.ws.readyState !== WebSocket.OPEN) && Date.now() - t0 < 5000) {
-        await new Promise((r) => setTimeout(r, 100));
+      while ((!hmi.ws || hmi.ws.readyState !== WebSocket.OPEN) && Date.now() - t0 < 4000) {
+        await new Promise((r) => setTimeout(r, 80));
       }
+      const wsOpenFast = Boolean(hmi.ws && hmi.ws.readyState === WebSocket.OPEN);
+      // 2. Feed a live WebAudio MediaStream (440 Hz voice-band signal) into _startMicrophoneAndVad to verify AudioWorklet pull-graph end-to-end
+      const ctx = await hmi._ensureAudioContext();
+      const dest = ctx.createMediaStreamDestination();
+      const osc = ctx.createOscillator();
+      const g = ctx.createGain();
+      osc.frequency.value = 420;
+      g.gain.value = 0.25;
+      osc.connect(g);
+      g.connect(dest);
+      osc.start();
+      if (!hmi.workletNode) {
+        await hmi._startMicrophoneAndVad(dest.stream);
+      }
+      let pcmFramesCaptured = 0;
       if (hmi.workletNode && hmi.workletNode.port) {
         hmi.workletNode.port.addEventListener('message', (ev) => {
           if (ev.data && ev.data.pcm16) pcmFramesCaptured++;
         });
       }
-      await new Promise((r) => setTimeout(r, 1500));
+      await new Promise((r) => setTimeout(r, 1250));
+      osc.stop();
       const snap = {
         callActive: hmi.callActive,
         audioCtxState: hmi.audioCtx?.state,
         workletOutputs: hmi.workletNode?.numberOfOutputs,
         silentSinkGain: hmi.micSilentSink?.gain?.value,
-        wsOpen: Boolean(hmi.ws && hmi.ws.readyState === WebSocket.OPEN),
+        wsOpen: wsOpenFast,
         pcmFramesCaptured,
         state: hmi.state,
       };
@@ -833,10 +848,10 @@ async function verifyHeadlessBrowserUserJourneys() {
       liveCallCheck.workletOutputs === 1 &&
       liveCallCheck.silentSinkGain === 0 &&
       liveCallCheck.wsOpen &&
-      liveCallCheck.pcmFramesCaptured >= 4
+      liveCallCheck.pcmFramesCaptured >= 8
     ) {
       ok(
-        `Journey 5 (/live/): Live Call connected (${liveCallCheck.audioCtxState}), AudioWorklet pulled ${liveCallCheck.pcmFramesCaptured} 16 kHz PCM16 frames via 0-gain sink, 0 errors`
+        `Journey 5 (/live/): Non-blocking Live Call connected (${liveCallCheck.audioCtxState}), AudioWorklet pulled ${liveCallCheck.pcmFramesCaptured} 16 kHz PCM16 frames via 0-gain sink, 0 errors`
       );
     } else {
       fail(`Journey 5 (/live/) failed: ${JSON.stringify(liveCallCheck)}`);

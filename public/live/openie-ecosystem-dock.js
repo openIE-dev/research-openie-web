@@ -1644,14 +1644,23 @@ export class OpenIEEcosystemSDK {
   }
 
   // ---------- Full-Duplex Microphone Capture ----------
-  async _startMicrophoneAndVad() {
-    if (this.micStream) return true;
-    if (!navigator.mediaDevices?.getUserMedia) return false;
-    try {
-      const ctx = await this._ensureAudioContext();
-      this.micStream = await navigator.mediaDevices.getUserMedia({
-        audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true, channelCount: 1 },
-      });
+  async _startMicrophoneAndVad(syntheticStream = null) {
+    if (this.micStream && !syntheticStream) return true;
+    if (this.micBootPromise && !syntheticStream) return this.micBootPromise;
+    if (!syntheticStream && !navigator.mediaDevices?.getUserMedia) return false;
+    const boot = (async () => {
+      try {
+        const ctx = await this._ensureAudioContext();
+        const acquired =
+          syntheticStream ||
+          (await navigator.mediaDevices.getUserMedia({
+            audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true, channelCount: 1 },
+          }));
+        if (!this.callActive && !syntheticStream) {
+          acquired.getTracks().forEach((t) => t.stop());
+          return false;
+        }
+        this.micStream = acquired;
       this.micSource = ctx.createMediaStreamSource(this.micStream);
       this.micAnalyser = ctx.createAnalyser();
       this.micAnalyser.fftSize = 1024;
@@ -1725,9 +1734,14 @@ export class OpenIEEcosystemSDK {
         this.vadTimer = setInterval(() => this._stepVadTelemetry(), 40);
       }
       return true;
-    } catch {
-      return false;
-    }
+      } catch {
+        return false;
+      } finally {
+        if (this.micBootPromise === boot) this.micBootPromise = null;
+      }
+    })();
+    if (!syntheticStream) this.micBootPromise = boot;
+    return boot;
   }
 
   _stepVadTelemetry() {
@@ -2661,7 +2675,8 @@ export class OpenIEEcosystemSDK {
     this._emitState();
 
     await this.playPickupChime();
-    await this._startMicrophoneAndVad();
+    const micBoot = this._startMicrophoneAndVad(opts.syntheticMicStream || null);
+    await Promise.race([micBoot, new Promise((r) => setTimeout(r, 380))]);
 
     const study = this.studiesById.get(this.activeStudyId);
     const dom = this.refreshLiveDomIndex();
