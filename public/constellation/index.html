@@ -97,6 +97,7 @@
     <button data-v="standards">Editor standards</button>
     <button data-v="immersion">Immersion gap</button>
     <button data-v="tooling">Tooling reality</button>
+    <button data-v="stack">Full stack</button>
     <button data-v="unlock">Unlock (prototype)</button>
   </nav>
   <div class="main">
@@ -188,6 +189,28 @@
         <p class="hint">The true view of language usability: a language is only as maintainable as its living tooling. This table organizes measured languages by <b>grammar maintenance</b> (active = pushed &lt;1 yr; stale = 1–3 yr; dormant = &gt;3 yr; dead = archived), with tree-sitter grammar repo, LSP and debug-adapter availability. Legacy-infrastructure languages (COBOL, Fortran, PL/I, RPG, Pascal) are included deliberately — critical code that still needs experts. Maintenance is probed deterministically from GitHub repo metadata, not guessed.</p>
         <div class="sec"><h3>Maintenance summary</h3><div id="toolstats"></div></div>
         <div class="sec"><h3>Measured languages by tooling reality</h3><div style="overflow-x:auto"><table id="tooltbl"><thead><tr><th>Language</th><th>Maintenance</th><th>Last push</th><th class="num">Grammar ★</th><th>LSP</th><th>DAP</th><th>Grammar repo</th></tr></thead><tbody></tbody></table></div></div>
+      </div>
+      <div class="view" id="v-stack">
+        <p class="hint">The entire architecture in one map: <b>intent → code → compiler → silicon</b>, and the feedback loop that turns verified execution into reusable competence. Three load-bearing structures permeate the stack — <b>ontology</b> (Form = the intended models of computation), <b>taxonomy</b> (the 113 constructs = a minimum-description-length / basic-level code), and <b>knowledge graph + replay gate</b> (the constellation = a verification mechanism whose equilibrium is admitted competence). See rce-ontology-taxonomy-kg.md for the information/game-theory reading.</p>
+        <div style="max-width:860px;margin:0 auto">
+          <div class="card" style="border-left:4px solid var(--acc)"><h4>1 · INTENT</h4><p class="hint">Human goal — natural language / spec. <b>RCE-SPEC</b> turns intent into a formal, parseable spec in the ontology's vocabulary. AI (RCE-JEPA, last) proposes; it does not admit.</p></div>
+          <div style="text-align:center;color:var(--acc);font-size:20px;line-height:1.2">▼ <span style="font-size:12px;color:var(--body)">ontology fixes meaning</span></div>
+          <div class="card" style="border-left:4px solid var(--acc)"><h4>2 · FORM — universal IR / meaning</h4><p class="hint">Content-addressed, name-free. <b>This is the ontology</b> (Gruber/Guarino: explicit specification of a conceptualization; intended models = program meanings). Ingestion decodes surface→construct; emission encodes construct→surface via LUTs. <b>The 113 constructs are the taxonomy</b> — the basic-level MDL code (Rosch / Corter-Gluck category utility).</p></div>
+          <div style="text-align:center;color:var(--acc);font-size:20px;line-height:1.2">▼ <span style="font-size:12px;color:var(--body)">taxonomy compresses (encoder/decoder LUT)</span></div>
+          <div class="card" style="border-left:4px solid var(--acc)"><h4>3 · CODE — target surface</h4><p class="hint">Rust / Python / COBOL / Verilog / … (104 measured at 100% construct coverage). Emission ⊇ ingestion. One Form, many surfaces — the description length collapses onto the shared taxonomy.</p></div>
+          <div style="text-align:center;color:var(--acc);font-size:20px;line-height:1.2">▼</div>
+          <div class="card" style="border-left:4px solid var(--acc)"><h4>4 · COMPILER → ASSEMBLY</h4><p class="hint"><b>Sovereign RCE-Compile</b>: Form → ARM64 / x86-64 assembly, capability-derived (FMA iff the fabric has it — the curse-of-ignorance flags become a lookup). Own assemblers; byte-exact vs the system toolchain; meaning-checked on real silicon. Sits above LLVM/MLIR/Mojo as the meaning layer.</p></div>
+          <div style="text-align:center;color:var(--acc);font-size:20px;line-height:1.2">▼</div>
+          <div class="card" style="border-left:4px solid var(--acc)"><h4>5 · SILICON / FABRIC</h4><p class="hint">CPU / GPU / NPU / quantum / thermodynamic / spatial / neuromorphic / analog — the costed primitive floor. Hundreds of compilers and dozens of IRs/VMs/OSes all lower to this same small floor: diversity is surface (high entropy), the floor is shared (low entropy). Execution returns a <b>joule receipt</b> (measured µJ/act).</p></div>
+          <div style="text-align:center;color:var(--acc);font-size:20px;line-height:1.2">▼ <span style="font-size:12px;color:var(--body)">replay gate = the mechanism / costly signal</span></div>
+          <div class="card" style="border-left:4px solid var(--acc2,#00D4AA)"><h4>6 · COMPETENCE — admitted, crystallized</h4><p class="hint">The <b>knowledge graph</b> (this constellation) admits a node/edge only by reproducing its examples — a costly signal that makes truth-telling dominant (mechanism design for ontology alignment). Content-addressed, joule-priced, persisted in the <b>forge</b> (post-git, bitemporal, Negative-Space). Feeds back to <b>G0 lookup at 1 µJ</b> vs the 5,000,000 µJ proposer — the reuse equilibrium (Law of Coding).</p></div>
+          <div style="text-align:center;color:var(--acc2,#00D4AA);font-size:13px;margin-top:6px">↺ feedback: admitted competence → G0 → cheaper next act</div>
+        </div>
+        <div class="sec" style="max-width:860px;margin:18px auto 0"><h3>The three structures, one stack</h3>
+          <div class="kv"><span>Ontology</span><span>Form — fixes meaning (prior / compression)</span></div>
+          <div class="kv"><span>Taxonomy</span><span>113 constructs — compresses (MDL / basic level)</span></div>
+          <div class="kv"><span>Knowledge graph + gate</span><span>constellation + replay — circulates verified competence (mechanism)</span></div>
+          <p class="hint">Global roots credited: Gruber/Guarino formal ontology; Rosch/Corter-Gluck basic-level information; Nyāya-Vaiśeṣika seven padārthas and Buddhist Abhidharma (finite explicit category systems, ~2000 yr); mechanism design for ontology alignment. The readings are interpretive lenses grounded in cited work; a formal MDL-optimality proof of the 113 set is open.</p></div>
       </div>
       <div class="view" id="v-unlock">
         <p class="hint">Prototype receipts for the proposed unlock: a competence-backed editor loop (Rust first), generated editor adapters, and synthesized fabric-native languages. Every edit is replay-gated before it is served; errors are caught at edit time; debugging is replay-divergence, not post-hoc. These are measured prototype receipts, not a delivered product claim.</p>
