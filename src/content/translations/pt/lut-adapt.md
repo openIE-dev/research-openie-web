@@ -1,6 +1,6 @@
 ---
 title: "Compilação descendente em LUT6 numa cascata Mixture of Limits: malhas booleanas roteadas por Beneš, portas de ativação conformais e streaming de camadas NVMe de 4 bits"
-deck: "Uma cascata Mixture of Limits com 130 teoremas Lean 4.36.0 verificados por seis kernels e extração mecânica de Rust sem biblioteca padrão para Lean via Inria Charon+Aeneas (além de 1,494 teoremas em quatro repositórios da Open Interface Engineering em sandboxes bubblewrap no Linux, endurecida contra CVE-2026-72844) que tenta primeiro circuitos paginados de tabela de consulta de 6 entradas (LUT6) com zero operações de ponto flutuante (FLOP), um módulo WebAssembly (WASM) de 15.95 quilobytes (18 exportações), um Nucleus lut6-core em Rust de 4 / 48 quilobytes (12 bancos com supermaioria de 60.00% [15/25 jogos, 18/183 níveis, 11/16 = 68.75% nos 16 pareados, 2.5030 / 3.2177 RHAE] nos 25 jogos oficiais ARC-AGI-3 via C-BFWS + RIW(2), Tiered-Expert-AirMoL de três níveis a 439.72 tok/s em 180B e 171.51 tok/s em 552B, Engram-LUT6 sem FLOP, avaliação Magnitude 0.3.5 ao vivo reduzindo 53.55x os joules por token correto e 3.157x no shunt Thor Window 23, Terminal-Bench e Cybench-Defensive 100% verificados [miter Yosys 144/144], FrontierMath-Constructive e SciCode 100% verificados e redução de 3.314x em Window 22, 3.204x em Window 21 e 4.092x em Window 20) com cauda ternária antissimétrica de 40 entradas sem multiplicação T-MAC, um estágio Wearable-MoL de 5,984 bytes (9.13% de 64 quilobytes de SRAM de smartwatch) com abertura de 56 bits e 4 tokens sem envenenamento de prefixo, e proteção (72, 64) SECDED contra raios cósmicos (0.154 milissegundos em mol-agent-rs, 162.71 nanojoules por decisão fatiada em bits e 100.0% de sobrevivência com 1% de taxa de erro de bit), escala através de micro-LLMs vestíveis abaixo de 1B parâmetros (Sensente/uLM-28M e LiquidAI/LFM2.5-230M) e modelos em loop, híbridos e esparsos Mixture-of-Experts (MoE) de 4 bits por NVMe do final de 2026 com até 120B parâmetros em quatro fabricantes de GPU (aceleração de até 328.06x, reduzindo em 5.37x o erro RMS de calibração LastExam de 70.62% para 13.14% com 0.00% de alucinações confiantes >= 80%), controla os commits em 4 repositórios upstream Verified e compila ativações certificadas em blocos RAMB36E2, bitstreams .bit pós-PAR a 320.62, 106.55, 109.15, 100.55 e 100.74 megahertz sem licença via openXC7 no Artix-7 XC7A200T M.2 2280 e páginas cristalinas de Lupanov e de códons wobble. Inclui leituras físicas por derivador DC Texas Instruments measured_j em Jetson AGX Thor (87.25x fatiado em bits, 222.57x porta epistêmica vestível de 56 bits vs. uLM-28M, 3.157x em Window 23, 3.314x em Window 22, 4.092x em Window 20, 1.65x cauda T-MAC antissimétrica [e 1.12x no Zen 5], 3.90x Sub1Bit-LUT6, 34.21x Expert-AirMoL e 10.94x Proposição 1; board_metered é verdadeiro) estritamente separadas de ciclos em Alif Cortex-M55 (2,905.18x na porta vestível), contadores reported_j, fechamento pós-PAR openXC7 e estimativas RTL est_j no commit 80471b9."
+deck: "Uma cascata Mixture of Limits com 138 teoremas Lean 4.36.0 verificados por seis kernels e extração mecânica de Rust sem biblioteca padrão para Lean via Inria Charon+Aeneas (além de 1,502 teoremas em quatro repositórios da Open Interface Engineering em sandboxes bubblewrap no Linux, endurecida contra CVE-2026-72844) que tenta primeiro circuitos paginados de tabela de consulta de 6 entradas (LUT6) com zero operações de ponto flutuante (FLOP), um módulo WebAssembly (WASM) de 15.16 quilobytes (19 exportações, 863 bytes livres), um Nucleus lut6-core em Rust de 4 / 56 quilobytes (14 bancos = 87.50%, fechando exatamente os 64.00 quilobytes de SRAM de smartwatch junto a 4 quilobytes de Nucleus e 4 quilobytes de pilha; supermaioria de 60.00% [15/25 jogos, 18/183 níveis, 11/16 = 68.75% nos 16 pareados, 2.5030 / 3.2177 RHAE] nos 25 jogos oficiais ARC-AGI-3 via C-BFWS + RIW(2), proxy Rust nativo sem Python mol-magnitude-adapter com 100.0% em CogLoadBench 4x poluído e redução de 3,028.3x no Thor VIN na Onda 2 mais 0.00% de corrupção ao vivo em MCPMark CoW CRUD, BA-Tiered-Expert-AirMoL adaptativo em largura de banda a 436.60 tok/s em 180B, 216.33 tok/s em GLM-5-355B e 166.27 tok/s em 552B = 4.00x-4.17x > FreeToken e 5.90x-6.00x > KTransformers com redução de 3.330x no shunt Thor Window 24, Engram-LUT6 sem FLOP, avaliação Magnitude 0.3.5 ao vivo reduzindo 53.55x os joules por token correto e 3.157x no shunt Thor Window 23, Terminal-Bench e Cybench-Defensive 100% verificados [miter Yosys 144/144], FrontierMath-Constructive e SciCode 100% verificados e redução de 3.314x em Window 22, 3.204x em Window 21 e 4.092x em Window 20) com cauda ternária antissimétrica de 40 entradas sem multiplicação T-MAC, um estágio Wearable-MoL de 5,984 bytes (9.13% de 64 quilobytes de SRAM de smartwatch) com abertura de 56 bits e 4 tokens sem envenenamento de prefixo, e proteção (72, 64) SECDED contra raios cósmicos (0.154 milissegundos em mol-agent-rs, 162.71 nanojoules por decisão fatiada em bits e 100.0% de sobrevivência com 1% de taxa de erro de bit), escala através de micro-LLMs vestíveis abaixo de 1B parâmetros (Sensente/uLM-28M e LiquidAI/LFM2.5-230M) e modelos em loop, híbridos e esparsos Mixture-of-Experts (MoE) de 4 bits por NVMe do final de 2026 com até 120B parâmetros em quatro fabricantes de GPU (aceleração de até 328.06x, reduzindo em 5.37x o erro RMS de calibração LastExam de 70.62% para 13.14% com 0.00% de alucinações confiantes >= 80%), controla os commits em 4 repositórios upstream Verified e compila ativações certificadas em blocos RAMB36E2, bitstreams .bit pós-PAR a 320.62, 106.55, 109.15, 100.55, 100.74 e 106.97 megahertz sem licença via openXC7 no Artix-7 XC7A200T M.2 2280 e páginas cristalinas de Lupanov e de códons wobble. Inclui leituras físicas por derivador DC Texas Instruments measured_j em Jetson AGX Thor (87.25x fatiado em bits, 222.57x porta epistêmica vestível de 56 bits vs. uLM-28M, 3.330x em Window 24, 3.157x em Window 23, 3.314x em Window 22, 4.092x em Window 20, 1.65x cauda T-MAC antissimétrica [e 1.12x no Zen 5], 3.90x Sub1Bit-LUT6, 34.21x Expert-AirMoL e 10.94x Proposição 1; board_metered é verdadeiro) estritamente separadas de ciclos em Alif Cortex-M55 (2,905.18x na porta vestível), contadores reported_j, fechamento pós-PAR openXC7 e estimativas RTL est_j no commit 0945f14."
 lang: "pt"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*Revisão 80471b9, 27 de novembro de 2026. Implementação de referência e artefatos: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) em [`80471b90b905a020f244ead31e7d587bc8d862ae`](https://github.com/openIE-dev/lut-adapt-ai/tree/80471b90b905a020f244ead31e7d587bc8d862ae). Resumo dos dados: [/data/#lut-adapt](/data/#lut-adapt). PDF LaTeX: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([fonte](/pdfs/latex/lut-adapt.tex)).*
+*Revisão 0945f14, 27 de novembro de 2026. Implementação de referência e artefatos: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) em [`0945f1408c38bc8b2c05ae781c0a1fb9459d3af8`](https://github.com/openIE-dev/lut-adapt-ai/tree/0945f1408c38bc8b2c05ae781c0a1fb9459d3af8). Resumo dos dados: [/data/#lut-adapt](/data/#lut-adapt). PDF LaTeX: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([fonte](/pdfs/latex/lut-adapt.tex)).*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ Este estudo examina como um sistema computacional pode compilar, em direção de
 
 <ul id="terms">
 <li>MoL: Mixture of Limits, a regra de cascata das Portas de Commit Medidas Parte II [mesma casa]</li>
-<li>LA: prefixo de afirmação e de falsificador (LA-1 a LA-71, LA-F1 a LA-F71) utilizado neste estudo</li>
+<li>LA: prefixo de afirmação e de falsificador (LA-1 a LA-75, LA-F1 a LA-F75) utilizado neste estudo</li>
 <li>LUT, LUT6, INIT: tabela de consulta, primitivo booleano Xilinx UltraScale+ de 6 entradas e sua máscara de inicialização de tabela-verdade de 64 bits</li>
 <li>BRAM, RAMB36E2, URAM: Block RAM, o primitivo Block RAM UltraScale+ de porta dupla de 36 Kbit (144 em xck26) e UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260: bloco de lógica configurável, flip-flop, fatia de processamento de sinal digital, e placa AMD Kria KV260 (xck26)</li>
@@ -825,6 +825,23 @@ A decomposição de cofatores compartilhados de Lupanov (1958; `k=8`, `m=16`) re
   <figcaption>Figura 18. Medições da supermaioria de `60.00%` (`15/25` jogos) no `ARC-AGI-3` via `C-BFWS`, `Terminal-Bench &amp; Cybench-Defensive`, `FrontierMath &amp; SciCode` e `122` teoremas (`Afirmações LA-19 [122 teoremas / 1,486 frota bwrap], LA-64..LA-67`).</figcaption>
 </figure>
 
+### 4.51 Afirmações LA-68..LA-75: `Magnitude 0.3.5` ao vivo, proxy Rust nativo `mol-magnitude-adapter` (`CogLoadBench` `4×` & `MCPMark` `CoW` `CRUD` com `0.00%` de corrupção), `BA-Tiered-Expert-AirMoL` (`4.00×–4.17×` > `FreeToken`, shunt `Thor` `Window 24` `3.330×`), fechamento exato dos `64.00 KB` de `SRAM` de relógio e `1,502` provas em seis kernels
+
+- **`Magnitude 0.3.5` ao vivo e `Engram-LUT6` (`LA-68..LA-71`)**: `Magnitude 0.3.5 + LUT-Adapt` reduz o `JpCT` `twist` no shunt `Thor` `VIN` `measured_j` em **`53.55×`** (`board_metered = true`, `18/18` codificação verificada `100.0%`), `Tiered-Expert-AirMoL` atinge **`439.72 tok/s`** em `180B`, e `Engram-LUT6` (`144/144` miter `Yosys`) reduz `Window 23` em **`3.157×`** com `.bit` `openXC7` a `100.74 MHz` e `130` teoremas (Figura 19).
+- **Proxy Rust sem Python `mol-magnitude-adapter` e sandbox `MCPMark` `CoW` `CRUD` (`LA-72 & LA-73`)**: Atinge **`100.00%` (`16/16`, `0` crashes Vulkan)** no `CogLoadBench` `4×` poluído, reduzindo o `measured_j` `Thor` `VIN` na Onda 2 em **`3,028.3×` (`0.2500 J` vs. `757.08 J`, `5.203 ms`)**, e garante **`0.00%` de corrupção ao vivo** vs. `75.00%` sem guarda em `24` fluxos `MCPMark` (`18` rollbacks `CoW`, `144/144` miter `Yosys` `abc -lut 6`).
+- **`BA-Tiered-Expert-AirMoL` e shunt `Thor` `Window 24` (`LA-74`)**: A divisão adaptativa em largura de banda ($\alpha^* = 0.5429$) + coalescência `K = 3` atinge **`436.60 tok/s`** (`180B`), **`216.33 tok/s`** (`GLM-5-355B`) e **`166.27 tok/s`** (`552B`) (**`4.00×–4.17×` > `FreeToken`**, **`5.90×–6.00×` > `KTransformers`**) e reduz o `measured_j` físico no `Thor` `Window 24` em **`3.330×` (`34,568.60` vs. `115,129.22 nJ/op`, `3.215×` mais rápido, `board_metered = true`)**.
+- **Fechamento exato dos `64.00 KB` de `SRAM` de relógio, `openXC7` a `106.97 MHz`, `WASM` de `15.16 KB` (`19` exportações) e `138` / `1,502` provas (`LA-75`)**: `14 × 4 KB = 56 KB` (`87.50%`) + `4 KB` Nucleus + `4 KB` pilha fecham exatamente **`65,536 B = 64.00 KB`**, `clai_mag_mcp_freetoken_xc7a200t_top` fecha a **`106.97 MHz`** (`0` `DSP48E1`), `lut6_core.64d3e8b80df6.wasm` cabe em **`15,521 B <= 16,384 B` (`19` exportações)**, e `RustMagnitudeMcpFreeToken.lean` eleva `LA-19` a **`138` teoremas `LutAdapt` / `1,502` na frota `bwrap` (`59,082` declarações)** (Figura 20).
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/magnitude-tiered-airmol-and-engram-lut6.svg" alt="Magnitude 0.3.5 ao vivo, Tiered-Expert-AirMoL, Engram-LUT6 Window 23 e 130 provas em 6 kernels." />
+  <figcaption>Figura 19. Medições ao vivo `Magnitude 0.3.5`, `Tiered-Expert-AirMoL`, `Engram-LUT6` e `130` teoremas (`Afirmações LA-68..LA-71`).</figcaption>
+</figure>
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/rust-magnitude-mcpmark-and-freetoken.svg" alt="Proxy Rust mol-magnitude-adapter em CogLoadBench e MCPMark, BA-Tiered-Expert-AirMoL vs FreeToken e KTransformers, Window 24 Thor Shunt, fechamento 64 KB SRAM e 1,502 provas." />
+  <figcaption>Figura 20. Medições do proxy Rust nativo `mol-magnitude-adapter` (`CogLoadBench` `4×` &amp; `MCPMark` `CoW` `CRUD`), `BA-Tiered-Expert-AirMoL` vs. `FreeToken` e `KTransformers`, shunt `Thor` `Window 24` (`3.330×`), fechamento exato dos `64.00 KB` de `SRAM` de relógio e `138` / `1,502` provas em seis kernels (`Afirmações LA-72..LA-75`).</figcaption>
+</figure>
+
 ---
 
 <div id="5-related-work-and-convergence-observations" class="anchor-alias" aria-hidden="true"></div>
@@ -842,6 +859,8 @@ A decomposição de cofatores compartilhados de Lupanov (1958; `k=8`, `m=16`) re
 | **Medusa** (2024), **EAGLE-2** (2024), **HCSpec** (2026) | `arXiv:2401.10774` · `arXiv:2406.16858` · ACL 2026 | Rascunhadores especulativos baseados em MLP neural, em árvore de rascunhos e em cascata. | Aceleração em tempo de relógio. | Exigem FLOPs de rascunho e leituras de pesos, em contraste com as páginas `uint64` `LUT6` de `0` FLOPs. |
 | **PLD** (Saxena, 2023) & **REST** (He et al., 2024) | GitHub · `arXiv:2311.08252` | Rascunhadores de n-gramas do prompt e tries de sufixos de datastore, sem FLOPs. | Aceleração de latência (`0` FLOPs). | `PLD` não captura tokens fora do prompt; `REST` usa tries de tamanho variável, em contraste com as páginas `RAMB36E2`. |
 | **AirLLM** (lyogavin, 2023) | Streamer de SSD de código aberto | Streaming de pesos por camada a partir de SSD em pouca RAM. | Footprint de RAM ativa. | `T=1` puro (`1.0 tok/sweep`) + transbordo de KV, em contraste com a redução de I/O de `2.74×-12.30×` do `AirMoL` e com `970 MB` de RAM `INT4` em Metal. |
+| **KTransformers** (Chen et al., 2025) & **FreeToken** (Yang et al., 2026) | `arXiv:2507.01909` · `arXiv:2608.07296` | Offload híbrido `CPU-GPU` MoE com `K=1` `LRU`. | Vazão em `tok/s`. | `K=1` reativo sem coalescência em rajada vs. `BA-Tiered-Expert-AirMoL` (`4.00×–4.17×` > `FreeToken`, `3.330×` no shunt `Thor` `Window 24`). |
+| **MCPMark** (Wu et al., 2025) & **Magnitude** (2026) | `arXiv:2509.24002` · `magnitudedev/magnitude` (`0.3.5`) | Benchmark `MCP` com estado e motor local em Rust. | Taxa de aprovação e `tok/s`. | `75.00%` de corrupção ao vivo sem guarda vs. `0.00%` sob `mol-magnitude-adapter` (`CoW` `CRUD`, redução de `3,028.3×` na Onda 2 no `Thor`). |
 | **Metered Commit Gates** & **RCE-JEPA** `[mesma casa]` | `/papers/gates/` · `/papers/rce-jepa/` | Commit gates (leitura do SOM KV260 `INA260` de `11,428 pJ`), MoL $p_i/c_i$ e `RCE-JEPA`. | `measured_j` do SOM KV260 + `reported_j` / `est_j`. | Fundação da mesma casa; estendida aqui com compilação descendente Beneš `LUT6`, `Expert-AirMoL` em Metal e `mol-agent`. |
 
 ---
@@ -863,7 +882,7 @@ A decomposição de cofatores compartilhados de Lupanov (1958; `k=8`, `m=16`) re
 | **`LA-F5`** | `Claim LA-5` (Byte speculation) | `scripts/run_code_corpus_benchmark.py` produz paridade exata de bytes `< 100.0%` versus o `Mamba3CodeLM` ganancioso em `48` prompts não vistos. |
 | **`LA-F6`** | `Claim LA-6` (`AirMoL` 14.3M) | `scripts/run_air_mol_benchmark.py` sob `F_NOCACHE` falha na paridade `100%` ou lê mais bytes NVMe que `AirLLM` 4-Bit `T=1`. |
 | **`LA-F7`** | `Claim LA-7` (2026 HF `AirMoL`) | `scripts/run_hf_lfm3_air_mol.py`, `scripts/run_hf_air_mol_pretrained.py` ou `scripts/run_hf_qwen35_air_mol.py` diverge por $\ge 1$ token BPE do alvo ganancioso. |
-| **`LA-F8`** | `Claim LA-8` (Regression suite) | `pytest -v` falha em qualquer um dos `94` testes em `tests/`. |
+| **`LA-F8`** | `Claim LA-8` (Regression suite) | `pytest -v` falha em qualquer um dos `102` testes em `tests/`. |
 | **`LA-F9`** | `Claim LA-9` (`8.5B/35B` MoE) | `scripts/run_hf_moe_8b_35b_air_mol.py` diverge da paridade de tokens `100%` ou lê mais bytes NVMe que `AirLLM` ou `Expert-AirLLM`. |
 | **`LA-F10`** | `Claim LA-10` (`Sub1Bit-LUT6`) | `scripts/run_sub1bit_lut_benchmark.py` excede erro máximo `1e-3` vs. multiplicação densa binária `ITQ` ou falha na paridade verificada `100%`. |
 | **`LA-F11`** | `Claim LA-11` (`48`-Task Bakeoff) | `scripts/run_frontier_ai_bakeoff.py` admite `> 0%` commits quebrados ou admite uma habilidade Wave-1 obsoleta sob mutação de especificação Wave-2. |
@@ -915,6 +934,14 @@ A decomposição de cofatores compartilhados de Lupanov (1958; `k=8`, `m=16`) re
 | **`LA-F65`** | `Claim LA-65` (`Terminal-Bench & Cybench-Defensive` e miter `Yosys` `144/144`) | Admite `> 0%` de commits quebrados/vulneráveis, executa exploit ofensivo ou falha no miter `Yosys` `abc -lut 6` `144/144`. |
 | **`LA-F66`** | `Claim LA-66` (`FrontierMath & SciCode` e shunt `Thor` `Window 22`) | Falha em qualquer item matemático/físico, viola conservação simplética/unitária ou obtém `< 2.5×` em `measured_j` no `Thor` `Window 22`. |
 | **`LA-F67`** | `Claim LA-67` (`openXC7` `100.55 MHz`, `WASM` `17` exportações e `122` provas) | Usa `> 0` `DSP48E1`, perde paridade `64/64` ou `100 MHz` pós-`PAR`, cai abaixo de `122` / `1,486` provas em 6 kernels ou `WASM` excede `16,384 B`. |
+| **`LA-F68`** | `Claim LA-68` (`Magnitude 0.3.5` ao vivo e `Thor` `VIN` `measured_j`) | Persiste texto bruto, marca `board_metered = true` fora do `Thor`, perde em `JpCT` `twist` ou admite commits quebrados. |
+| **`LA-F69`** | `Claim LA-69` (`Tiered-Expert-AirMoL` de três níveis) | Falha na paridade `64/64` `LUT6` ou perde em vazão `K=1` em `180B`, `552B` ou `30B`. |
+| **`LA-F70`** | `Claim LA-70` (`Engram-LUT6` miter `144/144` e shunt `Window 23`) | Falha em qualquer um dos `144/144` miter `Yosys` ou `Window 23` não reduz o `measured_j` no `Thor`. |
+| **`LA-F71`** | `Claim LA-71` (`openXC7` `100.74 MHz`, `WASM` `18` exportações e `130` provas) | Usa `> 0` `DSP48E1`, falha `100 MHz` pós-`PAR`, cai abaixo de `130` / `1,494` provas ou `WASM > 16,384 B`. |
+| **`LA-F72`** | `Claim LA-72` (Proxy Rust `mol-magnitude-adapter` e `CogLoadBench` `4×`) | Vincula Python/crates externos, falha em Vulkan, obtém `< 100%` ou `< 1,000×` de redução na Onda 2 no `Thor` `VIN` `measured_j`. |
+| **`LA-F73`** | `Claim LA-73` (Sandbox `MCPMark` `CoW` `CRUD` e miter `144/144`) | Admite `> 0%` de corrupção ao vivo em `24` fluxos `MCPMark` ou falha em `144/144` miter `Yosys` `abc -lut 6`. |
+| **`LA-F74`** | `Claim LA-74` (`BA-Tiered-Expert-AirMoL` vs. `FreeToken` e `Window 24`) | Obtém `< 3.5×` vs. `FreeToken` ou `< 5.0×` vs. `KTransformers`, ou `Window 24` obtém `< 2.5×` no `Thor` `measured_j`. |
+| **`LA-F75`** | `Claim LA-75` (`64.00 KB` `SRAM`, `106.97 MHz` `openXC7`, `WASM` `19` exportações e `138` / `1,502` provas) | `14 × 4,096 + 4,096 + 4,096 != 65,536 B`, `Fmax < 100 MHz`, `< 138` / `< 1,502` provas ou `lut6_core.wasm > 16,384 B`. |
 
 ---
 
@@ -999,6 +1026,9 @@ A decomposição de cofatores compartilhados de Lupanov (1958; `k=8`, `m=16`) re
 <li>Josefsson, S., and Liusvaara, I. (2017). Edwards-Curve Digital Signature Algorithm (<code>EdDSA</code> / <code>Ed25519</code>). <em>IETF RFC 8032</em>, <a href="https://doi.org/10.17487/RFC8032">doi:10.17487/RFC8032</a>.</li>
 <li>O'Connor, J., Aumasson, J.-P., Neves, S., and Wilcox-O'Hearn, Z. (2020). BLAKE3: One Function, Fast Everywhere (<code>BLAKE3</code> Cryptographic Hash Specification). <a href="https://github.com/BLAKE3-team/BLAKE3-specs">github.com/BLAKE3-team/BLAKE3-specs</a>.</li>
 <li>Magnitude (2026). Magnitude (<code>Seismic</code>): Open-Source Native Rust Local LLM Inference Engine (<code>magnitudedev/magnitude</code>, v0.3.5, MIT License). <a href="https://magnitude.dev/">magnitude.dev</a>.</li>
+<li>Wu, Z., et al. (2025). MCPMark: Benchmarking Multi-Turn Stateful Model Context Protocol Tool Use. <em>arXiv:2509.24002</em>.</li>
+<li>Chen, H., et al. (2025). KTransformers: Unleashing the Full Potential of CPU/GPU Hybrid Inference for MoE Models. <em>ACM SOSP 2025</em>, <em>arXiv:2507.01909</em>.</li>
+<li>Yang, Z., Stoica, I., Han, S., Zaharia, M., et al. (2026). FreeToken: Bandwidth-Balanced Heterogeneous CPU-GPU Offloading for Large Sparse MoE Inference. <em>arXiv:2608.07296</em>.</li>
 </ol>
 
 ---
@@ -1007,11 +1037,14 @@ A decomposição de cofatores compartilhados de Lupanov (1958; `k=8`, `m=16`) re
 
 ## Apêndice A. Reprodutibilidade
 
-A partir de checkouts de [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 80471b9`) e [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` e `lut6-core-nucleus/`):
+A partir de checkouts de [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 0945f14`) e [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` e `lut6-core-nucleus/`):
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
-(cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+(cd sys/lut6-core && cargo test --release && cargo run --release --bin mol_magnitude_adapter -- --self-test && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase44_rust_magnitude_fleet.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase44_window24_five_silicon.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_mag_mcp_freetoken_par.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase43_magnitude_head_to_head.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase43_window23_five_silicon.py
 PYTHONPATH=src .venv/bin/python scripts/run_openxc7_tiered_engram_par.py

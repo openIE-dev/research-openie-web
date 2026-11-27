@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits カスケードにおける下方 LUT6 コンパイル：Beneš ルーティング・ブールファブリック、コンフォーマル起動ゲート、およびフロンティア疎 MoE NVMe ストリーミング"
-deck: "6カーネル検証済みの Lean 4.36.0 定理 130 件および Inria Charon+Aeneas による機械的 #![no_std] Rust→Lean 抽出（さらに Linux bubblewrap サンドボックス内の Open Interface Engineering リポジトリ 4 件にわたる 1,494 定理を含み、CVE-2026-72844 対策強化済み）を備えた Mixture of Limits カスケードは、まずゼロ浮動小数点演算（FLOP）のページング式 6 入力ルックアップテーブル（LUT6）回路、15.95 キロバイト（18 エクスポート）の WebAssembly（WASM）ブラウザモジュール、反対称 40 エントリ・ゼロ乗算 T-MAC 三値テールを備えた 4/48 キロバイト（12 バンク）の Rust lut6-core Nucleus（公式 25 ゲーム ARC-AGI-3 の C-BFWS + RIW(2) で 60.00% 絶対多数［15/25 ゲーム、18/183 レベル、一致 16 ゲーム中 11/16 = 68.75%、2.5030 / 3.2177 RHAE］、3 階層 Tiered-Expert-AirMoL［180B で 439.72 tok/s、552B で 171.51 tok/s］、ゼロ FLOP Engram-LUT6、Magnitude 0.3.5 実機比較での正答トークンあたりジュール 53.55x 削減および Window 23 での Thor シャント 3.157x 削減、100% Terminal-Bench・Cybench-Defensive［144/144 Yosys マイタ］、100% FrontierMath-Constructive・SciCode 合成、ならびに Window 22 で 3.314x・Window 21 で 3.204x・Window 20 で 4.092x 削減）、プレフィックス汚染 0.00% の 56 ビット 4 トークン開幕応答を備えた 5,984 バイト（64 キロバイト・スマートウォッチ SRAM の 9.13%）の Wearable-MoL、および（72, 64）SECDED 宇宙線ビット反転保護を試行する（単一バイナリ Rust mol-agent-rs で 0.154 ミリ秒、ビットスライス判定あたり 162.71 ナノジュール、ビット誤り率 1% で生存率 100.0%）。さらにサブ10億パラメータのウェアラブル小型言語モデル（Sensente/uLM-28M、LiquidAI/LFM2.5-230M）および 4 つの GPU シリコンベンダー（最大 328.06x 高速化、LastExam プロトコル RMS 較正誤差を 70.62% から 13.14% へ 5.37x 削減し確信度 >= 80% での誤答 CHR@80 を 0.00% へ低減）にわたり最大 120B パラメータの 4 ビット NVMe ループ型・ハイブリッド・疎 MoE 2026 年後半モデルへ段階的にエスカレーションし、上流 Verified リポジトリ 4 件でコミットをゲート制御したうえで、認証済みの起動結果を RAMB36E2、ライセンス不要の openXC7 320.62、106.55、109.15、100.55 および 100.74 メガヘルツ配置配線後 Artix-7 XC7A200T M.2 2280 .bit ビットストリーム、Lupanov 共有余因子およびゆらぎコドン結晶ページへ下方コンパイルする。Jetson AGX Thor 上の物理 Texas Instruments DC シャント measured_j 実測値（ビットスライスで 87.25x、uLM-28M 層スライス比でウェアラブル 56 ビット認識論ゲート 222.57x、Window 23 で 3.157x、Window 22 で 3.314x、Window 20 で 4.092x、反対称 40 エントリ T-MAC で 1.65x［Zen 5 では 1.12x］、Sub1Bit-LUT6 で 3.90x、Expert-AirMoL で 34.21x、命題 1 で 10.94x；board_metered は真）を含み、Alif Cortex-M55 サイクル数（ウェアラブルゲート 2,905.18x）、reported_j カウンタ、openXC7 静的タイミング、およびコミット 80471b9 における RTL 推定値 est_j から厳密に分離して報告する。"
+deck: "6カーネル検証済みの Lean 4.36.0 定理 138 件および Inria Charon+Aeneas による機械的 #![no_std] Rust→Lean 抽出（さらに Linux bubblewrap サンドボックス内の Open Interface Engineering リポジトリ 4 件にわたる 1,502 定理を含み、CVE-2026-72844 対策強化済み）を備えた Mixture of Limits カスケードは、まずゼロ浮動小数点演算（FLOP）のページング式 6 入力ルックアップテーブル（LUT6）回路、15.16 キロバイト（19 エクスポート、863 バイト余裕）の WebAssembly（WASM）ブラウザモジュール、反対称 40 エントリ・ゼロ乗算 T-MAC 三値テールを備えた 4/56 キロバイト（14 バンク = 87.50%、4 キロバイト Nucleus と 4 キロバイトスタックと合わせ 64.00 キロバイトのスマートウォッチ SRAM を完全閉包）の Rust lut6-core Nucleus（公式 25 ゲーム ARC-AGI-3 の C-BFWS + RIW(2) で 60.00% 絶対多数［15/25 ゲーム、18/183 レベル、一致 16 ゲーム中 11/16 = 68.75%、2.5030 / 3.2177 RHAE］、Python 非依存 Rust mol-magnitude-adapter による 4 倍汚染 CogLoadBench 100.0% 合格・第 2 波 Thor VIN エネルギー 3,028.3x 削減および MCPMark CoW CRUD サンドボックスでの本番破壊 0.00%、帯域幅適応型 BA-Tiered-Expert-AirMoL［180B で 436.60 tok/s、GLM-5-355B で 216.33 tok/s、552B で 166.27 tok/s = FreeToken 比 4.00x-4.17x・KTransformers 比 5.90x-6.00x 高速、Window 24 で Thor シャント 3.330x 削減］、ゼロ FLOP Engram-LUT6、Magnitude 0.3.5 実機比較での正答トークンあたりジュール 53.55x 削減および Window 23 での Thor シャント 3.157x 削減、100% Terminal-Bench・Cybench-Defensive［144/144 Yosys マイタ］、100% FrontierMath-Constructive・SciCode 合成、ならびに Window 22 で 3.314x・Window 21 で 3.204x・Window 20 で 4.092x 削減）、プレフィックス汚染 0.00% の 56 ビット 4 トークン開幕応答を備えた 5,984 バイト（64 キロバイト・スマートウォッチ SRAM の 9.13%）の Wearable-MoL、および（72, 64）SECDED 宇宙線ビット反転保護を試行する（単一バイナリ Rust mol-agent-rs で 0.154 ミリ秒、ビットスライス判定あたり 162.71 ナノジュール、ビット誤り率 1% で生存率 100.0%）。さらにサブ10億パラメータのウェアラブル小型言語モデル（Sensente/uLM-28M、LiquidAI/LFM2.5-230M）および 4 つの GPU シリコンベンダー（最大 328.06x 高速化、LastExam プロトコル RMS 較正誤差を 70.62% から 13.14% へ 5.37x 削減し確信度 >= 80% での誤答 CHR@80 を 0.00% へ低減）にわたり最大 120B パラメータの 4 ビット NVMe ループ型・ハイブリッド・疎 MoE 2026 年後半モデルへ段階的にエスカレーションし、上流 Verified リポジトリ 4 件でコミットをゲート制御したうえで、認証済みの起動結果を RAMB36E2、ライセンス不要の openXC7 320.62、106.55、109.15、100.55、100.74 および 106.97 メガヘルツ配置配線後 Artix-7 XC7A200T M.2 2280 .bit ビットストリーム、Lupanov 共有余因子およびゆらぎコドン結晶ページへ下方コンパイルする。Jetson AGX Thor 上の物理 Texas Instruments DC シャント measured_j 実測値（ビットスライスで 87.25x、uLM-28M 層スライス比でウェアラブル 56 ビット認識論ゲート 222.57x、Window 24 で 3.330x、Window 23 で 3.157x、Window 22 で 3.314x、Window 20 で 4.092x、反対称 40 エントリ T-MAC で 1.65x［Zen 5 では 1.12x］、Sub1Bit-LUT6 で 3.90x、Expert-AirMoL で 34.21x、命題 1 で 10.94x；board_metered は真）を含み、Alif Cortex-M55 サイクル数（ウェアラブルゲート 2,905.18x）、reported_j カウンタ、openXC7 静的タイミング、およびコミット 0945f14 における RTL 推定値 est_j から厳密に分離して報告する。"
 lang: "ja"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*改訂 80471b9、2026年11月27日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) の [`80471b90b905a020f244ead31e7d587bc8d862ae`](https://github.com/openIE-dev/lut-adapt-ai/tree/80471b90b905a020f244ead31e7d587bc8d862ae)。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX版PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
+*改訂 0945f14、2026年11月27日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) の [`0945f1408c38bc8b2c05ae781c0a1fb9459d3af8`](https://github.com/openIE-dev/lut-adapt-ai/tree/0945f1408c38bc8b2c05ae781c0a1fb9459d3af8)。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX版PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: Mixture of Limits、カスケード規則（Metered Commit Gates Part II [same house]より）</li>
-<li>LA: 本研究で用いる主張 (claim) および反証子 (falsifier) の接頭辞 (LA-1 から LA-71、LA-F1 から LA-F71)</li>
+<li>LA: 本研究で用いる主張 (claim) および反証子 (falsifier) の接頭辞 (LA-1 から LA-75、LA-F1 から LA-F75)</li>
 <li>LUT、LUT6、INIT: ルックアップテーブル、6入力Xilinx UltraScale+ブール原始子、およびその64ビット真理値表初期化マスク</li>
 <li>BRAM、RAMB36E2、URAM: ブロックRAM、36-KbitデュアルポートUltraScale+ブロックRAM原始子（xck26では144個）、およびUltraRAM</li>
 <li>CLB、FF、DSP、DSP48、KV260: 構成可能ロジックブロック、フリップフロップ、デジタル信号処理スライス、およびAMD Kria KV260ボード（xck26）</li>
@@ -831,6 +831,23 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
   <figcaption>図 18. 公式 `ARC-AGI-3` の `C-BFWS` `60.00%`（`15/25` ゲーム）絶対多数、`Terminal-Bench &amp; Cybench-Defensive`、`FrontierMath &amp; SciCode`、および `122` 定理の測定（`主張 LA-19 [122 定理 / 1,486 bwrap フリート]、LA-64..LA-67`）。</figcaption>
 </figure>
 
+### 4.51 主張 LA-68..LA-75：実機 `Magnitude 0.3.5` 対決、ネイティブ Rust プロキシ `mol-magnitude-adapter`（`CogLoadBench` `4×` 汚染・`MCPMark` `CoW` `CRUD` 本番破壊 `0.00%`）、`BA-Tiered-Expert-AirMoL`（`FreeToken` 比 `4.00×–4.17×`、`Window 24` `Thor` シャント `3.330×`）、スマートウォッチ `64.00 KB` `SRAM` 完全閉包、および `1,502` 件の 6 カーネル証明
+
+- **実機 `Magnitude 0.3.5` と `Engram-LUT6`（`LA-68..LA-71`）**：`Magnitude 0.3.5 + LUT-Adapt` は `Thor` `VIN` `measured_j` 上の `twist` `JpCT` を **`53.55×`** 削減（`board_metered = true`、`18/18` 検証コーディング `100.0%`）し、`Tiered-Expert-AirMoL` は `180B` で **`439.72 tok/s`**、`Engram-LUT6`（`144/144` `Yosys` マイタ）は `Window 23` を **`3.157×`** 削減、`100.74 MHz` `openXC7` `.bit` と `130` 定理を達成します（図 19）。
+- **Python 非依存 Rust プロキシ `mol-magnitude-adapter` と `MCPMark` `CoW` `CRUD` サンドボックス（`LA-72 & LA-73`）**：`4×` 汚染 `CogLoadBench` で **`100.00%`（`16/16`、Vulkan クラッシュ `0`）**を達成し第 2 波 `Thor` `VIN` `measured_j` を **`3,028.3×` 削減（`0.2500 J` 対 `757.08 J`、`5.203 ms`）**、さらに `24` ワークフロー `MCPMark` で無保護 `75.00%` 破壊に対し **本番破壊 `0.00%`**（`18` 回の `CoW` ロールバック、`144/144` `Yosys` `abc -lut 6` マイタ）を保証します。
+- **`BA-Tiered-Expert-AirMoL` と `Window 24` `Thor` シャント（`LA-74`）**：帯域幅適応分割（$\alpha^* = 0.5429$）と `K = 3` バースト統合により `180B` で **`436.60 tok/s`**、`GLM-5-355B` で **`216.33 tok/s`**、`552B` で **`166.27 tok/s`**（**`FreeToken` 比 `4.00×–4.17×`**、**`KTransformers` 比 `5.90×–6.00×`**）を達成し、`Thor` `Window 24` 物理 `measured_j` を **`3.330×` 削減（`34,568.60` 対 `115,129.22 nJ/op`、`3.215×` 高速、`board_metered = true`）**します。
+- **スマートウォッチ `64.00 KB` `SRAM` 完全閉包、`106.97 MHz` `openXC7`、`15.16 KB`（`19` エクスポート）`WASM`、および `138` / `1,502` 証明（`LA-75`）**：`14 × 4 KB = 56 KB`（`87.50%`）+ `4 KB` Nucleus + `4 KB` スタックで **`65,536 B = 64.00 KB`** を厳密閉包し、`clai_mag_mcp_freetoken_xc7a200t_top` は **`106.97 MHz`**（`0` `DSP48E1`）、`lut6_core.64d3e8b80df6.wasm` は **`15,521 B <= 16,384 B`（`19` エクスポート）**、`RustMagnitudeMcpFreeToken.lean` は **`138` `LutAdapt` / `1,502` `bwrap` フリート定理（`59,082` 宣言）**へ到達します（図 20）。
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/magnitude-tiered-airmol-and-engram-lut6.svg" alt="実機 Magnitude 0.3.5、Tiered-Expert-AirMoL、Engram-LUT6 Window 23、および 130 件の 6 カーネル証明。" />
+  <figcaption>図 19. 実機 `Magnitude 0.3.5`、`Tiered-Expert-AirMoL`、`Engram-LUT6`、および `130` 定理の測定（`主張 LA-68..LA-71`）。</figcaption>
+</figure>
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/rust-magnitude-mcpmark-and-freetoken.svg" alt="ネイティブ Rust mol-magnitude-adapter による CogLoadBench と MCPMark、BA-Tiered-Expert-AirMoL 対 FreeToken・KTransformers、Window 24 Thor シャント、64 KB SRAM 完全閉包、および 1,502 件の 6 カーネル証明。" />
+  <figcaption>図 20. ネイティブ Rust `mol-magnitude-adapter`（`CogLoadBench` `4×` &amp; `MCPMark` `CoW` `CRUD`）、`BA-Tiered-Expert-AirMoL` 対 `FreeToken`・`KTransformers`、`Window 24` `Thor` シャント（`3.330×`）、`64.00 KB` ウォッチ `SRAM` 完全閉包、および `138` / `1,502` 件の 6 カーネル証明（`主張 LA-72..LA-75`）。</figcaption>
+</figure>
+
 ---
 
 <div id="5-related-work-and-convergence-observations" class="anchor-alias" aria-hidden="true"></div>
@@ -848,6 +865,8 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 | **Medusa** (2024), **EAGLE-2** (2024), **HCSpec** (2026) | `arXiv:2401.10774` · `arXiv:2406.16858` · ACL 2026 | ニューラル MLP、ドラフトツリー、およびカスケード投機的ドラフタ。 | 壁時計速度向上。 | ドラフト FLOP および重み読み出しを必要とするが、`0` FLOP `uint64` `LUT6` ページに対しては不要である。 |
 | **PLD** (Saxena, 2023) & **REST** (He et al., 2024) | GitHub · `arXiv:2311.08252` | ゼロ FLOP プロンプト n-gram およびデータストア接尾辞トライドラフタ。 | レイテンシ速度向上 (`0` FLOP)。 | `PLD` はプロンプト外トークンを欠落させ、`REST` は可変トライを使用するが、`RAMB36E2` ページに対しては不要である。 |
 | **AirLLM** (lyogavin, 2023) | オープンソース SSD ストリーマ | 小容量 RAM におけるレイヤごとの SSD 重みストリーミング。 | アクティブ RAM フットプリント。 | 純粋 `T=1` (`1.0 tok/sweep`) + KV スピルに対し、`AirMoL` は `2.74×-12.30×` の I/O 削減および `970 MB` Metal `INT4` RAM を実現する。 |
+| **KTransformers** (Chen et al., 2025) & **FreeToken** (Yang et al., 2026) | `arXiv:2507.01909` · `arXiv:2608.07296` | `K=1` `LRU` によるハイブリッド `CPU-GPU` MoE オフロード。 | スループット (`tok/s`)。 | バースト統合なしの反応的 `K=1` に対し、`BA-Tiered-Expert-AirMoL` は `FreeToken` 比 `4.00×–4.17×` 高速・`Window 24` `Thor` シャント `3.330×` 削減を達成する。 |
+| **MCPMark** (Wu et al., 2025) & **Magnitude** (2026) | `arXiv:2509.24002` · `magnitudedev/magnitude` (`0.3.5`) | ステートフル `MCP` ベンチマークおよびローカル Rust エンジン。 | 合格率および `tok/s`。 | 無保護での本番破壊 `75.00%` に対し、`mol-magnitude-adapter`（`CoW` `CRUD`）は破壊 `0.00%`・第 2 波 `Thor` エネルギー `3,028.3×` 削減を達成する。 |
 | **Metered Commit Gates** & **RCE-JEPA** `[same house]` | `/papers/gates/` · `/papers/rce-jepa/` | コミットゲート (`11,428 pJ` KV260 `INA260` SOM 読み出し)、MoL $p_i/c_i$、および `RCE-JEPA`。 | KV260 SOM `measured_j` + `reported_j` / `est_j`。 | 同家基礎。本稿では Beneš `LUT6` 下方コンパイル、Metal `Expert-AirMoL`、および `mol-agent` により拡張される。 |
 
 ---
@@ -869,7 +888,7 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 | **`LA-F5`** | `主張 LA-5` (バイト投機) | `scripts/run_code_corpus_benchmark.py` が `48` の未見プロンプト上で貪欲 `Mamba3CodeLM` に対して `< 100.0%` の正確なバイトパリティを生成する。 |
 | **`LA-F6`** | `主張 LA-6` (`AirMoL` 14.3M) | `scripts/run_air_mol_benchmark.py` が `F_NOCACHE` 下で `100%` パリティに失敗するか、`AirLLM` 4-Bit `T=1` よりも多くの NVMe バイトを読み込む。 |
 | **`LA-F7`** | `主張 LA-7` (2026 HF `AirMoL`) | `scripts/run_hf_lfm3_air_mol.py`、`scripts/run_hf_air_mol_pretrained.py`、または `scripts/run_hf_qwen35_air_mol.py` が貪欲目標から $\ge 1$ BPE トークン逸脱する。 |
-| **`LA-F8`** | `主張 LA-8` (回帰スイート) | `pytest -v` が `tests/` 内の `94` 個のテストのいずれかに失敗する。 |
+| **`LA-F8`** | `主張 LA-8` (回帰スイート) | `pytest -v` が `tests/` 内の `102` 個のテストのいずれかに失敗する。 |
 | **`LA-F9`** | `主張 LA-9` (`8.5B/35B` MoE) | `scripts/run_hf_moe_8b_35b_air_mol.py` が `100%` トークンパリティから逸脱するか、`AirLLM` または `Expert-AirLLM` よりも多くの NVMe バイトを読み込む。 |
 | **`LA-F10`** | `主張 LA-10` (`Sub1Bit-LUT6`) | `scripts/run_sub1bit_lut_benchmark.py` が密 `ITQ` バイナリ行列乗算に対して `1e-3` を超える最大誤差を示すか、`100%` 検証済みパリティに失敗する。 |
 | **`LA-F11`** | `主張 LA-11` (`48` タスク Bakeoff) | `scripts/run_frontier_ai_bakeoff.py` が `> 0%` の破損コミットを許容するか、Wave-2 仕様変異下で Wave-1 スキルの陳腐化を許容する。 |
@@ -921,6 +940,14 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 | **`LA-F65`** | `Claim LA-65` (`Terminal-Bench & Cybench-Defensive` と `144/144` `Yosys` マイタ) | 破損/脆弱コミット `> 0%`、攻撃的エクスプロイト実行、または `144/144` `Yosys` `abc -lut 6` マイタ不合格。 |
 | **`LA-F66`** | `Claim LA-66` (`FrontierMath & SciCode` と `Window 22` `Thor` シャント) | 数学/物理課題に失敗、シンプレクティック/ユニタリ保存逸脱、または `Thor` `Window 22` `measured_j` 利得 `< 2.5×`。 |
 | **`LA-F67`** | `Claim LA-67` (`100.55 MHz` `openXC7`、`17` エクスポート `WASM`、`122` 証明) | `DSP48E1` `> 0`、`64/64` 一致や `100 MHz` `PAR` 失敗、6カーネル証明 `< 122` / `< 1,486` 件、または `WASM` `16,384 B` 超過。 |
+| **`LA-F68`** | `Claim LA-68` (実機 `Magnitude 0.3.5` と `Thor` `VIN` `measured_j`) | 生テキスト保存、`Thor` 以外で `board_metered = true`、`twist` `JpCT` 劣後、または破損コミット受理。 |
+| **`LA-F69`** | `Claim LA-69` (3 階層 `Tiered-Expert-AirMoL`) | `64/64` `LUT6` 一致失敗、または `180B`・`552B`・`30B` で `K=1` スループットに劣後。 |
+| **`LA-F70`** | `Claim LA-70` (`Engram-LUT6` `144/144` マイタと `Window 23` シャント) | `144/144` `Yosys` マイタ不合格、または `Window 23` で `Thor` `measured_j` 非削減。 |
+| **`LA-F71`** | `Claim LA-71` (`100.74 MHz` `openXC7`、`18` エクスポート `WASM`、`130` 証明) | `DSP48E1` `> 0`、`100 MHz` `PAR` 失敗、証明 `< 130` / `< 1,494` 件、または `WASM > 16,384 B`。 |
+| **`LA-F72`** | `Claim LA-72` (Rust プロキシ `mol-magnitude-adapter` と `CogLoadBench` `4×`) | Python/外部 crate 依存、Vulkan クラッシュ、合格率 `< 100%`、または第 2 波 `Thor` `VIN` 削減 `< 1,000×`。 |
+| **`LA-F73`** | `Claim LA-73` (`MCPMark` `CoW` `CRUD` サンドボックスと `144/144` マイタ) | `24` ワークフロー `MCPMark` で本番破壊 `> 0%`、または `144/144` `Yosys` `abc -lut 6` マイタ不合格。 |
+| **`LA-F74`** | `Claim LA-74` (`BA-Tiered-Expert-AirMoL` 対 `FreeToken` と `Window 24`) | `FreeToken` 比 `< 3.5×`、`KTransformers` 比 `< 5.0×`、または `Window 24` `Thor` `measured_j` 利得 `< 2.5×`。 |
+| **`LA-F75`** | `Claim LA-75` (`64.00 KB` `SRAM`、`106.97 MHz` `openXC7`、`19` エクスポート `WASM`、`138` / `1,502` 証明) | `14 × 4,096 + 4,096 + 4,096 != 65,536 B`、`Fmax < 100 MHz`、証明 `< 138` / `< 1,502` 件、または `lut6_core.wasm > 16,384 B`。 |
 
 ---
 
@@ -1005,6 +1032,9 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 <li>Josefsson, S., and Liusvaara, I. (2017). Edwards-Curve Digital Signature Algorithm (<code>EdDSA</code> / <code>Ed25519</code>). <em>IETF RFC 8032</em>, <a href="https://doi.org/10.17487/RFC8032">doi:10.17487/RFC8032</a>.</li>
 <li>O'Connor, J., Aumasson, J.-P., Neves, S., and Wilcox-O'Hearn, Z. (2020). BLAKE3: One Function, Fast Everywhere (<code>BLAKE3</code> Cryptographic Hash Specification). <a href="https://github.com/BLAKE3-team/BLAKE3-specs">github.com/BLAKE3-team/BLAKE3-specs</a>.</li>
 <li>Magnitude (2026). Magnitude (<code>Seismic</code>): Open-Source Native Rust Local LLM Inference Engine (<code>magnitudedev/magnitude</code>, v0.3.5, MIT License). <a href="https://magnitude.dev/">magnitude.dev</a>.</li>
+<li>Wu, Z., et al. (2025). MCPMark: Benchmarking Multi-Turn Stateful Model Context Protocol Tool Use. <em>arXiv:2509.24002</em>.</li>
+<li>Chen, H., et al. (2025). KTransformers: Unleashing the Full Potential of CPU/GPU Hybrid Inference for MoE Models. <em>ACM SOSP 2025</em>, <em>arXiv:2507.01909</em>.</li>
+<li>Yang, Z., Stoica, I., Han, S., Zaharia, M., et al. (2026). FreeToken: Bandwidth-Balanced Heterogeneous CPU-GPU Offloading for Large Sparse MoE Inference. <em>arXiv:2608.07296</em>.</li>
 </ol>
 
 ---
@@ -1013,11 +1043,14 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 
 ## 付録A. 再現性
 
-[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit 80471b9`）および [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` および `lut6-core-nucleus/`）のチェックアウトから以下を実行する：
+[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit 0945f14`）および [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` および `lut6-core-nucleus/`）のチェックアウトから以下を実行する：
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
-(cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+(cd sys/lut6-core && cargo test --release && cargo run --release --bin mol_magnitude_adapter -- --self-test && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase44_rust_magnitude_fleet.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase44_window24_five_silicon.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_mag_mcp_freetoken_par.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase43_magnitude_head_to_head.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase43_window23_five_silicon.py
 PYTHONPATH=src .venv/bin/python scripts/run_openxc7_tiered_engram_par.py

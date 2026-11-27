@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="900" viewBox="0 0 1240 900" role="img" aria-labelledby="p44-t p44-d">
+  <title id="p44-t">Native Rust Magnitude Adapter, MCPMark CoW CRUD, FreeToken-Beat BA-AirMoL &amp; 138 Proofs</title>
+  <desc id="p44-d">Four-panel summary of Claims LA-72 through LA-75 and 138 six-kernel Lean 4.36.0 theorems (1502 Linux bwrap fleet): (A) Zero-Python native Rust mol-magnitude-adapter fronting Magnitude 0.3.5 (Seismic) on CogLoadBench 4x extraneous context pollution across Apple M5 Max, NVIDIA Jetson AGX Thor (physical TI INA238 DC shunt measured_j), and AMD Zen 5 RAPL; (B) 24-workflow (72-call) stateful MCPMark multi-turn CRUD sandbox (0.00% live state corruption via Copy-on-Write LUT6 guard) plus Bandwidth-Adaptive BA-Tiered-Expert-AirMoL vs FreeToken (UC Berkeley Aug 2026) and KTransformers; (C) 144/144 Yosys abc -lut 6 Boolean miter and Cross-Silicon Window 24 Thor DC shunt telemetry (3.330x); and (D) Exact 64 KB watch SRAM 14-bank partition, 106.97 MHz XC7A200T openXC7 gateware, 15.16 KB 19-export lut6_core.wasm, and 138 six-kernel theorems (1502 fleet).</desc>
+  <defs>
+    <linearGradient id="bg44" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#040814"/><stop offset="52%" stop-color="#08162b"/><stop offset="100%" stop-color="#051c20"/>
+    </linearGradient>
+  </defs>
+  <rect width="1240" height="900" fill="url(#bg44)"/>
+  <text x="28" y="34" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15.4" font-weight="800">Native Rust Magnitude Proxy, MCPMark CoW CRUD, FreeToken-Beat BA-AirMoL &amp; 138 Proofs (1,502 Fleet)</text>
+  <text x="28" y="54" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4">Claims LA-19 (138 Thms / 1,502 bwrap Fleet) &amp; LA-72..LA-75  |  Native Rust mol-magnitude-adapter + MCPMark CoW + FreeToken-Beat BA-AirMoL  |  Thor Window 24 = 34569 nJ (3.330x)  |  15.16 KB 19-Export WASM</text>
+  <rect x="24" y="68" width="584" height="398" rx="12" fill="#0d1729" stroke="#22d3ee" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="42" y="92" fill="#22d3ee" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.0" font-weight="800">A. Claim LA-72 · Zero-Python Native Rust mol-magnitude-adapter (CogLoadBench 4x)</text>
+  <text x="42" y="109" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8">Theorem 131 · OpenAI + Anthropic + MCP Proxy · Vulkan &lt;=120-Tok Guard · Thor INA238 Shunt</text>
+  <rect x="42" y="118" width="548" height="20" rx="4" fill="#1e293b"/>
+  <text x="48" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">Host · Engine (16 Polluted CogLoadBench Tasks)</text>
+  <text x="308" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">Pass</text>
+  <text x="366" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">Wall ms</text>
+  <text x="438" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">Joules</text>
+  <text x="516" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">Evidence</text>
+  <rect x="42" y="144" width="548" height="35" rx="5" fill="#231420" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="165" fill="#fda4af" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.2" font-weight="500">M5 Max · llama-server (Unv. 4x)</text>
+  <text x="308" y="165" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">37.5%</text>
+  <text x="366" y="165" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">2616.2</text>
+  <text x="438" y="165" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">1.4694 J</text>
+  <text x="516" y="165" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="700">reported_j</text>
+  <rect x="42" y="185" width="548" height="35" rx="5" fill="#231420" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="206" fill="#fda4af" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.2" font-weight="500">M5 Max · Magnitude 0.3.5 (Unv.)</text>
+  <text x="308" y="206" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">37.5%</text>
+  <text x="366" y="206" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">1869.3</text>
+  <text x="438" y="206" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">1.9809 J</text>
+  <text x="516" y="206" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="700">reported_j</text>
+  <rect x="42" y="226" width="548" height="35" rx="5" fill="#0b243b" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="247" fill="#7dd3fc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.2" font-weight="700">M5 Max · Mag 0.3.5 + Rust W1 (C(z))</text>
+  <text x="308" y="247" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">100.0%</text>
+  <text x="366" y="247" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">1012.9</text>
+  <text x="438" y="247" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">1.0050 J</text>
+  <text x="516" y="247" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="700">reported_j</text>
+  <rect x="42" y="267" width="548" height="35" rx="5" fill="#062c24" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="288" fill="#6ee7b7" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.2" font-weight="700">M5 Max · Rust Adapter W2 (.lut6)</text>
+  <text x="308" y="288" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">100.0%</text>
+  <text x="366" y="288" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">5.5</text>
+  <text x="438" y="288" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">0.0046 J</text>
+  <text x="516" y="288" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="700">reported_j</text>
+  <rect x="42" y="308" width="548" height="35" rx="5" fill="#231420" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="329" fill="#fda4af" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.2" font-weight="500">Thor · llama-server (Unv. 4x)</text>
+  <text x="308" y="329" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">25.0%</text>
+  <text x="366" y="329" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">2964.7</text>
+  <text x="438" y="329" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">250.3921 J</text>
+  <text x="516" y="329" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="700">measured_j</text>
+  <rect x="42" y="349" width="548" height="35" rx="5" fill="#231420" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="370" fill="#fda4af" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.2" font-weight="500">Thor · Magnitude 0.3.5 (Unv.)</text>
+  <text x="308" y="370" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">0.0%</text>
+  <text x="366" y="370" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">9847.0</text>
+  <text x="438" y="370" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700">757.0792 J</text>
+  <text x="516" y="370" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="700">measured_j</text>
+  <rect x="42" y="394" width="548" height="58" rx="6" fill="#072922" stroke="#10b981" stroke-width="0.9"/>
+  <text x="52" y="413" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">Zero External Crates · Native Rust Binary on macOS arm64, Tegra aarch64 &amp; Zen 5 x86_64:</text>
+  <text x="52" y="430" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8">Zen 5 RAPL: Rust Adapter W1 = 100.0% (162.6297 J) -&gt; W2 .lut6 = 5.08 ms (0.26776 J)</text>
+  <text x="52" y="445" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8">Vulkan Prefill Guards Triggered = 272 · 0 Seismic graph_replays.rs:821 Panics</text>
+  <rect x="632" y="68" width="584" height="398" rx="12" fill="#0d1729" stroke="#10b981" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="650" y="92" fill="#34d399" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.0" font-weight="800">B. Claims LA-73 &amp; LA-74 · MCPMark CoW CRUD &amp; BA-AirMoL vs FreeToken / KTransformers</text>
+  <text x="650" y="109" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8">Theorems 132–135 · Closed-Form CPU-GPU Co-Exec (alpha*) + K=3 LUT6 Burst + Scan-Safe Reuse</text>
+  <rect x="650" y="118" width="548" height="20" rx="4" fill="#1e293b"/>
+  <text x="656" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">DeepSeek-V4.1-Flash (552B-A16B) Heterogeneous MoE Runtime</text>
+  <text x="944" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">NVMe MB</text>
+  <text x="1014" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">tok/s</text>
+  <text x="1082" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">vs FreeTok</text>
+  <rect x="650" y="142" width="548" height="31" rx="5" fill="#131c2e" stroke="#334155" stroke-width="0.8"/>
+  <text x="656" y="162" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.0" font-weight="500">1. AirLLM (1-Tier Full NVMe)</text>
+  <text x="944" y="162" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1" font-weight="700">55296.0</text>
+  <text x="1014" y="162" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1" font-weight="700">0.13</text>
+  <text x="1086" y="162" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1" font-weight="700">0.00x</text>
+  <rect x="650" y="178" width="548" height="31" rx="5" fill="#131c2e" stroke="#334155" stroke-width="0.8"/>
+  <text x="656" y="198" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.0" font-weight="500">2. KTransformers (Static Hot-VRAM / Cold-CPU)</text>
+  <text x="944" y="198" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1" font-weight="700">208.8</text>
+  <text x="1014" y="198" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1" font-weight="700">28.16</text>
+  <text x="1086" y="198" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1" font-weight="700">0.68x</text>
+  <rect x="650" y="214" width="548" height="31" rx="5" fill="#131c2e" stroke="#334155" stroke-width="0.8"/>
+  <text x="656" y="234" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.0" font-weight="500">3. Magnitude 3-Tier (Reuse + LinkMover, K=1)</text>
+  <text x="944" y="234" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1" font-weight="700">208.8</text>
+  <text x="1014" y="234" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1" font-weight="700">43.78</text>
+  <text x="1086" y="234" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1" font-weight="700">1.05x</text>
+  <rect x="650" y="250" width="548" height="31" rx="5" fill="#0b243b" stroke="#334155" stroke-width="0.8"/>
+  <text x="656" y="270" fill="#7dd3fc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.0" font-weight="700">4. FreeToken (Bandwidth-Adaptive + Global LRU, K=1)</text>
+  <text x="944" y="270" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1" font-weight="700">261.1</text>
+  <text x="1014" y="270" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1" font-weight="700">41.56</text>
+  <text x="1086" y="270" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1" font-weight="700">1.00x</text>
+  <rect x="650" y="286" width="548" height="31" rx="5" fill="#062c24" stroke="#334155" stroke-width="0.8"/>
+  <text x="656" y="306" fill="#6ee7b7" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.0" font-weight="700">5. BA-Tiered-Expert-AirMoL (Co-Sched + Reuse, K=3)</text>
+  <text x="944" y="306" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1" font-weight="700">160.8</text>
+  <text x="1014" y="306" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1" font-weight="700">166.27</text>
+  <text x="1086" y="306" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1" font-weight="700">4.00x</text>
+  <rect x="650" y="328" width="548" height="124" rx="6" fill="#072922" stroke="#10b981" stroke-width="0.9"/>
+  <text x="660" y="347" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1" font-weight="700">Stateful MCPMark (24 Workflows / 72 CRUD Tool Calls) &amp; Multi-Model BA-AirMoL:</text>
+  <text x="660" y="366" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8">• Unguarded LLM CRUD: 25.0% clean · 75.0% live DB/ACL/Git state corrupted</text>
+  <text x="660" y="384" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">• Rust /mcp CoW Guard: 100.0% verified · 0.00% corrupted (18 CoW rollbacks, 576 idemp dedups)</text>
+  <text x="660" y="403" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8">• GLM-5-355B-A32B: BA-AirMoL K=3 = 216.328 tok/s (4.08x vs FreeToken, 5.997x vs KTrans.)</text>
+  <text x="660" y="422" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8">• Qwen3.8-180B-A6B: BA-AirMoL K=3 = 436.598 tok/s (4.167x vs FreeToken, 10461 scan evictions saved)</text>
+  <text x="660" y="441" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.7">• Optimal CPU-SIMD split alpha* = 0.543 · F_NOCACHE NVMe = 7.2 GB/s</text>
+  <rect x="24" y="484" width="584" height="392" rx="12" fill="#0d1729" stroke="#f59e0b" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="42" y="508" fill="#fbbf24" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.0" font-weight="800">C. Claims LA-73 &amp; LA-74 · 144/144 Yosys Miter &amp; Window 24 Thor DC Shunt</text>
+  <text x="42" y="525" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8">Vault-14 + MCPMark-CoW-Guard + BA-AirMoL LUT6 + JouleBit6 vs Float FreeToken LP + CRUD Scan</text>
+  <rect x="42" y="534" width="548" height="20" rx="4" fill="#1e293b"/>
+  <text x="48" y="548" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">Silicon Host (Window 24 vs Float FreeToken LP + CRUD Scan)</text>
+  <text x="336" y="548" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">W24 ns</text>
+  <text x="404" y="548" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">W24b ns</text>
+  <text x="478" y="548" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">Joule Cut</text>
+  <rect x="42" y="560" width="548" height="39" rx="5" fill="#2b1c08" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="583" fill="#fde68a" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.2" font-weight="700">NVIDIA Jetson AGX Thor Tegra aar (measured_j)</text>
+  <text x="336" y="583" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4" font-weight="700">1366.3</text>
+  <text x="404" y="583" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4" font-weight="700">4392.1</text>
+  <text x="482" y="583" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="800">3.330x</text>
+  <rect x="42" y="606" width="548" height="39" rx="5" fill="#131c2e" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="629" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.2" font-weight="500">AMD Ryzen AI Max 395 Zen5 Linux  (reported_j)</text>
+  <text x="336" y="629" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4" font-weight="700">1012.5</text>
+  <text x="404" y="629" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4" font-weight="700">1374.9</text>
+  <text x="482" y="629" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="800">1.630x</text>
+  <rect x="42" y="652" width="548" height="39" rx="5" fill="#131c2e" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="675" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.2" font-weight="500">Apple M3 Ultra 256GB macOS arm64 (reported_j)</text>
+  <text x="336" y="675" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4" font-weight="700">1857.8</text>
+  <text x="404" y="675" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.4" font-weight="700">1832.1</text>
+  <text x="482" y="675" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.6" font-weight="800">1.836x</text>
+  <rect x="42" y="704" width="548" height="156" rx="6" fill="#1e1b18" stroke="#f59e0b" stroke-width="0.9"/>
+  <text x="52" y="724" fill="#fbbf24" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.1" font-weight="700">Yosys 0.71+ (abc -lut 6) Boolean Miter (144/144 LUT6s, 9,216/9,216 Minterms, 0 Mismatches):</text>
+  <text x="52" y="744" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9">• Compiles 12 MCPMark-CoW-Guard + 12 BA-AirMoL Co-Scheduler 6-bit slices into single-cycle LUT6s</text>
+  <text x="52" y="764" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9">• Eliminates 13,824 runtime float LP + LRU shift + JSON/ACL byte-scan ops per batch</text>
+  <text x="52" y="784" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="700">• Jetson AGX Thor INA3221 VDD_CPU_SOC_MSS: 34568.6 vs 115129.2 nJ/op (3.330x)</text>
+  <text x="52" y="804" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9">• Strict 5-Tier Evidence Separation: board_metered = true ONLY on physical Thor DC shunts</text>
+  <text x="52" y="824" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8">•Thor MCPMark W1-&gt;W2 TCP Shunt: 1.384 J -&gt; 1.0858 J (INA238 VIN)</text>
+  <rect x="632" y="484" width="584" height="392" rx="12" fill="#0d1729" stroke="#a78bfa" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="650" y="508" fill="#c4b5fd" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.0" font-weight="800">D. Claims LA-75 &amp; LA-19 · 106.97 MHz openXC7, 19-Export WASM &amp; 138 Proofs</text>
+  <text x="650" y="525" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8">Theorems 136–138 · Exact 64.00 KB Watch SRAM · 15,521 B WASM · 1,502 Linux bwrap Fleet</text>
+  <rect x="650" y="540" width="548" height="70" rx="7" fill="#1e1638" stroke="#475569" stroke-width="0.9"/>
+  <text x="662" y="561" fill="#c4b5fd" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.1" font-weight="800">1. License-Free openXC7 Artix-7 XC7A200T Gateware (106.97 MHz Post-PAR)</text>
+  <text x="662" y="581" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8">Top: clai_mag_mcp_freetoken_xc7a200t_top · 653 SLICE_LUTX, 203 FFX, 0 DSP48E1s</text>
+  <text x="662" y="598" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.7">64/64 MCPMark+BA-AirMoL &amp; JouleBit6 RTL parity · 77.846 Mbit .bit (sha256=d19db777aa64...)</text>
+  <rect x="650" y="620" width="548" height="70" rx="7" fill="#0b243b" stroke="#475569" stroke-width="0.9"/>
+  <text x="662" y="641" fill="#7dd3fc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.1" font-weight="800">2. Browser-Native #![no_std] lut6_core.wasm (15,521 B = 15.16 KB &lt;= 16 KB)</text>
+  <text x="662" y="661" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8">19 C-ABI Exports (+wasm_eval_mag_mcp_freetoken_lut6) · 863 B spare under 16,384 B cap!</text>
+  <text x="662" y="678" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.7">Deduped eval_raw &amp; pair2 packing saved 811 B while adding Export #19 · 64/64 V8 roundtrip</text>
+  <rect x="650" y="700" width="548" height="70" rx="7" fill="#062c24" stroke="#475569" stroke-width="0.9"/>
+  <text x="662" y="721" fill="#6ee7b7" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.1" font-weight="800">3. Historic &gt;1,500 Milestone: 138 LutAdapt &amp; 1,502 bwrap Fleet Six-Kernel Theorems</text>
+  <text x="662" y="741" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8">RustMagnitudeMcpFreeToken.lean (Theorems 131..138) · 59,082 con-leche/con-ron decls</text>
+  <text x="662" y="758" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.7">con-leche --verified, con-ron --verified, lean4lean, nanoda, leanchecker --paranoid, Lean 4.36.0</text>
+  <rect x="650" y="780" width="548" height="70" rx="7" fill="#1f2433" stroke="#475569" stroke-width="0.9"/>
+  <text x="662" y="801" fill="#fde68a" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.1" font-weight="800">4. Exact Full-Chip 64.00 KB (65,536 B) Smartwatch SRAM Closure (Theorem 136)</text>
+  <text x="662" y="821" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8">14 Banks x 4,096 B = 57,344 B (87.50%, 7,168 u64 slots) + 4 KB Nucleus + 4 KB Stack = 65,536 B</text>
+  <text x="662" y="838" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.7">Peak Antisym-40 stack = 1,312 B &lt;= 4,096 B (2,784 B safety margin, 0 bytes wasted or overflowed)</text>
+</svg>

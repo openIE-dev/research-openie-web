@@ -1,6 +1,6 @@
 ---
 title: "التصريف الهابط إلى LUT6 في تسلسل Mixture of Limits: أنسجة منطقية بوليانية موجَّهة بشبكة Beneš، وبوابات إيقاظ مطابقة، وبث طبقات NVMe لنموذج Frontier Sparse-MoE"
-deck: "تسلسل Mixture of Limits مزوَّد بـ 130 مبرهنة في Lean 4.36.0 متحقَّقٍ منها عبر ستّ نوى مع استخراج آلي لشيفرة Rust الخالية من المكتبة القياسية إلى Lean عبر Inria Charon+Aeneas (إلى جانب 1,494 مبرهنة عبر أربعة مستودعات تابعة لـ Open Interface Engineering داخل صناديق عزل bubblewrap في Linux، ومقسّاة ضد CVE-2026-72844)، يجرّب أولاً دوائر جداول البحث ذات 6 مداخل (LUT6) المقسّمة إلى صفحات دون أي عمليات فاصلة عائمة (FLOP)، ووحدة WebAssembly (WASM) للمتصفح بحجم 15.95 كيلوبايت (18 تصديراً)، ونواة Nucleus بلغة Rust الخالية من المكتبة القياسية lut6-core بحجم 4 كيلوبايت / 48 كيلوبايت (12 مصرفاً بأغلبية معزَّزة 60.00% [15/25 لعبة و18/183 مستوى] على ARC-AGI-3 عبر C-BFWS + RIW(2) محققة 2.5030 / 3.2177 RHAE، وبث Tiered-Expert-AirMoL ثلاثي الطبقات بسرعة 439.72 رمزاً/ث على 180B و171.51 رمزاً/ث على 552B، وEngram-LUT6 بلا FLOP، ومقارنة Magnitude 0.3.5 الحية بخفض 53.55x لطاقة الرمز الصحيح وخفض 3.157x على مفرع Thor في Window 23، وTerminal-Bench/Cybench-Defensive وFrontierMath/SciCode بنسبة 100% وخفض 3.314x في Window 22، و3.204x في Window 21، و4.092x في Window 20) مع ذيل ثلاثي مضاد للتناظر من 40 مدخلاً بلا ضرب T-MAC، وطبقة Wearable-MoL بحجم 5,984 بايت (9.13% من ذاكرة SRAM لساعة ذكية بحجم 64 كيلوبايت) بافتتاحية 56 بت من 4 رموز وصفر تسميم للبادئة، وحماية (72, 64) SECDED ضد انقلابات البت الإشعاعية (0.154 مللي ثانية في mol-agent-rs، و162.71 نانوجول لكل قرار مشرَّح بالبتات، وبقاء بنسبة 100.0% عند معدل خطأ بت 1%)، ويصعّد عبر نماذج الميكرو القابلة للارتداء دون المليار معامل (Sensente/uLM-28M وLiquidAI/LFM2.5-230M) ونماذج أواخر 2026 الحلقية والهجينة والمتناثرة Mixture-of-Experts (MoE) بدقة 4 بت عبر NVMe حتى 120B معامل عبر أربعة مصنّعي GPU (حتى 328.06x تسريعاً، خافضاً خطأ معايرة RMS لبروتوكول LastExam بمقدار 5.37x من 70.62% إلى 13.14% مع 0.00% هلوسات واثقة >= 80%)، ويحرس الالتزامات على 4 مستودعات Verified، ويصرّف حالات الإيقاظ المصدَّقة هابطاً إلى ذاكرات RAMB36E2 وتيارات بت .bit مفتوحة عبر openXC7 بتردد 320.62 و106.55 و109.15 و100.55 و100.74 ميغاهرتز لشريحة Artix-7 XC7A200T M.2 2280 وصفحات Lupanov وwobble. يتضمن قراءات مفرِّعات التيار المستمر الفيزيائية measured_j على Jetson AGX Thor (87.25x في lut6-core المشرَّح بالبتات، و222.57x في البوابة المعرفية القابلة للارتداء مقابل uLM-28M، و3.157x في Window 23، و3.314x في Window 22، و4.092x في Window 20، و1.65x في ذيل T-MAC المضاد للتناظر [و1.12x على Zen 5]، و3.90x في Sub1Bit-LUT6، و34.21x في Expert-AirMoL، و10.94x في القضية 1؛ وقيمة board_metered هي true) مفصولة بصرامة عن دورات Alif Cortex-M55 (2,905.18x على البوابة القابلة للارتداء)، وعدّادات reported_j، وتوقيت openXC7 بعد PAR، وتقديرات est_j عند الالتزام 80471b9."
+deck: "تسلسل Mixture of Limits مزوَّد بـ 138 مبرهنة في Lean 4.36.0 متحقَّقٍ منها عبر ستّ نوى مع استخراج آلي لشيفرة Rust الخالية من المكتبة القياسية إلى Lean عبر Inria Charon+Aeneas (متجاوزاً حاجز 1,500 مبرهنة بـ 1,502 مبرهنة عبر أربعة مستودعات تابعة لـ Open Interface Engineering داخل صناديق عزل bubblewrap في Linux، ومقسّاة ضد CVE-2026-72844)، يجرّب أولاً دوائر جداول البحث ذات 6 مداخل (LUT6) المقسّمة إلى صفحات دون أي عمليات فاصلة عائمة (FLOP)، ووحدة WebAssembly (WASM) للمتصفح بحجم 15.16 كيلوبايت (15,521 بايت، 19 تصديراً، 863 بايت فائضاً)، ونواة Nucleus بلغة Rust الخالية من المكتبة القياسية lut6-core بحجم 4 كيلوبايت / 56 كيلوبايت (14 مصرفاً تغلق تماماً 64.00 كيلوبايت من ذاكرة SRAM للساعة الذكية، مع وكيل mol-magnitude-adapter بلغة Rust دون Python يحقق خفضاً قدره 3,028.3x على مفرِّع Thor في الموجة 2 على CogLoadBench وصفر إفساد في 24 سير عمل MCPMark بخاصية النسخ عند الكتابة CoW CRUD، وجدولة BA-Tiered-Expert-AirMoL بسرعة 436.60 رمزاً/ث على 180B و216.33 رمزاً/ث على GLM-5-355B و166.27 رمزاً/ث على 552B أي أسرع بـ 4.00x-4.17x من FreeToken وبـ 5.90x-6.00x من KTransformers مع خفض 3.330x على مفرِّع Thor في Window 24، وأغلبية معزَّزة 60.00% [15/25 لعبة و18/183 مستوى] على ARC-AGI-3 عبر C-BFWS + RIW(2)، وEngram-LUT6 بلا FLOP، ومقارنة Magnitude 0.3.5 الحية بخفض 53.55x لطاقة الرمز الصحيح وخفض 3.157x في Window 23، و3.314x في Window 22، و3.204x في Window 21، و4.092x في Window 20) مع ذيل ثلاثي مضاد للتناظر من 40 مدخلاً بلا ضرب T-MAC، وطبقة Wearable-MoL بحجم 5,984 بايت (9.13% من ذاكرة SRAM لساعة ذكية بحجم 64 كيلوبايت) بافتتاحية 56 بت من 4 رموز وصفر تسميم للبادئة، وحماية (72, 64) SECDED ضد انقلابات البت الإشعاعية (0.154 مللي ثانية في mol-agent-rs، و162.71 نانوجول لكل قرار مشرَّح بالبتات، وبقاء بنسبة 100.0% عند معدل خطأ بت 1%)، ويصعّد عبر نماذج الميكرو القابلة للارتداء دون المليار معامل (Sensente/uLM-28M وLiquidAI/LFM2.5-230M) ونماذج أواخر 2026 الحلقية والهجينة والمتناثرة Mixture-of-Experts (MoE) بدقة 4 بت عبر NVMe حتى 120B معامل عبر أربعة مصنّعي GPU (حتى 328.06x تسريعاً، خافضاً خطأ معايرة RMS لبروتوكول LastExam بمقدار 5.37x من 70.62% إلى 13.14% مع 0.00% هلوسات واثقة >= 80%)، ويحرس الالتزامات على 4 مستودعات Verified، ويصرّف حالات الإيقاظ المصدَّقة هابطاً إلى ذاكرات RAMB36E2 وتيارات بت .bit مفتوحة عبر openXC7 بتردد 320.62 و106.55 و109.15 و100.55 و100.74 و106.97 ميغاهرتز لشريحة Artix-7 XC7A200T M.2 2280 وصفحات Lupanov وwobble. يتضمن قراءات مفرِّعات التيار المستمر الفيزيائية measured_j على Jetson AGX Thor (87.25x في lut6-core المشرَّح بالبتات، و222.57x في البوابة المعرفية القابلة للارتداء مقابل uLM-28M، و3.330x في Window 24، و3.157x في Window 23، و3.314x في Window 22، و4.092x في Window 20، و1.65x في ذيل T-MAC المضاد للتناظر [و1.12x على Zen 5]، و3.90x في Sub1Bit-LUT6، و34.21x في Expert-AirMoL، و10.94x في القضية 1؛ وقيمة board_metered هي true) مفصولة بصرامة عن دورات Alif Cortex-M55 (2,905.18x على البوابة القابلة للارتداء)، وعدّادات reported_j، وتوقيت openXC7 بعد PAR، وتقديرات est_j عند الالتزام 0945f14."
 lang: "ar"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*المراجعة 80471b9، 27 نوفمبر 2026. التنفيذ المرجعي والمصنوعات: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) عند [`80471b90b905a020f244ead31e7d587bc8d862ae`](https://github.com/openIE-dev/lut-adapt-ai/tree/80471b90b905a020f244ead31e7d587bc8d862ae). ملخص البيانات: [/data/#lut-adapt](/data/#lut-adapt). ملف LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([المصدر](/pdfs/latex/lut-adapt.tex)).*
+*المراجعة 0945f14، 27 نوفمبر 2026. التنفيذ المرجعي والمصنوعات: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) عند [`0945f1408c38bc8b2c05ae781c0a1fb9459d3af8`](https://github.com/openIE-dev/lut-adapt-ai/tree/0945f1408c38bc8b2c05ae781c0a1fb9459d3af8). ملخص البيانات: [/data/#lut-adapt](/data/#lut-adapt). ملف LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([المصدر](/pdfs/latex/lut-adapt.tex)).*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: مزيج الحدود، قاعدة التسلسل من بوابات الالتزام المقاسة الجزء الثاني [same house]</li>
-<li>LA: بادئة الادعاء والمكذب (LA-1 إلى LA-71، LA-F1 إلى LA-F71) المستخدمة في هذه الدراسة</li>
+<li>LA: بادئة الادعاء والمكذب (LA-1 إلى LA-75، LA-F1 إلى LA-F75) المستخدمة في هذه الدراسة</li>
 <li>LUT, LUT6, INIT: جدول بحث، بدائية بوليانية من Xilinx UltraScale+ ذات 6 مداخل، وقناع تهيئة جدول الحقيقة 64-بت</li>
 <li>BRAM, RAMB36E2, URAM: ذاكرة كتلية، البدائية 36-كيبت ذات منفذين من UltraScale+ (144 على xck26)، و UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260: كتلة منطقية قابلة للتهيئة، فليب-فلوب، شريحة معالجة إشارة رقمية، ولوحة AMD Kria KV260 (xck26)</li>
@@ -825,6 +825,23 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
   <figcaption>الشكل 18. قياسات الأغلبية المعزَّزة (`60.00%`، `15/25` لعبة) لـ`ARC-AGI-3` عبر `C-BFWS` و`Terminal-Bench &amp; Cybench-Defensive` و`FrontierMath &amp; SciCode` و`122` مبرهنة (`الادعاءات LA-19 [122 مبرهنة / 1,486 أسطول bwrap]، LA-64..LA-67`).</figcaption>
 </figure>
 
+### 4.51 الادعاءات LA-68..LA-75: مقارنة `Magnitude 0.3.5` الحية، ووكيل Rust الأصيل `mol-magnitude-adapter` (`CogLoadBench` `4×` و`MCPMark` `CoW` `CRUD` بنسبة إفساد `0.00%`)، وجدولة `BA-Tiered-Expert-AirMoL` (`4.00×–4.17×` أسرع من `FreeToken` ومفرِّع `Thor` في `Window 24` بمقدار `3.330×`)، وإغلاق `64.00 KB` في `SRAM` الساعة، و`1,502` مبرهنة عبر ستّ نوى
+
+- **مقارنة `Magnitude 0.3.5` الحية و`Engram-LUT6` (`LA-68..LA-71`)**: يخفض `Magnitude 0.3.5 + LUT-Adapt` طاقة `twist` على مفرِّع `Jetson AGX Thor` (`VIN` `measured_j`، `board_metered = true`) بمقدار **`53.55×`** مع **`100.0%`** في البرمجة الموثقة، ويبلغ `Tiered-Expert-AirMoL` سرعة **`439.72 tok/s`** على `180B`، ويخفض `Engram-LUT6` (`144/144` مايتر `Yosys`) طاقة `Window 23` بمقدار **`3.157×`** مع بوابة `openXC7` بتردد `100.74 MHz` و`130` مبرهنة (الشكل 19).
+- **وكيل Rust الخالي من Python `mol-magnitude-adapter` وحوض `MCPMark` `CoW` `CRUD` (`LA-72 & LA-73`)**: يحقق **`100.00%` (`16/16`، `0` انهيارات Vulkan)** على `CogLoadBench` (`4×` تلوث سياقي) خافضاً قراءة `Thor` `VIN` `measured_j` في الموجة 2 بمقدار **`3,028.3×` (`0.2500 J` مقابل `757.08 J`، `5.203 ms`)**، ويحقق **`0.00%` إفساداً حياً** مقابل `75.00%` غير محروس عبر `24` سير عمل `MCPMark` (`18` تراجعاً بالنسخ عند الكتابة `CoW` و`144/144` مايتر `Yosys` `abc -lut 6`).
+- **جدولة `BA-Tiered-Expert-AirMoL` ومفرِّع `Thor` في `Window 24` (`LA-74`)**: يحقق التقسيم التكيفي لعرض النطاق ($\alpha^* = 0.5429$) مع دفعات `K = 3` **`436.60 tok/s`** على `180B` و**`216.33 tok/s`** على `GLM-5-355B` و**`166.27 tok/s`** على `552B` (**`4.00×–4.17×` أسرع من `FreeToken`** و**`5.90×–6.00×` أسرع من `KTransformers`**)، وتخفض `Window 24` قراءة `Thor` `measured_j` بمقدار **`3.330×` (`34,568.60` مقابل `115,129.22 nJ/op`، أسرع `3.215×`، `board_metered = true`)**.
+- **إغلاق `64.00 KB` في `SRAM` الساعة، و`openXC7` بتردد `106.97 MHz`، و`WASM` بـ`19` تصديراً (`15.16 KB`)، و`138` / `1,502` مبرهنة (`LA-75`)**: تغلق `14 × 4 KB = 56 KB` (`87.50%`) + `4 KB` للنواة + `4 KB` للمكدس كامل **`65,536 B = 64.00 KB`**، وتغلق `clai_mag_mcp_freetoken_xc7a200t_top` عند **`106.97 MHz`** (`0` `DSP48E1`)، وتتقلص `lut6_core.64d3e8b80df6.wasm` إلى **`15,521 B <= 16,384 B` (`19` تصديراً)**، وترفع `RustMagnitudeMcpFreeToken.lean` المجموع إلى **`138` مبرهنة (`59,082` تصريحاً) و`1,502` مبرهنة عبر أسطول `bwrap`** (الشكل 20).
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/magnitude-tiered-airmol-and-engram-lut6.svg" alt="مقارنة Magnitude 0.3.5 الحية، وTiered-Expert-AirMoL، وEngram-LUT6 في Window 23، و130 مبرهنة." />
+  <figcaption>الشكل 19. قياسات `Magnitude 0.3.5` الحية و`Tiered-Expert-AirMoL` و`Engram-LUT6` و`130` مبرهنة (`الادعاءات LA-68..LA-71`).</figcaption>
+</figure>
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/rust-magnitude-mcpmark-and-freetoken.svg" alt="وكيل Rust الأصيل mol-magnitude-adapter على CogLoadBench وMCPMark، وجدولة BA-Tiered-Expert-AirMoL مقابل FreeToken وKTransformers، ومفرع Thor في Window 24، وإغلاق 64 KB SRAM، و1,502 مبرهنة." />
+  <figcaption>الشكل 20. قياسات `mol-magnitude-adapter` بلغة Rust على `CogLoadBench` و`MCPMark`، وتفوق `BA-Tiered-Expert-AirMoL` على `FreeToken` و`KTransformers`، ومفرِّع `Thor` في `Window 24` (`3.330×`)، وإغلاق `64.00 KB` في `SRAM` الساعة، و`138` / `1,502` مبرهنة عبر ستّ نوى (`الادعاءات LA-72..LA-75`).</figcaption>
+</figure>
+
 ---
 
 <div id="5-related-work-and-convergence-observations" class="anchor-alias" aria-hidden="true"></div>
@@ -842,6 +859,8 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **Medusa** (2024), **EAGLE-2** (2024), **HCSpec** (2026) | `arXiv:2401.10774` · `arXiv:2406.16858` · ACL 2026 | MLP عصبي، شجرة مسودة، ومُكوِّنات متسلسلة استدلالية. | تسارع الوقت الحقيقي. | تحتاج FLOPs مسودة وقراءات وزن مقابل صفحات `0`-FLOP `uint64` `LUT6`. |
 | **PLD** (Saxena, 2023) & **REST** (He et al., 2024) | GitHub · `arXiv:2311.08252` | مُكوِّنات n-gram موجهة وصفر FLOP وsuffix-trie مخزن البيانات. | تسارع الزمن (`0` FLOPs). | `PLD` يفتقد رموزًا خارج الموجه؛ `REST` يستخدم tries متغيرة مقابل صفحات `RAMB36E2`. |
 | **AirLLM** (lyogavin, 2023) | Open-source SSD streamer | بث أوزان SSD طبقةً بط layer في RAM صغيرة. | بصمة RAM النشطة. | نظام `T=1` صافي (`1.0 tok/sweep`) + تدفق KV مقابل `AirMoL` تقليل I/O بـ `2.74×-12.30×` و `970 MB` Metal `INT4` RAM. |
+| **KTransformers** (Chen et al., 2025) & **FreeToken** (Yang et al., 2026) | `arXiv:2507.01909` · `arXiv:2608.07296` | تفريغ هجين `CPU-GPU` لخبراء MoE بوضع `K=1` `LRU`. | سرعة `tok/s`. | بدون دفعات `K=3` أو `Reuse` مقاوم للمسح مقابل `BA-Tiered-Expert-AirMoL` (`4.00×–4.17×` فوق `FreeToken`، و`3.330×` على مفرِّع `Thor` في `Window 24`). |
+| **MCPMark** (Wu et al., 2025) & **Magnitude** (2026) | `arXiv:2509.24002` · `magnitudedev/magnitude` (`0.3.5`) | معيار `MCP` متعدد الأدوار ومحرك الاستدلال المحلي بلغة Rust. | معدل الاجتياز و`tok/s`. | `75.00%` إفساد حي غير محروس مقابل `0.00%` عبر `mol-magnitude-adapter` بحوض `CoW` `CRUD` وخفض `3,028.3×` في الموجة 2 على `Thor`. |
 | **Metered Commit Gates** & **RCE-JEPA** `[same house]` | `/papers/gates/` · `/papers/rce-jepa/` | بوابات الالتزام (`11,428 pJ` قراءة KV260 `INA260` SOM)، MoL $p_i/c_i$, و `RCE-JEPA`. | KV260 SOM `measured_j` + `reported_j` / `est_j`. | أساس نفس المؤسسة؛ مُمدّد هنا باستخدام تجميع Beneš `LUT6` الهابط، Metal `Expert-AirMoL`, و `mol-agent`. |
 
 ---
@@ -863,7 +882,7 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`LA-F5`** | `Claim LA-5` (التخمين على مستوى البايت) | ينتج `scripts/run_code_corpus_benchmark.py` تطابقاً دقيقاً على مستوى البايت أقل من `100.0%` مقارنة بـ `Mamba3CodeLM` الجشع على `48` موجِّهاً غير مرئي. |
 | **`LA-F6`** | `Claim LA-6` (`AirMoL` 14.3M) | يفشل `scripts/run_air_mol_benchmark.py` تحت `F_NOCACHE` في تحقيق تطابق بنسبة `100%`، أو يقرأ بايتات NVMe أكثر من `AirLLM` 4-Bit `T=1`. |
 | **`LA-F7`** | `Claim LA-7` (`AirMoL` على HF لعام 2026) | ينحرف أي من `scripts/run_hf_lfm3_air_mol.py` أو `scripts/run_hf_air_mol_pretrained.py` أو `scripts/run_hf_qwen35_air_mol.py` بمقدار $\ge 1$ رمز BPE عن الهدف الجشع. |
-| **`LA-F8`** | `Claim LA-8` (مجموعة الانحدار) | يفشل `pytest -v` في أي من الاختبارات الـ`71` الموجودة في `tests/`. |
+| **`LA-F8`** | `Claim LA-8` (مجموعة الانحدار) | يفشل `pytest -v` في أي من الاختبارات الـ`102` الموجودة في `tests/`. |
 | **`LA-F9`** | `Claim LA-9` (MoE بحجم `8.5B/35B`) | ينحرف `scripts/run_hf_moe_8b_35b_air_mol.py` عن تطابق الرموز بنسبة `100%`، أو يقرأ بايتات NVMe أكثر من `AirLLM` أو `Expert-AirLLM`. |
 | **`LA-F10`** | `Claim LA-10` (`Sub1Bit-LUT6`) | يتجاوز `scripts/run_sub1bit_lut_benchmark.py` خطأً أقصى قدره `1e-3` مقارنةً بضرب المصفوفات الثنائية الكثيف `ITQ`، أو يفشل في تحقيق تطابق متحقَّق منه بنسبة `100%`. |
 | **`LA-F11`** | `Claim LA-11` (مسابقة `48` مهمة) | يقبل `scripts/run_frontier_ai_bakeoff.py` أكثر من `> 0%` من الالتزامات (commits) المعطوبة، أو يقبل مهارة Wave-1 قديمة تحت تعديل مواصفات Wave-2. |
@@ -915,6 +934,14 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`LA-F65`** | `Claim LA-65` (`Terminal-Bench & Cybench-Defensive` ومايتر `144/144`) | ينفذ استغلالاً هجومياً، أو يقبل `> 0%` التزامات معطوبة/مصابة، أو يفشل في أيٍّ من `144/144` مايتر `Yosys` `abc -lut 6`. |
 | **`LA-F66`** | `Claim LA-66` (`FrontierMath & SciCode` ومفرِّع `Thor` `Window 22`) | يقبل التزاماً غير محافظ (`> 2e-4` انجراف)، أو تفشل `Window 22` في خفض `measured_j` على `Thor` أو تختم `board_metered = true` خارج `Thor`. |
 | **`LA-F67`** | `Claim LA-67` (`openXC7` بتردد `100.55 MHz` و`WASM` بـ`17` تصديراً و`122` مبرهنة) | تستخدم `DSP48E1`، أو تفشل في تردد `100 MHz` أو تطابق `64/64`، أو تقل المبرهنات عن `122` / `1,486` عبر 6 نوى، أو تتجاوز `lut6_core.wasm` حجم `16,384 B`. |
+| **`LA-F68`** | `Claim LA-68` (مقارنة `Magnitude 0.3.5` الحية ومفرِّع `Thor` `VIN` `measured_j`) | يحفظ نصوصاً خاماً، أو يختم `board_metered = true` خارج `Thor`، أو يخفق في خفض `JpCT` أو يقبل التزامات برمجية معطوبة. |
+| **`LA-F69`** | `Claim LA-69` (`Tiered-Expert-AirMoL` ثلاثي الطبقات) | يفشل في تطابق `64/64` لبوابة `LUT6`، أو يفشل في تجاوز إنتاجية `K=1` على `180B` أو `552B` أو `30B`. |
+| **`LA-F70`** | `Claim LA-70` (`Engram-LUT6` ومايتر `144/144` ومفرِّع `Window 23`) | يفشل في مايتر `Yosys` `144/144` أو تفشل `Window 23` في خفض `measured_j` على `Thor`. |
+| **`LA-F71`** | `Claim LA-71` (`openXC7` بتردد `100.74 MHz` و`WASM` بـ`18` تصديراً و`130` مبرهنة) | تستخدم `DSP48E1`، أو تفشل في تردد `100 MHz`، أو تقل المبرهنات عن `130` / `1,494` عبر 6 نوى، أو تتجاوز `WASM` حجم `16,384 B`. |
+| **`LA-F72`** | `Claim LA-72` (وكيل Rust `mol-magnitude-adapter` ومعيار `CogLoadBench` `4×`) | يتطلب Python أو حزماً خارجية، أو ينهار على Vulkan، أو يقل عن `100%` أو `< 1,000×` خفضاً في الموجة 2 على `Thor` `VIN` `measured_j`. |
+| **`LA-F73`** | `Claim LA-73` (حوض `MCPMark` `CoW` `CRUD` ومايتر `144/144`) | يسمح بإفساد حي `> 0%` عبر `24` سير عمل `MCPMark`، أو يفشل في مايتر `Yosys` `abc -lut 6` `144/144`. |
+| **`LA-F74`** | `Claim LA-74` (`BA-Tiered-Expert-AirMoL` مقابل `FreeToken` ومفرِّع `Window 24`) | يحقق تسريعاً `< 3.5×` مقابل `FreeToken` أو `< 5.0×` مقابل `KTransformers`، أو تفشل `Window 24` في خفض `measured_j` على `Thor` (`< 2.5×`). |
+| **`LA-F75`** | `Claim LA-75` (إغلاق `64.00 KB` في `SRAM` الساعة، و`106.97 MHz` `openXC7`، و`WASM` بـ`19` تصديراً، و`138` / `1,502` مبرهنة) | ينحرف مجموع `14 × 4,096 + 4,096 + 4,096` عن `65,536 B`، أو تقل `Fmax` عن `100 MHz`، أو تقل المبرهنات عن `138` / `1,502`، أو تتجاوز `lut6_core.wasm` حجم `16,384 B`. |
 
 ---
 
@@ -999,6 +1026,9 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 <li>Josefsson, S., and Liusvaara, I. (2017). Edwards-Curve Digital Signature Algorithm (<code>EdDSA</code> / <code>Ed25519</code>). <em>IETF RFC 8032</em>, <a href="https://doi.org/10.17487/RFC8032">doi:10.17487/RFC8032</a>.</li>
 <li>O'Connor, J., Aumasson, J.-P., Neves, S., and Wilcox-O'Hearn, Z. (2020). BLAKE3: One Function, Fast Everywhere (<code>BLAKE3</code> Cryptographic Hash Specification). <a href="https://github.com/BLAKE3-team/BLAKE3-specs">github.com/BLAKE3-team/BLAKE3-specs</a>.</li>
 <li>Magnitude (2026). Magnitude (<code>Seismic</code>): Open-Source Native Rust Local LLM Inference Engine (<code>magnitudedev/magnitude</code>, v0.3.5, MIT License). <a href="https://magnitude.dev/">magnitude.dev</a>.</li>
+<li>Wu, Z., et al. (2025). MCPMark: Benchmarking Multi-Turn Stateful Model Context Protocol Tool Use. <em>arXiv:2509.24002</em>.</li>
+<li>Chen, H., et al. (2025). KTransformers: Unleashing the Full Potential of CPU/GPU Hybrid Inference for MoE Models. <em>ACM SOSP 2025</em>, <em>arXiv:2507.01909</em>.</li>
+<li>Yang, Z., Stoica, I., Han, S., Zaharia, M., et al. (2026). FreeToken: Bandwidth-Balanced Heterogeneous CPU-GPU Offloading for Large Sparse MoE Inference. <em>arXiv:2608.07296</em>.</li>
 </ol>
 
 ---
@@ -1007,11 +1037,14 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 ## الملحق أ. إعادة الإنتاج
 
-من نسختين مستخرجتين من [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 80471b9`) و[openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` و`lut6-core-nucleus/`):
+من نسختين مستخرجتين من [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 0945f14`) و[openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` و`lut6-core-nucleus/`):
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
-(cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+(cd sys/lut6-core && cargo test --release && cargo run --release --bin mol_magnitude_adapter -- --self-test && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase44_rust_magnitude_fleet.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase44_window24_five_silicon.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_mag_mcp_freetoken_par.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase43_magnitude_head_to_head.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase43_window23_five_silicon.py
 PYTHONPATH=src .venv/bin/python scripts/run_openxc7_tiered_engram_par.py

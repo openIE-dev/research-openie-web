@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits कैस्केड में अधोमुखी LUT6 संकलन: Beneš-रूट किए गए बूलियन फ़ैब्रिक, कन्फ़ॉर्मल वेक द्वार और फ्रंटियर स्पार्स-MoE NVMe स्ट्रीमिंग"
-deck: "130 छह-कर्नेल-सत्यापित Lean 4.36.0 प्रमेयों और Inria Charon+Aeneas यांत्रिक मानक-पुस्तकालय-रहित Rust-से-Lean निष्कर्षण (साथ ही Linux bubblewrap सैंडबॉक्स में चार Open Interface Engineering रिपॉज़िटरी में 1,494 प्रमेयों, CVE-2026-72844-सुदृढ़ीकृत) वाला एक Mixture of Limits कैस्केड, जो पहले शून्य-फ्लोटिंग-पॉइंट-ऑपरेशन (FLOP) वाले पेज्ड 6-इनपुट लुक-अप टेबल (LUT6) सर्किटों, 15.95-किलोबाइट WebAssembly (WASM) ब्राउज़र मॉड्यूल (18 निर्यात), प्रतिसममित 40-प्रविष्टि शून्य-गुणन T-MAC टर्नरी टेल वाले 4/48-किलोबाइट (12-बैंक) Rust lut6-core Nucleus (25 आधिकारिक ARC-AGI-3 खेलों पर C-BFWS + RIW(2) से 60.00% महा-बहुमत [15/25 खेल, 18/183 स्तर, 11/16 = 68.75% मिलान-16, 2.5030 / 3.2177 RHAE], त्रि-स्तरीय Tiered-Expert-AirMoL में 180B पर 439.72 tok/s व 552B पर 171.51 tok/s, शून्य-FLOP Engram-LUT6, लाइव Magnitude 0.3.5 बेकऑफ़ में 53.55x कम प्रति-सही-टोकन जूल व Window 23 में 3.157x Thor शंट कमी, 100% Terminal-Bench व Cybench-Defensive [144/144 Yosys माइटर], 100% FrontierMath-Constructive व SciCode संश्लेषण, तथा Window 22 में 3.314x, Window 21 में 3.204x व Window 20 में 4.092x Thor शंट कमी), शून्य प्रीफ़िक्स पॉइज़निंग वाले 5,984-बाइट Wearable-MoL चरण (स्मार्टवॉच के 64-किलोबाइट SRAM का 9.13%), और (72, 64) SECDED ब्रह्मांडीय-किरण बिट-फ़्लिप सुरक्षा को आज़माता है (एकल-बाइनरी Rust mol-agent-rs में 0.154 मिलीसेकंड, प्रति बिट-स्लाइस्ड निर्णय 162.71 नैनोजूल, 1% बिट-त्रुटि दर पर 100.0% उत्तरजीविता), सब-बिलियन वियरेबल माइक्रो-LLM (Sensente/uLM-28M और LiquidAI/LFM2.5-230M) तथा चार GPU सिलिकॉन विक्रेताओं (328.06x तक गति-वृद्धि, LastExam RMS अंशांकन त्रुटि को 70.62% से 5.37x घटाकर 13.14% और >= 80% पर 0.00% अति-आत्मविश्वासी मतिभ्रम) पर 120B पैरामीटर तक के 4-बिट NVMe लूप्ड, हाइब्रिड और स्पार्स MoE अंतिम-2026 मॉडलों में आरोहण करता है, 4 अपस्ट्रीम Verified रिपॉज़िटरी में कमिटों को द्वारबद्ध करता है, और प्रमाणित वेक्स को RAMB36E2, लाइसेंस-मुक्त openXC7 320.62, 106.55, 109.15, 100.55 और 100.74-मेगाहर्ट्ज़ पोस्ट-PAR Artix-7 XC7A200T M.2 2280 .bit बिटस्ट्रीम तथा Lupanov और वॉबल-कोडॉन क्रिस्टल पृष्ठों में अधोमुखी संकलित करता है। इसमें Jetson AGX Thor पर भौतिक Texas Instruments DC शंट measured_j माप (87.25x बिट-स्लाइस्ड lut6-core, uLM-28M की तुलना में 222.57x वियरेबल 56-बिट एपिस्टेमिक गेट, Window 23 में 3.157x, Window 22 में 3.314x, Window 20 में 4.092x, 1.65x प्रतिसममित-40 T-MAC [तथा Zen 5 पर 1.12x], 3.90x Sub1Bit-LUT6, 34.21x Expert-AirMoL, और 10.94x प्रस्थापना 1 संकलन; board_metered सत्य है) शामिल हैं, जिन्हें लाइव Alif Cortex-M55 चक्रों (2,905.18x वियरेबल गेट), reported_j काउंटरों, openXC7 पोस्ट-PAR टाइमिंग और कमिट 80471b9 पर RTL est_j अनुमानों से कड़ाई से पृथक रखा गया है।"
+deck: "138 छह-कर्नेल-सत्यापित Lean 4.36.0 प्रमेयों और Inria Charon+Aeneas यांत्रिक मानक-पुस्तकालय-रहित Rust-से-Lean निष्कर्षण (ऐतिहासिक 1,500-प्रमेय सीमा को पार करते हुए Linux bubblewrap सैंडबॉक्स में चार Open Interface Engineering रिपॉज़िटरी में 1,502 प्रमेयों, CVE-2026-72844-सुदृढ़ीकृत) वाला एक Mixture of Limits कैस्केड, जो पहले शून्य-फ्लोटिंग-पॉइंट-ऑपरेशन (FLOP) वाले पेज्ड 6-इनपुट लुक-अप टेबल (LUT6) सर्किटों, 15.16-किलोबाइट (15,521-बाइट, 19 निर्यात, 863 बाइट अतिरिक्त) WebAssembly (WASM) ब्राउज़र मॉड्यूल, प्रतिसममित 40-प्रविष्टि शून्य-गुणन T-MAC टर्नरी टेल वाले 4/56-किलोबाइट (14-बैंक = 64 KB स्मार्टवॉच SRAM का 87.50%, सटीक 64.00 KB पूर्ण-चिप SRAM बंद करते हुए) Rust lut6-core Nucleus (Python-रहित Rust mol-magnitude-adapter प्रॉक्सी द्वारा 4x-प्रदूषित CogLoadBench पर 3,028.3x कम Thor तरंग-2 ऊर्जा व 24 MCPMark CoW CRUD वर्कफ़्लो पर 0.00% लाइव भ्रष्टाचार, बैंडविड्थ-अनुकूली BA-Tiered-Expert-AirMoL में 180B पर 436.60 tok/s, GLM-5-355B पर 216.33 tok/s व 552B पर 166.27 tok/s = FreeToken से 4.00x-4.17x व KTransformers से 5.90x-6.00x तेज़ तथा Window 24 में 3.330x Thor शंट कमी, 25 आधिकारिक ARC-AGI-3 खेलों पर C-BFWS + RIW(2) से 60.00% महा-बहुमत [15/25 खेल, 18/183 स्तर], शून्य-FLOP Engram-LUT6, लाइव Magnitude 0.3.5 बेकऑफ़ में 53.55x कम प्रति-सही-टोकन जूल व Window 23 में 3.157x, Window 22 में 3.314x, Window 21 में 3.204x व Window 20 में 4.092x Thor शंट कमी), शून्य प्रीफ़िक्स पॉइज़निंग वाले 5,984-बाइट Wearable-MoL चरण (स्मार्टवॉच के 64-किलोबाइट SRAM का 9.13%), और (72, 64) SECDED ब्रह्मांडीय-किरण बिट-फ़्लिप सुरक्षा को आज़माता है (एकल-बाइनरी Rust mol-agent-rs में 0.154 मिलीसेकंड, प्रति बिट-स्लाइस्ड निर्णय 162.71 नैनोजूल, 1% बिट-त्रुटि दर पर 100.0% उत्तरजीविता), सब-बिलियन वियरेबल माइक्रो-LLM (Sensente/uLM-28M और LiquidAI/LFM2.5-230M) तथा चार GPU सिलिकॉन विक्रेताओं (328.06x तक गति-वृद्धि, LastExam RMS अंशांकन त्रुटि को 70.62% से 5.37x घटाकर 13.14% और >= 80% पर 0.00% अति-आत्मविश्वासी मतिभ्रम) पर 120B पैरामीटर तक के 4-बिट NVMe लूप्ड, हाइब्रिड और स्पार्स MoE अंतिम-2026 मॉडलों में आरोहण करता है, 4 अपस्ट्रीम Verified रिपॉज़िटरी में कमिटों को द्वारबद्ध करता है, और प्रमाणित वेक्स को RAMB36E2, लाइसेंस-मुक्त openXC7 320.62, 106.55, 109.15, 100.55, 100.74 और 106.97-मेगाहर्ट्ज़ पोस्ट-PAR Artix-7 XC7A200T M.2 2280 .bit बिटस्ट्रीम तथा Lupanov और वॉबल-कोडॉन क्रिस्टल पृष्ठों में अधोमुखी संकलित करता है। इसमें Jetson AGX Thor पर भौतिक Texas Instruments DC शंट measured_j माप (87.25x बिट-स्लाइस्ड lut6-core, uLM-28M की तुलना में 222.57x वियरेबल 56-बिट एपिस्टेमिक गेट, Window 24 में 3.330x, Window 23 में 3.157x, Window 22 में 3.314x, Window 20 में 4.092x, 1.65x प्रतिसममित-40 T-MAC [तथा Zen 5 पर 1.12x], 3.90x Sub1Bit-LUT6, 34.21x Expert-AirMoL, और 10.94x प्रस्थापना 1 संकलन; board_metered सत्य है) शामिल हैं, जिन्हें लाइव Alif Cortex-M55 चक्रों (2,905.18x वियरेबल गेट), reported_j काउंटरों, openXC7 पोस्ट-PAR टाइमिंग और कमिट 0945f14 पर RTL est_j अनुमानों से कड़ाई से पृथक रखा गया है।"
 lang: "hi"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*संशोधन 80471b9, 27 नवंबर 2026. संदर्भ कार्यान्वयन और कलाकृतियाँ: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) पर [`80471b90b905a020f244ead31e7d587bc8d862ae`](https://github.com/openIE-dev/lut-adapt-ai/tree/80471b90b905a020f244ead31e7d587bc8d862ae). डेटा सारांश: [/data/#lut-adapt](/data/#lut-adapt). LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([source](/pdfs/latex/lut-adapt.tex)).*
+*संशोधन 0945f14, 27 नवंबर 2026. संदर्भ कार्यान्वयन और कलाकृतियाँ: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) पर [`0945f1408c38bc8b2c05ae781c0a1fb9459d3af8`](https://github.com/openIE-dev/lut-adapt-ai/tree/0945f1408c38bc8b2c05ae781c0a1fb9459d3af8). डेटा सारांश: [/data/#lut-adapt](/data/#lut-adapt). LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([source](/pdfs/latex/lut-adapt.tex)).*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: Mixture of Limits, Metered Commit Gates Part II से cascade नियम [same house]</li>
-<li>LA: इस अध्ययन में उपयोग किए गए दावा और फ़ाल्सिफ़ायर उपसर्ग (LA-1 से LA-71, LA-F1 से LA-F71)</li>
+<li>LA: इस अध्ययन में उपयोग किए गए दावा और फ़ाल्सिफ़ायर उपसर्ग (LA-1 से LA-75, LA-F1 से LA-F75)</li>
 <li>LUT, LUT6, INIT: लुक-अप टेबल, 6-इनपुट Xilinx UltraScale+ बूलियन प्रिमिटिव, और इसका 64-बिट ट्रुथ-टेबल इनिशियलाइज़ेशन मास्क</li>
 <li>BRAM, RAMB36E2, URAM: ब्लॉक RAM, 36-Kbit डुअल-पोर्ट UltraScale+ ब्लॉक RAM प्रिमिटिव (xck26 पर 144), और UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260: कॉन्फ़िगर करने योग्य लॉजिक ब्लॉक, फ्लिप-फ्लॉप, डिजिटल सिग्नल प्रोसेसिंग स्लाइस, और AMD Kria KV260 बोर्ड (xck26)</li>
@@ -830,6 +830,23 @@ Lupanov का साझा-सहगुणक अपघटन (1958; `k=8`, `m=
   <figcaption>चित्र 18. `ARC-AGI-3` `C-BFWS` `60.00%` (`15/25` खेल) महा-बहुमत, `Terminal-Bench &amp; Cybench-Defensive`, `FrontierMath &amp; SciCode`, व `122` प्रमेयों के माप (`दावे LA-19 [122 प्रमेय / 1,486 bwrap बेड़ा], LA-64..LA-67`)।</figcaption>
 </figure>
 
+### 4.51 दावे LA-68..LA-75: लाइव `Magnitude 0.3.5`, Python-रहित Rust `mol-magnitude-adapter` (`CogLoadBench` `4×` व `MCPMark` `CoW` `CRUD` `0.00%` भ्रष्टाचार), `BA-Tiered-Expert-AirMoL` (`4.00×–4.17×` > `FreeToken`, `Window 24` `Thor` शंट `3.330×`), सटीक `64.00 KB` घड़ी `SRAM` समापन, और `1,502` षट्-कर्नेल प्रमेय
+
+- **लाइव `Magnitude 0.3.5` और `Engram-LUT6` (`LA-68..LA-71`)**: `Magnitude 0.3.5 + LUT-Adapt` `Thor` `VIN` `measured_j` `twist` `JpCT` को **`53.55×`** घटाता है (`board_metered = true`, `100.0%` कोडिंग), `Tiered-Expert-AirMoL` `180B` पर **`439.72 tok/s`** देता है, और `Engram-LUT6` (`144/144` `Yosys` माइटर) `Window 23` को **`3.157×`** घटाता है (`100.74 MHz` `openXC7` व `130` प्रमेय, चित्र 19)।
+- **Python-रहित Rust `mol-magnitude-adapter` और स्टेटफ़ुल `MCPMark` `CoW` `CRUD` (`LA-72 व LA-73`)**: `4×`-प्रदूषित `CogLoadBench` पर **`100.00%` (`16/16`, `0` Vulkan क्रैश)** सिद्ध कर `Thor` `VIN` `measured_j` को तरंग-2 में **`3,028.3×` (`0.2500 J` बनाम `757.08 J`, `5.203 ms`)** घटाता है, तथा `24` `MCPMark` वर्कफ़्लो में `75.00%` बनाम **`0.00%` लाइव भ्रष्टाचार** (`18` `CoW` रोलबैक, `144/144` `Yosys` `abc -lut 6` माइटर) सुनिश्चित करता है।
+- **`BA-Tiered-Expert-AirMoL` और `Window 24` `Thor` शंट (`LA-74`)**: बैंडविड्थ-अनुकूली विभाजन ($\alpha^* = 0.5429$) + `K = 3` बर्स्ट कोलेसिंग **`436.60 tok/s`** (`180B`), **`216.33 tok/s`** (`GLM-5-355B`), और **`166.27 tok/s`** (`552B`) (**`4.00×–4.17×` > `FreeToken`**, **`5.90×–6.00×` > `KTransformers`**) प्राप्त करता है तथा `Thor` `Window 24` भौतिक `measured_j` को **`3.330×` (`34,568.60` बनाम `115,129.22 nJ/op`, `3.215×` तेज़, `board_metered = true`)** घटाता है।
+- **सटीक `64.00 KB` घड़ी `SRAM` समापन, `106.97 MHz` `openXC7` `.bit`, `15.16 KB` (`19`-निर्यात) `WASM`, व `138` / `1,502` प्रमेय (`LA-75`)**: `14 × 4 KB = 56 KB` (`87.50%`) + `4 KB` Nucleus + `4 KB` स्टैक सटीक **`65,536 B = 64.00 KB`** पूर्ण करते हैं, `clai_mag_mcp_freetoken_xc7a200t_top` **`106.97 MHz`** (`0` `DSP48E1`) पर बंद होता है, `lut6_core.64d3e8b80df6.wasm` **`15,521 B <= 16,384 B` (`19` निर्यात)** में समाता है, और `RustMagnitudeMcpFreeToken.lean` कुल **`138` `LutAdapt` / `1,502` `bwrap` बेड़ा प्रमेय (`59,082` घोषणाएँ)** सिद्ध करता है (चित्र 20)।
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/magnitude-tiered-airmol-and-engram-lut6.svg" alt="लाइव Magnitude 0.3.5, Tiered-Expert-AirMoL, Engram-LUT6 Window 23, और 130 षट्-कर्नेल प्रमेय।" />
+  <figcaption>चित्र 19. लाइव `Magnitude 0.3.5`, `Tiered-Expert-AirMoL`, `Engram-LUT6`, और `130` प्रमेयों के माप (`दावे LA-68..LA-71`)।</figcaption>
+</figure>
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/rust-magnitude-mcpmark-and-freetoken.svg" alt="Rust mol-magnitude-adapter CogLoadBench व MCPMark पर, BA-Tiered-Expert-AirMoL बनाम FreeToken व KTransformers, Window 24 Thor शंट, 64 KB घड़ी SRAM समापन, और 1,502 प्रमेय।" />
+  <figcaption>चित्र 20. Python-रहित Rust `mol-magnitude-adapter` (`CogLoadBench` `4×` व `MCPMark` `CoW` `CRUD`), `BA-Tiered-Expert-AirMoL` बनाम `FreeToken` व `KTransformers`, `Window 24` `Thor` शंट (`3.330×`), सटीक `64.00 KB` घड़ी `SRAM` समापन, और `138` / `1,502` षट्-कर्नेल प्रमेय (`दावे LA-72..LA-75`)।</figcaption>
+</figure>
+
 ---
 
 <div id="5-related-work-and-convergence-observations" class="anchor-alias" aria-hidden="true"></div>
@@ -847,6 +864,8 @@ Lupanov का साझा-सहगुणक अपघटन (1958; `k=8`, `m=
 | **Medusa** (2024), **EAGLE-2** (2024), **HCSpec** (2026) | `arXiv:2401.10774` · `arXiv:2406.16858` · ACL 2026 | न्यूरल MLP, ड्राफ्ट-ट्री और कैस्केड स्पेकुलेटिव ड्राफ्टर। | दीवार-घड़ी गति वृद्धि। | ड्राफ्ट FLOP और वेट रीड की आवश्यकता होती है, जबकि यहाँ `0`-FLOP `uint64` `LUT6` पेज हैं। |
 | **PLD** (Saxena, 2023) और **REST** (He एट अल., 2024) | GitHub · `arXiv:2311.08252` | शून्य-FLOP प्रॉम्प्ट n-gram और डेटास्टोर सफ़िक्स-ट्राई ड्राफ्टर। | विलंबता गति वृद्धि (`0` FLOPs)। | `PLD` प्रॉम्प्ट से बाहर के टोकन चूकता है; `REST` परिवर्तनशील ट्राई उपयोग करता है, जबकि यहाँ `RAMB36E2` पेज हैं। |
 | **AirLLM** (lyogavin, 2023) | ओपन-सोर्स SSD स्ट्रीमर | छोटी RAM में परत-दर-परत SSD वेट स्ट्रीमिंग। | सक्रिय RAM फुटप्रिंट। | शुद्ध `T=1` (`1.0 tok/sweep`) + KV स्पिल, जबकि `AirMoL` `2.74×-12.30×` I/O कमी और `970 MB` Metal `INT4` RAM देता है। |
+| **KTransformers** (Chen एट अल., 2025) और **FreeToken** (Yang एट अल., 2026) | `arXiv:2507.01909` · `arXiv:2608.07296` | `K=1` `LRU` हाइब्रिड `CPU-GPU` MoE ऑफ़लोडिंग। | `tok/s` गति। | `BA-Tiered-Expert-AirMoL` द्वारा `4.00×–4.17×` गति-वृद्धि व `Window 24` में `3.330×` `Thor` शंट बचत। |
+| **MCPMark** (Wu एट अल., 2025) और **Magnitude** (2026) | `arXiv:2509.24002` · `magnitudedev/magnitude` (`0.3.5`) | स्टेटफ़ुल `MCP` बेंचमार्क व मूल Rust LLM इंजन। | पास दर व `tok/s`। | `75.00%` अनरक्षित भ्रष्टाचार बनाम `mol-magnitude-adapter` `CoW` `CRUD` में `0.00%` व `3,028.3×` तरंग-2 बचत। |
 | **Metered Commit Gates** और **RCE-JEPA** `[उसी संस्थान से]` | `/papers/gates/` · `/papers/rce-jepa/` | कमिट गेट (`11,428 pJ` KV260 `INA260` SOM रीडिंग), MoL $p_i/c_i$, और `RCE-JEPA`। | KV260 SOM `measured_j` + `reported_j` / `est_j`। | समान-संस्थान की नींव; यहाँ Beneš `LUT6` अधोमुखी संकलन, Metal `Expert-AirMoL`, और `mol-agent` के साथ विस्तारित। |
 
 ---
@@ -868,7 +887,7 @@ Lupanov का साझा-सहगुणक अपघटन (1958; `k=8`, `m=
 | **`LA-F5`** | `Claim LA-5` (Byte speculation) | `scripts/run_code_corpus_benchmark.py` `48` अनदेखे प्रॉम्प्ट्स पर लालची `Mamba3CodeLM` के विरुद्ध `< 100.0%` सटीक बाइट समानता देता है। |
 | **`LA-F6`** | `Claim LA-6` (`AirMoL` 14.3M) | `scripts/run_air_mol_benchmark.py` `F_NOCACHE` के अंतर्गत `100%` समानता विफल रहता है या `AirLLM` 4-Bit `T=1` से अधिक NVMe बाइट्स पढ़ता है। |
 | **`LA-F7`** | `Claim LA-7` (2026 HF `AirMoL`) | `scripts/run_hf_lfm3_air_mol.py`, `scripts/run_hf_air_mol_pretrained.py`, या `scripts/run_hf_qwen35_air_mol.py` लालची लक्ष्य से $\ge 1$ BPE टोकन विचलित होता है। |
-| **`LA-F8`** | `Claim LA-8` (Regression suite) | `pytest -v` `tests/` में `94` परीक्षणों में से किसी को भी विफल कर देता है। |
+| **`LA-F8`** | `Claim LA-8` (Regression suite) | `pytest -v` `tests/` में `102` परीक्षणों में से किसी को भी विफल कर देता है। |
 | **`LA-F9`** | `Claim LA-9` (`8.5B/35B` MoE) | `scripts/run_hf_moe_8b_35b_air_mol.py` `100%` टोकन समानता से विचलित होता है या `AirLLM` या `Expert-AirLLM` से अधिक NVMe बाइट्स पढ़ता है। |
 | **`LA-F10`** | `Claim LA-10` (`Sub1Bit-LUT6`) | `scripts/run_sub1bit_lut_benchmark.py` घने `ITQ` बाइनरी मैट्रिक्स गुणन के विरुद्ध `1e-3` अधिकतम त्रुटि से अधिक हो जाता है या `100%` सत्यापित समानता विफल रहता है। |
 | **`LA-F11`** | `Claim LA-11` (`48`-Task Bakeoff) | `scripts/run_frontier_ai_bakeoff.py` `> 0%` टूटे हुए कमिट स्वीकार करता है या Wave-2 स्पेक म्यूटेशन के अंतर्गत Wave-1 कौशल को स्टेल स्वीकार करता है। |
@@ -920,6 +939,14 @@ Lupanov का साझा-सहगुणक अपघटन (1958; `k=8`, `m=
 | **`LA-F65`** | `Claim LA-65` (`Terminal-Bench & Cybench-Defensive` व `144/144` `Yosys` माइटर) | `> 0%` टूटे/असुरक्षित कमिट स्वीकार करे, कोई आक्रामक एक्सप्लॉइट चलाए, या `144/144` `Yosys` `abc -lut 6` माइटर विफल करे। |
 | **`LA-F66`** | `Claim LA-66` (`FrontierMath & SciCode` व `Window 22` `Thor` शंट) | किसी गणित/भौतिकी कार्य में विफल हो, सिम्प्लेक्टिक/यूनिटरी संरक्षण तोड़ दे, या `Thor` `Window 22` पर `< 2.5×` `measured_j` लाभ दे। |
 | **`LA-F67`** | `Claim LA-67` (`100.55 MHz` `openXC7`, `17`-निर्यात `WASM` व `122` प्रमेय) | `> 0` `DSP48E1` ले, `64/64` समता या `100 MHz` `PAR` खोए, 6-कर्नेल प्रमेय `< 122` / `< 1,486` रहें, या `WASM` `16,384 B` पार करे। |
+| **`LA-F68`** | `Claim LA-68` (लाइव `Magnitude 0.3.5` व `Thor` `VIN` `measured_j`) | कच्चा पाठ सहेजे, `Thor` से बाहर `board_metered = true` लिखे, `twist` `JpCT` में हारे, या टूटे कमिट स्वीकार करे। |
+| **`LA-F69`** | `Claim LA-69` (त्रि-स्तरीय `Tiered-Expert-AirMoL`) | `64/64` `LUT6` समता खोए या `180B`, `552B`, व `30B` पर `K=1` गति को न हराए। |
+| **`LA-F70`** | `Claim LA-70` (`Engram-LUT6` `144/144` माइटर व `Window 23` शंट) | `144/144` `Yosys` माइटर विफल करे या `Window 23` `Thor` `measured_j` लाभ न दे। |
+| **`LA-F71`** | `Claim LA-71` (`100.74 MHz` `openXC7`, `18`-निर्यात `WASM` व `130` प्रमेय) | `> 0` `DSP48E1` ले, `100 MHz` `PAR` खोए, प्रमेय `< 130` / `< 1,494` रहें, या `WASM` `16,384 B` पार करे। |
+| **`LA-F72`** | `Claim LA-72` (Rust `mol-magnitude-adapter` व `CogLoadBench` `4×`) | Python/बाहरी क्रेट ले, Vulkan पर क्रैश हो, या `< 100%` व `< 1,000×` तरंग-2 `Thor` `VIN` `measured_j` कटौती दे। |
+| **`LA-F73`** | `Claim LA-73` (`MCPMark` `CoW` `CRUD` व `144/144` `Yosys` माइटर) | `24` `MCPMark` वर्कफ़्लो में `> 0%` लाइव भ्रष्टाचार दे या `144/144` `Yosys` `abc -lut 6` माइटर विफल करे। |
+| **`LA-F74`** | `Claim LA-74` (`BA-Tiered-Expert-AirMoL` बनाम `FreeToken` व `Window 24`) | `FreeToken` से `< 3.5×` या `KTransformers` से `< 5.0×` रहे, अथवा `Window 24` `Thor` `measured_j` लाभ `< 2.5×` रहे। |
+| **`LA-F75`** | `Claim LA-75` (`64.00 KB` `SRAM`, `106.97 MHz` `openXC7`, `19`-निर्यात `WASM` व `138` / `1,502` प्रमेय) | `14 × 4,096 + 4,096 + 4,096` `65,536 B` से भिन्न हो, `Fmax < 100 MHz` रहे, प्रमेय `< 138` / `< 1,502` रहें, या `lut6_core.wasm > 16,384 B` हो। |
 
 ---
 
@@ -1004,6 +1031,9 @@ Lupanov का साझा-सहगुणक अपघटन (1958; `k=8`, `m=
 <li>Josefsson, S., and Liusvaara, I. (2017). Edwards-Curve Digital Signature Algorithm (<code>EdDSA</code> / <code>Ed25519</code>). <em>IETF RFC 8032</em>, <a href="https://doi.org/10.17487/RFC8032">doi:10.17487/RFC8032</a>.</li>
 <li>O'Connor, J., Aumasson, J.-P., Neves, S., and Wilcox-O'Hearn, Z. (2020). BLAKE3: One Function, Fast Everywhere (<code>BLAKE3</code> Cryptographic Hash Specification). <a href="https://github.com/BLAKE3-team/BLAKE3-specs">github.com/BLAKE3-team/BLAKE3-specs</a>.</li>
 <li>Magnitude (2026). Magnitude (<code>Seismic</code>): Open-Source Native Rust Local LLM Inference Engine (<code>magnitudedev/magnitude</code>, v0.3.5, MIT License). <a href="https://magnitude.dev/">magnitude.dev</a>.</li>
+<li>Wu, Z., et al. (2025). MCPMark: Benchmarking Multi-Turn Stateful Model Context Protocol Tool Use. <em>arXiv:2509.24002</em>.</li>
+<li>Chen, H., et al. (2025). KTransformers: Unleashing the Full Potential of CPU/GPU Hybrid Inference for MoE Models. <em>ACM SOSP 2025</em>, <em>arXiv:2507.01909</em>.</li>
+<li>Yang, Z., Stoica, I., Han, S., Zaharia, M., et al. (2026). FreeToken: Bandwidth-Balanced Heterogeneous CPU-GPU Offloading for Large Sparse MoE Inference. <em>arXiv:2608.07296</em>.</li>
 </ol>
 
 ---
@@ -1012,11 +1042,14 @@ Lupanov का साझा-सहगुणक अपघटन (1958; `k=8`, `m=
 
 ## परिशिष्ट ए. पुनरुत्पादनशीलता
 
-[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 80471b9`) और [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` और `lut6-core-nucleus/`) के चेकआउट से:
+[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 0945f14`) और [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` और `lut6-core-nucleus/`) के चेकआउट से:
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
-(cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+(cd sys/lut6-core && cargo test --release && cargo run --release --bin mol_magnitude_adapter -- --self-test && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase44_rust_magnitude_fleet.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase44_window24_five_silicon.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_mag_mcp_freetoken_par.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase43_magnitude_head_to_head.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase43_window23_five_silicon.py
 PYTHONPATH=src .venv/bin/python scripts/run_openxc7_tiered_engram_par.py

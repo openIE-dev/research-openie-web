@@ -47,9 +47,9 @@
 
       <div class="measurement-box">
         <strong>Measurement grammar on this page.</strong> Every widget below stamps its numbers with an explicit honesty chip and never sums across tiers:
-        <span class="chip chip-meas">Physical DC Shunt (measured_j · Claims LA-24, LA-28, LA-32, LA-33, LA-38, LA-39, LA-42, LA-44, LA-48, LA-50, LA-51, LA-54, LA-58, LA-62, LA-66, LA-68 &amp; LA-70)</span> for <code>NVIDIA Jetson AGX Thor</code> <code>TI INA3221</code> <code>VDD_CPU_SOC_MSS</code> + <code>INA238</code> <code>VIN</code> joules (<code>board_metered = true</code> solely on Thor, reaching <code>162.71 nJ/op</code> = <code>87.25×</code> <code>CpJ</code> bit-sliced, <code>2,000.25 nJ/op</code> = <code>30.92×</code> <code>0.1056 bpw</code> <code>JouleBit-LUT6</code> vs. <code>LittleBit-2</code> [<code>Window 18</code>], <code>17,310.36 vs. 54,645.23 nJ/op</code> = <code>3.157×</code> <code>Window 23</code> <code>Tiered-Expert-AirMoL + Engram-LUT6</code> [<code>3.261×</code> faster] &amp; <code>53.55×</code> lower <code>Moby-Dick</code> <code>twist</code> <code>JpCT</code> vs. <code>Magnitude 0.3.5</code>, <code>8,656.79 vs. 28,689.54 nJ/op</code> = <code>3.314×</code> <code>Window 22</code> 12-bank <code>C-BFWS + Cybench + SciCode</code> [<code>3.322×</code> faster], <code>8,745.39 vs. 28,021.20 nJ/op</code> = <code>3.204×</code> <code>Window 21</code> 8-bank <code>R-BFWS + Enigma</code>, <code>11,357.65 vs. 46,481.07 nJ/op</code> = <code>4.092×</code> <code>Window 20</code> 4-bank <code>BFWS + Well</code>, <code>16,142.77 nJ/op</code> <code>256×128</code> <code>waiOS</code> ternary sweep [<code>Window 17b</code>], <code>201.22 nJ/op</code> = <code>13.18×</code> <code>CpJ</code> <code>Apex System-0</code> <code>DES-10</code> + <code>openie-cad</code> + <code>MathGround CBF</code> gate [<code>Window 16</code>], <code>2,803.25 nJ/op</code> = <code>222.57×</code> <code>CpJ</code> wearable 56-bit 4-token epistemic gate vs. <code>uLM-28M</code> slice, <code>15,317.65 nJ/tok</code> = <code>8.35×</code> <code>CpJ</code> <code>Bonsai-AirMoL</code> 4-tok sweep [<code>Window 14</code>], <code>713.82 nJ/op</code> = <code>5.33×</code> <code>CpJ</code> 2-layer <code>Beneš-ARC-LUT6</code> + <code>ARC-AGI-3</code> reflex [<code>Window 15</code>], and <code>8,594.93 nJ/op</code> = <code>1.65×</code> <code>CpJ</code> antisymmetric-40 zero-MUL <code>T-MAC</code> on <code>lut6-core</code>);
-        <span class="chip chip-meas">Reported, Bare-Metal Cycles, &amp; Live WASM (reported_j / DWT / .wasm)</span> for <code>RAPL</code> (including <code>25.62×</code> <code>JouleBit-LUT6</code>, <code>1.387×</code> <code>Window 23</code>, <code>1.631×</code> <code>Window 22</code>, <code>1.12×</code> <code>CpJ</code> <code>Zen 5</code> <code>Antisym-40</code> flip, <code>5.88×</code> <code>Window 14</code>, &amp; <code>3.90×</code> <code>Window 16</code>), <code>amdgpu PPT</code>, <code>NVML</code>, Apple M5 Max/M3 Ultra <code>IOReport</code> + <code>proc_pid_rusage</code> counters (including <code>1.725×</code> lower streamed GiB/tok on real <code>Ternary-Bonsai-2-27B</code>, <code>1.708×</code> <code>Window 23</code>, <code>1.785×</code> <code>Window 22</code>, &amp; <code>1.230×</code> <code>KernelBench</code> Level-2 Metal fusion), live attached <code>Alif Ensemble E3</code> (<code>OpenMV-AE3</code> Cortex-M55 @ <code>400 MHz</code>) <code>DWT</code> cycles (<code>2,745.18×</code> wearable gate &amp; <code>93.52×</code> <code>JouleBit-LUT6</code>), and the live <code>15.95 KB</code> (<code>16,332 B</code>, <code>18</code> exports) <code>lut6_core.d3d7ed0dfa1c.wasm</code> VM (<code>board_metered = false</code>);
-        <span class="chip chip-sim">Post-PAR openXC7 &amp; Simulated RTL</span> for license-free <code>openXC7</code> <code>nextpnr-xilinx</code> <code>320.62 MHz</code>, <code>142.55 MHz</code>, <code>111.45 MHz</code>, <code>106.55 MHz</code>, <code>109.15 MHz</code>, <code>100.55 MHz</code>, &amp; <code>100.74 MHz</code> post-route timing &amp; <code>77.85 Mbit</code> <code>.bit</code> bitstreams on <code>XC7A200T-2FBG484-2</code> plus Yosys <code>0.71+</code> <code>xcup</code> + <code>abc -lut 6</code> (<code>64/64</code>, <code>144/144</code>, &amp; <code>768/768</code> miter &amp; <code>3,915</code> <code>VerilogEval-Hard12</code> <code>LUT6</code>s) + Verilator <code>5.054</code> netlists (<code>measured_j = None</code>); and
+        <span class="chip chip-meas">Physical DC Shunt (measured_j · Claims LA-24, LA-28, LA-32, LA-33, LA-38, LA-39, LA-42, LA-44, LA-48, LA-50, LA-51, LA-54, LA-58, LA-62, LA-66, LA-68, LA-70, LA-72, LA-73 &amp; LA-74)</span> for <code>NVIDIA Jetson AGX Thor</code> <code>TI INA3221</code> <code>VDD_CPU_SOC_MSS</code> + <code>INA238</code> <code>VIN</code> joules (<code>board_metered = true</code> solely on Thor, reaching <code>162.71 nJ/op</code> = <code>87.25×</code> <code>CpJ</code> bit-sliced, <code>2,000.25 nJ/op</code> = <code>30.92×</code> <code>0.1056 bpw</code> <code>JouleBit-LUT6</code> vs. <code>LittleBit-2</code> [<code>Window 18</code>], <code>34,568.60 vs. 115,129.22 nJ/op</code> = <code>3.330×</code> <code>Window 24</code> 14-bank <code>MCPMark CoW + BA-Tiered-Expert-AirMoL</code> [<code>3.215×</code> faster] &amp; <code>3,028.3×</code> lower Wave-2 <code>CogLoadBench 4×</code> <code>VIN</code> <code>measured_j</code> via native Rust <code>mol-magnitude-adapter</code>, <code>17,310.36 vs. 54,645.23 nJ/op</code> = <code>3.157×</code> <code>Window 23</code> <code>Tiered-Expert-AirMoL + Engram-LUT6</code> [<code>3.261×</code> faster] &amp; <code>53.55×</code> lower <code>Moby-Dick</code> <code>twist</code> <code>JpCT</code> vs. <code>Magnitude 0.3.5</code>, <code>8,656.79 vs. 28,689.54 nJ/op</code> = <code>3.314×</code> <code>Window 22</code> 12-bank <code>C-BFWS + Cybench + SciCode</code> [<code>3.322×</code> faster], <code>8,745.39 vs. 28,021.20 nJ/op</code> = <code>3.204×</code> <code>Window 21</code> 8-bank <code>R-BFWS + Enigma</code>, <code>11,357.65 vs. 46,481.07 nJ/op</code> = <code>4.092×</code> <code>Window 20</code> 4-bank <code>BFWS + Well</code>, <code>16,142.77 nJ/op</code> <code>256×128</code> <code>waiOS</code> ternary sweep [<code>Window 17b</code>], <code>201.22 nJ/op</code> = <code>13.18×</code> <code>CpJ</code> <code>Apex System-0</code> <code>DES-10</code> + <code>openie-cad</code> + <code>MathGround CBF</code> gate [<code>Window 16</code>], <code>2,803.25 nJ/op</code> = <code>222.57×</code> <code>CpJ</code> wearable 56-bit 4-token epistemic gate vs. <code>uLM-28M</code> slice, <code>15,317.65 nJ/tok</code> = <code>8.35×</code> <code>CpJ</code> <code>Bonsai-AirMoL</code> 4-tok sweep [<code>Window 14</code>], <code>713.82 nJ/op</code> = <code>5.33×</code> <code>CpJ</code> 2-layer <code>Beneš-ARC-LUT6</code> + <code>ARC-AGI-3</code> reflex [<code>Window 15</code>], and <code>8,594.93 nJ/op</code> = <code>1.65×</code> <code>CpJ</code> antisymmetric-40 zero-MUL <code>T-MAC</code> on <code>lut6-core</code>);
+        <span class="chip chip-meas">Reported, Bare-Metal Cycles, &amp; Live WASM (reported_j / DWT / .wasm)</span> for <code>RAPL</code> (including <code>25.62×</code> <code>JouleBit-LUT6</code>, <code>1.630×</code> <code>Window 24</code>, <code>1.387×</code> <code>Window 23</code>, <code>1.631×</code> <code>Window 22</code>, <code>1.12×</code> <code>CpJ</code> <code>Zen 5</code> <code>Antisym-40</code> flip, <code>5.88×</code> <code>Window 14</code>, &amp; <code>3.90×</code> <code>Window 16</code>), <code>amdgpu PPT</code>, <code>NVML</code>, Apple M5 Max/M3 Ultra <code>IOReport</code> + <code>proc_pid_rusage</code> counters (including <code>1.725×</code> lower streamed GiB/tok on real <code>Ternary-Bonsai-2-27B</code>, <code>1.836×</code> <code>Window 24</code>, <code>1.708×</code> <code>Window 23</code>, <code>1.785×</code> <code>Window 22</code>, &amp; <code>1.230×</code> <code>KernelBench</code> Level-2 Metal fusion), live attached <code>Alif Ensemble E3</code> (<code>OpenMV-AE3</code> Cortex-M55 @ <code>400 MHz</code>) <code>DWT</code> cycles (<code>2,745.18×</code> wearable gate &amp; <code>93.52×</code> <code>JouleBit-LUT6</code>), and the live <code>15.16 KB</code> (<code>15,521 B</code>, <code>19</code> exports, <code>863 B</code> spare) <code>lut6_core.64d3e8b80df6.wasm</code> VM (<code>board_metered = false</code>);
+        <span class="chip chip-sim">Post-PAR openXC7 &amp; Simulated RTL</span> for license-free <code>openXC7</code> <code>nextpnr-xilinx</code> <code>320.62 MHz</code>, <code>142.55 MHz</code>, <code>111.45 MHz</code>, <code>106.55 MHz</code>, <code>109.15 MHz</code>, <code>100.55 MHz</code>, <code>100.74 MHz</code>, &amp; <code>106.97 MHz</code> post-route timing &amp; <code>77.85 Mbit</code> <code>.bit</code> bitstreams on <code>XC7A200T-2FBG484-2</code> plus Yosys <code>0.71+</code> <code>xcup</code> + <code>abc -lut 6</code> (<code>64/64</code>, <code>144/144</code>, &amp; <code>768/768</code> miter &amp; <code>3,915</code> <code>VerilogEval-Hard12</code> <code>LUT6</code>s) + Verilator <code>5.054</code> netlists (<code>measured_j = None</code>); and
         <span class="chip chip-est">Modelled (est_j / est_queries)</span> for analytical cascade and wearable battery equations.
       </div>
 
@@ -935,7 +935,59 @@
           <div class="metric-tile">
             <div class="k">Live WASM #18 (Tiered+Engram)</div>
             <div class="v" id="mag-wasm-v" style="color: var(--color-brand-cyan);">Mode 1 · Bank-11 · Tier=3</div>
-            <div class="s" id="mag-wasm-s">18th export live in 16,332 B lut6_core.d3d7ed0dfa1c.wasm</div>
+            <div class="s" id="mag-wasm-s">18th export live in 15,521 B lut6_core.64d3e8b80df6.wasm</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Widget 18: Native Rust mol-magnitude-adapter, Stateful MCPMark CoW CRUD, BA-Tiered-Expert-AirMoL vs. FreeToken, Exact 64 KB SRAM Closure, & 1,502 Fleet Proofs (la-mcp-01) -->
+      <section id="la-mcp-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-mcp-01</code> · Native Rust <code>mol-magnitude-adapter</code>, <code>MCPMark</code> <code>CoW</code> <code>CRUD</code>, <code>BA-Tiered-Expert-AirMoL</code> vs. <code>FreeToken</code>, &amp; <code>1,502</code> Proofs (<code>Claims LA-72..LA-75</code>)</h2>
+          <span class="chip chip-meas">Thor Shunt Window 24 (3.330×) + 3,028.3× W2 VIN Cut + Exact 64.00 KB SRAM + 138 Thms (1,502 Fleet) + Live 15.16 KB (19-Export) WASM</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Execute the 19th live WebAssembly export (<code>wasm_eval_mag_mcp_freetoken_lut6</code>) inside <code>lut6_core.64d3e8b80df6.wasm</code> (<code>15.16 KB</code> = <code>15,521 B &lt;= 16,384 B</code>, <code>863 B</code> spare), verifying <code>14</code>-Bank (<code>56 KB = 87.50%</code>, closing exact <code>64.00 KB</code> watch <code>SRAM</code>) spillover, <code>MCPMark</code> <code>CoW</code> <code>CRUD</code> transaction shielding (<code>0.00%</code> live corruption vs. <code>75.00%</code> unguarded), and Bandwidth-Adaptive <code>BA-Tiered-Expert-AirMoL</code> (<code>&alpha;* = 0.5429</code> + <code>K = 3</code> burst coalescing, <code>4.00×–4.17×</code> &gt; <code>FreeToken</code> &amp; <code>5.90×–6.00×</code> &gt; <code>KTransformers</code>) alongside zero-Python native Rust <code>mol_magnitude_adapter</code> on <code>4×</code>-polluted <code>CogLoadBench</code> (<code>3,028.3×</code> lower Wave-2 <code>Thor</code> <code>VIN</code> <code>measured_j</code>), <code>Window 24</code> <code>Thor</code> DC shunt telemetry (<code>3.330×</code> lower <code>measured_j</code>, <code>3.215×</code> faster), and zero-<code>DSP48E1</code> <code>106.97 MHz</code> <code>openXC7</code> <code>XC7A200T</code> gateware.
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label><span>Select Claim (Claims LA-72..LA-75)</span></label>
+            <select id="mcp-frontier">
+              <option value="proxy" selected>Claim LA-72 · Zero-Python Native Rust mol_magnitude_adapter on 4× CogLoadBench (100% Pass · 3,028.3× W2 Thor VIN Cut)</option>
+              <option value="mcpmark">Claim LA-73 · 24-Workflow Stateful MCPMark ACID CoW CRUD Sandbox (0.00% Live Corruption · 144/144 Yosys $lut Miter)</option>
+              <option value="ba_moe">Claim LA-74 · BA-Tiered-Expert-AirMoL (436.60 tok/s 180B · 4.00×–4.17× &gt; FreeToken) + Window 24 Thor Shunt (3.330×)</option>
+              <option value="xc7_44">Claim LA-75 · Exact 64.00 KB Watch SRAM Closure + 106.97 MHz openXC7 .bit + 15.16 KB 19-Export WASM + 138 / 1,502 Proofs</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label><span>Live <code>lut6_core.wasm</code> <code>wasm_eval_mag_mcp_freetoken_lut6</code> Probe</span></label>
+            <select id="mcp-wasm-probe">
+              <option value="12,3,63,37,0" selected>14-Bank Spillover (Bank-13) + Atomic CoW Commit (MCP=3) + CPU-SIMD Co-Exec (BA=2)</option>
+              <option value="0,0,59,19,0">Bank-0 Direct Hit + Failed Verify CoW Rollback (MCP=0) + Scan-Safe Bypass (BA=0)</option>
+              <option value="12,3,63,37,1">Provenance / Schema Tamper (brk=1) → Mode 2 Breaker Halt!</option>
+            </select>
+          </div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-tile">
+            <div class="k">Headline Fleet / MoE Result</div>
+            <div class="v" id="mcp-m1" style="color: var(--color-brand-cyan);">3,028.3× Lower W2 Thor VIN J</div>
+            <div class="s" id="mcp-s1">0.2500 J (5.203 ms) vs 757.08 J Mag. · 152.77 J W1 (4.96×) · board_metered</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Safety / Throughput Gain</div>
+            <div class="v" id="mcp-m2" style="color: var(--color-brand-cyan);">100.0% CogLoad (0 Vulkan Crash)</div>
+            <div class="s" id="mcp-s2">16/16 vs 68.75% Mag. · &lt;=120-Tok Window · 433.2× M5M &amp; 3,691.2× Zen 5 W2</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Silicon &amp; Formal Proof Seal</div>
+            <div class="v" id="mcp-m3" style="color: var(--color-brand-cyan);">34.57 µJ Thor Window 24</div>
+            <div class="s" id="mcp-s3">3.330× &lt; Float Gate (115.13 µJ) · 138 Thms / 1,502 Linux bwrap Fleet</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Live WASM #19 (VAULT14+MCP+BA)</div>
+            <div class="v" id="mcp-wasm-v" style="color: var(--color-brand-cyan);">Mode 1 · Bank-13 · MCP=3</div>
+            <div class="s" id="mcp-wasm-s">19th export live in 15,521 B lut6_core.64d3e8b80df6.wasm</div>
           </div>
         </div>
       </section>
@@ -943,6 +995,10 @@
       <!-- Static Vector Diagrams Gallery -->
       <section id="la-figs" style="margin-top: 2.5rem;">
         <h2 style="font-size: 1.3rem;">Paper Vector Diagrams (Click to Zoom)</h2>
+        <figure class="fig">
+          <img src="/figures/lut-adapt/rust-magnitude-mcpmark-and-freetoken.svg" alt="Native Rust mol-magnitude-adapter on CogLoadBench and MCPMark, BA-Tiered-Expert-AirMoL vs FreeToken and KTransformers, Window 24 Thor Shunt, Exact 64 KB SRAM Closure, and 1,502 Six-Kernel Proofs">
+          <figcaption><strong>Figure 20.</strong> Zero-Python native Rust <code>mol_magnitude_adapter</code> (<code>CogLoadBench</code> <code>4×</code> &amp; <code>MCPMark</code> <code>CoW</code> <code>CRUD</code>), Bandwidth-Adaptive <code>BA-Tiered-Expert-AirMoL</code> vs. <code>FreeToken</code> &amp; <code>KTransformers</code>, <code>Window 24</code> <code>Thor</code> DC shunt, exact <code>64.00 KB</code> watch <code>SRAM</code> closure, &amp; <code>1,502</code>-theorem fleet milestone (<code>Claims LA-19 [138 thms / 1,502 bwrap fleet], LA-72..LA-75</code>): (A) native Rust <code>mol_magnitude_adapter</code> fronting live <code>Magnitude 0.3.5</code> across <code>Apple M5 Max</code>, <code>Jetson AGX Thor</code> (<code>TI INA238</code> <code>VIN</code> <code>measured_j</code>, <code>board_metered = true</code>: <code>4.96×</code> Wave-1 &amp; <code>3,028.3×</code> Wave-2 cut to <code>0.2500 J</code> in <code>5.203 ms</code>), and <code>AMD Zen 5</code> on <code>4×</code>-polluted <code>CogLoadBench</code> (<code>100.0%</code> pass, <code>0</code> Vulkan crashes) plus <code>24</code>-workflow <code>MCPMark</code> <code>CoW</code> <code>CRUD</code> (<code>0.00%</code> live corruption vs. <code>75.00%</code> unguarded, <code>18</code> rollbacks, <code>144/144</code> Yosys <code>abc -lut 6</code> miter); (B) <code>BA-Tiered-Expert-AirMoL</code> (<code>&alpha;* = 0.5429</code> + <code>K = 3</code> burst coalescing: <code>436.60 tok/s</code> on <code>180B</code>, <code>216.33 tok/s</code> on <code>GLM-5-355B</code>, <code>166.27 tok/s</code> on <code>552B</code> = <code>4.00×–4.17×</code> &gt; <code>FreeToken</code> &amp; <code>5.90×–6.00×</code> &gt; <code>KTransformers</code>); (C) <code>Window 24</code> cross-silicon telemetry (<code>3.330×</code> lower <code>Thor</code> DC shunt <code>measured_j</code>, <code>3.215×</code> faster, <code>1.630×</code> <code>Zen 5</code> <code>RAPL</code>, <code>1.836×</code> <code>M3 Ultra</code>); and (D) exact <code>64.00 KB</code> (<code>65,536 B = 56 KB + 4 KB + 4 KB</code>) watch <code>SRAM</code> closure, zero-<code>DSP48E1</code> <code>106.97 MHz</code> <code>openXC7</code> <code>XC7A200T</code> <code>.bit</code> (<code>653</code> LUTs, <code>64/64</code> RTL parity), <code>15.16 KB</code> (<code>15,521 B</code>, <code>19</code> exports, <code>863 B</code> spare) <code>lut6_core.64d3e8b80df6.wasm</code>, and <code>138</code> <code>LutAdapt</code> / <code>1,502</code> Linux <code>bwrap</code> fleet six-kernel <code>Lean 4.36.0</code> proofs (<code>59,082</code> verified declarations).</figcaption>
+        </figure>
         <figure class="fig">
           <img src="/figures/lut-adapt/magnitude-tiered-airmol-and-engram-lut6.svg" alt="Live Cross-Fleet Magnitude 0.3.5 vs. llama.cpp vs. LUT-Adapt, Three-Tier Tiered-Expert-AirMoL, Zero-FLOP Engram-LUT6 Window 23 Thor Shunt, and 130 Six-Kernel Proofs">
           <figcaption><strong>Figure 19.</strong> Live <code>Magnitude 0.3.5</code> (<code>Seismic</code>) vs. <code>llama.cpp</code> vs. <code>Magnitude + LUT-Adapt</code>, three-tier <code>Tiered-Expert-AirMoL</code>, zero-<code>FLOP</code> <code>Engram-LUT6</code>, &amp; <code>130</code>-theorem measurements (<code>Claims LA-19 [130 thms / 1,494 bwrap fleet], LA-68..LA-71</code>): (A) live cross-fleet <code>Magnitude 0.3.5</code> vs. <code>llama-server 1.0.0</code> (<code>b12359</code>) vs. <code>Magnitude + LUT-Adapt</code> across <code>Apple M5 Max</code>, <code>Jetson AGX Thor</code> (<code>TI INA238</code> <code>VIN</code> <code>measured_j</code>, <code>board_metered = true</code>), and <code>AMD Zen 5</code> (<code>RAPL</code>) on SHA-256-pinned <code>Moby-Dick</code> (<code>100.0%</code> verbatim <code>repeat</code> &amp; <code>twist</code>, <code>53.55×</code> lower <code>Thor</code> <code>twist</code> <code>JpCT</code>) and <code>18</code>-task verified coding (<code>100.0%</code> verified, <code>0.0%</code> broken, <code>26.4×</code> W2 energy cut); (B) three-tier <code>VRAM → System RAM LinkMover → F_NOCACHE NVMe</code> <code>Tiered-Expert-AirMoL</code> (<code>439.72 tok/s</code> on <code>180B</code> &amp; <code>171.51 tok/s</code> on <code>552B</code>, <code>3.53×–3.56×</code> &gt; <code>K=1</code>); (C) zero-<code>FLOP</code> <code>DeepSeek-V4.1</code> <code>Engram-LUT6</code> (<code>144/144</code> Yosys <code>abc -lut 6</code> miter) &amp; <code>Window 23</code> <code>Thor</code> DC shunt telemetry (<code>3.157×</code> lower <code>measured_j</code>, <code>3.261×</code> faster); and (D) zero-<code>DSP48E1</code> <code>100.74 MHz</code> <code>openXC7</code> <code>XC7A200T</code> <code>.bit</code> (<code>707</code> LUTs, <code>64/64</code> RTL parity), <code>15.95 KB</code> (<code>16,332 B</code>, <code>18</code> exports) <code>lut6_core.d3d7ed0dfa1c.wasm</code>, and <code>130</code> six-kernel <code>Lean 4.36.0</code> proofs (<code>1,494</code> <code>bwrap</code> fleet, <code>59,048</code> verified declarations).</figcaption>
@@ -1237,12 +1293,12 @@
     // Widget 5: Six-Kernel Paranoid Proof Audit Explorer
     (function(){
       var sk = {
-        conleche: { decls: '59,048 declarations (--verified)', vec: 'CVE-2026-72844', basis: 'Proved consistent in ZFC set theory (Breitner)' },
-        conron:   { decls: '59,048 declarations (--verified)', vec: 'CVE-2026-72711 & GMP', basis: 'Aeneas-verified Rust refinement of con-leche' },
-        lean4lean:{ decls: '59,050 declarations checked', vec: 'C++ .proj divergence', basis: 'Independent Lean-in-Lean CIC typechecker' },
-        nanoda:   { decls: '59,050 decls (sorryAx blocked)', vec: '.olean tampering', basis: 'Zero-Lean-runtime standalone Rust verifier' },
-        paranoid: { decls: '59,050 fresh-env decls', vec: 'skipKernelTC / meta', basis: 'Fresh-environment C++ replay (0 tactic trust)' },
-        default:  { decls: '130 LutAdapt thms + 6 Aeneas fns', vec: 'Lean.ofReduceBool', basis: 'Post-CVE Lean 4.36.0 + Inria Aeneas LLBC→Lean' }
+        conleche: { decls: '59,082 declarations (--verified)', vec: 'CVE-2026-72844', basis: 'Proved consistent in ZFC set theory (Breitner)' },
+        conron:   { decls: '59,082 declarations (--verified)', vec: 'CVE-2026-72711 & GMP', basis: 'Aeneas-verified Rust refinement of con-leche' },
+        lean4lean:{ decls: '59,084 declarations checked', vec: 'C++ .proj divergence', basis: 'Independent Lean-in-Lean CIC typechecker' },
+        nanoda:   { decls: '59,084 decls (sorryAx blocked)', vec: '.olean tampering', basis: 'Zero-Lean-runtime standalone Rust verifier' },
+        paranoid: { decls: '59,084 fresh-env decls', vec: 'skipKernelTC / meta', basis: 'Fresh-environment C++ replay (0 tactic trust)' },
+        default:  { decls: '138 LutAdapt thms + 6 Aeneas fns', vec: 'Lean.ofReduceBool', basis: 'Post-CVE Lean 4.36.0 + Inria Aeneas LLBC→Lean (1,502 Fleet)' }
       };
       var sel = document.getElementById('sk-select');
       function updSk() {
@@ -1307,13 +1363,13 @@
       }
       vSel.addEventListener('change', updateUI);
       sSel.addEventListener('change', updateUI);
-      fetch('/living/lut-adapt/lut6_core.d3d7ed0dfa1c.wasm')
+      fetch('/living/lut-adapt/lut6_core.64d3e8b80df6.wasm')
         .then(function(r){ return r.arrayBuffer(); })
         .then(function(bytes){ return WebAssembly.instantiate(bytes, {}); })
         .then(function(res){
           exportsObj = res.instance.exports;
           window.__lut6WasmExports = exportsObj;
-          chip.textContent = 'Live WASM VM Active (16,332 B · 18 Exports · Signed Provenance · Self-Checked)';
+          chip.textContent = 'Live WASM VM Active (15,521 B · 19 Exports · 863 B Spare · Signed Provenance · Self-Checked)';
           updateUI();
           if (window.__updateHleWasm) window.__updateHleWasm();
           if (window.__updateBonsaiWasm) window.__updateBonsaiWasm();
@@ -1325,6 +1381,7 @@
           if (window.__updateEnigWasm) window.__updateEnigWasm();
           if (window.__updateTermWasm) window.__updateTermWasm();
           if (window.__updateMagWasm) window.__updateMagWasm();
+          if (window.__updateMcpWasm) window.__updateMcpWasm();
         })
         .catch(function(){
           chip.textContent = 'Offline Mode (Self-checked V8 receipt)';
@@ -1339,6 +1396,7 @@
           if (window.__updateEnigWasm) window.__updateEnigWasm();
           if (window.__updateTermWasm) window.__updateTermWasm();
           if (window.__updateMagWasm) window.__updateMagWasm();
+          if (window.__updateMcpWasm) window.__updateMcpWasm();
         });
     })();
 
@@ -1820,6 +1878,55 @@
         fSel.addEventListener('change', updMag);
         pSel.addEventListener('change', updMag);
         updMag();
+      }
+    })();
+
+    // Widget 18: Native Rust mol-magnitude-adapter, Stateful MCPMark CoW CRUD, BA-Tiered-Expert-AirMoL vs. FreeToken, Exact 64 KB SRAM, & 1,502 Fleet Proofs
+    (function(){
+      var mcpData = {
+        proxy:   { m1: '3,028.3× Lower W2 Thor VIN J', s1: '0.2500 J (5.203 ms) vs 757.08 J Mag. · 152.77 J W1 (4.96×) · board_metered', m2: '100.0% CogLoad (0 Vulkan Crash)', s2: '16/16 vs 68.75% Mag. · <=120-Tok Window · 433.2× M5M & 3,691.2× Zen 5 W2', m3: '0 Python · 0 External Crates', s3: 'Single-binary Rust mol_magnitude_adapter (/v1/chat, /v1/messages, /mcp)' },
+        mcpmark: { m1: '0.00% Live Sandbox Corruption', s1: 'vs 75.00% (18/24) Unguarded MCP · 18 ACID CoW Shadow Rollbacks', m2: '144 / 144 Yosys $lut Miter', s2: '9,216/9,216 minterms · 576 W2 Idempotent Dedups · 13,824 Ops/Batch Saved', m3: '1.0858 J vs 1.3840 J Thor VIN', s3: 'Physical TI INA238 measured_j (board_metered = true) across 72 CRUD calls' },
+        ba_moe:  { m1: '436.60 (180B) / 216.33 (355B) tok/s', s1: '166.27 tok/s on 552B · 4.00×–4.17× > FreeToken · 5.90×–6.00× > KTransformers', m2: '3.330× Lower Thor Window 24 J', s2: '34,568.60 vs 115,129.22 nJ/op (3.215× faster · TI INA3221 measured_j)', m3: '1.630× Zen 5 · 1.836× M3 Ultra', s3: '63.86 vs 104.10 µJ RAPL · 3.01 vs 5.52 µJ Darwin · α* = 0.5429 + K=3 Burst' },
+        xc7_44:  { m1: '65,536 B = 64.00 KB Exact SRAM', s1: '14×4 KB VAULT14 (56 KB = 87.50%) + 4 KB Nucleus + 4 KB Stack (0 B wasted)', m2: '106.97 MHz .bit & 15.16 KB WASM', s2: '653 SLICE_LUTX · 0 DSP48E1 · 15,521 B <= 16 KB (19 exports, 863 B spare)', m3: '138 LutAdapt / 1,502 Fleet Thms', s3: 'Historic >1,500 Linux bwrap Milestone · 59,082 con-leche/con-ron decls' }
+      };
+      var fSel = document.getElementById('mcp-frontier'), pSel = document.getElementById('mcp-wasm-probe');
+      if (fSel && pSel) {
+        function updMcp() {
+          var d = mcpData[fSel.value];
+          document.getElementById('mcp-m1').textContent = d.m1;
+          document.getElementById('mcp-s1').textContent = d.s1;
+          document.getElementById('mcp-m2').textContent = d.m2;
+          document.getElementById('mcp-s2').textContent = d.s2;
+          document.getElementById('mcp-m3').textContent = d.m3;
+          document.getElementById('mcp-s3').textContent = d.s3;
+          var sp = pSel.value.split(',');
+          var ep = Number(sp[0]) & 0xF, sg = Number(sp[1]) & 63, mcp = Number(sp[2]) & 63, ba = Number(sp[3]) & 63, brk = Number(sp[4]) & 1;
+          var percept = 1;
+          var ex = window.__lut6WasmExports;
+          var vEl = document.getElementById('mcp-wasm-v'), sEl = document.getElementById('mcp-wasm-s');
+          if (ex && ex.wasm_eval_mag_mcp_freetoken_lut6) {
+            var arg = (percept | (sg << 6) | (ep << 12) | (mcp << 16) | (ba << 22) | (brk << 28)) >>> 0;
+            var r = ex.wasm_eval_mag_mcp_freetoken_lut6(arg, 7) >>> 0;
+            var st2 = (r >>> 30) & 3, bk4 = (r >>> 26) & 0xF, m2 = (r >>> 20) & 3, b2 = (r >>> 18) & 3;
+            var jb = r & 0xFFFF; if (jb >= 0x8000) jb -= 0x10000;
+            if (st2 === 1) {
+              vEl.textContent = 'Mode 1 · Bank-' + bk4 + ' · MCP=' + m2;
+              vEl.style.color = 'var(--color-brand-cyan)';
+              sEl.textContent = 'BA-AirMoL=' + b2 + ' · JB6=' + jb + ' · Live WASM #19 (15,521 B)';
+            } else {
+              vEl.textContent = 'Mode 2 · BREAKER HALT!';
+              vEl.style.color = 'var(--color-brand-amber)';
+              sEl.textContent = 'Tamper trapped · MCP=' + m2 + ' · BA=' + b2 + ' (Live WASM #19)';
+            }
+          } else {
+            vEl.textContent = brk ? 'Mode 2 · BREAKER HALT!' : ('Mode 1 · Bank-' + (ep === 0 ? 0 : 13) + ' · MCP=' + (mcp === 63 ? 3 : 0));
+            sEl.textContent = 'Self-checked V8 receipt (15,521 B WASM)';
+          }
+        }
+        window.__updateMcpWasm = updMcp;
+        fSel.addEventListener('change', updMcp);
+        pSel.addEventListener('change', updMcp);
+        updMcp();
       }
     })();
 

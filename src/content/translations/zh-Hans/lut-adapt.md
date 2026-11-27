@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits 级联中的向下 LUT6 编译：Beneš 路由布尔架构、共形唤醒门槛与前沿稀疏 MoE NVMe 按层流式传输"
-deck: "一种附带 130 条经六内核验证的 Lean 4.36.0 定理及 Inria Charon+Aeneas 无标准库 Rust 至 Lean 机械化提取（另加 Linux bubblewrap 沙箱内四个 Open Interface Engineering 仓库共 1,494 条定理，针对 CVE-2026-72844 加固）的 Mixture of Limits 级联：首先尝试零浮点运算（FLOP）的分页式 6 输入查找表（LUT6）电路、15.95 千字节（18 项导出）的 WebAssembly（WASM）浏览器模块、带反对称 40 项零乘法 T-MAC 三值尾部的无标准库 4 / 48 千字节（12 体）Rust lut6-core Nucleus（全量 25 款 ARC-AGI-3 游戏经 C-BFWS + RIW(2) 达 60.00% 绝对多数［15/25 款，18/183 关卡，匹配 16 款达 11/16 = 68.75%，2.5030 / 3.2177 RHAE］、三层 Tiered-Expert-AirMoL 在 180B 达 439.72 tok/s 与 552B 达 171.51 tok/s、零 FLOP Engram-LUT6、Magnitude 0.3.5 实机对决将每正确词元焦耳削减 53.55x 且在 Window 23 实现 3.157x Thor 分流降低、100% Terminal-Bench 与 Cybench-Defensive［144/144 Yosys Miter］、100% FrontierMath-Constructive 与 SciCode 综合，以及 Window 22 实现 3.314x、Window 21 实现 3.204x 与 Window 20 实现 4.092x Thor 分流降低）、占 64 千字节智能手表 SRAM 仅 9.13%（5,984 字节）且零前缀污染的 56 比特 4 词元 Wearable-MoL 智能眼镜开场门控，以及（72, 64）SECDED 宇宙射线位翻转防护（在单二进制 Rust mol-agent-rs 中耗时 0.154 毫秒，每次位切片决策耗能 162.71 纳焦，在 1% 误码率下保持 100.0% 存活率），经亚十亿级可穿戴微型语言模型（Sensente/uLM-28M 与 LiquidAI/LFM2.5-230M）并跨四大 GPU 硅片厂商（最高加速 328.06x，将 LastExam 协议均方根校准误差从 70.62% 削减 5.37x 至 13.14%，且 >= 80% 置信度下的自信幻觉率降至 0.00%）逐级升级至最高 120B 参数的 4 位 NVMe 循环、混合与稀疏 MoE 2026 年末模型，通过跨 4 个上游 Verified 仓库的确定性验证器对提交进行门控，并将经认证的唤醒向下编译为 RAMB36E2、免许可 openXC7 320.62、106.55、109.15、100.55 与 100.74 兆赫布局布线后 Artix-7 XC7A200T M.2 2280 .bit 比特流，以及 Lupanov 共享余因子与摆动密码子晶体页。包含 Jetson AGX Thor 上的物理 Texas Instruments 直流分流器实测能量 measured_j（位切片 lut6-core 降低 87.25x、可穿戴 56 比特认知门控相对 uLM-28M 层切片降低 222.57x、Window 23 降低 3.157x、Window 22 降低 3.314x、Window 20 降低 4.092x、反对称 40 项 T-MAC 降低 1.65x［Zen 5 上反超达 1.12x］、Sub1Bit-LUT6 降低 3.90x、Expert-AirMoL 降低 34.21x、命题 1 编译降低 10.94x；board_metered 为真），并与实时连接的 Alif Cortex-M55 周期计数（可穿戴门控快 2,905.18x）、五主机片上 reported_j、openXC7 静态时序以及提交 80471b9 处的 RTL 仿真估计值 est_j 严格区分。"
+deck: "一种附带 138 条经六内核验证的 Lean 4.36.0 定理及 Inria Charon+Aeneas 无标准库 Rust 至 Lean 机械化提取（另加 Linux bubblewrap 沙箱内四个 Open Interface Engineering 仓库共 1,502 条定理，针对 CVE-2026-72844 加固）的 Mixture of Limits 级联：首先尝试零浮点运算（FLOP）的分页式 6 输入查找表（LUT6）电路、15.16 千字节（19 项导出，余 863 字节）的 WebAssembly（WASM）浏览器模块、带反对称 40 项零乘法 T-MAC 三值尾部的无标准库 4 / 56 千字节（14 体 = 87.50%，与 4 千字节 Nucleus 及 4 千字节栈精确闭合 64.00 千字节智能手表 SRAM）Rust lut6-core Nucleus（全量 25 款 ARC-AGI-3 游戏经 C-BFWS + RIW(2) 达 60.00% 绝对多数［15/25 款，18/183 关卡，匹配 16 款达 11/16 = 68.75%，2.5030 / 3.2177 RHAE］、零 Python 原生 Rust 代理 mol-magnitude-adapter 在 4 倍污染 CogLoadBench 上达 100.0% 通过率且第二波 Thor VIN 耗能削减 3,028.3x 并在 MCPMark CoW CRUD 沙箱上保持 0.00% 生产损坏、带宽自适应 BA-Tiered-Expert-AirMoL 在 180B 达 436.60 tok/s、GLM-5-355B 达 216.33 tok/s 与 552B 达 166.27 tok/s = 超越 FreeToken 4.00x-4.17x 与 KTransformers 5.90x-6.00x 且在 Window 24 实现 3.330x Thor 分流降低、零 FLOP Engram-LUT6、Magnitude 0.3.5 实机对决将每正确词元焦耳削减 53.55x 且在 Window 23 实现 3.157x Thor 分流降低、100% Terminal-Bench 与 Cybench-Defensive［144/144 Yosys Miter］、100% FrontierMath-Constructive 与 SciCode 综合，以及 Window 22 实现 3.314x、Window 21 实现 3.204x 与 Window 20 实现 4.092x Thor 分流降低）、占 64 千字节智能手表 SRAM 仅 9.13%（5,984 字节）且零前缀污染的 56 比特 4 词元 Wearable-MoL 智能眼镜开场门控，以及（72, 64）SECDED 宇宙射线位翻转防护（在单二进制 Rust mol-agent-rs 中耗时 0.154 毫秒，每次位切片决策耗能 162.71 纳焦，在 1% 误码率下保持 100.0% 存活率），经亚十亿级可穿戴微型语言模型（Sensente/uLM-28M 与 LiquidAI/LFM2.5-230M）并跨四大 GPU 硅片厂商（最高加速 328.06x，将 LastExam 协议均方根校准误差从 70.62% 削减 5.37x 至 13.14%，且 >= 80% 置信度下的自信幻觉率降至 0.00%）逐级升级至最高 120B 参数的 4 位 NVMe 循环、混合与稀疏 MoE 2026 年末模型，通过跨 4 个上游 Verified 仓库的确定性验证器对提交进行门控，并将经认证的唤醒向下编译为 RAMB36E2、免许可 openXC7 320.62、106.55、109.15、100.55、100.74 与 106.97 兆赫布局布线后 Artix-7 XC7A200T M.2 2280 .bit 比特流，以及 Lupanov 共享余因子与摆动密码子晶体页。包含 Jetson AGX Thor 上的物理 Texas Instruments 直流分流器实测能量 measured_j（位切片 lut6-core 降低 87.25x、可穿戴 56 比特认知门控相对 uLM-28M 层切片降低 222.57x、Window 24 降低 3.330x、Window 23 降低 3.157x、Window 22 降低 3.314x、Window 20 降低 4.092x、反对称 40 项 T-MAC 降低 1.65x［Zen 5 上反超达 1.12x］、Sub1Bit-LUT6 降低 3.90x、Expert-AirMoL 降低 34.21x、命题 1 编译降低 10.94x；board_metered 为真），并与实时连接的 Alif Cortex-M55 周期计数（可穿戴门控快 2,905.18x）、五主机片上 reported_j、openXC7 静态时序以及提交 0945f14 处的 RTL 仿真估计值 est_j 严格区分。"
 lang: "zh-Hans"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*修订 80471b9，2026年11月27日。参考实现和工件：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 于 [`80471b90b905a020f244ead31e7d587bc8d862ae`](https://github.com/openIE-dev/lut-adapt-ai/tree/80471b90b905a020f244ead31e7d587bc8d862ae)。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源文件](/pdfs/latex/lut-adapt.tex)）。*
+*修订 0945f14，2026年11月27日。参考实现和工件：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 于 [`0945f1408c38bc8b2c05ae781c0a1fb9459d3af8`](https://github.com/openIE-dev/lut-adapt-ai/tree/0945f1408c38bc8b2c05ae781c0a1fb9459d3af8)。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源文件](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: Mixture of Limits，即 Metered Commit Gates 第二部分中的级联规则 [同系列]</li>
-<li>LA: 本研究使用的主张与证伪前缀（LA-1 至 LA-71，LA-F1 至 LA-F71）</li>
+<li>LA: 本研究使用的主张与证伪前缀（LA-1 至 LA-75，LA-F1 至 LA-F75）</li>
 <li>LUT, LUT6, INIT: 查找表（look-up table）、6 输入 Xilinx UltraScale+ 布尔原语，以及其 64 位真值表初始化掩码</li>
 <li>BRAM, RAMB36E2, URAM: 块随机存储器（Block RAM）、36 Kbit 双端口 UltraScale+ 块 RAM 原语（xck26 上为 144 个），以及 UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260: 可配置逻辑块（configurable logic block）、触发器（flip-flop）、数字信号处理片（digital signal processing slice）、DSP48 原语，以及 AMD Kria KV260 开发板（xck26）</li>
@@ -835,6 +835,23 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
   <figcaption>图 18. 官方 `ARC-AGI-3` `C-BFWS` `60.00%`（`15/25` 款游戏）绝对多数、`Terminal-Bench &amp; Cybench-Defensive`、`FrontierMath &amp; SciCode` 与 `122` 条定理实测结果（`主张 LA-19 [122 条定理 / 1,486 跨仓套件]、LA-64..LA-67`）。</figcaption>
 </figure>
 
+### 4.51 论断 LA-68..LA-75：实机 `Magnitude 0.3.5` 对决、零 Python 原生 Rust 代理 `mol-magnitude-adapter`（`CogLoadBench` `4×` 污染与 `MCPMark` `CoW` `CRUD` `0.00%` 生产损坏）、`BA-Tiered-Expert-AirMoL`（超越 `FreeToken` `4.00×–4.17×`，`Window 24` `Thor` 分流器 `3.330×`）、智能手表 `64.00 KB` `SRAM` 精确闭合及 `1,502` 条六内核证明
+
+- **实机 `Magnitude 0.3.5` 与 `Engram-LUT6`（`LA-68..LA-71`）**：`Magnitude 0.3.5 + LUT-Adapt` 将 `Thor` `VIN` `measured_j` 上的 `twist` `JpCT` 降低 **`53.55×`**（`board_metered = true`，`18/18` 验证编码 `100.0%`）；`Tiered-Expert-AirMoL` 在 `180B` 达 **`439.72 tok/s`**，`Engram-LUT6`（`144/144` `Yosys` Miter）将 `Window 23` 降低 **`3.157×`**，并实现 `100.74 MHz` `openXC7` `.bit` 与 `130` 条定理（图 19）。
+- **零 Python 原生 Rust 代理 `mol-magnitude-adapter` 与 `MCPMark` `CoW` `CRUD` 沙箱（`LA-72 & LA-73`）**：在 `4×` 污染 `CogLoadBench` 上取得 **`100.00%`（`16/16`，`0` 次 Vulkan 崩溃）**，将第二波 `Thor` `VIN` `measured_j` 削减 **`3,028.3×`（`0.2500 J` 对比 `757.08 J`，`5.203 ms`）**，并在 `24` 条 `MCPMark` 工作流上实现 **`0.00%` 生产环境损坏**（对比无保护 `75.00%`，`18` 次 `CoW` 影子回滚，`144/144` `Yosys` `abc -lut 6` Miter）。
+- **`BA-Tiered-Expert-AirMoL` 与 `Window 24` `Thor` 分流器（`LA-74`）**：带宽自适应切分（$\alpha^* = 0.5429$）配合 `K = 3` 突发合并在 `180B` 达 **`436.60 tok/s`**、`GLM-5-355B` 达 **`216.33 tok/s`**、`552B` 达 **`166.27 tok/s`**（**超越 `FreeToken` `4.00×–4.17×`**、**超越 `KTransformers` `5.90×–6.00×`**），并将 `Thor` `Window 24` 物理 `measured_j` 降低 **`3.330×`（`34,568.60` 对比 `115,129.22 nJ/op`，快 `3.215×`，`board_metered = true`）**。
+- **智能手表 `64.00 KB` `SRAM` 精确闭合、`106.97 MHz` `openXC7`、`15.16 KB`（`19` 项导出）`WASM` 与 `138` / `1,502` 条证明（`LA-75`）**：`14 × 4 KB = 56 KB`（`87.50%`）+ `4 KB` Nucleus + `4 KB` 栈精确闭合 **`65,536 B = 64.00 KB`**，`clai_mag_mcp_freetoken_xc7a200t_top` 达 **`106.97 MHz`**（`0` `DSP48E1`），`lut6_core.64d3e8b80df6.wasm` 仅 **`15,521 B <= 16,384 B`（`19` 项导出）**，`RustMagnitudeMcpFreeToken.lean` 将 `LA-19` 推至 **`138` 条 `LutAdapt` / `1,502` 条 `bwrap` 跨仓定理（`59,082` 项声明）**（图 20）。
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/magnitude-tiered-airmol-and-engram-lut6.svg" alt="实机 Magnitude 0.3.5、Tiered-Expert-AirMoL、Engram-LUT6 Window 23 与 130 条六内核证明。" />
+  <figcaption>图 19. 实机 `Magnitude 0.3.5`、`Tiered-Expert-AirMoL`、`Engram-LUT6` 与 `130` 条定理实测结果（`主张 LA-68..LA-71`）。</figcaption>
+</figure>
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/rust-magnitude-mcpmark-and-freetoken.svg" alt="原生 Rust mol-magnitude-adapter 在 CogLoadBench 与 MCPMark 上的评测、BA-Tiered-Expert-AirMoL 对比 FreeToken 与 KTransformers、Window 24 Thor 分流器、64 KB SRAM 精确闭合与 1,502 条证明。" />
+  <figcaption>图 20. 原生 Rust `mol-magnitude-adapter`（`CogLoadBench` `4×` 与 `MCPMark` `CoW` `CRUD`）、`BA-Tiered-Expert-AirMoL` 对比 `FreeToken` 与 `KTransformers`、`Window 24` `Thor` 分流器（`3.330×`）、`64.00 KB` 手表 `SRAM` 精确闭合与 `138` / `1,502` 条六内核证明（`主张 LA-72..LA-75`）。</figcaption>
+</figure>
+
 ---
 
 <div id="5-related-work-and-convergence-observations" class="anchor-alias" aria-hidden="true"></div>
@@ -852,6 +869,8 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **Medusa** (2024), **EAGLE-2** (2024), **HCSpec** (2026) | `arXiv:2401.10774` · `arXiv:2406.16858` · ACL 2026 | 神经 MLP、草稿树和级联推测草稿器。 | 挂钟加速。 | 需要草稿 FLOP 和权重读取，而非 `0`-FLOP `uint64` `LUT6` 页。 |
 | **PLD** (Saxena, 2023) & **REST** (He et al., 2024) | GitHub · `arXiv:2311.08252` | 零 FLOP 提示 n-gram 和数据存储后缀 trie 草稿器。 | 延迟加速 (`0` FLOP)。 | `PLD` 遗漏非提示令牌；`REST` 使用可变 trie 而非 `RAMB36E2` 页。 |
 | **AirLLM** (lyogavin, 2023) | 开源 SSD 流式传输器 | 小 RAM 中逐层 SSD 权重流式传输。 | 活动 RAM 占用。 | 纯 `T=1` (`1.0 tok/sweep`) + KV 溢出，而非 `AirMoL` `2.74×-12.30×` I/O 减少和 `970 MB` Metal `INT4` RAM。 |
+| **KTransformers** (Chen et al., 2025) & **FreeToken** (Yang et al., 2026) | `arXiv:2507.01909` · `arXiv:2608.07296` | 基于 `K=1` `LRU` 的混合 `CPU-GPU` MoE 卸载。 | 吞吐率 (`tok/s`)。 | 无突发合并的被动 `K=1`，对比 `BA-Tiered-Expert-AirMoL`（超越 `FreeToken` `4.00×–4.17×`，`Window 24` `Thor` 分流器省能 `3.330×`）。 |
+| **MCPMark** (Wu et al., 2025) & **Magnitude** (2026) | `arXiv:2509.24002` · `magnitudedev/magnitude` (`0.3.5`) | 有状态 `MCP` 基准与原生 Rust 本地引擎。 | 通过率与 `tok/s`。 | 无保护下 `75.00%` 生产损坏，对比 `mol-magnitude-adapter`（`CoW` `CRUD`）下 `0.00%` 损坏及第二波 `Thor` 耗能削减 `3,028.3×`。 |
 | **Metered Commit Gates** & **RCE-JEPA** `[same house]` | `/papers/gates/` · `/papers/rce-jepa/` | Commit 门 (`11,428 pJ` KV260 `INA260` SOM 读数)、MoL $p_i/c_i$ 和 `RCE-JEPA`。 | KV260 SOM `measured_j` + `reported_j` / `est_j`。 | 同屋基础；在此通过 Beneš `LUT6` 向下编译、Metal `Expert-AirMoL` 和 `mol-agent` 进行扩展。 |
 
 ---
@@ -873,7 +892,7 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`LA-F5`** | `Claim LA-5` (字节推测) | `scripts/run_code_corpus_benchmark.py` 在 `48` 个未见提示上，相对贪婪解码 `Mamba3CodeLM` 的精确字节一致性为 `< 100.0%`。 |
 | **`LA-F6`** | `Claim LA-6` (`AirMoL` 14.3M) | `scripts/run_air_mol_benchmark.py` 在 `F_NOCACHE` 下未达到 `100%` 一致性，或读取的 NVMe 字节数多于 `AirLLM` 4-Bit `T=1`。 |
 | **`LA-F7`** | `Claim LA-7` (2026 年 HF `AirMoL`) | `scripts/run_hf_lfm3_air_mol.py`、`scripts/run_hf_air_mol_pretrained.py` 或 `scripts/run_hf_qwen35_air_mol.py` 与贪婪目标相比偏离 $\ge 1$ 个 BPE token。 |
-| **`LA-F8`** | `Claim LA-8` (回归套件) | `pytest -v` 在 `tests/` 的 `94` 个测试中任一失败。 |
+| **`LA-F8`** | `Claim LA-8` (回归套件) | `pytest -v` 在 `tests/` 的 `102` 个测试中任一失败。 |
 | **`LA-F9`** | `Claim LA-9` (`8.5B/35B` MoE) | `scripts/run_hf_moe_8b_35b_air_mol.py` 的 token 一致性偏离 `100%`，或读取的 NVMe 字节数多于 `AirLLM` 或 `Expert-AirLLM`。 |
 | **`LA-F10`** | `Claim LA-10` (`Sub1Bit-LUT6`) | `scripts/run_sub1bit_lut_benchmark.py` 相对稠密 `ITQ` 二值矩阵乘法的最大误差超过 `1e-3`，或未通过 `100%` 已验证一致性。 |
 | **`LA-F11`** | `Claim LA-11` (`48` 任务对比评测) | `scripts/run_frontier_ai_bakeoff.py` 接受了 `> 0%` 的损坏提交，或在 Wave-2 规格变异下接受了过时的 Wave-1 技能。 |
@@ -925,6 +944,14 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`LA-F65`** | `Claim LA-65` (`Terminal-Bench & Cybench-Defensive` 与 `144/144` `Yosys` Miter) | 放行 `> 0%` 损坏/漏洞提交、执行攻击性载荷，或未通过 `144/144` `Yosys` `abc -lut 6` Miter。 |
 | **`LA-F66`** | `Claim LA-66` (`FrontierMath & SciCode` 与 `Window 22` `Thor` 分流器) | 任一数学/物理题失败、违反辛/幺正守恒，或 `Thor` `Window 22` `measured_j` 增益 `< 2.5×`。 |
 | **`LA-F67`** | `Claim LA-67` (`100.55 MHz` `openXC7`、`17` 导出 `WASM` 与 `122` 条证明) | 使用 `> 0` 个 `DSP48E1`、未通过 `64/64` 一致或 `100 MHz` `PAR`、六内核证明少于 `122` / `1,486` 条，或 `WASM` 超出 `16,384 B`。 |
+| **`LA-F68`** | `Claim LA-68` (实机 `Magnitude 0.3.5` 与 `Thor` `VIN` `measured_j`) | 持久化原始文本、在 `Thor` 之外标记 `board_metered = true`、`twist` `JpCT` 劣于基线，或放行损坏提交。 |
+| **`LA-F69`** | `Claim LA-69` (三层 `Tiered-Expert-AirMoL`) | 未通过 `64/64` `LUT6` 一致，或在 `180B`、`552B`、`30B` 上吞吐率劣于 `K=1`。 |
+| **`LA-F70`** | `Claim LA-70` (`Engram-LUT6` `144/144` Miter 与 `Window 23` 分流器) | 未通过 `144/144` `Yosys` Miter，或 `Window 23` 未降低 `Thor` `measured_j`。 |
+| **`LA-F71`** | `Claim LA-71` (`100.74 MHz` `openXC7`、`18` 导出 `WASM` 与 `130` 条证明) | 使用 `> 0` 个 `DSP48E1`、未通过 `100 MHz` `PAR`、证明少于 `130` / `1,494` 条，或 `WASM > 16,384 B`。 |
+| **`LA-F72`** | `Claim LA-72` (Rust 代理 `mol-magnitude-adapter` 与 `CogLoadBench` `4×`) | 链接 Python/外部 crate、Vulkan 崩溃、通过率 `< 100%`，或第二波 `Thor` `VIN` 降幅 `< 1,000×`。 |
+| **`LA-F73`** | `Claim LA-73` (`MCPMark` `CoW` `CRUD` 沙箱与 `144/144` Miter) | 在 `24` 条 `MCPMark` 工作流上出现 `> 0%` 生产损坏，或未通过 `144/144` `Yosys` `abc -lut 6` Miter。 |
+| **`LA-F74`** | `Claim LA-74` (`BA-Tiered-Expert-AirMoL` 对比 `FreeToken` 与 `Window 24`) | 相对 `FreeToken` 加速 `< 3.5×` 或相对 `KTransformers` `< 5.0×`，或 `Window 24` `Thor` `measured_j` 增益 `< 2.5×`。 |
+| **`LA-F75`** | `Claim LA-75` (`64.00 KB` `SRAM`、`106.97 MHz` `openXC7`、`19` 导出 `WASM` 与 `138` / `1,502` 条证明) | `14 × 4,096 + 4,096 + 4,096 != 65,536 B`、`Fmax < 100 MHz`、证明少于 `138` / `1,502` 条，或 `lut6_core.wasm > 16,384 B`。 |
 
 ---
 
@@ -1009,6 +1036,9 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 <li>Josefsson, S., and Liusvaara, I. (2017). Edwards-Curve Digital Signature Algorithm (<code>EdDSA</code> / <code>Ed25519</code>). <em>IETF RFC 8032</em>, <a href="https://doi.org/10.17487/RFC8032">doi:10.17487/RFC8032</a>.</li>
 <li>O'Connor, J., Aumasson, J.-P., Neves, S., and Wilcox-O'Hearn, Z. (2020). BLAKE3: One Function, Fast Everywhere (<code>BLAKE3</code> Cryptographic Hash Specification). <a href="https://github.com/BLAKE3-team/BLAKE3-specs">github.com/BLAKE3-team/BLAKE3-specs</a>.</li>
 <li>Magnitude (2026). Magnitude (<code>Seismic</code>): Open-Source Native Rust Local LLM Inference Engine (<code>magnitudedev/magnitude</code>, v0.3.5, MIT License). <a href="https://magnitude.dev/">magnitude.dev</a>.</li>
+<li>Wu, Z., et al. (2025). MCPMark: Benchmarking Multi-Turn Stateful Model Context Protocol Tool Use. <em>arXiv:2509.24002</em>.</li>
+<li>Chen, H., et al. (2025). KTransformers: Unleashing the Full Potential of CPU/GPU Hybrid Inference for MoE Models. <em>ACM SOSP 2025</em>, <em>arXiv:2507.01909</em>.</li>
+<li>Yang, Z., Stoica, I., Han, S., Zaharia, M., et al. (2026). FreeToken: Bandwidth-Balanced Heterogeneous CPU-GPU Offloading for Large Sparse MoE Inference. <em>arXiv:2608.07296</em>.</li>
 </ol>
 
 ---
@@ -1017,11 +1047,14 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 ## 附录 A. 可复现性
 
-在 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（提交 `80471b9`）与 [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` 与 `lut6-core-nucleus/`）的代码检出目录中执行：
+在 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（提交 `0945f14`）与 [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` 与 `lut6-core-nucleus/`）的代码检出目录中执行：
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
-(cd sys/lut6-core && cargo test --release && cargo run --release --bin bench_lut6_nucleus_shunt)
+(cd sys/lut6-core && cargo test --release && cargo run --release --bin mol_magnitude_adapter -- --self-test && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase44_rust_magnitude_fleet.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase44_window24_five_silicon.py
+PYTHONPATH=src .venv/bin/python scripts/run_openxc7_mag_mcp_freetoken_par.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase43_magnitude_head_to_head.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase43_window23_five_silicon.py
 PYTHONPATH=src .venv/bin/python scripts/run_openxc7_tiered_engram_par.py
