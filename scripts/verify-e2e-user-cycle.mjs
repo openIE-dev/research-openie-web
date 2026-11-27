@@ -989,6 +989,7 @@ async function main() {
     process.exit(1);
   }
   console.log(`✓ ALL ${passNotes.length} E2E VERIFICATION GATES PASSED CLEANLY in ${elapsed}s`);
+  process.exit(0);
 }
 
 main().catch((err) => {
