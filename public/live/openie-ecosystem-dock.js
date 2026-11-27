@@ -1469,7 +1469,7 @@ export class OpenIEEcosystemSDK {
   }
 
   // ---------- Broadcast Mastering Chain & Zero-Click Jitter Buffer ----------
-  async _ensureAudioContext() {
+  _unlockAudioSync() {
     if (typeof window === 'undefined') return null;
     const Ctx = window.AudioContext || window.webkitAudioContext;
     if (!Ctx) return null;
@@ -1510,10 +1510,22 @@ export class OpenIEEcosystemSDK {
     }
     if (this.audioCtx.state === 'suspended') {
       try {
-        await this.audioCtx.resume();
+        this.audioCtx.resume().catch(() => {});
       } catch {}
     }
     return this.audioCtx;
+  }
+
+  async _ensureAudioContext() {
+    const ctx = this._unlockAudioSync();
+    if (!ctx) return null;
+    if (ctx.state === 'suspended') {
+      await Promise.race([
+        ctx.resume().catch(() => {}),
+        new Promise((r) => setTimeout(r, 300)),
+      ]);
+    }
+    return ctx;
   }
 
   async playPickupChime() {
@@ -2636,6 +2648,7 @@ export class OpenIEEcosystemSDK {
   }
 
   async startCall(opts = {}) {
+    this._unlockAudioSync();
     await this.loadCorpora();
     if (opts.studyId && this.studiesById.has(opts.studyId)) this.activeStudyId = opts.studyId;
     if (opts.contextSummary) this.contextSummary = String(opts.contextSummary);
@@ -2734,6 +2747,7 @@ export class OpenIEEcosystemSDK {
   }
 
   async ask(queryText, opts = {}) {
+    this._unlockAudioSync();
     await this.loadCorpora();
     const cleanQ = String(queryText || '').trim();
     if (!cleanQ) return null;
