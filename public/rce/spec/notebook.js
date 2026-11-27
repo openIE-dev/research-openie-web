@@ -226,9 +226,14 @@ async function speak(btn) {
   if (!text) { status('No plain-language text to read here.'); return; }
   let stopped = false, src = null;
   const ctx = new (window.AudioContext || window.webkitAudioContext)();
-  playing = { btn, stop() { stopped = true; try { src?.stop(); } catch {} ctx.close(); btn.setAttribute('aria-pressed', 'false'); btn.querySelector('.tts-l').textContent = btn.dataset.label; status(''); playing = null; } };
+  const setBtnLabel = (el, txt) => {
+    const inner = el.querySelector('.tts-l');
+    if (inner) inner.textContent = txt;
+    else el.textContent = txt;
+  };
+  playing = { btn, stop() { stopped = true; try { src?.stop(); } catch {} ctx.close(); btn.setAttribute('aria-pressed', 'false'); setBtnLabel(btn, btn.dataset.label || 'Listen'); status(''); playing = null; } };
   btn.setAttribute('aria-pressed', 'true');
-  btn.querySelector('.tts-l').textContent = 'Stop';
+  setBtnLabel(btn, 'Stop');
   try {
     const model = await tts(status);
     const chunks = sentences(text);
@@ -250,7 +255,7 @@ async function speak(btn) {
   }
 }
 for (const b of document.querySelectorAll('.tts-btn')) {
-  b.dataset.label = b.querySelector('.tts-l').textContent;
+  b.dataset.label = ((b.querySelector('.tts-l') || b).textContent || 'Listen').trim();
   b.addEventListener('click', () => speak(b));
 }
 window.__rceSpec = { checker, tts, speakable, sentences };

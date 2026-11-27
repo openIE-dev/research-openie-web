@@ -24,9 +24,10 @@ const CANON_MEDIA =
 
 const args = new Set(process.argv.slice(2));
 const runAll = args.has('--all');
-const runDist = runAll || args.has('--dist') || (!args.has('--live') && !args.has('--browser'));
+const runDist = runAll || args.has('--dist') || (!args.has('--live') && !args.has('--browser') && !args.has('--deep'));
 const runLive = runAll || args.has('--live');
-const runBrowser = runAll || args.has('--browser');
+const runBrowser = runAll || args.has('--browser') || args.has('--deep');
+const runDeep = args.has('--deep');
 
 const failures = [];
 const passNotes = [];
@@ -666,7 +667,11 @@ async function verifyHeadlessBrowserUserJourneys() {
     let httpErrors = [];
 
     cdp.on('Runtime.exceptionThrown', (p) => {
-      pageErrors.push(p.exceptionDetails?.text || 'Uncaught exception');
+      pageErrors.push(
+        p.exceptionDetails?.exception?.description ||
+          p.exceptionDetails?.text ||
+          'Uncaught exception'
+      );
     });
     cdp.on('Runtime.consoleAPICalled', (p) => {
       if (p.type === 'error') {
@@ -890,6 +895,73 @@ async function verifyHeadlessBrowserUserJourneys() {
       ok(`Journey 7 (/radio/ Studio Call-In): Dock opened, radio ducked (${callInCheck.modeTxt.trim()}), and hung up cleanly with 0 errors`);
     } else {
       fail(`Journey 7 (/radio/ Studio Call-In) failed: ${JSON.stringify(callInCheck)}`);
+    }
+
+    if (runDeep) {
+      console.log(`\n── Layer 5 (--deep): Exhaustive Real-Browser Sweep Across All /living/*, /papers/* & Hub Surfaces ──`);
+      const listSubDirs = (sub) => {
+        const base = path.join(DIST, sub);
+        if (!fs.existsSync(base)) return [];
+        return fs
+          .readdirSync(base, { withFileTypes: true })
+          .filter(
+            (e) =>
+              e.isDirectory() &&
+              e.name !== 'archive' &&
+              fs.existsSync(path.join(base, e.name, 'index.html'))
+          )
+          .map((e) => `/${sub}/${e.name}/`)
+          .sort();
+      };
+
+      const livingRoutes = ['/living/', ...listSubDirs('living')];
+      const paperRoutes = listSubDirs('papers');
+      const hubRoutes = [
+        '/tutorials/',
+        '/rce/spec/',
+        '/figures/',
+        '/syndication/',
+        '/sourcesheets/',
+        '/sourcesheets/gates/',
+        '/sourcesheets/lut-adapt/',
+        '/blueprint/',
+        '/glossary/',
+        '/data/',
+      ];
+
+      let livingOk = 0;
+      for (const r of livingRoutes) {
+        await navigateAndSettle(r, 650);
+        if (assertZeroPageFaults(`Deep Living (${r})`)) livingOk++;
+      }
+      if (livingOk === livingRoutes.length) {
+        ok(`All ${livingOk}/${livingRoutes.length} /living/* interactive observatories rendered with 0 HTTP >=400, 0 exceptions, and 0 console errors`);
+      }
+
+      let paperOk = 0;
+      for (const r of paperRoutes) {
+        await navigateAndSettle(r, 550);
+        const hasGw = await cdp.eval(`document.querySelectorAll('[data-gw-set-depth]').length`);
+        if (assertZeroPageFaults(`Deep Paper (${r})`)) {
+          if (hasGw >= 4) {
+            paperOk++;
+          } else {
+            fail(`Deep Paper (${r}) missing 4-Altitude Gravity-Well switcher (found ${hasGw})`);
+          }
+        }
+      }
+      if (paperOk === paperRoutes.length) {
+        ok(`All ${paperOk}/${paperRoutes.length} /papers/* study pages verified with 4-Altitude Gravity-Well & 0 browser errors`);
+      }
+
+      let hubOk = 0;
+      for (const r of hubRoutes) {
+        await navigateAndSettle(r, r === '/rce/spec/' ? 1400 : 700);
+        if (assertZeroPageFaults(`Deep Hub (${r})`)) hubOk++;
+      }
+      if (hubOk === hubRoutes.length) {
+        ok(`All ${hubOk}/${hubRoutes.length} hub & spec surfaces (/tutorials/, /rce/spec/, /figures/, /syndication/, /sourcesheets/, /blueprint/, /glossary/, /data/) passed with 0 errors`);
+      }
     }
 
     cdp.close();
