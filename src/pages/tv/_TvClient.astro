@@ -420,6 +420,15 @@ const ecosystemJson = JSON.stringify(ecosystem);
   videoEl?.addEventListener('ended', () => {
     if (playlistMode) stepTopic(1, true);
   });
+  videoEl?.addEventListener('error', () => {
+    const study = byId[activeStudyId];
+    const mobUrl = study?.study_assets?.mobile_mp4_url;
+    if (mobUrl && videoEl.getAttribute('data-loaded-src') !== mobUrl) {
+      videoEl.setAttribute('data-loaded-src', mobUrl);
+      videoEl.src = mobUrl;
+      videoEl.load();
+    }
+  });
 
   // Bidirectional Voice + Video Co-Pilot Bridge: ensure /tv/ playback and Live Call speech never talk over each other
   function pauseAndDuckTvMedia() {

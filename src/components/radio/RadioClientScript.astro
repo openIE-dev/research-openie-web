@@ -265,24 +265,37 @@ const payloadJson = JSON.stringify({ feed, radar, foundry, ecosystem }).replace(
     }
   }
 
-  function loadEpisode(epId, seekSec, autoPlay, modeLabel) {
+  var isAutoPlaying = false;
+  var pendingMetaHandler = null;
+
+  function resolvePreferredAudioUrl(ep, forceOpus) {
+    var planet = window.__OPENIE_RADIO_PLANETARY__ || {};
+    var ra = (planet.radioAssets || {})[ep.id] || {};
+    if ((forceOpus || window.__openieRadioOpusMode) && ra.opus_exists && ra.opus_url) {
+      return ra.opus_url;
+    }
+    return ep.audio_url;
+  }
+
+  function loadEpisode(epId, seekSec, autoPlay, modeLabel, forceOpus) {
     var target = EPISODES.find(function (e) { return e.id === epId; }) || EPISODES[0];
     var changed = currentEp.id !== target.id;
     currentEp = target;
     lastHighlightedTurn = -1;
+    isAutoPlaying = Boolean(autoPlay);
     renderEpisodeDom(target);
     publishRadioMediaContext();
     if (modePill && modeLabel) modePill.textContent = modeLabel;
 
     if (!audio) return;
-    if (changed || audio.getAttribute('src') !== target.audio_url) {
-      audio.src = target.audio_url;
-      audio.playbackRate = currentRate;
-    }
+    var desiredUrl = resolvePreferredAudioUrl(target, Boolean(forceOpus));
+    var currentSrcAttr = audio.getAttribute('src') || '';
+    var srcChanged = changed || currentSrcAttr !== desiredUrl;
 
     var applySeek = function () {
+      pendingMetaHandler = null;
       audio.playbackRate = currentRate;
-      if (typeof seekSec === 'number' && seekSec >= 0) {
+      if (typeof seekSec === 'number' && seekSec > 0) {
         try { audio.currentTime = seekSec; } catch (_) {}
       }
       if (autoPlay) {
@@ -291,8 +304,26 @@ const payloadJson = JSON.stringify({ feed, radar, foundry, ecosystem }).replace(
       }
     };
 
-    if (audio.readyState >= 1) applySeek();
-    else audio.addEventListener('loadedmetadata', applySeek, { once: true });
+    if (pendingMetaHandler) {
+      audio.removeEventListener('loadedmetadata', pendingMetaHandler);
+      pendingMetaHandler = null;
+    }
+
+    if (srcChanged) {
+      audio.setAttribute('data-ep-id', target.id);
+      audio.setAttribute('data-opus-fallback', forceOpus ? '1' : '0');
+      pendingMetaHandler = applySeek;
+      audio.addEventListener('loadedmetadata', applySeek, { once: true });
+      audio.src = desiredUrl;
+      audio.playbackRate = currentRate;
+      audio.load();
+    } else if (audio.readyState >= 1) {
+      applySeek();
+    } else {
+      pendingMetaHandler = applySeek;
+      audio.addEventListener('loadedmetadata', applySeek, { once: true });
+      audio.load();
+    }
   }
 
   function seekAndPlay(sec) {
@@ -347,7 +378,17 @@ const payloadJson = JSON.stringify({ feed, radar, foundry, ecosystem }).replace(
     audio.addEventListener('ended', function () {
       var idx = EPISODES.findIndex(function (e) { return e.id === currentEp.id; });
       var nextEp = EPISODES[(idx + 1) % EPISODES.length];
-      loadEpisode(nextEp.id, 0, true, modePill ? modePill.textContent : 'Mode: Auto-Advance');
+      loadEpisode(nextEp.id, 0, true, modePill ? modePill.textContent : 'Mode: Auto-Advance', false);
+    });
+    audio.addEventListener('error', function () {
+      // Seamless automatic fallback to 24 kbps Opus if .m4a stream encounters a network/404 error
+      if (audio.getAttribute('data-opus-fallback') === '1') return;
+      var planet = window.__OPENIE_RADIO_PLANETARY__ || {};
+      var ra = (planet.radioAssets || {})[currentEp.id] || {};
+      var opusFallbackUrl = (ra && ra.opus_url) || ('/media/radio/opus/' + currentEp.id + '.opus');
+      if (opusFallbackUrl && audio.getAttribute('src') !== opusFallbackUrl) {
+        loadEpisode(currentEp.id, 0, isAutoPlaying || !audio.paused, 'Mode: 24k Opus Resilient Stream', true);
+      }
     });
   }
 

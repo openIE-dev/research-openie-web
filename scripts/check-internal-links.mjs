@@ -9,6 +9,9 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
 const SITE = 'https://research.openie.dev';
+const CANON_MEDIA =
+  process.env.OPENIE_CANON_MEDIA ||
+  '/Users/dcharlot/data-share/vibe-coding/research-openie-web/public/media';
 
 if (!fs.existsSync(DIST)) {
   console.error('dist/ is missing; run pnpm build first');
@@ -54,12 +57,18 @@ function existsInDist(rel) {
     path.join(clean, 'index.html'),
     clean.replace(/\/$/, ''),
   ];
-  return candidates.some((c) => {
+  const inDist = candidates.some((c) => {
     const abs = path.join(DIST, c.replace(/^\//, ''));
     const resolved = path.resolve(abs);
     if (!resolved.startsWith(DIST + path.sep) && resolved !== DIST) return false;
     return fs.existsSync(resolved);
   });
+  if (inDist) return true;
+  if (clean.startsWith('/media/') && fs.existsSync(CANON_MEDIA)) {
+    const mediaCandidate = path.join(CANON_MEDIA, clean.slice('/media/'.length));
+    if (fs.existsSync(mediaCandidate)) return true;
+  }
+  return false;
 }
 
 const missing = [];

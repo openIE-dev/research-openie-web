@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "build:planetary": "node scripts/build-planetary-v1.mjs",
     "lint:coverage": "node scripts/lint-coverage.mjs",
-    "build": "node scripts/build-planetary-v1.mjs && node scripts/i18n/guard.mjs src && node scripts/lint-private.mjs src && node scripts/lint-claims.mjs && node scripts/lint-coverage.mjs && astro build --force && node scripts/lint-order.mjs && node scripts/lint-private.mjs dist && node scripts/i18n/guard.mjs dist && node scripts/lint-coverage.mjs && bash scripts/generate-pdfs.sh --stale",
+    "build": "node scripts/build-planetary-v1.mjs && node scripts/i18n/guard.mjs src && node scripts/lint-private.mjs src && node scripts/lint-claims.mjs && node scripts/lint-coverage.mjs && astro build --force && node scripts/lint-order.mjs && node scripts/lint-private.mjs dist && node scripts/i18n/guard.mjs dist && node scripts/lint-coverage.mjs && node scripts/check-internal-links.mjs && node scripts/verify-e2e-user-cycle.mjs --dist && bash scripts/generate-pdfs.sh --stale",
     "lint:claims": "node scripts/lint-claims.mjs",
     "lint:order": "node scripts/lint-order.mjs",
     "preview": "astro preview",
@@ -14,6 +14,8 @@
     "lint:private": "node scripts/lint-private.mjs src",
     "test:guard": "node --test scripts/lint-private.test.mjs scripts/i18n/guard.test.mjs",
     "test:links": "node scripts/check-internal-links.mjs",
+    "test:assets": "node scripts/check-internal-links.mjs && node scripts/verify-e2e-user-cycle.mjs --dist",
+    "test:e2e": "node scripts/verify-e2e-user-cycle.mjs --live --browser",
     "guard:i18n": "node scripts/i18n/guard.mjs src && node scripts/i18n/guard.mjs dist"
   },
   "dependencies": {

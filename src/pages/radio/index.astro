@@ -401,11 +401,18 @@ const pageDesc =
       var ra = activeEp ? (RADIO_ASSETS[activeEp.id] || {}) : {};
       if (!audioEl || !ra.opus_exists || !ra.opus_url) return;
       radioOpusActive = !radioOpusActive;
+      window.__openieRadioOpusMode = radioOpusActive;
       opusBtn.setAttribute('aria-pressed', String(radioOpusActive));
       var t = audioEl.currentTime || 0;
+      var wasPaused = audioEl.paused;
+      audioEl.addEventListener('loadedmetadata', function () {
+        if (t > 0) {
+          try { audioEl.currentTime = t; } catch (_) {}
+        }
+        if (!wasPaused) audioEl.play().catch(function () {});
+      }, { once: true });
       audioEl.src = radioOpusActive ? ra.opus_url : activeEp.audio_url;
-      audioEl.currentTime = t;
-      audioEl.play().catch(function () {});
+      audioEl.load();
     });
     var copyLangRssBtn = document.getElementById('radio-copy-lang-rss');
     var langRssSelect = document.getElementById('radio-lang-rss-select');

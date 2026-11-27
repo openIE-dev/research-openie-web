@@ -649,7 +649,7 @@ const HOST_ALIAS_MAP = {
   research: 'avalanche',
 };
 
-// Same-origin AudioWorklet Blob source (16 kHz Int16 100ms chunks + RMS for <30ms barge-in)
+// Same-origin AudioWorklet Blob source (16 kHz Int16 100ms chunks + RMS + zero-gain pull output)
 const DUPLEX_CAPTURE_BLOB_SOURCE = `
 class OpenIEEcoDuplexCapture extends AudioWorkletProcessor {
   constructor() {
@@ -658,7 +658,9 @@ class OpenIEEcoDuplexCapture extends AudioWorkletProcessor {
     this.pos = 0;
     this.phase = 0;
   }
-  process(inputs) {
+  process(inputs, outputs) {
+    const outCh = outputs[0] && outputs[0][0];
+    if (outCh) outCh.fill(0);
     const ch = inputs[0] && inputs[0][0];
     if (!ch || !ch.length) return true;
     const ratio = sampleRate / 16000;
@@ -666,7 +668,7 @@ class OpenIEEcoDuplexCapture extends AudioWorkletProcessor {
     for (let i = 0; i < ch.length; i++) sumSq += ch[i] * ch[i];
     const rms = Math.sqrt(sumSq / ch.length);
     while (this.phase < ch.length) {
-      const idx = Math.min(ch.length - 1, Math.floor(this.phase));
+      const idx = Math.max(0, Math.min(ch.length - 1, Math.floor(this.phase)));
       const v = Math.max(-1, Math.min(1, ch[idx]));
       this.buf[this.pos++] = v < 0 ? v * 0x8000 : v * 0x7fff;
       if (this.pos >= this.buf.length) {
@@ -676,13 +678,44 @@ class OpenIEEcoDuplexCapture extends AudioWorkletProcessor {
       }
       this.phase += ratio;
     }
-    this.phase -= ch.length;
-    if (rms > 0.03) this.port.postMessage({ rmsOnly: rms });
+    this.phase = Math.max(0, this.phase - ch.length);
+    if (rms > 0.02) this.port.postMessage({ rmsOnly: rms });
     return true;
   }
 }
 registerProcessor('openie-eco-duplex-capture', OpenIEEcoDuplexCapture);
 `;
+
+function pcm16ChunksToWavBase64(int16Chunks, sampleRate = 16000) {
+  let totalSamples = 0;
+  for (const c of int16Chunks) totalSamples += c.length;
+  const dataBytes = totalSamples * 2;
+  const wav = new ArrayBuffer(44 + dataBytes);
+  const view = new DataView(wav);
+  const writeStr = (off, s) => {
+    for (let i = 0; i < s.length; i++) view.setUint8(off + i, s.charCodeAt(i));
+  };
+  writeStr(0, 'RIFF');
+  view.setUint32(4, 36 + dataBytes, true);
+  writeStr(8, 'WAVE');
+  writeStr(12, 'fmt ');
+  view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true);
+  view.setUint16(22, 1, true);
+  view.setUint32(24, sampleRate, true);
+  view.setUint32(28, sampleRate * 2, true);
+  view.setUint16(32, 2, true);
+  view.setUint16(34, 16, true);
+  writeStr(36, 'data');
+  view.setUint32(40, dataBytes, true);
+  const outI16 = new Int16Array(wav, 44, totalSamples);
+  let offset = 0;
+  for (const c of int16Chunks) {
+    outI16.set(c, offset);
+    offset += c.length;
+  }
+  return abToBase64(wav);
+}
 
 const WHISPER_BLOB_WORKER_SOURCE = `
 const TF_CDN = '${TF_ESM_CDN}';
@@ -1504,6 +1537,9 @@ export class OpenIEEcosystemSDK {
 
   enqueuePcmPlayback(float32Samples, sampleRate = 24000) {
     if (!float32Samples || !float32Samples.length || !this.audioCtx) return;
+    if (this.bargeSuppressUntil && performance.now() < this.bargeSuppressUntil && !this.streamingAssistantTurn) {
+      return;
+    }
     const ctx = this.audioCtx;
     const startingFromSilence =
       this.activeSources.size === 0 || this.nextPlayTime <= ctx.currentTime + 0.005;
@@ -1532,6 +1568,7 @@ export class OpenIEEcosystemSDK {
 
     if (this.state !== 'speaking') {
       this.state = 'speaking';
+      this.ttsStartedAt = performance.now();
       this._emitState();
     }
 
@@ -1619,27 +1656,46 @@ export class OpenIEEcosystemSDK {
         }
         const wn = new AudioWorkletNode(ctx, 'openie-eco-duplex-capture', {
           numberOfInputs: 1,
-          numberOfOutputs: 0,
+          numberOfOutputs: 1,
+          outputChannelCount: [1],
           channelCount: 1,
         });
+        const silentSink = ctx.createGain();
+        silentSink.gain.value = 0;
+        wn.connect(silentSink);
+        silentSink.connect(ctx.destination);
+        this.micSilentSink = silentSink;
+
         wn.port.onmessage = (ev) => {
           if (!this.callActive || this.micMuted) return;
           const d = ev.data || {};
           if (typeof d.rms === 'number') this.micRms = d.rms;
           if (typeof d.rmsOnly === 'number') this.micRms = d.rmsOnly;
 
-          if (this.state === 'speaking' && this.micRms > 0.055) {
+          const sinceTtsOnset = performance.now() - (this.ttsStartedAt || 0);
+          if (this.state === 'speaking' && sinceTtsOnset > 320 && this.micRms > 0.068) {
             this.bargeFrames++;
-            if (this.bargeFrames >= 2) {
+            if (this.bargeFrames >= 3) {
               this.bargeFrames = 0;
+              this.bargeSuppressUntil = performance.now() + 260;
               this.bargeIn('vad-voice');
             }
           } else if (d.pcm16) {
             this.bargeFrames = 0;
           }
 
-          if (d.pcm16 && this.engineMode === 'studio_s2s' && this.ws && this.ws.readyState === WebSocket.OPEN) {
-            this.ws.send(JSON.stringify({ type: 'audio', pcm16_b64: abToBase64(d.pcm16) }));
+          if (d.pcm16 && this.engineMode === 'studio_s2s') {
+            if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+              this.ws.send(JSON.stringify({ type: 'audio', pcm16_b64: abToBase64(d.pcm16) }));
+            } else if (!this.wsReadyPromise) {
+              this._scheduleWsReconnect(80);
+            }
+            if (this.s2sSpeaking || this.micRms > 0.018) {
+              if (!this.s2sPcm16Chunks) this.s2sPcm16Chunks = [];
+              if (this.s2sPcm16Chunks.length < 250) {
+                this.s2sPcm16Chunks.push(new Int16Array(d.pcm16.slice(0)));
+              }
+            }
           }
 
           if (d.pcm16 && this.engineMode === 'sovereign_gpu' && !this.speechRecSupported && this.pcmSpeaking) {
@@ -1686,6 +1742,37 @@ export class OpenIEEcosystemSDK {
       this.noiseFloorDb = db;
     }
 
+    if (this.callActive && this.engineMode === 'studio_s2s' && !this.micMuted && this.state !== 'speaking') {
+      const now = performance.now();
+      const s2sThresh = Math.max(-42, this.noiseFloorDb + 8.5);
+      const voiceDetected = db > s2sThresh || this.micRms > 0.022;
+      if (voiceDetected) {
+        if (!this.s2sSpeaking) {
+          this.s2sSpeaking = true;
+          this.s2sSpeechStartAt = now;
+          this.s2sPcm16Chunks = [];
+          if (this.s2sTurnWatchdog) {
+            clearTimeout(this.s2sTurnWatchdog);
+            this.s2sTurnWatchdog = null;
+          }
+          if (!this.streamingUserTurn) {
+            this.emit('interim', { text: '🎙 Listening — hearing your voice…' });
+          }
+        }
+        this.s2sLastVoiceAt = now;
+      } else if (this.s2sSpeaking && now - this.s2sLastVoiceAt >= 720) {
+        const dur = now - this.s2sSpeechStartAt;
+        const captured = (this.s2sPcm16Chunks || []).slice();
+        this.s2sSpeaking = false;
+        this.s2sPcm16Chunks = [];
+        if (dur >= 360 && captured.length >= 3) {
+          this._commitStudioS2sUtteranceEnd(captured);
+        } else if (!this.streamingUserTurn) {
+          this.emit('interim', { text: '' });
+        }
+      }
+    }
+
     if (this.callActive && this.engineMode === 'sovereign_gpu' && !this.speechRecSupported && this.state === 'listening') {
       const now = performance.now();
       if (db > Math.max(-40, this.noiseFloorDb + 10)) {
@@ -1706,6 +1793,149 @@ export class OpenIEEcosystemSDK {
       }
     }
     this._emitTelemetry();
+  }
+
+  _scheduleWsReconnect(delayMs = 450) {
+    if (!this.callActive || this.engineMode !== 'studio_s2s' || this.wsReconnectTimer) return;
+    if ((this.wsReconnectAttempts || 0) >= 5) return;
+    this.wsReconnectTimer = setTimeout(() => {
+      this.wsReconnectTimer = null;
+      if (!this.callActive || this.engineMode !== 'studio_s2s') return;
+      this.wsReconnectAttempts = (this.wsReconnectAttempts || 0) + 1;
+      this.ensureStudioWebSocket().catch(() => {});
+    }, delayMs);
+  }
+
+  _clearTurnWatchdogs() {
+    if (this.s2sTurnWatchdog) {
+      clearTimeout(this.s2sTurnWatchdog);
+      this.s2sTurnWatchdog = null;
+    }
+    if (this.thinkingWatchdog) {
+      clearTimeout(this.thinkingWatchdog);
+      this.thinkingWatchdog = null;
+    }
+  }
+
+  _commitStudioS2sUtteranceEnd(int16Chunks) {
+    const speechEndedAt = performance.now();
+    this.lastTurnCommitAt = speechEndedAt;
+    if (!this.streamingUserTurn) {
+      this.emit('interim', { text: 'Processing spoken turn…' });
+    }
+    if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+      const zeroB64 = abToBase64(new Int16Array(1600).buffer);
+      for (let i = 0; i < 6; i++) {
+        try {
+          this.ws.send(JSON.stringify({ type: 'audio', pcm16_b64: zeroB64 }));
+        } catch {
+          break;
+        }
+      }
+    } else {
+      this._fallbackAudioTurnHttp(int16Chunks);
+      return;
+    }
+    if (this.s2sTurnWatchdog) clearTimeout(this.s2sTurnWatchdog);
+    this.s2sTurnWatchdog = setTimeout(() => {
+      this.s2sTurnWatchdog = null;
+      if (!this.callActive || this.state === 'speaking') return;
+      if ((this.s2sLastServerActivityAt || 0) < speechEndedAt) {
+        this._fallbackAudioTurnHttp(int16Chunks);
+      }
+    }, 3400);
+  }
+
+  async _fallbackAudioTurnHttp(int16Chunks) {
+    if (!this.callActive || !int16Chunks || !int16Chunks.length) return;
+    this.emit('interim', { text: 'Grounded audio recovery active…' });
+    this.state = 'thinking';
+    this._emitState();
+
+    const activeStudy = this.studiesById.get(this.activeStudyId);
+    const activeBlog = activeStudy ? this.blogById.get(activeStudy.id) : null;
+    const wavB64 = pcm16ChunksToWavBase64(int16Chunks, 16000);
+    const ctrl = new AbortController();
+    this.turnAbort = ctrl;
+    let spokenReply = '';
+
+    try {
+      const r = await fetch(`${RESEARCH_ORIGIN}/api/live/turn`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text: '',
+          audio_wav_b64: wavB64,
+          register: 'pi',
+          site: this.buildCompactSiteDescriptor(),
+          jpeg_b64: this.visionStream ? this.lastFrameB64 || null : null,
+        }),
+        signal: ctrl.signal,
+      });
+      if (r.ok) {
+        const d = await r.json();
+        spokenReply = String(d.spoken_text || '').trim();
+        if (d.witness_clip) this._emitWitnessTurn(d.witness_clip);
+      }
+    } catch {}
+
+    this.emit('interim', { text: '' });
+    if (ctrl.signal.aborted || !this.callActive) return;
+
+    if (!this.streamingUserTurn) {
+      const uTurn = {
+        id: `eco-turn-${++this.turnCounter}`,
+        role: 'user',
+        speakerName: 'You',
+        speakerRole: `${this.surface.domain} · Voice`,
+        text: '🎙 [Spoken question]',
+        ts: Date.now(),
+      };
+      this.transcript.push(uTurn);
+      this.emit('turn', uTurn);
+    } else {
+      this.sealStreamingTurns();
+    }
+
+    if (!spokenReply && activeStudy) {
+      const plainLead =
+        (activeStudy.plain_bullets && activeStudy.plain_bullets[0]) || activeStudy.headline_claim || activeStudy.short_title;
+      spokenReply = `In plain words on ${activeStudy.short_title}: ${plainLead} Ask if you want the technical metrics or formal proof.`;
+    }
+    if (!spokenReply) spokenReply = 'I heard you — ask about any study or figure on this page in plain words.';
+
+    if (this.engineMode === 'studio_s2s') {
+      try {
+        const ws = await this.ensureStudioWebSocket();
+        ws.send(
+          JSON.stringify({
+            type: 'text',
+            text: `Read this grounded answer naturally and verbatim in 2 crisp sentences: ${spokenReply}`,
+          })
+        );
+        return;
+      } catch {}
+    }
+
+    const persona = STUDIO_VOICES[this.voice] || STUDIO_VOICES.Aoede;
+    const aiTurn = {
+      id: `eco-turn-${++this.turnCounter}`,
+      role: 'assistant',
+      speakerName: persona.name,
+      speakerRole: `${persona.role} · Kokoro FP32`,
+      text: spokenReply,
+      receipt: this.makeReceipt(activeStudy, activeBlog),
+      ts: Date.now(),
+    };
+    this.transcript.push(aiTurn);
+    this.emit('turn', aiTurn);
+
+    await this.speakSovereignKokoro(spokenReply, { voice: this.voice, speed: this.speed, signal: ctrl.signal });
+    if (!ctrl.signal.aborted && this.activeSources.size === 0) {
+      this.state = this.callActive ? 'listening' : 'idle';
+      this._emitState();
+    }
   }
 
   // ---------- Default Engine (`studio_s2s`): Cross-Origin `wss://research.openie.dev/api/live/ws` ----------
@@ -1747,6 +1977,7 @@ export class OpenIEEcosystemSDK {
           return;
         }
         if (msg.type === 'ready') {
+          this.wsReconnectAttempts = 0;
           if (!settled) {
             settled = true;
             clearTimeout(timer);
@@ -1756,8 +1987,15 @@ export class OpenIEEcosystemSDK {
           this._emitState();
           this._emitTelemetry();
         } else if (msg.type === 'audio' && msg.pcm24_b64) {
+          this.s2sLastServerActivityAt = performance.now();
+          this._clearTurnWatchdogs();
+          this.emit('interim', { text: '' });
           this.enqueuePcmPlayback(pcm16Base64ToFloat32(msg.pcm24_b64), msg.sample_rate || 24000);
         } else if (msg.type === 'transcript' && msg.text) {
+          if (msg.role !== 'user') {
+            this.s2sLastServerActivityAt = performance.now();
+            this._clearTurnWatchdogs();
+          }
           this._handleStreamingTranscript(msg.role === 'user' ? 'user' : 'assistant', msg.text, !!msg.finished);
         } else if (msg.type === 'citations' && Array.isArray(msg.items)) {
           this.sealStreamingTurns();
@@ -1767,6 +2005,8 @@ export class OpenIEEcosystemSDK {
         } else if (msg.type === 'interrupted') {
           this.bargeIn('ws-interrupted');
         } else if (msg.type === 'turn_complete') {
+          this.s2sLastServerActivityAt = performance.now();
+          this._clearTurnWatchdogs();
           this.sealStreamingTurns();
           if (typeof msg.joules_est === 'number') this._bumpBrowserHeuristic(msg.joules_est);
           if (this.activeSources.size === 0) {
@@ -1797,6 +2037,10 @@ export class OpenIEEcosystemSDK {
           this.ws = null;
           this.wsReadyPromise = null;
           this._emitState();
+          if (this.callActive && this.engineMode === 'studio_s2s') {
+            const backoff = Math.min(2500, 450 * Math.pow(1.6, this.wsReconnectAttempts || 0));
+            this._scheduleWsReconnect(backoff);
+          }
         }
       };
     });
@@ -2324,7 +2568,16 @@ export class OpenIEEcosystemSDK {
       try {
         const ws = await this.ensureStudioWebSocket();
         if (this.visionStream) this.sampleAndPushVisionFrame(true);
+        const sentAt = performance.now();
         ws.send(JSON.stringify({ type: 'text', text: groundedPrompt }));
+        if (this.thinkingWatchdog) clearTimeout(this.thinkingWatchdog);
+        this.thinkingWatchdog = setTimeout(() => {
+          this.thinkingWatchdog = null;
+          if (this.state === 'thinking' && (this.s2sLastServerActivityAt || 0) < sentAt) {
+            this.state = this.callActive ? 'listening' : 'idle';
+            this._emitState();
+          }
+        }, 7000);
         return;
       } catch {}
     }
@@ -2438,6 +2691,13 @@ export class OpenIEEcosystemSDK {
   endCall() {
     this.bargeIn('silent-reset');
     this.callActive = false;
+    this.s2sSpeaking = false;
+    this.s2sPcm16Chunks = [];
+    this._clearTurnWatchdogs();
+    if (this.wsReconnectTimer) {
+      clearTimeout(this.wsReconnectTimer);
+      this.wsReconnectTimer = null;
+    }
     this._stopSovereignSpeechRec();
     if (this.ws) {
       try {
@@ -2455,6 +2715,12 @@ export class OpenIEEcosystemSDK {
         this.workletNode.disconnect();
       } catch {}
       this.workletNode = null;
+    }
+    if (this.micSilentSink) {
+      try {
+        this.micSilentSink.disconnect();
+      } catch {}
+      this.micSilentSink = null;
     }
     if (this.micStream) {
       this.micStream.getTracks().forEach((t) => t.stop());
