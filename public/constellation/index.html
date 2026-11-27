@@ -148,19 +148,24 @@
       </div>
 
       <div class="view" id="v-lineage">
-        <p class="hint">The documented road of ideas: influence edges (influenced_by) from the merged catalog, laid out by first-appearance year. <b>Lanes are language families; the horizontal axis is year.</b> Zoom and scroll to navigate the decades; <b>click any language to focus its lineage</b> — ancestors and descendants highlight on the map and list readably in the panel below. Independent of any one system.</p>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
-          <button id="linZoomOut" title="Zoom out">−</button>
-          <button id="linZoomIn" title="Zoom in">+</button>
-          <button id="linFit">Fit width</button>
+        <p class="hint">The documented road of ideas: influence edges (influenced_by) from the merged catalog, by first-appearance year. <b>Lanes are families; the horizontal axis is year.</b> Click or hover a language; <b>click to focus its lineage</b> (ancestors + descendants highlight and list in the panel). Independent of any one system.</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:6px">
+          <button id="linZoomOut" title="Zoom out (−)">−</button>
+          <button id="linZoomIn" title="Zoom in (+)">+</button>
+          <button id="linFit" title="Fit width (0)">Fit</button>
           <span class="hint" style="margin-left:6px">Jump:</span><span id="linEras" style="display:flex;gap:4px;flex-wrap:wrap"></span>
-          <input id="linFocus" placeholder="Focus a language…" style="margin-left:auto;background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:5px 9px;font-size:13px;min-width:180px">
-          <button id="linClear">Clear focus</button>
+          <input id="linFocus" list="linNames" placeholder="Search a language… (/)" autocomplete="off" style="margin-left:auto;background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:5px 9px;font-size:13px;min-width:200px">
+          <datalist id="linNames"></datalist>
+          <button id="linClear" title="Clear focus (Esc)">Clear</button>
         </div>
-        <div id="linScroll" style="overflow:auto;max-height:560px;border:1px solid var(--line);border-radius:8px;background:var(--bg)">
-          <canvas id="lin"></canvas>
+        <p class="hint" style="margin:0 0 6px"><b>Mouse:</b> drag to pan · wheel to zoom · hover for details · click to focus. &nbsp; <b>Keyboard:</b> ←/→ move by year · ↑/↓ change family · Enter focus · +/− zoom · 0 fit · / search · Esc clear.</p>
+        <div id="linWrap" style="position:relative">
+          <div id="linScroll" tabindex="0" style="overflow:auto;max-height:560px;border:1px solid var(--line);border-radius:8px;background:var(--bg);outline:none;cursor:grab">
+            <canvas id="lin"></canvas>
+          </div>
+          <div id="linTip" style="position:absolute;pointer-events:none;display:none;background:var(--panel);border:1px solid var(--acc);border-radius:6px;padding:5px 9px;font-size:12px;color:var(--ink);z-index:5;max-width:260px;box-shadow:0 2px 8px rgba(0,0,0,.3)"></div>
         </div>
-        <div class="sec" id="linPanel" style="margin-top:12px"><p class="hint">Click a language above (or type its name) to read its lineage.</p></div>
+        <div class="sec" id="linPanel" style="margin-top:12px"><p class="hint">Click a language above (or search, or use arrow keys + Enter) to read its lineage.</p></div>
       </div>
 
       <div class="view" id="v-landscape">
@@ -393,8 +398,27 @@ function doInfo(){ const m=L.filter(l=>l.g);
   $("itbl").querySelectorAll("tr.pill").forEach(tr=>tr.addEventListener("click",()=>{ const l=byName[tr.dataset.n.toLowerCase()]; selected=l; render(l); })); }
 
 /* lineage — zoomable, scrollable family swimlanes + focus + readable panel */
-const LIN={px:16,focus:null,init:false,nodes:[],idx:{},edges:[],P:{},y0:1940,y1:2030,left:150,laneH:30,top:28};
+const LIN={px:24,focus:null,cursor:null,hover:null,init:false,nodes:[],sorted:[],idx:{},edges:[],P:{},famY:{},y0:1940,y1:2030,left:160,laneH:34,top:28,drag:null};
 function linHash(s){ let h=0; for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0; return Math.abs(h); }
+function linX(y){ return LIN.left+(y-LIN.y0)*LIN.px; }
+function linNearest(px,py,rad){ let best=null,bd=rad*rad; for(const l of LIN.nodes){ const p=LIN.P[l.n]; if(!p) continue; const d=(p[0]-px)**2+(p[1]-py)**2; if(d<bd){bd=d;best=l;} } return best; }
+function linScrollTo(name){ const l=LIN.idx[name.toLowerCase()]; if(!l||!l.y) return; const sc=$("linScroll"); const x=linX(l.y), y=(LIN.famY[l.f]||0)+LIN.laneH/2;
+  if(x<sc.scrollLeft+LIN.left||x>sc.scrollLeft+sc.clientWidth-40) sc.scrollLeft=Math.max(0,x-sc.clientWidth/2);
+  if(y<sc.scrollTop+20||y>sc.scrollTop+sc.clientHeight-20) sc.scrollTop=Math.max(0,y-sc.clientHeight/2); }
+function linTipAt(name,cx,cy){ const l=LIN.idx[name.toLowerCase()]; const tip=$("linTip"); const wrap=$("linWrap").getBoundingClientRect();
+  tip.innerHTML=`<b>${esc(l.n)}</b> · ${l.y??""}<br><span class="hint">${esc(l.f)}${l.m?" · measured":""}</span>`;
+  tip.style.display="block"; tip.style.left=Math.min(cx-wrap.left+14,wrap.width-270)+"px"; tip.style.top=(cy-wrap.top+14)+"px"; }
+function linHideTip(){ $("linTip").style.display="none"; }
+function linMoveCursor(dx,dy){
+  if(!LIN.sorted.length) return;
+  let cur=LIN.cursor?LIN.idx[LIN.cursor.toLowerCase()]:null;
+  if(!cur){ cur=LIN.sorted[0]; }
+  else if(dx){ let i=LIN.sorted.indexOf(cur); i=Math.max(0,Math.min(LIN.sorted.length-1,i+dx)); cur=LIN.sorted[i]; }
+  else if(dy){ const fi=FAM.indexOf(cur.f); const nf=FAM[Math.max(0,Math.min(FAM.length-1,fi+dy))];
+    const cand=LIN.nodes.filter(l=>l.f===nf); if(cand.length){ cand.sort((a,b)=>Math.abs(a.y-cur.y)-Math.abs(b.y-cur.y)); cur=cand[0]; } }
+  LIN.cursor=cur.n; linScrollTo(cur.n); drawLineage();
+  const p=LIN.P[cur.n]; const b=$("lin").getBoundingClientRect(); linTipAt(cur.n,b.left+p[0],b.top+p[1]);
+}
 function linLineage(name){
   const parents={},children={};
   for(const [a,b] of LIN.edges){ (children[a.n]=children[a.n]||[]).push(b.n); (parents[b.n]=parents[b.n]||[]).push(a.n); }
@@ -409,36 +433,32 @@ function drawLineage(){
   const width=left+(y1-y0)*px+40, height=top+FAM.length*laneH+12;
   lc.width=width*DPR; lc.height=height*DPR; lc.style.width=width+"px"; lc.style.height=height+"px";
   const c=lc.getContext("2d"); c.setTransform(DPR,0,0,DPR,0,0); c.clearRect(0,0,width,height);
-  const X=y=>left+(y-y0)*px;
-  const famY={}; FAM.forEach((f,i)=>famY[f]=top+i*laneH);
-  // lanes + family labels
+  const famY={}; FAM.forEach((f,i)=>famY[f]=top+i*laneH); LIN.famY=famY;
   FAM.forEach((f,i)=>{ const y=famY[f];
     if(i%2){ c.fillStyle=cssv("--panel"); c.globalAlpha=.5; c.fillRect(0,y,width,laneH); c.globalAlpha=1; }
     c.strokeStyle=cssv("--line"); c.globalAlpha=.5; c.beginPath(); c.moveTo(0,y+laneH); c.lineTo(width,y+laneH); c.stroke(); c.globalAlpha=1;
     c.fillStyle=famColor(f); c.font="11px sans-serif"; c.fillText(f,8,y+laneH/2+4); });
-  // year gridlines + labels
   const step=px>=30?5:10;
   c.font="10px sans-serif";
-  for(let y=Math.ceil(y0/step)*step;y<=y1;y+=step){ const x=X(y);
+  for(let y=Math.ceil(y0/step)*step;y<=y1;y+=step){ const x=linX(y);
     c.strokeStyle=cssv("--line"); c.globalAlpha=(y%10===0)?.6:.25; c.beginPath(); c.moveTo(x,top); c.lineTo(x,height); c.stroke(); c.globalAlpha=1;
     if(y%10===0){ c.fillStyle=cssv("--mut"); c.fillText(y,x+2,12); } }
-  // positions (deterministic jitter within lane)
-  const P={}; LIN.nodes.forEach(l=>{ const jy=((linHash(l.n)%(laneH-10))-(laneH-10)/2); P[l.n]=[X(l.y),famY[l.f]+laneH/2+jy]; }); LIN.P=P;
+  const P={}; LIN.nodes.forEach(l=>{ const jy=((linHash(l.n)%(laneH-12))-(laneH-12)/2); P[l.n]=[linX(l.y),famY[l.f]+laneH/2+jy]; }); LIN.P=P;
   const foc=LIN.focus?linLineage(LIN.focus):null;
-  // edges
   for(const [a,b] of LIN.edges){ const pa=P[a.n],pb=P[b.n]; if(!pa||!pb) continue;
     const hot=foc&&foc.set.has(a.n)&&foc.set.has(b.n);
     c.strokeStyle=hot?cssv("--acc"):cssv("--blue"); c.globalAlpha=hot?.8:(foc?.06:.2); c.lineWidth=hot?1.6:1;
     c.beginPath(); c.moveTo(pa[0],pa[1]); c.lineTo(pb[0],pb[1]); c.stroke(); }
   c.globalAlpha=1; c.lineWidth=1;
-  // nodes + labels
   for(const l of LIN.nodes){ const p=P[l.n]; if(!p) continue; const [x,y]=p;
     const inFoc=!foc||foc.set.has(l.n);
     c.globalAlpha=inFoc?1:.15;
-    c.beginPath(); c.arc(x,y,l.m?4:2.5,0,7); c.fillStyle=l.m?cssv("--acc"):famColor(l.f); c.fill();
-    if(LIN.focus===l.n){ c.strokeStyle=cssv("--ink"); c.lineWidth=2; c.beginPath(); c.arc(x,y,7,0,7); c.stroke(); c.lineWidth=1; }
-    if(l.m||px>=22){ c.fillStyle=cssv("--light"); c.font=(l.m?"10px":"9px")+" sans-serif"; c.fillText(l.n,x+6,y+3); }
-    c.globalAlpha=1; }
+    c.beginPath(); c.arc(x,y,l.m?5:3,0,7); c.fillStyle=l.m?cssv("--acc"):famColor(l.f); c.fill();
+    if(l.m||px>=20){ c.fillStyle=cssv("--light"); c.font=(l.m?"10px":"9px")+" sans-serif"; c.fillText(l.n,x+7,y+3); }
+    c.globalAlpha=1;
+    if(LIN.focus===l.n){ c.strokeStyle=cssv("--acc"); c.lineWidth=2.5; c.beginPath(); c.arc(x,y,8,0,7); c.stroke(); c.lineWidth=1; }
+    if(LIN.cursor===l.n){ c.strokeStyle=cssv("--ink"); c.lineWidth=1.5; c.setLineDash([3,2]); c.beginPath(); c.arc(x,y,10,0,7); c.stroke(); c.setLineDash([]); c.lineWidth=1; }
+    if(LIN.hover===l.n){ c.strokeStyle=cssv("--blue"); c.lineWidth=2; c.beginPath(); c.arc(x,y,7,0,7); c.stroke(); c.lineWidth=1; } }
 }
 function linPanel(name){
   const l=LIN.idx[name.toLowerCase()]; const panel=$("linPanel");
@@ -455,19 +475,56 @@ function linPanel(name){
     <p class="hint" style="margin-top:8px">Click any name to walk the lineage. The map highlights the full ancestor/descendant chain.</p>`;
   panel.querySelectorAll("button.pill").forEach(b=>b.addEventListener("click",()=>linSetFocus(b.dataset.n)));
 }
-function linSetFocus(name){ LIN.focus=name; const l=LIN.idx[name.toLowerCase()]; if(l&&l.y){ const sc=$("linScroll"); sc.scrollLeft=Math.max(0,LIN.left+(l.y-LIN.y0)*LIN.px-sc.clientWidth/2); } drawLineage(); linPanel(name); $("linFocus").value=name; }
+function linSetFocus(name){ LIN.focus=name; LIN.cursor=name; linScrollTo(name); drawLineage(); linPanel(name); $("linFocus").value=name; }
+function linZoom(f,anchorX){ const sc=$("linScroll"); const mx=(anchorX!=null?anchorX:sc.clientWidth/2);
+  const yearAt=LIN.y0+(mx+sc.scrollLeft-LIN.left)/LIN.px;
+  LIN.px=Math.max(4,Math.min(90,LIN.px*f));
+  drawLineage(); sc.scrollLeft=Math.max(0,LIN.left+(yearAt-LIN.y0)*LIN.px-mx); }
 function doLineage(){
   if(!LIN.init){
     LIN.nodes=L.filter(l=>l.y); LIN.idx={}; LIN.nodes.forEach(l=>LIN.idx[l.n.toLowerCase()]=l);
+    LIN.sorted=LIN.nodes.slice().sort((a,b)=>a.y-b.y||FAM.indexOf(a.f)-FAM.indexOf(b.f)||a.n.localeCompare(b.n));
     LIN.edges=[]; for(const l of LIN.nodes)for(const p of (l.ib||[])){ const t=LIN.idx[p.toLowerCase()]; if(t)LIN.edges.push([t,l]); }
     const ys=LIN.nodes.map(l=>l.y); LIN.y0=Math.floor(Math.min(...ys)/10)*10; LIN.y1=Math.ceil(Math.max(...ys)/10)*10+2;
-    const eras=$("linEras"); for(let d=Math.ceil(LIN.y0/10)*10;d<=LIN.y1;d+=10){ const b=document.createElement("button"); b.textContent=d+"s"; b.addEventListener("click",()=>{ $("linScroll").scrollLeft=Math.max(0,LIN.left+(d-LIN.y0)*LIN.px-20); }); eras.appendChild(b); }
-    $("linZoomIn").addEventListener("click",()=>{ LIN.px=Math.min(80,LIN.px*1.4); drawLineage(); });
-    $("linZoomOut").addEventListener("click",()=>{ LIN.px=Math.max(4,LIN.px/1.4); drawLineage(); });
+    const dl=$("linNames"); LIN.sorted.forEach(l=>{ const o=document.createElement("option"); o.value=l.n; dl.appendChild(o); });
+    const eras=$("linEras"); for(let d=Math.ceil(LIN.y0/10)*10;d<=LIN.y1;d+=10){ const b=document.createElement("button"); b.textContent=d+"s"; b.addEventListener("click",()=>{ $("linScroll").scrollLeft=Math.max(0,linX(d)-20); }); eras.appendChild(b); }
+    $("linZoomIn").addEventListener("click",()=>linZoom(1.4));
+    $("linZoomOut").addEventListener("click",()=>linZoom(1/1.4));
     $("linFit").addEventListener("click",()=>{ const w=$("linScroll").clientWidth; LIN.px=Math.max(4,(w-LIN.left-40)/(LIN.y1-LIN.y0)); drawLineage(); $("linScroll").scrollLeft=0; });
-    $("linClear").addEventListener("click",()=>{ LIN.focus=null; $("linFocus").value=""; drawLineage(); $("linPanel").innerHTML='<p class="hint">Click a language above (or type its name) to read its lineage.</p>'; });
-    $("linFocus").addEventListener("input",e=>{ const q=e.target.value.trim().toLowerCase(); if(!q) return; const hit=LIN.nodes.find(l=>l.n.toLowerCase()===q)||LIN.nodes.find(l=>l.n.toLowerCase().startsWith(q)); if(hit) linSetFocus(hit.n); });
-    $("lin").addEventListener("click",e=>{ const b=$("lin").getBoundingClientRect(); const px=e.clientX-b.left,py=e.clientY-b.top; let best=null,bd=1e9; for(const l of LIN.nodes){ const p=LIN.P[l.n]; if(!p) continue; const d=(p[0]-px)**2+(p[1]-py)**2; if(d<100&&d<bd){bd=d;best=l;} } if(best) linSetFocus(best.n); });
+    $("linClear").addEventListener("click",()=>{ LIN.focus=null; LIN.cursor=null; $("linFocus").value=""; linHideTip(); drawLineage(); $("linPanel").innerHTML='<p class="hint">Click a language above (or search, or use arrow keys + Enter) to read its lineage.</p>'; });
+    const foc=$("linFocus");
+    foc.addEventListener("input",e=>{ const q=e.target.value.trim().toLowerCase(); if(!q) return; const hit=LIN.idx[q]||LIN.nodes.find(l=>l.n.toLowerCase().startsWith(q)); if(hit&&LIN.idx[q]) linSetFocus(hit.n); });
+    foc.addEventListener("change",e=>{ const hit=LIN.idx[e.target.value.trim().toLowerCase()]; if(hit) linSetFocus(hit.n); });
+    foc.addEventListener("keydown",e=>{ if(e.key==="Enter"){ const hit=LIN.idx[foc.value.trim().toLowerCase()]||LIN.nodes.find(l=>l.n.toLowerCase().startsWith(foc.value.trim().toLowerCase())); if(hit){ linSetFocus(hit.n); $("linScroll").focus(); } } if(e.key==="Escape"){ foc.blur(); $("linScroll").focus(); } });
+    const sc=$("linScroll"), lc=$("lin");
+    // mouse: hover tooltip + cursor
+    lc.addEventListener("mousemove",e=>{ if(LIN.drag){ sc.scrollLeft=LIN.drag.sl-(e.clientX-LIN.drag.x); sc.scrollTop=LIN.drag.st-(e.clientY-LIN.drag.y); return; }
+      const b=lc.getBoundingClientRect(); const hit=linNearest(e.clientX-b.left,e.clientY-b.top,14);
+      lc.style.cursor=hit?"pointer":"grab";
+      if(hit){ if(LIN.hover!==hit.n){ LIN.hover=hit.n; drawLineage(); } linTipAt(hit.n,e.clientX,e.clientY); }
+      else if(LIN.hover){ LIN.hover=null; linHideTip(); drawLineage(); } });
+    lc.addEventListener("mouseleave",()=>{ if(LIN.hover){ LIN.hover=null; drawLineage(); } linHideTip(); });
+    // mouse: drag to pan
+    lc.addEventListener("mousedown",e=>{ LIN.drag={x:e.clientX,y:e.clientY,sl:sc.scrollLeft,st:sc.scrollTop,moved:false}; lc.style.cursor="grabbing"; });
+    window.addEventListener("mousemove",e=>{ if(LIN.drag&&(Math.abs(e.clientX-LIN.drag.x)>3||Math.abs(e.clientY-LIN.drag.y)>3)) LIN.drag.moved=true; });
+    window.addEventListener("mouseup",()=>{ if(LIN.drag){ LIN.drag=null; lc.style.cursor="grab"; } });
+    // mouse: click to focus (ignore drags)
+    lc.addEventListener("click",e=>{ if(LIN.drag&&LIN.drag.moved) return; const b=lc.getBoundingClientRect(); const hit=linNearest(e.clientX-b.left,e.clientY-b.top,14); if(hit){ linSetFocus(hit.n); sc.focus(); } });
+    // wheel to zoom (anchor at pointer)
+    sc.addEventListener("wheel",e=>{ e.preventDefault(); const b=lc.getBoundingClientRect(); linZoom(e.deltaY<0?1.15:1/1.15, e.clientX-b.left); },{passive:false});
+    // keyboard navigation
+    sc.addEventListener("keydown",e=>{
+      const k=e.key;
+      if(k==="ArrowRight"){ linMoveCursor(1,0); e.preventDefault(); }
+      else if(k==="ArrowLeft"){ linMoveCursor(-1,0); e.preventDefault(); }
+      else if(k==="ArrowDown"){ linMoveCursor(0,1); e.preventDefault(); }
+      else if(k==="ArrowUp"){ linMoveCursor(0,-1); e.preventDefault(); }
+      else if(k==="Enter"){ if(LIN.cursor){ linSetFocus(LIN.cursor); e.preventDefault(); } }
+      else if(k==="+"||k==="="){ linZoom(1.4); e.preventDefault(); }
+      else if(k==="-"){ linZoom(1/1.4); e.preventDefault(); }
+      else if(k==="0"){ $("linFit").click(); e.preventDefault(); }
+      else if(k==="Escape"){ $("linClear").click(); e.preventDefault(); }
+      else if(k==="/"){ foc.focus(); foc.select(); e.preventDefault(); } });
     LIN.init=true;
   }
   drawLineage();
