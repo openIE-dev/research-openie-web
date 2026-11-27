@@ -448,7 +448,7 @@ async function verifyLiveVoiceProtocols() {
         }
         if (msg.type === 'ready' && phase === 'awaiting_ready') {
           phase = 'greeting';
-          ws.send(JSON.stringify({ type: 'text', text: 'Say the single word Ready.' }));
+          ws.send(JSON.stringify({ type: 'text', text: 'Hello! Please say Studio Ready out loud in one short phrase.' }));
         } else if (msg.type === 'audio' && msg.pcm24_b64) {
           if (phase === 'greeting') greetAudioBytes += msg.pcm24_b64.length;
           else if (phase === 'speaking_user' || phase === 'awaiting_voice_reply') replyAudioBytes += msg.pcm24_b64.length;
@@ -467,7 +467,11 @@ async function verifyLiveVoiceProtocols() {
           if (phase === 'greeting') {
             if (greetAudioBytes < 1000) {
               clearTimeout(guard);
-              finish(false, `WSS /api/live/ws greeting produced insufficient audio (${greetAudioBytes})`);
+              finish(
+                false,
+                `WSS /api/live/ws greeting produced insufficient audio (${greetAudioBytes})`,
+                attempt < 2
+              );
               return;
             }
             phase = 'speaking_user';
