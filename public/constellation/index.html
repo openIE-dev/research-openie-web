@@ -109,8 +109,10 @@
         <button id="zout" title="Zoom out">−</button>
         <button id="zfit" title="Fit all">Fit</button>
         <button id="reset">Reset view</button>
+        <span class="hint" style="margin-left:auto">drag pan · wheel zoom · click select · dbl-click focus · arrows move · Enter focus · / search</span>
       </div>
-      <canvas id="cv"></canvas>
+      <canvas id="cv" tabindex="0" style="outline:none"></canvas>
+      <div id="ontoTip" style="position:absolute;pointer-events:none;display:none;background:var(--panel);border:1px solid var(--acc);border-radius:6px;padding:5px 9px;font-size:12px;color:var(--ink);z-index:6;max-width:260px;box-shadow:0 2px 8px rgba(0,0,0,.3)"></div>
       <div class="legend" id="legend"></div>
 
       <div class="view" id="v-search">
@@ -300,11 +302,32 @@ let drag=null;
 cv.addEventListener("mousedown",e=>drag={x:e.clientX,y:e.clientY,vx:vw.x,vy:vw.y,moved:false});
 addEventListener("mousemove",e=>{ const r=cv.getBoundingClientRect(); const px=e.clientX-r.left,py=e.clientY-r.top;
   if(drag){ const dx=e.clientX-drag.x,dy=e.clientY-drag.y; if(Math.abs(dx)+Math.abs(dy)>3)drag.moved=true; vw.x=drag.vx+dx; vw.y=drag.vy+dy; draw(); return; }
-  if(view!=="ontology")return; if(px<0||py<0||px>r.width||py>r.height){hover=null;return;}
-  const l=pick(px,py); if(l!==hover){hover=l;cv.style.cursor=l?"pointer":"grab";draw();} });
+  if(view!=="ontology")return; const tip=$("ontoTip");
+  if(px<0||py<0||px>r.width||py>r.height){ if(hover){hover=null;draw();} tip.style.display="none"; return; }
+  const l=pick(px,py); if(l!==hover){hover=l;cv.style.cursor=l?"pointer":"grab";draw();}
+  if(l){ const sr=$("stage").getBoundingClientRect(); tip.innerHTML=`<b>${esc(l.n)}</b>${l.y?" · "+l.y:""}<br><span class="hint">${esc(l.f)}${l.m?" · measured":""}</span>`; tip.style.display="block"; tip.style.left=Math.min(e.clientX-sr.left+14,sr.width-270)+"px"; tip.style.top=(e.clientY-sr.top+14)+"px"; } else tip.style.display="none"; });
 addEventListener("mouseup",e=>{ if(drag&&!drag.moved&&view==="ontology"){ const r=cv.getBoundingClientRect(); const l=pick(e.clientX-r.left,e.clientY-r.top); if(l){selected=l;render(l);} } drag=null; });
 cv.addEventListener("wheel",e=>{ e.preventDefault(); const r=cv.getBoundingClientRect(); const px=e.clientX-r.left,py=e.clientY-r.top; const f=e.deltaY<0?1.18:1/1.18; const nk=Math.min(160,Math.max(.04,vw.k*f)); vw.x=px-(px-vw.x)*(nk/vw.k); vw.y=py-(py-vw.y)*(nk/vw.k); vw.k=nk; draw(); },{passive:false});
 cv.addEventListener("dblclick",e=>{ const r=cv.getBoundingClientRect(); const l=pick(e.clientX-r.left,e.clientY-r.top); if(l)focusNode(l); });
+function ensureVisible(l){ const r=$("stage").getBoundingClientRect(); const [x,y]=pos[l.n]; const sx=x*vw.k+vw.x, sy=y*vw.k+vw.y; if(sx<40||sx>r.width-40||sy<40||sy>r.height-40){ vw.x=r.width/2-x*vw.k; vw.y=r.height/2-y*vw.k; } }
+function kbMove(dirx,diry){ const cur=selected||L.find(visible); if(!cur||!pos[cur.n])return; const [cx,cy]=pos[cur.n];
+  let best=null,bs=1e18;
+  for(const l of L){ if(!visible(l)||l===cur||!pos[l.n])continue; const [x,y]=pos[l.n]; const dx=x-cx,dy=y-cy;
+    const fwd=dx*dirx+dy*diry; if(fwd<=0)continue; const perp=Math.abs(dx*diry-dy*dirx);
+    const s=Math.hypot(dx,dy)+perp*1.5; if(s<bs){bs=s;best=l;} }
+  if(best){ selected=best; render(best); ensureVisible(best); draw(); } }
+cv.addEventListener("keydown",e=>{ const k=e.key;
+  if(k==="ArrowRight"){kbMove(1,0);e.preventDefault();}
+  else if(k==="ArrowLeft"){kbMove(-1,0);e.preventDefault();}
+  else if(k==="ArrowDown"){kbMove(0,1);e.preventDefault();}
+  else if(k==="ArrowUp"){kbMove(0,-1);e.preventDefault();}
+  else if(k==="Enter"){ if(selected)focusNode(selected); e.preventDefault(); }
+  else if(k==="+"||k==="="){zoomBy(1.3);e.preventDefault();}
+  else if(k==="-"){zoomBy(1/1.3);e.preventDefault();}
+  else if(k==="0"){ $("zfit").click(); e.preventDefault(); }
+  else if(k==="/"){ $("q").focus(); e.preventDefault(); }
+  else if(k==="Escape"){ hover=null; $("ontoTip").style.display="none"; draw(); e.preventDefault(); } });
+cv.addEventListener("mouseleave",()=>{ $("ontoTip").style.display="none"; });
 function zoomBy(f){ const r=cv.getBoundingClientRect(); const px=r.width/2,py=r.height/2; const nk=Math.min(160,Math.max(.04,vw.k*f)); vw.x=px-(px-vw.x)*(nk/vw.k); vw.y=py-(py-vw.y)*(nk/vw.k); vw.k=nk; draw(); }
 function focusNode(l){ const r=$("stage").getBoundingClientRect(); const [x,y]=pos[l.n]; vw.k=Math.max(vw.k,8); vw.x=r.width/2-x*vw.k; vw.y=r.height/2-y*vw.k; selected=l; render(l); draw(); }
 
