@@ -925,6 +925,7 @@ async function verifyHeadlessBrowserUserJourneys() {
         '/sourcesheets/gates/',
         '/sourcesheets/lut-adapt/',
         '/blueprint/',
+        '/replication/',
         '/glossary/',
         '/data/',
       ];

@@ -1,0 +1,322 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const KITS = [
+  {
+    id: 'compiled-agency',
+    name: 'Kit #0 · Compiled Agency & 6-Model Oct–Nov 2026 SOTA Shunt Panel',
+    substrate: 'all',
+    evidence: 'measured_j · reported_j · unmetered',
+    repo: 'https://github.com/openIE-dev/openie-research-experiments',
+    paper: '/living/compiled-agency/',
+    sheet: '/sourcesheets/from-ephemeral-inference-to-compiled-agency/',
+    plainSummary:
+      'Reproduces all 6 Shots on Goal, the 5,111/5,111 SHA-256 checksum manifest (@ 6a22dee), and the 300-query Zipf(0.85) lookup-first crystallization stream (29.86× Jetson Thor & 21.6× KV260 measured_j cuts; 25.84× Zen 5 reported_j cut).',
+    cmd: `git clone https://github.com/openIE-dev/openie-research-experiments.git
+cd openie-research-experiments
+sha256sum -c CHECKSUMS.sha256
+./replicate/run_replication.sh`,
+  },
+  {
+    id: 'deterministic-null',
+    name: 'Kit #1 · Deterministic Null 5-Language Zero-Model Control Suite',
+    substrate: 'cpu',
+    evidence: 'reported_j · [E]/[M]',
+    repo: 'https://github.com/openIE-dev/deterministic-null',
+    paper: '/papers/deterministic-null/',
+    sheet: '/sourcesheets/deterministic-null/',
+    plainSummary:
+      'Runs the bit-identical Rust, C++20, Go, Julia, and Python zero-model baseline (Shape D) across 2,840 bounded Track-A cells and 1,190 open Track-B cells—no GPU or API keys needed for the deterministic arm.',
+    cmd: `git clone https://github.com/openIE-dev/openie-research-experiments.git
+cd openie-research-experiments
+./kits/deterministic-null-suite/run_kit.sh`,
+  },
+  {
+    id: 'rce',
+    name: 'Kit #2 · Reality Code Engine (RCE) & De Bruijn Normal-Form Compiler',
+    substrate: 'cpu',
+    evidence: 'reported_j · [T]/[E]',
+    repo: 'https://github.com/openIE-dev/rce',
+    paper: '/papers/rce-compile/',
+    sheet: '/sourcesheets/rce-compile/',
+    plainSummary:
+      'Verifies all 2,221 self-checked RCE runtime assertions, 0/500 De Bruijn alpha-renaming cache mutant collisions, and Linux RAPL prelude compile-energy cuts (20.07× Zen 5 / 15.44× Core i9).',
+    cmd: `git clone https://github.com/openIE-dev/rce.git
+cd rce
+cargo test --workspace --release`,
+  },
+  {
+    id: 'gates',
+    name: 'Kit #3 · Metered Commit Gates & KV260 INA260 Hardware Latch',
+    substrate: 'kv260',
+    evidence: 'measured_j · [E]/[T]',
+    repo: 'https://github.com/openIE-dev/openie-research-experiments',
+    paper: '/papers/gates/',
+    sheet: '/sourcesheets/gates/',
+    plainSummary:
+      'Tests the pre-action safety latch across 209,261 simulated permanent-action checks (0 unsafe approvals; 95% upper bound 1.4e-5) plus optional AMD Kria KV260 INA260 5V SOM shunt metering (11.43 nJ/check).',
+    cmd: `git clone https://github.com/openIE-dev/openie-research-experiments.git
+cd openie-research-experiments
+./replicate/run_replication.sh --study gates`,
+  },
+  {
+    id: 'littlebit-joule',
+    name: 'Kit #4 · Sub-Bit Decompression Penalty vs. Packed Integer WHT+XNOR',
+    substrate: 'jetson',
+    evidence: 'measured_j · [E]',
+    repo: 'https://github.com/openIE-dev/openie-research-experiments',
+    paper: '/living/compiled-agency/',
+    sheet: '/sourcesheets/lut-adapt/',
+    plainSummary:
+      'Measures why runtime FP32 unpacking of 0.1517-bpw weights burns 81.86× more KV260 measured_j than INT8, while packed integer WHT+XNOR cuts energy 4.1×–5.2× across a 14-point bit-width curve.',
+    cmd: `git clone https://github.com/openIE-dev/openie-research-experiments.git
+cd openie-research-experiments
+./kits/littlebit-joule/run_kit.sh`,
+  },
+  {
+    id: 'waios-mosaic',
+    name: 'Kit #5 · 6-Fabric waiOS Integer Conformance & 4-Stage Cascade',
+    substrate: 'cpu',
+    evidence: 'measured_j · unmetered · [T]/[E]',
+    repo: 'https://github.com/openIE-dev/openie-research-experiments',
+    paper: '/living/compiled-agency/',
+    sheet: '/sourcesheets/from-ephemeral-inference-to-compiled-agency/',
+    plainSummary:
+      'Verifies bit-exact BLAKE3 receipt invariance (a541323b…46f0) across CPU, Vulkan GPU, WASM SIMD128, Verilog RTL, and RV32IMAC MCU models plus the 75-cell 4-stage cascade sweep.',
+    cmd: `git clone https://github.com/openIE-dev/openie-research-experiments.git
+cd openie-research-experiments
+./kits/waios-mosaic-cascade/run_kit.sh`,
+  },
+  {
+    id: 'lean-proofs',
+    name: 'Kit #6 · Planetary Media Joule Ledger & Lean 4.36.0 Kernel Proofs',
+    substrate: 'lean',
+    evidence: 'unmetered · [T] · 0 sorry',
+    repo: 'https://github.com/openIE-dev/openie-research-experiments',
+    paper: '/papers/lut-adapt/',
+    sheet: '/sourcesheets/lut-adapt/',
+    plainSummary:
+      'Audits Planetary Media J/min energy accounting across 31 voiced / 50 captioned languages and checks 5,496 machine-checked Lean 4.36.0 theorems across 6 formal kernel models (0 sorry).',
+    cmd: `git clone https://github.com/openIE-dev/openie-research-experiments.git
+cd openie-research-experiments
+./kits/planetary-media-joule/run_kit.sh`,
+  },
+];
+
+const ISSUE_URL =
+  'https://github.com/openIE-dev/openie-research-experiments/issues/new?template=external-replication-receipt.yml&title=%5BReplication+Receipt%5D+';
+---
+
+<Layout
+  title="Independent External Replication & Falsification Portal"
+  description="Run Open Interface Engineering's 7 standalone Apache-2.0 replication kits in one command on any laptop, Linux server, NVIDIA Jetson, or AMD Kria KV260—and submit an independent replication or falsification receipt."
+>
+  <section class="max-w-6xl mx-auto px-6 md:px-10 pt-10 md:pt-14 pb-24">
+    <!-- Top Epistemic Badge Strip -->
+    <div class="flex flex-wrap items-center gap-2.5 mb-4">
+      <span class="font-mono text-[10.5px] tracking-[0.14em] uppercase px-2.5 py-1 rounded bg-brand-amber text-brand-dark font-bold">
+        Open Science · Apache-2.0 Harnesses
+      </span>
+      <span class="font-mono text-[11px] px-2.5 py-1 rounded border border-emerald-400/45 bg-emerald-500/12 text-emerald-300">
+        Current Status: Signed Provenance · Self-Checked (0 External Lab Reviews Yet)
+      </span>
+      <span class="font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-slate">
+        measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered
+      </span>
+    </div>
+
+    <h1 class="font-display text-3xl md:text-5xl font-bold text-brand-white tracking-tight leading-tight max-w-4xl">
+      Don&rsquo;t Take Our Word for It — <span class="text-brand-amber">Run the Kits or Prove Us Wrong.</span>
+    </h1>
+
+    <p class="mt-4 font-body text-base md:text-lg text-brand-slate leading-relaxed max-w-3xl">
+      Every study on <code class="text-brand-cyan">research.openie.dev</code> is currently marked <strong class="text-brand-white">Signed Provenance &middot; Self-Checked</strong>: cryptographically hashed and checked by our internal hardware and software gates, <strong class="text-brand-amber">not yet replicated by an independent outside lab</strong>. We built this page so any engineer, student, or reviewer can re-run our experiments in one command and publish either a confirmation or a falsification receipt.
+    </p>
+
+    <!-- Depth 1: Plain-Words Everyday Analogy + ABT -->
+    <div class="glass-card p-6 md:p-8 mt-8 border border-brand-amber/35 bg-gradient-to-br from-brand-amber/[0.06] via-transparent to-brand-cyan/[0.05]">
+      <div class="font-mono text-[10px] uppercase tracking-[0.15em] text-brand-amber font-semibold mb-1.5">
+        💡 In Plain Words — How Graduation from &ldquo;Self-Checked&rdquo; Works
+      </div>
+      <p class="font-body text-sm md:text-base text-brand-light leading-relaxed mb-5">
+        Think of a bakery printing its exact recipe, ingredient weights, and oven thermometer log on the box: we sign what came out of our own kitchen (<strong class="text-brand-white">Self-Checked</strong>), <strong class="text-brand-cyan">and</strong> we publish all 7 recipe kits openly, <strong class="text-brand-amber">but</strong> a dish only earns an <strong class="text-emerald-300">Externally Replicated</strong> badge after an unaffiliated kitchen bakes it independently and reports what happened—including if a step fails.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/55">
+          <div class="font-mono text-[10px] uppercase tracking-wider text-emerald-300 font-bold mb-1">
+            Step 1 · Clone &amp; Check SHA-256
+          </div>
+          <p class="font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+            Verify all <code class="text-brand-cyan">5,111 / 5,111</code> raw telemetry logs and scripts against <code class="text-brand-cyan">CHECKSUMS.sha256</code> on any Mac or Linux laptop in under 30 seconds.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/55">
+          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-amber font-bold mb-1">
+            Step 2 · Run CPU or Shunt Kit
+          </div>
+          <p class="font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+            Run the deterministic CPU/RAPL kits with zero special hardware, or attach an NVIDIA Jetson (<code class="text-brand-cyan">INA3221</code>) or AMD Kria KV260 (<code class="text-brand-cyan">INA260</code>) board for physical <code class="text-brand-cyan">measured_j</code>.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/55">
+          <div class="font-mono text-[10px] uppercase tracking-wider text-brand-cyan font-bold mb-1">
+            Step 3 · Post Signed Receipt
+          </div>
+          <p class="font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+            Open a public GitHub Replication Receipt issue with your machine&rsquo;s output JSON. Both confirmations and negative/falsifier runs are indexed verbatim.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 flex flex-wrap items-center gap-3">
+        <a
+          href={ISSUE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-brand-amber text-brand-dark font-mono text-xs font-bold no-underline hover:bg-brand-gold transition-colors"
+        >
+          📬 Submit External Replication / Falsification Receipt on GitHub ↗
+        </a>
+        <a
+          href="https://github.com/openIE-dev/openie-research-experiments"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-brand-cyan/45 text-brand-cyan font-mono text-xs no-underline hover:bg-brand-cyan/10 transition-colors"
+        >
+          📦 Browse openie-research-experiments (@ 6a22dee) ↗
+        </a>
+        <a
+          href="https://blog.openie.dev/verification/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-brand-border text-brand-slate font-mono text-xs no-underline hover:text-brand-white transition-colors"
+        >
+          Verification &amp; AI-Use Disclosure ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Interactive Substrate Filter + 7 Standalone Apache-2.0 Kits -->
+    <div class="mt-12">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+        <div>
+          <p class="font-mono text-[10.5px] uppercase tracking-[0.14em] text-brand-cyan font-semibold mb-1">
+            7 Standalone Apache-2.0 Replication Harnesses
+          </p>
+          <h2 class="font-display text-2xl md:text-3xl font-bold text-brand-white m-0">
+            Pick the Hardware Sitting on Your Desk
+          </h2>
+        </div>
+
+        <div class="flex flex-wrap gap-1.5" role="group" aria-label="Filter replication kits by hardware">
+          <button type="button" data-rep-filter="all" aria-pressed="true" class="rep-filter-btn px-3 py-1.5 rounded-md font-mono text-xs border border-brand-amber bg-brand-amber text-brand-dark font-bold cursor-pointer">
+            All 7 Kits
+          </button>
+          <button type="button" data-rep-filter="cpu" aria-pressed="false" class="rep-filter-btn px-3 py-1.5 rounded-md font-mono text-xs border border-brand-border text-brand-slate hover:text-brand-white cursor-pointer">
+            Laptop / CPU Only
+          </button>
+          <button type="button" data-rep-filter="jetson" aria-pressed="false" class="rep-filter-btn px-3 py-1.5 rounded-md font-mono text-xs border border-brand-border text-brand-slate hover:text-brand-white cursor-pointer">
+            NVIDIA Jetson Shunt
+          </button>
+          <button type="button" data-rep-filter="kv260" aria-pressed="false" class="rep-filter-btn px-3 py-1.5 rounded-md font-mono text-xs border border-brand-border text-brand-slate hover:text-brand-white cursor-pointer">
+            AMD Kria KV260 Shunt
+          </button>
+          <button type="button" data-rep-filter="lean" aria-pressed="false" class="rep-filter-btn px-3 py-1.5 rounded-md font-mono text-xs border border-brand-border text-brand-slate hover:text-brand-white cursor-pointer">
+            Lean 4.36.0 Proofs
+          </button>
+        </div>
+      </div>
+
+      <div class="grid gap-5" id="rep-kit-grid">
+        {KITS.map((kit) => (
+          <article
+            data-rep-card={kit.substrate}
+            class="glass-card p-5 md:p-6 border border-brand-border hover:border-brand-cyan/40 transition-colors"
+          >
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <h3 class="font-display text-lg md:text-xl font-bold text-brand-white m-0">
+                {kit.name}
+              </h3>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded border border-brand-cyan/35 bg-brand-cyan/10 text-brand-cyan">
+                {kit.evidence}
+              </span>
+            </div>
+
+            <p class="font-body text-sm text-brand-slate leading-relaxed mb-4">
+              {kit.plainSummary}
+            </p>
+
+            <div class="relative rounded-xl border border-brand-border bg-brand-dark/90 p-4 mb-4">
+              <button
+                type="button"
+                data-copy-cmd={kit.cmd}
+                class="absolute top-2.5 right-2.5 px-2.5 py-1 rounded border border-brand-amber/45 bg-brand-amber/15 text-brand-amber font-mono text-[11px] hover:bg-brand-amber hover:text-brand-dark cursor-pointer transition-colors"
+              >
+                Copy Commands
+              </button>
+              <pre class="font-mono text-xs text-brand-light overflow-x-auto m-0 pr-28"><code>{kit.cmd}</code></pre>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3 font-mono text-xs">
+              <a href={kit.paper} class="text-brand-amber no-underline hover:underline">
+                Read Plain-Words Guide &amp; Study →
+              </a>
+              <span class="text-brand-gray">·</span>
+              <a href={kit.sheet} class="text-brand-cyan no-underline hover:underline">
+                [G0–G12] Source Sheet →
+              </a>
+              <span class="text-brand-gray">·</span>
+              <a href={kit.repo} target="_blank" rel="noopener noreferrer" class="text-brand-slate no-underline hover:text-brand-white">
+                GitHub Repository ↗
+              </a>
+              <span class="text-brand-gray">·</span>
+              <a
+                href={`${ISSUE_URL}${encodeURIComponent(kit.id)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-emerald-300 no-underline hover:underline"
+              >
+                Report Run Receipt ↗
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      document.querySelectorAll('[data-rep-filter]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var sub = btn.getAttribute('data-rep-filter') || 'all';
+          document.querySelectorAll('[data-rep-filter]').forEach(function (b) {
+            var on = b === btn;
+            b.setAttribute('aria-pressed', String(on));
+            b.className = on
+              ? 'rep-filter-btn px-3 py-1.5 rounded-md font-mono text-xs border border-brand-amber bg-brand-amber text-brand-dark font-bold cursor-pointer'
+              : 'rep-filter-btn px-3 py-1.5 rounded-md font-mono text-xs border border-brand-border text-brand-slate hover:text-brand-white cursor-pointer';
+          });
+          document.querySelectorAll('[data-rep-card]').forEach(function (card) {
+            var csub = card.getAttribute('data-rep-card') || 'all';
+            card.style.display = sub === 'all' || csub === 'all' || csub === sub ? '' : 'none';
+          });
+        });
+      });
+
+      document.querySelectorAll('[data-copy-cmd]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var cmd = btn.getAttribute('data-copy-cmd') || '';
+          var orig = btn.textContent;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(cmd).then(function () {
+              btn.textContent = '✓ Copied!';
+              setTimeout(function () { btn.textContent = orig; }, 1800);
+            });
+          }
+        });
+      });
+    })();
+  </script>
+</Layout>
