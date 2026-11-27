@@ -1,0 +1,45 @@
+{
+  "name": "Language Constellation",
+  "description": "Neutral, measured map of programming languages and the computation stack. Provides language structure, coverage, emission templates, compiler landscape, and stack-collapse evidence as machine-readable data.",
+  "url": "https://research.openie.dev/constellation/",
+  "version": "2026-11-27",
+  "provider": { "organization": "Open Interface Engineering", "url": "https://research.openie.dev" },
+  "capabilities": { "streaming": false, "pushNotifications": false },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["application/json", "text/plain"],
+  "skills": [
+    {
+      "id": "language-coverage",
+      "name": "Language coverage lookup",
+      "description": "Return measured named-node coverage, construct count, structural entropy and redundancy for a language, from real tree-sitter grammars.",
+      "tags": ["languages", "coverage", "tree-sitter", "ontology"],
+      "examples": ["What is the measured coverage of Rust?", "List languages at 100% coverage."]
+    },
+    {
+      "id": "emission-templates",
+      "name": "Cross-language emission",
+      "description": "Return per-construct surface templates (emission LUT) for translating one meaning between languages.",
+      "tags": ["translation", "emission", "lut"],
+      "examples": ["Show the add construct in Rust and Python."]
+    },
+    {
+      "id": "compiler-landscape",
+      "name": "Compiler landscape and fault lines",
+      "description": "Return compiler lineage, landscape families, fault lines, and the unsiloed target layers.",
+      "tags": ["compilers", "llvm", "mlir", "lineage"],
+      "examples": ["What fault lines cause compiler fragmentation?"]
+    },
+    {
+      "id": "derive-evidence",
+      "name": "Derive-from-ISA evidence",
+      "description": "Return measured derive-vs-clang instruction counts and proof verdicts for the RISC-V prototype.",
+      "tags": ["risc-v", "derivation", "verification"],
+      "examples": ["How many instructions does derived popcount use vs clang baseline?"]
+    }
+  ],
+  "dataEndpoints": {
+    "dataset": "https://research.openie.dev/constellation/data.json",
+    "llms": "https://research.openie.dev/llms.txt",
+    "llmsFull": "https://research.openie.dev/llms-full.txt"
+  }
+}

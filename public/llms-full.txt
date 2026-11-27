@@ -1,0 +1,83 @@
+# The Language Constellation — full plain-text summary for language models
+
+Site: https://research.openie.dev/constellation/
+Dataset: https://research.openie.dev/constellation/data.json
+Agent card: https://research.openie.dev/.well-known/agent.json
+
+## What this is
+
+A neutral, open ontology of programming languages and the computation stack. It is the blueprint
+and the evidence for why a universal, deterministic coding substrate is feasible, and how its
+robustness can be ensured. It is not branded to any single implementation.
+
+Three readings of one stack are presented:
+1. Languages as surfaces (the ontology / taxonomy / information views).
+2. Compilers as lowering (the Compilers view: lineage, landscape families, fault lines).
+3. The stack's destination (the Collapse view: two real layers, invented middle, closed loop).
+
+## The universal taxonomy
+
+113 constructs. Each measured language's tree-sitter named node types are mapped onto these
+constructs. Coverage = mapped named nodes / total named nodes. Structural entropy H is the Shannon
+entropy of the construct histogram; redundancy = 1 - H/log2(C); surface-per-construct = N/C.
+These are grammar-derived structural measures, labelled as such, not corpus frequencies.
+
+## Measured state (2026-11-27)
+
+12,061 catalogued; 201 measured; 142 at 100% coverage. Emission (a lookup table per language)
+covers every ingested language; the test emission_covers_every_ingested_language enforces this.
+Maintenance is dated by last commit, not push. Years come from PLDB where the catalog is sparse.
+
+## The compiler layer (Compilers view)
+
+Lineage 1952 (A-0) to 2020 (MLIR): every core idea existed by ~1991; what changed was who shared
+the implementation. Landscape families exist because an incumbent was slow to adapt: GNU, LLVM,
+multi-level IR (MLIR/ClangIR/HLFIR), fast backends (Cranelift/Zig/Go), ML compilers (XLA/IREE/TVM/
+Mojo), portable sandbox (Wasm/WASI), verified (CompCert/CakeML/Alive2), quantum/hybrid.
+Fault lines: lossy lowering; dialects without shared semantics; the GCC/LLVM two-stack split;
+backend exits; ML/accelerator fragmentation; the C ABI as the only bridge; trust.
+The unsiloed target (hypothesis): front ends keep their facts; IR with written semantics;
+non-destructive rewriting (e-graphs); tiered backends from one target description; typed
+components; an evidence column so changes merge on a machine verdict.
+
+## The collapse (Collapse view)
+
+Only two layers are real: the person's intent and judgment, and the processor's fixed instruction
+math. The middle is invented buffers against latency and human limits. Latency gates both
+directions; one stalled rung holds the column. The squeeze: machine intelligence above, existing
+hardware below. Where derivation is fast and correctness is proved against the chip math, the
+middle becomes a computation, not artifacts. Four conditions: bottom written as math; derivation
+fast enough at need; one law of correctness proved not sampled; the loop closes at the person.
+
+## Derive prototype evidence (onec)
+
+One intent, one ISA (RISC-V), two paths. Instruction sequences enumerated from hand-transcribed
+semantics, matched by behaviour, checked against the intent. Compared with clang -O2 default and
+with extensions named. Derived(all) never loses to clang+ext; beats default baseline where it
+misses an extension: popcount 28 to 1, ctz 12 to 1, umax 2 to 1. Proof by exhaustion at XLEN 4 and 8
+(65,792 cases), sampled above. Behaviour pool 144,606 (baseline) vs 982,953 (all extensions).
+Limits: straight-line code, two inputs, no memory/loops/branches; instruction count, not silicon
+time or energy.
+
+## Prototypes view
+
+Editor loop (Rust): replay-gated edits, escaped_errors=0, debug_sessions=0. Generated editor
+adapters from one emission LUT. Sovereign compiler to ARM64/x86-64, byte-exact 16/16, silicon 8/8.
+Reuse across sessions by content hash at ~1 microjoule lookup. Synthesized fabric-native languages.
+Open edges: derive loops/memory/branches; silicon energy; production fabric lowering; scale beyond
+Rust.
+
+## How to read the data programmatically
+
+GET /constellation/data.json. Top-level keys: langs (array; n name, f family, y year, m measured,
+g [named_nodes, constructs, coverage, H, redundancy, surface_per_construct], tool, lsp, dap, imm),
+lut (per-language core emission templates), peers, sources, immersion_stats, redundancy_range,
+surface (registry grammars not in catalog), challengers, symbolic, compilers (lineage/landscape/
+faults/layers/forces), stack (latency/rungs/conditions), derive (rows/pools), unlock.
+
+## Neutrality and credit
+
+No product names in the views. Peers credited: GCC, LLVM/clang, MLIR, Cranelift, Zig, CompCert,
+Alive2, WebAssembly, RISC-V. Catalog upstream acherm/PL-ultimate-llm. Interpretive lenses (formal
+ontology, basic-level categories, mechanism design) are grounded in cited work and labelled as
+interpretation; a formal MDL-optimality proof of the construct count is open.

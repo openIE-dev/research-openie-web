@@ -1,0 +1,44 @@
+# The Language Constellation — OpenIE Research
+
+> An open, neutral reference map of programming languages: their structure, their information
+> content, and how one meaning translates across them. Part of research.openie.dev.
+
+This site is a measurement artifact, not a product pitch. Every coverage number is derived from a
+real tree-sitter grammar (named node types mapped onto a 113-construct universal taxonomy).
+Languages without a usable grammar carry no invented metrics.
+
+## Key measured facts (2026-11-27)
+
+- Catalogued languages: 12,061 (merged public curation: PLDB, Linguist, Pygments, Wikipedia,
+  esolangs, Hyperpolyglot, Rosetta Code, Wikidata).
+- Measured against real grammars: 201; of these 142 at 100% named-node coverage.
+- Universal construct taxonomy: 113 constructs; emission covers every ingested language.
+- Surface redundancy across measured grammars spans 0 to 0.556 (reported per language).
+- Compiler prototype: one intermediate form lowered to ARM64 and x86-64 with own assemblers;
+  byte-exact vs the system toolchain (16/16); meaning checked on real ARM64 silicon (8/8).
+- Derive prototype: instruction sequences derived from a written RISC-V semantics, proved by
+  exhaustion at XLEN 4/8; using all extensions it matches clang+ext and beats the default
+  baseline (popcount 28 instructions to 1, ctz 12 to 1).
+
+## Sections (views)
+
+Ontology, Search, Translate, Information, Lineage, Landscape, Sources, Editor standards,
+Immersion gap, Tooling reality, Full stack, Compilers, Collapse, Prototypes.
+
+## Machine-readable endpoints
+
+- /constellation/data.json : the full dataset (languages, emission LUT, compiler landscape,
+  stack thesis, derive results). JSON, UTF-8.
+- /.well-known/agent.json : A2A agent card describing capabilities and endpoints.
+- /llms-full.txt : longer plain-text summary for language models.
+
+## Provenance and credit
+
+Catalog upstream: github.com/acherm/PL-ultimate-llm. Grammar substrate: upstream tree-sitter
+grammars. Compiler peers credited: GCC, LLVM/clang, MLIR, Cranelift, Zig, CompCert, Alive2,
+WebAssembly. RISC-V ISA spec (hand-transcribed semantics in the derive prototype, not the
+official Sail model).
+
+## Source code
+
+github.com/openIE-dev/rce (public monorepo). License and governance as stated in the repo.
