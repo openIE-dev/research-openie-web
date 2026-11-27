@@ -475,7 +475,7 @@ function linPanel(name){
     <p class="hint" style="margin-top:8px">Click any name to walk the lineage. The map highlights the full ancestor/descendant chain.</p>`;
   panel.querySelectorAll("button.pill").forEach(b=>b.addEventListener("click",()=>linSetFocus(b.dataset.n)));
 }
-function linSetFocus(name){ LIN.focus=name; LIN.cursor=name; linScrollTo(name); drawLineage(); linPanel(name); $("linFocus").value=name; }
+function linSetFocus(name){ LIN.focus=name; LIN.cursor=name; linScrollTo(name); drawLineage(); linPanel(name); $("linFocus").value=name; const l=LIN.idx[name.toLowerCase()]; if(l&&typeof render==="function"){ selected=l; render(l); } }
 function linZoom(f,anchorX){ const sc=$("linScroll"); const mx=(anchorX!=null?anchorX:sc.clientWidth/2);
   const yearAt=LIN.y0+(mx+sc.scrollLeft-LIN.left)/LIN.px;
   LIN.px=Math.max(4,Math.min(90,LIN.px*f));
