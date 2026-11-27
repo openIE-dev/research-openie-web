@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits 级联中的向下 LUT6 编译：Beneš 路由布尔架构、共形唤醒门槛与前沿稀疏 MoE NVMe 按层流式传输"
-deck: "一种附带 146 条经六内核验证的 Lean 4.36.0 定理及 Inria Charon+Aeneas 无标准库 Rust 至 Lean 机械化提取（另加 Linux bubblewrap 沙箱内四个 Open Interface Engineering 仓库共 1,510 条定理，针对 CVE-2026-72844 加固）的 Mixture of Limits 级联：首先尝试零浮点运算（FLOP）的分页式 6 输入查找表（LUT6）电路、15.22 千字节（15,586 字节，20 项导出，余 798 字节）的 WebAssembly（WASM）浏览器模块、带反对称 40 项零乘法 T-MAC 三值尾部的无标准库 4 / 56 千字节（14 体 = 87.50%，与 4 千字节 Nucleus 及 4 千字节栈精确闭合 64.00 千字节智能手表 SRAM）Rust lut6-core Nucleus（全量 25 款 ARC-AGI-3 游戏经 C-BFWS + RIW(2) 达 60.00% 绝对多数［15/25 款，18/183 关卡，匹配 16 款达 11/16 = 68.75%，2.5030 / 3.2177 RHAE］、零 Python 原生 Rust 编解码器 mol_ltcb_codec 在 Matt Mahoney 官方 100 MB enwik8 大文本压缩基准上实现 32,764,848 字节 = 2.6212 bpb［较 gzip -9 缩减 10.25%，跨 arm64/aarch64/x86_64 达 100.0% 比特级一致 SHA-256，78.56 MB/s 解码］并将 tufazip v2 QPI1 1 比特循环先验转码为 5,680,128 块零 MAC LUT6 板片［JouleBit 先验缩减 8.766x，Window 25 实现 13.376x Thor 分流降低］、零 Python 原生 Rust 代理 mol-magnitude-adapter 在 4 倍污染 CogLoadBench 上达 100.0% 通过率且第二波 Thor VIN 耗能削减 3,028.3x 并在 MCPMark CoW CRUD 沙箱上保持 0.00% 生产损坏、带宽自适应 BA-Tiered-Expert-AirMoL 在 180B 达 436.60 tok/s、GLM-5-355B 达 216.33 tok/s 与 552B 达 166.27 tok/s = 超越 FreeToken 4.00x-4.17x 与 KTransformers 5.90x-6.00x 且在 Window 24 实现 3.330x Thor 分流降低、零 FLOP Engram-LUT6、Magnitude 0.3.5 实机对决将每正确词元焦耳削减 53.55x 且在 Window 23 实现 3.157x Thor 分流降低、100% Terminal-Bench 与 Cybench-Defensive［144/144 Yosys Miter］、100% FrontierMath-Constructive 与 SciCode 综合，以及 Window 22 实现 3.314x、Window 21 实现 3.204x 与 Window 20 实现 4.092x Thor 分流降低）、占 64 千字节智能手表 SRAM 仅 9.13%（5,984 字节）且零前缀污染的 56 比特 4 词元 Wearable-MoL 智能眼镜开场门控，以及（72, 64）SECDED 宇宙射线位翻转防护（在单二进制 Rust mol-agent-rs 中耗时 0.154 毫秒，每次位切片决策耗能 162.71 纳焦，在 1% 误码率下保持 100.0% 存活率），经亚十亿级可穿戴微型语言模型（Sensente/uLM-28M 与 LiquidAI/LFM2.5-230M）并跨四大 GPU 硅片厂商（最高加速 328.06x，将 LastExam 协议均方根校准误差从 70.62% 削减 5.37x 至 13.14%，且 >= 80% 置信度下的自信幻觉率降至 0.00%）逐级升级至最高 120B 参数的 4 位 NVMe 循环、混合与稀疏 MoE 2026 年末模型，通过跨 4 个上游 Verified 仓库的确定性验证器对提交进行门控，并将经认证的唤醒向下编译为 RAMB36E2、免许可 openXC7 320.62、106.55、109.15、100.55、100.74、106.97 与 102.41 兆赫布局布线后 Artix-7 XC7A200T M.2 2280 .bit 比特流，以及 Lupanov 共享余因子与摆动密码子晶体页。包含 Jetson AGX Thor 上的物理 Texas Instruments 直流分流器实测能量 measured_j（位切片 lut6-core 降低 87.25x、可穿戴 56 比特认知门控相对 uLM-28M 层切片降低 222.57x、Window 25 降低 13.376x、Window 24 降低 3.330x、Window 23 降低 3.157x、Window 22 降低 3.314x、Window 20 降低 4.092x、反对称 40 项 T-MAC 降低 1.65x［Zen 5 上反超达 1.12x］、Sub1Bit-LUT6 降低 3.90x、Expert-AirMoL 降低 34.21x、命题 1 编译降低 10.94x；board_metered 为真），并与实时连接的 Alif Cortex-M55 周期计数（可穿戴门控快 2,905.18x）、五主机片上 reported_j、openXC7 静态时序以及提交 b3cb6fe 处的 RTL 仿真估计值 est_j 严格区分。"
+deck: "一种附带 154 条经六内核验证的 Lean 4.36.0 定理及 Inria Charon+Aeneas 无标准库 Rust 至 Lean 机械化提取（另加 Linux bubblewrap 沙箱内四个 Open Interface Engineering 仓库共 1,518 条定理，针对 CVE-2026-72844 加固）的 Mixture of Limits 级联：首先尝试零浮点运算（FLOP）的分页式 6 输入查找表（LUT6）电路、15.33 千字节（15,703 字节，21 项导出，余 681 字节）的 WebAssembly（WASM）浏览器模块、带反对称 40 项零乘法 T-MAC 三值尾部的无标准库 4 / 56 千字节（14 体 = 87.50%，与 4 千字节 Nucleus 及 4 千字节栈精确闭合 64.00 千字节智能手表 SRAM）Rust lut6-core Nucleus（全量 25 款 ARC-AGI-3 游戏经 C-BFWS + RIW(2) 达 60.00% 绝对多数［15/25 款，18/183 关卡，匹配 16 款达 11/16 = 68.75%，2.5030 / 3.2177 RHAE］、零 Python 原生 Rust 编解码器 mol_ltcb_codec --cm2 在 Matt Mahoney 官方 100 MB enwik8 大文本压缩基准上击败 zstd -19、bzip2 -9 与 gzip -9 实现 26,838,089 字节 = 2.1470 bpb［跨 arm64/aarch64/x86_64 达 100.0% 比特级一致 SHA-256］、零边信道 i16 Online-TTT-LUT6［预热遗憾削减 56.73%，板片重建跳过 90.34%］并在 Window 26 实现 32.462x Thor 分流降低、将 tufazip v2 QPI1 1 比特循环先验转码为 5,680,128 块零 MAC LUT6 板片［JouleBit 先验缩减 8.766x，Window 25 实现 13.376x Thor 分流降低］、零 Python 原生 Rust 代理 mol-magnitude-adapter 在 4 倍污染 CogLoadBench 上达 100.0% 通过率且第二波 Thor VIN 耗能削减 3,028.3x 并在 MCPMark CoW CRUD 沙箱上保持 0.00% 生产损坏、带宽自适应 BA-Tiered-Expert-AirMoL 在 180B 达 436.60 tok/s、GLM-5-355B 达 216.33 tok/s 与 552B 达 166.27 tok/s = 超越 FreeToken 4.00x-4.17x 与 KTransformers 5.90x-6.00x 且在 Window 24 实现 3.330x Thor 分流降低、零 FLOP Engram-LUT6、Magnitude 0.3.5 实机对决将每正确词元焦耳削减 53.55x 且在 Window 23 实现 3.157x Thor 分流降低、100% Terminal-Bench 与 Cybench-Defensive［144/144 Yosys Miter］、100% FrontierMath-Constructive 与 SciCode 综合，以及 Window 22 实现 3.314x、Window 21 实现 3.204x 与 Window 20 实现 4.092x Thor 分流降低）、占 64 千字节智能手表 SRAM 仅 9.13%（5,984 字节）且零前缀污染的 56 比特 4 词元 Wearable-MoL 智能眼镜开场门控，以及（72, 64）SECDED 宇宙射线位翻转防护（在单二进制 Rust mol-agent-rs 中耗时 0.154 毫秒，每次位切片决策耗能 162.71 纳焦，在 1% 误码率下保持 100.0% 存活率），经亚十亿级可穿戴微型语言模型（Sensente/uLM-28M 与 LiquidAI/LFM2.5-230M）并跨四大 GPU 硅片厂商（最高加速 328.06x，将 LastExam 协议均方根校准误差从 70.62% 削减 5.37x 至 13.14%，且 >= 80% 置信度下的自信幻觉率降至 0.00%）逐级升级至最高 120B 参数的 4 位 NVMe 循环、混合与稀疏 MoE 2026 年末模型，通过跨 4 个上游 Verified 仓库的确定性验证器对提交进行门控，并将经认证的唤醒向下编译为 RAMB36E2、免许可 openXC7 320.62、106.55、109.15、100.55、100.74、106.97 102.41 与 103.25 兆赫布局布线后 Artix-7 XC7A200T M.2 2280 .bit 比特流，以及 Lupanov 共享余因子与摆动密码子晶体页。包含 Jetson AGX Thor 上的物理 Texas Instruments 直流分流器实测能量 measured_j（位切片 lut6-core 降低 87.25x、可穿戴 56 比特认知门控相对 uLM-28M 层切片降低 222.57x、Window 26 降低 32.462x、Window 25 降低 13.376x、Window 24 降低 3.330x、Window 23 降低 3.157x、Window 22 降低 3.314x、Window 20 降低 4.092x、反对称 40 项 T-MAC 降低 1.65x［Zen 5 上反超达 1.12x］、Sub1Bit-LUT6 降低 3.90x、Expert-AirMoL 降低 34.21x、命题 1 编译降低 10.94x；board_metered 为真），并与实时连接的 Alif Cortex-M55 周期计数（可穿戴门控快 2,905.18x）、五主机片上 reported_j、openXC7 静态时序以及提交 597c50b 处的 RTL 仿真估计值 est_j 严格区分。"
 lang: "zh-Hans"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*修订 b3cb6fe，2026年11月27日。参考实现和工件：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 于 [`b3cb6fe7f29ac3b856b90dd9f317af0be4538544`](https://github.com/openIE-dev/lut-adapt-ai/tree/b3cb6fe7f29ac3b856b90dd9f317af0be4538544)。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源文件](/pdfs/latex/lut-adapt.tex)）。*
+*修订 597c50b，2026年11月27日。参考实现和工件：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) 于 [`597c50b63f357e058e80fc9c7b3c46af1a63b88a`](https://github.com/openIE-dev/lut-adapt-ai/tree/597c50b63f357e058e80fc9c7b3c46af1a63b88a)。数据摘要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[源文件](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: Mixture of Limits，即 Metered Commit Gates 第二部分中的级联规则 [同系列]</li>
-<li>LA: 本研究使用的主张与证伪前缀（LA-1 至 LA-79，LA-F1 至 LA-F79）</li>
+<li>LA: 本研究使用的主张与证伪前缀（LA-1 至 LA-83，LA-F1 至 LA-F83）</li>
 <li>LUT, LUT6, INIT: 查找表（look-up table）、6 输入 Xilinx UltraScale+ 布尔原语，以及其 64 位真值表初始化掩码</li>
 <li>BRAM, RAMB36E2, URAM: 块随机存储器（Block RAM）、36 Kbit 双端口 UltraScale+ 块 RAM 原语（xck26 上为 144 个），以及 UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260: 可配置逻辑块（configurable logic block）、触发器（flip-flop）、数字信号处理片（digital signal processing slice）、DSP48 原语，以及 AMD Kria KV260 开发板（xck26）</li>
@@ -852,6 +852,23 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
   <figcaption>图 20. 原生 Rust `mol-magnitude-adapter`（`CogLoadBench` `4×` 与 `MCPMark` `CoW` `CRUD`）、`BA-Tiered-Expert-AirMoL` 对比 `FreeToken` 与 `KTransformers`、`Window 24` `Thor` 分流器（`3.330×`）、`64.00 KB` 手表 `SRAM` 精确闭合与 `138` / `1,502` 条六内核证明（`主张 LA-72..LA-75`）。</figcaption>
 </figure>
 
+### 4.52 论断 LA-76..LA-83：Matt Mahoney `LTCB` 大文本压缩基准（`100 MB` `enwik8`）、击败 `zstd -19` 与 `bzip2 -9` 的 `MoL-LTCB-CM2`（`26.84 MB = 2.1470 bpb`）、零边信道 `Online-TTT-LUT6`、`Window 25`（`13.376×`）与 `Window 26`（`32.462×`）`Thor` 分流器及突破 `> 150` 条定理里程碑（`154` / `1,518` 跨仓证明）
+
+- **`MoL-LTCB` v1、`tufazip v2` `QPI1` 先验转码与 `Window 25`（`LA-76..LA-79`）**：`mol_ltcb_codec`（`LTCB-XML-Skip LUT6` + 整数 `2^24` Kraft 区间编码器）达成 **`32,764,848 B`（`2.6212 bpb`，较 `gzip -9` 缩减 `-10.25%`，跨 `M5 Max`、`Thor`［`1,358.62 J` `measured_j`，`board_metered = true`］与 `Zen 5` 实现 `100.0%` 一致 `archive_sha256 = 1096e659ef4f...`）**并给出 Mahoney 阈值 $N^* = 5{,}486.26\text{ MB}$，将 `tufazip v2` `weights.bin` 的 `34,080,768` 比特无余数转码为 **`5,680,128` 块零 `MAC` `LUT6` 板片**（`8.766×` 先验缩减，`144/144` `Yosys` Miter），且 `Window 25` 将 `Thor` `measured_j` 降低 **`13.376×`**（配 `102.41 MHz` `openXC7` 与 `146` / `1,510` 条定理，图 21）。
+- **`MoL-LTCB-CM2`（`--cm2`）在 `enwik8` 上击败 `zstd -19`、`bzip2 -9` 与 `gzip -9`（`LA-80`）**：结合双射 `148` 词项 `WRT-Capillary-LUT6`（`0xFE` 转义）、全窗口 `100 MB` 惰性 `LZ-Rep4`（`83.073%` 跳过）与整数 `Q12` `StateSMix-LUT6`，达成 **`26,838,089 B` 排名总大小（`2.1470 bpb`，较 `zstd -19` 省 `204.4 KB`、较 `bzip2 -9` 省 `2.21 MB`、较 `gzip -9` 省 `9.67 MB`）**，并在 `M5 Max`（`62.60 MB/s`）、`Thor`（`2,890.72 J` `INA238` `VIN` `measured_j`，较 `bzip2 -9` 快 `3.40×` 且省能 `2.78×`，`board_metered = true`）与 `Zen 5`（`67.92 MB/s`）上保持 `100.00%` 比特一致 `archive_sha256 = 5342cc0b24a603b0...`。
+- **零边信道 `i16` `Online-TTT-LUT6` 与 `Window 26` `Thor` 分流器（`LA-81 & LA-82`）**：消除第 `20` 步出现的 `FP32` `AdamW` 符号翻转失步（**`512` 步跨机 `0` 失配**），将预热交叉熵遗憾压缩 **`-56.73%`** 并实现 **`90.338%` `LUT6` 板片重建跳过**（`144/144` `Yosys` Miter）；`Window 26` 将 `Thor` 物理 `VDD_CPU_SOC_MSS` `measured_j` 降低 **`32.462×`（`3,727.65` 对比 `121,006.57 nJ/op`，快 `32.369×`，`board_metered = true`）**，`Zen 5` 降低 `17.146×`，`M3 Ultra` 降低 `14.618×`。
+- **`103.25 MHz` `openXC7`、`15.33 KB`（`21` 项导出）`WASM` 与 `> 150`（`154` / `1,518`）条证明（`LA-83`）**：`clai_ltcb_cm2_ttt_xc7a200t_top` 闭合于 **`103.25 MHz`**（`656` `SLICE_LUTX`，`0` `DSP48E1`），`lut6_core.06c5c0b781d6.wasm` 仅 **`15,703 B <= 16,384 B`（`21` 项导出，余 `681 B`）**，`LtcbCm2OnlineTtt.lean` 跨越 `150` 条大关达 **`154` 条 `LutAdapt` / `1,518` 条 `bwrap` 跨仓定理（`59,192` 项声明）**（图 22）。
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/ltcb-neural-lut6-and-mahoney-threshold.svg" alt="Matt Mahoney LTCB enwik8、tufazip v2 QPI1 转码为 5,680,128 块 LUT6 板片、Window 25 Thor 分流器省能 13.376x 与 1,510 条证明。" />
+  <figcaption>图 21. `MoL-LTCB`、Mahoney 阈值 $N^*$、`tufazip v2` `QPI1` 先验转码、`Window 25` `Thor` 分流器（`13.376×`）与 `146` / `1,510` 条证明（`主张 LA-76..LA-79`）。</figcaption>
+</figure>
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/ltcb-cm2-wrt-statesmix-and-online-ttt.svg" alt="在 enwik8 上击败 zstd-19 与 bzip2-9 的 MoL-LTCB-CM2、Online-TTT-LUT6、Window 26 Thor 分流器省能 32.462x 与突破 >150（154 / 1,518）条六内核证明。" />
+  <figcaption>图 22. `MoL-LTCB-CM2`（`26,838,089 B`，击败 `zstd -19` 与 `bzip2 -9`）、`Online-TTT-LUT6`（遗憾削减 `-56.73%`，板片跳过 `90.34%`）、`Window 26` `Thor` 分流器（`32.462×`）、`103.25 MHz` `openXC7` 与 `&gt; 150`（`154` / `1,518`）条六内核证明（`主张 LA-80..LA-83`）。</figcaption>
+</figure>
+
 ---
 
 <div id="5-related-work-and-convergence-observations" class="anchor-alias" aria-hidden="true"></div>
@@ -892,7 +909,7 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`LA-F5`** | `Claim LA-5` (字节推测) | `scripts/run_code_corpus_benchmark.py` 在 `48` 个未见提示上，相对贪婪解码 `Mamba3CodeLM` 的精确字节一致性为 `< 100.0%`。 |
 | **`LA-F6`** | `Claim LA-6` (`AirMoL` 14.3M) | `scripts/run_air_mol_benchmark.py` 在 `F_NOCACHE` 下未达到 `100%` 一致性，或读取的 NVMe 字节数多于 `AirLLM` 4-Bit `T=1`。 |
 | **`LA-F7`** | `Claim LA-7` (2026 年 HF `AirMoL`) | `scripts/run_hf_lfm3_air_mol.py`、`scripts/run_hf_air_mol_pretrained.py` 或 `scripts/run_hf_qwen35_air_mol.py` 与贪婪目标相比偏离 $\ge 1$ 个 BPE token。 |
-| **`LA-F8`** | `Claim LA-8` (回归套件) | `pytest -v` 在 `tests/` 的 `102` 个测试中任一失败。 |
+| **`LA-F8`** | `Claim LA-8` (回归套件) | `pytest -v` 在 `tests/` 的 `110` 个测试中任一失败。 |
 | **`LA-F9`** | `Claim LA-9` (`8.5B/35B` MoE) | `scripts/run_hf_moe_8b_35b_air_mol.py` 的 token 一致性偏离 `100%`，或读取的 NVMe 字节数多于 `AirLLM` 或 `Expert-AirLLM`。 |
 | **`LA-F10`** | `Claim LA-10` (`Sub1Bit-LUT6`) | `scripts/run_sub1bit_lut_benchmark.py` 相对稠密 `ITQ` 二值矩阵乘法的最大误差超过 `1e-3`，或未通过 `100%` 已验证一致性。 |
 | **`LA-F11`** | `Claim LA-11` (`48` 任务对比评测) | `scripts/run_frontier_ai_bakeoff.py` 接受了 `> 0%` 的损坏提交，或在 Wave-2 规格变异下接受了过时的 Wave-1 技能。 |
@@ -952,6 +969,14 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`LA-F73`** | `Claim LA-73` (`MCPMark` `CoW` `CRUD` 沙箱与 `144/144` Miter) | 在 `24` 条 `MCPMark` 工作流上出现 `> 0%` 生产损坏，或未通过 `144/144` `Yosys` `abc -lut 6` Miter。 |
 | **`LA-F74`** | `Claim LA-74` (`BA-Tiered-Expert-AirMoL` 对比 `FreeToken` 与 `Window 24`) | 相对 `FreeToken` 加速 `< 3.5×` 或相对 `KTransformers` `< 5.0×`，或 `Window 24` `Thor` `measured_j` 增益 `< 2.5×`。 |
 | **`LA-F75`** | `Claim LA-75` (`64.00 KB` `SRAM`、`106.97 MHz` `openXC7`、`19` 导出 `WASM` 与 `138` / `1,502` 条证明) | `14 × 4,096 + 4,096 + 4,096 != 65,536 B`、`Fmax < 100 MHz`、证明少于 `138` / `1,502` 条，或 `lut6_core.wasm > 16,384 B`。 |
+| **`LA-F76`** | `Claim LA-76` (`LTCB` `enwik8` `100 MB` 与阈值 $N^*$) | 持久化原始 `enwik8`、跨架构 `SHA-256` 失配、在 `Thor` 之外标记 `board_metered = true`，或劣于 `gzip -9`。 |
+| **`LA-F77`** | `Claim LA-77` (`tufazip v2` `QPI1` 审计与 `144/144` Miter) | 持久化 `weights.bin`、`34,080,768` 比特（`5,680,128` 块 `LUT6` 板片）出现比特误差，或未通过 `144/144` `Yosys` Miter。 |
+| **`LA-F78`** | `Claim LA-78` (`Window 25` `Thor` 分流器) | 混用 `measured_j` 与 `reported_j`、在 `Thor` 之外标记 `board_metered = true`，或 `Thor` 降幅 `< 10.0×`。 |
+| **`LA-F79`** | `Claim LA-79` (`102.41 MHz` `openXC7`、`20` 导出 `WASM` 与 `146` / `1,510` 条证明) | `DSP48E1 > 0`、`Fmax < 100 MHz`、证明少于 `146` / `1,510` 条，或 `WASM > 16,384 B`。 |
+| **`LA-F80`** | `Claim LA-80` (在 `enwik8` 上击败 `zstd -19` 与 `bzip2 -9` 的 `MoL-LTCB-CM2`) | 持久化原始 `enwik8`、`WRT` 双射逆变换失败、偏离 `5342cc0b24a603b0...`，或在 `enwik5..enwik8` 上未击败 `zstd -19`、`bzip2 -9`、`gzip -9` 与 `v1`。 |
+| **`LA-F81`** | `Claim LA-81` (`0` 字节 `i16` `Online-TTT-LUT6` 与 `144/144` Miter) | `512` 步出现 `>= 1` 次 `i16` 失配、遗憾降幅 `< 50%` 或板片跳过 `< 80%`，或未通过 `144/144` `Yosys` Miter。 |
+| **`LA-F82`** | `Claim LA-82` (`Window 26` `Thor` 分流器) | 在 `Thor` 之外标记 `board_metered = true`、`Thor` `measured_j` 降幅 `< 25.0×`，或在 `Zen 5` / `M3 Ultra` 上 `< 10.0×`。 |
+| **`LA-F83`** | `Claim LA-83` (`103.25 MHz` `openXC7`、`21` 导出 `WASM` 与 `> 150`［`154` / `1,518`］条证明) | `DSP48E1 > 0`、`Fmax < 100 MHz`、证明少于 `154` / `1,518` 条，或 `lut6_core.wasm > 16,384 B`。 |
 
 ---
 
@@ -1042,6 +1067,8 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 <li>Mahoney, M. (2026). Large Text Compression Benchmark (<code>enwik8</code> / <code>enwik9</code>). <a href="https://mattmahoney.net/dc/text.html">mattmahoney.net/dc/text.html</a>.</li>
 <li>Bellard, F. (2021). NNCP v2: Lossless Data Compression with Transformer/LSTM Neural Networks. <a href="https://bellard.org/nncp/">bellard.org/nncp</a>.</li>
 <li>He, T. (2026). tufazip v2: 1-Bit Looped-Transformer Online Arithmetic Coding on <code>enwik9</code> (<code>Tufalabs/tufazip</code>, MIT License). <a href="https://github.com/Tufalabs/tufazip">github.com/Tufalabs/tufazip</a>.</li>
+<li>Mahoney, M. V. (2005). Adaptive Weighing of Context Models for Lossless Data Compression (<code>PAQ</code> &amp; <code>SSE</code>). <em>Florida Institute of Technology CS-2005-16</em>.</li>
+<li>Skibiński, P., Grabowski, S., and Deorowicz, S. (2005). Revisiting Dictionary-Based Compression (<code>WRT</code>). <em>Software: Practice and Experience</em>, 35(15):1455–1476.</li>
 </ol>
 
 ---
@@ -1050,11 +1077,14 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 ## 附录 A. 可复现性
 
-在 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（提交 `b3cb6fe`）与 [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` 与 `lut6-core-nucleus/`）的代码检出目录中执行：
+在 [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（提交 `597c50b`）与 [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` 与 `lut6-core-nucleus/`）的代码检出目录中执行：
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
-(cd sys/lut6-core && cargo test --release && cargo run --release --bin mol_ltcb_codec -- --self-test && cargo run --release --bin mol_magnitude_adapter -- --self-test && cargo run --release --bin bench_lut6_nucleus_shunt)
+(cd sys/lut6-core && cargo test --release && cargo run --release --features std --bin mol_ltcb_codec -- --self-test && cargo run --release --features std --bin mol_ltcb_codec -- --cm2 --self-test && cargo run --release --bin mol_magnitude_adapter -- --self-test && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase46_ltcb_cm2_fleet.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase46_window26_five_silicon.py
+PYTHONPATH=src:scripts .venv/bin/python scripts/run_openxc7_ltcb_cm2_ttt_par.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase45_ltcb_fleet.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase45_window25_five_silicon.py
 PYTHONPATH=src .venv/bin/python scripts/run_openxc7_ltcb_kraft_par.py

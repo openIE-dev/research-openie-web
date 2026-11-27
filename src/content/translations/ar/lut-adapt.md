@@ -1,6 +1,6 @@
 ---
 title: "التصريف الهابط إلى LUT6 في تسلسل Mixture of Limits: أنسجة منطقية بوليانية موجَّهة بشبكة Beneš، وبوابات إيقاظ مطابقة، وبث طبقات NVMe لنموذج Frontier Sparse-MoE"
-deck: "تسلسل Mixture of Limits مزوَّد بـ 146 مبرهنة في Lean 4.36.0 متحقَّقٍ منها عبر ستّ نوى مع استخراج آلي لشيفرة Rust الخالية من المكتبة القياسية إلى Lean عبر Inria Charon+Aeneas (1,510 مبرهنات عبر أربعة مستودعات تابعة لـ Open Interface Engineering داخل صناديق عزل bubblewrap في Linux، ومقسّاة ضد CVE-2026-72844)، يجرّب أولاً دوائر جداول البحث ذات 6 مداخل (LUT6) المقسّمة إلى صفحات دون أي عمليات فاصلة عائمة (FLOP)، ووحدة WebAssembly (WASM) للمتصفح بحجم 15.22 كيلوبايت (15,586 بايت، 20 تصديراً، 798 بايت فائضاً)، ونواة Nucleus بلغة Rust الخالية من المكتبة القياسية lut6-core بحجم 4 كيلوبايت / 56 كيلوبايت (14 مصرفاً تغلق تماماً 64.00 كيلوبايت من ذاكرة SRAM للساعة الذكية، مع مرمِّز mol_ltcb_codec بلغة Rust دون Python يحقق 32,764,848 بايت = 2.6212 بت/بايت على معيار Matt Mahoney الرسمي enwik8 بحجم 100 ميغابايت بانخفاض 10.25% عن gzip -9 وتطابق SHA-256 بنسبة 100.0% عبر arm64 وaarch64 وx86_64 مع فك ترميز بسرعة 78.56 ميغابايت/ث وتحويل أوزان tufazip v2 QPI1 إلى 5,680,128 شريحة LUT6 بلا MAC وخفض مبدئي JouleBit قدره 8.766x وخفض 13.376x على مفرِّع Thor في Window 25، ووكيل mol-magnitude-adapter بلغة Rust دون Python بخفض 3,028.3x على مفرِّع Thor في الموجة 2 على CogLoadBench وصفر إفساد في 24 سير عمل MCPMark بخاصية CoW CRUD، وجدولة BA-Tiered-Expert-AirMoL بسرعة 436.60 رمزاً/ث على 180B و216.33 رمزاً/ث على GLM-5-355B و166.27 رمزاً/ث على 552B أي أسرع بـ 4.00x-4.17x من FreeToken وبـ 5.90x-6.00x من KTransformers مع خفض 3.330x في Window 24، وأغلبية معزَّزة 60.00% [15/25 لعبة و18/183 مستوى] على ARC-AGI-3 عبر C-BFWS + RIW(2)، وEngram-LUT6 بلا FLOP، ومقارنة Magnitude 0.3.5 بخفض 53.55x لطاقة الرمز الصحيح وخفض 3.157x في Window 23، و3.314x في Window 22، و3.204x في Window 21، و4.092x في Window 20) مع ذيل ثلاثي مضاد للتناظر من 40 مدخلاً بلا ضرب T-MAC، وطبقة Wearable-MoL بحجم 5,984 بايت (9.13% من ذاكرة SRAM لساعة ذكية بحجم 64 كيلوبايت) بافتتاحية 56 بت من 4 رموز وصفر تسميم للبادئة، وحماية (72, 64) SECDED ضد انقلابات البت الإشعاعية (0.154 مللي ثانية في mol-agent-rs، و162.71 نانوجول لكل قرار مشرَّح بالبتات، وبقاء بنسبة 100.0% عند معدل خطأ بت 1%)، ويصعّد عبر نماذج الميكرو القابلة للارتداء دون المليار معامل (Sensente/uLM-28M وLiquidAI/LFM2.5-230M) ونماذج أواخر 2026 الحلقية والهجينة والمتناثرة Mixture-of-Experts (MoE) بدقة 4 بت عبر NVMe حتى 120B معامل عبر أربعة مصنّعي GPU (حتى 328.06x تسريعاً، خافضاً خطأ معايرة RMS لبروتوكول LastExam بمقدار 5.37x من 70.62% إلى 13.14% مع 0.00% هلوسات واثقة >= 80%)، ويحرس الالتزامات على 4 مستودعات Verified، ويصرّف حالات الإيقاظ المصدَّقة هابطاً إلى ذاكرات RAMB36E2 وتيارات بت .bit مفتوحة عبر openXC7 بتردد 320.62 و106.55 و109.15 و100.55 و100.74 و106.97 و102.41 ميغاهرتز لشريحة Artix-7 XC7A200T M.2 2280 وصفحات Lupanov وwobble. يتضمن قراءات مفرِّعات التيار المستمر الفيزيائية measured_j على Jetson AGX Thor (87.25x في lut6-core المشرَّح بالبتات، و222.57x في البوابة المعرفية القابلة للارتداء مقابل uLM-28M، و13.376x في Window 25، و3.330x في Window 24، و3.157x في Window 23، و3.314x في Window 22، و4.092x في Window 20، و1.65x في ذيل T-MAC المضاد للتناظر [و1.12x على Zen 5]، و3.90x في Sub1Bit-LUT6، و34.21x في Expert-AirMoL، و10.94x في القضية 1؛ وقيمة board_metered هي true) مفصولة بصرامة عن دورات Alif Cortex-M55 (2,905.18x على البوابة القابلة للارتداء)، وعدّادات reported_j، وتوقيت openXC7 بعد PAR، وتقديرات est_j عند الالتزام b3cb6fe."
+deck: "تسلسل Mixture of Limits مزوَّد بـ 154 مبرهنة في Lean 4.36.0 متحقَّقٍ منها عبر ستّ نوى مع استخراج آلي لشيفرة Rust الخالية من المكتبة القياسية إلى Lean عبر Inria Charon+Aeneas (1,518 مبرهنة عبر أربعة مستودعات تابعة لـ Open Interface Engineering داخل صناديق عزل bubblewrap في Linux، ومقسّاة ضد CVE-2026-72844)، يجرّب أولاً دوائر جداول البحث ذات 6 مداخل (LUT6) المقسّمة إلى صفحات دون أي عمليات فاصلة عائمة (FLOP)، ووحدة WebAssembly (WASM) للمتصفح بحجم 15.33 كيلوبايت (15,703 بايت، 21 تصديراً، 681 بايت فائضاً)، ونواة Nucleus بلغة Rust الخالية من المكتبة القياسية lut6-core بحجم 4 كيلوبايت / 56 كيلوبايت (14 مصرفاً تغلق تماماً 64.00 كيلوبايت من ذاكرة SRAM للساعة الذكية، مع مرمِّز mol_ltcb_codec --cm2 بلغة Rust دون Python يتفوق على zstd -19 وbzip2 -9 وgzip -9 محققاً 26,838,089 بايت = 2.1470 بت/بايت على معيار Matt Mahoney الرسمي enwik8 بحجم 100 ميغابايت وتطابق SHA-256 بنسبة 100.0% عبر arm64 وaarch64 وx86_64، وتكيّف Online-TTT-LUT6 بلا قناة جانبية [-56.73% ندم إحماء، 90.34% تخطي شرائح] وخفض 32.462x على مفرِّع Thor في Window 26، إضافةً إلى تحويل أوزان tufazip v2 QPI1 إلى 5,680,128 شريحة LUT6 بلا MAC وخفض مبدئي JouleBit قدره 8.766x وخفض 13.376x على مفرِّع Thor في Window 25، ووكيل mol-magnitude-adapter بلغة Rust دون Python بخفض 3,028.3x على مفرِّع Thor في الموجة 2 على CogLoadBench وصفر إفساد في 24 سير عمل MCPMark بخاصية CoW CRUD، وجدولة BA-Tiered-Expert-AirMoL بسرعة 436.60 رمزاً/ث على 180B و216.33 رمزاً/ث على GLM-5-355B و166.27 رمزاً/ث على 552B أي أسرع بـ 4.00x-4.17x من FreeToken وبـ 5.90x-6.00x من KTransformers مع خفض 3.330x في Window 24، وأغلبية معزَّزة 60.00% [15/25 لعبة و18/183 مستوى] على ARC-AGI-3 عبر C-BFWS + RIW(2)، وEngram-LUT6 بلا FLOP، ومقارنة Magnitude 0.3.5 بخفض 53.55x لطاقة الرمز الصحيح وخفض 3.157x في Window 23، و3.314x في Window 22، و3.204x في Window 21، و4.092x في Window 20) مع ذيل ثلاثي مضاد للتناظر من 40 مدخلاً بلا ضرب T-MAC، وطبقة Wearable-MoL بحجم 5,984 بايت (9.13% من ذاكرة SRAM لساعة ذكية بحجم 64 كيلوبايت) بافتتاحية 56 بت من 4 رموز وصفر تسميم للبادئة، وحماية (72, 64) SECDED ضد انقلابات البت الإشعاعية (0.154 مللي ثانية في mol-agent-rs، و162.71 نانوجول لكل قرار مشرَّح بالبتات، وبقاء بنسبة 100.0% عند معدل خطأ بت 1%)، ويصعّد عبر نماذج الميكرو القابلة للارتداء دون المليار معامل (Sensente/uLM-28M وLiquidAI/LFM2.5-230M) ونماذج أواخر 2026 الحلقية والهجينة والمتناثرة Mixture-of-Experts (MoE) بدقة 4 بت عبر NVMe حتى 120B معامل عبر أربعة مصنّعي GPU (حتى 328.06x تسريعاً، خافضاً خطأ معايرة RMS لبروتوكول LastExam بمقدار 5.37x من 70.62% إلى 13.14% مع 0.00% هلوسات واثقة >= 80%)، ويحرس الالتزامات على 4 مستودعات Verified، ويصرّف حالات الإيقاظ المصدَّقة هابطاً إلى ذاكرات RAMB36E2 وتيارات بت .bit مفتوحة عبر openXC7 بتردد 320.62 و106.55 و109.15 و100.55 و100.74 و106.97 و102.41 و103.25 ميغاهرتز لشريحة Artix-7 XC7A200T M.2 2280 وصفحات Lupanov وwobble. يتضمن قراءات مفرِّعات التيار المستمر الفيزيائية measured_j على Jetson AGX Thor (87.25x في lut6-core المشرَّح بالبتات، و222.57x في البوابة المعرفية القابلة للارتداء مقابل uLM-28M، و32.462x في Window 26، و13.376x في Window 25، و3.330x في Window 24، و3.157x في Window 23، و3.314x في Window 22، و4.092x في Window 20، و1.65x في ذيل T-MAC المضاد للتناظر [و1.12x على Zen 5]، و3.90x في Sub1Bit-LUT6، و34.21x في Expert-AirMoL، و10.94x في القضية 1؛ وقيمة board_metered هي true) مفصولة بصرامة عن دورات Alif Cortex-M55 (2,905.18x على البوابة القابلة للارتداء)، وعدّادات reported_j، وتوقيت openXC7 بعد PAR، وتقديرات est_j عند الالتزام 597c50b."
 lang: "ar"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*المراجعة b3cb6fe، 27 نوفمبر 2026. التنفيذ المرجعي والمصنوعات: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) عند [`b3cb6fe7f29ac3b856b90dd9f317af0be4538544`](https://github.com/openIE-dev/lut-adapt-ai/tree/b3cb6fe7f29ac3b856b90dd9f317af0be4538544). ملخص البيانات: [/data/#lut-adapt](/data/#lut-adapt). ملف LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([المصدر](/pdfs/latex/lut-adapt.tex)).*
+*المراجعة 597c50b، 27 نوفمبر 2026. التنفيذ المرجعي والمصنوعات: [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) عند [`597c50b63f357e058e80fc9c7b3c46af1a63b88a`](https://github.com/openIE-dev/lut-adapt-ai/tree/597c50b63f357e058e80fc9c7b3c46af1a63b88a). ملخص البيانات: [/data/#lut-adapt](/data/#lut-adapt). ملف LaTeX PDF: [/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf) ([المصدر](/pdfs/latex/lut-adapt.tex)).*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: مزيج الحدود، قاعدة التسلسل من بوابات الالتزام المقاسة الجزء الثاني [same house]</li>
-<li>LA: بادئة الادعاء والمكذب (LA-1 إلى LA-79، LA-F1 إلى LA-F79) المستخدمة في هذه الدراسة</li>
+<li>LA: بادئة الادعاء والمكذب (LA-1 إلى LA-83، LA-F1 إلى LA-F83) المستخدمة في هذه الدراسة</li>
 <li>LUT, LUT6, INIT: جدول بحث، بدائية بوليانية من Xilinx UltraScale+ ذات 6 مداخل، وقناع تهيئة جدول الحقيقة 64-بت</li>
 <li>BRAM, RAMB36E2, URAM: ذاكرة كتلية، البدائية 36-كيبت ذات منفذين من UltraScale+ (144 على xck26)، و UltraRAM</li>
 <li>CLB, FF, DSP, DSP48, KV260: كتلة منطقية قابلة للتهيئة، فليب-فلوب، شريحة معالجة إشارة رقمية، ولوحة AMD Kria KV260 (xck26)</li>
@@ -842,6 +842,23 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
   <figcaption>الشكل 20. قياسات `mol-magnitude-adapter` بلغة Rust على `CogLoadBench` و`MCPMark`، وتفوق `BA-Tiered-Expert-AirMoL` على `FreeToken` و`KTransformers`، ومفرِّع `Thor` في `Window 24` (`3.330×`)، وإغلاق `64.00 KB` في `SRAM` الساعة، و`138` / `1,502` مبرهنة عبر ستّ نوى (`الادعاءات LA-72..LA-75`).</figcaption>
 </figure>
 
+### 4.52 الادعاءات LA-76..LA-83: معيار Matt Mahoney لضغط النصوص الكبيرة (`LTCB` `enwik8` بحجم `100 MB`)، وتفوق `MoL-LTCB-CM2` على `zstd -19` و`bzip2 -9` (`26.84 MB = 2.1470 bpb`)، وتكيّف `Online-TTT-LUT6` بلا قناة جانبية، ومفرِّع `Thor` في `Window 25` (`13.376×`) و`Window 26` (`32.462×`)، وتجاوز معلم `> 150` مبرهنة (`154` / `1,518` عبر الأسطول)
+
+- **النسخة الأولى `MoL-LTCB` وأوزان `tufazip v2 QPI1` ومفرِّع `Window 25` (`LA-76..LA-79`)**: يحقق `mol_ltcb_codec` (`LTCB-XML-Skip LUT6` + مُرمِّز Kraft الصحيح `2^24`) **`32,764,848 B` (`2.6212 bpb`، `-10.25%` مقابل `gzip -9`، `archive_sha256 = 1096e659ef4f...` متطابق `100.0%` عبر `M5 Max` و`Thor` [`1,358.62 J` `measured_j`، `board_metered = true`] و`Zen 5`)** مع عتبة Mahoney $N^* = 5{,}486.26\text{ MB}$، ويحوّل `34,080,768` بت من `weights.bin` في `tufazip v2` إلى **`5,680,128` شريحة `LUT6` بلا `MAC`** (`8.766×` خفض مبدئي، `144/144` مايتر `Yosys`)، وتخفض `Window 25` قراءة `Thor` `measured_j` بمقدار **`13.376×`** مع بوابة `openXC7` بتردد `102.41 MHz` و`146` / `1,510` مبرهنة (الشكل 21).
+- **تفوق `MoL-LTCB-CM2` (`--cm2`) على `zstd -19` و`bzip2 -9` و`gzip -9` (`LA-80`)**: يجمع `WRT-Capillary-LUT6` ثنائي التقابل (`148` مدخلاً مع هروب `0xFE`) ومطابقة `LZ-Rep4` الكسولة عبر كامل نافذة `100 MB` (`83.073%` تخطي) ومازج السياق الصحيح `Q12` `StateSMix-LUT6` ليحقق **`26,838,089 B` إجمالي مرتَّب (`2.1470 bpb`، `-204.4 KB` تحت `zstd -19`، و`-2.21 MB` تحت `bzip2 -9`، و`-9.67 MB` تحت `gzip -9`)** بتطابق بتي `100.00%` (`5342cc0b24a603b0...`) عبر `M5 Max` (`62.60 MB/s`) و`Thor` (`2,890.72 J` `INA238` `VIN` `measured_j`، أسرع `3.40×` من `bzip2 -9`، `board_metered = true`) و`Zen 5` (`67.92 MB/s`).
+- **تكيّف `Online-TTT-LUT6` المتزامن بدقة `i16` ومفرِّع `Thor` في `Window 26` (`LA-81 & LA-82`)**: يمنع انحراف إشارة `FP32` `AdamW` عند الخطوة `20` مسجلاً **`0` عدم تطابق عبر `512` خطوة**، ويخفض ندم الإحماء بنسبة **`-56.73%`** مع **`90.338%` تخطي إعادة بناء شرائح `LUT6`** و`144/144` مايتر `Yosys`، وتخفض `Window 26` قراءة `Thor` `VDD_CPU_SOC_MSS` `measured_j` بمقدار **`32.462×` (`3,727.65` مقابل `121,006.57 nJ/op`، أسرع `32.369×`، `board_metered = true`)** و`17.146×` على `Zen 5` و`14.618×` على `M3 Ultra`.
+- **بوابة `openXC7` بتردد `103.25 MHz`، ووحدة `WASM` بـ`21` تصديراً (`15.33 KB`)، وتجاوز معلم `> 150` مبرهنة (`154` / `1,518`، `LA-83`)**: تغلق `clai_ltcb_cm2_ttt_xc7a200t_top` عند **`103.25 MHz`** (`656` `SLICE_LUTX`، `0` `DSP48E1`)، وتبلغ `lut6_core.06c5c0b781d6.wasm` **`15,703 B <= 16,384 B` (`21` تصديراً، `681 B` فائضاً)**، وترفع `LtcbCm2OnlineTtt.lean` المجموع إلى **`154` مبرهنة في `LutAdapt` (`59,192` تصريحاً) و`1,518` مبرهنة عبر أسطول `bwrap`** (الشكل 22).
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/ltcb-neural-lut6-and-mahoney-threshold.svg" alt="معيار Matt Mahoney LTCB enwik8، وتحويل أوزان tufazip v2 QPI1 إلى 5,680,128 شريحة LUT6، ومفرع Thor في Window 25 بخفض 13.376x، و1,510 مبرهنة." />
+  <figcaption>الشكل 21. قياسات `MoL-LTCB` وعتبة Mahoney $N^*$ وتحويل `tufazip v2 QPI1` ومفرِّع `Thor` في `Window 25` (`13.376×`) و`146` / `1,510` مبرهنة (`الادعاءات LA-76..LA-79`).</figcaption>
+</figure>
+
+<figure class="my-8">
+  <img src="/figures/lut-adapt/ltcb-cm2-wrt-statesmix-and-online-ttt.svg" alt="تفوق MoL-LTCB-CM2 على zstd-19 وbzip2-9 على enwik8، وتكيف Online-TTT-LUT6، ومفرع Thor في Window 26 بخفض 32.462x، و154 / 1,518 مبرهنة." />
+  <figcaption>الشكل 22. قياسات `MoL-LTCB-CM2` (`26,838,089 B` يتفوق على `zstd -19` و`bzip2 -9`) و`Online-TTT-LUT6` (`-56.73%` ندم، `90.34%` تخطي شرائح) ومفرِّع `Thor` في `Window 26` (`32.462×`) وبوابة `103.25 MHz` `openXC7` ومعلم `&gt; 150` (`154` / `1,518` مبرهنة عبر ستّ نوى، `الادعاءات LA-80..LA-83`).</figcaption>
+</figure>
+
 ---
 
 <div id="5-related-work-and-convergence-observations" class="anchor-alias" aria-hidden="true"></div>
@@ -882,7 +899,7 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`LA-F5`** | `Claim LA-5` (التخمين على مستوى البايت) | ينتج `scripts/run_code_corpus_benchmark.py` تطابقاً دقيقاً على مستوى البايت أقل من `100.0%` مقارنة بـ `Mamba3CodeLM` الجشع على `48` موجِّهاً غير مرئي. |
 | **`LA-F6`** | `Claim LA-6` (`AirMoL` 14.3M) | يفشل `scripts/run_air_mol_benchmark.py` تحت `F_NOCACHE` في تحقيق تطابق بنسبة `100%`، أو يقرأ بايتات NVMe أكثر من `AirLLM` 4-Bit `T=1`. |
 | **`LA-F7`** | `Claim LA-7` (`AirMoL` على HF لعام 2026) | ينحرف أي من `scripts/run_hf_lfm3_air_mol.py` أو `scripts/run_hf_air_mol_pretrained.py` أو `scripts/run_hf_qwen35_air_mol.py` بمقدار $\ge 1$ رمز BPE عن الهدف الجشع. |
-| **`LA-F8`** | `Claim LA-8` (مجموعة الانحدار) | يفشل `pytest -v` في أي من الاختبارات الـ`102` الموجودة في `tests/`. |
+| **`LA-F8`** | `Claim LA-8` (مجموعة الانحدار) | يفشل `pytest -v` في أي من الاختبارات الـ`110` الموجودة في `tests/`. |
 | **`LA-F9`** | `Claim LA-9` (MoE بحجم `8.5B/35B`) | ينحرف `scripts/run_hf_moe_8b_35b_air_mol.py` عن تطابق الرموز بنسبة `100%`، أو يقرأ بايتات NVMe أكثر من `AirLLM` أو `Expert-AirLLM`. |
 | **`LA-F10`** | `Claim LA-10` (`Sub1Bit-LUT6`) | يتجاوز `scripts/run_sub1bit_lut_benchmark.py` خطأً أقصى قدره `1e-3` مقارنةً بضرب المصفوفات الثنائية الكثيف `ITQ`، أو يفشل في تحقيق تطابق متحقَّق منه بنسبة `100%`. |
 | **`LA-F11`** | `Claim LA-11` (مسابقة `48` مهمة) | يقبل `scripts/run_frontier_ai_bakeoff.py` أكثر من `> 0%` من الالتزامات (commits) المعطوبة، أو يقبل مهارة Wave-1 قديمة تحت تعديل مواصفات Wave-2. |
@@ -942,6 +959,14 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 | **`LA-F73`** | `Claim LA-73` (حوض `MCPMark` `CoW` `CRUD` ومايتر `144/144`) | يسمح بإفساد حي `> 0%` عبر `24` سير عمل `MCPMark`، أو يفشل في مايتر `Yosys` `abc -lut 6` `144/144`. |
 | **`LA-F74`** | `Claim LA-74` (`BA-Tiered-Expert-AirMoL` مقابل `FreeToken` ومفرِّع `Window 24`) | يحقق تسريعاً `< 3.5×` مقابل `FreeToken` أو `< 5.0×` مقابل `KTransformers`، أو تفشل `Window 24` في خفض `measured_j` على `Thor` (`< 2.5×`). |
 | **`LA-F75`** | `Claim LA-75` (إغلاق `64.00 KB` في `SRAM` الساعة، و`106.97 MHz` `openXC7`، و`WASM` بـ`19` تصديراً، و`138` / `1,502` مبرهنة) | ينحرف مجموع `14 × 4,096 + 4,096 + 4,096` عن `65,536 B`، أو تقل `Fmax` عن `100 MHz`، أو تقل المبرهنات عن `138` / `1,502`، أو تتجاوز `lut6_core.wasm` حجم `16,384 B`. |
+| **`LA-F76`** | `Claim LA-76` (معيار `LTCB` `enwik8` بحجم `100 MB` وعتبة Mahoney $N^*$) | يحفظ نصوص `enwik8` الخام، أو تختلف تجزئة `SHA-256` عبر المعماريات، أو يختم `board_metered = true` خارج `Thor`، أو يخسر أمام `gzip -9`. |
+| **`LA-F77`** | `Claim LA-77` (تحويل `tufazip v2` `QPI1` ومايتر `144/144`) | يحفظ `weights.bin`، أو يسجل خطأ بتي عبر `34,080,768` بت (`5,680,128` شريحة `LUT6`)، أو يفشل في مايتر `Yosys` `144/144`. |
+| **`LA-F78`** | `Claim LA-78` (مفرِّع `Thor` في `Window 25`) | يخلط `measured_j` مع `reported_j`، أو يختم `board_metered = true` خارج `Thor`، أو يحقق خفضاً `< 10.0×` على `Thor`. |
+| **`LA-F79`** | `Claim LA-79` (`102.41 MHz` `openXC7`، و`WASM` بـ`20` تصديراً، و`146` / `1,510` مبرهنة) | تستخدم `DSP48E1`، أو تقل `Fmax` عن `100 MHz`، أو تقل المبرهنات عن `146` / `1,510`، أو تتجاوز `WASM` حجم `16,384 B`. |
+| **`LA-F80`** | `Claim LA-80` (تفوق `MoL-LTCB-CM2` على `zstd -19` و`bzip2 -9` على `enwik8`) | يحفظ نصوص `enwik8` الخام، أو يفشل عكس `WRT`، أو تختلف `5342cc0b24a603b0...` عبر المضيفين، أو يخفق في التفوق على `zstd -19` و`bzip2 -9` و`gzip -9` على `enwik5..enwik8`. |
+| **`LA-F81`** | `Claim LA-81` (`Online-TTT-LUT6` بدقة `i16` ومايتر `144/144`) | يسجل عدم تطابق في `i16` عبر `512` خطوة، أو يحقق خفض ندم `< 50%` أو تخطي شرائح `< 80%`، أو يفشل في مايتر `Yosys` `144/144`. |
+| **`LA-F82`** | `Claim LA-82` (مفرِّع `Thor` في `Window 26`) | يختم `board_metered = true` خارج `Thor`، أو يحقق خفضاً `< 25.0×` في `measured_j` على `Thor`، أو `< 10.0×` على `Zen 5` أو `M3 Ultra`. |
+| **`LA-F83`** | `Claim LA-83` (`103.25 MHz` `openXC7`، و`WASM` بـ`21` تصديراً، ومعلم `> 150` [`154` / `1,518`] مبرهنة) | تستخدم `DSP48E1`، أو تقل `Fmax` عن `100 MHz`، أو تقل المبرهنات عن `154` / `1,518`، أو تتجاوز `lut6_core.wasm` حجم `16,384 B`. |
 
 ---
 
@@ -1032,6 +1057,8 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 <li>Mahoney, M. (2026). Large Text Compression Benchmark (<code>enwik8</code> / <code>enwik9</code>). <a href="https://mattmahoney.net/dc/text.html">mattmahoney.net/dc/text.html</a>.</li>
 <li>Bellard, F. (2021). NNCP v2: Lossless Data Compression with Transformer/LSTM Neural Networks. <a href="https://bellard.org/nncp/">bellard.org/nncp</a>.</li>
 <li>He, T. (2026). tufazip v2: 1-Bit Looped-Transformer Online Arithmetic Coding on <code>enwik9</code> (<code>Tufalabs/tufazip</code>, MIT License). <a href="https://github.com/Tufalabs/tufazip">github.com/Tufalabs/tufazip</a>.</li>
+<li>Mahoney, M. V. (2005). Adaptive Weighing of Context Models for Lossless Data Compression (<code>PAQ</code> &amp; <code>SSE</code>). <em>Florida Institute of Technology CS-2005-16</em>.</li>
+<li>Skibiński, P., Grabowski, S., and Deorowicz, S. (2005). Revisiting Dictionary-Based Compression (<code>WRT</code>). <em>Software: Practice and Experience</em>, 35(15):1455–1476.</li>
 </ol>
 
 ---
@@ -1040,11 +1067,14 @@ $$E_\phi(x, y) = \frac{1}{2}\|f_\theta(x) - \mu_y\|_2^2 + \frac{\lambda_r}{2}\|f
 
 ## الملحق أ. إعادة الإنتاج
 
-من نسختين مستخرجتين من [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit b3cb6fe`) و[openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` و`lut6-core-nucleus/`):
+من نسختين مستخرجتين من [openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) (`commit 597c50b`) و[openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments) (`aller-a7-xc7a200t/` و`lut6-core-nucleus/`):
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
-(cd sys/lut6-core && cargo test --release && cargo run --release --bin mol_ltcb_codec -- --self-test && cargo run --release --bin mol_magnitude_adapter -- --self-test && cargo run --release --bin bench_lut6_nucleus_shunt)
+(cd sys/lut6-core && cargo test --release && cargo run --release --features std --bin mol_ltcb_codec -- --self-test && cargo run --release --features std --bin mol_ltcb_codec -- --cm2 --self-test && cargo run --release --bin mol_magnitude_adapter -- --self-test && cargo run --release --bin bench_lut6_nucleus_shunt)
+PYTHONPATH=src .venv/bin/python scripts/run_phase46_ltcb_cm2_fleet.py
+PYTHONPATH=src .venv/bin/python scripts/run_phase46_window26_five_silicon.py
+PYTHONPATH=src:scripts .venv/bin/python scripts/run_openxc7_ltcb_cm2_ttt_par.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase45_ltcb_fleet.py
 PYTHONPATH=src .venv/bin/python scripts/run_phase45_window25_five_silicon.py
 PYTHONPATH=src .venv/bin/python scripts/run_openxc7_ltcb_kraft_par.py
