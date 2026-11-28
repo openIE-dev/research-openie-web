@@ -282,6 +282,7 @@ dialog.lb::backdrop { background: rgba(0,0,0,0.85); }
 }
 main pre { overflow-x: auto; max-width: 100%; }
 main table { max-width: 100%; }
+main .grid > * { min-width: 0; }
 /* Wide screens: paper figures grow into the left margin, up to about 1150px. */
 @media (min-width: 1240px) {
   @supports (width: 1cqw) {

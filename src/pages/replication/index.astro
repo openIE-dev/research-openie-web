@@ -270,11 +270,11 @@ const ISSUE_URL =
         </div>
       </div>
 
-      <div class="grid gap-8" id="rep-kit-grid">
+      <div class="grid grid-cols-1 gap-8" id="rep-kit-grid">
         {KITS.map((kit) => (
           <article
             data-rep-card={kit.substrate}
-            class="glass-card p-7 md:p-9 rounded-3xl border border-brand-border hover:border-brand-cyan/35 transition-colors"
+            class="min-w-0 glass-card p-7 md:p-9 rounded-3xl border border-brand-border hover:border-brand-cyan/35 transition-colors"
           >
             <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
               <h3 class="font-display text-lg md:text-2xl font-bold text-brand-white m-0">
