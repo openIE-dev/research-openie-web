@@ -105,26 +105,28 @@ cd openie-research-experiments
     id: 'spec-fidelity-barrier',
     name: "Kit #8 · Spec-Fidelity Barrier (Goodhart's Law Defense & Constrained Decoding)",
     substrate: 'cpu',
-    evidence: 'reported_j · unmetered · [E]/[T]',
+    evidence: 'reported_j · @ d036b64 · BLAKE3 41514ee6…',
     repo: 'https://github.com/openIE-dev/openie-research-experiments',
     paper: '/standards/#layer-3-spec-fidelity',
     sheet: '/sourcesheets/gates/',
+    tutorial: '/tutorials/?lab=lab-14-standards-spec-barrier',
     plainSummary:
-      'Benchmarks context-isolated specifications (Spec ⊥ Impl), non-vacuity checks, behavioral mutant kill gates (blocking 56/56 hardcoded lookup-table clones), and in-loop grammar-constrained decoding (llguidance / Outlines) eliminating syntax-retry joule waste.',
+      'Measured @ d036b64 (Signed Provenance · Self-Checked, BLAKE3: 41514ee6147d636d6bcb27f4ee392e4c9c3ce4ffd2bce2fd88a1afd48e9d1e0a) across 40 tasks × 25 vectors (200 AST mutants): Arm A shared-context naive specs suffer 199/200 (99.50%) false accepts and Arm B isolated-spec-only suffers 146/200 (73.00%), whereas Arm C (Spec ⊥ Impl + 100% AST Mutant Kill Gate) achieves 0/200 (0.00%, exact 95% Clopper–Pearson [0.0000, 0.0183]). Arm D in-loop grammar/type masking + mutant gate cuts syntax/type wasted tokens by -100.0% (298,175 → 0), holds semantic false accepts at 0/800, runs 44.19× faster (570.5 µs → 12.9 µs), and lowers AMD Zen 5 Linux RAPL reported_j by 45.22× (55,337 µJ → 1,223.7 µJ).',
     cmd: `git clone https://github.com/openIE-dev/openie-research-experiments.git
 cd openie-research-experiments
 ./kits/spec-fidelity-barrier/run_kit.sh`,
   },
   {
     id: 'standards-bridge',
-    name: 'Kit #9 · Drop-In Apache-2.0 Standards Bridge (Wasmtime, MLIR/CIRCT, OTel & COSE)',
+    name: 'Kit #9 · Drop-In Apache-2.0 Standards Bridge (Wasmtime 50.0.1, MLIR/CIRCT, OTel & COSE)',
     substrate: 'cpu',
-    evidence: 'reported_j · measured_j · Apache-2.0',
+    evidence: 'reported_j · @ d036b64 · BLAKE3 6ee27b1d…',
     repo: 'https://github.com/openIE-dev/openie-research-experiments',
     paper: '/standards/',
     sheet: '/sourcesheets/satb-harness/',
+    tutorial: '/tutorials/?lab=lab-14-standards-spec-barrier',
     plainSummary:
-      'Runs the zero-lock-in production adapter stack: Wasmtime + WASI sandboxed skill routines paired with orthogonal OpenTelemetry joule semantic conventions, IETF RFC 9052 COSE_Sign1 + FlatBuffers Ed25519+BLAKE3 receipts, and LLVM MLIR/CIRCT translation validation.',
+      'Measured @ d036b64 (Signed Provenance · Self-Checked, BLAKE3: 6ee27b1de540199d9dce9c46b452f0b60faf7eb1f403319de01e9e97976fa5c0): (1) Wasmtime 50.0.1 exact fuel calibration proves identical 330,000,004 fuel (1.000000× parity; deterministic trap at 330,000,003) across L1 ALU vs. 64 MiB DRAM thrash diverges 10.36× (1.35 J vs. 14.00 J CLI RAPL reported_j) and 9.80× (0.82 J vs. 8.04 J steady-state in-process Wasm); (2) 10,000 Ed25519 + BLAKE3 receipts (0 mismatches) verify IETF RFC 9052 COSE_Sign1 at 144.7 B (-61.1% vs 371.6 B JSON, 86.2 µs) and zero-copy FlatBuffers at 161.0 B (< 1.0 µs unsigned read / 83.1 µs signed) beside WAI1 (128.0 B, 76.8 µs); (3) OpenTelemetry OTLP/JSON v1 exporter blocks 3/3 cross-class energy sum violations (OrthogonalityViolationError); (4) LLVM MLIR / CIRCT (hw + comb) + IEEE 1364 Verilog verifies 0/64 (2^6) and 0/1,024 (2^10) mismatches under iverilog 13.0 (vvp) RTL simulation + Alive2-style mutation witness.',
     cmd: `git clone https://github.com/openIE-dev/openie-research-experiments.git
 cd openie-research-experiments
 ./kits/standards-bridge/run_kit.sh`,
@@ -212,13 +214,19 @@ const ISSUE_URL =
           rel="noopener noreferrer"
           class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-brand-cyan/45 text-brand-cyan font-mono text-xs no-underline hover:bg-brand-cyan/10 transition-colors"
         >
-          📦 Browse openie-research-experiments (@ 6a22dee) ↗
+          📦 Browse openie-research-experiments (@ d036b64) ↗
         </a>
         <a
           href="/standards/"
           class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-brand-amber/45 text-brand-amber font-mono text-xs no-underline hover:bg-brand-amber/10 transition-colors"
         >
           🧭 Clean-Room vs. Standards Bridge (/standards/) →
+        </a>
+        <a
+          href="/tutorials/?lab=lab-14-standards-spec-barrier"
+          class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-emerald-400/45 text-emerald-300 font-mono text-xs no-underline hover:bg-emerald-500/10 transition-colors"
+        >
+          🎓 Try Lab #14 (Goodhart Barrier &amp; Fuel vs. Joules) →
         </a>
         <a
           href="https://blog.openie.dev/verification/"
@@ -300,6 +308,14 @@ const ISSUE_URL =
               <a href={kit.sheet} class="text-brand-cyan no-underline hover:underline">
                 [G0–G12] Source Sheet →
               </a>
+              {kit.tutorial && (
+                <>
+                  <span class="text-brand-gray">·</span>
+                  <a href={kit.tutorial} class="text-emerald-300 no-underline hover:underline">
+                    Interactive Lab #14 →
+                  </a>
+                </>
+              )}
               <span class="text-brand-gray">·</span>
               <a href={kit.repo} target="_blank" rel="noopener noreferrer" class="text-brand-slate no-underline hover:text-brand-white">
                 GitHub Repository ↗

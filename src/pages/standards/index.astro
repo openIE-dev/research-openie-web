@@ -11,13 +11,13 @@ const LAYERS = [
     cleanRoomTitle: 'Clean-Room Lab (~5,000 SLOC RCE Host)',
     cleanRoomBody:
       'Isolates a pure state-event fold P = (S, E, δ, D, λ) with SHA-256 log chaining and zero JIT background threads so replay determinism (10,500 streams × 6 targets, 0 mismatches) and log-hash overhead can be measured without runtime confounding. Already compiles to wasm32-wasip1.',
-    bridgeTitle: 'Drop-In Standards Bridge: Wasmtime + WASI + Hardware/OS Shunts',
+    bridgeTitle: 'Drop-In Standards Bridge: Wasmtime 50.0.1 + WASI + Hardware/OS Shunts',
     bridgeBody:
-      'Run untrusted or synthesized agent tools inside Wasmtime + WASI capability sandboxes with deterministic fuel enabled—paired with physical DC shunts (TI INA260 / INA3221 measured_j) or chip counters (Linux RAPL / Apple IOReport reported_j). Instruction fuel bounds logical op-count (halting infinite loops), whereas cache misses and runtime FP32 unpacking shift joules-per-op by up to 81.86× on silicon. The two meters are orthogonal complements, never rivals.',
+      'Run untrusted or synthesized agent tools inside Wasmtime 50.0.1 + WASI capability sandboxes with deterministic fuel enabled—paired with physical DC shunts (TI INA260 / INA3221 measured_j) or chip counters (Linux RAPL / Apple IOReport reported_j). Measured in kits/standards-bridge/ (@ d036b64, BLAKE3: 6ee27b1d…): two kernels burning identical 330,000,004 exact Wasmtime fuel (1.000000× parity; deterministic trap at 330,000,003) across L1 ALU vs. 64 MiB DRAM thrash diverge 10.36× (1.35 J vs. 14.00 J CLI RAPL reported_j) and 9.80× (0.82 J vs. 8.04 J steady-state in-process Wasm), alongside up to 81.86× sub-bit unpack penalties on silicon. Fuel bounds termination; shunts and counters measure joules.',
     kitSlug: 'kits/standards-bridge/',
     links: [
       { label: 'Metered Commit Gates →', href: '/papers/gates/' },
-      { label: 'SATB 5-Host Telemetry →', href: '/papers/satb-harness/' },
+      { label: 'Interactive Lab #14 (Fuel vs. Joules) →', href: '/tutorials/?lab=lab-14-standards-spec-barrier' },
     ],
   },
   {
@@ -47,13 +47,13 @@ const LAYERS = [
     cleanRoomTitle: 'Clean-Room Lab (56-Program Table-Control Falsifier & Rule W-INT-2)',
     cleanRoomBody:
       'OpenIE explicitly registered and published this exact failure mode (/faq/#hq-5): rebuilding 56 example-only modules as hardcoded lookup tables passed 56/56 naive example checks while diverging off-sample, prompting rule W-INT-2 and mutation gate W-MUT-1 (catching up to Cunha 2026 on specification-coverage bottlenecks).',
-    bridgeTitle: 'Drop-In Standards Bridge: Spec ⊥ Impl + Mutant/Vacuity Gates + llguidance/Outlines',
+    bridgeTitle: 'Drop-In Standards Bridge: Spec ⊥ Impl + 100% AST Mutant Gate + In-Loop Grammar Mask',
     bridgeBody:
-      'Enforce three barriers in kits/spec-fidelity-barrier/: (1) Context-Isolated Specs (Spec ⊥ Impl)—the implementation agent cannot read held-out property seeds or edit the contract bundle; (2) Mutant & Vacuity Kill Gates—a spec is rejected before synthesis if it is vacuously satisfiable or fails to kill injected behavioral mutants; (3) In-Loop Grammar-Constrained Decoding (llguidance / Outlines)—masks invalid tokens during generation so 0 joules are wasted on syntax-error retries.',
+      'Measured in kits/spec-fidelity-barrier/ (@ d036b64, BLAKE3: 41514ee6…) across 40 tasks × 25 vectors (200 AST mutants): Arm A shared-context naive specs admit 199/200 (99.50%) buggy candidates and Arm B isolated-spec-only admits 146/200 (73.00%), whereas Arm C (Spec ⊥ Impl + 100% AST Mutant Kill Gate) drives false accepts to 0/200 (0.00%, exact 95% Clopper–Pearson [0.0000, 0.0183]; 31/40 Arm A & 40/40 Arm B weak specs refused via SPEC_VACUOUS_REFUSED). Adding Arm D in-loop CFG/type token masking eliminates 100.0% of syntax/type wasted tokens (298,175 → 0), holds semantic false accepts at 0/800, runs 44.19× faster (570.5 µs → 12.9 µs), and cuts AMD Zen 5 Linux RAPL reported_j by 45.22× (55,337 µJ → 1,223.7 µJ).',
     kitSlug: 'kits/spec-fidelity-barrier/',
     links: [
       { label: 'FAQ #5 Table-Control Falsifier →', href: '/faq/#hq-5' },
-      { label: 'RCE-JEPA H15 & W-MUT-1 →', href: '/papers/rce-jepa/' },
+      { label: 'Try Lab #14 (Break & Repair Goodhart Gate) →', href: '/tutorials/?lab=lab-14-standards-spec-barrier' },
     ],
   },
   {
@@ -67,7 +67,7 @@ const LAYERS = [
       'Measures the physical floor on an AMD Kria KV260 (11.43 nJ/check TI INA260 measured_j) and openXC7 RTL to establish where sub-microjoule combinational gates pay back synthesis energy N* on extreme high-frequency edge loops.',
     bridgeTitle: 'Drop-In Standards Bridge: Stop at Rungs 1–3 (95% of Workloads); Lower Rung 4 via MLIR/CIRCT',
     bridgeBody:
-      'Do not synthesize FPGA gates for everyday software! Stop at Rungs 1–3: Rung 1 Exact/Nameless Hash Lookup (~0.3–1.8 µJ), Rung 2 Synthesized Rust/Wasm Skill Routines (gate-admitted tool libraries), and Rung 3 compact 0.5B–2B packed-integer local models—capturing 16.7×–29.9× Zipf(0.85) energy cuts on commodity CPUs. For the <5% ultra-low-latency hardware edge, lower through LLVM MLIR + CIRCT (comb / hw dialects → SystemVerilog) paired with exhaustive/SMT translation validation.',
+      'Do not synthesize FPGA gates for everyday software! Stop at Rungs 1–3: Rung 1 Exact/Nameless Hash Lookup (~0.3–1.8 µJ), Rung 2 Synthesized Rust/Wasm Skill Routines, and Rung 3 compact 0.5B–2B packed-integer local models—capturing 16.7×–29.9× Zipf(0.85) energy cuts on commodity CPUs. For the <5% ultra-low-latency hardware edge, kits/standards-bridge/ (@ d036b64) lowers through LLVM MLIR + CIRCT (hw + comb dialects → IEEE 1364 Verilog) with 0/64 (2^6) LUT6 and 0/1,024 (2^10) composed-cone mismatches verified under iverilog 13.0 (vvp) RTL simulation plus an Alive2-style mutation witness.',
     kitSlug: 'kits/standards-bridge/',
     links: [
       { label: 'Compiled Agency 4-Stage Cascade →', href: '/living/compiled-agency/' },
@@ -85,7 +85,7 @@ const LAYERS = [
       'Quantifies why reparsing and retokenizing verbose UTF-8 JSON/Markdown transcripts across agent hops burns order-of-magnitude excess CPU/memory energy compared with zero-copy typed binary frames (/papers/ai-reads-human/).',
     bridgeTitle: 'Drop-In Standards Bridge: Apache-2.0 OpenTelemetry Joule Conventions + IETF COSE_Sign1 + FlatBuffers',
     bridgeBody:
-      'Zero custom parser lock-in and 100% Apache-2.0 licensing. Emit standard OpenTelemetry spans and metrics carrying orthogonal joule attributes (openie.energy.measured_j, openie.energy.reported_j, openie.energy.est_j, openie.energy.evidence_class—never summed across classes!), serialize high-rate tool payloads in zero-copy FlatBuffers, and wrap Ed25519 + BLAKE3 provenance digests in standard IETF RFC 9052 COSE_Sign1 envelopes.',
+      'Zero custom parser lock-in and 100% Apache-2.0 licensing. Benchmarked across 10,000 Ed25519 + BLAKE3 receipts (0 mismatches) in kits/standards-bridge/ (@ d036b64, BLAKE3: 6ee27b1d…): IETF RFC 9052 COSE_Sign1 encodes in 144.7 B (-61.1% vs 371.6 B JSON, 86.2 µs roundtrip) and zero-copy FlatBuffers in 161.0 B (< 1.0 µs [0.65 µs] unsigned read / 83.1 µs signed) alongside clean-room WAI1 (128.0 B, 76.8 µs), while the OpenTelemetry OTLP/JSON v1 exporter blocks 3/3 cross-class energy sum violations (OrthogonalityViolationError).',
     kitSlug: 'kits/standards-bridge/',
     links: [
       { label: '34-Workload Wire Benchmark →', href: '/papers/ai-reads-human/' },
@@ -107,17 +107,21 @@ const OTEL_SCHEMA_SNIPPET = `{
   "attributes": {
     "openie.gate.verdict": "admitted",
     "openie.gate.spec_isolated": true,
-    "openie.gate.mutant_kill_ratio": 0.984,
+    "openie.gate.mutant_kill_ratio": 1.0,
+    "openie.gate.false_accepts_200_mutants": 0,
     "openie.cascade.rung": 2,
-    "openie.cascade.surface": "wasmtime_wasi_skill",
+    "openie.cascade.surface": "wasmtime_50_0_1_wasi_skill",
+    "openie.wasm.exact_fuel": 330000004,
     "openie.energy.evidence_class": "reported_j",
     "openie.energy.measured_j": null,
-    "openie.energy.reported_j": 0.00177,
+    "openie.energy.reported_j": 0.0012237,
     "openie.energy.est_j": null,
+    "openie.energy.cross_class_sum_prohibited": true,
     "openie.energy.sensor": "linux_powercap_rapl_pkg0",
     "openie.receipt.envelope": "ietf_rfc9052_cose_sign1",
+    "openie.receipt.wire_bytes": 144.7,
     "openie.receipt.payload_codec": "flatbuffers",
-    "openie.receipt.blake3": "a541323b9e0d418c2f1074c890e2b1d7f4e9c3a2180756b9d312e4f8c09a46f0"
+    "openie.receipt.blake3": "6ee27b1de540199d9dce9c46b452f0b60faf7eb1f403319de01e9e97976fa5c0"
   }
 }`;
 
@@ -161,6 +165,61 @@ const ld = {
     <p class="mt-4 font-body text-base md:text-lg text-brand-slate leading-relaxed max-w-4xl">
       A candid engineering map answering the five toughest architectural questions about Open Interface Engineering&rsquo;s research: why our papers isolate minimal clean-room kernels to measure physical floors, and how production teams get the exact same safety gates, Zipfian lookup savings, and cryptographic joule receipts <strong class="text-brand-white">this week</strong> on top of <code class="text-brand-cyan">Rust</code>, <code class="text-brand-cyan">Lean 4</code> / <code class="text-brand-cyan">Verus</code>, <code class="text-brand-cyan">Wasmtime</code>, <code class="text-brand-cyan">MLIR/CIRCT</code>, <code class="text-brand-cyan">IETF COSE</code>, and <code class="text-brand-cyan">OpenTelemetry</code>.
     </p>
+
+    <!-- MEASURED EMPIRICAL RECEIPTS STRIP (@ d036b64) -->
+    <div id="measured-receipts" class="mt-7 glass-card p-5 md:p-6 border border-emerald-400/40 bg-emerald-500/[0.05]">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-brand-border">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="font-mono text-[10.5px] tracking-[0.13em] uppercase px-2.5 py-0.5 rounded bg-emerald-400 text-brand-dark font-bold">
+            Measured Empirical Receipts (@ d036b64)
+          </span>
+          <span class="font-mono text-[11px] text-emerald-300">
+            Signed Provenance &middot; Self-Checked &middot; Apache-2.0
+          </span>
+        </div>
+        <div class="flex flex-wrap items-center gap-3 font-mono text-xs">
+          <a href="/tutorials/?lab=lab-14-standards-spec-barrier" class="text-brand-amber no-underline hover:underline font-semibold">
+            🎓 Launch Lab #14 (Break &amp; Repair Live) →
+          </a>
+          <span class="text-brand-gray">·</span>
+          <a href="/replication/" class="text-brand-cyan no-underline hover:underline">
+            Verify Kits #8 &amp; #9 →
+          </a>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-4 mt-4">
+        <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/70">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+            <span class="font-mono text-xs font-bold text-emerald-300">Kit #8 · kits/spec-fidelity-barrier/</span>
+            <code class="font-mono text-[10.5px] text-brand-slate" title="41514ee6147d636d6bcb27f4ee392e4c9c3ce4ffd2bce2fd88a1afd48e9d1e0a">BLAKE3: 41514ee6…1e0a</code>
+          </div>
+          <ul class="m-0 pl-4 space-y-1.5 font-body text-xs sm:text-[13px] text-brand-light leading-relaxed list-disc">
+            <li>
+              <strong class="text-brand-white">40 tasks &times; 25 vectors (200 AST mutants):</strong> Arm A naive shared-context <code class="text-rose-300">199/200 (99.50%)</code> false accepts &rarr; Arm B isolated-spec-only <code class="text-brand-amber">146/200 (73.00%)</code> &rarr; <strong class="text-emerald-300">Arm C (<code class="text-brand-cyan">Spec &perp; Impl</code> + 100% AST Mutant Kill Gate) <code class="text-emerald-300">0/200 (0.00%, exact 95% Clopper&ndash;Pearson [0.0000, 0.0183])</code></strong>.
+            </li>
+            <li>
+              <strong class="text-brand-white">Arm D (In-Loop Grammar/Type Mask + Mutant Gate, 1,000 draws):</strong> <code class="text-emerald-300">-100.0%</code> syntax/type wasted tokens (<code class="text-brand-cyan">298,175 &rarr; 0</code>), <code class="text-emerald-300">0/800</code> semantic false accepts, <strong class="text-brand-amber">44.19&times; faster</strong> (<code class="text-brand-cyan">570.5 &micro;s &rarr; 12.9 &micro;s</code>), and <strong class="text-emerald-300">45.22&times; lower AMD Zen 5 Linux RAPL <code class="text-brand-cyan">reported_j</code></strong> (<code class="text-brand-cyan">55,337 &micro;J &rarr; 1,223.7 &micro;J</code>).
+            </li>
+          </ul>
+        </div>
+
+        <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/70">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+            <span class="font-mono text-xs font-bold text-brand-cyan">Kit #9 · kits/standards-bridge/</span>
+            <code class="font-mono text-[10.5px] text-brand-slate" title="6ee27b1de540199d9dce9c46b452f0b60faf7eb1f403319de01e9e97976fa5c0">BLAKE3: 6ee27b1d…a5c0</code>
+          </div>
+          <ul class="m-0 pl-4 space-y-1.5 font-body text-xs sm:text-[13px] text-brand-light leading-relaxed list-disc">
+            <li>
+              <strong class="text-brand-white">Wasmtime 50.0.1 Exact Fuel Calibration:</strong> identical <code class="text-brand-cyan">330,000,004</code> exact fuel (<code class="text-brand-cyan">1.000000&times;</code> parity; deterministic trap at <code class="text-brand-cyan">330,000,003</code>) across L1 ALU vs. <code class="text-brand-cyan">64 MiB</code> DRAM thrash diverges <strong class="text-brand-amber">10.36&times; (<code class="text-brand-cyan">1.35 J</code> vs. <code class="text-rose-300">14.00 J</code> CLI RAPL <code class="text-brand-cyan">reported_j</code>)</strong> and <strong class="text-brand-amber">9.80&times; (<code class="text-brand-cyan">0.82 J</code> vs. <code class="text-rose-300">8.04 J</code> steady-state in-process Wasm)</strong>.
+            </li>
+            <li>
+              <strong class="text-brand-white">10,000 Ed25519 + BLAKE3 Receipts (0 mismatches) &amp; OTel / CIRCT:</strong> IETF RFC 9052 <code class="text-brand-cyan">COSE_Sign1</code> <strong class="text-emerald-300">144.7 B (-61.1% vs. 371.6 B JSON, 86.2 &micro;s)</strong>, zero-copy <code class="text-brand-cyan">FlatBuffers</code> <strong class="text-emerald-300">161.0 B (&lt; 1.0 &micro;s unsigned read / 83.1 &micro;s signed)</strong> alongside <code class="text-brand-cyan">WAI1</code> (<code class="text-brand-cyan">128.0 B</code>, <code class="text-brand-cyan">76.8 &micro;s</code>); <code class="text-brand-cyan">OpenTelemetry</code> OTLP/JSON v1 blocks <code class="text-emerald-300">3/3</code> cross-class energy sums (<code class="text-brand-cyan">OrthogonalityViolationError</code>); <code class="text-brand-cyan">LLVM MLIR / CIRCT</code> (<code class="text-brand-cyan">hw</code> + <code class="text-brand-cyan">comb</code>) + IEEE 1364 Verilog verifies <strong class="text-emerald-300">0/64 (2<sup>6</sup>) and 0/1,024 (2<sup>10</sup>)</strong> mismatches under <code class="text-brand-cyan">iverilog 13.0</code> (<code class="text-brand-cyan">vvp</code>) + <code class="text-brand-cyan">Alive2</code>-style mutation witness.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <!-- DEPTH 1: PLAIN WORDS + EVERYDAY ANALOGY + AND-BUT-THEREFORE -->
     <div id="depth-plain" class="glass-card p-6 md:p-8 mt-8 border border-brand-amber/40 bg-gradient-to-br from-brand-amber/[0.06] via-transparent to-brand-cyan/[0.05]">
@@ -467,21 +526,21 @@ const ld = {
 
         <div class="grid md:grid-cols-3 gap-4">
           <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/50">
-            <div class="font-mono text-[10px] uppercase text-brand-amber font-semibold mb-1">Spec-Fidelity Pipeline</div>
+            <div class="font-mono text-[10px] uppercase text-brand-amber font-semibold mb-1">Spec-Fidelity Pipeline (@ d036b64)</div>
             <p class="font-body text-xs text-brand-slate leading-relaxed m-0">
-              <code class="text-brand-cyan">Spec Bundle (Read-Only)</code> → Vacuity SAT Probe → Injected Mutant Kill Check (<code class="text-brand-cyan">≥95%</code> kill target) → <code class="text-brand-cyan">llguidance</code> / <code class="text-brand-cyan">Outlines</code> CFG-masked proposer → <code class="text-brand-cyan">Wasmtime</code> sandbox replay.
+              <code class="text-brand-cyan">Spec Bundle (Read-Only)</code> &rarr; Vacuity SAT Probe (<code class="text-brand-cyan">SPEC_VACUOUS_REFUSED</code> catches <code class="text-brand-cyan">31/40</code> Arm A &amp; <code class="text-brand-cyan">40/40</code> Arm B weak specs) &rarr; <code class="text-brand-cyan">100%</code> AST Mutant Kill Gate (<code class="text-emerald-300">0/200</code> false accepts) &rarr; In-Loop CFG/Type Mask (<code class="text-emerald-300">298,175 &rarr; 0</code> wasted tokens, <code class="text-emerald-300">45.22&times;</code> RAPL <code class="text-brand-cyan">reported_j</code> cut).
             </p>
           </div>
           <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/50">
-            <div class="font-mono text-[10px] uppercase text-brand-cyan font-semibold mb-1">MLIR / CIRCT Hardware Path</div>
+            <div class="font-mono text-[10px] uppercase text-brand-cyan font-semibold mb-1">MLIR / CIRCT Hardware Path (@ d036b64)</div>
             <p class="font-body text-xs text-brand-slate leading-relaxed m-0">
-              <code class="text-brand-cyan">Rust / Python Policy</code> → <code class="text-brand-cyan">MLIR arith/scf</code> → <code class="text-brand-cyan">CIRCT comb/hw</code> dialects → <code class="text-brand-cyan">ExportVerilog</code> + exhaustive small-word / SMT equivalence check against software reference.
+              <code class="text-brand-cyan">Policy Spec</code> &rarr; <code class="text-brand-cyan">CIRCT hw + comb</code> dialects &rarr; <code class="text-brand-cyan">IEEE 1364-2005 Verilog</code> &rarr; <code class="text-emerald-300">0/64 (2^6)</code> LUT6 &amp; <code class="text-emerald-300">0/1,024 (2^10)</code> composed mismatches verified under <code class="text-brand-cyan">iverilog 13.0 (vvp)</code> + <code class="text-brand-cyan">Alive2</code>-style mutation witness.
             </p>
           </div>
           <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/50">
-            <div class="font-mono text-[10px] uppercase text-emerald-300 font-semibold mb-1">COSE_Sign1 + FlatBuffers</div>
+            <div class="font-mono text-[10px] uppercase text-emerald-300 font-semibold mb-1">COSE_Sign1 + FlatBuffers (@ d036b64)</div>
             <p class="font-body text-xs text-brand-slate leading-relaxed m-0">
-              Protected header alg <code class="text-brand-cyan">-8 (EdDSA / Ed25519)</code> over a canonical <code class="text-brand-cyan">BLAKE3</code> payload digest of zero-copy <code class="text-brand-cyan">FlatBuffers</code> tables—verifiable in Rust, Go, Python, and browsers with stock libraries.
+              <code class="text-brand-cyan">10,000</code> Ed25519 + BLAKE3 receipts (<code class="text-emerald-300">0</code> mismatches): RFC 9052 <code class="text-brand-cyan">COSE_Sign1</code> at <code class="text-emerald-300">144.7 B</code> (<code class="text-brand-cyan">-61.1%</code> vs. <code class="text-brand-cyan">371.6 B</code> JSON, <code class="text-brand-cyan">86.2 &micro;s</code>) &amp; zero-copy <code class="text-brand-cyan">FlatBuffers</code> at <code class="text-emerald-300">161.0 B</code> (<code class="text-brand-cyan">0.65 &micro;s</code> unsigned read / <code class="text-brand-cyan">83.1 &micro;s</code> signed) beside <code class="text-brand-cyan">WAI1</code> (<code class="text-brand-cyan">128.0 B</code>, <code class="text-brand-cyan">76.8 &micro;s</code>).
             </p>
           </div>
         </div>
@@ -508,7 +567,7 @@ const ld = {
             min<sub>z ∈ L(G)</sub> J<sub>k</sub>(z) &nbsp;<span class="op">subject to</span>&nbsp; <span class="tuple">C<sub>⊥</sub>(z) = 1</span> &nbsp;<span class="op">∧</span>&nbsp; ¬Vacuous(C<sub>⊥</sub>) &nbsp;<span class="op">∧</span>&nbsp; KillRate(C<sub>⊥</sub>, M) ≥ τ<sub>mut</sub>
           </div>
           <div class="eq-caption">
-            Constrained-Decoding Grammar L(G) · Context-Isolated Predicate C_⊥ · Mutant Kill Threshold τ_mut · Evidence Class k ∈ &#123;measured_j, reported_j, est_j&#125;
+            Constrained-Decoding Grammar L(G) · Context-Isolated Predicate C_⊥ · Mutant Kill Threshold τ_mut = 1.0 · Evidence Class k ∈ &#123;measured_j, reported_j, est_j&#125;
           </div>
         </div>
 
@@ -518,29 +577,29 @@ const ld = {
               <tr class="border-b border-brand-border font-mono text-[11px] uppercase text-brand-amber">
                 <th class="py-2.5 pr-4">Falsifier ID</th>
                 <th class="py-2.5 pr-4">Bridge Layer Tested</th>
-                <th class="py-2.5">Registered Refutation Condition</th>
+                <th class="py-2.5">Registered Condition &amp; @ d036b64 Empirical Receipt</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-brand-border text-brand-slate">
               <tr>
                 <td class="py-3 pr-4 font-mono text-brand-white">SB-F1</td>
                 <td class="py-3 pr-4">Wasmtime Fuel vs. Physical Joules</td>
-                <td class="py-3">Fires if Wasmtime instruction-count fuel alone ranks two memory/unpack kernels within ±10% of physical TI INA260 / INA3221 <code class="text-brand-cyan">measured_j</code> across sub-bit vs. INT8 workloads (refuted empirically: 81.86× silicon gap).</td>
+                <td class="py-3">Fires if Wasmtime instruction fuel alone tracks physical/chip joules within &plusmn;10% across cache-resident vs. memory-striding or sub-bit unpack kernels. <strong class="text-emerald-300">Empirically refuted (@ d036b64, BLAKE3 6ee27b1d…):</strong> identical <code class="text-brand-cyan">330,000,004</code> exact Wasmtime 50.0.1 fuel (trap at <code class="text-brand-cyan">330,000,003</code>) diverges <strong class="text-brand-white">10.36&times;</strong> (<code class="text-brand-cyan">1.35 J</code> L1 ALU vs. <code class="text-brand-cyan">14.00 J</code> 64 MiB DRAM CLI RAPL <code class="text-brand-cyan">reported_j</code>; <strong class="text-brand-white">9.80&times;</strong> in-process <code class="text-brand-cyan">0.82 J</code> vs. <code class="text-brand-cyan">8.04 J</code>), beside <code class="text-brand-cyan">81.86&times;</code> KV260 sub-bit <code class="text-brand-cyan">measured_j</code> unpack tax.</td>
               </tr>
               <tr>
                 <td class="py-3 pr-4 font-mono text-brand-white">SB-F2</td>
                 <td class="py-3 pr-4">Spec-Fidelity Barrier (<code class="text-brand-cyan">Spec ⊥ Impl</code>)</td>
-                <td class="py-3">Fires if hardcoded lookup-table or tautological patches pass both held-out <code class="text-brand-cyan">Spec ⊥ Impl</code> property seeds and the <code class="text-brand-cyan">W-MUT-1</code> behavioral mutant gate at rate &gt; 1%.</td>
+                <td class="py-3">Fires if defective AST mutants pass held-out <code class="text-brand-cyan">Spec &perp; Impl</code> property suites and the <code class="text-brand-cyan">100%</code> AST mutant/vacuity kill gate at rate &gt; 1%. <strong class="text-emerald-300">Cleared (@ d036b64, BLAKE3 41514ee6…):</strong> Arm A (<code class="text-rose-300">199/200 = 99.50%</code>) &rarr; Arm B (<code class="text-brand-amber">146/200 = 73.00%</code>) &rarr; <strong class="text-brand-white">Arm C <code class="text-emerald-300">0/200 (0.00%, 95% Clopper&ndash;Pearson [0.0000, 0.0183])</code></strong>; Arm D cuts syntax/type waste <code class="text-emerald-300">298,175 &rarr; 0</code> (<code class="text-emerald-300">0/800</code> semantic false accepts, <code class="text-emerald-300">45.22&times;</code> lower RAPL <code class="text-brand-cyan">reported_j</code>).</td>
               </tr>
               <tr>
                 <td class="py-3 pr-4 font-mono text-brand-white">SB-F3</td>
                 <td class="py-3 pr-4">Rung 1–3 Software Horizon vs. Rung 4 CIRCT</td>
-                <td class="py-3">Fires on any workload where FPGA synthesis + host PCIe/AXI transfer energy exceeds cumulative Rung 2 <code class="text-brand-cyan">Wasmtime</code> skill execution energy over the deployment call horizon <code class="text-brand-cyan">N &lt; N*</code>.</td>
+                <td class="py-3">Fires on any workload where FPGA synthesis + host PCIe/AXI transfer energy exceeds cumulative Rung 2 <code class="text-brand-cyan">Wasmtime</code> skill execution energy over <code class="text-brand-cyan">N &lt; N*</code>, or if CIRCT Verilog lowering diverges from software reference. <strong class="text-emerald-300">Cleared (@ d036b64):</strong> <code class="text-brand-cyan">CIRCT hw + comb</code> &rarr; IEEE 1364 Verilog verified at <strong class="text-brand-white">0/64 (2<sup>6</sup>)</strong> and <strong class="text-brand-white">0/1,024 (2<sup>10</sup>)</strong> mismatches in <code class="text-brand-cyan">iverilog 13.0</code> + <code class="text-brand-cyan">Alive2</code> mutation witness.</td>
               </tr>
               <tr>
                 <td class="py-3 pr-4 font-mono text-brand-white">SB-F4</td>
                 <td class="py-3 pr-4">OTel + COSE_Sign1 + FlatBuffers Overhead</td>
-                <td class="py-3">Fires if standard <code class="text-brand-cyan">FlatBuffers + RFC 9052 COSE_Sign1</code> receipt signing/verification adds &gt; 5% CPU <code class="text-brand-cyan">reported_j</code> overhead relative to clean-room <code class="text-brand-cyan">WAI1</code> binary envelopes on 20,000-record streams.</td>
+                <td class="py-3">Fires if standard <code class="text-brand-cyan">RFC 9052 COSE_Sign1 / FlatBuffers</code> receipt signing adds &gt; 5% CPU <code class="text-brand-cyan">reported_j</code> overhead vs. <code class="text-brand-cyan">WAI1</code> or permits cross-class joule summation. <strong class="text-emerald-300">Cleared (@ d036b64, 10,000 receipts):</strong> <code class="text-brand-cyan">COSE_Sign1</code> (<code class="text-brand-cyan">144.7 B</code>, <code class="text-brand-cyan">7,938.9 &micro;J</code> = <strong class="text-brand-white">-5.1% lower</strong> RAPL <code class="text-brand-cyan">reported_j</code> than <code class="text-brand-cyan">128.0 B</code> <code class="text-brand-cyan">WAI1</code> at <code class="text-brand-cyan">8,363.9 &micro;J</code>), <code class="text-brand-cyan">FlatBuffers</code> (<code class="text-brand-cyan">161.0 B</code>, <code class="text-brand-cyan">+4.58%</code>, <code class="text-brand-cyan">0.65 &micro;s</code> zero-copy read), and <code class="text-brand-cyan">3/3</code> OTel cross-class sums blocked (<code class="text-brand-cyan">OrthogonalityViolationError</code>).</td>
               </tr>
             </tbody>
           </table>
@@ -552,6 +611,9 @@ const ld = {
     <div class="mt-12 flex flex-wrap gap-3">
       <a href="/replication/" class="inline-flex items-center font-mono text-xs text-brand-dark bg-brand-amber font-bold px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
         Run All 9 Apache-2.0 Replication Kits →
+      </a>
+      <a href="/tutorials/?lab=lab-14-standards-spec-barrier" class="inline-flex items-center font-mono text-xs text-emerald-300 border border-emerald-400/45 px-4 py-2.5 rounded-md no-underline hover:bg-emerald-500/10 transition-colors">
+        🎓 Launch Lab #14 (Spec Barrier &amp; Fuel vs. Joules) →
       </a>
       <a href="/constellation/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/45 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
         Explore /constellation/ (12,117 Languages &amp; 113 Constructs) →

@@ -2,9 +2,9 @@
   "version": "1.0.0",
   "storage_key": "oe-tutorials-v1",
   "tracks": [
-    { "id": "all", "label": "All 13 Labs", "count": 13 },
+    { "id": "all", "label": "All 14 Labs", "count": 14 },
     { "id": "avalanche", "label": "Communication Avalanche (1–5)", "count": 5 },
-    { "id": "core", "label": "Core OpenIE & Silicon Stack (6–13)", "count": 8 }
+    { "id": "core", "label": "Core OpenIE & Silicon Stack (6–14)", "count": 9 }
   ],
   "labs": [
     {
@@ -330,6 +330,36 @@
       "verified_receipt": {
         "suite": "Signed Provenance · Self-Checked · openie-research-experiments @ 813eb96", "headline": "81.86× FP32 unpack tax -> 4.13× Packed Int · 26.58× KV260 / 16.26× Thor cascade · /living/compiled-agency/",
         "metrics": [["KV260 INA260 Sub-Bit (0.1517 bpw)", "63,335.56 µJ FP32 unpack (81.86× gross / 71.91× net tax) -> 187.49 µJ Packed Int"], ["KV260 INA260 4-Stage Cascade", "18,221.99 -> 685.43 µJ (26.58× gross / 24.49× net · 0.09–0.11% drift Falsifier 6 PASS)"], ["Jetson Thor INA3221 & waiOS 4-ISA", "16.26× cascade cut · 0/400 waiOS disagrees (95% UB <= 0.00746 · a541323b…46f0)"], ["Stage-4 Avoidance & Observatory", "38.46× fewer Stage-4 calls (26/1,000, est_j isolated) · /living/compiled-agency/"]]
+      }
+    },
+    {
+      "id": "lab-14-standards-spec-barrier", "number": 14, "track": "core", "track_label": "Track B · Core OpenIE & Silicon Stack",
+      "title": "Goodhart Spec-Fidelity Barrier & Wasm Fuel vs. Physical Joules",
+      "subtitle": "Defeat 99.50% (199/200) Goodhart false accepts via Spec ⊥ Impl + 100% AST Mutant Kill + In-Loop Grammar Masking, and calibrate identical 330,000,004 Wasmtime 50.0.1 fuel against a 10.36× DRAM RAPL joule gap.",
+      "study_id": "standards-bridge", "paper_url": "/standards/", "tv_url": "/replication/", "figures_url": "/constellation/", "estimated_minutes": 7,
+      "key_concept": "Measured @ d036b64 (Signed Provenance · Self-Checked): an LLM's own shared-context test (assert len(out) == len(inp)) falsely admits 199/200 (99.50%) AST mutants until Spec ⊥ Impl + 100% AST Mutant/Vacuity Kill Gate cuts false accepts to 0/200 (0.00%, 95% Clopper–Pearson [0.0000, 0.0183]) and In-Loop Grammar Masking eliminates 100% of syntax waste (298,175 -> 0 tokens, 45.22× lower Zen 5 RAPL reported_j); meanwhile, identical 330,000,004 Wasmtime 50.0.1 fuel diverges 10.36× in CLI RAPL reported_j (14.00 J 64 MiB DRAM vs. 1.35 J L1 ALU), requiring orthogonal OTel reported_j/measured_j spans + 144.7 B RFC 9052 COSE_Sign1 receipts.",
+      "predict": {
+        "question": "Suppose a ~70 µs gate checks an LLM's own shared-context test (assert len(out) == len(inp)) against 200 broken sorting/ledger AST mutants, AND two Wasmtime 50.0.1 loops burn identical 330,000,004 instruction fuel (L1 ALU vs. 64 MiB DRAM thrash). What happens?",
+        "choices": [
+          { "label": "0% false accepts and 1.00× equal physical joules (fast tests catch logic bugs, and Wasm fuel equals energy)", "ok": false, "why": "Both fail empirically (@ d036b64): an LLM-authored shape check falsely accepts 199/200 (99.50%) broken AST mutants, and 64 MiB DRAM thrashing burns 10.36× more Linux RAPL reported_j (14.00 J vs. 1.35 J) at identical 330,000,004 Wasmtime fuel!" },
+          { "label": "Context isolation alone (Spec ⊥ Impl) eliminates all false accepts, while Wasm fuel tracks RAPL joules within ±5%", "ok": false, "why": "Context isolation alone (Arm B) still falsely accepts 146/200 (73.00%) mutants when partial specs omit boundary invariants, and DRAM cache misses multiply energy per Wasm instruction by ~10× (9.80× in-process, 10.36× CLI)!" },
+          { "label": "99.50% (199/200) Goodhart false accepts on shared specs AND a 10.36× RAPL reported_j gap (14.00 J vs. 1.35 J) at 1.000000× equal fuel!", "ok": true, "why": "Exact match (@ d036b64, Kits #8 & #9)! Closing Goodhart's loophole requires Spec ⊥ Impl + 100% AST Mutant/Vacuity Kill Gate (0/200 false accepts), and Wasmtime fuel enforces deterministic termination (trapping at 330,000,003) while OTel reported_j/measured_j records physical energy." }
+        ]
+      },
+      "steps": [
+        { "step": 1, "kind": "predict", "title": "Predict Goodhart & Fuel Gap", "prompt": "Predict whether an LLM's own 70 µs shape test catches broken sorting/ledger mutants and whether identical 330,000,004 Wasmtime fuel means equal joules." },
+        { "step": 2, "kind": "break", "title": "Break Goodhart Spec & Fuel Proxy", "prompt": "Run 'Arm A · Shared-Context Goodhart Spec' (assert len(out) == len(inp)) against the 5 AST mutants (watching 199/200 = 99.50% false accepts!) and switch Wasm Kernel to '64 MiB DRAM Thrash' to watch it burn 10.36× (14.00 J vs. 1.35 J) more RAPL reported_j at 1.000000× identical 330,000,004 fuel!", "goal": "Trigger 99.50% (199/200) Goodhart false accepts and 10.36× (14.00 J vs. 1.35 J) DRAM fuel-vs-joule gap" },
+        { "step": 3, "kind": "repair", "title": "Engage Spec ⊥ Impl + Mask + OTel", "prompt": "Switch to 'Arm C · Spec ⊥ Impl + 100% AST Mutant Kill Gate' (0/200 = 0.00% false accepts), toggle ON 'Arm D · In-Loop Grammar Mask' (-100% syntax token waste, 45.22× RAPL reported_j cut: 55,337 -> 1,223.7 µJ), and toggle ON 'OTel reported_j Span Guard + COSE_Sign1' (blocking 3/3 cross-class sums)!", "goal": "Lock 0/200 false accepts + 45.22× Grammar Mask cut + OTel reported_j Span Guard" },
+        { "step": 4, "kind": "verify", "title": "Inspect COSE_Sign1 & OTLP Receipt", "prompt": "Inspect the live 144.7 B RFC 9052 COSE_Sign1 / OTLP/JSON receipt (Signed Provenance · Self-Checked @ d036b64, BLAKE3 41514ee6… & 6ee27b1d…) and run ./kits/spec-fidelity-barrier/run_kit.sh & ./kits/standards-bridge/run_kit.sh." }
+      ],
+      "verified_receipt": {
+        "suite": "Signed Provenance · Self-Checked · Kits #8 & #9 @ d036b64 (BLAKE3 41514ee6… & 6ee27b1d…)", "headline": "199/200 -> 0/200 (0.00%) false accepts · 45.22× RAPL cut · 10.36× Wasm fuel-vs-J gap · 144.7 B COSE_Sign1",
+        "metrics": [
+          ["Kit #8 Spec-Fidelity (40×25, 200 mutants)", "Arm A 199/200 (99.50%) -> Arm B 146/200 (73.00%) -> Arm C 0/200 (0.00%, CI [0, 0.0183])"],
+          ["Kit #8 Arm D In-Loop Grammar Mask", "298,175 -> 0 wasted tokens (-100%) · 44.19× faster · 45.22× RAPL cut (55,337 -> 1,223.7 µJ)"],
+          ["Kit #9 Wasmtime 50.0.1 (330,000,004 fuel)", "1.000000× fuel (trap @ 330,000,003) vs 10.36× CLI RAPL (1.35 J L1 vs 14.00 J 64 MiB DRAM)"],
+          ["1-Command Replication (@ d036b64)", "./kits/spec-fidelity-barrier/run_kit.sh && ./kits/standards-bridge/run_kit.sh"]
+        ]
       }
     }
   ]

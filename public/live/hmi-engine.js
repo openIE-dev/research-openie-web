@@ -477,6 +477,12 @@ export class OpenIELiveHMI {
     if (p === '/radio' && window.__openieActiveMediaContext?.studyId) {
       return window.__openieActiveMediaContext.studyId;
     }
+    if (p === '/constellation') return 'constellation';
+    if (p === '/standards' || p === '/replication') return 'standards-bridge';
+    if (p === '/tutorials') {
+      const qlab = (params.get('lab') || '').toLowerCase();
+      if (qlab.includes('standards-spec-barrier')) return 'spec-fidelity-barrier';
+    }
     const mPaper = p.match(/\/(?:papers|products|about|living|posts|medium)\/([a-z0-9-]+)$/i);
     if (mPaper) {
       const slug = mPaper[1].toLowerCase();

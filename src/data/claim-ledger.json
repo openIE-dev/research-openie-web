@@ -231,6 +231,7 @@
       "files": [
         "src/pages/standards/index.astro",
         "src/pages/replication/index.astro",
+        "src/pages/tutorials/index.astro",
         "src/pages/faq.astro",
         "src/pages/llms.txt.ts",
         "src/layouts/Layout.astro"
