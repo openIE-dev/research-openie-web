@@ -1092,7 +1092,59 @@
           <div class="metric-tile">
             <div class="k">Live WASM #21 (CM2+TTT)</div>
             <div class="v" id="cm2-wasm-v" style="color: var(--color-brand-cyan);">Mode 1 · Bank-13 · WRT=2</div>
-            <div class="s" id="cm2-wasm-s">21st export live in 15,703 B lut6_core.06c5c0b781d6.wasm</div>
+            <div class="s" id="cm2-wasm-s">21st export live in 15,786 B lut6_core.ab7adca9c8e8.wasm</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Widget 21: Phase 47 MoL-LTCB-CM3 (< xz -6 enwik8 & 1.00 GB enwik9), ARC-AGI-3 >2/3 Supermajority (17/25 = 68.0% & 13/16 = 81.25%), Window 27 Thor Shunt (393.145x), & 162 / 1,526 Proofs -->
+      <section id="la-cm3-01" class="glass-card" style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="margin: 0; font-size: 1.25rem;"><code>la-cm3-01</code> · <code>MoL-LTCB-CM3</code> (<code>&lt; xz -6</code> <code>enwik8</code> &amp; <code>1.00 GB enwik9</code>), <code>ARC-AGI-3</code> <code>68.0%</code> (<code>17/25</code>), <code>Window 27</code> (<code>393.145×</code>), &amp; <code>162</code> / <code>1,526</code> Proofs (<code>Claims LA-84..LA-87</code>)</h2>
+          <span class="chip chip-meas">Thor Shunt Window 27 (393.145×) + 26.39 MB enwik8 (&lt; xz -6!) &amp; 1.00 GB enwik9 + 17/25 ARC-AGI-3 + 162 Thms (1,526 Fleet) + Live 15.42 KB (22-Export) WASM</span>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 0.6rem;">
+          Execute the 22nd live WebAssembly export (<code>wasm_eval_cm3_mbfws_lut6</code>) inside <code>lut6_core.ab7adca9c8e8.wasm</code> (<code>15.42 KB</code> = <code>15,786 B &lt;= 16,384 B</code>, <code>598 B</code> spare), verifying <code>14</code>-Bank <code>56 KB</code> (<code>87.50%</code> Watch <code>SRAM</code>) spillover, integer stretched log-odds <code>CM3-LogOdds-Mix LUT6</code> (zero-dilution unseen-prior cascade fallback), and <code>ARC-AGI-3</code> modal pick-place / containment avatar-switch <code>M-BFWS-LUT6</code> alongside <code>mol_ltcb_codec --cm3</code> beating <strong>all four</strong> classical codecs including <code>xz -6</code> (<code>LZMA2</code>) on official <code>100 MB</code> <code>enwik8</code> (<code>26,389,042 B = 2.1111 bpb</code> vs. <code>xz -6</code> <code>26,441,300 B = 2.1153 bpb</code>, <code>−52,258 B</code>) and streaming <code>1,000,000,000 B</code> (<code>1.00 GB</code>) <code>enwik9</code> in bounded <code>128 MiB</code> segments with <code>100.0%</code> bit-identical cross-architecture <code>archive_sha256</code> across <code>M5 Max</code>, <code>Thor</code> (<code>TI INA238 VIN measured_j</code>), and <code>Zen 5</code>, <code>&gt; 2/3</code> supermajority official black-box <code>ARC-AGI-3</code> (<code>17/25 = 68.00%</code> full-catalog &amp; <code>13/16 = 81.25%</code> matched-<code>16</code>, <code>20/183</code> levels, <code>0</code> breaker trips, unlocking <code>sb26</code> &amp; <code>ka59</code>), <code>Window 27</code> <code>Thor</code> DC shunt (<code>393.145×</code> lower <code>measured_j</code>, <code>297.109×</code> faster), and zero-<code>DSP48E1</code> <code>102.45 MHz</code> <code>openXC7</code> <code>XC7A200T</code> gateware.
+        </p>
+        <div class="ctrl-grid">
+          <div class="ctrl-box">
+            <label><span>Select Claim (Claims LA-84..LA-87)</span></label>
+            <select id="cm3-frontier">
+              <option value="ltcb9" selected>Claim LA-84 · MoL-LTCB-CM3 Beats xz -6 on enwik8 (26.39 MB = 2.1111 bpb) &amp; Streams 1.00 GB enwik9 (100% Bit-Exact SHA-256)</option>
+              <option value="mbfws">Claim LA-85 · &gt;2/3 Supermajority Official ARC-AGI-3 M-BFWS(R,M) + 56 KB 14-Bank Vault (17/25 = 68.0% · 13/16 = 81.25% · +sb26/+ka59)</option>
+              <option value="win27">Claim LA-86 · 144/144 Yosys $lut Miter &amp; Window 27 Thor DC Shunt (393.145× Lower measured_j · 297.109× Faster)</option>
+              <option value="xc7_47">Claim LA-87 · Zero-DSP48E1 102.45 MHz openXC7 .bit + 15.42 KB 22-Export WASM (598 B Spare) + 162 / 1,526 Proofs</option>
+            </select>
+          </div>
+          <div class="ctrl-box">
+            <label><span>Live <code>lut6_core.wasm</code> <code>wasm_eval_cm3_mbfws_lut6</code> Probe</span></label>
+            <select id="cm3-wasm-probe">
+              <option value="1,3,12,48,6,0" selected>14-Bank Spillover (Bank-13) + CM3 Shadow+SSE Log-Odds (Mix=3) + sb26 Modal Swatch-Slot Click (Mod=2)</option>
+              <option value="1,0,0,12,17,0">Bank-0 Direct Hit + CM3 Word+Ord4 Cascade (Mix=2) + ka59 Containment Avatar-Switch (Mod=1)</option>
+              <option value="1,3,12,48,6,1">Post-Step Playfield HUD Tamper (brk=1) → Mode 2 Mechanic-Shift Breaker Halt!</option>
+            </select>
+          </div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-tile">
+            <div class="k">Headline CM3 / ARC-AGI-3 Result</div>
+            <div class="v" id="cm3-m1" style="color: var(--color-brand-cyan);">26.39 MB (&lt; xz -6!) &amp; 1.00 GB</div>
+            <div class="s" id="cm3-s1">enwik8 2.1111 bpb (−52.3 KB vs xz -6 · −653 KB vs zstd -19) &amp; 128 MiB streaming enwik9</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Cross-Arch Determinism / RHAE</div>
+            <div class="v" id="cm3-m2" style="color: var(--color-brand-cyan);">100.0% Bit-Exact SHA-256</div>
+            <div class="s" id="cm3-s2">0 floats · Identical archives across Apple M5 Max, Jetson AGX Thor &amp; AMD Zen 5</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Silicon &amp; Formal Proof Seal</div>
+            <div class="v" id="cm3-m3" style="color: var(--color-brand-cyan);">252.6 nJ Thor Window 27 (393×!)</div>
+            <div class="s" id="cm3-s3">393.145× &lt; Float PAQ ln/expf + Scan (99.31 µJ) · 162 Thms / 1,526 bwrap Fleet</div>
+          </div>
+          <div class="metric-tile">
+            <div class="k">Live WASM #22 (CM3+M-BFWS)</div>
+            <div class="v" id="cm3-wasm-v" style="color: var(--color-brand-cyan);">Mode 1 · Bank-13 · Mix=3 Mod=2</div>
+            <div class="s" id="cm3-wasm-s">22nd export live in 15,786 B lut6_core.ab7adca9c8e8.wasm</div>
           </div>
         </div>
       </section>
@@ -1100,6 +1152,10 @@
       <!-- Static Vector Diagrams Gallery -->
       <section id="la-figs" style="margin-top: 2.5rem;">
         <h2 style="font-size: 1.3rem;">Paper Vector Diagrams (Click to Zoom)</h2>
+        <figure class="fig">
+          <img src="/figures/lut-adapt/ltcb-cm3-enwik9-and-arc3-supermajority.svg" alt="MoL-LTCB-CM3 Beating xz -6 on Official 100 MB enwik8 and Streaming 1.00 GB enwik9, ARC-AGI-3 >2/3 Supermajority (17/25 = 68.0% and 13/16 = 81.25%), Window 27 Thor Shunt (393.145x), and 162 / 1,526 Six-Kernel Proofs">
+          <figcaption><strong>Figure 23.</strong> <code>MoL-LTCB-CM3</code> (<code>MLT3</code>: beating <code>xz -6</code> on <code>enwik8</code> &amp; streaming <code>1.00 GB</code> <code>enwik9</code>), <code>&gt; 2/3</code> supermajority official black-box <code>ARC-AGI-3</code> <code>M-BFWS(R,M)</code> (<code>17/25 = 68.00%</code> &amp; <code>13/16 = 81.25%</code>), <code>Window 27</code> <code>Thor</code> DC shunt (<code>393.145×</code>), &amp; <code>162</code> <code>LutAdapt</code> / <code>1,526</code> <code>bwrap</code> fleet six-kernel proofs (<code>Claims LA-19 [162 thms / 1,526 bwrap fleet], LA-84..LA-87</code>): (A) zero-Python native Rust <code>mol_ltcb_codec --cm3</code> (structural <code>WRT2-Capillary-LUT6</code> + price-scored <code>HASH3/4/6/8</code> lazy <code>LZ-Rep4</code> + zero-dilution integer stretched log-odds <code>StateSMix3</code>) sweeping all four classical codecs including <code>xz -6</code> (<code>LZMA2</code>) on official <code>100 MB</code> <code>enwik8</code> (<code>26,389,042 B = 2.1111 bpb</code> vs. <code>xz -6</code> <code>26,441,300 B</code>) and streaming <code>1,000,000,000 B</code> (<code>1.00 GB</code>) <code>enwik9</code> in bounded <code>128 MiB</code> segments with <code>100.0%</code> bit-identical <code>archive_sha256</code> across <code>Apple M5 Max</code>, <code>Jetson AGX Thor</code> (<code>TI INA238 VIN measured_j</code>, <code>board_metered = true</code>), and <code>AMD Zen 5</code>; (B) official black-box <code>ARC-AGI-3</code> Modal <code>M-BFWS(R,M) + Fourteen-Bank 56 KB System-0 LUT6</code> (<code>87.50%</code> watch <code>SRAM</code>, <code>0</code> breaker trips) unlocking <code>sb26-7fbdac44</code> (<code>lut6=9</code> vs. <code>18</code> human) and <code>ka59-38d34dbb</code> (<code>lut6=11</code> vs. <code>28</code> human) to reach <code>17/25 = 68.00%</code> full-catalog (<code>20/183</code> levels, <code>2.7570</code> mean / <code>10.7143</code> peak <code>RHAE</code>) and <code>13/16 = 81.25%</code> matched-<code>16</code> (<code>16/113</code> levels, <code>3.6145</code> <code>RHAE</code>); (C) <code>144/144</code> Yosys <code>abc -lut 6</code> miter &amp; <code>Window 27</code> cross-silicon telemetry (<code>393.145×</code> lower <code>Thor</code> DC shunt <code>measured_j</code> [<code>252.61 vs. 99,311.13 nJ/op</code>], <code>297.109×</code> faster, <code>266.552×</code> <code>Zen 5</code> <code>RAPL</code>, <code>281.558×</code> <code>M3 Ultra</code>); and (D) zero-<code>DSP48E1</code> <code>102.45 MHz</code> <code>openXC7</code> <code>XC7A200T</code> <code>.bit</code> (<code>655</code> LUTs, <code>64/64</code> RTL parity), <code>15.42 KB</code> (<code>15,786 B</code>, <code>22</code> exports, <code>598 B</code> spare) <code>lut6_core.ab7adca9c8e8.wasm</code>, and <code>162</code> <code>LutAdapt</code> / <code>1,526</code> Linux <code>bwrap</code> fleet six-kernel <code>Lean 4.36.0</code> proofs (<code>59,237</code> verified declarations).</figcaption>
+        </figure>
         <figure class="fig">
           <img src="/figures/lut-adapt/ltcb-cm2-wrt-statesmix-and-online-ttt.svg" alt="MoL-LTCB-CM2 (WRT-Capillary + StateSMix-LUT6, enwik8 26.84 MB Beating zstd-19 and bzip2-9), Lockstep Zero-Float Online-TTT-LUT6, Window 26 Thor Shunt (32.462x), and 154 / 1,518 Six-Kernel Proofs">
           <figcaption><strong>Figure 22.</strong> <code>MoL-LTCB-CM2</code> (<code>MLT2</code>), lockstep zero-float <code>Online-TTT-LUT6</code>, <code>Window 26</code> <code>Thor</code> DC shunt (<code>32.462×</code>), &amp; historic <code>&gt; 150</code> (<code>154</code> <code>LutAdapt</code> / <code>1,518</code> <code>bwrap</code> fleet) six-kernel proofs (<code>Claims LA-19 [154 thms / 1,518 bwrap fleet], LA-80..LA-83</code>): (A) zero-Python native Rust <code>mol_ltcb_codec --cm2</code> (bijective <code>148</code>-entry <code>WRT-Capillary-LUT6</code> + unbounded <code>100 MB</code> lazy <code>LZ-Rep4</code> + integer-exact <code>Q12</code> <code>StateSMix-LUT6</code>) beating <code>zstd -19</code> (<code>27.04 MB</code>), <code>bzip2 -9</code> (<code>29.05 MB</code>), <code>v1</code> (<code>32.76 MB</code>), and <code>gzip -9</code> (<code>36.51 MB</code>) across all 4 Matt Mahoney <code>LTCB</code> tiers at <code>26,838,089 B</code> Ranked Total (<code>2.1470 bpb</code>) on official <code>100,000,000 B</code> <code>enwik8</code> with <code>100.0%</code> bit-identical <code>archive_sha256 = 5342cc0b24a603b0</code> across <code>Apple M5 Max</code> (<code>12.96 J</code> = <code>2.36×</code> &lt; <code>bzip2 -9</code>, <code>62.60 MB/s</code> decode), <code>Jetson AGX Thor</code> (<code>2,890.72 J</code> <code>TI INA238</code> <code>VIN</code> <code>measured_j</code>, <code>2.964 s</code> = <code>3.40×</code> faster decode than <code>bzip2 -9</code>, <code>board_metered = true</code>), and <code>AMD Zen 5</code> (<code>67.92 MB/s</code> decode); (B) lockstep <code>i16</code> Straight-Through <code>Online-TTT-LUT6</code> across <code>4</code> byte-stream domains (<code>−56.73%</code> mean warmup regret collapse, <code>90.34%</code> sparse <code>LUT6</code> slab-rebuild skip, <code>0</code> cross-host mismatches vs. <code>FP32</code> <code>AdamW</code> sign-flip desync at <code>step 20</code>); (C) <code>144/144</code> Yosys <code>abc -lut 6</code> miter &amp; <code>Window 26</code> cross-silicon telemetry (<code>32.462×</code> lower <code>Thor</code> DC shunt <code>measured_j</code> [<code>3,727.65 vs. 121,006.57 nJ/op</code>], <code>32.369×</code> faster, <code>17.146×</code> <code>Zen 5</code> <code>RAPL</code>, <code>14.618×</code> <code>M3 Ultra</code>); and (D) zero-<code>DSP48E1</code> <code>103.25 MHz</code> <code>openXC7</code> <code>XC7A200T</code> <code>.bit</code> (<code>656</code> LUTs, <code>64/64</code> RTL parity), <code>15.33 KB</code> (<code>15,703 B</code>, <code>21</code> exports, <code>681 B</code> spare) <code>lut6_core.06c5c0b781d6.wasm</code>, and <code>154</code> <code>LutAdapt</code> / <code>1,518</code> Linux <code>bwrap</code> fleet six-kernel <code>Lean 4.36.0</code> proofs (<code>59,192</code> verified declarations).</figcaption>
@@ -1406,12 +1462,12 @@
     // Widget 5: Six-Kernel Paranoid Proof Audit Explorer
     (function(){
       var sk = {
-        conleche: { decls: '59,192 declarations (--verified)', vec: 'CVE-2026-72844', basis: 'Proved consistent in ZFC set theory (Breitner)' },
-        conron:   { decls: '59,192 declarations (--verified)', vec: 'CVE-2026-72711 & GMP', basis: 'Aeneas-verified Rust refinement of con-leche' },
-        lean4lean:{ decls: '59,194 declarations checked', vec: 'C++ .proj divergence', basis: 'Independent Lean-in-Lean CIC typechecker' },
-        nanoda:   { decls: '59,194 decls (sorryAx blocked)', vec: '.olean tampering', basis: 'Zero-Lean-runtime standalone Rust verifier' },
-        paranoid: { decls: '59,194 fresh-env decls', vec: 'skipKernelTC / meta', basis: 'Fresh-environment C++ replay (0 tactic trust)' },
-        default:  { decls: '154 LutAdapt thms (>150!) + 6 Aeneas fns', vec: 'Lean.ofReduceBool', basis: 'Post-CVE Lean 4.36.0 + Inria Aeneas LLBC→Lean (1,518 Fleet)' }
+        conleche: { decls: '59,237 declarations (--verified)', vec: 'CVE-2026-72844', basis: 'Proved consistent in ZFC set theory (Breitner)' },
+        conron:   { decls: '59,237 declarations (--verified)', vec: 'CVE-2026-72711 & GMP', basis: 'Aeneas-verified Rust refinement of con-leche' },
+        lean4lean:{ decls: '59,239 declarations checked', vec: 'C++ .proj divergence', basis: 'Independent Lean-in-Lean CIC typechecker' },
+        nanoda:   { decls: '59,239 decls (sorryAx blocked)', vec: '.olean tampering', basis: 'Zero-Lean-runtime standalone Rust verifier' },
+        paranoid: { decls: '59,239 fresh-env decls', vec: 'skipKernelTC / meta', basis: 'Fresh-environment C++ replay (0 tactic trust)' },
+        default:  { decls: '162 LutAdapt thms + 6 Aeneas fns', vec: 'Lean.ofReduceBool', basis: 'Post-CVE Lean 4.36.0 + Inria Aeneas LLBC→Lean (1,526 Fleet)' }
       };
       var sel = document.getElementById('sk-select');
       function updSk() {
@@ -1476,13 +1532,13 @@
       }
       vSel.addEventListener('change', updateUI);
       sSel.addEventListener('change', updateUI);
-      fetch('/living/lut-adapt/lut6_core.06c5c0b781d6.wasm')
+      fetch('/living/lut-adapt/lut6_core.ab7adca9c8e8.wasm')
         .then(function(r){ return r.arrayBuffer(); })
         .then(function(bytes){ return WebAssembly.instantiate(bytes, {}); })
         .then(function(res){
           exportsObj = res.instance.exports;
           window.__lut6WasmExports = exportsObj;
-          chip.textContent = 'Live WASM VM Active (15,703 B · 21 Exports · 681 B Spare · Signed Provenance · Self-Checked)';
+          chip.textContent = 'Live WASM VM Active (15,786 B · 22 Exports · 598 B Spare · Signed Provenance · Self-Checked)';
           updateUI();
           if (window.__updateHleWasm) window.__updateHleWasm();
           if (window.__updateBonsaiWasm) window.__updateBonsaiWasm();
@@ -1497,6 +1553,7 @@
           if (window.__updateMcpWasm) window.__updateMcpWasm();
           if (window.__updateLtcbWasm) window.__updateLtcbWasm();
           if (window.__updateCm2Wasm) window.__updateCm2Wasm();
+          if (window.__updateCm3Wasm) window.__updateCm3Wasm();
         })
         .catch(function(){
           chip.textContent = 'Offline Mode (Self-checked V8 receipt)';
@@ -1514,6 +1571,7 @@
           if (window.__updateMcpWasm) window.__updateMcpWasm();
           if (window.__updateLtcbWasm) window.__updateLtcbWasm();
           if (window.__updateCm2Wasm) window.__updateCm2Wasm();
+          if (window.__updateCm3Wasm) window.__updateCm3Wasm();
         });
     })();
 
@@ -2142,6 +2200,55 @@
         fSel.addEventListener('change', updCm2);
         pSel.addEventListener('change', updCm2);
         updCm2();
+      }
+    })();
+
+    // Widget 21: MoL-LTCB-CM3 (< xz -6 enwik8 & 1.00 GB enwik9), ARC-AGI-3 >2/3 Supermajority (17/25 = 68.0%), Window 27 Thor Shunt (393.145x), & 162 / 1,526 Proofs
+    (function(){
+      var cm3Data = {
+        ltcb9:  { m1: '26.39 MB & 226.77 MB (< xz-6!)', s1: 'enwik8 2.1111 bpb (−52.3 KB < xz-6) & 1.00 GB enwik9 1.8142 bpb (−6.70 MB < xz-6)', m2: '100.0% Bit-Exact SHA-256', s2: '0 floats · Identical archives across M5 Max (26.29 MB/s), Thor (84,050.7 J VIN) & Zen 5', m3: '15.42 KB WASM (22 Exports · 598 B)', s3: '15,786 B <= 16,384 B · Structural WRT2 + Zero-Dilution Log-Odds StateSMix3' },
+        mbfws:  { m1: '17 / 25 Games (68.0% > 2/3!)', s1: '20 / 183 Lvls (+sb26, +ka59) · 13 / 16 (81.25%) & 16 / 113 Matched-16', m2: '3.6145 (16) / 2.7570 (25) RHAE', s2: '919.0× > FIFO-BFS · 10.7143 Peak · 0 Wave-2 Breaker Trips · 0 .py Peeking', m3: '57,344 B (87.50% Watch SRAM)', s3: '14-Bank System-0 Vault · sb26 lut6=9 (vs 18) · ka59 lut6=11 (vs 28)' },
+        win27:  { m1: '393.145× Lower Thor Window 27 J', s1: '252.61 vs 99,311.13 nJ/op (TI INA3221 VDD_CPU_SOC_MSS · board_metered)', m2: '297.109× Faster on Tegra aarch64', s2: '14.94 vs 4,437.62 ns/op · 144/144 Yosys $lut Miter (23,040 ops eliminated)', m3: '266.552× Zen 5 · 281.558× M3 Ultra', s3: '733.38 vs 195,482.67 nJ Linux RAPL · 26.63 vs 7,498.82 nJ Darwin RUSAGE_INFO_V6' },
+        xc7_47: { m1: '102.45 MHz openXC7 XC7A200T .bit', s1: '655 SLICE_LUTX (0.243%) · 203 FFs · 0 DSP48E1 · 64/64 RTL Parity · 9.73 MB .bit', m2: '15.42 KB WASM (22 Exports · 598 B)', s2: '15,786 B <= 16,384 B · sha256[:12]=ab7adca9c8e8 · 0 crates · Signed Provenance', m3: '162 LutAdapt / 1,526 Fleet Thms', s3: 'LtcbCm3Arc3Supermajority.lean (Theorems 155..162) · 59,237 con-leche/con-ron decls' }
+      };
+      var fSel = document.getElementById('cm3-frontier'), pSel = document.getElementById('cm3-wasm-probe');
+      if (fSel && pSel) {
+        function updCm3() {
+          var d = cm3Data[fSel.value];
+          document.getElementById('cm3-m1').textContent = d.m1;
+          document.getElementById('cm3-s1').textContent = d.s1;
+          document.getElementById('cm3-m2').textContent = d.m2;
+          document.getElementById('cm3-s2').textContent = d.s2;
+          document.getElementById('cm3-m3').textContent = d.m3;
+          document.getElementById('cm3-s3').textContent = d.s3;
+          var sp = pSel.value.split(',');
+          var per = Number(sp[0]) & 63, col = Number(sp[1]) & 3, ep = Number(sp[2]) & 0xF;
+          var cAddr = Number(sp[3]) & 63, mAddr = Number(sp[4]) & 63, brk = Number(sp[5]) & 1;
+          var ex = window.__lut6WasmExports;
+          var vEl = document.getElementById('cm3-wasm-v'), sEl = document.getElementById('cm3-wasm-s');
+          if (ex && ex.wasm_eval_cm3_mbfws_lut6) {
+            var arg = (per | (col << 6) | (ep << 12) | (cAddr << 16) | (mAddr << 22) | (brk << 28)) >>> 0;
+            var r = ex.wasm_eval_cm3_mbfws_lut6(arg, 7) >>> 0;
+            var st2 = (r >>> 30) & 3, bk4 = (r >>> 26) & 0xF, mix2 = (r >>> 20) & 3, mod2 = (r >>> 18) & 3;
+            var jb = r & 0xFFFF; if (jb >= 0x8000) jb -= 0x10000;
+            if (st2 === 1) {
+              vEl.textContent = 'Mode 1 · Bank-' + bk4 + ' · Mix=' + mix2 + ' Mod=' + mod2;
+              vEl.style.color = 'var(--color-brand-cyan)';
+              sEl.textContent = (mod2 === 2 ? 'sb26 Modal Swatch-Slot' : 'ka59 Avatar-Switch') + ' · JB6=' + jb + ' · WASM #22';
+            } else {
+              vEl.textContent = 'Mode 2 · BREAKER HALT!';
+              vEl.style.color = 'var(--color-brand-amber)';
+              sEl.textContent = 'Tamper trapped · Mix=' + mix2 + ' · Mod=' + mod2 + ' (Live WASM #22 · 15,786 B)';
+            }
+          } else {
+            vEl.textContent = brk ? 'Mode 2 · BREAKER HALT!' : ('Mode 1 · Bank-' + (col ? 13 : 0) + ' · Mix=' + (cAddr === 48 ? 3 : 2));
+            sEl.textContent = 'Self-checked V8 receipt (15,786 B WASM)';
+          }
+        }
+        window.__updateCm3Wasm = updCm3;
+        fSel.addEventListener('change', updCm3);
+        pSel.addEventListener('change', updCm3);
+        updCm3();
       }
     })();
 

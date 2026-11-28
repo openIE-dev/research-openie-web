@@ -1,6 +1,6 @@
 ---
 title: "Mixture of Limits カスケードにおける下方 LUT6 コンパイル：Beneš ルーティング・ブールファブリック、コンフォーマル起動ゲート、およびフロンティア疎 MoE NVMe ストリーミング"
-deck: "6カーネル検証済みの Lean 4.36.0 定理 154 件および Inria Charon+Aeneas による機械的 #![no_std] Rust→Lean 抽出（さらに Linux bubblewrap サンドボックス内の Open Interface Engineering リポジトリ 4 件にわたる 1,518 定理を含み、CVE-2026-72844 対策強化済み）を備えた Mixture of Limits カスケードは、まずゼロ浮動小数点演算（FLOP）のページング式 6 入力ルックアップテーブル（LUT6）回路、15.33 キロバイト（15,703 バイト、21 エクスポート、681 バイト余裕）の WebAssembly（WASM）ブラウザモジュール、反対称 40 エントリ・ゼロ乗算 T-MAC 三値テールを備えた 4/56 キロバイト（14 バンク = 87.50%、4 キロバイト Nucleus と 4 キロバイトスタックと合わせ 64.00 キロバイトのスマートウォッチ SRAM を完全閉包）の Rust lut6-core Nucleus（公式 25 ゲーム ARC-AGI-3 の C-BFWS + RIW(2) で 60.00% 絶対多数［15/25 ゲーム、18/183 レベル、一致 16 ゲーム中 11/16 = 68.75%、2.5030 / 3.2177 RHAE］、Python 非依存 Rust mol_ltcb_codec --cm2 による Matt Mahoney 公式 100 MB enwik8 での zstd -19・bzip2 -9・gzip -9 超え 26,838,089 バイト = 2.1470 bpb［arm64/aarch64/x86_64 間で 100.0% 同一 SHA-256］・サイドチャネル不要 i16 Online-TTT-LUT6［ウォームアップ後悔 -56.73%、スラブ再構築スキップ 90.34%］と Window 26 での Thor シャント 32.462x 削減・tufazip v2 QPI1 1 ビット初期事前分布の 5,680,128 個のゼロ MAC LUT6 スラブ変換と 8.766x JouleBit 事前削減および Window 25 での Thor シャント 13.376x 削減、Python 非依存 Rust mol-magnitude-adapter による 4 倍汚染 CogLoadBench 100.0% 合格・第 2 波 Thor VIN エネルギー 3,028.3x 削減および MCPMark CoW CRUD サンドボックスでの本番破壊 0.00%、帯域幅適応型 BA-Tiered-Expert-AirMoL［180B で 436.60 tok/s、GLM-5-355B で 216.33 tok/s、552B で 166.27 tok/s = FreeToken 比 4.00x-4.17x・KTransformers 比 5.90x-6.00x 高速、Window 24 で Thor シャント 3.330x 削減］、ゼロ FLOP Engram-LUT6、Magnitude 0.3.5 実機比較での正答トークンあたりジュール 53.55x 削減および Window 23 での Thor シャント 3.157x 削減、100% Terminal-Bench・Cybench-Defensive［144/144 Yosys マイタ］、100% FrontierMath-Constructive・SciCode 合成、ならびに Window 22 で 3.314x・Window 21 で 3.204x・Window 20 で 4.092x 削減）、プレフィックス汚染 0.00% の 56 ビット 4 トークン開幕応答を備えた 5,984 バイト（64 キロバイト・スマートウォッチ SRAM の 9.13%）の Wearable-MoL、および（72, 64）SECDED 宇宙線ビット反転保護を試行する（単一バイナリ Rust mol-agent-rs で 0.154 ミリ秒、ビットスライス判定あたり 162.71 ナノジュール、ビット誤り率 1% で生存率 100.0%）。さらにサブ10億パラメータのウェアラブル小型言語モデル（Sensente/uLM-28M、LiquidAI/LFM2.5-230M）および 4 つの GPU シリコンベンダー（最大 328.06x 高速化、LastExam プロトコル RMS 較正誤差を 70.62% から 13.14% へ 5.37x 削減し確信度 >= 80% での誤答 CHR@80 を 0.00% へ低減）にわたり最大 120B パラメータの 4 ビット NVMe ループ型・ハイブリッド・疎 MoE 2026 年後半モデルへ段階的にエスカレーションし、上流 Verified リポジトリ 4 件でコミットをゲート制御したうえで、認証済みの起動結果を RAMB36E2、ライセンス不要の openXC7 320.62、106.55、109.15、100.55、100.74、106.97 102.41 および 103.25 メガヘルツ配置配線後 Artix-7 XC7A200T M.2 2280 .bit ビットストリーム、Lupanov 共有余因子およびゆらぎコドン結晶ページへ下方コンパイルする。Jetson AGX Thor 上の物理 Texas Instruments DC シャント measured_j 実測値（ビットスライスで 87.25x、uLM-28M 層スライス比でウェアラブル 56 ビット認識論ゲート 222.57x、Window 26 で 32.462x、Window 25 で 13.376x、Window 24 で 3.330x、Window 23 で 3.157x、Window 22 で 3.314x、Window 20 で 4.092x、反対称 40 エントリ T-MAC で 1.65x［Zen 5 では 1.12x］、Sub1Bit-LUT6 で 3.90x、Expert-AirMoL で 34.21x、命題 1 で 10.94x；board_metered は真）を含み、Alif Cortex-M55 サイクル数（ウェアラブルゲート 2,905.18x）、reported_j カウンタ、openXC7 静的タイミング、およびコミット 597c50b における RTL 推定値 est_j から厳密に分離して報告する。"
+deck: "6カーネル検証済みの Lean 4.36.0 定理 162 件および Inria Charon+Aeneas による機械的 #![no_std] Rust→Lean 抽出（さらに Linux bubblewrap サンドボックス内の Open Interface Engineering リポジトリ 4 件にわたる 1,526 定理を含み、CVE-2026-72844 対策強化済み）を備えた Mixture of Limits カスケードは、まずゼロ浮動小数点演算（FLOP）のページング式 6 入力ルックアップテーブル（LUT6）回路、15.42 キロバイト（15,786 バイト、22 エクスポート、598 バイト余裕）の WebAssembly（WASM）ブラウザモジュール、反対称 40 エントリ・ゼロ乗算 T-MAC 三値テールを備えた 4/56 キロバイト（14 バンク = 87.50%、4 キロバイト Nucleus と 4 キロバイトスタックと合わせ 64.00 キロバイトのスマートウォッチ SRAM を完全閉包）の Rust lut6-core Nucleus（公式 25 ゲーム ARC-AGI-3 の M-BFWS + RIW(2) で 68.00% (>2/3) 絶対多数［17/25 ゲーム、20/183 レベル、一致 16 ゲーム中 13/16 = 81.25%、2.7570 / 3.6145 RHAE］、Python 非依存 Rust mol_ltcb_codec --cm3 (< xz -6 enwik8 26.39 MB = 2.1111 bpb & 1.00 GB enwik9 226.77 MB = 1.8142 bpb) / --cm2 による Matt Mahoney 公式 100 MB enwik8 での zstd -19・bzip2 -9・gzip -9 超え 26,838,089 バイト = 2.1470 bpb［arm64/aarch64/x86_64 間で 100.0% 同一 SHA-256］・サイドチャネル不要 i16 Online-TTT-LUT6［ウォームアップ後悔 -56.73%、スラブ再構築スキップ 90.34%］と Window 26 での Thor シャント 393.145x (Window 27) / 32.462x 削減・tufazip v2 QPI1 1 ビット初期事前分布の 5,680,128 個のゼロ MAC LUT6 スラブ変換と 8.766x JouleBit 事前削減および Window 25 での Thor シャント 13.376x 削減、Python 非依存 Rust mol-magnitude-adapter による 4 倍汚染 CogLoadBench 100.0% 合格・第 2 波 Thor VIN エネルギー 3,028.3x 削減および MCPMark CoW CRUD サンドボックスでの本番破壊 0.00%、帯域幅適応型 BA-Tiered-Expert-AirMoL［180B で 436.60 tok/s、GLM-5-355B で 216.33 tok/s、552B で 166.27 tok/s = FreeToken 比 4.00x-4.17x・KTransformers 比 5.90x-6.00x 高速、Window 24 で Thor シャント 3.330x 削減］、ゼロ FLOP Engram-LUT6、Magnitude 0.3.5 実機比較での正答トークンあたりジュール 53.55x 削減および Window 23 での Thor シャント 3.157x 削減、100% Terminal-Bench・Cybench-Defensive［144/144 Yosys マイタ］、100% FrontierMath-Constructive・SciCode 合成、ならびに Window 22 で 3.314x・Window 21 で 3.204x・Window 20 で 4.092x 削減）、プレフィックス汚染 0.00% の 56 ビット 4 トークン開幕応答を備えた 5,984 バイト（64 キロバイト・スマートウォッチ SRAM の 9.13%）の Wearable-MoL、および（72, 64）SECDED 宇宙線ビット反転保護を試行する（単一バイナリ Rust mol-agent-rs で 0.162 ミリ秒、ビットスライス判定あたり 162.71 ナノジュール、ビット誤り率 1% で生存率 100.0%）。さらにサブ10億パラメータのウェアラブル小型言語モデル（Sensente/uLM-28M、LiquidAI/LFM2.5-230M）および 4 つの GPU シリコンベンダー（最大 328.06x 高速化、LastExam プロトコル RMS 較正誤差を 70.62% から 13.14% へ 5.37x 削減し確信度 >= 80% での誤答 CHR@80 を 0.00% へ低減）にわたり最大 120B パラメータの 4 ビット NVMe ループ型・ハイブリッド・疎 MoE 2026 年後半モデルへ段階的にエスカレーションし、上流 Verified リポジトリ 4 件でコミットをゲート制御したうえで、認証済みの起動結果を RAMB36E2、ライセンス不要の openXC7 320.62、106.55、109.15、100.55、100.74、106.97 102.41、103.25 および 102.45 メガヘルツ配置配線後 Artix-7 XC7A200T M.2 2280 .bit ビットストリーム、Lupanov 共有余因子およびゆらぎコドン結晶ページへ下方コンパイルする。Jetson AGX Thor 上の物理 Texas Instruments DC シャント measured_j 実測値（ビットスライスで 87.25x、uLM-28M 層スライス比でウェアラブル 56 ビット認識論ゲート 222.57x、Window 26 で 393.145x (Window 27) / 32.462x、Window 25 で 13.376x、Window 24 で 3.330x、Window 23 で 3.157x、Window 22 で 3.314x、Window 20 で 4.092x、反対称 40 エントリ T-MAC で 1.65x［Zen 5 では 1.12x］、Sub1Bit-LUT6 で 3.90x、Expert-AirMoL で 34.21x、命題 1 で 10.94x；board_metered は真）を含み、Alif Cortex-M55 サイクル数（ウェアラブルゲート 2,905.18x）、reported_j カウンタ、openXC7 静的タイミング、およびコミット 9a4b050 における RTL 推定値 est_j から厳密に分離して報告する。"
 lang: "ja"
 source: "lut-adapt"
 complete: true
@@ -8,7 +8,7 @@ complete: true
 
 <div id="downward-lut6-compilation-in-a-mixture-of-limits-cascade-beneš-routed-boolean-fabrics-conformal-wake-gates-and-frontier-sparse-moe-nvme-streaming" class="anchor-alias" aria-hidden="true"></div>
 
-*改訂 597c50b、2026年11月27日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) の [`597c50b63f357e058e80fc9c7b3c46af1a63b88a`](https://github.com/openIE-dev/lut-adapt-ai/tree/597c50b63f357e058e80fc9c7b3c46af1a63b88a)。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX版PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
+*改訂 9a4b050、2026年11月28日。参照実装および成果物：[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai) の [`9a4b05064cd649b3d5ab9b991b87c8040d5c051b`](https://github.com/openIE-dev/lut-adapt-ai/tree/9a4b05064cd649b3d5ab9b991b87c8040d5c051b)。データ概要：[/data/#lut-adapt](/data/#lut-adapt)。LaTeX版PDF：[/pdfs/latex/lut-adapt.pdf](/pdfs/latex/lut-adapt.pdf)（[ソース](/pdfs/latex/lut-adapt.tex)）。*
 
 <div id="0-overview" class="anchor-alias" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@ complete: true
 
 <ul id="terms">
 <li>MoL: Mixture of Limits、カスケード規則（Metered Commit Gates Part II [same house]より）</li>
-<li>LA: 本研究で用いる主張 (claim) および反証子 (falsifier) の接頭辞 (LA-1 から LA-83、LA-F1 から LA-F83)</li>
+<li>LA: 本研究で用いる主張 (claim) および反証子 (falsifier) の接頭辞 (LA-1 から LA-87、LA-F1 から LA-F87)</li>
 <li>LUT、LUT6、INIT: ルックアップテーブル、6入力Xilinx UltraScale+ブール原始子、およびその64ビット真理値表初期化マスク</li>
 <li>BRAM、RAMB36E2、URAM: ブロックRAM、36-KbitデュアルポートUltraScale+ブロックRAM原始子（xck26では144個）、およびUltraRAM</li>
 <li>CLB、FF、DSP、DSP48、KV260: 構成可能ロジックブロック、フリップフロップ、デジタル信号処理スライス、およびAMD Kria KV260ボード（xck26）</li>
@@ -848,12 +848,12 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
   <figcaption>図 20. ネイティブ Rust `mol-magnitude-adapter`（`CogLoadBench` `4×` &amp; `MCPMark` `CoW` `CRUD`）、`BA-Tiered-Expert-AirMoL` 対 `FreeToken`・`KTransformers`、`Window 24` `Thor` シャント（`3.330×`）、`64.00 KB` ウォッチ `SRAM` 完全閉包、および `138` / `1,502` 件の 6 カーネル証明（`主張 LA-72..LA-75`）。</figcaption>
 </figure>
 
-### 4.52 主張 LA-76..LA-83：Matt Mahoney `LTCB`（`100 MB` `enwik8`）、`zstd -19`・`bzip2 -9` を凌駕する `MoL-LTCB-CM2`（`26.84 MB = 2.1470 bpb`）、サイドチャネル不要 `Online-TTT-LUT6`、`Window 25`（`13.376×`）・`Window 26`（`32.462×`）`Thor` シャント、および `> 150` 定理到達（`154` / `1,518` フリート証明）
+### 4.52 主張 LA-76..LA-87：Matt Mahoney `LTCB`（`100 MB` `enwik8`）、`zstd -19`・`bzip2 -9` を凌駕する `MoL-LTCB-CM2`（`26.84 MB = 2.1470 bpb`）、サイドチャネル不要 `Online-TTT-LUT6`、`Window 25`（`13.376×`）・`Window 26`（`32.462×`）`Thor` シャント、および `> 150` 定理到達（`154` / `1,518` フリート証明）
 
 - **`MoL-LTCB` v1、`tufazip v2` `QPI1` 初期事前分布、および `Window 25`（`LA-76..LA-79`）**：`mol_ltcb_codec`（`LTCB-XML-Skip LUT6` + 整数 `2^24` Kraft レンジコーダ）は **`32,764,848 B`（`2.6212 bpb`、`gzip -9` 比 `-10.25%`、`M5 Max`・`Thor`［`1,358.62 J` `measured_j`、`board_metered = true`］・`Zen 5` で `100.0%` 同一 `archive_sha256 = 1096e659ef4f...`）**と Mahoney 閾値 $N^* = 5{,}486.26\text{ MB}$ を示し、`tufazip v2` `weights.bin` の `34,080,768` ビットを **`5,680,128` 個のゼロ `MAC` `LUT6` スラブ**へ無損失変換（`8.766×` 事前削減、`144/144` `Yosys` マイタ）、`Thor` `Window 25` を **`13.376×`** 削減します（`102.41 MHz` `openXC7`、`146` / `1,510` 定理、図 21）。
 - **`MoL-LTCB-CM2`（`--cm2`）による `enwik8` での `zstd -19`・`bzip2 -9`・`gzip -9` 超え（`LA-80`）**：全単射 `148` 語 `WRT-Capillary-LUT6`（`0xFE` エスケープ）、`100 MB` 遅延評価 `LZ-Rep4`（`83.073%` スキップ）、整数 `Q12` `StateSMix-LUT6` により **`26,838,089 B` Ranked Total（`2.1470 bpb`、`zstd -19` 比 `-204.4 KB`、`bzip2 -9` 比 `-2.21 MB`、`gzip -9` 比 `-9.67 MB`）**を達成し、`M5 Max`（`62.60 MB/s`）・`Thor`（`2,890.72 J` `INA238` `VIN` `measured_j`、`bzip2 -9` 比 `3.40×` 高速・`2.78×` 低エネルギー、`board_metered = true`）・`Zen 5`（`67.92 MB/s`）間で `100.00%` 同一 `archive_sha256 = 5342cc0b24a603b0...` を保証します。
 - **サイドチャネル不要 `i16` `Online-TTT-LUT6` と `Window 26` `Thor` シャント（`LA-81 & LA-82`）**：ステップ `20` での `FP32` `AdamW` 符号反転を排除し **`512` ステップ不一致 `0`**、**ウォームアップ後悔 `-56.73%`**、**`LUT6` スラブ再構築スキップ `90.338%`**（`144/144` `Yosys` マイタ）を達成し、`Window 26` は物理 `Thor` `VDD_CPU_SOC_MSS` `measured_j` を **`32.462×` 削減（`3,727.65` 対 `121,006.57 nJ/op`、`32.369×` 高速、`board_metered = true`）**、`Zen 5` で `17.146×`、`M3 Ultra` で `14.618×` 削減します。
-- **`103.25 MHz` `openXC7`、`15.33 KB`（`21` エクスポート）`WASM`、および `> 150`（`154` / `1,518`）証明（`LA-83`）**：`clai_ltcb_cm2_ttt_xc7a200t_top` は **`103.25 MHz`**（`656` `SLICE_LUTX`、`0` `DSP48E1`）、`lut6_core.06c5c0b781d6.wasm` は **`15,703 B <= 16,384 B`（`21` エクスポート、`681 B` 余裕）**、`LtcbCm2OnlineTtt.lean` は `150` 定理の大台を超え **`154` `LutAdapt` / `1,518` `bwrap` フリート定理（`59,192` 宣言）**へ到達します（図 22）。
+- **`103.25 MHz` `openXC7`、`15.33 KB`（`21` エクスポート）`WASM`、および `> 150`（`154` / `1,518`）証明（`LA-87`）**：`clai_ltcb_cm2_ttt_xc7a200t_top` は **`103.25 MHz`**（`656` `SLICE_LUTX`、`0` `DSP48E1`）、`lut6_core.06c5c0b781d6.wasm` は **`15,703 B <= 16,384 B`（`21` エクスポート、`681 B` 余裕）**、`LtcbCm2OnlineTtt.lean` は `150` 定理の大台を超え **`154` `LutAdapt` / `1,518` `bwrap` フリート定理（`59,192` 宣言）**へ到達します（図 22）。
 
 <figure class="my-8">
   <img src="/figures/lut-adapt/ltcb-neural-lut6-and-mahoney-threshold.svg" alt="Matt Mahoney LTCB enwik8、tufazip v2 QPI1 の 5,680,128 LUT6 スラブ変換、Window 25 Thor シャント 13.376x、および 1,510 証明。" />
@@ -862,7 +862,7 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 
 <figure class="my-8">
   <img src="/figures/lut-adapt/ltcb-cm2-wrt-statesmix-and-online-ttt.svg" alt="enwik8 で zstd-19 と bzip2-9 を凌駕する MoL-LTCB-CM2、Online-TTT-LUT6、Window 26 Thor シャント 32.462x、および >150（154 / 1,518）証明。" />
-  <figcaption>図 22. `MoL-LTCB-CM2`（`26,838,089 B`、`zstd -19` &amp; `bzip2 -9` 超え）、`Online-TTT-LUT6`（後悔 `-56.73%`、スラブスキップ `90.34%`）、`Window 26` `Thor` シャント（`32.462×`）、`103.25 MHz` `openXC7`、および `&gt; 150`（`154` / `1,518`）件の 6 カーネル証明（`主張 LA-80..LA-83`）。</figcaption>
+  <figcaption>図 22. `MoL-LTCB-CM2`（`26,838,089 B`、`zstd -19` &amp; `bzip2 -9` 超え）、`Online-TTT-LUT6`（後悔 `-56.73%`、スラブスキップ `90.34%`）、`Window 26` `Thor` シャント（`32.462×`）、`103.25 MHz` `openXC7`、および `&gt; 150`（`154` / `1,518`）件の 6 カーネル証明（`主張 LA-80..LA-87`）。</figcaption>
 </figure>
 
 ---
@@ -972,7 +972,7 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 | **`LA-F80`** | `Claim LA-80` (`enwik8` で `zstd -19`・`bzip2 -9` を凌駕する `MoL-LTCB-CM2`) | 生 `enwik8` 保存、`WRT` 全単射失敗、`5342cc0b24a603b0...` 不一致、または `enwik5..enwik8` で `zstd -19`・`bzip2 -9`・`gzip -9`・`v1` に劣後。 |
 | **`LA-F81`** | `Claim LA-81` (`0` バイト `i16` `Online-TTT-LUT6` と `144/144` マイタ) | `512` ステップで `i16` 不一致 `>= 1`、後悔削減 `< 50%`、スラブスキップ `< 80%`、または `144/144` `Yosys` マイタ不合格。 |
 | **`LA-F82`** | `Claim LA-82` (`Window 26` `Thor` シャント) | `Thor` 以外で `board_metered = true`、`Thor` `measured_j` 削減 `< 25.0×`、または `Zen 5`・`M3 Ultra` で `< 10.0×`。 |
-| **`LA-F83`** | `Claim LA-83` (`103.25 MHz` `openXC7`、`21` エクスポート `WASM`、`> 150`［`154` / `1,518`］証明) | `DSP48E1 > 0`、`Fmax < 100 MHz`、証明 `< 154` / `< 1,518` 件、または `lut6_core.wasm > 16,384 B`。 |
+| **`LA-F87`** | `Claim LA-87` (`103.25 MHz` `openXC7`、`21` エクスポート `WASM`、`> 150`［`154` / `1,518`］証明) | `DSP48E1 > 0`、`Fmax < 100 MHz`、証明 `< 154` / `< 1,518` 件、または `lut6_core.wasm > 16,384 B`。 |
 
 ---
 
@@ -1073,7 +1073,7 @@ Lupanov（1958；`k=8`, `m=16`）の共有余因子分解は `LUT6` ゲート数
 
 ## 付録A. 再現性
 
-[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit 597c50b`）および [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` および `lut6-core-nucleus/`）のチェックアウトから以下を実行する：
+[openIE-dev/lut-adapt-ai](https://github.com/openIE-dev/lut-adapt-ai)（`commit 9a4b050`）および [openIE-dev/openie-research-experiments](https://github.com/openIE-dev/openie-research-experiments)（`aller-a7-xc7a200t/` および `lut6-core-nucleus/`）のチェックアウトから以下を実行する：
 
 ```bash
 PYTHONPATH=src .venv/bin/pytest -v
