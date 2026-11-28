@@ -1,0 +1,707 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const LAYERS = [
+  {
+    num: '01',
+    id: 'layer-1-execution',
+    name: 'Execution & Sandboxing',
+    critique:
+      'Why build a bespoke deterministic host when WebAssembly (Wasmtime + WASI) already delivers capability-safe sandboxing, AOT/Cranelift speed, and deterministic instruction-fuel accounting?',
+    cleanRoomTitle: 'Clean-Room Lab (~5,000 SLOC RCE Host)',
+    cleanRoomBody:
+      'Isolates a pure state-event fold P = (S, E, δ, D, λ) with SHA-256 log chaining and zero JIT background threads so replay determinism (10,500 streams × 6 targets, 0 mismatches) and log-hash overhead can be measured without runtime confounding. Already compiles to wasm32-wasip1.',
+    bridgeTitle: 'Drop-In Standards Bridge: Wasmtime + WASI + Hardware/OS Shunts',
+    bridgeBody:
+      'Run untrusted or synthesized agent tools inside Wasmtime + WASI capability sandboxes with deterministic fuel enabled—paired with physical DC shunts (TI INA260 / INA3221 measured_j) or chip counters (Linux RAPL / Apple IOReport reported_j). Instruction fuel bounds logical op-count (halting infinite loops), whereas cache misses and runtime FP32 unpacking shift joules-per-op by up to 81.86× on silicon. The two meters are orthogonal complements, never rivals.',
+    kitSlug: 'kits/standards-bridge/',
+    links: [
+      { label: 'Metered Commit Gates →', href: '/papers/gates/' },
+      { label: 'SATB 5-Host Telemetry →', href: '/papers/satb-harness/' },
+    ],
+  },
+  {
+    num: '02',
+    id: 'layer-2-verification',
+    name: 'Formal Verification & Surface Languages',
+    critique:
+      'Why ask human engineers or LLMs—whose pretraining corpora contain billions of lines of Rust, Python, TypeScript, and Lean 4 but zero bespoke RCE—to author code in a custom surface syntax?',
+    cleanRoomTitle: 'Clean-Room Lab (Nameless De Bruijn + 6-Kernel Lean 4.36.0 IR)',
+    cleanRoomBody:
+      'Keeps RCE strictly under the hood as a canonical nameless normal form (0/500 alpha-renaming cache collisions) whose core semantics (5,393 theorem constants) passes all 6 independent proof kernels of lake check --paranoid (lean4lean, nanoda, con-leche, con-ron, leanchecker --paranoid, and Lean v4.36.0).',
+    bridgeTitle: 'Drop-In Standards Bridge: Rust + Verus, Dafny, Lean 4, Python & TypeScript',
+    bridgeBody:
+      'Keep authoring and prompting in mainstream high-resource languages—Rust + Verus, Dafny, Lean 4, Python, Go, or TypeScript. As The Language Constellation (/constellation/) demonstrates across 12,117 catalogued languages and 75 benchmarked tree-sitter grammars (267 in the live dataset), mainstream languages express the same 113 universal computational constructs with measured syntactic-sugar ratios (Python N/C = 1.77, Go 1.75, TypeScript 2.44, Rust 2.56, C++ 3.38, Lean 4.15). Canonical normalization belongs under the hood, not in the human editor.',
+    kitSlug: 'kits/standards-bridge/',
+    links: [
+      { label: 'Explore /constellation/ (12,117 Languages) →', href: '/constellation/' },
+      { label: 'RCE Compile Payback Horizon →', href: '/papers/rce-compile/' },
+    ],
+  },
+  {
+    num: '03',
+    id: 'layer-3-spec-fidelity',
+    name: "Specification Fidelity (Goodhart's Law Defense)",
+    critique:
+      "Under Goodhart's Law, if a microsecond gate C(z) ∈ {0, 1} checks weak example assertions or specs co-authored by the same LLM, won't the proposer game the spec with a trivial lookup table—while wasting 80 J retries on grammar rejections?",
+    cleanRoomTitle: 'Clean-Room Lab (56-Program Table-Control Falsifier & Rule W-INT-2)',
+    cleanRoomBody:
+      'OpenIE explicitly registered and published this exact failure mode (/faq/#hq-5): rebuilding 56 example-only modules as hardcoded lookup tables passed 56/56 naive example checks while diverging off-sample, prompting rule W-INT-2 and mutation gate W-MUT-1 (catching up to Cunha 2026 on specification-coverage bottlenecks).',
+    bridgeTitle: 'Drop-In Standards Bridge: Spec ⊥ Impl + Mutant/Vacuity Gates + llguidance/Outlines',
+    bridgeBody:
+      'Enforce three barriers in kits/spec-fidelity-barrier/: (1) Context-Isolated Specs (Spec ⊥ Impl)—the implementation agent cannot read held-out property seeds or edit the contract bundle; (2) Mutant & Vacuity Kill Gates—a spec is rejected before synthesis if it is vacuously satisfiable or fails to kill injected behavioral mutants; (3) In-Loop Grammar-Constrained Decoding (llguidance / Outlines)—masks invalid tokens during generation so 0 joules are wasted on syntax-error retries.',
+    kitSlug: 'kits/spec-fidelity-barrier/',
+    links: [
+      { label: 'FAQ #5 Table-Control Falsifier →', href: '/faq/#hq-5' },
+      { label: 'RCE-JEPA H15 & W-MUT-1 →', href: '/papers/rce-jepa/' },
+    ],
+  },
+  {
+    num: '04',
+    id: 'layer-4-compilation',
+    name: 'Downward Compilation & Skill Libraries',
+    critique:
+      'Why compile agent policies all the way down to raw FPGA LUT6 netlists when 95% of repeated software tasks are solved cleanly by verified code/skill libraries, and hardware synthesis already has LLVM MLIR + CIRCT?',
+    cleanRoomTitle: 'Clean-Room Lab (KV260 xck26 LUT6 & Simon-Kadane Horizon)',
+    cleanRoomBody:
+      'Measures the physical floor on an AMD Kria KV260 (11.43 nJ/check TI INA260 measured_j) and openXC7 RTL to establish where sub-microjoule combinational gates pay back synthesis energy N* on extreme high-frequency edge loops.',
+    bridgeTitle: 'Drop-In Standards Bridge: Stop at Rungs 1–3 (95% of Workloads); Lower Rung 4 via MLIR/CIRCT',
+    bridgeBody:
+      'Do not synthesize FPGA gates for everyday software! Stop at Rungs 1–3: Rung 1 Exact/Nameless Hash Lookup (~0.3–1.8 µJ), Rung 2 Synthesized Rust/Wasm Skill Routines (gate-admitted tool libraries), and Rung 3 compact 0.5B–2B packed-integer local models—capturing 16.7×–29.9× Zipf(0.85) energy cuts on commodity CPUs. For the <5% ultra-low-latency hardware edge, lower through LLVM MLIR + CIRCT (comb / hw dialects → SystemVerilog) paired with exhaustive/SMT translation validation.',
+    kitSlug: 'kits/standards-bridge/',
+    links: [
+      { label: 'Compiled Agency 4-Stage Cascade →', href: '/living/compiled-agency/' },
+      { label: 'Downward LUT6 & Horizon Math →', href: '/papers/lut-adapt/' },
+    ],
+  },
+  {
+    num: '05',
+    id: 'layer-5-wire-telemetry',
+    name: 'Wire Protocols & Energy Telemetry',
+    critique:
+      'Why introduce custom binary WAI1 envelopes or BSL-1.1 storage dependencies when production fleets already standardize on Apache-2.0 OpenTelemetry, FlatBuffers / Cap’n Proto, and IETF COSE cryptographic receipts?',
+    cleanRoomTitle: 'Clean-Room Lab (34-Workload Wire & Tokenization Impedance Benchmark)',
+    cleanRoomBody:
+      'Quantifies why reparsing and retokenizing verbose UTF-8 JSON/Markdown transcripts across agent hops burns order-of-magnitude excess CPU/memory energy compared with zero-copy typed binary frames (/papers/ai-reads-human/).',
+    bridgeTitle: 'Drop-In Standards Bridge: Apache-2.0 OpenTelemetry Joule Conventions + IETF COSE_Sign1 + FlatBuffers',
+    bridgeBody:
+      'Zero custom parser lock-in and 100% Apache-2.0 licensing. Emit standard OpenTelemetry spans and metrics carrying orthogonal joule attributes (openie.energy.measured_j, openie.energy.reported_j, openie.energy.est_j, openie.energy.evidence_class—never summed across classes!), serialize high-rate tool payloads in zero-copy FlatBuffers, and wrap Ed25519 + BLAKE3 provenance digests in standard IETF RFC 9052 COSE_Sign1 envelopes.',
+    kitSlug: 'kits/standards-bridge/',
+    links: [
+      { label: '34-Workload Wire Benchmark →', href: '/papers/ai-reads-human/' },
+      { label: 'Run All 9 Apache-2.0 Kits →', href: '/replication/' },
+    ],
+  },
+];
+
+const CLONE_SPEC_FIDELITY = `git clone https://github.com/openIE-dev/openie-research-experiments.git
+cd openie-research-experiments/kits/spec-fidelity-barrier
+./run_kit.sh`;
+
+const CLONE_STANDARDS_BRIDGE = `git clone https://github.com/openIE-dev/openie-research-experiments.git
+cd openie-research-experiments/kits/standards-bridge
+./run_kit.sh`;
+
+const OTEL_SCHEMA_SNIPPET = `{
+  "name": "agent.tool.commit_gate",
+  "attributes": {
+    "openie.gate.verdict": "admitted",
+    "openie.gate.spec_isolated": true,
+    "openie.gate.mutant_kill_ratio": 0.984,
+    "openie.cascade.rung": 2,
+    "openie.cascade.surface": "wasmtime_wasi_skill",
+    "openie.energy.evidence_class": "reported_j",
+    "openie.energy.measured_j": null,
+    "openie.energy.reported_j": 0.00177,
+    "openie.energy.est_j": null,
+    "openie.energy.sensor": "linux_powercap_rapl_pkg0",
+    "openie.receipt.envelope": "ietf_rfc9052_cose_sign1",
+    "openie.receipt.payload_codec": "flatbuffers",
+    "openie.receipt.blake3": "a541323b9e0d418c2f1074c890e2b1d7f4e9c3a2180756b9d312e4f8c09a46f0"
+  }
+}`;
+
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: 'Clean-Room Core vs. Drop-In Standards Bridge: Adopting Metered & Verified AI Without Reinventing Your Stack',
+  url: 'https://research.openie.dev/standards/',
+  description:
+    '5-layer architecture guide mapping OpenIE clean-room verification research onto mainstream Apache-2.0 production standards: Rust + Verus, Lean 4, Wasmtime + WASI, llguidance/Outlines, LLVM MLIR + CIRCT, OpenTelemetry joule semantic conventions, and IETF RFC 9052 COSE_Sign1 + FlatBuffers.',
+  author: { '@type': 'Person', name: 'David Charlot' },
+  publisher: { '@type': 'Organization', name: 'Open Interface Engineering, Inc.', url: 'https://openie.dev' },
+  dateModified: '2026-11-28',
+};
+---
+
+<Layout
+  title="Clean-Room Core vs. Drop-In Standards Bridge: Adopting Metered & Verified AI Without Reinventing Your Stack"
+  description="Adopt Metered & Verified AI today without reinventing your stack: a 5-layer architecture matrix and interactive stack recommender bridging OpenIE's clean-room lab to Rust, Lean 4/Verus, Wasmtime/WASI, llguidance/Outlines, MLIR/CIRCT, OpenTelemetry, and IETF COSE/FlatBuffers."
+>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(ld)} />
+
+  <section class="max-w-6xl mx-auto px-6 md:px-10 pt-10 md:pt-14 pb-24">
+    <!-- Top Epistemic & Licensing Badge Strip -->
+    <div class="flex flex-wrap items-center gap-2.5 mb-4">
+      <span class="font-mono text-[10.5px] tracking-[0.14em] uppercase px-2.5 py-1 rounded bg-brand-amber text-brand-dark font-bold">
+        Architecture &amp; Interoperability Guide · 100% Apache-2.0 Bridge
+      </span>
+      <span class="font-mono text-[11px] px-2.5 py-1 rounded border border-emerald-400/45 bg-emerald-500/12 text-emerald-300">
+        Zero Custom Syntax or BSL-1.1 Lock-In Required
+      </span>
+      <span class="font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-slate">
+        measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered
+      </span>
+    </div>
+
+    <h1 class="font-display text-3xl md:text-5xl font-bold text-brand-white tracking-tight leading-tight max-w-5xl">
+      Clean-Room Core vs. Drop-In Standards Bridge: <span class="text-brand-amber">Adopting Metered &amp; Verified AI Without Reinventing Your Stack</span>
+    </h1>
+
+    <p class="mt-4 font-body text-base md:text-lg text-brand-slate leading-relaxed max-w-4xl">
+      A candid engineering map answering the five toughest architectural questions about Open Interface Engineering&rsquo;s research: why our papers isolate minimal clean-room kernels to measure physical floors, and how production teams get the exact same safety gates, Zipfian lookup savings, and cryptographic joule receipts <strong class="text-brand-white">this week</strong> on top of <code class="text-brand-cyan">Rust</code>, <code class="text-brand-cyan">Lean 4</code> / <code class="text-brand-cyan">Verus</code>, <code class="text-brand-cyan">Wasmtime</code>, <code class="text-brand-cyan">MLIR/CIRCT</code>, <code class="text-brand-cyan">IETF COSE</code>, and <code class="text-brand-cyan">OpenTelemetry</code>.
+    </p>
+
+    <!-- DEPTH 1: PLAIN WORDS + EVERYDAY ANALOGY + AND-BUT-THEREFORE -->
+    <div id="depth-plain" class="glass-card p-6 md:p-8 mt-8 border border-brand-amber/40 bg-gradient-to-br from-brand-amber/[0.06] via-transparent to-brand-cyan/[0.05]">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+        <span class="font-mono text-[10px] tracking-[0.14em] uppercase px-2.5 py-0.5 rounded bg-brand-amber text-brand-dark font-bold">
+          Depth 1 · Plain Story (2 min)
+        </span>
+        <div class="flex flex-wrap items-center gap-3 font-mono text-xs">
+          <a href="/constellation/" class="text-brand-cyan no-underline hover:underline">
+            Explore 12,117-Language Constellation →
+          </a>
+          <span class="text-brand-gray">·</span>
+          <a href="/replication/" class="text-emerald-300 no-underline hover:underline">
+            9 Standalone Apache-2.0 Kits →
+          </a>
+        </div>
+      </div>
+
+      <!-- Everyday Analogy Callout -->
+      <div class="p-4 rounded-xl border border-brand-cyan/35 bg-brand-cyan/[0.06] mb-5">
+        <div class="font-mono text-[10px] uppercase tracking-[0.14em] text-brand-cyan font-semibold mb-1">
+          💡 Everyday Analogy — Circuit Breakers &amp; Electric Meters Don&rsquo;t Require a New Wall Plug
+        </div>
+        <p class="font-body text-sm md:text-base text-brand-light leading-relaxed m-0">
+          You don&rsquo;t need to build your own power grid or invent a new three-prong plug shape just to put a <strong class="text-brand-white">circuit breaker</strong> and an <strong class="text-brand-white">electric meter</strong> on your house. OpenIE&rsquo;s clean-room core isolates the physics inside a tiny ~5,000-line reference lab so every theorem and joule reading can be audited without hidden compiler noise—while our <code class="text-brand-cyan">Apache-2.0</code> <strong class="text-brand-amber">Standards Bridge</strong> snaps straight onto <code class="text-brand-cyan">Rust</code>, <code class="text-brand-cyan">Lean 4</code> / <code class="text-brand-cyan">Verus</code>, <code class="text-brand-cyan">WebAssembly</code> / <code class="text-brand-cyan">Wasmtime</code>, <code class="text-brand-cyan">MLIR</code> / <code class="text-brand-cyan">CIRCT</code>, <code class="text-brand-cyan">IETF COSE</code> / <code class="text-brand-cyan">FlatBuffers</code>, and <code class="text-brand-cyan">OpenTelemetry</code> today.
+        </p>
+      </div>
+
+      <!-- 3-Beat And · But · Therefore Arc -->
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/55">
+          <div class="font-mono text-[10px] uppercase tracking-[0.14em] text-emerald-300 font-bold mb-1">
+            1 · Setup (And)
+          </div>
+          <p class="font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+            Modern engineering teams already run mature sandboxes (<code class="text-brand-cyan">Wasmtime</code>), verified contracts (<code class="text-brand-cyan">Verus</code>, <code class="text-brand-cyan">Lean 4</code>), compiler IRs (<code class="text-brand-cyan">MLIR</code>), and telemetry (<code class="text-brand-cyan">OpenTelemetry</code>)—and <a href="/constellation/" class="text-brand-cyan hover:underline">/constellation/</a> shows how <strong class="text-brand-white">75 benchmarked tree-sitter grammars</strong> across <strong class="text-brand-white">12,117 languages</strong> already map onto the same <strong class="text-brand-white">113 universal constructs</strong>.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/55">
+          <div class="font-mono text-[10px] uppercase tracking-[0.14em] text-brand-amber font-bold mb-1">
+            2 · Tension (But)
+          </div>
+          <p class="font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+            Reading our clean-room papers in isolation can make it look as if adopting verified, joule-accounted AI requires rewriting code in raw <code class="text-brand-amber">RCE</code>, trusting naive LLM-written tests against <strong class="text-brand-white">Goodhart&rsquo;s Law</strong>, compiling Python to raw <code class="text-brand-amber">LUT6</code> gates, or adopting custom <code class="text-brand-amber">WAI1</code> frames. <strong class="text-brand-white">None of that lock-in is required.</strong>
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/55">
+          <div class="font-mono text-[10px] uppercase tracking-[0.14em] text-brand-cyan font-bold mb-1">
+            3 · Resolution (Therefore)
+          </div>
+          <p class="font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+            Keep your mainstream languages, compilers, and observability pipeline. Add three drop-in <code class="text-brand-cyan">Apache-2.0</code> primitives: <strong class="text-brand-white">context-isolated mutant-killing gates</strong> (<code class="text-brand-cyan">Spec ⊥ Impl</code>), <strong class="text-brand-white">Rung 1–3 lookup/Wasm skill caching</strong>, and <strong class="text-brand-white">orthogonal OTel + COSE joule receipts</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEPTH 2A: INTERACTIVE STACK RECOMMENDER (4 PRIORITY SLIDERS) -->
+    <section id="stack-recommender" aria-labelledby="rec-heading" class="mt-12 glass-card p-6 md:p-8 border border-brand-cyan/35">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
+        <span class="font-mono text-[10px] tracking-[0.14em] uppercase px-2.5 py-0.5 rounded bg-brand-cyan/20 text-brand-cyan font-semibold">
+          Depth 2 · Interactive Stack Recommender
+        </span>
+        <div class="flex flex-wrap gap-1.5" role="group" aria-label="Workload presets">
+          <button type="button" data-std-preset="85,95,15,25" class="std-preset-btn px-2.5 py-1 rounded border border-brand-amber bg-brand-amber/15 text-brand-amber font-mono text-[11px] cursor-pointer">
+            Preset: Ship This Week (SaaS / Agent API)
+          </button>
+          <button type="button" data-std-preset="60,85,20,75" class="std-preset-btn px-2.5 py-1 rounded border border-brand-border text-brand-slate hover:text-brand-white font-mono text-[11px] cursor-pointer">
+            High-Assurance Rust / FinTech
+          </button>
+          <button type="button" data-std-preset="45,65,95,55" class="std-preset-btn px-2.5 py-1 rounded border border-brand-border text-brand-slate hover:text-brand-white font-mono text-[11px] cursor-pointer">
+            Sub-mJ Robotics / FPGA Edge
+          </button>
+          <button type="button" data-std-preset="20,25,60,98" class="std-preset-btn px-2.5 py-1 rounded border border-brand-border text-brand-slate hover:text-brand-white font-mono text-[11px] cursor-pointer">
+            Clean-Room 6-Kernel Proof Audit
+          </button>
+        </div>
+      </div>
+
+      <h2 id="rec-heading" class="font-display text-2xl md:text-3xl font-bold text-brand-white m-0">
+        Dial Your Team&rsquo;s Constraints — Get Your Recommended 5-Layer Stack
+      </h2>
+      <p class="mt-2 font-body text-sm text-brand-slate max-w-3xl">
+        Move the four priority sliders below. The recommender computes the lowest-friction combination across sandboxing, surface languages, Goodhart-resistant specs, cascade compilation rungs, and telemetry envelopes.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-5 mt-6">
+        <label class="block p-4 rounded-xl border border-brand-border bg-brand-dark/55">
+          <div class="flex justify-between items-center font-mono text-xs mb-2">
+            <span class="text-brand-white font-semibold">1. Production Velocity (Ship This Week)</span>
+            <span id="val-velocity" class="text-brand-amber font-bold">85%</span>
+          </div>
+          <input id="sl-velocity" type="range" min="0" max="100" value="85" class="w-full accent-amber-400 cursor-pointer" />
+          <span class="block mt-1 font-body text-[11.5px] text-brand-gray">High favors zero-migration drop-in wrappers around existing CI and model endpoints.</span>
+        </label>
+
+        <label class="block p-4 rounded-xl border border-brand-border bg-brand-dark/55">
+          <div class="flex justify-between items-center font-mono text-xs mb-2">
+            <span class="text-brand-white font-semibold">2. Existing Toolchain Compatibility</span>
+            <span id="val-compat" class="text-brand-cyan font-bold">95%</span>
+          </div>
+          <input id="sl-compat" type="range" min="0" max="100" value="95" class="w-full accent-teal-400 cursor-pointer" />
+          <span class="block mt-1 font-body text-[11.5px] text-brand-gray">High keeps Rust/Python/TS, Wasmtime, MLIR/LLVM, and existing OpenTelemetry collectors untouched.</span>
+        </label>
+
+        <label class="block p-4 rounded-xl border border-brand-border bg-brand-dark/55">
+          <div class="flex justify-between items-center font-mono text-xs mb-2">
+            <span class="text-brand-white font-semibold">3. Sub-Millijoule Edge / FPGA Target</span>
+            <span id="val-edge" class="text-emerald-300 font-bold">15%</span>
+          </div>
+          <input id="sl-edge" type="range" min="0" max="100" value="15" class="w-full accent-emerald-400 cursor-pointer" />
+          <span class="block mt-1 font-body text-[11.5px] text-brand-gray">Low stops at CPU/Wasm Rungs 1–3; high activates packed-int SIMD or MLIR/CIRCT → SystemVerilog hardware lowering.</span>
+        </label>
+
+        <label class="block p-4 rounded-xl border border-brand-border bg-brand-dark/55">
+          <div class="flex justify-between items-center font-mono text-xs mb-2">
+            <span class="text-brand-white font-semibold">4. Cross-Layer Mechanized Proof Minimalism</span>
+            <span id="val-proof" class="text-brand-indigo font-bold">25%</span>
+          </div>
+          <input id="sl-proof" type="range" min="0" max="100" value="25" class="w-full accent-indigo-400 cursor-pointer" />
+          <span class="block mt-1 font-body text-[11.5px] text-brand-gray">Moderate uses property + mutant gates or Verus/Dafny; extreme adds 6-kernel Lean 4.36.0 &amp; nameless RCE equivalence.</span>
+        </label>
+      </div>
+
+      <!-- Dynamic Output Card -->
+      <div class="mt-6 p-5 rounded-xl border border-brand-amber/40 bg-brand-dark/80">
+        <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-brand-border">
+          <div>
+            <div class="font-mono text-[10.5px] uppercase tracking-[0.14em] text-brand-amber font-semibold">
+              Recommended Architecture Profile
+            </div>
+            <h3 id="rec-profile-title" class="font-display text-lg md:text-xl font-bold text-brand-white m-0 mt-0.5">
+              Drop-In Production Standards Bridge (Rungs 1–3 · Zero Custom Lock-In)
+            </h3>
+          </div>
+          <span id="rec-ramp-badge" class="font-mono text-xs px-3 py-1 rounded-md border border-emerald-400/45 bg-emerald-500/12 text-emerald-300">
+            Est. Integration: 1–3 Days · 100% Apache-2.0
+          </span>
+        </div>
+
+        <div class="grid md:grid-cols-5 gap-3 mt-4" id="rec-layers-grid">
+          <div class="p-3 rounded-lg border border-brand-border bg-white/[0.02]">
+            <div class="font-mono text-[10px] uppercase text-brand-amber">1 · Sandbox &amp; Meter</div>
+            <div id="rec-l1" class="font-display text-xs sm:text-sm font-bold text-brand-white mt-1">Wasmtime + WASI fuel + RAPL / IOReport reported_j</div>
+          </div>
+          <div class="p-3 rounded-lg border border-brand-border bg-white/[0.02]">
+            <div class="font-mono text-[10px] uppercase text-brand-cyan">2 · Surface &amp; Proofs</div>
+            <div id="rec-l2" class="font-display text-xs sm:text-sm font-bold text-brand-white mt-1">Mainstream Rust / Python / TS + Property Contracts</div>
+          </div>
+          <div class="p-3 rounded-lg border border-brand-border bg-white/[0.02]">
+            <div class="font-mono text-[10px] uppercase text-emerald-300">3 · Spec Fidelity</div>
+            <div id="rec-l3" class="font-display text-xs sm:text-sm font-bold text-brand-white mt-1">Spec ⊥ Impl Isolation + Mutant Gate + Outlines/llguidance</div>
+          </div>
+          <div class="p-3 rounded-lg border border-brand-border bg-white/[0.02]">
+            <div class="font-mono text-[10px] uppercase text-brand-amber">4 · Cascade Rung</div>
+            <div id="rec-l4" class="font-display text-xs sm:text-sm font-bold text-brand-white mt-1">Stop at Rungs 1–3 (Hash Lookup → Wasm Skills → 0.5B–2B Local)</div>
+          </div>
+          <div class="p-3 rounded-lg border border-brand-border bg-white/[0.02]">
+            <div class="font-mono text-[10px] uppercase text-brand-indigo">5 · Wire &amp; Receipts</div>
+            <div id="rec-l5" class="font-display text-xs sm:text-sm font-bold text-brand-white mt-1">OpenTelemetry Joule Attributes + RFC 9052 COSE_Sign1</div>
+          </div>
+        </div>
+
+        <p id="rec-rationale" class="mt-4 mb-0 font-body text-xs sm:text-sm text-brand-light leading-relaxed">
+          Keeps 100% of your existing surface languages and observability pipeline intact. Adds context-isolated mutation testing + grammar-constrained decoding up front, crystallizes repeated calls into Wasmtime skill routines, and exports orthogonal joule spans to OpenTelemetry.
+        </p>
+
+        <!-- Copyable Clone Commands for Kit #8 & Kit #9 -->
+        <div class="grid md:grid-cols-2 gap-4 mt-5">
+          <div class="relative rounded-xl border border-brand-border bg-black/55 p-3.5">
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="font-mono text-[10.5px] text-emerald-300 font-semibold">Kit #8 · Spec-Fidelity Barrier (Apache-2.0)</span>
+              <button
+                type="button"
+                data-copy-cmd={CLONE_SPEC_FIDELITY}
+                class="px-2.5 py-0.5 rounded border border-brand-amber/45 bg-brand-amber/15 text-brand-amber font-mono text-[10.5px] hover:bg-brand-amber hover:text-brand-dark cursor-pointer transition-colors"
+              >
+                Copy Commands
+              </button>
+            </div>
+            <pre class="font-mono text-[11px] text-brand-light overflow-x-auto m-0"><code>{CLONE_SPEC_FIDELITY}</code></pre>
+          </div>
+
+          <div class="relative rounded-xl border border-brand-border bg-black/55 p-3.5">
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="font-mono text-[10.5px] text-brand-cyan font-semibold">Kit #9 · Drop-In Standards Bridge (Apache-2.0)</span>
+              <button
+                type="button"
+                data-copy-cmd={CLONE_STANDARDS_BRIDGE}
+                class="px-2.5 py-0.5 rounded border border-brand-amber/45 bg-brand-amber/15 text-brand-amber font-mono text-[10.5px] hover:bg-brand-amber hover:text-brand-dark cursor-pointer transition-colors"
+              >
+                Copy Commands
+              </button>
+            </div>
+            <pre class="font-mono text-[11px] text-brand-light overflow-x-auto m-0"><code>{CLONE_STANDARDS_BRIDGE}</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEPTH 2B: TRANSPARENT 5-LAYER SIDE-BY-SIDE ARCHITECTURE MATRIX -->
+    <section id="architecture-matrix" aria-labelledby="matrix-heading" class="mt-14">
+      <div class="mb-6">
+        <p class="font-mono text-[10.5px] uppercase tracking-[0.14em] text-brand-amber font-semibold mb-1">
+          5-Layer Side-by-Side Architecture Matrix
+        </p>
+        <h2 id="matrix-heading" class="font-display text-2xl md:text-3xl font-bold text-brand-white m-0">
+          Every External Critique Answered: Clean-Room Lab vs. Standards Bridge
+        </h2>
+        <p class="mt-2 font-body text-sm md:text-base text-brand-slate max-w-3xl">
+          Why we built a clean-room reference lab to test falsifiers—and why production adopters should bridge straight onto open industry standards at every layer.
+        </p>
+      </div>
+
+      <div class="space-y-5">
+        {LAYERS.map((layer) => (
+          <article id={layer.id} class="glass-card p-5 md:p-6 border border-brand-border hover:border-brand-cyan/40 transition-colors scroll-mt-28">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-brand-border">
+              <div class="flex items-center gap-3">
+                <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-brand-amber/15 border border-brand-amber/40 text-brand-amber">
+                  Layer {layer.num}
+                </span>
+                <h3 class="font-display text-lg md:text-xl font-bold text-brand-white m-0">
+                  {layer.name}
+                </h3>
+              </div>
+              <a href="/replication/" class="font-mono text-[11px] px-2.5 py-1 rounded border border-emerald-400/35 bg-emerald-500/10 text-emerald-300 no-underline hover:bg-emerald-500/20">
+                Verify via {layer.kitSlug} →
+              </a>
+            </div>
+
+            <div class="mt-3 p-3.5 rounded-lg border border-rose-400/25 bg-rose-500/[0.04]">
+              <div class="font-mono text-[10px] uppercase tracking-[0.12em] text-rose-300 font-semibold mb-0.5">
+                Skeptical Engineering Question
+              </div>
+              <p class="font-body text-xs sm:text-sm text-brand-light leading-relaxed m-0">
+                &ldquo;{layer.critique}&rdquo;
+              </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-4 mt-4">
+              <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/55">
+                <div class="font-mono text-[10px] uppercase tracking-[0.12em] text-brand-slate font-semibold mb-1">
+                  🔬 {layer.cleanRoomTitle}
+                </div>
+                <p class="font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+                  {layer.cleanRoomBody}
+                </p>
+              </div>
+
+              <div class="p-4 rounded-xl border border-brand-cyan/40 bg-brand-cyan/[0.06]">
+                <div class="font-mono text-[10px] uppercase tracking-[0.12em] text-brand-cyan font-semibold mb-1">
+                  🚀 {layer.bridgeTitle}
+                </div>
+                <p class="font-body text-xs sm:text-sm text-brand-light leading-relaxed m-0">
+                  {layer.bridgeBody}
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-4 flex flex-wrap items-center gap-4 font-mono text-xs">
+              {layer.links.map((lnk) => (
+                <a href={lnk.href} class="text-brand-amber no-underline hover:underline">
+                  {lnk.label}
+                </a>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    {/* DEPTH 3: BUILDER & EVIDENCE */}
+    <details id="gw-rung-builder" data-gw-rung="builder" class="mt-12 glass-card border border-emerald-400/35 overflow-hidden">
+      <summary class="px-6 py-4 cursor-pointer flex flex-wrap items-center justify-between gap-2 select-none">
+        <div class="flex flex-wrap items-center gap-2.5">
+          <span class="font-mono text-[10px] tracking-[0.14em] uppercase px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-semibold">
+            Depth 3 · Builder &amp; Wire Schema
+          </span>
+          <span class="font-display text-base md:text-lg font-bold text-brand-white">
+            Drop-In OpenTelemetry Joule Span Attributes, RFC 9052 COSE_Sign1 Envelope &amp; CIRCT Lowering
+          </span>
+        </div>
+        <span class="font-mono text-xs text-emerald-300">Inspect Schemas ▾</span>
+      </summary>
+
+      <div class="px-6 pb-6 pt-3 border-t border-brand-border space-y-5">
+        <p class="font-body text-sm text-brand-slate leading-relaxed m-0">
+          Every field in the <code class="text-brand-cyan">Apache-2.0</code> Standards Bridge maps directly onto standard <code class="text-brand-cyan">OpenTelemetry</code> span attributes and <code class="text-brand-cyan">IETF RFC 9052 COSE_Sign1</code> receipts. Notice that <code class="text-brand-cyan">measured_j</code>, <code class="text-brand-cyan">reported_j</code>, and <code class="text-brand-cyan">est_j</code> remain separate nullable fields so downstream dashboards never commit cross-class summation errors:
+        </p>
+
+        <div class="relative rounded-xl border border-brand-border bg-brand-dark/90 p-4">
+          <button
+            type="button"
+            data-copy-cmd={OTEL_SCHEMA_SNIPPET}
+            class="absolute top-2.5 right-2.5 px-2.5 py-1 rounded border border-brand-cyan/45 bg-brand-cyan/15 text-brand-cyan font-mono text-[11px] hover:bg-brand-cyan hover:text-brand-dark cursor-pointer transition-colors"
+          >
+            Copy OTel JSON
+          </button>
+          <pre class="font-mono text-xs text-brand-light overflow-x-auto m-0 pr-28"><code>{OTEL_SCHEMA_SNIPPET}</code></pre>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/50">
+            <div class="font-mono text-[10px] uppercase text-brand-amber font-semibold mb-1">Spec-Fidelity Pipeline</div>
+            <p class="font-body text-xs text-brand-slate leading-relaxed m-0">
+              <code class="text-brand-cyan">Spec Bundle (Read-Only)</code> → Vacuity SAT Probe → Injected Mutant Kill Check (<code class="text-brand-cyan">≥95%</code> kill target) → <code class="text-brand-cyan">llguidance</code> / <code class="text-brand-cyan">Outlines</code> CFG-masked proposer → <code class="text-brand-cyan">Wasmtime</code> sandbox replay.
+            </p>
+          </div>
+          <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/50">
+            <div class="font-mono text-[10px] uppercase text-brand-cyan font-semibold mb-1">MLIR / CIRCT Hardware Path</div>
+            <p class="font-body text-xs text-brand-slate leading-relaxed m-0">
+              <code class="text-brand-cyan">Rust / Python Policy</code> → <code class="text-brand-cyan">MLIR arith/scf</code> → <code class="text-brand-cyan">CIRCT comb/hw</code> dialects → <code class="text-brand-cyan">ExportVerilog</code> + exhaustive small-word / SMT equivalence check against software reference.
+            </p>
+          </div>
+          <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/50">
+            <div class="font-mono text-[10px] uppercase text-emerald-300 font-semibold mb-1">COSE_Sign1 + FlatBuffers</div>
+            <p class="font-body text-xs text-brand-slate leading-relaxed m-0">
+              Protected header alg <code class="text-brand-cyan">-8 (EdDSA / Ed25519)</code> over a canonical <code class="text-brand-cyan">BLAKE3</code> payload digest of zero-copy <code class="text-brand-cyan">FlatBuffers</code> tables—verifiable in Rust, Go, Python, and browsers with stock libraries.
+            </p>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    {/* DEPTH 4: FORMAL SPECIFICATION & FALSIFIERS */}
+    <details id="gw-rung-formal" data-gw-rung="formal" class="mt-4 glass-card border border-brand-indigo/35 overflow-hidden">
+      <summary class="px-6 py-4 cursor-pointer flex flex-wrap items-center justify-between gap-2 select-none">
+        <div class="flex flex-wrap items-center gap-2.5">
+          <span class="font-mono text-[10px] tracking-[0.14em] uppercase px-2.5 py-0.5 rounded bg-brand-indigo/20 text-brand-indigo font-semibold">
+            Depth 4 · Formal Gate Conditions &amp; Falsifiers
+          </span>
+          <span class="font-display text-base md:text-lg font-bold text-brand-white">
+            Goodhart-Bounded Gate Objective, Non-Mixing Joule Lattice &amp; Bridge Falsifiers (SB-F1..SB-F4)
+          </span>
+        </div>
+        <span class="font-mono text-xs text-brand-indigo">Expand Formal Conditions ▾</span>
+      </summary>
+
+      <div class="px-6 pb-6 pt-3 border-t border-brand-border space-y-5">
+        <div class="eq-block">
+          <div class="eq">
+            min<sub>z ∈ L(G)</sub> J<sub>k</sub>(z) &nbsp;<span class="op">subject to</span>&nbsp; <span class="tuple">C<sub>⊥</sub>(z) = 1</span> &nbsp;<span class="op">∧</span>&nbsp; ¬Vacuous(C<sub>⊥</sub>) &nbsp;<span class="op">∧</span>&nbsp; KillRate(C<sub>⊥</sub>, M) ≥ τ<sub>mut</sub>
+          </div>
+          <div class="eq-caption">
+            Constrained-Decoding Grammar L(G) · Context-Isolated Predicate C_⊥ · Mutant Kill Threshold τ_mut · Evidence Class k ∈ &#123;measured_j, reported_j, est_j&#125;
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead>
+              <tr class="border-b border-brand-border font-mono text-[11px] uppercase text-brand-amber">
+                <th class="py-2.5 pr-4">Falsifier ID</th>
+                <th class="py-2.5 pr-4">Bridge Layer Tested</th>
+                <th class="py-2.5">Registered Refutation Condition</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-brand-border text-brand-slate">
+              <tr>
+                <td class="py-3 pr-4 font-mono text-brand-white">SB-F1</td>
+                <td class="py-3 pr-4">Wasmtime Fuel vs. Physical Joules</td>
+                <td class="py-3">Fires if Wasmtime instruction-count fuel alone ranks two memory/unpack kernels within ±10% of physical TI INA260 / INA3221 <code class="text-brand-cyan">measured_j</code> across sub-bit vs. INT8 workloads (refuted empirically: 81.86× silicon gap).</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-mono text-brand-white">SB-F2</td>
+                <td class="py-3 pr-4">Spec-Fidelity Barrier (<code class="text-brand-cyan">Spec ⊥ Impl</code>)</td>
+                <td class="py-3">Fires if hardcoded lookup-table or tautological patches pass both held-out <code class="text-brand-cyan">Spec ⊥ Impl</code> property seeds and the <code class="text-brand-cyan">W-MUT-1</code> behavioral mutant gate at rate &gt; 1%.</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-mono text-brand-white">SB-F3</td>
+                <td class="py-3 pr-4">Rung 1–3 Software Horizon vs. Rung 4 CIRCT</td>
+                <td class="py-3">Fires on any workload where FPGA synthesis + host PCIe/AXI transfer energy exceeds cumulative Rung 2 <code class="text-brand-cyan">Wasmtime</code> skill execution energy over the deployment call horizon <code class="text-brand-cyan">N &lt; N*</code>.</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-mono text-brand-white">SB-F4</td>
+                <td class="py-3 pr-4">OTel + COSE_Sign1 + FlatBuffers Overhead</td>
+                <td class="py-3">Fires if standard <code class="text-brand-cyan">FlatBuffers + RFC 9052 COSE_Sign1</code> receipt signing/verification adds &gt; 5% CPU <code class="text-brand-cyan">reported_j</code> overhead relative to clean-room <code class="text-brand-cyan">WAI1</code> binary envelopes on 20,000-record streams.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <!-- Bottom Navigation Strip -->
+    <div class="mt-12 flex flex-wrap gap-3">
+      <a href="/replication/" class="inline-flex items-center font-mono text-xs text-brand-dark bg-brand-amber font-bold px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">
+        Run All 9 Apache-2.0 Replication Kits →
+      </a>
+      <a href="/constellation/" class="inline-flex items-center font-mono text-xs text-brand-cyan border border-brand-cyan/45 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">
+        Explore /constellation/ (12,117 Languages &amp; 113 Constructs) →
+      </a>
+      <a href="/faq/" class="inline-flex items-center font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors">
+        Read 10 Hard Questions in RCE FAQ →
+      </a>
+      <a href="/living/compiled-agency/" class="inline-flex items-center font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors">
+        Compiled Agency Observatory →
+      </a>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var slVel = document.getElementById('sl-velocity');
+      var slCompat = document.getElementById('sl-compat');
+      var slEdge = document.getElementById('sl-edge');
+      var slProof = document.getElementById('sl-proof');
+
+      function updateRecommender() {
+        if (!slVel || !slCompat || !slEdge || !slProof) return;
+        var v = Number(slVel.value);
+        var c = Number(slCompat.value);
+        var e = Number(slEdge.value);
+        var p = Number(slProof.value);
+
+        document.getElementById('val-velocity').textContent = v + '%';
+        document.getElementById('val-compat').textContent = c + '%';
+        document.getElementById('val-edge').textContent = e + '%';
+        document.getElementById('val-proof').textContent = p + '%';
+
+        // Layer 1: Sandbox & Meter
+        var l1 =
+          e >= 70
+            ? 'Wasmtime + WASI fuel + TI INA260 / INA3221 physical DC shunt (measured_j)'
+            : p >= 85 && c < 45
+            ? 'Clean-Room RCE Deterministic Host Fold + Wasmtime WASI Envelope'
+            : 'Wasmtime + WASI fuel + Linux RAPL / Apple IOReport (reported_j)';
+
+        // Layer 2: Surface Languages & Verification
+        var l2 =
+          p >= 85 && c < 50
+            ? 'Lean 4.36.0 (6-Kernel Audit) + Nameless De Bruijn RCE Equivalence IR'
+            : p >= 60
+            ? 'Rust + Verus / Dafny / Lean 4 Contracts (Mapped via 113-Construct Bridge)'
+            : 'Mainstream Rust / Python / TypeScript / Go + Property Test Suites';
+
+        // Layer 3: Specification Fidelity
+        var l3 =
+          p >= 65
+            ? 'Spec ⊥ Impl Isolation + SMT Non-Vacuity Proof + Mutant Gate + llguidance'
+            : 'Context-Isolated Specs (Spec ⊥ Impl) + Mutant Kill Gate + Outlines/llguidance';
+
+        // Layer 4: Downward Compilation & Cascade Rung
+        var l4 =
+          e >= 75
+            ? 'Rungs 1–3 + Rung 4 Hardware Path: LLVM MLIR + CIRCT (comb/hw → SystemVerilog)'
+            : e >= 45
+            ? 'Rungs 1–3: Exact Lookup → Wasm Skills → 0.5B–2B Packed-Int WHT+XNOR Kernel'
+            : 'Stop at Rungs 1–3: Exact Hash Lookup → Synthesized Rust/Wasm Skill Library';
+
+        // Layer 5: Wire Protocols & Energy Telemetry
+        var l5 =
+          e >= 60 || v < 50
+            ? 'Apache-2.0 OTel Joule Spans + Zero-Copy FlatBuffers + RFC 9052 COSE_Sign1'
+            : 'Apache-2.0 OpenTelemetry Joule Conventions + RFC 9052 COSE_Sign1 Receipts';
+
+        var title = 'Drop-In Production Standards Bridge (Rungs 1–3 · Zero Custom Lock-In)';
+        var badge = 'Est. Integration: 1–3 Days · 100% Apache-2.0';
+        var rationale =
+          'Keeps 100% of your existing surface languages and observability pipeline intact. Adds context-isolated mutation testing + grammar-constrained decoding up front, crystallizes repeated calls into Wasmtime skill routines, and exports orthogonal joule spans to OpenTelemetry.';
+
+        if (e >= 75) {
+          title = 'Sub-Millijoule Edge & MLIR/CIRCT Hardware Bridge (Rungs 1–4)';
+          badge = 'Est. Integration: 2–4 Weeks · Hardware Shunt + CIRCT RTL';
+          rationale =
+            'Pairs Wasmtime skill caching with physical TI INA260/INA3221 rail shunts (measured_j) and lowers ultra-hot inner policies through LLVM MLIR + CIRCT (comb/hw → SystemVerilog) with exhaustive translation validation.';
+        } else if (p >= 85 && c < 50) {
+          title = 'Clean-Room Formal Kernel & 6-Checker Mechanized Audit';
+          badge = 'Research / High-Assurance Audit · Lean 4.36.0 + RCE IR';
+          rationale =
+            'Prioritizes minimal-TCB proof checking across all 6 independent Lean 4.36.0 kernels and nameless de Bruijn equivalence while still exporting standard RFC 9052 COSE_Sign1 + OpenTelemetry receipts.';
+        } else if (p >= 60) {
+          title = 'Verified Mainstream Stack (Rust + Verus / Lean 4 + Wasmtime Bridge)';
+          badge = 'Est. Integration: 1–2 Weeks · SMT Verified + Apache-2.0';
+          rationale =
+            'Combines Rust + Verus or Dafny/Lean 4 specifications with Spec ⊥ Impl context isolation, mutant/vacuity kill gates, Wasmtime sandboxing, and COSE_Sign1 signed OpenTelemetry joule receipts.';
+        }
+
+        document.getElementById('rec-l1').textContent = l1;
+        document.getElementById('rec-l2').textContent = l2;
+        document.getElementById('rec-l3').textContent = l3;
+        document.getElementById('rec-l4').textContent = l4;
+        document.getElementById('rec-l5').textContent = l5;
+        document.getElementById('rec-profile-title').textContent = title;
+        document.getElementById('rec-ramp-badge').textContent = badge;
+        document.getElementById('rec-rationale').textContent = rationale;
+      }
+
+      [slVel, slCompat, slEdge, slProof].forEach(function (el) {
+        if (el) el.addEventListener('input', updateRecommender);
+      });
+
+      document.querySelectorAll('[data-std-preset]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var parts = (btn.getAttribute('data-std-preset') || '85,95,15,25').split(',').map(Number);
+          if (parts.length === 4) {
+            slVel.value = String(parts[0]);
+            slCompat.value = String(parts[1]);
+            slEdge.value = String(parts[2]);
+            slProof.value = String(parts[3]);
+            document.querySelectorAll('[data-std-preset]').forEach(function (b) {
+              var on = b === btn;
+              b.className = on
+                ? 'std-preset-btn px-2.5 py-1 rounded border border-brand-amber bg-brand-amber/15 text-brand-amber font-mono text-[11px] cursor-pointer'
+                : 'std-preset-btn px-2.5 py-1 rounded border border-brand-border text-brand-slate hover:text-brand-white font-mono text-[11px] cursor-pointer';
+            });
+            updateRecommender();
+          }
+        });
+      });
+
+      // Sync <details data-gw-rung="builder|formal"> with Global 4-Altitude Reading Depth Bar
+      function syncDepthDetails(depth) {
+        var bDet = document.getElementById('gw-rung-builder');
+        var fDet = document.getElementById('gw-rung-formal');
+        if (bDet) bDet.open = depth === 'builder' || depth === 'formal';
+        if (fDet) fDet.open = depth === 'formal';
+      }
+      syncDepthDetails(document.documentElement.getAttribute('data-reading-depth') || 'plain');
+      window.addEventListener('openie:reading-depth', function (ev) {
+        if (ev && ev.detail && ev.detail.depth) syncDepthDetails(ev.detail.depth);
+      });
+
+      // Copy buttons
+      document.querySelectorAll('[data-copy-cmd]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var cmd = btn.getAttribute('data-copy-cmd') || '';
+          var orig = btn.textContent;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(cmd).then(function () {
+              btn.textContent = '✓ Copied!';
+              setTimeout(function () { btn.textContent = orig; }, 1800);
+            });
+          }
+        });
+      });
+
+      updateRecommender();
+    })();
+  </script>
+</Layout>

@@ -55,6 +55,8 @@ const terms: [string, string][] = [
   ['AUROC', 'area under the receiver operating characteristic curve'],
   ['CALM', 'consistency as logical monotonicity, the result that monotone programs need no coordination between replicas'],
   ['CIC', 'Calculus of Inductive Constructions'],
+  ['CIRCT', 'Circuit Intermediate Representations for Compilers and Tools, the hardware-synthesis project built on MLIR'],
+  ['COSE', 'CBOR Object Signing and Encryption (IETF RFC 9052), a standard binary signature envelope'],
   ['CPU', 'central processing unit'],
   ['CVE', 'Common Vulnerabilities and Exposures'],
   ['DEPLOY.md', 'the guide in openIE-dev/rce (docs/DEPLOY.md) to running an RCE program as a service'],
@@ -69,17 +71,23 @@ const terms: [string, string][] = [
   ['H1 to H15', 'the fifteen hypotheses of the RCE-JEPA paper'],
   ['IEA', 'International Energy Agency'],
   ['IEEE 754', 'the floating-point standard of the Institute of Electrical and Electronics Engineers'],
+  ['IETF', 'Internet Engineering Task Force'],
+  ['IR', 'intermediate representation'],
   ['JEPA', 'joint embedding predictive architecture, a kind of model that predicts a compact summary of an answer instead of writing it out'],
   ['JSON', 'JavaScript Object Notation, a text format for data'],
   ['Lean 4', 'a proof assistant: a program that checks mathematical proofs'],
   ['LIFT', 'label of a lift rule in the RCE specification, for example LIFT-5'],
+  ['LLM', 'large language model'],
+  ['LLVM', 'the compiler infrastructure project providing shared intermediate representations and machine code backends'],
   ['MB', 'megabyte, 10⁶ bytes'],
+  ['MLIR', 'Multi-Level Intermediate Representation, a compiler framework in the LLVM project'],
   ['PID', 'process identifier in the operating system'],
   ['POSIX', 'Portable Operating System Interface'],
   ['RAPL', 'running average power limit, the on-chip energy counter of Intel processors'],
   ['RCE', 'the Reality Code Engine'],
   ['RCE-F', 'label of a falsifier of the RCE paper, RCE-F0 to RCE-F6'],
   ['README', 'the front-page documentation file of a repository or directory'],
+  ['RFC', 'Request for Comments, a numbered specification published by the IETF'],
   ['RJ-F', 'label of a falsifier of the RCE-JEPA paper, RJ-F1 to RJ-F6'],
   ['SAT', 'Boolean satisfiability, the problem of finding values that make a logical formula true'],
   ['SATB', 'Satiation Benchmark telemetry and harness discipline'],
@@ -90,6 +98,7 @@ const terms: [string, string][] = [
   ['SUT', 'system under test'],
   ['TWh', 'terawatt-hour, 3.6 × 10¹⁵ joules'],
   ['USD', 'United States dollars'],
+  ['WASI', 'WebAssembly System Interface'],
   ['ZFC', 'Zermelo-Fraenkel set theory with Choice'],
 ];
 
@@ -312,6 +321,26 @@ const ld = {
       </dl>
     </section>
 
+    <aside class="mt-8 glass-card p-5 md:p-6 border border-brand-cyan/40 bg-gradient-to-br from-brand-cyan/[0.06] via-transparent to-brand-amber/[0.05]" aria-label="Production Standards Bridge and Language Constellation">
+      <p class="font-mono text-[10.5px] tracking-[0.14em] uppercase text-brand-cyan font-semibold mb-2">
+        Adopting Without Reinventing Your Stack
+      </p>
+      <p class="font-body text-sm md:text-base text-brand-light leading-relaxed m-0">
+        <strong>Do developers or LLM agents have to write raw RCE by hand? No.</strong> Explore <a href="/constellation/">The Language Constellation (<code>/constellation/</code>)</a>, which maps <strong>12,117 catalogued programming languages</strong> and <strong>75 tree-sitter grammars</strong> onto <strong>113 universal constructs</strong>, and read <a href="/standards/">Clean-Room Core vs. Drop-In Standards Bridge (<code>/standards/</code>)</a> for a 5-layer architecture matrix showing how RCE serves as an under-the-hood proof and equivalence IR while production stacks run mainstream <code>Rust</code>, <code>Lean 4</code>, <code>Wasmtime</code> + <code>WASI</code>, <code>LLVM</code> <code>MLIR</code> / <code>CIRCT</code>, <code>OpenTelemetry</code> joule attributes, and <code>IETF</code> <code>RFC</code> 9052 <code>COSE</code> receipts.
+      </p>
+      <div class="mt-4 flex flex-wrap gap-2.5 font-mono text-xs">
+        <a href="/standards/" class="inline-flex items-center px-3.5 py-2 rounded-md bg-brand-amber text-brand-dark font-bold no-underline hover:bg-brand-gold transition-colors">
+          Open /standards/ Architecture Guide →
+        </a>
+        <a href="/constellation/" class="inline-flex items-center px-3.5 py-2 rounded-md border border-brand-cyan/45 text-brand-cyan no-underline hover:bg-brand-cyan/10 transition-colors">
+          Explore /constellation/ (12,117 Languages) →
+        </a>
+        <a href="/replication/" class="inline-flex items-center px-3.5 py-2 rounded-md border border-brand-border text-brand-slate no-underline hover:text-brand-white transition-colors">
+          9 Apache-2.0 Replication Kits →
+        </a>
+      </div>
+    </aside>
+
     <nav class="mt-8 faq-toc" aria-label="Questions on this page">
       <p class="font-mono text-[11px] tracking-[2px] uppercase text-brand-gray mb-3">Contents</p>
       <ol class="list-decimal pl-5 space-y-1 font-body text-sm">
@@ -348,6 +377,8 @@ const ld = {
 
     <div class="mt-12 flex flex-wrap gap-3">
       <a href="/papers/rce/" class="inline-flex font-mono text-xs text-brand-dark bg-brand-amber px-4 py-2.5 rounded-md no-underline hover:bg-brand-gold transition-colors">Read the RCE paper</a>
+      <a href="/standards/" class="inline-flex font-mono text-xs text-brand-cyan border border-brand-cyan/45 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">Standards Bridge (/standards/)</a>
+      <a href="/constellation/" class="inline-flex font-mono text-xs text-brand-cyan border border-brand-cyan/45 px-4 py-2.5 rounded-md no-underline hover:bg-brand-cyan/10 transition-colors">Language Constellation (/constellation/)</a>
       <a href="/papers/rce-jepa/" class="inline-flex font-mono text-xs text-brand-amber border border-brand-amber/40 px-4 py-2.5 rounded-md no-underline hover:bg-brand-amber/10 transition-colors">RCE-JEPA</a>
       <a href="/rce/spec/" class="inline-flex font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors">Specification</a>
       <a href="/data/#rce" class="inline-flex font-mono text-xs text-brand-slate border border-brand-border px-4 py-2.5 rounded-md no-underline hover:text-brand-white transition-colors">Data and code</a>

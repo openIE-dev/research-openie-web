@@ -901,6 +901,72 @@ async function verifyHeadlessBrowserUserJourneys() {
       fail(`Journey 7 (/radio/ Studio Call-In) failed: ${JSON.stringify(callInCheck)}`);
     }
 
+    // Journey 8: /constellation/ (390x844 Mobile Zero-Overflow + Dock + Gravity-Well) & /standards/ (Stack Recommender)
+    await navigateAndSettle('/constellation/', 1200);
+    await cdp.send('Emulation.setDeviceMetricsOverride', {
+      width: 390,
+      height: 844,
+      deviceScaleFactor: 2,
+      mobile: true,
+    });
+    await new Promise((r) => setTimeout(r, 350));
+    const constCheck = await cdp.eval(`(() => {
+      const host = document.getElementById('openie-ecosystem-dock-host');
+      const gwBtns = document.querySelectorAll('[data-gw-set-depth]').length;
+      const aside = document.getElementById('panel');
+      const asideDisplay = aside ? getComputedStyle(aside).display : 'missing';
+      const q = document.getElementById('q');
+      if (q) {
+        q.value = 'python';
+        q.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+      const selectedTitle = aside?.querySelector('h2')?.textContent || '';
+      return {
+        hasDockHost: Boolean(host && host.shadowRoot),
+        gwBtns,
+        scrollW: document.documentElement.scrollWidth,
+        innerW: window.innerWidth,
+        asideDisplay,
+        selectedTitle,
+      };
+    })()`);
+    await cdp.send('Emulation.clearDeviceMetricsOverride');
+    if (
+      assertZeroPageFaults('Journey 8A (/constellation/ 390x844 & Dock)') &&
+      constCheck.hasDockHost &&
+      constCheck.gwBtns >= 4 &&
+      constCheck.scrollW <= constCheck.innerW &&
+      constCheck.asideDisplay !== 'none' &&
+      constCheck.selectedTitle.toLowerCase().includes('python')
+    ) {
+      ok(
+        `Journey 8A (/constellation/): 390x844 mobile zero overflow (${constCheck.scrollW}<=${constCheck.innerW}), stacked inspector (${constCheck.selectedTitle}), 4-Altitude bar & Live Dock verified`
+      );
+    } else {
+      fail(`Journey 8A (/constellation/) failed: ${JSON.stringify(constCheck)}`);
+    }
+
+    await navigateAndSettle('/standards/', 1000);
+    const stdCheck = await cdp.eval(`(() => {
+      const gwBtns = document.querySelectorAll('[data-gw-set-depth]').length;
+      const slEdge = document.getElementById('sl-edge');
+      if (slEdge) {
+        slEdge.value = '90';
+        slEdge.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+      const profileTitle = document.getElementById('rec-profile-title')?.textContent?.trim() || '';
+      return { gwBtns, profileTitle };
+    })()`);
+    if (
+      assertZeroPageFaults('Journey 8B (/standards/ Stack Recommender)') &&
+      stdCheck.gwBtns >= 4 &&
+      stdCheck.profileTitle.includes('CIRCT')
+    ) {
+      ok(`Journey 8B (/standards/): 4-Altitude bar & interactive 4-slider stack recommender (${stdCheck.profileTitle}) verified with 0 errors`);
+    } else {
+      fail(`Journey 8B (/standards/) failed: ${JSON.stringify(stdCheck)}`);
+    }
+
     if (runDeep) {
       console.log(`\n── Layer 5 (--deep): Exhaustive Real-Browser Sweep Across All /living/*, /papers/* & Hub Surfaces ──`);
       const listSubDirs = (sub) => {
@@ -921,6 +987,9 @@ async function verifyHeadlessBrowserUserJourneys() {
       const livingRoutes = ['/living/', ...listSubDirs('living')];
       const paperRoutes = listSubDirs('papers');
       const hubRoutes = [
+        '/constellation/',
+        '/standards/',
+        '/replication/',
         '/tutorials/',
         '/rce/spec/',
         '/figures/',
@@ -929,7 +998,6 @@ async function verifyHeadlessBrowserUserJourneys() {
         '/sourcesheets/gates/',
         '/sourcesheets/lut-adapt/',
         '/blueprint/',
-        '/replication/',
         '/glossary/',
         '/data/',
       ];
@@ -965,7 +1033,7 @@ async function verifyHeadlessBrowserUserJourneys() {
         if (assertZeroPageFaults(`Deep Hub (${r})`)) hubOk++;
       }
       if (hubOk === hubRoutes.length) {
-        ok(`All ${hubOk}/${hubRoutes.length} hub & spec surfaces (/tutorials/, /rce/spec/, /figures/, /syndication/, /sourcesheets/, /blueprint/, /glossary/, /data/) passed with 0 errors`);
+        ok(`All ${hubOk}/${hubRoutes.length} hub & spec surfaces (/constellation/, /standards/, /replication/, /tutorials/, /rce/spec/, /figures/, /syndication/, /sourcesheets/, /blueprint/, /glossary/, /data/) passed with 0 errors`);
       }
     }
 

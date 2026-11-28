@@ -177,6 +177,28 @@ export const GET: APIRoute = async () => {
       chronicle_url: 'https://blog.openie.dev/posts/from-ephemeral-inference-to-compiled-agency/',
       hardware_requirements: 'Standard Linux/macOS Python + C (optional --candidate-cmd or --openai-compatible-url)',
       scope: 'Runs all 5 classical control arms (arm1_lookup_table, arm2_if_else_guards [0.20 uJ KV260 / 0.037 uJ Thor], arm3_bounded_for_loop, arm4_decision_tree [0.37 uJ KV260 / 0.175 uJ Thor], arm5_compiled_solver_rules + shape_d_classical_best [85.80% @ 28.28 uJ KV260 F6 PASS / 13.34 uJ Thor F6 PASS]) vs candidate_dense_mlp_int16 (62.60%, +12.80 pp on open_compositional_patch_triage).'
+    },
+    {
+      id: 'spec-fidelity-barrier',
+      title: 'Spec-Fidelity Barrier (Context-Isolated Specs, Mutant/Vacuity Gates & Constrained Decoding)',
+      license: 'Apache-2.0',
+      repo_url: 'https://github.com/openIE-dev/openie-research-experiments/tree/main/kits/spec-fidelity-barrier',
+      runner_url: 'https://github.com/openIE-dev/openie-research-experiments/blob/main/kits/spec-fidelity-barrier/run_kit.sh',
+      paper_url: 'https://research.openie.dev/standards/#layer-3-spec-fidelity',
+      chronicle_url: 'https://blog.openie.dev/verification/',
+      hardware_requirements: 'Commodity Linux or macOS Python + Rust',
+      scope: 'Verifies Goodhart-resistant commit-gate hygiene: context-isolated spec bundles (Spec orthogonal to Impl), non-vacuity satisfiability checks, behavioral mutant kill gates blocking lookup-table clones, and in-loop grammar-constrained decoding (llguidance / Outlines).'
+    },
+    {
+      id: 'standards-bridge',
+      title: 'Drop-In Apache-2.0 Standards Bridge (Wasmtime, MLIR/CIRCT, OpenTelemetry Joule Conventions & COSE_Sign1)',
+      license: 'Apache-2.0',
+      repo_url: 'https://github.com/openIE-dev/openie-research-experiments/tree/main/kits/standards-bridge',
+      runner_url: 'https://github.com/openIE-dev/openie-research-experiments/blob/main/kits/standards-bridge/run_kit.sh',
+      paper_url: 'https://research.openie.dev/standards/',
+      chronicle_url: 'https://blog.openie.dev/verification/',
+      hardware_requirements: 'Commodity Linux or macOS (optional Wasmtime, CIRCT, RAPL/INA260)',
+      scope: 'Demonstrates zero-lock-in adoption via Wasmtime + WASI sandboxed skill routines, orthogonal OpenTelemetry joule semantic conventions (measured_j / reported_j / est_j), IETF RFC 9052 COSE_Sign1 + FlatBuffers Ed25519+BLAKE3 receipts, and LLVM MLIR/CIRCT hardware lowering.'
     }
   ];
 

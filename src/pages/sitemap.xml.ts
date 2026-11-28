@@ -12,6 +12,8 @@ const STATIC = [
   '/changelog/',
   '/glossary/',
   '/faq/',
+  '/standards/',
+  '/replication/',
   '/living/',
   '/living/fpga-sim/alchitry/',
   '/opportunity-map/',

@@ -4,18 +4,7 @@ deck: "26 Nov 2026. Built in `competence-catalog::constellation`, measured on re
 id: rce-language-constellation
 status: "Research note · open topic"
 author: "David Charlot, Open Interface Engineering"
-figures: ""
-pdf: ""
-board_metered: false
----
-
----
-title: "The Language Constellation — a knowledge graph + information theory for every curated language"
-deck: "26 Nov 2026. Built in `competence-catalog::constellation`, measured on real tree-sitter"
-id: rce-language-constellation
-status: "Research note · open topic"
-author: "David Charlot, Open Interface Engineering"
-figures: ""
+figures: "/constellation/"
 pdf: ""
 board_metered: false
 ---

@@ -288,6 +288,20 @@ export function getRceSpecChapters() {
 
 export const LIVING_INSTRUMENTS = [
   {
+    id: 'constellation',
+    title: 'The Language Constellation · 12,117-Language Ontology & Tree-Sitter Construct Map',
+    path: '/constellation/',
+    url: `${BASE}/constellation/`,
+    paper_id: 'rce-compile',
+    controls: [
+      'view (ontology, search, translate, info, lineage, landscape, sources, standards, immersion, tooling, stack, compilers, collapse, unlock)',
+      '#lang=<Name> (e.g. #lang=Rust, #lang=Python, #lang=TypeScript, #lang=Lean)',
+      'depth (plain, visual, builder, formal)',
+    ],
+    description:
+      'Interactive ontology and grammar-derived information-theory explorer across 12,117 catalogued programming languages and 75 benchmarked tree-sitter grammars (expanded to 267 measured grammars in the live dataset) mapped onto 113 universal constructs—measuring cross-language surface-per-construct (N/C) ratios, Shannon structural entropy, syntactic redundancy, construct-by-construct translation bridges, lineage, and editor LSP/DAP tooling maintenance.',
+  },
+  {
     id: 'compiled-agency',
     title: 'Compiled Agency · Sub-Bit Tax, 4-Stage Cascade & Shot #6 Multi-Substrate Observatory (ca-sim-01..03)',
     path: '/living/compiled-agency/',

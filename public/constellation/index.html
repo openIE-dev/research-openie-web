@@ -1,12 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-reading-depth="plain" data-gw-depth="plain">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F59E0B">
 <meta name="color-scheme" content="dark light">
 <title>The Language Constellation: OpenIE Research</title>
+<meta name="description" content="The Language Constellation: an open ontology and tree-sitter information-theory map across 12,117 catalogued programming languages and 75 grammar-measured languages mapped onto 113 universal constructs.">
+<meta name="author" content="David Charlot">
+<link rel="canonical" href="https://research.openie.dev/constellation/">
+<meta property="og:title" content="The Language Constellation | OpenIE Research">
+<meta property="og:description" content="The Language Constellation: an open ontology and tree-sitter information-theory map across 12,117 catalogued programming languages and 75 grammar-measured languages mapped onto 113 universal constructs.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://research.openie.dev/constellation/">
+<meta property="og:site_name" content="OpenIE Research">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Language Constellation | OpenIE Research">
+<meta name="twitter:description" content="The Language Constellation: an open ontology and tree-sitter information-theory map across 12,117 catalogued programming languages and 75 grammar-measured languages mapped onto 113 universal constructs.">
+<link rel="describedby" type="text/markdown" href="/llms.txt">
+<link rel="alternate" type="application/json" title="The Language Constellation Dataset JSON" href="/constellation/data.json">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0iIzBBMEEwRiIvPgogIDwhLS0gcmV0ZW50aW9uOiBhbiBldGNoZWQgdHJhY2UgdGhhdCB0aGlucyBhcyBpdCBwZXJzaXN0cyBhY3Jvc3Mgc3Vic3RyYXRlcyAtLT4KICA8bGluZSB4MT0iNiIgIHkxPSI5IiAgeDI9IjI2IiB5Mj0iOSIgIHN0cm9rZT0iI0Y1OUUwQiIgc3Ryb2tlLXdpZHRoPSIyLjAiIG9wYWNpdHk9IjEuMDAiLz4KICA8bGluZSB4MT0iNiIgIHkxPSIxNCIgeDI9IjI2IiB5Mj0iMTQiIHN0cm9rZT0iI0Y1OUUwQiIgc3Ryb2tlLXdpZHRoPSIxLjYiIG9wYWNpdHk9IjAuNzgiLz4KICA8bGluZSB4MT0iNiIgIHkxPSIxOSIgeDI9IjI2IiB5Mj0iMTkiIHN0cm9rZT0iI0Y1OUUwQiIgc3Ryb2tlLXdpZHRoPSIxLjIiIG9wYWNpdHk9IjAuNTUiLz4KICA8bGluZSB4MT0iNiIgIHkxPSIyNCIgeDI9IjI2IiB5Mj0iMjQiIHN0cm9rZT0iI0Y1OUUwQiIgc3Ryb2tlLXdpZHRoPSIwLjkiIG9wYWNpdHk9IjAuMzIiLz4KICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjkiIHI9IjEuNiIgZmlsbD0iI0Y1OUUwQiIvPgo8L3N2Zz4K" />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"The Language Constellation","url":"https://research.openie.dev/constellation/","description":"Neutral measured map of programming languages: structure, coverage onto a 113-construct taxonomy, emission templates, compiler landscape, and stack-collapse evidence.","license":"https://research.openie.dev/","creator":{"@type":"Organization","name":"Open Interface Engineering"},"dateModified":"2026-11-27","variableMeasured":["named-node coverage","structural entropy","redundancy","surface per construct"],"distribution":[{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://research.openie.dev/constellation/data.json"}],"sameAs":["https://research.openie.dev/llms.txt","https://research.openie.dev/.well-known/agent.json"]}</script>
+<script src="/webmcp-tools.js" defer></script>
+<script>
+(function(){
+  var allowed = ['plain','visual','builder','formal'];
+  var q = '';
+  try { q = (new URLSearchParams(location.search).get('depth') || '').toLowerCase(); } catch (_e) {}
+  var s = '';
+  try { s = (localStorage.getItem('oe-reading-depth') || '').toLowerCase(); } catch (_e) {}
+  var d = allowed.indexOf(q) !== -1 ? q : (allowed.indexOf(s) !== -1 ? s : 'plain');
+  if (allowed.indexOf(q) !== -1) { try { localStorage.setItem('oe-reading-depth', d); } catch (_e) {} }
+  document.documentElement.setAttribute('data-reading-depth', d);
+  document.documentElement.setAttribute('data-gw-depth', d);
+})();
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"The Language Constellation","url":"https://research.openie.dev/constellation/","description":"Open ontology and tree-sitter information-theory map across 12,117 catalogued programming languages and 75 benchmarked tree-sitter grammars (expanded to 267 measured grammars in the live dataset) mapped onto 113 universal constructs, measuring cross-language surface-per-construct (N/C) ratios, Shannon structural entropy, emission templates, and compiler/editor tooling.","license":"https://research.openie.dev/","creator":{"@type":"Organization","name":"Open Interface Engineering"},"dateModified":"2026-11-28","variableMeasured":["named-node coverage","structural entropy","redundancy","surface per construct"],"distribution":[{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://research.openie.dev/constellation/data.json"}],"sameAs":["https://research.openie.dev/llms.txt","https://research.openie.dev/catalog.json","https://research.openie.dev/.well-known/agent-card.json"]}</script>
 </head>
 <body>
 <style>
@@ -17,37 +45,67 @@
   :root{
     --bg:#0A0A0F; --panel:#0F1419; --panel2:#141a21; --ink:#FFFFFF; --body:#94A3B8; --mut:#64748B;
     --light:#CBD5E1; --acc:#00D4AA; --amber:#F59E0B; --blue:#818CF8; --pur:#a78bfa;
-    --line:rgba(255,255,255,0.06); --pre:#0F1419; --legend:rgba(10,10,15.88);
+    --line:rgba(255,255,255,0.06); --pre:#0F1419; --legend:rgba(10,10,15,0.88);
     --font-display:'Space Grotesk',system-ui,sans-serif; --font-body:'Inter',system-ui,sans-serif; --font-mono:'JetBrains Mono','Fira Code',monospace;
   }
   html[data-theme="light"]{
     --bg:#FAFBFC; --panel:#F1F5F9; --panel2:#FFFFFF; --ink:#0F172A; --body:#475569; --mut:#94A3B8;
     --light:#1E293B; --acc:#0D9488; --amber:#D97706; --blue:#6366F1; --pur:#7C3AED;
-    --line:rgba(0,0,0,0.08); --pre:#F1F5F9; --legend:rgba(250,251,252.92);
+    --line:rgba(0,0,0,0.08); --pre:#F1F5F9; --legend:rgba(250,251,252,0.92);
   }
   *{box-sizing:border-box}
-  body{margin:0}
-  .wrap{display:flex;flex-direction:column;height:100vh;background:var(--bg);color:var(--body);font:14px/1.6 var(--font-body);transition:background-color .3s,color .3s}
-  header{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:center;flex-wrap:wrap;background:var(--bg)}
-  header h1{font-size:19px;margin:0;font-weight:700;font-family:var(--font-display);color:var(--ink);line-height:1.2}
-  header .sub{color:var(--body);font-size:13px;flex-basis:100%;}
-  #theme-toggle{margin-left:auto;background:transparent;border:1px solid var(--line);color:var(--body);border-radius:8px;padding:6px 12px;font:12px var(--font-mono);cursor:pointer}
+  html,body{margin:0;max-width:100%;overflow-x:hidden}
+  .wrap{display:flex;flex-direction:column;height:100vh;height:100dvh;max-width:100%;background:var(--bg);color:var(--body);font:14px/1.55 var(--font-body);transition:background-color .3s,color .3s}
+  .gw-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:6px 16px;border-bottom:1px solid var(--line);background:var(--panel);font-size:11.5px}
+  .gw-left{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0}
+  .gw-tag{font:700 10px/1 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
+  .gw-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .gw-links a{font:500 11px/1.2 var(--font-mono);color:var(--light);padding:3px 7px;border-radius:6px;border:1px solid var(--line);background:var(--panel2);text-decoration:none;white-space:nowrap}
+  .gw-links a:hover{border-color:var(--acc);color:var(--acc);text-decoration:none}
+  .gw-links a.gw-cta{border-color:rgba(0,212,170,0.4);color:var(--acc)}
+  .gw-right{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+  .gw-seg{display:inline-flex;flex-wrap:wrap;gap:2px;padding:2px;border-radius:7px;border:1px solid var(--line);background:var(--bg)}
+  .gw-btn{background:transparent;border:1px solid transparent;color:var(--body);border-radius:5px;padding:3px 8px;font:500 11px/1.2 var(--font-mono);cursor:pointer;white-space:nowrap}
+  .gw-btn:hover{color:var(--ink)}
+  .gw-btn.active{background:var(--amber);border-color:var(--amber);color:#0A0A0F;font-weight:700}
+  html[data-theme="light"] .gw-btn.active{color:#FFFFFF}
+  #gw-intro-toggle{background:transparent;border:1px solid var(--line);color:var(--body);border-radius:6px;padding:3px 8px;font:500 11px/1.2 var(--font-mono);cursor:pointer;white-space:nowrap}
+  #gw-intro-toggle:hover{color:var(--ink);border-color:var(--amber)}
+  .rosetta-card{padding:8px 16px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(245,158,11,0.06),rgba(0,212,170,0.05));font-size:12.5px;line-height:1.5;color:var(--light)}
+  .rosetta-card.collapsed{display:none}
+  .rosetta-card p{margin:0}
+  .rosetta-card strong{color:var(--ink)}
+  .rosetta-extra{margin-top:6px;padding-top:6px;border-top:1px dashed var(--line);display:none;font-size:12px;color:var(--body)}
+  html[data-reading-depth="visual"] .rosetta-extra[data-min-depth="visual"],
+  html[data-reading-depth="builder"] .rosetta-extra[data-min-depth="visual"],
+  html[data-reading-depth="builder"] .rosetta-extra[data-min-depth="builder"],
+  html[data-reading-depth="formal"] .rosetta-extra[data-min-depth="visual"],
+  html[data-reading-depth="formal"] .rosetta-extra[data-min-depth="builder"],
+  html[data-reading-depth="formal"] .rosetta-extra[data-min-depth="formal"]{display:block}
+  .quick-chip{background:var(--panel2);border:1px solid var(--line);color:var(--acc);border-radius:12px;padding:2px 8px;font:500 11px/1.3 var(--font-mono);cursor:pointer;margin-right:4px}
+  .quick-chip:hover{border-color:var(--acc);background:rgba(0,212,170,0.1)}
+  header{padding:10px 16px;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:var(--bg)}
+  header h1{font-size:18px;margin:0;font-weight:700;font-family:var(--font-display);color:var(--ink);line-height:1.2}
+  header .sub{color:var(--body);font-size:12.5px;flex-basis:100%;}
+  #lang{background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:5px 8px;font:12px var(--font-body);max-width:150px}
+  #theme-toggle{margin-left:auto;background:transparent;border:1px solid var(--line);color:var(--body);border-radius:8px;padding:5px 10px;font:12px var(--font-mono);cursor:pointer}
   #theme-toggle:hover{color:var(--ink);border-color:var(--amber)}
-  nav{display:flex;gap:6px;flex-wrap:wrap;padding:10px 20px;border-bottom:1px solid var(--line);background:var(--panel)}
-  nav button{background:transparent;border:1px solid var(--line);color:var(--body);border-radius:20px;padding:6px 14px;font-size:13px;font-family:var(--font-body);cursor:pointer}
-  nav button.on{border-color:var(--acc);color:var(--acc)}
-  nav button:hover{color:var(--ink)}
-  .main{flex:1;display:flex;min-height:0}
+  nav#nav{display:flex;gap:6px;flex-wrap:wrap;padding:8px 16px;border-bottom:1px solid var(--line);background:var(--panel);max-width:100%}
+  nav#nav button{background:transparent;border:1px solid var(--line);color:var(--body);border-radius:20px;padding:5px 12px;font-size:12.5px;font-family:var(--font-body);cursor:pointer;flex-shrink:0}
+  nav#nav button.on{border-color:var(--acc);color:var(--acc)}
+  nav#nav button:hover{color:var(--ink)}
+  .main{flex:1;display:flex;min-height:0;max-width:100%}
   #stage{flex:1;position:relative;min-width:0;overflow:hidden;background:var(--bg)}
-  canvas{display:block;width:100%;height:100%;cursor:grab;background:var(--bg)}
+  canvas{display:block;width:100%;height:100%;cursor:grab;background:var(--bg);touch-action:none}
   canvas:active{cursor:grabbing}
-  .view{position:absolute;inset:0;overflow:auto;padding:20px;display:none}
+  .view{position:absolute;inset:0;overflow:auto;padding:20px;display:none;max-width:100%}
   .view.on{display:block}
-  .tools{position:absolute;top:12px;left:12px;display:flex;gap:8px;flex-wrap:wrap;z-index:5}
-  .tools input.tools select.tools button{background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:7px 10px;font-size:13px;font-family:var(--font-body)}
-  .tools input{width:220px}
-  aside{width:360px;border-left:1px solid var(--line);background:var(--panel);overflow-y:auto;padding:18px;color:var(--body)}
-  aside h2{margin:0 0 2px;font-size:19px;font-family:var(--font-display);color:var(--ink)}
+  .tools{position:absolute;top:10px;left:10px;right:10px;display:flex;gap:6px;flex-wrap:wrap;z-index:5;max-width:calc(100% - 20px);pointer-events:none}
+  .tools > *{pointer-events:auto}
+  .tools input, .tools select, .tools button{background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:6px 9px;font-size:12.5px;font-family:var(--font-body);cursor:pointer}
+  .tools input{width:200px;max-width:100%;min-width:0;cursor:text}
+  aside{width:360px;border-left:1px solid var(--line);background:var(--panel);overflow-y:auto;padding:18px 18px 72px;color:var(--body)}
+  aside h2{margin:0 0 2px;font-size:19px;font-family:var(--font-display);color:var(--ink);overflow-wrap:anywhere}
   .kind{color:var(--amber);font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.15em}
   .badge{display:inline-block;font-size:11px;padding:2px 9px;border-radius:20px;margin:6px 6px 0 0;border:1px solid var(--line);color:var(--body)}
   .badge.m{border-color:var(--acc);color:var(--acc)}
@@ -55,38 +113,98 @@
   .sec{margin-top:16px}
   .sec h3{font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.15em;color:var(--amber);margin:0 0 8px;border-bottom:1px solid var(--line);padding-bottom:6px}
   .kv{display:flex;justify-content:space-between;gap:10px;padding:4px 0;font-size:13px}
-  .kv span:first-child{color:var(--body);flex-shrink:0}
-  .kv span:last-child{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
+  .kv span:first-child{color:var(--body);flex-shrink:1;min-width:0}
+  .kv span:last-child{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink);overflow-wrap:anywhere}
   .hint{color:var(--body);font-size:13px;line-height:1.65}
   .bar{height:6px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:4px}
   .bar i{display:block;height:100%;background:var(--acc)}
+  .tbl-wrap{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
   table{border-collapse:collapse;width:100%;font-size:13px}
   th,td{border-bottom:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top;color:var(--body)}
   th{color:var(--amber);font-weight:600;font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em}
   td.num{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .card{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .card{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px;min-width:0}
   .card h4{margin:0 0 6px;font-size:14px;font-family:var(--font-display);color:var(--ink)}
   code,pre{font-family:var(--font-mono);font-size:12.5px;color:var(--ink)}
-  pre{background:var(--pre);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto;white-space:pre-wrap}
-  .legend{position:absolute;bottom:12px;left:12px;font-size:12px;color:var(--body);background:var(--legend);padding:8px 12px;border-radius:8px;border:1px solid var(--line);max-width:70%}
+  pre{background:var(--pre);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto;white-space:pre-wrap;max-width:100%}
+  .legend{position:absolute;bottom:10px;left:10px;font-size:11.5px;color:var(--body);background:var(--legend);padding:7px 11px;border-radius:8px;border:1px solid var(--line);max-width:min(70%, calc(100% - 20px))}
   .legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin:0 4px 0 10px;vertical-align:middle}
   a{color:var(--blue);text-decoration:none}
   a:hover{text-decoration:underline}
-  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
-  .row select.row input{background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:7px 10px;font-size:13px;font-family:var(--font-body)}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px;max-width:100%}
+  .row select, .row input{background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:7px 10px;font-size:13px;font-family:var(--font-body);max-width:100%;min-width:0}
   .pill{cursor:pointer}
   .pill:hover{color:var(--acc)}
   :focus-visible{outline:2px solid var(--amber);outline-offset:2px}
   ::selection{background:var(--amber);color:var(--bg)}
-  @media(max-width:900px){aside{display:none}.grid{grid-template-columns:1fr}}
+  @media(max-width:900px){
+    .wrap{height:auto;min-height:100dvh}
+    .main{flex-direction:column;flex:none}
+    #stage{flex:none;width:100%;height:58vh;min-height:340px}
+    #stage:has(.view.on){height:auto;min-height:360px}
+    .view.on{position:relative;inset:auto;padding:14px}
+    aside{display:block;width:100%;border-left:0;border-top:1px solid var(--line);overflow-y:visible;padding:16px 14px 80px}
+    .grid{grid-template-columns:1fr}
+    nav#nav{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:8px 12px}
+    .tools .kb-hint{display:none}
+    .tools input{width:140px;flex:1 1 120px}
+    .legend{max-width:calc(100% - 20px);right:10px;font-size:11px;padding:5px 9px}
+  }
+  @media(max-width:480px){
+    .gw-bar{padding:6px 10px;gap:6px}
+    .gw-btn{padding:3px 6px;font-size:10px}
+    .rosetta-card{padding:8px 10px;font-size:12px}
+    header{padding:8px 10px;gap:6px}
+    header h1{font-size:16px}
+    #lang{max-width:112px;padding:4px 6px}
+  }
 </style>
 <div class="wrap">
+  <div class="gw-bar" data-gw-bar role="region" aria-label="Reading depth and OpenIE navigation">
+    <div class="gw-left">
+      <span class="gw-tag">Reading Depth</span>
+      <nav class="gw-links" aria-label="Ecosystem links">
+        <a href="/">← Research Home</a>
+        <a href="/standards/" class="gw-cta">Standards Bridge</a>
+        <a href="/replication/">Replication (9 Kits)</a>
+        <a href="/papers/">Papers</a>
+      </nav>
+    </div>
+    <div class="gw-right">
+      <div class="gw-seg" role="group" aria-label="Choose reading depth">
+        <button type="button" class="gw-btn active" data-gw-set-depth="plain" aria-pressed="true">1 · Plain</button>
+        <button type="button" class="gw-btn" data-gw-set-depth="visual" aria-pressed="false">2 · Visual</button>
+        <button type="button" class="gw-btn" data-gw-set-depth="builder" aria-pressed="false">3 · Builder</button>
+        <button type="button" class="gw-btn" data-gw-set-depth="formal" aria-pressed="false">4 · Formal</button>
+      </div>
+      <button type="button" id="gw-intro-toggle" aria-expanded="true" aria-controls="rosetta-intro">Hide Intro</button>
+    </div>
+  </div>
+  <section id="rosetta-intro" class="rosetta-card" aria-label="Plain-words Rosetta Stone overview">
+    <p><strong>💡 In Plain Words (The Rosetta Stone):</strong> Think of this map as a <strong>Rosetta Stone across 12,117 programming languages</strong> — showing that <code>Python</code> (<code>N/C = 1.77</code>), <code>Go</code> (<code>1.75</code>), <code>TypeScript</code> (<code>2.44</code>), <code>Rust</code> (<code>2.56</code>), <code>C++</code> (<code>3.38</code>), and <code>Lean 4</code> (<code>4.15</code>) all express the same <strong>113 core computational ideas</strong> with different amounts of syntactic sugar (<code>N/C</code>), so developers and LLMs keep writing mainstream languages while canonical tools verify them underneath.</p>
+    <div class="rosetta-extra" data-min-depth="visual">
+      <strong>Jump to a measured grammar:</strong>
+      <button type="button" class="quick-chip" data-jump-lang="Rust">Rust (2.56)</button>
+      <button type="button" class="quick-chip" data-jump-lang="Python">Python (1.77)</button>
+      <button type="button" class="quick-chip" data-jump-lang="TypeScript">TypeScript (2.44)</button>
+      <button type="button" class="quick-chip" data-jump-lang="Go">Go (1.75)</button>
+      <button type="button" class="quick-chip" data-jump-lang="Lean">Lean 4 (4.15)</button>
+      <button type="button" class="quick-chip" data-jump-lang="C++">C++ (3.38)</button>
+      <button type="button" class="quick-chip" data-jump-view="translate">Compare Rust → Python →</button>
+    </div>
+    <div class="rosetta-extra" data-min-depth="builder">
+      <strong>Builder &amp; Honesty Contract:</strong> Paper snapshot freezes <strong>75 tree-sitter grammars</strong> at 100% named-node coverage across the 12,117-language PLDB/Linguist/Rosetta merge (live dataset pass 70 expands coverage to 267 ingested grammars). Unmeasured languages carry <code>measured=false</code> with zero invented numbers. Raw dataset: <a href="/constellation/data.json">/constellation/data.json</a> · Production stack mapping: <a href="/standards/">/standards/</a>.
+    </div>
+    <div class="rosetta-extra" data-min-depth="formal">
+      <strong>Formal Information Coordinates:</strong> Structural entropy <code>H = −Σ p(c) log₂ p(c)</code> bits over the 113-construct histogram (grammar-structural, never conflated with corpus token frequency); syntactic redundancy <code>R = 1 − H / log₂(C)</code>; surface-to-construct distance <code>N/C</code>. Companion specification &amp; payback study: <a href="/rce/spec/">/rce/spec/</a> · <a href="/papers/rce-compile/">/papers/rce-compile/</a>.
+    </div>
+  </section>
   <header>
     <h1 data-i18n="title">The Language Constellation</h1>
     <select id="lang" title="Language" aria-label="Choose language"></select>
     <button id="theme-toggle" title="Theme: Auto" aria-label="Theme: Auto. Click to change.">Auto</button>
-    <div class="sub"><span data-i18n="tagline">An open map of programming languages: their structure, their information content, and how one meaning translates across them.</span> <span id="subCounts">catalogued languages; measured against real grammars</span>. <span data-i18n="neutral">A neutral reference.</span></div>
+    <div class="sub"><span data-i18n="tagline">An open map of programming languages: their structure, their information content, and how one meaning translates across them.</span> <span id="subCounts">12,117+ catalogued languages; 75+ grammar-measured onto 113 universal constructs</span>. <span data-i18n="neutral">A neutral reference.</span></div>
   </header>
   <nav id="nav">
     <button data-v="ontology" class="on" data-i18n="nav_ontology">Ontology</button>
@@ -113,21 +231,21 @@
         <button id="zout" title="Zoom out">−</button>
         <button id="zfit" title="Fit all">Fit</button>
         <button id="reset">Reset view</button>
-        <span class="hint" style="margin-left:auto">drag pan · wheel zoom · click select · dbl-click focus · arrows move · Enter focus · / search</span>
+        <span class="hint kb-hint" style="margin-left:auto">drag pan · wheel zoom · click select · dbl-click focus · arrows move · Enter focus · / search</span>
       </div>
       <canvas id="cv" tabindex="0" style="outline:none"></canvas>
-      <div id="ontoTip" style="position:absolute;pointer-events:none;display:none;background:var(--panel);border:1px solid var(--acc);border-radius:6px;padding:5px 9px;font-size:12px;color:var(--ink);z-index:6;max-width:260px;box-shadow:0 2px 8px rgba(0,0,0.3)"></div>
+      <div id="ontoTip" style="position:absolute;pointer-events:none;display:none;background:var(--panel);border:1px solid var(--acc);border-radius:6px;padding:5px 9px;font-size:12px;color:var(--ink);z-index:6;max-width:260px;box-shadow:0 2px 8px rgba(0,0,0,0.3)"></div>
       <div class="legend" id="legend"></div>
 
       <div class="view" id="v-search">
         <div class="row">
-          <input id="sq" placeholder="Search name, designer, paradigm…" style="width:280px">
+          <input id="sq" placeholder="Search name, designer, paradigm…" style="width:min(280px,100%)">
           <select id="sf"><option value="">All families</option></select>
           <select id="ss"><option value="">Any source</option></select>
           <label class="hint"><input type="checkbox" id="sm"> measured only</label>
           <span class="hint" id="scount"></span>
         </div>
-        <table id="stbl"><thead><tr><th>Language</th><th>Family</th><th>Year</th><th>Typing</th><th>Sources</th><th>Measured</th></tr></thead><tbody></tbody></table>
+        <div class="tbl-wrap"><table id="stbl"><thead><tr><th>Language</th><th>Family</th><th>Year</th><th>Typing</th><th>Sources</th><th>Measured</th></tr></thead><tbody></tbody></table></div>
       </div>
 
       <div class="view" id="v-translate">
@@ -160,7 +278,7 @@
           <button id="linZoomIn" title="Zoom in (+)">+</button>
           <button id="linFit" title="Fit width (0)">Fit</button>
           <span class="hint" style="margin-left:6px">Jump:</span><span id="linEras" style="display:flex;gap:4px;flex-wrap:wrap"></span>
-          <input id="linFocus" list="linNames" placeholder="Search a language… (/)" autocomplete="off" style="margin-left:auto;background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:5px 9px;font-size:13px;min-width:200px">
+          <input id="linFocus" list="linNames" placeholder="Search a language… (/)" autocomplete="off" style="margin-left:auto;background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:5px 9px;font-size:13px;min-width:0;width:min(200px,100%)">
           <datalist id="linNames"></datalist>
           <button id="linClear" title="Clear focus (Esc)">Clear</button>
         </div>
@@ -169,7 +287,7 @@
           <div id="linScroll" tabindex="0" style="overflow:auto;max-height:560px;border:1px solid var(--line);border-radius:8px;background:var(--bg);outline:none;cursor:grab">
             <canvas id="lin"></canvas>
           </div>
-          <div id="linTip" style="position:absolute;pointer-events:none;display:none;background:var(--panel);border:1px solid var(--acc);border-radius:6px;padding:5px 9px;font-size:12px;color:var(--ink);z-index:5;max-width:260px;box-shadow:0 2px 8px rgba(0,0,0.3)"></div>
+          <div id="linTip" style="position:absolute;pointer-events:none;display:none;background:var(--panel);border:1px solid var(--acc);border-radius:6px;padding:5px 9px;font-size:12px;color:var(--ink);z-index:5;max-width:260px;box-shadow:0 2px 8px rgba(0,0,0,0.3)"></div>
         </div>
         <div class="sec" id="linPanel" style="margin-top:12px"><p class="hint">Click a language above (or search, or use arrow keys + Enter) to read its lineage.</p></div>
       </div>
@@ -188,14 +306,14 @@
       </div>
       <div class="view" id="v-standards">
         <p class="hint">How a language enters an editor ecosystem. Three packaging standards, converging on shared open artifacts: a grammar, a language server (LSP), a debug adapter (DAP), and a per-ecosystem manifest. LSP/DAP amortize semantics across ecosystems; the grammar and packaging remain per-ecosystem, the residual impedance tax.</p>
-        <div class="sec"><h3>The shared artifact stack</h3><table><thead><tr><th>Layer</th><th>VSCode</th><th>Zed</th><th>JetBrains IntelliJ</th></tr></thead><tbody>
+        <div class="sec"><h3>The shared artifact stack</h3><div class="tbl-wrap"><table><thead><tr><th>Layer</th><th>VSCode</th><th>Zed</th><th>JetBrains IntelliJ</th></tr></thead><tbody>
           <tr><td>Grammar / syntax</td><td>TextMate .tmLanguage.json</td><td>tree-sitter grammar + queries (highlights/indents/outline)</td><td>PSI lexer/parser (Grammar-Kit, IElementType)</td></tr>
           <tr><td>Language config</td><td>language-configuration.json + snippets</td><td>config.toml (brackets, indent, comments)</td><td>plugin.xml + LanguageFileType</td></tr>
           <tr><td>Semantics (IDE features)</td><td>LSP server via extension</td><td>LSP adapter (zed_extension_api, Rust→Wasm/WIT)</td><td>native PSI features, or native LSP API / lsp4ij</td></tr>
           <tr><td>Debug</td><td>DAP adapter</td><td>DAP adapter (debug adapter protocol)</td><td>native debugger / XDebugProcess</td></tr>
           <tr><td>Packaging / registry</td><td>package.json contributes → Marketplace</td><td>extension.toml → Zed extension registry</td><td>plugin.xml → JetBrains Marketplace</td></tr>
-        </tbody></table></div>
-        <div class="sec"><h3>What four languages actually shipped, per ecosystem</h3><table id="stdtbl"><thead><tr><th>Language</th><th>VSCode</th><th>Zed</th><th>JetBrains</th><th>Shared server / adapter</th></tr></thead><tbody></tbody></table></div>
+        </tbody></table></div></div>
+        <div class="sec"><h3>What four languages actually shipped, per ecosystem</h3><div class="tbl-wrap"><table id="stdtbl"><thead><tr><th>Language</th><th>VSCode</th><th>Zed</th><th>JetBrains</th><th>Shared server / adapter</th></tr></thead><tbody></tbody></table></div></div>
         <div class="sec"><h3>Global editor ecosystems, the mechanism each exposes</h3><div style="overflow-x:auto"><table id="ecotbl"><thead><tr><th>Ecosystem</th><th>Origin</th><th>Grammar / syntax</th><th>Semantics</th><th>Debug</th><th>Packaging / extension standard</th></tr></thead><tbody></tbody></table></div></div>
         <div class="sec"><h3>Reading</h3><p class="hint">Rust, Go, Python and Zig each reached all three ecosystems by supplying the same logical bundle, grammar, language server, debug adapter, manifest, but re-packaged per ecosystem. rust-analyzer, gopls, pyright/Pylance and zls are LSP servers reused across VSCode and Zed (and via LSP API in IntelliJ); the grammar is re-expressed as TextMate vs tree-sitter vs PSI, and the manifest as package.json vs extension.toml vs plugin.xml. The semantics amortize; the syntax and packaging do not. That per-ecosystem re-expression is the impedance tax a universal construct IR plus generated adapters targets.</p></div>
       </div>
@@ -269,7 +387,21 @@
         <div class="sec"><h3>What this tests, and what stays open</h3><p class="hint">The hypothesis: if nothing is served unless it replays every probe, errors cannot escape to runtime and reuse drives cost per act toward the lookup floor. The measurements above support it at prototype scale. Open: loops, memory and branches in the derive prototype; energy measured on silicon rather than instruction count; production lowering to each fabric; and scaling the editor loop beyond Rust.</p></div>
       </div>
     </div>
-    <aside id="panel"></aside>
+    <aside id="panel" aria-label="Selected language profile">
+      <div class="kind">systems · measured</div>
+      <h2>Rust</h2>
+      <span class="badge m">measured</span>
+      <div class="sec">
+        <h3>Grammar profile (measured)</h3>
+        <div class="kv"><span>Named node types</span><span>169</span></div>
+        <div class="kv"><span>Universal constructs</span><span>66 / 113</span></div>
+        <div class="kv"><span>Named-node coverage</span><span>100.00%</span></div>
+        <div class="kv"><span>Structural entropy</span><span>5.400 bits</span></div>
+        <div class="kv"><span>Redundancy</span><span>10.7%</span></div>
+        <div class="kv"><span>Surface / construct (N/C)</span><span>2.56</span></div>
+      </div>
+      <p class="hint">Tap, click, or search any of the 12,117+ catalogued languages (including Python, Rust, TypeScript, Go, Lean, and C++) to inspect its measured tree-sitter construct profile.</p>
+    </aside>
   </div>
 </div>
 <script>
@@ -637,7 +769,7 @@ function doLineage(){
 
 /* landscape */
 function doLandscape(){ const groups={}; PEERS.forEach(p=>{(groups[p.k]=groups[p.k]||[]).push(p);});
-  $("peers").innerHTML=Object.entries(groups).map(([k,ps])=>`<div class="sec"><h3>${esc(k)}</h3><table><thead><tr><th>Effort</th><th>Axis</th><th>Note</th></tr></thead><tbody>`+ps.map(p=>`<tr><td><a href="${esc(p.u)}" target="_blank" rel="noopener">${esc(p.n)}</a></td><td>${esc(p.ax)}</td><td class="hint">${esc(p.note)}</td></tr>`).join("")+`</tbody></table></div>`).join(""); }
+  $("peers").innerHTML=Object.entries(groups).map(([k,ps])=>`<div class="sec"><h3>${esc(k)}</h3><div class="tbl-wrap"><table><thead><tr><th>Effort</th><th>Axis</th><th>Note</th></tr></thead><tbody>`+ps.map(p=>`<tr><td><a href="${esc(p.u)}" target="_blank" rel="noopener">${esc(p.n)}</a></td><td>${esc(p.ax)}</td><td class="hint">${esc(p.note)}</td></tr>`).join("")+`</tbody></table></div></div>`).join(""); }
 
 /* sources */
 function doSources(){ const counts=SOURCES.map((_,i)=>L.filter(l=>l.s&(1<<i)).length);
@@ -744,8 +876,93 @@ function doUnlock(){ const u=DATA.unlock||{}; const e=u.editor_loop||{};
   $("uladapt").textContent="Generated for: "+(u.adapters_generated_for||"n/a")+" (package.json, language-configuration.json, snippets.json, semanticTokens.json, extension.toml, dap.json).";
   $("ultbl").querySelector("tbody").innerHTML=(u.synthesized_languages||[]).map(s=>`<tr><td>${esc(s.name)}</td><td>${esc(s.fabric)}</td><td class="hint">${esc(s.paradigm)}</td><td class="num">${s.constructs}</td><td class="num">${(s.coverage*100).toFixed(1)}%</td><td>${s.sample_replays?"yes":"no"}</td></tr>`).join(""); }
 
-/* toolbar */
-$("q").addEventListener("input",e=>{query=e.target.value.trim().toLowerCase();draw();});
+/* toolbar, touch support, and 4-Altitude Gravity-Well controls */
+$("q").addEventListener("input",e=>{
+  query=e.target.value.trim().toLowerCase();
+  if(query){
+    const exact=byName[query]||L.find(l=>l.m&&l.n.toLowerCase().startsWith(query))||L.find(l=>l.n.toLowerCase()===query);
+    if(exact){selected=exact;render(exact);}
+  }
+  draw();
+});
+$("q").addEventListener("keydown",e=>{
+  if(e.key==="Enter"&&query){
+    const hit=byName[query]||L.find(l=>l.n.toLowerCase().includes(query));
+    if(hit){focusNode(hit);e.preventDefault();}
+  }
+});
+cv.addEventListener("touchstart",e=>{
+  if(e.touches.length===1){
+    const t=e.touches[0];
+    drag={x:t.clientX,y:t.clientY,vx:vw.x,vy:vw.y,moved:false,touch:true};
+  }
+},{passive:true});
+cv.addEventListener("touchmove",e=>{
+  if(drag&&drag.touch&&e.touches.length===1){
+    const t=e.touches[0];
+    const dx=t.clientX-drag.x,dy=t.clientY-drag.y;
+    if(Math.abs(dx)+Math.abs(dy)>5)drag.moved=true;
+    vw.x=drag.vx+dx;vw.y=drag.vy+dy;draw();
+    e.preventDefault();
+  }
+},{passive:false});
+cv.addEventListener("touchend",e=>{
+  if(drag&&drag.touch&&!drag.moved&&view==="ontology"&&e.changedTouches.length){
+    const t=e.changedTouches[0];
+    const r=cv.getBoundingClientRect();
+    const l=pick(t.clientX-r.left,t.clientY-r.top);
+    if(l){selected=l;render(l);draw();}
+  }
+  drag=null;
+},{passive:true});
+{
+  const ALLOWED_DEPTHS=["plain","visual","builder","formal"];
+  const introEl=$("rosetta-intro");
+  const toggleBtn=$("gw-intro-toggle");
+  function syncGwDepth(d,persist){
+    if(!ALLOWED_DEPTHS.includes(d))d="plain";
+    document.documentElement.setAttribute("data-reading-depth",d);
+    document.documentElement.setAttribute("data-gw-depth",d);
+    const bar=document.querySelector("[data-gw-bar]");
+    if(bar)bar.setAttribute("data-active-depth",d);
+    if(persist){
+      try{localStorage.setItem("oe-reading-depth",d);localStorage.setItem("openie_gw_depth",d);}catch(_e){}
+    }
+    document.querySelectorAll("[data-gw-set-depth]").forEach(btn=>{
+      const on=btn.getAttribute("data-gw-set-depth")===d;
+      btn.classList.toggle("active",on);
+      btn.setAttribute("aria-pressed",String(on));
+    });
+    resize();
+  }
+  document.querySelectorAll("[data-gw-set-depth]").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      if(introEl&&introEl.classList.contains("collapsed")){
+        introEl.classList.remove("collapsed");
+        if(toggleBtn){toggleBtn.textContent="Hide Intro";toggleBtn.setAttribute("aria-expanded","true");}
+      }
+      syncGwDepth(btn.getAttribute("data-gw-set-depth")||"plain",true);
+    });
+  });
+  if(toggleBtn&&introEl){
+    toggleBtn.addEventListener("click",()=>{
+      const hidden=introEl.classList.toggle("collapsed");
+      toggleBtn.textContent=hidden?"Show Intro":"Hide Intro";
+      toggleBtn.setAttribute("aria-expanded",String(!hidden));
+      resize();
+    });
+  }
+  document.querySelectorAll("[data-jump-lang]").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const target=byName[(btn.getAttribute("data-jump-lang")||"").toLowerCase()];
+      if(target){setView("ontology");focusNode(target);}
+    });
+  });
+  document.querySelectorAll("[data-jump-view]").forEach(btn=>{
+    btn.addEventListener("click",()=>setView(btn.getAttribute("data-jump-view")||"ontology"));
+  });
+  syncGwDepth(document.documentElement.getAttribute("data-reading-depth")||"plain",false);
+}
 $("tMeas").addEventListener("click",e=>{measOnly=!measOnly;e.target.style.borderColor=measOnly?"var(--acc)":"var(--line)";e.target.style.color=measOnly?"var(--acc)":"var(--ink)";draw();});
 $("reset").addEventListener("click",()=>{resize.done=false;resize();});
 $("zin").addEventListener("click",()=>zoomBy(1.5));
@@ -757,6 +974,6 @@ resize();
 initTheme();
 if(location.hash.startsWith("#lang=")){ const l=byName[decodeURIComponent(location.hash.slice(6)).toLowerCase()]; if(l){ setView("ontology"); focusNode(l); } }
 </script>
-
+<script type="module" src="/live/openie-ecosystem-dock.js"></script>
 </body>
 </html>

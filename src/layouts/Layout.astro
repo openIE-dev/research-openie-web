@@ -93,16 +93,18 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
         <span class="block w-5 h-0.5 bg-current transition-transform" id="burger-bot"></span>
       </button>
 
-      <div id="nav-links" class="hidden md:flex gap-5 items-center max-md:fixed max-md:inset-0 max-md:top-[60px] max-md:bg-brand-dark/95 max-md:backdrop-blur-xl max-md:flex-col max-md:justify-center max-md:gap-8 max-md:z-50">
+      <div id="nav-links" class="hidden md:flex gap-3.5 lg:gap-4 items-center max-md:fixed max-md:inset-0 max-md:top-[60px] max-md:bg-brand-dark/95 max-md:backdrop-blur-xl max-md:flex-col max-md:justify-center max-md:gap-6 max-md:z-50">
         <a href="/#catalog" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">{N.papers}</a>
         <a href="/living/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">{N.figures}</a>
+        <a href="/constellation/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-cyan no-underline hover:text-brand-white transition-colors">Constellation</a>
+        <a href="/standards/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-amber no-underline hover:text-brand-white transition-colors">Standards</a>
+        <a href="/replication/" class="font-body text-[13px] max-md:text-lg font-medium text-emerald-300 no-underline hover:text-brand-white transition-colors">Replicate</a>
         <a href="/tv/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-amber no-underline hover:text-brand-white transition-colors">TV</a>
         <a href="/radio/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-cyan no-underline hover:text-brand-white transition-colors">Radio</a>
         <a href="/live/" class="font-body text-[13px] max-md:text-lg font-medium text-emerald-400 no-underline hover:text-brand-white transition-colors inline-flex items-center gap-1.5"><span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Live</a>
         <a href="https://blog.openie.dev" class="font-body text-[13px] max-md:text-lg font-medium text-brand-amber no-underline hover:text-brand-white transition-colors">Chronicle</a>
         <a href="/syndication/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Syndication</a>
         <a href="/tutorials/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Tutorials</a>
-        <a href="/replication/" class="font-body text-[13px] max-md:text-lg font-medium text-emerald-300 no-underline hover:text-brand-white transition-colors">Replicate</a>
         <a href="/data/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Data</a>
         <a href="/about/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">{N.about}</a>
         <a href="/glossary/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">{N.glossary}</a>
@@ -150,7 +152,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
               <a href="/syndication/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Syndication (X · Medium · TikTok)</a>
               <a href="/blueprint/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Planetary media blueprint v1.0</a>
               <a href="/tutorials/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Interactive tutorials</a>
-              <a href="/replication/" class="block font-body text-[12px] text-emerald-300 no-underline hover:text-brand-cyan transition-colors">External replication kits (7)</a>
+              <a href="/constellation/" class="block font-body text-[12px] text-brand-cyan no-underline hover:text-brand-white transition-colors">Language Constellation (12,117)</a>
+              <a href="/standards/" class="block font-body text-[12px] text-brand-amber no-underline hover:text-brand-white transition-colors">Clean-Room vs. Standards Bridge</a>
+              <a href="/replication/" class="block font-body text-[12px] text-emerald-300 no-underline hover:text-brand-cyan transition-colors">External replication kits (9)</a>
               <a href="/about/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">About</a>
               <a href="/glossary/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">Glossary</a>
               <a href="/faq/" class="block font-body text-[12px] text-brand-slate no-underline hover:text-brand-cyan transition-colors">RCE FAQ</a>

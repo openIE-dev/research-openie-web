@@ -222,6 +222,19 @@
         "src/data/studies.json",
         "src/pages/changelog.astro"
       ]
+    },
+    {
+      "id": "standards-bridge-goodhart-and-title",
+      "status": "reference title",
+      "pattern": "Goodhart(?:'s|&rsquo;s|&#39;s) [Ll]aw|Metered (?:&|&amp;|and) Verified AI",
+      "note": "Goodhart's Law (Goodhart 1975 / Strathern 1997) is the cited external principle on specification gaming; 'Metered & Verified AI' is the proper title of the /standards/ architecture guide describing joule-accounted (measured_j / reported_j / est_j) and formally checked execution.",
+      "files": [
+        "src/pages/standards/index.astro",
+        "src/pages/replication/index.astro",
+        "src/pages/faq.astro",
+        "src/pages/llms.txt.ts",
+        "src/layouts/Layout.astro"
+      ]
     }
   ]
 }

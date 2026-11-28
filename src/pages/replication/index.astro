@@ -4,7 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 const KITS = [
   {
     id: 'compiled-agency',
-    name: 'Kit #0 · Compiled Agency & 6-Model Oct–Nov 2026 SOTA Shunt Panel',
+    name: 'Kit #1 · Compiled Agency & 6-Model Oct–Nov 2026 SOTA Shunt Panel',
     substrate: 'all',
     evidence: 'measured_j · reported_j · unmetered',
     repo: 'https://github.com/openIE-dev/openie-research-experiments',
@@ -19,7 +19,7 @@ sha256sum -c CHECKSUMS.sha256
   },
   {
     id: 'deterministic-null',
-    name: 'Kit #1 · Deterministic Null 5-Language Zero-Model Control Suite',
+    name: 'Kit #2 · Deterministic Null 5-Language Zero-Model Control Suite',
     substrate: 'cpu',
     evidence: 'reported_j · [E]/[M]',
     repo: 'https://github.com/openIE-dev/deterministic-null',
@@ -33,7 +33,7 @@ cd openie-research-experiments
   },
   {
     id: 'rce',
-    name: 'Kit #2 · Reality Code Engine (RCE) & De Bruijn Normal-Form Compiler',
+    name: 'Kit #3 · Reality Code Engine (RCE) & De Bruijn Normal-Form Compiler',
     substrate: 'cpu',
     evidence: 'reported_j · [T]/[E]',
     repo: 'https://github.com/openIE-dev/rce',
@@ -47,7 +47,7 @@ cargo test --workspace --release`,
   },
   {
     id: 'gates',
-    name: 'Kit #3 · Metered Commit Gates & KV260 INA260 Hardware Latch',
+    name: 'Kit #4 · Metered Commit Gates & KV260 INA260 Hardware Latch',
     substrate: 'kv260',
     evidence: 'measured_j · [E]/[T]',
     repo: 'https://github.com/openIE-dev/openie-research-experiments',
@@ -61,7 +61,7 @@ cd openie-research-experiments
   },
   {
     id: 'littlebit-joule',
-    name: 'Kit #4 · Sub-Bit Decompression Penalty vs. Packed Integer WHT+XNOR',
+    name: 'Kit #5 · Sub-Bit Decompression Penalty vs. Packed Integer WHT+XNOR',
     substrate: 'jetson',
     evidence: 'measured_j · [E]',
     repo: 'https://github.com/openIE-dev/openie-research-experiments',
@@ -75,7 +75,7 @@ cd openie-research-experiments
   },
   {
     id: 'waios-mosaic',
-    name: 'Kit #5 · 6-Fabric waiOS Integer Conformance & 4-Stage Cascade',
+    name: 'Kit #6 · 6-Fabric waiOS Integer Conformance & 4-Stage Cascade',
     substrate: 'cpu',
     evidence: 'measured_j · unmetered · [T]/[E]',
     repo: 'https://github.com/openIE-dev/openie-research-experiments',
@@ -89,7 +89,7 @@ cd openie-research-experiments
   },
   {
     id: 'lean-proofs',
-    name: 'Kit #6 · Planetary Media Joule Ledger & Lean 4.36.0 Kernel Proofs',
+    name: 'Kit #7 · Planetary Media Joule Ledger & Lean 4.36.0 Kernel Proofs',
     substrate: 'lean',
     evidence: 'unmetered · [T] · 0 sorry',
     repo: 'https://github.com/openIE-dev/openie-research-experiments',
@@ -101,6 +101,34 @@ cd openie-research-experiments
 cd openie-research-experiments
 ./kits/planetary-media-joule/run_kit.sh`,
   },
+  {
+    id: 'spec-fidelity-barrier',
+    name: "Kit #8 · Spec-Fidelity Barrier (Goodhart's Law Defense & Constrained Decoding)",
+    substrate: 'cpu',
+    evidence: 'reported_j · unmetered · [E]/[T]',
+    repo: 'https://github.com/openIE-dev/openie-research-experiments',
+    paper: '/standards/#layer-3-spec-fidelity',
+    sheet: '/sourcesheets/gates/',
+    plainSummary:
+      'Benchmarks context-isolated specifications (Spec ⊥ Impl), non-vacuity checks, behavioral mutant kill gates (blocking 56/56 hardcoded lookup-table clones), and in-loop grammar-constrained decoding (llguidance / Outlines) eliminating syntax-retry joule waste.',
+    cmd: `git clone https://github.com/openIE-dev/openie-research-experiments.git
+cd openie-research-experiments
+./kits/spec-fidelity-barrier/run_kit.sh`,
+  },
+  {
+    id: 'standards-bridge',
+    name: 'Kit #9 · Drop-In Apache-2.0 Standards Bridge (Wasmtime, MLIR/CIRCT, OTel & COSE)',
+    substrate: 'cpu',
+    evidence: 'reported_j · measured_j · Apache-2.0',
+    repo: 'https://github.com/openIE-dev/openie-research-experiments',
+    paper: '/standards/',
+    sheet: '/sourcesheets/satb-harness/',
+    plainSummary:
+      'Runs the zero-lock-in production adapter stack: Wasmtime + WASI sandboxed skill routines paired with orthogonal OpenTelemetry joule semantic conventions, IETF RFC 9052 COSE_Sign1 + FlatBuffers Ed25519+BLAKE3 receipts, and LLVM MLIR/CIRCT translation validation.',
+    cmd: `git clone https://github.com/openIE-dev/openie-research-experiments.git
+cd openie-research-experiments
+./kits/standards-bridge/run_kit.sh`,
+  },
 ];
 
 const ISSUE_URL =
@@ -109,7 +137,7 @@ const ISSUE_URL =
 
 <Layout
   title="Independent External Replication & Falsification Portal"
-  description="Run Open Interface Engineering's 7 standalone Apache-2.0 replication kits in one command on any laptop, Linux server, NVIDIA Jetson, or AMD Kria KV260—and submit an independent replication or falsification receipt."
+  description="Run Open Interface Engineering's 9 standalone Apache-2.0 replication kits in one command on any laptop, Linux server, NVIDIA Jetson, or AMD Kria KV260—and submit an independent replication or falsification receipt."
 >
   <section class="max-w-6xl mx-auto px-6 md:px-10 pt-10 md:pt-14 pb-24">
     <!-- Top Epistemic Badge Strip -->
@@ -139,7 +167,7 @@ const ISSUE_URL =
         💡 In Plain Words — How Graduation from &ldquo;Self-Checked&rdquo; Works
       </div>
       <p class="font-body text-sm md:text-base text-brand-light leading-relaxed mb-5">
-        Think of a bakery printing its exact recipe, ingredient weights, and oven thermometer log on the box: we sign what came out of our own kitchen (<strong class="text-brand-white">Self-Checked</strong>), <strong class="text-brand-cyan">and</strong> we publish all 7 recipe kits openly, <strong class="text-brand-amber">but</strong> a dish only earns an <strong class="text-emerald-300">Externally Replicated</strong> badge after an unaffiliated kitchen bakes it independently and reports what happened—including if a step fails.
+        Think of a bakery printing its exact recipe, ingredient weights, and oven thermometer log on the box: we sign what came out of our own kitchen (<strong class="text-brand-white">Self-Checked</strong>), <strong class="text-brand-cyan">and</strong> we publish all 9 recipe kits openly, <strong class="text-brand-amber">but</strong> a dish only earns an <strong class="text-emerald-300">Externally Replicated</strong> badge after an unaffiliated kitchen bakes it independently and reports what happened—including if a step fails.
       </p>
 
       <div class="grid md:grid-cols-3 gap-4">
@@ -187,6 +215,12 @@ const ISSUE_URL =
           📦 Browse openie-research-experiments (@ 6a22dee) ↗
         </a>
         <a
+          href="/standards/"
+          class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-brand-amber/45 text-brand-amber font-mono text-xs no-underline hover:bg-brand-amber/10 transition-colors"
+        >
+          🧭 Clean-Room vs. Standards Bridge (/standards/) →
+        </a>
+        <a
           href="https://blog.openie.dev/verification/"
           target="_blank"
           rel="noopener noreferrer"
@@ -197,12 +231,12 @@ const ISSUE_URL =
       </div>
     </div>
 
-    <!-- Interactive Substrate Filter + 7 Standalone Apache-2.0 Kits -->
+    <!-- Interactive Substrate Filter + 9 Standalone Apache-2.0 Kits -->
     <div class="mt-12">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         <div>
           <p class="font-mono text-[10.5px] uppercase tracking-[0.14em] text-brand-cyan font-semibold mb-1">
-            7 Standalone Apache-2.0 Replication Harnesses
+            9 Standalone Apache-2.0 Replication Harnesses
           </p>
           <h2 class="font-display text-2xl md:text-3xl font-bold text-brand-white m-0">
             Pick the Hardware Sitting on Your Desk
@@ -211,7 +245,7 @@ const ISSUE_URL =
 
         <div class="flex flex-wrap gap-1.5" role="group" aria-label="Filter replication kits by hardware">
           <button type="button" data-rep-filter="all" aria-pressed="true" class="rep-filter-btn px-3 py-1.5 rounded-md font-mono text-xs border border-brand-amber bg-brand-amber text-brand-dark font-bold cursor-pointer">
-            All 7 Kits
+            All 9 Kits
           </button>
           <button type="button" data-rep-filter="cpu" aria-pressed="false" class="rep-filter-btn px-3 py-1.5 rounded-md font-mono text-xs border border-brand-border text-brand-slate hover:text-brand-white cursor-pointer">
             Laptop / CPU Only
