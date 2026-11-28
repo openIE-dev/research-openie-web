@@ -144,30 +144,30 @@ const ld = {
 >
   <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(ld)} />
 
-  <section class="max-w-6xl mx-auto px-6 md:px-10 pt-10 md:pt-14 pb-24">
+  <section class="page-aurora max-w-6xl mx-auto px-6 md:px-12 pt-20 pb-28 md:pt-28 md:pb-36">
     <!-- Top Epistemic & Licensing Badge Strip -->
-    <div class="flex flex-wrap items-center gap-2.5 mb-4">
-      <span class="font-mono text-[10.5px] tracking-[0.14em] uppercase px-2.5 py-1 rounded bg-brand-amber text-brand-dark font-bold">
+    <div class="flex flex-wrap items-center gap-2.5 mb-6">
+      <span class="font-mono text-[10.5px] tracking-[0.14em] uppercase px-3 py-1 rounded-full bg-brand-amber text-[#090b10] font-bold">
         Architecture &amp; Interoperability Guide · 100% Apache-2.0 Bridge
       </span>
-      <span class="font-mono text-[11px] px-2.5 py-1 rounded border border-emerald-400/45 bg-emerald-500/12 text-emerald-300">
+      <span class="font-mono text-[11px] px-3 py-1 rounded-full border border-emerald-400/45 bg-emerald-500/12 text-emerald-300">
         Zero Custom Syntax or BSL-1.1 Lock-In Required
       </span>
-      <span class="font-mono text-[11px] px-2.5 py-1 rounded border border-brand-border text-brand-slate">
+      <span class="gw-builder-only font-mono text-[11px] px-3 py-1 rounded-full border border-brand-border text-brand-slate">
         measured_j ⊥ reported_j ⊥ est_j ⊥ unmetered
       </span>
     </div>
 
-    <h1 class="font-display text-3xl md:text-5xl font-bold text-brand-white tracking-tight leading-tight max-w-5xl">
+    <h1 class="font-display text-3xl sm:text-5xl md:text-6xl font-bold text-brand-white tracking-[-0.025em] leading-[1.1] max-w-5xl">
       Clean-Room Core vs. Drop-In Standards Bridge: <span class="text-brand-amber">Adopting Metered &amp; Verified AI Without Reinventing Your Stack</span>
     </h1>
 
-    <p class="mt-4 font-body text-base md:text-lg text-brand-slate leading-relaxed max-w-4xl">
+    <p class="mt-6 font-body text-base md:text-xl text-brand-slate leading-[1.8] max-w-4xl">
       A candid engineering map answering the five toughest architectural questions about Open Interface Engineering&rsquo;s research: why our papers isolate minimal clean-room kernels to measure physical floors, and how production teams get the exact same safety gates, Zipfian lookup savings, and cryptographic joule receipts <strong class="text-brand-white">this week</strong> on top of <code class="text-brand-cyan">Rust</code>, <code class="text-brand-cyan">Lean 4</code> / <code class="text-brand-cyan">Verus</code>, <code class="text-brand-cyan">Wasmtime</code>, <code class="text-brand-cyan">MLIR/CIRCT</code>, <code class="text-brand-cyan">IETF COSE</code>, and <code class="text-brand-cyan">OpenTelemetry</code>.
     </p>
 
-    <!-- MEASURED EMPIRICAL RECEIPTS STRIP (@ d036b64) -->
-    <div id="measured-receipts" class="mt-7 glass-card p-5 md:p-6 border border-emerald-400/40 bg-emerald-500/[0.05]">
+    <!-- MEASURED EMPIRICAL RECEIPTS STRIP (@ d036b64) — Tucked in Plain mode, shown at Visual/Builder/Formal -->
+    <div id="measured-receipts" class="gw-hide-in-plain mt-16 glass-card p-7 md:p-9 rounded-3xl border border-emerald-400/35 bg-emerald-500/[0.04]">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-brand-border">
         <div class="flex flex-wrap items-center gap-2">
           <span class="font-mono text-[10.5px] tracking-[0.13em] uppercase px-2.5 py-0.5 rounded bg-emerald-400 text-brand-dark font-bold">
@@ -222,9 +222,9 @@ const ld = {
     </div>
 
     <!-- DEPTH 1: PLAIN WORDS + EVERYDAY ANALOGY + AND-BUT-THEREFORE -->
-    <div id="depth-plain" class="glass-card p-6 md:p-8 mt-8 border border-brand-amber/40 bg-gradient-to-br from-brand-amber/[0.06] via-transparent to-brand-cyan/[0.05]">
-      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-        <span class="font-mono text-[10px] tracking-[0.14em] uppercase px-2.5 py-0.5 rounded bg-brand-amber text-brand-dark font-bold">
+    <div id="depth-plain" class="glass-card p-8 md:p-11 rounded-3xl mt-16 md:mt-20 border border-brand-amber/30 bg-gradient-to-br from-brand-amber/[0.05] via-transparent to-brand-cyan/[0.04]">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-5">
+        <span class="font-mono text-[10px] tracking-[0.14em] uppercase px-3 py-1 rounded-full bg-brand-amber text-[#090b10] font-bold">
           Depth 1 · Plain Story (2 min)
         </span>
         <div class="flex flex-wrap items-center gap-3 font-mono text-xs">
@@ -239,40 +239,40 @@ const ld = {
       </div>
 
       <!-- Everyday Analogy Callout -->
-      <div class="p-4 rounded-xl border border-brand-cyan/35 bg-brand-cyan/[0.06] mb-5">
-        <div class="font-mono text-[10px] uppercase tracking-[0.14em] text-brand-cyan font-semibold mb-1">
+      <div class="p-6 rounded-2xl border border-brand-cyan/30 bg-brand-cyan/[0.05] mb-8">
+        <div class="font-mono text-[10.5px] uppercase tracking-[0.14em] text-brand-cyan font-semibold mb-2">
           💡 Everyday Analogy — Circuit Breakers &amp; Electric Meters Don&rsquo;t Require a New Wall Plug
         </div>
-        <p class="font-body text-sm md:text-base text-brand-light leading-relaxed m-0">
+        <p class="font-body text-sm md:text-base text-brand-light leading-[1.8] m-0">
           You don&rsquo;t need to build your own power grid or invent a new three-prong plug shape just to put a <strong class="text-brand-white">circuit breaker</strong> and an <strong class="text-brand-white">electric meter</strong> on your house. OpenIE&rsquo;s clean-room core isolates the physics inside a tiny ~5,000-line reference lab so every theorem and joule reading can be audited without hidden compiler noise—while our <code class="text-brand-cyan">Apache-2.0</code> <strong class="text-brand-amber">Standards Bridge</strong> snaps straight onto <code class="text-brand-cyan">Rust</code>, <code class="text-brand-cyan">Lean 4</code> / <code class="text-brand-cyan">Verus</code>, <code class="text-brand-cyan">WebAssembly</code> / <code class="text-brand-cyan">Wasmtime</code>, <code class="text-brand-cyan">MLIR</code> / <code class="text-brand-cyan">CIRCT</code>, <code class="text-brand-cyan">IETF COSE</code> / <code class="text-brand-cyan">FlatBuffers</code>, and <code class="text-brand-cyan">OpenTelemetry</code> today.
         </p>
       </div>
 
-      <!-- 3-Beat And · But · Therefore Arc -->
-      <div class="grid md:grid-cols-3 gap-4">
-        <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/55">
-          <div class="font-mono text-[10px] uppercase tracking-[0.14em] text-emerald-300 font-bold mb-1">
-            1 · Setup (And)
+      <!-- 3-Beat And · But · Therefore Arc (Clean Hairline Columns) -->
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="pt-5 border-t border-emerald-400/35">
+          <div class="font-mono text-[10.5px] uppercase tracking-[0.16em] text-emerald-300 font-bold mb-2">
+            01 · Setup
           </div>
-          <p class="font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+          <p class="font-body text-sm text-brand-slate leading-[1.8] m-0">
             Modern engineering teams already run mature sandboxes (<code class="text-brand-cyan">Wasmtime</code>), verified contracts (<code class="text-brand-cyan">Verus</code>, <code class="text-brand-cyan">Lean 4</code>), compiler IRs (<code class="text-brand-cyan">MLIR</code>), and telemetry (<code class="text-brand-cyan">OpenTelemetry</code>)—and <a href="/constellation/" class="text-brand-cyan hover:underline">/constellation/</a> shows how <strong class="text-brand-white">75 benchmarked tree-sitter grammars</strong> across <strong class="text-brand-white">12,117 languages</strong> already map onto the same <strong class="text-brand-white">113 universal constructs</strong>.
           </p>
         </div>
 
-        <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/55">
-          <div class="font-mono text-[10px] uppercase tracking-[0.14em] text-brand-amber font-bold mb-1">
-            2 · Tension (But)
+        <div class="pt-5 border-t border-brand-amber/35">
+          <div class="font-mono text-[10.5px] uppercase tracking-[0.16em] text-brand-amber font-bold mb-2">
+            02 · Tension
           </div>
-          <p class="font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+          <p class="font-body text-sm text-brand-slate leading-[1.8] m-0">
             Reading our clean-room papers in isolation can make it look as if adopting verified, joule-accounted AI requires rewriting code in raw <code class="text-brand-amber">RCE</code>, trusting naive LLM-written tests against <strong class="text-brand-white">Goodhart&rsquo;s Law</strong>, compiling Python to raw <code class="text-brand-amber">LUT6</code> gates, or adopting custom <code class="text-brand-amber">WAI1</code> frames. <strong class="text-brand-white">None of that lock-in is required.</strong>
           </p>
         </div>
 
-        <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/55">
-          <div class="font-mono text-[10px] uppercase tracking-[0.14em] text-brand-cyan font-bold mb-1">
-            3 · Resolution (Therefore)
+        <div class="pt-5 border-t border-brand-cyan/35">
+          <div class="font-mono text-[10.5px] uppercase tracking-[0.16em] text-brand-cyan font-bold mb-2">
+            03 · Resolution
           </div>
-          <p class="font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+          <p class="font-body text-sm text-brand-slate leading-[1.8] m-0">
             Keep your mainstream languages, compilers, and observability pipeline. Add three drop-in <code class="text-brand-cyan">Apache-2.0</code> primitives: <strong class="text-brand-white">context-isolated mutant-killing gates</strong> (<code class="text-brand-cyan">Spec ⊥ Impl</code>), <strong class="text-brand-white">Rung 1–3 lookup/Wasm skill caching</strong>, and <strong class="text-brand-white">orthogonal OTel + COSE joule receipts</strong>.
           </p>
         </div>
@@ -280,7 +280,7 @@ const ld = {
     </div>
 
     <!-- DEPTH 2A: INTERACTIVE STACK RECOMMENDER (4 PRIORITY SLIDERS) -->
-    <section id="stack-recommender" aria-labelledby="rec-heading" class="mt-12 glass-card p-6 md:p-8 border border-brand-cyan/35">
+    <section id="stack-recommender" aria-labelledby="rec-heading" class="mt-20 md:mt-28 glass-card p-8 md:p-11 rounded-3xl border border-brand-cyan/30">
       <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
         <span class="font-mono text-[10px] tracking-[0.14em] uppercase px-2.5 py-0.5 rounded bg-brand-cyan/20 text-brand-cyan font-semibold">
           Depth 2 · Interactive Stack Recommender
@@ -423,66 +423,66 @@ const ld = {
     </section>
 
     <!-- DEPTH 2B: TRANSPARENT 5-LAYER SIDE-BY-SIDE ARCHITECTURE MATRIX -->
-    <section id="architecture-matrix" aria-labelledby="matrix-heading" class="mt-14">
-      <div class="mb-6">
-        <p class="font-mono text-[10.5px] uppercase tracking-[0.14em] text-brand-amber font-semibold mb-1">
+    <section id="architecture-matrix" aria-labelledby="matrix-heading" class="mt-24 md:mt-32">
+      <div class="mb-10">
+        <p class="font-mono text-[10.5px] uppercase tracking-[0.16em] text-brand-amber font-semibold mb-2">
           5-Layer Side-by-Side Architecture Matrix
         </p>
-        <h2 id="matrix-heading" class="font-display text-2xl md:text-3xl font-bold text-brand-white m-0">
+        <h2 id="matrix-heading" class="font-display text-2xl sm:text-4xl font-bold text-brand-white m-0">
           Every External Critique Answered: Clean-Room Lab vs. Standards Bridge
         </h2>
-        <p class="mt-2 font-body text-sm md:text-base text-brand-slate max-w-3xl">
+        <p class="mt-3 font-body text-base md:text-lg text-brand-slate leading-[1.8] max-w-3xl">
           Why we built a clean-room reference lab to test falsifiers—and why production adopters should bridge straight onto open industry standards at every layer.
         </p>
       </div>
 
-      <div class="space-y-5">
+      <div class="space-y-8">
         {LAYERS.map((layer) => (
-          <article id={layer.id} class="glass-card p-5 md:p-6 border border-brand-border hover:border-brand-cyan/40 transition-colors scroll-mt-28">
-            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-brand-border">
+          <article id={layer.id} class="glass-card p-7 md:p-9 rounded-3xl border border-brand-border hover:border-brand-cyan/35 transition-colors scroll-mt-28">
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-brand-border">
               <div class="flex items-center gap-3">
-                <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-brand-amber/15 border border-brand-amber/40 text-brand-amber">
+                <span class="font-mono text-xs font-bold px-3 py-1 rounded-full bg-brand-amber/15 border border-brand-amber/40 text-brand-amber">
                   Layer {layer.num}
                 </span>
-                <h3 class="font-display text-lg md:text-xl font-bold text-brand-white m-0">
+                <h3 class="font-display text-lg md:text-2xl font-bold text-brand-white m-0">
                   {layer.name}
                 </h3>
               </div>
-              <a href="/replication/" class="font-mono text-[11px] px-2.5 py-1 rounded border border-emerald-400/35 bg-emerald-500/10 text-emerald-300 no-underline hover:bg-emerald-500/20">
+              <a href="/replication/" class="font-mono text-[11px] px-3 py-1 rounded-full border border-emerald-400/35 bg-emerald-500/10 text-emerald-300 no-underline hover:bg-emerald-500/20">
                 Verify via {layer.kitSlug} →
               </a>
             </div>
 
-            <div class="mt-3 p-3.5 rounded-lg border border-rose-400/25 bg-rose-500/[0.04]">
-              <div class="font-mono text-[10px] uppercase tracking-[0.12em] text-rose-300 font-semibold mb-0.5">
+            <div class="mt-5 p-4 md:p-5 rounded-2xl border border-rose-400/20 bg-rose-500/[0.04]">
+              <div class="font-mono text-[10px] uppercase tracking-[0.14em] text-rose-300 font-semibold mb-1">
                 Skeptical Engineering Question
               </div>
-              <p class="font-body text-xs sm:text-sm text-brand-light leading-relaxed m-0">
+              <p class="font-body text-sm text-brand-light leading-[1.8] m-0">
                 &ldquo;{layer.critique}&rdquo;
               </p>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-4 mt-4">
-              <div class="p-4 rounded-xl border border-brand-border bg-brand-dark/55">
-                <div class="font-mono text-[10px] uppercase tracking-[0.12em] text-brand-slate font-semibold mb-1">
+            <div class="grid lg:grid-cols-2 gap-6 mt-6">
+              <div class="p-5 md:p-6 rounded-2xl border border-brand-border bg-brand-dark/50">
+                <div class="font-mono text-[10.5px] uppercase tracking-[0.14em] text-brand-slate font-semibold mb-2">
                   🔬 {layer.cleanRoomTitle}
                 </div>
-                <p class="font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+                <p class="font-body text-sm text-brand-slate leading-[1.8] m-0">
                   {layer.cleanRoomBody}
                 </p>
               </div>
 
-              <div class="p-4 rounded-xl border border-brand-cyan/40 bg-brand-cyan/[0.06]">
-                <div class="font-mono text-[10px] uppercase tracking-[0.12em] text-brand-cyan font-semibold mb-1">
+              <div class="p-5 md:p-6 rounded-2xl border border-brand-cyan/35 bg-brand-cyan/[0.05]">
+                <div class="font-mono text-[10.5px] uppercase tracking-[0.14em] text-brand-cyan font-semibold mb-2">
                   🚀 {layer.bridgeTitle}
                 </div>
-                <p class="font-body text-xs sm:text-sm text-brand-light leading-relaxed m-0">
+                <p class="font-body text-sm text-brand-light leading-[1.8] m-0">
                   {layer.bridgeBody}
                 </p>
               </div>
             </div>
 
-            <div class="mt-4 flex flex-wrap items-center gap-4 font-mono text-xs">
+            <div class="mt-6 flex flex-wrap items-center gap-5 font-mono text-xs">
               {layer.links.map((lnk) => (
                 <a href={lnk.href} class="text-brand-amber no-underline hover:underline">
                   {lnk.label}

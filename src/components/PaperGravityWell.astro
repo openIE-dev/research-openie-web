@@ -72,19 +72,19 @@ const easySentences = (easyEntry?.three_points_one_idea || []).slice(0, 3);
 ---
 
 {gw && (
-  <div class="gw-paper-ladder mt-8 space-y-4" data-gw-paper-id={paperId}>
+  <div class="gw-paper-ladder mt-12 space-y-6" data-gw-paper-id={paperId}>
     <!-- RUNG 1: IN PLAIN WORDS (ALWAYS OPEN) -->
     <section
       id="plain-guide"
       aria-label="Depth 1: In Plain Words"
-      class="glass-card p-5 md:p-7 border border-brand-amber/40 bg-gradient-to-br from-brand-amber/[0.06] via-transparent to-brand-cyan/[0.04]"
+      class="glass-card p-7 md:p-10 rounded-3xl border border-brand-amber/30 bg-gradient-to-br from-brand-amber/[0.05] via-transparent to-brand-cyan/[0.03]"
     >
-      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-        <div class="flex flex-wrap items-center gap-2">
-          <span class="font-mono text-[10px] tracking-[0.14em] uppercase px-2.5 py-0.5 rounded bg-brand-amber text-brand-dark font-bold">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-5">
+        <div class="flex flex-wrap items-center gap-2.5">
+          <span class="font-mono text-[10px] tracking-[0.14em] uppercase px-3 py-1 rounded-full bg-brand-amber text-[#090b10] font-bold">
             Depth 1 · Plain Story ({gw.readingMinutesPlain} min)
           </span>
-          <span class="font-mono text-[10.5px] text-brand-gray">
+          <span class="font-mono text-[11px] text-brand-gray">
             Full manuscript (~{gw.readingMinutesFull} min) is at Depth 4 below
           </span>
         </div>
@@ -96,58 +96,58 @@ const easySentences = (easyEntry?.three_points_one_idea || []).slice(0, 3);
         </a>
       </div>
 
-      <h2 class="text-xl md:text-2xl font-bold text-brand-white tracking-tight m-0">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-white tracking-tight m-0 leading-snug">
         {gw.plainTitle}
       </h2>
-      <p class="mt-2 font-body text-sm md:text-base text-brand-light leading-relaxed">
+      <p class="mt-3.5 font-body text-base md:text-lg text-brand-light leading-[1.8]">
         {gw.oneLineHook}
       </p>
 
       <!-- Everyday Analogy Callout -->
-      <div class="mt-4 p-3.5 rounded-xl border border-brand-cyan/35 bg-brand-cyan/[0.06]">
-        <div class="font-mono text-[10px] tracking-[0.12em] uppercase text-brand-cyan font-semibold mb-1">
-          💡 Everyday Analogy — Think of It Like This
+      <div class="mt-6 p-5 rounded-2xl border border-brand-cyan/25 bg-brand-cyan/[0.05]">
+        <div class="font-mono text-[10.5px] tracking-[0.14em] uppercase text-brand-cyan font-semibold mb-2">
+          💡 Everyday Analogy
         </div>
-        <p class="font-body text-sm text-brand-light leading-relaxed m-0">
+        <p class="font-body text-sm md:text-base text-brand-light leading-[1.8] m-0">
           {gw.everydayAnalogy}
         </p>
       </div>
 
-      <!-- 3-Beat And · But · Therefore Narrative Arc -->
-      <div class="mt-4 grid md:grid-cols-3 gap-3">
-        <div class="p-3.5 rounded-xl border border-brand-border bg-brand-dark/45">
-          <div class="font-mono text-[10px] tracking-[0.14em] uppercase text-emerald-300 font-semibold mb-1">
-            1 · Setup (And)
+      <!-- 3-Beat And · But · Therefore Narrative Arc (Clean Hairline Columns) -->
+      <div class="mt-8 grid md:grid-cols-3 gap-6 md:gap-8">
+        <div class="pt-4 border-t border-emerald-400/35">
+          <div class="font-mono text-[10.5px] tracking-[0.16em] uppercase text-emerald-300 font-semibold mb-2">
+            01 · Setup
           </div>
-          <p class="font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+          <p class="font-body text-sm text-brand-slate leading-[1.75] m-0">
             {gw.abt.and}
           </p>
         </div>
-        <div class="p-3.5 rounded-xl border border-brand-border bg-brand-dark/45">
-          <div class="font-mono text-[10px] tracking-[0.14em] uppercase text-brand-amber font-semibold mb-1">
-            2 · Problem (But)
+        <div class="pt-4 border-t border-brand-amber/35">
+          <div class="font-mono text-[10.5px] tracking-[0.16em] uppercase text-brand-amber font-semibold mb-2">
+            02 · Problem
           </div>
-          <p class="font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+          <p class="font-body text-sm text-brand-slate leading-[1.75] m-0">
             {gw.abt.but}
           </p>
         </div>
-        <div class="p-3.5 rounded-xl border border-brand-border bg-brand-dark/45">
-          <div class="font-mono text-[10px] tracking-[0.14em] uppercase text-brand-cyan font-semibold mb-1">
-            3 · Result (Therefore)
+        <div class="pt-4 border-t border-brand-cyan/35">
+          <div class="font-mono text-[10.5px] tracking-[0.16em] uppercase text-brand-cyan font-semibold mb-2">
+            03 · Result
           </div>
-          <p class="font-body text-xs sm:text-sm text-brand-slate leading-relaxed m-0">
+          <p class="font-body text-sm text-brand-slate leading-[1.75] m-0">
             {gw.abt.therefore}
           </p>
         </div>
       </div>
 
       <!-- Key Result in Plain Words -->
-      <div class="mt-4 p-3.5 rounded-xl border border-emerald-400/35 bg-emerald-500/[0.06] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div class="mt-8 p-5 rounded-2xl border border-emerald-400/30 bg-emerald-500/[0.05] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <div class="font-mono text-[10px] tracking-[0.12em] uppercase text-emerald-300 font-semibold mb-0.5">
+          <div class="font-mono text-[10.5px] tracking-[0.14em] uppercase text-emerald-300 font-semibold mb-1">
             Headline Number in Plain Words
           </div>
-          <p class="font-body text-xs sm:text-sm text-brand-white leading-relaxed m-0">
+          <p class="font-body text-sm md:text-base text-brand-white leading-[1.75] m-0">
             {gw.keyNumberPlain}
           </p>
         </div>
@@ -155,20 +155,20 @@ const easySentences = (easyEntry?.three_points_one_idea || []).slice(0, 3);
 
       <!-- Inline 15-Second Plain-Words Film & Multi-Language Audio Player -->
       {film15sExists && (
-        <div class="mt-5 pt-4 border-t border-brand-border">
-          <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
-            <span class="font-mono text-[11px] text-brand-amber font-semibold">
+        <div class="mt-8 pt-7 border-t border-brand-border">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <span class="font-mono text-xs text-brand-amber font-semibold">
               ▶ Watch or Listen in 15 Seconds (Plain-Words Summary)
             </span>
             {availableAudioLangs.length > 0 && (
-              <div class="flex flex-wrap items-center gap-1" role="group" aria-label="15-second spoken language audio">
+              <div class="flex flex-wrap items-center gap-1.5" role="group" aria-label="15-second spoken language audio">
                 <span class="font-mono text-[10px] text-brand-gray mr-1">Spoken audio:</span>
                 {availableAudioLangs.map((al) => (
                   <button
                     type="button"
                     data-gw-audio-src={`/media/tv/planetary-15s/audio/${paperId}/${al.code}.m4a`}
                     data-gw-audio-lang={al.code}
-                    class={`gw-lang-audio-btn font-mono text-[10px] px-2 py-0.5 rounded border cursor-pointer transition-colors ${
+                    class={`gw-lang-audio-btn font-mono text-[10px] px-2.5 py-1 rounded-full border cursor-pointer transition-colors ${
                       al.code === initialAudioLang
                         ? 'border-brand-amber text-brand-amber bg-brand-amber/15'
                         : 'border-brand-border text-brand-slate bg-transparent hover:text-brand-white'
@@ -181,8 +181,8 @@ const easySentences = (easyEntry?.three_points_one_idea || []).slice(0, 3);
             )}
           </div>
 
-          <div class="grid md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] gap-4 items-start">
-            <div class="rounded-xl overflow-hidden border border-brand-border bg-black">
+          <div class="grid md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] gap-6 md:gap-8 items-start">
+            <div class="rounded-2xl overflow-hidden border border-brand-border bg-black">
               <video
                 controls
                 playsinline
@@ -202,7 +202,7 @@ const easySentences = (easyEntry?.three_points_one_idea || []).slice(0, 3);
                 )}
               </video>
               {availableAudioLangs.length > 0 && (
-                <div class="px-3 py-2 bg-[#090d16] border-t border-brand-border flex items-center gap-2">
+                <div class="px-3.5 py-2.5 bg-[#090d16] border-t border-brand-border flex items-center gap-2">
                   <span id="gw-audio-lang-badge" class="font-mono text-[10px] text-brand-cyan shrink-0">
                     🔊 {availableAudioLangs.find((l) => l.code === initialAudioLang)?.label ?? 'English'} (15s)
                   </span>
@@ -218,9 +218,9 @@ const easySentences = (easyEntry?.three_points_one_idea || []).slice(0, 3);
             </div>
 
             <!-- Easy-Read 1-Idea-Per-Sentence + Mulberry/Tawasol CC BY-SA 4.0 Symbols -->
-            <div class="p-3.5 rounded-xl border border-brand-border bg-brand-dark/40 space-y-2.5">
+            <div class="p-5 rounded-2xl border border-brand-border bg-brand-dark/35 space-y-3.5">
               <div class="flex items-center justify-between gap-2">
-                <span class="font-mono text-[10px] tracking-[0.12em] uppercase text-brand-cyan font-semibold">
+                <span class="font-mono text-[10.5px] tracking-[0.12em] uppercase text-brand-cyan font-semibold">
                   Easy-Read · One Idea Per Sentence
                 </span>
                 <span class="font-mono text-[9.5px] text-brand-gray">
@@ -231,7 +231,7 @@ const easySentences = (easyEntry?.three_points_one_idea || []).slice(0, 3);
                 <div class="flex flex-wrap gap-1.5">
                   {mulberryList.map((sym: any) => (
                     <span
-                      class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-brand-border bg-white/[0.03] font-mono text-[10.5px] text-brand-light"
+                      class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border border-brand-border bg-white/[0.03] font-mono text-[10.5px] text-brand-light"
                       title={`${sym.label} (${sym.symbol_id} · ${sym.license})`}
                     >
                       <span aria-hidden="true">{sym.unicode}</span>
@@ -241,14 +241,14 @@ const easySentences = (easyEntry?.three_points_one_idea || []).slice(0, 3);
                 </div>
               )}
               {easySentences.length > 0 && (
-                <ul class="space-y-1.5 list-disc pl-4 font-body text-xs text-brand-slate leading-relaxed m-0">
+                <ul class="space-y-2 list-disc pl-4 font-body text-xs sm:text-sm text-brand-slate leading-[1.75] m-0">
                   {easySentences.map((sent: string) => (
                     <li>{sent}</li>
                   ))}
                 </ul>
               )}
               {brailleExists && (
-                <div class="pt-1 flex flex-wrap gap-3 font-mono text-[10.5px]">
+                <div class="pt-1 flex flex-wrap gap-3 font-mono text-[11px]">
                   <a href={`/transcripts/${paperId}/`} class="text-brand-cyan no-underline hover:underline">
                     ⠃ Zero-Table Braille &amp; Screen-Reader Transcript →
                   </a>
@@ -264,9 +264,9 @@ const easySentences = (easyEntry?.three_points_one_idea || []).slice(0, 3);
     <details
       id="gw-rung-visual"
       data-gw-rung="visual"
-      class="gw-rung-details glass-card border border-brand-cyan/35 overflow-hidden"
+      class="gw-rung-details glass-card rounded-3xl border border-brand-cyan/30 overflow-hidden"
     >
-      <summary class="px-5 py-3.5 cursor-pointer flex flex-wrap items-center justify-between gap-2 select-none">
+      <summary class="px-6 md:px-8 py-5 cursor-pointer flex flex-wrap items-center justify-between gap-2 select-none">
         <div class="flex flex-wrap items-center gap-2">
           <span class="font-mono text-[10px] tracking-[0.14em] uppercase px-2 py-0.5 rounded bg-brand-cyan/20 text-brand-cyan font-semibold">
             Depth 2 · Visual &amp; Hands-On
@@ -345,9 +345,9 @@ const easySentences = (easyEntry?.three_points_one_idea || []).slice(0, 3);
     <details
       id="gw-rung-builder"
       data-gw-rung="builder"
-      class="gw-rung-details glass-card border border-emerald-400/35 overflow-hidden"
+      class="gw-rung-details glass-card rounded-3xl border border-emerald-400/30 overflow-hidden"
     >
-      <summary class="px-5 py-3.5 cursor-pointer flex flex-wrap items-center justify-between gap-2 select-none">
+      <summary class="px-6 md:px-8 py-5 cursor-pointer flex flex-wrap items-center justify-between gap-2 select-none">
         <div class="flex flex-wrap items-center gap-2">
           <span class="font-mono text-[10px] tracking-[0.14em] uppercase px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-semibold">
             Depth 3 · Builder &amp; Evidence

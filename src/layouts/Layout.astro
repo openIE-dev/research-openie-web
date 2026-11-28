@@ -78,12 +78,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
           try { localStorage.setItem('oe-reading-depth', depth); } catch (_e) {}
         }
         document.documentElement.setAttribute('data-reading-depth', depth);
+        document.documentElement.setAttribute('data-gw-depth', depth);
+        document.documentElement.classList.add('js-motion');
       })();
     </script>
   </head>
-  <body class="min-h-screen flex flex-col noise-overlay grid-bg">
-    <nav id="nav" aria-label="Main navigation" class="nav-glass fixed top-0 left-0 right-0 z-100 px-6 md:px-10 py-4 md:py-5 flex justify-between items-center transition-all duration-400">
-      <a href="/" aria-label="OpenIE Research home" class="font-display text-[22px] font-bold tracking-tight text-brand-white no-underline hover:no-underline">
+  <body class="min-h-screen flex flex-col noise-overlay grid-bg overflow-x-clip">
+    <nav id="nav" aria-label="Main navigation" class="nav-glass fixed top-0 left-0 right-0 z-100 px-6 md:px-12 h-16 flex justify-between items-center transition-all duration-400">
+      <a href="/" aria-label="OpenIE Research home" class="font-display text-[21px] font-bold tracking-tight text-brand-white no-underline hover:no-underline shrink-0">
         Open<span class="text-brand-cyan">IE</span> <span class="text-brand-amber">Research</span>
       </a>
 
@@ -93,29 +95,49 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
         <span class="block w-5 h-0.5 bg-current transition-transform" id="burger-bot"></span>
       </button>
 
-      <div id="nav-links" class="hidden md:flex gap-3.5 lg:gap-4 items-center max-md:fixed max-md:inset-0 max-md:top-[60px] max-md:bg-brand-dark/95 max-md:backdrop-blur-xl max-md:flex-col max-md:justify-center max-md:gap-6 max-md:z-50">
-        <a href="/#catalog" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">{N.papers}</a>
-        <a href="/living/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">{N.figures}</a>
-        <a href="/constellation/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-cyan no-underline hover:text-brand-white transition-colors">Constellation</a>
-        <a href="/standards/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-amber no-underline hover:text-brand-white transition-colors">Standards</a>
-        <a href="/replication/" class="font-body text-[13px] max-md:text-lg font-medium text-emerald-300 no-underline hover:text-brand-white transition-colors">Replicate</a>
-        <a href="/tv/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-amber no-underline hover:text-brand-white transition-colors">TV</a>
-        <a href="/radio/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-cyan no-underline hover:text-brand-white transition-colors">Radio</a>
-        <a href="/live/" class="font-body text-[13px] max-md:text-lg font-medium text-emerald-400 no-underline hover:text-brand-white transition-colors inline-flex items-center gap-1.5"><span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Live</a>
-        <a href="https://blog.openie.dev" class="font-body text-[13px] max-md:text-lg font-medium text-brand-amber no-underline hover:text-brand-white transition-colors">Chronicle</a>
-        <a href="/syndication/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Syndication</a>
-        <a href="/tutorials/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Tutorials</a>
-        <a href="/data/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">Data</a>
-        <a href="/about/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">{N.about}</a>
-        <a href="/glossary/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">{N.glossary}</a>
-        <a href="/faq/" class="font-body text-[13px] max-md:text-lg font-medium text-brand-slate no-underline hover:text-brand-white transition-colors">FAQ</a>
-        <a href="https://avalanche.openie.dev" class="font-mono text-xs max-md:text-sm text-brand-amber border border-brand-amber/40 px-3 py-1.5 rounded-md no-underline hover:bg-brand-amber/10 hover:border-brand-amber transition-all">
-          Avalanche
-        </a>
-        <a href="https://openie.dev" class="font-mono text-xs max-md:text-sm text-brand-cyan border border-brand-cyan/30 px-3 py-1.5 rounded-md no-underline hover:bg-brand-cyan/10 hover:border-brand-cyan transition-all">
-          openie.dev
-        </a>
-        <div class="flex items-center gap-2 md:ml-2 md:pl-2 md:border-l md:border-brand-border">
+      <div id="nav-links" class="hidden md:flex gap-7 lg:gap-9 items-center max-md:fixed max-md:inset-0 max-md:top-16 max-md:bg-brand-dark/96 max-md:backdrop-blur-2xl max-md:flex-col max-md:items-stretch max-md:px-6 max-md:z-50">
+        <a href="/#catalog" class="font-body text-sm max-md:text-base font-medium text-brand-light/90 no-underline hover:text-brand-white transition-colors">{lang === 'en' ? 'Studies' : N.papers}</a>
+        <a href="/living/" class="font-body text-sm max-md:text-base font-medium text-brand-light/90 no-underline hover:text-brand-white transition-colors">{lang === 'en' ? 'Interactive' : N.figures}</a>
+        <a href="/tv/" class="font-body text-sm max-md:text-base font-medium text-brand-light/90 no-underline hover:text-brand-white transition-colors">TV &amp; Radio</a>
+        <a href="/live/" class="font-body text-sm max-md:text-base font-medium text-emerald-400 no-underline hover:text-emerald-300 transition-colors inline-flex items-center gap-2"><span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 pulse"></span>Live</a>
+
+        <details id="nav-explore-menu" class="relative max-md:w-full">
+          <summary class="list-none [&::-webkit-details-marker]:hidden font-body text-sm max-md:text-base font-medium text-brand-slate hover:text-brand-white transition-colors cursor-pointer select-none inline-flex items-center gap-1.5 py-1.5 px-2.5 rounded-full hover:bg-white/[0.04]">
+            <span>Explore</span>
+            <span class="text-[11px] opacity-75 transition-transform duration-200" id="nav-explore-caret">▾</span>
+          </summary>
+
+          <div class="nav-explore-panel md:absolute md:right-0 md:top-full md:mt-3 md:w-[440px] max-md:mt-2 rounded-2xl p-5 border border-brand-border shadow-2xl backdrop-blur-2xl z-120">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-brand-amber mb-2.5">Research &amp; Tools</div>
+                <div class="flex flex-col gap-1">
+                  <a href="/constellation/" class="font-body text-[13px] py-1.5 px-2.5 rounded-lg text-brand-light no-underline hover:text-brand-cyan hover:bg-white/[0.04] transition-colors">Constellation</a>
+                  <a href="/standards/" class="font-body text-[13px] py-1.5 px-2.5 rounded-lg text-brand-light no-underline hover:text-brand-amber hover:bg-white/[0.04] transition-colors">Standards</a>
+                  <a href="/replication/" class="font-body text-[13px] py-1.5 px-2.5 rounded-lg text-brand-light no-underline hover:text-emerald-300 hover:bg-white/[0.04] transition-colors">Replicate</a>
+                  <a href="/radio/" class="font-body text-[13px] py-1.5 px-2.5 rounded-lg text-brand-light no-underline hover:text-brand-cyan hover:bg-white/[0.04] transition-colors">Radio</a>
+                  <a href="/tutorials/" class="font-body text-[13px] py-1.5 px-2.5 rounded-lg text-brand-light no-underline hover:text-brand-white hover:bg-white/[0.04] transition-colors">Tutorials</a>
+                  <a href="/data/" class="font-body text-[13px] py-1.5 px-2.5 rounded-lg text-brand-light no-underline hover:text-brand-white hover:bg-white/[0.04] transition-colors">Data</a>
+                </div>
+              </div>
+
+              <div>
+                <div class="font-mono text-[10px] tracking-[0.18em] uppercase text-brand-cyan mb-2.5">Context &amp; Ecosystem</div>
+                <div class="flex flex-col gap-1">
+                  <a href="https://blog.openie.dev" class="font-body text-[13px] py-1.5 px-2.5 rounded-lg text-brand-light no-underline hover:text-brand-amber hover:bg-white/[0.04] transition-colors">Chronicle</a>
+                  <a href="/syndication/" class="font-body text-[13px] py-1.5 px-2.5 rounded-lg text-brand-light no-underline hover:text-brand-white hover:bg-white/[0.04] transition-colors">Syndication</a>
+                  <a href="/about/" class="font-body text-[13px] py-1.5 px-2.5 rounded-lg text-brand-light no-underline hover:text-brand-white hover:bg-white/[0.04] transition-colors">{N.about}</a>
+                  <a href="/glossary/" class="font-body text-[13px] py-1.5 px-2.5 rounded-lg text-brand-light no-underline hover:text-brand-white hover:bg-white/[0.04] transition-colors">{N.glossary}</a>
+                  <a href="/faq/" class="font-body text-[13px] py-1.5 px-2.5 rounded-lg text-brand-light no-underline hover:text-brand-white hover:bg-white/[0.04] transition-colors">FAQ</a>
+                  <a href="https://avalanche.openie.dev" class="font-mono text-xs py-1.5 px-2.5 rounded-lg text-brand-amber no-underline hover:bg-brand-amber/10 transition-colors">Avalanche ↗</a>
+                  <a href="https://openie.dev" class="font-mono text-xs py-1.5 px-2.5 rounded-lg text-brand-cyan no-underline hover:bg-brand-cyan/10 transition-colors">openie.dev ↗</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <div class="flex items-center gap-2 md:pl-3 md:border-l md:border-brand-border max-md:pt-2 max-md:border-t max-md:border-brand-border">
           <ThemeToggle />
         </div>
       </div>
@@ -126,7 +148,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
       <slot />
     </main>
 
-    <footer class="relative z-2 border-t border-brand-border px-6 md:px-10 py-10" role="contentinfo">
+    <footer class="relative z-2 border-t border-brand-border px-6 md:px-12 py-16 md:py-24 mt-12" role="contentinfo">
       <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-8">
         <div>
           <div class="font-display text-sm text-brand-white mb-3">
@@ -228,10 +250,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
         if (burgerBot) burgerBot.style.transform = menuOpen ? 'translateY(-4px) rotate(-45deg)' : '';
       });
 
+      const exploreMenu = document.getElementById('nav-explore-menu') as HTMLDetailsElement | null;
+
       navLinks?.querySelectorAll('a').forEach(a => {
         a.addEventListener('click', () => {
+          if (exploreMenu) exploreMenu.open = false;
           if (menuOpen) {
             menuOpen = false;
+            btn?.setAttribute('aria-expanded', 'false');
             navLinks.classList.add('hidden');
             navLinks.classList.remove('flex');
             if (burgerTop) burgerTop.style.transform = '';
@@ -241,13 +267,60 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://research.op
         });
       });
 
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && menuOpen) btn?.click(); });
+      document.addEventListener('click', (e) => {
+        if (exploreMenu?.open && e.target instanceof Node && !exploreMenu.contains(e.target)) {
+          exploreMenu.open = false;
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          if (exploreMenu?.open) exploreMenu.open = false;
+          if (menuOpen) btn?.click();
+        }
+      });
 
       const nav = document.getElementById('nav');
       window.addEventListener('scroll', () => {
-        nav?.classList.toggle('scrolled', window.scrollY > 60);
+        nav?.classList.toggle('scrolled', window.scrollY > 40);
+      }, { passive: true });
+
+      // Global scroll-triggered editorial reveal & spotlight hover coordinates
+      const revealEls = document.querySelectorAll('.editorial-reveal');
+      if (revealEls.length > 0 && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
+        revealEls.forEach((el) => io.observe(el));
+      } else {
+        revealEls.forEach((el) => el.classList.add('is-visible'));
+      }
+
+      document.querySelectorAll('.spotlight-card').forEach((card) => {
+        card.addEventListener('pointermove', (ev) => {
+          const e = ev as PointerEvent;
+          const rect = (card as HTMLElement).getBoundingClientRect();
+          (card as HTMLElement).style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+          (card as HTMLElement).style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        }, { passive: true });
       });
     </script>
+    <style is:global>
+      .nav-explore-panel {
+        background: rgba(12, 15, 24, 0.94);
+      }
+      html[data-theme="light"] .nav-explore-panel {
+        background: rgba(255, 255, 255, 0.96);
+      }
+      #nav-explore-menu[open] #nav-explore-caret {
+        transform: rotate(180deg);
+      }
+    </style>
     <script>import '../scripts/lightbox.js';</script>
   </body>
 </html>
