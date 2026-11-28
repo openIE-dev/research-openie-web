@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="900" viewBox="0 0 1240 900" role="img" aria-labelledby="p48-t p48-d">
+  <title id="p48-t">MoL-LTCB-CM4 (&lt; xz-9e enwik8 &amp; &lt; 200 MB 1.00 GB enwik9), ARC-AGI-3 80.0% (20/25), Live nRF52832 64 KB SRAM &amp; 170 Proofs</title>
+  <desc id="p48-d">Four-panel summary of Claims LA-88 through LA-91 and 170 six-kernel Lean 4.36.0 theorems (1534 Linux bwrap fleet): (A) MoL-LTCB-CM4 beating all five classical codecs including xz -9e (LZMA2 extreme) on 100 MB enwik8 (22.87 MB = 1.8298 bpb) and breaking 200 MB on 1.00 GB enwik9 (194.57 MB = 1.5565 bpb) with 100% cross-architecture SHA-256 parity across M5 Max, Jetson AGX Thor DC shunt, and AMD Zen 5; (B) Official black-box ARC-AGI-3 Target-Proximity &amp; Causal-Toggle T-BFWS(R,M) + 14-Bank 56 KB Vault reaching 20/25 = 80.00% full-catalog and 14/16 = 87.50% matched-16 (23/183 levels, 0 breaker trips); (C) Live physical 64.00 KB SRAM Nordic nRF52832 (Nicla Voice CMSIS-DAP SWD, 0 Flash writes, 185.667x DWT speedup) and Window 28 Thor DC shunt (294.027x lower measured_j); and (D) 102.57 MHz XC7A200T openXC7 gateware, 15.48 KB 23-export lut6_core.wasm, and 170 six-kernel proofs.</desc>
+  <defs>
+    <linearGradient id="bg48" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#040814"/><stop offset="52%" stop-color="#07182d"/><stop offset="100%" stop-color="#041e22"/>
+    </linearGradient>
+  </defs>
+  <rect width="1240" height="900" fill="url(#bg48)"/>
+  <text x="28" y="34" fill="#f8fafc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14.2" font-weight="800">MoL-LTCB-CM4 (&lt; xz-9e enwik8 &amp; &lt; 200 MB enwik9), ARC-AGI-3 80.0% (20/25), Live nRF52832 &amp; 170 Proofs</text>
+  <text x="28" y="54" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8">Claims LA-19 (170 Thms / 1,534 bwrap Fleet) &amp; LA-88..LA-91  |  MoL-LTCB-CM4 enwik8=22.87 MB (&lt; xz-9e!) &amp; 1.00 GB enwik9=194.57 MB (&lt; 200 MB!)  |  ARC-AGI-3 20/25 (80.0%) &amp; 14/16 (87.5%)  |  nRF52=185.7x · Thor W28=294.0x</text>
+  <rect x="24" y="68" width="584" height="398" rx="12" fill="#0d1729" stroke="#22d3ee" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="42" y="92" fill="#22d3ee" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="800">A. Claim LA-88 · MoL-LTCB-CM4 Beats xz-9e &amp; Breaks &lt; 200 MB on 1 GB enwik9</text>
+  <text x="42" y="109" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">Theorems 163–165 · 3-Tier Dynamic WRT4 + 256 MiB LZ-Rep6 + 6-Expert Sub1Bit-LUT6 StateSMix4</text>
+  <rect x="42" y="118" width="548" height="20" rx="4" fill="#1e293b"/>
+  <text x="48" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">Tier · Host · Codec</text>
+  <text x="276" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">Ranked MB</text>
+  <text x="352" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">bpb</text>
+  <text x="404" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">Dec s</text>
+  <text x="464" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">Energy / Tier</text>
+  <rect x="42" y="144" width="548" height="35" rx="5" fill="#131c2e" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="165" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.0" font-weight="500">enwik8 · M5 · MoL-CM3</text>
+  <text x="276" y="165" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">26.62 MB</text>
+  <text x="352" y="165" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">2.1295</text>
+  <text x="404" y="165" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">5.06s</text>
+  <text x="464" y="165" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">192.30 J (rep.)</text>
+  <rect x="42" y="185" width="548" height="35" rx="5" fill="#131c2e" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="206" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.0" font-weight="500">enwik8 · M5 · xz -9e (LZMA2)</text>
+  <text x="276" y="206" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">24.90 MB</text>
+  <text x="352" y="206" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">1.9918</text>
+  <text x="404" y="206" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">0.79s</text>
+  <text x="464" y="206" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">105.17 J (rep.)</text>
+  <rect x="42" y="226" width="548" height="35" rx="5" fill="#062c24" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="247" fill="#6ee7b7" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.0" font-weight="700">enwik8 · M5 · MoL-CM4 (#1!)</text>
+  <text x="276" y="247" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">22.87 MB</text>
+  <text x="352" y="247" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">1.8298</text>
+  <text x="404" y="247" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">12.73s</text>
+  <text x="464" y="247" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">116.36 J (rep.)</text>
+  <rect x="42" y="267" width="548" height="35" rx="5" fill="#131c2e" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="288" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.0" font-weight="500">enwik9 1GB · M5 · xz -9e</text>
+  <text x="276" y="288" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">214.22 MB</text>
+  <text x="352" y="288" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">1.7138</text>
+  <text x="404" y="288" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">1.88s</text>
+  <text x="464" y="288" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">249.79 J (rep.)</text>
+  <rect x="42" y="308" width="548" height="35" rx="5" fill="#062c24" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="329" fill="#6ee7b7" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.0" font-weight="700">enwik9 1GB · M5 · MoL-CM4 (&lt;200!)</text>
+  <text x="276" y="329" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">194.57 MB</text>
+  <text x="352" y="329" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">1.5565</text>
+  <text x="404" y="329" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">88.88s</text>
+  <text x="464" y="329" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">43112.26 J (rep.)</text>
+  <rect x="42" y="349" width="548" height="35" rx="5" fill="#2b1c08" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="370" fill="#fde68a" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.0" font-weight="700">enwik9 1GB · Thor · MoL-CM4</text>
+  <text x="276" y="370" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">194.57 MB</text>
+  <text x="352" y="370" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">1.5565</text>
+  <text x="404" y="370" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.0" font-weight="700">222.93s</text>
+  <text x="464" y="370" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">52001.4 J (meas.)</text>
+  <rect x="42" y="394" width="548" height="58" rx="6" fill="#072922" stroke="#10b981" stroke-width="0.9"/>
+  <text x="52" y="412" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.7" font-weight="700">100.00% Cross-Arch SHA-256 on enwik8 (63678dad16651197) &amp; 1.00 GB enwik9 (a10f3e7673fd4a63):</text>
+  <text x="52" y="429" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">enwik8: 22.87 MB beats xz -9e by -2.02 MB &amp; CM3 by -3.52 MB (0 floats!)</text>
+  <text x="52" y="445" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.5">1.00 GB enwik9: 194.57 MB (-5.43 MB &lt; 200 MB!) vs xz-9e 214.22 MB, zstd-19 235.43 MB · Zen5=192162 J</text>
+  <rect x="632" y="68" width="584" height="398" rx="12" fill="#0d1729" stroke="#10b981" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="650" y="92" fill="#34d399" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="800">B. Claim LA-89 · ARC-AGI-3 4/5 Supermajority (20/25 = 80.0% &amp; 14/16 = 87.5%)</text>
+  <text x="650" y="109" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">Theorems 166–168 · Target-Proximity &amp; Causal-Toggle T-BFWS(R,M) + 14-Bank 56 KB Vault</text>
+  <rect x="650" y="118" width="548" height="20" rx="4" fill="#1e293b"/>
+  <text x="656" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">Official Black-Box ARC-AGI-3 Agent</text>
+  <text x="880" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">16-Game</text>
+  <text x="954" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">25-Game</text>
+  <text x="1032" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">Lvls</text>
+  <text x="1090" y="132" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">RHAE (25)</text>
+  <rect x="650" y="144" width="548" height="32" rx="5" fill="#131c2e" stroke="#334155" stroke-width="0.8"/>
+  <text x="656" y="164" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="7.9" font-weight="500">Phase 41 · R-BFWS(R,M) + 8-Bank (32 KB)</text>
+  <text x="880" y="164" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">10/16 (62.5%)</text>
+  <text x="954" y="164" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">13/25 (52.0%)</text>
+  <text x="1032" y="164" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">16/183</text>
+  <text x="1090" y="164" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="800">2.3543</text>
+  <rect x="650" y="182" width="548" height="32" rx="5" fill="#131c2e" stroke="#334155" stroke-width="0.8"/>
+  <text x="656" y="202" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="7.9" font-weight="500">Phase 42 · C-BFWS(R,M) + 12-Bank (48 KB)</text>
+  <text x="880" y="202" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">11/16 (68.8%)</text>
+  <text x="954" y="202" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">15/25 (60.0%)</text>
+  <text x="1032" y="202" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">18/183</text>
+  <text x="1090" y="202" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="800">2.5030</text>
+  <rect x="650" y="220" width="548" height="32" rx="5" fill="#131c2e" stroke="#334155" stroke-width="0.8"/>
+  <text x="656" y="240" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="7.9" font-weight="500">Phase 47 · M-BFWS(R,M) + 14-Bank (56 KB)</text>
+  <text x="880" y="240" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">13/16 (81.3%)</text>
+  <text x="954" y="240" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">17/25 (68.0%)</text>
+  <text x="1032" y="240" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">20/183</text>
+  <text x="1090" y="240" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="800">2.7570</text>
+  <rect x="650" y="258" width="548" height="32" rx="5" fill="#062c24" stroke="#334155" stroke-width="0.8"/>
+  <text x="656" y="278" fill="#6ee7b7" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="7.9" font-weight="700">Phase 48 W1 · T-BFWS(R,M) Cold Wake</text>
+  <text x="880" y="278" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">14/16 (87.5%)</text>
+  <text x="954" y="278" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">20/25 (80.0%)</text>
+  <text x="1032" y="278" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">22/183</text>
+  <text x="1090" y="278" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="800">0.4796</text>
+  <rect x="650" y="296" width="548" height="32" rx="5" fill="#062c24" stroke="#334155" stroke-width="0.8"/>
+  <text x="656" y="316" fill="#6ee7b7" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="7.9" font-weight="700">Phase 48 W2 · 14-Bank 56 KB LUT6 Vault</text>
+  <text x="880" y="316" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">14/16 (87.5%)</text>
+  <text x="954" y="316" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">20/25 (80.0%)</text>
+  <text x="1032" y="316" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">23/183</text>
+  <text x="1090" y="316" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="800">3.2069</text>
+  <rect x="650" y="340" width="548" height="112" rx="6" fill="#072922" stroke="#10b981" stroke-width="0.9"/>
+  <text x="660" y="358" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">Three New Black-Box Games Unlocked -&gt; 20/25 (80.0%) &amp; 14/16 (87.5%, 0 Breaker Trips):</text>
+  <text x="660" y="376" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">• dc22-fdcac232 (1/6, RHAE=4.7619, lut6=20): Stratified causal panel-toggle probe + BFS+IW(2)</text>
+  <text x="660" y="393" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">• cn04-2fe56bfb (1/6, RHAE=4.7619, lut6=14, PINNED-16!): Slow-timer mask + ACTION5 k=2 + h_prox</text>
+  <text x="660" y="410" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">• re86-8af5384d (1/8, RHAE=1.7243, lut6=33): Cyclic ACTION5 k=4 rotation + h_prox forward-graph</text>
+  <text x="660" y="429" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.7" font-weight="700">• Matched-16 Mean RHAE = 3.9121 (Peak 10.7143) · 346 slots / 327 LUT6 steps</text>
+  <text x="660" y="445" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.5">• Zero .py game-source peeking · Zero raw frames persisted · 57,344 B (87.5% of 64 KB SRAM)</text>
+  <rect x="24" y="484" width="584" height="392" rx="12" fill="#0d1729" stroke="#f59e0b" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="42" y="508" fill="#fbbf24" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="800">C. Claim LA-90 · Live 64 KB SRAM Nordic nRF52832 &amp; Window 28 Thor Shunt</text>
+  <text x="42" y="525" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">Physical Nicla Voice CMSIS-DAP SWD (0 Flash Writes) + 3-Host Window 28 Cross-Silicon</text>
+  <rect x="42" y="534" width="548" height="20" rx="4" fill="#1e293b"/>
+  <text x="48" y="548" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">Silicon Fabric (Window 28 vs Float CMIX-6 APM + Reset Scan)</text>
+  <text x="330" y="548" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">W28</text>
+  <text x="398" y="548" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">W28b</text>
+  <text x="474" y="548" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6" font-weight="700">Gain / Cut</text>
+  <rect x="42" y="560" width="548" height="33" rx="5" fill="#0b243b" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="581" fill="#7dd3fc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.0" font-weight="700">Nordic nRF52832 64 KB SRAM (DWT cyc)</text>
+  <text x="330" y="581" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="700">1106.3c</text>
+  <text x="398" y="581" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="700">205.4kc</text>
+  <text x="474" y="581" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="800">185.667x cyc</text>
+  <rect x="42" y="598" width="548" height="33" rx="5" fill="#2b1c08" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="619" fill="#fde68a" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.0" font-weight="700">NVIDIA Jetson AGX Thor (measured_j)</text>
+  <text x="330" y="619" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="700">19.86ns</text>
+  <text x="398" y="619" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="700">5106ns</text>
+  <text x="474" y="619" fill="#fde68a" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="800">294.027x J</text>
+  <rect x="42" y="636" width="548" height="33" rx="5" fill="#131c2e" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="657" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.0" font-weight="700">AMD Ryzen AI Max+ 395 Zen 5 (reported_j)</text>
+  <text x="330" y="657" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="700">20.05ns</text>
+  <text x="398" y="657" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="700">2326ns</text>
+  <text x="474" y="657" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="800">114.829x J</text>
+  <rect x="42" y="674" width="548" height="33" rx="5" fill="#131c2e" stroke="#334155" stroke-width="0.8"/>
+  <text x="48" y="695" fill="#cbd5e1" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="8.0" font-weight="700">Apple M3 Ultra 256 GB (reported_j)</text>
+  <text x="330" y="695" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="700">10.51ns</text>
+  <text x="398" y="695" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.9" font-weight="700">1509ns</text>
+  <text x="474" y="695" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="800">169.043x J</text>
+  <rect x="42" y="716" width="548" height="144" rx="6" fill="#1e1b18" stroke="#f59e0b" stroke-width="0.9"/>
+  <text x="52" y="734" fill="#fbbf24" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.8" font-weight="700">Live USB Silicon Proof (DP=0x2ba01477, CPUID=0x410fc241, PART=0x52832 AAE0):</text>
+  <text x="52" y="752" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">• 30,296 B (46.23% of 64 KB SRAM, 0x20000000..0x20010000, 0 Flash writes, SYSRESETREQ)</text>
+  <text x="52" y="770" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">• Live Operon CRC32=0xd1cc025a · waiOS BLAKE3=0xa541323b (Row-77 fault=0x4ac7c4fb)</text>
+  <text x="52" y="788" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.7" font-weight="700">• Jetson AGX Thor INA3221 VDD_CPU: 508.86 vs 149619.62 nJ/op (294.027x measured_j!)</text>
+  <text x="52" y="806" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">• 144/144 Yosys abc -lut 6 Miter (9,216/9,216 minterms, 0 mismatches, 26,880 ops/call saved)</text>
+  <text x="52" y="824" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.5">• Strict Tier Separation: nRF52832 DWT cycles carry board_metered=false, measured_j=null</text>
+  <rect x="632" y="484" width="584" height="392" rx="12" fill="#0d1729" stroke="#a78bfa" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="650" y="508" fill="#c4b5fd" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="800">D. Claims LA-91 &amp; LA-19 · 102.57 MHz openXC7, 23-Export WASM &amp; 170 Proofs</text>
+  <text x="650" y="525" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">Theorems 169–170 · 170 LutAdapt / 1,534 Linux bwrap Fleet · 15,850 B WASM (534 B Spare)</text>
+  <rect x="650" y="540" width="548" height="70" rx="7" fill="#1e1638" stroke="#475569" stroke-width="0.9"/>
+  <text x="662" y="561" fill="#c4b5fd" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.0" font-weight="800">1. License-Free openXC7 Artix-7 XC7A200T Gateware (102.57 MHz Post-PAR)</text>
+  <text x="662" y="581" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.7">Top: clai_cm4_nrf52_xc7a200t_top · 653 SLICE_LUTX, 203 FFX, 0 DSP48E1s</text>
+  <text x="662" y="598" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">64/64 CM4-Sub1Bit+T-BFWS &amp; JouleBit6 RTL parity · 77.846 Mbit .bit (sha256=03db73f09420...)</text>
+  <rect x="650" y="620" width="548" height="70" rx="7" fill="#0b243b" stroke="#475569" stroke-width="0.9"/>
+  <text x="662" y="641" fill="#7dd3fc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.0" font-weight="800">2. Self-Contained #![no_std] lut6_core.wasm (15,850 B = 15.48 KB &lt;= 16 KB)</text>
+  <text x="662" y="661" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.7">23 C-ABI Exports (+wasm_eval_cm4_arc3_lut6) · 534 B spare under 16,384 B cap!</text>
+  <text x="662" y="678" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">Runs live in-browser Widget 22 (#la-cm4-01) with sha256[:12]=e8482985e889 &amp; 0 deps</text>
+  <rect x="650" y="700" width="548" height="70" rx="7" fill="#062c24" stroke="#475569" stroke-width="0.9"/>
+  <text x="662" y="721" fill="#6ee7b7" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.0" font-weight="800">3. Six-Kernel Paranoid Proof Closure: 170 LutAdapt &amp; 1,534 Linux bwrap Fleet</text>
+  <text x="662" y="741" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.7">LtcbCm4Nrf52Arc3ThreeQuarters.lean (Thms 163..170) · 59,294 verified decls</text>
+  <text x="662" y="758" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">3-tier WRT4 bijection, 6-expert Sub1Bit log-odds, 4/5 ARC-AGI-3, &amp; 64 KB nRF52832 SRAM fit</text>
+  <rect x="650" y="780" width="548" height="70" rx="7" fill="#1f2433" stroke="#475569" stroke-width="0.9"/>
+  <text x="662" y="801" fill="#fde68a" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.0" font-weight="800">4. Sweeping xz -9e on enwik8 &amp; Breaking &lt; 200.00 MB on 1.00 GB enwik9</text>
+  <text x="662" y="821" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.7">enwik8: 22.87 MB (&lt; xz-9e, xz-6, zstd-19, bzip2-9, gzip-9) · enwik9: 194.57 MB (&lt; 200 MB!)</text>
+  <text x="662" y="838" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="7.6">8th live waiOS fabric verified on physical Nordic nRF52832 Cortex-M4F 64 KB SRAM</text>
+</svg>
